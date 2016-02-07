@@ -8,7 +8,7 @@ Development
 * clone this repo
 * install dependencies:
 
-    pip install -r requirements.txt``
+    pip install -r requirements.txt
 
 * run the server
 
