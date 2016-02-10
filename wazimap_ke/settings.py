@@ -1,5 +1,7 @@
 import os
 
+import dj_database_url
+
 # pull in the default wazimap settings
 from wazimap.settings import *  # noqa
 
