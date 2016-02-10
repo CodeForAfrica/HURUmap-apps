@@ -9,6 +9,8 @@ INSTALLED_APPS.insert(-2, 'wazimap_ke')
 
 
 DATABASE_URL = os.environ.get('DATABASE_URL', 'postgresql://censusreporter_ke:censusreporter_ke@localhost/censusreporter_ke')
+DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
+DATABASES['default']['ATOMIC_REQUESTS'] = True
 
 
 # Localise this instance of Wazimap

@@ -1,8 +1,12 @@
 from collections import OrderedDict
 
 from wazimap.data.models import get_model_from_fields
-from wazimap.geo import get_summary_geo_info
+from wazimap.geo import geo_data
 from wazimap.data.utils import get_session, calculate_median, merge_dicts, get_stat_data, get_objects_by_geo, group_remainder
+
+
+# ensure tables are loaded
+import wazimap_ke.tables  # noqa
 
 
 PROFILE_SECTIONS = (
@@ -35,7 +39,7 @@ def get_census_profile(geo_code, geo_level, profile_name=None):
     session = get_session()
 
     try:
-        geo_summary_levels = get_summary_geo_info(geo_code, geo_level, session)
+        geo_summary_levels = geo_data.get_summary_geo_info(geo_code, geo_level, session)
         data = {}
 
         sections = list(PROFILE_SECTIONS)
