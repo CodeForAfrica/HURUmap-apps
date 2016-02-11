@@ -27,5 +27,8 @@ WAZIMAP['levels'] = {
         'plural': 'counties',
     }
 }
-
 WAZIMAP['comparative_levels'] = ['country']
+WAZIMAP['geometry_data'] = {
+    'country': 'geo/country.topojson',
+    'county': 'geo/county.topojson',
+}
