@@ -1,0 +1,35 @@
+{% extends '_base.html' %}
+{% load staticfiles %}
+
+{% block footer_content %}
+<div class="column-third">
+    <ul class="ul-icon-list">
+        <li>
+            <i class="fa fa-github"></i> <a href="https://github.com/CodeForAfrica/censusreporter-ke" target="_blank">Wazimap on Github</a>
+        </li>
+        <li>
+            <i class="fa fa-twitter"></i> <a href="http://twitter.com/CodeForAfrica" target="_blank">@CodeForAfrica</a>
+        </li>
+        <li>
+            <i class="fa fa-envelope"></i> <a href="mailto:info@codeforafrica.org">Email us</a>
+        </li>
+    </ul>
+</div>
+<div class="column-third">
+    <ul class="ul-icon-list">
+        <li>
+            <i class="fa fa-bar-chart-o"></i> <a href="http://www.knbs.or.ke/" target="_blank">Census 2009 data from KNBS</a>
+        </li>
+        <li>
+            <i class="fa fa-github"></i> Built on <a href="http://censusreporter.org" target="_blank">CensusReporter.org</a>
+        </li>
+    </ul>
+</div>
+<div class="column-third">
+    <ul class="ul-icon-list">
+        <li>
+            <a href="http://www.codeforafrica.org/"><img src="{% static 'img/code4africa-logo-small.png' %}"></a>
+        </li>
+    </ul>
+</div>
+{% endblock footer_content %}
