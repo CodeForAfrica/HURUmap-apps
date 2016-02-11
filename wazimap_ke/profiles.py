@@ -39,14 +39,10 @@ def get_census_profile(geo_code, geo_level, profile_name=None):
     session = get_session()
 
     try:
-        geo_summary_levels = geo_data.get_summary_geo_info(geo_code, geo_level, session)
+        geo_summary_levels = geo_data.get_summary_geo_info(geo_code, geo_level)
         data = {}
 
-        sections = list(PROFILE_SECTIONS)
-        if geo_level in ['country', 'province']:
-            sections.append('crime')
-
-        for section in sections:
+        for section in PROFILE_SECTIONS:
             function_name = 'get_%s_profile' % section
             if function_name in globals():
                 func = globals()[function_name]

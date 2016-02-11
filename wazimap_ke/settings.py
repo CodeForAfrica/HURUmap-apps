@@ -1,4 +1,5 @@
 import os
+from collections import OrderedDict
 
 import dj_database_url
 
@@ -18,3 +19,5 @@ DATABASES['default']['ATOMIC_REQUESTS'] = True
 # Localise this instance of Wazimap
 WAZIMAP['name'] = 'Wazimap Kenya'
 WAZIMAP['profile_builder'] = 'wazimap_ke.profiles.get_census_profile'
+WAZIMAP['levels'] = OrderedDict([('country', ['county'])])
+WAZIMAP['comparitive_levels'] = ['country']
