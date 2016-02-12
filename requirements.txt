@@ -1,0 +1,1 @@
+-e git+https://github.com/Code4SA/censusreporter.git@wazimap-pip#egg=wazimap
