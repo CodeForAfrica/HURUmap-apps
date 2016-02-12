@@ -7,7 +7,7 @@ from wazimap.settings import *  # noqa
 
 
 # insert our overrides before both census and wazimap
-INSTALLED_APPS.insert(-2, 'wazimap_ke')
+INSTALLED_APPS = ['wazimap_ke'] + INSTALLED_APPS
 
 
 DATABASE_URL = os.environ.get('DATABASE_URL', 'postgresql://censusreporter_ke:censusreporter_ke@localhost/censusreporter_ke')
