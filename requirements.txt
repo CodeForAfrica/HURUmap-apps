@@ -1,1 +1,4 @@
 -e git+https://github.com/Code4SA/censusreporter.git@wazimap-pip#egg=wazimap
+gevent==1.0.1
+greenlet==0.4.6
+gunicorn==18.0
