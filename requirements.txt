@@ -1,7 +1,6 @@
 Django==1.9.2
-GDAL==1.11.0
 gevent==1.0.1
 greenlet==0.4.6
 gunicorn==18.0
 newrelic==2.40.0.34
-wazimap==0.1.1
+wazimap==0.2.2
