@@ -1,4 +1,4 @@
--e git+https://github.com/Code4SA/censusreporter.git@wazimap-pip#egg=wazimap
+-e git+https://github.com/Code4SA/wazimap.git@master#egg=wazimap
 Django==1.9.2
 GDAL==1.11.0
 gevent==1.0.1
