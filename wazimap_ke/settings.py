@@ -34,3 +34,6 @@ WAZIMAP['geometry_data'] = {
     'country': 'geo/country.topojson',
     'county': 'geo/county.topojson',
 }
+
+WAZIMAP['ga_tracking_id'] = 'UA-44795600-8'
+WAZIMAP['twitter'] = '@Code4Africa'
