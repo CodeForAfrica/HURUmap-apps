@@ -23,7 +23,7 @@ SET default_with_oids = false;
 -- Name: healthfacilities_type; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE TABLE healthfacilities_type (
+CREATE TABLE health_facilities_type (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     "health_facilities_type" character varying(128) NOT NULL,
@@ -36,7 +36,7 @@ CREATE TABLE healthfacilities_type (
 -- Data for Name: healthfacilities_type; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY healthfacilities_type (geo_level, geo_code, "type of health facility", total) FROM stdin;
+COPY health_facilities_type (geo_level, geo_code, "type of health facility", total) FROM stdin;
 country	KE	Stand Alone VCT Centre	174
 country	KE	Health Training Institution	7
 country	KE	Sub District Hospital	137
