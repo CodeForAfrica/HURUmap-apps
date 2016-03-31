@@ -58,7 +58,7 @@ country	KE	Stand Alone Funeral Home	1
 country	KE	Eye Clinic	3
 country	KE	Eye Centre	10
 country	KE	District Hospital	138
-country KE	District Health Office	4
+country	KE	District Health Office	4
 country	KE	Dispensary	4624
 country	KE	Dental Clinic	30
 country	KE	Blood Bank	1
