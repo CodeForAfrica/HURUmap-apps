@@ -26,7 +26,7 @@ SET default_with_oids = false;
 CREATE TABLE healthfacilities_type (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
-    "school attendance" character varying(128) NOT NULL,
+    "health_facilities_type" character varying(128) NOT NULL,
     sex character varying(128) NOT NULL,
     total integer NOT NULL
 );
