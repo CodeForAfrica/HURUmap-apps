@@ -11,8 +11,8 @@ SET client_min_messages = warning;
 
 SET search_path = public, pg_catalog;
 
-ALTER TABLE IF EXISTS ONLY public.healthfacilities_type DROP CONSTRAINT IF EXISTS healthfacilities_type_pkey;
-DROP TABLE IF EXISTS public.healthfacilities_type;
+ALTER TABLE IF EXISTS ONLY public.health_facilities_type DROP CONSTRAINT IF EXISTS health_facilities_type_pkey;
+DROP TABLE IF EXISTS public.health_facilities_type;
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -26,17 +26,16 @@ SET default_with_oids = false;
 CREATE TABLE health_facilities_type (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
-    "health_facilities_type" character varying(128) NOT NULL,
-    sex character varying(128) NOT NULL,
+    type character varying(128) NOT NULL,
     total integer NOT NULL
 );
 
 
 --
--- Data for Name: healthfacilities_type; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: health_facilities_type; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY health_facilities_type (geo_level, geo_code, "type of health facility", total) FROM stdin;
+COPY health_facilities_type (geo_level, geo_code, type, total) FROM stdin;
 country	KE	Stand Alone VCT Centre	174
 country	KE	Health Training Institution	7
 country	KE	Sub District Hospital	137
@@ -513,14 +512,12 @@ county	24	Medical Clinic	15
 county	24	Other Hospital	1
 county	24	Sub District Hospital	2
 \.
-
-
 --
--- Name: healthfacilities_type_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: health_facilities_type_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
-ALTER TABLE ONLY healthfacilities_type
-    ADD CONSTRAINT healthfacilities_type_pkey PRIMARY KEY (geo_level, geo_code, "school attendance", sex);
+ALTER TABLE ONLY health_facilities_type
+    ADD CONSTRAINT health_facilities_type_pkey PRIMARY KEY (geo_level, geo_code, type, total);
 
 
 --
