@@ -35,7 +35,7 @@ CREATE TABLE health_facilities_type (
 -- Data for Name: health_facilities_type; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY health_facilities_type (geo_level, geo_code, type, total) FROM stdin;
+COPY	health_facilities_type (geo_level, geo_code, type, total) FROM stdin;
 country	KE	Stand Alone VCT Centre	174
 country	KE	Health Training Institution	7
 country	KE	Sub District Hospital	137
@@ -333,7 +333,7 @@ county	1	Stand Alone VCT Centre	9
 county	21	Dispensary	130
 county	21	District Hospital	2
 county	21	Health Centre	17
-county	21	Laboratory (Stand-alone)	1
+county	21	Stand Alone Labs	1
 county	21	Maternity Home	1
 county	21	Medical Centre	1
 county	21	Medical Clinic	118
@@ -349,7 +349,7 @@ county	47	Eye Clinic	1
 county	47	Health Centre	90
 county	47	Health Programme	5
 county	47	Health Project	3
-county	47	Laboratory (Stand-alone)	13
+county	47	Stand Alone Labs	13
 county	47	Maternity Home	15
 county	47	Medical Centre	10
 county	47	Medical Clinic	440
