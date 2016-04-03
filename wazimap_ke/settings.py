@@ -37,3 +37,6 @@ WAZIMAP['geometry_data'] = {
 
 WAZIMAP['ga_tracking_id'] = 'UA-44795600-8'
 WAZIMAP['twitter'] = '@Code4Africa'
+
+WAZIMAP['map_centre'] = [0.3051933453207569, 37.908818734483155]
+WAZIMAP['map_zoom'] = 6
