@@ -122,4 +122,197 @@
     </div>
 </article>
 
+<hr>
+<article class="clearfix">
+    <h2><a href="http://www.knbs.or.ke/index.php?option=com_content&view=article&id=308:2014-kenya-demographic-and-health-survey-2014-kdhs&catid=82:news&Itemid=593">KNBS Demographic and Health Survey Report 2014</a></h2>
+</article>
+
+<article id="contraceptive_use" class="clearfix">
+    <header class="section-contents">
+        <h1>Use of contraceptives</h1>
+    </header>
+    <div class="section-container">
+
+        <section class="clearfix stat-row">
+            <h2>Percent distribution of currently married women age 15-49 by contraceptive method</h2>
+            <div class="column-third" id="chart-pie-contraceptive_use-contraceptive_use_distribution" data-stat-type="percentage" data-chart-title="Method of contraception"></div>
+            <div class="column-two-thirds" id="chart-histogram-contraceptive_use-modern_methods_distribution" data-stat-type="scaled-percentage" data-chart-title="Modern methods of contraception used"></div>
+            <div class="column-third"> &nbsp;</div>
+            <div class="column-two-thirds" id="chart-histogram-contraceptive_use-traditional_methods_distribution" data-stat-type="scaled-percentage" data-chart-title="Traditional methods of contraception used"></div>
+        </section>
+
+    </div>
+</article>
+
+<article id="maternal-care-indicators" class="clearfix">
+    <header class="section-contents">
+        <h1>Maternal care indicators</h1>
+    </header>
+    <div class="section-container">
+         <section class="clearfix stat-row">
+            <div class="column-third">
+                {% include 'profile/_blocks/_stat_list.html' with stat=maternal_care_indicators.delivery_in_health_facility stat_type='percentage' %}
+            </div>
+         </section>
+
+         <section class="clearfix stat-row">
+            <div class="column-third"  id="chart-pie-maternal_care_indicators-antenatal_dist" data-stat-type="percentage" data-chart-title="Antenatal care"></div>
+            <div class="column-third"  id="chart-pie-maternal_care_indicators-anc_visits_dist" data-stat-type="percentage" data-chart-title="ANC visits"></div>
+            <div class="column-third"  id="chart-pie-maternal_care_indicators-delivery_by_skilled_provider_dist" data-stat-type="percentage" data-chart-title="Child Delivery"></div>
+        </section>
+
+        <section class="clearfix stat-row">
+            <h3>Intermittent Preventive Treatment of pregnant women</h3>
+            <small>The Government of Kenya’s policy advocates for pregnant women in malaria endemic areas to receive two doses of intermittent preventive treatment (IPT) in the second and third trimesters in order to reduce the risk of malaria infection. To assess the coverage of this policy, women who had a live birth in the two years before the survey were asked if they had received treatment to prevent malaria during their pregnancy</small>
+        </section>
+
+        <section class="clearfix stat-row">
+            <div class="column-third"  id="chart-pie-maternal_care_indicators-one_or_more_dist" data-stat-type="percentage" data-chart-title="1 or more doses of SP/Fansidar"></div>
+            <div class="column-third"  id="chart-pie-maternal_care_indicators-two_or_more_dist" data-stat-type="percentage" data-chart-title="2 or more doses of SP/Fansidar"></div>
+            <div class="column-third"  id="chart-pie-maternal_care_indicators-three_or_more_dist" data-stat-type="percentage" data-chart-title="3 or more doses of SP/Fansidar"></div>
+        </section>
+
+    </div>
+</article>
+
+<article id="knowledge_of_hiv_prevention_methods" class="clearfix">
+    <header class="section-contents">
+        <h1>Knowledge of HIV prevention</h1>
+    </header>
+    <div class="section-container">
+
+         <section class="clearfix stat-row">
+             <small>Percentage of women and men age 15-49 who, in response to prompted questions, say that people can reduce the risk of getting HIV by using condoms every time they have sexual intercourse and by having one sex partner who is not infected and has no other partners</small>
+         </section>
+         <section class="clearfix stat-row">
+            <div id="chart-grouped_column-knowledge_of_hiv_prevention_methods-distribution" data-stat-type="scaled-percentage" data-chart-title="" ></div>
+        </section>
+
+    </div>
+</article>
+
+<article id="ITN" class="clearfix">
+    <header class="section-contents">
+        <h1>Insecticide treated nets(ITN)</h1>
+    </header>
+    <div class="section-container">
+
+         <section class="clearfix stat-row">
+             <div class="column-third">
+                 {% include 'profile/_blocks/_stat_list.html' with stat=ITN.average_itn_per_household stat_type='number' %}
+             </div>
+             <div class="column-third" id="chart-pie-ITN-households_with_at_least_one_itn" data-stat-type="percentage" data-chart-title="Households that possess at least one ITN" ></div>
+             <div class="column-third" id="chart-pie-ITN-percentage_households_with_ITN_for_every_two_people" data-stat-type="percentage" data-chart-title="Households that possess an ITN for every 2 people" ></div>
+         </section>
+        <section class="clearfix stat-row">
+             <div class="column-two-thirds" id="chart-grouped_column-ITN-all_households_use_dist" data-stat-type="scaled-percentage" data-chart-title="All households" ></div>
+             <div class="column-third" id="chart-grouped_column-ITN-households_with_at_least_one_itn_use_dist" data-stat-type="scaled-percentage" data-chart-title="Households with at least one ITN" ></div>
+         </section>
+
+    </div>
+</article>
+
+<article id="fertility" class="clearfix">
+    <header class="section-contents">
+        <h1>Fertility</h1>
+    </header>
+    <div class="section-container">
+
+         <section class="clearfix stat-row">
+             <div class="column-third">
+                 {% include 'profile/_blocks/_stat_list.html' with stat=fertility.fertility_rate stat_type='number' %}
+             </div>
+             <div class="column-third">
+                 {% include 'profile/_blocks/_stat_list.html' with stat=fertility.mean_number_of_children_ever_born_to_women_aged_40_49 stat_type='number' %}
+             </div>
+             <div class="column-third" id="chart-pie-fertility-percentage_women_age_15_49_currently_pregnant" data-stat-type="percentage" data-chart-title="Percentage women aged 15-49 who are currently pregnant" ></div>
+         </section>
+
+    </div>
+</article>
+<article id="vaccinations" class="clearfix">
+    <header class="section-contents">
+        <h1>Vaccinations</h1>
+    </header>
+    <div class="section-container">
+        <section class="clearfix stat-row">
+             <div class="column-third">
+                 {% include 'profile/_blocks/_stat_list.html' with stat=vaccinations.not_vaccinated stat_type='percentage' %}
+             </div>
+        </section>
+        <section class="clearfix stat-row">
+             <div class="column-third" id="chart-pie-vaccinations-fully_vaccinated" data-stat-type="percentage" data-chart-title="Percentage children who are fully vaccinated" ></div>
+             <div class="column-third" id="chart-pie-vaccinations-all_basic_vaccinations" data-stat-type="percentage" data-chart-title="Percentage children who have received all basic vaccinations" ></div>
+             <div class="column-third" id="chart-pie-vaccinations-percentage_with_vaccination_cards" data-stat-type="percentage" data-chart-title="Percentage with vaccination cards" ></div>
+        </section>
+        <section class="clearfix stat-row">
+             <div id="chart-column-vaccinations-distribution" data-stat-type="scaled-percentage" data-chart-title="Percentage of children age 12-23 months who received specific vaccines" ></div>
+        </section>
+
+    </div>
+</article>
+
+<article id="type-treatment" class="clearfix">
+    <header class="section-contents">
+        <h1>Treatment of childhood illness</h1>
+    </header>
+    <div class="section-container">
+         <section class="clearfix stat-row">
+             <small>Percentage of children under age five with fever in the two weeks preceding the survey; among children under age five with fever, percentage for whom advice or treatment was sought, percentage who had blood taken from a finger or heel, percentage who took any antimalarial, percentage who took any artemisinin-based combination therapy (ACT), and percentage who took any ACT the same or next day following the onset of fever; and among children under age five with fever who took any antimalarial drug, percentage who took any ACT</small>
+        </section>
+        <section class="clearfix stat-row">
+             <div class="column-third">
+                 {% include 'profile/_blocks/_stat_list.html' with stat=type_treatment.children_with_fever stat_type='percentage' %}
+             </div>
+             <div class="column-two-thirds" id="chart-column-type_treatment-treatment_of_chidren_with_fever_dist" data-stat-type="scaled-percentage" data-chart-title="Treatment sort"></div>
+        </section>
+
+        <section class="clearfix stat-row">
+             <div id="chart-grouped_column-type_treatment-treatment_distribution" data-stat-type="scaled-percentage" data-chart-title="Among children under age five who had symptoms of acute respiratory infection (ARI) or had fever and diarrhoea and how they were treated." ></div>
+        </section>
+
+    </div>
+</article>
+
+<article id="nutrition" class="clearfix">
+    <header class="section-contents">
+        <h1>Nutritional status of children</h1>
+    </header>
+    <div class="section-container">
+        <section>
+            <p>Percentage of children under five years classified as malnourished according to three anthropometric indices of nutritional status: height-for-age, weight-for- height, and weight-for-age.</p>
+            <small>The indices are expressed in standard deviation units (SD) from the median of the WHO Child Growth Standards adopted in 2006.</small>
+        </section>
+        <section class="clearfix stat-row">
+             <div class="column-third">
+                 {% include 'profile/_blocks/_stat_list.html' with stat=nutrition.weight_for_height_mean_z_score stat_type='number' %}
+             </div>
+         </section>
+        <section class="clearfix stat-row">
+            <div class="column-third" id="chart-pie-nutrition-weight_for_height_below_minus_three_dist" data-stat-type="percentage" data-chart-title="Below -3 SD" ></div>
+            <div class="column-third" id="chart-pie-nutrition-weight_for_height_below_minus_two_dist" data-stat-type="percentage" data-chart-title="Below -2 SD" ></div>
+            <div class="column-third" id="chart-pie-nutrition-weight_for_height_above_plus_two_dist" data-stat-type="percentage" data-chart-title="Above +2 SD" ></div>
+        </section>
+        <section class="clearfix stat-row">
+             <div class="column-third">
+                 {% include 'profile/_blocks/_stat_list.html' with stat=nutrition.height_for_age_mean_z_score stat_type='number' %}
+             </div>
+        </section>
+        <section class="clearfix stat-row">
+            <div class="column-half" id="chart-pie-nutrition-height_for_age_below_minus_three_dist" data-stat-type="percentage" data-chart-title="Below -3 SD" ></div>
+            <div class="column-half" id="chart-pie-nutrition-height_for_age_below_minus_two_dist" data-stat-type="percentage" data-chart-title="Below -2 SD" ></div>
+        </section>
+        <section class="clearfix stat-row">
+             <div class="column-third">
+                 {% include 'profile/_blocks/_stat_list.html' with stat=nutrition.weight_for_age_mean_z_score stat_type='number' %}
+             </div>
+        </section>
+        <section class="clearfix stat-row">
+            <div class="column-third" id="chart-pie-nutrition-weight_for_age_below_minus_three_dist" data-stat-type="percentage" data-chart-title="Below -3 SD" ></div>
+            <div class="column-third" id="chart-pie-nutrition-weight_for_age_below_minus_two_dist" data-stat-type="percentage" data-chart-title="Below -2 SD" ></div>
+            <div class="column-third" id="chart-pie-nutrition-weight_for_age_above_plus_two_dist" data-stat-type="percentage" data-chart-title="Above +2 SD" ></div>
+        </section>
+
+    </div>
+</article>
 {% endblock %}

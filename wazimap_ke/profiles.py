@@ -14,6 +14,14 @@ PROFILE_SECTIONS = (
     'education',
     'employment',
     'households',
+    'contraceptive_use',
+    'maternal_care_indicators',
+    'knowledge_of_hiv_prevention_methods',
+    'ITN',
+    'fertility',
+    'vaccinations',
+    'type_treatment',
+    'nutrition'
 )
 
 EMPLOYMENT_RECODES = OrderedDict([
@@ -262,4 +270,304 @@ def get_households_profile(geo_code, geo_level, session):
         'roofing_material_distribution': roofing_dist,
         'floor_material_distribution': floor_dist,
         'wall_material_distribution': wall_dist,
+    }
+
+def get_contraceptive_use_profile(geo_code, geo_level, session):
+    # contraceptive_use stats
+    contraceptive_use_dist_data, _ = get_stat_data(
+        'contraceptive_use', geo_level, geo_code, session,
+        key_order=['Modern', 'Traditional', 'Not using'])
+
+    contraceptive_modern_method_dist_data, _ = get_stat_data(
+        'contraceptive_modern_method', geo_level, geo_code, session)
+    contraceptive_traditional_method_dist_data, _ = get_stat_data(
+        'contraceptive_traditional_method', geo_level, geo_code, session)
+
+    return  {
+        'contraceptive_use_distribution': contraceptive_use_dist_data,
+        'modern_methods_distribution': contraceptive_modern_method_dist_data,
+        'traditional_methods_distribution': contraceptive_traditional_method_dist_data
+    }
+
+def get_maternal_care_indicators_profile(geo_code, geo_level, session):
+    # maternal care indicators stats
+    maternal_care_indicators_data, _ = get_stat_data(
+        'maternal care indicators', geo_level, geo_code, session)
+
+    delivery_in_health_facility = \
+        maternal_care_indicators_data['Percentage delivered in a health facility']['numerators']['this']
+
+    antenatal_care_by_skilled_provider = \
+        maternal_care_indicators_data['Percentage with antenatal care from a skilled provider']['numerators']['this']
+    antenatal_dist = get_dictionary('From a skilled provider', 'From a non-skilled provider', antenatal_care_by_skilled_provider )
+
+    anc_visits = maternal_care_indicators_data['Percentage with 4+ ANC visits']['numerators']['this']
+    anc_visits_dist = get_dictionary('4+', 'Less than 4', anc_visits )
+
+    delivery_by_skilled_provider = \
+        maternal_care_indicators_data['Percentage delivered by a skilled provider']['numerators']['this']
+    delivery_by_skilled_provider_dist = get_dictionary('Skilled provider', 'Non-skilled provider', delivery_by_skilled_provider)
+
+    #Use of IPT
+    use_of_ipt_dist, _ = get_stat_data('use of ipt', geo_level, geo_code, session)
+
+    one_or_more_dist = use_of_ipt_dist['1 or more']['numerators']['this']
+    one_or_more_dist = get_dictionary('1 or more', 'Less', one_or_more_dist)
+    two_or_more_dist = use_of_ipt_dist['2 or more']['numerators']['this']
+    two_or_more_dist = get_dictionary('2 or more', 'Less', two_or_more_dist)
+    three_or_more_dist = use_of_ipt_dist['3 or more']['numerators']['this']
+    three_or_more_dist = get_dictionary('3 or more', 'Less', three_or_more_dist)
+
+    return  {
+        'maternal_care_indicators': maternal_care_indicators_data,
+        'antenatal_dist': antenatal_dist,
+        'anc_visits_dist': anc_visits_dist,
+        'delivery_by_skilled_provider_dist': delivery_by_skilled_provider_dist,
+        'delivery_in_health_facility': {
+            'name': 'babies delivered in a health facility',
+            'numerators': {'this': delivery_in_health_facility},
+            'values': {'this': round(delivery_in_health_facility, 2)}
+        },
+        'one_or_more_dist': one_or_more_dist,
+        'two_or_more_dist': two_or_more_dist,
+        'three_or_more_dist': three_or_more_dist,
+    }
+
+def get_knowledge_of_hiv_prevention_methods_profile(geo_code, geo_level, session):
+    dist, _ = get_stat_data(
+        ['knowledge of hiv prevention methods', 'sex'], geo_level, geo_code, session,
+        key_order={'knowledge of hiv prevention methods': {'Using condoms', 'Being faithful', 'Both'},
+                   'sex': ['Female', 'Male']})
+
+    # need to use numerators instead of values
+    for key in dist:
+        if key == 'metadata': continue
+        dist[key]['Female']['values']['this'] = 100 - dist[key]['Female']['numerators']['this']
+        dist[key]['Male']['values']['this'] = 100 - dist[key]['Male']['numerators']['this']
+    return {
+        'distribution': dist
+    }
+
+def get_ITN_profile(geo_code, geo_level, session):
+    # household possession and use of ITN
+    possession_dist, _ = get_stat_data(['household possession of itn'], geo_level, geo_code, session)
+
+    households_with_at_least_one_itn = \
+        possession_dist['Households with at least one ITN']['numerators']['this']
+    households_with_at_least_one_itn = get_dictionary('Possess at least one ITN', 'No ITN', households_with_at_least_one_itn)
+
+    percentage_households_with_ITN_for_every_two_people = \
+        possession_dist['Percentage households with ITN for every 2 people in household']['numerators']['this']
+    percentage_households_with_ITN_for_every_two_people = get_dictionary('Possess ITN for every two people',\
+                                                                         'Don\'t possess ITN for every two people',\
+                                                                         percentage_households_with_ITN_for_every_two_people)
+
+    average_itn_per_household = possession_dist['Average ITN per household']['numerators']['this']
+
+    use_dist, _ = get_stat_data(['household', 'users', 'itn_use'], geo_level, geo_code, session)
+    households_with_at_least_one_itn_use_dist = use_dist['With at least one ITN']
+    all_households_use_dist = use_dist['All']
+
+    return {
+        'households_with_at_least_one_itn': households_with_at_least_one_itn,
+        'percentage_households_with_ITN_for_every_two_people': percentage_households_with_ITN_for_every_two_people,
+        'average_itn_per_household': {
+            'name': 'Average number of ITN per household',
+            'numerators': {'this': average_itn_per_household},
+            'values': {'this': average_itn_per_household}
+        },
+        'households_with_at_least_one_itn_use_dist': households_with_at_least_one_itn_use_dist,
+        'all_households_use_dist': all_households_use_dist
+    }
+
+def get_fertility_profile(geo_code, geo_level, session):
+    # fertility
+    dist, _ = get_stat_data(['fertility'], geo_level, geo_code, session)
+
+    percentage_women_age_15_49_currently_pregnant = dist['Pregnant']['numerators']['this']
+
+    percentage_women_age_15_49_currently_pregnant = get_dictionary('Pregnant', 'Not pregnant',\
+                                                                   percentage_women_age_15_49_currently_pregnant)
+
+    fertility_rate = dist['Rate']['numerators']['this']
+    mean_number_of_children_ever_born_to_women_aged_40_49 =  dist['Mean']['numerators']['this']
+
+    return {
+        'percentage_women_age_15_49_currently_pregnant': percentage_women_age_15_49_currently_pregnant,
+        'fertility_rate': {
+            'name': 'Fertility',
+            'numerators': {'this': fertility_rate},
+            'values': {'this': fertility_rate}
+        },
+        'mean_number_of_children_ever_born_to_women_aged_40_49': {
+            'name': 'Mean number of children ever born to women aged 40-49',
+            'numerators': {'this': mean_number_of_children_ever_born_to_women_aged_40_49},
+            'values': {'this': mean_number_of_children_ever_born_to_women_aged_40_49}
+        },
+    }
+
+def get_vaccinations_profile(geo_code, geo_level, session):
+    # vaccinations
+    dist, _ = get_stat_data(['vaccinations'], geo_level, geo_code, session,
+                            key_order=['BCG','Pentavalent 1','Pentavalent 2','Pentavalent 3','Polio 0','Polio 1', \
+                                       'Polio 2','Polio 3','Measles','Pneumococcal 1', \
+                                       'Pneumococcal 2','Pneumococcal 3',],
+                            only=['BCG','Pentavalent 1','Pentavalent 2','Pentavalent 3','Polio 0','Polio 1', \
+                                  'Polio 2','Polio 3','Measles','Pneumococcal 1', \
+                                  'Pneumococcal 2','Pneumococcal 3',],
+                            )
+
+    # need to use numerators instead of values
+    for key in dist:
+        if key == 'metadata':
+            continue
+        dist[key]['values']['this'] = dist[key]['numerators']['this']
+
+    vacc_dist, _ = get_stat_data(['vaccinations'], geo_level, geo_code, session,
+                                 # only=['All basic vaccinations', 'Percentage with vaccination card',\
+                                 # 'Fully vaccinated', 'Not vaccinated'],
+                                 )
+
+    fully_vaccinated = vacc_dist['Fully vaccinated']['numerators']['this']
+    fully_vaccinated = get_dictionary('Fully vaccinated', 'Not fully vaccinated', fully_vaccinated)
+
+    all_basic_vaccinations = vacc_dist['All basic vaccinations']['numerators']['this']
+    all_basic_vaccinations = get_dictionary('All basic vaccinations', 'Basic vaccinations not administered', \
+                                            all_basic_vaccinations)
+
+    percentage_with_vaccination_cards = vacc_dist['Percentage with vaccination card']['numerators']['this']
+    percentage_with_vaccination_cards = get_dictionary('Have vaccination cards', 'No vaccination cards',\
+                                                       percentage_with_vaccination_cards)
+    not_vaccinated = vacc_dist['Not vaccinated']['numerators']['this']
+
+    return {
+        'distribution': dist,
+        'fully_vaccinated': fully_vaccinated,
+        'all_basic_vaccinations': all_basic_vaccinations,
+        'percentage_with_vaccination_cards': percentage_with_vaccination_cards,
+        'not_vaccinated': {
+            'name': 'Not vaccinated',
+            'numerators': {'this': not_vaccinated},
+            'values': {'this': not_vaccinated},
+        }
+    }
+
+def get_type_treatment_profile(geo_code, geo_level, session):
+    # Treatment for acute respiratory infection symptoms, fever, and diarrhoea
+    dist, _ = get_stat_data(['type', 'treatment'], geo_level, geo_code, session,
+                            key_order={
+                                'type': ['ARI', 'Fever','Diarrhoea'],
+                                'treatment': ['Sought treatment from health facility or provider', \
+                                              'ORT', 'Zinc', 'ORS and zinc','Fluid from ORS packet'
+                                              ]
+                            }, exclude_zero = True)
+
+    # need to use numerators instead of values
+    for key in dist:
+        if key == 'metadata': continue
+        for other_key in dist[key]:
+            if other_key == 'metadata': continue
+            try:
+                dist[key][other_key]['values']['this'] = dist[key][other_key]['numerators']['this']
+            except:
+                dist[key][other_key] = {'values': {'this': 0}, 'numerators': {'this': 0}}
+
+    treatment_of_chidren_with_fever_dist, _ = get_stat_data(['treatment of children with fever'], geo_level, geo_code, session)
+    children_with_fever = treatment_of_chidren_with_fever_dist['Had fever']['numerators']['this']
+    treatment_of_chidren_with_fever_dist.pop('Had fever')
+
+    # need to use numerators instead of values
+    for v in treatment_of_chidren_with_fever_dist:
+        if v == 'metadata': continue
+        treatment_of_chidren_with_fever_dist[v]['values']['this'] = treatment_of_chidren_with_fever_dist[v]['numerators']['this']
+
+
+    return {
+        'treatment_distribution': dist,
+        'treatment_of_chidren_with_fever_dist': treatment_of_chidren_with_fever_dist,
+        'children_with_fever': {
+            'name': 'Percentage with fever in the two weeks preceding the survey',
+            'numerators': {'this': children_with_fever},
+            'values': {'this': children_with_fever}
+        }
+    }
+
+def get_nutrition_profile(geo_code, geo_level, session):
+    # nutritional stats among children
+    height_for_age_dist, _ = get_stat_data(['height for age'], geo_level, geo_code, session)
+    for key in height_for_age_dist:
+        if key == 'metadata': continue
+        height_for_age_dist[key]['values']['this'] = height_for_age_dist[key]['numerators']['this']
+    height_for_age_below_minus_three = height_for_age_dist['Below -3']['numerators']['this']
+    height_for_age_below_minus_three_dist = get_dictionary('Below -3 SD', 'Above -3 SD', height_for_age_below_minus_three)
+    height_for_age_below_minus_two = height_for_age_dist['Below -2']['numerators']['this']
+    height_for_age_below_minus_two_dist = get_dictionary('Below -2 SD', 'Above -2 SD', height_for_age_below_minus_two)
+    height_for_age_mean_z_score = height_for_age_dist['Mean Z-score']['numerators']['this']
+
+    weight_for_height_dist, _ = get_stat_data(['weight for height'], geo_level, geo_code, session)
+    for key in weight_for_height_dist:
+        if key == 'metadata': continue
+        weight_for_height_dist[key]['values']['this'] = weight_for_height_dist[key]['numerators']['this']
+    weight_for_height_below_minus_three = weight_for_height_dist['Below -3']['numerators']['this']
+    weight_for_height_below_minus_three_dist = get_dictionary('Below -3 SD', 'Above -3 SD', weight_for_height_below_minus_three)
+    weight_for_height_below_minus_two = weight_for_height_dist['Below -2']['numerators']['this']
+    weight_for_height_below_minus_two_dist = get_dictionary('Below -2 SD', 'Above -2 SD', weight_for_height_below_minus_two)
+    weight_for_height_above_plus_two = weight_for_height_dist['Above +2']['numerators']['this']
+    weight_for_height_above_plus_two_dist = get_dictionary('Above +2 SD', 'Below +2 SD', weight_for_height_above_plus_two)
+    weight_for_height_mean_z_score = weight_for_height_dist['Mean Z-score']['numerators']['this']
+
+    weight_for_age_dist, _ = get_stat_data(['weight for height'], geo_level, geo_code, session)
+    for key in weight_for_age_dist:
+        if key == 'metadata': continue
+        weight_for_age_dist[key]['values']['this'] = weight_for_age_dist[key]['numerators']['this']
+    weight_for_age_below_minus_three = weight_for_age_dist['Below -3']['numerators']['this']
+    weight_for_age_below_minus_three_dist = get_dictionary('Below -3 SD', 'Above -3 SD',
+                                                           weight_for_age_below_minus_three)
+    weight_for_age_below_minus_two = weight_for_age_dist['Below -2']['numerators']['this']
+    weight_for_age_below_minus_two_dist = get_dictionary('Below -2 SD', 'Above -2 SD',
+                                                         weight_for_age_below_minus_two)
+    weight_for_age_above_plus_two = weight_for_age_dist['Above +2']['numerators']['this']
+    weight_for_age_above_plus_two_dist = get_dictionary('Above +2 SD', 'Below +2 SD',
+                                                        weight_for_age_above_plus_two)
+    weight_for_age_mean_z_score = weight_for_age_dist['Mean Z-score']['numerators']['this']
+
+    return {
+        'height_for_age_below_minus_three_dist': height_for_age_below_minus_three_dist,
+        'height_for_age_below_minus_two_dist': height_for_age_below_minus_two_dist,
+        'height_for_age_mean_z_score': {
+            'name': 'Mean Z score(height-for-age)',
+            'numerators': {'this': height_for_age_mean_z_score},
+            'values': {'this': height_for_age_mean_z_score},
+        },
+        'weight_for_height_below_minus_three_dist': weight_for_height_below_minus_three_dist,
+        'weight_for_height_below_minus_two_dist': weight_for_height_below_minus_two_dist,
+        'weight_for_height_above_plus_two_dist': weight_for_height_above_plus_two_dist,
+        'weight_for_height_mean_z_score': {
+            'name': 'Mean Z score (weight-for-height)',
+            'numerators': {'this': weight_for_height_mean_z_score},
+            'values': {'this': weight_for_height_mean_z_score},
+        },
+        'weight_for_age_below_minus_three_dist': weight_for_age_below_minus_three_dist,
+        'weight_for_age_below_minus_two_dist': weight_for_age_below_minus_two_dist,
+        'weight_for_age_above_plus_two_dist': weight_for_age_above_plus_two_dist,
+        'weight_for_age_mean_z_score': {
+            'name': 'Mean Z score (weight-for-age)',
+            'numerators': {'this': weight_for_age_mean_z_score},
+            'values': {'this': weight_for_age_mean_z_score},
+        }
+    }
+
+def get_dictionary(key_one, key_two, val):
+    #return a dictionary with the second dictionary being 100 - val
+    return {
+        key_one: {
+            'name': key_one,
+            'numerators': {'this': val},
+            'values': {'this': round(val, 2)},
+        },
+        key_two: {
+            'name': key_two,
+            'numerators': {'this': 100 - val},
+            'values': {'this': 100 - round(val, 2)},
+        }
     }
