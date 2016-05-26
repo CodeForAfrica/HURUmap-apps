@@ -10,7 +10,7 @@ from wazimap.settings import *  # noqa
 INSTALLED_APPS = ['wazimap_ke'] + INSTALLED_APPS
 
 
-DATABASE_URL = os.environ.get('DATABASE_URL', 'postgresql://wazimap:wazimap@localhost/wazimap')
+DATABASE_URL = os.environ.get('DATABASE_URL', 'postgresql://censusreporter_ke:censusreporter_ke@localhost/censusreporter_ke')
 DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
