@@ -461,7 +461,6 @@ def get_type_treatment_profile(geo_code, geo_level, session):
                                               'ORT', 'Zinc', 'ORS and zinc','Fluid from ORS packet'
                                               ]
                             }, exclude_zero = True)
-
     # need to use numerators instead of values
     for key in dist:
         if key == 'metadata': continue
@@ -471,6 +470,13 @@ def get_type_treatment_profile(geo_code, geo_level, session):
                 dist[key][other_key]['values']['this'] = dist[key][other_key]['numerators']['this']
             except:
                 dist[key][other_key] = {'values': {'this': 0}, 'numerators': {'this': 0}}
+
+    ari_dist = dist['ARI']['Sought treatment from health facility or provider']['numerators']['this']
+    fever_dist = dist['Fever']['Sought treatment from health facility or provider']['numerators']['this']
+    dist.pop('ARI')
+    dist.pop('Fever')
+    print ari_dist
+    print '*' * 30
 
     treatment_of_chidren_with_fever_dist, _ = get_stat_data(['treatment of children with fever'], geo_level, geo_code, session)
     children_with_fever = treatment_of_chidren_with_fever_dist['Had fever']['numerators']['this']
@@ -486,9 +492,19 @@ def get_type_treatment_profile(geo_code, geo_level, session):
         'treatment_distribution': dist,
         'treatment_of_chidren_with_fever_dist': treatment_of_chidren_with_fever_dist,
         'children_with_fever': {
-            'name': 'Percentage with fever in the two weeks preceding the survey',
+            'name': 'Percentage of children with fever in the two weeks preceding the survey',
             'numerators': {'this': children_with_fever},
             'values': {'this': children_with_fever}
+        },
+        'ari_dist': {
+            'name': 'Percentage of children with ARI who sought treatment from health facility or provider',
+            'numerators': {'this': ari_dist},
+            'values': {'this': ari_dist}
+        },
+        'fever_dist': {
+            'name': 'Percentage of children with fever who sought treatment from health facility or provider',
+            'numerators': {'this': fever_dist},
+            'values': {'this': fever_dist}
         }
     }
 
