@@ -132,7 +132,6 @@ county	47	modern	58.3
 county	47	traditional	4.4
 country	KE	modern	53.2
 country	KE	traditional	4.8
-
 \.
 --
 -- Name: contraceptive_method_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:

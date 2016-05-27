@@ -228,7 +228,6 @@ country	KE	percentage with antenatal care from a skilled provider	95.5
 country	KE	percentage with 4+ ANC visits	57.6
 country	KE	percentage delivered by a skilled provider	61.8
 country	KE	percentage delivered in a health facility	61.2
-
 \.
 --
 -- Name: maternalcareindicators_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
