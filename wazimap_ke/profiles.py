@@ -453,7 +453,7 @@ def get_vaccinations_profile(geo_code, geo_level, session):
     }
 
 def get_type_treatment_profile(geo_code, geo_level, session):
-    # Treatment for acute respiratory infection symptoms, fever, and diarrhoea
+    # Treatment for acute respiratory infection symptoms, fever, and diarrhoea stats
     dist, _ = get_stat_data(['type', 'treatment'], geo_level, geo_code, session,
                             key_order={
                                 'type': ['ARI', 'Fever','Diarrhoea'],
