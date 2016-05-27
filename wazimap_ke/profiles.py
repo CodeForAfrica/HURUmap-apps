@@ -479,7 +479,7 @@ def get_type_treatment_profile(geo_code, geo_level, session):
                 dist[key][other_key]['values']['this'] = dist[key][other_key]['numerators']['this']
             except:
                 dist[key][other_key] = {'values': {'this': 0}, 'numerators': {'this': 0}}
-                
+
     ari = dist['ARI']['Sought treatment from health facility or provider']['numerators']['this']
     fever = dist['Fever']['Sought treatment from health facility or provider']['numerators']['this']
     dist.pop('ARI')
