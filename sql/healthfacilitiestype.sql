@@ -113,7 +113,7 @@ county	14	Provincial General Hospital	1
 county	14	Regional Blood Transfusion Centre	1
 county	14	Sub District Hospital	2
 county	14	Health Training Institution  	1
-county	14	Stand Alone VCT Centre 	
+county	14	Stand Alone VCT Centre 	0
 county	7	Dispensary	62
 county	7	District Hospital	3
 county	7	Health Centre	22
@@ -459,7 +459,7 @@ county	26	District Hospital	3
 county	26	Eye Clinic	1
 county	26	Health Centre	9
 county	26	Health Programme	1
-county	26	Laboratory (	1
+county	26	Laboratory (Stand-alone)	1
 county	26	Medical Clinic	62
 county	26	Unlisted	3
 county	26	Nursing Home	2

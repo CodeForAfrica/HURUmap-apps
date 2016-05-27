@@ -134,10 +134,19 @@
     <div class="section-container">
 
         <section class="clearfix stat-row">
+             <small>The contraceptive prevalence rate (CPR) is usually defined as the percentage of currently married women who are currently using a method of contraception.</small><br>
+             <small>If more than one method is used, only the most effective method is considered in this tabulation.</small><br>
+             <small>LAM = Lactational amenorrhoea method</small>
+        </section>
+        <section class="clearfix stat-row">
             <h2>Percent distribution of currently married women age 15-49 by contraceptive method</h2>
-            <div class="column-third" id="chart-pie-contraceptive_use-contraceptive_use_distribution" data-stat-type="percentage" data-chart-title="Method of contraception"></div>
+            <div class="column-third">
+                {% include 'profile/_blocks/_stat_list.html' with stat=contraceptive_use.cpr stat_type='percentage' %}
+            </div>
             <div class="column-two-thirds" id="chart-histogram-contraceptive_use-modern_methods_distribution" data-stat-type="scaled-percentage" data-chart-title="Modern methods of contraception used"></div>
-            <div class="column-third"> &nbsp;</div>
+        </section>
+        <section class="clearfix stat-row">
+            <div class="column-third" id="chart-pie-contraceptive_use-contraceptive_use_distribution" data-stat-type="percentage" data-chart-title="Method of contraception"></div>
             <div class="column-two-thirds" id="chart-histogram-contraceptive_use-traditional_methods_distribution" data-stat-type="scaled-percentage" data-chart-title="Traditional methods of contraception used"></div>
         </section>
 
@@ -193,20 +202,23 @@
 
 <article id="ITN" class="clearfix">
     <header class="section-contents">
-        <h1>Insecticide treated nets(ITN)</h1>
+        <h1>Mosquito nets</h1>
     </header>
     <div class="section-container">
 
-         <section class="clearfix stat-row">
+        <section class="clearfix stat-row">
+            <small>One of the strongest weapons in the fight against malaria is the use of insecticide-treated nets (ITNs) while sleeping. In the 2014 KDHS, data were collected from households on ownership and number of mosquito nets owned. Respondents were also asked to indicate particular household members who had slept under each net the night prior to the interview.</small>
+        </section>
+        <section class="clearfix stat-row">
              <div class="column-third">
                  {% include 'profile/_blocks/_stat_list.html' with stat=ITN.average_itn_per_household stat_type='number' %}
              </div>
-             <div class="column-third" id="chart-pie-ITN-households_with_at_least_one_itn" data-stat-type="percentage" data-chart-title="Households that possess at least one ITN" ></div>
-             <div class="column-third" id="chart-pie-ITN-percentage_households_with_ITN_for_every_two_people" data-stat-type="percentage" data-chart-title="Households that possess an ITN for every 2 people" ></div>
-         </section>
+             <div class="column-third" id="chart-pie-ITN-households_with_at_least_one_itn" data-stat-type="percentage" data-chart-title="Households that possess at least one insecticide-treated nets (ITNs)" ></div>
+             <div class="column-third" id="chart-pie-ITN-percentage_households_with_ITN_for_every_two_people" data-stat-type="percentage" data-chart-title="Households that possess an insecticide-treated nets (ITNs) for every 2 people" ></div>
+        </section>
         <section class="clearfix stat-row">
-             <div class="column-two-thirds" id="chart-grouped_column-ITN-all_households_use_dist" data-stat-type="scaled-percentage" data-chart-title="All households" ></div>
-             <div class="column-third" id="chart-grouped_column-ITN-households_with_at_least_one_itn_use_dist" data-stat-type="scaled-percentage" data-chart-title="Households with at least one ITN" ></div>
+             <div class="column-two-thirds" id="chart-grouped_column-ITN-all_households_use_dist" data-stat-type="scaled-percentage" data-chart-title="Use of nets by children under age five and pregnant women in all households" ></div>
+             <div class="column-third" id="chart-grouped_column-ITN-households_with_at_least_one_itn_use_dist" data-stat-type="scaled-percentage" data-chart-title="Use of nets by children under age five and pregnant women in all households with at least one insecticide-treated nets (ITNs)" ></div>
          </section>
 
     </div>
@@ -264,12 +276,12 @@
              <div class="column-third">
                  {% include 'profile/_blocks/_stat_list.html' with stat=type_treatment.children_with_fever stat_type='percentage' %}
              </div>
-             <div class="column-two-thirds" id="chart-column-type_treatment-treatment_of_chidren_with_fever_dist" data-stat-type="scaled-percentage" data-chart-title="Treatment sort"></div>
+             <div class="column-two-thirds" id="chart-column-type_treatment-treatment_of_chidren_with_fever_dist" data-stat-type="scaled-percentage" data-chart-title="Type of treatment sought"></div>
         </section>
 
         <section class="clearfix stat-row">
-             <!--<div class="column-third" id="chart-pie-type_treatment-ari_dist" data-stat-type="scaled-percentage" data-chart-title="Percentage of children with ARI who sought treatment from health facility or provider" ></div>
-             <div class="column-third" id="chart-pie-type_treatment-fever_dist" data-stat-type="scaled-percentage" data-chart-title="Percentage of children with fever who sought treatment from health facility or provider" ></div>-->
+             <div class="column-third" id="chart-pie-type_treatment-ari_dist" data-stat-type="scaled-percentage" data-chart-title="Percentage of children with ARI who sought treatment from health facility or provider" ></div>
+             <div class="column-third" id="chart-pie-type_treatment-fever_dist" data-stat-type="scaled-percentage" data-chart-title="Percentage of children with fever who sought treatment from health facility or provider" ></div>
              <div class="column-third" id="chart-grouped_column-type_treatment-treatment_distribution" data-stat-type="scaled-percentage" data-chart-title="Among children under age five who had symptoms of acute respiratory infection (ARI) or had fever and diarrhoea and how they were treated." ></div>
         </section>
 
@@ -285,6 +297,17 @@
             <small>Percentage of children under five years classified as malnourished according to three anthropometric indices of nutritional status: height-for-age, weight-for- height, and weight-for-age.
             The indices are expressed in standard deviation units (SD) from the median of the WHO Child Growth Standards adopted in 2006.</small>
         </section>
+
+        <section class="clearfix stat-row">
+             <div class="column-third">
+                 {% include 'profile/_blocks/_stat_list.html' with stat=nutrition.height_for_age_mean_z_score stat_type='number' %}
+             </div>
+        </section>
+        <section class="clearfix stat-row">
+            <div class="column-half" id="chart-pie-nutrition-height_for_age_below_minus_three_dist" data-stat-type="percentage" data-chart-title="Below -3 SD" ></div>
+            <div class="column-half" id="chart-pie-nutrition-height_for_age_below_minus_two_dist" data-stat-type="percentage" data-chart-title="Below -2 SD" ></div>
+        </section>
+
         <section class="clearfix stat-row">
              <div class="column-third">
                  {% include 'profile/_blocks/_stat_list.html' with stat=nutrition.weight_for_height_mean_z_score stat_type='number' %}
@@ -295,15 +318,7 @@
             <div class="column-third" id="chart-pie-nutrition-weight_for_height_below_minus_two_dist" data-stat-type="percentage" data-chart-title="Below -2 SD" ></div>
             <div class="column-third" id="chart-pie-nutrition-weight_for_height_above_plus_two_dist" data-stat-type="percentage" data-chart-title="Above +2 SD" ></div>
         </section>
-        <section class="clearfix stat-row">
-             <div class="column-third">
-                 {% include 'profile/_blocks/_stat_list.html' with stat=nutrition.height_for_age_mean_z_score stat_type='number' %}
-             </div>
-        </section>
-        <section class="clearfix stat-row">
-            <div class="column-half" id="chart-pie-nutrition-height_for_age_below_minus_three_dist" data-stat-type="percentage" data-chart-title="Below -3 SD" ></div>
-            <div class="column-half" id="chart-pie-nutrition-height_for_age_below_minus_two_dist" data-stat-type="percentage" data-chart-title="Below -2 SD" ></div>
-        </section>
+
         <section class="clearfix stat-row">
              <div class="column-third">
                  {% include 'profile/_blocks/_stat_list.html' with stat=nutrition.weight_for_age_mean_z_score stat_type='number' %}

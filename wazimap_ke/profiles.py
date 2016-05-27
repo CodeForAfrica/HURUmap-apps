@@ -278,6 +278,10 @@ def get_contraceptive_use_profile(geo_code, geo_level, session):
         'contraceptive_use', geo_level, geo_code, session,
         key_order=['Modern', 'Traditional', 'Not using'])
 
+    modern = contraceptive_use_dist_data['Modern']['numerators']['this']
+    traditional = contraceptive_use_dist_data['Traditional']['numerators']['this']
+    cpr = modern + traditional
+
     contraceptive_modern_method_dist_data, _ = get_stat_data(
         'contraceptive_modern_method', geo_level, geo_code, session)
     contraceptive_traditional_method_dist_data, _ = get_stat_data(
@@ -286,7 +290,12 @@ def get_contraceptive_use_profile(geo_code, geo_level, session):
     return  {
         'contraceptive_use_distribution': contraceptive_use_dist_data,
         'modern_methods_distribution': contraceptive_modern_method_dist_data,
-        'traditional_methods_distribution': contraceptive_traditional_method_dist_data
+        'traditional_methods_distribution': contraceptive_traditional_method_dist_data,
+        'cpr': {
+            'name': 'Contraceptive prevalence rate',
+            'numerators': {'this': cpr},
+            'values': {'this': cpr},
+        }
     }
 
 def get_maternal_care_indicators_profile(geo_code, geo_level, session):
@@ -358,8 +367,8 @@ def get_ITN_profile(geo_code, geo_level, session):
 
     percentage_households_with_ITN_for_every_two_people = \
         possession_dist['Percentage households with ITN for every 2 people in household']['numerators']['this']
-    percentage_households_with_ITN_for_every_two_people = get_dictionary('Possess ITN for every two people',\
-                                                                         'Don\'t possess ITN for every two people',\
+    percentage_households_with_ITN_for_every_two_people = get_dictionary('1:2',\
+                                                                         'less than 1:2',\
                                                                          percentage_households_with_ITN_for_every_two_people)
 
     average_itn_per_household = possession_dist['Average ITN per household']['numerators']['this']
@@ -372,7 +381,7 @@ def get_ITN_profile(geo_code, geo_level, session):
         'households_with_at_least_one_itn': households_with_at_least_one_itn,
         'percentage_households_with_ITN_for_every_two_people': percentage_households_with_ITN_for_every_two_people,
         'average_itn_per_household': {
-            'name': 'Average number of ITN per household',
+            'name': 'Average number of insecticide-treated nets (ITNs) per household',
             'numerators': {'this': average_itn_per_household},
             'values': {'this': average_itn_per_household}
         },
@@ -470,8 +479,12 @@ def get_type_treatment_profile(geo_code, geo_level, session):
                 dist[key][other_key]['values']['this'] = dist[key][other_key]['numerators']['this']
             except:
                 dist[key][other_key] = {'values': {'this': 0}, 'numerators': {'this': 0}}
+    ari = dist['ARI']['Sought treatment from health facility or provider']['numerators']['this']
+    fever = dist['Fever']['Sought treatment from health facility or provider']['numerators']['this']
     dist.pop('ARI')
     dist.pop('Fever')
+    ari_dist = get_dictionary('Sought', 'Did not seek', ari)
+    fever_dist = get_dictionary('Sought', 'Did not seek', fever)
 
 
     treatment_of_chidren_with_fever_dist, _ = get_stat_data(['treatment of children with fever'], geo_level, geo_code, session)
@@ -486,6 +499,8 @@ def get_type_treatment_profile(geo_code, geo_level, session):
 
     return {
         'treatment_distribution': dist,
+        'ari_dist': ari_dist,
+        'fever_dist': fever_dist,
         'treatment_of_chidren_with_fever_dist': treatment_of_chidren_with_fever_dist,
         'children_with_fever': {
             'name': 'Percentage of children with fever in the two weeks preceding the survey',
