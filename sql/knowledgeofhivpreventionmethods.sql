@@ -11,8 +11,8 @@ SET client_min_messages = warning;
 
 SET search_path = public, pg_catalog;
 
-ALTER TABLE IF EXISTS ONLY public.knowledgeofhivpreventionmethods DROP CONSTRAINT IF EXISTS knowledgeofhivpreventionmethods_pkey;
-DROP TABLE IF EXISTS public.knowledgeofhivpreventionmethods;
+ALTER TABLE IF EXISTS ONLY public.knowledgeofhivpreventionmethods_sex DROP CONSTRAINT IF EXISTS knowledgeofhivpreventionmethods_sex_pkey;
+DROP TABLE IF EXISTS public.knowledgeofhivpreventionmethods_sex;
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -20,10 +20,10 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: knowledgeofhivpreventionmethods; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: knowledgeofhivpreventionmethods_sex; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
-CREATE TABLE knowledgeofhivpreventionmethods (
+CREATE TABLE knowledgeofhivpreventionmethods_sex (
 	geo_level character varying(15) NOT NULL,
 	geo_code character varying(10) NOT NULL,
 	"knowledge of hiv prevention methods" character varying(128) NOT NULL,
@@ -33,10 +33,10 @@ CREATE TABLE knowledgeofhivpreventionmethods (
 
 
 --
--- Data for Name: knowledgeofhivpreventionmethods; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: knowledgeofhivpreventionmethods_sex; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY knowledgeofhivpreventionmethods (geo_level, geo_code, "knowledge of hiv prevention methods", "sex", total) FROM stdin;
+COPY knowledgeofhivpreventionmethods_sex (geo_level, geo_code, "knowledge of hiv prevention methods", "sex", total) FROM stdin;
 county	1	using condoms	female	85.4
 county	1	using condoms	male	96.9
 county	1	being faithful	female	94.2
@@ -327,11 +327,11 @@ country	KE	both	female	76.6
 country	KE	both	male	84.8
 \.
 --
--- Name: knowledgeofhivpreventionmethods_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: knowledgeofhivpreventionmethods_sex_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
-ALTER TABLE ONLY knowledgeofhivpreventionmethods
-	ADD CONSTRAINT knowledgeofhivpreventionmethods_pkey PRIMARY KEY (geo_level, geo_code, "knowledge of hiv prevention methods", "sex", total);
+ALTER TABLE ONLY knowledgeofhivpreventionmethods_sex
+	ADD CONSTRAINT knowledgeofhivpreventionmethods_sex_pkey PRIMARY KEY (geo_level, geo_code, "knowledge of hiv prevention methods", "sex", total);
 
 
 --
