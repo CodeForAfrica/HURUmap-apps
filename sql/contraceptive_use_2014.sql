@@ -180,7 +180,6 @@ county	45	not using	33.9
 county	46	not using	32.1
 county	47	not using	37.4
 country	KE	not using	42
-
 \.
 --
 -- Name: contraceptive_use_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:

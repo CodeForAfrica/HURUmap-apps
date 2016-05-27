@@ -27,6 +27,7 @@ CREATE TABLE knowledgeofhivpreventionmethods (
 	geo_level character varying(15) NOT NULL,
 	geo_code character varying(10) NOT NULL,
 	"knowledge of hiv prevention methods" character varying(128) NOT NULL,
+	"sex" character varying(15) NOT NULL,
 	total float NOT NULL
 );
 
@@ -324,14 +325,13 @@ country	KE	being faithful	female	91.6
 country	KE	being faithful	male	94.2
 country	KE	both	female	76.6
 country	KE	both	male	84.8
-
 \.
 --
 -- Name: knowledgeofhivpreventionmethods_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY knowledgeofhivpreventionmethods
-	ADD CONSTRAINT knowledgeofhivpreventionmethods_pkey PRIMARY KEY (geo_level, geo_code, "knowledge of hiv prevention methods", total);
+	ADD CONSTRAINT knowledgeofhivpreventionmethods_pkey PRIMARY KEY (geo_level, geo_code, "knowledge of hiv prevention methods", "sex", total);
 
 
 --
