@@ -332,4 +332,18 @@
 
     </div>
 </article>
+
+<article id="protests" class="clearfix">
+     <header class="section-contents">
+        <h1>Protests</h1>
+    </header>
+    <div class="section-container">
+        <section class="clearfix stat-row">
+             <div class="column-third">
+                 {% include 'profile/_blocks/_stat_list.html' with stat=protests.number_of_protests stat_type='number' %}
+                 <small>Source: <a href="article19.org/resources.php/resource/38331/en/country-report:-protest-in-kenya-2015">Article 19</a></small>
+             </div>
+        </section>
+    <div>
+</article>
 {% endblock %}
