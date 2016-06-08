@@ -21,7 +21,8 @@ PROFILE_SECTIONS = (
     'fertility',
     'vaccinations',
     'type_treatment',
-    'nutrition'
+    'nutrition',
+    'protests'
 )
 
 EMPLOYMENT_RECODES = OrderedDict([
@@ -575,6 +576,18 @@ def get_nutrition_profile(geo_code, geo_level, session):
         }
     }
 
+def get_protests_profile(geo_code, geo_level, session):
+    number_of_protests_dist, _ = get_stat_data("protests", geo_level, geo_code, session)
+    number_of_protests = number_of_protests_dist['Number of protests']['numerators']['this']
+    print number_of_protests
+    print '*' * 30
+    return {
+        'number_of_protests': {
+            'name': 'Number of protests',
+            'numerators': {'this': number_of_protests},
+            'values': {'this': number_of_protests},
+        }
+    }
 def get_dictionary(key_one, key_two, val):
     #return a dictionary with the second dictionary being 100 - val
     return {
