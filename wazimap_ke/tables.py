@@ -28,3 +28,4 @@ FieldTable(['weight for height'], universe='Nutrition', table_per_level=False, y
 FieldTable(['type', 'treatment'], table_per_level=False, year = 2014)
 FieldTable(['treatment of children with fever'], table_per_level=False, year = 2014)
 FieldTable(['protests'], table_per_level=False, year = 2014)
+FieldTable(['schoolfires'], table_per_level=False, year = 2016)

@@ -344,6 +344,28 @@
                  <small>Source: <a href="article19.org/resources.php/resource/38331/en/country-report:-protest-in-kenya-2015">Article 19</a></small>
              </div>
         </section>
-    <div>
+    </div>
+</article>
+
+<article id="schoolfires" class="clearfix">
+     <header class="section-contents">
+        <h1>School fires</h1>
+    </header>
+    <div class="section-container">
+        <section class="clearfix stat-row">
+             <div class="column-third">
+                 {% include 'profile/_blocks/_stat_list.html' with stat=schoolfires.schoolfires stat_type='number' %}
+                 <small>Source: <a href="http://www.nation.co.ke/news/List-of-schools-hit-by-unrest/1056-3318282-14epye8/index.html">Daily Nation</a></small>
+             </div>
+            {% if schoolfires.schools %}
+            <div class="column-two-thirds">
+                <h3>Schools that have been set ablaze</h3>
+                {% autoescape off %}
+                {{schoolfires.schools}}
+                {% endautoescape %}
+            </div>
+            {% endif %}
+        </section>
+    </div>
 </article>
 {% endblock %}
