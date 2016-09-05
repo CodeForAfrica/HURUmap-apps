@@ -353,18 +353,52 @@
     </header>
     <div class="section-container">
         <section class="clearfix stat-row">
-             <div class="column-third">
+             <div class="column-half">
                  {% include 'profile/_blocks/_stat_list.html' with stat=schoolfires.schoolfires stat_type='number' %}
                  <small>Source: <a href="http://www.nation.co.ke/news/List-of-schools-hit-by-unrest/1056-3318282-14epye8/index.html">Daily Nation</a></small>
              </div>
             {% if schoolfires.schools %}
-            <div class="column-two-thirds">
+            <div class="column-half">
                 <h3>Schools that have been set ablaze</h3>
                 {% autoescape off %}
                 {{schoolfires.schools}}
                 {% endautoescape %}
             </div>
             {% endif %}
+        </section>
+    </div>
+</article>
+<article id="crimereport" class="clearfix">
+     <header class="section-contents">
+        <h1>Crime Statistics</h1>
+    </header>
+    <div class="section-container">
+        <section class="clearfix stat-row">
+             <div class="column-half">
+                 {% include 'profile/_blocks/_stat_list.html' with stat=crimereport.crimes stat_type='number' %}
+                 <small>Source: <a href="http://www.nationalpolice.go.ke/crime-statistics.html">National Police Service</a></small>
+             </div>
+            <div class="column-half">
+                {% include 'profile/_blocks/_stat_list.html' with stat=crimereport.crimesindex stat_type='number' %}
+            </div>
+        </section>
+    </div>
+</article>
+
+<article id="healthratios" class="clearfix">
+     <header class="section-contents">
+        <h1>Access to health services</h1>
+    </header>
+    <div class="section-container">
+        <section class="clearfix stat-row">
+             <div class="column-half">
+                 {% include 'profile/_blocks/_stat_list.html' with stat=healthratios.doctorratio stat_type='number' %}
+                 <small>Source: <a href="http://www.internationalbudget.org/wp-content/uploads/IBP-Budget-Brief-18B-Final.pdf">International Budget Partnership</a></small>
+             </div>
+            <div class="column-half">
+                {% include 'profile/_blocks/_stat_list.html' with stat=healthratios.nurseratio stat_type='number' %}
+                <small>Source: <a href="http://www.internationalbudget.org/wp-content/uploads/IBP-Budget-Brief-18B-Final.pdf">International Budget Partnership</a></small>
+            </div>
         </section>
     </div>
 </article>
