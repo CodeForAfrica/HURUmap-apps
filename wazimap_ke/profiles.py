@@ -23,7 +23,9 @@ PROFILE_SECTIONS = (
     'type_treatment',
     'nutrition',
     'protests',
-    'schoolfires'
+    'schoolfires',
+    'crimereport',
+    'healthratios'
 )
 
 EMPLOYMENT_RECODES = OrderedDict([
@@ -597,9 +599,46 @@ def get_schoolfires_profile(geo_code, geo_level, session):
             'numerators': {'this': number_of_school_fires},
             'values': {'this': number_of_school_fires},
         },
+        'metadata': school_fires_dist['metadata'],
         'schools': schools
     }
 
+def get_crimereport_profile(geo_code, geo_level, session):
+    crimes_dist, _ = get_stat_data("crimereport", geo_level, geo_code, session)
+    crimes = crimes_dist['Crimes']['numerators']['this']
+    crimeindex = crimes_dist['Crimesindex']['numerators']['this']
+    return {
+        'crimes': {
+            'name': 'Number of crimes',
+            'numerators': {'this': crimes},
+            'values': {'this': crimes},
+        },
+        'crimesindex': {
+            'name': 'Crime index per 100,000 people',
+            'numerators': {'this': crimeindex},
+            'values': {'this': crimeindex},
+        },
+        'metdata': crimes_dist['metadata']
+    }
+
+def get_healthratios_profile(geo_code, geo_level, session):
+    ratios_dist, _ = get_stat_data("healthratios", geo_level, geo_code, session)
+    print ratios_dist
+    dr = ratios_dist['Doctor ratio']['numerators']['this']
+    nr = ratios_dist['Nurse ratio']['numerators']['this']
+    return {
+        'doctorratio': {
+            'name': 'Doctor to population ratio',
+            'numerators': {'this': dr},
+            'values': {'this': dr},
+        },
+        'nurseratio': {
+            'name': 'Nurse to population ratio',
+            'numerators': {'this': nr},
+            'values': {'this': nr},
+        },
+        'metdata': ratios_dist['metadata']
+    }
 def get_dictionary(key_one, key_two, val):
     #return a dictionary with the second dictionary being 100 - val
     return {
