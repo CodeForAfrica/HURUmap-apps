@@ -76,7 +76,7 @@ ALTER TABLE ONLY wazimap_geography ALTER COLUMN id SET DEFAULT nextval('wazimap_
 
 COPY wazimap_geography (id, geo_level, geo_code, name, long_name, year, osm_area_id, square_kms, parent_level, parent_code) FROM stdin;
 1	country	KE	Kenya	Kenya	2009	662008	\N	\N	\N
-2	county	5Mombasa	Mombasa	2009	662784	\N	country	KE
+2	county	1	Mombasa	Mombasa	2009	662784	\N	country	KE
 3	county	2	Kwale	Kwale	2009	509519	\N	country	KE
 4	county	3	Kilifi	Kilifi	2009	662783	\N	country	KE
 5	county	4	Tana River	Tana River	2009	509533	\N	country	KE
