@@ -368,6 +368,12 @@
         </section>
     </div>
 </article>
+
+<style>
+    .label {word-break:break-word;}
+    #chart-histogram-crimereport-crimes_dist .action-links {margin-top:40px;}
+</style>
+
 <article id="crimereport" class="clearfix">
      <header class="section-contents">
         <h1>Crime Statistics</h1>
@@ -381,6 +387,9 @@
             <div class="column-half">
                 {% include 'profile/_blocks/_stat_list.html' with stat=crimereport.crimesindex stat_type='number' %}
             </div>
+        </section>
+        <section class="clearfix stat-row">
+            <div id="chart-histogram-crimereport-crimes_dist" data-stat-type="scaled-percentage" data-chart-title="Crimes"></div>
         </section>
     </div>
 </article>
