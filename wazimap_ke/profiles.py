@@ -13,7 +13,7 @@ PROFILE_SECTIONS = (
     'demographics',
     'education',
     'employment',
-    'households',
+     'households',
     'contraceptive_use',
     'maternal_care_indicators',
     'knowledge_of_hiv_prevention_methods',
@@ -46,8 +46,7 @@ WATER_SOURCE_RECODES = OrderedDict([
     ('other', 'Other'),
 ])
 
-
-def get_census_profile(geo_code, geo_level, profile_name=None):
+def get_census_profile(geo_code, geo_level, profile_name=None, cat=None):
     session = get_session()
 
     try:
@@ -67,8 +66,8 @@ def get_census_profile(geo_code, geo_level, profile_name=None):
 
         # tweaks to make the data nicer
         # show X largest groups on their own and group the rest as 'Other'
-        group_remainder(data['households']['roofing_material_distribution'], 5)
-        group_remainder(data['households']['wall_material_distribution'], 5)
+        # group_remainder(data['households']['roofing_material_distribution'], 5)
+        # group_remainder(data['households']['wall_material_distribution'], 5)
 
         return data
 
@@ -604,9 +603,10 @@ def get_schoolfires_profile(geo_code, geo_level, session):
     }
 
 def get_crimereport_profile(geo_code, geo_level, session):
-    crimes_dist, _ = get_stat_data("crimereport", geo_level, geo_code, session)
-    crimes = crimes_dist['Crimes']['numerators']['this']
-    crimeindex = crimes_dist['Crimesindex']['numerators']['this']
+    stats_dist, s_ = get_stat_data("crimereport", geo_level, geo_code, session)
+    crimes_dist,c_ = get_stat_data("typesofcrime", geo_level, geo_code, session)
+    crimes = stats_dist['Crimes']['numerators']['this']
+    crimeindex = stats_dist['Crimesindex']['numerators']['this']
     return {
         'crimes': {
             'name': 'Number of crimes',
@@ -618,12 +618,12 @@ def get_crimereport_profile(geo_code, geo_level, session):
             'numerators': {'this': crimeindex},
             'values': {'this': crimeindex},
         },
-        'metdata': crimes_dist['metadata']
+        'crimes_dist': crimes_dist,
+        'metadata': crimes_dist['metadata']
     }
 
 def get_healthratios_profile(geo_code, geo_level, session):
     ratios_dist, _ = get_stat_data("healthratios", geo_level, geo_code, session)
-    print ratios_dist
     dr = ratios_dist['Doctor ratio']['numerators']['this']
     nr = ratios_dist['Nurse ratio']['numerators']['this']
     return {
