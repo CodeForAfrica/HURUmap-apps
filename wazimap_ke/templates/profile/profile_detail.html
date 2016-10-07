@@ -122,6 +122,33 @@
     </div>
 </article>
 
+<article id="voterregistration" class="clearfix">
+     <header class="section-contents">
+        <h1>Voter Registration</h1>
+    </header>
+    <div class="section-container">
+        <section class="clearfix stat-row">
+             <div class="column-third">
+                 {% include 'profile/_blocks/_stat_list.html' with stat=voterregistration.ids_issued stat_type='number' %}
+                 <small>Source: <a href="http://www.iebc.or.ke/docs/MVR-Baseline-Data.html">IEBC</a></small>
+             </div>
+            <div class="column-third">
+                {% include 'profile/_blocks/_stat_list.html' with stat=voterregistration.dead_with_ids stat_type='number' %}
+            </div>
+            <div class="column-third">
+                {% include 'profile/_blocks/_stat_list.html' with stat=voterregistration.reg_centers stat_type='number' %}
+            </div>
+        </section>
+        <section  class="clearfix stat-row">
+            <div class="column-third">
+                {% include 'profile/_blocks/_stat_list.html' with stat=voterregistration.total stat_type='number' %}
+            </div>
+             <div class="column-third" id="chart-pie-voterregistration-registration" data-stat-type="percentage" data-chart-title="Registered voters as at March 2013 and as at October 2015" ></div>
+            <div class="column-third" id="chart-pie-voterregistration-registration_ratio" data-stat-type="percentage" data-chart-title="Potential voters with IDs not registered as at December 2015" ></div>
+        </section>
+    </div>
+</article>
+
 <hr>
 <article class="clearfix">
     <h2><a href="http://www.knbs.or.ke/index.php?option=com_content&view=article&id=308:2014-kenya-demographic-and-health-survey-2014-kdhs&catid=82:news&Itemid=593">KNBS Demographic and Health Survey Report 2014</a></h2>
