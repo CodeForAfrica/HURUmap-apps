@@ -25,7 +25,8 @@ PROFILE_SECTIONS = (
     'protests',
     'schoolfires',
     'crimereport',
-    'healthratios'
+    'healthratios',
+    'voterregistration',
 )
 
 EMPLOYMENT_RECODES = OrderedDict([
@@ -55,6 +56,7 @@ def get_census_profile(geo_code, geo_level, profile_name=None, cat=None):
 
         for section in PROFILE_SECTIONS:
             function_name = 'get_%s_profile' % section
+            print function_name
             if function_name in globals():
                 func = globals()[function_name]
                 data[section] = func(geo_code, geo_level, session)
@@ -639,6 +641,67 @@ def get_healthratios_profile(geo_code, geo_level, session):
         },
         'metdata': ratios_dist['metadata']
     }
+
+def get_voterregistration_profile(geo_code, geo_level, session):
+    stats_dist, _ = get_stat_data("voterregistration", geo_level, geo_code, session)
+    ids_issued = stats_dist['IDs issued']['numerators']['this']
+    dead_with_ids = stats_dist['Dead with IDs']['numerators']['this']
+    reg_centers = stats_dist['Registration centers']['numerators']['this']
+    reg = stats_dist['Registered voters']['numerators']['this']
+    aft = stats_dist['Additional voters registered']['numerators']['this']
+    total = stats_dist['Total registered']['numerators']['this']
+    not_registered = stats_dist['Potential voting population not registered']['numerators']['this']
+    r =  {
+        'ids_issued': {
+            'name': 'Number of IDs issued as at Dec 2015',
+            'numerators': {'this': ids_issued},
+            'values': {'this': ids_issued},
+        },
+        'dead_with_ids': {
+            'name': 'Projected dead with IDs 10.57%',
+            'numerators': {'this': dead_with_ids},
+            'values': {'this': dead_with_ids},
+        },
+        'reg_centers': {
+            'name': 'Number of registration centers',
+            'numerators': {'this': reg_centers},
+            'values': {'this': reg_centers},
+        },
+        'total': {
+            'name': 'Total population registered to vote',
+            'numerators': {'this': total},
+            'values': {'this': total},
+        },
+        'registration': {
+            'march': {
+                'name': 'As at Mar 2013',
+                'numerators': {'this': reg},
+                'values': {'this': round((reg / total) * 100) },
+            },
+            'oct': {
+                'name': 'As at Oct 2015',
+                'numerators': {'this': aft},
+                'values': {'this':round((aft / total) * 100)},
+            }
+        },
+        'registration_ratio': {
+            'march': {
+                'name': 'Registered',
+                'numerators': {'this': total},
+                'values': {'this': round((total / (total + not_registered)) * 100) },
+            },
+            'oct': {
+                'name': 'Not registered',
+                'numerators': {'this': not_registered},
+                'values': {'this':round((not_registered / (total + not_registered)) * 100)},
+            }
+        },
+        'metdata': stats_dist['metadata']
+    }
+    print r
+    print '*' * 30
+    return r;
+
 def get_dictionary(key_one, key_two, val):
     #return a dictionary with the second dictionary being 100 - val
     return {
