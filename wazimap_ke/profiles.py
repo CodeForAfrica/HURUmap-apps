@@ -773,20 +773,14 @@ def get_livestock_profile(geo_code, geo_level, session):
     pop_dist['sheep'] = sum_up([dist['Sheep wool'], dist['Sheep hair']], 'Sheep')
     pop_dist['goats dairy'] = sum_up([dist['Goat dairy'], dist['Goat meat']], 'Goat')
     pop_dist['poultry'] = sum_up(
-        [dist['Broilers'], dist['Layers'], dist['Indigenous'], dist['Others'],
+        [dist['Broilers'], dist['Layers'], dist['Kienyeji'], dist['Others'],
          dist['Turkey'], dist['Ducks'], dist['Quails'], dist['Guinea fowl'],
          dist['Geese']], 'Poultry')
     pop_dist['pigs'] = dist['Pigs']
     pop_dist['rabbits'] = dist['Rabbits']
     pop_dist['donkeys'] = dist['Donkeys']
     pop_dist['camels'] = dist['Camels']
-    pop_dist['horses'] = dist['Horses']
-    pop_dist['ostrich'] = dist['Ostrich']
     pop_dist['crocodiles'] = dist['Crocodiles']
-    pop_dist['guinea pigs'] = dist['Guinea pigs']
-    pop_dist['Doves'] = dist['Doves']
-    pop_dist['pegion'] = dist['Pegions']
-    pop_dist['hives'] = sum_up([dist['Hives log'], dist['Hives KTBH'], dist['Hives lang'],dist['Hives box']], 'Hives')
     pop_dist['metadata'] = dist['metadata']
 
     cattle_pop = OrderedDict()
@@ -797,6 +791,11 @@ def get_livestock_profile(geo_code, geo_level, session):
     goat_pop['meat'] = divide_by_one_thousand(dist['Goat meat'])
     goat_pop['dairy'] = divide_by_one_thousand(dist['Goat dairy'])
     goat_pop['metadata'] = dist['metadata']
+    hives_pop = OrderedDict()
+    hives_pop['log'] = dist['Hives log']
+    hives_pop['KTBH'] = dist['Hives KTBH']
+    hives_pop['lang'] = dist['Hives lang']
+    hives_pop['box'] = dist['Hives box']
     sheep_pop = OrderedDict()
     sheep_pop['meat'] = divide_by_one_thousand(dist['Sheep wool'])
     sheep_pop['dairy'] = divide_by_one_thousand(dist['Sheep hair'])
@@ -804,7 +803,7 @@ def get_livestock_profile(geo_code, geo_level, session):
     poultry_pop = OrderedDict()
     poultry_pop['broilers'] = divide_by_one_thousand(dist['Broilers'])
     poultry_pop['layers'] = divide_by_one_thousand(dist['Layers'])
-    poultry_pop['indigenous'] = divide_by_one_thousand(dist['Indigenous'])
+    poultry_pop['kienyeji'] = divide_by_one_thousand(dist['Kienyeji'])
     poultry_pop['others'] = divide_by_one_thousand(dist['Others'])
     poultry_pop['turkey'] = divide_by_one_thousand(dist['Turkey'])
     poultry_pop['ducks'] = divide_by_one_thousand(dist['Ducks'])
@@ -814,6 +813,7 @@ def get_livestock_profile(geo_code, geo_level, session):
     poultry_pop['metadata'] = dist['metadata']
 
     prod_dist, _ = get_stat_data("livestock_products", geo_level, geo_code, session, percent=False)
+    total_hives = sum_up([dist['Hives log'], dist['Hives KTBH'], dist['Hives lang'],dist['Hives box']], 'Hives')['values']['this']
 
     return {
         'pop_dist': pop_dist,
@@ -822,6 +822,13 @@ def get_livestock_profile(geo_code, geo_level, session):
         'sheep_pop': sheep_pop,
         'poultry_pop': poultry_pop,
         'prod_dist': prod_dist,
+        'hives_pop': hives_pop,
+        'hives': {
+            'name': 'Total number of hives',
+            'numerators': {'this': total_hives},
+            'values': {'this': total_hives},
+        }
+
     }
 
 
