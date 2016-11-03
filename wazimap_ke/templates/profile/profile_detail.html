@@ -451,11 +451,13 @@
             <div class="column-full">
                 <div id="chart-histogram-crop_production-area_dist" data-stat-type="number" data-chart-title="Area in hectares used for crop production"></div>
             </div>
-            <br clear="all">
+        </section>
+        <section class="clearfix stat-row">
             <div class="column-full">
                 <div id="chart-histogram-crop_production-prod_dist" data-stat-type="number" data-chart-title="Crop production (bags or tons)"></div>
             </div>
-            <br clear="all">
+        </section>
+        <section class="clearfix stat-row">
             <div class="column-full">
                 <div id="chart-histogram-crop_production-yield_dist" data-stat-type="number" data-chart-title="Yield bags per hectare or tons per hectare"></div>
             </div>
@@ -471,10 +473,20 @@
             <div class="column-full">
                 <div id="chart-histogram-livestock-pop_dist" data-stat-type="number" data-chart-title="Livestock population"></div>
             </div>
+        </section>
+        <section class="clearfix stat-row">
             <div class="column-half" id="chart-pie-livestock-cattle_pop" data-stat-type="number" data-chart-title="Cattle '000"></div>
             <div class="column-half" id="chart-pie-livestock-goat_pop" data-stat-type="number" data-chart-title="Goat '000"></div>
+        </section>
+        <section class="clearfix stat-row">
             <div class="column-half" id="chart-pie-livestock-sheep_pop" data-stat-type="number" data-chart-title="Sheep '000"></div>
             <div class="column-half" id="chart-histogram-livestock-poultry_pop" data-stat-type="number" data-chart-title="Poultry '000"></div>
+        </section>
+         <section class="clearfix stat-row">
+             <div class="column-half">
+                {% include 'profile/_blocks/_stat_list.html' with stat=livestock.hives stat_type='number' %}
+             </div>
+             <div class="column-half" id="chart-pie-livestock-hives_pop" data-stat-type="number" data-chart-title="Hives"></div>
         </section>
         <section class="clearfix stat-row">
             <div class="column-full">
