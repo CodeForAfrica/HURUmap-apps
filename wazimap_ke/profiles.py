@@ -10,23 +10,25 @@ import wazimap_ke.tables  # noqa
 
 
 PROFILE_SECTIONS = (
-    'demographics',
-    'education',
-    'employment',
-     'households',
-    'contraceptive_use',
-    'maternal_care_indicators',
-    'knowledge_of_hiv_prevention_methods',
-    'ITN',
-    'fertility',
-    'vaccinations',
-    'type_treatment',
-    'nutrition',
-    'protests',
-    'schoolfires',
-    'crimereport',
-    'healthratios',
-    'voterregistration',
+    # 'demographics',
+    # 'education',
+    # 'employment',
+    #  'households',
+    # 'contraceptive_use',
+    # 'maternal_care_indicators',
+    # 'knowledge_of_hiv_prevention_methods',
+    # 'ITN',
+    # 'fertility',
+    # 'vaccinations',
+    # 'type_treatment',
+    # 'nutrition',
+    # 'protests',
+    # 'schoolfires',
+    # 'crimereport',
+    # 'healthratios',
+    # 'voterregistration',
+    'crop_production',
+    'livestock',
 )
 
 EMPLOYMENT_RECODES = OrderedDict([
@@ -711,6 +713,118 @@ def get_voterregistration_profile(geo_code, geo_level, session):
         },
     }
 
+def get_crop_production_profile(geo_code, geo_level, session):
+    dist, _ = get_stat_data("crop_production", geo_level, geo_code, session, percent = False)
+    area_dist = OrderedDict()
+    area_dist['maize'] = dist['Maize']
+    area_dist['beans'] = dist['Beans']
+    area_dist['wheat'] = dist['Wheat']
+    area_dist['barley'] = dist['Barley']
+    area_dist['rice'] = dist['Rice']
+    area_dist['sorghum'] = dist['Sorghum']
+    area_dist['millet'] = dist['Millet']
+    area_dist['cowpeas'] = dist['Cowpeas']
+    area_dist['greengrams'] = dist['Greengrams']
+    area_dist['sweetpotatoes'] = dist['Sweetpotatoes']
+    area_dist['cassava'] = dist['Cassava']
+    area_dist['cocoyam'] = dist['Cocoyam']
+    area_dist['irishpotatoes'] = dist['Irishpotatoes']
+    area_dist['metadata'] = dist['metadata']
+    prod_dist = OrderedDict()
+    prod_dist['maize'] = dist['Maize (90kg bags)']
+    prod_dist['beans'] = dist['Beans (90kg bags)']
+    prod_dist['wheat'] = dist['Wheat (90kg bags)']
+    prod_dist['barley'] = dist['Barley (Ton)']
+    prod_dist['rice'] = dist['Rice (Ton)']
+    prod_dist['sorghum'] = dist['Sorghum (90kg bags)']
+    prod_dist['millet'] = dist['Millet (90kg bags)']
+    prod_dist['cowpeas'] = dist['Cowpeas (90kg bags)']
+    prod_dist['greengrams'] = dist['Greengrams (90kg bags)']
+    prod_dist['sweetpotatoes'] = dist['Sweetpotatoes (Ton)']
+    prod_dist['cassava'] = dist['Cassava (Ton)']
+    prod_dist['cocoyam'] = dist['Cocoyam (Ton)']
+    prod_dist['irishpotatoes'] = dist['Irishpotatoes (Ton)']
+    prod_dist['metadata'] = dist['metadata']
+    yield_dist = OrderedDict()
+    yield_dist['maize'] = dist['Maize yield']
+    yield_dist['beans'] = dist['Beans yield']
+    yield_dist['wheat'] = dist['Wheat yield']
+    yield_dist['barley'] = dist['Barley yield']
+    yield_dist['rice'] = dist['Rice yield']
+    yield_dist['sorghum'] = dist['Sorghum yield']
+    yield_dist['millet'] = dist['Millet yield']
+    yield_dist['cowpeas'] = dist['Cowpeas yield']
+    yield_dist['greengrams'] = dist['Greengrams yield']
+    yield_dist['sweetpotatoes'] = dist['Sweetpotatoes yield']
+    yield_dist['cassava'] = dist['Cassava yield']
+    yield_dist['cocoyam'] = dist['Cocoyam yield']
+    yield_dist['irishpotatoes'] = dist['Irishpotatoes yield']
+    yield_dist['metadata'] = dist['metadata']
+    return {
+        'area_dist': area_dist,
+        'prod_dist': prod_dist,
+        'yield_dist': yield_dist,
+    }
+
+def get_livestock_profile(geo_code, geo_level, session):
+    dist, _ = get_stat_data("livestock_population", geo_level, geo_code, session, percent = False)
+    pop_dist = OrderedDict()
+    pop_dist['cattle'] = sum_up([dist['Cattle meat'], dist['Cattle dairy']], 'Cattle')
+    pop_dist['sheep'] = sum_up([dist['Sheep wool'], dist['Sheep hair']], 'Sheep')
+    pop_dist['goats dairy'] = sum_up([dist['Goat dairy'], dist['Goat meat']], 'Goat')
+    pop_dist['poultry'] = sum_up(
+        [dist['Broilers'], dist['Layers'], dist['Indigenous'], dist['Others'],
+         dist['Turkey'], dist['Ducks'], dist['Quails'], dist['Guinea fowl'],
+         dist['Geese']], 'Poultry')
+    pop_dist['pigs'] = dist['Pigs']
+    pop_dist['rabbits'] = dist['Rabbits']
+    pop_dist['donkeys'] = dist['Donkeys']
+    pop_dist['camels'] = dist['Camels']
+    pop_dist['horses'] = dist['Horses']
+    pop_dist['ostrich'] = dist['Ostrich']
+    pop_dist['crocodiles'] = dist['Crocodiles']
+    pop_dist['guinea pigs'] = dist['Guinea pigs']
+    pop_dist['Doves'] = dist['Doves']
+    pop_dist['pegion'] = dist['Pegions']
+    pop_dist['hives'] = sum_up([dist['Hives log'], dist['Hives KTBH'], dist['Hives lang'],dist['Hives box']], 'Hives')
+    pop_dist['metadata'] = dist['metadata']
+
+    cattle_pop = OrderedDict()
+    cattle_pop['meat'] = divide_by_one_thousand(dist['Cattle meat'])
+    cattle_pop['dairy'] = divide_by_one_thousand(dist['Cattle dairy'])
+    cattle_pop['metadata'] = dist['metadata']
+    goat_pop = OrderedDict()
+    goat_pop['meat'] = divide_by_one_thousand(dist['Goat meat'])
+    goat_pop['dairy'] = divide_by_one_thousand(dist['Goat dairy'])
+    goat_pop['metadata'] = dist['metadata']
+    sheep_pop = OrderedDict()
+    sheep_pop['meat'] = divide_by_one_thousand(dist['Sheep wool'])
+    sheep_pop['dairy'] = divide_by_one_thousand(dist['Sheep hair'])
+    sheep_pop['metadata'] = dist['metadata']
+    poultry_pop = OrderedDict()
+    poultry_pop['broilers'] = divide_by_one_thousand(dist['Broilers'])
+    poultry_pop['layers'] = divide_by_one_thousand(dist['Layers'])
+    poultry_pop['indigenous'] = divide_by_one_thousand(dist['Indigenous'])
+    poultry_pop['others'] = divide_by_one_thousand(dist['Others'])
+    poultry_pop['turkey'] = divide_by_one_thousand(dist['Turkey'])
+    poultry_pop['ducks'] = divide_by_one_thousand(dist['Ducks'])
+    poultry_pop['quails'] = divide_by_one_thousand(dist['Quails'])
+    poultry_pop['guineafowl'] = divide_by_one_thousand(dist['Guinea fowl'])
+    poultry_pop['geese'] = divide_by_one_thousand(dist['Geese'])
+    poultry_pop['metadata'] = dist['metadata']
+
+    prod_dist, _ = get_stat_data("livestock_products", geo_level, geo_code, session, percent=False)
+
+    return {
+        'pop_dist': pop_dist,
+        'cattle_pop': cattle_pop,
+        'goat_pop': goat_pop,
+        'sheep_pop': sheep_pop,
+        'poultry_pop': poultry_pop,
+        'prod_dist': prod_dist,
+    }
+
+
 def get_dictionary(key_one, key_two, val, dist):
     #return a dictionary with the second dictionary being 100 - val
     return {
@@ -726,3 +840,13 @@ def get_dictionary(key_one, key_two, val, dist):
         },
         'metadata': dist['metadata']
     }
+
+def sum_up(arr, name):
+    s = 0
+    for x in arr:
+        s += x['values']['this']
+    return OrderedDict([('name', name), ('numerators', {'this': None}), ('values', {'this': s})])
+
+def divide_by_one_thousand(dist):
+    dist['values']['this'] =  round((dist['values']['this'] * 1.0) / 1000, 1)
+    return dist

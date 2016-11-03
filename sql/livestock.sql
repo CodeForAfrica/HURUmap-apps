@@ -35,7 +35,7 @@ CREATE TABLE livestock_population (
 -- Data for Name: livestock_population; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY livestock_population (geo_level, geo_code, "livestock population", total) FROM stdin;
+COPY livestock_population (geo_level, geo_code, "livestock_population", total) FROM stdin;
 county	26	cattle dairy	17050
 county	26	cattle meat	1690
 county	26	sheep wool	200
@@ -44,15 +44,15 @@ county	26	goat dairy	150
 county	26	goat meat	2830
 county	26	pigs	580
 county	26	rabbits	1160
-county	26	poultry broilers	1830
-county	26	poultry layers	11160
-county	26	poultry indigenous	66420
-county	26	poultry others	2140
-county	26	poultry turkey	0
-county	26	poultry ducks	0
-county	26	poultry quails	0
-county	26	poultry guniea fowl	0
-county	26	poultry geese	0
+county	26	broilers	1830
+county	26	layers	11160
+county	26	indigenous	66420
+county	26	others	2140
+county	26	turkey	0
+county	26	ducks	0
+county	26	quails	0
+county	26	guinea fowl	0
+county	26	geese	0
 county	24	cattle dairy	700
 county	24	cattle meat	36500
 county	24	sheep wool	9800
@@ -61,15 +61,15 @@ county	24	goat dairy	250
 county	24	goat meat	4500
 county	24	pigs	320
 county	24	rabbits	380
-county	24	poultry broilers	50
-county	24	poultry layers	210
-county	24	poultry indigenous	47500
-county	24	poultry others	5290
-county	24	poultry turkey	0
-county	24	poultry ducks	0
-county	24	poultry quails	0
-county	24	poultry guniea fowl	0
-county	24	poultry geese	0
+county	24	broilers	50
+county	24	layers	210
+county	24	indigenous	47500
+county	24	others	5290
+county	24	turkey	0
+county	24	ducks	0
+county	24	quails	0
+county	24	guinea fowl	0
+county	24	geese	0
 county	31	cattle dairy	5600
 county	31	cattle meat	233650
 county	31	sheep wool	14103
@@ -78,15 +78,15 @@ county	31	goat dairy	12996
 county	31	goat meat	3700
 county	31	pigs	50
 county	31	rabbits	20748
-county	31	poultry broilers	1600
-county	31	poultry layers	34220
-county	31	poultry indigenous	34500
-county	31	poultry others	9889
-county	31	poultry turkey	0
-county	31	poultry ducks	0
-county	31	poultry quails	0
-county	31	poultry guniea fowl	0
-county	31	poultry geese	0
+county	31	broilers	1600
+county	31	layers	34220
+county	31	indigenous	34500
+county	31	others	9889
+county	31	turkey	0
+county	31	ducks	0
+county	31	quails	0
+county	31	guinea fowl	0
+county	31	geese	0
 county	34	cattle dairy	157302
 county	34	cattle meat	525289
 county	34	sheep wool	0
@@ -95,14 +95,14 @@ county	34	goat dairy	1636
 county	34	goat meat	1080297
 county	34	pigs	21997
 county	34	rabbits	22014
-county	34	poultry broilers	340408
-county	34	poultry layers	169533
-county	34	poultry indigenous	211357
-county	34	poultry others	1735
-county	34	poultry turkey	65
-county	34	poultry ducks	25
-county	34	poultry quails	1645
-county	34	poultry guniea fowl	0
+county	34	broilers	340408
+county	34	layers	169533
+county	34	indigenous	211357
+county	34	others	1735
+county	34	turkey	65
+county	34	ducks	25
+county	34	quails	1645
+county	34	guinea fowl	0
 county	15	cattle dairy	6666
 county	15	cattle meat	388264
 county	15	sheep wool	0
@@ -111,14 +111,14 @@ county	15	goat dairy	4142
 county	15	goat meat	940645
 county	15	pigs	1015
 county	15	rabbits	3499
-county	15	poultry broilers	24410
-county	15	poultry layers	18892
-county	15	poultry indigenous	1425410
-county	15	poultry others	10654
-county	15	poultry turkey	0
-county	15	poultry ducks	0
-county	15	poultry quails	0
-county	15	poultry guniea fowl	0
+county	15	broilers	24410
+county	15	layers	18892
+county	15	indigenous	1425410
+county	15	others	10654
+county	15	turkey	0
+county	15	ducks	0
+county	15	quails	0
+county	15	guinea fowl	0
 county	16	cattle dairy	39950
 county	16	cattle meat	205490
 county	16	sheep wool	0
@@ -127,15 +127,15 @@ county	16	goat dairy	8430
 county	16	goat meat	321870
 county	16	pigs	550
 county	16	rabbits	16250
-county	16	poultry broilers	17480
-county	16	poultry layers	18410
-county	16	poultry indigenous	130600
-county	16	poultry others	23720
-county	16	poultry turkey	0
-county	16	poultry ducks	0
-county	16	poultry quails	0
-county	16	poultry guniea fowl	0
-county	16	poultry geese	0
+county	16	broilers	17480
+county	16	layers	18410
+county	16	indigenous	130600
+county	16	others	23720
+county	16	turkey	0
+county	16	ducks	0
+county	16	quails	0
+county	16	guinea fowl	0
+county	16	geese	0
 county	17	cattle dairy	22353
 county	17	cattle meat	233814
 county	17	sheep wool	0
@@ -144,15 +144,15 @@ county	17	goat dairy	11678
 county	17	goat meat	675045
 county	17	pigs	2040
 county	17	rabbits	13725
-county	17	poultry broilers	1330
-county	17	poultry layers	23628
-county	17	poultry indigenous	965475
-county	17	poultry others	3244
-county	17	poultry turkey	0
-county	17	poultry ducks	0
-county	17	poultry quails	0
-county	17	poultry guniea fowl	0
-county	17	poultry geese	0
+county	17	broilers	1330
+county	17	layers	23628
+county	17	indigenous	965475
+county	17	others	3244
+county	17	turkey	0
+county	17	ducks	0
+county	17	quails	0
+county	17	guinea fowl	0
+county	17	geese	0
 county	7	cattle dairy	191
 county	7	cattle meat	1104184
 county	7	sheep wool	0
@@ -161,15 +161,15 @@ county	7	goat dairy	147
 county	7	goat meat	1947163
 county	7	pigs	0
 county	7	rabbits	0
-county	7	poultry broilers	0
-county	7	poultry layers	0
-county	7	poultry indigenous	195021
-county	7	poultry others	0
-county	7	poultry turkey	0
-county	7	poultry ducks	0
-county	7	poultry quails	0
-county	7	poultry guniea fowl	0
-county	7	poultry geese	0
+county	7	broilers	0
+county	7	layers	0
+county	7	indigenous	195021
+county	7	others	0
+county	7	turkey	0
+county	7	ducks	0
+county	7	quails	0
+county	7	guinea fowl	0
+county	7	geese	0
 county	5	cattle dairy	8549
 county	5	cattle meat	112119
 county	5	sheep wool	0
@@ -178,14 +178,14 @@ county	5	goat dairy	5976
 county	5	goat meat	130620
 county	5	pigs	0
 county	5	rabbits	1764
-county	5	poultry broilers	6065
-county	5	poultry layers	4295
-county	5	poultry indigenous	177401
-county	5	poultry others	9434
-county	5	poultry turkey	0
-county	5	poultry ducks	0
-county	5	poultry quails	480
-county	5	poultry guniea fowl	860
+county	5	broilers	6065
+county	5	layers	4295
+county	5	indigenous	177401
+county	5	others	9434
+county	5	turkey	0
+county	5	ducks	0
+county	5	quails	480
+county	5	guinea fowl	860
 county	4	cattle dairy	76
 county	4	cattle meat	607190
 county	4	sheep wool	0
@@ -194,15 +194,15 @@ county	4	goat dairy	1330
 county	4	goat meat	693350
 county	4	pigs	11
 county	4	rabbits	332
-county	4	poultry broilers	100
-county	4	poultry layers	2402
-county	4	poultry indigenous	131912
-county	4	poultry others	8270
-county	4	poultry turkey	0
-county	4	poultry ducks	0
-county	4	poultry quails	0
-county	4	poultry guniea fowl	0
-county	4	poultry geese	0
+county	4	broilers	100
+county	4	layers	2402
+county	4	indigenous	131912
+county	4	others	8270
+county	4	turkey	0
+county	4	ducks	0
+county	4	quails	0
+county	4	guinea fowl	0
+county	4	geese	0
 county	8	cattle dairy	12
 county	8	cattle meat	718928
 county	8	sheep wool	0
@@ -211,14 +211,14 @@ county	8	goat dairy	254
 county	8	goat meat	1503730
 county	8	pigs	0
 county	8	rabbits	0
-county	8	poultry broilers	76
-county	8	poultry layers	534
-county	8	poultry indigenous	188732
-county	8	poultry others	20
-county	8	poultry turkey	0
-county	8	poultry ducks	0
-county	8	poultry quails	0
-county	8	poultry guniea fowl	0
+county	8	broilers	76
+county	8	layers	534
+county	8	indigenous	188732
+county	8	others	20
+county	8	turkey	0
+county	8	ducks	0
+county	8	quails	0
+county	8	guinea fowl	0
 county	1	cattle dairy	1866
 county	1	cattle meat	3968
 county	1	sheep wool	3
@@ -227,14 +227,14 @@ county	1	goat dairy	115
 county	1	goat meat	20710
 county	1	pigs	692
 county	1	rabbits	1408
-county	1	poultry broilers	8060
-county	1	poultry layers	1290
-county	1	poultry indigenous	36205
-county	1	poultry others	0
-county	1	poultry turkey	0
-county	1	poultry ducks	0
-county	1	poultry quails	5695
-county	1	poultry guniea fowl	0
+county	1	broilers	8060
+county	1	layers	1290
+county	1	indigenous	36205
+county	1	others	0
+county	1	turkey	0
+county	1	ducks	0
+county	1	quails	5695
+county	1	guinea fowl	0
 county	6	cattle dairy	27472
 county	6	cattle meat	149179
 county	6	sheep wool	0
@@ -243,14 +243,14 @@ county	6	goat dairy	3145
 county	6	goat meat	172450
 county	6	pigs	1407
 county	6	rabbits	9965
-county	6	poultry broilers	17078
-county	6	poultry layers	21113
-county	6	poultry indigenous	608609
-county	6	poultry others	7385
-county	6	poultry turkey	0
-county	6	poultry ducks	0
-county	6	poultry quails	0
-county	6	poultry guniea fowl	0
+county	6	broilers	17078
+county	6	layers	21113
+county	6	indigenous	608609
+county	6	others	7385
+county	6	turkey	0
+county	6	ducks	0
+county	6	quails	0
+county	6	guinea fowl	0
 county	2	cattle dairy	3488
 county	2	cattle meat	299026
 county	2	sheep wool	0
@@ -259,15 +259,15 @@ county	2	goat dairy	1382
 county	2	goat meat	350874
 county	2	pigs	468
 county	2	rabbits	1453
-county	2	poultry broilers	7480
-county	2	poultry layers	12250
-county	2	poultry indigenous	477918
-county	2	poultry others	6850
-county	2	poultry turkey	0
-county	2	poultry ducks	0
-county	2	poultry quails	0
-county	2	poultry guniea fowl	0
-county	2	poultry geese	0
+county	2	broilers	7480
+county	2	layers	12250
+county	2	indigenous	477918
+county	2	others	6850
+county	2	turkey	0
+county	2	ducks	0
+county	2	quails	0
+county	2	guinea fowl	0
+county	2	geese	0
 county	3	cattle dairy	51518
 county	3	cattle meat	261717
 county	3	sheep wool	0
@@ -276,15 +276,15 @@ county	3	goat dairy	828
 county	3	goat meat	286782
 county	3	pigs	2648
 county	3	rabbits	8978
-county	3	poultry broilers	129988
-county	3	poultry layers	105941
-county	3	poultry indigenous	99860
-county	3	poultry others	0
-county	3	poultry turkey	3944
-county	3	poultry ducks	89698
-county	3	poultry quails	280
-county	3	poultry guniea fowl	7991
-county	3	poultry geese	3850
+county	3	broilers	129988
+county	3	layers	105941
+county	3	indigenous	99860
+county	3	others	0
+county	3	turkey	3944
+county	3	ducks	89698
+county	3	quails	280
+county	3	guinea fowl	7991
+county	3	geese	3850
 county	14	cattle dairy	90427
 county	14	cattle meat	8920
 county	14	sheep wool	1525
@@ -293,15 +293,15 @@ county	14	goat dairy	27085
 county	14	goat meat	239571
 county	14	pigs	15780
 county	14	rabbits	59636
-county	14	poultry broilers	43690
-county	14	poultry layers	73768
-county	14	poultry indigenous	510188
-county	14	poultry others	3547
-county	14	poultry turkey	1595
-county	14	poultry ducks	2328
-county	14	poultry quails	1955
-county	14	poultry guniea fowl	430
-county	14	poultry geese	1532
+county	14	broilers	43690
+county	14	layers	73768
+county	14	indigenous	510188
+county	14	others	3547
+county	14	turkey	1595
+county	14	ducks	2328
+county	14	quails	1955
+county	14	guinea fowl	430
+county	14	geese	1532
 county	20	cattle dairy	79318
 county	20	cattle meat	31947
 county	20	sheep wool	0
@@ -310,15 +310,15 @@ county	20	goat dairy	13535
 county	20	goat meat	37791
 county	20	pigs	11316
 county	20	rabbits	51126
-county	20	poultry broilers	27115
-county	20	poultry layers	46407
-county	20	poultry indigenous	597366
-county	20	poultry others	0
-county	20	poultry turkey	15142
-county	20	poultry ducks	530
-county	20	poultry quails	1033
-county	20	poultry guniea fowl	2734
-county	20	poultry geese	1228
+county	20	broilers	27115
+county	20	layers	46407
+county	20	indigenous	597366
+county	20	others	0
+county	20	turkey	15142
+county	20	ducks	530
+county	20	quails	1033
+county	20	guinea fowl	2734
+county	20	geese	1228
 county	19	cattle dairy	173075
 county	19	cattle meat	11938
 county	19	sheep wool	13377
@@ -327,15 +327,15 @@ county	19	goat dairy	32367
 county	19	goat meat	55113
 county	19	pigs	1019
 county	19	rabbits	45205
-county	19	poultry broilers	62687
-county	19	poultry layers	43727
-county	19	poultry indigenous	298666
-county	19	poultry others	0
-county	19	poultry turkey	1809
-county	19	poultry ducks	2085
-county	19	poultry quails	500
-county	19	poultry guniea fowl	45
-county	19	poultry geese	1395
+county	19	broilers	62687
+county	19	layers	43727
+county	19	indigenous	298666
+county	19	others	0
+county	19	turkey	1809
+county	19	ducks	2085
+county	19	quails	500
+county	19	guinea fowl	45
+county	19	geese	1395
 county	21	cattle dairy	239196
 county	21	cattle meat	21881
 county	21	sheep wool	13959
@@ -344,15 +344,15 @@ county	21	goat dairy	51116
 county	21	goat meat	107938
 county	21	pigs	35510
 county	21	rabbits	85210
-county	21	poultry broilers	104573
-county	21	poultry layers	257646
-county	21	poultry indigenous	554883
-county	21	poultry others	0
-county	21	poultry turkey	2218
-county	21	poultry ducks	3851
-county	21	poultry quails	1680
-county	21	poultry guniea fowl	183
-county	21	poultry geese	3425
+county	21	broilers	104573
+county	21	layers	257646
+county	21	indigenous	554883
+county	21	others	0
+county	21	turkey	2218
+county	21	ducks	3851
+county	21	quails	1680
+county	21	guinea fowl	183
+county	21	geese	3425
 county	27	cattle dairy	327843
 county	27	cattle meat	39763
 county	27	sheep wool	37398
@@ -361,15 +361,15 @@ county	27	goat dairy	120
 county	27	goat meat	8280
 county	27	pigs	12692
 county	27	rabbits	6227
-county	27	poultry broilers	76913
-county	27	poultry layers	143848
-county	27	poultry indigenous	707726
-county	27	poultry others	0
-county	27	poultry turkey	0
-county	27	poultry ducks	4394
-county	27	poultry quails	0
-county	27	poultry guniea fowl	0
-county	27	poultry geese	0
+county	27	broilers	76913
+county	27	layers	143848
+county	27	indigenous	707726
+county	27	others	0
+county	27	turkey	0
+county	27	ducks	4394
+county	27	quails	0
+county	27	guinea fowl	0
+county	27	geese	0
 county	13	cattle dairy	46188
 county	13	cattle meat	92936
 county	13	sheep wool	0
@@ -378,15 +378,15 @@ county	13	goat dairy	12230
 county	13	goat meat	233231
 county	13	pigs	12354
 county	13	rabbits	36520
-county	13	poultry broilers	24477
-county	13	poultry layers	30687
-county	13	poultry indigenous	611271
-county	13	poultry others	6994
-county	13	poultry turkey	0
-county	13	poultry ducks	0
-county	13	poultry quails	0
-county	13	poultry guniea fowl	0
-county	13	poultry geese	0
+county	13	broilers	24477
+county	13	layers	30687
+county	13	indigenous	611271
+county	13	others	6994
+county	13	turkey	0
+county	13	ducks	0
+county	13	quails	0
+county	13	guinea fowl	0
+county	13	geese	0
 county	12	cattle dairy	17500
 county	12	cattle meat	25050
 county	12	sheep wool	4100
@@ -395,15 +395,15 @@ county	12	goat dairy	3530
 county	12	goat meat	29600
 county	12	pigs	2800
 county	12	rabbits	5460
-county	12	poultry broilers	0
-county	12	poultry layers	92969
-county	12	poultry indigenous	612271
-county	12	poultry others	610
-county	12	poultry turkey	0
-county	12	poultry ducks	0
-county	12	poultry quails	0
-county	12	poultry guniea fowl	0
-county	12	poultry geese	0
+county	12	broilers	0
+county	12	layers	92969
+county	12	indigenous	612271
+county	12	others	610
+county	12	turkey	0
+county	12	ducks	0
+county	12	quails	0
+county	12	guinea fowl	0
+county	12	geese	0
 county	11	cattle dairy	240
 county	11	cattle meat	205080
 county	11	sheep wool	0
@@ -412,15 +412,15 @@ county	11	goat dairy	720
 county	11	goat meat	386258
 county	11	pigs	0
 county	11	rabbits	0
-county	11	poultry broilers	200
-county	11	poultry layers	400
-county	11	poultry indigenous	32978
-county	11	poultry others	665
-county	11	poultry turkey	0
-county	11	poultry ducks	0
-county	11	poultry quails	0
-county	11	poultry guniea fowl	0
-county	11	poultry geese	0
+county	11	broilers	200
+county	11	layers	400
+county	11	indigenous	32978
+county	11	others	665
+county	11	turkey	0
+county	11	ducks	0
+county	11	quails	0
+county	11	guinea fowl	0
+county	11	geese	0
 county	10	cattle dairy	742
 county	10	cattle meat	218013
 county	10	sheep wool	0
@@ -429,15 +429,15 @@ county	10	goat dairy	488
 county	10	goat meat	1185964
 county	10	pigs	0
 county	10	rabbits	71
-county	10	poultry broilers	0
-county	10	poultry layers	4714
-county	10	poultry indigenous	41137
-county	10	poultry others	3
-county	10	poultry turkey	0
-county	10	poultry ducks	0
-county	10	poultry quails	0
-county	10	poultry guniea fowl	0
-county	10	poultry geese	0
+county	10	broilers	0
+county	10	layers	4714
+county	10	indigenous	41137
+county	10	others	3
+county	10	turkey	0
+county	10	ducks	0
+county	10	quails	0
+county	10	guinea fowl	0
+county	10	geese	0
 county	33	cattle dairy	25720
 county	33	cattle meat	1150998
 county	33	sheep wool	35206
@@ -446,15 +446,15 @@ county	33	goat dairy	1838
 county	33	goat meat	787331
 county	33	pigs	385
 county	33	rabbits	3013
-county	33	poultry broilers	140
-county	33	poultry layers	9236
-county	33	poultry indigenous	816018
-county	33	poultry others	6137
-county	33	poultry turkey	0
-county	33	poultry ducks	0
-county	33	poultry quails	0
-county	33	poultry guniea fowl	0
-county	33	poultry geese	0
+county	33	broilers	140
+county	33	layers	9236
+county	33	indigenous	816018
+county	33	others	6137
+county	33	turkey	0
+county	33	ducks	0
+county	33	quails	0
+county	33	guinea fowl	0
+county	33	geese	0
 county	36	cattle dairy	265431
 county	36	cattle meat	112742
 county	36	sheep wool	68418
@@ -463,15 +463,15 @@ county	36	goat dairy	2839
 county	36	goat meat	62636
 county	36	pigs	35
 county	36	rabbits	10330
-county	36	poultry broilers	22415
-county	36	poultry layers	33650
-county	36	poultry indigenous	378055
-county	36	poultry others	40645
-county	36	poultry turkey	0
-county	36	poultry ducks	0
-county	36	poultry quails	0
-county	36	poultry guniea fowl	0
-county	36	poultry geese	0
+county	36	broilers	22415
+county	36	layers	33650
+county	36	indigenous	378055
+county	36	others	40645
+county	36	turkey	0
+county	36	ducks	0
+county	36	quails	0
+county	36	guinea fowl	0
+county	36	geese	0
 county	46	cattle dairy	70859
 county	46	cattle meat	28734
 county	46	sheep wool	0
@@ -480,15 +480,15 @@ county	46	goat dairy	509
 county	46	goat meat	37290
 county	46	pigs	321
 county	46	rabbits	3415
-county	46	poultry broilers	0
-county	46	poultry layers	248997
-county	46	poultry indigenous	329380
-county	46	poultry others	2136
-county	46	poultry turkey	0
-county	46	poultry ducks	0
-county	46	poultry quails	0
-county	46	poultry guniea fowl	0
-county	46	poultry geese	0
+county	46	broilers	0
+county	46	layers	248997
+county	46	indigenous	329380
+county	46	others	2136
+county	46	turkey	0
+county	46	ducks	0
+county	46	quails	0
+county	46	guinea fowl	0
+county	46	geese	0
 county	45	cattle dairy	157471
 county	45	cattle meat	111871
 county	45	sheep wool	0
@@ -497,15 +497,15 @@ county	45	goat dairy	1750
 county	45	goat meat	94655
 county	45	pigs	914
 county	45	rabbits	16323
-county	45	poultry broilers	8785
-county	45	poultry layers	111921
-county	45	poultry indigenous	1310874
-county	45	poultry others	8421
-county	45	poultry turkey	0
-county	45	poultry ducks	0
-county	45	poultry quails	0
-county	45	poultry guniea fowl	0
-county	45	poultry geese	0
+county	45	broilers	8785
+county	45	layers	111921
+county	45	indigenous	1310874
+county	45	others	8421
+county	45	turkey	0
+county	45	ducks	0
+county	45	quails	0
+county	45	guinea fowl	0
+county	45	geese	0
 county	42	cattle dairy	17322
 county	42	cattle meat	268356
 county	42	sheep wool	0
@@ -514,15 +514,15 @@ county	42	goat dairy	1798
 county	42	goat meat	220462
 county	42	pigs	5348
 county	42	rabbits	12015
-county	42	poultry broilers	124916
-county	42	poultry layers	73712
-county	42	poultry indigenous	849535
-county	42	poultry others	42803
-county	42	poultry turkey	0
-county	42	poultry ducks	0
-county	42	poultry quails	0
-county	42	poultry guniea fowl	0
-county	42	poultry geese	0
+county	42	broilers	124916
+county	42	layers	73712
+county	42	indigenous	849535
+county	42	others	42803
+county	42	turkey	0
+county	42	ducks	0
+county	42	quails	0
+county	42	guinea fowl	0
+county	42	geese	0
 county	44	cattle dairy	11428
 county	44	cattle meat	331535
 county	44	sheep wool	0
@@ -531,15 +531,15 @@ county	44	goat dairy	3976
 county	44	goat meat	307815
 county	44	pigs	4604
 county	44	rabbits	7603
-county	44	poultry broilers	17799
-county	44	poultry layers	63883
-county	44	poultry indigenous	4648187
-county	44	poultry others	13534
-county	44	poultry turkey	0
-county	44	poultry ducks	0
-county	44	poultry quails	0
-county	44	poultry guniea fowl	0
-county	44	poultry geese	0
+county	44	broilers	17799
+county	44	layers	63883
+county	44	indigenous	4648187
+county	44	others	13534
+county	44	turkey	0
+county	44	ducks	0
+county	44	quails	0
+county	44	guinea fowl	0
+county	44	geese	0
 county	43	cattle dairy	10518
 county	43	cattle meat	636356
 county	43	sheep wool	0
@@ -548,15 +548,15 @@ county	43	goat dairy	4102
 county	43	goat meat	383373
 county	43	pigs	36719
 county	43	rabbits	15751
-county	43	poultry broilers	13950
-county	43	poultry layers	47268
-county	43	poultry indigenous	2380393
-county	43	poultry others	26551
-county	43	poultry turkey	0
-county	43	poultry ducks	0
-county	43	poultry quails	0
-county	43	poultry guniea fowl	0
-county	43	poultry geese	0
+county	43	broilers	13950
+county	43	layers	47268
+county	43	indigenous	2380393
+county	43	others	26551
+county	43	turkey	0
+county	43	ducks	0
+county	43	quails	0
+county	43	guinea fowl	0
+county	43	geese	0
 county	25	cattle dairy	312
 county	25	cattle meat	184881
 county	25	sheep wool	0
@@ -565,15 +565,15 @@ county	25	goat dairy	162
 county	25	goat meat	1110117
 county	25	pigs	0
 county	25	rabbits	0
-county	25	poultry broilers	3463
-county	25	poultry layers	4938
-county	25	poultry indigenous	164536
-county	25	poultry others	52
-county	25	poultry turkey	0
-county	25	poultry ducks	0
-county	25	poultry quails	0
-county	25	poultry guniea fowl	0
-county	25	poultry geese	0
+county	25	broilers	3463
+county	25	layers	4938
+county	25	indigenous	164536
+county	25	others	52
+county	25	turkey	0
+county	25	ducks	0
+county	25	quails	0
+county	25	guinea fowl	0
+county	25	geese	0
 county	18	cattle dairy	292191
 county	18	cattle meat	24713
 county	18	sheep wool	193254
@@ -582,15 +582,15 @@ county	18	goat dairy	8086
 county	18	goat meat	70420
 county	18	pigs	925
 county	18	rabbits	39142
-county	18	poultry broilers	7310
-county	18	poultry layers	16509
-county	18	poultry indigenous	242563
-county	18	poultry others	12354
-county	18	poultry turkey	0
-county	18	poultry ducks	0
-county	18	poultry quails	0
-county	18	poultry guniea fowl	0
-county	18	poultry geese	0
+county	18	broilers	7310
+county	18	layers	16509
+county	18	indigenous	242563
+county	18	others	12354
+county	18	turkey	0
+county	18	ducks	0
+county	18	quails	0
+county	18	guinea fowl	0
+county	18	geese	0
 county	22	cattle dairy	24605
 county	22	cattle meat	42590
 county	22	sheep wool	3067
@@ -599,15 +599,15 @@ county	22	goat dairy	81755
 county	22	goat meat	24926
 county	22	pigs	40788
 county	22	rabbits	55814
-county	22	poultry broilers	927272
-county	22	poultry layers	768713
-county	22	poultry indigenous	791434
-county	22	poultry others	0
-county	22	poultry turkey	0
-county	22	poultry ducks	0
-county	22	poultry quails	11
-county	22	poultry guniea fowl	136
-county	22	poultry geese	0
+county	22	broilers	927272
+county	22	layers	768713
+county	22	indigenous	791434
+county	22	others	0
+county	22	turkey	0
+county	22	ducks	0
+county	22	quails	11
+county	22	guinea fowl	136
+county	22	geese	0
 county	41	cattle dairy	5698
 county	41	cattle meat	492591
 county	41	sheep wool	0
@@ -616,15 +616,15 @@ county	41	goat dairy	4656
 county	41	goat meat	260252
 county	41	pigs	13453
 county	41	rabbits	12324
-county	41	poultry broilers	63688
-county	41	poultry layers	40394
-county	41	poultry indigenous	804161
-county	41	poultry others	24262
-county	41	poultry turkey	0
-county	41	poultry ducks	0
-county	41	poultry quails	0
-county	41	poultry guniea fowl	0
-county	41	poultry geese	0
+county	41	broilers	63688
+county	41	layers	40394
+county	41	indigenous	804161
+county	41	others	24262
+county	41	turkey	0
+county	41	ducks	0
+county	41	quails	0
+county	41	guinea fowl	0
+county	41	geese	0
 county	39	cattle dairy	102183
 county	39	cattle meat	259940
 county	39	sheep wool	5366
@@ -633,15 +633,15 @@ county	39	goat dairy	3353
 county	39	goat meat	105437
 county	39	pigs	15220
 county	39	rabbits	39645
-county	39	poultry broilers	8572
-county	39	poultry layers	36072
-county	39	poultry indigenous	1808108
-county	39	poultry others	0
-county	39	poultry turkey	21942
-county	39	poultry ducks	32259
-county	39	poultry quails	0
-county	39	poultry guniea fowl	1257
-county	39	poultry geese	10529
+county	39	broilers	8572
+county	39	layers	36072
+county	39	indigenous	1808108
+county	39	others	0
+county	39	turkey	21942
+county	39	ducks	32259
+county	39	quails	0
+county	39	guinea fowl	1257
+county	39	geese	10529
 county	37	cattle dairy	118806
 county	37	cattle meat	191905
 county	37	sheep wool	150
@@ -650,15 +650,15 @@ county	37	goat dairy	2099
 county	37	goat meat	69664
 county	37	pigs	34172
 county	37	rabbits	41476
-county	37	poultry broilers	38840
-county	37	poultry layers	121450
-county	37	poultry indigenous	2010545
-county	37	poultry others	94050
-county	37	poultry turkey	0
-county	37	poultry ducks	0
-county	37	poultry quails	0
-county	37	poultry guniea fowl	0
-county	37	poultry geese	0
+county	37	broilers	38840
+county	37	layers	121450
+county	37	indigenous	2010545
+county	37	others	94050
+county	37	turkey	0
+county	37	ducks	0
+county	37	quails	0
+county	37	guinea fowl	0
+county	37	geese	0
 county	38	cattle dairy	40209
 county	38	cattle meat	126908
 county	38	sheep wool	0
@@ -667,15 +667,15 @@ county	38	goat dairy	7046
 county	38	goat meat	2980
 county	38	pigs	2130
 county	38	rabbits	11856
-county	38	poultry broilers	1450
-county	38	poultry layers	8980
-county	38	poultry indigenous	738999
-county	38	poultry others	0
-county	38	poultry turkey	460
-county	38	poultry ducks	3290
-county	38	poultry quails	4320
-county	38	poultry guniea fowl	2320
-county	38	poultry geese	4075
+county	38	broilers	1450
+county	38	layers	8980
+county	38	indigenous	738999
+county	38	others	0
+county	38	turkey	460
+county	38	ducks	3290
+county	38	quails	4320
+county	38	guinea fowl	2320
+county	38	geese	4075
 county	29	cattle dairy	220557
 county	29	cattle meat	99388
 county	29	sheep wool	36840
@@ -684,15 +684,15 @@ county	29	goat dairy	3235
 county	29	goat meat	44972
 county	29	pigs	761
 county	29	rabbits	8647
-county	29	poultry broilers	9286
-county	29	poultry layers	37152
-county	29	poultry indigenous	690705
-county	29	poultry others	0
-county	29	poultry turkey	0
-county	29	poultry ducks	0
-county	29	poultry quails	0
-county	29	poultry guniea fowl	0
-county	29	poultry geese	0
+county	29	broilers	9286
+county	29	layers	37152
+county	29	indigenous	690705
+county	29	others	0
+county	29	turkey	0
+county	29	ducks	0
+county	29	quails	0
+county	29	guinea fowl	0
+county	29	geese	0
 county	30	cattle dairy	153099
 county	30	cattle meat	344289
 county	30	sheep wool	15055
@@ -701,14 +701,14 @@ county	30	goat dairy	5171
 county	30	goat meat	876936
 county	30	pigs	155
 county	30	rabbits	5089
-county	30	poultry broilers	30646
-county	30	poultry layers	41264
-county	30	poultry indigenous	106647
-county	30	poultry others	0
-county	30	poultry turkey	304
-county	30	poultry ducks	0
-county	30	poultry quails	0
-county	30	poultry guniea fowl	0
+county	30	broilers	30646
+county	30	layers	41264
+county	30	indigenous	106647
+county	30	others	0
+county	30	turkey	304
+county	30	ducks	0
+county	30	quails	0
+county	30	guinea fowl	0
 county	32	cattle dairy	286050
 county	32	cattle meat	160514
 county	32	sheep wool	128958
@@ -717,15 +717,15 @@ county	32	goat dairy	15529
 county	32	goat meat	259506
 county	32	pigs	18866
 county	32	rabbits	88682
-county	32	poultry broilers	8507
-county	32	poultry layers	295978
-county	32	poultry indigenous	1183108
-county	32	poultry others	76075
-county	32	poultry turkey	0
-county	32	poultry ducks	0
-county	32	poultry quails	0
-county	32	poultry guniea fowl	0
-county	32	poultry geese	0
+county	32	broilers	8507
+county	32	layers	295978
+county	32	indigenous	1183108
+county	32	others	76075
+county	32	turkey	0
+county	32	ducks	0
+county	32	quails	0
+county	32	guinea fowl	0
+county	32	geese	0
 county	35	cattle dairy	102684
 county	35	cattle meat	182372
 county	35	sheep wool	13342
@@ -734,15 +734,15 @@ county	35	goat dairy	3756
 county	35	goat meat	85601
 county	35	pigs	0
 county	35	rabbits	0
-county	35	poultry broilers	31169
-county	35	poultry layers	62370
-county	35	poultry indigenous	507138
-county	35	poultry others	7471
-county	35	poultry turkey	0
-county	35	poultry ducks	0
-county	35	poultry quails	0
-county	35	poultry guniea fowl	0
-county	35	poultry geese	0
+county	35	broilers	31169
+county	35	layers	62370
+county	35	indigenous	507138
+county	35	others	7471
+county	35	turkey	0
+county	35	ducks	0
+county	35	quails	0
+county	35	guinea fowl	0
+county	35	geese	0
 county	28	cattle dairy	159276
 county	28	cattle meat	14808
 county	28	sheep wool	114309
@@ -751,15 +751,15 @@ county	28	goat dairy	1220
 county	28	goat meat	194670
 county	28	pigs	88
 county	28	rabbits	2554
-county	28	poultry broilers	160
-county	28	poultry layers	14594
-county	28	poultry indigenous	433527
-county	28	poultry others	6694
-county	28	poultry turkey	0
-county	28	poultry ducks	0
-county	28	poultry quails	0
-county	28	poultry guniea fowl	0
-county	28	poultry geese	0
+county	28	broilers	160
+county	28	layers	14594
+county	28	indigenous	433527
+county	28	others	6694
+county	28	turkey	0
+county	28	ducks	0
+county	28	quails	0
+county	28	guinea fowl	0
+county	28	geese	0
 county	47	cattle dairy	34987
 county	47	cattle meat	18212
 county	47	sheep wool	125
@@ -768,15 +768,15 @@ county	47	goat dairy	7992
 county	47	goat meat	45547
 county	47	pigs	33031
 county	47	rabbits	42610
-county	47	poultry broilers	468156
-county	47	poultry layers	179122
-county	47	poultry indigenous	243777
-county	47	poultry others	41282
-county	47	poultry turkey	0
-county	47	poultry ducks	0
-county	47	poultry quails	0
-county	47	poultry guniea fowl	0
-county	47	poultry geese	0
+county	47	broilers	468156
+county	47	layers	179122
+county	47	indigenous	243777
+county	47	others	41282
+county	47	turkey	0
+county	47	ducks	0
+county	47	quails	0
+county	47	guinea fowl	0
+county	47	geese	0
 county	23	cattle dairy	0
 county	23	cattle meat	1534612
 county	23	sheep wool	0
@@ -785,15 +785,15 @@ county	23	goat dairy	0
 county	23	goat meat	5994881
 county	23	pigs	36
 county	23	rabbits	0
-county	23	poultry broilers	0
-county	23	poultry layers	0
-county	23	poultry indigenous	162862
-county	23	poultry others	0
-county	23	poultry turkey	0
-county	23	poultry ducks	0
-county	23	poultry quails	0
-county	23	poultry guniea fowl	0
-county	23	poultry geese	0
+county	23	broilers	0
+county	23	layers	0
+county	23	indigenous	162862
+county	23	others	0
+county	23	turkey	0
+county	23	ducks	0
+county	23	quails	0
+county	23	guinea fowl	0
+county	23	geese	0
 county	9	cattle dairy	0
 county	9	cattle meat	692321
 county	9	sheep wool	0
@@ -802,15 +802,15 @@ county	9	goat dairy	0
 county	9	goat meat	2314939
 county	9	pigs	0
 county	9	rabbits	0
-county	9	poultry broilers	0
-county	9	poultry layers	0
-county	9	poultry indigenous	202995
-county	9	poultry others	0
-county	9	poultry turkey	0
-county	9	poultry ducks	0
-county	9	poultry quails	0
-county	9	poultry guniea fowl	0
-county	9	poultry geese	0
+county	9	broilers	0
+county	9	layers	0
+county	9	indigenous	202995
+county	9	others	0
+county	9	turkey	0
+county	9	ducks	0
+county	9	quails	0
+county	9	guinea fowl	0
+county	9	geese	0
 county	40	cattle dairy	15895
 county	40	cattle meat	165880
 county	40	sheep wool	0
@@ -819,15 +819,15 @@ county	40	goat dairy	1684
 county	40	goat meat	6300
 county	40	pigs	54824
 county	40	rabbits	4145
-county	40	poultry broilers	0
-county	40	poultry layers	18614
-county	40	poultry indigenous	789315
-county	40	poultry others	0
-county	40	poultry turkey	7433
-county	40	poultry ducks	27897
-county	40	poultry quails	210
-county	40	poultry guniea fowl	200
-county	40	poultry geese	2724
+county	40	broilers	0
+county	40	layers	18614
+county	40	indigenous	789315
+county	40	others	0
+county	40	turkey	7433
+county	40	ducks	27897
+county	40	quails	210
+county	40	guinea fowl	200
+county	40	geese	2724
 country	KE	cattle dairy	4316153
 country	KE	cattle meat	13495692
 country	KE	sheep wool	862455
@@ -836,15 +836,15 @@ country	KE	goat dairy	389326
 country	KE	goat meat	25040732
 country	KE	pigs	430844
 country	KE	rabbits	874565
-country	KE	poultry broilers	3117554
-country	KE	poultry layers	3716911
-country	KE	poultry indigenous	34666188
-country	KE	poultry others	575457
-country	KE	poultry turkey	61752
-country	KE	poultry ducks	166357
-country	KE	poultry quails	39319
-country	KE	poultry guniea fowl	17956
-country	KE	poultry geese	28758
+country	KE	broilers	3117554
+country	KE	layers	3716911
+country	KE	indigenous	34666188
+country	KE	others	575457
+country	KE	turkey	61752
+country	KE	ducks	166357
+country	KE	quails	39319
+country	KE	guinea fowl	17956
+country	KE	geese	28758
 county	26	donkeys	7030
 county	26	camels	4
 county	26	hives log	3921
@@ -869,18 +869,6 @@ county	24	crocodiles	0
 county	24	guinea pigs	0
 county	24	doves	0
 county	24	pegions	0
-county	31	donkeys	0
-county	31	camels	0
-county	31	hives log	0
-county	31	hives KTBH	0
-county	31	hives lang	0
-county	31	hives box	0
-county	31	ostrich	0
-county	31	horses	0
-county	31	crocodiles	0
-county	31	guinea pigs	0
-county	31	doves	0
-county	31	pegions	0
 county	34	donkeys	61813
 county	34	camels	840
 county	34	hives log	4306
@@ -1437,7 +1425,7 @@ county	36	pegions	0
 --
 
 ALTER TABLE ONLY livestock_population
-    ADD CONSTRAINT livestock_population_pkey PRIMARY KEY (geo_level, geo_code, "livestock population");
+    ADD CONSTRAINT livestock_population_pkey PRIMARY KEY (geo_level, geo_code, "livestock_population");
 
 
 --
