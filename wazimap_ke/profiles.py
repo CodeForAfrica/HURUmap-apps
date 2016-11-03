@@ -730,39 +730,41 @@ def get_crop_production_profile(geo_code, geo_level, session):
     area_dist['cocoyam'] = dist['Cocoyam']
     area_dist['irishpotatoes'] = dist['Irishpotatoes']
     area_dist['metadata'] = dist['metadata']
-    prod_dist = OrderedDict()
-    prod_dist['maize'] = dist['Maize (90kg bags)']
-    prod_dist['beans'] = dist['Beans (90kg bags)']
-    prod_dist['wheat'] = dist['Wheat (90kg bags)']
-    prod_dist['barley'] = dist['Barley (Ton)']
-    prod_dist['rice'] = dist['Rice (Ton)']
-    prod_dist['sorghum'] = dist['Sorghum (90kg bags)']
-    prod_dist['millet'] = dist['Millet (90kg bags)']
-    prod_dist['cowpeas'] = dist['Cowpeas (90kg bags)']
-    prod_dist['greengrams'] = dist['Greengrams (90kg bags)']
-    prod_dist['sweetpotatoes'] = dist['Sweetpotatoes (Ton)']
-    prod_dist['cassava'] = dist['Cassava (Ton)']
-    prod_dist['cocoyam'] = dist['Cocoyam (Ton)']
-    prod_dist['irishpotatoes'] = dist['Irishpotatoes (Ton)']
-    prod_dist['metadata'] = dist['metadata']
+    prod_dist_k = OrderedDict()
+    prod_dist_k['maize'] = replace_name(dist['Maize (90kg bags)'], 'Maize')
+    prod_dist_k['beans'] = replace_name(dist['Beans (90kg bags)'], 'Beans')
+    prod_dist_k['wheat'] = replace_name(dist['Wheat (90kg bags)'], 'Wheat')
+    prod_dist_k['sorghum'] = replace_name(dist['Sorghum (90kg bags)'], 'Sorghum')
+    prod_dist_k['millet'] = replace_name(dist['Millet (90kg bags)'], 'Millet')
+    prod_dist_k['cowpeas'] = replace_name(dist['Cowpeas (90kg bags)'], 'Cowpeas')
+    prod_dist_k['greengrams'] = replace_name(dist['Greengrams (90kg bags)'], 'Green grams')
+    prod_dist_t = OrderedDict()
+    prod_dist_t['barley'] = replace_name(dist['Barley (Ton)'], 'Barley')
+    prod_dist_t['rice'] = replace_name(dist['Rice (Ton)'], 'Rice')
+    prod_dist_t['sweetpotatoes'] = replace_name(dist['Sweetpotatoes (Ton)'], 'Sweet Potatoes')
+    prod_dist_t['cassava'] = replace_name( dist['Cassava (Ton)'], 'Cassava')
+    prod_dist_t['cocoyam'] = replace_name(dist['Cocoyam (Ton)'], 'Cocoyam')
+    prod_dist_t['irishpotatoes'] = replace_name(dist['Irishpotatoes (Ton)'], 'Irish potatoes')
+    prod_dist_t['metadata'] = dist['metadata']
     yield_dist = OrderedDict()
-    yield_dist['maize'] = dist['Maize yield']
-    yield_dist['beans'] = dist['Beans yield']
-    yield_dist['wheat'] = dist['Wheat yield']
-    yield_dist['barley'] = dist['Barley yield']
-    yield_dist['rice'] = dist['Rice yield']
-    yield_dist['sorghum'] = dist['Sorghum yield']
-    yield_dist['millet'] = dist['Millet yield']
-    yield_dist['cowpeas'] = dist['Cowpeas yield']
-    yield_dist['greengrams'] = dist['Greengrams yield']
-    yield_dist['sweetpotatoes'] = dist['Sweetpotatoes yield']
-    yield_dist['cassava'] = dist['Cassava yield']
-    yield_dist['cocoyam'] = dist['Cocoyam yield']
-    yield_dist['irishpotatoes'] = dist['Irishpotatoes yield']
+    yield_dist['maize'] = replace_name(dist['Maize yield'], 'Maize')
+    yield_dist['beans'] = replace_name(dist['Beans yield'], 'Beans')
+    yield_dist['wheat'] = replace_name(dist['Wheat yield'], 'Wheat')
+    yield_dist['barley'] = replace_name(dist['Barley yield'], 'Barley')
+    yield_dist['rice'] = replace_name(dist['Rice yield'], 'Rice')
+    yield_dist['sorghum'] = replace_name(dist['Sorghum yield'], 'Sorghum')
+    yield_dist['millet'] = replace_name(dist['Millet yield'], 'Millet')
+    yield_dist['cowpeas'] = replace_name(dist['Cowpeas yield'], 'Cowpeas')
+    yield_dist['greengrams'] = replace_name(dist['Greengrams yield'], 'Green grams')
+    yield_dist['sweetpotatoes'] = replace_name(dist['Sweetpotatoes yield'], 'Sweet potatoes')
+    yield_dist['cassava'] = replace_name(dist['Cassava yield'], 'Cassava')
+    yield_dist['cocoyam'] = replace_name(dist['Cocoyam yield'], 'Cocoyam')
+    yield_dist['irishpotatoes'] = replace_name(dist['Irishpotatoes yield'], 'Irish potatoes')
     yield_dist['metadata'] = dist['metadata']
     return {
         'area_dist': area_dist,
-        'prod_dist': prod_dist,
+        'prod_dist_t': prod_dist_t,
+        'prod_dist_k': prod_dist_k,
         'yield_dist': yield_dist,
     }
 
@@ -856,4 +858,8 @@ def sum_up(arr, name):
 
 def divide_by_one_thousand(dist):
     dist['values']['this'] =  round((dist['values']['this'] * 1.0) / 1000, 1)
+    return dist
+
+def replace_name(dist, new_name):
+    dist['name'] = new_name
     return dist
