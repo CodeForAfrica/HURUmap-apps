@@ -103,6 +103,7 @@ county	34	turkey	65
 county	34	ducks	25
 county	34	quails	1645
 county	34	guinea fowl	0
+county	34	geese	0
 county	15	cattle dairy	6666
 county	15	cattle meat	388264
 county	15	sheep wool	0
@@ -119,6 +120,7 @@ county	15	turkey	0
 county	15	ducks	0
 county	15	quails	0
 county	15	guinea fowl	0
+county	15	geese	0
 county	16	cattle dairy	39950
 county	16	cattle meat	205490
 county	16	sheep wool	0
@@ -186,6 +188,7 @@ county	5	turkey	0
 county	5	ducks	0
 county	5	quails	480
 county	5	guinea fowl	860
+county	5	geese	0
 county	4	cattle dairy	76
 county	4	cattle meat	607190
 county	4	sheep wool	0
@@ -219,6 +222,7 @@ county	8	turkey	0
 county	8	ducks	0
 county	8	quails	0
 county	8	guinea fowl	0
+county	8	geese	0
 county	1	cattle dairy	1866
 county	1	cattle meat	3968
 county	1	sheep wool	3
@@ -235,6 +239,7 @@ county	1	turkey	0
 county	1	ducks	0
 county	1	quails	5695
 county	1	guinea fowl	0
+county	1	geese	0
 county	6	cattle dairy	27472
 county	6	cattle meat	149179
 county	6	sheep wool	0
@@ -251,6 +256,7 @@ county	6	turkey	0
 county	6	ducks	0
 county	6	quails	0
 county	6	guinea fowl	0
+county	6	geese	0
 county	2	cattle dairy	3488
 county	2	cattle meat	299026
 county	2	sheep wool	0
@@ -709,6 +715,7 @@ county	30	turkey	304
 county	30	ducks	0
 county	30	quails	0
 county	30	guinea fowl	0
+county	30	geese	0
 county	32	cattle dairy	286050
 county	32	cattle meat	160514
 county	32	sheep wool	128958
