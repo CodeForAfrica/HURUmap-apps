@@ -1,4 +1,4 @@
-Wazimap KE
+WAZImap KE
 ==========
 
 
