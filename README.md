@@ -1,4 +1,4 @@
-HURUmap KE
+HURUmap TZ
 ==========
 
 
@@ -13,3 +13,7 @@ Development
 * run the server
 
     python manage.py runserver
+
+*  set up the database
+    python manage.py migrate
+

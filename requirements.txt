@@ -1,5 +1,5 @@
 Django==1.9.2
-gevent==1.0.1
+gevent==1.2.0
 greenlet==0.4.6
 gunicorn==18.0
 newrelic==2.40.0.34
