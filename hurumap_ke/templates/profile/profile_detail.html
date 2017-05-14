@@ -7,7 +7,9 @@
 {% endblock %}
 
 {% block profile_detail %}
-<article id="demographics" class="clearfix">
+
+
+<article id="demographics" class="clearfix {% if 'demographics' not in selected_sections %}hide{% endif %}">
     <header class="section-contents">
         <h1>Demographics</h1>
     </header>
@@ -38,9 +40,9 @@
     </div>
 </article>
 
-<article id="education" class="clearfix">
+<article id="education" class="clearfix {% if 'education' not in selected_sections %}hide{% endif %}">
     <header class="section-contents">
-        <h1>Education</h1>
+        <h1> Education</h1>
     </header>
     <div class="section-container">
 
@@ -62,9 +64,9 @@
     </div>
 </article>
 
-<article id="employment" class="clearfix">
+<article id="employment" class="clearfix {% if 'employment' not in selected_sections %}hide{% endif %}">
     <header class="section-contents">
-        <h1>Employment</h1>
+        <h1> Employment</h1>
     </header>
     <div class="section-container">
 
@@ -79,7 +81,7 @@
     </div>
 </article>
 
-<article id="households" class="clearfix">
+<article id="households" class="clearfix {% if 'households' not in selected_sections %}hide{% endif %}">
     <header class="section-contents">
         <h1>Households</h1>
     </header>
@@ -122,39 +124,34 @@
     </div>
 </article>
 
-<article id="voterregistration" class="clearfix">
+<article id="voter_registration" class="clearfix {% if 'voter_registration' not in selected_sections %}hide{% endif %}">
      <header class="section-contents">
         <h1>Voter Registration</h1>
     </header>
     <div class="section-container">
         <section class="clearfix stat-row">
              <div class="column-third">
-                 {% include 'profile/_blocks/_stat_list.html' with stat=voterregistration.ids_issued stat_type='number' %}
+                 {% include 'profile/_blocks/_stat_list.html' with stat=voter_registration.ids_issued stat_type='number' %}
                  <small>Source: <a href="http://www.iebc.or.ke/docs/MVR-Baseline-Data.html">IEBC</a></small>
              </div>
             <div class="column-third">
-                {% include 'profile/_blocks/_stat_list.html' with stat=voterregistration.dead_with_ids stat_type='number' %}
+                {% include 'profile/_blocks/_stat_list.html' with stat=voter_registration.dead_with_ids stat_type='number' %}
             </div>
             <div class="column-third">
-                {% include 'profile/_blocks/_stat_list.html' with stat=voterregistration.reg_centers stat_type='number' %}
+                {% include 'profile/_blocks/_stat_list.html' with stat=voter_registration.reg_centers stat_type='number' %}
             </div>
         </section>
         <section  class="clearfix stat-row">
             <div class="column-third">
-                {% include 'profile/_blocks/_stat_list.html' with stat=voterregistration.total stat_type='number' %}
+                {% include 'profile/_blocks/_stat_list.html' with stat=voter_registration.total stat_type='number' %}
             </div>
-             <div class="column-third" id="chart-pie-voterregistration-registration" data-stat-type="percentage" data-chart-title="Registered voters as at March 2013 and as at October 2015" ></div>
-            <div class="column-third" id="chart-pie-voterregistration-registration_ratio" data-stat-type="percentage" data-chart-title="Potential voters with IDs not registered as at December 2015" ></div>
+             <div class="column-third" id="chart-pie-voter_registration-registration" data-stat-type="percentage" data-chart-title="Registered voters as at March 2013 and as at October 2015" ></div>
+            <div class="column-third" id="chart-pie-voter_registration-registration_ratio" data-stat-type="percentage" data-chart-title="Potential voters with IDs not registered as at December 2015" ></div>
         </section>
     </div>
 </article>
 
-<hr>
-<article class="clearfix">
-    <h2><a href="http://www.knbs.or.ke/index.php?option=com_content&view=article&id=308:2014-kenya-demographic-and-health-survey-2014-kdhs&catid=82:news&Itemid=593">KNBS Demographic and Health Survey Report 2014</a></h2>
-</article>
-
-<article id="contraceptive_use" class="clearfix">
+<article id="contraceptive_use" class="clearfix {% if 'contraceptive_use' not in selected_sections %}hide{% endif %}">
     <header class="section-contents">
         <h1>Use of contraceptives</h1>
     </header>
@@ -163,7 +160,8 @@
         <section class="clearfix stat-row">
              <small>The contraceptive prevalence rate (CPR) is usually defined as the percentage of currently married women who are currently using a method of contraception.</small><br>
              <small>If more than one method is used, only the most effective method is considered in this tabulation.</small><br>
-             <small>LAM = Lactational amenorrhoea method</small>
+             <small>LAM = Lactational amenorrhoea method</small><br>
+            <small>Source: <a href="http://www.knbs.or.ke/index.php?option=com_content&view=article&id=308:2014-kenya-demographic-and-health-survey-2014-kdhs&catid=82:news&Itemid=593">KNBS Demographic and Health Survey Report 2014</a></small>
         </section>
         <section class="clearfix stat-row">
             <h2>Percent distribution of currently married women age 15-49 by contraceptive method</h2>
@@ -180,7 +178,7 @@
     </div>
 </article>
 
-<article id="maternal-care-indicators" class="clearfix">
+<article id="maternal_care_indicators" class="clearfix {% if 'maternal_care_indicators' not in selected_sections %}hide{% endif %}">
     <header class="section-contents">
         <h1>Maternal care indicators</h1>
     </header>
@@ -211,7 +209,7 @@
     </div>
 </article>
 
-<article id="knowledge_of_hiv_prevention_methods" class="clearfix">
+<article id="knowledge_of_hiv_prevention_methods" class="clearfix {% if 'knowledge_of_hiv_prevention_methods' not in selected_sections %}hide{% endif %}">
     <header class="section-contents">
         <h1>Knowledge of HIV prevention</h1>
     </header>
@@ -227,7 +225,7 @@
     </div>
 </article>
 
-<article id="ITN" class="clearfix">
+<article id="itn" class="clearfix {% if 'itn' not in selected_sections %}hide{% endif %}">
     <header class="section-contents">
         <h1>Mosquito nets</h1>
     </header>
@@ -238,20 +236,20 @@
         </section>
         <section class="clearfix stat-row">
              <div class="column-third">
-                 {% include 'profile/_blocks/_stat_list.html' with stat=ITN.average_itn_per_household stat_type='number' %}
+                 {% include 'profile/_blocks/_stat_list.html' with stat=itn.average_itn_per_household stat_type='number' %}
              </div>
-             <div class="column-third" id="chart-pie-ITN-households_with_at_least_one_itn" data-stat-type="percentage" data-chart-title="Households that possess at least one insecticide-treated nets (ITNs)" ></div>
-             <div class="column-third" id="chart-pie-ITN-percentage_households_with_ITN_for_every_two_people" data-stat-type="percentage" data-chart-title="Households that possess an insecticide-treated nets (ITNs) for every 2 people" ></div>
+             <div class="column-third" id="chart-pie-itn-households_with_at_least_one_itn" data-stat-type="percentage" data-chart-title="Households that possess at least one insecticide-treated nets (ITNs)" ></div>
+             <div class="column-third" id="chart-pie-itn-percentage_households_with_ITN_for_every_two_people" data-stat-type="percentage" data-chart-title="Households that possess an insecticide-treated nets (ITNs) for every 2 people" ></div>
         </section>
         <section class="clearfix stat-row">
-             <div class="column-two-thirds" id="chart-grouped_column-ITN-all_households_use_dist" data-stat-type="scaled-percentage" data-chart-title="Use of nets by children under age five and pregnant women in all households" ></div>
-             <div class="column-third" id="chart-grouped_column-ITN-households_with_at_least_one_itn_use_dist" data-stat-type="scaled-percentage" data-chart-title="Use of nets by children under age five and pregnant women in all households with at least one insecticide-treated nets (ITNs)" ></div>
+             <div class="column-two-thirds" id="chart-grouped_column-itn-all_households_use_dist" data-stat-type="scaled-percentage" data-chart-title="Use of nets by children under age five and pregnant women in all households" ></div>
+             <div class="column-third" id="chart-grouped_column-itn-households_with_at_least_one_itn_use_dist" data-stat-type="scaled-percentage" data-chart-title="Use of nets by children under age five and pregnant women in all households with at least one insecticide-treated nets (ITNs)" ></div>
          </section>
 
     </div>
 </article>
 
-<article id="fertility" class="clearfix">
+<article id="fertility" class="clearfix {% if 'fertility' not in selected_sections %}hide{% endif %}">
     <header class="section-contents">
         <h1>Fertility</h1>
     </header>
@@ -269,7 +267,8 @@
 
     </div>
 </article>
-<article id="vaccinations" class="clearfix">
+
+<article id="vaccinations" class="clearfix {% if 'vaccinations' not in selected_sections %}hide{% endif %}">
     <header class="section-contents">
         <h1>Vaccinations</h1>
     </header>
@@ -291,7 +290,7 @@
     </div>
 </article>
 
-<article id="type-treatment" class="clearfix">
+<article id="type_treatment" class="clearfix {% if 'type_treatment' not in selected_sections %}hide{% endif %}">
     <header class="section-contents">
         <h1>Treatment of childhood illness</h1>
     </header>
@@ -315,7 +314,7 @@
     </div>
 </article>
 
-<article id="nutrition" class="clearfix">
+<article id="nutrition" class="clearfix {% if 'nutrition' not in selected_sections %}hide{% endif %}">
     <header class="section-contents">
         <h1>Nutritional status of children</h1>
     </header>
@@ -360,7 +359,25 @@
     </div>
 </article>
 
-<article id="protests" class="clearfix">
+<article id="health_ratios" class="clearfix {% if 'health_ratios' not in selected_sections %}hide{% endif %}">
+     <header class="section-contents">
+        <h1>Access to health services</h1>
+    </header>
+    <div class="section-container">
+        <section class="clearfix stat-row">
+             <div class="column-half">
+                 {% include 'profile/_blocks/_stat_list.html' with stat=healthratios.doctorratio stat_type='number' %}
+                 <small>Source: <a href="http://www.internationalbudget.org/wp-content/uploads/IBP-Budget-Brief-18B-Final.pdf">International Budget Partnership</a></small>
+             </div>
+            <div class="column-half">
+                {% include 'profile/_blocks/_stat_list.html' with stat=healthratios.nurseratio stat_type='number' %}
+                <small>Source: <a href="http://www.internationalbudget.org/wp-content/uploads/IBP-Budget-Brief-18B-Final.pdf">International Budget Partnership</a></small>
+            </div>
+        </section>
+    </div>
+</article>
+
+<article id="protests" class="clearfix {% if 'protests' not in selected_sections %}hide{% endif %}">
      <header class="section-contents">
         <h1>Protests</h1>
     </header>
@@ -368,13 +385,13 @@
         <section class="clearfix stat-row">
              <div class="column-third">
                  {% include 'profile/_blocks/_stat_list.html' with stat=protests.number_of_protests stat_type='number' %}
-                 <small>Source: <a href="article19.org/resources.php/resource/38331/en/country-report:-protest-in-kenya-2015">Article 19</a></small>
+                 <small>Source: <a href="http://article19.org/resources.php/resource/38331/en/country-report:-protest-in-kenya-2015">Article 19</a></small>
              </div>
         </section>
     </div>
 </article>
 
-<article id="schoolfires" class="clearfix">
+<article id="school_fires" class="clearfix {% if 'school_fires' not in selected_sections %}hide{% endif %}">
      <header class="section-contents">
         <h1>School fires</h1>
     </header>
@@ -400,49 +417,29 @@
     .label {word-break:break-word;}
     #chart-histogram-crimereport-crimes_dist .action-links {margin-top:40px;}
 </style>
-
-<article id="crimereport" class="clearfix">
+<article id="crime_report" class="clearfix {% if 'crime_report' not in selected_sections %}hide{% endif %}">
      <header class="section-contents">
         <h1>Crime Statistics</h1>
     </header>
     <div class="section-container">
         <section class="clearfix stat-row">
              <div class="column-half">
-                 {% include 'profile/_blocks/_stat_list.html' with stat=crimereport.crimes stat_type='number' %}
+                 {% include 'profile/_blocks/_stat_list.html' with stat=crime_report.crimes stat_type='number' %}
                  <small>Source: <a href="http://www.nationalpolice.go.ke/crime-statistics.html">National Police Service</a></small>
              </div>
             <div class="column-half">
-                {% include 'profile/_blocks/_stat_list.html' with stat=crimereport.crimesindex stat_type='number' %}
+                {% include 'profile/_blocks/_stat_list.html' with stat=crime_report.crimesindex stat_type='number' %}
             </div>
         </section>
         <section class="clearfix stat-row">
-            <div id="chart-histogram-crimereport-crimes_dist" data-stat-type="scaled-percentage" data-chart-title="Crimes"></div>
+            <div id="chart-histogram-crime_report-crimes_dist" data-stat-type="scaled-percentage" data-chart-title="Crimes"></div>
         </section>
     </div>
 </article>
-
-<article id="healthratios" class="clearfix">
-     <header class="section-contents">
-        <h1>Access to health services</h1>
-    </header>
-    <div class="section-container">
-        <section class="clearfix stat-row">
-             <div class="column-half">
-                 {% include 'profile/_blocks/_stat_list.html' with stat=healthratios.doctorratio stat_type='number' %}
-                 <small>Source: <a href="http://www.internationalbudget.org/wp-content/uploads/IBP-Budget-Brief-18B-Final.pdf">International Budget Partnership</a></small>
-             </div>
-            <div class="column-half">
-                {% include 'profile/_blocks/_stat_list.html' with stat=healthratios.nurseratio stat_type='number' %}
-                <small>Source: <a href="http://www.internationalbudget.org/wp-content/uploads/IBP-Budget-Brief-18B-Final.pdf">International Budget Partnership</a></small>
-            </div>
-        </section>
-    </div>
-</article>
-
 <style>
     .label {word-break:break-word;}
 </style>
-<article id="crop-production" class="clearfix">
+<article id="crop_production" class="clearfix">
      <header class="section-contents">
         <h1>Crop Production</h1>
     </header>
