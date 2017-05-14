@@ -81,7 +81,7 @@ county	26	doctor ratio	273000
 county	30	doctor ratio	278000
 county	23	doctor ratio	285000
 county	45	doctor ratio	378000
-county	5	doctor ratio 	0
+county	5	doctor ratio	0
 country	KE	doctor ratio	25000
 county	19	nurse ratio	654
 county	27	nurse ratio	706
