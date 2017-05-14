@@ -1,35 +1,15 @@
 from collections import OrderedDict
 
-from wazimap.geo import geo_data
-from wazimap.data.tables import get_model_from_fields
-from wazimap.data.utils import get_session, calculate_median, merge_dicts, get_stat_data, get_objects_by_geo, group_remainder
+from hurumap.geo import geo_data
+from hurumap.data.tables import get_model_from_fields
+from hurumap.data.utils import get_session, calculate_median, merge_dicts, get_stat_data, get_objects_by_geo, group_remainder
+from django.conf import settings
 
 
 # ensure tables are loaded
-import wazimap_ke.tables  # noqa
+import hurumap_ke.tables  # noqa
 
-
-PROFILE_SECTIONS = (
-    'demographics',
-    'education',
-    'employment',
-     'households',
-    'contraceptive_use',
-    'maternal_care_indicators',
-    'knowledge_of_hiv_prevention_methods',
-    'ITN',
-    'fertility',
-    'vaccinations',
-    'type_treatment',
-    'nutrition',
-    'protests',
-    'schoolfires',
-    'crimereport',
-    'healthratios',
-    'voterregistration',
-    'crop_production',
-    'livestock',
-)
+SECTIONS = settings.HURUMAP.get('topics', {})
 
 EMPLOYMENT_RECODES = OrderedDict([
     ('seeking work / no work available', 'Seeking work'),
@@ -49,18 +29,29 @@ WATER_SOURCE_RECODES = OrderedDict([
     ('other', 'Other'),
 ])
 
-def get_census_profile(geo_code, geo_level, profile_name=None, cat=None):
+def get_census_profile(geo_code, geo_level, get_params,  profile_name=None):
     session = get_session()
-
     try:
         geo_summary_levels = geo_data.get_summary_geo_info(geo_code, geo_level)
         data = {}
+        sections = []
+        selected_sections = []
+        if get_params.get('topic'):
+            categories = get_params.get('topic').split(',')
+            for cat in categories:
+                selected_sections.extend(SECTIONS[cat]['profiles'])
+            data['selected_topics'] = categories
 
-        for section in PROFILE_SECTIONS:
+        for cat in SECTIONS:
+            sections.extend(SECTIONS[cat]['profiles'])
+
+        for section in sections:
+            section = section.lower().replace(' ', '_')
             function_name = 'get_%s_profile' % section
             if function_name in globals():
                 func = globals()[function_name]
                 data[section] = func(geo_code, geo_level, session)
+
 
                 # get profiles for province and/or country
                 for level, code in geo_summary_levels:
@@ -69,9 +60,14 @@ def get_census_profile(geo_code, geo_level, profile_name=None, cat=None):
 
         # tweaks to make the data nicer
         # show X largest groups on their own and group the rest as 'Other'
-        # group_remainder(data['households']['roofing_material_distribution'], 5)
-        # group_remainder(data['households']['wall_material_distribution'], 5)
+        if 'households' in sections:
+            group_remainder(data['households']['roofing_material_distribution'], 5)
+            group_remainder(data['households']['wall_material_distribution'], 5)
 
+        data['all_sections'] = SECTIONS
+        if (selected_sections == []): selected_sections = sections
+        data['raw_selected_sections'] = selected_sections
+        data['selected_sections'] = [x.replace(' ','_').lower() for x in selected_sections]
         return data
 
     finally:
@@ -146,7 +142,8 @@ def get_demographics_profile(geo_code, geo_level, session):
         'total_population': {
             "name": "People",
             "values": {"this": total_pop}
-        }}
+        }
+    }
 
     return final_data
 
@@ -301,7 +298,7 @@ def get_contraceptive_use_profile(geo_code, geo_level, session):
             'name': 'Contraceptive prevalence rate',
             'numerators': {'this': cpr},
             'values': {'this': cpr},
-        },
+        }
     }
 
 def get_maternal_care_indicators_profile(geo_code, geo_level, session):
@@ -314,7 +311,7 @@ def get_maternal_care_indicators_profile(geo_code, geo_level, session):
 
     antenatal_care_by_skilled_provider = \
         maternal_care_indicators_data['Percentage with antenatal care from a skilled provider']['numerators']['this']
-    antenatal_dist = get_dictionary('From a skilled provider', 'From a non-skilled provider', antenatal_care_by_skilled_provider,maternal_care_indicators_data )
+    antenatal_dist = get_dictionary('From a skilled provider', 'From a non-skilled provider', antenatal_care_by_skilled_provider, maternal_care_indicators_data)
 
     anc_visits = maternal_care_indicators_data['Percentage with 4+ ANC visits']['numerators']['this']
     anc_visits_dist = get_dictionary('4+', 'Less than 4', anc_visits, maternal_care_indicators_data )
@@ -327,7 +324,7 @@ def get_maternal_care_indicators_profile(geo_code, geo_level, session):
     use_of_ipt_dist, _ = get_stat_data('use of ipt', geo_level, geo_code, session)
 
     one_or_more_dist = use_of_ipt_dist['1 or more']['numerators']['this']
-    one_or_more_dist = get_dictionary('1 or more', 'Less', one_or_more_dist,maternal_care_indicators_data)
+    one_or_more_dist = get_dictionary('1 or more', 'Less', one_or_more_dist, maternal_care_indicators_data)
     two_or_more_dist = use_of_ipt_dist['2 or more']['numerators']['this']
     two_or_more_dist = get_dictionary('2 or more', 'Less', two_or_more_dist, maternal_care_indicators_data)
     three_or_more_dist = use_of_ipt_dist['3 or more']['numerators']['this']
@@ -360,10 +357,10 @@ def get_knowledge_of_hiv_prevention_methods_profile(geo_code, geo_level, session
         dist[key]['Female']['values']['this'] = 100 - dist[key]['Female']['numerators']['this']
         dist[key]['Male']['values']['this'] = 100 - dist[key]['Male']['numerators']['this']
     return {
-        'distribution': dist,
+        'distribution': dist
     }
 
-def get_ITN_profile(geo_code, geo_level, session):
+def get_itn_profile(geo_code, geo_level, session):
     # household possession and use of ITN
     possession_dist, _ = get_stat_data(['household possession of itn'], geo_level, geo_code, session)
 
@@ -389,8 +386,7 @@ def get_ITN_profile(geo_code, geo_level, session):
         'average_itn_per_household': {
             'name': 'Average number of insecticide-treated nets (ITNs) per household',
             'numerators': {'this': average_itn_per_household},
-            'values': {'this': average_itn_per_household},
-            'metadata': possession_dist['metadata']
+            'values': {'this': average_itn_per_household}
         },
         'households_with_at_least_one_itn_use_dist': households_with_at_least_one_itn_use_dist,
         'all_households_use_dist': all_households_use_dist
@@ -413,16 +409,13 @@ def get_fertility_profile(geo_code, geo_level, session):
         'fertility_rate': {
             'name': 'Fertility',
             'numerators': {'this': fertility_rate},
-            'values': {'this': fertility_rate},
-            'metadata': dist['metadata']
+            'values': {'this': fertility_rate}
         },
         'mean_number_of_children_ever_born_to_women_aged_40_49': {
             'name': 'Mean number of children ever born to women aged 40-49',
             'numerators': {'this': mean_number_of_children_ever_born_to_women_aged_40_49},
-            'values': {'this': mean_number_of_children_ever_born_to_women_aged_40_49},
-            'metadata': dist['metadata']
+            'values': {'this': mean_number_of_children_ever_born_to_women_aged_40_49}
         },
-
     }
 
 def get_vaccinations_profile(geo_code, geo_level, session):
@@ -448,7 +441,7 @@ def get_vaccinations_profile(geo_code, geo_level, session):
                                  )
 
     fully_vaccinated = vacc_dist['Fully vaccinated']['numerators']['this']
-    fully_vaccinated = get_dictionary('Fully vaccinated', 'Not fully vaccinated', fully_vaccinated, dist)
+    fully_vaccinated = get_dictionary('Fully vaccinated', 'Not fully vaccinated', fully_vaccinated,dist)
 
     all_basic_vaccinations = vacc_dist['All basic vaccinations']['numerators']['this']
     all_basic_vaccinations = get_dictionary('All basic vaccinations', 'Basic vaccinations not administered', \
@@ -468,8 +461,7 @@ def get_vaccinations_profile(geo_code, geo_level, session):
             'name': 'Not vaccinated',
             'numerators': {'this': not_vaccinated},
             'values': {'this': not_vaccinated},
-            'metadata': dist['metadata']
-        },
+        }
     }
 
 def get_type_treatment_profile(geo_code, geo_level, session):
@@ -517,8 +509,7 @@ def get_type_treatment_profile(geo_code, geo_level, session):
         'children_with_fever': {
             'name': 'Percentage of children with fever in the two weeks preceding the survey',
             'numerators': {'this': children_with_fever},
-            'values': {'this': children_with_fever},
-            'metadata': dist['metadata']
+            'values': {'this': children_with_fever}
         },
     }
 
@@ -568,7 +559,6 @@ def get_nutrition_profile(geo_code, geo_level, session):
             'name': 'Mean Z score(height-for-age)',
             'numerators': {'this': height_for_age_mean_z_score},
             'values': {'this': height_for_age_mean_z_score},
-            'metadata': height_for_age_dist['metadata']
         },
         'weight_for_height_below_minus_three_dist': weight_for_height_below_minus_three_dist,
         'weight_for_height_below_minus_two_dist': weight_for_height_below_minus_two_dist,
@@ -577,7 +567,6 @@ def get_nutrition_profile(geo_code, geo_level, session):
             'name': 'Mean Z score (weight-for-height)',
             'numerators': {'this': weight_for_height_mean_z_score},
             'values': {'this': weight_for_height_mean_z_score},
-            'metadata': weight_for_height_dist['metadata']
         },
         'weight_for_age_below_minus_three_dist': weight_for_age_below_minus_three_dist,
         'weight_for_age_below_minus_two_dist': weight_for_age_below_minus_two_dist,
@@ -586,8 +575,7 @@ def get_nutrition_profile(geo_code, geo_level, session):
             'name': 'Mean Z score (weight-for-age)',
             'numerators': {'this': weight_for_age_mean_z_score},
             'values': {'this': weight_for_age_mean_z_score},
-            'metadata': weight_for_age_dist['metadata']
-        },
+        }
     }
 
 def get_protests_profile(geo_code, geo_level, session):
@@ -598,11 +586,10 @@ def get_protests_profile(geo_code, geo_level, session):
             'name': 'Number of protests',
             'numerators': {'this': number_of_protests},
             'values': {'this': number_of_protests},
-            'metadata': number_of_protests_dist['metadata']
-        },
+        }
     }
 
-def get_schoolfires_profile(geo_code, geo_level, session):
+def get_school_fires_profile(geo_code, geo_level, session):
     school_fires_dist, number_of_school_fires = get_stat_data("schoolfires", geo_level, geo_code, session)
     schools = school_fires_dist[school_fires_dist.keys()[0]]['name'].replace(',', '<br>').replace('"','')
     return {
@@ -610,12 +597,12 @@ def get_schoolfires_profile(geo_code, geo_level, session):
             'name': 'Number of school fires',
             'numerators': {'this': number_of_school_fires},
             'values': {'this': number_of_school_fires},
-            'metadata': school_fires_dist['metadata'],
         },
+        'metadata': school_fires_dist['metadata'],
         'schools': schools
     }
 
-def get_crimereport_profile(geo_code, geo_level, session):
+def get_crime_report_profile(geo_code, geo_level, session):
     stats_dist, s_ = get_stat_data("crimereport", geo_level, geo_code, session)
     crimes_dist,c_ = get_stat_data("typesofcrime", geo_level, geo_code, session)
     crimes = stats_dist['Crimes']['numerators']['this']
@@ -625,18 +612,17 @@ def get_crimereport_profile(geo_code, geo_level, session):
             'name': 'Number of crimes',
             'numerators': {'this': crimes},
             'values': {'this': crimes},
-            'metadata': crimes_dist['metadata']
         },
         'crimesindex': {
             'name': 'Crime index per 100,000 people',
             'numerators': {'this': crimeindex},
             'values': {'this': crimeindex},
-            'metadata': crimes_dist['metadata']
         },
         'crimes_dist': crimes_dist,
+        'metadata': crimes_dist['metadata']
     }
 
-def get_healthratios_profile(geo_code, geo_level, session):
+def get_health_ratios_profile(geo_code, geo_level, session):
     ratios_dist, _ = get_stat_data("healthratios", geo_level, geo_code, session)
     dr = ratios_dist['Doctor ratio']['numerators']['this']
     nr = ratios_dist['Nurse ratio']['numerators']['this']
@@ -645,17 +631,16 @@ def get_healthratios_profile(geo_code, geo_level, session):
             'name': 'Doctor to population ratio',
             'numerators': {'this': dr},
             'values': {'this': dr},
-            'metdata': ratios_dist['metadata']
         },
         'nurseratio': {
             'name': 'Nurse to population ratio',
             'numerators': {'this': nr},
             'values': {'this': nr},
-            'metdata': ratios_dist['metadata']
         },
+        'metdata': ratios_dist['metadata']
     }
 
-def get_voterregistration_profile(geo_code, geo_level, session):
+def get_voter_registration_profile(geo_code, geo_level, session):
     stats_dist, _ = get_stat_data("voterregistration", geo_level, geo_code, session)
     ids_issued = stats_dist['IDs issued']['numerators']['this']
     dead_with_ids = stats_dist['Dead with IDs']['numerators']['this']
@@ -664,7 +649,7 @@ def get_voterregistration_profile(geo_code, geo_level, session):
     aft = stats_dist['Additional voters registered']['numerators']['this']
     total = stats_dist['Total registered']['numerators']['this']
     not_registered = stats_dist['Potential voting population not registered']['numerators']['this']
-    return {
+    r =  {
         'ids_issued': {
             'name': 'Number of IDs issued as at Dec 2015',
             'numerators': {'this': ids_issued},
@@ -695,8 +680,7 @@ def get_voterregistration_profile(geo_code, geo_level, session):
                 'name': 'As at Oct 2015',
                 'numerators': {'this': aft},
                 'values': {'this':round((aft / total) * 100)},
-            },
-            'metadata': stats_dist['metadata']
+            }
         },
         'registration_ratio': {
             'march': {
@@ -708,10 +692,11 @@ def get_voterregistration_profile(geo_code, geo_level, session):
                 'name': 'Not registered',
                 'numerators': {'this': not_registered},
                 'values': {'this':round((not_registered / (total + not_registered)) * 100)},
-            },
-            'metadata': stats_dist['metadata']
+            }
         },
+        'metdata': stats_dist['metadata']
     }
+    return r;
 
 def get_crop_production_profile(geo_code, geo_level, session):
     dist, _ = get_stat_data("crop_production", geo_level, geo_code, session, percent = False)
