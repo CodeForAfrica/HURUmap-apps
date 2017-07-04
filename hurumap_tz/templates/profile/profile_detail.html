@@ -304,4 +304,27 @@
         </section>
     </div>
 </article>
+<article id="traffic_and_crimes" class="clearfix">
+    <header class="section-contents">
+        <h1>Traffic and Crimes Incidents</h1>
+    </header>
+    <div class="section-container">
+         <section class="clearfix stat-row">
+             <p class="source">Source: <a href="{{ traffic_and_crimes.source_link }}">{{ traffic_and_crimes.source_name }}</a></p>
+             <br clear="all">
+             <div class="column-half">
+                 {% include 'profile/_blocks/_stat_list.html' with stat=traffic_and_crimes.total_accidents stat_type='number' %}
+             </div>
+             <br>
+             <div class="column-half">
+                 {% include 'profile/_blocks/_stat_list.html' with stat=traffic_and_crimes.total_fatalities stat_type='number' %}
+             </div>
+             <br>
+               <div class="column-full" id="chart-bar-traffic_and_crimes-fatalities_by_gender" data-stat-type="number" data-initial-sort="-value" data-chart-title="Deaths caused by road accidents by gender"></div>
+               <div class="column-half">
+                   {% include 'profile/_blocks/_stat_list.html' with stat=traffic_and_crimes.deaths_per_pop stat_type='number' %}
+               </div>
+        </section>
+    </div>
+</article>
 {% endblock %}

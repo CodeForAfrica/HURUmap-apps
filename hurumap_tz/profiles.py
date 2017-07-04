@@ -822,3 +822,81 @@ def divide_by_one_thousand(dist):
 
 def replace_name(dist, new_name):
     dist['name'] = new_name
+
+
+def get_traffic_and_crimes_profile(geo_code, geo_level, session):
+    
+    if geo_level == 'ward' or geo_level == 'district':
+        return {}
+
+    traffic_and_crimes, _total_tc = get_stat_data('traffic and crimes', geo_level, geo_code, session,  order_by='-total')
+
+    #total accidents
+    total_accidents = 0
+    total_accidents += int(traffic_and_crimes['Fatal Accidents']['numerators']['this'])
+    total_accidents += int(traffic_and_crimes['Injury Accidents']['numerators']['this'])
+    total_accidents += int(traffic_and_crimes['Normal Accidents']['numerators']['this'])
+
+    #injuries
+    male_injuries = int(traffic_and_crimes['Male Injured Persons']['numerators']['this'])
+    female_injuries = int(traffic_and_crimes['Female Injured Persons']['numerators']['this'])
+    total_injuries = male_injuries + female_injuries
+
+    # deaths
+    male_deaths = int(traffic_and_crimes['Male Dead Persons']['numerators']['this'])
+    female_deaths = int(traffic_and_crimes['Female Dead Persons']['numerators']['this'])
+    total_deaths  = male_deaths + female_deaths
+
+    _, total_pop = get_stat_data(
+        'sex', geo_level, geo_code, session,
+        table_fields=['age in completed years', 'sex', 'rural or urban'])
+
+    deaths_per_pop = round((total_deaths * 1e5)/total_pop)
+
+    return {
+        'traffic_and_crimes_overall': traffic_and_crimes,
+        'injuries_by_gender':   {
+            'male': {
+                'name': 'Male',
+                'numerators': {'this': male_injuries},
+                'values': {'this':male_injuries}
+            },
+            'female': {
+                'name': 'Female',
+                'numerators': {'this': female_injuries},
+                'values': {'this': female_injuries}
+            },
+            'metadata': traffic_and_crimes['metadata']
+        },
+        'fatalities_by_gender':   {
+            'male': {
+                'name': 'Men',
+                'numerators': {'this': male_deaths},
+                'values': {'this': male_deaths}
+            },
+            'female': {
+                'name': 'Women',
+                'numerators': {'this': female_deaths},
+                'values': {'this': female_deaths}
+            },
+            'metadata': traffic_and_crimes['metadata']
+        },
+        'total_accidents': {
+            'name': 'Number of  road accidents  (2015)',
+            'numerators': {'this': total_accidents},
+            'values': {'this': total_accidents}
+        },
+        'total_fatalities': {
+            'name': 'Number of deaths cause by road accidents  (2015)',
+            'numerators': {'this': total_deaths},
+            'values': {'this': total_deaths}
+        },
+        'deaths_per_pop': {
+            'name': 'People are killed in road accidents in every 100,000 population ',
+            'numerators': {'this': deaths_per_pop},
+            'values': {'this': deaths_per_pop}
+        },
+        'source_link': 'http://www.policeforce.go.tz/index.php/sw/takwimu',
+        'source_name': 'Tanzania Police Force Report(2015)',
+
+    }

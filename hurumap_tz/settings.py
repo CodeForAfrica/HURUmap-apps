@@ -100,6 +100,6 @@ HURUMAP['topics']['development'] = {
     'icon': '/static/img/development.png',
     'desc': '',
     'profiles': [
-        #todo
+        'traffic and crimes'
     ]
 }
