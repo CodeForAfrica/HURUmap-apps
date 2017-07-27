@@ -362,10 +362,12 @@ def get_literacy_and_numeracy_tests_profile(geo_code, geo_level, session):
         'english_sort': '-value' if english_test_dist <= 50 else 'value',
         'swahili_sort': '-value' if swahili_test_dist <= 49 else 'value',
         'all_subjects_dist': {
-            'name': 'Competent in all subjects',
+            'name': 'Competent in all subjects children aged 6-16',
             'numerators': {'this': all_subjects},
             'values': {'this': round(all_subjects, 2)}
-        }
+        },
+        'source_link': 'https://africaopendata.org/dataset/uwezo-literacy-assessment-report-2015',
+        'source_name': 'Uwezo Annual Assessment Report 2015'
     }
 
 
@@ -825,7 +827,7 @@ def replace_name(dist, new_name):
 
 
 def get_traffic_and_crimes_profile(geo_code, geo_level, session):
-    
+
     if geo_level == 'ward' or geo_level == 'district':
         return {}
 

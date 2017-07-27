@@ -103,3 +103,5 @@ HURUMAP['topics']['development'] = {
         'traffic and crimes'
     ]
 }
+
+HURUMAP['na_label'] = ""
