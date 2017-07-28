@@ -54,6 +54,7 @@ HURUMAP['topics']['census'] = {
         'profiles': [
             'Demographics',
             'Voter registration',
+            'Voter registration 2013',
             'Households',
             'Protests',
             'School fires',
