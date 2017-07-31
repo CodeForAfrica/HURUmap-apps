@@ -2,17 +2,20 @@
 -- PostgreSQL database dump
 --
 
+-- Dumped from database version 9.5.2
+-- Dumped by pg_dump version 9.6.2
+
+-- Started on 2017-07-31 11:02:38 EAT
+
 SET statement_timeout = 0;
 SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
+SET row_security = off;
 
-SET search_path = public, pg_catalog;
-
-ALTER TABLE IF EXISTS ONLY public.schoolfires DROP CONSTRAINT IF EXISTS schoolfires_pkey;
-DROP TABLE IF EXISTS public.schoolfires;
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -20,22 +23,27 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: schoolfires; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- TOC entry 230 (class 1259 OID 17894)
+-- Name: schoolfires; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
 CREATE TABLE schoolfires (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     total integer NOT NULL,
-    "schoolfires" text NOT NULL
+    schoolfires text NOT NULL
 );
 
 
+ALTER TABLE schoolfires OWNER TO hurumap_ke;
+
 --
--- Data for Name: schoolfires; Type: TABLE DATA; Schema: public; Owner: -
+-- TOC entry 3177 (class 0 OID 17894)
+-- Dependencies: 230
+-- Data for Name: schoolfires; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
-COPY schoolfires (geo_level, geo_code, total, "schoolfires") FROM stdin;
+COPY schoolfires (geo_level, geo_code, total, schoolfires) FROM stdin;
 county	1	0	""
 county	2	0	""
 county	3	2	"Ganze Girls Secondary School,Malindi High"
@@ -86,13 +94,17 @@ county	47	3	"Ruthumitu Secondary School, Lang'ata High School,Sunshine Secondary
 country	KE	126	""
 \.
 
+
 --
--- Name: schoolfires_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- TOC entry 3062 (class 2606 OID 18029)
+-- Name: schoolfires schoolfires_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
 ALTER TABLE ONLY schoolfires
-    ADD CONSTRAINT schoolfires_pkey PRIMARY KEY (geo_level, geo_code, "schoolfires");
+    ADD CONSTRAINT schoolfires_pkey PRIMARY KEY (geo_level, geo_code, schoolfires);
 
+
+-- Completed on 2017-07-31 11:02:54 EAT
 
 --
 -- PostgreSQL database dump complete

@@ -2,17 +2,20 @@
 -- PostgreSQL database dump
 --
 
+-- Dumped from database version 9.5.2
+-- Dumped by pg_dump version 9.6.2
+
+-- Started on 2017-07-31 10:54:36 EAT
+
 SET statement_timeout = 0;
 SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
+SET row_security = off;
 
-SET search_path = public, pg_catalog;
-
-ALTER TABLE IF EXISTS ONLY public.crimereport DROP CONSTRAINT IF EXISTS crimereportpkey;
-DROP TABLE IF EXISTS public.crimereport;
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -20,7 +23,8 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: crimereport; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- TOC entry 199 (class 1259 OID 17797)
+-- Name: crimereport; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
 CREATE TABLE crimereport (
@@ -31,9 +35,14 @@ CREATE TABLE crimereport (
 );
 
 
+ALTER TABLE crimereport OWNER TO hurumap_ke;
+
 --
--- Data for Name: crimereport; Type: TABLE DATA; Schema: public; Owner: -
+-- TOC entry 3177 (class 0 OID 17797)
+-- Dependencies: 199
+-- Data for Name: crimereport; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
+
 COPY crimereport (geo_level, geo_code, crimereport, total) FROM stdin;
 county	20	crimes	1177
 county	20	crimesindex	223
@@ -132,13 +141,18 @@ county	9	crimesindex	41
 country	KE	crimes	72490
 country	KE	crimesindex	188
 \.
+
+
 --
--- Name: crimereportpkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- TOC entry 3062 (class 2606 OID 17971)
+-- Name: crimereport crimereportpkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
 ALTER TABLE ONLY crimereport
     ADD CONSTRAINT crimereportpkey PRIMARY KEY (geo_level, geo_code, crimereport);
 
+
+-- Completed on 2017-07-31 10:54:59 EAT
 
 --
 -- PostgreSQL database dump complete

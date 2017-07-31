@@ -2,17 +2,20 @@
 -- PostgreSQL database dump
 --
 
+-- Dumped from database version 9.5.2
+-- Dumped by pg_dump version 9.6.2
+
+-- Started on 2017-07-31 10:57:05 EAT
+
 SET statement_timeout = 0;
 SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
+SET row_security = off;
 
-SET search_path = public, pg_catalog;
-
-ALTER TABLE IF EXISTS ONLY public.health_facilities_type DROP CONSTRAINT IF EXISTS health_facilities_type_pkey;
-DROP TABLE IF EXISTS public.health_facilities_type;
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -20,7 +23,8 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: healthfacilities_type; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- TOC entry 210 (class 1259 OID 17834)
+-- Name: health_facilities_type; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
 CREATE TABLE health_facilities_type (
@@ -31,11 +35,15 @@ CREATE TABLE health_facilities_type (
 );
 
 
+ALTER TABLE health_facilities_type OWNER TO hurumap_ke;
+
 --
--- Data for Name: health_facilities_type; Type: TABLE DATA; Schema: public; Owner: -
+-- TOC entry 3177 (class 0 OID 17834)
+-- Dependencies: 210
+-- Data for Name: health_facilities_type; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
-COPY	health_facilities_type (geo_level, geo_code, type, total) FROM stdin;
+COPY health_facilities_type (geo_level, geo_code, type, total) FROM stdin;
 country	KE	Stand Alone VCT Centre	174
 country	KE	Health Training Institution	7
 country	KE	Sub District Hospital	137
@@ -512,13 +520,18 @@ county	24	Medical Clinic	15
 county	24	Other Hospital	1
 county	24	Sub District Hospital	2
 \.
+
+
 --
--- Name: health_facilities_type_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- TOC entry 3062 (class 2606 OID 17989)
+-- Name: health_facilities_type health_facilities_type_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
 ALTER TABLE ONLY health_facilities_type
     ADD CONSTRAINT health_facilities_type_pkey PRIMARY KEY (geo_level, geo_code, type, total);
 
+
+-- Completed on 2017-07-31 10:57:22 EAT
 
 --
 -- PostgreSQL database dump complete
