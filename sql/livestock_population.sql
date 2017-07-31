@@ -2,17 +2,20 @@
 -- PostgreSQL database dump
 --
 
+-- Dumped from database version 9.5.2
+-- Dumped by pg_dump version 9.6.2
+
+-- Started on 2017-07-31 10:59:25 EAT
+
 SET statement_timeout = 0;
 SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
+SET row_security = off;
 
-SET search_path = public, pg_catalog;
-
-ALTER TABLE IF EXISTS ONLY public.livestock_population DROP CONSTRAINT IF EXISTS livestock_population_pkey;
-DROP TABLE IF EXISTS public.livestock_population;
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -20,19 +23,24 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: livestock_population; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- TOC entry 219 (class 1259 OID 17860)
+-- Name: livestock_population; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
 CREATE TABLE livestock_population (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
-    "livestock_population" character varying(128) NOT NULL,
-    total float NOT NULL
+    livestock_population character varying(128) NOT NULL,
+    total double precision NOT NULL
 );
 
 
+ALTER TABLE livestock_population OWNER TO hurumap_ke;
+
 --
--- Data for Name: livestock_population; Type: TABLE DATA; Schema: public; Owner: -
+-- TOC entry 3177 (class 0 OID 17860)
+-- Dependencies: 219
+-- Data for Name: livestock_population; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
 COPY livestock_population (geo_level, geo_code, livestock_population, total) FROM stdin;
@@ -1429,15 +1437,17 @@ county	36	pegions	0
 \.
 
 --
--- Name: livestock_population_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- TOC entry 3062 (class 2606 OID 18007)
+-- Name: livestock_population livestock_population_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
 ALTER TABLE ONLY livestock_population
-    ADD CONSTRAINT livestock_population_pkey PRIMARY KEY (geo_level, geo_code, "livestock_population");
+    ADD CONSTRAINT livestock_population_pkey PRIMARY KEY (geo_level, geo_code, livestock_population);
 
+
+-- Completed on 2017-07-31 10:59:42 EAT
 
 --
 -- PostgreSQL database dump complete
 --
-
 

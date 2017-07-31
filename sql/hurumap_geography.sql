@@ -2,12 +2,19 @@
 -- PostgreSQL database dump
 --
 
+-- Dumped from database version 9.5.2
+-- Dumped by pg_dump version 9.6.2
+
+-- Started on 2017-07-31 10:58:48 EAT
+
 SET statement_timeout = 0;
 SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
+SET row_security = off;
 
 SET search_path = public, pg_catalog;
 
@@ -21,7 +28,6 @@ ALTER TABLE IF EXISTS public.hurumap_geography ALTER COLUMN id DROP DEFAULT;
 DROP SEQUENCE IF EXISTS public.hurumap_geography_id_seq;
 DROP TABLE IF EXISTS public.hurumap_geography;
 SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -44,6 +50,8 @@ CREATE TABLE hurumap_geography (
 );
 
 
+ALTER TABLE hurumap_geography OWNER TO hurumap_ke;
+
 --
 -- Name: hurumap_geography_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
@@ -56,6 +64,8 @@ CREATE SEQUENCE hurumap_geography_id_seq
     CACHE 1;
 
 
+ALTER TABLE hurumap_geography_id_seq OWNER TO hurumap_ke;
+
 --
 -- Name: hurumap_geography_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -64,7 +74,8 @@ ALTER SEQUENCE hurumap_geography_id_seq OWNED BY hurumap_geography.id;
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- TOC entry 3061 (class 2604 OID 17933)
+-- Name: hurumap_geography id; Type: DEFAULT; Schema: public; Owner: hurumap_ke
 --
 
 ALTER TABLE ONLY hurumap_geography ALTER COLUMN id SET DEFAULT nextval('hurumap_geography_id_seq'::regclass);
@@ -176,6 +187,7 @@ CREATE INDEX hurumap_geography_d7d547e9 ON hurumap_geography USING btree (osm_ar
 
 CREATE INDEX hurumap_geography_name_36b79089_like ON hurumap_geography USING btree (name varchar_pattern_ops);
 
+-- Completed on 2017-07-31 10:59:06 EAT
 
 --
 -- PostgreSQL database dump complete
