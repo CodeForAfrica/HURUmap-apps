@@ -2,17 +2,20 @@
 -- PostgreSQL database dump
 --
 
+-- Dumped from database version 9.5.2
+-- Dumped by pg_dump version 9.6.2
+
+-- Started on 2017-07-31 11:01:07 EAT
+
 SET statement_timeout = 0;
 SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
+SET row_security = off;
 
-SET search_path = public, pg_catalog;
-
-ALTER TABLE IF EXISTS ONLY public.maintypeofroofingmaterial DROP CONSTRAINT IF EXISTS maintypeofroofingmaterial_pkey;
-DROP TABLE IF EXISTS public.maintypeofroofingmaterial;
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -20,7 +23,8 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: maintypeofroofingmaterial; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- TOC entry 225 (class 1259 OID 17878)
+-- Name: maintypeofroofingmaterial; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
 CREATE TABLE maintypeofroofingmaterial (
@@ -31,8 +35,12 @@ CREATE TABLE maintypeofroofingmaterial (
 );
 
 
+ALTER TABLE maintypeofroofingmaterial OWNER TO hurumap_ke;
+
 --
--- Data for Name: maintypeofroofingmaterial; Type: TABLE DATA; Schema: public; Owner: -
+-- TOC entry 3177 (class 0 OID 17878)
+-- Dependencies: 225
+-- Data for Name: maintypeofroofingmaterial; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
 COPY maintypeofroofingmaterial (geo_level, geo_code, "main type of roofing material", total) FROM stdin;
@@ -472,12 +480,15 @@ county	24	tin	53
 
 
 --
--- Name: maintypeofroofingmaterial_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- TOC entry 3062 (class 2606 OID 18019)
+-- Name: maintypeofroofingmaterial maintypeofroofingmaterial_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
 ALTER TABLE ONLY maintypeofroofingmaterial
     ADD CONSTRAINT maintypeofroofingmaterial_pkey PRIMARY KEY (geo_level, geo_code, "main type of roofing material");
 
+
+-- Completed on 2017-07-31 11:01:26 EAT
 
 --
 -- PostgreSQL database dump complete

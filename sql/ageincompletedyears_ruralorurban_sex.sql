@@ -2,17 +2,20 @@
 -- PostgreSQL database dump
 --
 
+-- Dumped from database version 9.5.2
+-- Dumped by pg_dump version 9.6.2
+
+-- Started on 2017-07-31 10:50:59 EAT
+
 SET statement_timeout = 0;
 SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
+SET row_security = off;
 
-SET search_path = public, pg_catalog;
-
-ALTER TABLE IF EXISTS ONLY public.ageincompletedyears_ruralorurban_sex DROP CONSTRAINT IF EXISTS ageincompletedyears_ruralorurban_sex_pkey;
-DROP TABLE IF EXISTS public.ageincompletedyears_ruralorurban_sex;
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -20,7 +23,8 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: ageincompletedyears_ruralorurban_sex; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- TOC entry 182 (class 1259 OID 17752)
+-- Name: ageincompletedyears_ruralorurban_sex; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
 CREATE TABLE ageincompletedyears_ruralorurban_sex (
@@ -33,8 +37,12 @@ CREATE TABLE ageincompletedyears_ruralorurban_sex (
 );
 
 
+ALTER TABLE ageincompletedyears_ruralorurban_sex OWNER TO hurumap_ke;
+
 --
--- Data for Name: ageincompletedyears_ruralorurban_sex; Type: TABLE DATA; Schema: public; Owner: -
+-- TOC entry 3177 (class 0 OID 17752)
+-- Dependencies: 182
+-- Data for Name: ageincompletedyears_ruralorurban_sex; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
 COPY ageincompletedyears_ruralorurban_sex (geo_level, geo_code, "rural or urban", sex, "age in completed years", total) FROM stdin;
@@ -15458,12 +15466,15 @@ county	47	urban	male	unspecified	1810
 
 
 --
--- Name: ageincompletedyears_ruralorurban_sex_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- TOC entry 3062 (class 2606 OID 17937)
+-- Name: ageincompletedyears_ruralorurban_sex ageincompletedyears_ruralorurban_sex_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
 ALTER TABLE ONLY ageincompletedyears_ruralorurban_sex
     ADD CONSTRAINT ageincompletedyears_ruralorurban_sex_pkey PRIMARY KEY (geo_level, geo_code, "rural or urban", sex, "age in completed years");
 
+
+-- Completed on 2017-07-31 10:51:18 EAT
 
 --
 -- PostgreSQL database dump complete

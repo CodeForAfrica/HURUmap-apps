@@ -2,8 +2,10 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.2
+-- Dumped from database version 9.5.2
 -- Dumped by pg_dump version 9.6.2
+
+-- Started on 2017-07-31 11:05:10 EAT
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -15,6 +17,7 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
+-- TOC entry 1 (class 3079 OID 13276)
 -- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
 --
 
@@ -22,6 +25,8 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
+-- TOC entry 3435 (class 0 OID 0)
+-- Dependencies: 1
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
 --
 
@@ -35,6 +40,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
+-- TOC entry 181 (class 1259 OID 17749)
 -- Name: agegroup_gender; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -50,6 +56,7 @@ CREATE TABLE agegroup_gender (
 ALTER TABLE agegroup_gender OWNER TO hurumap_ke;
 
 --
+-- TOC entry 182 (class 1259 OID 17752)
 -- Name: ageincompletedyears_ruralorurban_sex; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -66,6 +73,7 @@ CREATE TABLE ageincompletedyears_ruralorurban_sex (
 ALTER TABLE ageincompletedyears_ruralorurban_sex OWNER TO hurumap_ke;
 
 --
+-- TOC entry 183 (class 1259 OID 17755)
 -- Name: auth_group; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -78,6 +86,7 @@ CREATE TABLE auth_group (
 ALTER TABLE auth_group OWNER TO hurumap_ke;
 
 --
+-- TOC entry 184 (class 1259 OID 17758)
 -- Name: auth_group_id_seq; Type: SEQUENCE; Schema: public; Owner: hurumap_ke
 --
 
@@ -92,6 +101,8 @@ CREATE SEQUENCE auth_group_id_seq
 ALTER TABLE auth_group_id_seq OWNER TO hurumap_ke;
 
 --
+-- TOC entry 3436 (class 0 OID 0)
+-- Dependencies: 184
 -- Name: auth_group_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hurumap_ke
 --
 
@@ -99,6 +110,7 @@ ALTER SEQUENCE auth_group_id_seq OWNED BY auth_group.id;
 
 
 --
+-- TOC entry 185 (class 1259 OID 17760)
 -- Name: auth_group_permissions; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -112,6 +124,7 @@ CREATE TABLE auth_group_permissions (
 ALTER TABLE auth_group_permissions OWNER TO hurumap_ke;
 
 --
+-- TOC entry 186 (class 1259 OID 17763)
 -- Name: auth_group_permissions_id_seq; Type: SEQUENCE; Schema: public; Owner: hurumap_ke
 --
 
@@ -126,6 +139,8 @@ CREATE SEQUENCE auth_group_permissions_id_seq
 ALTER TABLE auth_group_permissions_id_seq OWNER TO hurumap_ke;
 
 --
+-- TOC entry 3437 (class 0 OID 0)
+-- Dependencies: 186
 -- Name: auth_group_permissions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hurumap_ke
 --
 
@@ -133,6 +148,7 @@ ALTER SEQUENCE auth_group_permissions_id_seq OWNED BY auth_group_permissions.id;
 
 
 --
+-- TOC entry 187 (class 1259 OID 17765)
 -- Name: auth_permission; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -147,6 +163,7 @@ CREATE TABLE auth_permission (
 ALTER TABLE auth_permission OWNER TO hurumap_ke;
 
 --
+-- TOC entry 188 (class 1259 OID 17768)
 -- Name: auth_permission_id_seq; Type: SEQUENCE; Schema: public; Owner: hurumap_ke
 --
 
@@ -161,6 +178,8 @@ CREATE SEQUENCE auth_permission_id_seq
 ALTER TABLE auth_permission_id_seq OWNER TO hurumap_ke;
 
 --
+-- TOC entry 3438 (class 0 OID 0)
+-- Dependencies: 188
 -- Name: auth_permission_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hurumap_ke
 --
 
@@ -168,6 +187,7 @@ ALTER SEQUENCE auth_permission_id_seq OWNED BY auth_permission.id;
 
 
 --
+-- TOC entry 189 (class 1259 OID 17770)
 -- Name: auth_user; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -189,6 +209,7 @@ CREATE TABLE auth_user (
 ALTER TABLE auth_user OWNER TO hurumap_ke;
 
 --
+-- TOC entry 190 (class 1259 OID 17773)
 -- Name: auth_user_groups; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -202,6 +223,7 @@ CREATE TABLE auth_user_groups (
 ALTER TABLE auth_user_groups OWNER TO hurumap_ke;
 
 --
+-- TOC entry 191 (class 1259 OID 17776)
 -- Name: auth_user_groups_id_seq; Type: SEQUENCE; Schema: public; Owner: hurumap_ke
 --
 
@@ -216,6 +238,8 @@ CREATE SEQUENCE auth_user_groups_id_seq
 ALTER TABLE auth_user_groups_id_seq OWNER TO hurumap_ke;
 
 --
+-- TOC entry 3439 (class 0 OID 0)
+-- Dependencies: 191
 -- Name: auth_user_groups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hurumap_ke
 --
 
@@ -223,6 +247,7 @@ ALTER SEQUENCE auth_user_groups_id_seq OWNED BY auth_user_groups.id;
 
 
 --
+-- TOC entry 192 (class 1259 OID 17778)
 -- Name: auth_user_id_seq; Type: SEQUENCE; Schema: public; Owner: hurumap_ke
 --
 
@@ -237,6 +262,8 @@ CREATE SEQUENCE auth_user_id_seq
 ALTER TABLE auth_user_id_seq OWNER TO hurumap_ke;
 
 --
+-- TOC entry 3440 (class 0 OID 0)
+-- Dependencies: 192
 -- Name: auth_user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hurumap_ke
 --
 
@@ -244,6 +271,7 @@ ALTER SEQUENCE auth_user_id_seq OWNED BY auth_user.id;
 
 
 --
+-- TOC entry 193 (class 1259 OID 17780)
 -- Name: auth_user_user_permissions; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -257,6 +285,7 @@ CREATE TABLE auth_user_user_permissions (
 ALTER TABLE auth_user_user_permissions OWNER TO hurumap_ke;
 
 --
+-- TOC entry 194 (class 1259 OID 17783)
 -- Name: auth_user_user_permissions_id_seq; Type: SEQUENCE; Schema: public; Owner: hurumap_ke
 --
 
@@ -271,6 +300,8 @@ CREATE SEQUENCE auth_user_user_permissions_id_seq
 ALTER TABLE auth_user_user_permissions_id_seq OWNER TO hurumap_ke;
 
 --
+-- TOC entry 3441 (class 0 OID 0)
+-- Dependencies: 194
 -- Name: auth_user_user_permissions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hurumap_ke
 --
 
@@ -278,6 +309,7 @@ ALTER SEQUENCE auth_user_user_permissions_id_seq OWNED BY auth_user_user_permiss
 
 
 --
+-- TOC entry 195 (class 1259 OID 17785)
 -- Name: contraceptive_method; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -292,6 +324,7 @@ CREATE TABLE contraceptive_method (
 ALTER TABLE contraceptive_method OWNER TO hurumap_ke;
 
 --
+-- TOC entry 196 (class 1259 OID 17788)
 -- Name: contraceptive_modern_method; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -306,6 +339,7 @@ CREATE TABLE contraceptive_modern_method (
 ALTER TABLE contraceptive_modern_method OWNER TO hurumap_ke;
 
 --
+-- TOC entry 197 (class 1259 OID 17791)
 -- Name: contraceptive_traditional_method; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -320,6 +354,7 @@ CREATE TABLE contraceptive_traditional_method (
 ALTER TABLE contraceptive_traditional_method OWNER TO hurumap_ke;
 
 --
+-- TOC entry 198 (class 1259 OID 17794)
 -- Name: contraceptive_use; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -334,6 +369,7 @@ CREATE TABLE contraceptive_use (
 ALTER TABLE contraceptive_use OWNER TO hurumap_ke;
 
 --
+-- TOC entry 199 (class 1259 OID 17797)
 -- Name: crimereport; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -348,6 +384,7 @@ CREATE TABLE crimereport (
 ALTER TABLE crimereport OWNER TO hurumap_ke;
 
 --
+-- TOC entry 200 (class 1259 OID 17800)
 -- Name: crop_production; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -362,6 +399,7 @@ CREATE TABLE crop_production (
 ALTER TABLE crop_production OWNER TO hurumap_ke;
 
 --
+-- TOC entry 201 (class 1259 OID 17803)
 -- Name: django_admin_log; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -381,6 +419,7 @@ CREATE TABLE django_admin_log (
 ALTER TABLE django_admin_log OWNER TO hurumap_ke;
 
 --
+-- TOC entry 202 (class 1259 OID 17810)
 -- Name: django_admin_log_id_seq; Type: SEQUENCE; Schema: public; Owner: hurumap_ke
 --
 
@@ -395,6 +434,8 @@ CREATE SEQUENCE django_admin_log_id_seq
 ALTER TABLE django_admin_log_id_seq OWNER TO hurumap_ke;
 
 --
+-- TOC entry 3442 (class 0 OID 0)
+-- Dependencies: 202
 -- Name: django_admin_log_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hurumap_ke
 --
 
@@ -402,6 +443,7 @@ ALTER SEQUENCE django_admin_log_id_seq OWNED BY django_admin_log.id;
 
 
 --
+-- TOC entry 203 (class 1259 OID 17812)
 -- Name: django_content_type; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -415,6 +457,7 @@ CREATE TABLE django_content_type (
 ALTER TABLE django_content_type OWNER TO hurumap_ke;
 
 --
+-- TOC entry 204 (class 1259 OID 17815)
 -- Name: django_content_type_id_seq; Type: SEQUENCE; Schema: public; Owner: hurumap_ke
 --
 
@@ -429,6 +472,8 @@ CREATE SEQUENCE django_content_type_id_seq
 ALTER TABLE django_content_type_id_seq OWNER TO hurumap_ke;
 
 --
+-- TOC entry 3443 (class 0 OID 0)
+-- Dependencies: 204
 -- Name: django_content_type_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hurumap_ke
 --
 
@@ -436,6 +481,7 @@ ALTER SEQUENCE django_content_type_id_seq OWNED BY django_content_type.id;
 
 
 --
+-- TOC entry 205 (class 1259 OID 17817)
 -- Name: django_migrations; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -450,6 +496,7 @@ CREATE TABLE django_migrations (
 ALTER TABLE django_migrations OWNER TO hurumap_ke;
 
 --
+-- TOC entry 206 (class 1259 OID 17823)
 -- Name: django_migrations_id_seq; Type: SEQUENCE; Schema: public; Owner: hurumap_ke
 --
 
@@ -464,6 +511,8 @@ CREATE SEQUENCE django_migrations_id_seq
 ALTER TABLE django_migrations_id_seq OWNER TO hurumap_ke;
 
 --
+-- TOC entry 3444 (class 0 OID 0)
+-- Dependencies: 206
 -- Name: django_migrations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hurumap_ke
 --
 
@@ -471,6 +520,7 @@ ALTER SEQUENCE django_migrations_id_seq OWNED BY django_migrations.id;
 
 
 --
+-- TOC entry 207 (class 1259 OID 17825)
 -- Name: employmentactivitystatus_sex; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -486,6 +536,7 @@ CREATE TABLE employmentactivitystatus_sex (
 ALTER TABLE employmentactivitystatus_sex OWNER TO hurumap_ke;
 
 --
+-- TOC entry 208 (class 1259 OID 17828)
 -- Name: fertility; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -500,6 +551,7 @@ CREATE TABLE fertility (
 ALTER TABLE fertility OWNER TO hurumap_ke;
 
 --
+-- TOC entry 209 (class 1259 OID 17831)
 -- Name: gender_ruralorurban; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -515,6 +567,7 @@ CREATE TABLE gender_ruralorurban (
 ALTER TABLE gender_ruralorurban OWNER TO hurumap_ke;
 
 --
+-- TOC entry 210 (class 1259 OID 17834)
 -- Name: health_facilities_type; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -529,6 +582,7 @@ CREATE TABLE health_facilities_type (
 ALTER TABLE health_facilities_type OWNER TO hurumap_ke;
 
 --
+-- TOC entry 211 (class 1259 OID 17837)
 -- Name: healthratios; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -543,6 +597,7 @@ CREATE TABLE healthratios (
 ALTER TABLE healthratios OWNER TO hurumap_ke;
 
 --
+-- TOC entry 212 (class 1259 OID 17840)
 -- Name: heightforage; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -557,6 +612,7 @@ CREATE TABLE heightforage (
 ALTER TABLE heightforage OWNER TO hurumap_ke;
 
 --
+-- TOC entry 213 (class 1259 OID 17843)
 -- Name: highesteducationlevelreached; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -571,6 +627,7 @@ CREATE TABLE highesteducationlevelreached (
 ALTER TABLE highesteducationlevelreached OWNER TO hurumap_ke;
 
 --
+-- TOC entry 214 (class 1259 OID 17846)
 -- Name: household_itn_use_users; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -587,6 +644,7 @@ CREATE TABLE household_itn_use_users (
 ALTER TABLE household_itn_use_users OWNER TO hurumap_ke;
 
 --
+-- TOC entry 215 (class 1259 OID 17849)
 -- Name: householdpossessionofitn; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -601,6 +659,7 @@ CREATE TABLE householdpossessionofitn (
 ALTER TABLE householdpossessionofitn OWNER TO hurumap_ke;
 
 --
+-- TOC entry 216 (class 1259 OID 17852)
 -- Name: hurumap_geography; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -621,6 +680,7 @@ CREATE TABLE hurumap_geography (
 ALTER TABLE hurumap_geography OWNER TO hurumap_ke;
 
 --
+-- TOC entry 217 (class 1259 OID 17855)
 -- Name: hurumap_geography_id_seq; Type: SEQUENCE; Schema: public; Owner: hurumap_ke
 --
 
@@ -635,6 +695,8 @@ CREATE SEQUENCE hurumap_geography_id_seq
 ALTER TABLE hurumap_geography_id_seq OWNER TO hurumap_ke;
 
 --
+-- TOC entry 3445 (class 0 OID 0)
+-- Dependencies: 217
 -- Name: hurumap_geography_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hurumap_ke
 --
 
@@ -642,6 +704,7 @@ ALTER SEQUENCE hurumap_geography_id_seq OWNED BY hurumap_geography.id;
 
 
 --
+-- TOC entry 218 (class 1259 OID 17857)
 -- Name: knowledgeofhivpreventionmethods_sex; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -657,6 +720,7 @@ CREATE TABLE knowledgeofhivpreventionmethods_sex (
 ALTER TABLE knowledgeofhivpreventionmethods_sex OWNER TO hurumap_ke;
 
 --
+-- TOC entry 219 (class 1259 OID 17860)
 -- Name: livestock_population; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -671,6 +735,7 @@ CREATE TABLE livestock_population (
 ALTER TABLE livestock_population OWNER TO hurumap_ke;
 
 --
+-- TOC entry 220 (class 1259 OID 17863)
 -- Name: livestock_products; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -685,6 +750,7 @@ CREATE TABLE livestock_products (
 ALTER TABLE livestock_products OWNER TO hurumap_ke;
 
 --
+-- TOC entry 221 (class 1259 OID 17866)
 -- Name: mainmodeofhumanwastedisposal; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -699,6 +765,7 @@ CREATE TABLE mainmodeofhumanwastedisposal (
 ALTER TABLE mainmodeofhumanwastedisposal OWNER TO hurumap_ke;
 
 --
+-- TOC entry 222 (class 1259 OID 17869)
 -- Name: mainsourceofwater; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -713,6 +780,7 @@ CREATE TABLE mainsourceofwater (
 ALTER TABLE mainsourceofwater OWNER TO hurumap_ke;
 
 --
+-- TOC entry 223 (class 1259 OID 17872)
 -- Name: maintypeoffloormaterial; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -727,6 +795,7 @@ CREATE TABLE maintypeoffloormaterial (
 ALTER TABLE maintypeoffloormaterial OWNER TO hurumap_ke;
 
 --
+-- TOC entry 224 (class 1259 OID 17875)
 -- Name: maintypeoflightingfuel; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -741,6 +810,7 @@ CREATE TABLE maintypeoflightingfuel (
 ALTER TABLE maintypeoflightingfuel OWNER TO hurumap_ke;
 
 --
+-- TOC entry 225 (class 1259 OID 17878)
 -- Name: maintypeofroofingmaterial; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -755,6 +825,7 @@ CREATE TABLE maintypeofroofingmaterial (
 ALTER TABLE maintypeofroofingmaterial OWNER TO hurumap_ke;
 
 --
+-- TOC entry 226 (class 1259 OID 17881)
 -- Name: maintypeofwallmaterial; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -769,6 +840,7 @@ CREATE TABLE maintypeofwallmaterial (
 ALTER TABLE maintypeofwallmaterial OWNER TO hurumap_ke;
 
 --
+-- TOC entry 227 (class 1259 OID 17884)
 -- Name: maternalcareindicators; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -783,6 +855,7 @@ CREATE TABLE maternalcareindicators (
 ALTER TABLE maternalcareindicators OWNER TO hurumap_ke;
 
 --
+-- TOC entry 228 (class 1259 OID 17887)
 -- Name: protests; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -797,6 +870,7 @@ CREATE TABLE protests (
 ALTER TABLE protests OWNER TO hurumap_ke;
 
 --
+-- TOC entry 229 (class 1259 OID 17890)
 -- Name: schoolattendance_sex; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -812,6 +886,7 @@ CREATE TABLE schoolattendance_sex (
 ALTER TABLE schoolattendance_sex OWNER TO hurumap_ke;
 
 --
+-- TOC entry 230 (class 1259 OID 17894)
 -- Name: schoolfires; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -826,6 +901,7 @@ CREATE TABLE schoolfires (
 ALTER TABLE schoolfires OWNER TO hurumap_ke;
 
 --
+-- TOC entry 231 (class 1259 OID 17900)
 -- Name: treatment_type; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -841,6 +917,7 @@ CREATE TABLE treatment_type (
 ALTER TABLE treatment_type OWNER TO hurumap_ke;
 
 --
+-- TOC entry 232 (class 1259 OID 17903)
 -- Name: treatmentofchildrenwithfever; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -855,6 +932,7 @@ CREATE TABLE treatmentofchildrenwithfever (
 ALTER TABLE treatmentofchildrenwithfever OWNER TO hurumap_ke;
 
 --
+-- TOC entry 233 (class 1259 OID 17906)
 -- Name: typesofcrime; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -869,6 +947,7 @@ CREATE TABLE typesofcrime (
 ALTER TABLE typesofcrime OWNER TO hurumap_ke;
 
 --
+-- TOC entry 234 (class 1259 OID 17909)
 -- Name: useofipt; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -883,6 +962,7 @@ CREATE TABLE useofipt (
 ALTER TABLE useofipt OWNER TO hurumap_ke;
 
 --
+-- TOC entry 235 (class 1259 OID 17912)
 -- Name: vaccinations; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -897,6 +977,7 @@ CREATE TABLE vaccinations (
 ALTER TABLE vaccinations OWNER TO hurumap_ke;
 
 --
+-- TOC entry 236 (class 1259 OID 17915)
 -- Name: voterregistration; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -911,6 +992,7 @@ CREATE TABLE voterregistration (
 ALTER TABLE voterregistration OWNER TO hurumap_ke;
 
 --
+-- TOC entry 237 (class 1259 OID 17918)
 -- Name: weightforage; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -925,6 +1007,7 @@ CREATE TABLE weightforage (
 ALTER TABLE weightforage OWNER TO hurumap_ke;
 
 --
+-- TOC entry 238 (class 1259 OID 17921)
 -- Name: weightforheight; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
@@ -939,6 +1022,7 @@ CREATE TABLE weightforheight (
 ALTER TABLE weightforheight OWNER TO hurumap_ke;
 
 --
+-- TOC entry 3109 (class 2604 OID 17924)
 -- Name: auth_group id; Type: DEFAULT; Schema: public; Owner: hurumap_ke
 --
 
@@ -946,6 +1030,7 @@ ALTER TABLE ONLY auth_group ALTER COLUMN id SET DEFAULT nextval('auth_group_id_s
 
 
 --
+-- TOC entry 3110 (class 2604 OID 17925)
 -- Name: auth_group_permissions id; Type: DEFAULT; Schema: public; Owner: hurumap_ke
 --
 
@@ -953,6 +1038,7 @@ ALTER TABLE ONLY auth_group_permissions ALTER COLUMN id SET DEFAULT nextval('aut
 
 
 --
+-- TOC entry 3111 (class 2604 OID 17926)
 -- Name: auth_permission id; Type: DEFAULT; Schema: public; Owner: hurumap_ke
 --
 
@@ -960,6 +1046,7 @@ ALTER TABLE ONLY auth_permission ALTER COLUMN id SET DEFAULT nextval('auth_permi
 
 
 --
+-- TOC entry 3112 (class 2604 OID 17927)
 -- Name: auth_user id; Type: DEFAULT; Schema: public; Owner: hurumap_ke
 --
 
@@ -967,6 +1054,7 @@ ALTER TABLE ONLY auth_user ALTER COLUMN id SET DEFAULT nextval('auth_user_id_seq
 
 
 --
+-- TOC entry 3113 (class 2604 OID 17928)
 -- Name: auth_user_groups id; Type: DEFAULT; Schema: public; Owner: hurumap_ke
 --
 
@@ -974,6 +1062,7 @@ ALTER TABLE ONLY auth_user_groups ALTER COLUMN id SET DEFAULT nextval('auth_user
 
 
 --
+-- TOC entry 3114 (class 2604 OID 17929)
 -- Name: auth_user_user_permissions id; Type: DEFAULT; Schema: public; Owner: hurumap_ke
 --
 
@@ -981,6 +1070,7 @@ ALTER TABLE ONLY auth_user_user_permissions ALTER COLUMN id SET DEFAULT nextval(
 
 
 --
+-- TOC entry 3115 (class 2604 OID 17930)
 -- Name: django_admin_log id; Type: DEFAULT; Schema: public; Owner: hurumap_ke
 --
 
@@ -988,6 +1078,7 @@ ALTER TABLE ONLY django_admin_log ALTER COLUMN id SET DEFAULT nextval('django_ad
 
 
 --
+-- TOC entry 3117 (class 2604 OID 17931)
 -- Name: django_content_type id; Type: DEFAULT; Schema: public; Owner: hurumap_ke
 --
 
@@ -995,6 +1086,7 @@ ALTER TABLE ONLY django_content_type ALTER COLUMN id SET DEFAULT nextval('django
 
 
 --
+-- TOC entry 3118 (class 2604 OID 17932)
 -- Name: django_migrations id; Type: DEFAULT; Schema: public; Owner: hurumap_ke
 --
 
@@ -1002,6 +1094,7 @@ ALTER TABLE ONLY django_migrations ALTER COLUMN id SET DEFAULT nextval('django_m
 
 
 --
+-- TOC entry 3119 (class 2604 OID 17933)
 -- Name: hurumap_geography id; Type: DEFAULT; Schema: public; Owner: hurumap_ke
 --
 
@@ -1009,6 +1102,8 @@ ALTER TABLE ONLY hurumap_geography ALTER COLUMN id SET DEFAULT nextval('hurumap_
 
 
 --
+-- TOC entry 3370 (class 0 OID 17749)
+-- Dependencies: 181
 -- Data for Name: agegroup_gender; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -1017,6 +1112,8 @@ COPY agegroup_gender (geo_level, geo_code, gender, "age group", total) FROM stdi
 
 
 --
+-- TOC entry 3371 (class 0 OID 17752)
+-- Dependencies: 182
 -- Data for Name: ageincompletedyears_ruralorurban_sex; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -16441,6 +16538,8 @@ county	47	urban	male	unspecified	1810
 
 
 --
+-- TOC entry 3372 (class 0 OID 17755)
+-- Dependencies: 183
 -- Data for Name: auth_group; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -16449,6 +16548,8 @@ COPY auth_group (id, name) FROM stdin;
 
 
 --
+-- TOC entry 3446 (class 0 OID 0)
+-- Dependencies: 184
 -- Name: auth_group_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hurumap_ke
 --
 
@@ -16456,6 +16557,8 @@ SELECT pg_catalog.setval('auth_group_id_seq', 1, false);
 
 
 --
+-- TOC entry 3374 (class 0 OID 17760)
+-- Dependencies: 185
 -- Data for Name: auth_group_permissions; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -16464,6 +16567,8 @@ COPY auth_group_permissions (id, group_id, permission_id) FROM stdin;
 
 
 --
+-- TOC entry 3447 (class 0 OID 0)
+-- Dependencies: 186
 -- Name: auth_group_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hurumap_ke
 --
 
@@ -16471,6 +16576,8 @@ SELECT pg_catalog.setval('auth_group_permissions_id_seq', 1, false);
 
 
 --
+-- TOC entry 3376 (class 0 OID 17765)
+-- Dependencies: 187
 -- Data for Name: auth_permission; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -16479,6 +16586,8 @@ COPY auth_permission (id, name, content_type_id, codename) FROM stdin;
 
 
 --
+-- TOC entry 3448 (class 0 OID 0)
+-- Dependencies: 188
 -- Name: auth_permission_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hurumap_ke
 --
 
@@ -16486,6 +16595,8 @@ SELECT pg_catalog.setval('auth_permission_id_seq', 1, false);
 
 
 --
+-- TOC entry 3378 (class 0 OID 17770)
+-- Dependencies: 189
 -- Data for Name: auth_user; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -16494,6 +16605,8 @@ COPY auth_user (id, password, last_login, is_superuser, username, first_name, la
 
 
 --
+-- TOC entry 3379 (class 0 OID 17773)
+-- Dependencies: 190
 -- Data for Name: auth_user_groups; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -16502,6 +16615,8 @@ COPY auth_user_groups (id, user_id, group_id) FROM stdin;
 
 
 --
+-- TOC entry 3449 (class 0 OID 0)
+-- Dependencies: 191
 -- Name: auth_user_groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hurumap_ke
 --
 
@@ -16509,6 +16624,8 @@ SELECT pg_catalog.setval('auth_user_groups_id_seq', 1, false);
 
 
 --
+-- TOC entry 3450 (class 0 OID 0)
+-- Dependencies: 192
 -- Name: auth_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hurumap_ke
 --
 
@@ -16516,6 +16633,8 @@ SELECT pg_catalog.setval('auth_user_id_seq', 1, false);
 
 
 --
+-- TOC entry 3382 (class 0 OID 17780)
+-- Dependencies: 193
 -- Data for Name: auth_user_user_permissions; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -16524,6 +16643,8 @@ COPY auth_user_user_permissions (id, user_id, permission_id) FROM stdin;
 
 
 --
+-- TOC entry 3451 (class 0 OID 0)
+-- Dependencies: 194
 -- Name: auth_user_user_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hurumap_ke
 --
 
@@ -16531,6 +16652,8 @@ SELECT pg_catalog.setval('auth_user_user_permissions_id_seq', 1, false);
 
 
 --
+-- TOC entry 3384 (class 0 OID 17785)
+-- Dependencies: 195
 -- Data for Name: contraceptive_method; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -16635,6 +16758,8 @@ country	KE	traditional	4.79999999999999982
 
 
 --
+-- TOC entry 3385 (class 0 OID 17788)
+-- Dependencies: 196
 -- Data for Name: contraceptive_modern_method; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -17123,6 +17248,8 @@ country	KE	other	0
 
 
 --
+-- TOC entry 3386 (class 0 OID 17791)
+-- Dependencies: 197
 -- Data for Name: contraceptive_traditional_method; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -17611,6 +17738,8 @@ country	KE	other	0
 
 
 --
+-- TOC entry 3387 (class 0 OID 17794)
+-- Dependencies: 198
 -- Data for Name: contraceptive_use; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -17763,6 +17892,8 @@ country	KE	not using	42
 
 
 --
+-- TOC entry 3388 (class 0 OID 17797)
+-- Dependencies: 199
 -- Data for Name: crimereport; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -17867,6 +17998,8 @@ country	KE	crimesindex	188
 
 
 --
+-- TOC entry 3389 (class 0 OID 17800)
+-- Dependencies: 200
 -- Data for Name: crop_production; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -19744,6 +19877,8 @@ county	47	cocoyam yield	0
 
 
 --
+-- TOC entry 3390 (class 0 OID 17803)
+-- Dependencies: 201
 -- Data for Name: django_admin_log; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -19752,6 +19887,8 @@ COPY django_admin_log (id, action_time, object_id, object_repr, action_flag, cha
 
 
 --
+-- TOC entry 3452 (class 0 OID 0)
+-- Dependencies: 202
 -- Name: django_admin_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hurumap_ke
 --
 
@@ -19759,6 +19896,8 @@ SELECT pg_catalog.setval('django_admin_log_id_seq', 1, false);
 
 
 --
+-- TOC entry 3392 (class 0 OID 17812)
+-- Dependencies: 203
 -- Data for Name: django_content_type; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -19767,6 +19906,8 @@ COPY django_content_type (id, app_label, model) FROM stdin;
 
 
 --
+-- TOC entry 3453 (class 0 OID 0)
+-- Dependencies: 204
 -- Name: django_content_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hurumap_ke
 --
 
@@ -19774,25 +19915,29 @@ SELECT pg_catalog.setval('django_content_type_id_seq', 1, false);
 
 
 --
+-- TOC entry 3394 (class 0 OID 17817)
+-- Dependencies: 205
 -- Data for Name: django_migrations; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
 COPY django_migrations (id, app, name, applied) FROM stdin;
-1	contenttypes	0001_initial	2017-03-25 18:39:58.274822+03
-2	auth	0001_initial	2017-03-25 18:39:58.358585+03
-3	admin	0001_initial	2017-03-25 18:39:58.413926+03
-4	admin	0002_logentry_remove_auto_add	2017-03-25 18:39:58.437914+03
-5	contenttypes	0002_remove_content_type_name	2017-03-25 18:39:58.484345+03
-6	auth	0002_alter_permission_name_max_length	2017-03-25 18:39:58.498967+03
-7	auth	0003_alter_user_email_max_length	2017-03-25 18:39:58.512494+03
-8	auth	0004_alter_user_username_opts	2017-03-25 18:39:58.534689+03
-9	auth	0005_alter_user_last_login_null	2017-03-25 18:39:58.548062+03
-10	auth	0006_require_contenttypes_0002	2017-03-25 18:39:58.550646+03
-11	auth	0007_alter_validators_add_error_messages	2017-03-25 18:39:58.563799+03
+1	contenttypes	0001_initial	2017-03-25 15:39:58.274822+00
+2	auth	0001_initial	2017-03-25 15:39:58.358585+00
+3	admin	0001_initial	2017-03-25 15:39:58.413926+00
+4	admin	0002_logentry_remove_auto_add	2017-03-25 15:39:58.437914+00
+5	contenttypes	0002_remove_content_type_name	2017-03-25 15:39:58.484345+00
+6	auth	0002_alter_permission_name_max_length	2017-03-25 15:39:58.498967+00
+7	auth	0003_alter_user_email_max_length	2017-03-25 15:39:58.512494+00
+8	auth	0004_alter_user_username_opts	2017-03-25 15:39:58.534689+00
+9	auth	0005_alter_user_last_login_null	2017-03-25 15:39:58.548062+00
+10	auth	0006_require_contenttypes_0002	2017-03-25 15:39:58.550646+00
+11	auth	0007_alter_validators_add_error_messages	2017-03-25 15:39:58.563799+00
 \.
 
 
 --
+-- TOC entry 3454 (class 0 OID 0)
+-- Dependencies: 206
 -- Name: django_migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hurumap_ke
 --
 
@@ -19800,6 +19945,8 @@ SELECT pg_catalog.setval('django_migrations_id_seq', 11, true);
 
 
 --
+-- TOC entry 3396 (class 0 OID 17825)
+-- Dependencies: 207
 -- Data for Name: employmentactivitystatus_sex; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -20192,6 +20339,8 @@ country	KE	seeking work / no work available	male	1160959
 
 
 --
+-- TOC entry 3397 (class 0 OID 17828)
+-- Dependencies: 208
 -- Data for Name: fertility; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -20344,6 +20493,8 @@ county	34	mean	4.29999999999999982
 
 
 --
+-- TOC entry 3398 (class 0 OID 17831)
+-- Dependencies: 209
 -- Data for Name: gender_ruralorurban; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -20352,6 +20503,8 @@ COPY gender_ruralorurban (geo_level, geo_code, gender, "rural or urban", total) 
 
 
 --
+-- TOC entry 3399 (class 0 OID 17834)
+-- Dependencies: 210
 -- Data for Name: health_facilities_type; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -20835,6 +20988,8 @@ county	24	Sub District Hospital	2
 
 
 --
+-- TOC entry 3400 (class 0 OID 17837)
+-- Dependencies: 211
 -- Data for Name: healthratios; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -20939,6 +21094,8 @@ country	KE	nurse ratio	3049
 
 
 --
+-- TOC entry 3401 (class 0 OID 17840)
+-- Dependencies: 212
 -- Data for Name: heightforage; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -21091,6 +21248,8 @@ country	KE	mean Z-score	-1.10000000000000009
 
 
 --
+-- TOC entry 3402 (class 0 OID 17843)
+-- Dependencies: 213
 -- Data for Name: highesteducationlevelreached; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -21531,6 +21690,8 @@ country	KE	youth polytechnic	323408
 
 
 --
+-- TOC entry 3403 (class 0 OID 17846)
+-- Dependencies: 214
 -- Data for Name: household_itn_use_users; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -21923,6 +22084,8 @@ country	KE	with at least one ITN	pregnant women	used ITN last night	76.5
 
 
 --
+-- TOC entry 3404 (class 0 OID 17849)
+-- Dependencies: 215
 -- Data for Name: householdpossessionofitn; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -22075,6 +22238,8 @@ country	KE	Percentage households with ITN for every 2 people in household	34.299
 
 
 --
+-- TOC entry 3405 (class 0 OID 17852)
+-- Dependencies: 216
 -- Data for Name: hurumap_geography; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -22131,6 +22296,8 @@ COPY hurumap_geography (id, geo_level, geo_code, name, long_name, year, osm_area
 
 
 --
+-- TOC entry 3455 (class 0 OID 0)
+-- Dependencies: 217
 -- Name: hurumap_geography_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hurumap_ke
 --
 
@@ -22138,6 +22305,8 @@ SELECT pg_catalog.setval('hurumap_geography_id_seq', 48, true);
 
 
 --
+-- TOC entry 3407 (class 0 OID 17857)
+-- Dependencies: 218
 -- Data for Name: knowledgeofhivpreventionmethods_sex; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -22434,6 +22603,8 @@ country	KE	both	male	84.7999999999999972
 
 
 --
+-- TOC entry 3408 (class 0 OID 17860)
+-- Dependencies: 219
 -- Data for Name: livestock_population; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -23832,6 +24003,8 @@ county	36	pegions	0
 
 
 --
+-- TOC entry 3409 (class 0 OID 17863)
+-- Dependencies: 220
 -- Data for Name: livestock_products; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -24512,6 +24685,8 @@ country	KE	skin (no)	923.5
 
 
 --
+-- TOC entry 3410 (class 0 OID 17866)
+-- Dependencies: 221
 -- Data for Name: mainmodeofhumanwastedisposal; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -24808,6 +24983,8 @@ county	47	septic tank	95410
 
 
 --
+-- TOC entry 3411 (class 0 OID 17869)
+-- Dependencies: 222
 -- Data for Name: mainsourceofwater; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -25248,6 +25425,8 @@ country	KE	water vendor	573088
 
 
 --
+-- TOC entry 3412 (class 0 OID 17872)
+-- Dependencies: 223
 -- Data for Name: maintypeoffloormaterial; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -25496,6 +25675,8 @@ country	KE	wood	135692
 
 
 --
+-- TOC entry 3413 (class 0 OID 17875)
+-- Dependencies: 224
 -- Data for Name: maintypeoflightingfuel; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -25888,6 +26069,8 @@ country	KE	wood	142273
 
 
 --
+-- TOC entry 3414 (class 0 OID 17878)
+-- Dependencies: 225
 -- Data for Name: maintypeofroofingmaterial; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -26328,6 +26511,8 @@ county	24	tin	53
 
 
 --
+-- TOC entry 3415 (class 0 OID 17881)
+-- Dependencies: 226
 -- Data for Name: maintypeofwallmaterial; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -26768,6 +26953,8 @@ county	24	stone	360
 
 
 --
+-- TOC entry 3416 (class 0 OID 17884)
+-- Dependencies: 227
 -- Data for Name: maternalcareindicators; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -26968,6 +27155,8 @@ country	KE	percentage delivered in a health facility	61.2000000000000028
 
 
 --
+-- TOC entry 3417 (class 0 OID 17887)
+-- Dependencies: 228
 -- Data for Name: protests; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -27024,6 +27213,8 @@ country	KE	number of protests	140
 
 
 --
+-- TOC entry 3418 (class 0 OID 17890)
+-- Dependencies: 229
 -- Data for Name: schoolattendance_sex; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -27416,6 +27607,8 @@ county	47	unspecified	female	27302
 
 
 --
+-- TOC entry 3419 (class 0 OID 17894)
+-- Dependencies: 230
 -- Data for Name: schoolfires; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -27472,6 +27665,8 @@ country	KE	126	""
 
 
 --
+-- TOC entry 3420 (class 0 OID 17900)
+-- Dependencies: 231
 -- Data for Name: treatment_type; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -27816,6 +28011,8 @@ country	KE	diarrhoea	ORS and zinc	7.5
 
 
 --
+-- TOC entry 3421 (class 0 OID 17903)
+-- Dependencies: 232
 -- Data for Name: treatmentofchildrenwithfever; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -28112,6 +28309,8 @@ country	KE	took any ACT on same or next day	13.0999999999999996
 
 
 --
+-- TOC entry 3422 (class 0 OID 17906)
+-- Dependencies: 233
 -- Data for Name: typesofcrime; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -28888,6 +29087,8 @@ country	KE	other penal code offences	6010
 
 
 --
+-- TOC entry 3423 (class 0 OID 17909)
+-- Dependencies: 234
 -- Data for Name: useofipt; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -29040,6 +29241,8 @@ country	KE	3 or more	10.0999999999999996
 
 
 --
+-- TOC entry 3424 (class 0 OID 17912)
+-- Dependencies: 235
 -- Data for Name: vaccinations; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -29816,6 +30019,8 @@ country	KE	percentage with vaccination card	74.7000000000000028
 
 
 --
+-- TOC entry 3425 (class 0 OID 17915)
+-- Dependencies: 236
 -- Data for Name: voterregistration; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -30352,6 +30557,8 @@ country	KE	bvr kits	5756
 
 
 --
+-- TOC entry 3426 (class 0 OID 17918)
+-- Dependencies: 237
 -- Data for Name: weightforage; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -30552,6 +30759,8 @@ country	KE	mean Z-score	-0.599999999999999978
 
 
 --
+-- TOC entry 3427 (class 0 OID 17921)
+-- Dependencies: 238
 -- Data for Name: weightforheight; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
@@ -30752,6 +30961,7 @@ country	KE	mean Z-score	0
 
 
 --
+-- TOC entry 3121 (class 2606 OID 17935)
 -- Name: agegroup_gender agegroup_gender_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -30760,6 +30970,7 @@ ALTER TABLE ONLY agegroup_gender
 
 
 --
+-- TOC entry 3123 (class 2606 OID 17937)
 -- Name: ageincompletedyears_ruralorurban_sex ageincompletedyears_ruralorurban_sex_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -30768,6 +30979,7 @@ ALTER TABLE ONLY ageincompletedyears_ruralorurban_sex
 
 
 --
+-- TOC entry 3126 (class 2606 OID 17939)
 -- Name: auth_group auth_group_name_key; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -30776,6 +30988,7 @@ ALTER TABLE ONLY auth_group
 
 
 --
+-- TOC entry 3132 (class 2606 OID 17941)
 -- Name: auth_group_permissions auth_group_permissions_group_id_0cd325b0_uniq; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -30784,6 +30997,7 @@ ALTER TABLE ONLY auth_group_permissions
 
 
 --
+-- TOC entry 3134 (class 2606 OID 17943)
 -- Name: auth_group_permissions auth_group_permissions_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -30792,6 +31006,7 @@ ALTER TABLE ONLY auth_group_permissions
 
 
 --
+-- TOC entry 3128 (class 2606 OID 17945)
 -- Name: auth_group auth_group_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -30800,6 +31015,7 @@ ALTER TABLE ONLY auth_group
 
 
 --
+-- TOC entry 3137 (class 2606 OID 17947)
 -- Name: auth_permission auth_permission_content_type_id_01ab375a_uniq; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -30808,6 +31024,7 @@ ALTER TABLE ONLY auth_permission
 
 
 --
+-- TOC entry 3139 (class 2606 OID 17949)
 -- Name: auth_permission auth_permission_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -30816,6 +31033,7 @@ ALTER TABLE ONLY auth_permission
 
 
 --
+-- TOC entry 3148 (class 2606 OID 17951)
 -- Name: auth_user_groups auth_user_groups_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -30824,6 +31042,7 @@ ALTER TABLE ONLY auth_user_groups
 
 
 --
+-- TOC entry 3150 (class 2606 OID 17953)
 -- Name: auth_user_groups auth_user_groups_user_id_94350c0c_uniq; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -30832,6 +31051,7 @@ ALTER TABLE ONLY auth_user_groups
 
 
 --
+-- TOC entry 3141 (class 2606 OID 17955)
 -- Name: auth_user auth_user_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -30840,6 +31060,7 @@ ALTER TABLE ONLY auth_user
 
 
 --
+-- TOC entry 3154 (class 2606 OID 17957)
 -- Name: auth_user_user_permissions auth_user_user_permissions_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -30848,6 +31069,7 @@ ALTER TABLE ONLY auth_user_user_permissions
 
 
 --
+-- TOC entry 3156 (class 2606 OID 17959)
 -- Name: auth_user_user_permissions auth_user_user_permissions_user_id_14a6b632_uniq; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -30856,6 +31078,7 @@ ALTER TABLE ONLY auth_user_user_permissions
 
 
 --
+-- TOC entry 3144 (class 2606 OID 17961)
 -- Name: auth_user auth_user_username_key; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -30864,6 +31087,7 @@ ALTER TABLE ONLY auth_user
 
 
 --
+-- TOC entry 3158 (class 2606 OID 17963)
 -- Name: contraceptive_method contraceptive_method_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -30872,6 +31096,7 @@ ALTER TABLE ONLY contraceptive_method
 
 
 --
+-- TOC entry 3160 (class 2606 OID 17965)
 -- Name: contraceptive_modern_method contraceptive_modern_method_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -30880,6 +31105,7 @@ ALTER TABLE ONLY contraceptive_modern_method
 
 
 --
+-- TOC entry 3162 (class 2606 OID 17967)
 -- Name: contraceptive_traditional_method contraceptive_traditional_method_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -30888,6 +31114,7 @@ ALTER TABLE ONLY contraceptive_traditional_method
 
 
 --
+-- TOC entry 3164 (class 2606 OID 17969)
 -- Name: contraceptive_use contraceptive_use_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -30896,6 +31123,7 @@ ALTER TABLE ONLY contraceptive_use
 
 
 --
+-- TOC entry 3166 (class 2606 OID 17971)
 -- Name: crimereport crimereportpkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -30904,6 +31132,7 @@ ALTER TABLE ONLY crimereport
 
 
 --
+-- TOC entry 3168 (class 2606 OID 17973)
 -- Name: crop_production crop_production_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -30912,6 +31141,7 @@ ALTER TABLE ONLY crop_production
 
 
 --
+-- TOC entry 3172 (class 2606 OID 17975)
 -- Name: django_admin_log django_admin_log_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -30920,6 +31150,7 @@ ALTER TABLE ONLY django_admin_log
 
 
 --
+-- TOC entry 3174 (class 2606 OID 17977)
 -- Name: django_content_type django_content_type_app_label_76bd3d3b_uniq; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -30928,6 +31159,7 @@ ALTER TABLE ONLY django_content_type
 
 
 --
+-- TOC entry 3176 (class 2606 OID 17979)
 -- Name: django_content_type django_content_type_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -30936,6 +31168,7 @@ ALTER TABLE ONLY django_content_type
 
 
 --
+-- TOC entry 3178 (class 2606 OID 17981)
 -- Name: django_migrations django_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -30944,6 +31177,7 @@ ALTER TABLE ONLY django_migrations
 
 
 --
+-- TOC entry 3180 (class 2606 OID 17983)
 -- Name: employmentactivitystatus_sex employmentactivitystatus_sex_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -30952,6 +31186,7 @@ ALTER TABLE ONLY employmentactivitystatus_sex
 
 
 --
+-- TOC entry 3182 (class 2606 OID 17985)
 -- Name: fertility fertility_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -30960,6 +31195,7 @@ ALTER TABLE ONLY fertility
 
 
 --
+-- TOC entry 3184 (class 2606 OID 17987)
 -- Name: gender_ruralorurban gender_ruralorurban_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -30968,6 +31204,7 @@ ALTER TABLE ONLY gender_ruralorurban
 
 
 --
+-- TOC entry 3186 (class 2606 OID 17989)
 -- Name: health_facilities_type health_facilities_type_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -30976,6 +31213,7 @@ ALTER TABLE ONLY health_facilities_type
 
 
 --
+-- TOC entry 3188 (class 2606 OID 17991)
 -- Name: healthratios healthratiospkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -30984,6 +31222,7 @@ ALTER TABLE ONLY healthratios
 
 
 --
+-- TOC entry 3190 (class 2606 OID 17993)
 -- Name: heightforage heightforage_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -30992,6 +31231,7 @@ ALTER TABLE ONLY heightforage
 
 
 --
+-- TOC entry 3192 (class 2606 OID 17995)
 -- Name: highesteducationlevelreached highesteducationlevelreached_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -31000,6 +31240,7 @@ ALTER TABLE ONLY highesteducationlevelreached
 
 
 --
+-- TOC entry 3194 (class 2606 OID 17997)
 -- Name: household_itn_use_users household_itn_use_users_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -31008,6 +31249,7 @@ ALTER TABLE ONLY household_itn_use_users
 
 
 --
+-- TOC entry 3196 (class 2606 OID 17999)
 -- Name: householdpossessionofitn householdpossessionofitn_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -31016,6 +31258,7 @@ ALTER TABLE ONLY householdpossessionofitn
 
 
 --
+-- TOC entry 3201 (class 2606 OID 18001)
 -- Name: hurumap_geography hurumap_geography_geo_level_9a5128d2_uniq; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -31024,6 +31267,7 @@ ALTER TABLE ONLY hurumap_geography
 
 
 --
+-- TOC entry 3204 (class 2606 OID 18003)
 -- Name: hurumap_geography hurumap_geography_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -31032,6 +31276,7 @@ ALTER TABLE ONLY hurumap_geography
 
 
 --
+-- TOC entry 3206 (class 2606 OID 18005)
 -- Name: knowledgeofhivpreventionmethods_sex knowledgeofhivpreventionmethods_sex_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -31040,6 +31285,7 @@ ALTER TABLE ONLY knowledgeofhivpreventionmethods_sex
 
 
 --
+-- TOC entry 3208 (class 2606 OID 18007)
 -- Name: livestock_population livestock_population_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -31048,6 +31294,7 @@ ALTER TABLE ONLY livestock_population
 
 
 --
+-- TOC entry 3210 (class 2606 OID 18009)
 -- Name: livestock_products livestock_products_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -31056,6 +31303,7 @@ ALTER TABLE ONLY livestock_products
 
 
 --
+-- TOC entry 3212 (class 2606 OID 18011)
 -- Name: mainmodeofhumanwastedisposal mainmodeofhumanwastedisposal_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -31064,6 +31312,7 @@ ALTER TABLE ONLY mainmodeofhumanwastedisposal
 
 
 --
+-- TOC entry 3214 (class 2606 OID 18013)
 -- Name: mainsourceofwater mainsourceofwater_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -31072,6 +31321,7 @@ ALTER TABLE ONLY mainsourceofwater
 
 
 --
+-- TOC entry 3216 (class 2606 OID 18015)
 -- Name: maintypeoffloormaterial maintypeoffloormaterial_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -31080,6 +31330,7 @@ ALTER TABLE ONLY maintypeoffloormaterial
 
 
 --
+-- TOC entry 3218 (class 2606 OID 18017)
 -- Name: maintypeoflightingfuel maintypeoflightingfuel_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -31088,6 +31339,7 @@ ALTER TABLE ONLY maintypeoflightingfuel
 
 
 --
+-- TOC entry 3220 (class 2606 OID 18019)
 -- Name: maintypeofroofingmaterial maintypeofroofingmaterial_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -31096,6 +31348,7 @@ ALTER TABLE ONLY maintypeofroofingmaterial
 
 
 --
+-- TOC entry 3222 (class 2606 OID 18021)
 -- Name: maintypeofwallmaterial maintypeofwallmaterial_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -31104,6 +31357,7 @@ ALTER TABLE ONLY maintypeofwallmaterial
 
 
 --
+-- TOC entry 3224 (class 2606 OID 18023)
 -- Name: maternalcareindicators maternalcareindicators_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -31112,6 +31366,7 @@ ALTER TABLE ONLY maternalcareindicators
 
 
 --
+-- TOC entry 3226 (class 2606 OID 18025)
 -- Name: protests protests_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -31120,6 +31375,7 @@ ALTER TABLE ONLY protests
 
 
 --
+-- TOC entry 3228 (class 2606 OID 18027)
 -- Name: schoolattendance_sex schoolattendance_sex_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -31128,6 +31384,7 @@ ALTER TABLE ONLY schoolattendance_sex
 
 
 --
+-- TOC entry 3230 (class 2606 OID 18029)
 -- Name: schoolfires schoolfires_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -31136,6 +31393,7 @@ ALTER TABLE ONLY schoolfires
 
 
 --
+-- TOC entry 3232 (class 2606 OID 18031)
 -- Name: treatment_type treatment_type_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -31144,6 +31402,7 @@ ALTER TABLE ONLY treatment_type
 
 
 --
+-- TOC entry 3234 (class 2606 OID 18033)
 -- Name: treatmentofchildrenwithfever treatmentofchildrenwithfever_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -31152,6 +31411,7 @@ ALTER TABLE ONLY treatmentofchildrenwithfever
 
 
 --
+-- TOC entry 3236 (class 2606 OID 18035)
 -- Name: typesofcrime typesofcrimepkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -31160,6 +31420,7 @@ ALTER TABLE ONLY typesofcrime
 
 
 --
+-- TOC entry 3238 (class 2606 OID 18037)
 -- Name: useofipt useofipt_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -31168,6 +31429,7 @@ ALTER TABLE ONLY useofipt
 
 
 --
+-- TOC entry 3240 (class 2606 OID 18039)
 -- Name: vaccinations vaccinations_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -31176,6 +31438,7 @@ ALTER TABLE ONLY vaccinations
 
 
 --
+-- TOC entry 3242 (class 2606 OID 18041)
 -- Name: voterregistration voterregistration_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -31184,6 +31447,7 @@ ALTER TABLE ONLY voterregistration
 
 
 --
+-- TOC entry 3244 (class 2606 OID 18043)
 -- Name: weightforage weightforage_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -31192,6 +31456,7 @@ ALTER TABLE ONLY weightforage
 
 
 --
+-- TOC entry 3246 (class 2606 OID 18045)
 -- Name: weightforheight weightforheight_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -31200,6 +31465,7 @@ ALTER TABLE ONLY weightforheight
 
 
 --
+-- TOC entry 3124 (class 1259 OID 18046)
 -- Name: auth_group_name_a6ea08ec_like; Type: INDEX; Schema: public; Owner: hurumap_ke
 --
 
@@ -31207,6 +31473,7 @@ CREATE INDEX auth_group_name_a6ea08ec_like ON auth_group USING btree (name varch
 
 
 --
+-- TOC entry 3129 (class 1259 OID 18047)
 -- Name: auth_group_permissions_0e939a4f; Type: INDEX; Schema: public; Owner: hurumap_ke
 --
 
@@ -31214,6 +31481,7 @@ CREATE INDEX auth_group_permissions_0e939a4f ON auth_group_permissions USING btr
 
 
 --
+-- TOC entry 3130 (class 1259 OID 18048)
 -- Name: auth_group_permissions_8373b171; Type: INDEX; Schema: public; Owner: hurumap_ke
 --
 
@@ -31221,6 +31489,7 @@ CREATE INDEX auth_group_permissions_8373b171 ON auth_group_permissions USING btr
 
 
 --
+-- TOC entry 3135 (class 1259 OID 18049)
 -- Name: auth_permission_417f1b1c; Type: INDEX; Schema: public; Owner: hurumap_ke
 --
 
@@ -31228,6 +31497,7 @@ CREATE INDEX auth_permission_417f1b1c ON auth_permission USING btree (content_ty
 
 
 --
+-- TOC entry 3145 (class 1259 OID 18050)
 -- Name: auth_user_groups_0e939a4f; Type: INDEX; Schema: public; Owner: hurumap_ke
 --
 
@@ -31235,6 +31505,7 @@ CREATE INDEX auth_user_groups_0e939a4f ON auth_user_groups USING btree (group_id
 
 
 --
+-- TOC entry 3146 (class 1259 OID 18051)
 -- Name: auth_user_groups_e8701ad4; Type: INDEX; Schema: public; Owner: hurumap_ke
 --
 
@@ -31242,6 +31513,7 @@ CREATE INDEX auth_user_groups_e8701ad4 ON auth_user_groups USING btree (user_id)
 
 
 --
+-- TOC entry 3151 (class 1259 OID 18052)
 -- Name: auth_user_user_permissions_8373b171; Type: INDEX; Schema: public; Owner: hurumap_ke
 --
 
@@ -31249,6 +31521,7 @@ CREATE INDEX auth_user_user_permissions_8373b171 ON auth_user_user_permissions U
 
 
 --
+-- TOC entry 3152 (class 1259 OID 18053)
 -- Name: auth_user_user_permissions_e8701ad4; Type: INDEX; Schema: public; Owner: hurumap_ke
 --
 
@@ -31256,6 +31529,7 @@ CREATE INDEX auth_user_user_permissions_e8701ad4 ON auth_user_user_permissions U
 
 
 --
+-- TOC entry 3142 (class 1259 OID 18054)
 -- Name: auth_user_username_6821ab7c_like; Type: INDEX; Schema: public; Owner: hurumap_ke
 --
 
@@ -31263,6 +31537,7 @@ CREATE INDEX auth_user_username_6821ab7c_like ON auth_user USING btree (username
 
 
 --
+-- TOC entry 3169 (class 1259 OID 18055)
 -- Name: django_admin_log_417f1b1c; Type: INDEX; Schema: public; Owner: hurumap_ke
 --
 
@@ -31270,6 +31545,7 @@ CREATE INDEX django_admin_log_417f1b1c ON django_admin_log USING btree (content_
 
 
 --
+-- TOC entry 3170 (class 1259 OID 18056)
 -- Name: django_admin_log_e8701ad4; Type: INDEX; Schema: public; Owner: hurumap_ke
 --
 
@@ -31277,6 +31553,7 @@ CREATE INDEX django_admin_log_e8701ad4 ON django_admin_log USING btree (user_id)
 
 
 --
+-- TOC entry 3197 (class 1259 OID 18057)
 -- Name: hurumap_geography_84cdc76c; Type: INDEX; Schema: public; Owner: hurumap_ke
 --
 
@@ -31284,6 +31561,7 @@ CREATE INDEX hurumap_geography_84cdc76c ON hurumap_geography USING btree (year);
 
 
 --
+-- TOC entry 3198 (class 1259 OID 18058)
 -- Name: hurumap_geography_b068931c; Type: INDEX; Schema: public; Owner: hurumap_ke
 --
 
@@ -31291,6 +31569,7 @@ CREATE INDEX hurumap_geography_b068931c ON hurumap_geography USING btree (name);
 
 
 --
+-- TOC entry 3199 (class 1259 OID 18059)
 -- Name: hurumap_geography_d7d547e9; Type: INDEX; Schema: public; Owner: hurumap_ke
 --
 
@@ -31298,6 +31577,7 @@ CREATE INDEX hurumap_geography_d7d547e9 ON hurumap_geography USING btree (osm_ar
 
 
 --
+-- TOC entry 3202 (class 1259 OID 18060)
 -- Name: hurumap_geography_name_36b79089_like; Type: INDEX; Schema: public; Owner: hurumap_ke
 --
 
@@ -31305,6 +31585,7 @@ CREATE INDEX hurumap_geography_name_36b79089_like ON hurumap_geography USING btr
 
 
 --
+-- TOC entry 3247 (class 2606 OID 18061)
 -- Name: auth_group_permissions auth_group_permiss_permission_id_84c5c92e_fk_auth_permission_id; Type: FK CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -31313,6 +31594,7 @@ ALTER TABLE ONLY auth_group_permissions
 
 
 --
+-- TOC entry 3248 (class 2606 OID 18066)
 -- Name: auth_group_permissions auth_group_permissions_group_id_b120cbf9_fk_auth_group_id; Type: FK CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -31321,6 +31603,7 @@ ALTER TABLE ONLY auth_group_permissions
 
 
 --
+-- TOC entry 3249 (class 2606 OID 18071)
 -- Name: auth_permission auth_permiss_content_type_id_2f476e4b_fk_django_content_type_id; Type: FK CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -31329,6 +31612,7 @@ ALTER TABLE ONLY auth_permission
 
 
 --
+-- TOC entry 3250 (class 2606 OID 18076)
 -- Name: auth_user_groups auth_user_groups_group_id_97559544_fk_auth_group_id; Type: FK CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -31337,6 +31621,7 @@ ALTER TABLE ONLY auth_user_groups
 
 
 --
+-- TOC entry 3251 (class 2606 OID 18081)
 -- Name: auth_user_groups auth_user_groups_user_id_6a12ed8b_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -31345,6 +31630,7 @@ ALTER TABLE ONLY auth_user_groups
 
 
 --
+-- TOC entry 3252 (class 2606 OID 18086)
 -- Name: auth_user_user_permissions auth_user_user_per_permission_id_1fbb5f2c_fk_auth_permission_id; Type: FK CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -31353,6 +31639,7 @@ ALTER TABLE ONLY auth_user_user_permissions
 
 
 --
+-- TOC entry 3253 (class 2606 OID 18091)
 -- Name: auth_user_user_permissions auth_user_user_permissions_user_id_a95ead1b_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -31361,6 +31648,7 @@ ALTER TABLE ONLY auth_user_user_permissions
 
 
 --
+-- TOC entry 3254 (class 2606 OID 18096)
 -- Name: django_admin_log django_admin_content_type_id_c4bce8eb_fk_django_content_type_id; Type: FK CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
@@ -31369,12 +31657,27 @@ ALTER TABLE ONLY django_admin_log
 
 
 --
+-- TOC entry 3255 (class 2606 OID 18101)
 -- Name: django_admin_log django_admin_log_user_id_c564eba6_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
 ALTER TABLE ONLY django_admin_log
     ADD CONSTRAINT django_admin_log_user_id_c564eba6_fk_auth_user_id FOREIGN KEY (user_id) REFERENCES auth_user(id) DEFERRABLE INITIALLY DEFERRED;
 
+
+--
+-- TOC entry 3434 (class 0 OID 0)
+-- Dependencies: 7
+-- Name: public; Type: ACL; Schema: -; Owner: wazimap
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM wazimap;
+GRANT ALL ON SCHEMA public TO wazimap;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+-- Completed on 2017-07-31 11:07:24 EAT
 
 --
 -- PostgreSQL database dump complete

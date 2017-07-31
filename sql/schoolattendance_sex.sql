@@ -2,17 +2,20 @@
 -- PostgreSQL database dump
 --
 
+-- Dumped from database version 9.5.2
+-- Dumped by pg_dump version 9.6.2
+
+-- Started on 2017-07-31 11:02:21 EAT
+
 SET statement_timeout = 0;
 SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
+SET row_security = off;
 
-SET search_path = public, pg_catalog;
-
-ALTER TABLE IF EXISTS ONLY public.schoolattendance_sex DROP CONSTRAINT IF EXISTS schoolattendance_sex_pkey;
-DROP TABLE IF EXISTS public.schoolattendance_sex;
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -20,7 +23,8 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: schoolattendance_sex; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- TOC entry 229 (class 1259 OID 17890)
+-- Name: schoolattendance_sex; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
 CREATE TABLE schoolattendance_sex (
@@ -32,8 +36,12 @@ CREATE TABLE schoolattendance_sex (
 );
 
 
+ALTER TABLE schoolattendance_sex OWNER TO hurumap_ke;
+
 --
--- Data for Name: schoolattendance_sex; Type: TABLE DATA; Schema: public; Owner: -
+-- TOC entry 3177 (class 0 OID 17890)
+-- Dependencies: 229
+-- Data for Name: schoolattendance_sex; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
 COPY schoolattendance_sex (geo_level, geo_code, "school attendance", sex, total) FROM stdin;
@@ -425,12 +433,15 @@ county	47	unspecified	female	27302
 
 
 --
--- Name: schoolattendance_sex_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- TOC entry 3062 (class 2606 OID 18027)
+-- Name: schoolattendance_sex schoolattendance_sex_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
 ALTER TABLE ONLY schoolattendance_sex
     ADD CONSTRAINT schoolattendance_sex_pkey PRIMARY KEY (geo_level, geo_code, "school attendance", sex);
 
+
+-- Completed on 2017-07-31 11:02:38 EAT
 
 --
 -- PostgreSQL database dump complete
