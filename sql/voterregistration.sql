@@ -2,17 +2,20 @@
 -- PostgreSQL database dump
 --
 
+-- Dumped from database version 9.5.2
+-- Dumped by pg_dump version 9.6.2
+
+-- Started on 2017-07-31 11:04:18 EAT
+
 SET statement_timeout = 0;
 SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
+SET row_security = off;
 
-SET search_path = public, pg_catalog;
-
-ALTER TABLE IF EXISTS ONLY public.voterregistration DROP CONSTRAINT IF EXISTS voterregistration_pkey;
-DROP TABLE IF EXISTS public.voterregistration;
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -20,22 +23,27 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: voterregistration; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- TOC entry 236 (class 1259 OID 17915)
+-- Name: voterregistration; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
 CREATE TABLE voterregistration (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
-    "voterregistration" character varying(128) NOT NULL,
-    total float NOT NULL
+    voterregistration character varying(128) NOT NULL,
+    total double precision NOT NULL
 );
 
 
+ALTER TABLE voterregistration OWNER TO hurumap_ke;
+
 --
--- Data for Name: voterregistration; Type: TABLE DATA; Schema: public; Owner: -
+-- TOC entry 3177 (class 0 OID 17915)
+-- Dependencies: 236
+-- Data for Name: voterregistration; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
-COPY voterregistration (geo_level, geo_code, "voterregistration", total) FROM stdin;
+COPY voterregistration (geo_level, geo_code, voterregistration, total) FROM stdin;
 county	1	IDs issued	799735
 county	1	dead with IDs	84532
 county	1	potential voting population with IDs	715203
@@ -565,13 +573,18 @@ country	KE	wards	1450
 country	KE	registration centers	24559
 country	KE	bvr kits	5756
 \.
+
+
 --
--- Name: voterregistration_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- TOC entry 3062 (class 2606 OID 18041)
+-- Name: voterregistration voterregistration_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
 ALTER TABLE ONLY voterregistration
-    ADD CONSTRAINT voterregistration_pkey PRIMARY KEY (geo_level, geo_code, "voterregistration");
+    ADD CONSTRAINT voterregistration_pkey PRIMARY KEY (geo_level, geo_code, voterregistration);
 
+
+-- Completed on 2017-07-31 11:04:36 EAT
 
 --
 -- PostgreSQL database dump complete

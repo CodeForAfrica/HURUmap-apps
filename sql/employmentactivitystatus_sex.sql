@@ -2,17 +2,20 @@
 -- PostgreSQL database dump
 --
 
+-- Dumped from database version 9.5.2
+-- Dumped by pg_dump version 9.6.2
+
+-- Started on 2017-07-31 10:56:13 EAT
+
 SET statement_timeout = 0;
 SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
+SET row_security = off;
 
-SET search_path = public, pg_catalog;
-
-ALTER TABLE IF EXISTS ONLY public.employmentactivitystatus_sex DROP CONSTRAINT IF EXISTS employmentactivitystatus_sex_pkey;
-DROP TABLE IF EXISTS public.employmentactivitystatus_sex;
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -20,7 +23,8 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: employmentactivitystatus_sex; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- TOC entry 207 (class 1259 OID 17825)
+-- Name: employmentactivitystatus_sex; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
 CREATE TABLE employmentactivitystatus_sex (
@@ -32,8 +36,12 @@ CREATE TABLE employmentactivitystatus_sex (
 );
 
 
+ALTER TABLE employmentactivitystatus_sex OWNER TO hurumap_ke;
+
 --
--- Data for Name: employmentactivitystatus_sex; Type: TABLE DATA; Schema: public; Owner: -
+-- TOC entry 3177 (class 0 OID 17825)
+-- Dependencies: 207
+-- Data for Name: employmentactivitystatus_sex; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
 COPY employmentactivitystatus_sex (geo_level, geo_code, "employment activity status", sex, total) FROM stdin;
@@ -425,12 +433,15 @@ country	KE	seeking work / no work available	male	1160959
 
 
 --
--- Name: employmentactivitystatus_sex_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- TOC entry 3062 (class 2606 OID 17983)
+-- Name: employmentactivitystatus_sex employmentactivitystatus_sex_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
 ALTER TABLE ONLY employmentactivitystatus_sex
     ADD CONSTRAINT employmentactivitystatus_sex_pkey PRIMARY KEY (geo_level, geo_code, "employment activity status", sex);
 
+
+-- Completed on 2017-07-31 10:56:31 EAT
 
 --
 -- PostgreSQL database dump complete
