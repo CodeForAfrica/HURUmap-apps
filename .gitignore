@@ -12,3 +12,5 @@ debug
 loaddumps
 sqldumps.py
 .hurumapKEenv
+output.txt
+sql/voterregistration_2017.sql
