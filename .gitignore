@@ -1,12 +1,14 @@
 *.pyc
 *.csv
-.
 *.xlsx
 node_modules/
 .idea/
 debug
 .vagrant
 /static/
+.vscode/
+.vscode/*
 .*env
 loaddumps
-.vscode
+sqldumps.py
+.hurumapKEenv

@@ -53,13 +53,13 @@ HURUMAP['topics']['census'] = {
         'desc': 'Census data collected in 2009 provided by the Kenya National Bureau of Statistics',
         'profiles': [
             'Demographics',
-            'Voter registration',
-            'Voter registration 2013',
             'Households',
             'Protests',
             'School fires',
             'Crime report',
             'Employment',
+            'Voter registration 2013',
+            'Voter registration 2017',
         ]
     }
 

@@ -124,32 +124,60 @@
     </div>
 </article>
 
-<article id="voter_registration" class="clearfix {% if 'voter_registration' not in selected_sections %}hide{% endif %}">
+<article id="voter_registration_2013" class="clearfix {% if 'voter_registration_2013' not in selected_sections %}hide{% endif %}">
      <header class="section-contents">
-        <h1>Voter Registration</h1>
+        <h1>Voter Registration 2013</h1>
     </header>
     <div class="section-container">
         <section class="clearfix stat-row">
              <div class="column-third">
-                 {% include 'profile/_blocks/_stat_list.html' with stat=voter_registration.ids_issued stat_type='number' %}
+                 {% include 'profile/_blocks/_stat_list.html' with stat=voter_registration_2013.ids_issued stat_type='number' %}
                  <small>Source: <a href="https://www.iebc.or.ke/iebcreports/">IEBC</a></small>
              </div>
             <div class="column-third">
-                {% include 'profile/_blocks/_stat_list.html' with stat=voter_registration.dead_with_ids stat_type='number' %}
+                {% include 'profile/_blocks/_stat_list.html' with stat=voter_registration_2013.dead_with_ids stat_type='number' %}
             </div>
             <div class="column-third">
-                {% include 'profile/_blocks/_stat_list.html' with stat=voter_registration.reg_centers stat_type='number' %}
+                {% include 'profile/_blocks/_stat_list.html' with stat=voter_registration_2013.reg_centers stat_type='number' %}
             </div>
         </section>
         <section  class="clearfix stat-row">
             <div class="column-third">
-                {% include 'profile/_blocks/_stat_list.html' with stat=voter_registration.total stat_type='number' %}
+                {% include 'profile/_blocks/_stat_list.html' with stat=voter_registration_2013.total stat_type='number' %}
             </div>
-             <div class="column-third" id="chart-pie-voter_registration-registration" data-stat-type="percentage" data-chart-title="Registered voters as at March 2013 and as at October 2015" ></div>
+            <div class="column-third" id="chart-pie-voter_registration-registration" data-stat-type="percentage" data-chart-title="Registered voters as at March 2013 and as at October 2015" ></div>
             <div class="column-third" id="chart-pie-voter_registration-registration_ratio" data-stat-type="percentage" data-chart-title="Potential voters with IDs not registered as at December 2015" ></div>
         </section>
     </div>
 </article>
+
+<article id="voter_registration_2017" class="clearfix {% if 'voter_registration_2017' not in selected_sections %}hide{% endif %}">
+     <header class="section-contents">
+        <h1>Voter Registration 2017</h1>
+    </header>
+    <div class="section-container">
+        <section class="clearfix stat-row">
+             <div class="column-third">
+                 {% include 'profile/_blocks/_stat_list.html' with stat=voter_registration_2017.ids_issued stat_type='number' %}
+                 <small>Source: <a href="https://www.iebc.or.ke/iebcreports/">IEBC</a></small>
+             </div>
+            <div class="column-third">
+                {% include 'profile/_blocks/_stat_list.html' with stat=voter_registration_2017.dead_with_ids stat_type='number' %}
+            </div>
+            <div class="column-third">
+                {% include 'profile/_blocks/_stat_list.html' with stat=voter_registration_2017.reg_centers stat_type='number' %}
+            </div>
+        </section>
+        <section  class="clearfix stat-row">
+            <div class="column-third">
+                {% include 'profile/_blocks/_stat_list.html' with stat=voter_registration_2017.total stat_type='number' %}
+            </div>
+            <div class="column-third" id="chart-pie-voter_registration-registration" data-stat-type="percentage" data-chart-title="Registered voters as at March 2013 and as at October 2015" ></div>
+            <div class="column-third" id="chart-pie-voter_registration-registration_ratio" data-stat-type="percentage" data-chart-title="Potential voters with IDs not registered as at December 2015" ></div>
+        </section>
+    </div>
+</article>
+
 
 <article id="contraceptive_use" class="clearfix {% if 'contraceptive_use' not in selected_sections %}hide{% endif %}">
     <header class="section-contents">
