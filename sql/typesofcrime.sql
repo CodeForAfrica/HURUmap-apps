@@ -2,17 +2,20 @@
 -- PostgreSQL database dump
 --
 
+-- Dumped from database version 9.5.2
+-- Dumped by pg_dump version 9.6.2
+
+-- Started on 2017-07-31 11:03:27 EAT
+
 SET statement_timeout = 0;
 SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
+SET row_security = off;
 
-SET search_path = public, pg_catalog;
-
-ALTER TABLE IF EXISTS ONLY public.typesofcrime DROP CONSTRAINT IF EXISTS typesofcrimepkey;
-DROP TABLE IF EXISTS public.typesofcrime;
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -20,7 +23,8 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: typesofcrime; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- TOC entry 233 (class 1259 OID 17906)
+-- Name: typesofcrime; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
 CREATE TABLE typesofcrime (
@@ -31,9 +35,14 @@ CREATE TABLE typesofcrime (
 );
 
 
+ALTER TABLE typesofcrime OWNER TO hurumap_ke;
+
 --
--- Data for Name: typesofcrime; Type: TABLE DATA; Schema: public; Owner: -
+-- TOC entry 3177 (class 0 OID 17906)
+-- Dependencies: 233
+-- Data for Name: typesofcrime; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
+
 COPY typesofcrime (geo_level, geo_code, typesofcrime, total) FROM stdin;
 county	22	homicide	135
 county	22	offences against morality	238
@@ -804,13 +813,18 @@ country	KE	offences involving officers	60
 country	KE	offences involving tourist	21
 country	KE	other penal code offences	6010
 \.
+
+
 --
--- Name: typesofcrimepkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- TOC entry 3062 (class 2606 OID 18035)
+-- Name: typesofcrime typesofcrimepkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
 ALTER TABLE ONLY typesofcrime
     ADD CONSTRAINT typesofcrimepkey PRIMARY KEY (geo_level, geo_code, typesofcrime);
 
+
+-- Completed on 2017-07-31 11:03:45 EAT
 
 --
 -- PostgreSQL database dump complete

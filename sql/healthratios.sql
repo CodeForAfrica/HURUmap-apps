@@ -2,17 +2,20 @@
 -- PostgreSQL database dump
 --
 
+-- Dumped from database version 9.5.2
+-- Dumped by pg_dump version 9.6.2
+
+-- Started on 2017-07-31 10:57:22 EAT
+
 SET statement_timeout = 0;
 SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
+SET row_security = off;
 
-SET search_path = public, pg_catalog;
-
-ALTER TABLE IF EXISTS ONLY public.healthratios DROP CONSTRAINT IF EXISTS healthratiospkey;
-DROP TABLE IF EXISTS public.healthratios;
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -20,7 +23,8 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: healthratios; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- TOC entry 211 (class 1259 OID 17837)
+-- Name: healthratios; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
 CREATE TABLE healthratios (
@@ -31,9 +35,14 @@ CREATE TABLE healthratios (
 );
 
 
+ALTER TABLE healthratios OWNER TO hurumap_ke;
+
 --
--- Data for Name: healthratios; Type: TABLE DATA; Schema: public; Owner: -
+-- TOC entry 3177 (class 0 OID 17837)
+-- Dependencies: 211
+-- Data for Name: healthratios; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
+
 COPY healthratios (geo_level, geo_code, healthratios, total) FROM stdin;
 county	27	doctor ratio	4000
 county	19	doctor ratio	5000
@@ -132,13 +141,18 @@ county	23	nurse ratio	14748
 county	5	nurse ratio	0
 country	KE	nurse ratio	3049
 \.
+
+
 --
--- Name: healthratiospkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- TOC entry 3062 (class 2606 OID 17991)
+-- Name: healthratios healthratiospkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
 ALTER TABLE ONLY healthratios
     ADD CONSTRAINT healthratiospkey PRIMARY KEY (geo_level, geo_code, healthratios);
 
+
+-- Completed on 2017-07-31 10:57:38 EAT
 
 --
 -- PostgreSQL database dump complete

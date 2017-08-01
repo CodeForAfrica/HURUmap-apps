@@ -2,17 +2,20 @@
 -- PostgreSQL database dump
 --
 
+-- Dumped from database version 9.5.2
+-- Dumped by pg_dump version 9.6.2
+
+-- Started on 2017-07-31 11:00:33 EAT
+
 SET statement_timeout = 0;
 SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
+SET row_security = off;
 
-SET search_path = public, pg_catalog;
-
-ALTER TABLE IF EXISTS ONLY public.maintypeoffloormaterial DROP CONSTRAINT IF EXISTS maintypeoffloormaterial_pkey;
-DROP TABLE IF EXISTS public.maintypeoffloormaterial;
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -20,7 +23,8 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: maintypeoffloormaterial; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- TOC entry 223 (class 1259 OID 17872)
+-- Name: maintypeoffloormaterial; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
 CREATE TABLE maintypeoffloormaterial (
@@ -31,8 +35,12 @@ CREATE TABLE maintypeoffloormaterial (
 );
 
 
+ALTER TABLE maintypeoffloormaterial OWNER TO hurumap_ke;
+
 --
--- Data for Name: maintypeoffloormaterial; Type: TABLE DATA; Schema: public; Owner: -
+-- TOC entry 3177 (class 0 OID 17872)
+-- Dependencies: 223
+-- Data for Name: maintypeoffloormaterial; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
 COPY maintypeoffloormaterial (geo_level, geo_code, "main type of floor material", total) FROM stdin;
@@ -280,12 +288,15 @@ country	KE	wood	135692
 
 
 --
--- Name: maintypeoffloormaterial_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- TOC entry 3062 (class 2606 OID 18015)
+-- Name: maintypeoffloormaterial maintypeoffloormaterial_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
 ALTER TABLE ONLY maintypeoffloormaterial
     ADD CONSTRAINT maintypeoffloormaterial_pkey PRIMARY KEY (geo_level, geo_code, "main type of floor material");
 
+
+-- Completed on 2017-07-31 11:00:50 EAT
 
 --
 -- PostgreSQL database dump complete
