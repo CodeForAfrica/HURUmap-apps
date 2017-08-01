@@ -2,17 +2,20 @@
 -- PostgreSQL database dump
 --
 
+-- Dumped from database version 9.5.2
+-- Dumped by pg_dump version 9.6.2
+
+-- Started on 2017-07-31 10:59:25 EAT
+
 SET statement_timeout = 0;
 SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
+SET row_security = off;
 
-SET search_path = public, pg_catalog;
-
-ALTER TABLE IF EXISTS ONLY public.livestock_population DROP CONSTRAINT IF EXISTS livestock_population_pkey;
-DROP TABLE IF EXISTS public.livestock_population;
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -20,22 +23,27 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: livestock_population; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- TOC entry 219 (class 1259 OID 17860)
+-- Name: livestock_population; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
 CREATE TABLE livestock_population (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
-    "livestock_population" character varying(128) NOT NULL,
-    total float NOT NULL
+    livestock_population character varying(128) NOT NULL,
+    total double precision NOT NULL
 );
 
 
+ALTER TABLE livestock_population OWNER TO hurumap_ke;
+
 --
--- Data for Name: livestock_population; Type: TABLE DATA; Schema: public; Owner: -
+-- TOC entry 3177 (class 0 OID 17860)
+-- Dependencies: 219
+-- Data for Name: livestock_population; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
-COPY livestock_population (geo_level, geo_code, "livestock_population", total) FROM stdin;
+COPY livestock_population (geo_level, geo_code, livestock_population, total) FROM stdin;
 county	26	cattle dairy	17050
 county	26	cattle meat	1690
 county	26	sheep wool	200
@@ -46,7 +54,7 @@ county	26	pigs	580
 county	26	rabbits	1160
 county	26	broilers	1830
 county	26	layers	11160
-county	26	indigenous	66420
+county	26	kienyeji	66420
 county	26	others	2140
 county	26	turkey	0
 county	26	ducks	0
@@ -63,7 +71,7 @@ county	24	pigs	320
 county	24	rabbits	380
 county	24	broilers	50
 county	24	layers	210
-county	24	indigenous	47500
+county	24	kienyeji	47500
 county	24	others	5290
 county	24	turkey	0
 county	24	ducks	0
@@ -80,7 +88,7 @@ county	31	pigs	50
 county	31	rabbits	20748
 county	31	broilers	1600
 county	31	layers	34220
-county	31	indigenous	34500
+county	31	kienyeji	34500
 county	31	others	9889
 county	31	turkey	0
 county	31	ducks	0
@@ -97,12 +105,13 @@ county	34	pigs	21997
 county	34	rabbits	22014
 county	34	broilers	340408
 county	34	layers	169533
-county	34	indigenous	211357
+county	34	kienyeji	211357
 county	34	others	1735
 county	34	turkey	65
 county	34	ducks	25
 county	34	quails	1645
 county	34	guinea fowl	0
+county	34	geese	0
 county	15	cattle dairy	6666
 county	15	cattle meat	388264
 county	15	sheep wool	0
@@ -113,12 +122,13 @@ county	15	pigs	1015
 county	15	rabbits	3499
 county	15	broilers	24410
 county	15	layers	18892
-county	15	indigenous	1425410
+county	15	kienyeji	1425410
 county	15	others	10654
 county	15	turkey	0
 county	15	ducks	0
 county	15	quails	0
 county	15	guinea fowl	0
+county	15	geese	0
 county	16	cattle dairy	39950
 county	16	cattle meat	205490
 county	16	sheep wool	0
@@ -129,7 +139,7 @@ county	16	pigs	550
 county	16	rabbits	16250
 county	16	broilers	17480
 county	16	layers	18410
-county	16	indigenous	130600
+county	16	kienyeji	130600
 county	16	others	23720
 county	16	turkey	0
 county	16	ducks	0
@@ -146,7 +156,7 @@ county	17	pigs	2040
 county	17	rabbits	13725
 county	17	broilers	1330
 county	17	layers	23628
-county	17	indigenous	965475
+county	17	kienyeji	965475
 county	17	others	3244
 county	17	turkey	0
 county	17	ducks	0
@@ -163,7 +173,7 @@ county	7	pigs	0
 county	7	rabbits	0
 county	7	broilers	0
 county	7	layers	0
-county	7	indigenous	195021
+county	7	kienyeji	195021
 county	7	others	0
 county	7	turkey	0
 county	7	ducks	0
@@ -180,12 +190,13 @@ county	5	pigs	0
 county	5	rabbits	1764
 county	5	broilers	6065
 county	5	layers	4295
-county	5	indigenous	177401
+county	5	kienyeji	177401
 county	5	others	9434
 county	5	turkey	0
 county	5	ducks	0
 county	5	quails	480
 county	5	guinea fowl	860
+county	5	geese	0
 county	4	cattle dairy	76
 county	4	cattle meat	607190
 county	4	sheep wool	0
@@ -196,7 +207,7 @@ county	4	pigs	11
 county	4	rabbits	332
 county	4	broilers	100
 county	4	layers	2402
-county	4	indigenous	131912
+county	4	kienyeji	131912
 county	4	others	8270
 county	4	turkey	0
 county	4	ducks	0
@@ -213,12 +224,13 @@ county	8	pigs	0
 county	8	rabbits	0
 county	8	broilers	76
 county	8	layers	534
-county	8	indigenous	188732
+county	8	kienyeji	188732
 county	8	others	20
 county	8	turkey	0
 county	8	ducks	0
 county	8	quails	0
 county	8	guinea fowl	0
+county	8	geese	0
 county	1	cattle dairy	1866
 county	1	cattle meat	3968
 county	1	sheep wool	3
@@ -229,12 +241,13 @@ county	1	pigs	692
 county	1	rabbits	1408
 county	1	broilers	8060
 county	1	layers	1290
-county	1	indigenous	36205
+county	1	kienyeji	36205
 county	1	others	0
 county	1	turkey	0
 county	1	ducks	0
 county	1	quails	5695
 county	1	guinea fowl	0
+county	1	geese	0
 county	6	cattle dairy	27472
 county	6	cattle meat	149179
 county	6	sheep wool	0
@@ -245,12 +258,13 @@ county	6	pigs	1407
 county	6	rabbits	9965
 county	6	broilers	17078
 county	6	layers	21113
-county	6	indigenous	608609
+county	6	kienyeji	608609
 county	6	others	7385
 county	6	turkey	0
 county	6	ducks	0
 county	6	quails	0
 county	6	guinea fowl	0
+county	6	geese	0
 county	2	cattle dairy	3488
 county	2	cattle meat	299026
 county	2	sheep wool	0
@@ -261,7 +275,7 @@ county	2	pigs	468
 county	2	rabbits	1453
 county	2	broilers	7480
 county	2	layers	12250
-county	2	indigenous	477918
+county	2	kienyeji	477918
 county	2	others	6850
 county	2	turkey	0
 county	2	ducks	0
@@ -278,7 +292,7 @@ county	3	pigs	2648
 county	3	rabbits	8978
 county	3	broilers	129988
 county	3	layers	105941
-county	3	indigenous	99860
+county	3	kienyeji	99860
 county	3	others	0
 county	3	turkey	3944
 county	3	ducks	89698
@@ -295,7 +309,7 @@ county	14	pigs	15780
 county	14	rabbits	59636
 county	14	broilers	43690
 county	14	layers	73768
-county	14	indigenous	510188
+county	14	kienyeji	510188
 county	14	others	3547
 county	14	turkey	1595
 county	14	ducks	2328
@@ -312,7 +326,7 @@ county	20	pigs	11316
 county	20	rabbits	51126
 county	20	broilers	27115
 county	20	layers	46407
-county	20	indigenous	597366
+county	20	kienyeji	597366
 county	20	others	0
 county	20	turkey	15142
 county	20	ducks	530
@@ -329,7 +343,7 @@ county	19	pigs	1019
 county	19	rabbits	45205
 county	19	broilers	62687
 county	19	layers	43727
-county	19	indigenous	298666
+county	19	kienyeji	298666
 county	19	others	0
 county	19	turkey	1809
 county	19	ducks	2085
@@ -346,7 +360,7 @@ county	21	pigs	35510
 county	21	rabbits	85210
 county	21	broilers	104573
 county	21	layers	257646
-county	21	indigenous	554883
+county	21	kienyeji	554883
 county	21	others	0
 county	21	turkey	2218
 county	21	ducks	3851
@@ -363,7 +377,7 @@ county	27	pigs	12692
 county	27	rabbits	6227
 county	27	broilers	76913
 county	27	layers	143848
-county	27	indigenous	707726
+county	27	kienyeji	707726
 county	27	others	0
 county	27	turkey	0
 county	27	ducks	4394
@@ -380,7 +394,7 @@ county	13	pigs	12354
 county	13	rabbits	36520
 county	13	broilers	24477
 county	13	layers	30687
-county	13	indigenous	611271
+county	13	kienyeji	611271
 county	13	others	6994
 county	13	turkey	0
 county	13	ducks	0
@@ -397,7 +411,7 @@ county	12	pigs	2800
 county	12	rabbits	5460
 county	12	broilers	0
 county	12	layers	92969
-county	12	indigenous	612271
+county	12	kienyeji	612271
 county	12	others	610
 county	12	turkey	0
 county	12	ducks	0
@@ -414,7 +428,7 @@ county	11	pigs	0
 county	11	rabbits	0
 county	11	broilers	200
 county	11	layers	400
-county	11	indigenous	32978
+county	11	kienyeji	32978
 county	11	others	665
 county	11	turkey	0
 county	11	ducks	0
@@ -431,7 +445,7 @@ county	10	pigs	0
 county	10	rabbits	71
 county	10	broilers	0
 county	10	layers	4714
-county	10	indigenous	41137
+county	10	kienyeji	41137
 county	10	others	3
 county	10	turkey	0
 county	10	ducks	0
@@ -448,7 +462,7 @@ county	33	pigs	385
 county	33	rabbits	3013
 county	33	broilers	140
 county	33	layers	9236
-county	33	indigenous	816018
+county	33	kienyeji	816018
 county	33	others	6137
 county	33	turkey	0
 county	33	ducks	0
@@ -465,7 +479,7 @@ county	36	pigs	35
 county	36	rabbits	10330
 county	36	broilers	22415
 county	36	layers	33650
-county	36	indigenous	378055
+county	36	kienyeji	378055
 county	36	others	40645
 county	36	turkey	0
 county	36	ducks	0
@@ -482,7 +496,7 @@ county	46	pigs	321
 county	46	rabbits	3415
 county	46	broilers	0
 county	46	layers	248997
-county	46	indigenous	329380
+county	46	kienyeji	329380
 county	46	others	2136
 county	46	turkey	0
 county	46	ducks	0
@@ -499,7 +513,7 @@ county	45	pigs	914
 county	45	rabbits	16323
 county	45	broilers	8785
 county	45	layers	111921
-county	45	indigenous	1310874
+county	45	kienyeji	1310874
 county	45	others	8421
 county	45	turkey	0
 county	45	ducks	0
@@ -516,7 +530,7 @@ county	42	pigs	5348
 county	42	rabbits	12015
 county	42	broilers	124916
 county	42	layers	73712
-county	42	indigenous	849535
+county	42	kienyeji	849535
 county	42	others	42803
 county	42	turkey	0
 county	42	ducks	0
@@ -533,7 +547,7 @@ county	44	pigs	4604
 county	44	rabbits	7603
 county	44	broilers	17799
 county	44	layers	63883
-county	44	indigenous	4648187
+county	44	kienyeji	4648187
 county	44	others	13534
 county	44	turkey	0
 county	44	ducks	0
@@ -550,7 +564,7 @@ county	43	pigs	36719
 county	43	rabbits	15751
 county	43	broilers	13950
 county	43	layers	47268
-county	43	indigenous	2380393
+county	43	kienyeji	2380393
 county	43	others	26551
 county	43	turkey	0
 county	43	ducks	0
@@ -567,7 +581,7 @@ county	25	pigs	0
 county	25	rabbits	0
 county	25	broilers	3463
 county	25	layers	4938
-county	25	indigenous	164536
+county	25	kienyeji	164536
 county	25	others	52
 county	25	turkey	0
 county	25	ducks	0
@@ -584,7 +598,7 @@ county	18	pigs	925
 county	18	rabbits	39142
 county	18	broilers	7310
 county	18	layers	16509
-county	18	indigenous	242563
+county	18	kienyeji	242563
 county	18	others	12354
 county	18	turkey	0
 county	18	ducks	0
@@ -601,7 +615,7 @@ county	22	pigs	40788
 county	22	rabbits	55814
 county	22	broilers	927272
 county	22	layers	768713
-county	22	indigenous	791434
+county	22	kienyeji	791434
 county	22	others	0
 county	22	turkey	0
 county	22	ducks	0
@@ -618,7 +632,7 @@ county	41	pigs	13453
 county	41	rabbits	12324
 county	41	broilers	63688
 county	41	layers	40394
-county	41	indigenous	804161
+county	41	kienyeji	804161
 county	41	others	24262
 county	41	turkey	0
 county	41	ducks	0
@@ -635,7 +649,7 @@ county	39	pigs	15220
 county	39	rabbits	39645
 county	39	broilers	8572
 county	39	layers	36072
-county	39	indigenous	1808108
+county	39	kienyeji	1808108
 county	39	others	0
 county	39	turkey	21942
 county	39	ducks	32259
@@ -652,7 +666,7 @@ county	37	pigs	34172
 county	37	rabbits	41476
 county	37	broilers	38840
 county	37	layers	121450
-county	37	indigenous	2010545
+county	37	kienyeji	2010545
 county	37	others	94050
 county	37	turkey	0
 county	37	ducks	0
@@ -669,7 +683,7 @@ county	38	pigs	2130
 county	38	rabbits	11856
 county	38	broilers	1450
 county	38	layers	8980
-county	38	indigenous	738999
+county	38	kienyeji	738999
 county	38	others	0
 county	38	turkey	460
 county	38	ducks	3290
@@ -686,7 +700,7 @@ county	29	pigs	761
 county	29	rabbits	8647
 county	29	broilers	9286
 county	29	layers	37152
-county	29	indigenous	690705
+county	29	kienyeji	690705
 county	29	others	0
 county	29	turkey	0
 county	29	ducks	0
@@ -703,12 +717,13 @@ county	30	pigs	155
 county	30	rabbits	5089
 county	30	broilers	30646
 county	30	layers	41264
-county	30	indigenous	106647
+county	30	kienyeji	106647
 county	30	others	0
 county	30	turkey	304
 county	30	ducks	0
 county	30	quails	0
 county	30	guinea fowl	0
+county	30	geese	0
 county	32	cattle dairy	286050
 county	32	cattle meat	160514
 county	32	sheep wool	128958
@@ -719,7 +734,7 @@ county	32	pigs	18866
 county	32	rabbits	88682
 county	32	broilers	8507
 county	32	layers	295978
-county	32	indigenous	1183108
+county	32	kienyeji	1183108
 county	32	others	76075
 county	32	turkey	0
 county	32	ducks	0
@@ -736,7 +751,7 @@ county	35	pigs	0
 county	35	rabbits	0
 county	35	broilers	31169
 county	35	layers	62370
-county	35	indigenous	507138
+county	35	kienyeji	507138
 county	35	others	7471
 county	35	turkey	0
 county	35	ducks	0
@@ -753,7 +768,7 @@ county	28	pigs	88
 county	28	rabbits	2554
 county	28	broilers	160
 county	28	layers	14594
-county	28	indigenous	433527
+county	28	kienyeji	433527
 county	28	others	6694
 county	28	turkey	0
 county	28	ducks	0
@@ -770,7 +785,7 @@ county	47	pigs	33031
 county	47	rabbits	42610
 county	47	broilers	468156
 county	47	layers	179122
-county	47	indigenous	243777
+county	47	kienyeji	243777
 county	47	others	41282
 county	47	turkey	0
 county	47	ducks	0
@@ -787,7 +802,7 @@ county	23	pigs	36
 county	23	rabbits	0
 county	23	broilers	0
 county	23	layers	0
-county	23	indigenous	162862
+county	23	kienyeji	162862
 county	23	others	0
 county	23	turkey	0
 county	23	ducks	0
@@ -804,7 +819,7 @@ county	9	pigs	0
 county	9	rabbits	0
 county	9	broilers	0
 county	9	layers	0
-county	9	indigenous	202995
+county	9	kienyeji	202995
 county	9	others	0
 county	9	turkey	0
 county	9	ducks	0
@@ -821,7 +836,7 @@ county	40	pigs	54824
 county	40	rabbits	4145
 county	40	broilers	0
 county	40	layers	18614
-county	40	indigenous	789315
+county	40	kienyeji	789315
 county	40	others	0
 county	40	turkey	7433
 county	40	ducks	27897
@@ -838,7 +853,7 @@ country	KE	pigs	430844
 country	KE	rabbits	874565
 country	KE	broilers	3117554
 country	KE	layers	3716911
-country	KE	indigenous	34666188
+country	KE	kienyeji	34666188
 country	KE	others	575457
 country	KE	turkey	61752
 country	KE	ducks	166357
@@ -1420,16 +1435,20 @@ county	36	guinea pigs	0
 county	36	doves	0
 county	36	pegions	0
 \.
+
+
 --
--- Name: livestock_population_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- TOC entry 3062 (class 2606 OID 18007)
+-- Name: livestock_population livestock_population_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
 ALTER TABLE ONLY livestock_population
-    ADD CONSTRAINT livestock_population_pkey PRIMARY KEY (geo_level, geo_code, "livestock_population");
+    ADD CONSTRAINT livestock_population_pkey PRIMARY KEY (geo_level, geo_code, livestock_population);
 
+
+-- Completed on 2017-07-31 10:59:42 EAT
 
 --
 -- PostgreSQL database dump complete
 --
-
 

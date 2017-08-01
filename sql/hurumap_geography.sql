@@ -2,26 +2,20 @@
 -- PostgreSQL database dump
 --
 
+-- Dumped from database version 9.5.2
+-- Dumped by pg_dump version 9.6.2
+
+-- Started on 2017-07-31 10:58:48 EAT
+
 SET statement_timeout = 0;
 SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
+SET row_security = off;
 
-SET search_path = public, pg_catalog;
-
-DROP INDEX IF EXISTS public.hurumap_geography_name_36b79089_like;
-DROP INDEX IF EXISTS public.hurumap_geography_d7d547e9;
-DROP INDEX IF EXISTS public.hurumap_geography_b068931c;
-DROP INDEX IF EXISTS public.hurumap_geography_84cdc76c;
-ALTER TABLE IF EXISTS ONLY public.hurumap_geography DROP CONSTRAINT IF EXISTS hurumap
-_geography_pkey;
-ALTER TABLE IF EXISTS ONLY public.hurumap_geography DROP CONSTRAINT IF EXISTS hurumap
-_geography_geo_level_9a5128d2_uniq;
-ALTER TABLE IF EXISTS public.hurumap_geography ALTER COLUMN id DROP DEFAULT;
-DROP SEQUENCE IF EXISTS public.hurumap_geography_id_seq;
-DROP TABLE IF EXISTS public.hurumap_geography;
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -29,8 +23,8 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: hurumap
-_geography; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- TOC entry 216 (class 1259 OID 17852)
+-- Name: hurumap_geography; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
 CREATE TABLE hurumap_geography (
@@ -47,9 +41,11 @@ CREATE TABLE hurumap_geography (
 );
 
 
+ALTER TABLE hurumap_geography OWNER TO hurumap_ke;
+
 --
--- Name: hurumap
-_geography_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- TOC entry 217 (class 1259 OID 17855)
+-- Name: hurumap_geography_id_seq; Type: SEQUENCE; Schema: public; Owner: hurumap_ke
 --
 
 CREATE SEQUENCE hurumap_geography_id_seq
@@ -60,32 +56,32 @@ CREATE SEQUENCE hurumap_geography_id_seq
     CACHE 1;
 
 
---
--- Name: hurumap
-_geography_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE hurumap
-_geography_id_seq OWNED BY hurumap
-_geography.id;
-
+ALTER TABLE hurumap_geography_id_seq OWNER TO hurumap_ke;
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- TOC entry 3190 (class 0 OID 0)
+-- Dependencies: 217
+-- Name: hurumap_geography_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hurumap_ke
 --
 
-ALTER TABLE ONLY hurumap
-_geography ALTER COLUMN id SET DEFAULT nextval('hurumap
-_geography_id_seq'::regclass);
+ALTER SEQUENCE hurumap_geography_id_seq OWNED BY hurumap_geography.id;
 
 
 --
--- Data for Name: hurumap
-_geography; Type: TABLE DATA; Schema: public; Owner: -
+-- TOC entry 3061 (class 2604 OID 17933)
+-- Name: hurumap_geography id; Type: DEFAULT; Schema: public; Owner: hurumap_ke
 --
 
-COPY hurumap
-_geography (id, geo_level, geo_code, name, long_name, year, osm_area_id, square_kms, parent_level, parent_code) FROM stdin;
+ALTER TABLE ONLY hurumap_geography ALTER COLUMN id SET DEFAULT nextval('hurumap_geography_id_seq'::regclass);
+
+
+--
+-- TOC entry 3184 (class 0 OID 17852)
+-- Dependencies: 216
+-- Data for Name: hurumap_geography; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
+--
+
+COPY hurumap_geography (id, geo_level, geo_code, name, long_name, year, osm_area_id, square_kms, parent_level, parent_code) FROM stdin;
 1	country	KE	Kenya	Kenya	2009	662008	\N	\N	\N
 2	county	1	Mombasa	Mombasa	2009	662784	\N	country	KE
 3	county	2	Kwale	Kwale	2009	509519	\N	country	KE
@@ -138,75 +134,65 @@ _geography (id, geo_level, geo_code, name, long_name, year, osm_area_id, square_
 
 
 --
--- Name: hurumap
-_geography_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+-- TOC entry 3191 (class 0 OID 0)
+-- Dependencies: 217
+-- Name: hurumap_geography_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hurumap_ke
 --
 
-SELECT pg_catalog.setval('hurumap
-_geography_id_seq', 48, true);
-
-
---
--- Name: hurumap
-_geography_geo_level_9a5128d2_uniq; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY hurumap
-_geography
-    ADD CONSTRAINT hurumap
-_geography_geo_level_9a5128d2_uniq UNIQUE (geo_level, geo_code);
+SELECT pg_catalog.setval('hurumap_geography_id_seq', 48, true);
 
 
 --
--- Name: hurumap
-_geography_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- TOC entry 3066 (class 2606 OID 18001)
+-- Name: hurumap_geography hurumap_geography_geo_level_9a5128d2_uniq; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
-ALTER TABLE ONLY hurumap
-_geography
-    ADD CONSTRAINT hurumap
-_geography_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY hurumap_geography
+    ADD CONSTRAINT hurumap_geography_geo_level_9a5128d2_uniq UNIQUE (geo_level, geo_code);
 
 
 --
--- Name: hurumap
-_geography_84cdc76c; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- TOC entry 3069 (class 2606 OID 18003)
+-- Name: hurumap_geography hurumap_geography_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
-CREATE INDEX hurumap
-_geography_84cdc76c ON hurumap
-_geography USING btree (year);
-
-
---
--- Name: hurumap
-_geography_b068931c; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX hurumap
-_geography_b068931c ON hurumap
-_geography USING btree (name);
+ALTER TABLE ONLY hurumap_geography
+    ADD CONSTRAINT hurumap_geography_pkey PRIMARY KEY (id);
 
 
 --
--- Name: hurumap
-_geography_d7d547e9; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- TOC entry 3062 (class 1259 OID 18057)
+-- Name: hurumap_geography_84cdc76c; Type: INDEX; Schema: public; Owner: hurumap_ke
 --
 
-CREATE INDEX hurumap
-_geography_d7d547e9 ON hurumap
-_geography USING btree (osm_area_id);
+CREATE INDEX hurumap_geography_84cdc76c ON hurumap_geography USING btree (year);
 
 
 --
--- Name: hurumap
-_geography_name_36b79089_like; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- TOC entry 3063 (class 1259 OID 18058)
+-- Name: hurumap_geography_b068931c; Type: INDEX; Schema: public; Owner: hurumap_ke
 --
 
-CREATE INDEX hurumap
-_geography_name_36b79089_like ON hurumap
-_geography USING btree (name varchar_pattern_ops);
+CREATE INDEX hurumap_geography_b068931c ON hurumap_geography USING btree (name);
 
+
+--
+-- TOC entry 3064 (class 1259 OID 18059)
+-- Name: hurumap_geography_d7d547e9; Type: INDEX; Schema: public; Owner: hurumap_ke
+--
+
+CREATE INDEX hurumap_geography_d7d547e9 ON hurumap_geography USING btree (osm_area_id);
+
+
+--
+-- TOC entry 3067 (class 1259 OID 18060)
+-- Name: hurumap_geography_name_36b79089_like; Type: INDEX; Schema: public; Owner: hurumap_ke
+--
+
+CREATE INDEX hurumap_geography_name_36b79089_like ON hurumap_geography USING btree (name varchar_pattern_ops);
+
+
+-- Completed on 2017-07-31 10:59:06 EAT
 
 --
 -- PostgreSQL database dump complete
