@@ -2,10 +2,10 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.2
+-- Dumped from database version 9.6.2
 -- Dumped by pg_dump version 9.6.2
 
--- Started on 2017-07-31 11:04:18 EAT
+-- Started on 2017-08-02 11:58:43 EAT
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -23,27 +23,27 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- TOC entry 236 (class 1259 OID 17915)
--- Name: voterregistration; Type: TABLE; Schema: public; Owner: hurumap_ke
+-- TOC entry 240 (class 1259 OID 255255)
+-- Name: voterregistration_2015; Type: TABLE; Schema: public; Owner: hurumap_ke
 --
 
-CREATE TABLE voterregistration (
+CREATE TABLE voterregistration_2015 (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
-    voterregistration character varying(128) NOT NULL,
+    voterregistration_2015 character varying(128) NOT NULL,
     total double precision NOT NULL
 );
 
 
-ALTER TABLE voterregistration OWNER TO hurumap_ke;
+ALTER TABLE voterregistration_2015 OWNER TO hurumap_ke;
 
 --
--- TOC entry 3177 (class 0 OID 17915)
--- Dependencies: 236
--- Data for Name: voterregistration; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
+-- TOC entry 2550 (class 0 OID 255255)
+-- Dependencies: 240
+-- Data for Name: voterregistration_2015; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
 --
 
-COPY voterregistration (geo_level, geo_code, voterregistration, total) FROM stdin;
+COPY voterregistration_2015 (geo_level, geo_code, voterregistration_2015, total) FROM stdin;
 county	1	IDs issued	799735
 county	1	dead with IDs	84532
 county	1	potential voting population with IDs	715203
@@ -576,15 +576,15 @@ country	KE	bvr kits	5756
 
 
 --
--- TOC entry 3062 (class 2606 OID 18041)
--- Name: voterregistration voterregistration_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
+-- TOC entry 2432 (class 2606 OID 255381)
+-- Name: voterregistration_2015 voterregistration_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
 --
 
-ALTER TABLE ONLY voterregistration
-    ADD CONSTRAINT voterregistration_pkey PRIMARY KEY (geo_level, geo_code, voterregistration);
+ALTER TABLE ONLY voterregistration_2015
+    ADD CONSTRAINT voterregistration_pkey PRIMARY KEY (geo_level, geo_code, voterregistration_2015);
 
 
--- Completed on 2017-07-31 11:04:36 EAT
+-- Completed on 2017-08-02 11:58:43 EAT
 
 --
 -- PostgreSQL database dump complete
