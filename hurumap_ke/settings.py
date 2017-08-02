@@ -58,7 +58,7 @@ HURUMAP['topics']['census'] = {
             'School fires',
             'Crime report',
             'Employment',
-            'Voter registration 2013',
+            'Voter registration 2015',
             'Voter registration 2017',
         ]
     }

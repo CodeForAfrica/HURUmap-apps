@@ -96,9 +96,6 @@ def get_census_profile(geo_code, geo_level, get_params,  profile_name=None):
         data['selected_sections'] = [
             x.replace(' ', '_').lower() for x in selected_sections]
 
-        with open("output.txt", "w") as file:
-            file.write (str(data))
-
         return data
 
     finally:
@@ -737,11 +734,12 @@ def get_voter_registration_profile(geo_code, geo_level, session, year):
     total = stats_dist['Total registered']['numerators']['this']
     not_registered = stats_dist['Potential voting population not registered']['numerators']['this']
 
-    total = 1 if total == 0 else total
+    ids_issued_year = "2015" if year == "2015" else "2016"
+    report_period = "Oct 2015" if year == "2015" else "Dec 2016"
 
     r = {
         "ids_issued": {
-            'name': 'Number of IDs issued as at Dec 2015',
+            'name': 'Number of IDs issued as at Dec %s' % ids_issued_year,
             'numerators': {'this': ids_issued},
             'values': {'this': ids_issued},
         },
@@ -762,12 +760,12 @@ def get_voter_registration_profile(geo_code, geo_level, session, year):
         },
         'registration': {
             'march': {
-                'name': 'As at Mar 2013',
+                'name': 'As at Mar 2015',
                 'numerators': {'this': reg},
                 'values': {'this': round((reg / total) * 100)},
             },
             'oct': {
-                'name': 'As at Oct 2015',
+                'name': 'As at %s' % (report_period),
                 'numerators': {'this': aft},
                 'values': {'this': round((aft / total) * 100)},
             }
@@ -786,6 +784,37 @@ def get_voter_registration_profile(geo_code, geo_level, session, year):
         },
         'metdata': stats_dist['metadata']
     }
+
+    if not year == "2015":
+        actual_dead_with_ids = stats_dist["Actual Dead with IDs"]["numerators"]["this"]
+        polling_stations = stats_dist["Polling stations"]["numerators"]["this"]
+        male_voters = stats_dist["Male voters"]["numerators"]["this"]
+        female_voters = stats_dist["Female voters"]["numerators"]["this"]
+
+        r['actual_dead_with_ids'] = {
+            'name': 'Actual dead registered with IDs',
+            'numerators': {'this': actual_dead_with_ids},
+            'values': {'this': actual_dead_with_ids},
+        }
+
+        r['polling_stations'] = {
+            'name': 'Number of polling stations',
+            'numerators': {'this': polling_stations},
+            'values': {'this': polling_stations},
+        }
+
+        r['gender_ratio'] = {
+            'female': {
+                'name': "Number of female voters",
+                'numerators': {'this': female_voters},
+                'values': {'this': round((female_voters / total) * 100)},
+            },
+            'male': {
+                'name': 'Number of male voters',
+                'numerators': {'this': male_voters},
+                'values': {'this': round((male_voters / total) * 100)},
+            }
+        }
 
     return r
 
