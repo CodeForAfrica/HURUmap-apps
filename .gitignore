@@ -6,11 +6,4 @@ node_modules/
 debug
 .vagrant
 /static/
-.vscode/
-.vscode/*
-.*env
-loaddumps
-sqldumps.py
-.hurumapKEenv
-output.txt
-sql/voterregistration_2017.sql
+.vscode*

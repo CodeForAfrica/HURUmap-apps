@@ -1,12 +1,8 @@
-{% extends 'profile/profile_detail.html' %}
-
-{% block profile_header_tail %}
-    <div class="column-full">
-        <p class="caption"><strong>Census data:</strong> 2009</p>
-    </div>
-{% endblock %}
-
-{% block profile_detail %}
+{% extends 'profile/profile_detail.html' %} {% block profile_header_tail %}
+<div class="column-full">
+    <p class="caption"><strong>Census data:</strong> 2009</p>
+</div>
+{% endblock %} {% block profile_detail %}
 
 
 <article id="demographics" class="clearfix {% if 'demographics' not in selected_sections %}hide{% endif %}">
@@ -24,7 +20,8 @@
             <div class="column-quarter">
                 {% include 'profile/_blocks/_stat_list.html' with stat=demographics.urbanised stat_type='percentage' %}
             </div>
-            <div class="column-quarter" id="chart-grouped_column-demographics-urban_distribution" data-stat-type="scaled-percentage" data-chart-title="Urban vs rural by sex"></div>
+            <div class="column-quarter" id="chart-grouped_column-demographics-urban_distribution" data-stat-type="scaled-percentage"
+                data-chart-title="Urban vs rural by sex"></div>
         </section>
         <section class="clearfix stat-row">
             <h2 class="header-for-columns"><a class="permalink" href="#age" id="age">Age <i class="fa fa-link"></i></a></h2>
@@ -49,16 +46,19 @@
         <section class="clearfix stat-row">
             <h2><a class="permalink" href="#highest-education-level-reached" id="highest-education-level-reached">Educational level <i class="fa fa-link"></i></a></h2>
             <div class="column-third">
-                {% include 'profile/_blocks/_stat_list.html' with stat=education.education_reached_secondary_or_higher stat_type='percentage' %}
+                {% include 'profile/_blocks/_stat_list.html' with stat=education.education_reached_secondary_or_higher stat_type='percentage'
+                %}
             </div>
-            <div class="column-two-thirds" id="chart-histogram-education-education_reached_distribution" data-stat-type="scaled-percentage" data-chart-title="Population by highest education level reached" data-qualifier="Universe: {{ education.education_reached_distribution.metadata.universe }}"></div>
+            <div class="column-two-thirds" id="chart-histogram-education-education_reached_distribution" data-stat-type="scaled-percentage"
+                data-chart-title="Population by highest education level reached" data-qualifier="Universe: {{ education.education_reached_distribution.metadata.universe }}"></div>
         </section>
         <section class="clearfix stat-row">
             <h2><a class="permalink" href="#school-attendance" id="school-attendance">School attendance <i class="fa fa-link"></i></a></h2>
             <div class="column-third">
                 {% include 'profile/_blocks/_stat_list.html' with stat=education.school_attendance_never stat_type='percentage' %}
             </div>
-            <div class="column-two-thirds" id="chart-grouped_column-education-school_attendance_distribution" data-stat-type="scaled-percentage" data-chart-title="School attendance by sex" data-qualifier="Universe: {{ education.school_attendance_distribution.metadata.universe }}"></div>
+            <div class="column-two-thirds" id="chart-grouped_column-education-school_attendance_distribution" data-stat-type="scaled-percentage"
+                data-chart-title="School attendance by sex" data-qualifier="Universe: {{ education.school_attendance_distribution.metadata.universe }}"></div>
         </section>
 
     </div>
@@ -75,7 +75,8 @@
             <div class="column-third">
                 {% include 'profile/_blocks/_stat_list.html' with stat=employment.employed stat_type='percentage' %}
             </div>
-            <div class="column-two-thirds" id="chart-grouped_column-employment-activity_status_distribution" data-stat-type="scaled-percentage" data-chart-title="Population by employment status" data-qualifier="Universe: {{ employment.activity_status_distribution.metadata.universe }}"></div>
+            <div class="column-two-thirds" id="chart-grouped_column-employment-activity_status_distribution" data-stat-type="scaled-percentage"
+                data-chart-title="Population by employment status" data-qualifier="Universe: {{ employment.activity_status_distribution.metadata.universe }}"></div>
         </section>
 
     </div>
@@ -98,7 +99,8 @@
             <div class="column-third">
                 {% include 'profile/_blocks/_stat_list.html' with stat=households.piped_water stat_type='percentage' %}
             </div>
-            <div class="column-two-thirds" id="chart-histogram-households-water_source_distribution" data-stat-type="scaled-percentage" data-chart-title="Households by main source of water"></div>
+            <div class="column-two-thirds" id="chart-histogram-households-water_source_distribution" data-stat-type="scaled-percentage"
+                data-chart-title="Households by main source of water"></div>
         </section>
         <section class="clearfix stat-row">
             <h2><a class="permalink" href="#households-lighting" id="households-lighting">Main source of lighting <i class="fa fa-link"></i></a></h2>
@@ -112,7 +114,8 @@
             <div class="column-third">
                 {% include 'profile/_blocks/_stat_list.html' with stat=households.sewer_or_septic stat_type='percentage' %}
             </div>
-            <div class="column-two-thirds" id="chart-histogram-households-waste_disposal_distribution" data-stat-type="scaled-percentage" data-chart-title="Households by main mode of human waste disposal"></div>
+            <div class="column-two-thirds" id="chart-histogram-households-waste_disposal_distribution" data-stat-type="scaled-percentage"
+                data-chart-title="Households by main mode of human waste disposal"></div>
         </section>
         <section class="clearfix stat-row">
             <h2><a class="permalink" href="#households-materials" id="households-materials">Household construction materials <i class="fa fa-link"></i></a></h2>
@@ -124,57 +127,69 @@
     </div>
 </article>
 
-<article id="voter_registration_2013" class="clearfix {% if 'voter_registration_2013' not in selected_sections %}hide{% endif %}">
-     <header class="section-contents">
-        <h1>Voter Registration 2013</h1>
+<article id="voter_registration_2015" class="clearfix {% if 'voter_registration_2015' not in selected_sections %}hide{% endif %}">
+    <header class="section-contents">
+        <h1>Voter Registration 2015</h1>
     </header>
     <div class="section-container">
         <section class="clearfix stat-row">
-             <div class="column-third">
-                 {% include 'profile/_blocks/_stat_list.html' with stat=voter_registration_2013.ids_issued stat_type='number' %}
-                 <small>Source: <a href="https://www.iebc.or.ke/iebcreports/">IEBC</a></small>
-             </div>
-            <div class="column-third">
-                {% include 'profile/_blocks/_stat_list.html' with stat=voter_registration_2013.dead_with_ids stat_type='number' %}
+            <div class="permalink">
+                {% include 'profile/_blocks/_stat_list.html' with stat=voter_registration_2015.total stat_type='number' %}
             </div>
-            <div class="column-third">
-                {% include 'profile/_blocks/_stat_list.html' with stat=voter_registration_2013.reg_centers stat_type='number' %}
-            </div>
+            <div class="column-golden-narrow" id="chart-pie-voter_registration_2015-registration" data-stat-type="percentage" data-chart-title="Registered voters as at March 2015 and as at October 2015"></div>
+            <div class="column-golden-narrow" id="chart-pie-voter_registration_2015-registration_ratio" data-stat-type="percentage" data-chart-title="Potential voters with IDs not registered as at December 2015"></div>
         </section>
-        <section  class="clearfix stat-row">
+        <section class="clearfix stat-row">
             <div class="column-third">
-                {% include 'profile/_blocks/_stat_list.html' with stat=voter_registration_2013.total stat_type='number' %}
+                {% include 'profile/_blocks/_stat_list.html' with stat=voter_registration_2015.ids_issued stat_type='number' %}
+                <small>Source: <a href="http://www.iebc.or.ke/docs/MVR-Baseline-Data.html">IEBC</a></small>
             </div>
-            <div class="column-third" id="chart-pie-voter_registration-registration" data-stat-type="percentage" data-chart-title="Registered voters as at March 2013 and as at October 2015" ></div>
-            <div class="column-third" id="chart-pie-voter_registration-registration_ratio" data-stat-type="percentage" data-chart-title="Potential voters with IDs not registered as at December 2015" ></div>
+            <div class="column-third">
+                {% include 'profile/_blocks/_stat_list.html' with stat=voter_registration_2015.dead_with_ids stat_type='number' %}
+            </div>
+            <div class="column-third">
+                {% include 'profile/_blocks/_stat_list.html' with stat=voter_registration_2015.reg_centers stat_type='number' %}
+            </div>
         </section>
     </div>
 </article>
 
 <article id="voter_registration_2017" class="clearfix {% if 'voter_registration_2017' not in selected_sections %}hide{% endif %}">
-     <header class="section-contents">
-        <h1>Voter Registration 2017</h1>
+    <header class="section-contents">
+        <h1>Voter Registration 2017 </h1>
+        
     </header>
     <div class="section-container">
         <section class="clearfix stat-row">
-             <div class="column-third">
-                 {% include 'profile/_blocks/_stat_list.html' with stat=voter_registration_2017.ids_issued stat_type='number' %}
-                 <small>Source: <a href="https://www.iebc.or.ke/iebcreports/">IEBC</a></small>
-             </div>
+            <div class="permalink">
+                {% include 'profile/_blocks/_stat_list.html' with stat=voter_registration_2017.total stat_type='number' %}
+            </div>
+
+            <div class="column-third" id="chart-pie-voter_registration_2017-gender_ratio" data-stat-type="percentage" data-chart-title="Registered voters gender ratio"></div>  
+            <div class="column-third" id="chart-pie-voter_registration_2017-registration" data-stat-type="percentage" data-chart-title="Registered voters as at March 2015 and as at December 2016"> </div> 
+            <div class="column-third" id="chart-pie-voter_registration_2017-registration_ratio" data-stat-type="percentage" data-chart-title="Potential voters with IDs not registered as at December 2016"></div>
+         </section>
+        <section class="clearfix stat-row">
             <div class="column-third">
-                {% include 'profile/_blocks/_stat_list.html' with stat=voter_registration_2017.dead_with_ids stat_type='number' %}
+                {% include 'profile/_blocks/_stat_list.html' with stat=voter_registration_2017.ids_issued stat_type='number' %}
+                <small>Source: <a href="https://www.iebc.or.ke/iebcreports/">IEBC</a></small>
+            </div>
+            <div class="column-third">
+                {% include 'profile/_blocks/_stat_list.html' with stat=voter_registration_2017.actual_dead_with_ids stat_type='number' %}
             </div>
             <div class="column-third">
                 {% include 'profile/_blocks/_stat_list.html' with stat=voter_registration_2017.reg_centers stat_type='number' %}
             </div>
         </section>
-        <section  class="clearfix stat-row">
+
+
+        <section class="clearfix stat-row">
             <div class="column-third">
-                {% include 'profile/_blocks/_stat_list.html' with stat=voter_registration_2017.total stat_type='number' %}
+                {% include 'profile/_blocks/_stat_list.html' with stat=voter_registration_2017.polling_stations stat_type='number' %}
             </div>
-            <div class="column-third" id="chart-pie-voter_registration-registration" data-stat-type="percentage" data-chart-title="Registered voters as at March 2013 and as at October 2015" ></div>
-            <div class="column-third" id="chart-pie-voter_registration-registration_ratio" data-stat-type="percentage" data-chart-title="Potential voters with IDs not registered as at December 2015" ></div>
         </section>
+        {% comment %} <section class="clearfix stat-row">     
+        </section> {% endcomment %}
     </div>
 </article>
 
@@ -186,9 +201,9 @@
     <div class="section-container">
 
         <section class="clearfix stat-row">
-             <small>The contraceptive prevalence rate (CPR) is usually defined as the percentage of currently married women who are currently using a method of contraception.</small><br>
-             <small>If more than one method is used, only the most effective method is considered in this tabulation.</small><br>
-             <small>LAM = Lactational amenorrhoea method</small><br>
+            <small>The contraceptive prevalence rate (CPR) is usually defined as the percentage of currently married women who are currently using a method of contraception.</small><br>
+            <small>If more than one method is used, only the most effective method is considered in this tabulation.</small><br>
+            <small>LAM = Lactational amenorrhoea method</small><br>
             <small>Source: <a href="http://www.knbs.or.ke/index.php?option=com_content&view=article&id=308:2014-kenya-demographic-and-health-survey-2014-kdhs&catid=82:news&Itemid=593">KNBS Demographic and Health Survey Report 2014</a></small>
         </section>
         <section class="clearfix stat-row">
@@ -196,11 +211,13 @@
             <div class="column-third">
                 {% include 'profile/_blocks/_stat_list.html' with stat=contraceptive_use.cpr stat_type='percentage' %}
             </div>
-            <div class="column-two-thirds" id="chart-histogram-contraceptive_use-modern_methods_distribution" data-stat-type="scaled-percentage" data-chart-title="Modern methods of contraception used"></div>
+            <div class="column-two-thirds" id="chart-histogram-contraceptive_use-modern_methods_distribution" data-stat-type="scaled-percentage"
+                data-chart-title="Modern methods of contraception used"></div>
         </section>
         <section class="clearfix stat-row">
             <div class="column-third" id="chart-pie-contraceptive_use-contraceptive_use_distribution" data-stat-type="percentage" data-chart-title="Method of contraception"></div>
-            <div class="column-two-thirds" id="chart-histogram-contraceptive_use-traditional_methods_distribution" data-stat-type="scaled-percentage" data-chart-title="Traditional methods of contraception used"></div>
+            <div class="column-two-thirds" id="chart-histogram-contraceptive_use-traditional_methods_distribution" data-stat-type="scaled-percentage"
+                data-chart-title="Traditional methods of contraception used"></div>
         </section>
 
     </div>
@@ -211,16 +228,18 @@
         <h1>Maternal care indicators</h1>
     </header>
     <div class="section-container">
-         <section class="clearfix stat-row">
+        <section class="clearfix stat-row">
             <div class="column-third">
-                {% include 'profile/_blocks/_stat_list.html' with stat=maternal_care_indicators.delivery_in_health_facility stat_type='percentage' %}
+                {% include 'profile/_blocks/_stat_list.html' with stat=maternal_care_indicators.delivery_in_health_facility stat_type='percentage'
+                %}
             </div>
-         </section>
+        </section>
 
-         <section class="clearfix stat-row">
-            <div class="column-third"  id="chart-pie-maternal_care_indicators-antenatal_dist" data-stat-type="percentage" data-chart-title="Antenatal care"></div>
-            <div class="column-third"  id="chart-pie-maternal_care_indicators-anc_visits_dist" data-stat-type="percentage" data-chart-title="ANC visits"></div>
-            <div class="column-third"  id="chart-pie-maternal_care_indicators-delivery_by_skilled_provider_dist" data-stat-type="percentage" data-chart-title="Child Delivery"></div>
+        <section class="clearfix stat-row">
+            <div class="column-third" id="chart-pie-maternal_care_indicators-antenatal_dist" data-stat-type="percentage" data-chart-title="Antenatal care"></div>
+            <div class="column-third" id="chart-pie-maternal_care_indicators-anc_visits_dist" data-stat-type="percentage" data-chart-title="ANC visits"></div>
+            <div class="column-third" id="chart-pie-maternal_care_indicators-delivery_by_skilled_provider_dist" data-stat-type="percentage"
+                data-chart-title="Child Delivery"></div>
         </section>
 
         <section class="clearfix stat-row">
@@ -229,9 +248,9 @@
         </section>
 
         <section class="clearfix stat-row">
-            <div class="column-third"  id="chart-pie-maternal_care_indicators-one_or_more_dist" data-stat-type="percentage" data-chart-title="1 or more doses of SP/Fansidar"></div>
-            <div class="column-third"  id="chart-pie-maternal_care_indicators-two_or_more_dist" data-stat-type="percentage" data-chart-title="2 or more doses of SP/Fansidar"></div>
-            <div class="column-third"  id="chart-pie-maternal_care_indicators-three_or_more_dist" data-stat-type="percentage" data-chart-title="3 or more doses of SP/Fansidar"></div>
+            <div class="column-third" id="chart-pie-maternal_care_indicators-one_or_more_dist" data-stat-type="percentage" data-chart-title="1 or more doses of SP/Fansidar"></div>
+            <div class="column-third" id="chart-pie-maternal_care_indicators-two_or_more_dist" data-stat-type="percentage" data-chart-title="2 or more doses of SP/Fansidar"></div>
+            <div class="column-third" id="chart-pie-maternal_care_indicators-three_or_more_dist" data-stat-type="percentage" data-chart-title="3 or more doses of SP/Fansidar"></div>
         </section>
 
     </div>
@@ -243,11 +262,11 @@
     </header>
     <div class="section-container">
 
-         <section class="clearfix stat-row">
-             <small>Percentage of women and men age 15-49 who, in response to prompted questions, say that people can reduce the risk of getting HIV by using condoms every time they have sexual intercourse and by having one sex partner who is not infected and has no other partners</small>
-         </section>
-         <section class="clearfix stat-row">
-            <div id="chart-grouped_column-knowledge_of_hiv_prevention_methods-distribution" data-stat-type="scaled-percentage" data-chart-title="" ></div>
+        <section class="clearfix stat-row">
+            <small>Percentage of women and men age 15-49 who, in response to prompted questions, say that people can reduce the risk of getting HIV by using condoms every time they have sexual intercourse and by having one sex partner who is not infected and has no other partners</small>
+        </section>
+        <section class="clearfix stat-row">
+            <div id="chart-grouped_column-knowledge_of_hiv_prevention_methods-distribution" data-stat-type="scaled-percentage" data-chart-title=""></div>
         </section>
 
     </div>
@@ -263,16 +282,18 @@
             <small>One of the strongest weapons in the fight against malaria is the use of insecticide-treated nets (ITNs) while sleeping. In the 2014 KDHS, data were collected from households on ownership and number of mosquito nets owned. Respondents were also asked to indicate particular household members who had slept under each net the night prior to the interview.</small>
         </section>
         <section class="clearfix stat-row">
-             <div class="column-third">
-                 {% include 'profile/_blocks/_stat_list.html' with stat=itn.average_itn_per_household stat_type='number' %}
-             </div>
-             <div class="column-third" id="chart-pie-itn-households_with_at_least_one_itn" data-stat-type="percentage" data-chart-title="Households that possess at least one insecticide-treated nets (ITNs)" ></div>
-             <div class="column-third" id="chart-pie-itn-percentage_households_with_ITN_for_every_two_people" data-stat-type="percentage" data-chart-title="Households that possess an insecticide-treated nets (ITNs) for every 2 people" ></div>
+            <div class="column-third">
+                {% include 'profile/_blocks/_stat_list.html' with stat=itn.average_itn_per_household stat_type='number' %}
+            </div>
+            <div class="column-third" id="chart-pie-itn-households_with_at_least_one_itn" data-stat-type="percentage" data-chart-title="Households that possess at least one insecticide-treated nets (ITNs)"></div>
+            <div class="column-third" id="chart-pie-itn-percentage_households_with_ITN_for_every_two_people" data-stat-type="percentage"
+                data-chart-title="Households that possess an insecticide-treated nets (ITNs) for every 2 people"></div>
         </section>
         <section class="clearfix stat-row">
-             <div class="column-two-thirds" id="chart-grouped_column-itn-all_households_use_dist" data-stat-type="scaled-percentage" data-chart-title="Use of nets by children under age five and pregnant women in all households" ></div>
-             <div class="column-third" id="chart-grouped_column-itn-households_with_at_least_one_itn_use_dist" data-stat-type="scaled-percentage" data-chart-title="Use of nets by children under age five and pregnant women in all households with at least one insecticide-treated nets (ITNs)" ></div>
-         </section>
+            <div class="column-two-thirds" id="chart-grouped_column-itn-all_households_use_dist" data-stat-type="scaled-percentage" data-chart-title="Use of nets by children under age five and pregnant women in all households"></div>
+            <div class="column-third" id="chart-grouped_column-itn-households_with_at_least_one_itn_use_dist" data-stat-type="scaled-percentage"
+                data-chart-title="Use of nets by children under age five and pregnant women in all households with at least one insecticide-treated nets (ITNs)"></div>
+        </section>
 
     </div>
 </article>
@@ -283,15 +304,17 @@
     </header>
     <div class="section-container">
 
-         <section class="clearfix stat-row">
-             <div class="column-third">
-                 {% include 'profile/_blocks/_stat_list.html' with stat=fertility.fertility_rate stat_type='number' %}
-             </div>
-             <div class="column-third">
-                 {% include 'profile/_blocks/_stat_list.html' with stat=fertility.mean_number_of_children_ever_born_to_women_aged_40_49 stat_type='number' %}
-             </div>
-             <div class="column-third" id="chart-pie-fertility-percentage_women_age_15_49_currently_pregnant" data-stat-type="percentage" data-chart-title="Percentage women aged 15-49 who are currently pregnant" ></div>
-         </section>
+        <section class="clearfix stat-row">
+            <div class="column-third">
+                {% include 'profile/_blocks/_stat_list.html' with stat=fertility.fertility_rate stat_type='number' %}
+            </div>
+            <div class="column-third">
+                {% include 'profile/_blocks/_stat_list.html' with stat=fertility.mean_number_of_children_ever_born_to_women_aged_40_49 stat_type='number'
+                %}
+            </div>
+            <div class="column-third" id="chart-pie-fertility-percentage_women_age_15_49_currently_pregnant" data-stat-type="percentage"
+                data-chart-title="Percentage women aged 15-49 who are currently pregnant"></div>
+        </section>
 
     </div>
 </article>
@@ -302,17 +325,17 @@
     </header>
     <div class="section-container">
         <section class="clearfix stat-row">
-             <div class="column-third">
-                 {% include 'profile/_blocks/_stat_list.html' with stat=vaccinations.not_vaccinated stat_type='percentage' %}
-             </div>
+            <div class="column-third">
+                {% include 'profile/_blocks/_stat_list.html' with stat=vaccinations.not_vaccinated stat_type='percentage' %}
+            </div>
         </section>
         <section class="clearfix stat-row">
-             <div class="column-third" id="chart-pie-vaccinations-fully_vaccinated" data-stat-type="percentage" data-chart-title="Percentage children who are fully vaccinated" ></div>
-             <div class="column-third" id="chart-pie-vaccinations-all_basic_vaccinations" data-stat-type="percentage" data-chart-title="Percentage children who have received all basic vaccinations" ></div>
-             <div class="column-third" id="chart-pie-vaccinations-percentage_with_vaccination_cards" data-stat-type="percentage" data-chart-title="Percentage with vaccination cards" ></div>
+            <div class="column-third" id="chart-pie-vaccinations-fully_vaccinated" data-stat-type="percentage" data-chart-title="Percentage children who are fully vaccinated"></div>
+            <div class="column-third" id="chart-pie-vaccinations-all_basic_vaccinations" data-stat-type="percentage" data-chart-title="Percentage children who have received all basic vaccinations"></div>
+            <div class="column-third" id="chart-pie-vaccinations-percentage_with_vaccination_cards" data-stat-type="percentage" data-chart-title="Percentage with vaccination cards"></div>
         </section>
         <section class="clearfix stat-row">
-             <div id="chart-column-vaccinations-distribution" data-stat-type="scaled-percentage" data-chart-title="Percentage of children age 12-23 months who received specific vaccines" ></div>
+            <div id="chart-column-vaccinations-distribution" data-stat-type="scaled-percentage" data-chart-title="Percentage of children age 12-23 months who received specific vaccines"></div>
         </section>
 
     </div>
@@ -323,20 +346,22 @@
         <h1>Treatment of childhood illness</h1>
     </header>
     <div class="section-container">
-         <section class="clearfix stat-row">
-             <small>Percentage of children under age five with fever in the two weeks preceding the survey; among children under age five with fever, percentage for whom advice or treatment was sought, percentage who had blood taken from a finger or heel, percentage who took any antimalarial, percentage who took any artemisinin-based combination therapy (ACT), and percentage who took any ACT the same or next day following the onset of fever; and among children under age five with fever who took any antimalarial drug, percentage who took any ACT</small>
+        <section class="clearfix stat-row">
+            <small>Percentage of children under age five with fever in the two weeks preceding the survey; among children under age five with fever, percentage for whom advice or treatment was sought, percentage who had blood taken from a finger or heel, percentage who took any antimalarial, percentage who took any artemisinin-based combination therapy (ACT), and percentage who took any ACT the same or next day following the onset of fever; and among children under age five with fever who took any antimalarial drug, percentage who took any ACT</small>
         </section>
         <section class="clearfix stat-row">
-             <div class="column-third">
-                 {% include 'profile/_blocks/_stat_list.html' with stat=type_treatment.children_with_fever stat_type='percentage' %}
-             </div>
-             <div class="column-two-thirds" id="chart-column-type_treatment-treatment_of_chidren_with_fever_dist" data-stat-type="scaled-percentage" data-chart-title="Type of treatment sought"></div>
+            <div class="column-third">
+                {% include 'profile/_blocks/_stat_list.html' with stat=type_treatment.children_with_fever stat_type='percentage' %}
+            </div>
+            <div class="column-two-thirds" id="chart-column-type_treatment-treatment_of_chidren_with_fever_dist" data-stat-type="scaled-percentage"
+                data-chart-title="Type of treatment sought"></div>
         </section>
 
         <section class="clearfix stat-row">
-             <div class="column-third" id="chart-pie-type_treatment-ari_dist" data-stat-type="scaled-percentage" data-chart-title="Percentage of children with ARI who sought treatment from health facility or provider" ></div>
-             <div class="column-third" id="chart-pie-type_treatment-fever_dist" data-stat-type="scaled-percentage" data-chart-title="Percentage of children with fever who sought treatment from health facility or provider" ></div>
-             <div class="column-third" id="chart-grouped_column-type_treatment-treatment_distribution" data-stat-type="scaled-percentage" data-chart-title="Among children under age five who had symptoms of acute respiratory infection (ARI) or had fever and diarrhoea and how they were treated." ></div>
+            <div class="column-third" id="chart-pie-type_treatment-ari_dist" data-stat-type="scaled-percentage" data-chart-title="Percentage of children with ARI who sought treatment from health facility or provider"></div>
+            <div class="column-third" id="chart-pie-type_treatment-fever_dist" data-stat-type="scaled-percentage" data-chart-title="Percentage of children with fever who sought treatment from health facility or provider"></div>
+            <div class="column-third" id="chart-grouped_column-type_treatment-treatment_distribution" data-stat-type="scaled-percentage"
+                data-chart-title="Among children under age five who had symptoms of acute respiratory infection (ARI) or had fever and diarrhoea and how they were treated."></div>
         </section>
 
     </div>
@@ -353,50 +378,50 @@
         </section>
 
         <section class="clearfix stat-row">
-             <div class="column-third">
-                 {% include 'profile/_blocks/_stat_list.html' with stat=nutrition.height_for_age_mean_z_score stat_type='number' %}
-             </div>
+            <div class="column-third">
+                {% include 'profile/_blocks/_stat_list.html' with stat=nutrition.height_for_age_mean_z_score stat_type='number' %}
+            </div>
         </section>
         <section class="clearfix stat-row">
-            <div class="column-half" id="chart-pie-nutrition-height_for_age_below_minus_three_dist" data-stat-type="percentage" data-chart-title="Below -3 standard deviation(SD) units " ></div>
-            <div class="column-half" id="chart-pie-nutrition-height_for_age_below_minus_two_dist" data-stat-type="percentage" data-chart-title="Below -2 standard deviation(SD) units " ></div>
-        </section>
-
-        <section class="clearfix stat-row">
-             <div class="column-third">
-                 {% include 'profile/_blocks/_stat_list.html' with stat=nutrition.weight_for_height_mean_z_score stat_type='number' %}
-             </div>
-         </section>
-        <section class="clearfix stat-row">
-            <div class="column-third" id="chart-pie-nutrition-weight_for_height_below_minus_three_dist" data-stat-type="percentage" data-chart-title="Below -3 standard deviation(SD) units " ></div>
-            <div class="column-third" id="chart-pie-nutrition-weight_for_height_below_minus_two_dist" data-stat-type="percentage" data-chart-title="Below -2 standard deviation(SD) units " ></div>
-            <div class="column-third" id="chart-pie-nutrition-weight_for_height_above_plus_two_dist" data-stat-type="percentage" data-chart-title="Above +2 standard deviation(SD) units " ></div>
+            <div class="column-half" id="chart-pie-nutrition-height_for_age_below_minus_three_dist" data-stat-type="percentage" data-chart-title="Below -3 standard deviation(SD) units "></div>
+            <div class="column-half" id="chart-pie-nutrition-height_for_age_below_minus_two_dist" data-stat-type="percentage" data-chart-title="Below -2 standard deviation(SD) units "></div>
         </section>
 
         <section class="clearfix stat-row">
-             <div class="column-third">
-                 {% include 'profile/_blocks/_stat_list.html' with stat=nutrition.weight_for_age_mean_z_score stat_type='number' %}
-             </div>
+            <div class="column-third">
+                {% include 'profile/_blocks/_stat_list.html' with stat=nutrition.weight_for_height_mean_z_score stat_type='number' %}
+            </div>
         </section>
         <section class="clearfix stat-row">
-            <div class="column-third" id="chart-pie-nutrition-weight_for_age_below_minus_three_dist" data-stat-type="percentage" data-chart-title="Below -3 standard deviation(SD) units " ></div>
-            <div class="column-third" id="chart-pie-nutrition-weight_for_age_below_minus_two_dist" data-stat-type="percentage" data-chart-title="Below -2 standard deviation(SD) units " ></div>
-            <div class="column-third" id="chart-pie-nutrition-weight_for_age_above_plus_two_dist" data-stat-type="percentage" data-chart-title="Above +2 standard deviation(SD) units " ></div>
+            <div class="column-third" id="chart-pie-nutrition-weight_for_height_below_minus_three_dist" data-stat-type="percentage" data-chart-title="Below -3 standard deviation(SD) units "></div>
+            <div class="column-third" id="chart-pie-nutrition-weight_for_height_below_minus_two_dist" data-stat-type="percentage" data-chart-title="Below -2 standard deviation(SD) units "></div>
+            <div class="column-third" id="chart-pie-nutrition-weight_for_height_above_plus_two_dist" data-stat-type="percentage" data-chart-title="Above +2 standard deviation(SD) units "></div>
+        </section>
+
+        <section class="clearfix stat-row">
+            <div class="column-third">
+                {% include 'profile/_blocks/_stat_list.html' with stat=nutrition.weight_for_age_mean_z_score stat_type='number' %}
+            </div>
+        </section>
+        <section class="clearfix stat-row">
+            <div class="column-third" id="chart-pie-nutrition-weight_for_age_below_minus_three_dist" data-stat-type="percentage" data-chart-title="Below -3 standard deviation(SD) units "></div>
+            <div class="column-third" id="chart-pie-nutrition-weight_for_age_below_minus_two_dist" data-stat-type="percentage" data-chart-title="Below -2 standard deviation(SD) units "></div>
+            <div class="column-third" id="chart-pie-nutrition-weight_for_age_above_plus_two_dist" data-stat-type="percentage" data-chart-title="Above +2 standard deviation(SD) units "></div>
         </section>
 
     </div>
 </article>
 
 <article id="health_ratios" class="clearfix {% if 'health_ratios' not in selected_sections %}hide{% endif %}">
-     <header class="section-contents">
+    <header class="section-contents">
         <h1>Access to health services</h1>
     </header>
     <div class="section-container">
         <section class="clearfix stat-row">
-             <div class="column-half">
-                 {% include 'profile/_blocks/_stat_list.html' with stat=healthratios.doctorratio stat_type='number' %}
-                 <small>Source: <a href="http://www.internationalbudget.org/wp-content/uploads/IBP-Budget-Brief-18B-Final.pdf">International Budget Partnership</a></small>
-             </div>
+            <div class="column-half">
+                {% include 'profile/_blocks/_stat_list.html' with stat=healthratios.doctorratio stat_type='number' %}
+                <small>Source: <a href="http://www.internationalbudget.org/wp-content/uploads/IBP-Budget-Brief-18B-Final.pdf">International Budget Partnership</a></small>
+            </div>
             <div class="column-half">
                 {% include 'profile/_blocks/_stat_list.html' with stat=healthratios.nurseratio stat_type='number' %}
                 <small>Source: <a href="http://www.internationalbudget.org/wp-content/uploads/IBP-Budget-Brief-18B-Final.pdf">International Budget Partnership</a></small>
@@ -406,35 +431,33 @@
 </article>
 
 <article id="protests" class="clearfix {% if 'protests' not in selected_sections %}hide{% endif %}">
-     <header class="section-contents">
+    <header class="section-contents">
         <h1>Protests</h1>
     </header>
     <div class="section-container">
         <section class="clearfix stat-row">
-             <div class="column-third">
-                 {% include 'profile/_blocks/_stat_list.html' with stat=protests.number_of_protests stat_type='number' %}
-                 <small>Source: <a href="http://article19.org/resources.php/resource/38331/en/country-report:-protest-in-kenya-2015">Article 19</a></small>
-             </div>
+            <div class="column-third">
+                {% include 'profile/_blocks/_stat_list.html' with stat=protests.number_of_protests stat_type='number' %}
+                <small>Source: <a href="http://article19.org/resources.php/resource/38331/en/country-report:-protest-in-kenya-2015">Article 19</a></small>
+            </div>
         </section>
     </div>
 </article>
 
 <article id="school_fires" class="clearfix {% if 'school_fires' not in selected_sections %}hide{% endif %}">
-     <header class="section-contents">
+    <header class="section-contents">
         <h1>School fires</h1>
     </header>
     <div class="section-container">
         <section class="clearfix stat-row">
-             <div class="column-half">
-                 {% include 'profile/_blocks/_stat_list.html' with stat=schoolfires.schoolfires stat_type='number' %}
-                 <small>Source: <a href="http://www.nation.co.ke/news/List-of-schools-hit-by-unrest/1056-3318282-14epye8/index.html">Daily Nation</a></small>
-             </div>
+            <div class="column-half">
+                {% include 'profile/_blocks/_stat_list.html' with stat=schoolfires.schoolfires stat_type='number' %}
+                <small>Source: <a href="http://www.nation.co.ke/news/List-of-schools-hit-by-unrest/1056-3318282-14epye8/index.html">Daily Nation</a></small>
+            </div>
             {% if schoolfires.schools %}
             <div class="column-half">
                 <h3>Schools that have been set ablaze</h3>
-                {% autoescape off %}
-                {{schoolfires.schools}}
-                {% endautoescape %}
+                {% autoescape off %} {{schoolfires.schools}} {% endautoescape %}
             </div>
             {% endif %}
         </section>
@@ -442,19 +465,24 @@
 </article>
 
 <style>
-    .label {word-break:break-word;}
-    #chart-histogram-crimereport-crimes_dist .action-links {margin-top:40px;}
+    .label {
+        word-break: break-word;
+    }
+
+    #chart-histogram-crimereport-crimes_dist .action-links {
+        margin-top: 40px;
+    }
 </style>
 <article id="crime_report" class="clearfix {% if 'crime_report' not in selected_sections %}hide{% endif %}">
-     <header class="section-contents">
+    <header class="section-contents">
         <h1>Crime Statistics</h1>
     </header>
     <div class="section-container">
         <section class="clearfix stat-row">
-             <div class="column-half">
-                 {% include 'profile/_blocks/_stat_list.html' with stat=crime_report.crimes stat_type='number' %}
-                 <small>Source: <a href="http://www.nationalpolice.go.ke/crime-statistics.html">National Police Service</a></small>
-             </div>
+            <div class="column-half">
+                {% include 'profile/_blocks/_stat_list.html' with stat=crime_report.crimes stat_type='number' %}
+                <small>Source: <a href="http://www.nationalpolice.go.ke/crime-statistics.html">National Police Service</a></small>
+            </div>
             <div class="column-half">
                 {% include 'profile/_blocks/_stat_list.html' with stat=crime_report.crimesindex stat_type='number' %}
             </div>
@@ -465,10 +493,12 @@
     </div>
 </article>
 <style>
-    .label {word-break:break-word;}
+    .label {
+        word-break: break-word;
+    }
 </style>
 <article id="crop_production" class="clearfix">
-     <header class="section-contents">
+    <header class="section-contents">
         <h1>Crop Production</h1>
     </header>
     <div class="section-container">
@@ -493,7 +523,7 @@
     </div>
 </article>
 <article id="livestock" class="clearfix">
-     <header class="section-contents">
+    <header class="section-contents">
         <h1>Livestock</h1>
     </header>
     <div class="section-container">
@@ -510,11 +540,11 @@
             <div class="column-half" id="chart-pie-livestock-sheep_pop" data-stat-type="number" data-chart-title="Sheep '000"></div>
             <div class="column-half" id="chart-histogram-livestock-poultry_pop" data-stat-type="number" data-chart-title="Poultry '000"></div>
         </section>
-         <section class="clearfix stat-row">
-             <div class="column-half">
+        <section class="clearfix stat-row">
+            <div class="column-half">
                 {% include 'profile/_blocks/_stat_list.html' with stat=livestock.hives stat_type='number' %}
-             </div>
-             <div class="column-half" id="chart-pie-livestock-hives_pop" data-stat-type="number" data-chart-title="Hives"></div>
+            </div>
+            <div class="column-half" id="chart-pie-livestock-hives_pop" data-stat-type="number" data-chart-title="Hives"></div>
         </section>
         <section class="clearfix stat-row">
             <div class="column-full">
