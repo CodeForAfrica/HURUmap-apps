@@ -6,10 +6,5 @@ node_modules/
 debug
 .vagrant
 /static/
-<<<<<<< HEAD
-.vscode*
+.vscode/
 .DS_Store
-=======
-.vscode
-.DS_Store
->>>>>>> Adding .vscode and .DS_Store to .gitignore
