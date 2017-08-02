@@ -1436,7 +1436,6 @@ county	36	doves	0
 county	36	pegions	0
 \.
 
-
 --
 -- TOC entry 3062 (class 2606 OID 18007)
 -- Name: livestock_population livestock_population_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke

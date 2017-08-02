@@ -1,9 +1,10 @@
 *.pyc
 *.csv
+*.xlsx
 node_modules/
 .idea/
 debug
 .vagrant
 /static/
-.vscode
+.vscode/
 .DS_Store
