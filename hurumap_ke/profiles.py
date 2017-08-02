@@ -1,3 +1,5 @@
+import re
+
 from collections import OrderedDict
 
 from hurumap.geo import geo_data
@@ -29,7 +31,9 @@ WATER_SOURCE_RECODES = OrderedDict([
     ('other', 'Other'),
 ])
 
+
 def get_census_profile(geo_code, geo_level, get_params,  profile_name=None):
+
     session = get_session()
     try:
         geo_summary_levels = geo_data.get_summary_geo_info(geo_code, geo_level)
@@ -47,27 +51,51 @@ def get_census_profile(geo_code, geo_level, get_params,  profile_name=None):
 
         for section in sections:
             section = section.lower().replace(' ', '_')
+
+            if "voter_registration" in section:
+
+                year = re.search(r"\d+", section).group()
+                section = "voter_registration"
+
             function_name = 'get_%s_profile' % section
+
             if function_name in globals():
                 func = globals()[function_name]
-                data[section] = func(geo_code, geo_level, session)
 
+                if function_name == "get_voter_registration_profile":
+                    section = "{}_{}".format(section, year)
+                    data[section] = func(geo_code, geo_level, session, year)
 
-                # get profiles for province and/or country
-                for level, code in geo_summary_levels:
-                    # merge summary profile into current geo profile
-                    merge_dicts(data[section], func(code, level, session), level)
+                    # get profiles for province and/or country
+                    for level, code in geo_summary_levels:
+                        # merge summary profile into current geo profile
+                        merge_dicts(data[section], func(
+                            code, level, session, year), level)
+
+                else:
+                    data[section] = func(geo_code, geo_level, session)
+
+                    # get profiles for province and/or country
+                    for level, code in geo_summary_levels:
+                        # merge summary profile into current geo profile
+                        merge_dicts(data[section], func(
+                            code, level, session), level)
 
         # tweaks to make the data nicer
         # show X largest groups on their own and group the rest as 'Other'
         if 'households' in sections:
-            group_remainder(data['households']['roofing_material_distribution'], 5)
-            group_remainder(data['households']['wall_material_distribution'], 5)
+            group_remainder(data['households']
+                            ['roofing_material_distribution'], 5)
+            group_remainder(data['households']
+                            ['wall_material_distribution'], 5)
 
         data['all_sections'] = SECTIONS
-        if (selected_sections == []): selected_sections = sections
+        if (selected_sections == []):
+            selected_sections = sections
         data['raw_selected_sections'] = selected_sections
-        data['selected_sections'] = [x.replace(' ','_').lower() for x in selected_sections]
+        data['selected_sections'] = [
+            x.replace(' ', '_').lower() for x in selected_sections]
+
         return data
 
     finally:
@@ -90,8 +118,10 @@ def get_demographics_profile(geo_code, geo_level, session):
             total_urbanised += data['numerators']['this']
 
     # median age
-    db_model_age = get_model_from_fields(['age in completed years', 'sex', 'rural or urban'], geo_level)
-    objects = get_objects_by_geo(db_model_age, geo_code, geo_level, session, ['age in completed years'])
+    db_model_age = get_model_from_fields(
+        ['age in completed years', 'sex', 'rural or urban'], geo_level)
+    objects = get_objects_by_geo(db_model_age, geo_code, geo_level, session, [
+                                 'age in completed years'])
     objects = sorted((o for o in objects if getattr(o, 'age in completed years') != 'unspecified'),
                      key=lambda x: int(getattr(x, 'age in completed years').replace('+', '')))
     median = calculate_median(objects, 'age in completed years')
@@ -275,6 +305,7 @@ def get_households_profile(geo_code, geo_level, session):
         'wall_material_distribution': wall_dist,
     }
 
+
 def get_contraceptive_use_profile(geo_code, geo_level, session):
     # contraceptive_use stats
     contraceptive_use_dist_data, _ = get_stat_data(
@@ -290,7 +321,7 @@ def get_contraceptive_use_profile(geo_code, geo_level, session):
     contraceptive_traditional_method_dist_data, _ = get_stat_data(
         'contraceptive_traditional_method', geo_level, geo_code, session)
 
-    return  {
+    return {
         'contraceptive_use_distribution': contraceptive_use_dist_data,
         'modern_methods_distribution': contraceptive_modern_method_dist_data,
         'traditional_methods_distribution': contraceptive_traditional_method_dist_data,
@@ -300,6 +331,7 @@ def get_contraceptive_use_profile(geo_code, geo_level, session):
             'values': {'this': cpr},
         }
     }
+
 
 def get_maternal_care_indicators_profile(geo_code, geo_level, session):
     # maternal care indicators stats
@@ -311,26 +343,33 @@ def get_maternal_care_indicators_profile(geo_code, geo_level, session):
 
     antenatal_care_by_skilled_provider = \
         maternal_care_indicators_data['Percentage with antenatal care from a skilled provider']['numerators']['this']
-    antenatal_dist = get_dictionary('From a skilled provider', 'From a non-skilled provider', antenatal_care_by_skilled_provider, maternal_care_indicators_data)
+    antenatal_dist = get_dictionary('From a skilled provider', 'From a non-skilled provider',
+                                    antenatal_care_by_skilled_provider, maternal_care_indicators_data)
 
     anc_visits = maternal_care_indicators_data['Percentage with 4+ ANC visits']['numerators']['this']
-    anc_visits_dist = get_dictionary('4+', 'Less than 4', anc_visits, maternal_care_indicators_data )
+    anc_visits_dist = get_dictionary(
+        '4+', 'Less than 4', anc_visits, maternal_care_indicators_data)
 
     delivery_by_skilled_provider = \
         maternal_care_indicators_data['Percentage delivered by a skilled provider']['numerators']['this']
-    delivery_by_skilled_provider_dist = get_dictionary('Skilled provider', 'Non-skilled provider', delivery_by_skilled_provider, maternal_care_indicators_data)
+    delivery_by_skilled_provider_dist = get_dictionary(
+        'Skilled provider', 'Non-skilled provider', delivery_by_skilled_provider, maternal_care_indicators_data)
 
-    #Use of IPT
-    use_of_ipt_dist, _ = get_stat_data('use of ipt', geo_level, geo_code, session)
+    # Use of IPT
+    use_of_ipt_dist, _ = get_stat_data(
+        'use of ipt', geo_level, geo_code, session)
 
     one_or_more_dist = use_of_ipt_dist['1 or more']['numerators']['this']
-    one_or_more_dist = get_dictionary('1 or more', 'Less', one_or_more_dist, maternal_care_indicators_data)
+    one_or_more_dist = get_dictionary(
+        '1 or more', 'Less', one_or_more_dist, maternal_care_indicators_data)
     two_or_more_dist = use_of_ipt_dist['2 or more']['numerators']['this']
-    two_or_more_dist = get_dictionary('2 or more', 'Less', two_or_more_dist, maternal_care_indicators_data)
+    two_or_more_dist = get_dictionary(
+        '2 or more', 'Less', two_or_more_dist, maternal_care_indicators_data)
     three_or_more_dist = use_of_ipt_dist['3 or more']['numerators']['this']
-    three_or_more_dist = get_dictionary('3 or more', 'Less', three_or_more_dist, maternal_care_indicators_data)
+    three_or_more_dist = get_dictionary(
+        '3 or more', 'Less', three_or_more_dist, maternal_care_indicators_data)
 
-    return  {
+    return {
         'maternal_care_indicators': maternal_care_indicators_data,
         'antenatal_dist': antenatal_dist,
         'anc_visits_dist': anc_visits_dist,
@@ -345,38 +384,47 @@ def get_maternal_care_indicators_profile(geo_code, geo_level, session):
         'three_or_more_dist': three_or_more_dist,
     }
 
+
 def get_knowledge_of_hiv_prevention_methods_profile(geo_code, geo_level, session):
     dist, _ = get_stat_data(
-        ['knowledge of hiv prevention methods', 'sex'], geo_level, geo_code, session,
+        ['knowledge of hiv prevention methods',
+            'sex'], geo_level, geo_code, session,
         key_order={'knowledge of hiv prevention methods': {'Using condoms', 'Being faithful', 'Both'},
                    'sex': ['Female', 'Male']})
 
     # need to use numerators instead of values
     for key in dist:
-        if key == 'metadata': continue
-        dist[key]['Female']['values']['this'] = 100 - dist[key]['Female']['numerators']['this']
-        dist[key]['Male']['values']['this'] = 100 - dist[key]['Male']['numerators']['this']
+        if key == 'metadata':
+            continue
+        dist[key]['Female']['values']['this'] = 100 - \
+            dist[key]['Female']['numerators']['this']
+        dist[key]['Male']['values']['this'] = 100 - \
+            dist[key]['Male']['numerators']['this']
     return {
         'distribution': dist
     }
 
+
 def get_itn_profile(geo_code, geo_level, session):
     # household possession and use of ITN
-    possession_dist, _ = get_stat_data(['household possession of itn'], geo_level, geo_code, session)
+    possession_dist, _ = get_stat_data(
+        ['household possession of itn'], geo_level, geo_code, session)
 
     households_with_at_least_one_itn = \
         possession_dist['Households with at least one ITN']['numerators']['this']
-    households_with_at_least_one_itn = get_dictionary('Possess at least one ITN', 'No ITN', households_with_at_least_one_itn, possession_dist)
+    households_with_at_least_one_itn = get_dictionary(
+        'Possess at least one ITN', 'No ITN', households_with_at_least_one_itn, possession_dist)
 
     percentage_households_with_ITN_for_every_two_people = \
         possession_dist['Percentage households with ITN for every 2 people in household']['numerators']['this']
-    percentage_households_with_ITN_for_every_two_people = get_dictionary('1:2',\
-                                                                         'less than 1:2',\
+    percentage_households_with_ITN_for_every_two_people = get_dictionary('1:2',
+                                                                         'less than 1:2',
                                                                          percentage_households_with_ITN_for_every_two_people, possession_dist)
 
     average_itn_per_household = possession_dist['Average ITN per household']['numerators']['this']
 
-    use_dist, _ = get_stat_data(['household', 'users', 'itn_use'], geo_level, geo_code, session)
+    use_dist, _ = get_stat_data(
+        ['household', 'users', 'itn_use'], geo_level, geo_code, session)
     households_with_at_least_one_itn_use_dist = use_dist['With at least one ITN']
     all_households_use_dist = use_dist['All']
 
@@ -392,17 +440,18 @@ def get_itn_profile(geo_code, geo_level, session):
         'all_households_use_dist': all_households_use_dist
     }
 
+
 def get_fertility_profile(geo_code, geo_level, session):
     # fertility
     dist, _ = get_stat_data(['fertility'], geo_level, geo_code, session)
 
     percentage_women_age_15_49_currently_pregnant = dist['Pregnant']['numerators']['this']
 
-    percentage_women_age_15_49_currently_pregnant = get_dictionary('Pregnant', 'Not pregnant',\
+    percentage_women_age_15_49_currently_pregnant = get_dictionary('Pregnant', 'Not pregnant',
                                                                    percentage_women_age_15_49_currently_pregnant, dist)
 
     fertility_rate = dist['Rate']['numerators']['this']
-    mean_number_of_children_ever_born_to_women_aged_40_49 =  dist['Mean']['numerators']['this']
+    mean_number_of_children_ever_born_to_women_aged_40_49 = dist['Mean']['numerators']['this']
 
     return {
         'percentage_women_age_15_49_currently_pregnant': percentage_women_age_15_49_currently_pregnant,
@@ -418,15 +467,16 @@ def get_fertility_profile(geo_code, geo_level, session):
         },
     }
 
+
 def get_vaccinations_profile(geo_code, geo_level, session):
     # vaccinations
     dist, _ = get_stat_data(['vaccinations'], geo_level, geo_code, session,
-                            key_order=['BCG','Pentavalent 1','Pentavalent 2','Pentavalent 3','Polio 0','Polio 1', \
-                                       'Polio 2','Polio 3','Measles','Pneumococcal 1', \
-                                       'Pneumococcal 2','Pneumococcal 3',],
-                            only=['BCG','Pentavalent 1','Pentavalent 2','Pentavalent 3','Polio 0','Polio 1', \
-                                  'Polio 2','Polio 3','Measles','Pneumococcal 1', \
-                                  'Pneumococcal 2','Pneumococcal 3',],
+                            key_order=['BCG', 'Pentavalent 1', 'Pentavalent 2', 'Pentavalent 3', 'Polio 0', 'Polio 1',
+                                       'Polio 2', 'Polio 3', 'Measles', 'Pneumococcal 1',
+                                       'Pneumococcal 2', 'Pneumococcal 3', ],
+                            only=['BCG', 'Pentavalent 1', 'Pentavalent 2', 'Pentavalent 3', 'Polio 0', 'Polio 1',
+                                  'Polio 2', 'Polio 3', 'Measles', 'Pneumococcal 1',
+                                  'Pneumococcal 2', 'Pneumococcal 3', ],
                             )
 
     # need to use numerators instead of values
@@ -441,14 +491,15 @@ def get_vaccinations_profile(geo_code, geo_level, session):
                                  )
 
     fully_vaccinated = vacc_dist['Fully vaccinated']['numerators']['this']
-    fully_vaccinated = get_dictionary('Fully vaccinated', 'Not fully vaccinated', fully_vaccinated,dist)
+    fully_vaccinated = get_dictionary(
+        'Fully vaccinated', 'Not fully vaccinated', fully_vaccinated, dist)
 
     all_basic_vaccinations = vacc_dist['All basic vaccinations']['numerators']['this']
-    all_basic_vaccinations = get_dictionary('All basic vaccinations', 'Basic vaccinations not administered', \
+    all_basic_vaccinations = get_dictionary('All basic vaccinations', 'Basic vaccinations not administered',
                                             all_basic_vaccinations, dist)
 
     percentage_with_vaccination_cards = vacc_dist['Percentage with vaccination card']['numerators']['this']
-    percentage_with_vaccination_cards = get_dictionary('Have vaccination cards', 'No vaccination cards',\
+    percentage_with_vaccination_cards = get_dictionary('Have vaccination cards', 'No vaccination cards',
                                                        percentage_with_vaccination_cards, dist)
     not_vaccinated = vacc_dist['Not vaccinated']['numerators']['this']
 
@@ -464,24 +515,29 @@ def get_vaccinations_profile(geo_code, geo_level, session):
         }
     }
 
+
 def get_type_treatment_profile(geo_code, geo_level, session):
-    # Treatment for acute respiratory infection symptoms, fever, and diarrhoea stats
+    # Treatment for acute respiratory infection symptoms, fever, and diarrhoea
+    # stats
     dist, _ = get_stat_data(['type', 'treatment'], geo_level, geo_code, session,
                             key_order={
-                                'type': ['ARI', 'Fever','Diarrhoea'],
-                                'treatment': ['Sought treatment from health facility or provider', \
-                                              'ORT', 'Zinc', 'ORS and zinc','Fluid from ORS packet'
+                                'type': ['ARI', 'Fever', 'Diarrhoea'],
+                                'treatment': ['Sought treatment from health facility or provider',
+                                              'ORT', 'Zinc', 'ORS and zinc', 'Fluid from ORS packet'
                                               ]
-                            })
+    })
     # need to use numerators instead of values
     for key in dist:
-        if key == 'metadata': continue
+        if key == 'metadata':
+            continue
         for other_key in dist[key]:
-            if other_key == 'metadata': continue
+            if other_key == 'metadata':
+                continue
             try:
                 dist[key][other_key]['values']['this'] = dist[key][other_key]['numerators']['this']
             except:
-                dist[key][other_key] = {'values': {'this': 0}, 'numerators': {'this': 0}}
+                dist[key][other_key] = {'values': {
+                    'this': 0}, 'numerators': {'this': 0}}
 
     ari = dist['ARI']['Sought treatment from health facility or provider']['numerators']['this']
     fever = dist['Fever']['Sought treatment from health facility or provider']['numerators']['this']
@@ -490,16 +546,17 @@ def get_type_treatment_profile(geo_code, geo_level, session):
     ari_dist = get_dictionary('Sought', 'Did not seek', ari, dist)
     fever_dist = get_dictionary('Sought', 'Did not seek', fever, dist)
 
-
-    treatment_of_chidren_with_fever_dist, _ = get_stat_data(['treatment of children with fever'], geo_level, geo_code, session)
+    treatment_of_chidren_with_fever_dist, _ = get_stat_data(
+        ['treatment of children with fever'], geo_level, geo_code, session)
     children_with_fever = treatment_of_chidren_with_fever_dist['Had fever']['numerators']['this']
     treatment_of_chidren_with_fever_dist.pop('Had fever')
 
     # need to use numerators instead of values
     for v in treatment_of_chidren_with_fever_dist:
-        if v == 'metadata': continue
-        treatment_of_chidren_with_fever_dist[v]['values']['this'] = treatment_of_chidren_with_fever_dist[v]['numerators']['this']
-
+        if v == 'metadata':
+            continue
+        treatment_of_chidren_with_fever_dist[v]['values'][
+            'this'] = treatment_of_chidren_with_fever_dist[v]['numerators']['this']
 
     return {
         'treatment_distribution': dist,
@@ -513,33 +570,45 @@ def get_type_treatment_profile(geo_code, geo_level, session):
         },
     }
 
+
 def get_nutrition_profile(geo_code, geo_level, session):
     # nutritional stats among children
-    height_for_age_dist, _ = get_stat_data(['height for age'], geo_level, geo_code, session)
+    height_for_age_dist, _ = get_stat_data(
+        ['height for age'], geo_level, geo_code, session)
     for key in height_for_age_dist:
-        if key == 'metadata': continue
+        if key == 'metadata':
+            continue
         height_for_age_dist[key]['values']['this'] = height_for_age_dist[key]['numerators']['this']
     height_for_age_below_minus_three = height_for_age_dist['Below -3']['numerators']['this']
-    height_for_age_below_minus_three_dist = get_dictionary('Below -3 SD', 'Above -3 SD', height_for_age_below_minus_three, height_for_age_dist)
+    height_for_age_below_minus_three_dist = get_dictionary(
+        'Below -3 SD', 'Above -3 SD', height_for_age_below_minus_three, height_for_age_dist)
     height_for_age_below_minus_two = height_for_age_dist['Below -2']['numerators']['this']
-    height_for_age_below_minus_two_dist = get_dictionary('Below -2 SD', 'Above -2 SD', height_for_age_below_minus_two, height_for_age_dist)
+    height_for_age_below_minus_two_dist = get_dictionary(
+        'Below -2 SD', 'Above -2 SD', height_for_age_below_minus_two, height_for_age_dist)
     height_for_age_mean_z_score = height_for_age_dist['Mean Z-score']['numerators']['this']
 
-    weight_for_height_dist, _ = get_stat_data(['weight for height'], geo_level, geo_code, session)
+    weight_for_height_dist, _ = get_stat_data(
+        ['weight for height'], geo_level, geo_code, session)
     for key in weight_for_height_dist:
-        if key == 'metadata': continue
+        if key == 'metadata':
+            continue
         weight_for_height_dist[key]['values']['this'] = weight_for_height_dist[key]['numerators']['this']
     weight_for_height_below_minus_three = weight_for_height_dist['Below -3']['numerators']['this']
-    weight_for_height_below_minus_three_dist = get_dictionary('Below -3 SD', 'Above -3 SD', weight_for_height_below_minus_three, weight_for_height_dist)
+    weight_for_height_below_minus_three_dist = get_dictionary(
+        'Below -3 SD', 'Above -3 SD', weight_for_height_below_minus_three, weight_for_height_dist)
     weight_for_height_below_minus_two = weight_for_height_dist['Below -2']['numerators']['this']
-    weight_for_height_below_minus_two_dist = get_dictionary('Below -2 SD', 'Above -2 SD', weight_for_height_below_minus_two, weight_for_height_dist)
+    weight_for_height_below_minus_two_dist = get_dictionary(
+        'Below -2 SD', 'Above -2 SD', weight_for_height_below_minus_two, weight_for_height_dist)
     weight_for_height_above_plus_two = weight_for_height_dist['Above +2']['numerators']['this']
-    weight_for_height_above_plus_two_dist = get_dictionary('Above +2 SD', 'Below +2 SD', weight_for_height_above_plus_two, weight_for_height_dist)
+    weight_for_height_above_plus_two_dist = get_dictionary(
+        'Above +2 SD', 'Below +2 SD', weight_for_height_above_plus_two, weight_for_height_dist)
     weight_for_height_mean_z_score = weight_for_height_dist['Mean Z-score']['numerators']['this']
 
-    weight_for_age_dist, _ = get_stat_data(['weight for height'], geo_level, geo_code, session)
+    weight_for_age_dist, _ = get_stat_data(
+        ['weight for height'], geo_level, geo_code, session)
     for key in weight_for_age_dist:
-        if key == 'metadata': continue
+        if key == 'metadata':
+            continue
         weight_for_age_dist[key]['values']['this'] = weight_for_age_dist[key]['numerators']['this']
     weight_for_age_below_minus_three = weight_for_age_dist['Below -3']['numerators']['this']
     weight_for_age_below_minus_three_dist = get_dictionary('Below -3 SD', 'Above -3 SD',
@@ -578,8 +647,10 @@ def get_nutrition_profile(geo_code, geo_level, session):
         }
     }
 
+
 def get_protests_profile(geo_code, geo_level, session):
-    number_of_protests_dist, _ = get_stat_data("protests", geo_level, geo_code, session)
+    number_of_protests_dist, _ = get_stat_data(
+        "protests", geo_level, geo_code, session)
     number_of_protests = number_of_protests_dist['Number of protests']['numerators']['this']
     return {
         'number_of_protests': {
@@ -589,9 +660,12 @@ def get_protests_profile(geo_code, geo_level, session):
         }
     }
 
+
 def get_school_fires_profile(geo_code, geo_level, session):
-    school_fires_dist, number_of_school_fires = get_stat_data("schoolfires", geo_level, geo_code, session)
-    schools = school_fires_dist[school_fires_dist.keys()[0]]['name'].replace(',', '<br>').replace('"','')
+    school_fires_dist, number_of_school_fires = get_stat_data(
+        "schoolfires", geo_level, geo_code, session)
+    schools = school_fires_dist[school_fires_dist.keys()[0]]['name'].replace(
+        ',', '<br>').replace('"', '')
     return {
         'schoolfires': {
             'name': 'Number of school fires',
@@ -602,9 +676,11 @@ def get_school_fires_profile(geo_code, geo_level, session):
         'schools': schools
     }
 
+
 def get_crime_report_profile(geo_code, geo_level, session):
     stats_dist, s_ = get_stat_data("crimereport", geo_level, geo_code, session)
-    crimes_dist,c_ = get_stat_data("typesofcrime", geo_level, geo_code, session)
+    crimes_dist, c_ = get_stat_data(
+        "typesofcrime", geo_level, geo_code, session)
     crimes = stats_dist['Crimes']['numerators']['this']
     crimeindex = stats_dist['Crimesindex']['numerators']['this']
     return {
@@ -622,8 +698,10 @@ def get_crime_report_profile(geo_code, geo_level, session):
         'metadata': crimes_dist['metadata']
     }
 
+
 def get_health_ratios_profile(geo_code, geo_level, session):
-    ratios_dist, _ = get_stat_data("healthratios", geo_level, geo_code, session)
+    ratios_dist, _ = get_stat_data(
+        "healthratios", geo_level, geo_code, session)
     dr = ratios_dist['Doctor ratio']['numerators']['this']
     nr = ratios_dist['Nurse ratio']['numerators']['this']
     return {
@@ -640,8 +718,14 @@ def get_health_ratios_profile(geo_code, geo_level, session):
         'metdata': ratios_dist['metadata']
     }
 
-def get_voter_registration_profile(geo_code, geo_level, session):
-    stats_dist, _ = get_stat_data("voterregistration", geo_level, geo_code, session)
+
+def get_voter_registration_profile(geo_code, geo_level, session, year):
+
+    field = 'voterregistration_%s' % year
+
+    stats_dist, _ = get_stat_data(
+        field, geo_level, geo_code, session)
+
     ids_issued = stats_dist['IDs issued']['numerators']['this']
     dead_with_ids = stats_dist['Dead with IDs']['numerators']['this']
     reg_centers = stats_dist['Registration centers']['numerators']['this']
@@ -649,9 +733,13 @@ def get_voter_registration_profile(geo_code, geo_level, session):
     aft = stats_dist['Additional voters registered']['numerators']['this']
     total = stats_dist['Total registered']['numerators']['this']
     not_registered = stats_dist['Potential voting population not registered']['numerators']['this']
-    r =  {
-        'ids_issued': {
-            'name': 'Number of IDs issued as at Dec 2015',
+
+    ids_issued_year = "2015" if year == "2015" else "2016"
+    report_period = "Oct 2015" if year == "2015" else "Dec 2016"
+
+    r = {
+        "ids_issued": {
+            'name': 'Number of IDs issued as at Dec %s' % ids_issued_year,
             'numerators': {'this': ids_issued},
             'values': {'this': ids_issued},
         },
@@ -672,34 +760,68 @@ def get_voter_registration_profile(geo_code, geo_level, session):
         },
         'registration': {
             'march': {
-                'name': 'As at Mar 2013',
+                'name': 'As at Mar 2015',
                 'numerators': {'this': reg},
-                'values': {'this': round((reg / total) * 100) },
+                'values': {'this': round((reg / total) * 100)},
             },
             'oct': {
-                'name': 'As at Oct 2015',
+                'name': 'As at %s' % (report_period),
                 'numerators': {'this': aft},
-                'values': {'this':round((aft / total) * 100)},
+                'values': {'this': round((aft / total) * 100)},
             }
         },
         'registration_ratio': {
             'march': {
                 'name': 'Registered',
                 'numerators': {'this': total},
-                'values': {'this': round((total / (total + not_registered)) * 100) },
+                'values': {'this': round((total / (total + not_registered)) * 100)},
             },
             'oct': {
                 'name': 'Not registered',
                 'numerators': {'this': not_registered},
-                'values': {'this':round((not_registered / (total + not_registered)) * 100)},
+                'values': {'this': round((not_registered / (total + not_registered)) * 100)},
             }
         },
         'metdata': stats_dist['metadata']
     }
-    return r;
+
+    if not year == "2015":
+        actual_dead_with_ids = stats_dist["Actual Dead with IDs"]["numerators"]["this"]
+        polling_stations = stats_dist["Polling stations"]["numerators"]["this"]
+        male_voters = stats_dist["Male voters"]["numerators"]["this"]
+        female_voters = stats_dist["Female voters"]["numerators"]["this"]
+
+        r['actual_dead_with_ids'] = {
+            'name': 'Actual dead registered with IDs',
+            'numerators': {'this': actual_dead_with_ids},
+            'values': {'this': actual_dead_with_ids},
+        }
+
+        r['polling_stations'] = {
+            'name': 'Number of polling stations',
+            'numerators': {'this': polling_stations},
+            'values': {'this': polling_stations},
+        }
+
+        r['gender_ratio'] = {
+            'female': {
+                'name': "Number of female voters",
+                'numerators': {'this': female_voters},
+                'values': {'this': round((female_voters / total) * 100)},
+            },
+            'male': {
+                'name': 'Number of male voters',
+                'numerators': {'this': male_voters},
+                'values': {'this': round((male_voters / total) * 100)},
+            }
+        }
+
+    return r
+
 
 def get_crop_production_profile(geo_code, geo_level, session):
-    dist, _ = get_stat_data("crop_production", geo_level, geo_code, session, percent = False)
+    dist, _ = get_stat_data("crop_production", geo_level,
+                            geo_code, session, percent=False)
     area_dist = OrderedDict()
     area_dist['maize'] = dist['Maize']
     area_dist['beans'] = dist['Beans']
@@ -719,17 +841,22 @@ def get_crop_production_profile(geo_code, geo_level, session):
     prod_dist_k['maize'] = replace_name(dist['Maize (90kg bags)'], 'Maize')
     prod_dist_k['beans'] = replace_name(dist['Beans (90kg bags)'], 'Beans')
     prod_dist_k['wheat'] = replace_name(dist['Wheat (90kg bags)'], 'Wheat')
-    prod_dist_k['sorghum'] = replace_name(dist['Sorghum (90kg bags)'], 'Sorghum')
+    prod_dist_k['sorghum'] = replace_name(
+        dist['Sorghum (90kg bags)'], 'Sorghum')
     prod_dist_k['millet'] = replace_name(dist['Millet (90kg bags)'], 'Millet')
-    prod_dist_k['cowpeas'] = replace_name(dist['Cowpeas (90kg bags)'], 'Cowpeas')
-    prod_dist_k['greengrams'] = replace_name(dist['Greengrams (90kg bags)'], 'Green grams')
+    prod_dist_k['cowpeas'] = replace_name(
+        dist['Cowpeas (90kg bags)'], 'Cowpeas')
+    prod_dist_k['greengrams'] = replace_name(
+        dist['Greengrams (90kg bags)'], 'Green grams')
     prod_dist_t = OrderedDict()
     prod_dist_t['barley'] = replace_name(dist['Barley (Ton)'], 'Barley')
     prod_dist_t['rice'] = replace_name(dist['Rice (Ton)'], 'Rice')
-    prod_dist_t['sweetpotatoes'] = replace_name(dist['Sweetpotatoes (Ton)'], 'Sweet Potatoes')
-    prod_dist_t['cassava'] = replace_name( dist['Cassava (Ton)'], 'Cassava')
+    prod_dist_t['sweetpotatoes'] = replace_name(
+        dist['Sweetpotatoes (Ton)'], 'Sweet Potatoes')
+    prod_dist_t['cassava'] = replace_name(dist['Cassava (Ton)'], 'Cassava')
     prod_dist_t['cocoyam'] = replace_name(dist['Cocoyam (Ton)'], 'Cocoyam')
-    prod_dist_t['irishpotatoes'] = replace_name(dist['Irishpotatoes (Ton)'], 'Irish potatoes')
+    prod_dist_t['irishpotatoes'] = replace_name(
+        dist['Irishpotatoes (Ton)'], 'Irish potatoes')
     prod_dist_t['metadata'] = dist['metadata']
     yield_dist = OrderedDict()
     yield_dist['maize'] = replace_name(dist['Maize yield'], 'Maize')
@@ -740,11 +867,14 @@ def get_crop_production_profile(geo_code, geo_level, session):
     yield_dist['sorghum'] = replace_name(dist['Sorghum yield'], 'Sorghum')
     yield_dist['millet'] = replace_name(dist['Millet yield'], 'Millet')
     yield_dist['cowpeas'] = replace_name(dist['Cowpeas yield'], 'Cowpeas')
-    yield_dist['greengrams'] = replace_name(dist['Greengrams yield'], 'Green grams')
-    yield_dist['sweetpotatoes'] = replace_name(dist['Sweetpotatoes yield'], 'Sweet potatoes')
+    yield_dist['greengrams'] = replace_name(
+        dist['Greengrams yield'], 'Green grams')
+    yield_dist['sweetpotatoes'] = replace_name(
+        dist['Sweetpotatoes yield'], 'Sweet potatoes')
     yield_dist['cassava'] = replace_name(dist['Cassava yield'], 'Cassava')
     yield_dist['cocoyam'] = replace_name(dist['Cocoyam yield'], 'Cocoyam')
-    yield_dist['irishpotatoes'] = replace_name(dist['Irishpotatoes yield'], 'Irish potatoes')
+    yield_dist['irishpotatoes'] = replace_name(
+        dist['Irishpotatoes yield'], 'Irish potatoes')
     yield_dist['metadata'] = dist['metadata']
     return {
         'area_dist': area_dist,
@@ -753,12 +883,17 @@ def get_crop_production_profile(geo_code, geo_level, session):
         'yield_dist': yield_dist,
     }
 
+
 def get_livestock_profile(geo_code, geo_level, session):
-    dist, _ = get_stat_data("livestock_population", geo_level, geo_code, session, percent = False)
+    dist, _ = get_stat_data("livestock_population",
+                            geo_level, geo_code, session, percent=False)
     pop_dist = OrderedDict()
-    pop_dist['cattle'] = sum_up([dist['Cattle meat'], dist['Cattle dairy']], 'Cattle')
-    pop_dist['sheep'] = sum_up([dist['Sheep wool'], dist['Sheep hair']], 'Sheep')
-    pop_dist['goats dairy'] = sum_up([dist['Goat dairy'], dist['Goat meat']], 'Goat')
+    pop_dist['cattle'] = sum_up(
+        [dist['Cattle meat'], dist['Cattle dairy']], 'Cattle')
+    pop_dist['sheep'] = sum_up(
+        [dist['Sheep wool'], dist['Sheep hair']], 'Sheep')
+    pop_dist['goats dairy'] = sum_up(
+        [dist['Goat dairy'], dist['Goat meat']], 'Goat')
     pop_dist['poultry'] = sum_up(
         [dist['Broilers'], dist['Layers'], dist['Kienyeji'], dist['Others'],
          dist['Turkey'], dist['Ducks'], dist['Quails'], dist['Guinea fowl'],
@@ -799,8 +934,10 @@ def get_livestock_profile(geo_code, geo_level, session):
     poultry_pop['geese'] = divide_by_one_thousand(dist['Geese'])
     poultry_pop['metadata'] = dist['metadata']
 
-    prod_dist, _ = get_stat_data("livestock_products", geo_level, geo_code, session, percent=False)
-    total_hives = sum_up([dist['Hives log'], dist['Hives KTBH'], dist['Hives lang'],dist['Hives box']], 'Hives')['values']['this']
+    prod_dist, _ = get_stat_data(
+        "livestock_products", geo_level, geo_code, session, percent=False)
+    total_hives = sum_up([dist['Hives log'], dist['Hives KTBH'],
+                          dist['Hives lang'], dist['Hives box']], 'Hives')['values']['this']
 
     return {
         'pop_dist': pop_dist,
@@ -820,7 +957,7 @@ def get_livestock_profile(geo_code, geo_level, session):
 
 
 def get_dictionary(key_one, key_two, val, dist):
-    #return a dictionary with the second dictionary being 100 - val
+    # return a dictionary with the second dictionary being 100 - val
     return {
         key_one: {
             'name': key_one,
@@ -835,15 +972,18 @@ def get_dictionary(key_one, key_two, val, dist):
         'metadata': dist['metadata']
     }
 
+
 def sum_up(arr, name):
     s = 0
     for x in arr:
         s += x['values']['this']
     return OrderedDict([('name', name), ('numerators', {'this': None}), ('values', {'this': s})])
 
+
 def divide_by_one_thousand(dist):
-    dist['values']['this'] =  round((dist['values']['this'] * 1.0) / 1000, 1)
+    dist['values']['this'] = round((dist['values']['this'] * 1.0) / 1000, 1)
     return dist
+
 
 def replace_name(dist, new_name):
     dist['name'] = new_name

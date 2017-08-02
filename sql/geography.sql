@@ -15,10 +15,8 @@ DROP INDEX IF EXISTS public.hurumap_geography_name_36b79089_like;
 DROP INDEX IF EXISTS public.hurumap_geography_d7d547e9;
 DROP INDEX IF EXISTS public.hurumap_geography_b068931c;
 DROP INDEX IF EXISTS public.hurumap_geography_84cdc76c;
-ALTER TABLE IF EXISTS ONLY public.hurumap_geography DROP CONSTRAINT IF EXISTS hurumap
-_geography_pkey;
-ALTER TABLE IF EXISTS ONLY public.hurumap_geography DROP CONSTRAINT IF EXISTS hurumap
-_geography_geo_level_9a5128d2_uniq;
+ALTER TABLE IF EXISTS ONLY public.hurumap_geography DROP CONSTRAINT IF EXISTS hurumap_geography_pkey;
+ALTER TABLE IF EXISTS ONLY public.hurumap_geography DROP CONSTRAINT IF EXISTS hurumap_geography_geo_level_9a5128d2_uniq;
 ALTER TABLE IF EXISTS public.hurumap_geography ALTER COLUMN id DROP DEFAULT;
 DROP SEQUENCE IF EXISTS public.hurumap_geography_id_seq;
 DROP TABLE IF EXISTS public.hurumap_geography;
@@ -29,8 +27,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: hurumap
-_geography; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: hurumap_geography; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE hurumap_geography (
@@ -48,8 +45,7 @@ CREATE TABLE hurumap_geography (
 
 
 --
--- Name: hurumap
-_geography_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: hurumap_geography_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE hurumap_geography_id_seq
@@ -61,31 +57,24 @@ CREATE SEQUENCE hurumap_geography_id_seq
 
 
 --
--- Name: hurumap
-_geography_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: hurumap_geography_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE hurumap
-_geography_id_seq OWNED BY hurumap
-_geography.id;
+ALTER SEQUENCE hurumap_geography_id_seq OWNED BY hurumap_geography.id;
 
 
 --
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY hurumap
-_geography ALTER COLUMN id SET DEFAULT nextval('hurumap
-_geography_id_seq'::regclass);
+ALTER TABLE ONLY hurumap_geography ALTER COLUMN id SET DEFAULT nextval('hurumap_geography_id_seq'::regclass);
 
 
 --
--- Data for Name: hurumap
-_geography; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: hurumap_geography; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY hurumap
-_geography (id, geo_level, geo_code, name, long_name, year, osm_area_id, square_kms, parent_level, parent_code) FROM stdin;
+COPY hurumap_geography (id, geo_level, geo_code, name, long_name, year, osm_area_id, square_kms, parent_level, parent_code) FROM stdin;
 1	country	KE	Kenya	Kenya	2009	662008	\N	\N	\N
 2	county	1	Mombasa	Mombasa	2009	662784	\N	country	KE
 3	county	2	Kwale	Kwale	2009	509519	\N	country	KE
@@ -138,74 +127,54 @@ _geography (id, geo_level, geo_code, name, long_name, year, osm_area_id, square_
 
 
 --
--- Name: hurumap
-_geography_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+-- Name: hurumap_geography_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('hurumap
-_geography_id_seq', 48, true);
+SELECT pg_catalog.setval('hurumap_geography_id_seq', 48, true);
 
 
 --
--- Name: hurumap
-_geography_geo_level_9a5128d2_uniq; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: hurumap_geography_geo_level_9a5128d2_uniq; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
-ALTER TABLE ONLY hurumap
-_geography
-    ADD CONSTRAINT hurumap
-_geography_geo_level_9a5128d2_uniq UNIQUE (geo_level, geo_code);
+ALTER TABLE ONLY hurumap_geography
+    ADD CONSTRAINT hurumap_geography_geo_level_9a5128d2_uniq UNIQUE (geo_level, geo_code);
 
 
 --
--- Name: hurumap
-_geography_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: hurumap_geography_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
-ALTER TABLE ONLY hurumap
-_geography
-    ADD CONSTRAINT hurumap
-_geography_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY hurumap_geography
+    ADD CONSTRAINT hurumap_geography_pkey PRIMARY KEY (id);
 
 
 --
--- Name: hurumap
-_geography_84cdc76c; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: hurumap_geography_84cdc76c; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE INDEX hurumap
-_geography_84cdc76c ON hurumap
-_geography USING btree (year);
+CREATE INDEX hurumap_geography_84cdc76c ON hurumap_geography USING btree (year);
 
 
 --
--- Name: hurumap
-_geography_b068931c; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: hurumap_geography_b068931c; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE INDEX hurumap
-_geography_b068931c ON hurumap
-_geography USING btree (name);
+CREATE INDEX hurumap_geography_b068931c ON hurumap_geography USING btree (name);
 
 
 --
--- Name: hurumap
-_geography_d7d547e9; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: hurumap_geography_d7d547e9; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE INDEX hurumap
-_geography_d7d547e9 ON hurumap
-_geography USING btree (osm_area_id);
+CREATE INDEX hurumap_geography_d7d547e9 ON hurumap_geography USING btree (osm_area_id);
 
 
 --
--- Name: hurumap
-_geography_name_36b79089_like; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: hurumap_geography_name_36b79089_like; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE INDEX hurumap
-_geography_name_36b79089_like ON hurumap
-_geography USING btree (name varchar_pattern_ops);
+CREATE INDEX hurumap_geography_name_36b79089_like ON hurumap_geography USING btree (name varchar_pattern_ops);
 
 
 --
