@@ -37,7 +37,7 @@ HURUMAP['geometry_data'] = {
     'county': 'geo/county.topojson',
 }
 
-HURUMAP['ga_tracking_id'] = 'UA-44795600-8'
+HURUMAP['ga_tracking_id'] = ['UA-44795600-8']
 HURUMAP['twitter'] = '@Code4Africa'
 
 HURUMAP['map_centre'] = [0.3051933453207569, 37.908818734483155]
