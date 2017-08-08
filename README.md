@@ -15,6 +15,10 @@ When deploying with dokku set the `DJANGO_SETTINGS_MODULE` in the following way:
     dokku config:set hurumap-ke DJANGO_SETTINGS_MODULE=hurumap_ke.settings
 
 
+### Checks
+
+Dokku allows for checks that make sure you have [zero-downtime deployments](http://dokku.viewdocs.io/dokku/deployment/zero-downtime-deploys/). We currently only check for DB errors but should allow for better checks in the future.
+
 ### Development
 
 * clone this repo
