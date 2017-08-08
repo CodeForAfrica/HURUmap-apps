@@ -1,9 +1,25 @@
-HURUmap KE
-==========
+HURUmap Sites
+=============
+
+These are the [HURUmap](https://hurumap.org) sites being managed and deployed by the Code for Africa teams.
 
 
-Development
------------
+## Installation
+
+?
+
+## Deployment
+
+When deploying with dokku set the `DJANGO_SETTINGS_MODULE` in the following way:
+
+    dokku config:set hurumap-ke DJANGO_SETTINGS_MODULE=hurumap_ke.settings
+
+
+### Checks
+
+Dokku allows for checks that make sure you have [zero-downtime deployments](http://dokku.viewdocs.io/dokku/deployment/zero-downtime-deploys/). We currently only check for DB errors but should allow for better checks in the future.
+
+### Development
 
 * clone this repo
 * install dependencies:
@@ -11,5 +27,16 @@ Development
     pip install -r requirements.txt
 
 * run the server
-
+    
+    python manage.py collectstatic
     python manage.py runserver
+
+### Test
+
+?
+
+---
+
+## License
+
+MIT 
