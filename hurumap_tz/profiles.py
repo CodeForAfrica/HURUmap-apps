@@ -520,6 +520,8 @@ def get_pepfar_profile(geo_code, geo_level, session):
         PEP = 0
         PEPP = 0
     return {
+        'source_link': 'http://www.pepfar.gov/documents/organization/255251.xlsx',
+        'source_name': "The United States President's Emergency Plan for AIDS relief",
         'HTC_TST': {
             'name': 'Number of individuals who received HIV Testing and Counseling (HTC) services for HIV and their\
                         test results',
@@ -607,7 +609,8 @@ def get_pepfar_profile(geo_code, geo_level, session):
             },
             'metadata': pepfar_data['metadata']
         },
-        'metadata': pepfar_data['metadata']
+        'metadata': pepfar_data['metadata'],
+
 
     }
 

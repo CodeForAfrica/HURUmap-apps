@@ -42,7 +42,9 @@
         <h1>Literacy & numeracy tests</h1>
     </header>
     <div class="section-container">
+          {% if literacy_and_numeracy_tests.source_name %}
          <p class="source">Source: <a href="{{ literacy_and_numeracy_tests.source_link}}">{{ literacy_and_numeracy_tests.source_name }}</a></p>
+         {% endif %}
          <br clear="all">
          <section class="clearfix stat-row">
             <div class="column-third">
@@ -79,7 +81,9 @@
     </header>
 
     <div class="section-container">
-          <p class="source">Source: <a href="http://www.pepfar.gov/documents/organization/255251.xlsx">The United States President's Emergency Plan for AIDS relief</a></p>
+          {% if pepfar.source_name %}
+          <p class="source">Source: <a href="{{ pepfar.source_link }}">{{ pepfar.source_name }}</a></p>
+          {% endif %}
          <small>The data within the sheets represent PEPFAR program results from Oct. 1, 2014 to Sept. 30, 2015</small>
          <br clear="all">
          <section class="clearfix stat-row">
@@ -175,7 +179,9 @@
     </header>
     <div class="section-container">
          <section class="clearfix stat-row">
+           {% if causes_of_death.source_name %}
              <p class="source">Source: <a href="{{causes_of_death.source_link}}">{{causes_of_death.source_name}}</a></p>
+             {% endif %}
              <br clear="all">
              <div class="column-full">
                  <div id="chart-histogram-causes_of_death-causes_of_death_under_five_data" data-stat-type="scaled-percentage" data-chart-title="Causes of death among persons under five years of age (2013)"></div>
@@ -184,7 +190,9 @@
                 <div id="chart-histogram-causes_of_death-causes_of_death_over_five_data" data-stat-type="scaled-percentage" data-chart-title="Causes of death among persons over five years of age (2013)"></div>
              </div>
              <br clear="all">
+              {% if causes_of_death.source_name %}
              <p class="source">Source: <a href="{{causes_of_death.source_link_2}}">{{causes_of_death.source_name}}</a></p>
+             {% endif %}
              <br clear="all">
              <div class="column-full">
                  <div id="chart-histogram-causes_of_death-inpatient_diagnosis_under_five_data" data-stat-type="scaled-percentage" data-chart-title="Inpatient diagnosis among persons under five years of age (2014)"></div>
@@ -193,7 +201,9 @@
                 <div id="chart-histogram-causes_of_death-inpatient_diagnosis_over_five_data" data-stat-type="scaled-percentage" data-chart-title="Inpatient diagnosis among persons over years of age (2014)"></div>
              </div>
              <br clear="all">
+             {% if causes_of_death.source_name %}
              <p class="source">Source: <a href="{{causes_of_death.source_link_3}}">{{causes_of_death.source_name}}</a></p>
+             {% endif %}
              <br clear="all">
              <div class="column-full">
                  <div id="chart-histogram-causes_of_death-outpatient_diagnosis_under_five_data" data-stat-type="scaled-percentage" data-chart-title="Outpatient diagnosis among persons under five years of age (2014)"></div>
@@ -211,7 +221,9 @@
     </header>
     <div class="section-container">
          <section class="clearfix stat-row">
+            {% if health_centers_distribution.source_name %}
              <p class="source">Source: <a href="{{health_centers_distribution.source_link}}">{{health_centers_distribution.source_name}}</a></p>
+             {% endif %}
              <br clear="all">
               <div class="column-third">
                 {% include 'profile/_blocks/_stat_list.html' with stat=health_centers_distribution.total stat_type='number' %}
@@ -233,7 +245,9 @@
     </header>
     <div class="section-container">
          <section class="clearfix stat-row">
+           {% if health_workers_distribution.source_name %}
              <p class="source">Source: <a href="{{health_workers_distribution.source_link}}">{{health_workers_distribution.source_name}}</a></p>
+             {% endif %}
              <br clear="all">
              <div class="column-third">
                 {% include 'profile/_blocks/_stat_list.html' with stat=health_workers_distribution.hrh_patient_ratio stat_type='number' %}
@@ -251,7 +265,9 @@
     </header>
     <div class="section-container">
          <section class="clearfix stat-row">
+           {% if family_planning_clients.source_name %}
              <p class="source">Source: <a href="{{family_planning_clients.source_link}}">{{family_planning_clients.source_name}}</a></p>
+             {% endif %}
              <br clear="all">
              <div class="column-third">
                 {% include 'profile/_blocks/_stat_list.html' with stat=family_planning_clients.total stat_type='number' %}
@@ -272,7 +288,9 @@
     </header>
     <div class="section-container">
          <section class="clearfix stat-row">
+           {% if place_of_delivery.source_name %}
              <p class="source">Source: <a href="{{place_of_delivery.source_link}}">{{place_of_delivery.source_name}}</a></p>
+            {% endif %}
              <br clear="all">
              <div class="column-half">
                 {% include 'profile/_blocks/_stat_list.html' with stat=place_of_delivery.anc_projection stat_type='number' %}
@@ -293,7 +311,9 @@
     </header>
     <div class="section-container">
          <section class="clearfix stat-row">
+            {% if tetanus_vaccine.source_name %}
              <p class="source">Source: <a href="{{tetanus_vaccine.source_link}}">{{tetanus_vaccine.source_name}}</a></p>
+             {% endif %}
              <br clear="all">
              <div class="column-half">
                 {% include 'profile/_blocks/_stat_list.html' with stat=tetanus_vaccine.number_vaccinated stat_type='number' %}
@@ -310,7 +330,9 @@
     </header>
     <div class="section-container">
          <section class="clearfix stat-row">
+            {% if traffic_and_crimes.source_name %}
              <p class="source">Source: <a href="{{ traffic_and_crimes.source_link }}">{{ traffic_and_crimes.source_name }}</a></p>
+            {% endif %}
              <br clear="all">
              <div class="column-half">
                  {% include 'profile/_blocks/_stat_list.html' with stat=traffic_and_crimes.total_accidents stat_type='number' %}
