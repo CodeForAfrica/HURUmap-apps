@@ -855,6 +855,62 @@ def get_traffic_and_crimes_profile(geo_code, geo_level, session):
 
     deaths_per_pop = round((total_deaths * 1e5)/total_pop)
 
+    #offences against person 2015
+    person_offences = ['Murder', 'Rape', 'Child Desertion', 'Unnatural Offence', 'Child Stealing', 'Defilement']
+    offences_against_person_dist, _ = get_stat_data('traffic and crimes', only=person_offences,\
+      geo_level=geo_level, geo_code=geo_code, session=session, order_by='-total')
+
+    #cattle theft
+    cattle_theft_only = ["Cattle Thieves", "Murdered Cattle Owners"]
+
+    def recoder(f, x):
+        if x in  ('Murdered Cattle Owners', 'Robbery Victims'):
+            return 'Owners'
+        if x in ('Cattle Thieves', 'Robbery Thieves'):
+            return 'Thieves'
+        if x  == "Superstitious Beliefs Albino":
+            return "Albino"
+        if x == "Superstitious Beliefs Others":
+            return  "Other"
+        if x == "Superstitious Beliefs Old Age":
+            return "Old Age"
+        if x == "Superstitious Beliefs Theft":
+            return "Theft"
+        if x == "Public Fighting Pombe shops":
+            return "Pombe shops"
+        if x == "Public Fighting Jelousy":
+            return "Jelousy"
+        if x == "Public Fighting Domestic":
+            return "Domestic"
+        if x == "Public Fighting Grudge":
+            return "Grudge"
+        if x == "Public Fighting Accident":
+            return  "Accident"
+        return x
+
+    cattle_theft_dist, _total_ct = get_stat_data("traffic and crimes", only=cattle_theft_only,\
+     geo_level=geo_level, geo_code=geo_code, session=session, order_by='-total',\
+     recode=recoder)
+
+    robbery_only = ['Robbery Victims', 'Robbery Thieves']
+    robbery_fatalities_dist, _total_rf = get_stat_data('traffic and crimes', only=robbery_only,\
+      geo_level=geo_level, geo_code=geo_code, session=session, order_by='-total',
+      recode=recoder)
+
+    superstitious_only = ["Superstitious Beliefs Albino", "Superstitious Beliefs Theft",\
+    "Superstitious Beliefs Others", "Superstitious Beliefs Old Age"]
+    superstitious_beliefs_dist, _ = get_stat_data('traffic and crimes', only=superstitious_only,\
+      geo_level=geo_level, geo_code=geo_code, session=session, order_by='-total',
+      recode=recoder)
+
+    total_cattletheft_robbery = _total_rf + _total_ct
+
+    public_fighting_only = ["Public Fighting Pombe shops", "Public Fighting Jelousy",\
+        "Public Fighting Domestic", "Public Fighting Grudge", "Public Fighting Accident"]
+    public_fighting_dist, _total_pf = get_stat_data('traffic and crimes', only=public_fighting_only,\
+      geo_level=geo_level, geo_code=geo_code, session=session, order_by='-total',
+      recode=recoder)
+
     return {
         'traffic_and_crimes_overall': traffic_and_crimes,
         'injuries_by_gender':   {
@@ -900,5 +956,34 @@ def get_traffic_and_crimes_profile(geo_code, geo_level, session):
         },
         'source_link': 'http://www.policeforce.go.tz/index.php/sw/takwimu',
         'source_name': 'Tanzania Police Force Report(2015)',
-
+        'offences_against_person': offences_against_person_dist,
+        'cattletheft_robbery_deaths': {
+            'Cattle Theft': {
+                'metadata': {
+                    'name': 'Cattle Theft'
+                },
+                'Thieves':  cattle_theft_dist['Thieves'],
+                'Owners':  cattle_theft_dist['Owners']
+            },
+            'Robbery': {
+                'metadata': {
+                    'name': 'Robbery'
+                },
+                'Thieves': robbery_fatalities_dist['Thieves'],
+                'Owners': robbery_fatalities_dist['Owners']
+            },
+            'metadata': traffic_and_crimes['metadata']
+        },
+        'superstitious_beliefs': superstitious_beliefs_dist,
+        'cattle_and_robbery': {
+            'name': 'People killed in cattle theft and robbery crimes(2015)',
+            'numerators': {'this': total_cattletheft_robbery},
+            'values': {'this': total_cattletheft_robbery }
+        },
+        'public_fighting': public_fighting_dist,
+        'public_fighting_stat': {
+            'name': 'Number of people killed in public fights(2015)',
+            'numerators': {'this': _total_pf},
+            'values': {'this': _total_pf}
+        }
     }
