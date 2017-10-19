@@ -1,7 +1,9 @@
-HURUmap Sites
-=============
+HURUmap
+=======
 
-These are the [HURUmap](https://hurumap.org) sites being managed and deployed by the Code for Africa teams.
+[HURUmap](https://hurumap.org) gives infomediaries like journalists and civic activists an easy ‘plug & play’ toolkit for finding and embedding interactive data visualisations into their storytelling.
+
+The project is built on Wazimap, an open source platform by OpenUp and Media Monitoring Africa for making census data more understandable.
 
 
 ## Installation
