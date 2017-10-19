@@ -1,0 +1,98 @@
+{% extends '_base.html' %}
+
+{% block body_id %}homepage{% endblock %}
+
+{% block head_css_extra %}
+<link rel="stylesheet" href="{{ STATIC_URL }}css/vendor/select2/select2.css">
+{% endblock %}
+
+{% block header_content %}
+<div class="content-container clearfix bg-ocean-green centered">
+    <div class="wrapper">
+        <h1>Discover the Stories Behind the Data</h1>
+        <h4>HURUmap is a tool aimed at helping journalists add content and depth to stories.</h4>
+    </div>
+</div>
+{% endblock header_content %}
+
+{% block content_container %}
+    <div class="hero centered">
+        <div class="wrapper">
+            <p>
+                <select class="country" name="country" data-placeholder="Select a Country">
+                    <option value=""></option>
+                    <option value="kenya.hurumap.org">Kenya</option>
+                    <option value="wazimap.co.za">South Africa</option>
+                    <option value="tanzania.hurumap.org">Tanzania</option>
+                    <option value="uganda.hurumap.org">Uganda</option>
+                    <option value="zambia.hurumap.org">Zambia</option>
+                </select>
+            </p>
+            <p>
+                <a id="locate-me">Use Your Current Location <i class="fa fa-location-arrow fa-flip-horizontal"></i></a>
+            </p>
+        </div>
+    </div> <!-- /.hero -->
+
+    <div class="showcase">
+        <div class="container-narrow clearfix centered">
+            <h1>Explore our Showcase</h1>
+            <p>Sample stories written with the help of HURUmap</p>
+            <br/>
+            {% for story in HURUMAP.showcase_stories %}
+                <div class="column-third">
+                    <div class="img" style="background-image: url('{{ story.img }}');"></div>
+                    <h3>{{ story.title }}</h3>
+                    <p>By {{ story.author }}</p>
+                    <p>{{ story.brief }}</p>
+                    <br/>
+                    <p class="clearfix"><a href="{{ story.link }}" target="_blank" rel="noopener" class="btn btn-lg bg-bottle-green">Read more</a></p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="showcase bg-tan">
+        <div class="container-narrow">
+            <h1 class="centered">About HURUmap</h1>
+            <br/>
+            <p class="text-lg">What’s the data behind the story? HURUmap gives infomediaries like journalists and civic activists an easy ‘plug & play’ toolkit for finding and embedding interactive data visualisations into their storytelling.</p>
+            <p class="text-lg">HURUmap’s underlying data is quality-checked, from reputable official sources including the government Census, PEPFAR and Uwezo.</p>
+            <p class="text-lg">The project is built on <a href="http://wazimap.readthedocs.org/">Wazimap</a>, an open source platform by <a href="https://openup.org.za/">OpenUp</a> and <a href="http://www.mediamonitoringafrica.org/">Media Monitoring Africa</a> for making census data more understandable.</p>
+            <br/>
+            <p class="centered"><a href="/about" class="btn btn-lg bg-ocean-green">Read more</a></p>
+        </div>
+    </div>
+
+    <div class="showcase clearfix partners">
+        <div class="wrapper centered">
+            <h2>Partners</h2>
+            <p>HURUmap is made possible through support from the following partners:</p>
+
+            <a href="https://codeforafrica.org/" target="_blank" rel="noopener">
+                <img src="{{ STATIC_URL }}img/logos/cfafrica.png" alt="Code for Africa"></a>
+            <a href="https://datazetu.or.tz/" target="_blank" rel="noopener">
+                <img src="{{ STATIC_URL }}img/logos/datazetu.png" alt="Data Zetu"></a>
+            <a href="http://twaweza.org/" target="_blank" rel="noopener">
+                <img src="{{ STATIC_URL }}img/logos/twaweza.png" alt="Twaweza"></a>
+            <a href="https://icfj.org/" target="_blank" rel="noopener">
+                <img src="{{ STATIC_URL }}img/logos/icfj.png" alt="ICFJ"></a>
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block body_javascript_extra %}
+<script src="{{ STATIC_URL }}js/vendor/select2.min.js"></script>
+<script src="{{ STATIC_URL }}js/vendor/chroma.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.country').select2();
+        $('.country').on('change', function (e) {
+            window.open('http://' + e.val, '_blank');
+        })
+    });
+</script>
+{% endblock %}
+
