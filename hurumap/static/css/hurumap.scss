@@ -1,0 +1,280 @@
+// HURUmap.scss
+
+// VARIABLES
+
+// Colours
+$bottle_green: rgb(8,74,73);
+$ocean_green: rgb(28,157,149);
+
+// Fonts
+$font-lato: 'Lato', sans-serif;
+$font-poppins: 'Poppins', sans-serif;
+
+
+// DEFAULTS
+
+html, body, p {
+  font-family: $font-lato;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-poppins;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  &:hover {
+    color: $ocean_green;
+  }
+}
+
+input {
+  border-radius: 0 !important;
+}
+
+
+// HELPERS
+
+// Container
+
+.container-narrow {
+  max-width: 750px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+// Colour helpers
+
+.bg-ocean-green {
+  background-color: $ocean_green;
+  color: #fff;
+}
+
+.bg-bottle-green {
+  background-color: $bottle_green;
+  color: #fff;
+}
+
+.bg-tan {
+  background-color: #eff1e9;
+}
+
+// Text helpers
+
+.text-lg {
+  font-size: 1.1em;
+}
+
+.text-left {
+  text-align: left;
+}
+
+
+// BODY
+
+body {
+  padding-top: 70px;
+}
+
+// Navbar
+
+#page-header {
+  position: fixed;
+  width: 100%;
+  z-index: 10000;
+  top: 0px;
+
+  #page-header-title {
+    min-height: 70px;
+    padding: 10px 0 !important;
+
+    .title {
+      img {
+        height: 50px;
+      }
+    }
+
+    .nav-menu {
+      float: right;
+      @media screen and (max-width: 640px) {
+        float: none;
+      }
+      ul#site-menu {
+        padding: 15px 10px 0px 10px;
+      }
+
+      #menu {
+        margin: 10px 0 0;
+        .tool-group {
+          margin-left: 10px;
+        }
+        input {
+          padding: 2px 6px;
+          height: 30px;
+          @media only screen and (max-width: 768px) {
+            font-size: 1.1em;
+          }
+        }
+      }
+    }
+    
+    #menu-toggle {
+      color: $ocean_green;
+      font-size: 20px;
+      margin-top: 10px;
+    }
+
+  }
+}
+
+#page-header, .box-header {
+  background-color: $bottle_green;
+}
+
+// Footer
+
+#page-footer {
+  background-color: $bottle_green;
+  color: #fff;
+  padding: 45px 0;
+  a {
+    color: #fff;
+    &:hover {
+      color: $ocean_green;
+    }
+  }
+  ul a {
+    text-decoration: underline;
+  }
+
+  img {
+    max-height: 50px;
+    margin: 10px;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  // Remove attribution without having to change entire body block
+  section:nth-child(2) {
+    display: none;
+  }
+}
+
+// PAGES
+
+// Homepage
+
+#homepage .hero {
+  background-image: url('/static/img/banners/global.jpg');
+  background-size: cover;
+  background-position: center;
+  min-height: 300px;
+  padding: 100px 0;
+
+  select, a {
+    max-width: 100%;
+    width: 320px;
+    height: 42px;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: $ocean_green;
+    text-transform: uppercase;
+    text-align: left;
+    color: #fff;
+    border: none;
+    font-size: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 20px #000;
+    i {
+      float: right;
+      margin-top: 3px;
+    }
+    &:hover {
+      background-color: $bottle_green;
+    }
+  }
+}
+
+.showcase {
+  padding: 50px 0;
+  .column-third {
+    .img {
+      height: 200px;
+      width: 100%;
+      max-width: 300px;
+      margin: 10px auto 20px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+  }
+
+  &.partners {
+    img {
+      max-width: 250px;
+      max-height: 75px;
+      margin: 10px;
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+}
+
+.btn {
+  text-decoration: none;
+  &.btn-lg {
+    font-size: 1.2em;
+    padding: 10px 20px 12px;
+  }
+  &.bg-ocean-green:hover {
+    background-color: $bottle_green;
+    color: #fff;
+  }
+  &.bg-bottle-green:hover {
+    background-color: $ocean_green;
+    color: #fff;
+  }
+}
+
+
+// Select2 Stuff
+
+.select2-container {
+  .select2-choice {
+    div {
+      background-color: $ocean_green !important;
+      border: none !important;
+      background-image: url('/static/img/arrow-down-white.png') !important;
+      background-size: 24px !important;
+      background-repeat: no-repeat !important;
+      background-position: left center !important;
+      width: 34px !important;
+      b {
+        display: none !important;
+      }
+    }
+    &:hover, &:focus, &:hover div, &:focus div {
+      background-color: $bottle_green !important;
+    }
+  }
+  .select2-default {
+      color: #fff !important;
+  }
+}
+
+.select2-drop {
+  padding: 10px 5px;
+  .select2-results {
+    font-size: 1.1em !important;
+    .select2-result-label {
+      padding: 5px 8px 6px;
+    }
+    .select2-highlighted {
+      background-color: $bottle_green;
+    }
+  }
+}
