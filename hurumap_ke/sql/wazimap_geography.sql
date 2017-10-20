@@ -18,7 +18,7 @@ SET row_security = off;
 
 SET search_path = public, pg_catalog;
 
-DROP INDEX IF EXISTS public.hurumap_geography_name_36b79089_like;
+DROP INDEX IF EXISTS public._geography_name_36b79089_like;
 DROP INDEX IF EXISTS public.hurumap_geography_d7d547e9;
 DROP INDEX IF EXISTS public.hurumap_geography_b068931c;
 DROP INDEX IF EXISTS public.hurumap_geography_84cdc76c;
@@ -85,7 +85,7 @@ ALTER TABLE ONLY hurumap_geography ALTER COLUMN id SET DEFAULT nextval('hurumap_
 -- Data for Name: hurumap_geography; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY hurumap_geography (id, geo_level, geo_code, name, long_name, year, osm_area_id, square_kms, parent_level, parent_code) FROM stdin;
+COPY hurumap_geography (id, geo_level, geo_code, name, long_name, version, osm_area_id, square_kms, parent_level, parent_code) FROM stdin;
 1	country	KE	Kenya	Kenya	2009	662008	\N	\N	\N
 2	county	1	Mombasa	Mombasa	2009	662784	\N	country	KE
 3	county	2	Kwale	Kwale	2009	509519	\N	country	KE
