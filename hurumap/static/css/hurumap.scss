@@ -10,11 +10,15 @@ $ocean_green: rgb(28,157,149);
 $font-lato: 'Lato', sans-serif;
 $font-poppins: 'Poppins', sans-serif;
 
+// Sizes
+$nav-height: 70px;
+
 
 // DEFAULTS
 
 html, body, p {
   font-family: $font-lato;
+  word-wrap: break-word;
 }
 h1, h2, h3, h4, h5, h6 {
   font-family: $font-poppins;
@@ -85,9 +89,10 @@ body {
   width: 100%;
   z-index: 10000;
   top: 0px;
+  transition: top 0.2s ease-in-out;
 
   #page-header-title {
-    min-height: 70px;
+    min-height: $nav-height;
     padding: 10px 0 !important;
 
     .title {
@@ -127,6 +132,10 @@ body {
     }
 
   }
+}
+
+.nav-up {
+  top: -$nav-height !important;
 }
 
 #page-header, .box-header {
@@ -188,6 +197,7 @@ body {
     font-size: 15px;
     border-radius: 5px;
     box-shadow: 0 0 20px #000;
+    cursor: pointer;
     i {
       float: right;
       margin-top: 3px;
