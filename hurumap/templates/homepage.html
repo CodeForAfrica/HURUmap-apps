@@ -6,6 +6,12 @@
 <link rel="stylesheet" href="{{ STATIC_URL }}css/vendor/select2/select2.css">
 {% endblock %}
 
+{% block header %}
+    {% with True as hide_nav_tools %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock %}
+
 {% block header_content %}
 <div class="content-container clearfix bg-ocean-green centered">
     <div class="wrapper">
@@ -64,22 +70,7 @@
         </div>
     </div>
 
-    <div class="showcase clearfix partners">
-        <div class="wrapper centered">
-            <h2>Partners</h2>
-            <p>HURUmap is made possible through support from the following partners:</p>
-
-            <a href="https://codeforafrica.org/" target="_blank" rel="noopener">
-                <img src="{{ STATIC_URL }}img/logos/cfafrica.png" alt="Code for Africa"></a>
-            <a href="https://datazetu.or.tz/" target="_blank" rel="noopener">
-                <img src="{{ STATIC_URL }}img/logos/datazetu.png" alt="Data Zetu"></a>
-            <a href="http://twaweza.org/" target="_blank" rel="noopener">
-                <img src="{{ STATIC_URL }}img/logos/twaweza.png" alt="Twaweza"></a>
-            <a href="https://icfj.org/" target="_blank" rel="noopener">
-                <img src="{{ STATIC_URL }}img/logos/icfj.png" alt="ICFJ"></a>
-        </div>
-
-    </div>
+    {% include 'blocks/partners.html' %}
 
 {% endblock %}
 
@@ -91,7 +82,9 @@
         $('.country').select2();
         $('.country').on('change', function (e) {
             window.open('http://' + e.val, '_blank');
-        })
+        });
+
+        // TODO: Locate me
     });
 </script>
 {% endblock %}
