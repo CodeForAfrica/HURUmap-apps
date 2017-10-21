@@ -1,5 +1,6 @@
 gevent==1.0.1
 gunicorn==19.7.1
-wazimap[gdal]==1.0.1
+# wazimap==1.0.1
 GDAL==1.11.0
 Shapely>=1.5.13
+git+https://github.com/OpenUpSA/wazimap.git@static-map-geo-version#egg=wazimap

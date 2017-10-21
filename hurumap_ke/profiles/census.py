@@ -1,11 +1,14 @@
 import re
-
 from collections import OrderedDict
+import logging
 
 from wazimap.geo import geo_data
 from wazimap.data.tables import get_model_from_fields
 from wazimap.data.utils import get_session, calculate_median, merge_dicts, get_stat_data, get_objects_by_geo, group_remainder
 from django.conf import settings
+
+
+log = logging.getLogger(__name__)
 
 
 # ensure tables are loaded
@@ -36,7 +39,7 @@ def get_profile(geo, profile_name, request):
 
     session = get_session()
     try:
-        geo_summary_levels = geo_data.get_summary_geo_info(geo)
+        comparative_geos = geo_data.get_comparative_geos(geo)
         data = {}
         sections = []
 
@@ -46,34 +49,42 @@ def get_profile(geo, profile_name, request):
         for section in sections:
             section = section.lower().replace(' ', '_')
 
-            if "voter_registration" in section:
+            if 'voter_registration' in section:
 
                 year = re.search(r"\d+", section).group()
-                section = "voter_registration"
+                section = 'voter_registration'
 
             function_name = 'get_%s_profile' % section
 
             if function_name in globals():
                 func = globals()[function_name]
 
-                if function_name == "get_voter_registration_profile":
-                    section = "{}_{}".format(section, year)
+                if function_name == 'get_voter_registration_profile':
+                    section = '{}_{}'.format(section, year)
                     data[section] = func(geo, session, year)
 
-                    # get profiles for province and/or country
-                    for level, code in geo_summary_levels:
-                        # merge summary profile into current geo profile
-                        merge_dicts(data[section], func(
-                            code, level, session, year), level)
+                    # get profiles for comparative geometries
+                    for comp_geo in comparative_geos:
+                        try:
+                            merge_dicts(data[section], func(comp_geo, session, year), comp_geo.geo_level)
+                        except KeyError as e:
+                            msg = "Error merging data into %s for section '%s' from %s: KeyError: %s" % (
+                            geo.geoid, section, comp_geo.geoid, e)
+                            log.fatal(msg, exc_info=e)
+                            raise ValueError(msg)
 
                 else:
                     data[section] = func(geo, session)
 
-                    # get profiles for province and/or country
-                    for level, code in geo_summary_levels:
-                        # merge summary profile into current geo profile
-                        merge_dicts(data[section], func(
-                            code, level, session), level)
+                    # get profiles for comparative geometries
+                    for comp_geo in comparative_geos:
+                        try:
+                            merge_dicts(data[section], func(comp_geo, session), comp_geo.geo_level)
+                        except KeyError as e:
+                            msg = "Error merging data into %s for section '%s' from %s: KeyError: %s" % (
+                                geo.geoid, section, comp_geo.geoid, e)
+                            log.fatal(msg, exc_info=e)
+                            raise ValueError(msg)
 
         # tweaks to make the data nicer
         # show X largest groups on their own and group the rest as 'Other'

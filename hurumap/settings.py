@@ -24,11 +24,12 @@ HURUMAP = WAZIMAP
 HURUMAP['name'] = 'HURUmap'
 HURUMAP['url'] = 'https://hurumap.org'
 
-WAZIMAP['geodata'] = 'hurumap.geo.GeoData'
+WAZIMAP['geodata'] = 'wazimap.geo.GeoData'
 HURUMAP['geometry_data'] = {}
 
 HURUMAP['ga_tracking_id'] = 'UA-44795600-8'
 HURUMAP['twitter'] = '@Code4Africa'
+HURUMAP['contact_email'] = 'hello@hurumap.org'
 HURUMAP['github_url'] = 'https://github.com/CodeForAfrica/HURUmap'
 HURUMAP['openafrica_url'] = 'https://open.africa/'
 
