@@ -6,6 +6,9 @@
 $bottle_green: rgb(8,74,73);
 $ocean_green: rgb(28,157,149);
 
+$brand-primary-color: $bottle_green;
+$brand-secondary-color: $ocean_green;
+
 // Fonts
 $font-lato: 'Lato', sans-serif;
 $font-poppins: 'Poppins', sans-serif;
@@ -16,13 +19,23 @@ $nav-height: 70px;
 
 // DEFAULTS
 
-html, body, p {
+html, body, h4, h5, h6, p {
   font-family: $font-lato;
   word-wrap: break-word;
 }
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3 {
   font-family: $font-poppins;
+  font-weight: 400;
 }
+h4, h5, h6 {
+  font-weight: 300;
+}
+h1 { font-size: 1.85em; }
+h4 { font-size: 20px; }
+h5 { font-size: 18px; }
+h6 { font-size: 16px; }
+html, body, p { font-size: 16px; }
+
 
 img {
   max-width: 100%;
@@ -44,7 +57,12 @@ input {
 // Container
 
 .container-narrow {
-  max-width: 750px;
+  max-width: 800px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+.container-narrowest {
+  max-width: 700px;
   padding: 0 15px;
   margin: 0 auto;
 }
@@ -85,6 +103,9 @@ input {
 body {
   padding-top: 70px;
 }
+#body-spinner {
+  margin: 90px 20px;
+}
 
 // Navbar
 
@@ -112,6 +133,17 @@ body {
       }
       ul#site-menu {
         padding: 15px 10px 0px 10px;
+        li {
+          a {
+            &:hover {
+              color: $ocean_green;
+              text-decoration: none;
+            }
+            .fa {
+              text-align: center;
+            }
+          }
+        }
       }
 
       #menu {
@@ -151,7 +183,10 @@ body {
 #page-footer {
   background-color: $bottle_green;
   color: #fff;
-  padding: 45px 0;
+  padding: 45px 0 35px;
+  small, .small, .smaller {
+    font-weight: 300;
+  }
   a {
     color: #fff;
     &:hover {
@@ -185,30 +220,34 @@ body {
   background-size: cover;
   background-position: center;
   min-height: 300px;
-  padding: 100px 0;
+  padding: 150px 0;
 
   select, a {
     max-width: 100%;
     width: 320px;
-    height: 42px;
+    height: auto;
     display: inline-block;
-    padding: 10px 20px;
+    padding: 13px 20px 12px;
     background-color: $ocean_green;
     text-transform: uppercase;
     text-align: left;
     color: #fff;
     border: none;
-    font-size: 15px;
+    font-size: 16px;
+    font-family: $font-poppins;
     border-radius: 5px;
     box-shadow: 0 0 20px #000;
     cursor: pointer;
     i {
       float: right;
-      margin-top: 3px;
+      margin-top: 2px;
     }
     &:hover {
       background-color: $bottle_green;
     }
+  }
+  #locate-me {
+    padding-right: 13px;
   }
 }
 
@@ -290,6 +329,16 @@ body {
     .select2-highlighted {
       background-color: $bottle_green;
     }
+  }
+}
+
+
+// Other pages: about, help
+
+#page {
+  .container-narrow, .container-narrowest {
+    padding-top: 50px;
+    padding-bottom: 50px;
   }
 }
 
