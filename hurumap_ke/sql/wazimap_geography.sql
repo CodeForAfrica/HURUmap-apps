@@ -2,61 +2,57 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.2
--- Dumped by pg_dump version 9.6.2
-
--- Started on 2017-07-31 10:58:48 EAT
+-- Dumped from database version 9.6.5
+-- Dumped by pg_dump version 10.0
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
 
 SET search_path = public, pg_catalog;
 
-DROP INDEX IF EXISTS public._geography_name_36b79089_like;
-DROP INDEX IF EXISTS public.hurumap_geography_d7d547e9;
-DROP INDEX IF EXISTS public.hurumap_geography_b068931c;
-DROP INDEX IF EXISTS public.hurumap_geography_84cdc76c;
-ALTER TABLE IF EXISTS ONLY public.hurumap_geography DROP CONSTRAINT IF EXISTS hurumap_geography_pkey;
-ALTER TABLE IF EXISTS ONLY public.hurumap_geography DROP CONSTRAINT IF EXISTS hurumap_geography_geo_level_9a5128d2_uniq;
-ALTER TABLE IF EXISTS public.hurumap_geography ALTER COLUMN id DROP DEFAULT;
-DROP SEQUENCE IF EXISTS public.hurumap_geography_id_seq;
-DROP TABLE IF EXISTS public.hurumap_geography;
+DROP INDEX IF EXISTS public.wazimap_geography_version_01953818_like;
+DROP INDEX IF EXISTS public.wazimap_geography_name_36b79089_like;
+DROP INDEX IF EXISTS public.wazimap_geography_long_name_9b8409f5_like;
+DROP INDEX IF EXISTS public.wazimap_geography_b068931c;
+DROP INDEX IF EXISTS public.wazimap_geography_2fc6351a;
+DROP INDEX IF EXISTS public.wazimap_geography_2af72f10;
+ALTER TABLE IF EXISTS ONLY public.wazimap_geography DROP CONSTRAINT IF EXISTS wazimap_geography_pkey;
+ALTER TABLE IF EXISTS ONLY public.wazimap_geography DROP CONSTRAINT IF EXISTS wazimap_geography_geo_level_bbe3c9fc_uniq;
+ALTER TABLE IF EXISTS public.wazimap_geography ALTER COLUMN id DROP DEFAULT;
+DROP SEQUENCE IF EXISTS public.wazimap_geography_id_seq;
+DROP TABLE IF EXISTS public.wazimap_geography;
 SET search_path = public, pg_catalog;
+
 SET default_tablespace = '';
 
 SET default_with_oids = false;
 
 --
--- Name: hurumap_geography; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: wazimap_geography; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE hurumap_geography (
+CREATE TABLE wazimap_geography (
     id integer NOT NULL,
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
-    name character varying(20) NOT NULL,
-    long_name character varying(128) NOT NULL,
-    year integer,
-    osm_area_id integer,
+    name character varying(100) NOT NULL,
     square_kms double precision,
     parent_level character varying(15),
-    parent_code character varying(10)
+    parent_code character varying(10),
+    long_name character varying(100),
+    version character varying(100) NOT NULL
 );
 
 
-ALTER TABLE hurumap_geography OWNER TO hurumap_ke;
-
 --
--- Name: hurumap_geography_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: wazimap_geography_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE hurumap_geography_id_seq
+CREATE SEQUENCE wazimap_geography_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -64,130 +60,140 @@ CREATE SEQUENCE hurumap_geography_id_seq
     CACHE 1;
 
 
-ALTER TABLE hurumap_geography_id_seq OWNER TO hurumap_ke;
-
 --
--- Name: hurumap_geography_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: wazimap_geography_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE hurumap_geography_id_seq OWNED BY hurumap_geography.id;
+ALTER SEQUENCE wazimap_geography_id_seq OWNED BY wazimap_geography.id;
 
 
 --
--- TOC entry 3061 (class 2604 OID 17933)
--- Name: hurumap_geography id; Type: DEFAULT; Schema: public; Owner: hurumap_ke
+-- Name: wazimap_geography id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY hurumap_geography ALTER COLUMN id SET DEFAULT nextval('hurumap_geography_id_seq'::regclass);
+ALTER TABLE ONLY wazimap_geography ALTER COLUMN id SET DEFAULT nextval('wazimap_geography_id_seq'::regclass);
 
 
 --
--- Data for Name: hurumap_geography; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: wazimap_geography; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY hurumap_geography (id, geo_level, geo_code, name, long_name, version, osm_area_id, square_kms, parent_level, parent_code) FROM stdin;
-1	country	KE	Kenya	Kenya	2009	662008	\N	\N	\N
-2	county	1	Mombasa	Mombasa	2009	662784	\N	country	KE
-3	county	2	Kwale	Kwale	2009	509519	\N	country	KE
-4	county	3	Kilifi	Kilifi	2009	662783	\N	country	KE
-5	county	4	Tana River	Tana River	2009	509533	\N	country	KE
-6	county	5	Lamu	Lamu	2009	509521	\N	country	KE
-7	county	6	Taita-Taveta	Taita-Taveta	2009	509532	\N	country	KE
-8	county	7	Garissa	Garissa	2009	662782	\N	country	KE
-9	county	8	Wajir	Wajir	2009	509538	\N	country	KE
-10	county	9	Mandera	Mandera	2009	509522	\N	country	KE
-11	county	10	Marsabit	Marsabit	2009	509523	\N	country	KE
-12	county	11	Isiolo	Isiolo	2009	509513	\N	country	KE
-13	county	12	Meru	Meru	2009	509524	\N	country	KE
-14	county	13	Tharaka-Nithi	Tharaka-Nithi	2009	509534	\N	country	KE
-15	county	14	Embu	Embu	2009	509511	\N	country	KE
-16	county	15	Kitui	Kitui	2009	509518	\N	country	KE
-17	county	16	Machakos	Machakos	2009	509501	\N	country	KE
-18	county	17	Makueni	Makueni	2009	509502	\N	country	KE
-19	county	18	Nyandarua	Nyandarua	2009	509528	\N	country	KE
-20	county	19	Nyeri	Nyeri	2009	509529	\N	country	KE
-21	county	20	Kirinyaga	Kirinyaga	2009	509517	\N	country	KE
-22	county	21	Murang'a	Murang'a	2009	509526	\N	country	KE
-23	county	22	Kiambu	Kiambu	2009	509515	\N	country	KE
-24	county	23	Turkana	Turkana	2009	509536	\N	country	KE
-25	county	24	West Pokot	West Pokot	2009	509539	\N	country	KE
-26	county	25	Samburu	Samburu	2009	509530	\N	country	KE
-27	county	26	Trans Nzoia	Trans Nzoia	2009	509535	\N	country	KE
-28	county	27	Uasin Gishu	Uasin Gishu	2009	509537	\N	country	KE
-29	county	28	Elgeyo-Marakwet	Elgeyo-Marakwet	2009	509510	\N	country	KE
-30	county	29	Nandi	Nandi	2009	509527	\N	country	KE
-31	county	30	Baringo	Baringo	2009	509508	\N	country	KE
-32	county	31	Laikipia	Laikipia	2009	509520	\N	country	KE
-33	county	32	Nakuru	Nakuru	2009	509466	\N	country	KE
-34	county	33	Narok	Narok	2009	509385	\N	country	KE
-35	county	34	Kajiado	Kajiado	2009	662770	\N	country	KE
-36	county	35	Kericho	Kericho	2009	509468	\N	country	KE
-37	county	36	Bomet	Bomet	2009	509383	\N	country	KE
-38	county	37	Kakamega	Kakamega	2009	509514	\N	country	KE
-39	county	38	Vihiga	Vihiga	2009	509473	\N	country	KE
-40	county	39	Bungoma	Bungoma	2009	509509	\N	country	KE
-41	county	40	Busia	Busia	2009	509472	\N	country	KE
-42	county	41	Siaya	Siaya	2009	509471	\N	country	KE
-43	county	42	Kisumu	Kisumu	2009	509469	\N	country	KE
-44	county	43	Homa Bay	Homa Bay	2009	509464	\N	country	KE
-45	county	44	Migori	Migori	2009	662769	\N	country	KE
-46	county	45	Kisii	Kisii	2009	509384	\N	country	KE
-47	county	46	Nyamira	Nyamira	2009	509470	\N	country	KE
-48	county	47	Nairobi	Nairobi	2009	509503	\N	country	KE
+COPY wazimap_geography (id, geo_level, geo_code, name, square_kms, parent_level, parent_code, long_name, version) FROM stdin;
+22	county	20	Kirinyaga	1205.40000000000009	country	KE	\N	2009
+23	county	21	Murang'a	2325.80000000000018	country	KE	\N	2009
+20	county	18	Nyandarua	3107.69999999999982	country	KE	\N	2009
+21	county	19	Nyeri	2361	country	KE	\N	2009
+26	county	24	West Pokot	8418.20000000000073	country	KE	\N	2009
+27	county	25	Samburu	20182.5	country	KE	\N	2009
+24	county	22	Kiambu	2449.19999999999982	country	KE	\N	2009
+25	county	23	Turkana	71597.8000000000029	country	KE	\N	2009
+30	county	28	Elgeyo-Marakwet	3049.69999999999982	country	KE	\N	2009
+31	county	29	Nandi	2884.5	country	KE	\N	2009
+28	county	26	Trans-Nzoia	2469.90000000000009	country	KE	\N	2009
+29	county	27	Uasin Gishu	2955.30000000000018	country	KE	\N	2009
+34	county	32	Nakuru	7509.5	country	KE	\N	2009
+35	county	33	Narok	17921.2000000000007	country	KE	\N	2009
+32	county	30	Baringo	11075.2999999999993	country	KE	\N	2009
+33	county	31	Laikipia	8696.10000000000036	country	KE	\N	2009
+38	county	36	Bomet	1997.90000000000009	country	KE	\N	2009
+39	county	37	Kakamega	3033.80000000000018	country	KE	\N	2009
+36	county	34	Kajiado	21292.7000000000007	country	KE	\N	2009
+37	county	35	Kericho	2454.5	country	KE	\N	2009
+42	county	40	Busia	1628.40000000000009	country	KE	\N	2009
+43	county	41	Siaya	2496.09999999999991	country	KE	\N	2009
+40	county	38	Vihiga	531.299999999999955	country	KE	\N	2009
+41	county	39	Bungoma	2206.90000000000009	country	KE	\N	2009
+46	county	44	Migori	2586.40000000000009	country	KE	\N	2009
+47	county	45	Kisii	1317.90000000000009	country	KE	\N	2009
+44	county	42	Kisumu	2009.5	country	KE	\N	2009
+45	county	43	Homa Bay	3154.69999999999982	country	KE	\N	2009
+48	county	46	Nyamira	912.5	country	KE	\N	2009
+49	county	47	Nairobi	694.899999999999977	country	KE	\N	2009
+2	country	KE	Kenya	581309	\N	\N	\N	2009
+3	county	1	Mombasa	212.5	country	KE	\N	2009
+6	county	4	Tana River	35375.8000000000029	country	KE	\N	2009
+7	county	5	Lamu	6497.69999999999982	country	KE	\N	2009
+4	county	2	Kwale	8270.29999999999927	country	KE	\N	2009
+5	county	3	Kilifi	12245.8999999999996	country	KE	\N	2009
+10	county	8	Wajir	55840.5999999999985	country	KE	\N	2009
+11	county	9	Mandera	25797.7000000000007	country	KE	\N	2009
+8	county	6	Taita-Taveta	17083.9000000000015	country	KE	\N	2009
+9	county	7	Garissa	45720.1999999999971	country	KE	\N	2009
+14	county	12	Meru	6930.10000000000036	country	KE	\N	2009
+15	county	13	Tharaka-Nithi	2409.5	country	KE	\N	2009
+12	county	10	Marsabit	66923.1000000000058	country	KE	\N	2009
+13	county	11	Isiolo	25336.0999999999985	country	KE	\N	2009
+18	county	16	Machakos	5952.89999999999964	country	KE	\N	2009
+19	county	17	Makueni	8008.89999999999964	country	KE	\N	2009
+16	county	14	Embu	2555.90000000000009	country	KE	\N	2009
+17	county	15	Kitui	24385.0999999999985	country	KE	\N	2009
 \.
 
 
 --
--- Name: hurumap_geography_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+-- Name: wazimap_geography_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('hurumap_geography_id_seq', 48, true);
-
-
---
--- Name: hurumap_geography_geo_level_9a5128d2_uniq; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY hurumap_geography
-    ADD CONSTRAINT hurumap_geography_geo_level_9a5128d2_uniq UNIQUE (geo_level, geo_code);
+SELECT pg_catalog.setval('wazimap_geography_id_seq', 49, true);
 
 
 --
--- Name: hurumap_geography_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: wazimap_geography wazimap_geography_geo_level_bbe3c9fc_uniq; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY hurumap_geography
-    ADD CONSTRAINT hurumap_geography_pkey PRIMARY KEY (id);
-
-
---
--- Name: hurumap_geography_84cdc76c; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX hurumap_geography_84cdc76c ON hurumap_geography USING btree (year);
+ALTER TABLE ONLY wazimap_geography
+    ADD CONSTRAINT wazimap_geography_geo_level_bbe3c9fc_uniq UNIQUE (geo_level, geo_code, version);
 
 
 --
--- Name: hurumap_geography_b068931c; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: wazimap_geography wazimap_geography_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-CREATE INDEX hurumap_geography_b068931c ON hurumap_geography USING btree (name);
-
-
---
--- Name: hurumap_geography_d7d547e9; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX hurumap_geography_d7d547e9 ON hurumap_geography USING btree (osm_area_id);
+ALTER TABLE ONLY wazimap_geography
+    ADD CONSTRAINT wazimap_geography_pkey PRIMARY KEY (id);
 
 
 --
--- Name: hurumap_geography_name_36b79089_like; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: wazimap_geography_2af72f10; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX hurumap_geography_name_36b79089_like ON hurumap_geography USING btree (name varchar_pattern_ops);
+CREATE INDEX wazimap_geography_2af72f10 ON wazimap_geography USING btree (version);
 
--- Completed on 2017-07-31 10:59:06 EAT
+
+--
+-- Name: wazimap_geography_2fc6351a; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX wazimap_geography_2fc6351a ON wazimap_geography USING btree (long_name);
+
+
+--
+-- Name: wazimap_geography_b068931c; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX wazimap_geography_b068931c ON wazimap_geography USING btree (name);
+
+
+--
+-- Name: wazimap_geography_long_name_9b8409f5_like; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX wazimap_geography_long_name_9b8409f5_like ON wazimap_geography USING btree (long_name varchar_pattern_ops);
+
+
+--
+-- Name: wazimap_geography_name_36b79089_like; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX wazimap_geography_name_36b79089_like ON wazimap_geography USING btree (name varchar_pattern_ops);
+
+
+--
+-- Name: wazimap_geography_version_01953818_like; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX wazimap_geography_version_01953818_like ON wazimap_geography USING btree (version varchar_pattern_ops);
+
 
 --
 -- PostgreSQL database dump complete
