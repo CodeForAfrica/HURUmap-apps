@@ -33,7 +33,7 @@ Dokku allows for checks that make sure you have [zero-downtime deployments](http
     python manage.py collectstatic
     python manage.py runserver
 
-### Test
+### Tests
 
 ?
 

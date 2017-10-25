@@ -1,1 +1,1 @@
-web: gunicorn --worker-class gevent hurumap.wsgi:application -t 120
+web: gunicorn --worker-class gevent wazimap.wsgi:application -t 120
