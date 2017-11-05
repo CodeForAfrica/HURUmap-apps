@@ -1,0 +1,140 @@
+{% extends '_base.html' %}
+
+{% block body_id %}homepage{% endblock %}
+
+{% block head_css_extra %}
+<link rel="stylesheet" href="{{ STATIC_URL }}css/vendor/select2/select2.css">
+{% endblock %}
+
+{% block header %}
+    {% with True as hide_nav_tools %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock %}
+
+{% block header_content %}
+<div class="content-container clearfix bg-ocean-green text-center">
+    <div class="wrapper">
+        <h1>Discover the Stories Behind the Data</h1>
+        <h4>{{ HURUMAP.name }} helps storytellers and campaigners use data to add context and depth to stories.</h4>
+    </div>
+</div>
+{% endblock header_content %}
+
+{% block content_container %}
+    <div class="hero text-center">
+        <div class="wrapper">
+            <p>
+                <select class="country" name="country" data-placeholder="Select a Country">
+                    <option value=""></option>
+                    <option value="kenya.hurumap.org">Kenya</option>
+                    <option value="wazimap.co.za">South Africa</option>
+                    <option value="tanzania.hurumap.org">Tanzania</option>
+                    <option value="uganda.hurumap.org">Uganda</option>
+                    <option value="zambia.hurumap.org">Zambia</option>
+                </select>
+            </p>
+            <p>
+                <a id="locate-me">Use Your Current Location <i class="fa fa-location-arrow fa-flip-horizontal"></i></a>
+            </p>
+        </div>
+    </div> <!-- /.hero -->
+
+    {% include 'blocks/showcase.html' %}
+
+    <div class="showcase bg-tan">
+        <div class="container-narrow">
+            <h1 class="text-center">About {{ HURUMAP.name }}</h1>
+            <br/>
+            <p class="text-lg">What’s the data behind the story? HURUmap gives infomediaries like journalists and civic activists an easy ‘plug & play’ toolkit for finding and embedding interactive data visualisations into their storytelling.</p>
+            <p class="text-lg">HURUmap’s underlying data is quality-checked, from reputable official sources including the government Census, PEPFAR and Uwezo.</p>
+            <p class="text-lg">The project is built on <a href="http://wazimap.readthedocs.org/">Wazimap</a>, an open source platform by <a href="https://openup.org.za/">OpenUp</a> and <a href="http://www.mediamonitoringafrica.org/">Media Monitoring Africa</a> for making census data more understandable.</p>
+            <br/>
+            <p class="text-center"><a href="/about" class="btn btn-lg bg-ocean-green">Read more</a></p>
+        </div>
+    </div>
+
+    {% include 'blocks/partners.html' %}
+
+{% endblock %}
+
+{% block body_javascript_extra %}
+    <script src="{{ STATIC_URL }}js/vendor/select2.min.js"></script>
+    <script src="{{ STATIC_URL }}js/vendor/chroma.min.js"></script>
+    <script>
+
+    // SELECT FOR COUNTRIES
+
+    $('.country').select2();
+    $('.country').on('change', function (e) {
+        window.open('http://' + e.val, '_blank');
+    });
+
+    // LOCATE ME
+    if (Modernizr.geolocation) {
+        $('#locate-me').show();
+    }
+
+    $('#locate-me').click(function () {
+
+        $('#locate-me').html('Locating... <i class="fa fa-location-arrow fa-pulse"></i>');
+
+        navigator.geolocation.getCurrentPosition(function(position) {
+            var url = 'https://maps.googleapis.com/maps/api/geocode/json?sensor=false&language=en&latlng=' + position.coords.latitude + ',' + position.coords.longitude;
+            $.ajax({
+                url: url
+            }).done(function (response) {
+                locate_me(response);
+            });
+        });
+
+    });
+
+    function locate_me(response) {
+        var found = false;
+        var countries = [
+            {
+                name: 'Kenya',
+                url: 'https://kenya.hurumap.org'
+            },{
+                name: 'South Africa',
+                url: 'http://wazimap.co.za'
+            },{
+                name: 'Tanzania',
+                url: 'https://tanzania.hurumap.org'
+            },{
+                name: 'Uganda',
+                url: 'http://uganda.hurumap.org'
+            },{
+                name: 'Zambia',
+                url: 'http://zambia.hurumap.org'
+            }
+        ];
+
+        // If not really there
+        if (typeof response.results[0] === 'undefined'){
+            $('#locate-me').html('Oops.. Could not locate you. <i class="fa fa-exclamation-triangle"></i>');
+            $('#body-spinner').hide();
+            return false;
+        }
+
+        // Find country
+        $.each(response.results[0].address_components, function (index, address) {
+            $.each(countries, function (i, country) {
+                if (address.long_name == country.name){
+                    found = country;
+                }
+            });
+        });
+        if (found) {
+            window.open(found.url, '_blank');
+            $('#locate-me').html('Use Your Current Location <i class="fa fa-location-arrow fa-flip-horizontal"></i>');
+        } else {
+            $('#locate-me').html('Oops.. Could not locate you. <i class="fa fa-exclamation-triangle"></i>');
+        }
+        $('#body-spinner').hide();
+    }
+
+    </script>
+{% endblock %}
+

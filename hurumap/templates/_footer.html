@@ -1,0 +1,40 @@
+{% load staticfiles %}
+
+<div class="column-half">
+    <p class="smaller"><strong>HURUmap</strong> gives infomediaries like journalists and civic activists an easy ‘plug & play’ toolkit for finding and embedding interactive data visualisations into their storytelling.</p>
+    <p class="small">
+                The project is built on <a href="http://wazimap.readthedocs.org/" target="_blank" rel="noopener">Wazimap</a>, an open source platform by <a href="https://openup.org.za/" target="_blank" rel="noopener">OpenUp</a> and <a href="http://www.mediamonitoringafrica.org/" target="_blank" rel="noopener">Media Monitoring Africa</a> for making census data more understandable.</p>
+    <p class="small">This site is a project of <strong><a
+            href="https://codeforafrica.org" target="_blank">Code for Africa</a></strong>. All content is released under a
+        <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons 4 Attribution license</a>. Reuse it to help empower your own community. The code is available on
+        <a href="{{ HURUMAP.github_url }}" target="_blank">GitHub</a> and data is available on <a
+                href="{{ HURUMAP.openafrica_url }}" target="_blank">​openAFRICA​</a>.</p>
+    <br/>
+</div>
+<div class="column-quarter">
+    <p>Other HURUmap Projects:</p>
+    <ul class="smaller">
+        <li>
+            <a href="https://pesacheck.org" target="_blank">PesaYetu</a>
+        </li>
+        <li>
+            <a href="#" target="_blank">AP (coming soon)</a>
+        </li>
+    </ul>
+    <br/>
+    <p>Join Our Community:</p>
+    <ul class="smaller">
+        <li>
+            <a href="https://facebook.com/HacksHackersAfrica" target="_blank">Hacks/Hackers Africa</a>
+        </li>
+    </ul>
+</div>
+<div class="column-quarter text-center">
+    <p>A project by:</p>
+    {% block footer_branding %}
+        <a href="https://codeforafrica.org" target="_blank">
+            <img src="{% static 'img/logos/cfafrica-white.png' %}" alt="Code for Africa" style="margin-top: 0;"></a>
+        <a href="https://icfj.org" target="_blank">
+            <img src="{% static 'img/logos/icfj-white.png' %}" alt="ICFJ" style="max-height: 42px;"></a>
+    {% endblock %}
+</div>

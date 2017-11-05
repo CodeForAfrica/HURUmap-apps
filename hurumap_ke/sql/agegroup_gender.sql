@@ -2,20 +2,20 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.2
--- Dumped by pg_dump version 9.6.2
-
--- Started on 2017-07-31 10:50:41 EAT
+-- Dumped from database version 9.6.5
+-- Dumped by pg_dump version 10.0
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
 
+SET search_path = public, pg_catalog;
+
+ALTER TABLE IF EXISTS ONLY public.agegroup_gender DROP CONSTRAINT IF EXISTS agegroup_gender_pkey;
+DROP TABLE IF EXISTS public.agegroup_gender;
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -23,8 +23,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- TOC entry 181 (class 1259 OID 17749)
--- Name: agegroup_gender; Type: TABLE; Schema: public; Owner: hurumap_ke
+-- Name: agegroup_gender; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE agegroup_gender (
@@ -36,12 +35,8 @@ CREATE TABLE agegroup_gender (
 );
 
 
-ALTER TABLE agegroup_gender OWNER TO hurumap_ke;
-
 --
--- TOC entry 3177 (class 0 OID 17749)
--- Dependencies: 181
--- Data for Name: agegroup_gender; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
+-- Data for Name: agegroup_gender; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY agegroup_gender (geo_level, geo_code, gender, "age group", total) FROM stdin;
@@ -49,15 +44,12 @@ COPY agegroup_gender (geo_level, geo_code, gender, "age group", total) FROM stdi
 
 
 --
--- TOC entry 3062 (class 2606 OID 17935)
--- Name: agegroup_gender agegroup_gender_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
+-- Name: agegroup_gender agegroup_gender_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY agegroup_gender
     ADD CONSTRAINT agegroup_gender_pkey PRIMARY KEY (geo_level, geo_code, gender, "age group");
 
-
--- Completed on 2017-07-31 10:50:59 EAT
 
 --
 -- PostgreSQL database dump complete
