@@ -1,0 +1,126 @@
+{% extends '_base.html' %}
+{% load sass_tags staticfiles %}
+
+{# HEAD #}
+
+{% block head_title %}{{ block.super }}: Making Census Data Easy to Use{% endblock %}
+{% block head_meta_description %}{{ HURUmap.name }} provides useful facts about places across the continent. Compare places using tables and maps, download data, and embed charts on your site!{% endblock %}
+
+{% block head_css %}
+    {{ block.super }}
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400|Poppins:400,500,600" rel="stylesheet">
+    <link rel="stylesheet" href="{% sass_src 'css/hurumap.scss' %}">
+{% endblock %}
+
+{% block favicon %}
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ STATIC_URL }}img/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ STATIC_URL }}img/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ STATIC_URL }}img/icons/favicon-16x16.png">
+    <link rel="manifest" href="{{ STATIC_URL }}img/icons/manifest.json">
+    <link rel="mask-icon" href="{{ STATIC_URL }}img/icons/safari-pinned-tab.svg" color="#00aba9">
+    <link rel="shortcut icon" href="{{ STATIC_URL }}img/icons/favicon.ico">
+    <meta name="msapplication-config" content="{{ STATIC_URL }}img/icons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+{% endblock %}
+
+
+{# BODY #}
+
+{# Navbar #}
+
+{% block header %}
+    <header id="page-header">
+        <div id="page-header-title" class="wrapper clearfix">
+            <i id="menu-toggle" class="fa fa-bars"></i>
+            <a class="title" href="{% url 'homepage' %}">
+                {% block header_logo %}
+                <img src="{% static 'img/logo-white.png' %}">
+                {% endblock %}
+            </a>
+
+            <div class="nav-menu">
+                <ul id="site-menu">
+                    {% block header_menu %}
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/#showcase">Showcase</a></li>
+                        <li><a href="https://facebook.com/HacksHackersAfrica" target="_blank" rel="noopener">Community</a></li>
+                        <li class="social-icons">
+                            <a href="https://twitter.com/{{ HURUMAP.twitter }}"><i class="fa fa-twitter fa-lg fa-fw"></i></a>
+                            <a href="https://facebook.com/{{ HURUMAP.facebook }}"><i class="fa fa-facebook fa-lg fa-fw"></i></a>
+{#                            <a href="mailto:{{ HURUMAP.contact_email }}"><i class="fa fa-envelope-o fa-lg"></i></a>#}
+                        </li>
+                    {% endblock header_menu %}
+                </ul>
+
+                {% if not hide_nav_tools %}
+                    {% block nav_tools %}
+                    <div id="menu" class="tool-set clearfix">
+                        <div class="tool-group">
+                            <input name="geography_select" id="geography-select" type="text" placeholder="Start typing a place name or address..." autocomplete="off">
+                        </div>
+                        {% if not hide_nav_compare %}
+                        {% comment %}
+                        <span class="separator">or</span>
+                        <div class="tool-group">
+                            <a class="button" href="{% url 'table_search' %}">
+                                <i class="fa fa-chevron-circle-right"></i>
+                                Search for data
+                            </a>
+                        </div>
+                        {% endcomment %}
+                        {% endif %}
+                    </div>
+                    {% endblock %}
+                {% endif %}
+            </div>
+        </div>
+    </header>
+{% block header_content %}{% endblock header_content %}
+{% endblock %}
+
+
+{% block body_javascript %}
+    {{ block.super }}
+
+    {#  Navbar scroll stuff  #}
+    <script>
+        // Hide Header on on scroll down
+        var didScroll;
+        var lastScrollTop = 0;
+        var delta = 5;
+        var navbarHeight = $('header').outerHeight();
+
+        $(window).scroll(function(event){
+            didScroll = true;
+        });
+
+        setInterval(function() {
+            if (didScroll) {
+                hasScrolled();
+                didScroll = false;
+            }
+        }, 250);
+
+        function hasScrolled() {
+            var st = $(this).scrollTop();
+
+            // Make sure they scroll more than delta
+            if(Math.abs(lastScrollTop - st) <= delta)
+                return;
+
+            // If they scrolled down and are past the navbar, add class .nav-up.
+            // This is necessary so you never see what is "behind" the navbar.
+            if (st > lastScrollTop && st > navbarHeight){
+                // Scroll Down
+                $('#page-header').removeClass('nav-down').addClass('nav-up');
+            } else {
+                // Scroll Up
+                if(st + $(window).height() < $(document).height()) {
+                    $('#page-header').removeClass('nav-up').addClass('nav-down');
+                }
+            }
+
+            lastScrollTop = st;
+        }
+    </script>
+{%  endblock %}

@@ -1,0 +1,19 @@
+<a name="showcase"></a>
+<div class="showcase {{ extra_css_class }}">
+    <div class="container-narrow clearfix text-center">
+        <h1>Story Showcase</h1>
+        <p>Explore how people are using {{ HURUMAP.name }} to improve their storytelling.</p>
+        <br/>
+        {% for story in HURUMAP.showcase_stories %}
+            <div class="column-third">
+                <div class="img" style="background-image: url('{{ story.img }}');"></div>
+                <h3>{{ story.title }}</h3>
+                <p>By {{ story.author }}</p>
+                <p>{{ story.brief }}</p>
+                <br/>
+                <p class="clearfix"><a href="{{ story.link }}" target="_blank" rel="noopener" class="btn btn-lg bg-bottle-green">Read more</a></p>
+                <br/>
+            </div>
+        {% endfor %}
+    </div>
+</div>

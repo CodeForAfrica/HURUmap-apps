@@ -2,20 +2,20 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.2
--- Dumped by pg_dump version 9.6.2
-
--- Started on 2017-07-31 10:53:27 EAT
+-- Dumped from database version 9.6.5
+-- Dumped by pg_dump version 10.0
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
 
+SET search_path = public, pg_catalog;
+
+ALTER TABLE IF EXISTS ONLY public.contraceptive_method DROP CONSTRAINT IF EXISTS contraceptive_method_pkey;
+DROP TABLE IF EXISTS public.contraceptive_method;
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -23,8 +23,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- TOC entry 195 (class 1259 OID 17785)
--- Name: contraceptive_method; Type: TABLE; Schema: public; Owner: hurumap_ke
+-- Name: contraceptive_method; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE contraceptive_method (
@@ -35,12 +34,8 @@ CREATE TABLE contraceptive_method (
 );
 
 
-ALTER TABLE contraceptive_method OWNER TO hurumap_ke;
-
 --
--- TOC entry 3177 (class 0 OID 17785)
--- Dependencies: 195
--- Data for Name: contraceptive_method; Type: TABLE DATA; Schema: public; Owner: hurumap_ke
+-- Data for Name: contraceptive_method; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY contraceptive_method (geo_level, geo_code, contraceptive_method, total) FROM stdin;
@@ -144,15 +139,12 @@ country	KE	traditional	4.79999999999999982
 
 
 --
--- TOC entry 3062 (class 2606 OID 17963)
--- Name: contraceptive_method contraceptive_method_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_ke
+-- Name: contraceptive_method contraceptive_method_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY contraceptive_method
     ADD CONSTRAINT contraceptive_method_pkey PRIMARY KEY (geo_level, geo_code, contraceptive_method, total);
 
-
--- Completed on 2017-07-31 10:53:43 EAT
 
 --
 -- PostgreSQL database dump complete

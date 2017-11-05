@@ -1,6 +1,5 @@
 import os
 from collections import OrderedDict
-import dj_database_url
 
 # pull in the default HURUmap settings
 from hurumap.settings import *  # noqa
@@ -104,4 +103,6 @@ HURUMAP['topics']['development'] = {
     ]
 }
 
-HURUMAP['na_label'] = ""
+
+# Making sure they are the same
+WAZIMAP = HURUMAP
