@@ -320,11 +320,30 @@
                  {% include 'profile/_blocks/_stat_list.html' with stat=traffic_and_crimes.total_fatalities stat_type='number' %}
              </div>
              <br>
-               <div class="column-full" id="chart-bar-traffic_and_crimes-fatalities_by_gender" data-stat-type="number" data-initial-sort="-value" data-chart-title="Deaths caused by road accidents by gender"></div>
-               <div class="column-half">
-                   {% include 'profile/_blocks/_stat_list.html' with stat=traffic_and_crimes.deaths_per_pop stat_type='number' %}
-               </div>
+            <div class="column-full" id="chart-bar-traffic_and_crimes-fatalities_by_gender" data-stat-type="number" data-initial-sort="-value" data-chart-title="Deaths caused by road accidents by gender"></div>
+             <div class="column-half">
+                 {% include 'profile/_blocks/_stat_list.html' with stat=traffic_and_crimes.deaths_per_pop stat_type='number' %}
+             </div>
         </section>
+        <br clear="all">
+        <section class="clearfix stat-row">
+          <div class="column-full" id="chart-histogram-traffic_and_crimes-offences_against_person" data-stat-type="scaled-percentage" data-chart-title="Distribution of offences against person(2015)" data-initial-sort="-value"></div>
+          <br>
+          <br>
+        </section>
+        <section class="clearfix stat-row">
+          <div class="column-half">
+              {% include 'profile/_blocks/_stat_list.html' with stat=traffic_and_crimes.cattle_and_robbery stat_type='number' %}
+          </div>
+          <div class="column-half" id="chart-grouped_column-traffic_and_crimes-cattletheft_robbery_deaths" data-stat-type="scaled-percentage" data-chart-title="Percentage of people killed in cattle theft and robbery crimes(2015)" data-initial-sort="-value"></div>
+          <div class="column-half" id="chart-pie-traffic_and_crimes-superstitious_beliefs" data-stat-type="number" data-chart-title="Murder based on superstitious beliefs(2015)" data-initial-sort="-value"></div>
+        </section>
+        <section class="clearfix stat-row">
+          <div class="column-half">
+              {% include 'profile/_blocks/_stat_list.html' with stat=traffic_and_crimes.public_fighting_stat stat_type='number' %}
+          </div>
+          <div class="column-half" id="chart-histogram-traffic_and_crimes-public_fighting" data-stat-type="scaled-percentage" data-chart-title="Percentage of people killed in public fights(2015)" data-initial-sort="-value"></div>
+      </section>
     </div>
 </article>
 {% endblock %}
