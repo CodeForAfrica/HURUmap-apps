@@ -28,11 +28,12 @@ HURUMAP['country_name'] = 'Uganda'
 
 hurumap_profile = os.environ.get('HURUMAP_PROFILE', 'census')
 
+HURUMAP['default_profile'] = hurumap_profile
 
 HURUMAP['country_profile'] = 'country-UG-Uganda'
-HURUMAP['profile_builder'] = 'hurumap_ug.profile.get_profile'
-HURUMAP['default_geo_version'] = os.environ.get('DEFAULT_GEO_VERSION', '2009')
-HURUMAP['legacy_embed_geo_version'] = '2009'
+HURUMAP['profile_builder'] = 'hurumap_ug.profiles.census.get_profile'
+HURUMAP['default_geo_version'] = os.environ.get('DEFAULT_GEO_VERSION', '2014')
+HURUMAP['legacy_embed_geo_version'] = '2014'
 HURUMAP['levels'] = {
     'country': {
         'plural': 'countries',
@@ -53,7 +54,7 @@ HURUMAP['levels'] = {
 }
 
 HURUMAP['geometry_data'] = {
-    '2009': {
+    '2014': {
         'country': 'geo/country.topojson',
         'region': 'geo/region.topojson',
         'district': 'geo/district.topojson',
