@@ -22,13 +22,20 @@ def get_demographics_profile(geo, session):
         table_fields=['sex'])
 
     # urban/rural by sex
-    urban_dist_data, _ = get_stat_data(
-        ['rural or urban'], geo, session,
-        table_fields=['rural or urban'])
     total_urbanised = 0
-    for data in urban_dist_data['Urban'].itervalues():
-        if 'numerators' in data:
-            total_urbanised += data['numerators']['this']
+    try:
+        urban_dist_data, _ = get_stat_data(
+            ['rural or urban'], geo, session,
+            table_fields=['rural or urban'])
+
+        for data in urban_dist_data['Urban'].itervalues():
+            if 'numerators' in data:
+                total_urbanised += data['numerators']['this']
+
+    except LocationNotFound:
+        urban_dist_data = LOCATIONNOTFOUND
+
+
 
     final_data = {
         'sex_ratio': sex_dist_data,
@@ -50,17 +57,17 @@ def get_demographics_profile(geo, session):
     return final_data
 
 
-def get_households_profile(geocode, geo_level, session):
+def get_households_profile(geo, session):
     try:
-        permanency, _ = get_stat_data('household percentage by permanency', geo_level, geocode, session,
+        permanency, _ = get_stat_data('household percentage by permanency', geo, session,
                                       table_fields=['household percentage by permanency'])
     except LocationNotFound:
         permanency = LOCATIONNOTFOUND
 
     try:
-        light_source, total_households = get_stat_data('household distribution by light source', geo_level, geocode,
+        light_source, total_households = get_stat_data('household distribution by light source', geo,
                                                        session, table_fields=['household distribution by light source'])
-        energy_source, _ = get_stat_data('household distribution by energy source', geo_level, geocode, session,
+        energy_source, _ = get_stat_data('household distribution by energy source', geo, session,
                                          table_fields=['household distribution by energy source'])
     except LocationNotFound:
         total_households = 0
@@ -79,9 +86,9 @@ def get_households_profile(geocode, geo_level, session):
     return final_data
 
 
-def get_elections2016_profile(geocode, geo_level, session):
+def get_elections2016_profile(geo, session):
     try:
-        candidate, total_votes = get_stat_data('presidential candidate', geo_level, geocode, session,
+        candidate, total_votes = get_stat_data('presidential candidate', geo, session,
                                                table_fields=['presidential candidate'], order_by="-total")
 
 
@@ -126,11 +133,11 @@ def get_elections2016_profile(geocode, geo_level, session):
     return final_data
 
 
-def get_disabilities_profile(geocode, geo_level, session):
+def get_disabilities_profile(geo, session):
     try:
-        disabled_or_not, total_ = get_stat_data('disabled or not', geo_level, geocode, session,
+        disabled_or_not, total_ = get_stat_data('disabled or not', geo, session,
                                                 table_fields=['disabled or not'])
-        disability, _ = get_stat_data('disability', geo_level, geocode, session, table_fields=['disability'])
+        disability, _ = get_stat_data('disability', geo, session, table_fields=['disability'])
     except LocationNotFound:
         disabled_or_not, total_ = LOCATIONNOTFOUND, 0
         disability = LOCATIONNOTFOUND
@@ -171,6 +178,10 @@ def get_profile(geo, profile_name, request):
 
     try:
         data['demographics'] = get_demographics_profile(geo, session)
+        data['households'] = get_households_profile(geo, session)
+        data['disability'] = get_disabilities_profile(geo, session)
+        data['elections2016'] = get_elections2016_profile(geo, session)
+
         return data
 
     finally:
