@@ -1,18 +1,19 @@
+import logging
 import re
 from collections import OrderedDict
-import logging
 
-from wazimap.geo import geo_data
-from wazimap.data.tables import get_model_from_fields
-from wazimap.data.utils import get_session, calculate_median, merge_dicts, get_stat_data, get_objects_by_geo, group_remainder
 from django.conf import settings
-
-
-log = logging.getLogger(__name__)
-
+from wazimap.data.tables import get_model_from_fields
+from wazimap.data.utils import (calculate_median, get_objects_by_geo,
+                                get_session, get_stat_data, group_remainder,
+                                merge_dicts)
+from wazimap.geo import geo_data
 
 # ensure tables are loaded
 import hurumap_ke.tables  # noqa
+
+log = logging.getLogger(__name__)
+
 
 SECTIONS = settings.HURUMAP.get('topics', {})
 
@@ -66,10 +67,16 @@ def get_profile(geo, profile_name, request):
                     # get profiles for comparative geometries
                     for comp_geo in comparative_geos:
                         try:
-                            merge_dicts(data[section], func(comp_geo, session, year), comp_geo.geo_level)
+                            merge_dicts(
+                                data[section],
+                                func(
+                                    comp_geo,
+                                    session,
+                                    year),
+                                comp_geo.geo_level)
                         except KeyError as e:
                             msg = "Error merging data into %s for section '%s' from %s: KeyError: %s" % (
-                            geo.geoid, section, comp_geo.geoid, e)
+                                geo.geoid, section, comp_geo.geoid, e)
                             log.fatal(msg, exc_info=e)
                             raise ValueError(msg)
 
@@ -79,7 +86,9 @@ def get_profile(geo, profile_name, request):
                     # get profiles for comparative geometries
                     for comp_geo in comparative_geos:
                         try:
-                            merge_dicts(data[section], func(comp_geo, session), comp_geo.geo_level)
+                            merge_dicts(
+                                data[section], func(
+                                    comp_geo, session), comp_geo.geo_level)
                         except KeyError as e:
                             msg = "Error merging data into %s for section '%s' from %s: KeyError: %s" % (
                                 geo.geoid, section, comp_geo.geoid, e)
@@ -533,7 +542,7 @@ def get_type_treatment_profile(geo, session):
                 continue
             try:
                 dist[key][other_key]['values']['this'] = dist[key][other_key]['numerators']['this']
-            except:
+            except BaseException:
                 dist[key][other_key] = {'values': {
                     'this': 0}, 'numerators': {'this': 0}}
 

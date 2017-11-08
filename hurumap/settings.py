@@ -50,14 +50,14 @@ HURUMAP['showcase_stories'] = [
         'brief': 'Two suspected thugs were shot dead in two separate incidents on Tuesday evening, and three guns with more than 30 bullets recovered.',
         'link': 'http://www.the-star.co.ke/news/2016/10/19/two-suspected-thugs-shot-dead-in-nairobi-as-crime-rate-soars_c1440749',
         'img': STATIC_URL + 'img/showcase/crime.jpg'
-     },
+    },
     {
         'title': 'Narok, Homa Bay and West Pokot top in early pregnancy',
         'author': 'Monicah Mwangi',
         'brief': 'About one in every five teenage girls between 15-19 years have either had a live birth or are pregnant with their first child, according to a report by the United Nations Population Fund.',
         'link': 'http://www.the-star.co.ke/news/2016/11/02/narok-homa-bay-and-west-pokot-top-in-early-pregnancy_c1447958',
         'img': STATIC_URL + 'img/showcase/early-pregnancy.jpg'
-     }
+    }
 ]
 
 WAZIMAP = HURUMAP
