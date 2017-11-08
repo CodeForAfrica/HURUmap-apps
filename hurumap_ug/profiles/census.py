@@ -3,26 +3,32 @@ from wazimap.data.tables import get_datatable
 from wazimap.data.utils import merge_dicts, get_session, get_stat_data, LocationNotFound
 from wazimap.geo import geo_data
 from django.conf import settings
+import logging
 
 __author__ = 'kenneth'
+
+log = logging.getLogger(__name__)
 
 SECTIONS = settings.HURUMAP.get('topics', {})
 
 LOCATIONNOTFOUND = {'name': 'No Data Found', 'numerators': {'this': 0}, 'values': {'this': 0}}
 
 
-def get_demographics_profile(geo_code, geo_level, session):
-    sex_dist_data, total_pop = get_stat_data('sex', geo_level, geo_code, session, table_fields=['sex'])
-    try:
-        urban_dist_data, _ = get_stat_data('rural or urban', geo_level, geo_code, session,
-                                           table_fields=['rural or urban'])
-    except LocationNotFound:
-        urban_dist_data = LOCATIONNOTFOUND
+def get_demographics_profile(geo, session):
+    geo.version = str(geo.version)
+    # sex
+    sex_dist_data, total_pop = get_stat_data(
+        'sex', geo, session,
+        table_fields=['sex'])
 
+    # urban/rural by sex
+    urban_dist_data, _ = get_stat_data(
+        ['rural or urban'], geo, session,
+        table_fields=['rural or urban'])
     total_urbanised = 0
-    for data, value in urban_dist_data.get('Urban', {}).iteritems():
-        if data == 'numerators':
-            total_urbanised += value['this']
+    for data in urban_dist_data['Urban'].itervalues():
+        if 'numerators' in data:
+            total_urbanised += data['numerators']['this']
 
     final_data = {
         'sex_ratio': sex_dist_data,
@@ -159,38 +165,12 @@ def get_disabilities_profile(geocode, geo_level, session):
 PROFILE_SECTIONS = ['demographics', 'households', 'elections2016', 'disabilities']
 
 
-def get_profile(geo_code, geo_level, get_params, profile_name=None):
+def get_profile(geo, profile_name, request):
     session = get_session()
+    data = {}
 
     try:
-        geo_summary_levels = geo_data.get_summary_geo_info(geo_code, geo_level)
-        data = {}
-        sections = []
-        selected_sections = []
-        if get_params.get('topic'):
-            categories = get_params.get('topic').split(',')
-            for cat in categories:
-                selected_sections.extend(SECTIONS[cat]['profiles'])
-            data['selected_topics'] = categories
-
-        for cat in SECTIONS:
-            sections.extend(SECTIONS[cat]['profiles'])
-
-        for section in sections:
-            section = section.lower().replace(' ', '_')
-            function_name = 'get_%s_profile' % section
-            if function_name in globals():
-                func = globals()[function_name]
-                data[section] = func(geo_code, geo_level, session)
-
-                # get profiles for province and/or country
-                for level, code in geo_summary_levels:
-                    # merge summary profile into current geo profile
-                    merge_dicts(data[section], func(code, level, session), level)
-        data['all_sections'] = SECTIONS
-        if (selected_sections == []): selected_sections = sections
-        data['raw_selected_sections'] = selected_sections
-        data['selected_sections'] = [x.replace(' ', '_').lower() for x in selected_sections]
+        data['demographics'] = get_demographics_profile(geo, session)
         return data
 
     finally:
