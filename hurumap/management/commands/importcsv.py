@@ -1,14 +1,11 @@
-import copy
 import csv
+import logging
 import re
 
 from django.core.management.base import BaseCommand, CommandError
-
-from wazimap.data.utils import get_session
 from wazimap.data.tables import get_datatable, get_table_id
+from wazimap.data.utils import get_session
 from wazimap.geo import geo_data
-
-import logging
 
 logging.basicConfig()
 logging.getLogger('sqlalchemy.engine').setLevel(logging.WARN)
@@ -295,7 +292,7 @@ class Command(BaseCommand):
                     else:
                         raise Exception(
                             "Different value %r != %r for duplicate key %r" % (
-                            stored_values[stored_key], total, stored_key))
+                                stored_values[stored_key], total, stored_key))
                 stored_values[stored_key] = total
                 kwargs['total'] = total
 
@@ -321,7 +318,7 @@ class Command(BaseCommand):
         level = None
         if ':' in geo_name:
             pre, code = geo_name.split(':', 1)
-            pre = pre.strip();
+            pre = pre.strip()
             code = code.strip()
         else:
             pre = code = geo_name
@@ -352,6 +349,6 @@ class Command(BaseCommand):
             else:
                 raise ValueError(
                     "Cannot recognize single geo level of %s: %s" % (
-                    geo_name, matches))
+                        geo_name, matches))
 
         return [level, code]
