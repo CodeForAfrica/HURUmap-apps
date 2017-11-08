@@ -71,7 +71,7 @@ HURUMAP['topics']['census'] = {
     'name': 'census',
     'icon': '/static/img/census.png',
     'order': 1,
-    'desc': 'Census data collected in 2009 by the Uganda National Bureau of \
+    'desc': 'Census data collected in 2014 by the Uganda National Bureau of \
                     Statistics',
     'profiles': [
         'Demographics',
