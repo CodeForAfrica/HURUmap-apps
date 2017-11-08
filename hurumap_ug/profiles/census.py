@@ -1,6 +1,7 @@
 import operator
 from wazimap.data.tables import get_datatable
-from wazimap.data.utils import merge_dicts, get_session, get_stat_data, LocationNotFound
+from wazimap.data.utils import merge_dicts, get_session, get_stat_data, \
+    LocationNotFound
 from wazimap.geo import geo_data
 from django.conf import settings
 import logging
@@ -11,7 +12,8 @@ log = logging.getLogger(__name__)
 
 SECTIONS = settings.HURUMAP.get('topics', {})
 
-LOCATIONNOTFOUND = {'name': 'No Data Found', 'numerators': {'this': 0}, 'values': {'this': 0}}
+LOCATIONNOTFOUND = {'name': 'No Data Found', 'numerators': {'this': 0},
+                    'values': {'this': 0}}
 
 
 def get_demographics_profile(geo, session):
@@ -35,8 +37,6 @@ def get_demographics_profile(geo, session):
     except LocationNotFound:
         urban_dist_data = LOCATIONNOTFOUND
 
-
-
     final_data = {
         'sex_ratio': sex_dist_data,
         'urban_distribution': urban_dist_data,
@@ -59,16 +59,20 @@ def get_demographics_profile(geo, session):
 
 def get_households_profile(geo, session):
     try:
-        permanency, _ = get_stat_data('household percentage by permanency', geo, session,
-                                      table_fields=['household percentage by permanency'])
+        permanency, _ = get_stat_data('household percentage by permanency', geo,
+                                      session,
+                                      table_fields=[
+                                          'household percentage by permanency'])
     except LocationNotFound:
         permanency = LOCATIONNOTFOUND
 
     try:
-        light_source, total_households = get_stat_data('household distribution by light source', geo,
-                                                       session, table_fields=['household distribution by light source'])
-        energy_source, _ = get_stat_data('household distribution by energy source', geo, session,
-                                         table_fields=['household distribution by energy source'])
+        light_source, total_households = get_stat_data(
+            'household distribution by light source', geo,
+            session, table_fields=['household distribution by light source'])
+        energy_source, _ = get_stat_data(
+            'household distribution by energy source', geo, session,
+            table_fields=['household distribution by energy source'])
     except LocationNotFound:
         total_households = 0
         light_source = LOCATIONNOTFOUND
@@ -88,8 +92,11 @@ def get_households_profile(geo, session):
 
 def get_elections2016_profile(geo, session):
     try:
-        candidate, total_votes = get_stat_data('presidential candidate', geo, session,
-                                               table_fields=['presidential candidate'], order_by="-total")
+        candidate, total_votes = get_stat_data('presidential candidate', geo,
+                                               session,
+                                               table_fields=[
+                                                   'presidential candidate'],
+                                               order_by="-total")
 
 
     except LocationNotFound:
@@ -106,9 +113,9 @@ def get_elections2016_profile(geo, session):
 
     final_data = {
         'candidate_distribution': candidate,
-        'museveni_votes':{
+        'museveni_votes': {
             'name': 'Museveni Votes',
-            'numerators':{'this':  total_museveni}
+            'numerators': {'this': total_museveni}
         },
         'besigye_votes': {
             'name': 'Besigye Votes',
@@ -125,7 +132,7 @@ def get_elections2016_profile(geo, session):
         final_data['besigye_votes']['values'] = {
             'this': round(total_besigye / total_votes * 100, 2)}
         final_data['museveni_votes']['values'] = {
-            'this': round(total_museveni/ total_votes * 100, 2)
+            'this': round(total_museveni / total_votes * 100, 2)
         }
     except ZeroDivisionError:
         final_data['besigye_votes']['values'] = {'this': 0}
@@ -136,8 +143,10 @@ def get_elections2016_profile(geo, session):
 def get_disabilities_profile(geo, session):
     try:
         disabled_or_not, total_ = get_stat_data('disabled or not', geo, session,
-                                                table_fields=['disabled or not'])
-        disability, _ = get_stat_data('disability', geo, session, table_fields=['disability'])
+                                                table_fields=[
+                                                    'disabled or not'])
+        disability, _ = get_stat_data('disability', geo, session,
+                                      table_fields=['disability'])
     except LocationNotFound:
         disabled_or_not, total_ = LOCATIONNOTFOUND, 0
         disability = LOCATIONNOTFOUND
@@ -169,7 +178,8 @@ def get_disabilities_profile(geo, session):
     return final_data
 
 
-PROFILE_SECTIONS = ['demographics', 'households', 'elections2016', 'disabilities']
+PROFILE_SECTIONS = ['demographics', 'households', 'elections2016',
+                    'disabilities']
 
 
 def get_profile(geo, profile_name, request):
@@ -186,5 +196,3 @@ def get_profile(geo, profile_name, request):
 
     finally:
         session.close()
-
-
