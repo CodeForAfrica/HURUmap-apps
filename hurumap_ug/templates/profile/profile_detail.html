@@ -1,10 +1,12 @@
-{% extends 'profile/profile_detail.html' %} {% block profile_header_tail %}
+{% extends 'profile/profile_detail.html' %}
+
+{% block profile_header_tail %}
     <div class="column-full">
-        <p class="caption"><strong>Census data:</strong> 2009</p>
+        <p class="caption"><strong>Census data:</strong> 2014</p>
     </div>
-{% endblock %} {% block profile_detail %}
+{% endblock %}
 
-
+{% block profile_detail %}
     <article id="demographics"
              class="clearfix {% if 'demographics' not in selected_sections %}hide{% endif %}">
         <header class="section-contents">
@@ -13,10 +15,11 @@
         <div class="section-container">
 
             <section class="clearfix stat-row">
-                <h2 class="header-for-columns"><a class="permalink"
-                                                  href="#pop_count"
-                                                  id="pop_count">Population <i
-                        class="fa fa-link"></i></a></h2>
+                <h2 class="header-for-columns">
+                    <a class="permalink"
+                       href="#pop_count"
+                       id="pop_count">Population <i
+                            class="fa fa-link"></i></a></h2>
                 <div class="column-quarter">
                     {% include 'profile/_blocks/_stat_list.html' with stat=demographics.total_population stat_type='number' %}
                 </div>
@@ -80,7 +83,7 @@
         </div>
     </article>
 
-    <article id="households"
+    <article id="disability"
              class="clearfix {% if 'households' not in selected_sections %}hide{% endif %}">
         <header class="section-contents">
             <h1>Population with disability</h1>
@@ -106,8 +109,6 @@
             </section>
 
         </div>
-    </article>
-
     </article>
 
     <article id="elections2016"
@@ -139,7 +140,7 @@
                      data-stat-type="scaled-percentage"
                      data-chart-title="Votes Distribution"></div>
             </section>
-
         </div>
     </article>
+
 {% endblock %}
