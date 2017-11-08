@@ -1,10 +1,8 @@
-import operator
-from wazimap.data.tables import get_datatable
-from wazimap.data.utils import merge_dicts, get_session, get_stat_data, \
-    LocationNotFound
-from wazimap.geo import geo_data
-from django.conf import settings
 import logging
+
+from django.conf import settings
+from wazimap.data.utils import (LocationNotFound, get_session, get_stat_data,
+                                merge_dicts)
 
 __author__ = 'kenneth'
 
@@ -97,7 +95,6 @@ def get_elections2016_profile(geo, session):
                                                table_fields=[
                                                    'presidential candidate'],
                                                order_by="-total")
-
 
     except LocationNotFound:
         candidate, total_votes = LOCATIONNOTFOUND, 0

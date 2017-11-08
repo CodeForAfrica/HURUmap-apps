@@ -1,7 +1,7 @@
 import subprocess
 
-from django.core.management.base import BaseCommand, CommandError
 from django.conf import settings
+from django.core.management.base import BaseCommand, CommandError
 
 
 class Command(BaseCommand):
@@ -31,7 +31,10 @@ class Command(BaseCommand):
 
         args = ["pg_dump"] + args
 
-        p = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        p = subprocess.Popen(
+            args,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE)
         stdout, stderr = p.communicate()
 
         self.stdout.write(stdout.decode('utf8'))

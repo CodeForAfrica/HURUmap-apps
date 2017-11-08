@@ -1,6 +1,7 @@
 # pull in the default HURUmap settings
-from hurumap.settings import *  # noqa
 from collections import OrderedDict
+
+from hurumap.settings import *  # noqa
 
 DATABASE_URL = os.environ.get('DATABASE_URL',
                               'postgresql://hurumap_ug:hurumap_ug@localhost/hurumap_ug')
