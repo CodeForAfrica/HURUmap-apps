@@ -6,12 +6,36 @@ All members of our community are expected to follow our [Code of Conduct](https:
 
 Following these guidelines helps to communicate that you respect the time of the developers managing and developing this open source project. In return, they should reciprocate that respect in addressing your issue, assessing changes, and helping you finalize your pull requests.
 
-
-***... to be continued ...***
-
 <!-- TODO: Use template below to build on this -->
 
-<!--
+## Contributions
+
+
+### Submitting Bugs
+*If you find a security vulnerability, do **NOT** open an issue. Email [David](david@codeforafrica.org) instead.*
+
+Before submitting a bug, please do the following:
+
+
+* Perform **basic troubleshooting** steps:
+
+    * **Make sure you're on the latest version.** If you're not on the most
+      recent version, your problem may have been solved already! Upgrading is
+      always the best first step.
+    * **Try switching up dependency versions.** If the software in question has
+      dependencies (other libraries, etc) try upgrading/downgrading those as
+      well.
+
+* **Search the bug/issue tracker** to make sure it's not a known
+  issue.
+  
+It is very helpful if you can prepare a reproduction of the bug. In other words, provide a small test 
+case which we can run to confirm your bug. It makes it easier to find the problem and to fix it.
+
+Provide as much information as you can and use this [template](https://github.com/CodeForAfrica/HURUmap/blob/master/ISSUE_TEMPLATE.md) to create an issue.
+
+
+
 
 ### Explain what kinds of contributions you are looking for.
 
@@ -180,4 +204,3 @@ These sections are not necessary, but can help streamline the contributions you 
 
 **Need inspiration?** [1] [StandardIssueLabels](https://github.com/wagenet/StandardIssueLabels#standardissuelabels) [2] [Atom](https://github.com/atom/atom/blob/master/CONTRIBUTING.md#issue-and-pull-request-labels)
 
--->
