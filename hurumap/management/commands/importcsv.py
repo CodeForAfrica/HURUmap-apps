@@ -1,15 +1,11 @@
-import copy
 import csv
+import logging
 import re
 
 from django.core.management.base import BaseCommand, CommandError
-
-from wazimap.data.utils import get_session
 from wazimap.data.tables import get_datatable, get_table_id
+from wazimap.data.utils import get_session
 from wazimap.geo import geo_data
-
-
-import logging
 
 logging.basicConfig()
 logging.getLogger('sqlalchemy.engine').setLevel(logging.WARN)
@@ -69,9 +65,19 @@ class Command(BaseCommand):
         self.table_id = options.get('table')
         self.dryrun = options.get('dryrun', False)
         self.geo_version = options.get('geo_version')
-        self.provinces = {g.name.lower(): g for g in geo_data.geo_model.objects.filter(version=self.geo_version).filter(geo_level='province')}
-        self.districts = {g.name.lower(): g for g in geo_data.geo_model.objects.filter(version=self.geo_version).filter(geo_level='district')}
-        self.metros = {g.name.lower(): g for g in geo_data.geo_model.objects.filter(version=self.geo_version).filter(geo_level='municipality').filter(parent_level='province')}
+        self.provinces = {g.name.lower(): g for g in
+                          geo_data.geo_model.objects.filter(
+                              version=self.geo_version).filter(
+                              geo_level='province')}
+        self.districts = {g.name.lower(): g for g in
+                          geo_data.geo_model.objects.filter(
+                              version=self.geo_version).filter(
+                              geo_level='district')}
+        self.metros = {g.name.lower(): g for g in
+                       geo_data.geo_model.objects.filter(
+                           version=self.geo_version).filter(
+                           geo_level='municipality').filter(
+                           parent_level='province')}
 
         if self.dryrun:
             self.stdout.write("DRY RUN: not actuall writing data")
@@ -123,10 +129,10 @@ class Command(BaseCommand):
 
         # Geography by Highest educational level, Population group and Gender
         line = next(self.reader)[0].strip()
-        fields = line\
-            .replace("Geography by", "")\
-            .strip()\
-            .replace(" and ", ", ")\
+        fields = line \
+            .replace("Geography by", "") \
+            .strip() \
+            .replace(" and ", ", ") \
             .split(", ")
         self.fields = [f.strip().lower() for f in fields]
 
@@ -210,9 +216,9 @@ class Command(BaseCommand):
 
             # zip the categories
             if categories is None:
-                categories = [(c, ) for c in categories_for_field]
+                categories = [(c,) for c in categories_for_field]
             else:
-                categories = [tup + (categories_for_field[i], )
+                categories = [tup + (categories_for_field[i],)
                               for i, tup in enumerate(categories)]
 
         self.fields = fields
@@ -244,9 +250,11 @@ class Command(BaseCommand):
         table_id = self.table_id or get_table_id(self.fields)
         try:
             self.table = get_datatable(table_id)
-            self.stdout.write("Table for fields %s is %s" % (self.fields, self.table.id))
+            self.stdout.write(
+                "Table for fields %s is %s" % (self.fields, self.table.id))
         except KeyError:
-            raise CommandError("Couldn't establish which table to use for these fields. Have you added a FieldTable entry in wazimap_za/tables.py?\nFields: %s" % self.fields)
+            raise CommandError(
+                "Couldn't establish which table to use for these fields. Have you added a FieldTable entry in wazimap_za/tables.py?\nFields: %s" % self.fields)
 
     def store_values(self):
         session = get_session()
@@ -269,17 +277,22 @@ class Command(BaseCommand):
                     'geo_version': self.geo_version,
                 }
 
-                kwargs.update(dict((f, v) for f, v in zip(self.fields, category)))
+                kwargs.update(
+                    dict((f, v) for f, v in zip(self.fields, category)))
                 if value == '-':
                     value = '0'
                 total = round(float(value.replace(',', '')))
                 stored_key = tuple(sorted(list(kwargs.items())))
                 if stored_key in stored_values:
                     if stored_values[stored_key] == total:
-                        self.stdout.write("Skipping already-added value for key %r" % list(stored_key))
+                        self.stdout.write(
+                            "Skipping already-added value for key %r" % list(
+                                stored_key))
                         continue
                     else:
-                        raise Exception("Different value %r != %r for duplicate key %r" % (stored_values[stored_key], total, stored_key))
+                        raise Exception(
+                            "Different value %r != %r for duplicate key %r" % (
+                                stored_values[stored_key], total, stored_key))
                 stored_values[stored_key] = total
                 kwargs['total'] = total
 
@@ -305,7 +318,8 @@ class Command(BaseCommand):
         level = None
         if ':' in geo_name:
             pre, code = geo_name.split(':', 1)
-            pre = pre.strip(); code = code.strip()
+            pre = pre.strip()
+            code = code.strip()
         else:
             pre = code = geo_name
 
@@ -328,10 +342,13 @@ class Command(BaseCommand):
                 if match:
                     matches.append((geo_level, match.geo_code))
             if len(matches) == 0:
-                raise ValueError("Cannot recognize the geo level of %s" % geo_name)
+                raise ValueError(
+                    "Cannot recognize the geo level of %s" % geo_name)
             elif len(matches) == 1:
                 (level, code) = matches[0]
             else:
-                raise ValueError("Cannot recognize single geo level of %s: %s" % (geo_name, matches))
+                raise ValueError(
+                    "Cannot recognize single geo level of %s: %s" % (
+                        geo_name, matches))
 
         return [level, code]
