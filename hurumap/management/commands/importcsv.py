@@ -1,15 +1,12 @@
 import copy
 import csv
+import logging
 import re
 
 from django.core.management.base import BaseCommand, CommandError
-
-from wazimap.data.utils import get_session
 from wazimap.data.tables import get_datatable, get_table_id
+from wazimap.data.utils import get_session
 from wazimap.geo import geo_data
-
-
-import logging
 
 logging.basicConfig()
 logging.getLogger('sqlalchemy.engine').setLevel(logging.WARN)

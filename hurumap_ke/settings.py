@@ -1,10 +1,9 @@
 import os
 from collections import OrderedDict
+
 import dj_database_url
 
-# pull in the default hurumap settings
 from hurumap.settings import *  # noqa
-
 
 # insert our overrides before both census and hurumap
 INSTALLED_APPS = ['hurumap_ke'] + INSTALLED_APPS

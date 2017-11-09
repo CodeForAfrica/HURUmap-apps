@@ -1,6 +1,6 @@
+from django.conf import settings
 from wazimap.geo import GeoData as GeoDataBase
 
-from django.conf import settings
 
 class GeoData (GeoDataBase):
 

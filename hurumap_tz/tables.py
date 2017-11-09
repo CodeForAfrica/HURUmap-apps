@@ -1,6 +1,5 @@
 from hurumap.data.tables import FieldTable
 
-
 # Define our tables so the data API can discover them.
 FieldTable(['rural or urban', 'sex', 'age in completed years'], table_per_level=False)
 #tz wards do not have population breakdown by age so they have a separate table
