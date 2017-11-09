@@ -1,0 +1,38 @@
+{% extends 'profile/profile_detail.html' %}
+
+{% block profile_header_tail %}
+    <div class="column-full">
+        <p class="caption"><strong>Census data:</strong> 2010</p>
+    </div>
+{% endblock %}
+
+{% block profile_detail %}
+<article id="demographics" class="clearfix">
+    <header class="section-contents">
+        <h1>Demographics</h1>
+    </header>
+    <div class="section-container">
+
+        <section class="clearfix stat-row">
+            <h2 class="header-for-columns"><a class="permalink" href="#pop_count" id="pop_count">Population <i class="fa fa-link"></i></a></h2>
+            <div class="column-quarter">
+                {% include 'profile/_blocks/_stat_list.html' with stat=demographics.total_population stat_type='number' %}
+            </div>
+            <div class="column-half" id="chart-pie-demographics-gender_ratio" data-stat-type="percentage" data-chart-title="Gender"></div>
+            <div class="column-quarter" id="chart-grouped_column-demographics-rural_distribution" data-stat-type="scaled-percentage" data-chart-title="Rural vs Urban"></div> 
+        </section>
+        <section class="clearfix stat-row">
+            <h2 class="header-for-columns"><a class="permalink" href="#age" id="age">Age <i class="fa fa-link"></i></a></h2>
+            <div class="column-quarter">
+                {% include 'profile/_blocks/_stat_list.html' with stat=demographics.under_15 stat_type='number' %}
+            </div>
+            <div class="column-half">
+                <div id="chart-histogram-demographics-age_group_distribution" data-stat-type="scaled-percentage" data-chart-title="Population by age range"></div>
+            </div>
+            <div class="column-quarter" id="chart-pie-demographics-age_group_distribution" data-stat-type="percentage" data-chart-title="Population by age category"></div>
+        </section>
+
+    </div>
+</article>
+
+{% endblock %}
