@@ -20,6 +20,18 @@ HURUMAP['country_code'] = 'TZ'
 HURUMAP['country_name'] = 'Tanzania'
 HURUMAP['country_profile'] = 'country-TZ-Tanzania'
 HURUMAP['profile_builder'] = 'hurumap_tz.profiles.get_census_profile'
+
+ # Define the profile to load
+
+hurumap_profile = os.environ.get('HURUMAP_PROFILE', 'census')
+
+HURUMAP['default_profile'] = hurumap_profile
+
+
+HURUMAP['profile_builder'] = 'hurumap_tz.profiles.{}.get_profile'.format(hurumap_profile)
+HURUMAP['default_geo_version'] = os.environ.get('DEFAULT_GEO_VERSION', '2009')
+HURUMAP['legacy_embed_geo_version'] = '2009'
+
 HURUMAP['levels'] = {
     'country': {
         'plural': 'countries',
@@ -41,10 +53,12 @@ HURUMAP['levels'] = {
 
 HURUMAP['comparative_levels'] = ["ward", "district", "region", "country"]
 HURUMAP['geometry_data'] = {
-    'country': 'geo/country.topojson',
-    'region': 'geo/region.topojson',
-    'district': 'geo/district.topojson',
-    'ward': 'geo/ward.topojson',
+    '2009': {
+                'country': 'geo/country.topojson',
+                'region': 'geo/region.topojson',
+                'district': 'geo/district.topojson',
+                'ward': 'geo/ward.topojson'
+            }
 }
 
 HURUMAP['ga_tracking_ids'] = ['UA-91133100-4', 'UA-44795600-27', 'UA-92541368-2']
@@ -103,6 +117,37 @@ HURUMAP['topics']['development'] = {
     ]
 }
 
+HURUMAP['showcase_stories'] = [
+    {
+        'title': 'Umbumbumbu wa Hesabu, Kiingereza unavyotishia mustakabali wa elimu Tanzania',
+        'author': 'Nuzulack Dausen',
+        'brief': 'Msingi dhaifu wa masomo ya Hisabati na Kiingereza unazidi kudhoofisha'\
+        ' elimu ya msingi nchini, jambo linalotishia mustakabali wa kuzalisha wataalamu bora watakaochochea maendeleo.',
+        'link': 'https://data.mwananchi.co.tz/umbumbumbu-wa-hesabu-kiingereza-unavyotishia-mustakabali-wa-elimu-tanzania/',
+        'img': STATIC_URL + 'img/showcase/uwezo.png'
+    },
+    {
+        'title': 'Hii ndiyo siri ya utofauti wa kipato kati ya wanaume na wanawake Tanzania',
+        'author': 'Nuzulack Dausen',
+        'brief': 'Dar es Salaam. Licha ya kipato cha mfanyakazi kwa mwezi kuongezeka'\
+        ' nchini bado kuna mwanya mkubwa wa kimapato kijinsia baada ya wanaume kuingiza fedha nyingi zaidi kuliko wanawake.',
+        'link': 'https://data.mwananchi.co.tz/hii-ndiyo-siri-ya-utofauti-wa-kipato-kati-ya-wanaume-na-wanawake-tanzania/',
+        'img': STATIC_URL + 'img/showcase/kipato.png'
+     },
+    {
+        'title': 'CTI calls streamlined taxation food processing sector',
+        'author': 'IPP Media',
+        'brief': 'A recent Confederation of Tanzania Industries (CTI) position'\
+        ' paper on regulatory authorities shows that although the manufacturing'\
+        ' sector generates tax revenues to the tune of 248 billion/- per year.',
+        'link': 'http://ippmedia.com/en/news/cti-calls-streamlined-taxation-food-processing-sector',
+        'img': STATIC_URL + 'img/showcase/IPPMedia.png'
+     }
+]
+
+STATIC_ROOT = 'hurumap_tz/static/'
+
+LOGGING['loggers']['hurumap_tz'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
 
 # Making sure they are the same
 WAZIMAP = HURUMAP
