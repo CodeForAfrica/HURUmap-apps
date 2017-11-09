@@ -1,13 +1,14 @@
 from collections import OrderedDict
 
-from hurumap.geo import geo_data
-from hurumap.data.tables import get_model_from_fields
-from hurumap.data.utils import get_session, calculate_median, merge_dicts, get_stat_data, get_objects_by_geo, \
-    group_remainder
 from django.conf import settings
 
 # ensure tables are loaded
 import hurumap_tz.tables  # noqa
+from hurumap.data.tables import get_model_from_fields
+from hurumap.data.utils import (calculate_median, get_objects_by_geo,
+                                get_session, get_stat_data, group_remainder,
+                                merge_dicts)
+from hurumap.geo import geo_data
 
 SECTIONS = settings.HURUMAP.get('topics', {})
 

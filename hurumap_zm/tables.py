@@ -1,9 +1,8 @@
-from hurumap.data.tables import FieldTable
-
+from wazimap.data.tables import FieldTable
 
 # Define our tables so the data API can discover them.
-FieldTable(['gender', 'age group'], table_per_level=False)
-FieldTable(['gender', 'rural or urban'], table_per_level=False)
+FieldTable(['gender', 'age group'])
+FieldTable(['gender', 'rural or urban'])
 
 # FieldTable(['rural or urban', 'sex', 'age in completed years'], table_per_level=False)
 # FieldTable(['employment activity status', 'sex'], universe='People aged 5 years and older', table_per_level=False)

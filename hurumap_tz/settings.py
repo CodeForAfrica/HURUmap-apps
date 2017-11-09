@@ -1,9 +1,7 @@
 import os
 from collections import OrderedDict
 
-# pull in the default HURUmap settings
 from hurumap.settings import *  # noqa
-
 
 # insert our overrides before both census and HURUmap
 INSTALLED_APPS = ['hurumap_tz'] + INSTALLED_APPS

@@ -1,10 +1,7 @@
 from collections import OrderedDict
 
-from hurumap.geo import geo_data
-from hurumap.data.tables import get_model_from_fields
-from hurumap.data.utils import get_session, calculate_median, merge_dicts, get_stat_data, get_objects_by_geo, group_remainder
 from django.conf import settings
-
+from wazimap.data.utils import get_session, get_stat_data, group_remainder
 
 # ensure tables are loaded
 import hurumap_zm.tables  # noqa
@@ -37,18 +34,13 @@ WATER_SOURCE_RECODES = OrderedDict([
 ])
 
 
-def get_census_profile(geo_code, geo_level, get_params,  profile_name=None):
+def get_census_profile(geo, profile_name, request):
+    geo.version = str(geo.version)
     session = get_session()
     try:
-        geo_summary_levels = geo_data.get_summary_geo_info(geo_code, geo_level)
         data = {}
         sections = []
         selected_sections = []
-        if get_params.get('topic'):
-            categories = get_params.get('topic').split(',')
-            for cat in categories:
-                selected_sections.extend(SECTIONS[cat]['profiles'])
-            data['selected_topics'] = categories
 
         for cat in SECTIONS:
             sections.extend(SECTIONS[cat]['profiles'])
@@ -58,13 +50,7 @@ def get_census_profile(geo_code, geo_level, get_params,  profile_name=None):
             function_name = 'get_%s_profile' % section
             if function_name in globals():
                 func = globals()[function_name]
-                data[section] = func(geo_code, geo_level, session)
-
-
-                # get profiles for province and/or country
-                for level, code in geo_summary_levels:
-                    # merge summary profile into current geo profile
-                    merge_dicts(data[section], func(code, level, session), level)
+                data[section] = func(geo, session)
 
         # tweaks to make the data nicer
         # show X largest groups on their own and group the rest as 'Other'
@@ -82,23 +68,21 @@ def get_census_profile(geo_code, geo_level, get_params,  profile_name=None):
         session.close()
 
 
-
-def get_demographics_profile(geo_code, geo_level, session):
-
+def get_demographics_profile(geo, session):
     # gender
     gender_dist_data, total_pop = get_stat_data(
-        'gender', geo_level, geo_code, session,
+        'gender', geo, session,
         table_fields=['gender', 'age group'])
 
     # age group
     age_group_dist_data, _ = get_stat_data(
-        'age group', geo_level, geo_code, session,
+        'age group', geo, session,
         table_fields=['gender', 'age group'])
     total_under_15 = age_group_dist_data['0-14 Years']['numerators']['this']
 
     # rural or urban
     rural_dist_data, _ = get_stat_data(
-        ['rural or urban','gender'], geo_level, geo_code, session,
+        ['rural or urban','gender'], geo, session,
         table_fields=['gender', 'rural or urban'])
 
     # # sex
@@ -180,10 +164,10 @@ def get_demographics_profile(geo_code, geo_level, session):
     return final_data
 
 
-def get_education_profile(geo_code, geo_level, session):
+def get_education_profile(geo, session):
     # highest level reached
     edu_dist_data, total_pop = get_stat_data(
-        'highest education level reached', geo_level, geo_code, session,
+        'highest education level reached', geo, session,
         key_order=['None', 'Pre-primary', 'Primary', 'Secondary', 'Tertiary',
                    'University', 'Youth polytechnic', 'Basic literacy', 'Madrassa'])
 
@@ -194,7 +178,7 @@ def get_education_profile(geo_code, geo_level, session):
 
     # school attendance by sex
     school_attendance_dist, _ = get_stat_data(
-        ['school attendance', 'sex'], geo_level, geo_code, session,
+        ['school attendance', 'sex'], geo, session,
         key_order={'school attendance': ['Never attended', 'At school', 'Left school', 'Unspecified'],
                    'sex': ['Female', 'Male']})
 
@@ -219,10 +203,10 @@ def get_education_profile(geo_code, geo_level, session):
     }
 
 
-def get_employment_profile(geo_code, geo_level, session):
+def get_employment_profile(geo, session):
     # employment status
     employment_activity_dist, total_workers = get_stat_data(
-        ['employment activity status', 'sex'], geo_level, geo_code, session,
+        ['employment activity status', 'sex'], geo, session,
         recode={'employment activity status': dict(EMPLOYMENT_RECODES)},
         key_order={'employment activity status': EMPLOYMENT_RECODES.values(),
                    'sex': ['Female', 'Male']})
@@ -242,17 +226,17 @@ def get_employment_profile(geo_code, geo_level, session):
     }
 
 
-def get_households_profile(geo_code, geo_level, session):
+def get_households_profile(geo, session):
     # main source of water
     water_source_dist, total_households = get_stat_data(
-        'main source of water', geo_level, geo_code, session,
+        'main source of water', geo, session,
         recode=dict(WATER_SOURCE_RECODES),
         key_order=WATER_SOURCE_RECODES.values())
     total_piped = water_source_dist['Piped']['numerators']['this']
 
     # main mode of waste disposal
     waste_disposal_dist, _ = get_stat_data(
-        'main mode of human waste disposal', geo_level, geo_code, session,
+        'main mode of human waste disposal', geo, session,
         key_order=['Main sewer', 'Septic tank', 'Cess pool', 'Bucket', 'Bush', 'Other'])
 
     total_sewer_or_septic = 0.0
@@ -262,21 +246,21 @@ def get_households_profile(geo_code, geo_level, session):
 
     # lighting
     lighting_dist, _ = get_stat_data(
-        'main type of lighting fuel', geo_level, geo_code, session,
+        'main type of lighting fuel', geo, session,
         key_order=['Electricity', 'Solar', 'Gas lamps', 'Pressure lamps', 'Tin lamps', 'Lanterns', 'Wood', 'Other'])
     total_electricity = lighting_dist['Electricity']['numerators']['this']
 
     # construction materials
     roofing_dist, _ = get_stat_data(
-        'main type of roofing material', geo_level, geo_code, session,
+        'main type of roofing material', geo, session,
         order_by='-total')
 
     wall_dist, _ = get_stat_data(
-        'main type of wall material', geo_level, geo_code, session,
+        'main type of wall material', geo, session,
         order_by='-total')
 
     floor_dist, _ = get_stat_data(
-        'main type of floor material', geo_level, geo_code, session,
+        'main type of floor material', geo, session,
         order_by='-total')
 
     return {

@@ -1,18 +1,20 @@
+import logging
 import re
 from collections import OrderedDict
-import logging
 
-from wazimap.geo import geo_data
-from wazimap.data.tables import get_model_from_fields
-from wazimap.data.utils import get_session, calculate_median, merge_dicts, get_stat_data, get_objects_by_geo, group_remainder
 from django.conf import settings
+from wazimap.data.tables import get_model_from_fields
+from wazimap.data.utils import (calculate_median, get_objects_by_geo,
+                                get_session, get_stat_data, group_remainder,
+                                merge_dicts)
+from wazimap.geo import geo_data
 
+# ensure tables are loaded
+import hurumap_ke.tables  # noqa
 
 log = logging.getLogger(__name__)
 
 
-# ensure tables are loaded
-import hurumap_ke.tables  # noqa
 
 SECTIONS = settings.HURUMAP.get('topics', {})
 
