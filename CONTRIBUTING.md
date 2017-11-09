@@ -26,7 +26,7 @@ You can contribute in many ways. For example, you might:
 
 #### Bug Reports
 *If you find a security vulnerability, **DO NOT** open an issue. Email 
-[David](david@codeforafrica.org) instead.*
+[David](mailto:david@codeforafrica.org) instead.*
 
 If you're reporting a bug, please include:
 * Your operating system name and version
