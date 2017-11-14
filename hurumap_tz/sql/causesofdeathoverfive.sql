@@ -11,8 +11,11 @@ SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
 
+SET search_path = public, pg_catalog;
+
+ALTER TABLE IF EXISTS ONLY public.causesofdeathoverfive DROP CONSTRAINT IF EXISTS pk_causesofdeathoverfive;
+DROP TABLE IF EXISTS public.causesofdeathoverfive;
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -20,7 +23,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: causesofdeathoverfive; Type: TABLE; Schema: public; Owner: hurumap_tz
+-- Name: causesofdeathoverfive; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE causesofdeathoverfive (
@@ -32,10 +35,8 @@ CREATE TABLE causesofdeathoverfive (
 );
 
 
-ALTER TABLE causesofdeathoverfive OWNER TO hurumap_tz;
-
 --
--- Data for Name: causesofdeathoverfive; Type: TABLE DATA; Schema: public; Owner: hurumap_tz
+-- Data for Name: causesofdeathoverfive; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY causesofdeathoverfive (geo_level, geo_code, "causes of death over five", total, geo_version) FROM stdin;
@@ -353,7 +354,7 @@ country	TZ	others	5828	2009
 
 
 --
--- Name: pk_causesofdeathoverfive; Type: CONSTRAINT; Schema: public; Owner: hurumap_tz
+-- Name: pk_causesofdeathoverfive; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY causesofdeathoverfive

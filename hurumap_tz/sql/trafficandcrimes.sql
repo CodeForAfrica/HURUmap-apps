@@ -11,8 +11,11 @@ SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
 
+SET search_path = public, pg_catalog;
+
+ALTER TABLE IF EXISTS ONLY public.trafficandcrimes DROP CONSTRAINT IF EXISTS pk_trafficandcrimes;
+DROP TABLE IF EXISTS public.trafficandcrimes;
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -20,7 +23,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: trafficandcrimes; Type: TABLE; Schema: public; Owner: hurumap_tz
+-- Name: trafficandcrimes; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE trafficandcrimes (
@@ -32,10 +35,8 @@ CREATE TABLE trafficandcrimes (
 );
 
 
-ALTER TABLE trafficandcrimes OWNER TO hurumap_tz;
-
 --
--- Data for Name: trafficandcrimes; Type: TABLE DATA; Schema: public; Owner: hurumap_tz
+-- Data for Name: trafficandcrimes; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY trafficandcrimes (geo_level, geo_code, "traffic and crimes", total, geo_version) FROM stdin;
@@ -1066,7 +1067,7 @@ country	TZ	Murdered Other Reasons	876	2009
 
 
 --
--- Name: pk_trafficandcrimes; Type: CONSTRAINT; Schema: public; Owner: hurumap_tz
+-- Name: pk_trafficandcrimes; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY trafficandcrimes

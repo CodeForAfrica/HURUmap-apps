@@ -11,8 +11,11 @@ SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
 
+SET search_path = public, pg_catalog;
+
+ALTER TABLE IF EXISTS ONLY public.healthcenterownership DROP CONSTRAINT IF EXISTS pk_healthcenterownership;
+DROP TABLE IF EXISTS public.healthcenterownership;
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -20,7 +23,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: healthcenterownership; Type: TABLE; Schema: public; Owner: hurumap_tz
+-- Name: healthcenterownership; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE healthcenterownership (
@@ -32,10 +35,8 @@ CREATE TABLE healthcenterownership (
 );
 
 
-ALTER TABLE healthcenterownership OWNER TO hurumap_tz;
-
 --
--- Data for Name: healthcenterownership; Type: TABLE DATA; Schema: public; Owner: hurumap_tz
+-- Data for Name: healthcenterownership; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY healthcenterownership (geo_level, geo_code, "health center ownership", total, geo_version) FROM stdin;
@@ -843,7 +844,7 @@ district	169	public	12	2009
 
 
 --
--- Name: pk_healthcenterownership; Type: CONSTRAINT; Schema: public; Owner: hurumap_tz
+-- Name: pk_healthcenterownership; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY healthcenterownership

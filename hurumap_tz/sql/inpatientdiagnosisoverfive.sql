@@ -11,8 +11,11 @@ SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
 
+SET search_path = public, pg_catalog;
+
+ALTER TABLE IF EXISTS ONLY public.inpatientdiagnosisoverfive DROP CONSTRAINT IF EXISTS pk_inpatientdiagnosisoverfive;
+DROP TABLE IF EXISTS public.inpatientdiagnosisoverfive;
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -20,7 +23,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: inpatientdiagnosisoverfive; Type: TABLE; Schema: public; Owner: hurumap_tz
+-- Name: inpatientdiagnosisoverfive; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE inpatientdiagnosisoverfive (
@@ -32,10 +35,8 @@ CREATE TABLE inpatientdiagnosisoverfive (
 );
 
 
-ALTER TABLE inpatientdiagnosisoverfive OWNER TO hurumap_tz;
-
 --
--- Data for Name: inpatientdiagnosisoverfive; Type: TABLE DATA; Schema: public; Owner: hurumap_tz
+-- Data for Name: inpatientdiagnosisoverfive; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY inpatientdiagnosisoverfive (geo_level, geo_code, "inpatient diagnosis over five", total, geo_version) FROM stdin;
@@ -477,7 +478,7 @@ country	TZ	UTI	42853	2009
 
 
 --
--- Name: pk_inpatientdiagnosisoverfive; Type: CONSTRAINT; Schema: public; Owner: hurumap_tz
+-- Name: pk_inpatientdiagnosisoverfive; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY inpatientdiagnosisoverfive

@@ -11,8 +11,11 @@ SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
 
+SET search_path = public, pg_catalog;
+
+ALTER TABLE IF EXISTS ONLY public.tetanusvaccine DROP CONSTRAINT IF EXISTS pk_tetanusvaccine;
+DROP TABLE IF EXISTS public.tetanusvaccine;
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -20,7 +23,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: tetanusvaccine; Type: TABLE; Schema: public; Owner: hurumap_tz
+-- Name: tetanusvaccine; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE tetanusvaccine (
@@ -32,10 +35,8 @@ CREATE TABLE tetanusvaccine (
 );
 
 
-ALTER TABLE tetanusvaccine OWNER TO hurumap_tz;
-
 --
--- Data for Name: tetanusvaccine; Type: TABLE DATA; Schema: public; Owner: hurumap_tz
+-- Data for Name: tetanusvaccine; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY tetanusvaccine (geo_level, geo_code, "tetanus vaccine", total, geo_version) FROM stdin;
@@ -105,7 +106,7 @@ country	TZ	coverage	72	2009
 
 
 --
--- Name: pk_tetanusvaccine; Type: CONSTRAINT; Schema: public; Owner: hurumap_tz
+-- Name: pk_tetanusvaccine; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY tetanusvaccine

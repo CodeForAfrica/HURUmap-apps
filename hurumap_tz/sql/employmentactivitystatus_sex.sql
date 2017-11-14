@@ -11,8 +11,11 @@ SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
 
+SET search_path = public, pg_catalog;
+
+ALTER TABLE IF EXISTS ONLY public.employmentactivitystatus_sex DROP CONSTRAINT IF EXISTS pk_employmentactivitystatus_sex;
+DROP TABLE IF EXISTS public.employmentactivitystatus_sex;
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -20,7 +23,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: employmentactivitystatus_sex; Type: TABLE; Schema: public; Owner: hurumap_tz
+-- Name: employmentactivitystatus_sex; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE employmentactivitystatus_sex (
@@ -33,10 +36,8 @@ CREATE TABLE employmentactivitystatus_sex (
 );
 
 
-ALTER TABLE employmentactivitystatus_sex OWNER TO hurumap_tz;
-
 --
--- Data for Name: employmentactivitystatus_sex; Type: TABLE DATA; Schema: public; Owner: hurumap_tz
+-- Data for Name: employmentactivitystatus_sex; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY employmentactivitystatus_sex (geo_level, geo_code, "employment activity status", sex, total, geo_version) FROM stdin;
@@ -428,7 +429,7 @@ country	TZ	seeking work / no work available	male	1160959	2009
 
 
 --
--- Name: pk_employmentactivitystatus_sex; Type: CONSTRAINT; Schema: public; Owner: hurumap_tz
+-- Name: pk_employmentactivitystatus_sex; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY employmentactivitystatus_sex

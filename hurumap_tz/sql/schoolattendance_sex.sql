@@ -11,8 +11,11 @@ SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
 
+SET search_path = public, pg_catalog;
+
+ALTER TABLE IF EXISTS ONLY public.schoolattendance_sex DROP CONSTRAINT IF EXISTS pk_schoolattendance_sex;
+DROP TABLE IF EXISTS public.schoolattendance_sex;
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -20,7 +23,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: schoolattendance_sex; Type: TABLE; Schema: public; Owner: hurumap_tz
+-- Name: schoolattendance_sex; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE schoolattendance_sex (
@@ -33,10 +36,8 @@ CREATE TABLE schoolattendance_sex (
 );
 
 
-ALTER TABLE schoolattendance_sex OWNER TO hurumap_tz;
-
 --
--- Data for Name: schoolattendance_sex; Type: TABLE DATA; Schema: public; Owner: hurumap_tz
+-- Data for Name: schoolattendance_sex; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY schoolattendance_sex (geo_level, geo_code, "school attendance", sex, total, geo_version) FROM stdin;
@@ -428,7 +429,7 @@ region	47	unspecified	female	27302	2009
 
 
 --
--- Name: pk_schoolattendance_sex; Type: CONSTRAINT; Schema: public; Owner: hurumap_tz
+-- Name: pk_schoolattendance_sex; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY schoolattendance_sex

@@ -11,8 +11,11 @@ SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
 
+SET search_path = public, pg_catalog;
+
+ALTER TABLE IF EXISTS ONLY public.literacytest DROP CONSTRAINT IF EXISTS pk_literacytest;
+DROP TABLE IF EXISTS public.literacytest;
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -20,7 +23,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: literacytest; Type: TABLE; Schema: public; Owner: hurumap_tz
+-- Name: literacytest; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE literacytest (
@@ -32,10 +35,8 @@ CREATE TABLE literacytest (
 );
 
 
-ALTER TABLE literacytest OWNER TO hurumap_tz;
-
 --
--- Data for Name: literacytest; Type: TABLE DATA; Schema: public; Owner: hurumap_tz
+-- Data for Name: literacytest; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY literacytest (geo_level, geo_code, "literacy test", total, geo_version) FROM stdin;
@@ -843,7 +844,7 @@ district	168	all subjects	0	2009
 
 
 --
--- Name: pk_literacytest; Type: CONSTRAINT; Schema: public; Owner: hurumap_tz
+-- Name: pk_literacytest; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY literacytest

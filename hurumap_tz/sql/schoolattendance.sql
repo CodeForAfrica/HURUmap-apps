@@ -11,8 +11,11 @@ SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
 
+SET search_path = public, pg_catalog;
+
+ALTER TABLE IF EXISTS ONLY public.schoolattendance DROP CONSTRAINT IF EXISTS pk_schoolattendance;
+DROP TABLE IF EXISTS public.schoolattendance;
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -20,7 +23,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: schoolattendance; Type: TABLE; Schema: public; Owner: hurumap_tz
+-- Name: schoolattendance; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE schoolattendance (
@@ -32,10 +35,8 @@ CREATE TABLE schoolattendance (
 );
 
 
-ALTER TABLE schoolattendance OWNER TO hurumap_tz;
-
 --
--- Data for Name: schoolattendance; Type: TABLE DATA; Schema: public; Owner: hurumap_tz
+-- Data for Name: schoolattendance; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY schoolattendance (geo_level, geo_code, "school attendance", total, geo_version) FROM stdin;
@@ -443,7 +444,7 @@ district	168	drop outs	0	2009
 
 
 --
--- Name: pk_schoolattendance; Type: CONSTRAINT; Schema: public; Owner: hurumap_tz
+-- Name: pk_schoolattendance; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY schoolattendance

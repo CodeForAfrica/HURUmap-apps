@@ -11,8 +11,11 @@ SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
 
+SET search_path = public, pg_catalog;
+
+ALTER TABLE IF EXISTS ONLY public.placeofdelivery DROP CONSTRAINT IF EXISTS pk_placeofdelivery;
+DROP TABLE IF EXISTS public.placeofdelivery;
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -20,7 +23,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: placeofdelivery; Type: TABLE; Schema: public; Owner: hurumap_tz
+-- Name: placeofdelivery; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE placeofdelivery (
@@ -32,10 +35,8 @@ CREATE TABLE placeofdelivery (
 );
 
 
-ALTER TABLE placeofdelivery OWNER TO hurumap_tz;
-
 --
--- Data for Name: placeofdelivery; Type: TABLE DATA; Schema: public; Owner: hurumap_tz
+-- Data for Name: placeofdelivery; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY placeofdelivery (geo_level, geo_code, "place of delivery", total, geo_version) FROM stdin;
@@ -229,7 +230,7 @@ country	TZ	facility birth rate	66.0799999999999983	2009
 
 
 --
--- Name: pk_placeofdelivery; Type: CONSTRAINT; Schema: public; Owner: hurumap_tz
+-- Name: pk_placeofdelivery; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY placeofdelivery
