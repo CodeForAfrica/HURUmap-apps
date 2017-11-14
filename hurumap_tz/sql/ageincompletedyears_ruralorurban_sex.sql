@@ -11,8 +11,11 @@ SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
 
+SET search_path = public, pg_catalog;
+
+ALTER TABLE IF EXISTS ONLY public.ageincompletedyears_ruralorurban_sex DROP CONSTRAINT IF EXISTS pk_ageincompletedyears_ruralorurban_sex;
+DROP TABLE IF EXISTS public.ageincompletedyears_ruralorurban_sex;
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -20,7 +23,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: ageincompletedyears_ruralorurban_sex; Type: TABLE; Schema: public; Owner: hurumap_tz
+-- Name: ageincompletedyears_ruralorurban_sex; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE ageincompletedyears_ruralorurban_sex (
@@ -34,10 +37,8 @@ CREATE TABLE ageincompletedyears_ruralorurban_sex (
 );
 
 
-ALTER TABLE ageincompletedyears_ruralorurban_sex OWNER TO hurumap_tz;
-
 --
--- Data for Name: ageincompletedyears_ruralorurban_sex; Type: TABLE DATA; Schema: public; Owner: hurumap_tz
+-- Data for Name: ageincompletedyears_ruralorurban_sex; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY ageincompletedyears_ruralorurban_sex (geo_level, geo_code, "rural or urban", sex, "age in completed years", total, geo_version) FROM stdin;
@@ -62833,7 +62834,7 @@ district	169	urban	female	80	725	2009
 
 
 --
--- Name: pk_ageincompletedyears_ruralorurban_sex; Type: CONSTRAINT; Schema: public; Owner: hurumap_tz
+-- Name: pk_ageincompletedyears_ruralorurban_sex; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY ageincompletedyears_ruralorurban_sex

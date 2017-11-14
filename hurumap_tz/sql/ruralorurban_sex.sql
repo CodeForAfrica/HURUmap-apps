@@ -11,8 +11,11 @@ SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
 
+SET search_path = public, pg_catalog;
+
+ALTER TABLE IF EXISTS ONLY public.ruralorurban_sex DROP CONSTRAINT IF EXISTS pk_ruralorurban_sex;
+DROP TABLE IF EXISTS public.ruralorurban_sex;
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -20,7 +23,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: ruralorurban_sex; Type: TABLE; Schema: public; Owner: hurumap_tz
+-- Name: ruralorurban_sex; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE ruralorurban_sex (
@@ -33,10 +36,8 @@ CREATE TABLE ruralorurban_sex (
 );
 
 
-ALTER TABLE ruralorurban_sex OWNER TO hurumap_tz;
-
 --
--- Data for Name: ruralorurban_sex; Type: TABLE DATA; Schema: public; Owner: hurumap_tz
+-- Data for Name: ruralorurban_sex; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY ruralorurban_sex (geo_level, geo_code, "rural or urban", sex, total, geo_version) FROM stdin;
@@ -14616,7 +14617,7 @@ ward	3643	urban	female	0	2009
 
 
 --
--- Name: pk_ruralorurban_sex; Type: CONSTRAINT; Schema: public; Owner: hurumap_tz
+-- Name: pk_ruralorurban_sex; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY ruralorurban_sex

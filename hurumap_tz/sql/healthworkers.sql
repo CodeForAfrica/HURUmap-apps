@@ -11,8 +11,11 @@ SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
 
+SET search_path = public, pg_catalog;
+
+ALTER TABLE IF EXISTS ONLY public.healthworkers DROP CONSTRAINT IF EXISTS pk_healthworkers;
+DROP TABLE IF EXISTS public.healthworkers;
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -20,7 +23,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: healthworkers; Type: TABLE; Schema: public; Owner: hurumap_tz
+-- Name: healthworkers; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE healthworkers (
@@ -32,10 +35,8 @@ CREATE TABLE healthworkers (
 );
 
 
-ALTER TABLE healthworkers OWNER TO hurumap_tz;
-
 --
--- Data for Name: healthworkers; Type: TABLE DATA; Schema: public; Owner: hurumap_tz
+-- Data for Name: healthworkers; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY healthworkers (geo_level, geo_code, "health workers", total, geo_version) FROM stdin;
@@ -477,7 +478,7 @@ country	TZ	HRH patient ratio	5.87000000000000011	2009
 
 
 --
--- Name: pk_healthworkers; Type: CONSTRAINT; Schema: public; Owner: hurumap_tz
+-- Name: pk_healthworkers; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY healthworkers

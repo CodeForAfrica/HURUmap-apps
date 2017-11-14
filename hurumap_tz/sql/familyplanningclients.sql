@@ -11,8 +11,11 @@ SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
 
+SET search_path = public, pg_catalog;
+
+ALTER TABLE IF EXISTS ONLY public.familyplanningclients DROP CONSTRAINT IF EXISTS pk_familyplanningclients;
+DROP TABLE IF EXISTS public.familyplanningclients;
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -20,7 +23,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: familyplanningclients; Type: TABLE; Schema: public; Owner: hurumap_tz
+-- Name: familyplanningclients; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE familyplanningclients (
@@ -32,10 +35,8 @@ CREATE TABLE familyplanningclients (
 );
 
 
-ALTER TABLE familyplanningclients OWNER TO hurumap_tz;
-
 --
--- Data for Name: familyplanningclients; Type: TABLE DATA; Schema: public; Owner: hurumap_tz
+-- Data for Name: familyplanningclients; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY familyplanningclients (geo_level, geo_code, "family planning clients", total, geo_version) FROM stdin;
@@ -105,7 +106,7 @@ country	TZ	new client rate	40.5	2009
 
 
 --
--- Name: pk_familyplanningclients; Type: CONSTRAINT; Schema: public; Owner: hurumap_tz
+-- Name: pk_familyplanningclients; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY familyplanningclients

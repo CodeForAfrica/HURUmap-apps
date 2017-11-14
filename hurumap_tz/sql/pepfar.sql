@@ -11,8 +11,11 @@ SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
 
+SET search_path = public, pg_catalog;
+
+ALTER TABLE IF EXISTS ONLY public.pepfar DROP CONSTRAINT IF EXISTS pk_pepfar;
+DROP TABLE IF EXISTS public.pepfar;
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -20,7 +23,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: pepfar; Type: TABLE; Schema: public; Owner: hurumap_tz
+-- Name: pepfar; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE pepfar (
@@ -32,10 +35,8 @@ CREATE TABLE pepfar (
 );
 
 
-ALTER TABLE pepfar OWNER TO hurumap_tz;
-
 --
--- Data for Name: pepfar; Type: TABLE DATA; Schema: public; Owner: hurumap_tz
+-- Data for Name: pepfar; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY pepfar (geo_level, geo_code, pepfar, total, geo_version) FROM stdin;
@@ -4023,7 +4024,7 @@ district	168	KP_PREV	0	2009
 
 
 --
--- Name: pk_pepfar; Type: CONSTRAINT; Schema: public; Owner: hurumap_tz
+-- Name: pk_pepfar; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY pepfar

@@ -11,8 +11,11 @@ SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
 
+SET search_path = public, pg_catalog;
+
+ALTER TABLE IF EXISTS ONLY public.highesteducationlevelreached DROP CONSTRAINT IF EXISTS pk_highesteducationlevelreached;
+DROP TABLE IF EXISTS public.highesteducationlevelreached;
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -20,7 +23,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: highesteducationlevelreached; Type: TABLE; Schema: public; Owner: hurumap_tz
+-- Name: highesteducationlevelreached; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE highesteducationlevelreached (
@@ -32,10 +35,8 @@ CREATE TABLE highesteducationlevelreached (
 );
 
 
-ALTER TABLE highesteducationlevelreached OWNER TO hurumap_tz;
-
 --
--- Data for Name: highesteducationlevelreached; Type: TABLE DATA; Schema: public; Owner: hurumap_tz
+-- Data for Name: highesteducationlevelreached; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY highesteducationlevelreached (geo_level, geo_code, "highest education level reached", total, geo_version) FROM stdin;
@@ -475,7 +476,7 @@ country	TZ	youth polytechnic	323408
 
 
 --
--- Name: pk_highesteducationlevelreached; Type: CONSTRAINT; Schema: public; Owner: hurumap_tz
+-- Name: pk_highesteducationlevelreached; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY highesteducationlevelreached

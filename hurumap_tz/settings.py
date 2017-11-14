@@ -19,7 +19,6 @@ HURUMAP['url'] = 'https://tanzania.hurumap.org'
 HURUMAP['country_code'] = 'TZ'
 HURUMAP['country_name'] = 'Tanzania'
 HURUMAP['country_profile'] = 'country-TZ-Tanzania'
-HURUMAP['profile_builder'] = 'hurumap_tz.profiles.get_census_profile'
 
  # Define the profile to load
 
