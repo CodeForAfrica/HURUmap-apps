@@ -14,7 +14,6 @@ import hurumap_ke.tables  # noqa
 
 log = logging.getLogger(__name__)
 
-
 SECTIONS = settings.HURUMAP.get('topics', {})
 
 EMPLOYMENT_RECODES = OrderedDict([
