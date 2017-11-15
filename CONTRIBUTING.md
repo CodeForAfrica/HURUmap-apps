@@ -1,6 +1,6 @@
 # Introduction
 
-You are here to help on HURUmap? Awesome, feel welcome and read the following 
+You are here to help on [HURUmap](https://hurumap.org)? Awesome, feel welcome and read the following 
 sections in order to know what and how to work on something. If you get stuck 
 at any point you can create a ticket on 
 [GitHub](https://github.com/CodeForAfrica/HURUmap/issues).
@@ -17,16 +17,14 @@ changes, and helping you finalize your pull requests.
 ## Types of Contributions
 
 You can contribute in many ways. For example, you might:
-* Add documentation and "how-to" articles in the 
-  [README](https://github.com/CodeForAfricaLabs/HURUmap.Uganda/blob/master/README.md) 
-  or the wiki
+* Add documentation and "how-to" articles in the [README](README.md) or the wiki
 * Suggest Enhancements
 * Fix issues
 * Submit Bug reports
 
 #### Bug Reports
 *If you find a security vulnerability, **DO NOT** open an issue. Email 
-[David](mailto:david@codeforafrica.org) instead.*
+[security@codeforafrica.org](mailto:security@codeforafrica.org) instead.*
 
 If you're reporting a bug, please include:
 * Your operating system name and version
@@ -37,7 +35,7 @@ If you're reporting a bug, please include:
   are welcome.
 
 To ease the process of reporting bugs and issues, consider using our 
-[issue template](https://github.com/CodeForAfrica/HURUmap/blob/master/ISSUE_TEMPLATE.md) 
+[issue template](https://github.com/CodeForAfrica/HURUmap/blob/master/.github/ISSUE_TEMPLATE.md) 
 and don't forget to add an appropriate 
 [label](https://help.github.com/articles/creating-a-label/) to the issue. 
 
@@ -56,7 +54,7 @@ whoever wants to implement it.
 Before creating enhancement suggestions, please check the issues list as you 
 might find out that you don't need to create one. When you are creating an 
 enhancement suggestion fill out the 
-[issue template](https://github.com/CodeForAfrica/HURUmap/blob/master/ISSUE_TEMPLATE.md)
+[issue template](https://github.com/CodeForAfrica/HURUmap/blob/master/.github/ISSUE_TEMPLATE.md)
 and [label](https://help.github.com/articles/creating-a-label/) the issue as a 
 new feature.
 
