@@ -1,14 +1,14 @@
 import os
 from collections import OrderedDict
 
-# pull in the default HURUmap settings
 from hurumap.settings import *  # noqa
-
 
 # insert our overrides before both census and HURUmap
 INSTALLED_APPS = ['hurumap_tz'] + INSTALLED_APPS
 
-DATABASE_URL = os.environ.get('DATABASE_URL', 'postgresql://hurumap_tz:hurumap_tz@localhost/hurumap_tz')
+DATABASE_URL = os.environ.get(
+    'DATABASE_URL',
+    'postgresql://hurumap_tz:hurumap_tz@localhost/hurumap_tz')
 DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
@@ -23,11 +23,11 @@ HURUMAP['profile_builder'] = 'hurumap_tz.profiles.get_census_profile'
 HURUMAP['levels'] = {
     'country': {
         'plural': 'countries',
-        'children': ['region','district','ward'],
+        'children': ['region', 'district', 'ward'],
     },
     'region': {
         'plural': 'regions',
-        'children': ['district','ward'],
+        'children': ['district', 'ward'],
     },
     'district': {
         'plural': 'districts',
@@ -47,7 +47,10 @@ HURUMAP['geometry_data'] = {
     'ward': 'geo/ward.topojson',
 }
 
-HURUMAP['ga_tracking_ids'] = ['UA-91133100-4', 'UA-44795600-27', 'UA-92541368-2']
+HURUMAP['ga_tracking_ids'] = [
+    'UA-91133100-4',
+    'UA-44795600-27',
+    'UA-92541368-2']
 HURUMAP['twitter'] = '@Code4Africa'
 
 HURUMAP['map_centre'] = [-6.1523563, 35.6754813]
