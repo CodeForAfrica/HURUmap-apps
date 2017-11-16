@@ -40,13 +40,6 @@ def get_profile(geo, profile_name, request):
         data = {}
         sections = []
 
-        '''selected_sections = []
-        if get_params.get('topic'):
-            categories = get_params.get('topic').split(',')
-            for cat in categories:
-                selected_sections.extend(SECTIONS[cat]['profiles'])
-            data['selected_topics'] = categories'''
-
         for cat in SECTIONS:
             sections.extend(SECTIONS[cat]['profiles'])
 
@@ -77,10 +70,6 @@ def get_profile(geo, profile_name, request):
             group_remainder(data['households']['roofing_material_distribution'], 5)
             group_remainder(data['households']['wall_material_distribution'], 5)
 
-        '''data['all_sections'] = SECTIONS
-        if (selected_sections == []): selected_sections = sections
-        data['raw_selected_sections'] = selected_sections
-        data['selected_sections'] = [x.replace(' ', '_').lower() for x in selected_sections]'''
         return data
 
     finally:
@@ -126,7 +115,7 @@ def get_demographics_profile(geo, session):
     if geo.geo_level != "ward":
         # median age
         db_model_age = get_model_from_fields(['age in completed years', 'sex', 'rural or urban'], geo.geo_level)
-        
+
         objects = get_objects_by_geo(db_model_age,geo, session, ['age in completed years'])
         objects = sorted((o for o in objects if getattr(o, 'age in completed years') != 'unspecified'),
                          key=lambda x: int(getattr(x, 'age in completed years').replace('+', '')))
