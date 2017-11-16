@@ -17,9 +17,15 @@ LOCATIONNOTFOUND = {'name': 'No Data Found', 'numerators': {'this': 0},
 def get_demographics_profile(geo, session):
     geo.version = str(geo.version)
     # sex
-    sex_dist_data, total_pop = get_stat_data(
-        'sex', geo, session,
-        table_fields=['sex'])
+    try:
+        sex_dist_data, total_pop = get_stat_data(
+            'sex', geo, session,
+            table_fields=['sex'])
+
+    except LocationNotFound:
+        sex_dist_data = LOCATIONNOTFOUND
+        total_pop = 0
+
 
     # urban/rural by sex
     total_urbanised = 0

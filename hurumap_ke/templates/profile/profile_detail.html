@@ -46,8 +46,7 @@
         <section class="clearfix stat-row">
             <h2><a class="permalink" href="#highest-education-level-reached" id="highest-education-level-reached">Educational level <i class="fa fa-link"></i></a></h2>
             <div class="column-third">
-                {% include 'profile/_blocks/_stat_list.html' with stat=education.education_reached_secondary_or_higher stat_type='percentage'
-                %}
+                {% include 'profile/_blocks/_stat_list.html' with stat=education.education_reached_secondary_or_higher stat_type='percentage'%}
             </div>
             <div class="column-two-thirds" id="chart-histogram-education-education_reached_distribution" data-stat-type="scaled-percentage"
                 data-chart-title="Population by highest education level reached" data-qualifier="Universe: {{ education.education_reached_distribution.metadata.universe }}"></div>
@@ -100,7 +99,7 @@
                 {% include 'profile/_blocks/_stat_list.html' with stat=households.piped_water stat_type='percentage' %}
             </div>
             <div class="column-two-thirds" id="chart-histogram-households-water_source_distribution" data-stat-type="scaled-percentage"
-                data-chart-title="Households by main source of water"></div>
+                 data-chart-title="Households by main source of water"></div>
         </section>
         <section class="clearfix stat-row">
             <h2><a class="permalink" href="#households-lighting" id="households-lighting">Main source of lighting <i class="fa fa-link"></i></a></h2>
