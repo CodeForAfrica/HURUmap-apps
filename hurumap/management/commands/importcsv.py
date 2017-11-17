@@ -97,7 +97,10 @@ class Command(BaseCommand):
         elif "SuperWEB2" in line:
             self.read_superweb_headers()
         else:
-            raise ValueError("Unknown format of CSV data")
+            # raise ValueError("Unknown format of CSV data")
+            self.reader = csv.DictReader(self.f, delimiter=",")
+            # Fields excluding geo_level, geo_code and total
+            self.fields = self.reader.fieldnames[2:-1]
 
     def read_supercross_headers(self):
         '''

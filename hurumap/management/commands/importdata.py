@@ -2,8 +2,10 @@ import csv
 import logging
 
 from django.core.management.base import BaseCommand, CommandError
+from django.core.exceptions import ObjectDoesNotExist
 from wazimap.data.tables import get_datatable, get_table_id
 from wazimap.data.utils import get_session
+from wazimap.models import Geography
 
 logging.basicConfig()
 logging.getLogger('sqlalchemy.engine').setLevel(logging.WARN)
@@ -100,13 +102,18 @@ class Command(BaseCommand):
         session = get_session()
         count = 0
         for row in self.reader:
+            model_row = {}
             count += 1
-            row['geo_version'] = self.geo_version
+            geo_code, geo_level = self.get_geo_data(row['name'])
+            model_row['geo_version'] = self.geo_version
+            model_row['geo_code'] = geo_code
+            model_row['geo_level'] = geo_level
+            model_row[self.table_id] = row[self.table_id]
 
             if row['total'] == 'no data':
-                row['total'] = None
+                model_row['total'] = None
             else:
-                row['total'] = round(
+                model_row['total'] = round(
                     float(
                         row['total']),
                     1) if self.value_type == 'Float' else int(
@@ -114,8 +121,8 @@ class Command(BaseCommand):
                         float(
                             row['total'])))
             # self.stdout.write("%s-%s" % (row['geo_level'], row['geo_code'])
-            print (row)
-            entry = self.table.model(**row)
+            print model_row
+            entry = self.table.model(**model_row)
 
             if not self.dryrun:
                 session.add(entry)
@@ -127,3 +134,14 @@ class Command(BaseCommand):
             session.commit()
 
         session.close()
+
+    def get_geo_data(self, geo_name):
+        try:
+            query = Geography.objects.get(name__iexact=geo_name)
+            return query.geo_code, query.geo_level
+        except ObjectDoesNotExist:
+            raise CommandError(geo_name + " does not exist")
+
+
+
+
