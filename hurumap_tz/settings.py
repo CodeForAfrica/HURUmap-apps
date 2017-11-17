@@ -53,11 +53,11 @@ HURUMAP['levels'] = {
 HURUMAP['comparative_levels'] = ["ward", "district", "region", "country"]
 HURUMAP['geometry_data'] = {
     '2009': {
-                'country': 'geo/country.topojson',
-                'region': 'geo/region.topojson',
-                'district': 'geo/district.topojson',
-                'ward': 'geo/ward.topojson'
-            }
+        'country': 'geo/country.topojson',
+        'region': 'geo/region.topojson',
+        'district': 'geo/district.topojson',
+        'ward': 'geo/ward.topojson'
+        }
 }
 
 HURUMAP['ga_tracking_ids'] = [
