@@ -147,8 +147,6 @@ HURUMAP['showcase_stories'] = [
      }
 ]
 
-STATIC_ROOT = 'hurumap_tz/static/'
-
 LOGGING['loggers']['hurumap_tz'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
 
 # Making sure they are the same
