@@ -46,7 +46,7 @@ PESAYETU['geometry_data'] = {
         'county': 'geo/county.topojson'
     }
 }
-PESAYETU['CURRENCY_SYMBOL'] = 'KSHS.'
+FORMAT_MODULE_PATH = 'pesayetu.formats'
 
 LOGGING['loggers']['pesayetu'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
 
