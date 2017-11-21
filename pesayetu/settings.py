@@ -12,20 +12,23 @@ DATABASES['default']['ATOMIC_REQUESTS'] = True
 
 PESAYETU = WAZIMAP
 
-PESAYETU['name'] = 'HURUmap Kenya'
+PESAYETU['name'] = 'PesaYetu'
 PESAYETU['url'] = 'https://pesayetu.hurumap.org'
 PESAYETU['country_code'] = 'KE'
 PESAYETU['country_name'] = 'Kenya'
 
-pesayetu_profile = os.environ.get('HURUMAP_PROFILE', 'census')
+pesayetu_profile = os.environ.get('PESAYETU_PROFILE', 'pesayetu')
+
 
 PESAYETU['default_profile'] = pesayetu_profile
 
-PESAYETU['country_profile'] = 'country-KE-Kenya'
-PESAYETU['profile_builder'] = 'hurumap_ke.profiles.{}.get_profile'.format(
+PESAYETU['profile_builder'] = 'pesayetu.profiles.{}.get_profile'.format(
     pesayetu_profile)
 PESAYETU['default_geo_version'] = os.environ.get('DEFAULT_GEO_VERSION', '2009')
 PESAYETU['legacy_embed_geo_version'] = '2009'
+
+PESAYETU['map_centre'] = [0.3051933453207569, 37.908818734483155]
+PESAYETU['map_zoom'] = 6
 
 PESAYETU['levels'] = {
     'country': {

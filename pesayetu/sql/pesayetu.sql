@@ -21,25 +21,25 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: pesayetu_data; Type: TABLE; Schema: public; Owner: pesayetu
+-- Name: financial_year; Type: TABLE; Schema: public; Owner: pesayetu
 --
 
-CREATE TABLE pesayetu_data (
+CREATE TABLE financial_year (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     geo_version character varying(100) DEFAULT ''::character varying NOT NULL,
     financial_year character varying(128) NOT NULL,
-    total bigint
+    total double precision
 );
 
 
-ALTER TABLE pesayetu_data OWNER TO pesayetu;
+ALTER TABLE financial_year OWNER TO pesayetu;
 
 --
 -- Data for Name: financial_year; Type: TABLE DATA; Schema: public; Owner: pesayetu
 --
 
-COPY pesayetu_data (geo_level, geo_code, geo_version, financial_year, total) FROM stdin;
+COPY financial_year (geo_level, geo_code, geo_version, financial_year, total) FROM stdin;
 county	30	2009	FY 2015/2016	4440576026
 county	30	2009	FY 2016/2017	4791438190
 county	30	2009	FY 2014/2015	3874517946
@@ -239,7 +239,7 @@ county	24	2009	FY 2013/2014	3154744440
 -- Name: financial_year pk_financial_year; Type: CONSTRAINT; Schema: public; Owner: pesayetu
 --
 
-ALTER TABLE ONLY pesayetu_data
+ALTER TABLE ONLY financial_year
     ADD CONSTRAINT pk_financial_year PRIMARY KEY (geo_level, geo_code, geo_version, financial_year);
 
 
