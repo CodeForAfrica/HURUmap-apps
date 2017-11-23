@@ -1,14 +1,16 @@
 from collections import OrderedDict
+import logging
 
+from wazimap.geo import geo_data
+from wazimap.data.tables import get_model_from_fields
+from wazimap.data.utils import get_session, calculate_median, merge_dicts, get_stat_data, get_objects_by_geo, group_remainder
 from django.conf import settings
+
+
+log = logging.getLogger(__name__)
 
 # ensure tables are loaded
 import hurumap_tz.tables  # noqa
-from hurumap.data.tables import get_model_from_fields
-from hurumap.data.utils import (calculate_median, get_objects_by_geo,
-                                get_session, get_stat_data, group_remainder,
-                                merge_dicts)
-from hurumap.geo import geo_data
 
 SECTIONS = settings.HURUMAP.get('topics', {})
 
@@ -31,18 +33,12 @@ WATER_SOURCE_RECODES = OrderedDict([
 ])
 
 
-def get_census_profile(geo_code, geo_level, get_params, profile_name=None):
+def get_profile(geo, profile_name, request):
     session = get_session()
     try:
-        geo_summary_levels = geo_data.get_summary_geo_info(geo_code, geo_level)
+        comparative_geos = geo_data.get_comparative_geos(geo)
         data = {}
         sections = []
-        selected_sections = []
-        if get_params.get('topic'):
-            categories = get_params.get('topic').split(',')
-            for cat in categories:
-                selected_sections.extend(SECTIONS[cat]['profiles'])
-            data['selected_topics'] = categories
 
         for cat in SECTIONS:
             sections.extend(SECTIONS[cat]['profiles'])
@@ -50,57 +46,57 @@ def get_census_profile(geo_code, geo_level, get_params, profile_name=None):
         for section in sections:
             section = section.lower().replace(' ', '_')
             function_name = 'get_%s_profile' % section
+
             if function_name in globals():
                 func = globals()[function_name]
-                data[section] = func(geo_code, geo_level, session)
 
-                # get profiles for province and/or country
-                for level, code in geo_summary_levels:
-                    # merge summary profile into current geo profile
-                    merge_dicts(
-                        data[section], func(
-                            code, level, session), level)
+                # get profiles for comperative geometries
+                data[section] = func(geo, session)
+
+                # get profiles for comparative geometries
+                for comp_geo in comparative_geos:
+                    try:
+                        merge_dicts(data[section], func(comp_geo, session), comp_geo.geo_level)
+                    except KeyError as e:
+                        msg = "Error merging data into %s for section '%s' from %s: KeyError: %s" % (
+                            geo.geoid, section, comp_geo.geoid, e)
+                        log.fatal(msg, exc_info=e)
+                        raise ValueError(msg)
+
 
         # tweaks to make the data nicer
         # show X largest groups on their own and group the rest as 'Other'
         if 'households' in sections:
-            group_remainder(
-                data['households']['roofing_material_distribution'], 5)
-            group_remainder(
-                data['households']['wall_material_distribution'], 5)
+            group_remainder(data['households']['roofing_material_distribution'], 5)
+            group_remainder(data['households']['wall_material_distribution'], 5)
 
-        data['all_sections'] = SECTIONS
-        if (selected_sections == []):
-            selected_sections = sections
-        data['raw_selected_sections'] = selected_sections
-        data['selected_sections'] = [
-            x.replace(' ', '_').lower() for x in selected_sections]
         return data
 
     finally:
         session.close()
 
 
-def get_demographics_profile(geo_code, geo_level, session):
+def get_demographics_profile(geo, session):
     sex_dist_data = None
     age_dist_data = None
     age_cats = None
     median = None
-    if geo_level != "ward":
+
+    if geo.geo_level != "ward":
         # sex
         sex_dist_data, total_pop = get_stat_data(
-            'sex', geo_level, geo_code, session,
+            'sex',geo=geo, session=session,
             table_fields=['age in completed years', 'sex', 'rural or urban'])
     else:
         # sex
         sex_dist_data, total_pop = get_stat_data(
-            'sex', geo_level, geo_code, session,
+            'sex',geo=geo, session=session,
             table_fields=['sex', 'rural or urban'])
 
-    if geo_level != "ward":
+    if geo.geo_level != "ward":
         # urban/rural by sex
         urban_dist_data, _ = get_stat_data(
-            ['rural or urban', 'sex'], geo_level, geo_code, session,
+            ['rural or urban', 'sex'],geo=geo, session=session,
             table_fields=['age in completed years', 'sex', 'rural or urban'])
         total_urbanised = 0
         for data in urban_dist_data['Urban'].itervalues():
@@ -109,23 +105,18 @@ def get_demographics_profile(geo_code, geo_level, session):
     else:
         # urban/rural by sex
         urban_dist_data, _ = get_stat_data(
-            ['rural or urban', 'sex'], geo_level, geo_code, session,
+            ['rural or urban', 'sex'],geo=geo, session=session,
             table_fields=['sex', 'rural or urban'])
         total_urbanised = 0
         for data in urban_dist_data['Urban'].itervalues():
             if 'numerators' in data:
                 total_urbanised += data['numerators']['this']
 
-    if geo_level != "ward":
+    if geo.geo_level != "ward":
         # median age
-        db_model_age = get_model_from_fields(
-            ['age in completed years', 'sex', 'rural or urban'], geo_level)
-        objects = get_objects_by_geo(
-            db_model_age,
-            geo_code,
-            geo_level,
-            session,
-            ['age in completed years'])
+        db_model_age = get_model_from_fields(['age in completed years', 'sex', 'rural or urban'], geo.geo_level)
+
+        objects = get_objects_by_geo(db_model_age,geo, session, ['age in completed years'])
         objects = sorted((o for o in objects if getattr(o, 'age in completed years') != 'unspecified'),
                          key=lambda x: int(getattr(x, 'age in completed years').replace('+', '')))
         median = calculate_median(objects, 'age in completed years')
@@ -139,7 +130,7 @@ def get_demographics_profile(geo_code, geo_level, session):
             return '%d-%d' % (bucket, bucket + 9)
 
         age_dist_data, _ = get_stat_data(
-            'age in completed years', geo_level, geo_code, session,
+            'age in completed years',geo=geo, session=session,
             table_fields=['age in completed years', 'sex', 'rural or urban'],
             recode=age_recode, exclude=['unspecified'])
 
@@ -154,7 +145,7 @@ def get_demographics_profile(geo_code, geo_level, session):
                 return '18 to 64'
 
         age_cats, _ = get_stat_data(
-            'age in completed years', geo_level, geo_code, session,
+            'age in completed years',geo=geo, session=session,
             table_fields=['age in completed years', 'sex', 'rural or urban'],
             recode=age_cat_recode,
             exclude=['unspecified'])
@@ -181,12 +172,11 @@ def get_demographics_profile(geo_code, geo_level, session):
     return final_data
 
 
-def get_education_profile(geo_code, geo_level, session):
-    if geo_level == "ward":
-        return {}
+def get_education_profile(geo, session):
+    if geo.geo_level == "ward": return {}
     # highest level reached
     edu_dist_data, total_pop = get_stat_data(
-        'highest education level reached', geo_level, geo_code, session,
+        'highest education level reached',geo=geo, session=session,
         key_order=['None', 'Pre-primary', 'Primary', 'Secondary', 'Tertiary',
                    'University', 'Youth polytechnic', 'Basic literacy', 'Madrassa'])
 
@@ -197,7 +187,7 @@ def get_education_profile(geo_code, geo_level, session):
 
     # school attendance by sex
     school_attendance_dist, _ = get_stat_data(
-        ['school attendance', 'sex'], geo_level, geo_code, session,
+        ['school attendance', 'sex'],geo=geo, session=session,
         key_order={'school attendance': ['Never attended', 'At school', 'Left school', 'Unspecified'],
                    'sex': ['Female', 'Male']})
 
@@ -222,12 +212,11 @@ def get_education_profile(geo_code, geo_level, session):
     }
 
 
-def get_employment_profile(geo_code, geo_level, session):
-    if geo_level == "ward":
-        return {}
+def get_employment_profile(geo, session):
+    if geo.geo_level == "ward": return {}
     # employment status
     employment_activity_dist, total_workers = get_stat_data(
-        ['employment activity status', 'sex'], geo_level, geo_code, session,
+        ['employment activity status', 'sex'],geo=geo, session=session,
         recode={'employment activity status': dict(EMPLOYMENT_RECODES)},
         key_order={'employment activity status': EMPLOYMENT_RECODES.values(),
                    'sex': ['Female', 'Male']})
@@ -247,19 +236,18 @@ def get_employment_profile(geo_code, geo_level, session):
     }
 
 
-def get_households_profile(geo_code, geo_level, session):
-    if geo_level == "ward":
-        return {}
+def get_households_profile(geo, session):
+    if geo.geo_level == "ward": return {}
     # main source of water
     water_source_dist, total_households = get_stat_data(
-        'main source of water', geo_level, geo_code, session,
+        'main source of water',geo=geo, session=session,
         recode=dict(WATER_SOURCE_RECODES),
         key_order=WATER_SOURCE_RECODES.values())
     total_piped = water_source_dist['Piped']['numerators']['this']
 
     # main mode of waste disposal
     waste_disposal_dist, _ = get_stat_data(
-        'main mode of human waste disposal', geo_level, geo_code, session,
+        'main mode of human waste disposal',geo=geo, session=session,
         key_order=['Main sewer', 'Septic tank', 'Cess pool', 'Bucket', 'Bush', 'Other'])
 
     total_sewer_or_septic = 0.0
@@ -268,22 +256,22 @@ def get_households_profile(geo_code, geo_level, session):
             total_sewer_or_septic += waste_disposal_dist[key]['numerators']['this']
 
     # lighting
-    lighting_dist, _ = get_stat_data('main type of lighting fuel', geo_level, geo_code, session,
+    lighting_dist, _ = get_stat_data('main type of lighting fuel',geo=geo, session=session,
                                      key_order=['Electricity', 'Solar', 'Gas lamps', 'Pressure lamps', 'Tin lamps',
                                                 'Lanterns', 'Wood', 'Other'])
     total_electricity = lighting_dist['Electricity']['numerators']['this']
 
     # construction materials
     roofing_dist, _ = get_stat_data(
-        'main type of roofing material', geo_level, geo_code, session,
+        'main type of roofing material',geo=geo, session=session,
         order_by='-total')
 
     wall_dist, _ = get_stat_data(
-        'main type of wall material', geo_level, geo_code, session,
+        'main type of wall material',geo=geo, session=session,
         order_by='-total')
 
     floor_dist, _ = get_stat_data(
-        'main type of floor material', geo_level, geo_code, session,
+        'main type of floor material',geo=geo, session=session,
         order_by='-total')
 
     return {
@@ -315,12 +303,11 @@ def get_households_profile(geo_code, geo_level, session):
     }
 
 
-def get_literacy_and_numeracy_tests_profile(geo_code, geo_level, session):
-    if geo_level == "ward":
-        return {}
+def get_literacy_and_numeracy_tests_profile(geo, session):
+    if geo.geo_level == "ward": return {}
     # literacy tests stats
     literacy_data, _ = get_stat_data(
-        'literacy test', geo_level, geo_code, session)
+        'literacy test', geo, session)
 
     all_subjects = literacy_data['All subjects']['numerators']['this']
 
@@ -388,12 +375,11 @@ def get_literacy_and_numeracy_tests_profile(geo_code, geo_level, session):
     }
 
 
-def get_school_attendance_profile(geo_code, geo_level, session):
-    if geo_level == "ward":
-        return {}
+def get_school_attendance_profile(geo, session):
+    if geo.geo_level == "ward": return {}
     # attendance stats
     attendance_data, _ = get_stat_data(
-        'school attendance', geo_level, geo_code, session)
+        'school attendance', geo, session)
 
     dropped_out_dist = \
         attendance_data['Pupils in school']['numerators']['this']
@@ -434,27 +420,21 @@ def get_school_attendance_profile(geo_code, geo_level, session):
     }
 
 
-def get_pupil_teacher_ratios_profile(geo_code, geo_level, session):
-    if geo_level == "ward":
-        return {}
+def get_pupil_teacher_ratios_profile(geo, session):
+    if geo.geo_level == "ward": return {}
     # pupil teacher ratios
     ratio_data, _ = get_stat_data(
-        'pupil teacher ratios', geo_level, geo_code, session)
+        'pupil teacher ratios', geo, session)
 
     pupil_teacher_ratio = ratio_data['Pupil teacher ratio']['numerators']['this']
     pupils_per_textbook = ratio_data['Pupils per textbook']['numerators']['this']
 
     pupil_attendance_rate_dist = \
         ratio_data['Government school attendance rate']['numerators']['this']
-    pupil_attendance_rate_dist = get_dictionary(
-        "Attending school", "Absent", pupil_attendance_rate_dist, ratio_data)
+    pupil_attendance_rate_dist = get_dictionary("Attending school", "Absent", pupil_attendance_rate_dist, ratio_data)
 
     teachers_absent_dist = ratio_data['Teachers absent']['numerators']['this']
-    teachers_absent_dist = get_dictionary(
-        "Teachers absent",
-        "Teachers present",
-        teachers_absent_dist,
-        ratio_data)
+    teachers_absent_dist = get_dictionary("Teachers absent", "Teachers present", teachers_absent_dist, ratio_data)
 
     return {
         'pupil_attendance_rate_dist': pupil_attendance_rate_dist,
@@ -472,26 +452,19 @@ def get_pupil_teacher_ratios_profile(geo_code, geo_level, session):
     }
 
 
-def get_school_amenities_profile(geo_code, geo_level, session):
-    if geo_level == "ward":
-        return {}
+def get_school_amenities_profile(geo, session):
+    if geo.geo_level == "ward": return {}
     # school amenities
-    data, _ = get_stat_data('school amenity', geo_level, geo_code, session)
+    data, _ = get_stat_data('school amenity', geo, session)
 
     library_data = data['Library']['numerators']['this']
-    library_data = get_dictionary(
-        "Have a library", "Don't", library_data, data)
+    library_data = get_dictionary("Have a library", "Don't", library_data, data)
 
     drinking_water_data = data['Drinking water']['numerators']['this']
-    drinking_water_data = get_dictionary(
-        "Have clean drinking water",
-        "Don't",
-        drinking_water_data,
-        data)
+    drinking_water_data = get_dictionary("Have clean drinking water", "Don't", drinking_water_data, data)
 
     feeding_program_data = data['Feeding program']['numerators']['this']
-    feeding_program_data = get_dictionary(
-        "Have a feeding program", "Don't", feeding_program_data, data)
+    feeding_program_data = get_dictionary("Have a feeding program", "Don't", feeding_program_data, data)
 
     return {
         'library_data': library_data,
@@ -502,11 +475,10 @@ def get_school_amenities_profile(geo_code, geo_level, session):
 
 
 # PEPFAR DATA
-def get_pepfar_profile(geo_code, geo_level, session):
-    if geo_level == "ward":
-        return {}
+def get_pepfar_profile(geo, session):
+    if geo.geo_level == "ward": return {}
     # PEPFAR stats
-    pepfar_data, _ = get_stat_data("pepfar", geo_level, geo_code, session)
+    pepfar_data, _ = get_stat_data("pepfar", geo, session)
     HTC_TST = pepfar_data['HTC_TST']['numerators']['this']
     HTC_TST_POS = pepfar_data['HTC_TST_POS']['numerators']['this']
     PMTCT_STAT = pepfar_data['PMTCT_STAT']['numerators']['this']
@@ -518,39 +490,37 @@ def get_pepfar_profile(geo_code, geo_level, session):
     CARE_NEW = pepfar_data['CARE_NEW']['numerators']['this']
     TX_NEW = pepfar_data['TX_NEW']['numerators']['this']
     CARE_CURR = pepfar_data['CARE_CURR']['numerators']['this']
-    pepfar_data['TB_SCREEN']['numerators']['this']
-    pepfar_data['TX_CURR']['numerators']['this']
-    pepfar_data['TB_ART']['numerators']['this']
-    pepfar_data['TX_RET_NUM']['numerators']['this']
-    pepfar_data['TX_RET_DEN']['numerators']['this']
-    pepfar_data['VMMC_CIRC']['numerators']['this']
-    pepfar_data['OVC_SERV']['numerators']['this']
-    pepfar_data['PP_PREV']['numerators']['this']
-    pepfar_data['KP_PREV']['numerators']['this']
+    TB_SCREEN = pepfar_data['TB_SCREEN']['numerators']['this']
+    TX_CURR = pepfar_data['TX_CURR']['numerators']['this']
+    TB_ART = pepfar_data['TB_ART']['numerators']['this']
+    TX_RET_NUM = pepfar_data['TX_RET_NUM']['numerators']['this']
+    TX_RET_DEN = pepfar_data['TX_RET_DEN']['numerators']['this']
+    VMMC_CIRC = pepfar_data['VMMC_CIRC']['numerators']['this']
+    OVC_SERV = pepfar_data['OVC_SERV']['numerators']['this']
+    PP_PREV = pepfar_data['PP_PREV']['numerators']['this']
+    KP_PREV = pepfar_data['KP_PREV']['numerators']['this']
     try:
         HTP = round((HTC_TST_POS / HTC_TST) * 100)
         HTPP = round((((HTC_TST - HTC_TST_POS) * 1.0) / HTC_TST) * 100)
-    except BaseException:
+    except:
         HTP = 0
         HTPP = 0
     try:
         PSP = round(((PMTCT_STAT_POS * 1.0) / PMTCT_STAT) * 100)
-        PSPP = round(
-            (((PMTCT_STAT - PMTCT_STAT_POS) * 1.0) / PMTCT_STAT) * 100)
-    except BaseException:
+        PSPP = round((((PMTCT_STAT - PMTCT_STAT_POS) * 1.0) / PMTCT_STAT) * 100)
+    except:
         PSP = 0
         PSPP = 0
     try:
         PA = round((PMTCT_ARV / PMTCT_STAT_POS) * 100)
-        PAP = round(
-            (((PMTCT_STAT_POS - PMTCT_ARV) * 1.0) / PMTCT_STAT_POS) * 100)
-    except BaseException:
+        PAP = round((((PMTCT_STAT_POS - PMTCT_ARV) * 1.0) / PMTCT_STAT_POS) * 100)
+    except:
         PA = 0
         PAP = 0
     try:
         PEP = round((PMTCT_EID_POS / PMTCT_EID) * 100)
         PEPP = round((((PMTCT_EID - PMTCT_EID_POS) * 1.0) / PMTCT_EID) * 100)
-    except BaseException:
+    except:
         PEP = 0
         PEPP = 0
     return {
@@ -646,22 +616,21 @@ def get_pepfar_profile(geo_code, geo_level, session):
     }
 
 
-def get_causes_of_death_profile(geo_code, geo_level, session):
-    if geo_level != 'region' and geo_level != 'country':
-        return {}
+def get_causes_of_death_profile(geo, session):
+    if geo.geo_level != 'region' and geo.geo_level != 'country': return {}
 
     causes_of_death_under_five_data, _ = get_stat_data(
-        'causes of death under five', geo_level, geo_code, session, order_by='-total')
+        'causes of death under five',geo=geo, session=session, order_by='-total')
     causes_of_death_over_five_data, _ = get_stat_data(
-        'causes of death over five', geo_level, geo_code, session, order_by='-total')
+        'causes of death over five',geo=geo, session=session, order_by='-total')
     inpatient_diagnosis_over_five_data, _ = get_stat_data(
-        'inpatient diagnosis over five', geo_level, geo_code, session, order_by='-total')
+        'inpatient diagnosis over five',geo=geo, session=session, order_by='-total')
     outpatient_diagnosis_over_five_data, _ = get_stat_data(
-        'outpatient diagnosis over five', geo_level, geo_code, session, order_by='-total')
+        'outpatient diagnosis over five',geo=geo, session=session, order_by='-total')
     inpatient_diagnosis_under_five_data, _ = get_stat_data(
-        'inpatient diagnosis under five', geo_level, geo_code, session, order_by='-total')
+        'inpatient diagnosis under five',geo=geo, session=session, order_by='-total')
     outpatient_diagnosis_under_five_data, _ = get_stat_data(
-        'outpatient diagnosis under five', geo_level, geo_code, session, order_by='-total')
+        'outpatient diagnosis under five',geo=geo, session=session, order_by='-total')
     return {
         'causes_of_death_under_five_data': causes_of_death_under_five_data,
         'causes_of_death_over_five_data': causes_of_death_over_five_data,
@@ -676,12 +645,14 @@ def get_causes_of_death_profile(geo_code, geo_level, session):
     }
 
 
-def get_family_planning_clients_profile(geo_code, geo_level, session):
-    if geo_level != 'region' and geo_level != 'country':
+def get_family_planning_clients_profile(geo, session):
+    #missing data for some regions
+    return {}
+    if geo.geo_level != 'region' and geo.geo_level != 'country':
         return {}
 
     family_planning_clients_data, _ = get_stat_data(
-        'family planning clients', geo_level, geo_code, session, order_by='-total')
+        'family planning clients',geo=geo, session=session, order_by='-total')
     total = family_planning_clients_data['Total']['numerators']['this']
     rate = family_planning_clients_data['New client rate']['numerators']['this']
 
@@ -695,7 +666,7 @@ def get_family_planning_clients_profile(geo_code, geo_level, session):
         return "15-49"
 
     age_dist_data, _ = get_stat_data(
-        'age in completed years', geo_level, geo_code, session,
+        'age in completed years',geo=geo, session=session,
         table_fields=['age in completed years', 'sex', 'rural or urban'],
         recode=age_recode, exclude=['male'])
     all_women_aged_15_49 = age_dist_data['15-49']['numerators']['this']
@@ -723,12 +694,11 @@ def get_family_planning_clients_profile(geo_code, geo_level, session):
     }
 
 
-def get_place_of_delivery_profile(geo_code, geo_level, session):
-    if geo_level != 'region' and geo_level != 'country':
-        return {}
+def get_place_of_delivery_profile(geo, session):
+    if geo.geo_level != 'region' and geo.geo_level != 'country': return {}
 
     delivery_data, _ = get_stat_data(
-        'place of delivery', geo_level, geo_code, session, order_by='-total')
+        'place of delivery',geo=geo, session=session, order_by='-total')
     anc_projection = delivery_data['ANC projection']['numerators']['this']
     facility_birth_rate = delivery_data['Facility birth rate']['numerators']['this']
     del delivery_data['ANC projection']
@@ -750,12 +720,11 @@ def get_place_of_delivery_profile(geo_code, geo_level, session):
     }
 
 
-def get_health_workers_distribution_profile(geo_code, geo_level, session):
-    if geo_level != 'region' and geo_level != 'country':
-        return {}
+def get_health_workers_distribution_profile(geo, session):
+    if geo.geo_level != 'region' and geo.geo_level != 'country': return {}
 
     hw_data, total = get_stat_data(
-        'health workers', geo_level, geo_code, session, order_by='-total')
+        'health workers',geo=geo, session=session, order_by='-total')
 
     hrh_patient_ratio = hw_data['HRH patient ratio']['numerators']['this']
     del hw_data['HRH patient ratio']
@@ -780,16 +749,15 @@ def get_health_workers_distribution_profile(geo_code, geo_level, session):
     }
 
 
-def get_health_centers_distribution_profile(geo_code, geo_level, session):
-    if geo_level == 'ward':
-        return {}
+def get_health_centers_distribution_profile(geo, session):
+    if geo.geo_level == 'ward': return {}
 
     hc_data, total = get_stat_data(
-        'health centers', geo_level, geo_code, session, order_by='-total')
+        'health centers',geo=geo, session=session, order_by='-total')
     ho_data, _ = get_stat_data(
-        'health center ownership', geo_level, geo_code, session)
+        'health center ownership', geo, session)
     hiv_centers_data, hiv_c = get_stat_data(
-        'hiv centers', geo_level, geo_code, session)
+        'hiv centers', geo, session)
 
     return {
         'total': {
@@ -809,12 +777,11 @@ def get_health_centers_distribution_profile(geo_code, geo_level, session):
     }
 
 
-def get_tetanus_vaccine_profile(geo_code, geo_level, session):
-    if geo_level != 'region' and geo_level != 'country':
-        return {}
+def get_tetanus_vaccine_profile(geo, session):
+    if geo.geo_level != 'region' and geo.geo_level != 'country': return {}
 
     tetanus_vaccine_data, _ = get_stat_data(
-        'tetanus vaccine', geo_level, geo_code, session, order_by='-total')
+        'tetanus vaccine',geo=geo, session=session, order_by='-total')
     number_vaccinated = tetanus_vaccine_data['Vaccinated']['numerators']['this']
     coverage = tetanus_vaccine_data['Coverage']['numerators']['this']
     return {
@@ -854,8 +821,7 @@ def sum_up(arr, name):
     s = 0
     for x in arr:
         s += x['values']['this']
-    return OrderedDict(
-        [('name', name), ('numerators', {'this': None}), ('values', {'this': s})])
+    return OrderedDict([('name', name), ('numerators', {'this': None}), ('values', {'this': s})])
 
 
 def divide_by_one_thousand(dist):
@@ -867,66 +833,52 @@ def replace_name(dist, new_name):
     dist['name'] = new_name
 
 
-def get_traffic_and_crimes_profile(geo_code, geo_level, session):
+def get_traffic_and_crimes_profile(geo, session):
 
-    if geo_level == 'ward' or geo_level == 'district':
+    if geo.geo_level == 'ward' or geo.geo_level == 'district':
         return {}
 
-    traffic_and_crimes, _total_tc = get_stat_data(
-        'traffic and crimes', geo_level, geo_code, session, order_by='-total')
+    traffic_and_crimes, _total_tc = get_stat_data('traffic and crimes',geo=geo, session=session,  order_by='-total')
 
-    # total accidents
+    #total accidents
     total_accidents = 0
-    total_accidents += int(
-        traffic_and_crimes['Fatal Accidents']['numerators']['this'])
-    total_accidents += int(
-        traffic_and_crimes['Injury Accidents']['numerators']['this'])
-    total_accidents += int(
-        traffic_and_crimes['Normal Accidents']['numerators']['this'])
+    total_accidents += int(traffic_and_crimes['Fatal Accidents']['numerators']['this'])
+    total_accidents += int(traffic_and_crimes['Injury Accidents']['numerators']['this'])
+    total_accidents += int(traffic_and_crimes['Normal Accidents']['numerators']['this'])
 
-    # injuries
-    male_injuries = int(
-        traffic_and_crimes['Male Injured Persons']['numerators']['this'])
-    female_injuries = int(
-        traffic_and_crimes['Female Injured Persons']['numerators']['this'])
-    male_injuries + female_injuries
+    #injuries
+    male_injuries = int(traffic_and_crimes['Male Injured Persons']['numerators']['this'])
+    female_injuries = int(traffic_and_crimes['Female Injured Persons']['numerators']['this'])
+    total_injuries = male_injuries + female_injuries
 
     # deaths
-    male_deaths = int(
-        traffic_and_crimes['Male Dead Persons']['numerators']['this'])
-    female_deaths = int(
-        traffic_and_crimes['Female Dead Persons']['numerators']['this'])
-    total_deaths = male_deaths + female_deaths
+    male_deaths = int(traffic_and_crimes['Male Dead Persons']['numerators']['this'])
+    female_deaths = int(traffic_and_crimes['Female Dead Persons']['numerators']['this'])
+    total_deaths  = male_deaths + female_deaths
 
     _, total_pop = get_stat_data(
-        'sex', geo_level, geo_code, session,
+        'sex',geo=geo, session=session,
         table_fields=['age in completed years', 'sex', 'rural or urban'])
 
-    deaths_per_pop = round((total_deaths * 1e5) / total_pop)
+    deaths_per_pop = round((total_deaths * 1e5)/total_pop)
 
-    # offences against person 2015
-    person_offences = [
-        'Murder',
-        'Rape',
-        'Child Desertion',
-        'Unnatural Offence',
-        'Child Stealing',
-        'Defilement']
-    offences_against_person_dist, _ = get_stat_data('traffic and crimes', only=person_offences,
-                                                    geo_level=geo_level, geo_code=geo_code, session=session, order_by='-total')
+    #offences against person 2015
+    person_offences = ['Murder', 'Rape', 'Child Desertion', 'Unnatural Offence', 'Child Stealing', 'Defilement']
+    offences_against_person_dist, _ = get_stat_data('traffic and crimes', only=person_offences,\
+      geo=geo, session=session, order_by='-total')
 
-    # cattle theft
+    #cattle theft
     cattle_theft_only = ["Cattle Thieves", "Murdered Cattle Owners"]
 
     def recoder(f, x):
-        if x in ('Murdered Cattle Owners', 'Robbery Victims'):
+        if x in  ('Murdered Cattle Owners', 'Robbery Victims'):
             return 'Owners'
         if x in ('Cattle Thieves', 'Robbery Thieves'):
             return 'Thieves'
-        if x == "Superstitious Beliefs Albino":
+        if x  == "Superstitious Beliefs Albino":
             return "Albino"
         if x == "Superstitious Beliefs Others":
-            return "Other"
+            return  "Other"
         if x == "Superstitious Beliefs Old Age":
             return "Old Age"
         if x == "Superstitious Beliefs Theft":
@@ -940,39 +892,39 @@ def get_traffic_and_crimes_profile(geo_code, geo_level, session):
         if x == "Public Fighting Grudge":
             return "Grudge"
         if x == "Public Fighting Accident":
-            return "Accident"
+            return  "Accident"
         return x
 
-    cattle_theft_dist, _total_ct = get_stat_data("traffic and crimes", only=cattle_theft_only,
-                                                 geo_level=geo_level, geo_code=geo_code, session=session, order_by='-total',
-                                                 recode=recoder)
+    cattle_theft_dist, _total_ct = get_stat_data("traffic and crimes", only=cattle_theft_only,\
+     geo=geo, session=session, order_by='-total',\
+     recode=recoder)
 
     robbery_only = ['Robbery Victims', 'Robbery Thieves']
-    robbery_fatalities_dist, _total_rf = get_stat_data('traffic and crimes', only=robbery_only,
-                                                       geo_level=geo_level, geo_code=geo_code, session=session, order_by='-total',
-                                                       recode=recoder)
+    robbery_fatalities_dist, _total_rf = get_stat_data('traffic and crimes', only=robbery_only,\
+     geo=geo, session=session, order_by='-total',
+      recode=recoder)
 
-    superstitious_only = ["Superstitious Beliefs Albino", "Superstitious Beliefs Theft",
-                          "Superstitious Beliefs Others", "Superstitious Beliefs Old Age"]
-    superstitious_beliefs_dist, _ = get_stat_data('traffic and crimes', only=superstitious_only,
-                                                  geo_level=geo_level, geo_code=geo_code, session=session, order_by='-total',
-                                                  recode=recoder)
+    superstitious_only = ["Superstitious Beliefs Albino", "Superstitious Beliefs Theft",\
+    "Superstitious Beliefs Others", "Superstitious Beliefs Old Age"]
+    superstitious_beliefs_dist, _ = get_stat_data('traffic and crimes', only=superstitious_only,\
+     geo=geo, session=session, order_by='-total',
+      recode=recoder)
 
     total_cattletheft_robbery = _total_rf + _total_ct
 
-    public_fighting_only = ["Public Fighting Pombe shops", "Public Fighting Jelousy",
-                            "Public Fighting Domestic", "Public Fighting Grudge", "Public Fighting Accident"]
-    public_fighting_dist, _total_pf = get_stat_data('traffic and crimes', only=public_fighting_only,
-                                                    geo_level=geo_level, geo_code=geo_code, session=session, order_by='-total',
-                                                    recode=recoder)
+    public_fighting_only = ["Public Fighting Pombe shops", "Public Fighting Jelousy",\
+        "Public Fighting Domestic", "Public Fighting Grudge", "Public Fighting Accident"]
+    public_fighting_dist, _total_pf = get_stat_data('traffic and crimes', only=public_fighting_only,\
+     geo=geo, session=session, order_by='-total',
+      recode=recoder)
 
     return {
         'traffic_and_crimes_overall': traffic_and_crimes,
-        'injuries_by_gender': {
+        'injuries_by_gender':   {
             'male': {
                 'name': 'Male',
                 'numerators': {'this': male_injuries},
-                'values': {'this': male_injuries}
+                'values': {'this':male_injuries}
             },
             'female': {
                 'name': 'Female',
@@ -981,7 +933,7 @@ def get_traffic_and_crimes_profile(geo_code, geo_level, session):
             },
             'metadata': traffic_and_crimes['metadata']
         },
-        'fatalities_by_gender': {
+        'fatalities_by_gender':   {
             'male': {
                 'name': 'Men',
                 'numerators': {'this': male_deaths},
@@ -1017,8 +969,8 @@ def get_traffic_and_crimes_profile(geo_code, geo_level, session):
                 'metadata': {
                     'name': 'Cattle Theft'
                 },
-                'Thieves': cattle_theft_dist['Thieves'],
-                'Owners': cattle_theft_dist['Owners']
+                'Thieves':  cattle_theft_dist['Thieves'],
+                'Owners':  cattle_theft_dist['Owners']
             },
             'Robbery': {
                 'metadata': {
@@ -1033,7 +985,7 @@ def get_traffic_and_crimes_profile(geo_code, geo_level, session):
         'cattle_and_robbery': {
             'name': 'People killed in cattle theft and robbery crimes(2015)',
             'numerators': {'this': total_cattletheft_robbery},
-            'values': {'this': total_cattletheft_robbery}
+            'values': {'this': total_cattletheft_robbery }
         },
         'public_fighting': public_fighting_dist,
         'public_fighting_stat': {

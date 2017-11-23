@@ -8,3 +8,6 @@ debug
 /static/
 .vscode/
 .DS_Store
+/env/
+.env/
+env
