@@ -59,6 +59,14 @@ class Command(BaseCommand):
             default=False,
             help="Dry-run, don't actuall write any data.",
         )
+        parser.add_argument(
+            '--columns',
+            action='store',
+            nargs='*',
+            dest='columns',
+            default='',
+            help="Get the columns used in the table",
+        )
 
     def debug(self, msg):
         if self.verbosity >= 2:
@@ -70,8 +78,10 @@ class Command(BaseCommand):
         self.verbosity = options.get('verbosity', 1)
         self.table_id = options.get('table')
         self.geo_version = options.get('geo_version')
+        self.columns = options.get('columns', [])
         self.value_type = options.get('value_type', 'Integer')
         self.dryrun = options.get('dryrun', False)
+
 
         if self.dryrun:
             self.stdout.write("DRY RUN: not actually writing data")
@@ -108,7 +118,9 @@ class Command(BaseCommand):
             model_row['geo_version'] = self.geo_version
             model_row['geo_code'] = geo_code
             model_row['geo_level'] = geo_level
-            model_row[self.table_id] = row[self.table_id]
+
+            for col in self.columns:
+                model_row[col] = row[col]
 
             if row['total'] == 'no data':
                 model_row['total'] = None

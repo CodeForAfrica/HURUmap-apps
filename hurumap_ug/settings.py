@@ -114,3 +114,9 @@ LOGGING['loggers']['hurumap_ug'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
 
 # Making sure they are the same
 WAZIMAP = HURUMAP
+
+'''
+MDXvR2QUoMLlFMSYN9mqVa
+qjBtVtjcCbDrmmU1VCBDztZtA
+'''
+
