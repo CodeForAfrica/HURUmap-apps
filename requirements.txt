@@ -1,5 +1,5 @@
 gevent==1.0.1
 gunicorn==19.7.1
-wazimap==1.1.0
+wazimap==1.1.1
 GDAL==1.11.0
 Shapely>=1.6
