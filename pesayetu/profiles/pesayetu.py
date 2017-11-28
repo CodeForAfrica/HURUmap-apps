@@ -18,6 +18,10 @@ def get_profile(geo, profile_name, request):
 
     try:
         data['budget'] = get_equitable_allocation_data(geo, session)
+        data['expenditure_ceilings'] = get_county_expenditure_ceilings(geo,
+                                                                       session)
+
+        print data
         return data
     finally:
         session.close()
@@ -31,23 +35,26 @@ def get_equitable_allocation_data(geo, session):
                                              percent=False)
 
         yr2013_2014 = 0
-        print budget_allocation
-        for data, value in budget_allocation.get('FY 2013/2014', {}).iteritems():
+        for data, value in budget_allocation.get('FY 2013/2014',
+                                                 {}).iteritems():
             if data == 'values':
                 yr2013_2014 += value['this']
 
         yr2014_2015 = 0
-        for data, value in budget_allocation.get('FY 2014/2015', {}).iteritems():
+        for data, value in budget_allocation.get('FY 2014/2015',
+                                                 {}).iteritems():
             if data == 'values':
                 yr2014_2015 += value['this']
 
         yr2015_2016 = 0
-        for data , value in budget_allocation.get('FY 2015/2016', {}).iteritems():
+        for data, value in budget_allocation.get('FY 2015/2016',
+                                                 {}).iteritems():
             if data == 'values':
                 yr2015_2016 += value['this']
 
         yr2016_2017 = 0
-        for data, value in budget_allocation.get('FY 2016/2017', {}).iteritems():
+        for data, value in budget_allocation.get('FY 2016/2017',
+                                                 {}).iteritems():
             if data == 'values':
                 yr2016_2017 += value['this']
 
@@ -79,3 +86,46 @@ def get_equitable_allocation_data(geo, session):
 
     except LocationNotFound:
         budget_allocation, _ = LOCATIONNOTFOUND, 0
+
+
+def get_county_expenditure_ceilings(geo, session):
+    try:
+        ceilings, _ = get_stat_data(['expenditure', 'year'],
+                                    geo, session, table_fields=['expenditure',
+                                                                'year'],
+                                    percent=False)
+
+        final_data = {}
+        county_assembly = ceilings['County Assembly']
+        county_exec = ceilings['County Executive']
+        final_data['county_assembly'] = {
+            'fy2015_2016': {
+                'name': county_assembly['FY 2015/2016'].get('name'),
+                'numerators': county_assembly['FY 2015/2016'].get('numerators'),
+                'values': county_assembly['FY 2015/2016'].get('values')
+
+            },
+            'fy2016_2017': {
+                'name': county_assembly['FY 2016/2017'].get('name'),
+                'numerators': county_assembly['FY 2016/2017'].get('numerators'),
+                'values': county_assembly['FY 2016/2017'].get('values')
+            }
+        }
+
+        final_data['county_executive'] = {
+            'fy2015_2016': {
+                'name': county_exec['FY 2015/2016'].get('name'),
+                'numerators': county_exec['FY 2015/2016'].get('numerators'),
+                'values': county_exec['FY 2015/2016'].get('values')
+
+            },
+            'fy2016_2017': {
+                'name': county_exec['FY 2016/2017'].get('name'),
+                'numerators': county_exec['FY 2016/2017'].get('numerators'),
+                'values': county_exec['FY 2016/2017'].get('values')
+            }
+        }
+        return final_data
+
+    except LocationNotFound:
+        ceilings, _ = LOCATIONNOTFOUND, 0

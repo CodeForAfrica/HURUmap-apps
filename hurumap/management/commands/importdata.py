@@ -82,7 +82,6 @@ class Command(BaseCommand):
         self.value_type = options.get('value_type', 'Integer')
         self.dryrun = options.get('dryrun', False)
 
-
         if self.dryrun:
             self.stdout.write("DRY RUN: not actually writing data")
 
@@ -114,7 +113,7 @@ class Command(BaseCommand):
         for row in self.reader:
             model_row = {}
             count += 1
-            geo_code, geo_level = self.get_geo_data(row['name'])
+            geo_code, geo_level = self.get_geo_data(row['geography'])
             model_row['geo_version'] = self.geo_version
             model_row['geo_code'] = geo_code
             model_row['geo_level'] = geo_level
