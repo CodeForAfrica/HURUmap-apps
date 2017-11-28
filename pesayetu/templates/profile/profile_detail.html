@@ -6,7 +6,7 @@
 {% endblock %} {% block profile_detail %}
 
 
-    <article id="demographics"
+    <article id="budget"
              class="clearfix {% if 'demographics' not in selected_sections %}hide{% endif %}">
         <header class="section-contents">
             <h1>Budget Data</h1>
@@ -38,6 +38,48 @@
                      data-stat-type="dollar"
                      data-chart-title="Allocation Distribution"></div>
             </section>
+
+        </div>
+    </article>
+
+        <article id="budget"
+             class="clearfix {% if 'demographics' not in selected_sections %}hide{% endif %}">
+        <header class="section-contents">
+            <h1>Ceilings on Recurrent Expenditure by Counties</h1>
+        </header>
+        <div class="section-container">
+
+            <section class="clearfix stat-row">
+                <h2 class="header-for-columns"><a class="permalink"
+                                                  href="#pop_count"
+                                                  id="pop_count">County Assembly <i class="fa fa-link"></i></a></h2>
+                <div class="column-half">
+                    {% include 'profile/_blocks/_stat_list.html' with stat=expenditure_ceilings.county_assembly.fy2015_2016 stat_type='number' %}
+                </div>
+                <div class="column-half">
+                    {% include 'profile/_blocks/_stat_list.html' with stat=expenditure_ceilings.county_assembly.fy2016_2017 stat_type='number' %}
+                </div>
+
+            </section>
+
+            <section class="clearfix stat-row">
+                <h2 class="header-for-columns"><a class="permalink"
+                                                  href="#pop_count"
+                                                  id="pop_count">County Executive <i class="fa fa-link"></i></a></h2>
+                <div class="column-half">
+                    {% include 'profile/_blocks/_stat_list.html' with stat=expenditure_ceilings.county_executive.fy2015_2016 stat_type='number' %}
+                </div>
+                <div class="column-half">
+                    {% include 'profile/_blocks/_stat_list.html' with stat=expenditure_ceilings.county_executive.fy2016_2017 stat_type='number' %}
+                </div>
+
+            </section>
+{#            <section class="clearfix stat-row">#}
+{#                <div class="column-three-quarters"#}
+{#                     id="chart-histogram-budget-budget_allocation"#}
+{#                     data-stat-type="dollar"#}
+{#                     data-chart-title="Allocation Distribution"></div>#}
+{#            </section>#}
 
         </div>
     </article>
