@@ -20,8 +20,9 @@ def get_profile(geo, profile_name, request):
         data['budget'] = get_equitable_allocation_data(geo, session)
         data['expenditure_ceilings'] = get_county_expenditure_ceilings(geo,
                                                                        session)
+        data['conditional_grants_15_16'] = get_conditional_allocation_2015_2016(
+            geo, session)
 
-        print data
         return data
     finally:
         session.close()
@@ -129,3 +130,26 @@ def get_county_expenditure_ceilings(geo, session):
 
     except LocationNotFound:
         ceilings, _ = LOCATIONNOTFOUND, 0
+
+
+def get_conditional_allocation_2015_2016(geo, session):
+    try:
+        conditional, _ = get_stat_data(['conditional_fund'], geo, session,
+                                       table_fields=['conditional_fund'],
+                                       percent=False)
+        final_data = {}
+        data = ['DANIDA Grant', 'Other Conditional Allocations',
+                'World Bank Loan']
+        for i in data:
+            fund = conditional.get(i)
+
+            final_data[i.lower().replace(' ', '_')] = {
+                'name': i,
+                'numerators': fund['numerators'],
+                'values': fund['values']
+            }
+
+        print final_data
+        return final_data
+    except LocationNotFound:
+        conditional, _ = LOCATIONNOTFOUND, 0
