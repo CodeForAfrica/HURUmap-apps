@@ -3,6 +3,11 @@
 $red: #F43D3D;
 $wedding_bells_red: #F4A1A1;
 
+$darkblue: #3385B5;
+$lightblue: #9AC2DB;
+$footer-bg-dark: #353745;
+$footer_txt: #A5A8BB;
+
 $brand-primary-color: $red;
 $brand-secondary-color: $wedding_bells_red;
 
@@ -20,6 +25,10 @@ $nav-height: 70px;
 html, body, h4, h5, h6, p {
   font-family: $font-lato;
   word-wrap: break-word;
+}
+
+body {
+  background-color: #ffffff;
 }
 h1, h2, h3 {
   font-family: $font-poppins;
@@ -41,7 +50,7 @@ img {
 
 a {
   &:hover {
-    color: $red;
+    color: $darkblue;
   }
 }
 
@@ -68,17 +77,17 @@ input {
 // Colour helpers
 
 .bg-ocean-green {
-  background-color: $wedding_bells_red;
+  background-color: $lightblue;
   color: #fff;
 }
 
 .bg-bottle-green {
-  background-color: $red;
+  background-color: $darkblue;
   color: #fff;
 }
 
 .bg-tan {
-  background-color: transparentize(#3687B6, 0.9);
+  background-color: transparentize(#9AC2DB, 0.7);
 }
 
 // Text helpers
@@ -134,7 +143,7 @@ body {
         li {
           a {
             &:hover {
-              color: $wedding_bells_red;
+              color: $lightblue;
               text-decoration: none;
             }
             .fa {
@@ -160,7 +169,7 @@ body {
     }
 
     #menu-toggle {
-      color: $red;
+      color: $darkblue;
       font-size: 20px;
       margin-top: 10px;
     }
@@ -173,14 +182,14 @@ body {
 }
 
 #page-header, .box-header {
-  background-color: $red;
+  background-color: $darkblue;
 }
 
 // Footer
 
 #page-footer {
-  background-color: $red;
-  color: #fff;
+  background-color: $footer-bg-dark;
+  color: $footer_txt;
   padding: 45px 0 35px;
   small, .small, .smaller {
     font-weight: 300;
@@ -188,7 +197,7 @@ body {
   a {
     color: #fff;
     &:hover {
-      color: $wedding_bells_red;
+      color: #ffffff;
     }
   }
   ul a {
@@ -226,7 +235,7 @@ body {
     height: auto;
     display: inline-block;
     padding: 13px 20px 12px;
-    background-color: $wedding_bells_red;
+    background-color: $lightblue;
     text-transform: uppercase;
     text-align: left;
     color: #fff;
@@ -345,8 +354,8 @@ body {
 
 .leaflet-label {
   color: #fff !important;
-  background-color: $wedding_bells_red !important;
-  border-color: $wedding_bells_red !important;
+  background-color: $lightblue !important;
+  border-color: $lightblue !important;
   border-radius: 0 !important;
   font-weight: 200 !important;
   font-family: $font-poppins !important;
