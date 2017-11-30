@@ -1048,10 +1048,10 @@ def get_water_sources_profile(geo, session):
             'numerators': {'this': n_sources},
             'values': {'this': n_sources}
         },
-        'source_link': '',
-        'source_name': '',
+        'source_link': 'http://www.opendata.go.tz/dataset/hali-halisi-ya-vitoa-maji-kwa-mikoa-yote-tanzania',
+        'source_name': 'opendata.go.tz',
         'n_people_per_point': {
-            'name': 'Number of people using a working water point(Functional/Needs repair)',
+            'name': 'Number of people using a working water point(Functional/Needs repair water point)',
             'numerators': {'this': n_people_per_point},
             'values': {'this': n_people_per_point}
         },
