@@ -90,6 +90,7 @@ HURUMAP['topics']['education'] = {
     'profiles': [
         'literacy and numeracy tests',
         'school attendance',
+        'primary school teachers'
     ]
 }
 
@@ -115,7 +116,8 @@ HURUMAP['topics']['development'] = {
     'icon': '/static/img/development.png',
     'desc': '',
     'profiles': [
-        'traffic and crimes'
+        'traffic and crimes',
+        'water sources'
     ]
 }
 
@@ -148,6 +150,8 @@ HURUMAP['showcase_stories'] = [
 ]
 
 LOGGING['loggers']['hurumap_tz'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
+
+HURUMAP['na_label'] = ''
 
 # Making sure they are the same
 WAZIMAP = HURUMAP
