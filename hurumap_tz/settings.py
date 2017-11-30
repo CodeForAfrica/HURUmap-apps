@@ -148,6 +148,7 @@ HURUMAP['showcase_stories'] = [
 
 LOGGING['loggers']['hurumap_tz'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
 
+#Empty NA label, avoids having long pages on missing geo level data
 HURUMAP['na_label'] = ''
 
 # Making sure they are the same

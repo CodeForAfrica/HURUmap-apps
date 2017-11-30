@@ -1021,19 +1021,23 @@ def get_water_sources_profile(geo, session):
     if geo.geo_level == 'ward' or geo.geo_level == 'district':
         return {}
 
-    _, total_pop = get_stat_data(
-        'sex',geo=geo, session=session,
-        table_fields=['age in completed years', 'sex', 'rural or urban'])
+    try:
+        _, total_pop = get_stat_data(
+            'sex',geo=geo, session=session,
+            table_fields=['age in completed years', 'sex', 'rural or urban'])
 
-    WATER_POINT_STATUS_RECODES = OrderedDict([
-            ('functional', 'Functional'),
-            ('nonfunctional', 'Non Functional'),
-            ('needsrepair', 'Functional Needs Repair')
-        ])
+        WATER_POINT_STATUS_RECODES = OrderedDict([
+                ('functional', 'Functional'),
+                ('nonfunctional', 'Non Functional'),
+                ('needsrepair', 'Functional Needs Repair')
+            ])
 
-    water_source_dist, n_sources  = get_stat_data('water sources', geo=geo,\
-     session=session, recode=WATER_POINT_STATUS_RECODES)
+        water_source_dist, n_sources  = get_stat_data('water sources', geo=geo,\
+         session=session, recode=WATER_POINT_STATUS_RECODES)
 
+    except Exception as e:
+        #Location not found in dataset
+        return {}
     #Functional  + Needs repair
     all_functional  = water_source_dist['Functional']['numerators']['this'] + \
             water_source_dist['Functional Needs Repair']['numerators']['this']
