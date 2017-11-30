@@ -994,3 +994,29 @@ def get_traffic_and_crimes_profile(geo, session):
             'values': {'this': _total_pf}
         }
     }
+
+
+def get_primary_school_teachers_profile(geo, session):
+
+    if geo.geo_level == 'ward':
+        return {}
+    ps_teachers, n_teachers = get_stat_data('primary school teachers',\
+        geo=geo, session=session, order_by='-total')
+
+    return {
+        'number_of_teachers': {
+            'name': 'Number of primary school teachers (2016)',
+            'numerators': {'this': n_teachers},
+            'values': {'this': n_teachers}
+        },
+        'source_name': 'opendata.go.tz',
+        'source_link': 'http://www.opendata.go.tz/dataset/number-of-primary-school-teachers',
+        'primary_school_teachers': ps_teachers
+    }
+
+
+def get_water_sources_profile(geo, session):
+
+    return {
+        'xyz': 'Jo'
+    }
