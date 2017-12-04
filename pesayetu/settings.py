@@ -22,6 +22,7 @@ PESAYETU['description'] = 'is a tool the gives Kenyan Citizens access to ' \
                           'what their elected officials are doing with it, and ' \
                           'from there the discussion can proceed towards how ' \
                           'money is spent in the future to better their lives.'
+PESAYETU['title_tagline'] = 'Making Budget Data Easy to Use'
 
 pesayetu_profile = os.environ.get('PESAYETU_PROFILE', 'pesayetu')
 
