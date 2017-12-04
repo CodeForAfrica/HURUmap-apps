@@ -16,6 +16,12 @@ PESAYETU['name'] = 'PesaYetu'
 PESAYETU['url'] = 'https://pesayetu.hurumap.org'
 PESAYETU['country_code'] = 'KE'
 PESAYETU['country_name'] = 'Kenya'
+PESAYETU['description'] = 'is a tool the gives Kenyan Citizens access to ' \
+                          'information on how money collected from taxpayers ' \
+                          'is allocated. With this information, they can ask ' \
+                          'what their elected officials are doing with it, and ' \
+                          'from there the discussion can proceed towards how ' \
+                          'money is spent in the future to better their lives.'
 
 pesayetu_profile = os.environ.get('PESAYETU_PROFILE', 'pesayetu')
 
