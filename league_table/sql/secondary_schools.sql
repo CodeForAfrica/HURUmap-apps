@@ -1,0 +1,108 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.10
+-- Dumped by pg_dump version 9.5.10
+
+-- Started on 2017-12-08 15:25:14 EAT
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 181 (class 1259 OID 27705)
+-- Name: secondary_schools; Type: TABLE; Schema: public; Owner: league_table
+--
+
+CREATE TABLE secondary_schools (
+    geo_level character varying(15) NOT NULL,
+    geo_code character varying(10) NOT NULL,
+    geo_version character varying(100) DEFAULT ''::character varying NOT NULL,
+    code character varying(128) NOT NULL,
+    name character varying(128) NOT NULL,
+    ownership character varying(128) NOT NULL,
+    "pass rate" character varying(128) NOT NULL,
+    rank character varying(128) NOT NULL,
+    total integer
+);
+
+
+ALTER TABLE secondary_schools OWNER TO league_table;
+
+--
+-- TOC entry 2155 (class 0 OID 27705)
+-- Dependencies: 181
+-- Data for Name: secondary_schools; Type: TABLE DATA; Schema: public; Owner: league_table
+--
+
+COPY secondary_schools (geo_level, geo_code, geo_version, code, name, ownership, "pass rate", rank, total) FROM stdin;
+country	TZ	2009	S0189	FEZA BOYS' SECONDARY SCHOOL	PRIVATE	100	1	1
+country	TZ	2009	S0239	ST. FRANCIS GIRLS SECONDARY SCHOOL	PRIVATE	100	2	1
+country	TZ	2009	S0248	MARIAN GIRLS SECONDARY SCHOOL	PRIVATE	100	4	1
+country	TZ	2009	S3881	AHMES SECONDARY SCHOOL	UNKNOWN	100	5	1
+country	TZ	2009	S4213	MARIAN BOYS' SECONDARY SCHOOL	PRIVATE	100	6	1
+country	TZ	2009	S0113	MAFINGA SEMINARY	SEMINARY	100	8	1
+country	TZ	2009	S0269	ANWARITE GIRLS' SECONDARY SCHOOL	PRIVATE	100	10	1
+country	TZ	2009	S0224	KIFUNGILO GIRLS SECONDARY SCHOOL	PRIVATE	100	11	1
+country	TZ	2009	S1604	THOMAS MORE MACHRINA SECONDARY SCHOOL	COMMUNITY	100	12	1
+country	TZ	2009	S0298	FEZA GIRLS' SECONDARY SCHOOL	PRIVATE	100	13	1
+country	TZ	2009	S0148	RUBYA SEMINARY	SEMINARY	100	14	1
+country	TZ	2009	S0268	BETHEL SABS GIRLS SECONDARY SCHOOL	UNKNOWN	100	15	1
+country	TZ	2009	S2325	CANOSSA SECONDARY SCHOOL	UNKNOWN	100	16	1
+country	TZ	2009	S0295	PRECIOUS BLOOD SECONDARY SCHOOL	PRIVATE	100	18	1
+country	TZ	2009	S0692	ROSMINI SECONDARY SCHOOL	PRIVATE	100	20	1
+country	TZ	2009	S0172	DON BOSCO SEMINARY	PRIVATE	100	21	1
+country	TZ	2009	S0119	KIBAHA SECONDARY SCHOOL	GOVERNMENT	100	22	1
+country	TZ	2009	S4405	ST AMEDEUS SECONDARY SCHOOL	UNKNOWN	100	23	1
+country	TZ	2009	S0159	ST. JOSEPH'S ITERAMBOGO SEMINARY	SEMINARY	100	24	1
+country	TZ	2009	S1601	TENGERU BOYS SECONDARY SCHOOL	PRIVATE	100	25	1
+country	TZ	2009	S0121	ST. JAMES SEMINARY	SEMINARY	100	26	1
+country	TZ	2009	S0233	ST. MARY'S MAZINDE JUU SECONDARY SCHOOL	PRIVATE	100	27	1
+country	TZ	2009	S3933	RISING STAR SECONDARY SCHOOL	PRIVATE	100	29	1
+country	TZ	2009	S3674	ST. JOSEPH MILLENIUM SECONDARY SCHOOL	UNKNOWN	100	30	1
+country	TZ	2009	S3470	ABBEY SECONDARY SCHOOL	UNKNOWN	100	31	1
+country	TZ	2009	S4964	HERITAGE SECONDARY SCHOOL	UNKNOWN	100	32	1
+country	TZ	2009	S0190	ST. JOSEPH-KILOCHA SEMINARY	PRIVATE	100	33	1
+country	TZ	2009	S4569	ST MARIE EUGENIE SECONDARY SCHOOL	UNKNOWN	100	34	1
+country	TZ	2009	S0146	NYEGEZI SEMINARY	SEMINARY	100	35	1
+country	TZ	2009	S0140	MZUMBE SECONDARY SCHOOL	GOVERNMENT	100	36	1
+country	TZ	2009	S0206	KILAKALA SECONDARY SCHOOL	GOVERNMENT	100	37	1
+country	TZ	2009	S2315	KANDOTO SAYANSI GIRLS SECONDARY SCHOOL	UNKNOWN	100	40	1
+country	TZ	2009	S0118	KATOKE SEMINARY	SEMINARY	100	41	1
+country	TZ	2009	S0130	MAUA SEMINARY	SEMINARY	100	42	1
+country	TZ	2009	S4645	ALLIANCE BOYS' SECONDARY SCHOOL	UNKNOWN	100	43	1
+country	TZ	2009	S0154	ST. PETER'S SEMINARY	SEMINARY	100	44	1
+country	TZ	2009	S4939	CENTENNIAL CHRISTIAN SEMINARY	UNKNOWN	100	47	1
+country	TZ	2009	S4565	GILI SECONDARY SCHOOL	UNKNOWN	100	48	1
+country	TZ	2009	S3905	UWATA SECONDARY SCHOOL	UNKNOWN	100	49	1
+region	2	2009	S0189	FEZA BOYS' SECONDARY SCHOOL	PRIVATE	100	1	1
+\.
+
+
+--
+-- TOC entry 2040 (class 2606 OID 27713)
+-- Name: pk_secondary_schools; Type: CONSTRAINT; Schema: public; Owner: league_table
+--
+
+ALTER TABLE ONLY secondary_schools
+    ADD CONSTRAINT pk_secondary_schools PRIMARY KEY (geo_level, geo_code, geo_version, code, name, ownership, "pass rate", rank);
+
+
+-- Completed on 2017-12-08 15:25:15 EAT
+
+--
+-- PostgreSQL database dump complete
+--
+
