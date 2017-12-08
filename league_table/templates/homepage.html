@@ -1,0 +1,104 @@
+{% extends 'homepage_country.html' %}{% load humanize partition staticfiles %}
+
+{% block head_title %}League Table : Schools Ranking{% endblock %}
+
+{% block header %}
+    <header id="page-header" style="background: #204d8a;">
+        <div id="page-header-title" class="wrapper clearfix">
+            <i id="menu-toggle" class="fa fa-bars"></i>
+            <a class="title" href="{% url 'homepage' %}">
+                <span style="font-size: 20px;font-weight: bolder;">League</span><br />
+                <span style="font-size: 18px;font-weight: bold; margin-left: 20px;">Table</span>
+            </a>
+
+            <div class="nav-menu">
+                <ul id="site-menu">
+                    {% block header_menu %}
+                        <li><a href="#">Schools</a></li>
+                        <li><a href="#">Statistics</a></li>
+                        <li><a href="#">About</a></li>
+                    {% endblock header_menu %}
+                </ul>
+
+                {% if not hide_nav_tools %}
+                    {% block nav_tools %}
+                    <div id="menu" class="tool-set clearfix">
+                        <div class="tool-group">
+                            <input name="geography_select" id="geography-select" type="text" placeholder="Search School" autocomplete="off">
+                        </div>
+                        {% if not hide_nav_compare %}
+                        {% comment %}
+                        <span class="separator">or</span>
+                        <div class="tool-group">
+                            <a class="button" href="{% url 'table_search' %}">
+                                <i class="fa fa-chevron-circle-right"></i>
+                                Search for data
+                            </a>
+                        </div>
+                        {% endcomment %}
+                        {% endif %}
+                    </div>
+                    {% endblock %}
+                {% endif %}
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+{% block content_container %}
+
+    <div class="clearfix">
+{#        <h1 class="article-header">Discover the story behind the data.</h1>#}
+        <div id="slippy-map"></div>
+    </div>
+
+    <div class="showcase schools" style="overflow:auto;">
+        <div class="holder" style="margin-left: 40px; margin-right: 40px; margin-bottom: 30px;">
+            <div class="" style="width: 50%; float: left; border-right: 1px solid #dedede;padding: 20px;">
+                <center><h2>10 Top Schools</h2></center>
+                <br />
+                <table style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Name</th>
+                            <th>Pass Rate</th>
+                            <th>National Ranking</th>
+                            <th>Regional Ranking</th>
+                            <th>District Ranking</th>
+                            <th>Stats</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+
+                <br />
+                <button type="button" class="button" style="float:right; display: none;">See More</button>
+            </div>
+            <div class="" style="width: 50%;float:left;padding:20px;">
+                <center><h2>10 Lowest Schools</h2></center>
+                <br />
+                <table style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Name</th>
+                            <th>Pass Rate</th>
+                            <th>National Ranking</th>
+                            <th>Regional Ranking</th>
+                            <th>District Ranking</th>
+                            <th>Stats</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                
+                <button type="button" class="button" style="float:right; display: none;">See More</button>
+            </div>
+        </div>
+    </div>
+
+    {% include 'blocks/partners.html' with extra_css_class='bg-tan' %}
+{% endblock %}

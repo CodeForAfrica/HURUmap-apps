@@ -1,0 +1,121 @@
+{% extends 'profile/profile_detail.html' %}
+
+{% block header %}
+<header id="page-header" style="background: #204d8a;">
+    <div id="page-header-title" class="wrapper clearfix">
+        <i id="menu-toggle" class="fa fa-bars"></i>
+        <a class="title" href="{% url 'homepage' %}">
+            <span style="font-size: 20px;font-weight: bolder;">League</span><br />
+            <span style="font-size: 18px;font-weight: bold; margin-left: 20px;">Table</span>
+        </a>
+
+        <div class="nav-menu">
+            <ul id="site-menu">
+                {% block header_menu %}
+                    <li><a href="#">Schools</a></li>
+                    <li><a href="#">Statistics</a></li>
+                    <li><a href="#">About</a></li>
+                {% endblock header_menu %}
+            </ul>
+
+            {% if not hide_nav_tools %}
+                {% block nav_tools %}
+                <div id="menu" class="tool-set clearfix">
+                    <div class="tool-group">
+                        <input name="geography_select" id="geography-select" type="text" placeholder="Search School" autocomplete="off">
+                    </div>
+                    {% if not hide_nav_compare %}
+                    {% comment %}
+                    <span class="separator">or</span>
+                    <div class="tool-group">
+                        <a class="button" href="{% url 'table_search' %}">
+                            <i class="fa fa-chevron-circle-right"></i>
+                            Search for data
+                        </a>
+                    </div>
+                    {% endcomment %}
+                    {% endif %}
+                </div>
+                {% endblock %}
+            {% endif %}
+        </div>
+    </div>
+</header>
+{% block header_content %}
+<div id="cover-map" class="clearfix">
+    <div id="slippy-map"></div>
+    <div id="cover-profile" class="wrapper">
+        <article class="clearfix column-half">
+            <header id="header-box" class="column-full">
+                <h1 class="title">{{ geography.this.short_name }}</h1>
+                <p class="caption">
+                  {{ geography.this.geo_level|capfirst }}
+                  {% if geography.parents %}
+                      in
+                      {% for level, g in geography.parents.items %}
+                        <a href="/profiles/{{ g.full_geoid }}-{{ g.short_name|slugify }}/">{{ g.short_name }}</a>{% if not forloop.last %},{%endif%}
+                      {% endfor %}
+                  {% endif %}
+                </p>
+            </header>
+
+            <div class="column-half">
+                <div class="stat">
+                    <span class="primary">
+                        {% block profile_header_population %}
+                        <span class="value">{{ demographics.total_population.values.this|floatformat:"0" }}</span>
+                        <span class="name">Population</span>
+                        {% endblock %}
+                    </span>
+                </div>
+            </div>
+            {% if geography.this.square_kms %}
+            <div class="column-half">
+                <div class="stat">
+                    <span class="secondary">
+                        <span class="value">{% if geography.this.square_kms < 1.0 %}{{ geography.this.square_kms|floatformat:"3" }}{% else %}{{ geography.this.square_kms|floatformat:"1" }}{% endif %}</span>
+                        <span class="name"> square kilometres</span>
+                    </span>
+                    {% if demographics.population_density.values.this %}
+                    <span class="secondary">
+                        {% block profile_header_density %}
+                        <span class="value">{{ demographics.population_density.values.this|floatformat:"1" }}</span>
+                        <span class="name"> people per square kilometre</span>
+                        {% endblock %}
+                    </span>
+                    {% endif %}
+                    {% block geography_extra_sq_km %}
+                    {% endblock %}
+                </div>
+            </div>
+            {% endif %}
+
+            {% if geography.this.show_extra_links %}
+                {% include "profile/_blocks/_header_extra_links.html" %}
+            {% endif %}
+
+            {% block profile_header_tail %}
+                <div class="column-full">
+                    <p class="caption"><strong>Open data:</strong> 2016</p>
+                </div>
+            {% endblock %}
+        </article>
+    </div>
+</div>
+{% endblock %}
+{% endblock %}
+
+{% block profile_detail %}
+<article id="schools" class="clearfix">
+    <header class="section-contents">
+        <h1> Schools</h1>
+    </header>
+    <div class="section-container">
+        <section class="clearfix stat-row">
+            <h2><a class="permalink" href="#private">Ownership <i class="fa fa-link"></i></a></h2>
+            <div class="column-two-thirds" id="chart-bar-schools-schools_distribution" data-stat-type="scaled-percentage"
+                data-chart-title="Schools by ownership status" data-qualifier="Universe: {{ schools_distribution.metadata.universe }}"></div>
+        </section>
+    </div>
+</article>
+{% endblock %}
