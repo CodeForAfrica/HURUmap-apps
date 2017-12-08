@@ -35,6 +35,11 @@ HURUMAP['contact_email'] = 'hello@hurumap.org'
 
 HURUMAP['github_url'] = 'https://github.com/CodeForAfrica/HURUmap'
 HURUMAP['openafrica_url'] = 'https://open.africa/'
+HURUMAP['description'] = 'gives infomediaries like journalists and Civic ' \
+                         'activists an easy \'plug & play\' toolkit for ' \
+                         'finding and embedding interactive data ' \
+                         'visualizations into their storytelling'
+HURUMAP['title_tagline'] = 'Making Census Data Easy to Use'
 
 HURUMAP['showcase_stories'] = [
     {
