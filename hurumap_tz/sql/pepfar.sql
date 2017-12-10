@@ -2,6 +2,9 @@
 -- PostgreSQL database dump
 --
 
+-- Dumped from database version 9.5.8
+-- Dumped by pg_dump version 9.5.8
+
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
@@ -11,7 +14,7 @@ SET client_min_messages = warning;
 
 SET search_path = public, pg_catalog;
 
-ALTER TABLE IF EXISTS ONLY public.pepfar DROP CONSTRAINT IF EXISTS pepfar_pkey;
+ALTER TABLE IF EXISTS ONLY public.pepfar DROP CONSTRAINT IF EXISTS pk_pepfar;
 DROP TABLE IF EXISTS public.pepfar;
 SET search_path = public, pg_catalog;
 
@@ -20,4011 +23,4015 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: htc_tst; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: pepfar; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE pepfar (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
-    "pepfar" character varying(128) NOT NULL,
-    total integer NOT NULL
+    pepfar character varying(128) NOT NULL,
+    total integer NOT NULL,
+    geo_version character varying(100) DEFAULT ''::character varying NOT NULL
 );
 
 
 --
--- Data for Name: htc_tst; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: pepfar; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY pepfar (geo_level, geo_code, "pepfar", total) FROM stdin;
-district	22	HTC_TST	24672
-district	23	HTC_TST	25091
-district	24	HTC_TST	15483
-district	25	HTC_TST	36671
-district	26	HTC_TST	10113
-district	27	HTC_TST	22240
-district	28	HTC_TST	28568
-district	29	HTC_TST	13033
-district	30	HTC_TST	9565
-district	31	HTC_TST	11667
-region	28	HTC_TST	197103
-district	89	HTC_TST	100356
-district	90	HTC_TST	73856
-district	91	HTC_TST	57968
-district	92	HTC_TST	30539
-district	93	HTC_TST	36330
-district	94	HTC_TST	34145
-district	95	HTC_TST	58330
-region	29	HTC_TST	391524
-district	128	HTC_TST	43081
-district	129	HTC_TST	27975
-district	130	HTC_TST	15617
-district	131	HTC_TST	49501
-district	132	HTC_TST	46325
-district	133	HTC_TST	20713
-district	169	HTC_TST	35140
-region	16	HTC_TST	238352
-district	134	HTC_TST	30658
-district	135	HTC_TST	18454
-district	136	HTC_TST	31775
-district	137	HTC_TST	17460
-district	138	HTC_TST	42856
-district	139	HTC_TST	24118
-region	15	HTC_TST	165321
-region	13	HTC_TST	0
-district	49	HTC_TST	26761
-district	50	HTC_TST	20303
-district	51	HTC_TST	26375
-district	52	HTC_TST	8769
-district	53	HTC_TST	15507
-district	54	HTC_TST	14183
-region	14	HTC_TST	111898
-district	96	HTC_TST	46519
-district	97	HTC_TST	52817
-district	98	HTC_TST	48217
-district	99	HTC_TST	64209
-region	23	HTC_TST	211762
-district	55	HTC_TST	16609
-district	56	HTC_TST	21046
-district	57	HTC_TST	20287
-district	58	HTC_TST	20347
-district	59	HTC_TST	25468
-district	60	HTC_TST	8322
-district	61	HTC_TST	19249
-region	19	HTC_TST	131328
-district	140	HTC_TST	16114
-district	141	HTC_TST	16231
-district	142	HTC_TST	11898
-district	143	HTC_TST	11717
-district	144	HTC_TST	12373
-district	145	HTC_TST	12931
-region	21	HTC_TST	81264
-region	30	HTC_TST	0
-district	108	HTC_TST	53446
-district	109	HTC_TST	65398
-district	110	HTC_TST	74353
-district	111	HTC_TST	512
-district	112	HTC_TST	49041
-region	25	HTC_TST	242750
-district	15	HTC_TST	24723
-district	16	HTC_TST	12260
-district	17	HTC_TST	26659
-district	18	HTC_TST	20828
-district	19	HTC_TST	13342
-district	20	HTC_TST	34386
-district	21	HTC_TST	11797
-region	11	HTC_TST	143995
-district	100	HTC_TST	40116
-district	101	HTC_TST	37079
-district	102	HTC_TST	19006
-district	103	HTC_TST	62567
-district	104	HTC_TST	56337
-district	105	HTC_TST	20573
-district	106	HTC_TST	24302
-district	107	HTC_TST	44453
-region	10	HTC_TST	304433
-district	1	HTC_TST	9934
-district	2	HTC_TST	16499
-district	3	HTC_TST	15803
-district	4	HTC_TST	13829
-district	5	HTC_TST	27329
-district	6	HTC_TST	5856
-district	7	HTC_TST	4677
-region	3	HTC_TST	93927
-district	39	HTC_TST	46821
-district	40	HTC_TST	18736
-district	41	HTC_TST	16694
-district	42	HTC_TST	35317
-district	43	HTC_TST	49811
-district	44	HTC_TST	9180
-district	45	HTC_TST	21252
-region	22	HTC_TST	197811
-district	32	HTC_TST	39421
-district	33	HTC_TST	32780
-district	34	HTC_TST	27950
-district	35	HTC_TST	25215
-district	36	HTC_TST	64956
-district	37	HTC_TST	34381
-district	38	HTC_TST	8314
-region	18	HTC_TST	233017
-region	8	HTC_TST	0
-region	7	HTC_TST	0
-district	83	HTC_TST	11861
-district	84	HTC_TST	11021
-district	85	HTC_TST	23892
-district	86	HTC_TST	11829
-district	87	HTC_TST	16585
-district	88	HTC_TST	8480
-region	27	HTC_TST	83668
-district	149	HTC_TST	91350
-district	150	HTC_TST	30367
-district	151	HTC_TST	43869
-district	152	HTC_TST	63556
-district	153	HTC_TST	27493
-region	26	HTC_TST	256635
-district	121	HTC_TST	23036
-district	122	HTC_TST	40653
-district	123	HTC_TST	69619
-district	124	HTC_TST	38817
-district	125	HTC_TST	64626
-district	126	HTC_TST	21592
-district	127	HTC_TST	31861
-region	20	HTC_TST	290204
-district	113	HTC_TST	42660
-district	114	HTC_TST	25283
-district	115	HTC_TST	55500
-district	116	HTC_TST	29560
-district	117	HTC_TST	49130
-district	118	HTC_TST	64211
-district	119	HTC_TST	37704
-district	120	HTC_TST	58939
-region	6	HTC_TST	362987
-district	8	HTC_TST	20920
-district	9	HTC_TST	36756
-district	10	HTC_TST	78686
-district	11	HTC_TST	23609
-district	12	HTC_TST	16628
-district	13	HTC_TST	78686
-district	14	HTC_TST	8544
-region	1	HTC_TST	263829
-district	68	HTC_TST	33450
-district	69	HTC_TST	31200
-district	70	HTC_TST	22188
-district	71	HTC_TST	23927
-district	72	HTC_TST	7551
-region	5	HTC_TST	118316
-district	146	HTC_TST	23148
-district	147	HTC_TST	60337
-district	148	HTC_TST	23609
-region	9	HTC_TST	107094
-district	46	HTC_TST	214510
-district	47	HTC_TST	179904
-district	48	HTC_TST	130749
-region	2	HTC_TST	525163
-district	73	HTC_TST	52201
-district	74	HTC_TST	55517
-district	75	HTC_TST	41994
-district	76	HTC_TST	37245
-district	77	HTC_TST	13764
-district	78	HTC_TST	38646
-district	79	HTC_TST	41685
-district	80	HTC_TST	34581
-district	81	HTC_TST	33517
-district	82	HTC_TST	1267
-region	17	HTC_TST	350417
-district	62	HTC_TST	24887
-district	63	HTC_TST	22183
-district	64	HTC_TST	40163
-district	65	HTC_TST	39893
-district	66	HTC_TST	26798
-district	67	HTC_TST	28674
-region	24	HTC_TST	182598
-district	154	HTC_TST	83342
-district	155	HTC_TST	33974
-district	156	HTC_TST	60066
-district	157	HTC_TST	44710
-district	158	HTC_TST	28683
-region	4	HTC_TST	250775
-country	TZ	HTC_TST	5971075
-district	22	HTC_TST_POS	0
-district	23	HTC_TST_POS	0
-district	24	HTC_TST_POS	0
-district	25	HTC_TST_POS	0
-district	26	HTC_TST_POS	0
-district	27	HTC_TST_POS	0
-district	28	HTC_TST_POS	0
-district	29	HTC_TST_POS	0
-district	30	HTC_TST_POS	0
-district	31	HTC_TST_POS	0
-region	28	HTC_TST_POS	0
-district	89	HTC_TST_POS	0
-district	90	HTC_TST_POS	0
-district	91	HTC_TST_POS	0
-district	92	HTC_TST_POS	0
-district	93	HTC_TST_POS	0
-district	94	HTC_TST_POS	0
-district	95	HTC_TST_POS	0
-region	29	HTC_TST_POS	0
-district	128	HTC_TST_POS	0
-district	129	HTC_TST_POS	0
-district	130	HTC_TST_POS	0
-district	131	HTC_TST_POS	0
-district	132	HTC_TST_POS	0
-district	133	HTC_TST_POS	0
-district	169	HTC_TST_POS	0
-region	16	HTC_TST_POS	0
-district	134	HTC_TST_POS	0
-district	135	HTC_TST_POS	0
-district	136	HTC_TST_POS	0
-district	137	HTC_TST_POS	0
-district	138	HTC_TST_POS	0
-district	139	HTC_TST_POS	0
-region	15	HTC_TST_POS	0
-region	13	HTC_TST_POS	0
-district	49	HTC_TST_POS	0
-district	50	HTC_TST_POS	0
-district	51	HTC_TST_POS	0
-district	52	HTC_TST_POS	0
-district	53	HTC_TST_POS	0
-district	54	HTC_TST_POS	0
-region	14	HTC_TST_POS	0
-district	96	HTC_TST_POS	0
-district	97	HTC_TST_POS	0
-district	98	HTC_TST_POS	0
-district	99	HTC_TST_POS	0
-region	23	HTC_TST_POS	0
-district	55	HTC_TST_POS	0
-district	56	HTC_TST_POS	0
-district	57	HTC_TST_POS	0
-district	58	HTC_TST_POS	0
-district	59	HTC_TST_POS	0
-district	60	HTC_TST_POS	0
-district	61	HTC_TST_POS	0
-region	19	HTC_TST_POS	0
-district	140	HTC_TST_POS	0
-district	141	HTC_TST_POS	0
-district	142	HTC_TST_POS	0
-district	143	HTC_TST_POS	0
-district	144	HTC_TST_POS	0
-district	145	HTC_TST_POS	0
-region	21	HTC_TST_POS	0
-region	30	HTC_TST_POS	0
-district	108	HTC_TST_POS	0
-district	109	HTC_TST_POS	0
-district	110	HTC_TST_POS	0
-district	111	HTC_TST_POS	0
-district	112	HTC_TST_POS	0
-region	25	HTC_TST_POS	0
-district	15	HTC_TST_POS	0
-district	16	HTC_TST_POS	0
-district	17	HTC_TST_POS	0
-district	18	HTC_TST_POS	0
-district	19	HTC_TST_POS	0
-district	20	HTC_TST_POS	0
-district	21	HTC_TST_POS	0
-region	11	HTC_TST_POS	0
-district	100	HTC_TST_POS	0
-district	101	HTC_TST_POS	0
-district	102	HTC_TST_POS	0
-district	103	HTC_TST_POS	0
-district	104	HTC_TST_POS	0
-district	105	HTC_TST_POS	0
-district	106	HTC_TST_POS	0
-district	107	HTC_TST_POS	0
-region	10	HTC_TST_POS	0
-district	1	HTC_TST_POS	0
-district	2	HTC_TST_POS	0
-district	3	HTC_TST_POS	0
-district	4	HTC_TST_POS	0
-district	5	HTC_TST_POS	0
-district	6	HTC_TST_POS	0
-district	7	HTC_TST_POS	0
-region	3	HTC_TST_POS	0
-district	39	HTC_TST_POS	0
-district	40	HTC_TST_POS	0
-district	41	HTC_TST_POS	0
-district	42	HTC_TST_POS	0
-district	43	HTC_TST_POS	0
-district	44	HTC_TST_POS	0
-district	45	HTC_TST_POS	0
-region	22	HTC_TST_POS	0
-district	32	HTC_TST_POS	0
-district	33	HTC_TST_POS	0
-district	34	HTC_TST_POS	0
-district	35	HTC_TST_POS	0
-district	36	HTC_TST_POS	0
-district	37	HTC_TST_POS	0
-district	38	HTC_TST_POS	0
-region	18	HTC_TST_POS	0
-region	8	HTC_TST_POS	0
-region	7	HTC_TST_POS	0
-district	83	HTC_TST_POS	0
-district	84	HTC_TST_POS	0
-district	85	HTC_TST_POS	0
-district	86	HTC_TST_POS	0
-district	87	HTC_TST_POS	0
-district	88	HTC_TST_POS	0
-region	27	HTC_TST_POS	0
-district	149	HTC_TST_POS	0
-district	150	HTC_TST_POS	0
-district	151	HTC_TST_POS	0
-district	152	HTC_TST_POS	0
-district	153	HTC_TST_POS	0
-region	26	HTC_TST_POS	0
-district	121	HTC_TST_POS	0
-district	122	HTC_TST_POS	0
-district	123	HTC_TST_POS	0
-district	124	HTC_TST_POS	0
-district	125	HTC_TST_POS	0
-district	126	HTC_TST_POS	0
-district	127	HTC_TST_POS	0
-region	20	HTC_TST_POS	0
-district	113	HTC_TST_POS	0
-district	114	HTC_TST_POS	0
-district	115	HTC_TST_POS	0
-district	116	HTC_TST_POS	0
-district	117	HTC_TST_POS	0
-district	118	HTC_TST_POS	0
-district	119	HTC_TST_POS	0
-district	120	HTC_TST_POS	0
-region	6	HTC_TST_POS	0
-district	8	HTC_TST_POS	0
-district	9	HTC_TST_POS	0
-district	10	HTC_TST_POS	0
-district	11	HTC_TST_POS	0
-district	12	HTC_TST_POS	0
-district	13	HTC_TST_POS	0
-district	14	HTC_TST_POS	0
-region	1	HTC_TST_POS	0
-district	68	HTC_TST_POS	0
-district	69	HTC_TST_POS	0
-district	70	HTC_TST_POS	0
-district	71	HTC_TST_POS	0
-district	72	HTC_TST_POS	0
-region	5	HTC_TST_POS	0
-district	146	HTC_TST_POS	0
-district	147	HTC_TST_POS	0
-district	148	HTC_TST_POS	0
-region	9	HTC_TST_POS	0
-district	46	HTC_TST_POS	0
-district	47	HTC_TST_POS	0
-district	48	HTC_TST_POS	0
-region	2	HTC_TST_POS	0
-district	73	HTC_TST_POS	0
-district	74	HTC_TST_POS	0
-district	75	HTC_TST_POS	0
-district	76	HTC_TST_POS	0
-district	77	HTC_TST_POS	0
-district	78	HTC_TST_POS	0
-district	79	HTC_TST_POS	0
-district	80	HTC_TST_POS	0
-district	81	HTC_TST_POS	0
-district	82	HTC_TST_POS	0
-region	17	HTC_TST_POS	0
-district	62	HTC_TST_POS	0
-district	63	HTC_TST_POS	0
-district	64	HTC_TST_POS	0
-district	65	HTC_TST_POS	0
-district	66	HTC_TST_POS	0
-district	67	HTC_TST_POS	0
-region	24	HTC_TST_POS	0
-district	154	HTC_TST_POS	0
-district	155	HTC_TST_POS	0
-district	156	HTC_TST_POS	0
-district	157	HTC_TST_POS	0
-district	158	HTC_TST_POS	0
-region	4	HTC_TST_POS	0
-country	TZ	HTC_TST_POS	1972
-district	22	PMTCT_STAT	8399
-district	23	PMTCT_STAT	6152
-district	24	PMTCT_STAT	4249
-district	25	PMTCT_STAT	10685
-district	26	PMTCT_STAT	1736
-district	27	PMTCT_STAT	11247
-district	28	PMTCT_STAT	10168
-district	29	PMTCT_STAT	3511
-district	30	PMTCT_STAT	2151
-district	31	PMTCT_STAT	2352
-region	28	PMTCT_STAT	60650
-district	89	PMTCT_STAT	27840
-district	90	PMTCT_STAT	20963
-district	91	PMTCT_STAT	19741
-district	92	PMTCT_STAT	10725
-district	93	PMTCT_STAT	13301
-district	94	PMTCT_STAT	10282
-district	95	PMTCT_STAT	20767
-region	29	PMTCT_STAT	123619
-district	128	PMTCT_STAT	11291
-district	129	PMTCT_STAT	7086
-district	130	PMTCT_STAT	5515
-district	131	PMTCT_STAT	10843
-district	132	PMTCT_STAT	9184
-district	133	PMTCT_STAT	4611
-district	169	PMTCT_STAT	6590
-region	16	PMTCT_STAT	55120
-district	134	PMTCT_STAT	9760
-district	135	PMTCT_STAT	9112
-district	136	PMTCT_STAT	11622
-district	137	PMTCT_STAT	7511
-district	138	PMTCT_STAT	9547
-district	139	PMTCT_STAT	2736
-region	15	PMTCT_STAT	50288
-region	13	PMTCT_STAT	0
-district	49	PMTCT_STAT	7778
-district	50	PMTCT_STAT	6505
-district	51	PMTCT_STAT	5058
-district	52	PMTCT_STAT	3788
-district	53	PMTCT_STAT	3719
-district	54	PMTCT_STAT	2131
-region	14	PMTCT_STAT	28979
-district	96	PMTCT_STAT	7639
-district	97	PMTCT_STAT	13557
-district	98	PMTCT_STAT	11543
-district	99	PMTCT_STAT	12923
-region	23	PMTCT_STAT	45662
-district	55	PMTCT_STAT	3479
-district	56	PMTCT_STAT	5224
-district	57	PMTCT_STAT	7992
-district	58	PMTCT_STAT	7473
-district	59	PMTCT_STAT	3708
-district	60	PMTCT_STAT	3079
-district	61	PMTCT_STAT	3307
-region	19	PMTCT_STAT	34262
-district	140	PMTCT_STAT	4782
-district	141	PMTCT_STAT	3379
-district	142	PMTCT_STAT	2243
-district	143	PMTCT_STAT	2978
-district	144	PMTCT_STAT	4088
-district	145	PMTCT_STAT	4441
-region	21	PMTCT_STAT	21911
-region	30	PMTCT_STAT	0
-district	108	PMTCT_STAT	6595
-district	109	PMTCT_STAT	13204
-district	110	PMTCT_STAT	16321
-district	111	PMTCT_STAT	0
-district	112	PMTCT_STAT	15180
-region	25	PMTCT_STAT	51300
-district	15	PMTCT_STAT	6258
-district	16	PMTCT_STAT	3420
-district	17	PMTCT_STAT	7108
-district	18	PMTCT_STAT	8136
-district	19	PMTCT_STAT	5470
-district	20	PMTCT_STAT	8914
-district	21	PMTCT_STAT	4260
-region	11	PMTCT_STAT	43566
-district	100	PMTCT_STAT	9014
-district	101	PMTCT_STAT	12288
-district	102	PMTCT_STAT	5619
-district	103	PMTCT_STAT	6631
-district	104	PMTCT_STAT	15431
-district	105	PMTCT_STAT	6961
-district	106	PMTCT_STAT	5511
-district	107	PMTCT_STAT	6859
-region	10	PMTCT_STAT	68314
-district	1	PMTCT_STAT	6916
-district	2	PMTCT_STAT	10226
-district	3	PMTCT_STAT	12806
-district	4	PMTCT_STAT	13790
-district	5	PMTCT_STAT	16861
-district	6	PMTCT_STAT	6504
-district	7	PMTCT_STAT	7417
-region	3	PMTCT_STAT	74520
-district	39	PMTCT_STAT	11976
-district	40	PMTCT_STAT	2657
-district	41	PMTCT_STAT	3235
-district	42	PMTCT_STAT	7859
-district	43	PMTCT_STAT	10452
-district	44	PMTCT_STAT	1546
-district	45	PMTCT_STAT	4496
-region	22	PMTCT_STAT	42221
-district	32	PMTCT_STAT	13225
-district	33	PMTCT_STAT	8407
-district	34	PMTCT_STAT	10078
-district	35	PMTCT_STAT	9845
-district	36	PMTCT_STAT	7836
-district	37	PMTCT_STAT	8690
-district	38	PMTCT_STAT	7280
-region	18	PMTCT_STAT	65361
-region	8	PMTCT_STAT	0
-region	7	PMTCT_STAT	0
-district	83	PMTCT_STAT	7232
-district	84	PMTCT_STAT	8099
-district	85	PMTCT_STAT	14141
-district	86	PMTCT_STAT	6185
-district	87	PMTCT_STAT	9426
-district	88	PMTCT_STAT	6246
-region	27	PMTCT_STAT	51329
-district	149	PMTCT_STAT	22871
-district	150	PMTCT_STAT	16159
-district	151	PMTCT_STAT	15586
-district	152	PMTCT_STAT	18022
-district	153	PMTCT_STAT	8217
-region	26	PMTCT_STAT	80855
-district	121	PMTCT_STAT	7024
-district	122	PMTCT_STAT	10505
-district	123	PMTCT_STAT	16097
-district	124	PMTCT_STAT	12330
-district	125	PMTCT_STAT	16362
-district	126	PMTCT_STAT	10377
-district	127	PMTCT_STAT	11554
-region	20	PMTCT_STAT	84249
-district	113	PMTCT_STAT	8641
-district	114	PMTCT_STAT	7774
-district	115	PMTCT_STAT	16457
-district	116	PMTCT_STAT	13616
-district	117	PMTCT_STAT	12429
-district	118	PMTCT_STAT	5459
-district	119	PMTCT_STAT	6067
-district	120	PMTCT_STAT	10840
-region	6	PMTCT_STAT	81283
-district	8	PMTCT_STAT	7869
-district	9	PMTCT_STAT	9408
-district	10	PMTCT_STAT	23163
-district	11	PMTCT_STAT	9277
-district	12	PMTCT_STAT	6168
-district	13	PMTCT_STAT	23163
-district	14	PMTCT_STAT	4638
-region	1	PMTCT_STAT	83686
-district	68	PMTCT_STAT	8433
-district	69	PMTCT_STAT	8424
-district	70	PMTCT_STAT	6299
-district	71	PMTCT_STAT	6894
-district	72	PMTCT_STAT	1742
-region	5	PMTCT_STAT	31792
-district	146	PMTCT_STAT	7213
-district	147	PMTCT_STAT	13746
-district	148	PMTCT_STAT	9380
-region	9	PMTCT_STAT	30339
-district	46	PMTCT_STAT	37528
-district	47	PMTCT_STAT	30820
-district	48	PMTCT_STAT	31435
-region	2	PMTCT_STAT	99783
-district	73	PMTCT_STAT	16040
-district	74	PMTCT_STAT	17768
-district	75	PMTCT_STAT	7802
-district	76	PMTCT_STAT	8072
-district	77	PMTCT_STAT	4175
-district	78	PMTCT_STAT	13485
-district	79	PMTCT_STAT	10949
-district	80	PMTCT_STAT	10252
-district	81	PMTCT_STAT	11644
-district	82	PMTCT_STAT	777
-region	17	PMTCT_STAT	100964
-district	62	PMTCT_STAT	9181
-district	63	PMTCT_STAT	5089
-district	64	PMTCT_STAT	11624
-district	65	PMTCT_STAT	6884
-district	66	PMTCT_STAT	7994
-district	67	PMTCT_STAT	5706
-region	24	PMTCT_STAT	46478
-district	154	PMTCT_STAT	15940
-district	155	PMTCT_STAT	7444
-district	156	PMTCT_STAT	7632
-district	157	PMTCT_STAT	8889
-district	158	PMTCT_STAT	8398
-region	4	PMTCT_STAT	48303
-country	TZ	PMTCT_STAT	1588234
-district	22	PMTCT_STAT_POS	103
-district	23	PMTCT_STAT_POS	221
-district	24	PMTCT_STAT_POS	230
-district	25	PMTCT_STAT_POS	794
-district	26	PMTCT_STAT_POS	93
-district	27	PMTCT_STAT_POS	217
-district	28	PMTCT_STAT_POS	123
-district	29	PMTCT_STAT_POS	121
-district	30	PMTCT_STAT_POS	90
-district	31	PMTCT_STAT_POS	40
-region	28	PMTCT_STAT_POS	2032
-district	89	PMTCT_STAT_POS	840
-district	90	PMTCT_STAT_POS	680
-district	91	PMTCT_STAT_POS	346
-district	92	PMTCT_STAT_POS	249
-district	93	PMTCT_STAT_POS	412
-district	94	PMTCT_STAT_POS	381
-district	95	PMTCT_STAT_POS	423
-region	29	PMTCT_STAT_POS	3331
-district	128	PMTCT_STAT_POS	229
-district	129	PMTCT_STAT_POS	142
-district	130	PMTCT_STAT_POS	153
-district	131	PMTCT_STAT_POS	382
-district	132	PMTCT_STAT_POS	656
-district	133	PMTCT_STAT_POS	101
-district	169	PMTCT_STAT_POS	345
-region	16	PMTCT_STAT_POS	2008
-district	134	PMTCT_STAT_POS	118
-district	135	PMTCT_STAT_POS	66
-district	136	PMTCT_STAT_POS	75
-district	137	PMTCT_STAT_POS	185
-district	138	PMTCT_STAT_POS	146
-district	139	PMTCT_STAT_POS	56
-region	15	PMTCT_STAT_POS	646
-region	13	PMTCT_STAT_POS	0
-district	49	PMTCT_STAT_POS	185
-district	50	PMTCT_STAT_POS	184
-district	51	PMTCT_STAT_POS	170
-district	52	PMTCT_STAT_POS	70
-district	53	PMTCT_STAT_POS	154
-district	54	PMTCT_STAT_POS	106
-region	14	PMTCT_STAT_POS	869
-district	96	PMTCT_STAT_POS	91
-district	97	PMTCT_STAT_POS	400
-district	98	PMTCT_STAT_POS	315
-district	99	PMTCT_STAT_POS	720
-region	23	PMTCT_STAT_POS	1526
-district	55	PMTCT_STAT_POS	85
-district	56	PMTCT_STAT_POS	129
-district	57	PMTCT_STAT_POS	260
-district	58	PMTCT_STAT_POS	158
-district	59	PMTCT_STAT_POS	250
-district	60	PMTCT_STAT_POS	64
-district	61	PMTCT_STAT_POS	179
-region	19	PMTCT_STAT_POS	1125
-district	140	PMTCT_STAT_POS	625
-district	141	PMTCT_STAT_POS	346
-district	142	PMTCT_STAT_POS	292
-district	143	PMTCT_STAT_POS	314
-district	144	PMTCT_STAT_POS	400
-district	145	PMTCT_STAT_POS	354
-region	21	PMTCT_STAT_POS	2331
-region	30	PMTCT_STAT_POS	0
-district	108	PMTCT_STAT_POS	437
-district	109	PMTCT_STAT_POS	423
-district	110	PMTCT_STAT_POS	643
-district	111	PMTCT_STAT_POS	0
-district	112	PMTCT_STAT_POS	720
-region	25	PMTCT_STAT_POS	2223
-district	15	PMTCT_STAT_POS	144
-district	16	PMTCT_STAT_POS	106
-district	17	PMTCT_STAT_POS	132
-district	18	PMTCT_STAT_POS	229
-district	19	PMTCT_STAT_POS	157
-district	20	PMTCT_STAT_POS	399
-district	21	PMTCT_STAT_POS	96
-region	11	PMTCT_STAT_POS	1263
-district	100	PMTCT_STAT_POS	86
-district	101	PMTCT_STAT_POS	55
-district	102	PMTCT_STAT_POS	30
-district	103	PMTCT_STAT_POS	175
-district	104	PMTCT_STAT_POS	153
-district	105	PMTCT_STAT_POS	14
-district	106	PMTCT_STAT_POS	29
-district	107	PMTCT_STAT_POS	56
-region	10	PMTCT_STAT_POS	598
-district	1	PMTCT_STAT_POS	59
-district	2	PMTCT_STAT_POS	107
-district	3	PMTCT_STAT_POS	177
-district	4	PMTCT_STAT_POS	89
-district	5	PMTCT_STAT_POS	642
-district	6	PMTCT_STAT_POS	100
-district	7	PMTCT_STAT_POS	54
-region	3	PMTCT_STAT_POS	1228
-district	39	PMTCT_STAT_POS	445
-district	40	PMTCT_STAT_POS	149
-district	41	PMTCT_STAT_POS	178
-district	42	PMTCT_STAT_POS	378
-district	43	PMTCT_STAT_POS	378
-district	44	PMTCT_STAT_POS	40
-district	45	PMTCT_STAT_POS	299
-region	22	PMTCT_STAT_POS	1867
-district	32	PMTCT_STAT_POS	400
-district	33	PMTCT_STAT_POS	168
-district	34	PMTCT_STAT_POS	346
-district	35	PMTCT_STAT_POS	227
-district	36	PMTCT_STAT_POS	462
-district	37	PMTCT_STAT_POS	241
-district	38	PMTCT_STAT_POS	130
-region	18	PMTCT_STAT_POS	1974
-region	8	PMTCT_STAT_POS	0
-region	7	PMTCT_STAT_POS	0
-district	83	PMTCT_STAT_POS	186
-district	84	PMTCT_STAT_POS	68
-district	85	PMTCT_STAT_POS	283
-district	86	PMTCT_STAT_POS	215
-district	87	PMTCT_STAT_POS	119
-district	88	PMTCT_STAT_POS	75
-region	27	PMTCT_STAT_POS	946
-district	149	PMTCT_STAT_POS	504
-district	150	PMTCT_STAT_POS	131
-district	151	PMTCT_STAT_POS	342
-district	152	PMTCT_STAT_POS	364
-district	153	PMTCT_STAT_POS	388
-region	26	PMTCT_STAT_POS	1729
-district	121	PMTCT_STAT_POS	145
-district	122	PMTCT_STAT_POS	500
-district	123	PMTCT_STAT_POS	939
-district	124	PMTCT_STAT_POS	418
-district	125	PMTCT_STAT_POS	622
-district	126	PMTCT_STAT_POS	528
-district	127	PMTCT_STAT_POS	508
-region	20	PMTCT_STAT_POS	3660
-district	113	PMTCT_STAT_POS	244
-district	114	PMTCT_STAT_POS	395
-district	115	PMTCT_STAT_POS	632
-district	116	PMTCT_STAT_POS	247
-district	117	PMTCT_STAT_POS	198
-district	118	PMTCT_STAT_POS	494
-district	119	PMTCT_STAT_POS	364
-district	120	PMTCT_STAT_POS	263
-region	6	PMTCT_STAT_POS	2837
-district	8	PMTCT_STAT_POS	134
-district	9	PMTCT_STAT_POS	253
-district	10	PMTCT_STAT_POS	764
-district	11	PMTCT_STAT_POS	120
-district	12	PMTCT_STAT_POS	28
-district	13	PMTCT_STAT_POS	764
-district	14	PMTCT_STAT_POS	68
-region	1	PMTCT_STAT_POS	2131
-district	68	PMTCT_STAT_POS	554
-district	69	PMTCT_STAT_POS	1035
-district	70	PMTCT_STAT_POS	597
-district	71	PMTCT_STAT_POS	560
-district	72	PMTCT_STAT_POS	225
-region	5	PMTCT_STAT_POS	2971
-district	146	PMTCT_STAT_POS	408
-district	147	PMTCT_STAT_POS	159
-district	148	PMTCT_STAT_POS	226
-region	9	PMTCT_STAT_POS	793
-district	46	PMTCT_STAT_POS	3223
-district	47	PMTCT_STAT_POS	1993
-district	48	PMTCT_STAT_POS	2370
-region	2	PMTCT_STAT_POS	7586
-district	73	PMTCT_STAT_POS	1027
-district	74	PMTCT_STAT_POS	1506
-district	75	PMTCT_STAT_POS	841
-district	76	PMTCT_STAT_POS	472
-district	77	PMTCT_STAT_POS	76
-district	78	PMTCT_STAT_POS	893
-district	79	PMTCT_STAT_POS	1265
-district	80	PMTCT_STAT_POS	602
-district	81	PMTCT_STAT_POS	494
-district	82	PMTCT_STAT_POS	42
-region	17	PMTCT_STAT_POS	7218
-district	62	PMTCT_STAT_POS	299
-district	63	PMTCT_STAT_POS	281
-district	64	PMTCT_STAT_POS	441
-district	65	PMTCT_STAT_POS	573
-district	66	PMTCT_STAT_POS	182
-district	67	PMTCT_STAT_POS	232
-region	24	PMTCT_STAT_POS	2008
-district	154	PMTCT_STAT_POS	610
-district	155	PMTCT_STAT_POS	211
-district	156	PMTCT_STAT_POS	279
-district	157	PMTCT_STAT_POS	374
-district	158	PMTCT_STAT_POS	316
-region	4	PMTCT_STAT_POS	1790
-country	TZ	PMTCT_STAT_POS	58539
-district	22	PMTCT_ARV	123
-district	23	PMTCT_ARV	317
-district	24	PMTCT_ARV	213
-district	25	PMTCT_ARV	672
-district	26	PMTCT_ARV	109
-district	27	PMTCT_ARV	285
-district	28	PMTCT_ARV	137
-district	29	PMTCT_ARV	133
-district	30	PMTCT_ARV	125
-district	31	PMTCT_ARV	67
-region	28	PMTCT_ARV	2181
-district	89	PMTCT_ARV	1309
-district	90	PMTCT_ARV	1299
-district	91	PMTCT_ARV	687
-district	92	PMTCT_ARV	442
-district	93	PMTCT_ARV	366
-district	94	PMTCT_ARV	942
-district	95	PMTCT_ARV	478
-region	29	PMTCT_ARV	5523
-district	128	PMTCT_ARV	234
-district	129	PMTCT_ARV	119
-district	130	PMTCT_ARV	191
-district	131	PMTCT_ARV	440
-district	132	PMTCT_ARV	479
-district	133	PMTCT_ARV	133
-district	169	PMTCT_ARV	331
-region	16	PMTCT_ARV	1927
-district	134	PMTCT_ARV	115
-district	135	PMTCT_ARV	63
-district	136	PMTCT_ARV	73
-district	137	PMTCT_ARV	177
-district	138	PMTCT_ARV	142
-district	139	PMTCT_ARV	55
-region	15	PMTCT_ARV	625
-region	13	PMTCT_ARV	0
-district	49	PMTCT_ARV	336
-district	50	PMTCT_ARV	314
-district	51	PMTCT_ARV	289
-district	52	PMTCT_ARV	91
-district	53	PMTCT_ARV	343
-district	54	PMTCT_ARV	170
-region	14	PMTCT_ARV	1543
-district	96	PMTCT_ARV	91
-district	97	PMTCT_ARV	398
-district	98	PMTCT_ARV	315
-district	99	PMTCT_ARV	678
-region	23	PMTCT_ARV	1482
-district	55	PMTCT_ARV	108
-district	56	PMTCT_ARV	290
-district	57	PMTCT_ARV	369
-district	58	PMTCT_ARV	267
-district	59	PMTCT_ARV	344
-district	60	PMTCT_ARV	61
-district	61	PMTCT_ARV	311
-region	19	PMTCT_ARV	1750
-district	140	PMTCT_ARV	1205
-district	141	PMTCT_ARV	611
-district	142	PMTCT_ARV	458
-district	143	PMTCT_ARV	496
-district	144	PMTCT_ARV	575
-district	145	PMTCT_ARV	631
-region	21	PMTCT_ARV	3976
-region	30	PMTCT_ARV	0
-district	108	PMTCT_ARV	546
-district	109	PMTCT_ARV	969
-district	110	PMTCT_ARV	983
-district	111	PMTCT_ARV	0
-district	112	PMTCT_ARV	1548
-region	25	PMTCT_ARV	4046
-district	15	PMTCT_ARV	251
-district	16	PMTCT_ARV	205
-district	17	PMTCT_ARV	359
-district	18	PMTCT_ARV	504
-district	19	PMTCT_ARV	214
-district	20	PMTCT_ARV	586
-district	21	PMTCT_ARV	151
-region	11	PMTCT_ARV	2270
-district	100	PMTCT_ARV	91
-district	101	PMTCT_ARV	74
-district	102	PMTCT_ARV	42
-district	103	PMTCT_ARV	183
-district	104	PMTCT_ARV	206
-district	105	PMTCT_ARV	22
-district	106	PMTCT_ARV	25
-district	107	PMTCT_ARV	68
-region	10	PMTCT_ARV	711
-district	1	PMTCT_ARV	89
-district	2	PMTCT_ARV	159
-district	3	PMTCT_ARV	254
-district	4	PMTCT_ARV	174
-district	5	PMTCT_ARV	874
-district	6	PMTCT_ARV	152
-district	7	PMTCT_ARV	97
-region	3	PMTCT_ARV	1799
-district	39	PMTCT_ARV	415
-district	40	PMTCT_ARV	146
-district	41	PMTCT_ARV	140
-district	42	PMTCT_ARV	413
-district	43	PMTCT_ARV	349
-district	44	PMTCT_ARV	42
-district	45	PMTCT_ARV	234
-region	22	PMTCT_ARV	1739
-district	32	PMTCT_ARV	560
-district	33	PMTCT_ARV	257
-district	34	PMTCT_ARV	547
-district	35	PMTCT_ARV	296
-district	36	PMTCT_ARV	628
-district	37	PMTCT_ARV	344
-district	38	PMTCT_ARV	215
-region	18	PMTCT_ARV	2847
-region	8	PMTCT_ARV	0
-region	7	PMTCT_ARV	0
-district	83	PMTCT_ARV	236
-district	84	PMTCT_ARV	83
-district	85	PMTCT_ARV	420
-district	86	PMTCT_ARV	264
-district	87	PMTCT_ARV	177
-district	88	PMTCT_ARV	79
-region	27	PMTCT_ARV	1259
-district	149	PMTCT_ARV	781
-district	150	PMTCT_ARV	255
-district	151	PMTCT_ARV	508
-district	152	PMTCT_ARV	633
-district	153	PMTCT_ARV	493
-region	26	PMTCT_ARV	2670
-district	121	PMTCT_ARV	244
-district	122	PMTCT_ARV	580
-district	123	PMTCT_ARV	1159
-district	124	PMTCT_ARV	416
-district	125	PMTCT_ARV	777
-district	126	PMTCT_ARV	574
-district	127	PMTCT_ARV	722
-region	20	PMTCT_ARV	4472
-district	113	PMTCT_ARV	198
-district	114	PMTCT_ARV	373
-district	115	PMTCT_ARV	378
-district	116	PMTCT_ARV	205
-district	117	PMTCT_ARV	145
-district	118	PMTCT_ARV	274
-district	119	PMTCT_ARV	229
-district	120	PMTCT_ARV	315
-region	6	PMTCT_ARV	2117
-district	8	PMTCT_ARV	210
-district	9	PMTCT_ARV	318
-district	10	PMTCT_ARV	1098
-district	11	PMTCT_ARV	128
-district	12	PMTCT_ARV	36
-district	13	PMTCT_ARV	1098
-district	14	PMTCT_ARV	73
-region	1	PMTCT_ARV	2961
-district	68	PMTCT_ARV	943
-district	69	PMTCT_ARV	1578
-district	70	PMTCT_ARV	944
-district	71	PMTCT_ARV	889
-district	72	PMTCT_ARV	332
-region	5	PMTCT_ARV	4686
-district	146	PMTCT_ARV	383
-district	147	PMTCT_ARV	203
-district	148	PMTCT_ARV	246
-region	9	PMTCT_ARV	832
-district	46	PMTCT_ARV	3183
-district	47	PMTCT_ARV	2619
-district	48	PMTCT_ARV	2100
-region	2	PMTCT_ARV	7902
-district	73	PMTCT_ARV	858
-district	74	PMTCT_ARV	1178
-district	75	PMTCT_ARV	831
-district	76	PMTCT_ARV	447
-district	77	PMTCT_ARV	53
-district	78	PMTCT_ARV	779
-district	79	PMTCT_ARV	1243
-district	80	PMTCT_ARV	916
-district	81	PMTCT_ARV	520
-district	82	PMTCT_ARV	40
-region	17	PMTCT_ARV	6865
-district	62	PMTCT_ARV	259
-district	63	PMTCT_ARV	297
-district	64	PMTCT_ARV	388
-district	65	PMTCT_ARV	574
-district	66	PMTCT_ARV	166
-district	67	PMTCT_ARV	211
-region	24	PMTCT_ARV	1895
-district	154	PMTCT_ARV	1142
-district	155	PMTCT_ARV	233
-district	156	PMTCT_ARV	176
-district	157	PMTCT_ARV	249
-district	158	PMTCT_ARV	308
-region	4	PMTCT_ARV	2108
-country	TZ	PMTCT_ARV	73896
-district	22	PMTCT_EID	57
-district	23	PMTCT_EID	167
-district	24	PMTCT_EID	120
-district	25	PMTCT_EID	483
-district	26	PMTCT_EID	72
-district	27	PMTCT_EID	97
-district	28	PMTCT_EID	54
-district	29	PMTCT_EID	81
-district	30	PMTCT_EID	69
-district	31	PMTCT_EID	73
-region	28	PMTCT_EID	1273
-district	89	PMTCT_EID	394
-district	90	PMTCT_EID	304
-district	91	PMTCT_EID	121
-district	92	PMTCT_EID	111
-district	93	PMTCT_EID	133
-district	94	PMTCT_EID	270
-district	95	PMTCT_EID	150
-region	29	PMTCT_EID	1483
-district	128	PMTCT_EID	166
-district	129	PMTCT_EID	91
-district	130	PMTCT_EID	88
-district	131	PMTCT_EID	195
-district	132	PMTCT_EID	198
-district	133	PMTCT_EID	85
-district	169	PMTCT_EID	219
-region	16	PMTCT_EID	1042
-district	134	PMTCT_EID	61
-district	135	PMTCT_EID	26
-district	136	PMTCT_EID	48
-district	137	PMTCT_EID	54
-district	138	PMTCT_EID	50
-district	139	PMTCT_EID	46
-region	15	PMTCT_EID	285
-region	13	PMTCT_EID	0
-district	49	PMTCT_EID	167
-district	50	PMTCT_EID	142
-district	51	PMTCT_EID	115
-district	52	PMTCT_EID	48
-district	53	PMTCT_EID	143
-district	54	PMTCT_EID	101
-region	14	PMTCT_EID	716
-district	96	PMTCT_EID	67
-district	97	PMTCT_EID	139
-district	98	PMTCT_EID	158
-district	99	PMTCT_EID	323
-region	23	PMTCT_EID	687
-district	55	PMTCT_EID	28
-district	56	PMTCT_EID	59
-district	57	PMTCT_EID	127
-district	58	PMTCT_EID	83
-district	59	PMTCT_EID	156
-district	60	PMTCT_EID	23
-district	61	PMTCT_EID	136
-region	19	PMTCT_EID	612
-district	140	PMTCT_EID	400
-district	141	PMTCT_EID	176
-district	142	PMTCT_EID	180
-district	143	PMTCT_EID	231
-district	144	PMTCT_EID	177
-district	145	PMTCT_EID	209
-region	21	PMTCT_EID	1373
-region	30	PMTCT_EID	0
-district	108	PMTCT_EID	213
-district	109	PMTCT_EID	189
-district	110	PMTCT_EID	216
-district	111	PMTCT_EID	0
-district	112	PMTCT_EID	287
-region	25	PMTCT_EID	905
-district	15	PMTCT_EID	119
-district	16	PMTCT_EID	78
-district	17	PMTCT_EID	103
-district	18	PMTCT_EID	203
-district	19	PMTCT_EID	114
-district	20	PMTCT_EID	331
-district	21	PMTCT_EID	80
-region	11	PMTCT_EID	1028
-district	100	PMTCT_EID	72
-district	101	PMTCT_EID	15
-district	102	PMTCT_EID	7
-district	103	PMTCT_EID	104
-district	104	PMTCT_EID	53
-district	105	PMTCT_EID	8
-district	106	PMTCT_EID	28
-district	107	PMTCT_EID	33
-region	10	PMTCT_EID	320
-district	1	PMTCT_EID	56
-district	2	PMTCT_EID	52
-district	3	PMTCT_EID	79
-district	4	PMTCT_EID	43
-district	5	PMTCT_EID	378
-district	6	PMTCT_EID	42
-district	7	PMTCT_EID	8
-region	3	PMTCT_EID	658
-district	39	PMTCT_EID	331
-district	40	PMTCT_EID	99
-district	41	PMTCT_EID	95
-district	42	PMTCT_EID	190
-district	43	PMTCT_EID	181
-district	44	PMTCT_EID	24
-district	45	PMTCT_EID	241
-region	22	PMTCT_EID	1161
-district	32	PMTCT_EID	111
-district	33	PMTCT_EID	49
-district	34	PMTCT_EID	120
-district	35	PMTCT_EID	20
-district	36	PMTCT_EID	132
-district	37	PMTCT_EID	89
-district	38	PMTCT_EID	35
-region	18	PMTCT_EID	556
-region	8	PMTCT_EID	0
-region	7	PMTCT_EID	0
-district	83	PMTCT_EID	85
-district	84	PMTCT_EID	18
-district	85	PMTCT_EID	76
-district	86	PMTCT_EID	92
-district	87	PMTCT_EID	51
-district	88	PMTCT_EID	32
-region	27	PMTCT_EID	354
-district	149	PMTCT_EID	271
-district	150	PMTCT_EID	45
-district	151	PMTCT_EID	203
-district	152	PMTCT_EID	131
-district	153	PMTCT_EID	114
-region	26	PMTCT_EID	764
-district	121	PMTCT_EID	114
-district	122	PMTCT_EID	253
-district	123	PMTCT_EID	534
-district	124	PMTCT_EID	132
-district	125	PMTCT_EID	284
-district	126	PMTCT_EID	211
-district	127	PMTCT_EID	189
-region	20	PMTCT_EID	1717
-district	113	PMTCT_EID	156
-district	114	PMTCT_EID	283
-district	115	PMTCT_EID	272
-district	116	PMTCT_EID	156
-district	117	PMTCT_EID	141
-district	118	PMTCT_EID	235
-district	119	PMTCT_EID	238
-district	120	PMTCT_EID	165
-region	6	PMTCT_EID	1646
-district	8	PMTCT_EID	91
-district	9	PMTCT_EID	121
-district	10	PMTCT_EID	450
-district	11	PMTCT_EID	90
-district	12	PMTCT_EID	18
-district	13	PMTCT_EID	450
-district	14	PMTCT_EID	44
-region	1	PMTCT_EID	1264
-district	68	PMTCT_EID	293
-district	69	PMTCT_EID	535
-district	70	PMTCT_EID	316
-district	71	PMTCT_EID	249
-district	72	PMTCT_EID	97
-region	5	PMTCT_EID	1490
-district	146	PMTCT_EID	210
-district	147	PMTCT_EID	39
-district	148	PMTCT_EID	79
-region	9	PMTCT_EID	328
-district	46	PMTCT_EID	2169
-district	47	PMTCT_EID	1694
-district	48	PMTCT_EID	1464
-region	2	PMTCT_EID	5327
-district	73	PMTCT_EID	586
-district	74	PMTCT_EID	910
-district	75	PMTCT_EID	552
-district	76	PMTCT_EID	246
-district	77	PMTCT_EID	30
-district	78	PMTCT_EID	221
-district	79	PMTCT_EID	484
-district	80	PMTCT_EID	273
-district	81	PMTCT_EID	188
-district	82	PMTCT_EID	12
-region	17	PMTCT_EID	3502
-district	62	PMTCT_EID	144
-district	63	PMTCT_EID	115
-district	64	PMTCT_EID	230
-district	65	PMTCT_EID	288
-district	66	PMTCT_EID	101
-district	67	PMTCT_EID	110
-region	24	PMTCT_EID	988
-district	154	PMTCT_EID	336
-district	155	PMTCT_EID	55
-district	156	PMTCT_EID	156
-district	157	PMTCT_EID	233
-district	158	PMTCT_EID	151
-region	4	PMTCT_EID	931
-country	TZ	PMTCT_EID	31397
-district	22	PMTCT_EID_POS	1
-district	23	PMTCT_EID_POS	6
-district	24	PMTCT_EID_POS	2
-district	25	PMTCT_EID_POS	7
-district	26	PMTCT_EID_POS	4
-district	27	PMTCT_EID_POS	2
-district	28	PMTCT_EID_POS	1
-district	29	PMTCT_EID_POS	6
-district	30	PMTCT_EID_POS	2
-district	31	PMTCT_EID_POS	2
-region	28	PMTCT_EID_POS	33
-district	89	PMTCT_EID_POS	15
-district	90	PMTCT_EID_POS	11
-district	91	PMTCT_EID_POS	1
-district	92	PMTCT_EID_POS	3
-district	93	PMTCT_EID_POS	3
-district	94	PMTCT_EID_POS	12
-district	95	PMTCT_EID_POS	3
-region	29	PMTCT_EID_POS	48
-district	128	PMTCT_EID_POS	7
-district	129	PMTCT_EID_POS	4
-district	130	PMTCT_EID_POS	2
-district	131	PMTCT_EID_POS	3
-district	132	PMTCT_EID_POS	5
-district	133	PMTCT_EID_POS	3
-district	169	PMTCT_EID_POS	2
-region	16	PMTCT_EID_POS	26
-district	134	PMTCT_EID_POS	1
-district	135	PMTCT_EID_POS	2
-district	136	PMTCT_EID_POS	3
-district	137	PMTCT_EID_POS	1
-district	138	PMTCT_EID_POS	0
-district	139	PMTCT_EID_POS	0
-region	15	PMTCT_EID_POS	7
-region	13	PMTCT_EID_POS	0
-district	49	PMTCT_EID_POS	65
-district	50	PMTCT_EID_POS	58
-district	51	PMTCT_EID_POS	44
-district	52	PMTCT_EID_POS	25
-district	53	PMTCT_EID_POS	55
-district	54	PMTCT_EID_POS	65
-region	14	PMTCT_EID_POS	312
-district	96	PMTCT_EID_POS	4
-district	97	PMTCT_EID_POS	7
-district	98	PMTCT_EID_POS	5
-district	99	PMTCT_EID_POS	16
-region	23	PMTCT_EID_POS	32
-district	55	PMTCT_EID_POS	8
-district	56	PMTCT_EID_POS	27
-district	57	PMTCT_EID_POS	52
-district	58	PMTCT_EID_POS	36
-district	59	PMTCT_EID_POS	75
-district	60	PMTCT_EID_POS	7
-district	61	PMTCT_EID_POS	66
-region	19	PMTCT_EID_POS	271
-district	140	PMTCT_EID_POS	10
-district	141	PMTCT_EID_POS	1
-district	142	PMTCT_EID_POS	3
-district	143	PMTCT_EID_POS	13
-district	144	PMTCT_EID_POS	7
-district	145	PMTCT_EID_POS	13
-region	21	PMTCT_EID_POS	47
-region	30	PMTCT_EID_POS	0
-district	108	PMTCT_EID_POS	9
-district	109	PMTCT_EID_POS	95
-district	110	PMTCT_EID_POS	13
-district	111	PMTCT_EID_POS	0
-district	112	PMTCT_EID_POS	188
-region	25	PMTCT_EID_POS	305
-district	15	PMTCT_EID_POS	2
-district	16	PMTCT_EID_POS	0
-district	17	PMTCT_EID_POS	22
-district	18	PMTCT_EID_POS	3
-district	19	PMTCT_EID_POS	6
-district	20	PMTCT_EID_POS	8
-district	21	PMTCT_EID_POS	23
-region	11	PMTCT_EID_POS	64
-district	100	PMTCT_EID_POS	1
-district	101	PMTCT_EID_POS	0
-district	102	PMTCT_EID_POS	0
-district	103	PMTCT_EID_POS	0
-district	104	PMTCT_EID_POS	0
-district	105	PMTCT_EID_POS	0
-district	106	PMTCT_EID_POS	0
-district	107	PMTCT_EID_POS	0
-region	10	PMTCT_EID_POS	1
-district	1	PMTCT_EID_POS	0
-district	2	PMTCT_EID_POS	3
-district	3	PMTCT_EID_POS	1
-district	4	PMTCT_EID_POS	0
-district	5	PMTCT_EID_POS	4
-district	6	PMTCT_EID_POS	0
-district	7	PMTCT_EID_POS	0
-region	3	PMTCT_EID_POS	8
-district	39	PMTCT_EID_POS	6
-district	40	PMTCT_EID_POS	3
-district	41	PMTCT_EID_POS	0
-district	42	PMTCT_EID_POS	8
-district	43	PMTCT_EID_POS	3
-district	44	PMTCT_EID_POS	0
-district	45	PMTCT_EID_POS	7
-region	22	PMTCT_EID_POS	27
-district	32	PMTCT_EID_POS	2
-district	33	PMTCT_EID_POS	3
-district	34	PMTCT_EID_POS	10
-district	35	PMTCT_EID_POS	0
-district	36	PMTCT_EID_POS	4
-district	37	PMTCT_EID_POS	2
-district	38	PMTCT_EID_POS	2
-region	18	PMTCT_EID_POS	23
-region	8	PMTCT_EID_POS	0
-region	7	PMTCT_EID_POS	0
-district	83	PMTCT_EID_POS	3
-district	84	PMTCT_EID_POS	1
-district	85	PMTCT_EID_POS	1
-district	86	PMTCT_EID_POS	3
-district	87	PMTCT_EID_POS	3
-district	88	PMTCT_EID_POS	3
-region	27	PMTCT_EID_POS	14
-district	149	PMTCT_EID_POS	3
-district	150	PMTCT_EID_POS	4
-district	151	PMTCT_EID_POS	8
-district	152	PMTCT_EID_POS	2
-district	153	PMTCT_EID_POS	0
-region	26	PMTCT_EID_POS	17
-district	121	PMTCT_EID_POS	5
-district	122	PMTCT_EID_POS	14
-district	123	PMTCT_EID_POS	28
-district	124	PMTCT_EID_POS	2
-district	125	PMTCT_EID_POS	3
-district	126	PMTCT_EID_POS	5
-district	127	PMTCT_EID_POS	6
-region	20	PMTCT_EID_POS	63
-district	113	PMTCT_EID_POS	0
-district	114	PMTCT_EID_POS	4
-district	115	PMTCT_EID_POS	0
-district	116	PMTCT_EID_POS	1
-district	117	PMTCT_EID_POS	2
-district	118	PMTCT_EID_POS	4
-district	119	PMTCT_EID_POS	10
-district	120	PMTCT_EID_POS	4
-region	6	PMTCT_EID_POS	25
-district	8	PMTCT_EID_POS	2
-district	9	PMTCT_EID_POS	5
-district	10	PMTCT_EID_POS	135
-district	11	PMTCT_EID_POS	6
-district	12	PMTCT_EID_POS	0
-district	13	PMTCT_EID_POS	135
-district	14	PMTCT_EID_POS	3
-region	1	PMTCT_EID_POS	286
-district	68	PMTCT_EID_POS	4
-district	69	PMTCT_EID_POS	12
-district	70	PMTCT_EID_POS	3
-district	71	PMTCT_EID_POS	4
-district	72	PMTCT_EID_POS	1
-region	5	PMTCT_EID_POS	24
-district	146	PMTCT_EID_POS	6
-district	147	PMTCT_EID_POS	2
-district	148	PMTCT_EID_POS	4
-region	9	PMTCT_EID_POS	12
-district	46	PMTCT_EID_POS	57
-district	47	PMTCT_EID_POS	42
-district	48	PMTCT_EID_POS	88
-region	2	PMTCT_EID_POS	187
-district	73	PMTCT_EID_POS	19
-district	74	PMTCT_EID_POS	20
-district	75	PMTCT_EID_POS	19
-district	76	PMTCT_EID_POS	71
-district	77	PMTCT_EID_POS	4
-district	78	PMTCT_EID_POS	4
-district	79	PMTCT_EID_POS	18
-district	80	PMTCT_EID_POS	10
-district	81	PMTCT_EID_POS	6
-district	82	PMTCT_EID_POS	1
-region	17	PMTCT_EID_POS	172
-district	62	PMTCT_EID_POS	8
-district	63	PMTCT_EID_POS	4
-district	64	PMTCT_EID_POS	11
-district	65	PMTCT_EID_POS	18
-district	66	PMTCT_EID_POS	1
-district	67	PMTCT_EID_POS	0
-region	24	PMTCT_EID_POS	42
-district	154	PMTCT_EID_POS	13
-district	155	PMTCT_EID_POS	0
-district	156	PMTCT_EID_POS	0
-district	157	PMTCT_EID_POS	0
-district	158	PMTCT_EID_POS	0
-region	4	PMTCT_EID_POS	13
-country	TZ	PMTCT_EID_POS	2007
-district	22	PMTCT_CTX	57
-district	23	PMTCT_CTX	167
-district	24	PMTCT_CTX	120
-district	25	PMTCT_CTX	485
-district	26	PMTCT_CTX	72
-district	27	PMTCT_CTX	97
-district	28	PMTCT_CTX	54
-district	29	PMTCT_CTX	80
-district	30	PMTCT_CTX	69
-district	31	PMTCT_CTX	73
-region	28	PMTCT_CTX	1274
-district	89	PMTCT_CTX	469
-district	90	PMTCT_CTX	356
-district	91	PMTCT_CTX	137
-district	92	PMTCT_CTX	128
-district	93	PMTCT_CTX	164
-district	94	PMTCT_CTX	278
-district	95	PMTCT_CTX	115
-region	29	PMTCT_CTX	1647
-district	128	PMTCT_CTX	166
-district	129	PMTCT_CTX	91
-district	130	PMTCT_CTX	88
-district	131	PMTCT_CTX	195
-district	132	PMTCT_CTX	170
-district	133	PMTCT_CTX	85
-district	169	PMTCT_CTX	219
-region	16	PMTCT_CTX	1014
-district	134	PMTCT_CTX	99
-district	135	PMTCT_CTX	44
-district	136	PMTCT_CTX	64
-district	137	PMTCT_CTX	115
-district	138	PMTCT_CTX	78
-district	139	PMTCT_CTX	58
-region	15	PMTCT_CTX	458
-region	13	PMTCT_CTX	0
-district	49	PMTCT_CTX	175
-district	50	PMTCT_CTX	145
-district	51	PMTCT_CTX	128
-district	52	PMTCT_CTX	50
-district	53	PMTCT_CTX	152
-district	54	PMTCT_CTX	110
-region	14	PMTCT_CTX	760
-district	96	PMTCT_CTX	57
-district	97	PMTCT_CTX	162
-district	98	PMTCT_CTX	157
-district	99	PMTCT_CTX	372
-region	23	PMTCT_CTX	748
-district	55	PMTCT_CTX	38
-district	56	PMTCT_CTX	69
-district	57	PMTCT_CTX	157
-district	58	PMTCT_CTX	107
-district	59	PMTCT_CTX	170
-district	60	PMTCT_CTX	20
-district	61	PMTCT_CTX	138
-region	19	PMTCT_CTX	699
-district	140	PMTCT_CTX	474
-district	141	PMTCT_CTX	206
-district	142	PMTCT_CTX	205
-district	143	PMTCT_CTX	211
-district	144	PMTCT_CTX	159
-district	145	PMTCT_CTX	184
-region	21	PMTCT_CTX	1439
-region	30	PMTCT_CTX	0
-district	108	PMTCT_CTX	280
-district	109	PMTCT_CTX	224
-district	110	PMTCT_CTX	221
-district	111	PMTCT_CTX	0
-district	112	PMTCT_CTX	373
-region	25	PMTCT_CTX	1098
-district	15	PMTCT_CTX	141
-district	16	PMTCT_CTX	81
-district	17	PMTCT_CTX	120
-district	18	PMTCT_CTX	204
-district	19	PMTCT_CTX	110
-district	20	PMTCT_CTX	332
-district	21	PMTCT_CTX	87
-region	11	PMTCT_CTX	1075
-district	100	PMTCT_CTX	72
-district	101	PMTCT_CTX	23
-district	102	PMTCT_CTX	7
-district	103	PMTCT_CTX	104
-district	104	PMTCT_CTX	52
-district	105	PMTCT_CTX	8
-district	106	PMTCT_CTX	28
-district	107	PMTCT_CTX	40
-region	10	PMTCT_CTX	334
-district	1	PMTCT_CTX	51
-district	2	PMTCT_CTX	62
-district	3	PMTCT_CTX	117
-district	4	PMTCT_CTX	74
-district	5	PMTCT_CTX	522
-district	6	PMTCT_CTX	51
-district	7	PMTCT_CTX	16
-region	3	PMTCT_CTX	893
-district	39	PMTCT_CTX	366
-district	40	PMTCT_CTX	99
-district	41	PMTCT_CTX	107
-district	42	PMTCT_CTX	202
-district	43	PMTCT_CTX	189
-district	44	PMTCT_CTX	35
-district	45	PMTCT_CTX	246
-region	22	PMTCT_CTX	1244
-district	32	PMTCT_CTX	139
-district	33	PMTCT_CTX	63
-district	34	PMTCT_CTX	306
-district	35	PMTCT_CTX	44
-district	36	PMTCT_CTX	201
-district	37	PMTCT_CTX	105
-district	38	PMTCT_CTX	39
-region	18	PMTCT_CTX	897
-region	8	PMTCT_CTX	0
-region	7	PMTCT_CTX	0
-district	83	PMTCT_CTX	91
-district	84	PMTCT_CTX	27
-district	85	PMTCT_CTX	95
-district	86	PMTCT_CTX	87
-district	87	PMTCT_CTX	57
-district	88	PMTCT_CTX	32
-region	27	PMTCT_CTX	389
-district	149	PMTCT_CTX	280
-district	150	PMTCT_CTX	71
-district	151	PMTCT_CTX	223
-district	152	PMTCT_CTX	183
-district	153	PMTCT_CTX	137
-region	26	PMTCT_CTX	894
-district	121	PMTCT_CTX	119
-district	122	PMTCT_CTX	358
-district	123	PMTCT_CTX	550
-district	124	PMTCT_CTX	185
-district	125	PMTCT_CTX	213
-district	126	PMTCT_CTX	144
-district	127	PMTCT_CTX	280
-region	20	PMTCT_CTX	1849
-district	113	PMTCT_CTX	162
-district	114	PMTCT_CTX	281
-district	115	PMTCT_CTX	315
-district	116	PMTCT_CTX	168
-district	117	PMTCT_CTX	148
-district	118	PMTCT_CTX	244
-district	119	PMTCT_CTX	256
-district	120	PMTCT_CTX	173
-region	6	PMTCT_CTX	1747
-district	8	PMTCT_CTX	99
-district	9	PMTCT_CTX	124
-district	10	PMTCT_CTX	535
-district	11	PMTCT_CTX	90
-district	12	PMTCT_CTX	18
-district	13	PMTCT_CTX	535
-district	14	PMTCT_CTX	52
-region	1	PMTCT_CTX	1453
-district	68	PMTCT_CTX	338
-district	69	PMTCT_CTX	623
-district	70	PMTCT_CTX	460
-district	71	PMTCT_CTX	345
-district	72	PMTCT_CTX	116
-region	5	PMTCT_CTX	1882
-district	146	PMTCT_CTX	273
-district	147	PMTCT_CTX	65
-district	148	PMTCT_CTX	130
-region	9	PMTCT_CTX	468
-district	46	PMTCT_CTX	2365
-district	47	PMTCT_CTX	2174
-district	48	PMTCT_CTX	2038
-region	2	PMTCT_CTX	6577
-district	73	PMTCT_CTX	749
-district	74	PMTCT_CTX	1131
-district	75	PMTCT_CTX	645
-district	76	PMTCT_CTX	335
-district	77	PMTCT_CTX	42
-district	78	PMTCT_CTX	638
-district	79	PMTCT_CTX	944
-district	80	PMTCT_CTX	388
-district	81	PMTCT_CTX	295
-district	82	PMTCT_CTX	32
-region	17	PMTCT_CTX	5199
-district	62	PMTCT_CTX	171
-district	63	PMTCT_CTX	123
-district	64	PMTCT_CTX	283
-district	65	PMTCT_CTX	438
-district	66	PMTCT_CTX	113
-district	67	PMTCT_CTX	73
-region	24	PMTCT_CTX	1201
-district	154	PMTCT_CTX	441
-district	155	PMTCT_CTX	68
-district	156	PMTCT_CTX	90
-district	157	PMTCT_CTX	192
-district	158	PMTCT_CTX	238
-region	4	PMTCT_CTX	1029
-country	TZ	PMTCT_CTX	37320
-district	22	CARE_NEW	464
-district	23	CARE_NEW	1359
-district	24	CARE_NEW	613
-district	25	CARE_NEW	1580
-district	26	CARE_NEW	283
-district	27	CARE_NEW	512
-district	28	CARE_NEW	274
-district	29	CARE_NEW	345
-district	30	CARE_NEW	406
-district	31	CARE_NEW	305
-region	28	CARE_NEW	6141
-district	89	CARE_NEW	2942
-district	90	CARE_NEW	2188
-district	91	CARE_NEW	1271
-district	92	CARE_NEW	729
-district	93	CARE_NEW	770
-district	94	CARE_NEW	1132
-district	95	CARE_NEW	1149
-region	29	CARE_NEW	10181
-district	128	CARE_NEW	850
-district	129	CARE_NEW	492
-district	130	CARE_NEW	486
-district	131	CARE_NEW	1180
-district	132	CARE_NEW	1550
-district	133	CARE_NEW	298
-district	169	CARE_NEW	1048
-region	16	CARE_NEW	5904
-district	134	CARE_NEW	226
-district	135	CARE_NEW	150
-district	136	CARE_NEW	191
-district	137	CARE_NEW	236
-district	138	CARE_NEW	354
-district	139	CARE_NEW	260
-region	15	CARE_NEW	1417
-region	13	CARE_NEW	0
-district	49	CARE_NEW	437
-district	50	CARE_NEW	607
-district	51	CARE_NEW	697
-district	52	CARE_NEW	249
-district	53	CARE_NEW	529
-district	54	CARE_NEW	415
-region	14	CARE_NEW	2934
-district	96	CARE_NEW	427
-district	97	CARE_NEW	1409
-district	98	CARE_NEW	1086
-district	99	CARE_NEW	1777
-region	23	CARE_NEW	4699
-district	55	CARE_NEW	289
-district	56	CARE_NEW	403
-district	57	CARE_NEW	853
-district	58	CARE_NEW	617
-district	59	CARE_NEW	1085
-district	60	CARE_NEW	123
-district	61	CARE_NEW	687
-region	19	CARE_NEW	4057
-district	140	CARE_NEW	1694
-district	141	CARE_NEW	768
-district	142	CARE_NEW	947
-district	143	CARE_NEW	649
-district	144	CARE_NEW	813
-district	145	CARE_NEW	1040
-region	21	CARE_NEW	5911
-region	30	CARE_NEW	0
-district	108	CARE_NEW	2002
-district	109	CARE_NEW	1511
-district	110	CARE_NEW	1964
-district	111	CARE_NEW	0
-district	112	CARE_NEW	2589
-region	25	CARE_NEW	8066
-district	15	CARE_NEW	406
-district	16	CARE_NEW	286
-district	17	CARE_NEW	533
-district	18	CARE_NEW	744
-district	19	CARE_NEW	495
-district	20	CARE_NEW	1083
-district	21	CARE_NEW	298
-region	11	CARE_NEW	3845
-district	100	CARE_NEW	217
-district	101	CARE_NEW	305
-district	102	CARE_NEW	76
-district	103	CARE_NEW	637
-district	104	CARE_NEW	412
-district	105	CARE_NEW	53
-district	106	CARE_NEW	105
-district	107	CARE_NEW	261
-region	10	CARE_NEW	2066
-district	1	CARE_NEW	247
-district	2	CARE_NEW	459
-district	3	CARE_NEW	466
-district	4	CARE_NEW	393
-district	5	CARE_NEW	1862
-district	6	CARE_NEW	334
-district	7	CARE_NEW	64
-region	3	CARE_NEW	3825
-district	39	CARE_NEW	1337
-district	40	CARE_NEW	389
-district	41	CARE_NEW	653
-district	42	CARE_NEW	1206
-district	43	CARE_NEW	782
-district	44	CARE_NEW	104
-district	45	CARE_NEW	962
-region	22	CARE_NEW	5433
-district	32	CARE_NEW	1210
-district	33	CARE_NEW	430
-district	34	CARE_NEW	2121
-district	35	CARE_NEW	681
-district	36	CARE_NEW	1645
-district	37	CARE_NEW	691
-district	38	CARE_NEW	284
-region	18	CARE_NEW	7062
-region	8	CARE_NEW	0
-region	7	CARE_NEW	0
-district	83	CARE_NEW	497
-district	84	CARE_NEW	132
-district	85	CARE_NEW	715
-district	86	CARE_NEW	673
-district	87	CARE_NEW	293
-district	88	CARE_NEW	228
-region	27	CARE_NEW	2538
-district	149	CARE_NEW	1421
-district	150	CARE_NEW	534
-district	151	CARE_NEW	1154
-district	152	CARE_NEW	1469
-district	153	CARE_NEW	1223
-region	26	CARE_NEW	5801
-district	121	CARE_NEW	565
-district	122	CARE_NEW	1541
-district	123	CARE_NEW	2838
-district	124	CARE_NEW	1094
-district	125	CARE_NEW	1876
-district	126	CARE_NEW	967
-district	127	CARE_NEW	2313
-region	20	CARE_NEW	11194
-district	113	CARE_NEW	865
-district	114	CARE_NEW	856
-district	115	CARE_NEW	1739
-district	116	CARE_NEW	722
-district	117	CARE_NEW	503
-district	118	CARE_NEW	2115
-district	119	CARE_NEW	997
-district	120	CARE_NEW	895
-region	6	CARE_NEW	8692
-district	8	CARE_NEW	474
-district	9	CARE_NEW	692
-district	10	CARE_NEW	2710
-district	11	CARE_NEW	307
-district	12	CARE_NEW	127
-district	13	CARE_NEW	2710
-district	14	CARE_NEW	199
-region	1	CARE_NEW	7219
-district	68	CARE_NEW	1242
-district	69	CARE_NEW	2003
-district	70	CARE_NEW	1779
-district	71	CARE_NEW	1129
-district	72	CARE_NEW	764
-region	5	CARE_NEW	6917
-district	146	CARE_NEW	1195
-district	147	CARE_NEW	784
-district	148	CARE_NEW	849
-region	9	CARE_NEW	2828
-district	46	CARE_NEW	10673
-district	47	CARE_NEW	8626
-district	48	CARE_NEW	9873
-region	2	CARE_NEW	29172
-district	73	CARE_NEW	2803
-district	74	CARE_NEW	4593
-district	75	CARE_NEW	2686
-district	76	CARE_NEW	1696
-district	77	CARE_NEW	506
-district	78	CARE_NEW	2579
-district	79	CARE_NEW	3746
-district	80	CARE_NEW	1657
-district	81	CARE_NEW	1787
-district	82	CARE_NEW	57
-region	17	CARE_NEW	22110
-district	62	CARE_NEW	1081
-district	63	CARE_NEW	839
-district	64	CARE_NEW	1683
-district	65	CARE_NEW	1473
-district	66	CARE_NEW	497
-district	67	CARE_NEW	928
-region	24	CARE_NEW	6501
-district	154	CARE_NEW	3114
-district	155	CARE_NEW	582
-district	156	CARE_NEW	1080
-district	157	CARE_NEW	1896
-district	158	CARE_NEW	1330
-region	4	CARE_NEW	8002
-country	TZ	CARE_NEW	191208
-district	22	TX_NEW	428
-district	23	TX_NEW	1271
-district	24	TX_NEW	602
-district	25	TX_NEW	1417
-district	26	TX_NEW	235
-district	27	TX_NEW	447
-district	28	TX_NEW	282
-district	29	TX_NEW	342
-district	30	TX_NEW	358
-district	31	TX_NEW	280
-region	28	TX_NEW	5662
-district	89	TX_NEW	2629
-district	90	TX_NEW	1979
-district	91	TX_NEW	1127
-district	92	TX_NEW	619
-district	93	TX_NEW	787
-district	94	TX_NEW	1033
-district	95	TX_NEW	1026
-region	29	TX_NEW	9200
-district	128	TX_NEW	629
-district	129	TX_NEW	422
-district	130	TX_NEW	403
-district	131	TX_NEW	1025
-district	132	TX_NEW	1528
-district	133	TX_NEW	304
-district	169	TX_NEW	964
-region	16	TX_NEW	5275
-district	134	TX_NEW	200
-district	135	TX_NEW	142
-district	136	TX_NEW	205
-district	137	TX_NEW	195
-district	138	TX_NEW	354
-district	139	TX_NEW	202
-region	15	TX_NEW	1298
-region	13	TX_NEW	0
-district	49	TX_NEW	534
-district	50	TX_NEW	622
-district	51	TX_NEW	663
-district	52	TX_NEW	256
-district	53	TX_NEW	510
-district	54	TX_NEW	468
-region	14	TX_NEW	3053
-district	96	TX_NEW	410
-district	97	TX_NEW	1248
-district	98	TX_NEW	1048
-district	99	TX_NEW	1651
-region	23	TX_NEW	4357
-district	55	TX_NEW	248
-district	56	TX_NEW	386
-district	57	TX_NEW	797
-district	58	TX_NEW	509
-district	59	TX_NEW	967
-district	60	TX_NEW	98
-district	61	TX_NEW	688
-region	19	TX_NEW	3693
-district	140	TX_NEW	1691
-district	141	TX_NEW	910
-district	142	TX_NEW	1152
-district	143	TX_NEW	541
-district	144	TX_NEW	1017
-district	145	TX_NEW	852
-region	21	TX_NEW	6163
-region	30	TX_NEW	0
-district	108	TX_NEW	1663
-district	109	TX_NEW	1352
-district	110	TX_NEW	1564
-district	111	TX_NEW	0
-district	112	TX_NEW	2298
-region	25	TX_NEW	6877
-district	15	TX_NEW	426
-district	16	TX_NEW	305
-district	17	TX_NEW	553
-district	18	TX_NEW	715
-district	19	TX_NEW	471
-district	20	TX_NEW	1090
-district	21	TX_NEW	309
-region	11	TX_NEW	3869
-district	100	TX_NEW	187
-district	101	TX_NEW	135
-district	102	TX_NEW	43
-district	103	TX_NEW	537
-district	104	TX_NEW	288
-district	105	TX_NEW	31
-district	106	TX_NEW	79
-district	107	TX_NEW	222
-region	10	TX_NEW	1522
-district	1	TX_NEW	271
-district	2	TX_NEW	510
-district	3	TX_NEW	474
-district	4	TX_NEW	380
-district	5	TX_NEW	1911
-district	6	TX_NEW	343
-district	7	TX_NEW	65
-region	3	TX_NEW	3954
-district	39	TX_NEW	1045
-district	40	TX_NEW	325
-district	41	TX_NEW	570
-district	42	TX_NEW	1147
-district	43	TX_NEW	767
-district	44	TX_NEW	113
-district	45	TX_NEW	893
-region	22	TX_NEW	4860
-district	32	TX_NEW	1162
-district	33	TX_NEW	376
-district	34	TX_NEW	2115
-district	35	TX_NEW	592
-district	36	TX_NEW	1546
-district	37	TX_NEW	677
-district	38	TX_NEW	266
-region	18	TX_NEW	6734
-region	8	TX_NEW	0
-region	7	TX_NEW	0
-district	83	TX_NEW	509
-district	84	TX_NEW	147
-district	85	TX_NEW	726
-district	86	TX_NEW	611
-district	87	TX_NEW	325
-district	88	TX_NEW	223
-region	27	TX_NEW	2541
-district	149	TX_NEW	1163
-district	150	TX_NEW	479
-district	151	TX_NEW	1008
-district	152	TX_NEW	1212
-district	153	TX_NEW	1146
-region	26	TX_NEW	5008
-district	121	TX_NEW	742
-district	122	TX_NEW	1788
-district	123	TX_NEW	3446
-district	124	TX_NEW	1199
-district	125	TX_NEW	1995
-district	126	TX_NEW	1120
-district	127	TX_NEW	1382
-region	20	TX_NEW	11672
-district	113	TX_NEW	796
-district	114	TX_NEW	962
-district	115	TX_NEW	1587
-district	116	TX_NEW	722
-district	117	TX_NEW	467
-district	118	TX_NEW	1501
-district	119	TX_NEW	992
-district	120	TX_NEW	895
-region	6	TX_NEW	7922
-district	8	TX_NEW	466
-district	9	TX_NEW	680
-district	10	TX_NEW	2671
-district	11	TX_NEW	263
-district	12	TX_NEW	122
-district	13	TX_NEW	2671
-district	14	TX_NEW	148
-region	1	TX_NEW	7021
-district	68	TX_NEW	1051
-district	69	TX_NEW	2370
-district	70	TX_NEW	1781
-district	71	TX_NEW	980
-district	72	TX_NEW	702
-region	5	TX_NEW	6884
-district	146	TX_NEW	980
-district	147	TX_NEW	680
-district	148	TX_NEW	846
-region	9	TX_NEW	2506
-district	46	TX_NEW	9633
-district	47	TX_NEW	6643
-district	48	TX_NEW	7321
-region	2	TX_NEW	23597
-district	73	TX_NEW	2458
-district	74	TX_NEW	4410
-district	75	TX_NEW	2562
-district	76	TX_NEW	1650
-district	77	TX_NEW	356
-district	78	TX_NEW	2522
-district	79	TX_NEW	3290
-district	80	TX_NEW	1565
-district	81	TX_NEW	1726
-district	82	TX_NEW	55
-region	17	TX_NEW	20594
-district	62	TX_NEW	984
-district	63	TX_NEW	821
-district	64	TX_NEW	1607
-district	65	TX_NEW	1410
-district	66	TX_NEW	409
-district	67	TX_NEW	870
-region	24	TX_NEW	6101
-district	154	TX_NEW	10203
-district	155	TX_NEW	606
-district	156	TX_NEW	991
-district	157	TX_NEW	1447
-district	158	TX_NEW	1167
-region	4	TX_NEW	14414
-country	TZ	TX_NEW	182245
-district	22	CARE_CURR	2430
-district	23	CARE_CURR	4497
-district	24	CARE_CURR	5302
-district	25	CARE_CURR	10193
-district	26	CARE_CURR	1408
-district	27	CARE_CURR	1369
-district	28	CARE_CURR	847
-district	29	CARE_CURR	1364
-district	30	CARE_CURR	881
-district	31	CARE_CURR	1514
-region	28	CARE_CURR	29805
-district	89	CARE_CURR	9970
-district	90	CARE_CURR	6963
-district	91	CARE_CURR	2798
-district	92	CARE_CURR	2158
-district	93	CARE_CURR	2448
-district	94	CARE_CURR	4576
-district	95	CARE_CURR	2616
-region	29	CARE_CURR	31529
-district	128	CARE_CURR	3015
-district	129	CARE_CURR	2016
-district	130	CARE_CURR	1425
-district	131	CARE_CURR	4311
-district	132	CARE_CURR	5906
-district	133	CARE_CURR	1290
-district	169	CARE_CURR	5694
-region	16	CARE_CURR	23657
-district	134	CARE_CURR	1207
-district	135	CARE_CURR	621
-district	136	CARE_CURR	1004
-district	137	CARE_CURR	459
-district	138	CARE_CURR	1123
-district	139	CARE_CURR	1047
-region	15	CARE_CURR	5461
-region	13	CARE_CURR	0
-district	49	CARE_CURR	1904
-district	50	CARE_CURR	2626
-district	51	CARE_CURR	2569
-district	52	CARE_CURR	836
-district	53	CARE_CURR	2143
-district	54	CARE_CURR	2427
-region	14	CARE_CURR	12505
-district	96	CARE_CURR	1205
-district	97	CARE_CURR	4488
-district	98	CARE_CURR	3433
-district	99	CARE_CURR	6043
-region	23	CARE_CURR	15169
-district	55	CARE_CURR	1097
-district	56	CARE_CURR	1475
-district	57	CARE_CURR	3962
-district	58	CARE_CURR	1875
-district	59	CARE_CURR	4013
-district	60	CARE_CURR	356
-district	61	CARE_CURR	2690
-region	19	CARE_CURR	15468
-district	140	CARE_CURR	9263
-district	141	CARE_CURR	5053
-district	142	CARE_CURR	7879
-district	143	CARE_CURR	2972
-district	144	CARE_CURR	5963
-district	145	CARE_CURR	3832
-region	21	CARE_CURR	34962
-region	30	CARE_CURR	0
-district	108	CARE_CURR	7150
-district	109	CARE_CURR	4781
-district	110	CARE_CURR	5449
-district	111	CARE_CURR	0
-district	112	CARE_CURR	8470
-region	25	CARE_CURR	25850
-district	15	CARE_CURR	2479
-district	16	CARE_CURR	1364
-district	17	CARE_CURR	2549
-district	18	CARE_CURR	3293
-district	19	CARE_CURR	2024
-district	20	CARE_CURR	7390
-district	21	CARE_CURR	1404
-region	11	CARE_CURR	20503
-district	100	CARE_CURR	1140
-district	101	CARE_CURR	1022
-district	102	CARE_CURR	248
-district	103	CARE_CURR	3255
-district	104	CARE_CURR	1160
-district	105	CARE_CURR	258
-district	106	CARE_CURR	477
-district	107	CARE_CURR	1122
-region	10	CARE_CURR	8682
-district	1	CARE_CURR	1349
-district	2	CARE_CURR	1931
-district	3	CARE_CURR	2127
-district	4	CARE_CURR	1973
-district	5	CARE_CURR	9163
-district	6	CARE_CURR	1223
-district	7	CARE_CURR	265
-region	3	CARE_CURR	18031
-district	39	CARE_CURR	5596
-district	40	CARE_CURR	1601
-district	41	CARE_CURR	2955
-district	42	CARE_CURR	4557
-district	43	CARE_CURR	3340
-district	44	CARE_CURR	688
-district	45	CARE_CURR	4741
-region	22	CARE_CURR	23478
-district	32	CARE_CURR	3841
-district	33	CARE_CURR	1430
-district	34	CARE_CURR	7575
-district	35	CARE_CURR	2517
-district	36	CARE_CURR	8428
-district	37	CARE_CURR	2802
-district	38	CARE_CURR	890
-region	18	CARE_CURR	27483
-region	8	CARE_CURR	0
-region	7	CARE_CURR	0
-district	83	CARE_CURR	2392
-district	84	CARE_CURR	451
-district	85	CARE_CURR	2951
-district	86	CARE_CURR	2605
-district	87	CARE_CURR	1089
-district	88	CARE_CURR	855
-region	27	CARE_CURR	10343
-district	149	CARE_CURR	4328
-district	150	CARE_CURR	1659
-district	151	CARE_CURR	3501
-district	152	CARE_CURR	4355
-district	153	CARE_CURR	3472
-region	26	CARE_CURR	17315
-district	121	CARE_CURR	3079
-district	122	CARE_CURR	6428
-district	123	CARE_CURR	17365
-district	124	CARE_CURR	4192
-district	125	CARE_CURR	7181
-district	126	CARE_CURR	2894
-district	127	CARE_CURR	4450
-region	20	CARE_CURR	45589
-district	113	CARE_CURR	3243
-district	114	CARE_CURR	3912
-district	115	CARE_CURR	7474
-district	116	CARE_CURR	3181
-district	117	CARE_CURR	2352
-district	118	CARE_CURR	5944
-district	119	CARE_CURR	3948
-district	120	CARE_CURR	2635
-region	6	CARE_CURR	32689
-district	8	CARE_CURR	1511
-district	9	CARE_CURR	3146
-district	10	CARE_CURR	10137
-district	11	CARE_CURR	1017
-district	12	CARE_CURR	245
-district	13	CARE_CURR	10137
-district	14	CARE_CURR	432
-region	1	CARE_CURR	26625
-district	68	CARE_CURR	6391
-district	69	CARE_CURR	14778
-district	70	CARE_CURR	10340
-district	71	CARE_CURR	4933
-district	72	CARE_CURR	3509
-region	5	CARE_CURR	39951
-district	146	CARE_CURR	2680
-district	147	CARE_CURR	2405
-district	148	CARE_CURR	2511
-region	9	CARE_CURR	7596
-district	46	CARE_CURR	38024
-district	47	CARE_CURR	39840
-district	48	CARE_CURR	37048
-region	2	CARE_CURR	114912
-district	73	CARE_CURR	10896
-district	74	CARE_CURR	19105
-district	75	CARE_CURR	10237
-district	76	CARE_CURR	7398
-district	77	CARE_CURR	1594
-district	78	CARE_CURR	11398
-district	79	CARE_CURR	11724
-district	80	CARE_CURR	5150
-district	81	CARE_CURR	5194
-district	82	CARE_CURR	123
-region	17	CARE_CURR	82819
-district	62	CARE_CURR	3079
-district	63	CARE_CURR	4366
-district	64	CARE_CURR	5848
-district	65	CARE_CURR	7391
-district	66	CARE_CURR	1990
-district	67	CARE_CURR	2394
-region	24	CARE_CURR	25068
-district	154	CARE_CURR	9771
-district	155	CARE_CURR	1376
-district	156	CARE_CURR	3289
-district	157	CARE_CURR	4223
-district	158	CARE_CURR	4087
-region	4	CARE_CURR	22746
-country	TZ	CARE_CURR	748519
-district	22	TB_SCREEN	6179
-district	23	TB_SCREEN	11782
-district	24	TB_SCREEN	14089
-district	25	TB_SCREEN	28098
-district	26	TB_SCREEN	3676
-district	27	TB_SCREEN	3419
-district	28	TB_SCREEN	2093
-district	29	TB_SCREEN	3655
-district	30	TB_SCREEN	2266
-district	31	TB_SCREEN	4271
-region	28	TB_SCREEN	79528
-district	89	TB_SCREEN	25582
-district	90	TB_SCREEN	19985
-district	91	TB_SCREEN	7099
-district	92	TB_SCREEN	6191
-district	93	TB_SCREEN	6590
-district	94	TB_SCREEN	12002
-district	95	TB_SCREEN	7274
-region	29	TB_SCREEN	84723
-district	128	TB_SCREEN	7512
-district	129	TB_SCREEN	5079
-district	130	TB_SCREEN	2935
-district	131	TB_SCREEN	13304
-district	132	TB_SCREEN	9876
-district	133	TB_SCREEN	3304
-district	169	TB_SCREEN	15679
-region	16	TB_SCREEN	57689
-district	134	TB_SCREEN	3285
-district	135	TB_SCREEN	1726
-district	136	TB_SCREEN	2846
-district	137	TB_SCREEN	1832
-district	138	TB_SCREEN	2934
-district	139	TB_SCREEN	2804
-region	15	TB_SCREEN	15427
-region	13	TB_SCREEN	0
-district	49	TB_SCREEN	5456
-district	50	TB_SCREEN	7188
-district	51	TB_SCREEN	7146
-district	52	TB_SCREEN	2252
-district	53	TB_SCREEN	6056
-district	54	TB_SCREEN	6928
-region	14	TB_SCREEN	35026
-district	96	TB_SCREEN	3319
-district	97	TB_SCREEN	7870
-district	98	TB_SCREEN	6576
-district	99	TB_SCREEN	16354
-region	23	TB_SCREEN	34119
-district	55	TB_SCREEN	2833
-district	56	TB_SCREEN	4032
-district	57	TB_SCREEN	11673
-district	58	TB_SCREEN	5074
-district	59	TB_SCREEN	10053
-district	60	TB_SCREEN	930
-district	61	TB_SCREEN	7610
-region	19	TB_SCREEN	42205
-district	140	TB_SCREEN	26193
-district	141	TB_SCREEN	14057
-district	142	TB_SCREEN	21111
-district	143	TB_SCREEN	7374
-district	144	TB_SCREEN	16646
-district	145	TB_SCREEN	9649
-region	21	TB_SCREEN	95030
-region	30	TB_SCREEN	0
-district	108	TB_SCREEN	19836
-district	109	TB_SCREEN	11915
-district	110	TB_SCREEN	13855
-district	111	TB_SCREEN	0
-district	112	TB_SCREEN	21252
-region	25	TB_SCREEN	66858
-district	15	TB_SCREEN	7278
-district	16	TB_SCREEN	4051
-district	17	TB_SCREEN	7376
-district	18	TB_SCREEN	10280
-district	19	TB_SCREEN	5682
-district	20	TB_SCREEN	20534
-district	21	TB_SCREEN	4096
-region	11	TB_SCREEN	59297
-district	100	TB_SCREEN	2578
-district	101	TB_SCREEN	1923
-district	102	TB_SCREEN	713
-district	103	TB_SCREEN	8649
-district	104	TB_SCREEN	3128
-district	105	TB_SCREEN	705
-district	106	TB_SCREEN	1378
-district	107	TB_SCREEN	3120
-region	10	TB_SCREEN	22194
-district	1	TB_SCREEN	3459
-district	2	TB_SCREEN	5262
-district	3	TB_SCREEN	5442
-district	4	TB_SCREEN	5598
-district	5	TB_SCREEN	24292
-district	6	TB_SCREEN	3278
-district	7	TB_SCREEN	725
-region	3	TB_SCREEN	48056
-district	39	TB_SCREEN	15445
-district	40	TB_SCREEN	4104
-district	41	TB_SCREEN	8472
-district	42	TB_SCREEN	12399
-district	43	TB_SCREEN	9560
-district	44	TB_SCREEN	1933
-district	45	TB_SCREEN	13353
-region	22	TB_SCREEN	65266
-district	32	TB_SCREEN	11895
-district	33	TB_SCREEN	3768
-district	34	TB_SCREEN	19531
-district	35	TB_SCREEN	6534
-district	36	TB_SCREEN	21266
-district	37	TB_SCREEN	7408
-district	38	TB_SCREEN	1940
-region	18	TB_SCREEN	72342
-region	8	TB_SCREEN	0
-region	7	TB_SCREEN	0
-district	83	TB_SCREEN	6553
-district	84	TB_SCREEN	1241
-district	85	TB_SCREEN	7659
-district	86	TB_SCREEN	7035
-district	87	TB_SCREEN	2827
-district	88	TB_SCREEN	2315
-region	27	TB_SCREEN	27630
-district	149	TB_SCREEN	11086
-district	150	TB_SCREEN	4303
-district	151	TB_SCREEN	8774
-district	152	TB_SCREEN	12045
-district	153	TB_SCREEN	8867
-region	26	TB_SCREEN	45075
-district	121	TB_SCREEN	6497
-district	122	TB_SCREEN	15985
-district	123	TB_SCREEN	41593
-district	124	TB_SCREEN	7418
-district	125	TB_SCREEN	12852
-district	126	TB_SCREEN	4845
-district	127	TB_SCREEN	12070
-region	20	TB_SCREEN	101260
-district	113	TB_SCREEN	9016
-district	114	TB_SCREEN	10213
-district	115	TB_SCREEN	19261
-district	116	TB_SCREEN	8491
-district	117	TB_SCREEN	6328
-district	118	TB_SCREEN	16708
-district	119	TB_SCREEN	9721
-district	120	TB_SCREEN	6819
-region	6	TB_SCREEN	86557
-district	8	TB_SCREEN	4206
-district	9	TB_SCREEN	8397
-district	10	TB_SCREEN	29668
-district	11	TB_SCREEN	2695
-district	12	TB_SCREEN	694
-district	13	TB_SCREEN	29668
-district	14	TB_SCREEN	1211
-region	1	TB_SCREEN	76539
-district	68	TB_SCREEN	16947
-district	69	TB_SCREEN	41879
-district	70	TB_SCREEN	28108
-district	71	TB_SCREEN	13540
-district	72	TB_SCREEN	11391
-region	5	TB_SCREEN	111865
-district	146	TB_SCREEN	7057
-district	147	TB_SCREEN	6487
-district	148	TB_SCREEN	6272
-region	9	TB_SCREEN	19816
-district	46	TB_SCREEN	99341
-district	47	TB_SCREEN	104954
-district	48	TB_SCREEN	97564
-region	2	TB_SCREEN	301859
-district	73	TB_SCREEN	27377
-district	74	TB_SCREEN	50176
-district	75	TB_SCREEN	28218
-district	76	TB_SCREEN	20227
-district	77	TB_SCREEN	5468
-district	78	TB_SCREEN	30731
-district	79	TB_SCREEN	33579
-district	80	TB_SCREEN	12600
-district	81	TB_SCREEN	13695
-district	82	TB_SCREEN	345
-region	17	TB_SCREEN	222416
-district	62	TB_SCREEN	8462
-district	63	TB_SCREEN	12485
-district	64	TB_SCREEN	16009
-district	65	TB_SCREEN	20770
-district	66	TB_SCREEN	5422
-district	67	TB_SCREEN	6329
-region	24	TB_SCREEN	69477
-district	154	TB_SCREEN	25375
-district	155	TB_SCREEN	3244
-district	156	TB_SCREEN	7793
-district	157	TB_SCREEN	10820
-district	158	TB_SCREEN	10011
-region	4	TB_SCREEN	57243
-country	TZ	TB_SCREEN	1964271
-district	22	TX_CURR	1926
-district	23	TX_CURR	3713
-district	24	TX_CURR	4274
-district	25	TX_CURR	9360
-district	26	TX_CURR	1188
-district	27	TX_CURR	1177
-district	28	TX_CURR	744
-district	29	TX_CURR	1152
-district	30	TX_CURR	676
-district	31	TX_CURR	1413
-region	28	TX_CURR	25623
-district	89	TX_CURR	8419
-district	90	TX_CURR	6716
-district	91	TX_CURR	2495
-district	92	TX_CURR	1950
-district	93	TX_CURR	2344
-district	94	TX_CURR	3892
-district	95	TX_CURR	2414
-region	29	TX_CURR	28230
-district	128	TX_CURR	2568
-district	129	TX_CURR	1761
-district	130	TX_CURR	1169
-district	131	TX_CURR	4077
-district	132	TX_CURR	4523
-district	133	TX_CURR	1159
-district	169	TX_CURR	5132
-region	16	TX_CURR	20389
-district	134	TX_CURR	1012
-district	135	TX_CURR	556
-district	136	TX_CURR	915
-district	137	TX_CURR	367
-district	138	TX_CURR	947
-district	139	TX_CURR	918
-region	15	TX_CURR	4715
-region	13	TX_CURR	0
-district	49	TX_CURR	1728
-district	50	TX_CURR	2249
-district	51	TX_CURR	2238
-district	52	TX_CURR	680
-district	53	TX_CURR	1942
-district	54	TX_CURR	2237
-region	14	TX_CURR	11074
-district	96	TX_CURR	1074
-district	97	TX_CURR	3236
-district	98	TX_CURR	2730
-district	99	TX_CURR	5069
-region	23	TX_CURR	12109
-district	55	TX_CURR	934
-district	56	TX_CURR	1226
-district	57	TX_CURR	3519
-district	58	TX_CURR	1457
-district	59	TX_CURR	3342
-district	60	TX_CURR	316
-district	61	TX_CURR	2211
-region	19	TX_CURR	13005
-district	140	TX_CURR	7843
-district	141	TX_CURR	4457
-district	142	TX_CURR	6127
-district	143	TX_CURR	2384
-district	144	TX_CURR	4841
-district	145	TX_CURR	3126
-region	21	TX_CURR	28778
-region	30	TX_CURR	0
-district	108	TX_CURR	6100
-district	109	TX_CURR	3882
-district	110	TX_CURR	4394
-district	111	TX_CURR	0
-district	112	TX_CURR	7304
-region	25	TX_CURR	21680
-district	15	TX_CURR	2288
-district	16	TX_CURR	1309
-district	17	TX_CURR	2315
-district	18	TX_CURR	2980
-district	19	TX_CURR	1925
-district	20	TX_CURR	6925
-district	21	TX_CURR	1358
-region	11	TX_CURR	19100
-district	100	TX_CURR	874
-district	101	TX_CURR	622
-district	102	TX_CURR	193
-district	103	TX_CURR	2466
-district	104	TX_CURR	911
-district	105	TX_CURR	203
-district	106	TX_CURR	341
-district	107	TX_CURR	914
-region	10	TX_CURR	6524
-district	1	TX_CURR	1049
-district	2	TX_CURR	1591
-district	3	TX_CURR	1629
-district	4	TX_CURR	1646
-district	5	TX_CURR	7489
-district	6	TX_CURR	923
-district	7	TX_CURR	211
-region	3	TX_CURR	14538
-district	39	TX_CURR	4552
-district	40	TX_CURR	1333
-district	41	TX_CURR	2472
-district	42	TX_CURR	3915
-district	43	TX_CURR	2746
-district	44	TX_CURR	568
-district	45	TX_CURR	3849
-region	22	TX_CURR	19435
-district	32	TX_CURR	3107
-district	33	TX_CURR	1125
-district	34	TX_CURR	6018
-district	35	TX_CURR	1996
-district	36	TX_CURR	6970
-district	37	TX_CURR	2317
-district	38	TX_CURR	566
-region	18	TX_CURR	22099
-region	8	TX_CURR	0
-region	7	TX_CURR	0
-district	83	TX_CURR	2006
-district	84	TX_CURR	407
-district	85	TX_CURR	2354
-district	86	TX_CURR	2134
-district	87	TX_CURR	901
-district	88	TX_CURR	720
-region	27	TX_CURR	8522
-district	149	TX_CURR	3640
-district	150	TX_CURR	1448
-district	151	TX_CURR	2850
-district	152	TX_CURR	3829
-district	153	TX_CURR	2908
-region	26	TX_CURR	14675
-district	121	TX_CURR	2439
-district	122	TX_CURR	3749
-district	123	TX_CURR	14694
-district	124	TX_CURR	3657
-district	125	TX_CURR	5533
-district	126	TX_CURR	2445
-district	127	TX_CURR	3763
-region	20	TX_CURR	36280
-district	113	TX_CURR	2801
-district	114	TX_CURR	3294
-district	115	TX_CURR	5869
-district	116	TX_CURR	2434
-district	117	TX_CURR	1907
-district	118	TX_CURR	5144
-district	119	TX_CURR	3458
-district	120	TX_CURR	2187
-region	6	TX_CURR	27094
-district	8	TX_CURR	1394
-district	9	TX_CURR	2946
-district	10	TX_CURR	9416
-district	11	TX_CURR	918
-district	12	TX_CURR	232
-district	13	TX_CURR	9416
-district	14	TX_CURR	416
-region	1	TX_CURR	24738
-district	68	TX_CURR	4875
-district	69	TX_CURR	12868
-district	70	TX_CURR	9132
-district	71	TX_CURR	3977
-district	72	TX_CURR	2608
-region	5	TX_CURR	33460
-district	146	TX_CURR	2363
-district	147	TX_CURR	2051
-district	148	TX_CURR	2211
-region	9	TX_CURR	6625
-district	46	TX_CURR	31554
-district	47	TX_CURR	34910
-district	48	TX_CURR	31983
-region	2	TX_CURR	98447
-district	73	TX_CURR	9481
-district	74	TX_CURR	17182
-district	75	TX_CURR	9190
-district	76	TX_CURR	7035
-district	77	TX_CURR	1412
-district	78	TX_CURR	10245
-district	79	TX_CURR	10241
-district	80	TX_CURR	4839
-district	81	TX_CURR	4481
-district	82	TX_CURR	123
-region	17	TX_CURR	74229
-district	62	TX_CURR	2547
-district	63	TX_CURR	3874
-district	64	TX_CURR	5609
-district	65	TX_CURR	6884
-district	66	TX_CURR	1669
-district	67	TX_CURR	2176
-region	24	TX_CURR	22759
-district	154	TX_CURR	8104
-district	155	TX_CURR	1103
-district	156	TX_CURR	4235
-district	157	TX_CURR	3736
-district	158	TX_CURR	3509
-region	4	TX_CURR	20687
-country	TZ	TX_CURR	637875
-district	22	TB_ART	72
-district	23	TB_ART	101
-district	24	TB_ART	134
-district	25	TB_ART	237
-district	26	TB_ART	27
-district	27	TB_ART	42
-district	28	TB_ART	26
-district	29	TB_ART	41
-district	30	TB_ART	9
-district	31	TB_ART	29
-region	28	TB_ART	718
-district	89	TB_ART	160
-district	90	TB_ART	139
-district	91	TB_ART	45
-district	92	TB_ART	109
-district	93	TB_ART	46
-district	94	TB_ART	160
-district	95	TB_ART	14
-region	29	TB_ART	673
-district	128	TB_ART	0
-district	129	TB_ART	0
-district	130	TB_ART	0
-district	131	TB_ART	0
-district	132	TB_ART	0
-district	133	TB_ART	0
-district	169	TB_ART	0
-region	16	TB_ART	0
-district	134	TB_ART	0
-district	135	TB_ART	0
-district	136	TB_ART	0
-district	137	TB_ART	0
-district	138	TB_ART	0
-district	139	TB_ART	0
-region	15	TB_ART	0
-region	13	TB_ART	0
-district	49	TB_ART	63
-district	50	TB_ART	87
-district	51	TB_ART	57
-district	52	TB_ART	42
-district	53	TB_ART	27
-district	54	TB_ART	54
-region	14	TB_ART	330
-district	96	TB_ART	0
-district	97	TB_ART	0
-district	98	TB_ART	0
-district	99	TB_ART	0
-region	23	TB_ART	0
-district	55	TB_ART	7
-district	56	TB_ART	14
-district	57	TB_ART	34
-district	58	TB_ART	51
-district	59	TB_ART	55
-district	60	TB_ART	4
-district	61	TB_ART	22
-region	19	TB_ART	187
-district	140	TB_ART	56
-district	141	TB_ART	56
-district	142	TB_ART	118
-district	143	TB_ART	15
-district	144	TB_ART	116
-district	145	TB_ART	0
-region	21	TB_ART	361
-region	30	TB_ART	0
-district	108	TB_ART	260
-district	109	TB_ART	35
-district	110	TB_ART	95
-district	111	TB_ART	0
-district	112	TB_ART	247
-region	25	TB_ART	637
-district	15	TB_ART	26
-district	16	TB_ART	16
-district	17	TB_ART	18
-district	18	TB_ART	77
-district	19	TB_ART	39
-district	20	TB_ART	155
-district	21	TB_ART	81
-region	11	TB_ART	412
-district	100	TB_ART	0
-district	101	TB_ART	0
-district	102	TB_ART	0
-district	103	TB_ART	0
-district	104	TB_ART	0
-district	105	TB_ART	0
-district	106	TB_ART	0
-district	107	TB_ART	0
-region	10	TB_ART	0
-district	1	TB_ART	0
-district	2	TB_ART	0
-district	3	TB_ART	0
-district	4	TB_ART	0
-district	5	TB_ART	0
-district	6	TB_ART	0
-district	7	TB_ART	0
-region	3	TB_ART	0
-district	39	TB_ART	74
-district	40	TB_ART	23
-district	41	TB_ART	31
-district	42	TB_ART	73
-district	43	TB_ART	32
-district	44	TB_ART	4
-district	45	TB_ART	65
-region	22	TB_ART	302
-district	32	TB_ART	151
-district	33	TB_ART	66
-district	34	TB_ART	266
-district	35	TB_ART	105
-district	36	TB_ART	178
-district	37	TB_ART	85
-district	38	TB_ART	12
-region	18	TB_ART	863
-region	8	TB_ART	0
-region	7	TB_ART	0
-district	83	TB_ART	1
-district	84	TB_ART	14
-district	85	TB_ART	49
-district	86	TB_ART	76
-district	87	TB_ART	43
-district	88	TB_ART	11
-region	27	TB_ART	194
-district	149	TB_ART	64
-district	150	TB_ART	41
-district	151	TB_ART	71
-district	152	TB_ART	106
-district	153	TB_ART	19
-region	26	TB_ART	301
-district	121	TB_ART	10
-district	122	TB_ART	44
-district	123	TB_ART	466
-district	124	TB_ART	114
-district	125	TB_ART	112
-district	126	TB_ART	142
-district	127	TB_ART	21
-region	20	TB_ART	909
-district	113	TB_ART	0
-district	114	TB_ART	0
-district	115	TB_ART	0
-district	116	TB_ART	0
-district	117	TB_ART	0
-district	118	TB_ART	0
-district	119	TB_ART	0
-district	120	TB_ART	0
-region	6	TB_ART	0
-district	8	TB_ART	34
-district	9	TB_ART	56
-district	10	TB_ART	142
-district	11	TB_ART	25
-district	12	TB_ART	24
-district	13	TB_ART	142
-district	14	TB_ART	10
-region	1	TB_ART	433
-district	68	TB_ART	121
-district	69	TB_ART	127
-district	70	TB_ART	187
-district	71	TB_ART	76
-district	72	TB_ART	68
-region	5	TB_ART	579
-district	146	TB_ART	0
-district	147	TB_ART	0
-district	148	TB_ART	0
-region	9	TB_ART	0
-district	46	TB_ART	248
-district	47	TB_ART	629
-district	48	TB_ART	1541
-region	2	TB_ART	2418
-district	73	TB_ART	186
-district	74	TB_ART	115
-district	75	TB_ART	117
-district	76	TB_ART	167
-district	77	TB_ART	33
-district	78	TB_ART	117
-district	79	TB_ART	182
-district	80	TB_ART	42
-district	81	TB_ART	39
-district	82	TB_ART	2
-region	17	TB_ART	1000
-district	62	TB_ART	108
-district	63	TB_ART	48
-district	64	TB_ART	73
-district	65	TB_ART	221
-district	66	TB_ART	29
-district	67	TB_ART	24
-region	24	TB_ART	503
-district	154	TB_ART	112
-district	155	TB_ART	2
-district	156	TB_ART	41
-district	157	TB_ART	112
-district	158	TB_ART	61
-region	4	TB_ART	328
-country	TZ	TB_ART	11232
-district	22	TX_RET_NUM	90
-district	23	TX_RET_NUM	642
-district	24	TX_RET_NUM	137
-district	25	TX_RET_NUM	1412
-district	26	TX_RET_NUM	213
-district	27	TX_RET_NUM	231
-district	28	TX_RET_NUM	193
-district	29	TX_RET_NUM	208
-district	30	TX_RET_NUM	145
-district	31	TX_RET_NUM	277
-region	28	TX_RET_NUM	3548
-district	89	TX_RET_NUM	1986
-district	90	TX_RET_NUM	1454
-district	91	TX_RET_NUM	412
-district	92	TX_RET_NUM	436
-district	93	TX_RET_NUM	512
-district	94	TX_RET_NUM	744
-district	95	TX_RET_NUM	568
-region	29	TX_RET_NUM	6112
-district	128	TX_RET_NUM	615
-district	129	TX_RET_NUM	101
-district	130	TX_RET_NUM	335
-district	131	TX_RET_NUM	754
-district	132	TX_RET_NUM	1094
-district	133	TX_RET_NUM	236
-district	169	TX_RET_NUM	884
-region	16	TX_RET_NUM	4019
-district	134	TX_RET_NUM	167
-district	135	TX_RET_NUM	98
-district	136	TX_RET_NUM	119
-district	137	TX_RET_NUM	79
-district	138	TX_RET_NUM	212
-district	139	TX_RET_NUM	190
-region	15	TX_RET_NUM	865
-region	13	TX_RET_NUM	0
-district	49	TX_RET_NUM	522
-district	50	TX_RET_NUM	523
-district	51	TX_RET_NUM	463
-district	52	TX_RET_NUM	246
-district	53	TX_RET_NUM	273
-district	54	TX_RET_NUM	450
-region	14	TX_RET_NUM	2477
-district	96	TX_RET_NUM	68
-district	97	TX_RET_NUM	927
-district	98	TX_RET_NUM	559
-district	99	TX_RET_NUM	1160
-region	23	TX_RET_NUM	2714
-district	55	TX_RET_NUM	167
-district	56	TX_RET_NUM	251
-district	57	TX_RET_NUM	614
-district	58	TX_RET_NUM	356
-district	59	TX_RET_NUM	580
-district	60	TX_RET_NUM	64
-district	61	TX_RET_NUM	392
-region	19	TX_RET_NUM	2424
-district	140	TX_RET_NUM	1279
-district	141	TX_RET_NUM	629
-district	142	TX_RET_NUM	788
-district	143	TX_RET_NUM	497
-district	144	TX_RET_NUM	724
-district	145	TX_RET_NUM	561
-region	21	TX_RET_NUM	4478
-region	30	TX_RET_NUM	0
-district	108	TX_RET_NUM	1309
-district	109	TX_RET_NUM	1012
-district	110	TX_RET_NUM	985
-district	111	TX_RET_NUM	0
-district	112	TX_RET_NUM	1450
-region	25	TX_RET_NUM	4756
-district	15	TX_RET_NUM	311
-district	16	TX_RET_NUM	209
-district	17	TX_RET_NUM	351
-district	18	TX_RET_NUM	351
-district	19	TX_RET_NUM	275
-district	20	TX_RET_NUM	926
-district	21	TX_RET_NUM	247
-region	11	TX_RET_NUM	2670
-district	100	TX_RET_NUM	137
-district	101	TX_RET_NUM	71
-district	102	TX_RET_NUM	34
-district	103	TX_RET_NUM	508
-district	104	TX_RET_NUM	190
-district	105	TX_RET_NUM	27
-district	106	TX_RET_NUM	47
-district	107	TX_RET_NUM	142
-region	10	TX_RET_NUM	1156
-district	1	TX_RET_NUM	178
-district	2	TX_RET_NUM	319
-district	3	TX_RET_NUM	306
-district	4	TX_RET_NUM	284
-district	5	TX_RET_NUM	1063
-district	6	TX_RET_NUM	146
-district	7	TX_RET_NUM	40
-region	3	TX_RET_NUM	2336
-district	39	TX_RET_NUM	807
-district	40	TX_RET_NUM	271
-district	41	TX_RET_NUM	419
-district	42	TX_RET_NUM	774
-district	43	TX_RET_NUM	483
-district	44	TX_RET_NUM	95
-district	45	TX_RET_NUM	662
-region	22	TX_RET_NUM	3511
-district	32	TX_RET_NUM	620
-district	33	TX_RET_NUM	259
-district	34	TX_RET_NUM	1011
-district	35	TX_RET_NUM	327
-district	36	TX_RET_NUM	1069
-district	37	TX_RET_NUM	396
-district	38	TX_RET_NUM	134
-region	18	TX_RET_NUM	3816
-region	8	TX_RET_NUM	0
-region	7	TX_RET_NUM	0
-district	83	TX_RET_NUM	189
-district	84	TX_RET_NUM	83
-district	85	TX_RET_NUM	416
-district	86	TX_RET_NUM	334
-district	87	TX_RET_NUM	186
-district	88	TX_RET_NUM	107
-region	27	TX_RET_NUM	1315
-district	149	TX_RET_NUM	768
-district	150	TX_RET_NUM	310
-district	151	TX_RET_NUM	706
-district	152	TX_RET_NUM	780
-district	153	TX_RET_NUM	636
-region	26	TX_RET_NUM	3200
-district	121	TX_RET_NUM	468
-district	122	TX_RET_NUM	1218
-district	123	TX_RET_NUM	2212
-district	124	TX_RET_NUM	809
-district	125	TX_RET_NUM	1395
-district	126	TX_RET_NUM	773
-district	127	TX_RET_NUM	920
-region	20	TX_RET_NUM	7795
-district	113	TX_RET_NUM	607
-district	114	TX_RET_NUM	949
-district	115	TX_RET_NUM	1205
-district	116	TX_RET_NUM	334
-district	117	TX_RET_NUM	496
-district	118	TX_RET_NUM	903
-district	119	TX_RET_NUM	692
-district	120	TX_RET_NUM	610
-region	6	TX_RET_NUM	5796
-district	8	TX_RET_NUM	205
-district	9	TX_RET_NUM	353
-district	10	TX_RET_NUM	992
-district	11	TX_RET_NUM	196
-district	12	TX_RET_NUM	21
-district	13	TX_RET_NUM	992
-district	14	TX_RET_NUM	82
-region	1	TX_RET_NUM	2841
-district	68	TX_RET_NUM	879
-district	69	TX_RET_NUM	2037
-district	70	TX_RET_NUM	1413
-district	71	TX_RET_NUM	951
-district	72	TX_RET_NUM	455
-region	5	TX_RET_NUM	5735
-district	146	TX_RET_NUM	764
-district	147	TX_RET_NUM	472
-district	148	TX_RET_NUM	636
-region	9	TX_RET_NUM	1872
-district	46	TX_RET_NUM	7193
-district	47	TX_RET_NUM	6308
-district	48	TX_RET_NUM	6211
-region	2	TX_RET_NUM	19712
-district	73	TX_RET_NUM	1662
-district	74	TX_RET_NUM	3483
-district	75	TX_RET_NUM	1962
-district	76	TX_RET_NUM	869
-district	77	TX_RET_NUM	299
-district	78	TX_RET_NUM	1940
-district	79	TX_RET_NUM	1821
-district	80	TX_RET_NUM	997
-district	81	TX_RET_NUM	1100
-district	82	TX_RET_NUM	68
-region	17	TX_RET_NUM	14201
-district	62	TX_RET_NUM	554
-district	63	TX_RET_NUM	538
-district	64	TX_RET_NUM	728
-district	65	TX_RET_NUM	1267
-district	66	TX_RET_NUM	400
-district	67	TX_RET_NUM	324
-region	24	TX_RET_NUM	3811
-district	154	TX_RET_NUM	1827
-district	155	TX_RET_NUM	185
-district	156	TX_RET_NUM	556
-district	157	TX_RET_NUM	748
-district	158	TX_RET_NUM	798
-region	4	TX_RET_NUM	4114
-country	TZ	TX_RET_NUM	120962
-district	22	TX_RET_DEN	156
-district	23	TX_RET_DEN	846
-district	24	TX_RET_DEN	185
-district	25	TX_RET_DEN	1803
-district	26	TX_RET_DEN	288
-district	27	TX_RET_DEN	336
-district	28	TX_RET_DEN	270
-district	29	TX_RET_DEN	288
-district	30	TX_RET_DEN	195
-district	31	TX_RET_DEN	385
-region	28	TX_RET_DEN	4752
-district	89	TX_RET_DEN	2706
-district	90	TX_RET_DEN	2041
-district	91	TX_RET_DEN	674
-district	92	TX_RET_DEN	629
-district	93	TX_RET_DEN	735
-district	94	TX_RET_DEN	984
-district	95	TX_RET_DEN	917
-region	29	TX_RET_DEN	8686
-district	128	TX_RET_DEN	880
-district	129	TX_RET_DEN	142
-district	130	TX_RET_DEN	524
-district	131	TX_RET_DEN	1023
-district	132	TX_RET_DEN	1554
-district	133	TX_RET_DEN	288
-district	169	TX_RET_DEN	1079
-region	16	TX_RET_DEN	5490
-district	134	TX_RET_DEN	230
-district	135	TX_RET_DEN	149
-district	136	TX_RET_DEN	147
-district	137	TX_RET_DEN	135
-district	138	TX_RET_DEN	411
-district	139	TX_RET_DEN	237
-region	15	TX_RET_DEN	1309
-region	13	TX_RET_DEN	0
-district	49	TX_RET_DEN	625
-district	50	TX_RET_DEN	903
-district	51	TX_RET_DEN	926
-district	52	TX_RET_DEN	496
-district	53	TX_RET_DEN	587
-district	54	TX_RET_DEN	623
-region	14	TX_RET_DEN	4160
-district	96	TX_RET_DEN	112
-district	97	TX_RET_DEN	1032
-district	98	TX_RET_DEN	940
-district	99	TX_RET_DEN	1541
-region	23	TX_RET_DEN	3625
-district	55	TX_RET_DEN	238
-district	56	TX_RET_DEN	387
-district	57	TX_RET_DEN	905
-district	58	TX_RET_DEN	523
-district	59	TX_RET_DEN	780
-district	60	TX_RET_DEN	95
-district	61	TX_RET_DEN	649
-region	19	TX_RET_DEN	3577
-district	140	TX_RET_DEN	1778
-district	141	TX_RET_DEN	803
-district	142	TX_RET_DEN	1113
-district	143	TX_RET_DEN	693
-district	144	TX_RET_DEN	930
-district	145	TX_RET_DEN	761
-region	21	TX_RET_DEN	6078
-region	30	TX_RET_DEN	0
-district	108	TX_RET_DEN	1906
-district	109	TX_RET_DEN	1461
-district	110	TX_RET_DEN	1606
-district	111	TX_RET_DEN	0
-district	112	TX_RET_DEN	2235
-region	25	TX_RET_DEN	7208
-district	15	TX_RET_DEN	408
-district	16	TX_RET_DEN	271
-district	17	TX_RET_DEN	468
-district	18	TX_RET_DEN	563
-district	19	TX_RET_DEN	383
-district	20	TX_RET_DEN	1269
-district	21	TX_RET_DEN	358
-region	11	TX_RET_DEN	3720
-district	100	TX_RET_DEN	191
-district	101	TX_RET_DEN	86
-district	102	TX_RET_DEN	45
-district	103	TX_RET_DEN	781
-district	104	TX_RET_DEN	292
-district	105	TX_RET_DEN	41
-district	106	TX_RET_DEN	63
-district	107	TX_RET_DEN	200
-region	10	TX_RET_DEN	1699
-district	1	TX_RET_DEN	323
-district	2	TX_RET_DEN	467
-district	3	TX_RET_DEN	495
-district	4	TX_RET_DEN	417
-district	5	TX_RET_DEN	1683
-district	6	TX_RET_DEN	247
-district	7	TX_RET_DEN	62
-region	3	TX_RET_DEN	3694
-district	39	TX_RET_DEN	1164
-district	40	TX_RET_DEN	488
-district	41	TX_RET_DEN	620
-district	42	TX_RET_DEN	1122
-district	43	TX_RET_DEN	762
-district	44	TX_RET_DEN	129
-district	45	TX_RET_DEN	992
-region	22	TX_RET_DEN	5277
-district	32	TX_RET_DEN	1041
-district	33	TX_RET_DEN	454
-district	34	TX_RET_DEN	1637
-district	35	TX_RET_DEN	529
-district	36	TX_RET_DEN	1590
-district	37	TX_RET_DEN	654
-district	38	TX_RET_DEN	228
-region	18	TX_RET_DEN	6133
-region	8	TX_RET_DEN	0
-region	7	TX_RET_DEN	0
-district	83	TX_RET_DEN	341
-district	84	TX_RET_DEN	130
-district	85	TX_RET_DEN	653
-district	86	TX_RET_DEN	530
-district	87	TX_RET_DEN	287
-district	88	TX_RET_DEN	174
-region	27	TX_RET_DEN	2115
-district	149	TX_RET_DEN	1064
-district	150	TX_RET_DEN	438
-district	151	TX_RET_DEN	1023
-district	152	TX_RET_DEN	1126
-district	153	TX_RET_DEN	908
-region	26	TX_RET_DEN	4559
-district	121	TX_RET_DEN	691
-district	122	TX_RET_DEN	1789
-district	123	TX_RET_DEN	3057
-district	124	TX_RET_DEN	1148
-district	125	TX_RET_DEN	2046
-district	126	TX_RET_DEN	1207
-district	127	TX_RET_DEN	1338
-region	20	TX_RET_DEN	11276
-district	113	TX_RET_DEN	865
-district	114	TX_RET_DEN	1349
-district	115	TX_RET_DEN	1812
-district	116	TX_RET_DEN	663
-district	117	TX_RET_DEN	686
-district	118	TX_RET_DEN	1208
-district	119	TX_RET_DEN	1035
-district	120	TX_RET_DEN	800
-region	6	TX_RET_DEN	8418
-district	8	TX_RET_DEN	252
-district	9	TX_RET_DEN	449
-district	10	TX_RET_DEN	1440
-district	11	TX_RET_DEN	349
-district	12	TX_RET_DEN	21
-district	13	TX_RET_DEN	1440
-district	14	TX_RET_DEN	144
-region	1	TX_RET_DEN	4095
-district	68	TX_RET_DEN	1284
-district	69	TX_RET_DEN	2447
-district	70	TX_RET_DEN	1826
-district	71	TX_RET_DEN	1157
-district	72	TX_RET_DEN	574
-region	5	TX_RET_DEN	7288
-district	146	TX_RET_DEN	1068
-district	147	TX_RET_DEN	762
-district	148	TX_RET_DEN	834
-region	9	TX_RET_DEN	2664
-district	46	TX_RET_DEN	9728
-district	47	TX_RET_DEN	8541
-district	48	TX_RET_DEN	8771
-region	2	TX_RET_DEN	27040
-district	73	TX_RET_DEN	2587
-district	74	TX_RET_DEN	4968
-district	75	TX_RET_DEN	2954
-district	76	TX_RET_DEN	1094
-district	77	TX_RET_DEN	509
-district	78	TX_RET_DEN	2502
-district	79	TX_RET_DEN	2457
-district	80	TX_RET_DEN	1316
-district	81	TX_RET_DEN	1871
-district	82	TX_RET_DEN	69
-region	17	TX_RET_DEN	20327
-district	62	TX_RET_DEN	777
-district	63	TX_RET_DEN	649
-district	64	TX_RET_DEN	1041
-district	65	TX_RET_DEN	1684
-district	66	TX_RET_DEN	624
-district	67	TX_RET_DEN	431
-region	24	TX_RET_DEN	5206
-district	154	TX_RET_DEN	2684
-district	155	TX_RET_DEN	304
-district	156	TX_RET_DEN	844
-district	157	TX_RET_DEN	1126
-district	158	TX_RET_DEN	1213
-region	4	TX_RET_DEN	6171
-country	TZ	TX_RET_DEN	172854
-district	22	VMMC_CIRC	0
-district	23	VMMC_CIRC	0
-district	24	VMMC_CIRC	0
-district	25	VMMC_CIRC	0
-district	26	VMMC_CIRC	0
-district	27	VMMC_CIRC	0
-district	28	VMMC_CIRC	0
-district	29	VMMC_CIRC	0
-district	30	VMMC_CIRC	0
-district	31	VMMC_CIRC	0
-region	28	VMMC_CIRC	0
-district	89	VMMC_CIRC	12259
-district	90	VMMC_CIRC	16260
-district	91	VMMC_CIRC	13019
-district	92	VMMC_CIRC	7670
-district	93	VMMC_CIRC	11366
-district	94	VMMC_CIRC	3301
-district	95	VMMC_CIRC	23189
-region	29	VMMC_CIRC	87064
-district	128	VMMC_CIRC	686
-district	129	VMMC_CIRC	0
-district	130	VMMC_CIRC	0
-district	131	VMMC_CIRC	0
-district	132	VMMC_CIRC	13585
-district	133	VMMC_CIRC	0
-district	169	VMMC_CIRC	0
-region	16	VMMC_CIRC	14271
-district	134	VMMC_CIRC	0
-district	135	VMMC_CIRC	0
-district	136	VMMC_CIRC	0
-district	137	VMMC_CIRC	0
-district	138	VMMC_CIRC	0
-district	139	VMMC_CIRC	0
-region	15	VMMC_CIRC	0
-region	13	VMMC_CIRC	0
-district	49	VMMC_CIRC	0
-district	50	VMMC_CIRC	0
-district	51	VMMC_CIRC	0
-district	52	VMMC_CIRC	0
-district	53	VMMC_CIRC	0
-district	54	VMMC_CIRC	0
-region	14	VMMC_CIRC	0
-district	96	VMMC_CIRC	4026
-district	97	VMMC_CIRC	11892
-district	98	VMMC_CIRC	11238
-district	99	VMMC_CIRC	2748
-region	23	VMMC_CIRC	29904
-district	55	VMMC_CIRC	0
-district	56	VMMC_CIRC	0
-district	57	VMMC_CIRC	0
-district	58	VMMC_CIRC	0
-district	59	VMMC_CIRC	0
-district	60	VMMC_CIRC	0
-district	61	VMMC_CIRC	0
-region	19	VMMC_CIRC	0
-district	140	VMMC_CIRC	2108
-district	141	VMMC_CIRC	3659
-district	142	VMMC_CIRC	4238
-district	143	VMMC_CIRC	1425
-district	144	VMMC_CIRC	2394
-district	145	VMMC_CIRC	1604
-region	21	VMMC_CIRC	15428
-region	30	VMMC_CIRC	0
-district	108	VMMC_CIRC	5166
-district	109	VMMC_CIRC	24922
-district	110	VMMC_CIRC	21894
-district	111	VMMC_CIRC	0
-district	112	VMMC_CIRC	11775
-region	25	VMMC_CIRC	63757
-district	15	VMMC_CIRC	0
-district	16	VMMC_CIRC	0
-district	17	VMMC_CIRC	0
-district	18	VMMC_CIRC	0
-district	19	VMMC_CIRC	0
-district	20	VMMC_CIRC	0
-district	21	VMMC_CIRC	0
-region	11	VMMC_CIRC	0
-district	100	VMMC_CIRC	0
-district	101	VMMC_CIRC	0
-district	102	VMMC_CIRC	0
-district	103	VMMC_CIRC	0
-district	104	VMMC_CIRC	0
-district	105	VMMC_CIRC	0
-district	106	VMMC_CIRC	0
-district	107	VMMC_CIRC	0
-region	10	VMMC_CIRC	0
-district	1	VMMC_CIRC	0
-district	2	VMMC_CIRC	0
-district	3	VMMC_CIRC	0
-district	4	VMMC_CIRC	0
-district	5	VMMC_CIRC	0
-district	6	VMMC_CIRC	0
-district	7	VMMC_CIRC	0
-region	3	VMMC_CIRC	0
-district	39	VMMC_CIRC	54
-district	40	VMMC_CIRC	0
-district	41	VMMC_CIRC	0
-district	42	VMMC_CIRC	0
-district	43	VMMC_CIRC	0
-district	44	VMMC_CIRC	0
-district	45	VMMC_CIRC	0
-region	22	VMMC_CIRC	54
-district	32	VMMC_CIRC	0
-district	33	VMMC_CIRC	0
-district	34	VMMC_CIRC	0
-district	35	VMMC_CIRC	0
-district	36	VMMC_CIRC	0
-district	37	VMMC_CIRC	0
-district	38	VMMC_CIRC	0
-region	18	VMMC_CIRC	0
-region	8	VMMC_CIRC	0
-region	7	VMMC_CIRC	0
-district	83	VMMC_CIRC	0
-district	84	VMMC_CIRC	0
-district	85	VMMC_CIRC	0
-district	86	VMMC_CIRC	0
-district	87	VMMC_CIRC	0
-district	88	VMMC_CIRC	0
-region	27	VMMC_CIRC	0
-district	149	VMMC_CIRC	28675
-district	150	VMMC_CIRC	14456
-district	151	VMMC_CIRC	1022
-district	152	VMMC_CIRC	21739
-district	153	VMMC_CIRC	21081
-region	26	VMMC_CIRC	86973
-district	121	VMMC_CIRC	792
-district	122	VMMC_CIRC	437
-district	123	VMMC_CIRC	3039
-district	124	VMMC_CIRC	0
-district	125	VMMC_CIRC	20548
-district	126	VMMC_CIRC	0
-district	127	VMMC_CIRC	8641
-region	20	VMMC_CIRC	33457
-district	113	VMMC_CIRC	7504
-district	114	VMMC_CIRC	717
-district	115	VMMC_CIRC	5011
-district	116	VMMC_CIRC	1470
-district	117	VMMC_CIRC	7202
-district	118	VMMC_CIRC	4978
-district	119	VMMC_CIRC	1442
-district	120	VMMC_CIRC	9153
-region	6	VMMC_CIRC	37477
-district	8	VMMC_CIRC	0
-district	9	VMMC_CIRC	0
-district	10	VMMC_CIRC	0
-district	11	VMMC_CIRC	0
-district	12	VMMC_CIRC	0
-district	13	VMMC_CIRC	0
-district	14	VMMC_CIRC	0
-region	1	VMMC_CIRC	0
-district	68	VMMC_CIRC	11772
-district	69	VMMC_CIRC	11066
-district	70	VMMC_CIRC	4086
-district	71	VMMC_CIRC	8348
-district	72	VMMC_CIRC	1561
-region	5	VMMC_CIRC	36833
-district	146	VMMC_CIRC	2946
-district	147	VMMC_CIRC	11833
-district	148	VMMC_CIRC	1204
-region	9	VMMC_CIRC	15983
-district	46	VMMC_CIRC	0
-district	47	VMMC_CIRC	0
-district	48	VMMC_CIRC	0
-region	2	VMMC_CIRC	0
-district	73	VMMC_CIRC	9723
-district	74	VMMC_CIRC	11761
-district	75	VMMC_CIRC	3027
-district	76	VMMC_CIRC	7101
-district	77	VMMC_CIRC	2150
-district	78	VMMC_CIRC	5480
-district	79	VMMC_CIRC	4058
-district	80	VMMC_CIRC	796
-district	81	VMMC_CIRC	20408
-district	82	VMMC_CIRC	0
-region	17	VMMC_CIRC	64504
-district	62	VMMC_CIRC	0
-district	63	VMMC_CIRC	288
-district	64	VMMC_CIRC	1708
-district	65	VMMC_CIRC	73
-district	66	VMMC_CIRC	0
-district	67	VMMC_CIRC	1552
-region	24	VMMC_CIRC	3621
-district	154	VMMC_CIRC	14276
-district	155	VMMC_CIRC	9581
-district	156	VMMC_CIRC	8293
-district	157	VMMC_CIRC	12861
-district	158	VMMC_CIRC	26746
-region	4	VMMC_CIRC	71757
-country	TZ	VMMC_CIRC	615089
-district	22	OVC_SERV	4303
-district	23	OVC_SERV	4258
-district	24	OVC_SERV	4889
-district	25	OVC_SERV	6312
-district	26	OVC_SERV	0
-district	27	OVC_SERV	0
-district	28	OVC_SERV	0
-district	29	OVC_SERV	0
-district	30	OVC_SERV	6405
-district	31	OVC_SERV	0
-region	28	OVC_SERV	26167
-district	89	OVC_SERV	2319
-district	90	OVC_SERV	2112
-district	91	OVC_SERV	478
-district	92	OVC_SERV	244
-district	93	OVC_SERV	403
-district	94	OVC_SERV	529
-district	95	OVC_SERV	0
-region	29	OVC_SERV	6085
-district	128	OVC_SERV	2351
-district	129	OVC_SERV	2753
-district	130	OVC_SERV	164
-district	131	OVC_SERV	2272
-district	132	OVC_SERV	1682
-district	133	OVC_SERV	1571
-district	169	OVC_SERV	502
-region	16	OVC_SERV	11295
-district	134	OVC_SERV	0
-district	135	OVC_SERV	0
-district	136	OVC_SERV	0
-district	137	OVC_SERV	1273
-district	138	OVC_SERV	0
-district	139	OVC_SERV	0
-region	15	OVC_SERV	1273
-region	13	OVC_SERV	0
-district	49	OVC_SERV	3114
-district	50	OVC_SERV	1603
-district	51	OVC_SERV	1816
-district	52	OVC_SERV	1527
-district	53	OVC_SERV	2151
-district	54	OVC_SERV	1078
-region	14	OVC_SERV	11289
-district	96	OVC_SERV	539
-district	97	OVC_SERV	1050
-district	98	OVC_SERV	965
-district	99	OVC_SERV	1147
-region	23	OVC_SERV	3701
-district	55	OVC_SERV	0
-district	56	OVC_SERV	2399
-district	57	OVC_SERV	1476
-district	58	OVC_SERV	685
-district	59	OVC_SERV	988
-district	60	OVC_SERV	0
-district	61	OVC_SERV	272
-region	19	OVC_SERV	5820
-district	140	OVC_SERV	2507
-district	141	OVC_SERV	5985
-district	142	OVC_SERV	5405
-district	143	OVC_SERV	4132
-district	144	OVC_SERV	4214
-district	145	OVC_SERV	0
-region	21	OVC_SERV	22243
-region	30	OVC_SERV	0
-district	108	OVC_SERV	3740
-district	109	OVC_SERV	3268
-district	110	OVC_SERV	10184
-district	111	OVC_SERV	0
-district	112	OVC_SERV	800
-region	25	OVC_SERV	17992
-district	15	OVC_SERV	0
-district	16	OVC_SERV	0
-district	17	OVC_SERV	7150
-district	18	OVC_SERV	0
-district	19	OVC_SERV	0
-district	20	OVC_SERV	0
-district	21	OVC_SERV	5327
-region	11	OVC_SERV	12477
-district	100	OVC_SERV	2383
-district	101	OVC_SERV	668
-district	102	OVC_SERV	1779
-district	103	OVC_SERV	2789
-district	104	OVC_SERV	2290
-district	105	OVC_SERV	323
-district	106	OVC_SERV	2290
-district	107	OVC_SERV	1828
-region	10	OVC_SERV	14350
-district	1	OVC_SERV	2922
-district	2	OVC_SERV	7233
-district	3	OVC_SERV	16190
-district	4	OVC_SERV	4203
-district	5	OVC_SERV	9717
-district	6	OVC_SERV	3689
-district	7	OVC_SERV	2548
-region	3	OVC_SERV	46502
-district	39	OVC_SERV	7794
-district	40	OVC_SERV	11028
-district	41	OVC_SERV	7917
-district	42	OVC_SERV	12445
-district	43	OVC_SERV	7403
-district	44	OVC_SERV	2273
-district	45	OVC_SERV	7342
-region	22	OVC_SERV	56202
-district	32	OVC_SERV	4313
-district	33	OVC_SERV	4741
-district	34	OVC_SERV	6437
-district	35	OVC_SERV	8986
-district	36	OVC_SERV	1871
-district	37	OVC_SERV	5459
-district	38	OVC_SERV	0
-region	18	OVC_SERV	31807
-region	8	OVC_SERV	0
-region	7	OVC_SERV	0
-district	83	OVC_SERV	1925
-district	84	OVC_SERV	2583
-district	85	OVC_SERV	5232
-district	86	OVC_SERV	2547
-district	87	OVC_SERV	1601
-district	88	OVC_SERV	3318
-region	27	OVC_SERV	17206
-district	149	OVC_SERV	0
-district	150	OVC_SERV	0
-district	151	OVC_SERV	863
-district	152	OVC_SERV	0
-district	153	OVC_SERV	1107
-region	26	OVC_SERV	1970
-district	121	OVC_SERV	1337
-district	122	OVC_SERV	2304
-district	123	OVC_SERV	2453
-district	124	OVC_SERV	4350
-district	125	OVC_SERV	1318
-district	126	OVC_SERV	6222
-district	127	OVC_SERV	3250
-region	20	OVC_SERV	21234
-district	113	OVC_SERV	2648
-district	114	OVC_SERV	949
-district	115	OVC_SERV	1212
-district	116	OVC_SERV	476
-district	117	OVC_SERV	0
-district	118	OVC_SERV	0
-district	119	OVC_SERV	957
-district	120	OVC_SERV	1192
-region	6	OVC_SERV	7434
-district	8	OVC_SERV	106
-district	9	OVC_SERV	0
-district	10	OVC_SERV	9136
-district	11	OVC_SERV	5930
-district	12	OVC_SERV	0
-district	13	OVC_SERV	9136
-district	14	OVC_SERV	0
-region	1	OVC_SERV	24308
-district	68	OVC_SERV	7024
-district	69	OVC_SERV	8178
-district	70	OVC_SERV	6783
-district	71	OVC_SERV	12483
-district	72	OVC_SERV	0
-region	5	OVC_SERV	34468
-district	146	OVC_SERV	1477
-district	147	OVC_SERV	1087
-district	148	OVC_SERV	1739
-region	9	OVC_SERV	4303
-district	46	OVC_SERV	12490
-district	47	OVC_SERV	11551
-district	48	OVC_SERV	2714
-region	2	OVC_SERV	26755
-district	73	OVC_SERV	1770
-district	74	OVC_SERV	2364
-district	75	OVC_SERV	1469
-district	76	OVC_SERV	2044
-district	77	OVC_SERV	1815
-district	78	OVC_SERV	3283
-district	79	OVC_SERV	2820
-district	80	OVC_SERV	1265
-district	81	OVC_SERV	2279
-district	82	OVC_SERV	0
-region	17	OVC_SERV	19109
-district	62	OVC_SERV	1417
-district	63	OVC_SERV	1191
-district	64	OVC_SERV	793
-district	65	OVC_SERV	1456
-district	66	OVC_SERV	991
-district	67	OVC_SERV	756
-region	24	OVC_SERV	6604
-district	154	OVC_SERV	1504
-district	155	OVC_SERV	669
-district	156	OVC_SERV	0
-district	157	OVC_SERV	0
-district	158	OVC_SERV	0
-region	4	OVC_SERV	2173
-country	TZ	OVC_SERV	452262
-district	22	PP_PREV	2813
-district	23	PP_PREV	572
-district	24	PP_PREV	0
-district	25	PP_PREV	4762
-district	26	PP_PREV	0
-district	27	PP_PREV	0
-district	28	PP_PREV	0
-district	29	PP_PREV	0
-district	30	PP_PREV	1811
-district	31	PP_PREV	0
-region	28	PP_PREV	9958
-district	89	PP_PREV	0
-district	90	PP_PREV	0
-district	91	PP_PREV	0
-district	92	PP_PREV	0
-district	93	PP_PREV	0
-district	94	PP_PREV	0
-district	95	PP_PREV	0
-region	29	PP_PREV	0
-district	128	PP_PREV	2424
-district	129	PP_PREV	1450
-district	130	PP_PREV	0
-district	131	PP_PREV	0
-district	132	PP_PREV	1509
-district	133	PP_PREV	6593
-district	169	PP_PREV	2728
-region	16	PP_PREV	14704
-district	134	PP_PREV	0
-district	135	PP_PREV	0
-district	136	PP_PREV	0
-district	137	PP_PREV	1220
-district	138	PP_PREV	0
-district	139	PP_PREV	0
-region	15	PP_PREV	1220
-region	13	PP_PREV	0
-district	49	PP_PREV	430
-district	50	PP_PREV	0
-district	51	PP_PREV	1552
-district	52	PP_PREV	0
-district	53	PP_PREV	0
-district	54	PP_PREV	5947
-region	14	PP_PREV	7929
-district	96	PP_PREV	0
-district	97	PP_PREV	10793
-district	98	PP_PREV	0
-district	99	PP_PREV	10052
-region	23	PP_PREV	20845
-district	55	PP_PREV	0
-district	56	PP_PREV	0
-district	57	PP_PREV	0
-district	58	PP_PREV	0
-district	59	PP_PREV	0
-district	60	PP_PREV	0
-district	61	PP_PREV	0
-region	19	PP_PREV	0
-district	140	PP_PREV	1347
-district	141	PP_PREV	29
-district	142	PP_PREV	0
-district	143	PP_PREV	0
-district	144	PP_PREV	0
-district	145	PP_PREV	430
-region	21	PP_PREV	1806
-region	30	PP_PREV	0
-district	108	PP_PREV	3072
-district	109	PP_PREV	0
-district	110	PP_PREV	5821
-district	111	PP_PREV	0
-district	112	PP_PREV	2692
-region	25	PP_PREV	11585
-district	15	PP_PREV	0
-district	16	PP_PREV	0
-district	17	PP_PREV	0
-district	18	PP_PREV	0
-district	19	PP_PREV	0
-district	20	PP_PREV	0
-district	21	PP_PREV	0
-region	11	PP_PREV	0
-district	100	PP_PREV	1189
-district	101	PP_PREV	0
-district	102	PP_PREV	731
-district	103	PP_PREV	4047
-district	104	PP_PREV	1102
-district	105	PP_PREV	0
-district	106	PP_PREV	1336
-district	107	PP_PREV	0
-region	10	PP_PREV	8405
-district	1	PP_PREV	0
-district	2	PP_PREV	0
-district	3	PP_PREV	0
-district	4	PP_PREV	0
-district	5	PP_PREV	1619
-district	6	PP_PREV	0
-district	7	PP_PREV	0
-region	3	PP_PREV	1619
-district	39	PP_PREV	7209
-district	40	PP_PREV	0
-district	41	PP_PREV	0
-district	42	PP_PREV	2069
-district	43	PP_PREV	0
-district	44	PP_PREV	0
-district	45	PP_PREV	6006
-region	22	PP_PREV	15284
-district	32	PP_PREV	0
-district	33	PP_PREV	0
-district	34	PP_PREV	0
-district	35	PP_PREV	0
-district	36	PP_PREV	0
-district	37	PP_PREV	0
-district	38	PP_PREV	0
-region	18	PP_PREV	0
-region	8	PP_PREV	0
-region	7	PP_PREV	0
-district	83	PP_PREV	0
-district	84	PP_PREV	0
-district	85	PP_PREV	0
-district	86	PP_PREV	0
-district	87	PP_PREV	0
-district	88	PP_PREV	0
-region	27	PP_PREV	0
-district	149	PP_PREV	0
-district	150	PP_PREV	0
-district	151	PP_PREV	0
-district	152	PP_PREV	0
-district	153	PP_PREV	0
-region	26	PP_PREV	0
-district	121	PP_PREV	0
-district	122	PP_PREV	0
-district	123	PP_PREV	0
-district	124	PP_PREV	0
-district	125	PP_PREV	0
-district	126	PP_PREV	0
-district	127	PP_PREV	0
-region	20	PP_PREV	0
-district	113	PP_PREV	0
-district	114	PP_PREV	0
-district	115	PP_PREV	0
-district	116	PP_PREV	0
-district	117	PP_PREV	0
-district	118	PP_PREV	0
-district	119	PP_PREV	0
-district	120	PP_PREV	0
-region	6	PP_PREV	0
-district	8	PP_PREV	0
-district	9	PP_PREV	0
-district	10	PP_PREV	0
-district	11	PP_PREV	0
-district	12	PP_PREV	0
-district	13	PP_PREV	0
-district	14	PP_PREV	0
-region	1	PP_PREV	0
-district	68	PP_PREV	0
-district	69	PP_PREV	865
-district	70	PP_PREV	215
-district	71	PP_PREV	77
-district	72	PP_PREV	0
-region	5	PP_PREV	1157
-district	146	PP_PREV	13921
-district	147	PP_PREV	0
-district	148	PP_PREV	0
-region	9	PP_PREV	13921
-district	46	PP_PREV	24504
-district	47	PP_PREV	20172
-district	48	PP_PREV	24235
-region	2	PP_PREV	68911
-district	73	PP_PREV	2682
-district	74	PP_PREV	18485
-district	75	PP_PREV	5985
-district	76	PP_PREV	8445
-district	77	PP_PREV	0
-district	78	PP_PREV	7540
-district	79	PP_PREV	4497
-district	80	PP_PREV	10124
-district	81	PP_PREV	3286
-district	82	PP_PREV	0
-region	17	PP_PREV	61044
-district	62	PP_PREV	0
-district	63	PP_PREV	0
-district	64	PP_PREV	0
-district	65	PP_PREV	21453
-district	66	PP_PREV	10581
-district	67	PP_PREV	11397
-region	24	PP_PREV	43431
-district	154	PP_PREV	0
-district	155	PP_PREV	0
-district	156	PP_PREV	0
-district	157	PP_PREV	0
-district	158	PP_PREV	0
-region	4	PP_PREV	0
-country	TZ	PP_PREV	388062
-district	22	KP_PREV	0
-district	23	KP_PREV	0
-district	24	KP_PREV	0
-district	25	KP_PREV	1477
-district	26	KP_PREV	0
-district	27	KP_PREV	0
-district	28	KP_PREV	0
-district	29	KP_PREV	0
-district	30	KP_PREV	0
-district	31	KP_PREV	0
-region	28	KP_PREV	1477
-district	89	KP_PREV	0
-district	90	KP_PREV	0
-district	91	KP_PREV	0
-district	92	KP_PREV	0
-district	93	KP_PREV	0
-district	94	KP_PREV	0
-district	95	KP_PREV	0
-region	29	KP_PREV	0
-district	128	KP_PREV	0
-district	129	KP_PREV	0
-district	130	KP_PREV	0
-district	131	KP_PREV	0
-district	132	KP_PREV	0
-district	133	KP_PREV	0
-district	169	KP_PREV	0
-region	16	KP_PREV	0
-district	134	KP_PREV	0
-district	135	KP_PREV	0
-district	136	KP_PREV	0
-district	137	KP_PREV	0
-district	138	KP_PREV	0
-district	139	KP_PREV	0
-region	15	KP_PREV	0
-region	13	KP_PREV	0
-district	49	KP_PREV	0
-district	50	KP_PREV	0
-district	51	KP_PREV	0
-district	52	KP_PREV	0
-district	53	KP_PREV	0
-district	54	KP_PREV	0
-region	14	KP_PREV	0
-district	96	KP_PREV	0
-district	97	KP_PREV	33
-district	98	KP_PREV	0
-district	99	KP_PREV	255
-region	23	KP_PREV	288
-district	55	KP_PREV	0
-district	56	KP_PREV	0
-district	57	KP_PREV	0
-district	58	KP_PREV	0
-district	59	KP_PREV	0
-district	60	KP_PREV	0
-district	61	KP_PREV	0
-region	19	KP_PREV	0
-district	140	KP_PREV	567
-district	141	KP_PREV	43
-district	142	KP_PREV	0
-district	143	KP_PREV	0
-district	144	KP_PREV	427
-district	145	KP_PREV	411
-region	21	KP_PREV	1448
-region	30	KP_PREV	0
-district	108	KP_PREV	1273
-district	109	KP_PREV	0
-district	110	KP_PREV	0
-district	111	KP_PREV	0
-district	112	KP_PREV	720
-region	25	KP_PREV	1993
-district	15	KP_PREV	0
-district	16	KP_PREV	0
-district	17	KP_PREV	0
-district	18	KP_PREV	0
-district	19	KP_PREV	0
-district	20	KP_PREV	0
-district	21	KP_PREV	0
-region	11	KP_PREV	0
-district	100	KP_PREV	0
-district	101	KP_PREV	0
-district	102	KP_PREV	0
-district	103	KP_PREV	0
-district	104	KP_PREV	0
-district	105	KP_PREV	0
-district	106	KP_PREV	0
-district	107	KP_PREV	0
-region	10	KP_PREV	0
-district	1	KP_PREV	0
-district	2	KP_PREV	0
-district	3	KP_PREV	0
-district	4	KP_PREV	0
-district	5	KP_PREV	0
-district	6	KP_PREV	0
-district	7	KP_PREV	0
-region	3	KP_PREV	0
-district	39	KP_PREV	440
-district	40	KP_PREV	0
-district	41	KP_PREV	0
-district	42	KP_PREV	0
-district	43	KP_PREV	0
-district	44	KP_PREV	0
-district	45	KP_PREV	8
-region	22	KP_PREV	448
-district	32	KP_PREV	0
-district	33	KP_PREV	0
-district	34	KP_PREV	0
-district	35	KP_PREV	0
-district	36	KP_PREV	0
-district	37	KP_PREV	0
-district	38	KP_PREV	0
-region	18	KP_PREV	0
-region	8	KP_PREV	0
-region	7	KP_PREV	0
-district	83	KP_PREV	0
-district	84	KP_PREV	0
-district	85	KP_PREV	0
-district	86	KP_PREV	0
-district	87	KP_PREV	0
-district	88	KP_PREV	0
-region	27	KP_PREV	0
-district	149	KP_PREV	0
-district	150	KP_PREV	0
-district	151	KP_PREV	0
-district	152	KP_PREV	0
-district	153	KP_PREV	0
-region	26	KP_PREV	0
-district	121	KP_PREV	0
-district	122	KP_PREV	0
-district	123	KP_PREV	815
-district	124	KP_PREV	0
-district	125	KP_PREV	0
-district	126	KP_PREV	1012
-district	127	KP_PREV	0
-region	20	KP_PREV	1827
-district	113	KP_PREV	0
-district	114	KP_PREV	0
-district	115	KP_PREV	0
-district	116	KP_PREV	0
-district	117	KP_PREV	0
-district	118	KP_PREV	0
-district	119	KP_PREV	0
-district	120	KP_PREV	0
-region	6	KP_PREV	0
-district	8	KP_PREV	0
-district	9	KP_PREV	0
-district	10	KP_PREV	0
-district	11	KP_PREV	0
-district	12	KP_PREV	0
-district	13	KP_PREV	0
-district	14	KP_PREV	0
-region	1	KP_PREV	0
-district	68	KP_PREV	0
-district	69	KP_PREV	0
-district	70	KP_PREV	3104
-district	71	KP_PREV	574
-district	72	KP_PREV	1083
-region	5	KP_PREV	4761
-district	146	KP_PREV	749
-district	147	KP_PREV	0
-district	148	KP_PREV	0
-region	9	KP_PREV	749
-district	46	KP_PREV	8955
-district	47	KP_PREV	3961
-district	48	KP_PREV	1686
-region	2	KP_PREV	14602
-district	73	KP_PREV	1059
-district	74	KP_PREV	2873
-district	75	KP_PREV	805
-district	76	KP_PREV	758
-district	77	KP_PREV	728
-district	78	KP_PREV	1362
-district	79	KP_PREV	644
-district	80	KP_PREV	1734
-district	81	KP_PREV	1679
-district	82	KP_PREV	0
-region	17	KP_PREV	11642
-district	62	KP_PREV	0
-district	63	KP_PREV	0
-district	64	KP_PREV	0
-district	65	KP_PREV	589
-district	66	KP_PREV	42
-district	67	KP_PREV	195
-region	24	KP_PREV	826
-district	154	KP_PREV	0
-district	155	KP_PREV	0
-district	156	KP_PREV	0
-district	157	KP_PREV	0
-district	158	KP_PREV	0
-region	4	KP_PREV	0
-country	TZ	KP_PREV	54264
-district	159	HTC_TST	0
-district	159	HTC_TST_POS	0
-district	159	PMTCT_STAT	0
-district	159	PMTCT_STAT_POS	0
-district	159	PMTCT_ARV	0
-district	159	PMTCT_EID	0
-district	159	PMTCT_EID_POS	0
-district	159	PMTCT_CTX	0
-district	159	CARE_NEW	0
-district	159	TX_NEW	0
-district	159	CARE_CURR	0
-district	159	TB_SCREEN	0
-district	159	TX_CURR	0
-district	159	TB_ART	0
-district	159	TX_RET_NUM	0
-district	159	TX_RET_DEN	0
-district	159	VMMC_CIRC	0
-district	159	OVC_SERV	0
-district	159	PP_PREV	0
-district	159	KP_PREV	0
-district	160	HTC_TST	0
-district	160	HTC_TST_POS	0
-district	160	PMTCT_STAT	0
-district	160	PMTCT_STAT_POS	0
-district	160	PMTCT_ARV	0
-district	160	PMTCT_EID	0
-district	160	PMTCT_EID_POS	0
-district	160	PMTCT_CTX	0
-district	160	CARE_NEW	0
-district	160	TX_NEW	0
-district	160	CARE_CURR	0
-district	160	TB_SCREEN	0
-district	160	TX_CURR	0
-district	160	TB_ART	0
-district	160	TX_RET_NUM	0
-district	160	TX_RET_DEN	0
-district	160	VMMC_CIRC	0
-district	160	OVC_SERV	0
-district	160	PP_PREV	0
-district	160	KP_PREV	0
-district	161	HTC_TST	0
-district	161	HTC_TST_POS	0
-district	161	PMTCT_STAT	0
-district	161	PMTCT_STAT_POS	0
-district	161	PMTCT_ARV	0
-district	161	PMTCT_EID	0
-district	161	PMTCT_EID_POS	0
-district	161	PMTCT_CTX	0
-district	161	CARE_NEW	0
-district	161	TX_NEW	0
-district	161	CARE_CURR	0
-district	161	TB_SCREEN	0
-district	161	TX_CURR	0
-district	161	TB_ART	0
-district	161	TX_RET_NUM	0
-district	161	TX_RET_DEN	0
-district	161	VMMC_CIRC	0
-district	161	OVC_SERV	0
-district	161	PP_PREV	0
-district	161	KP_PREV	0
-district	162	HTC_TST	0
-district	162	HTC_TST_POS	0
-district	162	PMTCT_STAT	0
-district	162	PMTCT_STAT_POS	0
-district	162	PMTCT_ARV	0
-district	162	PMTCT_EID	0
-district	162	PMTCT_EID_POS	0
-district	162	PMTCT_CTX	0
-district	162	CARE_NEW	0
-district	162	TX_NEW	0
-district	162	CARE_CURR	0
-district	162	TB_SCREEN	0
-district	162	TX_CURR	0
-district	162	TB_ART	0
-district	162	TX_RET_NUM	0
-district	162	TX_RET_DEN	0
-district	162	VMMC_CIRC	0
-district	162	OVC_SERV	0
-district	162	PP_PREV	0
-district	162	KP_PREV	0
-district	163	HTC_TST	0
-district	163	HTC_TST_POS	0
-district	163	PMTCT_STAT	0
-district	163	PMTCT_STAT_POS	0
-district	163	PMTCT_ARV	0
-district	163	PMTCT_EID	0
-district	163	PMTCT_EID_POS	0
-district	163	PMTCT_CTX	0
-district	163	CARE_NEW	0
-district	163	TX_NEW	0
-district	163	CARE_CURR	0
-district	163	TB_SCREEN	0
-district	163	TX_CURR	0
-district	163	TB_ART	0
-district	163	TX_RET_NUM	0
-district	163	TX_RET_DEN	0
-district	163	VMMC_CIRC	0
-district	163	OVC_SERV	0
-district	163	PP_PREV	0
-district	163	KP_PREV	0
-district	164	HTC_TST	0
-district	164	HTC_TST_POS	0
-district	164	PMTCT_STAT	0
-district	164	PMTCT_STAT_POS	0
-district	164	PMTCT_ARV	0
-district	164	PMTCT_EID	0
-district	164	PMTCT_EID_POS	0
-district	164	PMTCT_CTX	0
-district	164	CARE_NEW	0
-district	164	TX_NEW	0
-district	164	CARE_CURR	0
-district	164	TB_SCREEN	0
-district	164	TX_CURR	0
-district	164	TB_ART	0
-district	164	TX_RET_NUM	0
-district	164	TX_RET_DEN	0
-district	164	VMMC_CIRC	0
-district	164	OVC_SERV	0
-district	164	PP_PREV	0
-district	164	KP_PREV	0
-district	165	HTC_TST	0
-district	165	HTC_TST_POS	0
-district	165	PMTCT_STAT	0
-district	165	PMTCT_STAT_POS	0
-district	165	PMTCT_ARV	0
-district	165	PMTCT_EID	0
-district	165	PMTCT_EID_POS	0
-district	165	PMTCT_CTX	0
-district	165	CARE_NEW	0
-district	165	TX_NEW	0
-district	165	CARE_CURR	0
-district	165	TB_SCREEN	0
-district	165	TX_CURR	0
-district	165	TB_ART	0
-district	165	TX_RET_NUM	0
-district	165	TX_RET_DEN	0
-district	165	VMMC_CIRC	0
-district	165	OVC_SERV	0
-district	165	PP_PREV	0
-district	165	KP_PREV	0
-district	166	HTC_TST	0
-district	166	HTC_TST_POS	0
-district	166	PMTCT_STAT	0
-district	166	PMTCT_STAT_POS	0
-district	166	PMTCT_ARV	0
-district	166	PMTCT_EID	0
-district	166	PMTCT_EID_POS	0
-district	166	PMTCT_CTX	0
-district	166	CARE_NEW	0
-district	166	TX_NEW	0
-district	166	CARE_CURR	0
-district	166	TB_SCREEN	0
-district	166	TX_CURR	0
-district	166	TB_ART	0
-district	166	TX_RET_NUM	0
-district	166	TX_RET_DEN	0
-district	166	VMMC_CIRC	0
-district	166	OVC_SERV	0
-district	166	PP_PREV	0
-district	166	KP_PREV	0
-district	167	HTC_TST	0
-district	167	HTC_TST_POS	0
-district	167	PMTCT_STAT	0
-district	167	PMTCT_STAT_POS	0
-district	167	PMTCT_ARV	0
-district	167	PMTCT_EID	0
-district	167	PMTCT_EID_POS	0
-district	167	PMTCT_CTX	0
-district	167	CARE_NEW	0
-district	167	TX_NEW	0
-district	167	CARE_CURR	0
-district	167	TB_SCREEN	0
-district	167	TX_CURR	0
-district	167	TB_ART	0
-district	167	TX_RET_NUM	0
-district	167	TX_RET_DEN	0
-district	167	VMMC_CIRC	0
-district	167	OVC_SERV	0
-district	167	PP_PREV	0
-district	167	KP_PREV	0
-district	168	HTC_TST	0
-district	168	HTC_TST_POS	0
-district	168	PMTCT_STAT	0
-district	168	PMTCT_STAT_POS	0
-district	168	PMTCT_ARV	0
-district	168	PMTCT_EID	0
-district	168	PMTCT_EID_POS	0
-district	168	PMTCT_CTX	0
-district	168	CARE_NEW	0
-district	168	TX_NEW	0
-district	168	CARE_CURR	0
-district	168	TB_SCREEN	0
-district	168	TX_CURR	0
-district	168	TB_ART	0
-district	168	TX_RET_NUM	0
-district	168	TX_RET_DEN	0
-district	168	VMMC_CIRC	0
-district	168	OVC_SERV	0
-district	168	PP_PREV	0
-district	168	KP_PREV	0
+COPY pepfar (geo_level, geo_code, pepfar, total, geo_version) FROM stdin;
+region	9	PMTCT_STAT	30339	2009
+district	22	HTC_TST	24672	2009
+district	23	HTC_TST	25091	2009
+district	24	HTC_TST	15483	2009
+district	25	HTC_TST	36671	2009
+district	26	HTC_TST	10113	2009
+district	27	HTC_TST	22240	2009
+district	28	HTC_TST	28568	2009
+district	29	HTC_TST	13033	2009
+district	30	HTC_TST	9565	2009
+district	31	HTC_TST	11667	2009
+region	28	HTC_TST	197103	2009
+district	89	HTC_TST	100356	2009
+district	90	HTC_TST	73856	2009
+district	91	HTC_TST	57968	2009
+district	92	HTC_TST	30539	2009
+district	93	HTC_TST	36330	2009
+district	94	HTC_TST	34145	2009
+district	95	HTC_TST	58330	2009
+region	29	HTC_TST	391524	2009
+district	128	HTC_TST	43081	2009
+district	129	HTC_TST	27975	2009
+district	130	HTC_TST	15617	2009
+district	131	HTC_TST	49501	2009
+district	132	HTC_TST	46325	2009
+district	133	HTC_TST	20713	2009
+district	169	HTC_TST	35140	2009
+region	16	HTC_TST	238352	2009
+district	134	HTC_TST	30658	2009
+district	135	HTC_TST	18454	2009
+district	136	HTC_TST	31775	2009
+district	137	HTC_TST	17460	2009
+district	138	HTC_TST	42856	2009
+district	139	HTC_TST	24118	2009
+region	15	HTC_TST	165321	2009
+region	13	HTC_TST	0	2009
+district	49	HTC_TST	26761	2009
+district	50	HTC_TST	20303	2009
+district	51	HTC_TST	26375	2009
+district	52	HTC_TST	8769	2009
+district	53	HTC_TST	15507	2009
+district	54	HTC_TST	14183	2009
+region	14	HTC_TST	111898	2009
+district	96	HTC_TST	46519	2009
+district	97	HTC_TST	52817	2009
+district	98	HTC_TST	48217	2009
+district	99	HTC_TST	64209	2009
+region	23	HTC_TST	211762	2009
+district	55	HTC_TST	16609	2009
+district	56	HTC_TST	21046	2009
+district	57	HTC_TST	20287	2009
+district	58	HTC_TST	20347	2009
+district	59	HTC_TST	25468	2009
+district	60	HTC_TST	8322	2009
+district	61	HTC_TST	19249	2009
+region	19	HTC_TST	131328	2009
+district	140	HTC_TST	16114	2009
+district	141	HTC_TST	16231	2009
+district	142	HTC_TST	11898	2009
+district	143	HTC_TST	11717	2009
+district	144	HTC_TST	12373	2009
+district	145	HTC_TST	12931	2009
+region	21	HTC_TST	81264	2009
+region	30	HTC_TST	0	2009
+district	108	HTC_TST	53446	2009
+district	109	HTC_TST	65398	2009
+district	110	HTC_TST	74353	2009
+district	111	HTC_TST	512	2009
+district	112	HTC_TST	49041	2009
+region	25	HTC_TST	242750	2009
+district	15	HTC_TST	24723	2009
+district	16	HTC_TST	12260	2009
+district	17	HTC_TST	26659	2009
+district	18	HTC_TST	20828	2009
+district	19	HTC_TST	13342	2009
+district	20	HTC_TST	34386	2009
+district	21	HTC_TST	11797	2009
+region	11	HTC_TST	143995	2009
+district	100	HTC_TST	40116	2009
+district	101	HTC_TST	37079	2009
+district	102	HTC_TST	19006	2009
+district	103	HTC_TST	62567	2009
+district	104	HTC_TST	56337	2009
+district	105	HTC_TST	20573	2009
+district	106	HTC_TST	24302	2009
+district	107	HTC_TST	44453	2009
+region	10	HTC_TST	304433	2009
+district	1	HTC_TST	9934	2009
+district	2	HTC_TST	16499	2009
+district	3	HTC_TST	15803	2009
+district	4	HTC_TST	13829	2009
+district	5	HTC_TST	27329	2009
+district	6	HTC_TST	5856	2009
+district	7	HTC_TST	4677	2009
+region	3	HTC_TST	93927	2009
+district	39	HTC_TST	46821	2009
+district	40	HTC_TST	18736	2009
+district	41	HTC_TST	16694	2009
+district	42	HTC_TST	35317	2009
+district	43	HTC_TST	49811	2009
+district	44	HTC_TST	9180	2009
+district	45	HTC_TST	21252	2009
+region	22	HTC_TST	197811	2009
+district	32	HTC_TST	39421	2009
+district	33	HTC_TST	32780	2009
+district	34	HTC_TST	27950	2009
+district	35	HTC_TST	25215	2009
+district	36	HTC_TST	64956	2009
+district	37	HTC_TST	34381	2009
+district	38	HTC_TST	8314	2009
+region	18	HTC_TST	233017	2009
+region	8	HTC_TST	0	2009
+region	7	HTC_TST	0	2009
+district	83	HTC_TST	11861	2009
+district	84	HTC_TST	11021	2009
+district	85	HTC_TST	23892	2009
+district	86	HTC_TST	11829	2009
+district	87	HTC_TST	16585	2009
+district	88	HTC_TST	8480	2009
+region	27	HTC_TST	83668	2009
+district	149	HTC_TST	91350	2009
+district	150	HTC_TST	30367	2009
+district	151	HTC_TST	43869	2009
+district	152	HTC_TST	63556	2009
+district	153	HTC_TST	27493	2009
+region	26	HTC_TST	256635	2009
+district	121	HTC_TST	23036	2009
+district	122	HTC_TST	40653	2009
+district	123	HTC_TST	69619	2009
+district	124	HTC_TST	38817	2009
+district	125	HTC_TST	64626	2009
+district	126	HTC_TST	21592	2009
+district	127	HTC_TST	31861	2009
+region	20	HTC_TST	290204	2009
+district	113	HTC_TST	42660	2009
+district	114	HTC_TST	25283	2009
+district	115	HTC_TST	55500	2009
+district	116	HTC_TST	29560	2009
+district	117	HTC_TST	49130	2009
+district	118	HTC_TST	64211	2009
+district	119	HTC_TST	37704	2009
+district	120	HTC_TST	58939	2009
+region	6	HTC_TST	362987	2009
+district	8	HTC_TST	20920	2009
+district	9	HTC_TST	36756	2009
+district	10	HTC_TST	78686	2009
+district	11	HTC_TST	23609	2009
+district	12	HTC_TST	16628	2009
+district	13	HTC_TST	78686	2009
+district	14	HTC_TST	8544	2009
+region	1	HTC_TST	263829	2009
+district	68	HTC_TST	33450	2009
+district	69	HTC_TST	31200	2009
+district	70	HTC_TST	22188	2009
+district	71	HTC_TST	23927	2009
+district	72	HTC_TST	7551	2009
+region	5	HTC_TST	118316	2009
+district	146	HTC_TST	23148	2009
+district	147	HTC_TST	60337	2009
+district	148	HTC_TST	23609	2009
+region	9	HTC_TST	107094	2009
+district	46	HTC_TST	214510	2009
+district	47	HTC_TST	179904	2009
+district	48	HTC_TST	130749	2009
+region	2	HTC_TST	525163	2009
+district	73	HTC_TST	52201	2009
+district	74	HTC_TST	55517	2009
+district	75	HTC_TST	41994	2009
+district	76	HTC_TST	37245	2009
+district	77	HTC_TST	13764	2009
+district	78	HTC_TST	38646	2009
+district	79	HTC_TST	41685	2009
+district	80	HTC_TST	34581	2009
+district	81	HTC_TST	33517	2009
+district	82	HTC_TST	1267	2009
+region	17	HTC_TST	350417	2009
+district	62	HTC_TST	24887	2009
+district	63	HTC_TST	22183	2009
+district	64	HTC_TST	40163	2009
+district	65	HTC_TST	39893	2009
+district	66	HTC_TST	26798	2009
+district	67	HTC_TST	28674	2009
+region	24	HTC_TST	182598	2009
+district	154	HTC_TST	83342	2009
+district	155	HTC_TST	33974	2009
+district	156	HTC_TST	60066	2009
+district	157	HTC_TST	44710	2009
+district	158	HTC_TST	28683	2009
+region	4	HTC_TST	250775	2009
+country	TZ	HTC_TST	5971075	2009
+district	22	HTC_TST_POS	0	2009
+district	23	HTC_TST_POS	0	2009
+district	24	HTC_TST_POS	0	2009
+district	25	HTC_TST_POS	0	2009
+district	26	HTC_TST_POS	0	2009
+district	27	HTC_TST_POS	0	2009
+district	28	HTC_TST_POS	0	2009
+district	29	HTC_TST_POS	0	2009
+district	30	HTC_TST_POS	0	2009
+district	31	HTC_TST_POS	0	2009
+region	28	HTC_TST_POS	0	2009
+district	89	HTC_TST_POS	0	2009
+district	90	HTC_TST_POS	0	2009
+district	91	HTC_TST_POS	0	2009
+district	92	HTC_TST_POS	0	2009
+district	93	HTC_TST_POS	0	2009
+district	94	HTC_TST_POS	0	2009
+district	95	HTC_TST_POS	0	2009
+region	29	HTC_TST_POS	0	2009
+district	128	HTC_TST_POS	0	2009
+district	129	HTC_TST_POS	0	2009
+district	130	HTC_TST_POS	0	2009
+district	131	HTC_TST_POS	0	2009
+district	132	HTC_TST_POS	0	2009
+district	133	HTC_TST_POS	0	2009
+district	169	HTC_TST_POS	0	2009
+region	16	HTC_TST_POS	0	2009
+district	134	HTC_TST_POS	0	2009
+district	135	HTC_TST_POS	0	2009
+district	136	HTC_TST_POS	0	2009
+district	137	HTC_TST_POS	0	2009
+district	138	HTC_TST_POS	0	2009
+district	139	HTC_TST_POS	0	2009
+region	15	HTC_TST_POS	0	2009
+region	13	HTC_TST_POS	0	2009
+district	49	HTC_TST_POS	0	2009
+district	50	HTC_TST_POS	0	2009
+district	51	HTC_TST_POS	0	2009
+district	52	HTC_TST_POS	0	2009
+district	53	HTC_TST_POS	0	2009
+district	54	HTC_TST_POS	0	2009
+region	14	HTC_TST_POS	0	2009
+district	96	HTC_TST_POS	0	2009
+district	97	HTC_TST_POS	0	2009
+district	98	HTC_TST_POS	0	2009
+district	99	HTC_TST_POS	0	2009
+region	23	HTC_TST_POS	0	2009
+district	55	HTC_TST_POS	0	2009
+district	56	HTC_TST_POS	0	2009
+district	57	HTC_TST_POS	0	2009
+district	58	HTC_TST_POS	0	2009
+district	59	HTC_TST_POS	0	2009
+district	60	HTC_TST_POS	0	2009
+district	61	HTC_TST_POS	0	2009
+region	19	HTC_TST_POS	0	2009
+district	140	HTC_TST_POS	0	2009
+district	141	HTC_TST_POS	0	2009
+district	142	HTC_TST_POS	0	2009
+district	143	HTC_TST_POS	0	2009
+district	144	HTC_TST_POS	0	2009
+district	145	HTC_TST_POS	0	2009
+region	21	HTC_TST_POS	0	2009
+region	30	HTC_TST_POS	0	2009
+district	108	HTC_TST_POS	0	2009
+district	109	HTC_TST_POS	0	2009
+district	110	HTC_TST_POS	0	2009
+district	111	HTC_TST_POS	0	2009
+district	112	HTC_TST_POS	0	2009
+region	25	HTC_TST_POS	0	2009
+district	15	HTC_TST_POS	0	2009
+district	16	HTC_TST_POS	0	2009
+district	17	HTC_TST_POS	0	2009
+district	18	HTC_TST_POS	0	2009
+district	19	HTC_TST_POS	0	2009
+district	20	HTC_TST_POS	0	2009
+district	21	HTC_TST_POS	0	2009
+region	11	HTC_TST_POS	0	2009
+district	100	HTC_TST_POS	0	2009
+district	101	HTC_TST_POS	0	2009
+district	102	HTC_TST_POS	0	2009
+district	103	HTC_TST_POS	0	2009
+district	104	HTC_TST_POS	0	2009
+district	105	HTC_TST_POS	0	2009
+district	106	HTC_TST_POS	0	2009
+district	107	HTC_TST_POS	0	2009
+region	10	HTC_TST_POS	0	2009
+district	1	HTC_TST_POS	0	2009
+district	2	HTC_TST_POS	0	2009
+district	3	HTC_TST_POS	0	2009
+district	4	HTC_TST_POS	0	2009
+district	5	HTC_TST_POS	0	2009
+district	6	HTC_TST_POS	0	2009
+district	7	HTC_TST_POS	0	2009
+region	3	HTC_TST_POS	0	2009
+district	39	HTC_TST_POS	0	2009
+district	40	HTC_TST_POS	0	2009
+district	41	HTC_TST_POS	0	2009
+district	42	HTC_TST_POS	0	2009
+district	43	HTC_TST_POS	0	2009
+district	44	HTC_TST_POS	0	2009
+district	45	HTC_TST_POS	0	2009
+region	22	HTC_TST_POS	0	2009
+district	32	HTC_TST_POS	0	2009
+district	33	HTC_TST_POS	0	2009
+district	34	HTC_TST_POS	0	2009
+district	35	HTC_TST_POS	0	2009
+district	36	HTC_TST_POS	0	2009
+district	37	HTC_TST_POS	0	2009
+district	38	HTC_TST_POS	0	2009
+region	18	HTC_TST_POS	0	2009
+region	8	HTC_TST_POS	0	2009
+region	7	HTC_TST_POS	0	2009
+district	83	HTC_TST_POS	0	2009
+district	84	HTC_TST_POS	0	2009
+district	85	HTC_TST_POS	0	2009
+district	86	HTC_TST_POS	0	2009
+district	87	HTC_TST_POS	0	2009
+district	88	HTC_TST_POS	0	2009
+region	27	HTC_TST_POS	0	2009
+district	149	HTC_TST_POS	0	2009
+district	150	HTC_TST_POS	0	2009
+district	151	HTC_TST_POS	0	2009
+district	152	HTC_TST_POS	0	2009
+district	153	HTC_TST_POS	0	2009
+region	26	HTC_TST_POS	0	2009
+district	121	HTC_TST_POS	0	2009
+district	122	HTC_TST_POS	0	2009
+district	123	HTC_TST_POS	0	2009
+district	124	HTC_TST_POS	0	2009
+district	125	HTC_TST_POS	0	2009
+district	126	HTC_TST_POS	0	2009
+district	127	HTC_TST_POS	0	2009
+region	20	HTC_TST_POS	0	2009
+district	113	HTC_TST_POS	0	2009
+district	114	HTC_TST_POS	0	2009
+district	115	HTC_TST_POS	0	2009
+district	116	HTC_TST_POS	0	2009
+district	117	HTC_TST_POS	0	2009
+district	118	HTC_TST_POS	0	2009
+district	119	HTC_TST_POS	0	2009
+district	120	HTC_TST_POS	0	2009
+region	6	HTC_TST_POS	0	2009
+district	8	HTC_TST_POS	0	2009
+district	9	HTC_TST_POS	0	2009
+district	10	HTC_TST_POS	0	2009
+district	11	HTC_TST_POS	0	2009
+district	12	HTC_TST_POS	0	2009
+district	13	HTC_TST_POS	0	2009
+district	14	HTC_TST_POS	0	2009
+region	1	HTC_TST_POS	0	2009
+district	68	HTC_TST_POS	0	2009
+district	69	HTC_TST_POS	0	2009
+district	70	HTC_TST_POS	0	2009
+district	71	HTC_TST_POS	0	2009
+district	72	HTC_TST_POS	0	2009
+region	5	HTC_TST_POS	0	2009
+district	146	HTC_TST_POS	0	2009
+district	147	HTC_TST_POS	0	2009
+district	148	HTC_TST_POS	0	2009
+region	9	HTC_TST_POS	0	2009
+district	46	HTC_TST_POS	0	2009
+district	47	HTC_TST_POS	0	2009
+district	48	HTC_TST_POS	0	2009
+region	2	HTC_TST_POS	0	2009
+district	73	HTC_TST_POS	0	2009
+district	74	HTC_TST_POS	0	2009
+district	75	HTC_TST_POS	0	2009
+district	76	HTC_TST_POS	0	2009
+district	77	HTC_TST_POS	0	2009
+district	78	HTC_TST_POS	0	2009
+district	79	HTC_TST_POS	0	2009
+district	80	HTC_TST_POS	0	2009
+district	81	HTC_TST_POS	0	2009
+district	82	HTC_TST_POS	0	2009
+region	17	HTC_TST_POS	0	2009
+district	62	HTC_TST_POS	0	2009
+district	63	HTC_TST_POS	0	2009
+district	64	HTC_TST_POS	0	2009
+district	65	HTC_TST_POS	0	2009
+district	66	HTC_TST_POS	0	2009
+district	67	HTC_TST_POS	0	2009
+region	24	HTC_TST_POS	0	2009
+district	154	HTC_TST_POS	0	2009
+district	155	HTC_TST_POS	0	2009
+district	156	HTC_TST_POS	0	2009
+district	157	HTC_TST_POS	0	2009
+district	158	HTC_TST_POS	0	2009
+region	4	HTC_TST_POS	0	2009
+country	TZ	HTC_TST_POS	1972	2009
+district	22	PMTCT_STAT	8399	2009
+district	23	PMTCT_STAT	6152	2009
+district	24	PMTCT_STAT	4249	2009
+district	25	PMTCT_STAT	10685	2009
+district	26	PMTCT_STAT	1736	2009
+district	27	PMTCT_STAT	11247	2009
+district	28	PMTCT_STAT	10168	2009
+district	29	PMTCT_STAT	3511	2009
+district	30	PMTCT_STAT	2151	2009
+district	31	PMTCT_STAT	2352	2009
+region	28	PMTCT_STAT	60650	2009
+district	89	PMTCT_STAT	27840	2009
+district	90	PMTCT_STAT	20963	2009
+district	91	PMTCT_STAT	19741	2009
+district	92	PMTCT_STAT	10725	2009
+district	93	PMTCT_STAT	13301	2009
+district	94	PMTCT_STAT	10282	2009
+district	95	PMTCT_STAT	20767	2009
+region	29	PMTCT_STAT	123619	2009
+district	128	PMTCT_STAT	11291	2009
+district	129	PMTCT_STAT	7086	2009
+district	130	PMTCT_STAT	5515	2009
+district	131	PMTCT_STAT	10843	2009
+district	132	PMTCT_STAT	9184	2009
+district	133	PMTCT_STAT	4611	2009
+district	169	PMTCT_STAT	6590	2009
+region	16	PMTCT_STAT	55120	2009
+district	134	PMTCT_STAT	9760	2009
+district	135	PMTCT_STAT	9112	2009
+district	136	PMTCT_STAT	11622	2009
+district	137	PMTCT_STAT	7511	2009
+district	138	PMTCT_STAT	9547	2009
+district	139	PMTCT_STAT	2736	2009
+region	15	PMTCT_STAT	50288	2009
+region	13	PMTCT_STAT	0	2009
+district	49	PMTCT_STAT	7778	2009
+district	50	PMTCT_STAT	6505	2009
+district	51	PMTCT_STAT	5058	2009
+district	52	PMTCT_STAT	3788	2009
+district	53	PMTCT_STAT	3719	2009
+district	54	PMTCT_STAT	2131	2009
+region	14	PMTCT_STAT	28979	2009
+district	96	PMTCT_STAT	7639	2009
+district	97	PMTCT_STAT	13557	2009
+district	98	PMTCT_STAT	11543	2009
+district	99	PMTCT_STAT	12923	2009
+region	23	PMTCT_STAT	45662	2009
+district	55	PMTCT_STAT	3479	2009
+district	56	PMTCT_STAT	5224	2009
+district	57	PMTCT_STAT	7992	2009
+district	58	PMTCT_STAT	7473	2009
+district	59	PMTCT_STAT	3708	2009
+district	60	PMTCT_STAT	3079	2009
+district	61	PMTCT_STAT	3307	2009
+region	19	PMTCT_STAT	34262	2009
+district	140	PMTCT_STAT	4782	2009
+district	141	PMTCT_STAT	3379	2009
+district	142	PMTCT_STAT	2243	2009
+district	143	PMTCT_STAT	2978	2009
+district	144	PMTCT_STAT	4088	2009
+district	145	PMTCT_STAT	4441	2009
+region	21	PMTCT_STAT	21911	2009
+region	30	PMTCT_STAT	0	2009
+district	108	PMTCT_STAT	6595	2009
+district	109	PMTCT_STAT	13204	2009
+district	110	PMTCT_STAT	16321	2009
+district	111	PMTCT_STAT	0	2009
+district	112	PMTCT_STAT	15180	2009
+region	25	PMTCT_STAT	51300	2009
+district	15	PMTCT_STAT	6258	2009
+district	16	PMTCT_STAT	3420	2009
+district	17	PMTCT_STAT	7108	2009
+district	18	PMTCT_STAT	8136	2009
+district	19	PMTCT_STAT	5470	2009
+district	20	PMTCT_STAT	8914	2009
+district	21	PMTCT_STAT	4260	2009
+region	11	PMTCT_STAT	43566	2009
+district	100	PMTCT_STAT	9014	2009
+district	101	PMTCT_STAT	12288	2009
+district	102	PMTCT_STAT	5619	2009
+district	103	PMTCT_STAT	6631	2009
+district	104	PMTCT_STAT	15431	2009
+district	105	PMTCT_STAT	6961	2009
+district	106	PMTCT_STAT	5511	2009
+district	107	PMTCT_STAT	6859	2009
+region	10	PMTCT_STAT	68314	2009
+district	1	PMTCT_STAT	6916	2009
+district	2	PMTCT_STAT	10226	2009
+district	3	PMTCT_STAT	12806	2009
+district	4	PMTCT_STAT	13790	2009
+district	5	PMTCT_STAT	16861	2009
+district	6	PMTCT_STAT	6504	2009
+district	7	PMTCT_STAT	7417	2009
+region	3	PMTCT_STAT	74520	2009
+district	39	PMTCT_STAT	11976	2009
+district	40	PMTCT_STAT	2657	2009
+district	41	PMTCT_STAT	3235	2009
+district	42	PMTCT_STAT	7859	2009
+district	43	PMTCT_STAT	10452	2009
+district	44	PMTCT_STAT	1546	2009
+district	45	PMTCT_STAT	4496	2009
+region	22	PMTCT_STAT	42221	2009
+district	32	PMTCT_STAT	13225	2009
+district	33	PMTCT_STAT	8407	2009
+district	34	PMTCT_STAT	10078	2009
+district	35	PMTCT_STAT	9845	2009
+district	36	PMTCT_STAT	7836	2009
+district	37	PMTCT_STAT	8690	2009
+district	38	PMTCT_STAT	7280	2009
+region	18	PMTCT_STAT	65361	2009
+region	8	PMTCT_STAT	0	2009
+region	7	PMTCT_STAT	0	2009
+district	83	PMTCT_STAT	7232	2009
+district	84	PMTCT_STAT	8099	2009
+district	85	PMTCT_STAT	14141	2009
+district	86	PMTCT_STAT	6185	2009
+district	87	PMTCT_STAT	9426	2009
+district	88	PMTCT_STAT	6246	2009
+region	27	PMTCT_STAT	51329	2009
+district	149	PMTCT_STAT	22871	2009
+district	150	PMTCT_STAT	16159	2009
+district	151	PMTCT_STAT	15586	2009
+district	152	PMTCT_STAT	18022	2009
+district	153	PMTCT_STAT	8217	2009
+region	26	PMTCT_STAT	80855	2009
+district	121	PMTCT_STAT	7024	2009
+district	122	PMTCT_STAT	10505	2009
+district	123	PMTCT_STAT	16097	2009
+district	124	PMTCT_STAT	12330	2009
+district	125	PMTCT_STAT	16362	2009
+district	126	PMTCT_STAT	10377	2009
+district	127	PMTCT_STAT	11554	2009
+region	20	PMTCT_STAT	84249	2009
+district	113	PMTCT_STAT	8641	2009
+district	114	PMTCT_STAT	7774	2009
+district	115	PMTCT_STAT	16457	2009
+district	116	PMTCT_STAT	13616	2009
+district	117	PMTCT_STAT	12429	2009
+district	118	PMTCT_STAT	5459	2009
+district	119	PMTCT_STAT	6067	2009
+district	120	PMTCT_STAT	10840	2009
+region	6	PMTCT_STAT	81283	2009
+district	8	PMTCT_STAT	7869	2009
+district	9	PMTCT_STAT	9408	2009
+district	10	PMTCT_STAT	23163	2009
+district	11	PMTCT_STAT	9277	2009
+district	12	PMTCT_STAT	6168	2009
+district	13	PMTCT_STAT	23163	2009
+district	14	PMTCT_STAT	4638	2009
+region	1	PMTCT_STAT	83686	2009
+district	68	PMTCT_STAT	8433	2009
+district	69	PMTCT_STAT	8424	2009
+district	70	PMTCT_STAT	6299	2009
+district	71	PMTCT_STAT	6894	2009
+district	72	PMTCT_STAT	1742	2009
+region	5	PMTCT_STAT	31792	2009
+district	146	PMTCT_STAT	7213	2009
+district	147	PMTCT_STAT	13746	2009
+district	148	PMTCT_STAT	9380	2009
+district	46	PMTCT_STAT	37528	2009
+district	47	PMTCT_STAT	30820	2009
+district	48	PMTCT_STAT	31435	2009
+region	2	PMTCT_STAT	99783	2009
+district	73	PMTCT_STAT	16040	2009
+district	74	PMTCT_STAT	17768	2009
+district	75	PMTCT_STAT	7802	2009
+district	76	PMTCT_STAT	8072	2009
+district	77	PMTCT_STAT	4175	2009
+district	78	PMTCT_STAT	13485	2009
+district	79	PMTCT_STAT	10949	2009
+district	80	PMTCT_STAT	10252	2009
+district	81	PMTCT_STAT	11644	2009
+district	82	PMTCT_STAT	777	2009
+region	17	PMTCT_STAT	100964	2009
+district	62	PMTCT_STAT	9181	2009
+district	63	PMTCT_STAT	5089	2009
+district	64	PMTCT_STAT	11624	2009
+district	65	PMTCT_STAT	6884	2009
+district	66	PMTCT_STAT	7994	2009
+district	67	PMTCT_STAT	5706	2009
+region	24	PMTCT_STAT	46478	2009
+district	154	PMTCT_STAT	15940	2009
+district	155	PMTCT_STAT	7444	2009
+district	156	PMTCT_STAT	7632	2009
+district	157	PMTCT_STAT	8889	2009
+district	158	PMTCT_STAT	8398	2009
+region	4	PMTCT_STAT	48303	2009
+country	TZ	PMTCT_STAT	1588234	2009
+district	22	PMTCT_STAT_POS	103	2009
+district	23	PMTCT_STAT_POS	221	2009
+district	24	PMTCT_STAT_POS	230	2009
+district	25	PMTCT_STAT_POS	794	2009
+district	26	PMTCT_STAT_POS	93	2009
+district	27	PMTCT_STAT_POS	217	2009
+district	28	PMTCT_STAT_POS	123	2009
+district	29	PMTCT_STAT_POS	121	2009
+district	30	PMTCT_STAT_POS	90	2009
+district	31	PMTCT_STAT_POS	40	2009
+region	28	PMTCT_STAT_POS	2032	2009
+district	89	PMTCT_STAT_POS	840	2009
+district	90	PMTCT_STAT_POS	680	2009
+district	91	PMTCT_STAT_POS	346	2009
+district	92	PMTCT_STAT_POS	249	2009
+district	93	PMTCT_STAT_POS	412	2009
+district	94	PMTCT_STAT_POS	381	2009
+district	95	PMTCT_STAT_POS	423	2009
+region	29	PMTCT_STAT_POS	3331	2009
+district	128	PMTCT_STAT_POS	229	2009
+district	129	PMTCT_STAT_POS	142	2009
+district	130	PMTCT_STAT_POS	153	2009
+district	131	PMTCT_STAT_POS	382	2009
+district	132	PMTCT_STAT_POS	656	2009
+district	133	PMTCT_STAT_POS	101	2009
+district	169	PMTCT_STAT_POS	345	2009
+region	16	PMTCT_STAT_POS	2008	2009
+district	134	PMTCT_STAT_POS	118	2009
+district	135	PMTCT_STAT_POS	66	2009
+district	136	PMTCT_STAT_POS	75	2009
+district	137	PMTCT_STAT_POS	185	2009
+district	138	PMTCT_STAT_POS	146	2009
+district	139	PMTCT_STAT_POS	56	2009
+region	15	PMTCT_STAT_POS	646	2009
+region	13	PMTCT_STAT_POS	0	2009
+district	49	PMTCT_STAT_POS	185	2009
+district	50	PMTCT_STAT_POS	184	2009
+district	51	PMTCT_STAT_POS	170	2009
+district	52	PMTCT_STAT_POS	70	2009
+district	53	PMTCT_STAT_POS	154	2009
+district	54	PMTCT_STAT_POS	106	2009
+region	14	PMTCT_STAT_POS	869	2009
+district	96	PMTCT_STAT_POS	91	2009
+district	97	PMTCT_STAT_POS	400	2009
+district	98	PMTCT_STAT_POS	315	2009
+district	99	PMTCT_STAT_POS	720	2009
+region	23	PMTCT_STAT_POS	1526	2009
+district	55	PMTCT_STAT_POS	85	2009
+district	56	PMTCT_STAT_POS	129	2009
+district	57	PMTCT_STAT_POS	260	2009
+district	58	PMTCT_STAT_POS	158	2009
+district	59	PMTCT_STAT_POS	250	2009
+district	60	PMTCT_STAT_POS	64	2009
+district	61	PMTCT_STAT_POS	179	2009
+region	19	PMTCT_STAT_POS	1125	2009
+district	140	PMTCT_STAT_POS	625	2009
+district	141	PMTCT_STAT_POS	346	2009
+district	142	PMTCT_STAT_POS	292	2009
+district	143	PMTCT_STAT_POS	314	2009
+district	144	PMTCT_STAT_POS	400	2009
+district	145	PMTCT_STAT_POS	354	2009
+region	21	PMTCT_STAT_POS	2331	2009
+region	30	PMTCT_STAT_POS	0	2009
+district	108	PMTCT_STAT_POS	437	2009
+district	109	PMTCT_STAT_POS	423	2009
+district	110	PMTCT_STAT_POS	643	2009
+district	111	PMTCT_STAT_POS	0	2009
+district	112	PMTCT_STAT_POS	720	2009
+region	25	PMTCT_STAT_POS	2223	2009
+district	15	PMTCT_STAT_POS	144	2009
+district	16	PMTCT_STAT_POS	106	2009
+district	17	PMTCT_STAT_POS	132	2009
+district	18	PMTCT_STAT_POS	229	2009
+district	19	PMTCT_STAT_POS	157	2009
+district	20	PMTCT_STAT_POS	399	2009
+district	21	PMTCT_STAT_POS	96	2009
+region	11	PMTCT_STAT_POS	1263	2009
+district	100	PMTCT_STAT_POS	86	2009
+district	101	PMTCT_STAT_POS	55	2009
+district	102	PMTCT_STAT_POS	30	2009
+district	103	PMTCT_STAT_POS	175	2009
+district	104	PMTCT_STAT_POS	153	2009
+district	105	PMTCT_STAT_POS	14	2009
+district	106	PMTCT_STAT_POS	29	2009
+district	107	PMTCT_STAT_POS	56	2009
+region	10	PMTCT_STAT_POS	598	2009
+district	1	PMTCT_STAT_POS	59	2009
+district	2	PMTCT_STAT_POS	107	2009
+district	3	PMTCT_STAT_POS	177	2009
+district	4	PMTCT_STAT_POS	89	2009
+district	5	PMTCT_STAT_POS	642	2009
+district	6	PMTCT_STAT_POS	100	2009
+district	7	PMTCT_STAT_POS	54	2009
+region	3	PMTCT_STAT_POS	1228	2009
+district	39	PMTCT_STAT_POS	445	2009
+district	40	PMTCT_STAT_POS	149	2009
+district	41	PMTCT_STAT_POS	178	2009
+district	42	PMTCT_STAT_POS	378	2009
+district	43	PMTCT_STAT_POS	378	2009
+district	44	PMTCT_STAT_POS	40	2009
+district	45	PMTCT_STAT_POS	299	2009
+region	22	PMTCT_STAT_POS	1867	2009
+district	32	PMTCT_STAT_POS	400	2009
+district	33	PMTCT_STAT_POS	168	2009
+district	34	PMTCT_STAT_POS	346	2009
+district	35	PMTCT_STAT_POS	227	2009
+district	36	PMTCT_STAT_POS	462	2009
+district	37	PMTCT_STAT_POS	241	2009
+district	38	PMTCT_STAT_POS	130	2009
+region	18	PMTCT_STAT_POS	1974	2009
+region	8	PMTCT_STAT_POS	0	2009
+region	7	PMTCT_STAT_POS	0	2009
+district	83	PMTCT_STAT_POS	186	2009
+district	84	PMTCT_STAT_POS	68	2009
+district	85	PMTCT_STAT_POS	283	2009
+district	86	PMTCT_STAT_POS	215	2009
+district	87	PMTCT_STAT_POS	119	2009
+district	88	PMTCT_STAT_POS	75	2009
+region	27	PMTCT_STAT_POS	946	2009
+district	149	PMTCT_STAT_POS	504	2009
+district	150	PMTCT_STAT_POS	131	2009
+district	151	PMTCT_STAT_POS	342	2009
+district	152	PMTCT_STAT_POS	364	2009
+district	153	PMTCT_STAT_POS	388	2009
+region	26	PMTCT_STAT_POS	1729	2009
+district	121	PMTCT_STAT_POS	145	2009
+district	122	PMTCT_STAT_POS	500	2009
+district	123	PMTCT_STAT_POS	939	2009
+district	124	PMTCT_STAT_POS	418	2009
+district	125	PMTCT_STAT_POS	622	2009
+district	126	PMTCT_STAT_POS	528	2009
+district	127	PMTCT_STAT_POS	508	2009
+region	20	PMTCT_STAT_POS	3660	2009
+district	113	PMTCT_STAT_POS	244	2009
+district	114	PMTCT_STAT_POS	395	2009
+district	115	PMTCT_STAT_POS	632	2009
+district	116	PMTCT_STAT_POS	247	2009
+district	117	PMTCT_STAT_POS	198	2009
+district	118	PMTCT_STAT_POS	494	2009
+district	119	PMTCT_STAT_POS	364	2009
+district	120	PMTCT_STAT_POS	263	2009
+region	6	PMTCT_STAT_POS	2837	2009
+district	8	PMTCT_STAT_POS	134	2009
+district	9	PMTCT_STAT_POS	253	2009
+district	10	PMTCT_STAT_POS	764	2009
+district	11	PMTCT_STAT_POS	120	2009
+district	12	PMTCT_STAT_POS	28	2009
+district	13	PMTCT_STAT_POS	764	2009
+district	14	PMTCT_STAT_POS	68	2009
+region	1	PMTCT_STAT_POS	2131	2009
+district	68	PMTCT_STAT_POS	554	2009
+district	69	PMTCT_STAT_POS	1035	2009
+district	70	PMTCT_STAT_POS	597	2009
+district	71	PMTCT_STAT_POS	560	2009
+district	72	PMTCT_STAT_POS	225	2009
+region	5	PMTCT_STAT_POS	2971	2009
+district	146	PMTCT_STAT_POS	408	2009
+district	147	PMTCT_STAT_POS	159	2009
+district	148	PMTCT_STAT_POS	226	2009
+region	9	PMTCT_STAT_POS	793	2009
+district	46	PMTCT_STAT_POS	3223	2009
+district	47	PMTCT_STAT_POS	1993	2009
+district	48	PMTCT_STAT_POS	2370	2009
+region	2	PMTCT_STAT_POS	7586	2009
+district	73	PMTCT_STAT_POS	1027	2009
+district	74	PMTCT_STAT_POS	1506	2009
+district	75	PMTCT_STAT_POS	841	2009
+district	76	PMTCT_STAT_POS	472	2009
+district	77	PMTCT_STAT_POS	76	2009
+district	78	PMTCT_STAT_POS	893	2009
+district	79	PMTCT_STAT_POS	1265	2009
+district	80	PMTCT_STAT_POS	602	2009
+district	81	PMTCT_STAT_POS	494	2009
+district	82	PMTCT_STAT_POS	42	2009
+region	17	PMTCT_STAT_POS	7218	2009
+district	62	PMTCT_STAT_POS	299	2009
+district	63	PMTCT_STAT_POS	281	2009
+district	64	PMTCT_STAT_POS	441	2009
+district	65	PMTCT_STAT_POS	573	2009
+district	66	PMTCT_STAT_POS	182	2009
+district	67	PMTCT_STAT_POS	232	2009
+region	24	PMTCT_STAT_POS	2008	2009
+district	154	PMTCT_STAT_POS	610	2009
+district	155	PMTCT_STAT_POS	211	2009
+district	156	PMTCT_STAT_POS	279	2009
+district	157	PMTCT_STAT_POS	374	2009
+district	158	PMTCT_STAT_POS	316	2009
+region	4	PMTCT_STAT_POS	1790	2009
+country	TZ	PMTCT_STAT_POS	58539	2009
+district	22	PMTCT_ARV	123	2009
+district	23	PMTCT_ARV	317	2009
+district	24	PMTCT_ARV	213	2009
+district	25	PMTCT_ARV	672	2009
+district	26	PMTCT_ARV	109	2009
+district	27	PMTCT_ARV	285	2009
+district	28	PMTCT_ARV	137	2009
+district	29	PMTCT_ARV	133	2009
+district	30	PMTCT_ARV	125	2009
+district	31	PMTCT_ARV	67	2009
+region	28	PMTCT_ARV	2181	2009
+district	89	PMTCT_ARV	1309	2009
+district	90	PMTCT_ARV	1299	2009
+district	91	PMTCT_ARV	687	2009
+district	92	PMTCT_ARV	442	2009
+district	93	PMTCT_ARV	366	2009
+district	94	PMTCT_ARV	942	2009
+district	95	PMTCT_ARV	478	2009
+region	29	PMTCT_ARV	5523	2009
+district	128	PMTCT_ARV	234	2009
+district	129	PMTCT_ARV	119	2009
+district	130	PMTCT_ARV	191	2009
+district	131	PMTCT_ARV	440	2009
+district	132	PMTCT_ARV	479	2009
+district	133	PMTCT_ARV	133	2009
+district	169	PMTCT_ARV	331	2009
+region	16	PMTCT_ARV	1927	2009
+district	134	PMTCT_ARV	115	2009
+district	135	PMTCT_ARV	63	2009
+district	136	PMTCT_ARV	73	2009
+district	137	PMTCT_ARV	177	2009
+district	138	PMTCT_ARV	142	2009
+district	139	PMTCT_ARV	55	2009
+region	15	PMTCT_ARV	625	2009
+region	13	PMTCT_ARV	0	2009
+district	49	PMTCT_ARV	336	2009
+district	50	PMTCT_ARV	314	2009
+district	51	PMTCT_ARV	289	2009
+district	52	PMTCT_ARV	91	2009
+district	53	PMTCT_ARV	343	2009
+district	54	PMTCT_ARV	170	2009
+region	14	PMTCT_ARV	1543	2009
+district	96	PMTCT_ARV	91	2009
+district	97	PMTCT_ARV	398	2009
+district	98	PMTCT_ARV	315	2009
+district	99	PMTCT_ARV	678	2009
+region	23	PMTCT_ARV	1482	2009
+district	55	PMTCT_ARV	108	2009
+district	56	PMTCT_ARV	290	2009
+district	57	PMTCT_ARV	369	2009
+district	58	PMTCT_ARV	267	2009
+district	59	PMTCT_ARV	344	2009
+district	60	PMTCT_ARV	61	2009
+district	61	PMTCT_ARV	311	2009
+region	19	PMTCT_ARV	1750	2009
+district	140	PMTCT_ARV	1205	2009
+district	141	PMTCT_ARV	611	2009
+district	142	PMTCT_ARV	458	2009
+district	143	PMTCT_ARV	496	2009
+district	144	PMTCT_ARV	575	2009
+district	145	PMTCT_ARV	631	2009
+region	21	PMTCT_ARV	3976	2009
+region	30	PMTCT_ARV	0	2009
+district	108	PMTCT_ARV	546	2009
+district	109	PMTCT_ARV	969	2009
+district	110	PMTCT_ARV	983	2009
+district	111	PMTCT_ARV	0	2009
+district	112	PMTCT_ARV	1548	2009
+region	25	PMTCT_ARV	4046	2009
+district	15	PMTCT_ARV	251	2009
+district	16	PMTCT_ARV	205	2009
+district	17	PMTCT_ARV	359	2009
+district	18	PMTCT_ARV	504	2009
+district	19	PMTCT_ARV	214	2009
+district	20	PMTCT_ARV	586	2009
+district	21	PMTCT_ARV	151	2009
+region	11	PMTCT_ARV	2270	2009
+district	100	PMTCT_ARV	91	2009
+district	101	PMTCT_ARV	74	2009
+district	102	PMTCT_ARV	42	2009
+district	103	PMTCT_ARV	183	2009
+district	104	PMTCT_ARV	206	2009
+district	105	PMTCT_ARV	22	2009
+district	106	PMTCT_ARV	25	2009
+district	107	PMTCT_ARV	68	2009
+region	10	PMTCT_ARV	711	2009
+district	1	PMTCT_ARV	89	2009
+district	2	PMTCT_ARV	159	2009
+district	3	PMTCT_ARV	254	2009
+district	4	PMTCT_ARV	174	2009
+district	5	PMTCT_ARV	874	2009
+district	6	PMTCT_ARV	152	2009
+district	7	PMTCT_ARV	97	2009
+region	3	PMTCT_ARV	1799	2009
+district	39	PMTCT_ARV	415	2009
+district	40	PMTCT_ARV	146	2009
+district	41	PMTCT_ARV	140	2009
+district	42	PMTCT_ARV	413	2009
+district	43	PMTCT_ARV	349	2009
+district	44	PMTCT_ARV	42	2009
+district	45	PMTCT_ARV	234	2009
+region	22	PMTCT_ARV	1739	2009
+district	32	PMTCT_ARV	560	2009
+district	33	PMTCT_ARV	257	2009
+district	34	PMTCT_ARV	547	2009
+district	35	PMTCT_ARV	296	2009
+district	36	PMTCT_ARV	628	2009
+district	37	PMTCT_ARV	344	2009
+district	38	PMTCT_ARV	215	2009
+region	18	PMTCT_ARV	2847	2009
+region	8	PMTCT_ARV	0	2009
+region	7	PMTCT_ARV	0	2009
+district	83	PMTCT_ARV	236	2009
+district	84	PMTCT_ARV	83	2009
+district	85	PMTCT_ARV	420	2009
+district	86	PMTCT_ARV	264	2009
+district	87	PMTCT_ARV	177	2009
+district	88	PMTCT_ARV	79	2009
+region	27	PMTCT_ARV	1259	2009
+district	149	PMTCT_ARV	781	2009
+district	150	PMTCT_ARV	255	2009
+district	151	PMTCT_ARV	508	2009
+district	152	PMTCT_ARV	633	2009
+district	153	PMTCT_ARV	493	2009
+region	26	PMTCT_ARV	2670	2009
+district	121	PMTCT_ARV	244	2009
+district	122	PMTCT_ARV	580	2009
+district	123	PMTCT_ARV	1159	2009
+district	124	PMTCT_ARV	416	2009
+district	125	PMTCT_ARV	777	2009
+district	126	PMTCT_ARV	574	2009
+district	127	PMTCT_ARV	722	2009
+region	20	PMTCT_ARV	4472	2009
+district	113	PMTCT_ARV	198	2009
+district	114	PMTCT_ARV	373	2009
+district	115	PMTCT_ARV	378	2009
+district	116	PMTCT_ARV	205	2009
+district	117	PMTCT_ARV	145	2009
+district	118	PMTCT_ARV	274	2009
+district	119	PMTCT_ARV	229	2009
+district	120	PMTCT_ARV	315	2009
+region	6	PMTCT_ARV	2117	2009
+district	8	PMTCT_ARV	210	2009
+district	9	PMTCT_ARV	318	2009
+district	10	PMTCT_ARV	1098	2009
+district	11	PMTCT_ARV	128	2009
+district	12	PMTCT_ARV	36	2009
+district	13	PMTCT_ARV	1098	2009
+district	14	PMTCT_ARV	73	2009
+region	1	PMTCT_ARV	2961	2009
+district	68	PMTCT_ARV	943	2009
+district	69	PMTCT_ARV	1578	2009
+district	70	PMTCT_ARV	944	2009
+district	71	PMTCT_ARV	889	2009
+district	72	PMTCT_ARV	332	2009
+region	5	PMTCT_ARV	4686	2009
+district	146	PMTCT_ARV	383	2009
+district	147	PMTCT_ARV	203	2009
+district	148	PMTCT_ARV	246	2009
+region	9	PMTCT_ARV	832	2009
+district	46	PMTCT_ARV	3183	2009
+district	47	PMTCT_ARV	2619	2009
+district	48	PMTCT_ARV	2100	2009
+region	2	PMTCT_ARV	7902	2009
+district	73	PMTCT_ARV	858	2009
+district	74	PMTCT_ARV	1178	2009
+district	75	PMTCT_ARV	831	2009
+district	76	PMTCT_ARV	447	2009
+district	77	PMTCT_ARV	53	2009
+district	78	PMTCT_ARV	779	2009
+district	79	PMTCT_ARV	1243	2009
+district	80	PMTCT_ARV	916	2009
+district	81	PMTCT_ARV	520	2009
+district	82	PMTCT_ARV	40	2009
+region	17	PMTCT_ARV	6865	2009
+district	62	PMTCT_ARV	259	2009
+district	63	PMTCT_ARV	297	2009
+district	64	PMTCT_ARV	388	2009
+district	65	PMTCT_ARV	574	2009
+district	66	PMTCT_ARV	166	2009
+district	67	PMTCT_ARV	211	2009
+region	24	PMTCT_ARV	1895	2009
+district	154	PMTCT_ARV	1142	2009
+district	155	PMTCT_ARV	233	2009
+district	156	PMTCT_ARV	176	2009
+district	157	PMTCT_ARV	249	2009
+district	158	PMTCT_ARV	308	2009
+region	4	PMTCT_ARV	2108	2009
+country	TZ	PMTCT_ARV	73896	2009
+district	22	PMTCT_EID	57	2009
+district	23	PMTCT_EID	167	2009
+district	24	PMTCT_EID	120	2009
+district	25	PMTCT_EID	483	2009
+district	26	PMTCT_EID	72	2009
+district	27	PMTCT_EID	97	2009
+district	28	PMTCT_EID	54	2009
+district	29	PMTCT_EID	81	2009
+district	30	PMTCT_EID	69	2009
+district	31	PMTCT_EID	73	2009
+region	28	PMTCT_EID	1273	2009
+district	89	PMTCT_EID	394	2009
+district	90	PMTCT_EID	304	2009
+district	91	PMTCT_EID	121	2009
+district	92	PMTCT_EID	111	2009
+district	93	PMTCT_EID	133	2009
+district	94	PMTCT_EID	270	2009
+district	95	PMTCT_EID	150	2009
+region	29	PMTCT_EID	1483	2009
+district	128	PMTCT_EID	166	2009
+district	129	PMTCT_EID	91	2009
+district	130	PMTCT_EID	88	2009
+district	131	PMTCT_EID	195	2009
+district	132	PMTCT_EID	198	2009
+district	133	PMTCT_EID	85	2009
+district	169	PMTCT_EID	219	2009
+region	16	PMTCT_EID	1042	2009
+district	134	PMTCT_EID	61	2009
+district	135	PMTCT_EID	26	2009
+district	136	PMTCT_EID	48	2009
+district	137	PMTCT_EID	54	2009
+district	138	PMTCT_EID	50	2009
+district	139	PMTCT_EID	46	2009
+region	15	PMTCT_EID	285	2009
+region	13	PMTCT_EID	0	2009
+district	49	PMTCT_EID	167	2009
+district	50	PMTCT_EID	142	2009
+district	51	PMTCT_EID	115	2009
+district	52	PMTCT_EID	48	2009
+district	53	PMTCT_EID	143	2009
+district	54	PMTCT_EID	101	2009
+region	14	PMTCT_EID	716	2009
+district	96	PMTCT_EID	67	2009
+district	97	PMTCT_EID	139	2009
+district	98	PMTCT_EID	158	2009
+district	99	PMTCT_EID	323	2009
+region	23	PMTCT_EID	687	2009
+district	55	PMTCT_EID	28	2009
+district	56	PMTCT_EID	59	2009
+district	57	PMTCT_EID	127	2009
+district	58	PMTCT_EID	83	2009
+district	59	PMTCT_EID	156	2009
+district	60	PMTCT_EID	23	2009
+district	61	PMTCT_EID	136	2009
+region	19	PMTCT_EID	612	2009
+district	140	PMTCT_EID	400	2009
+district	141	PMTCT_EID	176	2009
+district	142	PMTCT_EID	180	2009
+district	143	PMTCT_EID	231	2009
+district	144	PMTCT_EID	177	2009
+district	145	PMTCT_EID	209	2009
+region	21	PMTCT_EID	1373	2009
+region	30	PMTCT_EID	0	2009
+district	108	PMTCT_EID	213	2009
+district	109	PMTCT_EID	189	2009
+district	110	PMTCT_EID	216	2009
+district	111	PMTCT_EID	0	2009
+district	112	PMTCT_EID	287	2009
+region	25	PMTCT_EID	905	2009
+district	15	PMTCT_EID	119	2009
+district	16	PMTCT_EID	78	2009
+district	17	PMTCT_EID	103	2009
+district	18	PMTCT_EID	203	2009
+district	19	PMTCT_EID	114	2009
+district	20	PMTCT_EID	331	2009
+district	21	PMTCT_EID	80	2009
+region	11	PMTCT_EID	1028	2009
+district	100	PMTCT_EID	72	2009
+district	101	PMTCT_EID	15	2009
+district	102	PMTCT_EID	7	2009
+district	103	PMTCT_EID	104	2009
+district	104	PMTCT_EID	53	2009
+district	105	PMTCT_EID	8	2009
+district	106	PMTCT_EID	28	2009
+district	107	PMTCT_EID	33	2009
+region	10	PMTCT_EID	320	2009
+district	1	PMTCT_EID	56	2009
+district	2	PMTCT_EID	52	2009
+district	3	PMTCT_EID	79	2009
+district	4	PMTCT_EID	43	2009
+district	5	PMTCT_EID	378	2009
+district	6	PMTCT_EID	42	2009
+district	7	PMTCT_EID	8	2009
+region	3	PMTCT_EID	658	2009
+district	39	PMTCT_EID	331	2009
+district	40	PMTCT_EID	99	2009
+district	41	PMTCT_EID	95	2009
+district	42	PMTCT_EID	190	2009
+district	43	PMTCT_EID	181	2009
+district	44	PMTCT_EID	24	2009
+district	45	PMTCT_EID	241	2009
+region	22	PMTCT_EID	1161	2009
+district	32	PMTCT_EID	111	2009
+district	33	PMTCT_EID	49	2009
+district	34	PMTCT_EID	120	2009
+district	35	PMTCT_EID	20	2009
+district	36	PMTCT_EID	132	2009
+district	37	PMTCT_EID	89	2009
+district	38	PMTCT_EID	35	2009
+region	18	PMTCT_EID	556	2009
+region	8	PMTCT_EID	0	2009
+region	7	PMTCT_EID	0	2009
+district	83	PMTCT_EID	85	2009
+district	84	PMTCT_EID	18	2009
+district	85	PMTCT_EID	76	2009
+district	86	PMTCT_EID	92	2009
+district	87	PMTCT_EID	51	2009
+district	88	PMTCT_EID	32	2009
+region	27	PMTCT_EID	354	2009
+district	149	PMTCT_EID	271	2009
+district	150	PMTCT_EID	45	2009
+district	151	PMTCT_EID	203	2009
+district	152	PMTCT_EID	131	2009
+district	153	PMTCT_EID	114	2009
+region	26	PMTCT_EID	764	2009
+district	121	PMTCT_EID	114	2009
+district	122	PMTCT_EID	253	2009
+district	123	PMTCT_EID	534	2009
+district	124	PMTCT_EID	132	2009
+district	125	PMTCT_EID	284	2009
+district	126	PMTCT_EID	211	2009
+district	127	PMTCT_EID	189	2009
+region	20	PMTCT_EID	1717	2009
+district	113	PMTCT_EID	156	2009
+district	114	PMTCT_EID	283	2009
+district	115	PMTCT_EID	272	2009
+district	116	PMTCT_EID	156	2009
+district	117	PMTCT_EID	141	2009
+district	118	PMTCT_EID	235	2009
+district	119	PMTCT_EID	238	2009
+district	120	PMTCT_EID	165	2009
+region	6	PMTCT_EID	1646	2009
+district	8	PMTCT_EID	91	2009
+district	9	PMTCT_EID	121	2009
+district	10	PMTCT_EID	450	2009
+district	11	PMTCT_EID	90	2009
+district	12	PMTCT_EID	18	2009
+district	13	PMTCT_EID	450	2009
+district	14	PMTCT_EID	44	2009
+region	1	PMTCT_EID	1264	2009
+district	68	PMTCT_EID	293	2009
+district	69	PMTCT_EID	535	2009
+district	70	PMTCT_EID	316	2009
+district	71	PMTCT_EID	249	2009
+district	72	PMTCT_EID	97	2009
+region	5	PMTCT_EID	1490	2009
+district	146	PMTCT_EID	210	2009
+district	147	PMTCT_EID	39	2009
+district	148	PMTCT_EID	79	2009
+region	9	PMTCT_EID	328	2009
+district	46	PMTCT_EID	2169	2009
+district	47	PMTCT_EID	1694	2009
+district	48	PMTCT_EID	1464	2009
+region	2	PMTCT_EID	5327	2009
+district	73	PMTCT_EID	586	2009
+district	74	PMTCT_EID	910	2009
+district	75	PMTCT_EID	552	2009
+district	76	PMTCT_EID	246	2009
+district	77	PMTCT_EID	30	2009
+district	78	PMTCT_EID	221	2009
+district	79	PMTCT_EID	484	2009
+district	80	PMTCT_EID	273	2009
+district	81	PMTCT_EID	188	2009
+district	82	PMTCT_EID	12	2009
+region	17	PMTCT_EID	3502	2009
+district	62	PMTCT_EID	144	2009
+district	63	PMTCT_EID	115	2009
+district	64	PMTCT_EID	230	2009
+district	65	PMTCT_EID	288	2009
+district	66	PMTCT_EID	101	2009
+district	67	PMTCT_EID	110	2009
+region	24	PMTCT_EID	988	2009
+district	154	PMTCT_EID	336	2009
+district	155	PMTCT_EID	55	2009
+district	156	PMTCT_EID	156	2009
+district	157	PMTCT_EID	233	2009
+district	158	PMTCT_EID	151	2009
+region	4	PMTCT_EID	931	2009
+country	TZ	PMTCT_EID	31397	2009
+district	22	PMTCT_EID_POS	1	2009
+district	23	PMTCT_EID_POS	6	2009
+district	24	PMTCT_EID_POS	2	2009
+district	25	PMTCT_EID_POS	7	2009
+district	26	PMTCT_EID_POS	4	2009
+district	27	PMTCT_EID_POS	2	2009
+district	28	PMTCT_EID_POS	1	2009
+district	29	PMTCT_EID_POS	6	2009
+district	30	PMTCT_EID_POS	2	2009
+district	31	PMTCT_EID_POS	2	2009
+region	28	PMTCT_EID_POS	33	2009
+district	89	PMTCT_EID_POS	15	2009
+district	90	PMTCT_EID_POS	11	2009
+district	91	PMTCT_EID_POS	1	2009
+district	92	PMTCT_EID_POS	3	2009
+district	93	PMTCT_EID_POS	3	2009
+district	94	PMTCT_EID_POS	12	2009
+district	95	PMTCT_EID_POS	3	2009
+region	29	PMTCT_EID_POS	48	2009
+district	128	PMTCT_EID_POS	7	2009
+district	129	PMTCT_EID_POS	4	2009
+district	130	PMTCT_EID_POS	2	2009
+district	131	PMTCT_EID_POS	3	2009
+district	132	PMTCT_EID_POS	5	2009
+district	133	PMTCT_EID_POS	3	2009
+district	169	PMTCT_EID_POS	2	2009
+region	16	PMTCT_EID_POS	26	2009
+district	134	PMTCT_EID_POS	1	2009
+district	135	PMTCT_EID_POS	2	2009
+district	136	PMTCT_EID_POS	3	2009
+district	137	PMTCT_EID_POS	1	2009
+district	138	PMTCT_EID_POS	0	2009
+district	139	PMTCT_EID_POS	0	2009
+region	15	PMTCT_EID_POS	7	2009
+region	13	PMTCT_EID_POS	0	2009
+district	49	PMTCT_EID_POS	65	2009
+district	50	PMTCT_EID_POS	58	2009
+district	51	PMTCT_EID_POS	44	2009
+district	52	PMTCT_EID_POS	25	2009
+district	53	PMTCT_EID_POS	55	2009
+district	54	PMTCT_EID_POS	65	2009
+region	14	PMTCT_EID_POS	312	2009
+district	96	PMTCT_EID_POS	4	2009
+district	97	PMTCT_EID_POS	7	2009
+district	98	PMTCT_EID_POS	5	2009
+district	99	PMTCT_EID_POS	16	2009
+region	23	PMTCT_EID_POS	32	2009
+district	55	PMTCT_EID_POS	8	2009
+district	56	PMTCT_EID_POS	27	2009
+district	57	PMTCT_EID_POS	52	2009
+district	58	PMTCT_EID_POS	36	2009
+district	59	PMTCT_EID_POS	75	2009
+district	60	PMTCT_EID_POS	7	2009
+district	61	PMTCT_EID_POS	66	2009
+region	19	PMTCT_EID_POS	271	2009
+district	140	PMTCT_EID_POS	10	2009
+district	141	PMTCT_EID_POS	1	2009
+district	142	PMTCT_EID_POS	3	2009
+district	143	PMTCT_EID_POS	13	2009
+district	144	PMTCT_EID_POS	7	2009
+district	145	PMTCT_EID_POS	13	2009
+region	21	PMTCT_EID_POS	47	2009
+region	30	PMTCT_EID_POS	0	2009
+district	108	PMTCT_EID_POS	9	2009
+district	109	PMTCT_EID_POS	95	2009
+district	110	PMTCT_EID_POS	13	2009
+district	111	PMTCT_EID_POS	0	2009
+district	112	PMTCT_EID_POS	188	2009
+region	25	PMTCT_EID_POS	305	2009
+district	15	PMTCT_EID_POS	2	2009
+district	16	PMTCT_EID_POS	0	2009
+district	17	PMTCT_EID_POS	22	2009
+district	18	PMTCT_EID_POS	3	2009
+district	19	PMTCT_EID_POS	6	2009
+district	20	PMTCT_EID_POS	8	2009
+district	21	PMTCT_EID_POS	23	2009
+region	11	PMTCT_EID_POS	64	2009
+district	100	PMTCT_EID_POS	1	2009
+district	101	PMTCT_EID_POS	0	2009
+district	102	PMTCT_EID_POS	0	2009
+district	103	PMTCT_EID_POS	0	2009
+district	104	PMTCT_EID_POS	0	2009
+district	105	PMTCT_EID_POS	0	2009
+district	106	PMTCT_EID_POS	0	2009
+district	107	PMTCT_EID_POS	0	2009
+region	10	PMTCT_EID_POS	1	2009
+district	1	PMTCT_EID_POS	0	2009
+district	2	PMTCT_EID_POS	3	2009
+district	3	PMTCT_EID_POS	1	2009
+district	4	PMTCT_EID_POS	0	2009
+district	5	PMTCT_EID_POS	4	2009
+district	6	PMTCT_EID_POS	0	2009
+district	7	PMTCT_EID_POS	0	2009
+region	3	PMTCT_EID_POS	8	2009
+district	39	PMTCT_EID_POS	6	2009
+district	40	PMTCT_EID_POS	3	2009
+district	41	PMTCT_EID_POS	0	2009
+district	42	PMTCT_EID_POS	8	2009
+district	43	PMTCT_EID_POS	3	2009
+district	44	PMTCT_EID_POS	0	2009
+district	45	PMTCT_EID_POS	7	2009
+region	22	PMTCT_EID_POS	27	2009
+district	32	PMTCT_EID_POS	2	2009
+district	33	PMTCT_EID_POS	3	2009
+district	34	PMTCT_EID_POS	10	2009
+district	35	PMTCT_EID_POS	0	2009
+district	36	PMTCT_EID_POS	4	2009
+district	37	PMTCT_EID_POS	2	2009
+district	38	PMTCT_EID_POS	2	2009
+region	18	PMTCT_EID_POS	23	2009
+region	8	PMTCT_EID_POS	0	2009
+region	7	PMTCT_EID_POS	0	2009
+district	83	PMTCT_EID_POS	3	2009
+district	84	PMTCT_EID_POS	1	2009
+district	85	PMTCT_EID_POS	1	2009
+district	86	PMTCT_EID_POS	3	2009
+district	87	PMTCT_EID_POS	3	2009
+district	88	PMTCT_EID_POS	3	2009
+region	27	PMTCT_EID_POS	14	2009
+district	149	PMTCT_EID_POS	3	2009
+district	150	PMTCT_EID_POS	4	2009
+district	151	PMTCT_EID_POS	8	2009
+district	152	PMTCT_EID_POS	2	2009
+district	153	PMTCT_EID_POS	0	2009
+region	26	PMTCT_EID_POS	17	2009
+district	121	PMTCT_EID_POS	5	2009
+district	122	PMTCT_EID_POS	14	2009
+district	123	PMTCT_EID_POS	28	2009
+district	124	PMTCT_EID_POS	2	2009
+district	125	PMTCT_EID_POS	3	2009
+district	126	PMTCT_EID_POS	5	2009
+district	127	PMTCT_EID_POS	6	2009
+region	20	PMTCT_EID_POS	63	2009
+district	113	PMTCT_EID_POS	0	2009
+district	114	PMTCT_EID_POS	4	2009
+district	115	PMTCT_EID_POS	0	2009
+district	116	PMTCT_EID_POS	1	2009
+district	117	PMTCT_EID_POS	2	2009
+district	118	PMTCT_EID_POS	4	2009
+district	119	PMTCT_EID_POS	10	2009
+district	120	PMTCT_EID_POS	4	2009
+region	6	PMTCT_EID_POS	25	2009
+district	8	PMTCT_EID_POS	2	2009
+district	9	PMTCT_EID_POS	5	2009
+district	10	PMTCT_EID_POS	135	2009
+district	11	PMTCT_EID_POS	6	2009
+district	12	PMTCT_EID_POS	0	2009
+district	13	PMTCT_EID_POS	135	2009
+district	14	PMTCT_EID_POS	3	2009
+region	1	PMTCT_EID_POS	286	2009
+district	68	PMTCT_EID_POS	4	2009
+district	69	PMTCT_EID_POS	12	2009
+district	70	PMTCT_EID_POS	3	2009
+district	71	PMTCT_EID_POS	4	2009
+district	72	PMTCT_EID_POS	1	2009
+region	5	PMTCT_EID_POS	24	2009
+district	146	PMTCT_EID_POS	6	2009
+district	147	PMTCT_EID_POS	2	2009
+district	148	PMTCT_EID_POS	4	2009
+region	9	PMTCT_EID_POS	12	2009
+district	46	PMTCT_EID_POS	57	2009
+district	47	PMTCT_EID_POS	42	2009
+district	48	PMTCT_EID_POS	88	2009
+region	2	PMTCT_EID_POS	187	2009
+district	73	PMTCT_EID_POS	19	2009
+district	74	PMTCT_EID_POS	20	2009
+district	75	PMTCT_EID_POS	19	2009
+district	76	PMTCT_EID_POS	71	2009
+district	77	PMTCT_EID_POS	4	2009
+district	78	PMTCT_EID_POS	4	2009
+district	79	PMTCT_EID_POS	18	2009
+district	80	PMTCT_EID_POS	10	2009
+district	81	PMTCT_EID_POS	6	2009
+district	82	PMTCT_EID_POS	1	2009
+region	17	PMTCT_EID_POS	172	2009
+district	62	PMTCT_EID_POS	8	2009
+district	63	PMTCT_EID_POS	4	2009
+district	64	PMTCT_EID_POS	11	2009
+district	65	PMTCT_EID_POS	18	2009
+district	66	PMTCT_EID_POS	1	2009
+district	67	PMTCT_EID_POS	0	2009
+region	24	PMTCT_EID_POS	42	2009
+district	154	PMTCT_EID_POS	13	2009
+district	155	PMTCT_EID_POS	0	2009
+district	156	PMTCT_EID_POS	0	2009
+district	157	PMTCT_EID_POS	0	2009
+district	158	PMTCT_EID_POS	0	2009
+region	4	PMTCT_EID_POS	13	2009
+country	TZ	PMTCT_EID_POS	2007	2009
+district	22	PMTCT_CTX	57	2009
+district	23	PMTCT_CTX	167	2009
+district	24	PMTCT_CTX	120	2009
+district	25	PMTCT_CTX	485	2009
+district	26	PMTCT_CTX	72	2009
+district	27	PMTCT_CTX	97	2009
+district	28	PMTCT_CTX	54	2009
+district	29	PMTCT_CTX	80	2009
+district	30	PMTCT_CTX	69	2009
+district	31	PMTCT_CTX	73	2009
+region	28	PMTCT_CTX	1274	2009
+district	89	PMTCT_CTX	469	2009
+district	90	PMTCT_CTX	356	2009
+district	91	PMTCT_CTX	137	2009
+district	92	PMTCT_CTX	128	2009
+district	93	PMTCT_CTX	164	2009
+district	94	PMTCT_CTX	278	2009
+district	95	PMTCT_CTX	115	2009
+region	29	PMTCT_CTX	1647	2009
+district	128	PMTCT_CTX	166	2009
+district	129	PMTCT_CTX	91	2009
+district	130	PMTCT_CTX	88	2009
+district	131	PMTCT_CTX	195	2009
+district	132	PMTCT_CTX	170	2009
+district	133	PMTCT_CTX	85	2009
+district	169	PMTCT_CTX	219	2009
+region	16	PMTCT_CTX	1014	2009
+district	134	PMTCT_CTX	99	2009
+district	135	PMTCT_CTX	44	2009
+district	136	PMTCT_CTX	64	2009
+district	137	PMTCT_CTX	115	2009
+district	138	PMTCT_CTX	78	2009
+district	139	PMTCT_CTX	58	2009
+region	15	PMTCT_CTX	458	2009
+region	13	PMTCT_CTX	0	2009
+district	49	PMTCT_CTX	175	2009
+district	50	PMTCT_CTX	145	2009
+district	51	PMTCT_CTX	128	2009
+district	52	PMTCT_CTX	50	2009
+district	53	PMTCT_CTX	152	2009
+district	54	PMTCT_CTX	110	2009
+region	14	PMTCT_CTX	760	2009
+district	96	PMTCT_CTX	57	2009
+district	97	PMTCT_CTX	162	2009
+district	98	PMTCT_CTX	157	2009
+district	99	PMTCT_CTX	372	2009
+region	23	PMTCT_CTX	748	2009
+district	55	PMTCT_CTX	38	2009
+district	56	PMTCT_CTX	69	2009
+district	57	PMTCT_CTX	157	2009
+district	58	PMTCT_CTX	107	2009
+district	59	PMTCT_CTX	170	2009
+district	60	PMTCT_CTX	20	2009
+district	61	PMTCT_CTX	138	2009
+region	19	PMTCT_CTX	699	2009
+district	140	PMTCT_CTX	474	2009
+district	141	PMTCT_CTX	206	2009
+district	142	PMTCT_CTX	205	2009
+district	143	PMTCT_CTX	211	2009
+district	144	PMTCT_CTX	159	2009
+district	145	PMTCT_CTX	184	2009
+region	21	PMTCT_CTX	1439	2009
+region	30	PMTCT_CTX	0	2009
+district	108	PMTCT_CTX	280	2009
+district	109	PMTCT_CTX	224	2009
+district	110	PMTCT_CTX	221	2009
+district	111	PMTCT_CTX	0	2009
+district	112	PMTCT_CTX	373	2009
+region	25	PMTCT_CTX	1098	2009
+district	15	PMTCT_CTX	141	2009
+district	16	PMTCT_CTX	81	2009
+district	17	PMTCT_CTX	120	2009
+district	18	PMTCT_CTX	204	2009
+district	19	PMTCT_CTX	110	2009
+district	20	PMTCT_CTX	332	2009
+district	21	PMTCT_CTX	87	2009
+region	11	PMTCT_CTX	1075	2009
+district	100	PMTCT_CTX	72	2009
+district	101	PMTCT_CTX	23	2009
+district	102	PMTCT_CTX	7	2009
+district	103	PMTCT_CTX	104	2009
+district	104	PMTCT_CTX	52	2009
+district	105	PMTCT_CTX	8	2009
+district	106	PMTCT_CTX	28	2009
+district	107	PMTCT_CTX	40	2009
+region	10	PMTCT_CTX	334	2009
+district	1	PMTCT_CTX	51	2009
+district	2	PMTCT_CTX	62	2009
+district	3	PMTCT_CTX	117	2009
+district	4	PMTCT_CTX	74	2009
+district	5	PMTCT_CTX	522	2009
+district	6	PMTCT_CTX	51	2009
+district	7	PMTCT_CTX	16	2009
+region	3	PMTCT_CTX	893	2009
+district	39	PMTCT_CTX	366	2009
+district	40	PMTCT_CTX	99	2009
+district	41	PMTCT_CTX	107	2009
+district	42	PMTCT_CTX	202	2009
+district	43	PMTCT_CTX	189	2009
+district	44	PMTCT_CTX	35	2009
+district	45	PMTCT_CTX	246	2009
+region	22	PMTCT_CTX	1244	2009
+district	32	PMTCT_CTX	139	2009
+district	33	PMTCT_CTX	63	2009
+district	34	PMTCT_CTX	306	2009
+district	35	PMTCT_CTX	44	2009
+district	36	PMTCT_CTX	201	2009
+district	37	PMTCT_CTX	105	2009
+district	38	PMTCT_CTX	39	2009
+region	18	PMTCT_CTX	897	2009
+region	8	PMTCT_CTX	0	2009
+region	7	PMTCT_CTX	0	2009
+district	83	PMTCT_CTX	91	2009
+district	84	PMTCT_CTX	27	2009
+district	85	PMTCT_CTX	95	2009
+district	86	PMTCT_CTX	87	2009
+district	87	PMTCT_CTX	57	2009
+district	88	PMTCT_CTX	32	2009
+region	27	PMTCT_CTX	389	2009
+district	149	PMTCT_CTX	280	2009
+district	150	PMTCT_CTX	71	2009
+district	151	PMTCT_CTX	223	2009
+district	152	PMTCT_CTX	183	2009
+district	153	PMTCT_CTX	137	2009
+region	26	PMTCT_CTX	894	2009
+district	121	PMTCT_CTX	119	2009
+district	122	PMTCT_CTX	358	2009
+district	123	PMTCT_CTX	550	2009
+district	124	PMTCT_CTX	185	2009
+district	125	PMTCT_CTX	213	2009
+district	126	PMTCT_CTX	144	2009
+district	127	PMTCT_CTX	280	2009
+region	20	PMTCT_CTX	1849	2009
+district	113	PMTCT_CTX	162	2009
+district	114	PMTCT_CTX	281	2009
+district	115	PMTCT_CTX	315	2009
+district	116	PMTCT_CTX	168	2009
+district	117	PMTCT_CTX	148	2009
+district	118	PMTCT_CTX	244	2009
+district	119	PMTCT_CTX	256	2009
+district	120	PMTCT_CTX	173	2009
+region	6	PMTCT_CTX	1747	2009
+district	8	PMTCT_CTX	99	2009
+district	9	PMTCT_CTX	124	2009
+district	10	PMTCT_CTX	535	2009
+district	11	PMTCT_CTX	90	2009
+district	12	PMTCT_CTX	18	2009
+district	13	PMTCT_CTX	535	2009
+district	14	PMTCT_CTX	52	2009
+region	1	PMTCT_CTX	1453	2009
+district	68	PMTCT_CTX	338	2009
+district	69	PMTCT_CTX	623	2009
+district	70	PMTCT_CTX	460	2009
+district	71	PMTCT_CTX	345	2009
+district	72	PMTCT_CTX	116	2009
+region	5	PMTCT_CTX	1882	2009
+district	146	PMTCT_CTX	273	2009
+district	147	PMTCT_CTX	65	2009
+district	148	PMTCT_CTX	130	2009
+region	9	PMTCT_CTX	468	2009
+district	46	PMTCT_CTX	2365	2009
+district	47	PMTCT_CTX	2174	2009
+district	48	PMTCT_CTX	2038	2009
+region	2	PMTCT_CTX	6577	2009
+district	73	PMTCT_CTX	749	2009
+district	74	PMTCT_CTX	1131	2009
+district	75	PMTCT_CTX	645	2009
+district	76	PMTCT_CTX	335	2009
+district	77	PMTCT_CTX	42	2009
+district	78	PMTCT_CTX	638	2009
+district	79	PMTCT_CTX	944	2009
+district	80	PMTCT_CTX	388	2009
+district	81	PMTCT_CTX	295	2009
+district	82	PMTCT_CTX	32	2009
+region	17	PMTCT_CTX	5199	2009
+district	62	PMTCT_CTX	171	2009
+district	63	PMTCT_CTX	123	2009
+district	64	PMTCT_CTX	283	2009
+district	65	PMTCT_CTX	438	2009
+district	66	PMTCT_CTX	113	2009
+district	67	PMTCT_CTX	73	2009
+region	24	PMTCT_CTX	1201	2009
+district	154	PMTCT_CTX	441	2009
+district	155	PMTCT_CTX	68	2009
+district	156	PMTCT_CTX	90	2009
+district	157	PMTCT_CTX	192	2009
+district	158	PMTCT_CTX	238	2009
+region	4	PMTCT_CTX	1029	2009
+country	TZ	PMTCT_CTX	37320	2009
+district	22	CARE_NEW	464	2009
+district	23	CARE_NEW	1359	2009
+district	24	CARE_NEW	613	2009
+district	25	CARE_NEW	1580	2009
+district	26	CARE_NEW	283	2009
+district	27	CARE_NEW	512	2009
+district	28	CARE_NEW	274	2009
+district	29	CARE_NEW	345	2009
+district	30	CARE_NEW	406	2009
+district	31	CARE_NEW	305	2009
+region	28	CARE_NEW	6141	2009
+district	89	CARE_NEW	2942	2009
+district	90	CARE_NEW	2188	2009
+district	91	CARE_NEW	1271	2009
+district	92	CARE_NEW	729	2009
+district	93	CARE_NEW	770	2009
+district	94	CARE_NEW	1132	2009
+district	95	CARE_NEW	1149	2009
+region	29	CARE_NEW	10181	2009
+district	128	CARE_NEW	850	2009
+district	129	CARE_NEW	492	2009
+district	130	CARE_NEW	486	2009
+district	131	CARE_NEW	1180	2009
+district	132	CARE_NEW	1550	2009
+district	133	CARE_NEW	298	2009
+district	169	CARE_NEW	1048	2009
+region	16	CARE_NEW	5904	2009
+district	134	CARE_NEW	226	2009
+district	135	CARE_NEW	150	2009
+district	136	CARE_NEW	191	2009
+district	137	CARE_NEW	236	2009
+district	138	CARE_NEW	354	2009
+district	139	CARE_NEW	260	2009
+region	15	CARE_NEW	1417	2009
+region	13	CARE_NEW	0	2009
+district	49	CARE_NEW	437	2009
+district	50	CARE_NEW	607	2009
+district	51	CARE_NEW	697	2009
+district	52	CARE_NEW	249	2009
+district	53	CARE_NEW	529	2009
+district	54	CARE_NEW	415	2009
+region	14	CARE_NEW	2934	2009
+district	96	CARE_NEW	427	2009
+district	97	CARE_NEW	1409	2009
+district	98	CARE_NEW	1086	2009
+district	99	CARE_NEW	1777	2009
+region	23	CARE_NEW	4699	2009
+district	55	CARE_NEW	289	2009
+district	56	CARE_NEW	403	2009
+district	57	CARE_NEW	853	2009
+district	58	CARE_NEW	617	2009
+district	59	CARE_NEW	1085	2009
+district	60	CARE_NEW	123	2009
+district	61	CARE_NEW	687	2009
+region	19	CARE_NEW	4057	2009
+district	140	CARE_NEW	1694	2009
+district	141	CARE_NEW	768	2009
+district	142	CARE_NEW	947	2009
+district	143	CARE_NEW	649	2009
+district	144	CARE_NEW	813	2009
+district	145	CARE_NEW	1040	2009
+region	21	CARE_NEW	5911	2009
+region	30	CARE_NEW	0	2009
+district	108	CARE_NEW	2002	2009
+district	109	CARE_NEW	1511	2009
+district	110	CARE_NEW	1964	2009
+district	111	CARE_NEW	0	2009
+district	112	CARE_NEW	2589	2009
+region	25	CARE_NEW	8066	2009
+district	15	CARE_NEW	406	2009
+district	16	CARE_NEW	286	2009
+district	17	CARE_NEW	533	2009
+district	18	CARE_NEW	744	2009
+district	19	CARE_NEW	495	2009
+district	20	CARE_NEW	1083	2009
+district	21	CARE_NEW	298	2009
+region	11	CARE_NEW	3845	2009
+district	100	CARE_NEW	217	2009
+district	101	CARE_NEW	305	2009
+district	102	CARE_NEW	76	2009
+district	103	CARE_NEW	637	2009
+district	104	CARE_NEW	412	2009
+district	105	CARE_NEW	53	2009
+district	106	CARE_NEW	105	2009
+district	107	CARE_NEW	261	2009
+region	10	CARE_NEW	2066	2009
+district	1	CARE_NEW	247	2009
+district	2	CARE_NEW	459	2009
+district	3	CARE_NEW	466	2009
+district	4	CARE_NEW	393	2009
+district	5	CARE_NEW	1862	2009
+district	6	CARE_NEW	334	2009
+district	7	CARE_NEW	64	2009
+region	3	CARE_NEW	3825	2009
+district	39	CARE_NEW	1337	2009
+district	40	CARE_NEW	389	2009
+district	41	CARE_NEW	653	2009
+district	42	CARE_NEW	1206	2009
+district	43	CARE_NEW	782	2009
+district	44	CARE_NEW	104	2009
+district	45	CARE_NEW	962	2009
+region	22	CARE_NEW	5433	2009
+district	32	CARE_NEW	1210	2009
+district	33	CARE_NEW	430	2009
+district	34	CARE_NEW	2121	2009
+district	35	CARE_NEW	681	2009
+district	36	CARE_NEW	1645	2009
+district	37	CARE_NEW	691	2009
+district	38	CARE_NEW	284	2009
+region	18	CARE_NEW	7062	2009
+region	8	CARE_NEW	0	2009
+region	7	CARE_NEW	0	2009
+district	83	CARE_NEW	497	2009
+district	84	CARE_NEW	132	2009
+district	85	CARE_NEW	715	2009
+district	86	CARE_NEW	673	2009
+district	87	CARE_NEW	293	2009
+district	88	CARE_NEW	228	2009
+region	27	CARE_NEW	2538	2009
+district	149	CARE_NEW	1421	2009
+district	150	CARE_NEW	534	2009
+district	151	CARE_NEW	1154	2009
+district	152	CARE_NEW	1469	2009
+district	153	CARE_NEW	1223	2009
+region	26	CARE_NEW	5801	2009
+district	121	CARE_NEW	565	2009
+district	122	CARE_NEW	1541	2009
+district	123	CARE_NEW	2838	2009
+district	124	CARE_NEW	1094	2009
+district	125	CARE_NEW	1876	2009
+district	126	CARE_NEW	967	2009
+district	127	CARE_NEW	2313	2009
+region	20	CARE_NEW	11194	2009
+district	113	CARE_NEW	865	2009
+district	114	CARE_NEW	856	2009
+district	115	CARE_NEW	1739	2009
+district	116	CARE_NEW	722	2009
+district	117	CARE_NEW	503	2009
+district	118	CARE_NEW	2115	2009
+district	119	CARE_NEW	997	2009
+district	120	CARE_NEW	895	2009
+region	6	CARE_NEW	8692	2009
+district	8	CARE_NEW	474	2009
+district	9	CARE_NEW	692	2009
+district	10	CARE_NEW	2710	2009
+district	11	CARE_NEW	307	2009
+district	12	CARE_NEW	127	2009
+district	13	CARE_NEW	2710	2009
+district	14	CARE_NEW	199	2009
+region	1	CARE_NEW	7219	2009
+district	68	CARE_NEW	1242	2009
+district	69	CARE_NEW	2003	2009
+district	70	CARE_NEW	1779	2009
+district	71	CARE_NEW	1129	2009
+district	72	CARE_NEW	764	2009
+region	5	CARE_NEW	6917	2009
+district	146	CARE_NEW	1195	2009
+district	147	CARE_NEW	784	2009
+district	148	CARE_NEW	849	2009
+region	9	CARE_NEW	2828	2009
+district	46	CARE_NEW	10673	2009
+district	47	CARE_NEW	8626	2009
+district	48	CARE_NEW	9873	2009
+region	2	CARE_NEW	29172	2009
+district	73	CARE_NEW	2803	2009
+district	74	CARE_NEW	4593	2009
+district	75	CARE_NEW	2686	2009
+district	76	CARE_NEW	1696	2009
+district	77	CARE_NEW	506	2009
+district	78	CARE_NEW	2579	2009
+district	79	CARE_NEW	3746	2009
+district	80	CARE_NEW	1657	2009
+district	81	CARE_NEW	1787	2009
+district	82	CARE_NEW	57	2009
+region	17	CARE_NEW	22110	2009
+district	62	CARE_NEW	1081	2009
+district	63	CARE_NEW	839	2009
+district	64	CARE_NEW	1683	2009
+district	65	CARE_NEW	1473	2009
+district	66	CARE_NEW	497	2009
+district	67	CARE_NEW	928	2009
+region	24	CARE_NEW	6501	2009
+district	154	CARE_NEW	3114	2009
+district	155	CARE_NEW	582	2009
+district	156	CARE_NEW	1080	2009
+district	157	CARE_NEW	1896	2009
+district	158	CARE_NEW	1330	2009
+region	4	CARE_NEW	8002	2009
+country	TZ	CARE_NEW	191208	2009
+district	22	TX_NEW	428	2009
+district	23	TX_NEW	1271	2009
+district	24	TX_NEW	602	2009
+district	25	TX_NEW	1417	2009
+district	26	TX_NEW	235	2009
+district	27	TX_NEW	447	2009
+district	28	TX_NEW	282	2009
+district	29	TX_NEW	342	2009
+district	30	TX_NEW	358	2009
+district	31	TX_NEW	280	2009
+region	28	TX_NEW	5662	2009
+district	89	TX_NEW	2629	2009
+district	90	TX_NEW	1979	2009
+district	91	TX_NEW	1127	2009
+district	92	TX_NEW	619	2009
+district	93	TX_NEW	787	2009
+district	94	TX_NEW	1033	2009
+district	95	TX_NEW	1026	2009
+region	29	TX_NEW	9200	2009
+district	128	TX_NEW	629	2009
+district	129	TX_NEW	422	2009
+district	130	TX_NEW	403	2009
+district	131	TX_NEW	1025	2009
+district	132	TX_NEW	1528	2009
+district	133	TX_NEW	304	2009
+district	169	TX_NEW	964	2009
+region	16	TX_NEW	5275	2009
+district	134	TX_NEW	200	2009
+district	135	TX_NEW	142	2009
+district	136	TX_NEW	205	2009
+district	137	TX_NEW	195	2009
+district	138	TX_NEW	354	2009
+district	139	TX_NEW	202	2009
+region	15	TX_NEW	1298	2009
+region	13	TX_NEW	0	2009
+district	49	TX_NEW	534	2009
+district	50	TX_NEW	622	2009
+district	51	TX_NEW	663	2009
+district	52	TX_NEW	256	2009
+district	53	TX_NEW	510	2009
+district	54	TX_NEW	468	2009
+region	14	TX_NEW	3053	2009
+district	96	TX_NEW	410	2009
+district	97	TX_NEW	1248	2009
+district	98	TX_NEW	1048	2009
+district	99	TX_NEW	1651	2009
+region	23	TX_NEW	4357	2009
+district	55	TX_NEW	248	2009
+district	56	TX_NEW	386	2009
+district	57	TX_NEW	797	2009
+district	58	TX_NEW	509	2009
+district	59	TX_NEW	967	2009
+district	60	TX_NEW	98	2009
+district	61	TX_NEW	688	2009
+region	19	TX_NEW	3693	2009
+district	140	TX_NEW	1691	2009
+district	141	TX_NEW	910	2009
+district	142	TX_NEW	1152	2009
+district	143	TX_NEW	541	2009
+district	144	TX_NEW	1017	2009
+district	145	TX_NEW	852	2009
+region	21	TX_NEW	6163	2009
+region	30	TX_NEW	0	2009
+district	108	TX_NEW	1663	2009
+district	109	TX_NEW	1352	2009
+district	110	TX_NEW	1564	2009
+district	111	TX_NEW	0	2009
+district	112	TX_NEW	2298	2009
+region	25	TX_NEW	6877	2009
+district	15	TX_NEW	426	2009
+district	16	TX_NEW	305	2009
+district	17	TX_NEW	553	2009
+district	18	TX_NEW	715	2009
+district	19	TX_NEW	471	2009
+district	20	TX_NEW	1090	2009
+district	21	TX_NEW	309	2009
+region	11	TX_NEW	3869	2009
+district	100	TX_NEW	187	2009
+district	101	TX_NEW	135	2009
+district	102	TX_NEW	43	2009
+district	103	TX_NEW	537	2009
+district	104	TX_NEW	288	2009
+district	105	TX_NEW	31	2009
+district	106	TX_NEW	79	2009
+district	107	TX_NEW	222	2009
+region	10	TX_NEW	1522	2009
+district	1	TX_NEW	271	2009
+district	2	TX_NEW	510	2009
+district	3	TX_NEW	474	2009
+district	4	TX_NEW	380	2009
+district	5	TX_NEW	1911	2009
+district	6	TX_NEW	343	2009
+district	7	TX_NEW	65	2009
+region	3	TX_NEW	3954	2009
+district	39	TX_NEW	1045	2009
+district	40	TX_NEW	325	2009
+district	41	TX_NEW	570	2009
+district	42	TX_NEW	1147	2009
+district	43	TX_NEW	767	2009
+district	44	TX_NEW	113	2009
+district	45	TX_NEW	893	2009
+region	22	TX_NEW	4860	2009
+district	32	TX_NEW	1162	2009
+district	33	TX_NEW	376	2009
+district	34	TX_NEW	2115	2009
+district	35	TX_NEW	592	2009
+district	36	TX_NEW	1546	2009
+district	37	TX_NEW	677	2009
+district	38	TX_NEW	266	2009
+region	18	TX_NEW	6734	2009
+region	8	TX_NEW	0	2009
+region	7	TX_NEW	0	2009
+district	83	TX_NEW	509	2009
+district	84	TX_NEW	147	2009
+district	85	TX_NEW	726	2009
+district	86	TX_NEW	611	2009
+district	87	TX_NEW	325	2009
+district	88	TX_NEW	223	2009
+region	27	TX_NEW	2541	2009
+district	149	TX_NEW	1163	2009
+district	150	TX_NEW	479	2009
+district	151	TX_NEW	1008	2009
+district	152	TX_NEW	1212	2009
+district	153	TX_NEW	1146	2009
+region	26	TX_NEW	5008	2009
+district	121	TX_NEW	742	2009
+district	122	TX_NEW	1788	2009
+district	123	TX_NEW	3446	2009
+district	124	TX_NEW	1199	2009
+district	125	TX_NEW	1995	2009
+district	126	TX_NEW	1120	2009
+district	127	TX_NEW	1382	2009
+region	20	TX_NEW	11672	2009
+district	113	TX_NEW	796	2009
+district	114	TX_NEW	962	2009
+district	115	TX_NEW	1587	2009
+district	116	TX_NEW	722	2009
+district	117	TX_NEW	467	2009
+district	118	TX_NEW	1501	2009
+district	119	TX_NEW	992	2009
+district	120	TX_NEW	895	2009
+region	6	TX_NEW	7922	2009
+district	8	TX_NEW	466	2009
+district	9	TX_NEW	680	2009
+district	10	TX_NEW	2671	2009
+district	11	TX_NEW	263	2009
+district	12	TX_NEW	122	2009
+district	13	TX_NEW	2671	2009
+district	14	TX_NEW	148	2009
+region	1	TX_NEW	7021	2009
+district	68	TX_NEW	1051	2009
+district	69	TX_NEW	2370	2009
+district	70	TX_NEW	1781	2009
+district	71	TX_NEW	980	2009
+district	72	TX_NEW	702	2009
+region	5	TX_NEW	6884	2009
+district	146	TX_NEW	980	2009
+district	147	TX_NEW	680	2009
+district	148	TX_NEW	846	2009
+region	9	TX_NEW	2506	2009
+district	46	TX_NEW	9633	2009
+district	47	TX_NEW	6643	2009
+district	48	TX_NEW	7321	2009
+region	2	TX_NEW	23597	2009
+district	73	TX_NEW	2458	2009
+district	74	TX_NEW	4410	2009
+district	75	TX_NEW	2562	2009
+district	76	TX_NEW	1650	2009
+district	77	TX_NEW	356	2009
+district	78	TX_NEW	2522	2009
+district	79	TX_NEW	3290	2009
+district	80	TX_NEW	1565	2009
+district	81	TX_NEW	1726	2009
+district	82	TX_NEW	55	2009
+region	17	TX_NEW	20594	2009
+district	62	TX_NEW	984	2009
+district	63	TX_NEW	821	2009
+district	64	TX_NEW	1607	2009
+district	65	TX_NEW	1410	2009
+district	66	TX_NEW	409	2009
+district	67	TX_NEW	870	2009
+region	24	TX_NEW	6101	2009
+district	154	TX_NEW	10203	2009
+district	155	TX_NEW	606	2009
+district	156	TX_NEW	991	2009
+district	157	TX_NEW	1447	2009
+district	158	TX_NEW	1167	2009
+region	4	TX_NEW	14414	2009
+country	TZ	TX_NEW	182245	2009
+district	22	CARE_CURR	2430	2009
+district	23	CARE_CURR	4497	2009
+district	24	CARE_CURR	5302	2009
+district	25	CARE_CURR	10193	2009
+district	26	CARE_CURR	1408	2009
+district	27	CARE_CURR	1369	2009
+district	28	CARE_CURR	847	2009
+district	29	CARE_CURR	1364	2009
+district	30	CARE_CURR	881	2009
+district	31	CARE_CURR	1514	2009
+region	28	CARE_CURR	29805	2009
+district	89	CARE_CURR	9970	2009
+district	90	CARE_CURR	6963	2009
+district	91	CARE_CURR	2798	2009
+district	92	CARE_CURR	2158	2009
+district	93	CARE_CURR	2448	2009
+district	94	CARE_CURR	4576	2009
+district	95	CARE_CURR	2616	2009
+region	29	CARE_CURR	31529	2009
+district	128	CARE_CURR	3015	2009
+district	129	CARE_CURR	2016	2009
+district	130	CARE_CURR	1425	2009
+district	131	CARE_CURR	4311	2009
+district	132	CARE_CURR	5906	2009
+district	133	CARE_CURR	1290	2009
+district	169	CARE_CURR	5694	2009
+region	16	CARE_CURR	23657	2009
+district	134	CARE_CURR	1207	2009
+district	135	CARE_CURR	621	2009
+district	136	CARE_CURR	1004	2009
+district	137	CARE_CURR	459	2009
+district	138	CARE_CURR	1123	2009
+district	139	CARE_CURR	1047	2009
+region	15	CARE_CURR	5461	2009
+region	13	CARE_CURR	0	2009
+district	49	CARE_CURR	1904	2009
+district	50	CARE_CURR	2626	2009
+district	51	CARE_CURR	2569	2009
+district	52	CARE_CURR	836	2009
+district	53	CARE_CURR	2143	2009
+district	54	CARE_CURR	2427	2009
+region	14	CARE_CURR	12505	2009
+district	96	CARE_CURR	1205	2009
+district	97	CARE_CURR	4488	2009
+district	98	CARE_CURR	3433	2009
+district	99	CARE_CURR	6043	2009
+region	23	CARE_CURR	15169	2009
+district	55	CARE_CURR	1097	2009
+district	56	CARE_CURR	1475	2009
+district	57	CARE_CURR	3962	2009
+district	58	CARE_CURR	1875	2009
+district	59	CARE_CURR	4013	2009
+district	60	CARE_CURR	356	2009
+district	61	CARE_CURR	2690	2009
+region	19	CARE_CURR	15468	2009
+district	140	CARE_CURR	9263	2009
+district	141	CARE_CURR	5053	2009
+district	142	CARE_CURR	7879	2009
+district	143	CARE_CURR	2972	2009
+district	144	CARE_CURR	5963	2009
+district	145	CARE_CURR	3832	2009
+region	21	CARE_CURR	34962	2009
+region	30	CARE_CURR	0	2009
+district	108	CARE_CURR	7150	2009
+district	109	CARE_CURR	4781	2009
+district	110	CARE_CURR	5449	2009
+district	111	CARE_CURR	0	2009
+district	112	CARE_CURR	8470	2009
+region	25	CARE_CURR	25850	2009
+district	15	CARE_CURR	2479	2009
+district	16	CARE_CURR	1364	2009
+district	17	CARE_CURR	2549	2009
+district	18	CARE_CURR	3293	2009
+district	19	CARE_CURR	2024	2009
+district	20	CARE_CURR	7390	2009
+district	21	CARE_CURR	1404	2009
+region	11	CARE_CURR	20503	2009
+district	100	CARE_CURR	1140	2009
+district	101	CARE_CURR	1022	2009
+district	102	CARE_CURR	248	2009
+district	103	CARE_CURR	3255	2009
+district	104	CARE_CURR	1160	2009
+district	105	CARE_CURR	258	2009
+district	106	CARE_CURR	477	2009
+district	107	CARE_CURR	1122	2009
+region	10	CARE_CURR	8682	2009
+district	1	CARE_CURR	1349	2009
+district	2	CARE_CURR	1931	2009
+district	3	CARE_CURR	2127	2009
+district	4	CARE_CURR	1973	2009
+district	5	CARE_CURR	9163	2009
+district	6	CARE_CURR	1223	2009
+district	7	CARE_CURR	265	2009
+region	3	CARE_CURR	18031	2009
+district	39	CARE_CURR	5596	2009
+district	40	CARE_CURR	1601	2009
+district	41	CARE_CURR	2955	2009
+district	42	CARE_CURR	4557	2009
+district	43	CARE_CURR	3340	2009
+district	44	CARE_CURR	688	2009
+district	45	CARE_CURR	4741	2009
+region	22	CARE_CURR	23478	2009
+district	32	CARE_CURR	3841	2009
+district	33	CARE_CURR	1430	2009
+district	34	CARE_CURR	7575	2009
+district	35	CARE_CURR	2517	2009
+district	36	CARE_CURR	8428	2009
+district	37	CARE_CURR	2802	2009
+district	38	CARE_CURR	890	2009
+region	18	CARE_CURR	27483	2009
+region	8	CARE_CURR	0	2009
+region	7	CARE_CURR	0	2009
+district	83	CARE_CURR	2392	2009
+district	84	CARE_CURR	451	2009
+district	85	CARE_CURR	2951	2009
+district	86	CARE_CURR	2605	2009
+district	87	CARE_CURR	1089	2009
+district	88	CARE_CURR	855	2009
+region	27	CARE_CURR	10343	2009
+district	149	CARE_CURR	4328	2009
+district	150	CARE_CURR	1659	2009
+district	151	CARE_CURR	3501	2009
+district	152	CARE_CURR	4355	2009
+district	153	CARE_CURR	3472	2009
+region	26	CARE_CURR	17315	2009
+district	121	CARE_CURR	3079	2009
+district	122	CARE_CURR	6428	2009
+district	123	CARE_CURR	17365	2009
+district	124	CARE_CURR	4192	2009
+district	125	CARE_CURR	7181	2009
+district	126	CARE_CURR	2894	2009
+district	127	CARE_CURR	4450	2009
+region	20	CARE_CURR	45589	2009
+district	113	CARE_CURR	3243	2009
+district	114	CARE_CURR	3912	2009
+district	115	CARE_CURR	7474	2009
+district	116	CARE_CURR	3181	2009
+district	117	CARE_CURR	2352	2009
+district	118	CARE_CURR	5944	2009
+district	119	CARE_CURR	3948	2009
+district	120	CARE_CURR	2635	2009
+region	6	CARE_CURR	32689	2009
+district	8	CARE_CURR	1511	2009
+district	9	CARE_CURR	3146	2009
+district	10	CARE_CURR	10137	2009
+district	11	CARE_CURR	1017	2009
+district	12	CARE_CURR	245	2009
+district	13	CARE_CURR	10137	2009
+district	14	CARE_CURR	432	2009
+region	1	CARE_CURR	26625	2009
+district	68	CARE_CURR	6391	2009
+district	69	CARE_CURR	14778	2009
+district	70	CARE_CURR	10340	2009
+district	71	CARE_CURR	4933	2009
+district	72	CARE_CURR	3509	2009
+region	5	CARE_CURR	39951	2009
+district	146	CARE_CURR	2680	2009
+district	147	CARE_CURR	2405	2009
+district	148	CARE_CURR	2511	2009
+region	9	CARE_CURR	7596	2009
+district	46	CARE_CURR	38024	2009
+district	47	CARE_CURR	39840	2009
+district	48	CARE_CURR	37048	2009
+region	2	CARE_CURR	114912	2009
+district	73	CARE_CURR	10896	2009
+district	74	CARE_CURR	19105	2009
+district	75	CARE_CURR	10237	2009
+district	76	CARE_CURR	7398	2009
+district	77	CARE_CURR	1594	2009
+district	78	CARE_CURR	11398	2009
+district	79	CARE_CURR	11724	2009
+district	80	CARE_CURR	5150	2009
+district	81	CARE_CURR	5194	2009
+district	82	CARE_CURR	123	2009
+region	17	CARE_CURR	82819	2009
+district	62	CARE_CURR	3079	2009
+district	63	CARE_CURR	4366	2009
+district	64	CARE_CURR	5848	2009
+district	65	CARE_CURR	7391	2009
+district	66	CARE_CURR	1990	2009
+district	67	CARE_CURR	2394	2009
+region	24	CARE_CURR	25068	2009
+district	154	CARE_CURR	9771	2009
+district	155	CARE_CURR	1376	2009
+district	156	CARE_CURR	3289	2009
+district	157	CARE_CURR	4223	2009
+district	158	CARE_CURR	4087	2009
+region	4	CARE_CURR	22746	2009
+country	TZ	CARE_CURR	748519	2009
+district	22	TB_SCREEN	6179	2009
+district	23	TB_SCREEN	11782	2009
+district	24	TB_SCREEN	14089	2009
+district	25	TB_SCREEN	28098	2009
+district	26	TB_SCREEN	3676	2009
+district	27	TB_SCREEN	3419	2009
+district	28	TB_SCREEN	2093	2009
+district	29	TB_SCREEN	3655	2009
+district	30	TB_SCREEN	2266	2009
+district	31	TB_SCREEN	4271	2009
+region	28	TB_SCREEN	79528	2009
+district	89	TB_SCREEN	25582	2009
+district	90	TB_SCREEN	19985	2009
+district	91	TB_SCREEN	7099	2009
+district	92	TB_SCREEN	6191	2009
+district	93	TB_SCREEN	6590	2009
+district	94	TB_SCREEN	12002	2009
+district	95	TB_SCREEN	7274	2009
+region	29	TB_SCREEN	84723	2009
+district	128	TB_SCREEN	7512	2009
+district	129	TB_SCREEN	5079	2009
+district	130	TB_SCREEN	2935	2009
+district	131	TB_SCREEN	13304	2009
+district	132	TB_SCREEN	9876	2009
+district	133	TB_SCREEN	3304	2009
+district	169	TB_SCREEN	15679	2009
+region	16	TB_SCREEN	57689	2009
+district	134	TB_SCREEN	3285	2009
+district	135	TB_SCREEN	1726	2009
+district	136	TB_SCREEN	2846	2009
+district	137	TB_SCREEN	1832	2009
+district	138	TB_SCREEN	2934	2009
+district	139	TB_SCREEN	2804	2009
+region	15	TB_SCREEN	15427	2009
+region	13	TB_SCREEN	0	2009
+district	49	TB_SCREEN	5456	2009
+district	50	TB_SCREEN	7188	2009
+district	51	TB_SCREEN	7146	2009
+district	52	TB_SCREEN	2252	2009
+district	53	TB_SCREEN	6056	2009
+district	54	TB_SCREEN	6928	2009
+region	14	TB_SCREEN	35026	2009
+district	96	TB_SCREEN	3319	2009
+district	97	TB_SCREEN	7870	2009
+district	98	TB_SCREEN	6576	2009
+district	99	TB_SCREEN	16354	2009
+region	23	TB_SCREEN	34119	2009
+district	55	TB_SCREEN	2833	2009
+district	56	TB_SCREEN	4032	2009
+district	57	TB_SCREEN	11673	2009
+district	58	TB_SCREEN	5074	2009
+district	59	TB_SCREEN	10053	2009
+district	60	TB_SCREEN	930	2009
+district	61	TB_SCREEN	7610	2009
+region	19	TB_SCREEN	42205	2009
+district	140	TB_SCREEN	26193	2009
+district	141	TB_SCREEN	14057	2009
+district	142	TB_SCREEN	21111	2009
+district	143	TB_SCREEN	7374	2009
+district	144	TB_SCREEN	16646	2009
+district	145	TB_SCREEN	9649	2009
+region	21	TB_SCREEN	95030	2009
+region	30	TB_SCREEN	0	2009
+district	108	TB_SCREEN	19836	2009
+district	109	TB_SCREEN	11915	2009
+district	110	TB_SCREEN	13855	2009
+district	111	TB_SCREEN	0	2009
+district	112	TB_SCREEN	21252	2009
+region	25	TB_SCREEN	66858	2009
+district	15	TB_SCREEN	7278	2009
+district	16	TB_SCREEN	4051	2009
+district	17	TB_SCREEN	7376	2009
+district	18	TB_SCREEN	10280	2009
+district	19	TB_SCREEN	5682	2009
+district	20	TB_SCREEN	20534	2009
+district	21	TB_SCREEN	4096	2009
+region	11	TB_SCREEN	59297	2009
+district	100	TB_SCREEN	2578	2009
+district	101	TB_SCREEN	1923	2009
+district	102	TB_SCREEN	713	2009
+district	103	TB_SCREEN	8649	2009
+district	104	TB_SCREEN	3128	2009
+district	105	TB_SCREEN	705	2009
+district	106	TB_SCREEN	1378	2009
+district	107	TB_SCREEN	3120	2009
+region	10	TB_SCREEN	22194	2009
+district	1	TB_SCREEN	3459	2009
+district	2	TB_SCREEN	5262	2009
+district	3	TB_SCREEN	5442	2009
+district	4	TB_SCREEN	5598	2009
+district	5	TB_SCREEN	24292	2009
+district	6	TB_SCREEN	3278	2009
+district	7	TB_SCREEN	725	2009
+region	3	TB_SCREEN	48056	2009
+district	39	TB_SCREEN	15445	2009
+district	40	TB_SCREEN	4104	2009
+district	41	TB_SCREEN	8472	2009
+district	42	TB_SCREEN	12399	2009
+district	43	TB_SCREEN	9560	2009
+district	44	TB_SCREEN	1933	2009
+district	45	TB_SCREEN	13353	2009
+region	22	TB_SCREEN	65266	2009
+district	32	TB_SCREEN	11895	2009
+district	33	TB_SCREEN	3768	2009
+district	34	TB_SCREEN	19531	2009
+district	35	TB_SCREEN	6534	2009
+district	36	TB_SCREEN	21266	2009
+district	37	TB_SCREEN	7408	2009
+district	38	TB_SCREEN	1940	2009
+region	18	TB_SCREEN	72342	2009
+region	8	TB_SCREEN	0	2009
+region	7	TB_SCREEN	0	2009
+district	83	TB_SCREEN	6553	2009
+district	84	TB_SCREEN	1241	2009
+district	85	TB_SCREEN	7659	2009
+district	86	TB_SCREEN	7035	2009
+district	87	TB_SCREEN	2827	2009
+district	88	TB_SCREEN	2315	2009
+region	27	TB_SCREEN	27630	2009
+district	149	TB_SCREEN	11086	2009
+district	150	TB_SCREEN	4303	2009
+district	151	TB_SCREEN	8774	2009
+district	152	TB_SCREEN	12045	2009
+district	153	TB_SCREEN	8867	2009
+region	26	TB_SCREEN	45075	2009
+district	121	TB_SCREEN	6497	2009
+district	122	TB_SCREEN	15985	2009
+district	123	TB_SCREEN	41593	2009
+district	124	TB_SCREEN	7418	2009
+district	125	TB_SCREEN	12852	2009
+district	126	TB_SCREEN	4845	2009
+district	127	TB_SCREEN	12070	2009
+region	20	TB_SCREEN	101260	2009
+district	113	TB_SCREEN	9016	2009
+district	114	TB_SCREEN	10213	2009
+district	115	TB_SCREEN	19261	2009
+district	116	TB_SCREEN	8491	2009
+district	117	TB_SCREEN	6328	2009
+district	118	TB_SCREEN	16708	2009
+district	119	TB_SCREEN	9721	2009
+district	120	TB_SCREEN	6819	2009
+region	6	TB_SCREEN	86557	2009
+district	8	TB_SCREEN	4206	2009
+district	9	TB_SCREEN	8397	2009
+district	10	TB_SCREEN	29668	2009
+district	11	TB_SCREEN	2695	2009
+district	12	TB_SCREEN	694	2009
+district	13	TB_SCREEN	29668	2009
+district	14	TB_SCREEN	1211	2009
+region	1	TB_SCREEN	76539	2009
+district	68	TB_SCREEN	16947	2009
+district	69	TB_SCREEN	41879	2009
+district	70	TB_SCREEN	28108	2009
+district	71	TB_SCREEN	13540	2009
+district	72	TB_SCREEN	11391	2009
+region	5	TB_SCREEN	111865	2009
+district	146	TB_SCREEN	7057	2009
+district	147	TB_SCREEN	6487	2009
+district	148	TB_SCREEN	6272	2009
+region	9	TB_SCREEN	19816	2009
+district	46	TB_SCREEN	99341	2009
+district	47	TB_SCREEN	104954	2009
+district	48	TB_SCREEN	97564	2009
+region	2	TB_SCREEN	301859	2009
+district	73	TB_SCREEN	27377	2009
+district	74	TB_SCREEN	50176	2009
+district	75	TB_SCREEN	28218	2009
+district	76	TB_SCREEN	20227	2009
+district	77	TB_SCREEN	5468	2009
+district	78	TB_SCREEN	30731	2009
+district	79	TB_SCREEN	33579	2009
+district	80	TB_SCREEN	12600	2009
+district	81	TB_SCREEN	13695	2009
+district	82	TB_SCREEN	345	2009
+region	17	TB_SCREEN	222416	2009
+district	62	TB_SCREEN	8462	2009
+district	63	TB_SCREEN	12485	2009
+district	64	TB_SCREEN	16009	2009
+district	65	TB_SCREEN	20770	2009
+district	66	TB_SCREEN	5422	2009
+district	67	TB_SCREEN	6329	2009
+region	24	TB_SCREEN	69477	2009
+district	154	TB_SCREEN	25375	2009
+district	155	TB_SCREEN	3244	2009
+district	156	TB_SCREEN	7793	2009
+district	157	TB_SCREEN	10820	2009
+district	158	TB_SCREEN	10011	2009
+region	4	TB_SCREEN	57243	2009
+country	TZ	TB_SCREEN	1964271	2009
+district	22	TX_CURR	1926	2009
+district	23	TX_CURR	3713	2009
+district	24	TX_CURR	4274	2009
+district	25	TX_CURR	9360	2009
+district	26	TX_CURR	1188	2009
+district	27	TX_CURR	1177	2009
+district	28	TX_CURR	744	2009
+district	29	TX_CURR	1152	2009
+district	30	TX_CURR	676	2009
+district	31	TX_CURR	1413	2009
+region	28	TX_CURR	25623	2009
+district	89	TX_CURR	8419	2009
+district	90	TX_CURR	6716	2009
+district	91	TX_CURR	2495	2009
+district	92	TX_CURR	1950	2009
+district	93	TX_CURR	2344	2009
+district	94	TX_CURR	3892	2009
+district	95	TX_CURR	2414	2009
+region	29	TX_CURR	28230	2009
+district	128	TX_CURR	2568	2009
+district	129	TX_CURR	1761	2009
+district	130	TX_CURR	1169	2009
+district	131	TX_CURR	4077	2009
+district	132	TX_CURR	4523	2009
+district	133	TX_CURR	1159	2009
+district	169	TX_CURR	5132	2009
+region	16	TX_CURR	20389	2009
+district	134	TX_CURR	1012	2009
+district	135	TX_CURR	556	2009
+district	136	TX_CURR	915	2009
+district	137	TX_CURR	367	2009
+district	138	TX_CURR	947	2009
+district	139	TX_CURR	918	2009
+region	15	TX_CURR	4715	2009
+region	13	TX_CURR	0	2009
+district	49	TX_CURR	1728	2009
+district	50	TX_CURR	2249	2009
+district	51	TX_CURR	2238	2009
+district	52	TX_CURR	680	2009
+district	53	TX_CURR	1942	2009
+district	54	TX_CURR	2237	2009
+region	14	TX_CURR	11074	2009
+district	96	TX_CURR	1074	2009
+district	97	TX_CURR	3236	2009
+district	98	TX_CURR	2730	2009
+district	99	TX_CURR	5069	2009
+region	23	TX_CURR	12109	2009
+district	55	TX_CURR	934	2009
+district	56	TX_CURR	1226	2009
+district	57	TX_CURR	3519	2009
+district	58	TX_CURR	1457	2009
+district	59	TX_CURR	3342	2009
+district	60	TX_CURR	316	2009
+district	61	TX_CURR	2211	2009
+region	19	TX_CURR	13005	2009
+district	140	TX_CURR	7843	2009
+district	141	TX_CURR	4457	2009
+district	142	TX_CURR	6127	2009
+district	143	TX_CURR	2384	2009
+district	144	TX_CURR	4841	2009
+district	145	TX_CURR	3126	2009
+region	21	TX_CURR	28778	2009
+region	30	TX_CURR	0	2009
+district	108	TX_CURR	6100	2009
+district	109	TX_CURR	3882	2009
+district	110	TX_CURR	4394	2009
+district	111	TX_CURR	0	2009
+district	112	TX_CURR	7304	2009
+region	25	TX_CURR	21680	2009
+district	15	TX_CURR	2288	2009
+district	16	TX_CURR	1309	2009
+district	17	TX_CURR	2315	2009
+district	18	TX_CURR	2980	2009
+district	19	TX_CURR	1925	2009
+district	20	TX_CURR	6925	2009
+district	21	TX_CURR	1358	2009
+region	11	TX_CURR	19100	2009
+district	100	TX_CURR	874	2009
+district	101	TX_CURR	622	2009
+district	102	TX_CURR	193	2009
+district	103	TX_CURR	2466	2009
+district	104	TX_CURR	911	2009
+district	105	TX_CURR	203	2009
+district	106	TX_CURR	341	2009
+district	107	TX_CURR	914	2009
+region	10	TX_CURR	6524	2009
+district	1	TX_CURR	1049	2009
+district	2	TX_CURR	1591	2009
+district	3	TX_CURR	1629	2009
+district	4	TX_CURR	1646	2009
+district	5	TX_CURR	7489	2009
+district	6	TX_CURR	923	2009
+district	7	TX_CURR	211	2009
+region	3	TX_CURR	14538	2009
+district	39	TX_CURR	4552	2009
+district	40	TX_CURR	1333	2009
+district	41	TX_CURR	2472	2009
+district	42	TX_CURR	3915	2009
+district	43	TX_CURR	2746	2009
+district	44	TX_CURR	568	2009
+district	45	TX_CURR	3849	2009
+region	22	TX_CURR	19435	2009
+district	32	TX_CURR	3107	2009
+district	33	TX_CURR	1125	2009
+district	34	TX_CURR	6018	2009
+district	35	TX_CURR	1996	2009
+district	36	TX_CURR	6970	2009
+district	37	TX_CURR	2317	2009
+district	38	TX_CURR	566	2009
+region	18	TX_CURR	22099	2009
+region	8	TX_CURR	0	2009
+region	7	TX_CURR	0	2009
+district	83	TX_CURR	2006	2009
+district	84	TX_CURR	407	2009
+district	85	TX_CURR	2354	2009
+district	86	TX_CURR	2134	2009
+district	87	TX_CURR	901	2009
+district	88	TX_CURR	720	2009
+region	27	TX_CURR	8522	2009
+district	149	TX_CURR	3640	2009
+district	150	TX_CURR	1448	2009
+district	151	TX_CURR	2850	2009
+district	152	TX_CURR	3829	2009
+district	153	TX_CURR	2908	2009
+region	26	TX_CURR	14675	2009
+district	121	TX_CURR	2439	2009
+district	122	TX_CURR	3749	2009
+district	123	TX_CURR	14694	2009
+district	124	TX_CURR	3657	2009
+district	125	TX_CURR	5533	2009
+district	126	TX_CURR	2445	2009
+district	127	TX_CURR	3763	2009
+region	20	TX_CURR	36280	2009
+district	113	TX_CURR	2801	2009
+district	114	TX_CURR	3294	2009
+district	115	TX_CURR	5869	2009
+district	116	TX_CURR	2434	2009
+district	117	TX_CURR	1907	2009
+district	118	TX_CURR	5144	2009
+district	119	TX_CURR	3458	2009
+district	120	TX_CURR	2187	2009
+region	6	TX_CURR	27094	2009
+district	8	TX_CURR	1394	2009
+district	9	TX_CURR	2946	2009
+district	10	TX_CURR	9416	2009
+district	11	TX_CURR	918	2009
+district	12	TX_CURR	232	2009
+district	13	TX_CURR	9416	2009
+district	14	TX_CURR	416	2009
+region	1	TX_CURR	24738	2009
+district	68	TX_CURR	4875	2009
+district	69	TX_CURR	12868	2009
+district	70	TX_CURR	9132	2009
+district	71	TX_CURR	3977	2009
+district	72	TX_CURR	2608	2009
+region	5	TX_CURR	33460	2009
+district	146	TX_CURR	2363	2009
+district	147	TX_CURR	2051	2009
+district	148	TX_CURR	2211	2009
+region	9	TX_CURR	6625	2009
+district	46	TX_CURR	31554	2009
+district	47	TX_CURR	34910	2009
+district	48	TX_CURR	31983	2009
+region	2	TX_CURR	98447	2009
+district	73	TX_CURR	9481	2009
+district	74	TX_CURR	17182	2009
+district	75	TX_CURR	9190	2009
+district	76	TX_CURR	7035	2009
+district	77	TX_CURR	1412	2009
+district	78	TX_CURR	10245	2009
+district	79	TX_CURR	10241	2009
+district	80	TX_CURR	4839	2009
+district	81	TX_CURR	4481	2009
+district	82	TX_CURR	123	2009
+region	17	TX_CURR	74229	2009
+district	62	TX_CURR	2547	2009
+district	63	TX_CURR	3874	2009
+district	64	TX_CURR	5609	2009
+district	65	TX_CURR	6884	2009
+district	66	TX_CURR	1669	2009
+district	67	TX_CURR	2176	2009
+region	24	TX_CURR	22759	2009
+district	154	TX_CURR	8104	2009
+district	155	TX_CURR	1103	2009
+district	156	TX_CURR	4235	2009
+district	157	TX_CURR	3736	2009
+district	158	TX_CURR	3509	2009
+region	4	TX_CURR	20687	2009
+country	TZ	TX_CURR	637875	2009
+district	22	TB_ART	72	2009
+district	23	TB_ART	101	2009
+district	24	TB_ART	134	2009
+district	25	TB_ART	237	2009
+district	26	TB_ART	27	2009
+district	27	TB_ART	42	2009
+district	28	TB_ART	26	2009
+district	29	TB_ART	41	2009
+district	30	TB_ART	9	2009
+district	31	TB_ART	29	2009
+region	28	TB_ART	718	2009
+district	89	TB_ART	160	2009
+district	90	TB_ART	139	2009
+district	91	TB_ART	45	2009
+district	92	TB_ART	109	2009
+district	93	TB_ART	46	2009
+district	94	TB_ART	160	2009
+district	95	TB_ART	14	2009
+region	29	TB_ART	673	2009
+district	128	TB_ART	0	2009
+district	129	TB_ART	0	2009
+district	130	TB_ART	0	2009
+district	131	TB_ART	0	2009
+district	132	TB_ART	0	2009
+district	133	TB_ART	0	2009
+district	169	TB_ART	0	2009
+region	16	TB_ART	0	2009
+district	134	TB_ART	0	2009
+district	135	TB_ART	0	2009
+district	136	TB_ART	0	2009
+district	137	TB_ART	0	2009
+district	138	TB_ART	0	2009
+district	139	TB_ART	0	2009
+region	15	TB_ART	0	2009
+region	13	TB_ART	0	2009
+district	49	TB_ART	63	2009
+district	50	TB_ART	87	2009
+district	51	TB_ART	57	2009
+district	52	TB_ART	42	2009
+district	53	TB_ART	27	2009
+district	54	TB_ART	54	2009
+region	14	TB_ART	330	2009
+district	96	TB_ART	0	2009
+district	97	TB_ART	0	2009
+district	98	TB_ART	0	2009
+district	99	TB_ART	0	2009
+region	23	TB_ART	0	2009
+district	55	TB_ART	7	2009
+district	56	TB_ART	14	2009
+district	57	TB_ART	34	2009
+district	58	TB_ART	51	2009
+district	59	TB_ART	55	2009
+district	60	TB_ART	4	2009
+district	61	TB_ART	22	2009
+region	19	TB_ART	187	2009
+district	140	TB_ART	56	2009
+district	141	TB_ART	56	2009
+district	142	TB_ART	118	2009
+district	143	TB_ART	15	2009
+district	144	TB_ART	116	2009
+district	145	TB_ART	0	2009
+region	21	TB_ART	361	2009
+region	30	TB_ART	0	2009
+district	108	TB_ART	260	2009
+district	109	TB_ART	35	2009
+district	110	TB_ART	95	2009
+district	111	TB_ART	0	2009
+district	112	TB_ART	247	2009
+region	25	TB_ART	637	2009
+district	15	TB_ART	26	2009
+district	16	TB_ART	16	2009
+district	17	TB_ART	18	2009
+district	18	TB_ART	77	2009
+district	19	TB_ART	39	2009
+district	20	TB_ART	155	2009
+district	21	TB_ART	81	2009
+region	11	TB_ART	412	2009
+district	100	TB_ART	0	2009
+district	101	TB_ART	0	2009
+district	102	TB_ART	0	2009
+district	103	TB_ART	0	2009
+district	104	TB_ART	0	2009
+district	105	TB_ART	0	2009
+district	106	TB_ART	0	2009
+district	107	TB_ART	0	2009
+region	10	TB_ART	0	2009
+district	1	TB_ART	0	2009
+district	2	TB_ART	0	2009
+district	3	TB_ART	0	2009
+district	4	TB_ART	0	2009
+district	5	TB_ART	0	2009
+district	6	TB_ART	0	2009
+district	7	TB_ART	0	2009
+region	3	TB_ART	0	2009
+district	39	TB_ART	74	2009
+district	40	TB_ART	23	2009
+district	41	TB_ART	31	2009
+district	42	TB_ART	73	2009
+district	43	TB_ART	32	2009
+district	44	TB_ART	4	2009
+district	45	TB_ART	65	2009
+region	22	TB_ART	302	2009
+district	32	TB_ART	151	2009
+district	33	TB_ART	66	2009
+district	34	TB_ART	266	2009
+district	35	TB_ART	105	2009
+district	36	TB_ART	178	2009
+district	37	TB_ART	85	2009
+district	38	TB_ART	12	2009
+region	18	TB_ART	863	2009
+region	8	TB_ART	0	2009
+region	7	TB_ART	0	2009
+district	83	TB_ART	1	2009
+district	84	TB_ART	14	2009
+district	85	TB_ART	49	2009
+district	86	TB_ART	76	2009
+district	87	TB_ART	43	2009
+district	88	TB_ART	11	2009
+region	27	TB_ART	194	2009
+district	149	TB_ART	64	2009
+district	150	TB_ART	41	2009
+district	151	TB_ART	71	2009
+district	152	TB_ART	106	2009
+district	153	TB_ART	19	2009
+region	26	TB_ART	301	2009
+district	121	TB_ART	10	2009
+district	122	TB_ART	44	2009
+district	123	TB_ART	466	2009
+district	124	TB_ART	114	2009
+district	125	TB_ART	112	2009
+district	126	TB_ART	142	2009
+district	127	TB_ART	21	2009
+region	20	TB_ART	909	2009
+district	113	TB_ART	0	2009
+district	114	TB_ART	0	2009
+district	115	TB_ART	0	2009
+district	116	TB_ART	0	2009
+district	117	TB_ART	0	2009
+district	118	TB_ART	0	2009
+district	119	TB_ART	0	2009
+district	120	TB_ART	0	2009
+region	6	TB_ART	0	2009
+district	8	TB_ART	34	2009
+district	9	TB_ART	56	2009
+district	10	TB_ART	142	2009
+district	11	TB_ART	25	2009
+district	12	TB_ART	24	2009
+district	13	TB_ART	142	2009
+district	14	TB_ART	10	2009
+region	1	TB_ART	433	2009
+district	68	TB_ART	121	2009
+district	69	TB_ART	127	2009
+district	70	TB_ART	187	2009
+district	71	TB_ART	76	2009
+district	72	TB_ART	68	2009
+region	5	TB_ART	579	2009
+district	146	TB_ART	0	2009
+district	147	TB_ART	0	2009
+district	148	TB_ART	0	2009
+region	9	TB_ART	0	2009
+district	46	TB_ART	248	2009
+district	47	TB_ART	629	2009
+district	48	TB_ART	1541	2009
+region	2	TB_ART	2418	2009
+district	73	TB_ART	186	2009
+district	74	TB_ART	115	2009
+district	75	TB_ART	117	2009
+district	76	TB_ART	167	2009
+district	77	TB_ART	33	2009
+district	78	TB_ART	117	2009
+district	79	TB_ART	182	2009
+district	80	TB_ART	42	2009
+district	81	TB_ART	39	2009
+district	82	TB_ART	2	2009
+region	17	TB_ART	1000	2009
+district	62	TB_ART	108	2009
+district	63	TB_ART	48	2009
+district	64	TB_ART	73	2009
+district	65	TB_ART	221	2009
+district	66	TB_ART	29	2009
+district	67	TB_ART	24	2009
+region	24	TB_ART	503	2009
+district	154	TB_ART	112	2009
+district	155	TB_ART	2	2009
+district	156	TB_ART	41	2009
+district	157	TB_ART	112	2009
+district	158	TB_ART	61	2009
+region	4	TB_ART	328	2009
+country	TZ	TB_ART	11232	2009
+district	22	TX_RET_NUM	90	2009
+district	23	TX_RET_NUM	642	2009
+district	24	TX_RET_NUM	137	2009
+district	25	TX_RET_NUM	1412	2009
+district	26	TX_RET_NUM	213	2009
+district	27	TX_RET_NUM	231	2009
+district	28	TX_RET_NUM	193	2009
+district	29	TX_RET_NUM	208	2009
+district	30	TX_RET_NUM	145	2009
+district	31	TX_RET_NUM	277	2009
+region	28	TX_RET_NUM	3548	2009
+district	89	TX_RET_NUM	1986	2009
+district	90	TX_RET_NUM	1454	2009
+district	91	TX_RET_NUM	412	2009
+district	92	TX_RET_NUM	436	2009
+district	93	TX_RET_NUM	512	2009
+district	94	TX_RET_NUM	744	2009
+district	95	TX_RET_NUM	568	2009
+region	29	TX_RET_NUM	6112	2009
+district	128	TX_RET_NUM	615	2009
+district	129	TX_RET_NUM	101	2009
+district	130	TX_RET_NUM	335	2009
+district	131	TX_RET_NUM	754	2009
+district	132	TX_RET_NUM	1094	2009
+district	133	TX_RET_NUM	236	2009
+district	169	TX_RET_NUM	884	2009
+region	16	TX_RET_NUM	4019	2009
+district	134	TX_RET_NUM	167	2009
+district	135	TX_RET_NUM	98	2009
+district	136	TX_RET_NUM	119	2009
+district	137	TX_RET_NUM	79	2009
+district	138	TX_RET_NUM	212	2009
+district	139	TX_RET_NUM	190	2009
+region	15	TX_RET_NUM	865	2009
+region	13	TX_RET_NUM	0	2009
+district	49	TX_RET_NUM	522	2009
+district	50	TX_RET_NUM	523	2009
+district	51	TX_RET_NUM	463	2009
+district	52	TX_RET_NUM	246	2009
+district	53	TX_RET_NUM	273	2009
+district	54	TX_RET_NUM	450	2009
+region	14	TX_RET_NUM	2477	2009
+district	96	TX_RET_NUM	68	2009
+district	97	TX_RET_NUM	927	2009
+district	98	TX_RET_NUM	559	2009
+district	99	TX_RET_NUM	1160	2009
+region	23	TX_RET_NUM	2714	2009
+district	55	TX_RET_NUM	167	2009
+district	56	TX_RET_NUM	251	2009
+district	57	TX_RET_NUM	614	2009
+district	58	TX_RET_NUM	356	2009
+district	59	TX_RET_NUM	580	2009
+district	60	TX_RET_NUM	64	2009
+district	61	TX_RET_NUM	392	2009
+region	19	TX_RET_NUM	2424	2009
+district	140	TX_RET_NUM	1279	2009
+district	141	TX_RET_NUM	629	2009
+district	142	TX_RET_NUM	788	2009
+district	143	TX_RET_NUM	497	2009
+district	144	TX_RET_NUM	724	2009
+district	145	TX_RET_NUM	561	2009
+region	21	TX_RET_NUM	4478	2009
+region	30	TX_RET_NUM	0	2009
+district	108	TX_RET_NUM	1309	2009
+district	109	TX_RET_NUM	1012	2009
+district	110	TX_RET_NUM	985	2009
+district	111	TX_RET_NUM	0	2009
+district	112	TX_RET_NUM	1450	2009
+region	25	TX_RET_NUM	4756	2009
+district	15	TX_RET_NUM	311	2009
+district	16	TX_RET_NUM	209	2009
+district	17	TX_RET_NUM	351	2009
+district	18	TX_RET_NUM	351	2009
+district	19	TX_RET_NUM	275	2009
+district	20	TX_RET_NUM	926	2009
+district	21	TX_RET_NUM	247	2009
+region	11	TX_RET_NUM	2670	2009
+district	100	TX_RET_NUM	137	2009
+district	101	TX_RET_NUM	71	2009
+district	102	TX_RET_NUM	34	2009
+district	103	TX_RET_NUM	508	2009
+district	104	TX_RET_NUM	190	2009
+district	105	TX_RET_NUM	27	2009
+district	106	TX_RET_NUM	47	2009
+district	107	TX_RET_NUM	142	2009
+region	10	TX_RET_NUM	1156	2009
+district	1	TX_RET_NUM	178	2009
+district	2	TX_RET_NUM	319	2009
+district	3	TX_RET_NUM	306	2009
+district	4	TX_RET_NUM	284	2009
+district	5	TX_RET_NUM	1063	2009
+district	6	TX_RET_NUM	146	2009
+district	7	TX_RET_NUM	40	2009
+region	3	TX_RET_NUM	2336	2009
+district	39	TX_RET_NUM	807	2009
+district	40	TX_RET_NUM	271	2009
+district	41	TX_RET_NUM	419	2009
+district	42	TX_RET_NUM	774	2009
+district	43	TX_RET_NUM	483	2009
+district	44	TX_RET_NUM	95	2009
+district	45	TX_RET_NUM	662	2009
+region	22	TX_RET_NUM	3511	2009
+district	32	TX_RET_NUM	620	2009
+district	33	TX_RET_NUM	259	2009
+district	34	TX_RET_NUM	1011	2009
+district	35	TX_RET_NUM	327	2009
+district	36	TX_RET_NUM	1069	2009
+district	37	TX_RET_NUM	396	2009
+district	38	TX_RET_NUM	134	2009
+region	18	TX_RET_NUM	3816	2009
+region	8	TX_RET_NUM	0	2009
+region	7	TX_RET_NUM	0	2009
+district	83	TX_RET_NUM	189	2009
+district	84	TX_RET_NUM	83	2009
+district	85	TX_RET_NUM	416	2009
+district	86	TX_RET_NUM	334	2009
+district	87	TX_RET_NUM	186	2009
+district	88	TX_RET_NUM	107	2009
+region	27	TX_RET_NUM	1315	2009
+district	149	TX_RET_NUM	768	2009
+district	150	TX_RET_NUM	310	2009
+district	151	TX_RET_NUM	706	2009
+district	152	TX_RET_NUM	780	2009
+district	153	TX_RET_NUM	636	2009
+region	26	TX_RET_NUM	3200	2009
+district	121	TX_RET_NUM	468	2009
+district	122	TX_RET_NUM	1218	2009
+district	123	TX_RET_NUM	2212	2009
+district	124	TX_RET_NUM	809	2009
+district	125	TX_RET_NUM	1395	2009
+district	126	TX_RET_NUM	773	2009
+district	127	TX_RET_NUM	920	2009
+region	20	TX_RET_NUM	7795	2009
+district	113	TX_RET_NUM	607	2009
+district	114	TX_RET_NUM	949	2009
+district	115	TX_RET_NUM	1205	2009
+district	116	TX_RET_NUM	334	2009
+district	117	TX_RET_NUM	496	2009
+district	118	TX_RET_NUM	903	2009
+district	119	TX_RET_NUM	692	2009
+district	120	TX_RET_NUM	610	2009
+region	6	TX_RET_NUM	5796	2009
+district	8	TX_RET_NUM	205	2009
+district	9	TX_RET_NUM	353	2009
+district	10	TX_RET_NUM	992	2009
+district	11	TX_RET_NUM	196	2009
+district	12	TX_RET_NUM	21	2009
+district	13	TX_RET_NUM	992	2009
+district	14	TX_RET_NUM	82	2009
+region	1	TX_RET_NUM	2841	2009
+district	68	TX_RET_NUM	879	2009
+district	69	TX_RET_NUM	2037	2009
+district	70	TX_RET_NUM	1413	2009
+district	71	TX_RET_NUM	951	2009
+district	72	TX_RET_NUM	455	2009
+region	5	TX_RET_NUM	5735	2009
+district	146	TX_RET_NUM	764	2009
+district	147	TX_RET_NUM	472	2009
+district	148	TX_RET_NUM	636	2009
+region	9	TX_RET_NUM	1872	2009
+district	46	TX_RET_NUM	7193	2009
+district	47	TX_RET_NUM	6308	2009
+district	48	TX_RET_NUM	6211	2009
+region	2	TX_RET_NUM	19712	2009
+district	73	TX_RET_NUM	1662	2009
+district	74	TX_RET_NUM	3483	2009
+district	75	TX_RET_NUM	1962	2009
+district	76	TX_RET_NUM	869	2009
+district	77	TX_RET_NUM	299	2009
+district	78	TX_RET_NUM	1940	2009
+district	79	TX_RET_NUM	1821	2009
+district	80	TX_RET_NUM	997	2009
+district	81	TX_RET_NUM	1100	2009
+district	82	TX_RET_NUM	68	2009
+region	17	TX_RET_NUM	14201	2009
+district	62	TX_RET_NUM	554	2009
+district	63	TX_RET_NUM	538	2009
+district	64	TX_RET_NUM	728	2009
+district	65	TX_RET_NUM	1267	2009
+district	66	TX_RET_NUM	400	2009
+district	67	TX_RET_NUM	324	2009
+region	24	TX_RET_NUM	3811	2009
+district	154	TX_RET_NUM	1827	2009
+district	155	TX_RET_NUM	185	2009
+district	156	TX_RET_NUM	556	2009
+district	157	TX_RET_NUM	748	2009
+district	158	TX_RET_NUM	798	2009
+region	4	TX_RET_NUM	4114	2009
+country	TZ	TX_RET_NUM	120962	2009
+district	22	TX_RET_DEN	156	2009
+district	23	TX_RET_DEN	846	2009
+district	24	TX_RET_DEN	185	2009
+district	25	TX_RET_DEN	1803	2009
+district	26	TX_RET_DEN	288	2009
+district	27	TX_RET_DEN	336	2009
+district	28	TX_RET_DEN	270	2009
+district	29	TX_RET_DEN	288	2009
+district	30	TX_RET_DEN	195	2009
+district	31	TX_RET_DEN	385	2009
+region	28	TX_RET_DEN	4752	2009
+district	89	TX_RET_DEN	2706	2009
+district	90	TX_RET_DEN	2041	2009
+district	91	TX_RET_DEN	674	2009
+district	92	TX_RET_DEN	629	2009
+district	93	TX_RET_DEN	735	2009
+district	94	TX_RET_DEN	984	2009
+district	95	TX_RET_DEN	917	2009
+region	29	TX_RET_DEN	8686	2009
+district	128	TX_RET_DEN	880	2009
+district	129	TX_RET_DEN	142	2009
+district	130	TX_RET_DEN	524	2009
+district	131	TX_RET_DEN	1023	2009
+district	132	TX_RET_DEN	1554	2009
+district	133	TX_RET_DEN	288	2009
+district	169	TX_RET_DEN	1079	2009
+region	16	TX_RET_DEN	5490	2009
+district	134	TX_RET_DEN	230	2009
+district	135	TX_RET_DEN	149	2009
+district	136	TX_RET_DEN	147	2009
+district	137	TX_RET_DEN	135	2009
+district	138	TX_RET_DEN	411	2009
+district	139	TX_RET_DEN	237	2009
+region	15	TX_RET_DEN	1309	2009
+region	13	TX_RET_DEN	0	2009
+district	49	TX_RET_DEN	625	2009
+district	50	TX_RET_DEN	903	2009
+district	51	TX_RET_DEN	926	2009
+district	52	TX_RET_DEN	496	2009
+district	53	TX_RET_DEN	587	2009
+district	54	TX_RET_DEN	623	2009
+region	14	TX_RET_DEN	4160	2009
+district	96	TX_RET_DEN	112	2009
+district	97	TX_RET_DEN	1032	2009
+district	98	TX_RET_DEN	940	2009
+district	99	TX_RET_DEN	1541	2009
+region	23	TX_RET_DEN	3625	2009
+district	55	TX_RET_DEN	238	2009
+district	56	TX_RET_DEN	387	2009
+district	57	TX_RET_DEN	905	2009
+district	58	TX_RET_DEN	523	2009
+district	59	TX_RET_DEN	780	2009
+district	60	TX_RET_DEN	95	2009
+district	61	TX_RET_DEN	649	2009
+region	19	TX_RET_DEN	3577	2009
+district	140	TX_RET_DEN	1778	2009
+district	141	TX_RET_DEN	803	2009
+district	142	TX_RET_DEN	1113	2009
+district	143	TX_RET_DEN	693	2009
+district	144	TX_RET_DEN	930	2009
+district	145	TX_RET_DEN	761	2009
+region	21	TX_RET_DEN	6078	2009
+region	30	TX_RET_DEN	0	2009
+district	108	TX_RET_DEN	1906	2009
+district	109	TX_RET_DEN	1461	2009
+district	110	TX_RET_DEN	1606	2009
+district	111	TX_RET_DEN	0	2009
+district	112	TX_RET_DEN	2235	2009
+region	25	TX_RET_DEN	7208	2009
+district	15	TX_RET_DEN	408	2009
+district	16	TX_RET_DEN	271	2009
+district	17	TX_RET_DEN	468	2009
+district	18	TX_RET_DEN	563	2009
+district	19	TX_RET_DEN	383	2009
+district	20	TX_RET_DEN	1269	2009
+district	21	TX_RET_DEN	358	2009
+region	11	TX_RET_DEN	3720	2009
+district	100	TX_RET_DEN	191	2009
+district	101	TX_RET_DEN	86	2009
+district	102	TX_RET_DEN	45	2009
+district	103	TX_RET_DEN	781	2009
+district	104	TX_RET_DEN	292	2009
+district	105	TX_RET_DEN	41	2009
+district	106	TX_RET_DEN	63	2009
+district	107	TX_RET_DEN	200	2009
+region	10	TX_RET_DEN	1699	2009
+district	1	TX_RET_DEN	323	2009
+district	2	TX_RET_DEN	467	2009
+district	3	TX_RET_DEN	495	2009
+district	4	TX_RET_DEN	417	2009
+district	5	TX_RET_DEN	1683	2009
+district	6	TX_RET_DEN	247	2009
+district	7	TX_RET_DEN	62	2009
+region	3	TX_RET_DEN	3694	2009
+district	39	TX_RET_DEN	1164	2009
+district	40	TX_RET_DEN	488	2009
+district	41	TX_RET_DEN	620	2009
+district	42	TX_RET_DEN	1122	2009
+district	43	TX_RET_DEN	762	2009
+district	44	TX_RET_DEN	129	2009
+district	45	TX_RET_DEN	992	2009
+region	22	TX_RET_DEN	5277	2009
+district	32	TX_RET_DEN	1041	2009
+district	33	TX_RET_DEN	454	2009
+district	34	TX_RET_DEN	1637	2009
+district	35	TX_RET_DEN	529	2009
+district	36	TX_RET_DEN	1590	2009
+district	37	TX_RET_DEN	654	2009
+district	38	TX_RET_DEN	228	2009
+region	18	TX_RET_DEN	6133	2009
+region	8	TX_RET_DEN	0	2009
+region	7	TX_RET_DEN	0	2009
+district	83	TX_RET_DEN	341	2009
+district	84	TX_RET_DEN	130	2009
+district	85	TX_RET_DEN	653	2009
+district	86	TX_RET_DEN	530	2009
+district	87	TX_RET_DEN	287	2009
+district	88	TX_RET_DEN	174	2009
+region	27	TX_RET_DEN	2115	2009
+district	149	TX_RET_DEN	1064	2009
+district	150	TX_RET_DEN	438	2009
+district	151	TX_RET_DEN	1023	2009
+district	152	TX_RET_DEN	1126	2009
+district	153	TX_RET_DEN	908	2009
+region	26	TX_RET_DEN	4559	2009
+district	121	TX_RET_DEN	691	2009
+district	122	TX_RET_DEN	1789	2009
+district	123	TX_RET_DEN	3057	2009
+district	124	TX_RET_DEN	1148	2009
+district	125	TX_RET_DEN	2046	2009
+district	126	TX_RET_DEN	1207	2009
+district	127	TX_RET_DEN	1338	2009
+region	20	TX_RET_DEN	11276	2009
+district	113	TX_RET_DEN	865	2009
+district	114	TX_RET_DEN	1349	2009
+district	115	TX_RET_DEN	1812	2009
+district	116	TX_RET_DEN	663	2009
+district	117	TX_RET_DEN	686	2009
+district	118	TX_RET_DEN	1208	2009
+district	119	TX_RET_DEN	1035	2009
+district	120	TX_RET_DEN	800	2009
+region	6	TX_RET_DEN	8418	2009
+district	8	TX_RET_DEN	252	2009
+district	9	TX_RET_DEN	449	2009
+district	10	TX_RET_DEN	1440	2009
+district	11	TX_RET_DEN	349	2009
+district	12	TX_RET_DEN	21	2009
+district	13	TX_RET_DEN	1440	2009
+district	14	TX_RET_DEN	144	2009
+region	1	TX_RET_DEN	4095	2009
+district	68	TX_RET_DEN	1284	2009
+district	69	TX_RET_DEN	2447	2009
+district	70	TX_RET_DEN	1826	2009
+district	71	TX_RET_DEN	1157	2009
+district	72	TX_RET_DEN	574	2009
+region	5	TX_RET_DEN	7288	2009
+district	146	TX_RET_DEN	1068	2009
+district	147	TX_RET_DEN	762	2009
+district	148	TX_RET_DEN	834	2009
+region	9	TX_RET_DEN	2664	2009
+district	46	TX_RET_DEN	9728	2009
+district	47	TX_RET_DEN	8541	2009
+district	48	TX_RET_DEN	8771	2009
+region	2	TX_RET_DEN	27040	2009
+district	73	TX_RET_DEN	2587	2009
+district	74	TX_RET_DEN	4968	2009
+district	75	TX_RET_DEN	2954	2009
+district	76	TX_RET_DEN	1094	2009
+district	77	TX_RET_DEN	509	2009
+district	78	TX_RET_DEN	2502	2009
+district	79	TX_RET_DEN	2457	2009
+district	80	TX_RET_DEN	1316	2009
+district	81	TX_RET_DEN	1871	2009
+district	82	TX_RET_DEN	69	2009
+region	17	TX_RET_DEN	20327	2009
+district	62	TX_RET_DEN	777	2009
+district	63	TX_RET_DEN	649	2009
+district	64	TX_RET_DEN	1041	2009
+district	65	TX_RET_DEN	1684	2009
+district	66	TX_RET_DEN	624	2009
+district	67	TX_RET_DEN	431	2009
+region	24	TX_RET_DEN	5206	2009
+district	154	TX_RET_DEN	2684	2009
+district	155	TX_RET_DEN	304	2009
+district	156	TX_RET_DEN	844	2009
+district	157	TX_RET_DEN	1126	2009
+district	158	TX_RET_DEN	1213	2009
+region	4	TX_RET_DEN	6171	2009
+country	TZ	TX_RET_DEN	172854	2009
+district	22	VMMC_CIRC	0	2009
+district	23	VMMC_CIRC	0	2009
+district	24	VMMC_CIRC	0	2009
+district	25	VMMC_CIRC	0	2009
+district	26	VMMC_CIRC	0	2009
+district	27	VMMC_CIRC	0	2009
+district	28	VMMC_CIRC	0	2009
+district	29	VMMC_CIRC	0	2009
+district	30	VMMC_CIRC	0	2009
+district	31	VMMC_CIRC	0	2009
+region	28	VMMC_CIRC	0	2009
+district	89	VMMC_CIRC	12259	2009
+district	90	VMMC_CIRC	16260	2009
+district	91	VMMC_CIRC	13019	2009
+district	92	VMMC_CIRC	7670	2009
+district	93	VMMC_CIRC	11366	2009
+district	94	VMMC_CIRC	3301	2009
+district	95	VMMC_CIRC	23189	2009
+region	29	VMMC_CIRC	87064	2009
+district	128	VMMC_CIRC	686	2009
+district	129	VMMC_CIRC	0	2009
+district	130	VMMC_CIRC	0	2009
+district	131	VMMC_CIRC	0	2009
+district	132	VMMC_CIRC	13585	2009
+district	133	VMMC_CIRC	0	2009
+district	169	VMMC_CIRC	0	2009
+region	16	VMMC_CIRC	14271	2009
+district	134	VMMC_CIRC	0	2009
+district	135	VMMC_CIRC	0	2009
+district	136	VMMC_CIRC	0	2009
+district	137	VMMC_CIRC	0	2009
+district	138	VMMC_CIRC	0	2009
+district	139	VMMC_CIRC	0	2009
+region	15	VMMC_CIRC	0	2009
+region	13	VMMC_CIRC	0	2009
+district	49	VMMC_CIRC	0	2009
+district	50	VMMC_CIRC	0	2009
+district	51	VMMC_CIRC	0	2009
+district	52	VMMC_CIRC	0	2009
+district	53	VMMC_CIRC	0	2009
+district	54	VMMC_CIRC	0	2009
+region	14	VMMC_CIRC	0	2009
+district	96	VMMC_CIRC	4026	2009
+district	97	VMMC_CIRC	11892	2009
+district	98	VMMC_CIRC	11238	2009
+district	99	VMMC_CIRC	2748	2009
+region	23	VMMC_CIRC	29904	2009
+district	55	VMMC_CIRC	0	2009
+district	56	VMMC_CIRC	0	2009
+district	57	VMMC_CIRC	0	2009
+district	58	VMMC_CIRC	0	2009
+district	59	VMMC_CIRC	0	2009
+district	60	VMMC_CIRC	0	2009
+district	61	VMMC_CIRC	0	2009
+region	19	VMMC_CIRC	0	2009
+district	140	VMMC_CIRC	2108	2009
+district	141	VMMC_CIRC	3659	2009
+district	142	VMMC_CIRC	4238	2009
+district	143	VMMC_CIRC	1425	2009
+district	144	VMMC_CIRC	2394	2009
+district	145	VMMC_CIRC	1604	2009
+region	21	VMMC_CIRC	15428	2009
+region	30	VMMC_CIRC	0	2009
+district	108	VMMC_CIRC	5166	2009
+district	109	VMMC_CIRC	24922	2009
+district	110	VMMC_CIRC	21894	2009
+district	111	VMMC_CIRC	0	2009
+district	112	VMMC_CIRC	11775	2009
+region	25	VMMC_CIRC	63757	2009
+district	15	VMMC_CIRC	0	2009
+district	16	VMMC_CIRC	0	2009
+district	17	VMMC_CIRC	0	2009
+district	18	VMMC_CIRC	0	2009
+district	19	VMMC_CIRC	0	2009
+district	20	VMMC_CIRC	0	2009
+district	21	VMMC_CIRC	0	2009
+region	11	VMMC_CIRC	0	2009
+district	100	VMMC_CIRC	0	2009
+district	101	VMMC_CIRC	0	2009
+district	102	VMMC_CIRC	0	2009
+district	103	VMMC_CIRC	0	2009
+district	104	VMMC_CIRC	0	2009
+district	105	VMMC_CIRC	0	2009
+district	106	VMMC_CIRC	0	2009
+district	107	VMMC_CIRC	0	2009
+region	10	VMMC_CIRC	0	2009
+district	1	VMMC_CIRC	0	2009
+district	2	VMMC_CIRC	0	2009
+district	3	VMMC_CIRC	0	2009
+district	4	VMMC_CIRC	0	2009
+district	5	VMMC_CIRC	0	2009
+district	6	VMMC_CIRC	0	2009
+district	7	VMMC_CIRC	0	2009
+region	3	VMMC_CIRC	0	2009
+district	39	VMMC_CIRC	54	2009
+district	40	VMMC_CIRC	0	2009
+district	41	VMMC_CIRC	0	2009
+district	42	VMMC_CIRC	0	2009
+district	43	VMMC_CIRC	0	2009
+district	44	VMMC_CIRC	0	2009
+district	45	VMMC_CIRC	0	2009
+region	22	VMMC_CIRC	54	2009
+district	32	VMMC_CIRC	0	2009
+district	33	VMMC_CIRC	0	2009
+district	34	VMMC_CIRC	0	2009
+district	35	VMMC_CIRC	0	2009
+district	36	VMMC_CIRC	0	2009
+district	37	VMMC_CIRC	0	2009
+district	38	VMMC_CIRC	0	2009
+region	18	VMMC_CIRC	0	2009
+region	8	VMMC_CIRC	0	2009
+region	7	VMMC_CIRC	0	2009
+district	83	VMMC_CIRC	0	2009
+district	84	VMMC_CIRC	0	2009
+district	85	VMMC_CIRC	0	2009
+district	86	VMMC_CIRC	0	2009
+district	87	VMMC_CIRC	0	2009
+district	88	VMMC_CIRC	0	2009
+region	27	VMMC_CIRC	0	2009
+district	149	VMMC_CIRC	28675	2009
+district	150	VMMC_CIRC	14456	2009
+district	151	VMMC_CIRC	1022	2009
+district	152	VMMC_CIRC	21739	2009
+district	153	VMMC_CIRC	21081	2009
+region	26	VMMC_CIRC	86973	2009
+district	121	VMMC_CIRC	792	2009
+district	122	VMMC_CIRC	437	2009
+district	123	VMMC_CIRC	3039	2009
+district	124	VMMC_CIRC	0	2009
+district	125	VMMC_CIRC	20548	2009
+district	126	VMMC_CIRC	0	2009
+district	127	VMMC_CIRC	8641	2009
+region	20	VMMC_CIRC	33457	2009
+district	113	VMMC_CIRC	7504	2009
+district	114	VMMC_CIRC	717	2009
+district	115	VMMC_CIRC	5011	2009
+district	116	VMMC_CIRC	1470	2009
+district	117	VMMC_CIRC	7202	2009
+district	118	VMMC_CIRC	4978	2009
+district	119	VMMC_CIRC	1442	2009
+district	120	VMMC_CIRC	9153	2009
+region	6	VMMC_CIRC	37477	2009
+district	8	VMMC_CIRC	0	2009
+district	9	VMMC_CIRC	0	2009
+district	10	VMMC_CIRC	0	2009
+district	11	VMMC_CIRC	0	2009
+district	12	VMMC_CIRC	0	2009
+district	13	VMMC_CIRC	0	2009
+district	14	VMMC_CIRC	0	2009
+region	1	VMMC_CIRC	0	2009
+district	68	VMMC_CIRC	11772	2009
+district	69	VMMC_CIRC	11066	2009
+district	70	VMMC_CIRC	4086	2009
+district	71	VMMC_CIRC	8348	2009
+district	72	VMMC_CIRC	1561	2009
+region	5	VMMC_CIRC	36833	2009
+district	146	VMMC_CIRC	2946	2009
+district	147	VMMC_CIRC	11833	2009
+district	148	VMMC_CIRC	1204	2009
+region	9	VMMC_CIRC	15983	2009
+district	46	VMMC_CIRC	0	2009
+district	47	VMMC_CIRC	0	2009
+district	48	VMMC_CIRC	0	2009
+region	2	VMMC_CIRC	0	2009
+district	73	VMMC_CIRC	9723	2009
+district	74	VMMC_CIRC	11761	2009
+district	75	VMMC_CIRC	3027	2009
+district	76	VMMC_CIRC	7101	2009
+district	77	VMMC_CIRC	2150	2009
+district	78	VMMC_CIRC	5480	2009
+district	79	VMMC_CIRC	4058	2009
+district	80	VMMC_CIRC	796	2009
+district	81	VMMC_CIRC	20408	2009
+district	82	VMMC_CIRC	0	2009
+region	17	VMMC_CIRC	64504	2009
+district	62	VMMC_CIRC	0	2009
+district	63	VMMC_CIRC	288	2009
+district	64	VMMC_CIRC	1708	2009
+district	65	VMMC_CIRC	73	2009
+district	66	VMMC_CIRC	0	2009
+district	67	VMMC_CIRC	1552	2009
+region	24	VMMC_CIRC	3621	2009
+district	154	VMMC_CIRC	14276	2009
+district	155	VMMC_CIRC	9581	2009
+district	156	VMMC_CIRC	8293	2009
+district	157	VMMC_CIRC	12861	2009
+district	158	VMMC_CIRC	26746	2009
+region	4	VMMC_CIRC	71757	2009
+country	TZ	VMMC_CIRC	615089	2009
+district	22	OVC_SERV	4303	2009
+district	23	OVC_SERV	4258	2009
+district	24	OVC_SERV	4889	2009
+district	25	OVC_SERV	6312	2009
+district	26	OVC_SERV	0	2009
+district	27	OVC_SERV	0	2009
+district	28	OVC_SERV	0	2009
+district	29	OVC_SERV	0	2009
+district	30	OVC_SERV	6405	2009
+district	31	OVC_SERV	0	2009
+region	28	OVC_SERV	26167	2009
+district	89	OVC_SERV	2319	2009
+district	90	OVC_SERV	2112	2009
+district	91	OVC_SERV	478	2009
+district	92	OVC_SERV	244	2009
+district	93	OVC_SERV	403	2009
+district	94	OVC_SERV	529	2009
+district	95	OVC_SERV	0	2009
+region	29	OVC_SERV	6085	2009
+district	128	OVC_SERV	2351	2009
+district	129	OVC_SERV	2753	2009
+district	130	OVC_SERV	164	2009
+district	131	OVC_SERV	2272	2009
+district	132	OVC_SERV	1682	2009
+district	133	OVC_SERV	1571	2009
+district	169	OVC_SERV	502	2009
+region	16	OVC_SERV	11295	2009
+district	134	OVC_SERV	0	2009
+district	135	OVC_SERV	0	2009
+district	136	OVC_SERV	0	2009
+district	137	OVC_SERV	1273	2009
+district	138	OVC_SERV	0	2009
+district	139	OVC_SERV	0	2009
+region	15	OVC_SERV	1273	2009
+region	13	OVC_SERV	0	2009
+district	49	OVC_SERV	3114	2009
+district	50	OVC_SERV	1603	2009
+district	51	OVC_SERV	1816	2009
+district	52	OVC_SERV	1527	2009
+district	53	OVC_SERV	2151	2009
+district	54	OVC_SERV	1078	2009
+region	14	OVC_SERV	11289	2009
+district	96	OVC_SERV	539	2009
+district	97	OVC_SERV	1050	2009
+district	98	OVC_SERV	965	2009
+district	99	OVC_SERV	1147	2009
+region	23	OVC_SERV	3701	2009
+district	55	OVC_SERV	0	2009
+district	56	OVC_SERV	2399	2009
+district	57	OVC_SERV	1476	2009
+district	58	OVC_SERV	685	2009
+district	59	OVC_SERV	988	2009
+district	60	OVC_SERV	0	2009
+district	61	OVC_SERV	272	2009
+region	19	OVC_SERV	5820	2009
+district	140	OVC_SERV	2507	2009
+district	141	OVC_SERV	5985	2009
+district	142	OVC_SERV	5405	2009
+district	143	OVC_SERV	4132	2009
+district	144	OVC_SERV	4214	2009
+district	145	OVC_SERV	0	2009
+region	21	OVC_SERV	22243	2009
+region	30	OVC_SERV	0	2009
+district	108	OVC_SERV	3740	2009
+district	109	OVC_SERV	3268	2009
+district	110	OVC_SERV	10184	2009
+district	111	OVC_SERV	0	2009
+district	112	OVC_SERV	800	2009
+region	25	OVC_SERV	17992	2009
+district	15	OVC_SERV	0	2009
+district	16	OVC_SERV	0	2009
+district	17	OVC_SERV	7150	2009
+district	18	OVC_SERV	0	2009
+district	19	OVC_SERV	0	2009
+district	20	OVC_SERV	0	2009
+district	21	OVC_SERV	5327	2009
+region	11	OVC_SERV	12477	2009
+district	100	OVC_SERV	2383	2009
+district	101	OVC_SERV	668	2009
+district	102	OVC_SERV	1779	2009
+district	103	OVC_SERV	2789	2009
+district	104	OVC_SERV	2290	2009
+district	105	OVC_SERV	323	2009
+district	106	OVC_SERV	2290	2009
+district	107	OVC_SERV	1828	2009
+region	10	OVC_SERV	14350	2009
+district	1	OVC_SERV	2922	2009
+district	2	OVC_SERV	7233	2009
+district	3	OVC_SERV	16190	2009
+district	4	OVC_SERV	4203	2009
+district	5	OVC_SERV	9717	2009
+district	6	OVC_SERV	3689	2009
+district	7	OVC_SERV	2548	2009
+region	3	OVC_SERV	46502	2009
+district	39	OVC_SERV	7794	2009
+district	40	OVC_SERV	11028	2009
+district	41	OVC_SERV	7917	2009
+district	42	OVC_SERV	12445	2009
+district	43	OVC_SERV	7403	2009
+district	44	OVC_SERV	2273	2009
+district	45	OVC_SERV	7342	2009
+region	22	OVC_SERV	56202	2009
+district	32	OVC_SERV	4313	2009
+district	33	OVC_SERV	4741	2009
+district	34	OVC_SERV	6437	2009
+district	35	OVC_SERV	8986	2009
+district	36	OVC_SERV	1871	2009
+district	37	OVC_SERV	5459	2009
+district	38	OVC_SERV	0	2009
+region	18	OVC_SERV	31807	2009
+region	8	OVC_SERV	0	2009
+region	7	OVC_SERV	0	2009
+district	83	OVC_SERV	1925	2009
+district	84	OVC_SERV	2583	2009
+district	85	OVC_SERV	5232	2009
+district	86	OVC_SERV	2547	2009
+district	87	OVC_SERV	1601	2009
+district	88	OVC_SERV	3318	2009
+region	27	OVC_SERV	17206	2009
+district	149	OVC_SERV	0	2009
+district	150	OVC_SERV	0	2009
+district	151	OVC_SERV	863	2009
+district	152	OVC_SERV	0	2009
+district	153	OVC_SERV	1107	2009
+region	26	OVC_SERV	1970	2009
+district	121	OVC_SERV	1337	2009
+district	122	OVC_SERV	2304	2009
+district	123	OVC_SERV	2453	2009
+district	124	OVC_SERV	4350	2009
+district	125	OVC_SERV	1318	2009
+district	126	OVC_SERV	6222	2009
+district	127	OVC_SERV	3250	2009
+region	20	OVC_SERV	21234	2009
+district	113	OVC_SERV	2648	2009
+district	114	OVC_SERV	949	2009
+district	115	OVC_SERV	1212	2009
+district	116	OVC_SERV	476	2009
+district	117	OVC_SERV	0	2009
+district	118	OVC_SERV	0	2009
+district	119	OVC_SERV	957	2009
+district	120	OVC_SERV	1192	2009
+region	6	OVC_SERV	7434	2009
+district	8	OVC_SERV	106	2009
+district	9	OVC_SERV	0	2009
+district	10	OVC_SERV	9136	2009
+district	11	OVC_SERV	5930	2009
+district	12	OVC_SERV	0	2009
+district	13	OVC_SERV	9136	2009
+district	14	OVC_SERV	0	2009
+region	1	OVC_SERV	24308	2009
+district	68	OVC_SERV	7024	2009
+district	69	OVC_SERV	8178	2009
+district	70	OVC_SERV	6783	2009
+district	71	OVC_SERV	12483	2009
+district	72	OVC_SERV	0	2009
+region	5	OVC_SERV	34468	2009
+district	146	OVC_SERV	1477	2009
+district	147	OVC_SERV	1087	2009
+district	148	OVC_SERV	1739	2009
+region	9	OVC_SERV	4303	2009
+district	46	OVC_SERV	12490	2009
+district	47	OVC_SERV	11551	2009
+district	48	OVC_SERV	2714	2009
+region	2	OVC_SERV	26755	2009
+district	73	OVC_SERV	1770	2009
+district	74	OVC_SERV	2364	2009
+district	75	OVC_SERV	1469	2009
+district	76	OVC_SERV	2044	2009
+district	77	OVC_SERV	1815	2009
+district	78	OVC_SERV	3283	2009
+district	79	OVC_SERV	2820	2009
+district	80	OVC_SERV	1265	2009
+district	81	OVC_SERV	2279	2009
+district	82	OVC_SERV	0	2009
+region	17	OVC_SERV	19109	2009
+district	62	OVC_SERV	1417	2009
+district	63	OVC_SERV	1191	2009
+district	64	OVC_SERV	793	2009
+district	65	OVC_SERV	1456	2009
+district	66	OVC_SERV	991	2009
+district	67	OVC_SERV	756	2009
+region	24	OVC_SERV	6604	2009
+district	154	OVC_SERV	1504	2009
+district	155	OVC_SERV	669	2009
+district	156	OVC_SERV	0	2009
+district	157	OVC_SERV	0	2009
+district	158	OVC_SERV	0	2009
+region	4	OVC_SERV	2173	2009
+country	TZ	OVC_SERV	452262	2009
+district	22	PP_PREV	2813	2009
+district	23	PP_PREV	572	2009
+district	24	PP_PREV	0	2009
+district	25	PP_PREV	4762	2009
+district	26	PP_PREV	0	2009
+district	27	PP_PREV	0	2009
+district	28	PP_PREV	0	2009
+district	29	PP_PREV	0	2009
+district	30	PP_PREV	1811	2009
+district	31	PP_PREV	0	2009
+region	28	PP_PREV	9958	2009
+district	89	PP_PREV	0	2009
+district	90	PP_PREV	0	2009
+district	91	PP_PREV	0	2009
+district	92	PP_PREV	0	2009
+district	93	PP_PREV	0	2009
+district	94	PP_PREV	0	2009
+district	95	PP_PREV	0	2009
+region	29	PP_PREV	0	2009
+district	128	PP_PREV	2424	2009
+district	129	PP_PREV	1450	2009
+district	130	PP_PREV	0	2009
+district	131	PP_PREV	0	2009
+district	132	PP_PREV	1509	2009
+district	133	PP_PREV	6593	2009
+district	169	PP_PREV	2728	2009
+region	16	PP_PREV	14704	2009
+district	134	PP_PREV	0	2009
+district	135	PP_PREV	0	2009
+district	136	PP_PREV	0	2009
+district	137	PP_PREV	1220	2009
+district	138	PP_PREV	0	2009
+district	139	PP_PREV	0	2009
+region	15	PP_PREV	1220	2009
+region	13	PP_PREV	0	2009
+district	49	PP_PREV	430	2009
+district	50	PP_PREV	0	2009
+district	51	PP_PREV	1552	2009
+district	52	PP_PREV	0	2009
+district	53	PP_PREV	0	2009
+district	54	PP_PREV	5947	2009
+region	14	PP_PREV	7929	2009
+district	96	PP_PREV	0	2009
+district	97	PP_PREV	10793	2009
+district	98	PP_PREV	0	2009
+district	99	PP_PREV	10052	2009
+region	23	PP_PREV	20845	2009
+district	55	PP_PREV	0	2009
+district	56	PP_PREV	0	2009
+district	57	PP_PREV	0	2009
+district	58	PP_PREV	0	2009
+district	59	PP_PREV	0	2009
+district	60	PP_PREV	0	2009
+district	61	PP_PREV	0	2009
+region	19	PP_PREV	0	2009
+district	140	PP_PREV	1347	2009
+district	141	PP_PREV	29	2009
+district	142	PP_PREV	0	2009
+district	143	PP_PREV	0	2009
+district	144	PP_PREV	0	2009
+district	145	PP_PREV	430	2009
+region	21	PP_PREV	1806	2009
+region	30	PP_PREV	0	2009
+district	108	PP_PREV	3072	2009
+district	109	PP_PREV	0	2009
+district	110	PP_PREV	5821	2009
+district	111	PP_PREV	0	2009
+district	112	PP_PREV	2692	2009
+region	25	PP_PREV	11585	2009
+district	15	PP_PREV	0	2009
+district	16	PP_PREV	0	2009
+district	17	PP_PREV	0	2009
+district	18	PP_PREV	0	2009
+district	19	PP_PREV	0	2009
+district	20	PP_PREV	0	2009
+district	21	PP_PREV	0	2009
+region	11	PP_PREV	0	2009
+district	100	PP_PREV	1189	2009
+district	101	PP_PREV	0	2009
+district	102	PP_PREV	731	2009
+district	103	PP_PREV	4047	2009
+district	104	PP_PREV	1102	2009
+district	105	PP_PREV	0	2009
+district	106	PP_PREV	1336	2009
+district	107	PP_PREV	0	2009
+region	10	PP_PREV	8405	2009
+district	1	PP_PREV	0	2009
+district	2	PP_PREV	0	2009
+district	3	PP_PREV	0	2009
+district	4	PP_PREV	0	2009
+district	5	PP_PREV	1619	2009
+district	6	PP_PREV	0	2009
+district	7	PP_PREV	0	2009
+region	3	PP_PREV	1619	2009
+district	39	PP_PREV	7209	2009
+district	40	PP_PREV	0	2009
+district	41	PP_PREV	0	2009
+district	42	PP_PREV	2069	2009
+district	43	PP_PREV	0	2009
+district	44	PP_PREV	0	2009
+district	45	PP_PREV	6006	2009
+region	22	PP_PREV	15284	2009
+district	32	PP_PREV	0	2009
+district	33	PP_PREV	0	2009
+district	34	PP_PREV	0	2009
+district	35	PP_PREV	0	2009
+district	36	PP_PREV	0	2009
+district	37	PP_PREV	0	2009
+district	38	PP_PREV	0	2009
+region	18	PP_PREV	0	2009
+region	8	PP_PREV	0	2009
+region	7	PP_PREV	0	2009
+district	83	PP_PREV	0	2009
+district	84	PP_PREV	0	2009
+district	85	PP_PREV	0	2009
+district	86	PP_PREV	0	2009
+district	87	PP_PREV	0	2009
+district	88	PP_PREV	0	2009
+region	27	PP_PREV	0	2009
+district	149	PP_PREV	0	2009
+district	150	PP_PREV	0	2009
+district	151	PP_PREV	0	2009
+district	152	PP_PREV	0	2009
+district	153	PP_PREV	0	2009
+region	26	PP_PREV	0	2009
+district	121	PP_PREV	0	2009
+district	122	PP_PREV	0	2009
+district	123	PP_PREV	0	2009
+district	124	PP_PREV	0	2009
+district	125	PP_PREV	0	2009
+district	126	PP_PREV	0	2009
+district	127	PP_PREV	0	2009
+region	20	PP_PREV	0	2009
+district	113	PP_PREV	0	2009
+district	114	PP_PREV	0	2009
+district	115	PP_PREV	0	2009
+district	116	PP_PREV	0	2009
+district	117	PP_PREV	0	2009
+district	118	PP_PREV	0	2009
+district	119	PP_PREV	0	2009
+district	120	PP_PREV	0	2009
+region	6	PP_PREV	0	2009
+district	8	PP_PREV	0	2009
+district	9	PP_PREV	0	2009
+district	10	PP_PREV	0	2009
+district	11	PP_PREV	0	2009
+district	12	PP_PREV	0	2009
+district	13	PP_PREV	0	2009
+district	14	PP_PREV	0	2009
+region	1	PP_PREV	0	2009
+district	68	PP_PREV	0	2009
+district	69	PP_PREV	865	2009
+district	70	PP_PREV	215	2009
+district	71	PP_PREV	77	2009
+district	72	PP_PREV	0	2009
+region	5	PP_PREV	1157	2009
+district	146	PP_PREV	13921	2009
+district	147	PP_PREV	0	2009
+district	148	PP_PREV	0	2009
+region	9	PP_PREV	13921	2009
+district	46	PP_PREV	24504	2009
+district	47	PP_PREV	20172	2009
+district	48	PP_PREV	24235	2009
+region	2	PP_PREV	68911	2009
+district	73	PP_PREV	2682	2009
+district	74	PP_PREV	18485	2009
+district	75	PP_PREV	5985	2009
+district	76	PP_PREV	8445	2009
+district	77	PP_PREV	0	2009
+district	78	PP_PREV	7540	2009
+district	79	PP_PREV	4497	2009
+district	80	PP_PREV	10124	2009
+district	81	PP_PREV	3286	2009
+district	82	PP_PREV	0	2009
+region	17	PP_PREV	61044	2009
+district	62	PP_PREV	0	2009
+district	63	PP_PREV	0	2009
+district	64	PP_PREV	0	2009
+district	65	PP_PREV	21453	2009
+district	66	PP_PREV	10581	2009
+district	67	PP_PREV	11397	2009
+region	24	PP_PREV	43431	2009
+district	154	PP_PREV	0	2009
+district	155	PP_PREV	0	2009
+district	156	PP_PREV	0	2009
+district	157	PP_PREV	0	2009
+district	158	PP_PREV	0	2009
+region	4	PP_PREV	0	2009
+country	TZ	PP_PREV	388062	2009
+district	22	KP_PREV	0	2009
+district	23	KP_PREV	0	2009
+district	24	KP_PREV	0	2009
+district	25	KP_PREV	1477	2009
+district	26	KP_PREV	0	2009
+district	27	KP_PREV	0	2009
+district	28	KP_PREV	0	2009
+district	29	KP_PREV	0	2009
+district	30	KP_PREV	0	2009
+district	31	KP_PREV	0	2009
+region	28	KP_PREV	1477	2009
+district	89	KP_PREV	0	2009
+district	90	KP_PREV	0	2009
+district	91	KP_PREV	0	2009
+district	92	KP_PREV	0	2009
+district	93	KP_PREV	0	2009
+district	94	KP_PREV	0	2009
+district	95	KP_PREV	0	2009
+region	29	KP_PREV	0	2009
+district	128	KP_PREV	0	2009
+district	129	KP_PREV	0	2009
+district	130	KP_PREV	0	2009
+district	131	KP_PREV	0	2009
+district	132	KP_PREV	0	2009
+district	133	KP_PREV	0	2009
+district	169	KP_PREV	0	2009
+region	16	KP_PREV	0	2009
+district	134	KP_PREV	0	2009
+district	135	KP_PREV	0	2009
+district	136	KP_PREV	0	2009
+district	137	KP_PREV	0	2009
+district	138	KP_PREV	0	2009
+district	139	KP_PREV	0	2009
+region	15	KP_PREV	0	2009
+region	13	KP_PREV	0	2009
+district	49	KP_PREV	0	2009
+district	50	KP_PREV	0	2009
+district	51	KP_PREV	0	2009
+district	52	KP_PREV	0	2009
+district	53	KP_PREV	0	2009
+district	54	KP_PREV	0	2009
+region	14	KP_PREV	0	2009
+district	96	KP_PREV	0	2009
+district	97	KP_PREV	33	2009
+district	98	KP_PREV	0	2009
+district	99	KP_PREV	255	2009
+region	23	KP_PREV	288	2009
+district	55	KP_PREV	0	2009
+district	56	KP_PREV	0	2009
+district	57	KP_PREV	0	2009
+district	58	KP_PREV	0	2009
+district	59	KP_PREV	0	2009
+district	60	KP_PREV	0	2009
+district	61	KP_PREV	0	2009
+region	19	KP_PREV	0	2009
+district	140	KP_PREV	567	2009
+district	141	KP_PREV	43	2009
+district	142	KP_PREV	0	2009
+district	143	KP_PREV	0	2009
+district	144	KP_PREV	427	2009
+district	145	KP_PREV	411	2009
+region	21	KP_PREV	1448	2009
+region	30	KP_PREV	0	2009
+district	108	KP_PREV	1273	2009
+district	109	KP_PREV	0	2009
+district	110	KP_PREV	0	2009
+district	111	KP_PREV	0	2009
+district	112	KP_PREV	720	2009
+region	25	KP_PREV	1993	2009
+district	15	KP_PREV	0	2009
+district	16	KP_PREV	0	2009
+district	17	KP_PREV	0	2009
+district	18	KP_PREV	0	2009
+district	19	KP_PREV	0	2009
+district	20	KP_PREV	0	2009
+district	21	KP_PREV	0	2009
+region	11	KP_PREV	0	2009
+district	100	KP_PREV	0	2009
+district	101	KP_PREV	0	2009
+district	102	KP_PREV	0	2009
+district	103	KP_PREV	0	2009
+district	104	KP_PREV	0	2009
+district	105	KP_PREV	0	2009
+district	106	KP_PREV	0	2009
+district	107	KP_PREV	0	2009
+region	10	KP_PREV	0	2009
+district	1	KP_PREV	0	2009
+district	2	KP_PREV	0	2009
+district	3	KP_PREV	0	2009
+district	4	KP_PREV	0	2009
+district	5	KP_PREV	0	2009
+district	6	KP_PREV	0	2009
+district	7	KP_PREV	0	2009
+region	3	KP_PREV	0	2009
+district	39	KP_PREV	440	2009
+district	40	KP_PREV	0	2009
+district	41	KP_PREV	0	2009
+district	42	KP_PREV	0	2009
+district	43	KP_PREV	0	2009
+district	44	KP_PREV	0	2009
+district	45	KP_PREV	8	2009
+region	22	KP_PREV	448	2009
+district	32	KP_PREV	0	2009
+district	33	KP_PREV	0	2009
+district	34	KP_PREV	0	2009
+district	35	KP_PREV	0	2009
+district	36	KP_PREV	0	2009
+district	37	KP_PREV	0	2009
+district	38	KP_PREV	0	2009
+region	18	KP_PREV	0	2009
+region	8	KP_PREV	0	2009
+region	7	KP_PREV	0	2009
+district	83	KP_PREV	0	2009
+district	84	KP_PREV	0	2009
+district	85	KP_PREV	0	2009
+district	86	KP_PREV	0	2009
+district	87	KP_PREV	0	2009
+district	88	KP_PREV	0	2009
+region	27	KP_PREV	0	2009
+district	149	KP_PREV	0	2009
+district	150	KP_PREV	0	2009
+district	151	KP_PREV	0	2009
+district	152	KP_PREV	0	2009
+district	153	KP_PREV	0	2009
+region	26	KP_PREV	0	2009
+district	121	KP_PREV	0	2009
+district	122	KP_PREV	0	2009
+district	123	KP_PREV	815	2009
+district	124	KP_PREV	0	2009
+district	125	KP_PREV	0	2009
+district	126	KP_PREV	1012	2009
+district	127	KP_PREV	0	2009
+region	20	KP_PREV	1827	2009
+district	113	KP_PREV	0	2009
+district	114	KP_PREV	0	2009
+district	115	KP_PREV	0	2009
+district	116	KP_PREV	0	2009
+district	117	KP_PREV	0	2009
+district	118	KP_PREV	0	2009
+district	119	KP_PREV	0	2009
+district	120	KP_PREV	0	2009
+region	6	KP_PREV	0	2009
+district	8	KP_PREV	0	2009
+district	9	KP_PREV	0	2009
+district	10	KP_PREV	0	2009
+district	11	KP_PREV	0	2009
+district	12	KP_PREV	0	2009
+district	13	KP_PREV	0	2009
+district	14	KP_PREV	0	2009
+region	1	KP_PREV	0	2009
+district	68	KP_PREV	0	2009
+district	69	KP_PREV	0	2009
+district	70	KP_PREV	3104	2009
+district	71	KP_PREV	574	2009
+district	72	KP_PREV	1083	2009
+region	5	KP_PREV	4761	2009
+district	146	KP_PREV	749	2009
+district	147	KP_PREV	0	2009
+district	148	KP_PREV	0	2009
+region	9	KP_PREV	749	2009
+district	46	KP_PREV	8955	2009
+district	47	KP_PREV	3961	2009
+district	48	KP_PREV	1686	2009
+region	2	KP_PREV	14602	2009
+district	73	KP_PREV	1059	2009
+district	74	KP_PREV	2873	2009
+district	75	KP_PREV	805	2009
+district	76	KP_PREV	758	2009
+district	77	KP_PREV	728	2009
+district	78	KP_PREV	1362	2009
+district	79	KP_PREV	644	2009
+district	80	KP_PREV	1734	2009
+district	81	KP_PREV	1679	2009
+district	82	KP_PREV	0	2009
+region	17	KP_PREV	11642	2009
+district	62	KP_PREV	0	2009
+district	63	KP_PREV	0	2009
+district	64	KP_PREV	0	2009
+district	65	KP_PREV	589	2009
+district	66	KP_PREV	42	2009
+district	67	KP_PREV	195	2009
+region	24	KP_PREV	826	2009
+district	154	KP_PREV	0	2009
+district	155	KP_PREV	0	2009
+district	156	KP_PREV	0	2009
+district	157	KP_PREV	0	2009
+district	158	KP_PREV	0	2009
+region	4	KP_PREV	0	2009
+country	TZ	KP_PREV	54264	2009
+district	159	HTC_TST	0	2009
+district	159	HTC_TST_POS	0	2009
+district	159	PMTCT_STAT	0	2009
+district	159	PMTCT_STAT_POS	0	2009
+district	159	PMTCT_ARV	0	2009
+district	159	PMTCT_EID	0	2009
+district	159	PMTCT_EID_POS	0	2009
+district	159	PMTCT_CTX	0	2009
+district	159	CARE_NEW	0	2009
+district	159	TX_NEW	0	2009
+district	159	CARE_CURR	0	2009
+district	159	TB_SCREEN	0	2009
+district	159	TX_CURR	0	2009
+district	159	TB_ART	0	2009
+district	159	TX_RET_NUM	0	2009
+district	159	TX_RET_DEN	0	2009
+district	159	VMMC_CIRC	0	2009
+district	159	OVC_SERV	0	2009
+district	159	PP_PREV	0	2009
+district	159	KP_PREV	0	2009
+district	160	HTC_TST	0	2009
+district	160	HTC_TST_POS	0	2009
+district	160	PMTCT_STAT	0	2009
+district	160	PMTCT_STAT_POS	0	2009
+district	160	PMTCT_ARV	0	2009
+district	160	PMTCT_EID	0	2009
+district	160	PMTCT_EID_POS	0	2009
+district	160	PMTCT_CTX	0	2009
+district	160	CARE_NEW	0	2009
+district	160	TX_NEW	0	2009
+district	160	CARE_CURR	0	2009
+district	160	TB_SCREEN	0	2009
+district	160	TX_CURR	0	2009
+district	160	TB_ART	0	2009
+district	160	TX_RET_NUM	0	2009
+district	160	TX_RET_DEN	0	2009
+district	160	VMMC_CIRC	0	2009
+district	160	OVC_SERV	0	2009
+district	160	PP_PREV	0	2009
+district	160	KP_PREV	0	2009
+district	161	HTC_TST	0	2009
+district	161	HTC_TST_POS	0	2009
+district	161	PMTCT_STAT	0	2009
+district	161	PMTCT_STAT_POS	0	2009
+district	161	PMTCT_ARV	0	2009
+district	161	PMTCT_EID	0	2009
+district	161	PMTCT_EID_POS	0	2009
+district	161	PMTCT_CTX	0	2009
+district	161	CARE_NEW	0	2009
+district	161	TX_NEW	0	2009
+district	161	CARE_CURR	0	2009
+district	161	TB_SCREEN	0	2009
+district	161	TX_CURR	0	2009
+district	161	TB_ART	0	2009
+district	161	TX_RET_NUM	0	2009
+district	161	TX_RET_DEN	0	2009
+district	161	VMMC_CIRC	0	2009
+district	161	OVC_SERV	0	2009
+district	161	PP_PREV	0	2009
+district	161	KP_PREV	0	2009
+district	162	HTC_TST	0	2009
+district	162	HTC_TST_POS	0	2009
+district	162	PMTCT_STAT	0	2009
+district	162	PMTCT_STAT_POS	0	2009
+district	162	PMTCT_ARV	0	2009
+district	162	PMTCT_EID	0	2009
+district	162	PMTCT_EID_POS	0	2009
+district	162	PMTCT_CTX	0	2009
+district	162	CARE_NEW	0	2009
+district	162	TX_NEW	0	2009
+district	162	CARE_CURR	0	2009
+district	162	TB_SCREEN	0	2009
+district	162	TX_CURR	0	2009
+district	162	TB_ART	0	2009
+district	162	TX_RET_NUM	0	2009
+district	162	TX_RET_DEN	0	2009
+district	162	VMMC_CIRC	0	2009
+district	162	OVC_SERV	0	2009
+district	162	PP_PREV	0	2009
+district	162	KP_PREV	0	2009
+district	163	HTC_TST	0	2009
+district	163	HTC_TST_POS	0	2009
+district	163	PMTCT_STAT	0	2009
+district	163	PMTCT_STAT_POS	0	2009
+district	163	PMTCT_ARV	0	2009
+district	163	PMTCT_EID	0	2009
+district	163	PMTCT_EID_POS	0	2009
+district	163	PMTCT_CTX	0	2009
+district	163	CARE_NEW	0	2009
+district	163	TX_NEW	0	2009
+district	163	CARE_CURR	0	2009
+district	163	TB_SCREEN	0	2009
+district	163	TX_CURR	0	2009
+district	163	TB_ART	0	2009
+district	163	TX_RET_NUM	0	2009
+district	163	TX_RET_DEN	0	2009
+district	163	VMMC_CIRC	0	2009
+district	163	OVC_SERV	0	2009
+district	163	PP_PREV	0	2009
+district	163	KP_PREV	0	2009
+district	164	HTC_TST	0	2009
+district	164	HTC_TST_POS	0	2009
+district	164	PMTCT_STAT	0	2009
+district	164	PMTCT_STAT_POS	0	2009
+district	164	PMTCT_ARV	0	2009
+district	164	PMTCT_EID	0	2009
+district	164	PMTCT_EID_POS	0	2009
+district	164	PMTCT_CTX	0	2009
+district	164	CARE_NEW	0	2009
+district	164	TX_NEW	0	2009
+district	164	CARE_CURR	0	2009
+district	164	TB_SCREEN	0	2009
+district	164	TX_CURR	0	2009
+district	164	TB_ART	0	2009
+district	164	TX_RET_NUM	0	2009
+district	164	TX_RET_DEN	0	2009
+district	164	VMMC_CIRC	0	2009
+district	164	OVC_SERV	0	2009
+district	164	PP_PREV	0	2009
+district	164	KP_PREV	0	2009
+district	165	HTC_TST	0	2009
+district	165	HTC_TST_POS	0	2009
+district	165	PMTCT_STAT	0	2009
+district	165	PMTCT_STAT_POS	0	2009
+district	165	PMTCT_ARV	0	2009
+district	165	PMTCT_EID	0	2009
+district	165	PMTCT_EID_POS	0	2009
+district	165	PMTCT_CTX	0	2009
+district	165	CARE_NEW	0	2009
+district	165	TX_NEW	0	2009
+district	165	CARE_CURR	0	2009
+district	165	TB_SCREEN	0	2009
+district	165	TX_CURR	0	2009
+district	165	TB_ART	0	2009
+district	165	TX_RET_NUM	0	2009
+district	165	TX_RET_DEN	0	2009
+district	165	VMMC_CIRC	0	2009
+district	165	OVC_SERV	0	2009
+district	165	PP_PREV	0	2009
+district	165	KP_PREV	0	2009
+district	166	HTC_TST	0	2009
+district	166	HTC_TST_POS	0	2009
+district	166	PMTCT_STAT	0	2009
+district	166	PMTCT_STAT_POS	0	2009
+district	166	PMTCT_ARV	0	2009
+district	166	PMTCT_EID	0	2009
+district	166	PMTCT_EID_POS	0	2009
+district	166	PMTCT_CTX	0	2009
+district	166	CARE_NEW	0	2009
+district	166	TX_NEW	0	2009
+district	166	CARE_CURR	0	2009
+district	166	TB_SCREEN	0	2009
+district	166	TX_CURR	0	2009
+district	166	TB_ART	0	2009
+district	166	TX_RET_NUM	0	2009
+district	166	TX_RET_DEN	0	2009
+district	166	VMMC_CIRC	0	2009
+district	166	OVC_SERV	0	2009
+district	166	PP_PREV	0	2009
+district	166	KP_PREV	0	2009
+district	167	HTC_TST	0	2009
+district	167	HTC_TST_POS	0	2009
+district	167	PMTCT_STAT	0	2009
+district	167	PMTCT_STAT_POS	0	2009
+district	167	PMTCT_ARV	0	2009
+district	167	PMTCT_EID	0	2009
+district	167	PMTCT_EID_POS	0	2009
+district	167	PMTCT_CTX	0	2009
+district	167	CARE_NEW	0	2009
+district	167	TX_NEW	0	2009
+district	167	CARE_CURR	0	2009
+district	167	TB_SCREEN	0	2009
+district	167	TX_CURR	0	2009
+district	167	TB_ART	0	2009
+district	167	TX_RET_NUM	0	2009
+district	167	TX_RET_DEN	0	2009
+district	167	VMMC_CIRC	0	2009
+district	167	OVC_SERV	0	2009
+district	167	PP_PREV	0	2009
+district	167	KP_PREV	0	2009
+district	168	HTC_TST	0	2009
+district	168	HTC_TST_POS	0	2009
+district	168	PMTCT_STAT	0	2009
+district	168	PMTCT_STAT_POS	0	2009
+district	168	PMTCT_ARV	0	2009
+district	168	PMTCT_EID	0	2009
+district	168	PMTCT_EID_POS	0	2009
+district	168	PMTCT_CTX	0	2009
+district	168	CARE_NEW	0	2009
+district	168	TX_NEW	0	2009
+district	168	CARE_CURR	0	2009
+district	168	TB_SCREEN	0	2009
+district	168	TX_CURR	0	2009
+district	168	TB_ART	0	2009
+district	168	TX_RET_NUM	0	2009
+district	168	TX_RET_DEN	0	2009
+district	168	VMMC_CIRC	0	2009
+district	168	OVC_SERV	0	2009
+district	168	PP_PREV	0	2009
+district	168	KP_PREV	0	2009
 \.
+
+
 --
--- Name: htc_tst_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: pk_pepfar; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY pepfar
-    ADD CONSTRAINT pepfar_pkey PRIMARY KEY (geo_level, geo_code, "pepfar");
+    ADD CONSTRAINT pk_pepfar PRIMARY KEY (geo_level, geo_code, geo_version, pepfar);
 
 
 --
 -- PostgreSQL database dump complete
 --
+

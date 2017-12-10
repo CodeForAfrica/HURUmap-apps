@@ -99,7 +99,7 @@
                 {% include 'profile/_blocks/_stat_list.html' with stat=households.piped_water stat_type='percentage' %}
             </div>
             <div class="column-two-thirds" id="chart-histogram-households-water_source_distribution" data-stat-type="scaled-percentage"
-                data-chart-title="Households by main source of water"></div>
+                 data-chart-title="Households by main source of water"></div>
         </section>
         <section class="clearfix stat-row">
             <h2><a class="permalink" href="#households-lighting" id="households-lighting">Main source of lighting <i class="fa fa-link"></i></a></h2>
@@ -229,8 +229,7 @@
     <div class="section-container">
         <section class="clearfix stat-row">
             <div class="column-third">
-                {% include 'profile/_blocks/_stat_list.html' with stat=maternal_care_indicators.delivery_in_health_facility stat_type='percentage'
-                %}
+                {% include 'profile/_blocks/_stat_list.html' with stat=maternal_care_indicators.delivery_in_health_facility stat_type='percentage'%}
             </div>
         </section>
 
@@ -308,8 +307,7 @@
                 {% include 'profile/_blocks/_stat_list.html' with stat=fertility.fertility_rate stat_type='number' %}
             </div>
             <div class="column-third">
-                {% include 'profile/_blocks/_stat_list.html' with stat=fertility.mean_number_of_children_ever_born_to_women_aged_40_49 stat_type='number'
-                %}
+                {% include 'profile/_blocks/_stat_list.html' with stat=fertility.mean_number_of_children_ever_born_to_women_aged_40_49 stat_type='number'%}
             </div>
             <div class="column-third" id="chart-pie-fertility-percentage_women_age_15_49_currently_pregnant" data-stat-type="percentage"
                 data-chart-title="Percentage women aged 15-49 who are currently pregnant"></div>
