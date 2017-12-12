@@ -3,13 +3,13 @@
 
 {# HEAD #}
 
-{% block head_title %}{{ block.super }}: {{ HURUMAP.title_tagline }} {% endblock %}
+{% block head_title %}{{ block.super }}: Making Census Data Easy to Use{% endblock %}
 {% block head_meta_description %}{{ HURUmap.name }} provides useful facts about places across the continent. Compare places using tables and maps, download data, and embed charts on your site!{% endblock %}
 
 {% block head_css %}
     {{ block.super }}
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400|Poppins:400,500,600" rel="stylesheet">
-    <link rel="stylesheet" href="{% sass_src 'css/hurumap.scss' %}">
+    <link rel="stylesheet" href="{% sass_src 'css/pesayetu.scss' %}">
 {% endblock %}
 
 {% block favicon %}
@@ -45,8 +45,8 @@
                         <li><a href="/#showcase">Showcase</a></li>
                         <li><a href="https://facebook.com/HacksHackersAfrica" target="_blank" rel="noopener">Community</a></li>
                         <li class="social-icons">
-                            <a href="https://twitter.com/{{ HURUMAP.twitter }}"><i class="fa fa-twitter fa-lg fa-fw"></i></a>
-                            <a href="https://facebook.com/{{ HURUMAP.facebook }}"><i class="fa fa-facebook fa-lg fa-fw"></i></a>
+                            <a href="https://twitter.com/{{ PESAYETU.twitter }}"><i class="fa fa-twitter fa-lg fa-fw"></i></a>
+                            <a href="https://facebook.com/{{ PESAYETU.facebook }}"><i class="fa fa-facebook fa-lg fa-fw"></i></a>
 {#                            <a href="mailto:{{ HURUMAP.contact_email }}"><i class="fa fa-envelope-o fa-lg"></i></a>#}
                         </li>
                     {% endblock header_menu %}
