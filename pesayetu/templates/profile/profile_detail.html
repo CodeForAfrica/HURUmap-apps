@@ -1,0 +1,118 @@
+{% extends 'profile/profile_detail.html' %} {% block profile_header_tail %}
+    <div class="column-full">
+        <p class="caption"><strong>Budget Allocation data:</strong> 2013, 2014,
+            2015, 2016, 2017</p>
+    </div>
+{% endblock %} {% block profile_detail %}
+
+
+    <article id="budget"
+             class="clearfix {% if 'demographics' not in selected_sections %}hide{% endif %}">
+        <header class="section-contents">
+            <h1>Budget Data</h1>
+        </header>
+        <div class="section-container">
+
+            <section class="clearfix stat-row">
+                <h2 class="header-for-columns"><a class="permalink"
+                                                  href="#pop_count"
+                                                  id="pop_count">Equitable
+                    Allocations <i class="fa fa-link"></i></a></h2>
+                <div class="column-half">
+                    {% include 'profile/_blocks/_stat_list.html' with stat=budget.fy2013_2014 stat_type='number' %}
+                </div>
+                <div class="column-half">
+                    {% include 'profile/_blocks/_stat_list.html' with stat=budget.fy2014_2015 stat_type='number' %}
+                </div>
+                <div class="column-half">
+                    {% include 'profile/_blocks/_stat_list.html' with stat=budget.fy2015_2016 stat_type='number' %}
+                </div>
+                <div class="column-half">
+                    {% include 'profile/_blocks/_stat_list.html' with stat=budget.fy2016_2017 stat_type='number' %}
+                </div>
+
+            </section>
+            <section class="clearfix stat-row">
+                <div class="column-three-quarters"
+                     id="chart-histogram-budget-budget_allocation"
+                     data-stat-type="dollar"
+                     data-chart-title="Allocation Distribution"></div>
+            </section>
+
+        </div>
+    </article>
+
+    <article id="budget"
+             class="clearfix {% if 'demographics' not in selected_sections %}hide{% endif %}">
+        <header class="section-contents">
+            <h1>Ceilings on Recurrent Expenditure by Counties</h1>
+        </header>
+        <div class="section-container">
+
+            <section class="clearfix stat-row">
+                <h2 class="header-for-columns"><a class="permalink"
+                                                  href="#pop_count"
+                                                  id="pop_count">County Assembly
+                    <i class="fa fa-link"></i></a></h2>
+                <div class="column-half">
+                    {% include 'profile/_blocks/_stat_list.html' with stat=expenditure_ceilings.county_assembly.fy2015_2016 stat_type='number' %}
+                </div>
+                <div class="column-half">
+                    {% include 'profile/_blocks/_stat_list.html' with stat=expenditure_ceilings.county_assembly.fy2016_2017 stat_type='number' %}
+                </div>
+
+            </section>
+
+            <section class="clearfix stat-row">
+                <h2 class="header-for-columns"><a class="permalink"
+                                                  href="#pop_count"
+                                                  id="pop_count">County
+                    Executive <i class="fa fa-link"></i></a></h2>
+                <div class="column-half">
+                    {% include 'profile/_blocks/_stat_list.html' with stat=expenditure_ceilings.county_executive.fy2015_2016 stat_type='number' %}
+                </div>
+                <div class="column-half">
+                    {% include 'profile/_blocks/_stat_list.html' with stat=expenditure_ceilings.county_executive.fy2016_2017 stat_type='number' %}
+                </div>
+
+            </section>
+            {#            <section class="clearfix stat-row">#}
+            {#                <div class="column-three-quarters"#}
+            {#                     id="chart-histogram-budget-budget_allocation"#}
+            {#                     data-stat-type="dollar"#}
+            {#                     data-chart-title="Allocation Distribution"></div>#}
+            {#            </section>#}
+
+        </div>
+    </article>
+
+
+    <article id="conditional_funds_15_16"
+             class="clearfix {% if 'demographics' not in selected_sections %}hide{% endif %}">
+        <header class="section-contents">
+            <h1>Conditional Funds</h1>
+        </header>
+        <div class="section-container">
+
+            <section class="clearfix stat-row">
+                <h2 class="header-for-columns"><a class="permalink"
+                                                  href="#pop_count"
+                                                  id="pop_count">FY 2015/2016 <i class="fa fa-link"></i></a></h2>
+                <div class="column-third">
+                    {% include 'profile/_blocks/_stat_list.html' with stat=conditional_grants_15_16.danida_grant stat_type='number' %}
+                </div>
+                <div class="column-third">
+                    {% include 'profile/_blocks/_stat_list.html' with stat=conditional_grants_15_16.world_bank_loan stat_type='number' %}
+                </div>
+                <div class="column-third">
+                    {% include 'profile/_blocks/_stat_list.html' with stat=conditional_grants_15_16.other_conditional_allocations stat_type='number' %}
+                </div>
+
+
+            </section>
+
+        </div>
+    </article>
+
+
+{% endblock %}

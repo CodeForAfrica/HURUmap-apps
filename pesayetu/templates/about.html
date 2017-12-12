@@ -1,0 +1,29 @@
+{% extends 'homepage.html' %}
+
+{% block body_id %}page{% endblock %}
+
+{% block content_container %}
+    <div class="content container-narrowest clearfix">
+        <h1>About {{ HURUMAP.name }}</h1>
+        <p><em>What’s the data behind the story?</em></p>
+
+        <p>One essential tool that Kenyan citizens need to engage the government is information on how money collected from taxpayers is allocated.
+            With this information, we can ask what our elected officials are doing with it, and from there the discussion can proceed towards how money
+            is spent in the future to better our lives.</p>
+        <p>The 47 county governments of Kenya are in charge of overseeing functions such as the provision of healthcare, pre-primary education and
+            management of local roads, which were previously the responsibility of Kenya’s national government. In order to do this, the national government
+            allocates a share of national revenues using a set formula. This information is contained in copies of the Kenya Gazette, breaking down
+            allocations per year for every financial year since 2013/14.</p>
+        <p>
+            This concept is already being used to visualize revenues and other budget information in South Africa on Municipal Money, a web-based tool
+            designed to inform citizens on their local authority’s financial performance and allows comparisons between municipalities.
+
+        </p>
+
+
+        <p>The project is built on <a href="http://wazimap.readthedocs.org/" target="_blank" rel="noopener">Wazimap</a>, an open source platform by <a href="https://openup.org.za/" target="_blank" rel="noopener">OpenUp</a> and <a href="http://www.mediamonitoringafrica.org/" target="_blank" rel="noopener">Media Monitoring Africa</a> for making census data more understandable.</p>
+
+        <br/>
+        {% include 'blocks/about/manifesto.html' %}
+    </div>
+{% endblock %}

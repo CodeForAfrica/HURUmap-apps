@@ -8,7 +8,7 @@ HURUmap’s underlying data is quality-checked, from reputable official sources 
 The project is built on [Wazimap](http://wazimap.readthedocs.org/en/latest/), an open source platform by OpenUp and Media Monitoring Africa for making census data more understandable.
 
 
-## Local development
+## Development
 
 1. Clone the repo
 2. ``cd HURUmap``
@@ -17,6 +17,8 @@ The project is built on [Wazimap](http://wazimap.readthedocs.org/en/latest/), an
 5. ``pip install -r requirements.txt``
 
 
+***NB:** The set up docs from here assume setting up HURUmap Kenya but is applicable to the rest of the projects.*
+
 You will need a Postgres database:
 
 ```
@@ -24,6 +26,12 @@ psql
 create user hurumap_ke with password hurumap_ke;
 create database hurumap_ke;
 grant all privileges on database hurumap_ke to hurumap_ke;
+```
+
+Set the environment variables as needed:
+```
+export DJANGO_SETTINGS_MODULE=hurumap_ke.settings
+export DATABASE_URL=postgresql://hurumap_ke:hurumap_ke@localhost/hurumap_ke
 ```
 
 Run migrations to keep Django happy:
@@ -43,14 +51,37 @@ python manage.py runserver
 
 ## Deployment
 
-When deploying with dokku set the `DJANGO_SETTINGS_MODULE` in the following way:
+We use [dokku](https://dokku.viewdocs.com/dokku) to deploy on our own servers. It's awesome like sliced bread or [*chapati*](https://google.com/search?q=chapati). Check out their docs on getting started: https://dokku.viewdocs.com/dokku
 
-    dokku config:set hurumap-ke DJANGO_SETTINGS_MODULE=hurumap_ke.settings
+Once set up, you'll have to do a couple of things:
+```
+# Create app
+dokku apps:create hurumap-ke
+
+# Set environment variables
+dokku config:set hurumap-ke \
+  DJANGO_SETTINGS_MODULE=hurumap_ke.settings \
+  DATABASE_URL=postgresql://hurumap_ke:hurumap_ke@localhost/hurumap_ke
+```
+
+After ensuring your [ssh key is added](https://dokku.viewdocs.com/dokku/user-management), from your local machine you should now run:
+```
+git remote add dokku dokku@hurumap.org:hurumap-ke
+git push dokku
+```
+
+***NOTE:** You'll have to set up the database before deployment. Either [self-hosted](https://github.com/dokku/dokku-postgres-plugin) or [managed](https://aws.amazon.com/rds).*
 
 
 ### Checks
 
 Dokku allows for checks that make sure you have [zero-downtime deployments](http://dokku.viewdocs.io/dokku/deployment/zero-downtime-deploys/). We currently only check for DB errors but should allow for better checks in the future.
+
+
+## Contributing
+
+If you'd like to contribute to HURUmap, check out the [CONTRIBUTING.md](CONTRIBUTING.md) file on how to get started.
+
 
 ---
 
@@ -74,7 +105,7 @@ To dump all data tables at once, run
 for t in `ls hurumap_ke/sql/[a-z]*.sql`
 do
     echo $t
-    pg_dump "postgres://hurumap_ke@localhost/hurumap_ke" \
+    pg_dump "postgres://hurumap_ke:hurumap_ke@localhost/hurumap_ke" \
         -O -c --if-exists -t $(basename $t .sql) \
       | egrep -v "(idle_in_transaction_session_timeout|row_security)" \
       > hurumap_ke/sql/$(basename $t .sql).sql

@@ -1,9 +1,12 @@
 import csv
-import logging
 
 from django.core.management.base import BaseCommand, CommandError
-from wazimap.data.tables import get_datatable, get_table_id
+
 from wazimap.data.utils import get_session
+from wazimap.data.tables import get_datatable, get_table_id
+
+
+import logging
 
 logging.basicConfig()
 logging.getLogger('sqlalchemy.engine').setLevel(logging.WARN)
@@ -87,13 +90,9 @@ class Command(BaseCommand):
         table_id = self.table_id or get_table_id(self.fields)
         try:
             self.table = get_datatable(table_id)
-            self.stdout.write(
-                "Table for fields %s is %s" %
-                (self.fields, self.table.id))
+            self.stdout.write("Table for fields %s is %s" % (self.fields, self.table.id))
         except KeyError:
-            raise CommandError(
-                "Couldn't establish which table to use for these fields. Have you added a FieldTable entry in wazimap_za/tables.py?\nFields: %s" %
-                self.fields)
+            raise CommandError("Couldn't establish which table to use for these fields. Have you added a FieldTable entry in wazimap_za/tables.py?\nFields: %s" % self.fields)
 
     def store_values(self):
         session = get_session()
@@ -104,13 +103,7 @@ class Command(BaseCommand):
             if row['total'] == 'no data':
                 row['total'] = None
             else:
-                row['total'] = round(
-                    float(
-                        row['total']),
-                    1) if self.value_type == 'Float' else int(
-                    round(
-                        float(
-                            row['total'])))
+                row['total'] = round(float(row['total']), 1) if self.value_type == 'Float' else int(round(float(row['total'])))
             self.stdout.write("%s-%s" % (row['geo_level'], row['geo_code']))
             entry = self.table.model(**row)
 
