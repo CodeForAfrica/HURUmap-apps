@@ -14,9 +14,8 @@
             <div class="nav-menu">
                 <ul id="site-menu">
                     {% block header_menu %}
-                        <li><a href="#">Schools</a></li>
-                        <li><a href="#">Statistics</a></li>
-                        <li><a href="#">About</a></li>
+                        <li><a href="/schools">Schools</a></li>
+                        <li><a href="/about">About</a></li>
                     {% endblock header_menu %}
                 </ul>
 
@@ -24,7 +23,7 @@
                     {% block nav_tools %}
                     <div id="menu" class="tool-set clearfix">
                         <div class="tool-group">
-                            <input name="geography_select" id="geography-select" type="text" placeholder="Search School" autocomplete="off">
+                            <input name="geography_select" id="geography-select" type="text" placeholder="Search Place" autocomplete="off">
                         </div>
                         {% if not hide_nav_compare %}
                         {% comment %}
@@ -52,7 +51,7 @@
         <div id="slippy-map"></div>
     </div>
 
-    <div class="showcase schools" style="overflow:auto;">
+    <div class="showcase schools" style="overflow:auto; display: none;">
         <div class="holder" style="margin-left: 40px; margin-right: 40px; margin-bottom: 30px;">
             <div class="" style="width: 50%; float: left; border-right: 1px solid #dedede;padding: 20px;">
                 <center><h2>10 Top Schools</h2></center>
@@ -100,5 +99,22 @@
         </div>
     </div>
 
-    {% include 'blocks/partners.html' with extra_css_class='bg-tan' %}
+    <div class="showcase clearfix partners {{ extra_css_class }}">
+        <div class="wrapper text-center">
+            <h2>Partners</h2>
+            <p>League Table is made possible through support from the following partners:</p>
+    
+            <a href="https://codeforafrica.org/" target="_blank" rel="noopener">
+                <img src="{{ STATIC_URL }}img/logos/cfafrica.png" alt="Code for Africa"></a>
+            <a href="https://datazetu.or.tz/" target="_blank" rel="noopener">
+                <img src="{{ STATIC_URL }}img/logos/datazetu.png" alt="Data Zetu"></a>
+            <a href="http://twaweza.org/" target="_blank" rel="noopener">
+                <img src="{{ STATIC_URL }}img/logos/world_bank_group_logo.png" alt="Twaweza"></a>
+            <br/>
+        </div>
+    </div>
 {% endblock %}
+
+{% block footer_content %}
+    {% include 'footer.html' %}
+{% endblock footer_content %}

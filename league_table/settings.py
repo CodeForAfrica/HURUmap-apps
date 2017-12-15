@@ -6,6 +6,9 @@ from hurumap.settings import *  # noqa
 # insert our overrides before both census and HURUmap
 INSTALLED_APPS = ['league_table'] + INSTALLED_APPS
 
+# League Table URLS
+ROOT_URLCONF = 'league_table.urls'
+
 DATABASE_URL = os.environ.get(
     'DATABASE_URL',
     'postgresql://league_table:league_table@localhost/league_table')
@@ -15,6 +18,8 @@ DATABASES['default']['ATOMIC_REQUESTS'] = True
 
 # Localise this instance of HURUmap
 HURUMAP['name'] = 'League Table'
+HURUMAP['description'] = 'it shows ranking of different secondary schools\
+                            bassed on their performance in each year.'
 HURUMAP['url'] = 'https://tanzania.hurumap.org'
 HURUMAP['country_code'] = 'TZ'
 HURUMAP['country_name'] = 'Tanzania'
