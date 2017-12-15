@@ -3,7 +3,12 @@
 {% block head_title %}League Table : Schools Ranking{% endblock %}
 
 {% block header %}
-<header id="page-header" style="background: #204d8a;">
+<style>
+    #page-footer, #page-header {
+        background: #204d8a;
+    }
+</style>
+<header id="page-header">
     <div id="page-header-title" class="wrapper clearfix">
         <i id="menu-toggle" class="fa fa-bars"></i>
         <a class="title" href="{% url 'homepage' %}">

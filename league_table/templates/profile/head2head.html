@@ -1,0 +1,78 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block head_title %}{{ geo1.name }} vs {{ geo2.name }} - {{ block.super }}{% endblock %}
+{% block header %}
+<style>
+    #page-footer, #page-header {
+        background: #204d8a;
+    }
+</style>
+<header id="page-header">
+    <div id="page-header-title" class="wrapper clearfix">
+        <i id="menu-toggle" class="fa fa-bars"></i>
+        <a class="title" href="{% url 'homepage' %}">
+            <span style="font-size: 20px;font-weight: bolder;">League</span><br />
+            <span style="font-size: 18px;font-weight: bold; margin-left: 20px;">Table</span>
+        </a>
+
+        <div class="nav-menu">
+            <ul id="site-menu">
+                {% block header_menu %}
+                    <li><a href="/schools">Schools</a></li>
+                    <li><a href="/about">About</a></li>
+                {% endblock header_menu %}
+            </ul>
+
+            {% if not hide_nav_tools %}
+                {% block nav_tools %}
+                <div id="menu" class="tool-set clearfix">
+                    <div class="tool-group">
+                        <input name="geography_select" id="geography-select" type="text" placeholder="Search Place" autocomplete="off">
+                    </div>
+                    {% if not hide_nav_compare %}
+                    {% comment %}
+                    <span class="separator">or</span>
+                    <div class="tool-group">
+                        <a class="button" href="{% url 'table_search' %}">
+                            <i class="fa fa-chevron-circle-right"></i>
+                            Search for data
+                        </a>
+                    </div>
+                    {% endcomment %}
+                    {% endif %}
+                </div>
+                {% endblock %}
+            {% endif %}
+        </div>
+    </div>
+</header>
+{% endblock %}
+
+{% block head_facebook_tags %}
+    <meta property="og:title" content="{{ WAZIMAP.name }} comparison: {{ geo1.name }} vs {{ geo2.name }}" />
+    <meta property="og:site_name" content="{{ WAZIMAP.name }}" />
+    <meta property="og:url" content="{{ WAZIMAP.url }}{{ request.path }}" />
+    <meta property="og:description" content="Compare demographics between {{ geo1.name }} vs {{ geo2.name }}." />
+    <meta property="og:type" content="article" />
+{% endblock %}
+
+{% block body_class %}profile-head2head-view{% endblock %}
+
+{% block content_container %}
+
+<div class="head2head-wrapper">
+    <iframe class="frame-left" scrolling="no" src="{% url 'geography_detail' geography_id=geo_id1 %}"></iframe>
+    <iframe class="frame-right" scrolling="no" src="{% url 'geography_detail' geography_id=geo_id2 %}"></iframe>
+
+    <div class="clear"></div>
+</div>
+{% endblock %}
+
+{% block footer_content %}
+{% include 'footer.html' %}
+{% endblock footer_content %}
+
+{% block body_javascript_extra %}
+<script src="{% static 'js/head2head.js' %}"></script>
+{% endblock %}
