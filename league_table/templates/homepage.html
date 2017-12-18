@@ -12,14 +12,14 @@
         <div id="page-header-title" class="wrapper clearfix">
             <i id="menu-toggle" class="fa fa-bars"></i>
             <a class="title" href="{% url 'homepage' %}">
-                <span style="font-size: 20px;font-weight: bolder;">League</span><br />
-                <span style="font-size: 18px;font-weight: bold; margin-left: 20px;">Table</span>
+                <img src="{% static 'img/logos/books.png' %}" style="height: 44px; float: left;"/>
+                <span style="font-size: 25px;font-weight: bolder; margin-left:10px; line-height: 50px;">League Table</span><br />
             </a>
 
             <div class="nav-menu">
                 <ul id="site-menu">
                     {% block header_menu %}
-                        <li><a href="/schools">Schools</a></li>
+                        <li><a href="/schools">Full League</a></li>
                         <li><a href="/about">About</a></li>
                     {% endblock header_menu %}
                 </ul>
@@ -47,6 +47,13 @@
             </div>
         </div>
     </header>
+
+    <div class="content-container clearfix bg-ocean-green text-center" style="background: #5299d3;">
+        <div class="wrapper">
+            <h1>Discover the Stories Behind the Data</h1>
+            <h4>{{ HURUMAP.name }} helps storytellers and campaigners use data to add context and depth to stories.</h4>
+        </div>
+    </div>
 {% endblock %}
 
 {% block content_container %}
@@ -54,6 +61,34 @@
     <div class="clearfix">
 {#        <h1 class="article-header">Discover the story behind the data.</h1>#}
         <div id="slippy-map"></div>
+    </div>
+
+    <div class="showcase how-it-works bg-tan text-center">
+        {% block how_it_works %}
+            <div class="wrapper clearfix">
+                <h1>How It Works</h1>
+                <br/>
+                <div class="column-third">
+                    <p><img src="{% static 'img/icons/blurbs/facts.png' %}" alt=""></p>
+                    <h3>Find Facts</h3>
+                    <p>Population and financial figures are broken down by category: Elections, Demographics, Service Delivery, Economics, and Education.</p>
+                </div>
+                <div class="column-third">
+                    <p><img src="{% static 'img/icons/blurbs/visualise.png' %}" alt=""></p>
+                    <h3>Visualize</h3>
+                    <p>Our library of charts gives you insight into data from places you research. Look for them on profile pages. You can embed the charts on your own site.</p>
+                </div>
+                <div class="column-third">
+                    <p><img src="{% static 'img/icons/blurbs/context.png' %}" alt=""></p>
+                    <h3>Get Context</h3>
+                    <p>Pre-computed statistics are presented alongside each data point so you can see how each place fits into a large context.</p>
+                </div>
+            </div>
+            <div class="wrapper">
+                <br/><br/>
+                <p><a href="/help" class="btn btn-lg bg-bottle-green">Learn more</a></p>
+            </div>
+        {% endblock %}
     </div>
 
     <div class="showcase schools" style="overflow:auto; display: none;">
@@ -108,13 +143,13 @@
         <div class="wrapper text-center">
             <h2>Partners</h2>
             <p>League Table is made possible through support from the following partners:</p>
-    
-            <a href="https://codeforafrica.org/" target="_blank" rel="noopener">
-                <img src="{{ STATIC_URL }}img/logos/cfafrica.png" alt="Code for Africa"></a>
+
+            <a href="http://twaweza.org/" target="_blank" rel="noopener">
+                <img src="{{ STATIC_URL }}img/logos/world_bank_group_logo.png" alt="World Bank Group"></a>
             <a href="https://datazetu.or.tz/" target="_blank" rel="noopener">
                 <img src="{{ STATIC_URL }}img/logos/datazetu.png" alt="Data Zetu"></a>
-            <a href="http://twaweza.org/" target="_blank" rel="noopener">
-                <img src="{{ STATIC_URL }}img/logos/world_bank_group_logo.png" alt="Twaweza"></a>
+            <a href="https://codeforafrica.org/" target="_blank" rel="noopener">
+                <img src="{{ STATIC_URL }}img/logos/cfafrica.png" alt="Code for Africa"></a>
             <br/>
         </div>
     </div>

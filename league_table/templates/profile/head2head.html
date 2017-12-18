@@ -12,14 +12,14 @@
     <div id="page-header-title" class="wrapper clearfix">
         <i id="menu-toggle" class="fa fa-bars"></i>
         <a class="title" href="{% url 'homepage' %}">
-            <span style="font-size: 20px;font-weight: bolder;">League</span><br />
-            <span style="font-size: 18px;font-weight: bold; margin-left: 20px;">Table</span>
+            <img src="{% static 'img/logos/books.png' %}" style="height: 44px; float: left;"/>
+            <span style="font-size: 25px;font-weight: bolder; margin-left:10px; line-height: 50px;">League Table</span><br />
         </a>
 
         <div class="nav-menu">
             <ul id="site-menu">
                 {% block header_menu %}
-                    <li><a href="/schools">Schools</a></li>
+                    <li><a href="/schools">Full League</a></li>
                     <li><a href="/about">About</a></li>
                 {% endblock header_menu %}
             </ul>

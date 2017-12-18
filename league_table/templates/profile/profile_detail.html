@@ -1,4 +1,5 @@
 {% extends 'profile/profile_detail.html' %}
+{% load staticfiles %}
 
 {% block header %}
 <style>
@@ -6,18 +7,57 @@
         background: #204d8a;
     }
 </style>
+<style type="text/css">
+	.TFtable{
+		width:100%; 
+		border-collapse:collapse; 
+	}
+
+    .TFtable thead th{
+        background: #204d8a;
+        padding:10px;
+        color: #fff;
+    }
+
+	.TFtable td{ 
+		padding:7px; border:#4e95f4 0px solid;
+	}
+	/* provide some minimal visual accomodation for IE8 and below */
+	.TFtable tr{
+		background: #b8d1f3;
+	}
+	/*  Define the background color for all the ODD background rows  */
+	.TFtable tr:nth-child(odd){ 
+		background: #b8d1f3;
+	}
+	/*  Define the background color for all the EVEN background rows  */
+	.TFtable tr:nth-child(even){
+		background: #dae5f4;
+	}
+
+    .lt_button {
+        background-color: #01200f; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+    }
+</style>
 <header id="page-header">
     <div id="page-header-title" class="wrapper clearfix">
         <i id="menu-toggle" class="fa fa-bars"></i>
         <a class="title" href="{% url 'homepage' %}">
-            <span style="font-size: 20px;font-weight: bolder;">League</span><br />
-            <span style="font-size: 18px;font-weight: bold; margin-left: 20px;">Table</span>
+            <img src="{% static 'img/logos/books.png' %}" style="height: 44px; float: left;"/>
+            <span style="font-size: 25px;font-weight: bolder; margin-left:10px; line-height: 50px;">League Table</span><br />
         </a>
 
         <div class="nav-menu">
             <ul id="site-menu">
                 {% block header_menu %}
-                    <li><a href="/schools">Schools</a></li>
+                    <li><a href="/schools">Full League</a></li>
                     <li><a href="/about">About</a></li>
                 {% endblock header_menu %}
             </ul>
@@ -26,7 +66,7 @@
                 {% block nav_tools %}
                 <div id="menu" class="tool-set clearfix">
                     <div class="tool-group">
-                        <input name="geography_select" id="geography-select" type="text" placeholder="Search Place" autocomplete="off">
+                        <input name="geography_select" id="geography-select" type="text" placeholder="Search for a place or school" autocomplete="off">
                     </div>
                     {% if not hide_nav_compare %}
                     {% comment %}
@@ -63,9 +103,9 @@
                 </p>
             </header>
 
-            <div class="column-half">
+            <div class="column-full">
                 <div class="stat">
-                    <span class="primary">
+                    <span class="primary pull-left">
                         {% block profile_header_population %}
                         <span class="value">{{ schools.top_schools|length }}</span>
                         <span class="name">Total Secondary Schools</span>
@@ -83,71 +123,61 @@
 {% endblock %}
 
 <div class="content-container wrapper clearfix" style="overflow:auto;">
-    <div class="holder" style="margin-bottom: 0px;">
-        <div class="" style="width: 100%;">
-            <center><h2>10 Top Schools in {{ geography.this.short_name }}</h2></center>
+    <div class="holder" style="width: 100%; margin-bottom: 0px;">
+        <div class="" style="width: 49%; margin-bottom: 0px; float: left;">
+            <h2><i class="fa fa-arrow-up"></i>&nbsp;&nbsp;10 Best Schools in {{ geography.this.short_name }}</h2>
             <br />
-            <table style="width: 100%; margin-bottom: 0px;">
+            <table class="TFtable" style="width: 100%;">
                 <thead>
                     <tr>
-                        <th style="text-align:left;">No</th>
+                        <th style="text-align:left;  min-width: 5px;">No</th>
                         <th style="text-align:left;">Name</th>
-                        <th>Pass Rate</th>
+                        <th style="min-width: 10px;">Pass Rate</th>
                         <th>National Rank</th>
-                        <th>Regional Rank</th>
-                        <th style="text-align: right;">Stats</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for school in schools.top_schools|slice:":10" %}
                         <tr>
-                            <td style="text-align:left;">{{ forloop.counter }}</td>
-                            <td>{{ school.name }}</td>
+                            <td style="text-align:left; min-width: 5px;">{{ forloop.counter }}</td>
+                            <td><a href="/schools/{{ school.code }}">{{ school.name }}</a></a></td>
                             <td style="text-align:center;">{{ school.pass_rate }}</td>
                             <td style="text-align:center;">{{ school.national_rank_all }}</td>
-                            <td style="text-align:center;">{{ school.regional_rank_all }}</td>
-                            <td style="text-align: right;"><a href="/schools/{{ school.code }}"><i class="fa fa-bar-chart"></i></a></td>
                         </tr>
                     {% endfor %}
                 </tbody>
             </table>
+        </div>
 
+        <div style="width: 49%; margin-bottom: 0px; float: right;">
+            <h2><i class="fa fa-arrow-down"></i>&nbsp;&nbsp;10 Worst Schools in {{ geography.this.short_name }}</h2>
             <br />
-            <hr />
-            <br />
-
-            <center><h2>10 Lowest Schools in {{ geography.this.short_name }}</h2></center>
-            <br />
-            <table style="width: 100%; margin-bottom: 0px;">
+            <table class="TFtable" style="width: 100%;">
                 <thead>
                     <tr>
-                        <th style="text-align:left;">No</th>
+                        <th style="text-align:left;min-width: 5px;">No</th>
                         <th style="text-align:left;">Name</th>
-                        <th>Pass Rate</th>
+                        <th style="min-width: 10px;">Pass Rate</th>
                         <th>National Rank</th>
-                        <th>Regional Rank</th>
-                        <th style="text-align: right;">Stats</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for school in schools.lowest_schools|slice:":10" %}
                         <tr>
-                            <td style="text-align:left;">{{ forloop.counter }}</td>
-                            <td>{{ school.name }}</td>
+                            <td style="text-align:left;min-width: 5px;">{{ forloop.counter }}</td>
+                            <td><a href="/schools/{{ school.code }}">{{ school.name }}</a></a></td>
                             <td style="text-align:center;">{{ school.pass_rate }}</td>
                             <td style="text-align:center;">{{ school.national_rank_all }}</td>
-                            <td style="text-align:center;">{{ school.regional_rank_all }}</td>
-                            <td style="text-align: right;"><a href="/schools/{{ school.code }}"><i class="fa fa-bar-chart"></i></a></td>
                         </tr>
                     {% endfor %}
                 </tbody>
             </table>
-
-            <br />
-            <hr />
-            <br />
         </div>
     </div>
+
+    <center>
+        <button type="button" class="lt_button">Embed League Table</button>
+    </center>
 </div>
 {% endblock %}
 
