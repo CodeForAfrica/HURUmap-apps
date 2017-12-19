@@ -176,7 +176,7 @@
     </div>
 
     <center>
-        <button type="button" class="lt_button">Embed League Table</button>
+        <button type="button" class="lt_button" onclick="javascript: embedTable('{{ geography.this.geo_level }}', '{{geography.this.geo_code}}');">Embed League Table</button>
     </center>
 </div>
 {% endblock %}
@@ -209,21 +209,21 @@
 </article>
 
 <article id="schools" class="clearfix">
-        <header class="section-contents">
-            <h1> Averege GPA</h1>
-        </header>
-        <div class="section-container">
-            <section class="clearfix stat-row">
-                <h2 class="header-for-columns"><a class="permalink" href="#age" id="age">GPA <i class="fa fa-link"></i></a></h2>
-                <div class="column-quarter">
-                    {% include 'profile/_blocks/_stat_list.html' with stat=schools.median_gpa stat_type='number' %}
-                </div>
-                <div class="column-half">
-                    <div id="chart-histogram-schools-gpa_group_distribution" data-stat-type="scaled-percentage" data-chart-title="Average gpa range"></div>
-                </div>
-            </section>
-        </div>
-    </article>
+    <header class="section-contents">
+        <h1> Averege GPA</h1>
+    </header>
+    <div class="section-container">
+        <section class="clearfix stat-row">
+            <h2 class="header-for-columns"><a class="permalink" href="#age" id="age">GPA <i class="fa fa-link"></i></a></h2>
+            <div class="column-quarter">
+                {% include 'profile/_blocks/_stat_list.html' with stat=schools.median_gpa stat_type='number' %}
+            </div>
+            <div class="column-half">
+                <div id="chart-histogram-schools-gpa_group_distribution" data-stat-type="scaled-percentage" data-chart-title="Average gpa range"></div>
+            </div>
+        </section>
+    </div>
+</article>
 {% endblock %}
 
 {% block footer_content %}

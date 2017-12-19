@@ -20,7 +20,7 @@ DATABASES['default']['ATOMIC_REQUESTS'] = True
 HURUMAP['name'] = 'League Table'
 HURUMAP['description'] = 'it shows ranking of different secondary schools\
                             bassed on their performance in each year.'
-HURUMAP['url'] = 'https://tanzania.hurumap.org'
+HURUMAP['url'] = 'https://leaguetable.codefortanzania.org'
 HURUMAP['country_code'] = 'TZ'
 HURUMAP['country_name'] = 'Tanzania'
 HURUMAP['country_profile'] = 'country-TZ-Tanzania'

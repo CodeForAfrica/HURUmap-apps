@@ -12,7 +12,7 @@ from wazimap.views import (HomepageView, GeographyDetailView, GeographyJsonView,
                            LocateView, DataAPIView, TableAPIView, AboutView, HelpView, GeographyCompareView,
                            GeoAPIView, TableDetailView)
 
-from league_table.views import schools, specific_school
+from league_table.views import schools, specific_school, embed
 
 
 admin.autodiscover()
@@ -237,6 +237,14 @@ urlpatterns = patterns('',
         view = specific_school,
         kwargs = {},
         name = 'specific_schools',
+    ),
+
+    # url for embedding league table
+    url(
+        regex = '^embed/(?P<geo_level>[a-zA-Z]+)/(?P<geo_code>[a-zA-Z0-9_-]+)$',
+        view = embed,
+        kwargs = {},
+        name = 'embed',
     )
 
     # LOCAL DEV VERSION OF API ##

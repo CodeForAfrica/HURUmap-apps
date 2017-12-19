@@ -40,3 +40,33 @@
             <img src="{% static 'img/logos/world_bank_group_vertial_white_logo.png' %}" alt="World Bank Group" style="max-width: 105px; max-height: 50px;"></a>
     {% endblock %}
 </div>
+
+<!-- Embed table -->
+<div id="lightbox" style="display: none; color: #000;">
+    <div class="hovercard-wrapper">
+        <div class="hovercard">
+            <small class="close clearfix close-embed" onclick="javascript: closeEmbed();"><i class="fa fa-times-circle"></i> Close</small>
+            <h2 style="font-size: 22px;">Embed code for this league table</h2>
+            <p>Copy the code below, then paste into your own CMS or HTML. 
+                Embedded league tables are responsive to your page width, 
+                and have been tested in Firefox, Safari, Chrome, and IE8 and above.
+            </p>
+            <textarea></textarea>
+        </div>
+    </div>
+</div>
+
+<!-- embed table script -->
+<script type="text/javascript">
+   function embedTable(geo_level, geo_code){
+        var text = '&lt;iframe src="https://leaguetable.codefortanzania.org/embed/' + geo_level + '/' + geo_code + 
+        '" frameborder="0" width="100%" height="300" style="margin: 1em; width: 100%;"&gt;&lt;/iframe&gt;';
+
+        $('#lightbox textarea').html(text);
+        $('#lightbox').toggle();
+   }
+
+   function closeEmbed(){
+        $('#lightbox').toggle();
+   }
+</script>
