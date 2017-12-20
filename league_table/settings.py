@@ -40,29 +40,24 @@ HURUMAP['legacy_embed_geo_version'] = '2009'
 HURUMAP['levels'] = {
     'country': {
         'plural': 'countries',
-        'children': ['region', 'district', 'ward'],
+        'children': ['region', 'district'],
     },
     'region': {
         'plural': 'regions',
-        'children': ['district', 'ward'],
+        'children': ['district'],
     },
     'district': {
         'plural': 'districts',
-        'children': ['ward'],
-    },
-    'ward': {
-        'plural': 'wards',
         'children': [],
     }
 }
 
-HURUMAP['comparative_levels'] = ["ward", "district", "region", "country"]
+HURUMAP['comparative_levels'] = ["district", "region", "country"]
 HURUMAP['geometry_data'] = {
     '2009': {
                 'country': 'geo/country.topojson',
                 'region': 'geo/region.topojson',
-                'district': 'geo/district.topojson',
-                'ward': 'geo/ward.topojson'
+                'district': 'geo/district.topojson'
             }
 }
 
