@@ -87,7 +87,8 @@ HURUMAP['topics']['education'] = {
     'profiles': [
         'literacy and numeracy tests',
         'school attendance',
-        'primary school teachers'
+        'primary school teachers',
+        #'primary school desks' #pending data discrepancy fix
     ]
 }
 
