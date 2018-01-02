@@ -12,19 +12,10 @@ DATABASES['default']['ATOMIC_REQUESTS'] = True
 
 HUMANDEV = WAZIMAP
 
-HUMANDEV['name'] = 'PesaYetu'
-HUMANDEV['url'] = 'https://pesayetu.hurumap.org'
-HUMANDEV['country_code'] = 'KE'
-HUMANDEV['country_name'] = 'Kenya'
-HUMANDEV['description'] = 'is a tool the gives Kenyan Citizens access to ' \
-                          'information on how money collected from taxpayers ' \
-                          'is allocated. With this information, they can ask ' \
-                          'what their elected officials are doing with it, and ' \
-                          'from there the discussion can proceed towards how ' \
-                          'money is spent in the future to better their lives.'
-HUMANDEV['title_tagline'] = 'Making Budget Data Easy to Use'
+HUMANDEV['name'] = 'AP Human Development Country Profiles'
+HUMANDEV['url'] = 'https://hd.hurumap.org'
 
-humandev_profile = os.environ.get('HUMANDEV_PROFILE', 'pesayetu')
+humandev_profile = os.environ.get('HUMANDEV_PROFILE', 'humandev')
 
 
 HUMANDEV['default_profile'] = humandev_profile
@@ -36,24 +27,23 @@ HUMANDEV['legacy_embed_geo_version'] = '2009'
 
 
 HUMANDEV['levels'] = {
+    'continent': {
+        'plural': 'continents',
+        'children': ['country'],
+    },
     'country': {
         'plural': 'countries',
-        'children': ['county'],
-    },
-    'county': {
-        'plural': 'counties',
     }
 }
 HUMANDEV['comparative_levels'] = ['country']
 HUMANDEV['geometry_data'] = {
     '2009': {
-        'country': 'geo/country.topojson',
-        'county': 'geo/county.topojson'
+        'country': 'geo/continent.topojson',
+        'county': 'geo/country.topojson'
     }
 }
-FORMAT_MODULE_PATH = 'pesayetu.formats'
 
-LOGGING['loggers']['pesayetu'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
+LOGGING['loggers']['humandev'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
 
 # Making sure they are the same
 WAZIMAP = HUMANDEV
