@@ -994,3 +994,70 @@ def get_traffic_and_crimes_profile(geo, session):
             'values': {'this': _total_pf}
         }
     }
+
+
+def get_primary_school_teachers_profile(geo, session):
+
+    if geo.geo_level == 'ward':
+        return {}
+    ps_teachers, n_teachers = get_stat_data('primary school teachers',\
+        geo=geo, session=session, order_by='-total')
+
+    return {
+        'number_of_teachers': {
+            'name': 'Number of primary school teachers (2016)',
+            'numerators': {'this': n_teachers},
+            'values': {'this': n_teachers}
+        },
+        'source_name': 'opendata.go.tz',
+        'source_link': 'http://www.opendata.go.tz/dataset/number-of-primary-school-teachers',
+        'primary_school_teachers': ps_teachers
+    }
+
+
+
+def get_water_sources_profile(geo, session):
+
+    if geo.geo_level == 'ward' or geo.geo_level == 'district':
+        return {}
+
+    try:
+        _, total_pop = get_stat_data(
+            'sex',geo=geo, session=session,
+            table_fields=['age in completed years', 'sex', 'rural or urban'])
+
+        WATER_POINT_STATUS_RECODES = OrderedDict([
+                ('functional', 'Functional'),
+                ('nonfunctional', 'Non Functional'),
+                ('needsrepair', 'Functional Needs Repair')
+            ])
+
+        water_source_dist, n_sources  = get_stat_data('water sources', geo=geo,\
+         session=session, recode=WATER_POINT_STATUS_RECODES)
+
+    except Exception as e:
+        #Location not found in dataset
+        return {}
+    #Functional  + Needs repair
+    all_functional  = water_source_dist['Functional']['numerators']['this'] + \
+            water_source_dist['Functional Needs Repair']['numerators']['this']
+
+    #Number of people per water point
+    n_people_per_point = round(total_pop/all_functional)
+
+    return {
+        'water_sources_dist': water_source_dist,
+        'number_of_water_sources': {
+            'name': 'Total number of water points',
+            'numerators': {'this': n_sources},
+            'values': {'this': n_sources}
+        },
+        'source_link': 'http://www.opendata.go.tz/dataset/hali-halisi-ya-vitoa-maji-kwa-mikoa-yote-tanzania',
+        'source_name': 'opendata.go.tz',
+        'n_people_per_point': {
+            'name': 'Number of people using a working water point(Functional/Needs repair water point)',
+            'numerators': {'this': n_people_per_point},
+            'values': {'this': n_people_per_point}
+        },
+
+    }

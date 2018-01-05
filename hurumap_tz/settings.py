@@ -60,10 +60,7 @@ HURUMAP['geometry_data'] = {
         }
 }
 
-HURUMAP['ga_tracking_ids'] = [
-    'UA-91133100-4',
-    'UA-44795600-27',
-    'UA-92541368-2']
+HURUMAP['ga_tracking_ids'] = ['UA-91133100-4']
 HURUMAP['twitter'] = '@Code4Africa'
 
 HURUMAP['map_centre'] = [-6.1523563, 35.6754813]
@@ -90,6 +87,7 @@ HURUMAP['topics']['education'] = {
     'profiles': [
         'literacy and numeracy tests',
         'school attendance',
+        'primary school teachers'
     ]
 }
 
@@ -115,7 +113,8 @@ HURUMAP['topics']['development'] = {
     'icon': '/static/img/development.png',
     'desc': '',
     'profiles': [
-        'traffic and crimes'
+        'traffic and crimes',
+        'water sources'
     ]
 }
 
@@ -149,5 +148,7 @@ HURUMAP['showcase_stories'] = [
 
 LOGGING['loggers']['hurumap_tz'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
 
+#Empty NA label, avoids having long pages on missing geo level data
+HURUMAP['na_label'] = ''
 # Making sure they are the same
 WAZIMAP = HURUMAP
