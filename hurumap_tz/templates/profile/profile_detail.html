@@ -346,4 +346,40 @@
       </section>
     </div>
 </article>
+<article id="primary_school_teachers" class="clearfix">
+    <header class="section-contents">
+        <h1>Primary School Teachers</h1>
+    </header>
+    <div class="section-container">
+         <section class="clearfix stat-row">
+             <p class="source">Source: <a href="{{ primary_school_teachers.source_link }}">{{ primary_school_teachers.source_name }}</a></p>
+             <br clear="all">
+             <div class="column-half">
+                 {% include 'profile/_blocks/_stat_list.html' with stat=primary_school_teachers.number_of_teachers stat_type='number' %}
+             </div>
+            <div class="column-half" id="chart-pie-primary_school_teachers-primary_school_teachers" data-stat-type="percentage" data-chart-title="Distribution of primary school teachers based on gender(2016)" data-initial-sort="-value"></div>
+
+        </section>
+        <br clear="all">
+    </div>
+</article>
+<article id="water_sources" class="clearfix">
+    <header class="section-contents">
+        <h1>Water Points Statuses</h1>
+    </header>
+    <div class="section-container">
+         <section class="clearfix stat-row">
+             <p class="source">Source: <a href="{{ water_sources.source_link }}">{{ water_sources.source_name }}</a></p>
+             <div class="column-half">
+                 {% include 'profile/_blocks/_stat_list.html' with stat=water_sources.number_of_water_sources stat_type='number' %}
+             </div>
+             <div class="column-half">
+                 {% include 'profile/_blocks/_stat_list.html' with stat=water_sources.n_people_per_point stat_type='number' %}
+             </div>
+          </section>
+          <section class='clearfix stat-row'>
+             <div class="column-full" id="chart-bar-water_sources-water_sources_dist" data-stat-type="percentage" data-initial-sort="-value" data-chart-title="Water points statuses"></div>
+        </section>
+    </div>
+</article>
 {% endblock %}
