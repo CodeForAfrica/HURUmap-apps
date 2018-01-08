@@ -34,6 +34,7 @@
 <div class="column-quarter text-center">
     <p>A project by:</p>
     {% block footer_branding %}
+        {{ block.super }}
         <a href="https://codeforafrica.org" target="_blank">
             <img src="{% static 'img/logos/cfafrica-white.png' %}" alt="Code for Africa" style="margin-top: 0;"></a>
         <a href="https://icfj.org" target="_blank">
