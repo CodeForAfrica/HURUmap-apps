@@ -38,8 +38,8 @@ HUMANDEV['levels'] = {
 HUMANDEV['comparative_levels'] = ['country']
 HUMANDEV['geometry_data'] = {
     '2009': {
-        'country': 'geo/continent.topojson',
-        'county': 'geo/country.topojson'
+        'continent': 'geo/continent.topojson',
+        'country': 'geo/country.topojson'
     }
 }
 
