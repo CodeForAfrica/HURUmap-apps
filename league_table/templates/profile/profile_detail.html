@@ -125,7 +125,12 @@
 {% endblock %}
 
 <div class="content-container wrapper clearfix" style="overflow:auto;">
-    <div class="holder" style="width: 100%; margin-bottom: 0px;">
+    <div class="holder" style="width: 100%; margin-bottom: 0px; overflow: auto;">
+        <div style="width: 100%; text-align:right;">
+            <a href="javascript: ;"  onclick="javascript: embedTable('{{ geography.this.geo_level }}', '{{geography.this.geo_code}}');">Embed League Table</a>&nbsp;
+            <span class="fa fa-code"></span>
+        </div>
+        <br />
         <div class="" style="width: 49%; margin-bottom: 0px; float: left;">
             <h2><i class="fa fa-arrow-up"></i>&nbsp;&nbsp;10 Best Schools in {{ geography.this.short_name }}</h2>
             <br />
@@ -178,7 +183,7 @@
     </div>
 
     <center>
-        <button type="button" class="lt_button" onclick="javascript: embedTable('{{ geography.this.geo_level }}', '{{geography.this.geo_code}}');">Embed League Table</button>
+        <button type="button" class="lt_button">View More</button>
     </center>
 </div>
 {% endblock %}
