@@ -360,3 +360,9 @@ body {
     max-width: 70px;
   }
 }
+
+// override wazimap css add padding between compare with and the input box
+
+#profile #compare-place-picker .typeahead-container {
+  padding-left: 18em;
+}
