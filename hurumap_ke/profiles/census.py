@@ -261,6 +261,8 @@ def get_households_profile(geo, session):
         key_order=WATER_SOURCE_RECODES.values())
     total_piped = water_source_dist['Piped']['numerators']['this']
 
+    household_heads_dist, total_ = get_stat_data('Household_Heads', geo, session)
+
     # main mode of waste disposal
     waste_disposal_dist, _ = get_stat_data(
         'main mode of human waste disposal', geo, session,
@@ -290,11 +292,14 @@ def get_households_profile(geo, session):
         'main type of floor material', geo, session,
         order_by='-total')
 
+    print household_heads_dist
+
     return {
         'total_households': {
             'name': 'Households',
             'values': {'this': total_households},
         },
+        'household_heads': household_heads_dist,
         'water_source_distribution': water_source_dist,
         'piped_water': {
             'name': 'Have piped water',
