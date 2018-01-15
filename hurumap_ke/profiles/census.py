@@ -6,13 +6,16 @@ from django.conf import settings
 from wazimap.data.tables import get_model_from_fields
 from wazimap.data.utils import (calculate_median, get_objects_by_geo,
                                 get_session, get_stat_data, group_remainder,
-                                merge_dicts)
+                                merge_dicts, LocationNotFound)
 from wazimap.geo import geo_data
 
 # ensure tables are loaded
 import hurumap_ke.tables  # noqa
 
 log = logging.getLogger(__name__)
+
+LOCATIONNOTFOUND = {'name': 'No Data Found', 'numerators': {'this': 0},
+                    'values': {'this': 0}}
 
 SECTIONS = settings.HURUMAP.get('topics', {})
 
@@ -114,6 +117,9 @@ def get_demographics_profile(geo, session):
         'sex', geo, session,
         table_fields=['age in completed years', 'sex', 'rural or urban'])
 
+    religion_dist_data, _ = get_stat_data(
+        'religion', geo, session)
+
     # urban/rural by sex
     urban_dist_data, _ = get_stat_data(
         ['rural or urban', 'sex'], geo, session,
@@ -163,6 +169,7 @@ def get_demographics_profile(geo, session):
 
     final_data = {
         'sex_ratio': sex_dist_data,
+        'religion_ratio': religion_dist_data,
         'urban_distribution': urban_dist_data,
         'urbanised': {
             'name': 'In urban areas',
@@ -254,6 +261,8 @@ def get_households_profile(geo, session):
         key_order=WATER_SOURCE_RECODES.values())
     total_piped = water_source_dist['Piped']['numerators']['this']
 
+    household_heads_dist, total_ = get_stat_data('Household_Heads', geo, session)
+
     # main mode of waste disposal
     waste_disposal_dist, _ = get_stat_data(
         'main mode of human waste disposal', geo, session,
@@ -283,11 +292,14 @@ def get_households_profile(geo, session):
         'main type of floor material', geo, session,
         order_by='-total')
 
+    print household_heads_dist
+
     return {
         'total_households': {
             'name': 'Households',
             'values': {'this': total_households},
         },
+        'household_heads': household_heads_dist,
         'water_source_distribution': water_source_dist,
         'piped_water': {
             'name': 'Have piped water',
