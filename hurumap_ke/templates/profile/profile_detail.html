@@ -33,6 +33,10 @@
             </div>
             <div class="column-quarter" id="chart-pie-demographics-age_category_distribution" data-stat-type="percentage" data-chart-title="Population by age category"></div>
         </section>
+        <section class="clearfix stat-row">
+            <h2><a class="permalink" href="#religion" id="religions">Religion Distribution <i class="fa fa-link"></i></a></h2>
+            <div class="column-half" id="chart-pie-demographics-religion_ratio" data-stat-type="scaled-percentage" data-chart-title="Main Religions"></div>
+        </section>
 
     </div>
 </article>
@@ -122,6 +126,10 @@
             <div class="column-third" id="chart-pie-households-floor_material_distribution" data-stat-type="scaled-percentage" data-chart-title="Households by main type of floor material"></div>
             <div class="column-third" id="chart-pie-households-wall_material_distribution" data-stat-type="scaled-percentage" data-chart-title="Households by main type of wall material"></div>
         </section>
+        <section class="clearfix stat-row">
+            <h2><a class="permalink" href="#households-heads" id="households-heads">Household Heads <i class="fa fa-link"></i></a></h2>
+            <div class="column-half" id="chart-histogram-households-household_heads" data-stat-type="scaled-percentage" data-chart-title="Non-Male Headed Households"></div>
+        </section>
 
     </div>
 </article>
@@ -156,7 +164,7 @@
 <article id="voter_registration_2017" class="clearfix {% if 'voter_registration_2017' not in selected_sections %}hide{% endif %}">
     <header class="section-contents">
         <h1>Voter Registration 2017 </h1>
-        
+
     </header>
     <div class="section-container">
         <section class="clearfix stat-row">
@@ -164,8 +172,8 @@
                 {% include 'profile/_blocks/_stat_list.html' with stat=voter_registration_2017.total stat_type='number' %}
             </div>
 
-            <div class="column-third" id="chart-pie-voter_registration_2017-gender_ratio" data-stat-type="percentage" data-chart-title="Registered voters gender ratio"></div>  
-            <div class="column-third" id="chart-pie-voter_registration_2017-registration" data-stat-type="percentage" data-chart-title="Registered voters as at March 2015 and as at December 2016"> </div> 
+            <div class="column-third" id="chart-pie-voter_registration_2017-gender_ratio" data-stat-type="percentage" data-chart-title="Registered voters gender ratio"></div>
+            <div class="column-third" id="chart-pie-voter_registration_2017-registration" data-stat-type="percentage" data-chart-title="Registered voters as at March 2015 and as at December 2016"> </div>
             <div class="column-third" id="chart-pie-voter_registration_2017-registration_ratio" data-stat-type="percentage" data-chart-title="Potential voters with IDs not registered as at December 2016"></div>
          </section>
         <section class="clearfix stat-row">
@@ -187,7 +195,7 @@
                 {% include 'profile/_blocks/_stat_list.html' with stat=voter_registration_2017.polling_stations stat_type='number' %}
             </div>
         </section>
-        {% comment %} <section class="clearfix stat-row">     
+        {% comment %} <section class="clearfix stat-row">
         </section> {% endcomment %}
     </div>
 </article>
@@ -465,7 +473,6 @@
     .label {
         word-break: break-word;
     }
-
     #chart-histogram-crimereport-crimes_dist .action-links {
         margin-top: 40px;
     }
