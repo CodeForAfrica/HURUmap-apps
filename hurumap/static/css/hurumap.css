@@ -233,3 +233,6 @@ body {
 
 .how-it-works img {
   max-width: 70px; }
+
+#profile #compare-place-picker .typeahead-container {
+  padding-left: 18em; }

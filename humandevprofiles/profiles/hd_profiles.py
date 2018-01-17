@@ -81,5 +81,6 @@ def extract_time_series_data(data, chart_title='', x_label='', y_label=''):
         'chart_title': chart_title,
         'x_label': x_label,
         'y_label': y_label,
+        'id': chart_title.replace(' ', '_')
     }
 

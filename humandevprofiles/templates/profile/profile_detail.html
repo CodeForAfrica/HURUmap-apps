@@ -16,28 +16,28 @@
 
             <section class="clearfix stat-row">
                 <div class="column-three-quarters">
-                    {% include 'profile/_blocks/_line_graph_stats.html' with x_values=life_expectancy.x y_values=life_expectancy.y chart_title=life_expectancy.chart_title x_label=life_expectancy.x_label y_label=life_expectancy.y_label %}
+                    {% include 'profile/_blocks/_line_graph_stats.html' with x_values=life_expectancy.x y_values=life_expectancy.y chart_title=life_expectancy.chart_title x_label=life_expectancy.x_label y_label=life_expectancy.y_label uid=life_expectancy.id%}
                 </div>
             </section>
 
         </div>
     </article>
 
-{#    <article id="gni"#}
-{#             class="clearfix">#}
-{#        <header class="section-contents">#}
-{#            <h1>GNI Index</h1>#}
-{#        </header>#}
-{#        <div class="section-container">#}
-{##}
-{#            <section class="clearfix stat-row">#}
-{#                <div class="column-three-quarters">#}
-{#                    {% include 'profile/_blocks/_line_graph_stats.html' with x_values=gni.x y_values=gni.y chart_title=gni.chart_title x_label=gni.x_label y_label=gni.y_label %}#}
-{#                </div>#}
-{#            </section>#}
-{##}
-{#        </div>#}
-{#    </article>#}
+    <article id="gni"
+             class="clearfix">
+        <header class="section-contents">
+            <h1>GNI Index</h1>
+        </header>
+        <div class="section-container">
+
+            <section class="clearfix stat-row">
+                <div class="column-three-quarters">
+                    {% include 'profile/_blocks/_line_graph_stats.html' with x_values=gni.x y_values=gni.y chart_title=gni.chart_title x_label=gni.x_label y_label=gni.y_label uid=gni.id%}
+                </div>
+            </section>
+
+        </div>
+    </article>
 
 
 
