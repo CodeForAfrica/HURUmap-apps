@@ -15,7 +15,7 @@ HUMANDEV = WAZIMAP
 HUMANDEV['name'] = 'AP Human Development Country Profiles'
 HUMANDEV['url'] = 'https://hd.hurumap.org'
 
-humandev_profile = os.environ.get('HUMANDEV_PROFILE', 'humandev')
+humandev_profile = os.environ.get('HUMANDEV_PROFILE', 'hd_profiles')
 
 
 HUMANDEV['default_profile'] = humandev_profile

@@ -33,7 +33,7 @@ CREATE TABLE wazimap_geography (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     name character varying(100) NOT NULL,
-    version integer,
+    version character varying(100) NOT NULL,
     square_kms double precision,
     parent_level character varying(15),
     parent_code character varying(10),
