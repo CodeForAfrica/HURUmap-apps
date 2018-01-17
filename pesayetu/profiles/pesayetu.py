@@ -1,4 +1,3 @@
-from wazimap.data.utils import get_session, get_stat_data
 from wazimap.data.utils import (LocationNotFound, get_session, get_stat_data,
                                 merge_dicts)
 from django.conf import settings
