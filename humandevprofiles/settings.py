@@ -12,7 +12,7 @@ DATABASES['default']['ATOMIC_REQUESTS'] = True
 
 HUMANDEV = WAZIMAP
 
-HUMANDEV['name'] = 'AP Human Development Country Profiles'
+HUMANDEV['name'] = 'Human Development Profiles'
 HUMANDEV['url'] = 'https://hd.hurumap.org'
 
 humandev_profile = os.environ.get('HUMANDEV_PROFILE', 'hd_profiles')
