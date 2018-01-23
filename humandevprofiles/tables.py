@@ -10,3 +10,5 @@ FieldTable(['Rank', 'year'])
 FieldTable(['HIV_Prevalence_Year'], value_type='Float')
 # literate Percentage of population above 15 years
 FieldTable(['Literacy_Year'])
+
+FieldTable(['Indicator'], id='hd_landscape', value_type='Float')
