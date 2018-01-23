@@ -1,44 +1,69 @@
 {% extends 'profile/profile_detail.html' %}
 
 {% block profile_header_tail %}
+    <div class="column-three-quarters">
+        <div class="stat">
+                    <span class="primary">
+                        {% block profile_header_population %}
+                            <span class="value">{{ demographics.total_population.values.this|floatformat:"0" }}</span>
+                            <span class="name">Population</span>
+                        {% endblock %}
+                    </span>
+        </div>
+    </div>
     <div class="column-full">
         <p class="caption"><strong>Census data:</strong> 2014</p>
     </div>
+
 {% endblock %}
 
 {% block profile_detail %}
-    <article id="life_expectancy"
-             class="clearfix">
+    <article
+            class="clearfix {% if 'demographics' not in selected_sections %}hide{% endif %}">
         <header class="section-contents">
-            <h1>Life Expectancy</h1>
+            <h1>Economy</h1>
         </header>
         <div class="section-container">
-
             <section class="clearfix stat-row">
-                <div class="column-three-quarters">
-                    {% include 'profile/_blocks/_line_graph_stats.html' with x_values=life_expectancy.x y_values=life_expectancy.y chart_title=life_expectancy.chart_title x_label=life_expectancy.x_label y_label=life_expectancy.y_label uid=life_expectancy.id%}
-                </div>
+                <div class="column-full"
+                     id="chart-histogram-gni-gni"
+                     data-stat-type="number"
+                     data-chart-title="Allocation Distribution"></div>
             </section>
 
         </div>
     </article>
 
-    <article id="gni"
-             class="clearfix">
+    <article
+            class="clearfix {% if 'demographics' not in selected_sections %}hide{% endif %}">
         <header class="section-contents">
-            <h1>GNI Index</h1>
+            <h1>Health</h1>
         </header>
         <div class="section-container">
-
             <section class="clearfix stat-row">
-                <div class="column-three-quarters">
-                    {% include 'profile/_blocks/_line_graph_stats.html' with x_values=gni.x y_values=gni.y chart_title=gni.chart_title x_label=gni.x_label y_label=gni.y_label uid=gni.id%}
-                </div>
+                <div class="column-full"
+                     id="chart-histogram-life_expectancy-life_expectancy"
+                     data-stat-type="number"
+                     data-chart-title="Life Expectancy"></div>
             </section>
 
         </div>
     </article>
 
+    <article
+            class="clearfix">
+        <header class="section-contents">
+            <h1>Census</h1>
+        </header>
+        <div class="section-container">
+            <section class="clearfix stat-row">
+                <div class="column-three-quarters"
+                     id="chart-histogram-demographics-population_dist"
+                     data-stat-type="number"
+                     data-chart-title="Population For the last 10 years"></div>
+            </section>
 
+        </div>
+    </article>
 
 {% endblock %}

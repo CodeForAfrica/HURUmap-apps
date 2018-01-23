@@ -105,4 +105,3 @@ ALTER TABLE ONLY gni_year
 --
 -- PostgreSQL database dump complete
 --
-

@@ -102,4 +102,3 @@ ALTER TABLE ONLY life_expectancy_year
 --
 -- PostgreSQL database dump complete
 --
-

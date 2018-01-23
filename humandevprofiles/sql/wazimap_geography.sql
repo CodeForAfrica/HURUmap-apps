@@ -130,4 +130,3 @@ CREATE INDEX wazimap_geography_name_36b79089_like ON wazimap_geography USING btr
 --
 -- PostgreSQL database dump complete
 --
-

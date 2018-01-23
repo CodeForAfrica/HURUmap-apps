@@ -16,8 +16,8 @@ SET row_security = off;
 
 SET search_path = public, pg_catalog;
 
-ALTER TABLE IF EXISTS ONLY public.gdp_in_billions_of_usd DROP CONSTRAINT IF EXISTS pk_gdp_in_billions_of_usd;
-DROP TABLE IF EXISTS public.gdp_in_billions_of_usd;
+ALTER TABLE IF EXISTS ONLY public.gdp_year DROP CONSTRAINT IF EXISTS pk_gdp_year;
+DROP TABLE IF EXISTS public.gdp_year;
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -25,23 +25,23 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: gdp_in_billions_of_usd; Type: TABLE; Schema: public; Owner: -
+-- Name: gdp_year; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE gdp_in_billions_of_usd (
+CREATE TABLE gdp_year (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     geo_version character varying(100) DEFAULT ''::character varying NOT NULL,
-    year character varying(128) NOT NULL,
-    total integer
+    "GDP_Year" character varying(128) NOT NULL,
+    total double precision
 );
 
 
 --
--- Data for Name: gdp_in_billions_of_usd; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: gdp_year; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY gdp_in_billions_of_usd (geo_level, geo_code, geo_version, year, total) FROM stdin;
+COPY gdp_year (geo_level, geo_code, geo_version, "GDP_Year", total) FROM stdin;
 country	NGA	2011	2000	157
 country	SEN	2011	2000	9
 country	TZA	2011	2000	17
@@ -75,9 +75,9 @@ country	TZA	2011	2009	30
 country	NGA	2011	2010	369
 country	SEN	2011	2010	13
 country	TZA	2011	2010	31
-country	NGA	2011	2011	387
-country	SEN	2011	2011	13
-country	TZA	2011	2011	34
+country	NGA	2009	2011	387
+country	SEN	2009	2011	13
+country	TZA	2009	2011	34
 country	NGA	2011	2012	404
 country	SEN	2011	2012	14
 country	TZA	2011	2012	36
@@ -97,11 +97,11 @@ country	TZA	2011	2016	47
 
 
 --
--- Name: gdp_in_billions_of_usd pk_gdp_in_billions_of_usd; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: gdp_year pk_gdp_year; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY gdp_in_billions_of_usd
-    ADD CONSTRAINT pk_gdp_in_billions_of_usd PRIMARY KEY (geo_level, geo_code, geo_version, year);
+ALTER TABLE ONLY gdp_year
+    ADD CONSTRAINT pk_gdp_year PRIMARY KEY (geo_level, geo_code, geo_version, "GDP_Year");
 
 
 --
