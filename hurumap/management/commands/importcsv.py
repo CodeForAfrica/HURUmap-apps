@@ -127,7 +127,7 @@ class Command(BaseCommand):
                 model_row['total'] = round(
                     float(
                         row['total']),
-                    1) if self.value_type == 'Float' else int(
+                    2) if self.value_type == 'Float' else int(
                     round(
                         float(
                             row['total'])))

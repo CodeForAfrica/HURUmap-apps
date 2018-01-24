@@ -30,7 +30,7 @@ FieldTable(
 )
 FieldTable(
     id='religion',
-    fields = ['religion'],
+    fields=['religion'],
     year=2009
 )
 
