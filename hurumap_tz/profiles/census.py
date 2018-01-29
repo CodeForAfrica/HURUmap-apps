@@ -1000,8 +1000,14 @@ def get_primary_school_teachers_profile(geo, session):
 
     if geo.geo_level == 'ward':
         return {}
-    ps_teachers, n_teachers = get_stat_data('primary school teachers',\
-        geo=geo, session=session, order_by='-total')
+    try:
+
+        ps_teachers, n_teachers = get_stat_data('primary school teachers',\
+            geo=geo, session=session, order_by='-total')
+
+    except Exception as e:
+        ps_teachers = None
+        n_teachers = None
 
     return {
         'number_of_teachers': {
@@ -1013,7 +1019,6 @@ def get_primary_school_teachers_profile(geo, session):
         'source_link': 'http://www.opendata.go.tz/dataset/number-of-primary-school-teachers',
         'primary_school_teachers': ps_teachers
     }
-
 
 
 def get_water_sources_profile(geo, session):
@@ -1060,4 +1065,25 @@ def get_water_sources_profile(geo, session):
             'values': {'this': n_people_per_point}
         },
 
+    }
+
+
+def get_primary_school_desks_profile(geo, session):
+
+    if geo.geo_level == 'ward':
+        return {}
+
+    try:
+        school_desks_dist, n_desks = get_stat_data('primary school desks', geo=geo,\
+            session=session)
+    except Exception as e:
+        n_desks = None
+        school_desks_dist = None
+
+    return {
+        'number_of_desks': {
+            'name': 'Number of Desks(2014)',
+            'numerators': {'this': n_desks},
+            'values': {'this': n_desks}
+        },
     }
