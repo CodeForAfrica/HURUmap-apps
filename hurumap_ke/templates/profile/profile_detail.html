@@ -5,9 +5,11 @@
     <div class="floating-nav-wrapper" id="sticky-nav">
         <nav class="floating-nav affix-top" data-spy="affix" data-offset-top="197">
             <div class="wrapper clearfix">
-                <h3><img
-                        src="{% static 'img/wazi-logo.png' %}">{{ geography.this.name }}
-                </h3>
+                <div class="geography-ico">
+                    <span><img
+                        src="{% static 'img/icons/favicon.ico' %}">{{ geography.this.name }}
+                    </span>
+                </div>
                 <ul>
                     <li><a href="#elections"><i class="fa fa-check"></i>
                         <span>Elections</span></a></li>

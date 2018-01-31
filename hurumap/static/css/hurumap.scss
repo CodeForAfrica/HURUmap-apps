@@ -417,6 +417,7 @@ body {
 .floating-nav li a {
   display: block;
   text-decoration: none;
+  font-size: 14px;
 }
 
 .floating-nav li a span {
@@ -424,11 +425,20 @@ body {
 }
 
 .floating-nav li a .fa {
-  font-size: 18px;
+  font-size: 14px;
 }
 
 @media only screen and (max-width: 768px) {
   .floating-nav-wrapper {
     display: none;
   }
+}
+
+.geography-ico span {
+    height: 16px;
+}
+
+.geography-ico span img {
+  margin-right: 10px;
+  height: 16px;
 }

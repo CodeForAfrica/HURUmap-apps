@@ -4,19 +4,22 @@
     <div class="floating-nav-wrapper" id="sticky-nav">
         <nav class="floating-nav affix-top" data-spy="affix" data-offset-top="197">
             <div class="wrapper clearfix">
-                <h3><img
-                        src="{% static 'img/wazi-logo.png' %}">{{ geography.this.name }}
-                </h3>
+                <div class="geography-ico">
+                    <span><img
+                        src="{% static 'img/icons/favicon.ico' %}">{{ geography.this.name }}
+                    </span>
+                </div>
+
                 <ul>
-                    <li><a href="#elections2016"><i class="fa fa-check"></i>
-                        <span>Elections</span></a></li>
                     <li><a href="#demographics"><i class="fa fa-user"></i>
                         <span>Demographics</span></a></li>
+                    <li><a href="#elections2016"><i class="fa fa-check"></i>
+                        <span>Elections</span></a></li>
                     <li><a href="#households"><i class="fa fa-home"></i>
                         <span>Households</span></a></li>
                     <li><a href="#disability"><i
                             class="fa fa-medkit"></i>
-                        <span>Employment</span></a></li>
+                        <span>Disability</span></a></li>
                 </ul>
             </div>
         </nav>
