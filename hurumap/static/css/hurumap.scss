@@ -368,7 +368,7 @@ body {
 }
 
 .floating-nav-wrapper {
-  height: 55px;
+  height: 76px;
 }
 
 .floating-nav {
@@ -398,7 +398,7 @@ body {
   vertical-align: text-bottom;
 }
 
-.floating-nav.affix h3 {
+.floating-nav.affix .geography-ico {
   display: block;
 }
 
@@ -436,9 +436,16 @@ body {
 
 .geography-ico span {
     height: 16px;
+  img {
+
+  }
 }
 
 .geography-ico span img {
   margin-right: 10px;
   height: 16px;
+}
+
+.geography-ico {
+  display: none;
 }
