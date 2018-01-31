@@ -1,39 +1,42 @@
 {% extends 'profile/profile_detail.html' %} {% load humanize lookup staticfiles %}
-    {% block header_content %}
-        <div class="floating-nav-wrapper" id="sticky-nav">
-            <nav class="floating-nav">
-                <div class="wrapper clearfix">
-                    <h3><img
-                            src="{% static 'img/wazi-logo.png' %}">{{ geography.this.name }}
-                    </h3>
-                    <ul>
-                        <li><a href="#elections"><i class="fa fa-check"></i>
-                            <span>Elections</span></a></li>
-                        <li><a href="#demographics"><i class="fa fa-user"></i>
-                            <span>Demographics</span></a></li>
-                        <li><a href="#households"><i class="fa fa-home"></i>
-                            <span>Households</span></a></li>
-                        <li><a href="#employment"><i
-                                class="fa fa-briefcase"></i>
-                            <span>Employment</span></a></li>
-                        <li><a href="#crime_report"><i class="fa fa-shield"></i>
-                            <span>Crime Reports</span></a></li>
-                        <li><a href="#education"><i
-                                class="fa fa-graduation-cap"></i> <span>Education</span></a>
-                        </li>
-                        <li><a href="#health"><i class="fa fa-medkit"></i>
-                            <span>Health</span></a></li>
-                        <li><a href="#nutrition"><i class="fa fa-cutlery"></i>
-                            <span>Nutrition</span></a></li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
 
-        {{ block.super }}
-    {% endblock %}
+
+{% block header_content %}
+    <div class="floating-nav-wrapper" id="sticky-nav">
+        <nav class="floating-nav affix-top" data-spy="affix" data-offset-top="197">
+            <div class="wrapper clearfix">
+                <h3><img
+                        src="{% static 'img/wazi-logo.png' %}">{{ geography.this.name }}
+                </h3>
+                <ul>
+                    <li><a href="#elections"><i class="fa fa-check"></i>
+                        <span>Elections</span></a></li>
+                    <li><a href="#demographics"><i class="fa fa-user"></i>
+                        <span>Demographics</span></a></li>
+                    <li><a href="#households"><i class="fa fa-home"></i>
+                        <span>Households</span></a></li>
+                    <li><a href="#employment"><i
+                            class="fa fa-briefcase"></i>
+                        <span>Employment</span></a></li>
+                    <li><a href="#crime_report"><i class="fa fa-shield"></i>
+                        <span>Crime Reports</span></a></li>
+                    <li><a href="#education"><i
+                            class="fa fa-graduation-cap"></i>
+                        <span>Education</span></a>
+                    </li>
+                    <li><a href="#health"><i class="fa fa-medkit"></i>
+                        <span>Health</span></a></li>
+                    <li><a href="#nutrition"><i class="fa fa-cutlery"></i>
+                        <span>Nutrition</span></a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    {{ block.super }}
+{% endblock %}
 {% block profile_header_tail %}
-        <div class="column-full">
+    <div class="column-full">
         <p class="caption"><strong>Census data:</strong> 2009</p>
     </div>
 {% endblock %} {% block profile_detail %}
@@ -865,20 +868,9 @@
         </article>
     </div>
 
-    <script>
-        window.onscroll = function () {
-            myFunction()
-        };
-
-        var navbar = document.getElementById("sticky-nav");
-        var sticky = navbar.offsetTop;
-
-        function myFunction() {
-            if (window.pageYOffset >= sticky) {
-                navbar.classList.add("sticky")
-            } else {
-                navbar.classList.remove("sticky");
-            }
-        }
-    </script>
+    {% block profile_javascript_libs %}
+        {{ block.super }}
+        <script src="{% static 'js/affix.js' %}"></script>
+        <script src="{% static 'js/profiles.js' %}"></script>
+    {% endblock %}
 {% endblock %}

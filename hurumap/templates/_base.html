@@ -113,10 +113,13 @@
             if (st > lastScrollTop && st > navbarHeight){
                 // Scroll Down
                 $('#page-header').removeClass('nav-down').addClass('nav-up');
+                $('.floating-nav').removeClass('affix-top').addClass('affix');
             } else {
                 // Scroll Up
-                if(st + $(window).height() < $(document).height()) {
+{#                if(st + $(window).height() < $(document).height()) {#}
+                if(st == 0) {
                     $('#page-header').removeClass('nav-up').addClass('nav-down');
+                    $('.floating-nav').removeClass('affix').addClass('affix-top');
                 }
             }
 
