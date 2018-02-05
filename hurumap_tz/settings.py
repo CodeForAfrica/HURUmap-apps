@@ -87,7 +87,8 @@ HURUMAP['topics']['education'] = {
     'profiles': [
         'literacy and numeracy tests',
         'school attendance',
-        'primary school teachers'
+        'primary school teachers',
+        #'primary school desks' #pending data discrepancy fix
     ]
 }
 
@@ -121,19 +122,19 @@ HURUMAP['topics']['development'] = {
 HURUMAP['showcase_stories'] = [
     {
         'title': 'Umbumbumbu wa Hesabu, Kiingereza unavyotishia mustakabali wa elimu Tanzania',
-        'author': 'Nuzulack Dausen',
+        'author': 'Mwananchi',
         'brief': 'Msingi dhaifu wa masomo ya Hisabati na Kiingereza unazidi kudhoofisha'\
         ' elimu ya msingi nchini, jambo linalotishia mustakabali wa kuzalisha wataalamu bora watakaochochea maendeleo.',
         'link': 'https://data.mwananchi.co.tz/umbumbumbu-wa-hesabu-kiingereza-unavyotishia-mustakabali-wa-elimu-tanzania/',
-        'img': STATIC_URL + 'img/showcase/uwezo.png'
+        'img': STATIC_URL + 'img/showcase/uwezo.jpg'
     },
     {
         'title': 'Hii ndiyo siri ya utofauti wa kipato kati ya wanaume na wanawake Tanzania',
-        'author': 'Nuzulack Dausen',
+        'author': 'Mwananchi',
         'brief': 'Dar es Salaam. Licha ya kipato cha mfanyakazi kwa mwezi kuongezeka'\
         ' nchini bado kuna mwanya mkubwa wa kimapato kijinsia baada ya wanaume kuingiza fedha nyingi zaidi kuliko wanawake.',
         'link': 'https://data.mwananchi.co.tz/hii-ndiyo-siri-ya-utofauti-wa-kipato-kati-ya-wanaume-na-wanawake-tanzania/',
-        'img': STATIC_URL + 'img/showcase/kipato.png'
+        'img': STATIC_URL + 'img/showcase/kipato.jpg'
      },
     {
         'title': 'CTI calls streamlined taxation food processing sector',
@@ -142,7 +143,7 @@ HURUMAP['showcase_stories'] = [
         ' paper on regulatory authorities shows that although the manufacturing'\
         ' sector generates tax revenues to the tune of 248 billion/- per year.',
         'link': 'http://ippmedia.com/en/news/cti-calls-streamlined-taxation-food-processing-sector',
-        'img': STATIC_URL + 'img/showcase/IPPMedia.png'
+        'img': STATIC_URL + 'img/showcase/cti.jpg'
      }
 ]
 
