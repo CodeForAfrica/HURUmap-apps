@@ -70,9 +70,59 @@
 {% endblock %}
 
 {% block footer_content %}
-{% include 'footer.html' %}
+    {% include 'footer.html' %}
+
+    <!-- Embed table -->
+    <div id="lightbox" style="display: none; color: #000;">
+        <div class="hovercard-wrapper">
+            <div class="hovercard">
+                <small class="close clearfix close-embed" onclick="javascript: closeEmbed();"><i class="fa fa-times-circle"></i> Close</small>
+                <h2 style="font-size: 22px;"></h2>
+                <p>Copy the code below, then paste into your own CMS or HTML. 
+                    Embedded league tables are responsive to your page width, 
+                    and have been tested in Firefox, Safari, Chrome, and IE8 and above.
+                </p>
+                <textarea></textarea>
+            </div>
+        </div>
+    </div>
 {% endblock footer_content %}
 
 {% block body_javascript_extra %}
-<script src="{% static 'js/head2head.js' %}"></script>
+    <script src="{% static 'js/head2head.js' %}"></script>
+
+    <!-- embed table script -->
+    <script type="text/javascript">
+        // Fx to show table embed code
+        function embedTable(geo_level, geo_code){
+            var text = '&lt;iframe src="{{ HURUMAP.url }}/embed/' + geo_level + '/' + geo_code + 
+            '" frameborder="0" width="100%" height="300" style="margin: 1em; width: 100%;"&gt;&lt;/iframe&gt;';
+
+            $('#lightbox h2').html("");
+            $('#lightbox h2').html("Embed code for this league table");
+
+            $('#lightbox textarea').html("");
+            $('#lightbox textarea').html(text);
+            $('#lightbox').toggle();
+        }
+        
+        // Fx to show map embed code
+        function embedMap(geo_level, geo_code, short_name){
+            var short_name = short_name.toLowerCase().replace(/ /g,"-");
+            
+            var text = '&lt;iframe src="{{ HURUMAP.url }}/embed/' + geo_level + '-' + geo_code + '-' + short_name + 
+            '" frameborder="0" width="100%" height="300" style="margin: 1em; width: 100%;"&gt;&lt;/iframe&gt;';
+
+            $('#lightbox h2').html("");
+            $('#lightbox h2').html("Embed code for this map");
+
+            $('#lightbox textarea').html("");
+            $('#lightbox textarea').html(text);
+            $('#lightbox').toggle();
+        }
+        
+        function closeEmbed(){
+            $('#lightbox').toggle();
+        }
+    </script>
 {% endblock %}

@@ -1,92 +1,9 @@
+{% extends '_footer.html' %}
 {% load staticfiles %}
 
-<div class="column-half">
-    <p class="smaller"><strong>{{ HURUMAP.name }}</strong> {{ HURUMAP.description }}</p>
-    <p class="small">
-                The project is built on <a href="http://wazimap.readthedocs.org/" target="_blank" rel="noopener">Wazimap</a>, an open source platform by <a href="https://openup.org.za/" target="_blank" rel="noopener">OpenUp</a> and <a href="http://www.mediamonitoringafrica.org/" target="_blank" rel="noopener">Media Monitoring Africa</a> for making census data more understandable.</p>
-    <p class="small">This site is a project of <strong><a
-            href="https://codeforafrica.org" target="_blank">Code for Africa</a></strong>. All content is released under a
-        <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons 4 Attribution license</a>. Reuse it to help empower your own community. The code is available on
-        <a href="{{ HURUMAP.github_url }}" target="_blank">GitHub</a> and data is available on <a
-                href="{{ HURUMAP.openafrica_url }}" target="_blank">​openAFRICA​</a>.</p>
-    <br/>
-</div>
-<div class="column-quarter">
-    <p>Other HURUmap Projects:</p>
-    <ul class="smaller">
-        {% if HURUMAP.name != 'PesaYetu' %}
-        <li>
-            <a href="https://pesacheck.org" target="_blank">PesaYetu</a>
-        </li>
-        {% endif %}
-        <li>
-            <a href="#" target="_blank">AP (coming soon)</a>
-        </li>
-    </ul>
-    <br/>
-    <p>Join Our Community:</p>
-    <ul class="smaller">
-        <li>
-            <a href="https://facebook.com/HacksHackersAfrica" target="_blank">Hacks/Hackers Africa</a>
-        </li>
-    </ul>
-</div>
-<div class="column-quarter text-center">
-    <p>A project by:</p>
-    {% block footer_branding %}
-        <a href="https://codeforafrica.org" target="_blank">
-            <img src="{% static 'img/logos/cftanzania-white.png' %}" alt="Code for Africa" style="margin-top: 20px; max-width: 105px;"></a>
-        <a href="https://worldbank.org/" target="_blank">
-            <img src="{% static 'img/logos/world_bank_group_vertial_white_logo.png' %}" alt="World Bank Group" style="max-width: 105px; max-height: 50px;"></a>
-    {% endblock %}
-</div>
-
-<!-- Embed table -->
-<div id="lightbox" style="display: none; color: #000;">
-    <div class="hovercard-wrapper">
-        <div class="hovercard">
-            <small class="close clearfix close-embed" onclick="javascript: closeEmbed();"><i class="fa fa-times-circle"></i> Close</small>
-            <h2 style="font-size: 22px;"></h2>
-            <p>Copy the code below, then paste into your own CMS or HTML. 
-                Embedded league tables are responsive to your page width, 
-                and have been tested in Firefox, Safari, Chrome, and IE8 and above.
-            </p>
-            <textarea></textarea>
-        </div>
-    </div>
-</div>
-
-<!-- embed table script -->
-<script type="text/javascript">
-    // Fx to show table embed code
-    function embedTable(geo_level, geo_code){
-        var text = '&lt;iframe src="{{ HURUMAP.url }}/embed/' + geo_level + '/' + geo_code + 
-        '" frameborder="0" width="100%" height="300" style="margin: 1em; width: 100%;"&gt;&lt;/iframe&gt;';
-
-        $('#lightbox h2').html("");
-        $('#lightbox h2').html("Embed code for this league table");
-
-        $('#lightbox textarea').html("");
-        $('#lightbox textarea').html(text);
-        $('#lightbox').toggle();
-    }
-    
-    // Fx to show map embed code
-    function embedMap(geo_level, geo_code, short_name){
-        var short_name = short_name.toLowerCase().replace(/ /g,"-");
-        
-        var text = '&lt;iframe src="{{ HURUMAP.url }}/embed/' + geo_level + '-' + geo_code + '-' + short_name + 
-        '" frameborder="0" width="100%" height="300" style="margin: 1em; width: 100%;"&gt;&lt;/iframe&gt;';
-
-        $('#lightbox h2').html("");
-        $('#lightbox h2').html("Embed code for this map");
-
-        $('#lightbox textarea').html("");
-        $('#lightbox textarea').html(text);
-        $('#lightbox').toggle();
-    }
-    
-    function closeEmbed(){
-        $('#lightbox').toggle();
-    }
-</script>
+{% block footer_branding %}
+    <a href="https://codeforafrica.org" target="_blank">
+        <img src="{% static 'img/logos/cftanzania-white.png' %}" alt="Code for Africa" style="margin-top: 20px; max-width: 105px;"></a>
+    <a href="https://worldbank.org/" target="_blank">
+        <img src="{% static 'img/logos/world_bank_group_vertial_white_logo.png' %}" alt="World Bank Group" style="max-width: 105px; max-height: 50px;"></a>
+{% endblock %}
