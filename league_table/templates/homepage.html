@@ -1,0 +1,160 @@
+{% extends 'homepage_country.html' %}{% load humanize partition staticfiles %}
+
+{% block head_title %}League Table : Schools Ranking{% endblock %}
+
+{% block header %}
+    <style>
+        #page-footer, #page-header {
+            background: #204d8a;
+        }
+    </style>
+    <header id="page-header">
+        <div id="page-header-title" class="wrapper clearfix">
+            <i id="menu-toggle" class="fa fa-bars"></i>
+            <a class="title" href="{% url 'homepage' %}">
+                <img src="{% static 'img/logos/books.png' %}" style="height: 44px; float: left;"/>
+                <span style="font-size: 25px;font-weight: bolder; margin-left:10px; line-height: 50px;">League Table</span><br />
+            </a>
+
+            <div class="nav-menu">
+                <ul id="site-menu">
+                    {% block header_menu %}
+                        <li><a href="/schools">Full League</a></li>
+                        <li><a href="/about">About</a></li>
+                    {% endblock header_menu %}
+                </ul>
+
+                {% if not hide_nav_tools %}
+                    {% block nav_tools %}
+                    <div id="menu" class="tool-set clearfix">
+                        <div class="tool-group">
+                            <input name="geography_select" id="geography-select" type="text" placeholder="Search Place" autocomplete="off">
+                        </div>
+                        {% if not hide_nav_compare %}
+                        {% comment %}
+                        <span class="separator">or</span>
+                        <div class="tool-group">
+                            <a class="button" href="{% url 'table_search' %}">
+                                <i class="fa fa-chevron-circle-right"></i>
+                                Search for data
+                            </a>
+                        </div>
+                        {% endcomment %}
+                        {% endif %}
+                    </div>
+                    {% endblock %}
+                {% endif %}
+            </div>
+        </div>
+    </header>
+
+    <div class="content-container clearfix bg-ocean-green text-center" style="background: #5299d3;">
+        <div class="wrapper">
+            <h1>Discover the Stories Behind the Data</h1>
+            <h4>{{ HURUMAP.name }} helps storytellers and campaigners use data to add context and depth to stories.</h4>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content_container %}
+
+    <div class="clearfix">
+{#        <h1 class="article-header">Discover the story behind the data.</h1>#}
+        <div id="slippy-map"></div>
+    </div>
+
+    <div class="showcase how-it-works bg-tan text-center">
+        {% block how_it_works %}
+            <div class="wrapper clearfix">
+                <h1>How It Works</h1>
+                <br/>
+                <div class="column-third">
+                    <p><img src="{% static 'img/icons/blurbs/facts.png' %}" alt=""></p>
+                    <h3>Find Facts</h3>
+                    <p>Population and financial figures are broken down by category: Elections, Demographics, Service Delivery, Economics, and Education.</p>
+                </div>
+                <div class="column-third">
+                    <p><img src="{% static 'img/icons/blurbs/visualise.png' %}" alt=""></p>
+                    <h3>Visualize</h3>
+                    <p>Our library of charts gives you insight into data from places you research. Look for them on profile pages. You can embed the charts on your own site.</p>
+                </div>
+                <div class="column-third">
+                    <p><img src="{% static 'img/icons/blurbs/context.png' %}" alt=""></p>
+                    <h3>Get Context</h3>
+                    <p>Pre-computed statistics are presented alongside each data point so you can see how each place fits into a large context.</p>
+                </div>
+            </div>
+            <div class="wrapper">
+                <br/><br/>
+                <p><a href="/help" class="btn btn-lg bg-bottle-green">Learn more</a></p>
+            </div>
+        {% endblock %}
+    </div>
+
+    <div class="showcase schools" style="overflow:auto; display: none;">
+        <div class="holder" style="margin-left: 40px; margin-right: 40px; margin-bottom: 30px;">
+            <div class="" style="width: 50%; float: left; border-right: 1px solid #dedede;padding: 20px;">
+                <center><h2>10 Top Schools</h2></center>
+                <br />
+                <table style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Name</th>
+                            <th>Pass Rate</th>
+                            <th>National Ranking</th>
+                            <th>Regional Ranking</th>
+                            <th>District Ranking</th>
+                            <th>Stats</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+
+                <br />
+                <button type="button" class="button" style="float:right; display: none;">See More</button>
+            </div>
+            <div class="" style="width: 50%;float:left;padding:20px;">
+                <center><h2>10 Lowest Schools</h2></center>
+                <br />
+                <table style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Name</th>
+                            <th>Pass Rate</th>
+                            <th>National Ranking</th>
+                            <th>Regional Ranking</th>
+                            <th>District Ranking</th>
+                            <th>Stats</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                
+                <button type="button" class="button" style="float:right; display: none;">See More</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="showcase clearfix partners {{ extra_css_class }}">
+        <div class="wrapper text-center">
+            <h2>Partners</h2>
+            <p>League Table is made possible through support from the following partners:</p>
+
+            <a href="http://twaweza.org/" target="_blank" rel="noopener">
+                <img src="{{ STATIC_URL }}img/logos/world_bank_group_logo.png" alt="World Bank Group"></a>
+            <a href="https://datazetu.or.tz/" target="_blank" rel="noopener">
+                <img src="{{ STATIC_URL }}img/logos/datazetu.png" alt="Data Zetu"></a>
+            <a href="https://codeforafrica.org/" target="_blank" rel="noopener">
+                <img src="{{ STATIC_URL }}img/logos/cfafrica.png" alt="Code for Africa"></a>
+            <br/>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer_content %}
+    {% include 'footer.html' %}
+{% endblock footer_content %}
