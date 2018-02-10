@@ -60,10 +60,7 @@ HURUMAP['geometry_data'] = {
         }
 }
 
-HURUMAP['ga_tracking_ids'] = [
-    'UA-91133100-4',
-    'UA-44795600-27',
-    'UA-92541368-2']
+HURUMAP['ga_tracking_ids'] = ['UA-91133100-4']
 HURUMAP['twitter'] = '@Code4Africa'
 
 HURUMAP['map_centre'] = [-6.1523563, 35.6754813]
@@ -90,6 +87,8 @@ HURUMAP['topics']['education'] = {
     'profiles': [
         'literacy and numeracy tests',
         'school attendance',
+        'primary school teachers',
+        #'primary school desks' #pending data discrepancy fix
     ]
 }
 
@@ -115,26 +114,27 @@ HURUMAP['topics']['development'] = {
     'icon': '/static/img/development.png',
     'desc': '',
     'profiles': [
-        'traffic and crimes'
+        'traffic and crimes',
+        'water sources'
     ]
 }
 
 HURUMAP['showcase_stories'] = [
     {
         'title': 'Umbumbumbu wa Hesabu, Kiingereza unavyotishia mustakabali wa elimu Tanzania',
-        'author': 'Nuzulack Dausen',
+        'author': 'Mwananchi',
         'brief': 'Msingi dhaifu wa masomo ya Hisabati na Kiingereza unazidi kudhoofisha'\
         ' elimu ya msingi nchini, jambo linalotishia mustakabali wa kuzalisha wataalamu bora watakaochochea maendeleo.',
         'link': 'https://data.mwananchi.co.tz/umbumbumbu-wa-hesabu-kiingereza-unavyotishia-mustakabali-wa-elimu-tanzania/',
-        'img': STATIC_URL + 'img/showcase/uwezo.png'
+        'img': STATIC_URL + 'img/showcase/uwezo.jpg'
     },
     {
         'title': 'Hii ndiyo siri ya utofauti wa kipato kati ya wanaume na wanawake Tanzania',
-        'author': 'Nuzulack Dausen',
+        'author': 'Mwananchi',
         'brief': 'Dar es Salaam. Licha ya kipato cha mfanyakazi kwa mwezi kuongezeka'\
         ' nchini bado kuna mwanya mkubwa wa kimapato kijinsia baada ya wanaume kuingiza fedha nyingi zaidi kuliko wanawake.',
         'link': 'https://data.mwananchi.co.tz/hii-ndiyo-siri-ya-utofauti-wa-kipato-kati-ya-wanaume-na-wanawake-tanzania/',
-        'img': STATIC_URL + 'img/showcase/kipato.png'
+        'img': STATIC_URL + 'img/showcase/kipato.jpg'
      },
     {
         'title': 'CTI calls streamlined taxation food processing sector',
@@ -143,11 +143,13 @@ HURUMAP['showcase_stories'] = [
         ' paper on regulatory authorities shows that although the manufacturing'\
         ' sector generates tax revenues to the tune of 248 billion/- per year.',
         'link': 'http://ippmedia.com/en/news/cti-calls-streamlined-taxation-food-processing-sector',
-        'img': STATIC_URL + 'img/showcase/IPPMedia.png'
+        'img': STATIC_URL + 'img/showcase/cti.jpg'
      }
 ]
 
 LOGGING['loggers']['hurumap_tz'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
 
+#Empty NA label, avoids having long pages on missing geo level data
+HURUMAP['na_label'] = ''
 # Making sure they are the same
 WAZIMAP = HURUMAP

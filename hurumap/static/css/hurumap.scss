@@ -360,3 +360,92 @@ body {
     max-width: 70px;
   }
 }
+
+// override wazimap css add padding between compare with and the input box
+
+#profile #compare-place-picker .typeahead-container {
+  padding-left: 18em;
+}
+
+.floating-nav-wrapper {
+  height: 54px;
+}
+
+.floating-nav {
+  z-index: 1500;
+  width: 100%;
+  padding: 0.5em;
+  background-color: #e0e4d4;
+}
+
+.floating-nav.affix {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
+}
+
+.floating-nav h3 {
+  margin-bottom: 0.5em;
+  display: none;
+}
+
+.floating-nav h3 img {
+  width: auto;
+  height: 17px;
+  margin-right: 10px;
+  vertical-align: text-bottom;
+}
+
+.floating-nav.affix .geography-ico {
+  display: block;
+}
+
+.floating-nav ul {
+  margin: 0px;
+  padding: 0px;
+}
+
+.floating-nav li {
+  display: inline-block;
+  float: left;
+  margin-right: 20px;
+  text-align: center;
+}
+
+.floating-nav li a {
+  display: block;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.floating-nav li a span {
+  display: block;
+}
+
+.floating-nav li a .fa {
+  font-size: 14px;
+}
+
+@media only screen and (max-width: 768px) {
+  .floating-nav-wrapper {
+    display: none;
+  }
+}
+
+.geography-ico span {
+    height: 16px;
+  img {
+
+  }
+}
+
+.geography-ico span img {
+  margin-right: 10px;
+  height: 16px;
+}
+
+.geography-ico {
+  display: none;
+}

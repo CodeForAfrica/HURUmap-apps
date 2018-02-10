@@ -1,0 +1,9 @@
+{% extends '_footer.html' %}
+{% load staticfiles %}
+
+{% block footer_branding %}
+    <a href="https://codeforafrica.org" target="_blank">
+        <img src="{% static 'img/logos/cftanzania-white.png' %}" alt="Code for Africa" style="margin-top: 20px; max-width: 105px;"></a>
+    <a href="https://worldbank.org/" target="_blank">
+        <img src="{% static 'img/logos/world_bank_group_vertial_white_logo.png' %}" alt="World Bank Group" style="max-width: 105px; max-height: 50px;"></a>
+{% endblock %}

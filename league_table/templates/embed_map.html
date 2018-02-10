@@ -1,0 +1,59 @@
+{% extends 'profile/profile_detail.html' %}
+{% load staticfiles %}
+
+{% block header %}
+    <style type="text/css">
+        html{
+            background: #fff;
+        }
+        footer{
+            display: none;
+        }
+
+        .content-container{
+            display: none;
+        }
+    </style>
+    {% block header_content %}
+    <div id="cover-map" class="clearfix" style="margin-top: -70px; margin-bottom: 0px;">
+        <div id="slippy-map"></div>
+        <div id="cover-profile" class="wrapper">
+            <article class="clearfix column-half">
+                <header id="header-box" class="column-full">
+                    <h1 class="title">{{ geography.this.short_name }}</h1>
+                    <p class="caption">
+                    {{ geography.this.geo_level|capfirst }}
+                    {% if geography.parents %}
+                        in
+                        {% for level, g in geography.parents.items %}
+                            <a href="/profiles/{{ g.full_geoid }}-{{ g.short_name|slugify }}/">{{ g.short_name }}</a>{% if not forloop.last %},{%endif%}
+                        {% endfor %}
+                    {% endif %}
+                    </p>
+                </header>
+
+                <div class="column-full">
+                    <div class="stat">
+                        <span class="primary pull-left">
+                            {% block profile_header_population %}
+                            <span class="value">{{ schools.top_schools|length }}</span>
+                            <span class="name">Total Secondary Schools</span>
+                            {% endblock %}
+                        </span>
+                    </div>
+                </div>
+
+                {% if geography.this.show_extra_links %}
+                    {% include "profile/_blocks/_header_extra_links.html" %}
+                {% endif %}
+            </article>
+        </div>
+    </div>
+    {% endblock %}
+{% endblock %}
+
+{% block profile_preamble %}{% endblock %}
+
+{% block profile_detail %}{% endblock %}
+
+{% block footer_content %}{% endblock footer_content %}

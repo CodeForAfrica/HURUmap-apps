@@ -1,4 +1,4 @@
-from wazimap.data.tables import FieldTable
+from wazimap.data.tables import FieldTable, SimpleTable
 
 
 # Define our tables so the data API can discover them.
@@ -33,3 +33,6 @@ FieldTable(['health center ownership'])
 FieldTable(['hiv centers'])
 FieldTable(['tetanus vaccine'])
 FieldTable(['traffic and crimes'])
+FieldTable(['primary school teachers'])
+FieldTable(['water sources'])
+#FieldTable(['primary school desks'])

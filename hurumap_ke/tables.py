@@ -28,6 +28,17 @@ FieldTable(
     universe='Households',
     year='2009'
 )
+FieldTable(
+    id='religion',
+    fields=['religion'],
+    year=2009
+)
+
+FieldTable(
+    id='household_heads',
+    fields=['Household_Heads'],
+    year=2009
+)
 FieldTable(['main source of water'], universe='Households', year='2009')
 FieldTable(['main type of lighting fuel'], universe='Households', year='2009')
 FieldTable(['main type of floor material'], universe='Households', year='2009')

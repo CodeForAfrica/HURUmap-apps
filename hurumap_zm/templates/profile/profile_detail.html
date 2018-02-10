@@ -1,4 +1,25 @@
-{% extends 'profile/profile_detail.html' %}
+{% extends 'profile/profile_detail.html' %} {% load humanize lookup staticfiles %}
+
+{% block header_content %}
+    <div class="floating-nav-wrapper" id="sticky-nav">
+        <nav class="floating-nav affix-top" data-spy="affix" data-offset-top="197">
+            <div class="wrapper clearfix">
+                <div class="geography-ico">
+                    <span><img
+                        src="{% static 'img/icons/favicon.ico' %}">{{ geography.this.name }}
+                    </span>
+                </div>
+
+                <ul>
+                    <li><a href="#demographics"><i class="fa fa-user"></i>
+                        <span>Demographics</span></a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    {{ block.super }}
+{% endblock %}
 
 {% block profile_header_tail %}
     <div class="column-full">
