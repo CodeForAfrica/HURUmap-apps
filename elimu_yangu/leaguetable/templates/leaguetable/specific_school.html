@@ -1,0 +1,116 @@
+{% extends 'profile/profile_detail.html' %}
+{% load static %}
+
+{% block header %}
+<style>
+    #page-footer, #page-header {
+        background: #204d8a;
+    }
+</style>
+<header id="page-header">
+    <div id="page-header-title" class="wrapper clearfix">
+        <i id="menu-toggle" class="fa fa-bars"></i>
+        <a class="title" href="{% url 'homepage' %}">
+            <img src="{% static 'img/logos/books.png' %}" style="height: 44px; float: left;"/>
+            <span style="font-size: 25px;font-weight: bolder; margin-left:10px; line-height: 50px;">League Table</span><br />
+        </a>
+
+        <div class="nav-menu">
+            <ul id="site-menu">
+                {% block header_menu %}
+                    <li><a href="/schools">Full League</a></li>
+                    <li><a href="/about">About</a></li>
+                {% endblock header_menu %}
+            </ul>
+
+            {% if not hide_nav_tools %}
+                {% block nav_tools %}
+                <div id="menu" class="tool-set clearfix">
+                    <div class="tool-group">
+                        <input name="geography_select" id="geography-select" type="text" placeholder="Search School" autocomplete="off">
+                    </div>
+                    {% if not hide_nav_compare %}
+                    {% comment %}
+                    <span class="separator">or</span>
+                    <div class="tool-group">
+                        <a class="button" href="{% url 'table_search' %}">
+                            <i class="fa fa-chevron-circle-right"></i>
+                            Search for data
+                        </a>
+                    </div>
+                    {% endcomment %}
+                    {% endif %}
+                </div>
+                {% endblock %}
+            {% endif %}
+        </div>
+    </div>
+</header>
+{% block header_content %}
+<div id="cover-map" class="clearfix">
+    <div id="slippy-map"></div>
+    <div id="cover-profile" class="wrapper">
+        <article class="clearfix column-half">
+            <header id="header-box" class="column-full">
+                <h1 class="title">{{ school.name }}</h1>
+                <p class="caption">
+                  {{ geography.this.geo_level|capfirst }}
+                  {% if geography.parents %}
+                      in
+                      {% for level, g in geography.parents.items %}
+                        <a href="/profiles/{{ g.full_geoid }}-{{ g.short_name|slugify }}/">{{ g.short_name }}</a>{% if not forloop.last %},{%endif%}
+                      {% endfor %}
+                  {% endif %}
+                </p>
+            </header>
+
+            <div class="column-half">
+                <div class="stat">
+                    <span class="primary">
+                        Location
+                    </span>
+                </div>
+            </div>
+        </article>
+    </div>
+</div>
+{% endblock %}
+
+{% endblock %}
+
+{% block profile_preamble %}
+    <div class="clearfix wrapper" style="min-height: 300px;">
+        <br />
+        <h2><i class="fa fa-bar-chart"></i>&nbsp;&nbsp;&nbsp;Stats</h2>
+        <hr />
+        <br/><br />
+        
+        <div class="column-third">
+            <h3>{{ school.ownership }}</h3>
+            <h3>Ownership</h3>
+        </div>
+
+        <div class="column-third">
+            <h3>{{ school.pass_rate }}</h3>
+            <h3>Pass Rate</h3>
+        </div>
+
+        <div class="column-third">
+            <h3>{{ school.avg_gpa }}</h3>
+            <h3>Average GPA</h3>
+        </div>
+    </div>
+    <br />
+    <br />
+{% endblock %}
+
+{% block profile_detail %}
+    <div class="clearfix wrapper" style="min-height: 500px;">
+        <br />
+        <h2><i class="fa fa-bar-chart"></i>&nbsp;&nbsp;&nbsp;Performance Trend</h2>
+        <hr />
+        <br/><br />
+    </div>
+    <br />
+    <br />
+{% endblock %}
