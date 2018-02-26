@@ -1,0 +1,23 @@
+{
+  "CIVICS": "civics",
+  "CHEMISTRY": "chemistry",
+  "HISTORY": "history",
+  "ENGLISH LANGUAGE": "english",
+  "BIBLE KNOWLEDGE": "bibleknowledge",
+  "KISWAHILI": "kiswahili",
+  "PHYSICS": "physics",
+  "BASIC MATHEMATICS": "basicmathematics",
+  "ADDITIONAL MATHEMATICS": "additionalmathematics",
+  "BIOLOGY": "biology",
+  "BOOK-KEEPING": "bookkeeping",
+  "COMMERCE": "commerce",
+  "GEOGRAPHY": "geography",
+  "ELIMU YA DINI YA KIISLAMU": "elimuyadinikiislam",
+  "FINE ART": "fineart",
+  "PHYSICAL EDUCATION": "physicaleducation",
+  "FRENCH LANGUAGE": "frenchlanguage",
+  "INFORMATION & COMPUTER STUDIES": "computerstudies",
+  "FOOD & NUTRITION": "foodnutrition",
+  "AGRICULTURAL SCIENCE": "agriculturalsci"
+
+}
