@@ -2,7 +2,7 @@ import logging
 import json
 
 from django.http import HttpResponse
-from django.shortcuts import render_to_response, render
+from django.shortcuts import render_to_response, render, redirect
 from django.utils.module_loading import import_string
 from django.utils.safestring import SafeString
 from django.core.serializers.json import DjangoJSONEncoder
@@ -39,7 +39,7 @@ def schools(request):
                     .order_by(asc(cast(Base.metadata.tables['secondary_schools'].c.national_rank_all, Integer)))\
                     .all()
 
-    return render(request,'schools.html',{'schools':schools})
+    return render(request,'leaguetable/schools.html',{'schools':schools})
 
 # handling specific school page
 def specific_school(request, code):
@@ -52,7 +52,7 @@ def specific_school(request, code):
                     .filter(Base.metadata.tables['secondary_schools'].c.code == code)\
                     .one()
 
-    return render(request, 'specific_school.html',{'school':school})
+    return render(request, 'leaguetable/specific_school.html',{'school':school})
 
 
 # embed league table
@@ -86,7 +86,7 @@ def embed(request, geo_level, geo_code):
     schools['best_schools'] = best_schools
     schools['worst_schools'] = worst_schools
 
-    return render(request, 'embed.html',{'schools':schools})
+    return render(request, 'leaguetable/embed.html',{'schools':schools})
 
 class EmbedGeographyDetailView(BaseGeographyDetailView):
     adjust_slugs = True
@@ -107,7 +107,7 @@ class EmbedGeographyDetailView(BaseGeographyDetailView):
         if self.adjust_slugs and (kwargs.get('slug') or self.geo.slug):
             if kwargs['slug'] != self.geo.slug:
                 kwargs['slug'] = self.geo.slug
-                url = '/profiles/%s-%s-%s' % (self.geo_level, self.geo_code, self.geo.slug)
+                url = '/leaguetable/profiles/%s-%s-%s' % (self.geo_level, self.geo_code, self.geo.slug)
                 return redirect(url, permanent=True)
 
         # Skip the parent class's logic completely and go back to basics
@@ -147,3 +147,66 @@ class EmbedGeographyDetailView(BaseGeographyDetailView):
 
     def get_template_names(self):
         return ['profile/profile_detail_%s.html' % self.profile_name, 'embed_map.html']
+
+
+
+
+class GeographyDetailView(BaseGeographyDetailView):
+    adjust_slugs = True
+    default_geo_version = None
+
+    def dispatch(self, *args, **kwargs):
+        request = args[0]
+        version = request.GET.get('geo_version', self.default_geo_version)
+        self.geo_id = self.kwargs.get('geography_id', None)
+
+        try:
+            self.geo_level, self.geo_code = self.geo_id.split('-', 1)
+            self.geo = geo_data.get_geography(self.geo_code, self.geo_level, version)
+        except (ValueError, LocationNotFound):
+            raise Http404
+
+        # check slug
+        if self.adjust_slugs and (kwargs.get('slug') or self.geo.slug):
+            if kwargs['slug'] != self.geo.slug:
+                kwargs['slug'] = self.geo.slug
+                url = '/leaguetable/profiles/%s-%s-%s' % (self.geo_level, self.geo_code, self.geo.slug)
+                return redirect(url, permanent=True)
+
+        # Skip the parent class's logic completely and go back to basics
+        return TemplateView.dispatch(self, *args, **kwargs)
+
+    def get_context_data(self, *args, **kwargs):
+        page_context = {}
+
+        # load the profile
+        profile_method = settings.WAZIMAP.get('profile_builder', None)
+        self.profile_name = settings.WAZIMAP.get('default_profile', 'default')
+
+        if not profile_method:
+            raise ValueError("You must define WAZIMAP.profile_builder in settings.py")
+        profile_method = import_string(profile_method)
+        profile_data = profile_method(self.geo, self.profile_name, self.request)
+
+        profile_data['geography'] = self.geo.as_dict_deep()
+
+        profile_data = enhance_api_data(profile_data)
+        page_context.update(profile_data)
+
+        profile_data_json = SafeString(json.dumps(profile_data, cls=DjangoJSONEncoder))
+
+        page_context.update({
+            'profile_data_json': profile_data_json
+        })
+
+        # is this a head-to-head view?
+        page_context['head2head'] = 'h2h' in self.request.GET
+
+        return page_context
+
+    def get_geography(self, geo_id):
+        # stub this out to prevent the subclass for calling out to CR
+        pass
+
+    def get_template_names(self):
+        return ['profile/profile_detail_%s.html' % self.profile_name, 'profile/profile_detail.html']
