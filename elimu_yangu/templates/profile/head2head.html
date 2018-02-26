@@ -1,0 +1,128 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block head_title %}{{ geo1.name }} vs {{ geo2.name }} - {{ block.super }}{% endblock %}
+{% block header %}
+<style>
+    #page-footer, #page-header {
+        background: #204d8a;
+    }
+</style>
+<header id="page-header">
+    <div id="page-header-title" class="wrapper clearfix">
+        <i id="menu-toggle" class="fa fa-bars"></i>
+        <a class="title" href="{% url 'homepage' %}">
+            <img src="{% static 'img/logos/books.png' %}" style="height: 44px; float: left;"/>
+            <span style="font-size: 25px;font-weight: bolder; margin-left:10px; line-height: 50px;">League Table</span><br />
+        </a>
+
+        <div class="nav-menu">
+            <ul id="site-menu">
+                {% block header_menu %}
+                    <li><a href="/schools">Full League</a></li>
+                    <li><a href="/about">About</a></li>
+                {% endblock header_menu %}
+            </ul>
+
+            {% if not hide_nav_tools %}
+                {% block nav_tools %}
+                <div id="menu" class="tool-set clearfix">
+                    <div class="tool-group">
+                        <input name="geography_select" id="geography-select" type="text" placeholder="Search Place" autocomplete="off">
+                    </div>
+                    {% if not hide_nav_compare %}
+                    {% comment %}
+                    <span class="separator">or</span>
+                    <div class="tool-group">
+                        <a class="button" href="{% url 'table_search' %}">
+                            <i class="fa fa-chevron-circle-right"></i>
+                            Search for data
+                        </a>
+                    </div>
+                    {% endcomment %}
+                    {% endif %}
+                </div>
+                {% endblock %}
+            {% endif %}
+        </div>
+    </div>
+</header>
+{% endblock %}
+
+{% block head_facebook_tags %}
+    <meta property="og:title" content="{{ WAZIMAP.name }} comparison: {{ geo1.name }} vs {{ geo2.name }}" />
+    <meta property="og:site_name" content="{{ WAZIMAP.name }}" />
+    <meta property="og:url" content="{{ WAZIMAP.url }}{{ request.path }}" />
+    <meta property="og:description" content="Compare demographics between {{ geo1.name }} vs {{ geo2.name }}." />
+    <meta property="og:type" content="article" />
+{% endblock %}
+
+{% block body_class %}profile-head2head-view{% endblock %}
+
+{% block content_container %}
+
+<div class="head2head-wrapper">
+    <iframe class="frame-left" scrolling="no" src="{% url 'geography_detail' geography_id=geo_id1 %}"></iframe>
+    <iframe class="frame-right" scrolling="no" src="{% url 'geography_detail' geography_id=geo_id2 %}"></iframe>
+
+    <div class="clear"></div>
+</div>
+{% endblock %}
+
+{% block footer_content %}
+    {% include 'footer.html' %}
+
+    <!-- Embed table -->
+    <div id="lightbox" style="display: none; color: #000;">
+        <div class="hovercard-wrapper">
+            <div class="hovercard">
+                <small class="close clearfix close-embed" onclick="javascript: closeEmbed();"><i class="fa fa-times-circle"></i> Close</small>
+                <h2 style="font-size: 22px;"></h2>
+                <p>Copy the code below, then paste into your own CMS or HTML. 
+                    Embedded league tables are responsive to your page width, 
+                    and have been tested in Firefox, Safari, Chrome, and IE8 and above.
+                </p>
+                <textarea></textarea>
+            </div>
+        </div>
+    </div>
+{% endblock footer_content %}
+
+{% block body_javascript_extra %}
+    <script src="{% static 'js/head2head.js' %}"></script>
+
+    <!-- embed table script -->
+    <script type="text/javascript">
+        // Fx to show table embed code
+        function embedTable(geo_level, geo_code){
+            var text = '&lt;iframe src="{{ HURUMAP.url }}/embed/' + geo_level + '/' + geo_code + 
+            '" frameborder="0" width="100%" height="300" style="margin: 1em; width: 100%;"&gt;&lt;/iframe&gt;';
+
+            $('#lightbox h2').html("");
+            $('#lightbox h2').html("Embed code for this league table");
+
+            $('#lightbox textarea').html("");
+            $('#lightbox textarea').html(text);
+            $('#lightbox').toggle();
+        }
+        
+        // Fx to show map embed code
+        function embedMap(geo_level, geo_code, short_name){
+            var short_name = short_name.toLowerCase().replace(/ /g,"-");
+            
+            var text = '&lt;iframe src="{{ HURUMAP.url }}/embed/' + geo_level + '-' + geo_code + '-' + short_name + 
+            '" frameborder="0" width="100%" height="300" style="margin: 1em; width: 100%;"&gt;&lt;/iframe&gt;';
+
+            $('#lightbox h2').html("");
+            $('#lightbox h2').html("Embed code for this map");
+
+            $('#lightbox textarea').html("");
+            $('#lightbox textarea').html(text);
+            $('#lightbox').toggle();
+        }
+        
+        function closeEmbed(){
+            $('#lightbox').toggle();
+        }
+    </script>
+{% endblock %}

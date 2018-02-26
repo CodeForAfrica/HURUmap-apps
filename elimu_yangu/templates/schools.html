@@ -1,0 +1,126 @@
+{% extends 'homepage_country.html' %}{% load humanize partition staticfiles %}
+
+{% block head_title %}League Table : Schools Ranking{% endblock %}
+
+{% block header %}
+<style>
+    #page-footer, #page-header {
+        background: #204d8a;
+    }
+</style>
+<header id="page-header">
+    <div id="page-header-title" class="wrapper clearfix">
+        <i id="menu-toggle" class="fa fa-bars"></i>
+        <a class="title" href="{% url 'homepage' %}">
+            <img src="{% static 'img/logos/books.png' %}" style="height: 44px; float: left;"/>
+            <span style="font-size: 25px;font-weight: bolder; margin-left:10px; line-height: 50px;">League Table</span><br />
+        </a>
+
+        <div class="nav-menu">
+            <ul id="site-menu">
+                {% block header_menu %}
+                    <li><a href="/schools">Full League</a></li>
+                    <li><a href="/about">About</a></li>
+                {% endblock header_menu %}
+            </ul>
+
+            {% if not hide_nav_tools %}
+                {% block nav_tools %}
+                <div id="menu" class="tool-set clearfix">
+                    <div class="tool-group">
+                        <input name="geography_select" id="geography-select" type="text" placeholder="Search Place" autocomplete="off">
+                    </div>
+                    {% if not hide_nav_compare %}
+                    {% comment %}
+                    <span class="separator">or</span>
+                    <div class="tool-group">
+                        <a class="button" href="{% url 'table_search' %}">
+                            <i class="fa fa-chevron-circle-right"></i>
+                            Search for data
+                        </a>
+                    </div>
+                    {% endcomment %}
+                    {% endif %}
+                </div>
+                {% endblock %}
+            {% endif %}
+        </div>
+    </div>
+</header>
+{% endblock %}
+
+{% block content_container %}
+    <div class="content-container wrapper clearfix">
+        <div class="wrapper clearfix">
+            <br />
+            <h2><i class="fa fa-binoculars"></i>&nbsp;&nbsp;&nbsp;Explore the Landscape</h2>
+            <br/><br />
+
+            <div class="column-third">
+                <Label><strong>Region</strong></Label><br />
+                <select style="width:100%;">
+                    <option>Choose Region</option>
+                </select>
+            </div>
+
+            <div class="column-third">
+                <Label><strong>District</strong></Label><br />
+                <select style="width:100%;">
+                    <option>Choose Region</option>
+                </select>
+            </div>
+
+            <div class="column-third">
+                <Label><strong>Ward</strong></Label><br />
+                <select style="width:100%;">
+                    <option>Choose Region</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="wrapper">
+            <br/><br/>
+            <div class="column-full">
+                <button class="pull-right" type="button">Explore</button>
+            </div>
+            <br /><br />
+        </div>
+
+        <div class="wrapper">
+            <br/><br/>
+            <hr />
+            <br /><br />
+        </div>
+
+        <div class="wrapper">
+            <h2>All Schools</h2>
+            <br />
+            <table style="width: 100%; margin-bottom: 0px;">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th style="text-align:left;">Name</th>
+                        <th>Pass Rate</th>
+                        <th>National Ranking</th>
+                        <th>Regional Ranking</th>
+                        <th>District Ranking</th>
+                        <th style="text-align: right;">Stats</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for school in schools|slice:":50" %}
+                        <tr>
+                            <td style="text-align:center;">{{ forloop.counter }}</td>
+                            <td>{{ school.name }}</td>
+                            <td style="text-align:center;">{{ school.pass_rate }}</td>
+                            <td style="text-align:center;">{{ school.national_rank_all }}</td>
+                            <td style="text-align:center;">{{ school.regional_rank_all }}</td>
+                            <td style="text-align:center;">{{ school.district_rank_all }}</td>
+                            <td style="text-align: right;"><a href="/schools/{{ school.code }}"><i class="fa fa-bar-chart"></i></a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
