@@ -9,8 +9,8 @@
 </style>
 <style type="text/css">
 	.TFtable{
-		width:100%; 
-		border-collapse:collapse; 
+		width:100%;
+		border-collapse:collapse;
 	}
 
     .TFtable thead th{
@@ -19,7 +19,7 @@
         color: #fff;
     }
 
-	.TFtable td{ 
+	.TFtable td{
 		padding:7px; border:#4e95f4 0px solid;
 	}
 	/* provide some minimal visual accomodation for IE8 and below */
@@ -27,7 +27,7 @@
 		background: #b8d1f3;
 	}
 	/*  Define the background color for all the ODD background rows  */
-	.TFtable tr:nth-child(odd){ 
+	.TFtable tr:nth-child(odd){
 		background: #b8d1f3;
 	}
 	/*  Define the background color for all the EVEN background rows  */
@@ -56,10 +56,12 @@
 
         <div class="nav-menu">
             <ul id="site-menu">
-                {% block header_menu %}
-                    <li><a href="/schools">Full League</a></li>
-                    <li><a href="/about">About</a></li>
-                {% endblock header_menu %}
+              {% block header_menu %}
+                  <li><a href="/leaguetable">League League</a></li>
+                  <li><a href="/careerguide">Career Guide</a></li>
+                  <li><a href="/schools">University Finder</a></li>
+                  <li><a href="/about">About</a></li>
+              {% endblock header_menu %}
             </ul>
 
             {% if not hide_nav_tools %}
@@ -147,7 +149,7 @@
                     {% for school in schools.top_schools|slice:":10" %}
                         <tr>
                             <td style="text-align:left; min-width: 5px;">{{ forloop.counter }}</td>
-                            <td><a href="/schools/{{ school.code }}">{{ school.name }}</a></a></td>
+                            <td><a href="/leaguetable/schools/{{ school.code }}">{{ school.name }}</a></a></td>
                             <td style="text-align:center;">{{ school.pass_rate }}</td>
                             <td style="text-align:center;">{{ school.national_rank_all }}</td>
                         </tr>
@@ -172,7 +174,7 @@
                     {% for school in schools.lowest_schools|slice:":10" %}
                         <tr>
                             <td style="text-align:left;min-width: 5px;">{{ forloop.counter }}</td>
-                            <td><a href="/schools/{{ school.code }}">{{ school.name }}</a></a></td>
+                            <td><a href="/leaguetable/schools/{{ school.code }}">{{ school.name }}</a></a></td>
                             <td style="text-align:center;">{{ school.pass_rate }}</td>
                             <td style="text-align:center;">{{ school.national_rank_all }}</td>
                         </tr>
@@ -242,8 +244,8 @@
             <div class="hovercard">
                 <small class="close clearfix close-embed" onclick="javascript: closeEmbed();"><i class="fa fa-times-circle"></i> Close</small>
                 <h2 style="font-size: 22px;"></h2>
-                <p>Copy the code below, then paste into your own CMS or HTML. 
-                    Embedded league tables are responsive to your page width, 
+                <p>Copy the code below, then paste into your own CMS or HTML.
+                    Embedded league tables are responsive to your page width,
                     and have been tested in Firefox, Safari, Chrome, and IE8 and above.
                 </p>
                 <textarea></textarea>
@@ -259,7 +261,7 @@
     <script type="text/javascript">
         // Fx to show table embed code
         function embedTable(geo_level, geo_code){
-            var text = '&lt;iframe src="{{ HURUMAP.url }}/embed/' + geo_level + '/' + geo_code + 
+            var text = '&lt;iframe src="{{ HURUMAP.url }}/embed/' + geo_level + '/' + geo_code +
             '" frameborder="0" width="100%" height="300" style="margin: 1em; width: 100%;"&gt;&lt;/iframe&gt;';
 
             $('#lightbox h2').html("");
@@ -269,12 +271,12 @@
             $('#lightbox textarea').html(text);
             $('#lightbox').toggle();
         }
-        
+
         // Fx to show map embed code
         function embedMap(geo_level, geo_code, short_name){
             var short_name = short_name.toLowerCase().replace(/ /g,"-");
-            
-            var text = '&lt;iframe src="{{ HURUMAP.url }}/embed/' + geo_level + '-' + geo_code + '-' + short_name + 
+
+            var text = '&lt;iframe src="{{ HURUMAP.url }}/embed/' + geo_level + '-' + geo_code + '-' + short_name +
             '" frameborder="0" width="100%" height="300" style="margin: 1em; width: 100%;"&gt;&lt;/iframe&gt;';
 
             $('#lightbox h2').html("");
@@ -284,7 +286,7 @@
             $('#lightbox textarea').html(text);
             $('#lightbox').toggle();
         }
-        
+
         function closeEmbed(){
             $('#lightbox').toggle();
         }

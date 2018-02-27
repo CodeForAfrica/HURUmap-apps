@@ -18,10 +18,12 @@
 
             <div class="nav-menu">
                 <ul id="site-menu">
-                    {% block header_menu %}
-                        <li><a href="/schools">Full League</a></li>
-                        <li><a href="/about">About</a></li>
-                    {% endblock header_menu %}
+                  {% block header_menu %}
+                      <li><a href="/leaguetable">League League</a></li>
+                      <li><a href="/careerguide">Career Guide</a></li>
+                      <li><a href="/schools">University Finder</a></li>
+                      <li><a href="/about">About</a></li>
+                  {% endblock header_menu %}
                 </ul>
 
                 {% if not hide_nav_tools %}
@@ -133,7 +135,7 @@
                     <tbody>
                     </tbody>
                 </table>
-                
+
                 <button type="button" class="button" style="float:right; display: none;">See More</button>
             </div>
         </div>
