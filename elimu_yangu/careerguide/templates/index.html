@@ -6,7 +6,7 @@
   <main role="main" class="container">
     <section class="starter-template">
       <div class="container">
-        <form action="/" method="post">
+        <form action="/careerguide/" method="post">
           {% csrf_token %}
           {{ form.non_field_errors }}
 
@@ -38,7 +38,7 @@
                 <td>{{ school.subjectname }}</td>
                 <td>{{ school.subjectnatranking }}</td>
                 <td>{{ school.subjectregranking }}</td>
-                <td><a href="{% url 'school' schoolcode=school.schoolcode %}">More</a></td>
+                <td><a href="/careerguide/school/{{ school.schoolcode }}">More</a></td>
               </tr>
             {% endfor %}
         </table>

@@ -2,20 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.11
--- Dumped by pg_dump version 9.5.11
+-- Dumped from database version 9.5.12
+-- Dumped by pg_dump version 9.5.12
 
--- Started on 2018-03-02 16:08:17 EAT
+-- Started on 2018-03-12 17:04:08 EAT
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET row_security = off;
-
-SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
 
@@ -26,7 +25,7 @@ SET default_with_oids = false;
 -- Name: olevel_overall_performance; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE olevel_overall_performance (
+CREATE TABLE public.olevel_overall_performance (
     id integer NOT NULL,
     year character(5),
     schoolcode character(20) NOT NULL,
@@ -42,15 +41,15 @@ CREATE TABLE olevel_overall_performance (
 );
 
 
-ALTER TABLE olevel_overall_performance OWNER TO postgres;
+ALTER TABLE public.olevel_overall_performance OWNER TO postgres;
 
 --
--- TOC entry 2172 (class 0 OID 17202)
+-- TOC entry 2182 (class 0 OID 17202)
 -- Dependencies: 190
 -- Data for Name: olevel_overall_performance; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY olevel_overall_performance (id, year, schoolcode, schoolname, gender, gendertotal, division_i, division_ii, division_iii, division_iv, division_0, abswithheld) FROM stdin;
+COPY public.olevel_overall_performance (id, year, schoolcode, schoolname, gender, gendertotal, division_i, division_ii, division_iii, division_iv, division_0, abswithheld) FROM stdin;
 1	2017 	S0101               	AZANIA                                            	F 	0	0	0	0	0	0	0
 2	2017 	S0101               	AZANIA                                            	M 	289	29	74	40	86	58	2
 3	2017 	S0101               	AZANIA                                            	T 	289	29	74	40	86	58	2
@@ -28594,15 +28593,15 @@ COPY olevel_overall_performance (id, year, schoolcode, schoolname, gender, gende
 
 
 --
--- TOC entry 2057 (class 2606 OID 17239)
+-- TOC entry 2067 (class 2606 OID 17239)
 -- Name: id; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY olevel_overall_performance
+ALTER TABLE ONLY public.olevel_overall_performance
     ADD CONSTRAINT id PRIMARY KEY (id);
 
 
--- Completed on 2018-03-02 16:08:17 EAT
+-- Completed on 2018-03-12 17:04:08 EAT
 
 --
 -- PostgreSQL database dump complete

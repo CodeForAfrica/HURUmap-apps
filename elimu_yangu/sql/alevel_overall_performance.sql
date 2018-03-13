@@ -2,20 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.11
--- Dumped by pg_dump version 9.5.11
+-- Dumped from database version 9.5.12
+-- Dumped by pg_dump version 9.5.12
 
--- Started on 2018-03-02 16:04:41 EAT
+-- Started on 2018-03-12 17:02:47 EAT
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET row_security = off;
-
-SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
 
@@ -23,10 +22,10 @@ SET default_with_oids = false;
 
 --
 -- TOC entry 193 (class 1259 OID 17240)
--- Name: alevel_overall_performance; Type: TABLE; Schema: public; Owner: postgres
+-- Name: alevel_overall_performance; Type: TABLE; Schema: public; Owner: elimu_yangu
 --
 
-CREATE TABLE alevel_overall_performance (
+CREATE TABLE public.alevel_overall_performance (
     id integer NOT NULL,
     year character(5),
     schoolcode character(20) NOT NULL,
@@ -42,15 +41,15 @@ CREATE TABLE alevel_overall_performance (
 );
 
 
-ALTER TABLE alevel_overall_performance OWNER TO postgres;
+ALTER TABLE public.alevel_overall_performance OWNER TO elimu_yangu;
 
 --
--- TOC entry 2172 (class 0 OID 17240)
+-- TOC entry 2182 (class 0 OID 17240)
 -- Dependencies: 193
--- Data for Name: alevel_overall_performance; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: alevel_overall_performance; Type: TABLE DATA; Schema: public; Owner: elimu_yangu
 --
 
-COPY alevel_overall_performance (id, year, schoolcode, schoolname, gender, gendertotal, division_i, division_ii, division_iii, division_iv, division_0, abswithheld) FROM stdin;
+COPY public.alevel_overall_performance (id, year, schoolcode, schoolname, gender, gendertotal, division_i, division_ii, division_iii, division_iv, division_0, abswithheld) FROM stdin;
 1	2016 	S0101               	AZANIA                                            	F 	0	0	0	0	0	0	0
 2	2016 	S0101               	AZANIA                                            	M 	235	11	33	119	38	31	3
 3	2016 	S0101               	AZANIA                                            	T 	235	11	33	119	38	31	3
@@ -3460,17 +3459,16 @@ COPY alevel_overall_performance (id, year, schoolcode, schoolname, gender, gende
 
 
 --
--- TOC entry 2057 (class 2606 OID 17253)
--- Name: alevel_overall_performance_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2067 (class 2606 OID 17253)
+-- Name: alevel_overall_performance_pkey; Type: CONSTRAINT; Schema: public; Owner: elimu_yangu
 --
 
-ALTER TABLE ONLY alevel_overall_performance
+ALTER TABLE ONLY public.alevel_overall_performance
     ADD CONSTRAINT alevel_overall_performance_pkey PRIMARY KEY (id);
 
 
--- Completed on 2018-03-02 16:04:41 EAT
+-- Completed on 2018-03-12 17:02:47 EAT
 
 --
 -- PostgreSQL database dump complete
 --
-

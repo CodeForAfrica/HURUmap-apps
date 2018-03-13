@@ -1,6 +1,6 @@
 {
-  "Doctor": ["Biology", "Chemistry"],
-  "Pilot": ["Geography", "Physics", "Mathematics"],
+  "Doctor": ["BIOLOGY", "CHEMISTRY"],
+  "Pilot": ["GEOGRAPHY", "PHYSICS", "MATHEMATICS"],
   "Accountant": [],
   "Journalist": [],
   "Architect": [],
