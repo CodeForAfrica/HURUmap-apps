@@ -137,6 +137,8 @@
           var subjectPos = $(this).attr('data-position');
           var subjectsPerformance = {{ OlevelSchooldetailsList | safe }};
           var subject = subjectsPerformance[subjectPos];
+          console.log(subject);
+          console.log(subjectPos);
           var countA = 0;
           var countB = 0;
           var countC = 0;

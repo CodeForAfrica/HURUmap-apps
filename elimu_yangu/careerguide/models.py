@@ -37,7 +37,7 @@ class Alevel_student_performance(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'alevel_subject_performance'
+        db_table = 'alevel_student_performance'
 
 class Olevel_student_performance(models.Model):
     #id = models.CharField(db_column='Id', max_length=20)  # Field name made lowercase.
@@ -93,7 +93,7 @@ class Olevel_student_performance(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'olevel_subject_performance'
+        db_table = 'olevel_student_performance'
 
 
 class Olevel_overall_performance(models.Model):
