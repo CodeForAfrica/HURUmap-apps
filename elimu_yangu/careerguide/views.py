@@ -6,7 +6,7 @@ import os, json
 from django.core import serializers
 from django.core.serializers.json import DjangoJSONEncoder
 from .forms import InputForm
-from elimu_yangu.careerguide.models import Olevel_subject_performance, Olevel_overall_performance, Alevel_subject_performance, Olevel_student_performance, Alevel_student_performance, Alevel_overall_performance
+from elimu_yangu.careerguide.models import Olevel_subject_performance, Olevel_overall_performance, Alevel_subject_performance, Olevel_student_performance_2017, Alevel_student_performance, Alevel_overall_performance
 # Create your views here.
 
 data = json.load(open(os.path.join(settings.BASE_DIR, 'elimu_yangu/careerguide','career.json')))
@@ -74,7 +74,7 @@ def school(request, schoolcode):
         AlevelOverallPerformance = serializers.serialize("json", AlevelOverallPerformance)
         AlevelPerformanceTrends.append({"2017": (alevel_subjects[0].gpa).encode("utf8")})
 
-    SchoolPerformance = Olevel_student_performance.objects.filter(year="2017").filter(schoolcode = schoolcode)
+    SchoolPerformance = Olevel_student_performance_2017.objects.filter(schoolcode = schoolcode)
     ASchoolPerformance = Alevel_student_performance.objects.filter(year="2017").filter(schoolcode = schoolcode)
     OlevelSchooldetailsList = []
     AlevelSchooldetailsList = []

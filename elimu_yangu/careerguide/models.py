@@ -23,7 +23,7 @@ class Alevel_student_performance(models.Model):
     english = models.CharField(db_column='english', max_length=5, blank=True, null=True)  # Field name made lowercase.
     kiswahili = models.CharField(db_column='kiswahili', max_length=5, blank=True, null=True)  # Field name made lowercase.
     geography = models.CharField(db_column='geography', max_length=5, blank=True, null=True)  # Field name made lowercase.
-    additionalmathematics = models.CharField(db_column='additionalmathematics', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    advancemathematics = models.CharField(db_column='advancemathematics', max_length=5, blank=True, null=True)  # Field name made lowercase.
     biology = models.CharField(db_column='biology', max_length=5, blank=True, null=True)  # Field name made lowercase.
     physics = models.CharField(db_column='physics', max_length=5, blank=True, null=True)  # Field name made lowercase.
     chemistry = models.CharField(db_column='chemistry', max_length=5, blank=True, null=True)  # Field name made lowercase.
@@ -39,7 +39,7 @@ class Alevel_student_performance(models.Model):
         managed = False
         db_table = 'alevel_student_performance'
 
-class Olevel_student_performance(models.Model):
+class Olevel_student_performance_2016(models.Model):
     #id = models.CharField(db_column='Id', max_length=20)  # Field name made lowercase.
     year = models.CharField(db_column='year', max_length=50)  # Field name made lowercase
     schoolcode = models.CharField(db_column='schoolcode', max_length=20)  # Field name made lowercase.
@@ -93,7 +93,64 @@ class Olevel_student_performance(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'olevel_student_performance'
+        db_table = 'olevel_student_performance_2016'
+
+
+class Olevel_student_performance_2017(models.Model):
+    #id = models.CharField(db_column='Id', max_length=20)  # Field name made lowercase.
+    year = models.CharField(db_column='year', max_length=50)  # Field name made lowercase
+    schoolcode = models.CharField(db_column='schoolcode', max_length=20)  # Field name made lowercase.
+    schoolname = models.CharField(db_column='schoolname', max_length=50)  # Field name made lowercase.
+    region = models.CharField(db_column='region', max_length=30)  # Field name made lowercase.
+    studentno = models.CharField(db_column='studentno', max_length=20)  # Field name made lowercase.
+    gender = models.CharField(db_column='gender', max_length=5)  # Field name made lowercase.
+    division = models.CharField(db_column='division', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    civics = models.CharField(db_column='civics', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    history = models.CharField(db_column='history', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    english = models.CharField(db_column='english', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    kiswahili = models.CharField(db_column='kiswahili', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    geography = models.CharField(db_column='geography', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    bibleknowledge = models.CharField(db_column='bibleknowledge', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    basicmathematics = models.CharField(db_column='basicmathematics', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    additionalmathematics = models.CharField(db_column='additionalmathematics', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    biology = models.CharField(db_column='biology', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    physics = models.CharField(db_column='physics', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    chemistry = models.CharField(db_column='chemistry', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    bookkeeping = models.CharField(db_column='bookkeeping', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    commerce = models.CharField(db_column='commerce', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    agriculturalsci = models.CharField(db_column='agriculturalsci', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    electricaldraugting = models.CharField(db_column='electricaldraugting', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    electricalinstallation = models.CharField(db_column='electricalinstallation', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    electricalengnsci = models.CharField(db_column='electricalengnsci', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    elimuyadinikiislam = models.CharField(db_column='elimuyadinikiislam', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    fineart = models.CharField(db_column='fineart', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    arabiclanguage = models.CharField(db_column='arabiclanguage', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    archtecturualdraught = models.CharField(db_column='archtecturualdraught', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    brickworkmasonary = models.CharField(db_column='brickworkmasonary', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    buildingconstruction = models.CharField(db_column='buildingconstruction', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    carpentryjoinery = models.CharField(db_column='carpentryjoinery', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    engineeringsci = models.CharField(db_column='engineeringsci', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    fittingturning = models.CharField(db_column='fittingturning', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    foodnutrition = models.CharField(db_column='foodnutrition', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    frenchlanguage = models.CharField(db_column='frenchlanguage', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    computerstudies = models.CharField(db_column='computerstudies', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    plumbing = models.CharField(db_column='plumbing', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    music = models.CharField(db_column='music', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    literatureenglish = models.CharField(db_column='literatureenglish', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    mechanicaldraughting = models.CharField(db_column='mechanicaldraughting', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    motorvehiclemech = models.CharField(db_column='motorvehiclemech', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    paintingsignwriting = models.CharField(db_column='paintingsignwriting', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    physicaleducation = models.CharField(db_column='physicaleducation', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    radiotvserving = models.CharField(db_column='radiotvserving', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    surveying = models.CharField(db_column='surveying', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    textiledressmaking = models.CharField(db_column='textiledressmaking', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    theatreart = models.CharField(db_column='theatreart', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    weldingmetalfabrication = models.CharField(db_column='weldingmetalfabrication', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    workshoptech = models.CharField(db_column='workshoptech', max_length=5, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'olevel_student_performance_2017'
 
 
 class Olevel_overall_performance(models.Model):
