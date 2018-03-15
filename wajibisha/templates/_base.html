@@ -1,0 +1,16 @@
+{% extends '_base.html' %}
+{% load sass_tags staticfiles %}
+
+
+{% block head_css %}
+    {{ block.super }}
+{#    <link rel="stylesheet" href="{% sass_src 'css/pesayetu.scss' %}">#}
+{% endblock %}
+
+
+{# Navbar #}
+
+
+{% block header_logo %}
+    <img src="{% static 'img/pesayetu-header-logo.png' %}" style="height: 50px">
+{% endblock %}
