@@ -4,6 +4,9 @@ from hurumap.settings import *  # noqa
 # insert our overrides before both census and hurumap
 INSTALLED_APPS = ['wajibisha'] + INSTALLED_APPS
 
+# Wajibisha URLS
+ROOT_URLCONF = 'wajibisha.urls'
+
 
 DATABASE_URL = os.environ.get('DATABASE_URL',
                               'postgresql://wajibisha:wajibisha@localhost/wajibisha')
@@ -26,6 +29,12 @@ WAJIBISHA['description'] = "Wajibisha (Swahili for ‘hold accountable’) is a 
 WAJIBISHA['title_tagline'] = 'Hold Accountable'
 
 wajibisha_profile = os.environ.get('WAJIBISHA_PROFILE', 'census')
+
+PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
+
+TEMPLATE_DIRS = (
+    os.path.join(PROJECT_PATH, 'wajibisha', 'templates'),
+)
 
 
 WAJIBISHA['default_profile'] = wajibisha_profile
@@ -54,7 +63,8 @@ WAJIBISHA['geometry_data'] = {
         'county': 'geo/county.topojson'
     }
 }
-FORMAT_MODULE_PATH = 'wajibisha.formats'
+
+STATIC_ROOT = 'wajibisha/static/'
 
 LOGGING['loggers']['wajibisha'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
 
