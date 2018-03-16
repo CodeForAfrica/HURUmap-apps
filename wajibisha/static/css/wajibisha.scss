@@ -1,3 +1,24 @@
+$color-blue: #0067a3;
+$color-red: #ee4538;
+$color-orange: #f7971d;
+$color-yellow: #f8ca0f;
+$color-green: #4cae4e;
+
 body {
-    background-color: white !important;
+  background-color: white !important;
+}
+
+#page-header {
+  background-color: $color-blue;
+}
+
+@media only screen and (min-width: 1140px) {
+  .wrapper {
+    width: 95%;
+    margin: 0 auto;
+  }
+}
+
+#page-footer {
+  background-color: $color-blue;
 }

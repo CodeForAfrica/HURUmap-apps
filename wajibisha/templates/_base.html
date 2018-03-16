@@ -10,7 +10,17 @@
 
 {# Navbar #}
 
-
 {% block header_logo %}
-    <img src="{% static 'img/pesayetu-header-logo.png' %}" style="height: 50px">
+
 {% endblock %}
+
+
+{% block header_menu %}
+    <li><a href="#">Promise Tracker</a></li>
+    <li><a href="#">Articles</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Contact</a></li>
+
+{% endblock header_menu %}
+
+{% block nav_tools %} {% endblock %}
