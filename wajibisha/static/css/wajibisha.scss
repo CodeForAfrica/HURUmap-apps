@@ -5,7 +5,7 @@ $color-yellow: #f8ca0f;
 $color-green: #4cae4e;
 
 body {
-  background-color: white !important;
+  background-color: #F6F9FC !important;
 }
 
 #page-header {
@@ -21,4 +21,89 @@ body {
 
 #page-footer {
   background-color: $color-blue;
+}
+
+.mission {
+  background-color: white;
+  padding: 60px 0;
+  height: auto;
+  display: table;
+  float: none;
+  width: 100%;
+
+  .objective {
+    height: inherit;
+    display: table-cell;
+    float: none;
+    vertical-align: middle;
+    text-align: center;
+    padding: 0 30px;
+  }
+  .pie-chart {
+    display: table-cell;
+    float: none;
+    vertical-align: middle;
+    text-align: center;
+
+  }
+  .title {
+    color: #B7E4FF;
+    font-size: large;
+    border-right: solid #d4d4d4;
+    height: inherit;
+    display: table-cell;
+    float: none;
+    vertical-align: middle;
+    text-align: center;
+    padding: 30px 0;
+
+  }
+}
+
+.clipped-header {
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 46%, 0% 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 46%, 0% 100%);
+  background-color: $color-blue;
+  height: 250px;
+  color: white;
+  text-align: center;
+  padding-top: 50px;
+  position: relative;
+  z-index: 100;
+
+  .wrapper {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 103;
+  }
+
+  .wrapper .presentation-img {
+    z-index: 1003;
+    height: 200px;
+    position: absolute;
+    right: 0;
+  }
+
+}
+
+.yellow-text {
+  color: $color-yellow;
+}
+
+.how-it-works img {
+  max-width: 100px;
+}
+
+.how-it-works p {
+  margin-bottom: 0;
+}
+
+.card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  padding: 50px 20px;
 }

@@ -1,0 +1,68 @@
+{% extends '_base.html' %}{% load staticfiles %}
+
+{% block body_id %}homepage{% endblock %}
+
+{% block head_css_extra %}
+<link rel="stylesheet" href="{% static 'css/vendor/leaflet-0.6.4.css' %}" />
+<!--[if lte IE 8]>
+    <link rel="stylesheet" href="{% static 'css/vendor/leaflet-0.6.4.ie.css' %}" />
+<![endif]-->
+<link href="{% static 'css/vendor/leaflet.label.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block header_content %}
+<div class="clipped-header clearfix">
+<div class="wrapper content-container">
+  <div class="column-third">
+  <h2>WAJIBISHA</h2>
+  <p>Keep track of your county's <span class="yellow-text">promises</span></p>
+</div>
+  <div class="column-third"></div>
+<div class="column-third push-right">
+  <img src="{% static 'img/Presentation.svg' %}" class="presentation-img">
+</div>
+</div>
+
+</div>
+{% endblock header_content %}
+
+
+{% block content_container %}
+
+    <div class="showcase how-it-works text-center">
+        {% block how_it_works %}
+            <div class="wrapper clearfix">
+                <h3>SOME OF THE PROMISES WE'RE TRACKING</h3>
+                <br/>
+                <div class="column-third card">
+                    <p><img src="{% static 'img/icons/blurbs/Housing.svg' %}" alt=""></p>
+                    <h3>Housing</h3>
+                    <p>Population and financial figures are broken down by category: Elections, Demographics, Service Delivery, Economics, and Education.</p>
+                </div>
+                <div class="column-third card">
+                    <p><img src="{% static 'img/icons/blurbs/health.svg' %}" alt=""></p>
+                    <h3>Health</h3>
+                    <p>Our library of charts gives you insight into data from places you research. Look for them on profile pages. You can embed the charts on your own site.</p>
+                </div>
+                <div class="column-third card">
+                    <p><img src="{% static 'img/icons/blurbs/Jobs.svg' %}" alt=""></p>
+                    <h3>Jobs</h3>
+                    <p>Pre-computed statistics are presented alongside each data point so you can see how each place fits into a large context.</p>
+                </div>
+            </div>
+        {% endblock %}
+    </div>
+
+    {% include 'blocks/mission.html' %}
+
+    {% include 'blocks/partners.html' with extra_css_class='bg-tan' %}
+{% endblock %}
+
+
+{% block body_javascript_extra %}
+    {{ block.super }}
+
+    {% block homepage_javascripb_libs %}
+    {% endblock %}
+
+{% endblock %}
