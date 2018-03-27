@@ -11,3 +11,6 @@ debug
 /env/
 .env/
 env
+elimu_yangu/sql/olevel_student_performance.sql
+elimu_yangu/sql/olevel_student_performance_2016.sql
+elimu_yangu/sql/olevel_student_performance_2017.sql
