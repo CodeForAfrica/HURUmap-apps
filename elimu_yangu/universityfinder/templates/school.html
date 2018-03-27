@@ -1,0 +1,609 @@
+{% extends "_base.html" %}
+{% block title %} {{ pageTitle }}{% endblock %}
+{% block body %}
+  <main role="main">
+    <section class="starter-template">
+        <h1>{{ school_name }}</h1>
+        <h2> Region: {{ school_region }} </h2>
+    </section>
+    <section class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div style="padding: 5 30px">
+            {% if OlevelSchooldetailsList %}
+              <input class="radio" id="tab1" type="radio" name="tabs" checked>
+              <label for="tab1">O-level Performance</label>
+            {% endif %}
+
+            {% if AlevelSchooldetailsList %}
+              <input class="radio" id="tab2" type="radio" name="tabs" {% if not OlevelSchooldetailsList %}checked{% endif %}>
+              <label for="tab2">A-level Performance</label>
+            {% endif %}
+
+            <input class="radio" id="tab3" type="radio" name="tabs">
+            <label for="tab3">Performance Trend</label>
+
+            <section class="tabSection container" id="content1">
+              <div class="row">
+                <div class="col-md-12 col-lg-12 col-xs-12">
+                  <div id="chartContainer" style="width: 100%; height: 300px"></div>
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-lg-8 col-md-8 col-xs-12">
+                  <p class="text-center">Subjects GPA</p>
+                  <ul class="list-group">
+                  {% for subject in OlevelSchooldetailsList %}
+                    <li class="list-group-item" id="subject{{ forloop.counter0 }}" data-position={{ forloop.counter0 }}>{{ subject.subjectname }}
+                    <div id="bar{{ forloop.counter }}" class="barfiller">
+                      <div class="tipWrap">
+                  		<span class="tip"></span>
+                  	    </div>
+                      <span class="fill" data-percentage={{ subject.subjectgpa }}></span>
+                    </div>
+                    </li>
+                  {% endfor %}
+                  </ul>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                  <div class ="col-md-12">
+                    <div id="subjectPerformance" class = "subjectPerformance">
+                      <!-- <p class="text-center">Subject Performance</p> -->
+                      <div id="subjectChartContainer" style="width: 100%; height: 300px"></div>
+                    </div>
+                  </div>
+                  <br />
+                  <div class="col-md-12">
+                    <!-- <p class="text-center">Gender Performance</p> -->
+                    <div id="genderSubjectPerformance" style="width: 100%; height: 350px"></div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section class="tabSection container" id="content2">
+              <div class="row">
+                <div class="col-md-12 col-lg-12 col-xs-12">
+                  <div id="chart2Container" style="width: 100%; height: 300px"></div>
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-lg-8 col-md-8 col-xs-12">
+                  <p class="text-center">Subjects GPA</p>
+                  <ul class="list-group">
+                  {% for subject in AlevelSchooldetailsList %}
+                    <li class="list-group-item" id="subjectA{{ forloop.counter0 }}" data-position={{ forloop.counter0 }}>{{ subject.subjectname }}
+                    <div id="barA{{ forloop.counter }}" class="barfiller">
+                      <div class="tipWrap">
+                  		<span class="tip"></span>
+                  	    </div>
+                      <span class="fill" data-percentage={{ subject.subjectgpa }}></span>
+                    </div>
+                    </li>
+                  {% endfor %}
+                  </ul>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                  <div class ="col-md-12">
+                    <div id="subjectPerformance2" class = "subjectPerformance">
+                      <div id="subjectChartContainer2" style="width: 100%; height: 300px"></div>
+                    </div>
+                  </div>
+                  <br />
+                  <div class="col-md-12">
+                    <div id="genderSubjectPerformance2" style="width: 100%; height: 350px"></div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section class="tabSection" id="content3">
+              <div class="row">
+                {% if OlevelSchooldetailsList %}
+                    <div class="col-md-6 col-lg-6 col-xs-12">
+                      <div id="olevelTrend"> </div>
+                    </div>
+                {% endif %}
+                {% if AlevelSchooldetailsList %}
+                  <div class="col-md-6 col-lg-6 col-xs-12">
+                    <div id="alevelTrend"></div>
+                  </div>
+                {% endif %}
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    <section>
+  </main>
+  <script type="text/javascript">
+  $(document).ready(function(){
+    var count = {{ OlevelSchooldetailsList|length }}
+    for (var i= 1; i <= count; i++) {
+      elemId = '#bar'+i
+      $(elemId).barfiller({ barColor: 'orange' });
+    };
+
+    var countAl = {{ AlevelSchooldetailsList|length }}
+    for (var i= 1; i <= countAl; i++) {
+      elemId = '#barA'+i
+      $(elemId).barfiller({ barColor: 'orange' });
+    };
+
+    for (var i= 0; i < count; i++) {
+      elemId = '#subject'+i;
+
+      $(elemId).click(function(){
+          var subjectPos = $(this).attr('data-position');
+          var subjectsPerformance = {{ OlevelSchooldetailsList | safe }};
+          var subject = subjectsPerformance[subjectPos];
+          var countA = 0;
+          var countB = 0;
+          var countC = 0;
+          var countD = 0;
+          var countE = 0;
+          var countF = 0;
+          var countABS = 0;
+          var len = subject.subjectPerformance.length;
+          for (var i = 0; i < len; i++) {
+            if (subject.subjectPerformance[i] == 'A') {
+              countA++;
+            } else if ( subject.subjectPerformance[i] == 'B') {
+              countB++;
+            } else if ( subject.subjectPerformance[i] == 'C') {
+              countC++;
+            } else if ( subject.subjectPerformance[i] == 'D') {
+              countD++;
+            } else if ( subject.subjectPerformance[i] == 'E') {
+              countE++;
+            } else if ( subject.subjectPerformance[i] == 'F') {
+              countF++;
+            } else {
+              countABS++
+            }
+          }
+          var perc = (100/len).toFixed(2);
+          var texts = subject.subjectname + " GRADE DISTRIBUTION 2017";
+
+          $("#subjectChartContainer").CanvasJSChart({
+            title: {
+              text: texts,
+              fontSize: 18
+            },
+            axisY: {
+              title: "Products in %"
+            },
+            data: [
+            {
+              type: "pie",
+              showInLegend: true,
+              toolTipContent: "{label} <br/> {y} %",
+              indexLabel: "{label}: {y} %",
+              dataPoints: [
+                { label: "A", y: countA * perc, legendText: "A"},
+                { label: "B", y: countB * perc, legendText: "B"  },
+                { label: "C", y: countC * perc, legendText: "C" },
+                { label: "D", y: countD * perc,  legendText: "D"},
+                { label: "E", y: countE * perc,  legendText: "E" },
+                { label: "F", y: countF * perc,  legendText: "F" },
+              ]
+            }
+            ]
+        });
+        var countFA = 0;
+        var countFB = 0;
+        var countFC = 0;
+        var countFD = 0;
+        var countFE = 0;
+        var countFF = 0;
+        var countFABS = 0;
+        var lenF = subject.subjectFemalePerformance.length;
+        for (var i = 0; i < lenF; i++) {
+          if (subject.subjectFemalePerformance[i] == 'A') {
+            countFA++;
+          } else if ( subject.subjectFemalePerformance[i] == 'B') {
+            countFB++;
+          } else if ( subject.subjectFemalePerformance[i] == 'C') {
+            countFC++;
+          } else if ( subject.subjectFemalePerformance[i] == 'D') {
+            countFD++;
+          } else if ( subject.subjectFemalePerformance[i] == 'E') {
+            countFE++;
+          } else if ( subject.subjectFemalePerformance[i] == 'F') {
+            countFF++;
+          } else {
+            countFABS++
+          }
+        }
+        var percF = (100/lenF).toFixed(2);
+
+        var countMA = 0;
+        var countMB = 0;
+        var countMC = 0;
+        var countMD = 0;
+        var countME = 0;
+        var countMF = 0;
+        var countMABS = 0;
+        var lenM = subject.subjectMalePerformance.length;
+        for (var i = 0; i < lenM; i++) {
+          if (subject.subjectMalePerformance[i] == 'A') {
+            countMA++;
+          } else if ( subject.subjectMalePerformance[i] == 'B') {
+            countMB++;
+          } else if ( subject.subjectMalePerformance[i] == 'C') {
+            countMC++;
+          } else if ( subject.subjectMalePerformance[i] == 'D') {
+            countMD++;
+          } else if ( subject.subjectMalePerformance[i] == 'E') {
+            countME++;
+          } else if ( subject.subjectMalePerformance[i] == 'F') {
+            countMF++;
+          } else {
+            countMABS++;
+          }
+        }
+        var percM = (100/lenM).toFixed(2);
+
+        var genderHead =  subject.subjectname + " GENDER PERFORMANCE"
+        $("#genderSubjectPerformance").CanvasJSChart ({
+        	title:{
+        		text: genderHead,
+            fontSize: 18
+        	},
+        	axisY: {
+        		titleFontColor: "#4F81BC",
+        		lineColor: "#4F81BC",
+        		labelFontColor: "#4F81BC",
+        		tickColor: "#4F81BC"
+        	},
+        	axisY2: {
+        		titleFontColor: "#C0504E",
+        		lineColor: "#C0504E",
+        		labelFontColor: "#C0504E",
+        		tickColor: "#C0504E"
+        	},
+        	toolTip: {
+        		shared: true
+        	},
+        	legend: {
+        		cursor:"pointer"
+        	},
+        	data: [{
+        		type: "column",
+        		name: "F",
+        		legendText: "Female",
+        		showInLegend: true,
+        		dataPoints:[
+        			{ label: "A", y: countFA * percF },
+        			{ label: "B", y: countFB * percF },
+        			{ label: "C", y: countFC * percF },
+        			{ label: "D", y: countFD * percF },
+        			{ label: "E", y: countFE * percF },
+        			{ label: "F", y: countFF * percF }
+        		]
+        	},
+        	{
+        		type: "column",
+        		name: "M",
+        		legendText: "Male",
+        		axisYType: "secondary",
+        		showInLegend: true,
+        		dataPoints:[
+              { label: "A", y: countMA * percM },
+        			{ label: "B", y: countMB * percM },
+        			{ label: "C", y: countMC * percM },
+        			{ label: "D", y: countMD * percM },
+        			{ label: "E", y: countME * percM },
+        			{ label: "F", y: countMF * percM }
+        		]
+        	}]
+        });
+      });
+    }
+
+    for (var i= 0; i < countAl; i++) {
+      elemId = '#subjectA'+i;
+
+      $(elemId).click(function(){
+          var subjectPos = $(this).attr('data-position');
+          var subjectsPerformance = {{ AlevelSchooldetailsList | safe }};
+          var subject = subjectsPerformance[subjectPos];
+          var countA = 0;
+          var countB = 0;
+          var countC = 0;
+          var countD = 0;
+          var countE = 0;
+          var countF = 0;
+          var countABS = 0;
+          var len = subject.subjectPerformance.length;
+          for (var i = 0; i < len; i++) {
+            if (subject.subjectPerformance[i] == 'A') {
+              countA++;
+            } else if ( subject.subjectPerformance[i] == 'B') {
+              countB++;
+            } else if ( subject.subjectPerformance[i] == 'C') {
+              countC++;
+            } else if ( subject.subjectPerformance[i] == 'D') {
+              countD++;
+            } else if ( subject.subjectPerformance[i] == 'E') {
+              countE++;
+            } else if ( subject.subjectPerformance[i] == 'F') {
+              countF++;
+            } else {
+              countABS++
+            }
+          }
+          var perc = (100/len).toFixed(2);
+          var texts = subject.subjectname + " GRADE DISTRIBUTION 2017";
+
+          $("#subjectChartContainer2").CanvasJSChart({
+            title: {
+              text: texts,
+              fontSize: 18
+            },
+            axisY: {
+              title: "Products in %"
+            },
+            data: [
+            {
+              type: "pie",
+              showInLegend: true,
+              toolTipContent: "{label} <br/> {y} %",
+              indexLabel: "{label}: {y} %",
+              dataPoints: [
+                { label: "A", y: countA * perc, legendText: "A"},
+                { label: "B", y: countB * perc, legendText: "B"  },
+                { label: "C", y: countC * perc, legendText: "C" },
+                { label: "D", y: countD * perc,  legendText: "D"},
+                { label: "E", y: countE * perc,  legendText: "E" },
+                { label: "F", y: countF * perc,  legendText: "F" },
+              ]
+            }
+            ]
+        });
+        var countFA = 0;
+        var countFB = 0;
+        var countFC = 0;
+        var countFD = 0;
+        var countFE = 0;
+        var countFF = 0;
+        var countFABS = 0;
+        var lenF = subject.subjectFemalePerformance.length;
+        for (var i = 0; i < lenF; i++) {
+          if (subject.subjectFemalePerformance[i] == 'A') {
+            countFA++;
+          } else if ( subject.subjectFemalePerformance[i] == 'B') {
+            countFB++;
+          } else if ( subject.subjectFemalePerformance[i] == 'C') {
+            countFC++;
+          } else if ( subject.subjectFemalePerformance[i] == 'D') {
+            countFD++;
+          } else if ( subject.subjectFemalePerformance[i] == 'E') {
+            countFE++;
+          } else if ( subject.subjectFemalePerformance[i] == 'F') {
+            countFF++;
+          } else {
+            countFABS++
+          }
+        }
+        var percF = (100/lenF).toFixed(2);
+
+        var countMA = 0;
+        var countMB = 0;
+        var countMC = 0;
+        var countMD = 0;
+        var countME = 0;
+        var countMF = 0;
+        var countMABS = 0;
+        var lenM = subject.subjectMalePerformance.length;
+        for (var i = 0; i < lenM; i++) {
+          if (subject.subjectMalePerformance[i] == 'A') {
+            countMA++;
+          } else if ( subject.subjectMalePerformance[i] == 'B') {
+            countMB++;
+          } else if ( subject.subjectMalePerformance[i] == 'C') {
+            countMC++;
+          } else if ( subject.subjectMalePerformance[i] == 'D') {
+            countMD++;
+          } else if ( subject.subjectMalePerformance[i] == 'E') {
+            countME++;
+          } else if ( subject.subjectMalePerformance[i] == 'F') {
+            countMF++;
+          } else {
+            countMABS++;
+          }
+        }
+        var percM = (100/lenM).toFixed(2);
+
+        var genderHead =  subject.subjectname + " GENDER PERFORMANCE"
+        $("#genderSubjectPerformance2").CanvasJSChart ({
+        	title:{
+        		text: genderHead,
+            fontSize: 18
+        	},
+        	axisY: {
+        		titleFontColor: "#4F81BC",
+        		lineColor: "#4F81BC",
+        		labelFontColor: "#4F81BC",
+        		tickColor: "#4F81BC"
+        	},
+        	axisY2: {
+        		titleFontColor: "#C0504E",
+        		lineColor: "#C0504E",
+        		labelFontColor: "#C0504E",
+        		tickColor: "#C0504E"
+        	},
+        	toolTip: {
+        		shared: true
+        	},
+        	legend: {
+        		cursor:"pointer"
+        	},
+        	data: [{
+        		type: "column",
+        		name: "F",
+        		legendText: "Female",
+        		showInLegend: true,
+        		dataPoints:[
+        			{ label: "A", y: countFA * percF },
+        			{ label: "B", y: countFB * percF },
+        			{ label: "C", y: countFC * percF },
+        			{ label: "D", y: countFD * percF },
+        			{ label: "E", y: countFE * percF },
+        			{ label: "F", y: countFF * percF }
+        		]
+        	},
+        	{
+        		type: "column",
+        		name: "M",
+        		legendText: "Male",
+        		axisYType: "secondary",
+        		showInLegend: true,
+        		dataPoints:[
+              { label: "A", y: countMA * percM },
+        			{ label: "B", y: countMB * percM },
+        			{ label: "C", y: countMC * percM },
+        			{ label: "D", y: countMD * percM },
+        			{ label: "E", y: countME * percM },
+        			{ label: "F", y: countMF * percM }
+        		]
+        	}]
+        });
+      });
+    }
+
+    var AlevelOverallPerf = {{ AlevelOverallPerformance|safe }};
+    if (AlevelOverallPerf.length > 0) {
+      var div1 = AlevelOverallPerf[0].fields.division_i;
+      var div2 = AlevelOverallPerf[0].fields.division_ii;
+      var div3 = AlevelOverallPerf[0].fields.division_iii;
+      var div4 = AlevelOverallPerf[0].fields.division_iv;
+      var div0 = AlevelOverallPerf[0].fields.division_0;
+      var totalAl = div1 + div2 + div3 + div4 + div0;
+      var percAl = (100/totalAl).toFixed(2);
+      $("#chart2Container").CanvasJSChart({
+        title: {
+          text: "Overall School Performance 2017",
+          fontSize: 18
+        },
+        axisY: {
+          title: "Products in %"
+        },
+        data: [
+          {
+            type: "pie",
+            showInLegend: true,
+            toolTipContent: "{label} <br/> {y} %",
+            indexLabel: "{label}: {y} %",
+            dataPoints: [
+              { label: "Division I",  y: div1 * percAl, legendText: "Division I"},
+              { label: "Division II", y: div2 * percAl, legendText: "Division II"  },
+              { label: "Division III",y: div3 * percAl,  legendText: "Division III" },
+              { label: "Division IV", y: div4 * percAl,  legendText: "Division IV"},
+              { label: "Division 0",  y: div0 * percAl,  legendText: "Division 0" },
+            ]
+          }
+        ]
+      });
+
+    }
+    //var olevelOverallPerf = JSON.parse({{ OlevelOverallPerformance }});
+    var olevelOverallPerf = {{ OlevelOverallPerformance | safe}};
+    if (olevelOverallPerf.length > 0) {
+      var div1 = olevelOverallPerf[0].fields.division_i;
+      var div2 = olevelOverallPerf[0].fields.division_ii;
+      var div3 = olevelOverallPerf[0].fields.division_iii;
+      var div4 = olevelOverallPerf[0].fields.division_iv;
+      var div0 = olevelOverallPerf[0].fields.division_0;
+
+      var totalAl = div1 + div2 + div3 + div4 + div0;
+      var percent = (100/totalAl).toFixed(2)
+      $("#chartContainer").CanvasJSChart({
+      title: {
+        text: "Overall School Performance 2017",
+        fontSize: 18
+      },
+      axisY: {
+        title: "Products in %"
+      },
+      data: [
+      {
+        type: "pie",
+        showInLegend: true,
+        toolTipContent: "{label} <br/> {y} %",
+        indexLabel: "{label}: {y} %",
+        dataPoints: [
+          { label: "Division I",  y: div1 * percent, legendText: "Division I"},
+          { label: "Division II", y: div2* percent, legendText: "Division II"  },
+          { label: "Division III",y: div3 * percent,  legendText: "Division III" },
+          { label: "Division IV", y: div4 * percent,  legendText: "Division IV"},
+          { label: "Division 0",  y: div0 * percent,  legendText: "Division 0" },
+        ]
+      }
+      ]
+    });
+    }
+
+    $('#tab3').click(function(){
+      var olTrend = {{ OlevelPerformanceTrends | safe }};
+      var alTrend = {{ AlevelPerformanceTrends | safe }};
+
+      if (olTrend.length > 0) {
+        $("#olevelTrend").CanvasJSChart ({
+          title:{
+            text: "Performance Trend - Ordinary Level",
+            fontSize: 18
+          },
+          legend: {
+            cursor:"pointer"
+          },
+          data: [{
+            type: "column",
+            color: "#4F81BC",
+            legendText: "School GPA",
+            showInLegend: false,
+            dataPoints:[
+              { x: 1, label: "2015", y: parseFloat(olTrend[0]["2015"]) },
+              { x: 2, label: "2016", y: parseFloat(olTrend[1]["2016"])  },
+              { x: 3, label: "2017", y: parseFloat(olTrend[2]["2017"]) }
+            ]
+          }]
+        });
+      }
+
+      if (alTrend.length > 0) {
+        $("#alevelTrend").CanvasJSChart ({
+          title:{
+            text: "Performance Trend - Advance Level",
+            fontSize: 18
+          },
+          axisY: {
+            titleFontColor: "#C0504E",
+            lineColor: "#C0504E",
+            labelFontColor: "#C0504E",
+            tickColor: "#C0504E"
+          },
+          toolTip: {
+            shared: true
+          },
+          legend: {
+            cursor:"pointer"
+          },
+          data: [{
+            type: "column",
+            name: "F",
+            legendText: "School GPA",
+            showInLegend: true,
+            dataPoints:[
+              { label: "2016", y: parseFloat(alTrend[0]["2016"]) },
+              { label: "2017", y: parseFloat(alTrend[1]["2017"]) }
+            ]
+          }]
+        });
+      }
+
+    });
+
+  });
+  </script>
+{% endblock %}

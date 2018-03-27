@@ -1,0 +1,60 @@
+<!-- index.html-->
+
+{% extends "_base.html" %}
+{% block title %}Home{% endblock %}
+{% block body %}
+  <main role="main" class="container">
+    <section class="starter-template">
+      <div class="container">
+        <form action="/" method="post">
+          {% csrf_token %}
+          {{ form.non_field_errors }}
+          <h4>Fill in your A-level subjects and grades</h4>
+          <br />
+          <p class="jumbotron-heading"> {{ form.subjects.label }} {{ form.subjects }} </p>
+          <span>{{ form.subjects.help_text }}</span>
+          <br />
+          <span>OR</span>
+          <br />
+          <h4> Fill in your Diploma Course and GPA</h4>
+          <br />
+          <p class="jumbotron-heading"> {{ form.diplomas.label }} {{ form.diplomas }} </p>
+          <span>{{ form.diplomas.help_text }}</span>
+          <br />
+
+          <h4> Fill in your O-level subjects and grades</h4>
+          <br />
+          <p class="jumbotron-heading"> {{ form.olevel_subjects.label }} {{ form.olevel_subjects }} </p>
+          <span>{{ form.olevel_subjects.help_text }}</span>
+          <br />
+          <input type="submit" value="Submit" />
+        </form>
+        <!-- <p class="lead"> Dar-es-salaam</p> -->
+          <!-- <a href="/stations" class="btn btn-primary">Find Other Stations</a> -->
+          <!-- <a href="#" class="btn btn-secondary">Secondary action</a> -->
+      </div>
+    </section>
+    {% if courses %}
+      <section class=text-center>
+        <div class="container">
+          <h4>List of courses and university with higher chances of admission</h4>
+          <table>
+            <tr>
+              <th>University Name</th>
+              <th>Course Name</th>
+              <th></th>
+            </tr>
+            {% for course in courses %}
+              <tr>
+                <td>{{ course.university_name }}</td>
+                <td>{{ course.course_name }}</td>
+                <td><a href="#">More</a></td>
+              </tr>
+            {% endfor %}
+        </table>
+      </div>
+      </section>
+    {% endif %}
+  </main>
+
+{% endblock %}

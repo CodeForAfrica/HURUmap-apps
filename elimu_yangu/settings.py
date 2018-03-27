@@ -7,7 +7,7 @@ from hurumap.settings import *  # noqa
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # insert our overrides before both census and HURUmap
-INSTALLED_APPS = ['elimu_yangu', 'elimu_yangu.careerguide', 'elimu_yangu.leaguetable'] + INSTALLED_APPS
+INSTALLED_APPS = ['elimu_yangu', 'elimu_yangu.careerguide', 'elimu_yangu.leaguetable', 'elimu_yangu.universityfinder'] + INSTALLED_APPS
 
 # League Table URLS
 ROOT_URLCONF = 'elimu_yangu.urls'

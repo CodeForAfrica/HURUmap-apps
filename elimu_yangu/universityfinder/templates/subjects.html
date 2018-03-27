@@ -1,0 +1,12 @@
+{% extends "_base.html" %}
+{% block title %} {{ pageTitle }}{% endblock %}
+{% block body %}
+  <main role="main" class="container">
+    <h2>List of {{ pageTitle }} in Tanzania</h2>
+    <ul class="list-group">
+      {% for subject in subjects %}
+        <li class="list-group-item disabled">{{ subject.subjectname }}</li>
+      {% endfor %}
+    </ul>
+  </main>
+{% endblock %}
