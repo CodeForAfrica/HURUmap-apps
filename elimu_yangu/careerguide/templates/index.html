@@ -38,7 +38,11 @@
                 <td>{{ school.subjectname }}</td>
                 <td>{{ school.subjectnatranking }}</td>
                 <td>{{ school.subjectregranking }}</td>
+<<<<<<< HEAD
                 <td><a href="/careerguide/school/{{ school.schoolcode }}">More</a></td>
+=======
+                <td><a href="{% url 'school' schoolcode=school.schoolcode %}">More</a></td>
+>>>>>>> 12c7f73158084255ebb19044202596a0e9c48beb
               </tr>
             {% endfor %}
         </table>

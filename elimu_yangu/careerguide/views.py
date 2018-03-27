@@ -27,7 +27,6 @@ def index(request):
             edu_level = form.cleaned_data['education_level']
 
             schools = get_schools(career, region, gender, edu_level)
-            print schools
             if edu_level == '1':
                 school_level = "A levels"
             else:
