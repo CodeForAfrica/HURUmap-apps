@@ -1,6 +1,7 @@
-from django.conf.urls import url
-from . import views
+from django.conf.urls import url, patterns
+from elimu_yangu.universityfinder.views import index
+#from wazimap.urls import *
 
-urlpatterns = [
-    url(r'^$', views.index, name='index'),
-    ]
+urlpatterns = patterns('',
+    url(regex = r'^$', view = index, name='index'),
+    )
