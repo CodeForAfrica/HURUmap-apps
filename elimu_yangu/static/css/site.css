@@ -82,8 +82,8 @@ h3.title {
     width: 10px
 }
 
-.nice-select .option:hover, 
-.nice-select .option.focus, 
+.nice-select .option:hover,
+.nice-select .option.focus,
 .nice-select .option.selected.focus {
     color: #5badde;
 }
@@ -155,7 +155,7 @@ footer {
 * ----------------------------------------------------------------------------------------
 */
 .landing-main {
-    background: url("/images/bg.jpg");
+    background: url("/static/img/bg.jpg");
     height: 400px;
     padding-top: 100px;
     color: #ffffff;
@@ -432,8 +432,8 @@ footer {
 }
 
 .subject-box > div {
-    padding-bottom: 15px;  
-} 
+    padding-bottom: 15px;
+}
 
 .subject-box .border-left {
     border-left: 2px solid #CEA235
@@ -472,7 +472,7 @@ footer {
 }
 
 .details > div{
-    display: inline-block;    
+    display: inline-block;
 }
 
 .details-info {
@@ -490,7 +490,7 @@ footer {
 * ----------------------------------------------------------------------------------------
 */
 .tab-content{
-    margin-top: 50px;    
+    margin-top: 50px;
 }
 
 .box-item,
@@ -553,17 +553,17 @@ section .wizard {
     position: relative
 }
 
-.pagination > li > a, 
+.pagination > li > a,
 .pagination > li > span {
     color: #A6B0BF;
     cursor: pointer;
 }
 
-.pagination > .active > a, 
-.pagination > .active > span, 
-.pagination > .active > a:hover, 
-.pagination > .active > span:hover, 
-.pagination > .active > a:focus, 
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
 .pagination > .active > span:focus {
     background-color: #A6B0BF;
     border-color: #A6B0BF;
