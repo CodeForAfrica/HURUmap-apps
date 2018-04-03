@@ -2,35 +2,6 @@
 
 {% block head_title %}Elimu Yangu{% endblock %}
 
-{% block header %}
-    <header  id="page-header">
-            <nav class="navbar navbar-inverse navbar-fixed-top">
-                <div class="container">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="">
-                            <img class="logo" src="{% static 'img/logo0.png' %}" />
-                        </a>
-                    </div>
-                    <div class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav text-center">
-                            <li><a href="/leaguetable">SCHOOL LEAGUE</a></li>
-                            <li><a href="/careerguide">CAREER GUIDE</a></li>
-                            <li><a href="/university-finder">UNI FINDER</a></li>
-                            <li><a href="/about">ABOUT</a></li>
-                            <li><a href="/contact">CONTACT US</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </header>
-{% endblock %}
 
 {% block content_container %}
 <div class="main-content">
@@ -123,7 +94,7 @@
   </div>
   </section>
 </div>
-    <div class="showcase clearfix partners {{ extra_css_class }}">
+    <!-- <div class="showcase clearfix partners {{ extra_css_class }}">
         <div class="wrapper text-center">
             <h2>Partners</h2>
             <p>League Table is made possible through support from the following partners:</p>
@@ -136,7 +107,7 @@
                 <img src="{{ STATIC_URL }}img/logos/cfafrica.png" alt="Code for Africa"></a>
             <br/>
         </div>
-    </div>
+    </div> -->
 {% endblock %}
 
 {% block footer_content %}

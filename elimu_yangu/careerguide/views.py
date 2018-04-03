@@ -6,6 +6,7 @@ import os, json
 from django.core import serializers
 from django.core.serializers.json import DjangoJSONEncoder
 from .forms import InputForm
+from django.db.models import Count, Avg
 from elimu_yangu.careerguide.models import Olevel_subject_performance, Olevel_overall_performance, Alevel_subject_performance, Olevel_student_performance_2017, Alevel_student_performance, Alevel_overall_performance
 # Create your views here.
 
@@ -32,12 +33,12 @@ def index(request):
             else:
                 school_level = "O levels"
             # redirect to a new URL:
-            return render(request, 'index.html', {'form': form, 'schools': schools, 'school_level': school_level})
+            return render(request, 'careerguide/homepage.html', {'form': form, 'schools': schools, 'school_level': school_level})
 
     # if a GET (or any other method) we'll create a blank form
     else:
         form = InputForm(label_suffix="  ")
-        return render(request, 'index.html', {'form': form})
+        return render(request, 'careerguide/homepage.html', {'form': form})
 
 def school(request, schoolcode):
     alevel_subjects = Alevel_subject_performance.objects.filter(year="2017").filter(schoolcode = schoolcode)
@@ -109,23 +110,15 @@ def get_schools(career, region, gender, edu_level):
     subjects = data[career]
     if not region:
         if edu_level == '1':
-            for subject in subjects:
-                queryset = Alevel_subject_performance.objects.filter(year = "2017").filter(subjectname = subject).filter(subjectnatranking__in=["1","2","3","4","5","6"])
-                schools += list(queryset)
+            schools = Alevel_subject_performance.objects.filter(year = "2017").filter(subjectname__in = subjects).values('schoolcode', 'schoolname', 'gpa', 'region', 'natranking', 'regranking').annotate(career_avg=Avg('subjectgpa')).group_by('schoolcode').order_by('career_avg')[:10]
         else:
-            for subject in subjects:
-                queryset =  Olevel_subject_performance.objects.filter(year = "2017").filter(subjectname = subject).filter(subjectnatranking__in=["1","2","3","4","5","6"])
-                schools += list(queryset)
+            schools = Olevel_subject_performance.objects.filter(year = "2017").filter(subjectname__in = subjects).values('schoolcode', 'schoolname', 'gpa', 'region', 'natranking', 'regranking').annotate(career_avg=Avg('subjectgpa')).group_by('schoolcode').order_by('career_avg')[:10]
     else:
         if edu_level == '1':
-            for subject in subjects:
-                queryset = Alevel_subject_performance.objects.filter(year = "2017").filter(subjectname = subject).filter(region = region).filter(subjectregranking__in=["1","2","3"])
-                schools += list(queryset)
-                print list(queryset)
+            schools = Alevel_subject_performance.objects.filter(year = "2017").filter(region = region).filter(subjectname__in = subjects).values('schoolcode', 'schoolname', 'gpa', 'region', 'natranking', 'regranking').annotate(career_avg=Avg('subjectgpa')).order_by('career_avg')[:10]
         else:
-            for subject in subjects:
-                queryset = Olevel_subject_performance.objects.filter(year = "2017").filter(subjectname = subject).filter(region = region).filter(subjectregranking__in=["1","2","3"])
-                schools += list(queryset)
+            schools = Olevel_subject_performance.objects.filter(year = "2017").filter(region = region).filter(subjectname__in = subjects).values('schoolcode', 'schoolname', 'gpa', 'region', 'natranking', 'regranking').annotate(career_avg=Avg('subjectgpa')).order_by('career_avg')[:10]
+
     return schools
 
 def alevel_subjects(request):

@@ -2,70 +2,38 @@
 
 {% block head_title %}League Table : Schools Ranking{% endblock %}
 
-{% block header %}
-    <style>
-        #page-footer, #page-header {
-            background: #204d8a;
-        }
-    </style>
-    <header id="page-header">
-        <div id="page-header-title" class="wrapper clearfix">
-            <i id="menu-toggle" class="fa fa-bars"></i>
-            <a class="title" href="{% url 'homepage' %}">
-                <img src="{% static 'img/logos/books.png' %}" style="height: 44px; float: left;"/>
-                <span style="font-size: 25px;font-weight: bolder; margin-left:10px; line-height: 50px;">League Table</span><br />
-            </a>
-
-            <div class="nav-menu">
-                <ul id="site-menu">
-                  {% block header_menu %}
-                      <li><a href="/leaguetable">League League</a></li>
-                      <li><a href="/careerguide">Career Guide</a></li>
-                      <li><a href="/schools">University Finder</a></li>
-                      <li><a href="/about">About</a></li>
-                  {% endblock header_menu %}
-                </ul>
-
-                {% if not hide_nav_tools %}
-                    {% block nav_tools %}
-                    <div id="menu" class="tool-set clearfix">
-                        <div class="tool-group">
-                            <input name="geography_select" id="geography-select" type="text" placeholder="Search Place" autocomplete="off">
-                        </div>
-                        {% if not hide_nav_compare %}
-                        {% comment %}
-                        <span class="separator">or</span>
-                        <div class="tool-group">
-                            <a class="button" href="{% url 'table_search' %}">
-                                <i class="fa fa-chevron-circle-right"></i>
-                                Search for data
-                            </a>
-                        </div>
-                        {% endcomment %}
-                        {% endif %}
-                    </div>
-                    {% endblock %}
-                {% endif %}
-            </div>
-        </div>
-    </header>
-
-    <div class="content-container clearfix bg-ocean-green text-center" style="background: #5299d3;">
-        <div class="wrapper">
-            <h1>Discover the Stories Behind the Data</h1>
-            <h4>{{ HURUMAP.name }} helps storytellers and campaigners use data to add context and depth to stories.</h4>
-        </div>
-    </div>
-{% endblock %}
-
 {% block content_container %}
 
-    <div class="clearfix">
-{#        <h1 class="article-header">Discover the story behind the data.</h1>#}
-        <div id="slippy-map"></div>
-    </div>
+  <div class="map-box">
+      <h3 class="map-title center">Discover The Stories Behind The Data</h3>
+      <h5 class="map-description center">HURUMap description comes here</h5>
+      <div id="slippy-map" class="map"></div>
+  </div>
 
-    <div class="showcase how-it-works bg-tan text-center">
+  <div class="help-box text-center">
+      <div class="help-text">HOW IT WORKS?</div>
+      <div class="container">
+          <div class="row">
+              <div class="col-sm-4 option-round">
+                  <span class="icon">Icon</span>
+                  <h3 class="title">FIND FACTS</h3>
+                  <div class="description">Fusce temper felis lacus, a hendrerit urna facilisis at. Sed sollocitudin bibendum tincidunt. Aenean a bibendum magna.</div>
+              </div>
+              <div class="col-sm-4 option-round">
+                  <span class="icon">Icon</span>
+                  <h3 class="title">VISUALISE</h3>
+                  <div class="description">Pellentesque feugiat urna a lectus consequat, quis vulpulate nunc feugiat. Fusce non augue ligula. Ut sed ultrices lacus.</div>
+              </div>
+              <div class="col-sm-4 option-round">
+                  <span class="icon">Icon</span>
+                  <h3 class="title">GET CONTENT</h3>
+                  <div class="description">Quisque volutpat mi consectetur, rutrum lacus nec, porttitor nunc. Vivamus non est vitae erat feugiat ultricies eu id sapien.</div>
+              </div>
+          </div>
+       </div>
+  </div>
+
+    <!-- <div class="showcase how-it-works bg-tan text-center">
         {% block how_it_works %}
             <div class="wrapper clearfix">
                 <h1>How It Works</h1>
@@ -91,7 +59,7 @@
                 <p><a href="/help" class="btn btn-lg bg-bottle-green">Learn more</a></p>
             </div>
         {% endblock %}
-    </div>
+    </div> -->
 
     <div class="showcase schools" style="overflow:auto; display: none;">
         <div class="holder" style="margin-left: 40px; margin-right: 40px; margin-bottom: 30px;">

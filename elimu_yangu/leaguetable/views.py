@@ -146,7 +146,7 @@ class EmbedGeographyDetailView(BaseGeographyDetailView):
         pass
 
     def get_template_names(self):
-        return ['profile/profile_detail_%s.html' % self.profile_name, 'embed_map.html']
+        return ['leaguetable/profile/profile_detail_%s.html' % self.profile_name, 'leaguetable/embed_map.html']
 
 
 
@@ -209,4 +209,4 @@ class GeographyDetailView(BaseGeographyDetailView):
         pass
 
     def get_template_names(self):
-        return ['profile/profile_detail_%s.html' % self.profile_name, 'profile/profile_detail.html']
+        return ['leaguetable/profile/profile_detail_%s.html' % self.profile_name, 'leaguetable/profile/profile_detail.html']
