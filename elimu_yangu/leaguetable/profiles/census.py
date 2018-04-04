@@ -14,7 +14,7 @@ __author__ = 'timothy'
 log = logging.getLogger(__name__)
 
 # ensure tables are loaded
-import .tables  # noqa
+import elimu_yangu.tables  # noqa
 
 SECTIONS = settings.HURUMAP.get('topics', {})
 
