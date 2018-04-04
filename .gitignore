@@ -11,3 +11,4 @@ debug
 /env/
 .env/
 env
+*.map

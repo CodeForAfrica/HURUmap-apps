@@ -11,58 +11,92 @@
 {% endblock %}
 
 {% block header_content %}
+
 <div class="clipped-header clearfix">
-<div class="wrapper content-container">
-  <div class="column-third">
-  <h2>WAJIBISHA</h2>
-  <p>Keep track of your county's <span class="yellow-text">promises</span></p>
-</div>
-  <div class="column-third"></div>
-<div class="column-third push-right">
-  <img src="{% static 'img/Presentation.svg' %}" class="presentation-img">
-</div>
-</div>
+    <div class="wrapper content-container">
+      <div class="column-third text-left">
+          <h2>WAJIBISHA</h2>
+          <p>Keep track of your county's <span class="yellow-text">promises</span></p>
+          <div class="colum-third pt-3">
+          <select class="form-control form-control-lg">
+            <option value="" disabled selected>SELECT A COUNTRY</option>
+            <option>Kenya</option>
+            <option>Uganda</option>
+            <option>Tanzania</option>
+          </select>
+        </div>
+      </div>
+      <div class="column-third"></div>
+      <div class="column-third push-right">
+          <img src="{% static 'img/Presentation.svg' %}" class="presentation-img">
+      </div>
+  </div>
 
 </div>
-{% endblock header_content %}
-
+{% endblock header_content %}`
 
 {% block content_container %}
 
-    <div class="showcase how-it-works text-center">
-        {% block how_it_works %}
-            <div class="wrapper clearfix">
-                <h3>SOME OF THE PROMISES WE'RE TRACKING</h3>
-                <br/>
-                <div class="column-third card">
-                    <p><img src="{% static 'img/icons/blurbs/Housing.svg' %}" alt=""></p>
-                    <h3>Housing</h3>
-                    <p>Population and financial figures are broken down by category: Elections, Demographics, Service Delivery, Economics, and Education.</p>
-                </div>
-                <div class="column-third card">
-                    <p><img src="{% static 'img/icons/blurbs/health.svg' %}" alt=""></p>
-                    <h3>Health</h3>
-                    <p>Our library of charts gives you insight into data from places you research. Look for them on profile pages. You can embed the charts on your own site.</p>
-                </div>
-                <div class="column-third card">
-                    <p><img src="{% static 'img/icons/blurbs/Jobs.svg' %}" alt=""></p>
-                    <h3>Jobs</h3>
-                    <p>Pre-computed statistics are presented alongside each data point so you can see how each place fits into a large context.</p>
-                </div>
-            </div>
-        {% endblock %}
+<div class="showcase how-it-works text-center">
+    {% block how_it_works %}
+    <div class="wrapper clearfix">
+        <h2>SOME OF THE PROMISES WE'RE TRACKING</h2>
+        <br/>
+      <!--start of cards-->
+      <div class="card-group">
+        <div class="card" style="margin:1rem;padding:0;">
+          <div class="pt-4">
+          <img class="card-img-top rounded mx-auto d-block" src="{% static 'img/icons/landing/Housing.svg' %}" alt="Card image cap"></div>
+          <div class="card-block">
+            <h5 class="card-title">HOUSING</h5>
+          </div>
+          <div class="card-block text-left pt-3" style="height:11rem;background-color:#ededed;">
+            <p class="pl-4">Country: <b>Nairobi</b></p>
+            <p class="pl-4">Total no. of promises: <b>10</b></p>
+            <p class="pl-4" >Promises fulfilled: <b>0</b></p> 
+          </div>
+        </div>
+
+        <div class="card" style="margin:1rem;padding:0;">
+          <div class="pt-4">
+          <img class="card-img-top rounded mx-auto d-block" src="{% static 'img/icons/landing/health.svg' %}" alt="Card image cap"></div>
+          <div class="card-block">
+            <h5 class="card-title">HEALTH</h5>
+          </div>
+          <div class="card-block text-left pt-3" style="height:11rem;background-color:#ededed;">
+            <p class="pl-4">Country: <b>Nairobi </b></p>
+             <p class="pl-4">Total no. of promises: <b>10</b></p>
+              <p class="pl-4">Promises fulfilled:<b>1</b></p>
+          </div>
+        </div>
+
+        <div class="card" style="margin:1rem;padding:0;">
+          <div class="pt-4">
+          <img class="card-img-top rounded mx-auto d-block" src="{% static 'img/icons/landing/Jobs.svg' %}" alt="Card image cap"></div>
+          <div class="card-block">
+            <h5 class="card-title">JOBS</h5>
+          </div>
+          <div class="card-block text-left pt-3" style="height:11rem;background-color:#ededed;">
+            <p class="pl-4">Country: <b>Nairobi</b></p>
+             <p class="pl-4">Total no. of promises: <b>10</b></p>
+              <p class="pl-4">Promises fulfilled: <b>0</b></p>
+          </div>
+        </div>
+        
+      </div>
     </div>
+    {% endblock %}
+</div>
 
-    {% include 'blocks/mission.html' %}
-
-    {% include 'blocks/partners.html' with extra_css_class='bg-tan' %}
+{% include 'blocks/mission.html' %}
+{% include 'blocks/tweets.html' %}
 {% endblock %}
 
 
 {% block body_javascript_extra %}
-    {{ block.super }}
+{{ block.super }}
 
-    {% block homepage_javascripb_libs %}
-    {% endblock %}
+{% block homepage_javascripb_libs %}
+{% endblock %}
 
 {% endblock %}

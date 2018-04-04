@@ -34,6 +34,13 @@ export DJANGO_SETTINGS_MODULE=hurumap_ke.settings
 export DATABASE_URL=postgresql://hurumap_ke:hurumap_ke@localhost/hurumap_ke
 ```
 
+
+To use Wajibisha,set the environment variables with this:
+```
+export DJANGO_SETTINGS_MODULE=wajibisha.settings
+
+```
+
 Run migrations to keep Django happy:
 ```
 python manage.py migrate
