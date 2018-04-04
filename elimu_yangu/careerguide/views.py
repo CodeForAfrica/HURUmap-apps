@@ -5,7 +5,7 @@ from django.conf import settings
 import os, json
 from django.core import serializers
 from django.core.serializers.json import DjangoJSONEncoder
-from .forms import InputForm
+from elimu_yangu.careerguide.forms import InputForm
 from django.db.models import Avg
 from elimu_yangu.careerguide.models import Olevel_subject_performance, Olevel_overall_performance, Alevel_subject_performance, Olevel_student_performance_2017, Alevel_student_performance, Alevel_overall_performance
 # Create your views here.

@@ -8,8 +8,8 @@ from django.conf import settings
 import os, json
 from django.core import serializers
 from django.core.serializers.json import DjangoJSONEncoder
-from .forms import InputForm
-from models import UniversityFinder
+from elimu_yangu.universityfinder.forms import InputForm
+from elimu_yangu.universityfinder.models import UniversityFinder
 
 grades_list= ["A","B","C","D","E","S","F"]
 
