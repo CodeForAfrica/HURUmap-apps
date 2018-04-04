@@ -20,10 +20,10 @@ DATABASES['default']['ATOMIC_REQUESTS'] = True
 
 
 # Localise this instance of HURUmap
-HURUMAP['name'] = 'League Table'
+HURUMAP['name'] = 'Elimu Yangu'
 HURUMAP['description'] = 'it shows ranking of different secondary schools\
                             bassed on their performance in each year.'
-HURUMAP['url'] = 'https://leaguetable.codefortanzania.org'
+HURUMAP['url'] = 'https://elimu_yangu.codefortanzania.org'
 HURUMAP['country_code'] = 'TZ'
 HURUMAP['country_name'] = 'Tanzania'
 HURUMAP['country_profile'] = 'country-TZ-Tanzania'
