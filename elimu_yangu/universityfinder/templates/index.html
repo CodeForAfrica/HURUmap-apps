@@ -54,11 +54,11 @@
                             <div class="modal-body">
                               <div class="form-group">
                                 <label for="sub-name">Name:</label>
-                                <input type="text" class="form-control" id="sub-name">
+                                {{ form.subjects}}
                               </div>
                               <div class="form-group">
                                 <label for="sub-grade">Grade:</label>
-                                <input type="text" class="form-control" id="sub-grade">
+                                {{ form.grades }}
                               </div>
                               <button id="add-sub-grade" type="button" class="btn btn-default">Save</button>
                             </div>
@@ -477,3 +477,6 @@
   </main>
 
 {% endblock %}
+{% block footer_content %}
+    {% include 'footer.html' %}
+{% endblock footer_content %}

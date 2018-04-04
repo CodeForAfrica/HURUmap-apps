@@ -219,7 +219,7 @@ class Alevel_subject_performance(models.Model):
     schoolname = models.CharField(db_column='schoolname', max_length=50)  # Field name made lowercase.
     region = models.CharField(db_column='region', max_length=30, blank=True, null=True)  # Field name made lowercase.
     gpa = models.CharField(db_column='gpa', max_length=7, blank=True, null=True)  # Field name made lowercase.
-    #category = models.CharField(db_column='category', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    category = models.CharField(db_column='category', max_length=50, blank=True, null=True)  # Field name made lowercase.
     regranking = models.CharField(db_column='regranking', max_length=6, blank=True, null=True)  # Field name made lowercase.
     natranking = models.CharField(db_column='natranking', max_length=7, blank=True, null=True)  # Field name made lowercase.
     subjectcode = models.CharField(db_column='subjectcode', max_length=5, blank=True, null=True)  # Field name made lowercase.

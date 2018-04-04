@@ -21,12 +21,35 @@ from sqlalchemy import Column, ForeignKey, Integer, String, Table, func, or_, an
 from census.views import GeographyDetailView as BaseGeographyDetailView
 
 #override homepage
-class HomepageView(TemplateView):
+def index(request):
+    # Getting the session
+    session = get_session()
+    schools = {}
     template_name = 'leaguetable/homepage.html'
-    def get_context_data(self, *args, **kwargs):
-        return {
-            'root_geo': geo_data.root_geography(),
-        }
+    geo_level = "country"
+    geo_code = "TZ"
+    rank_column = Base.metadata.tables['secondary_schools'].c.national_rank_all
+    best_schools = session.query(Base.metadata.tables['secondary_schools'])\
+                    .filter(Base.metadata.tables['secondary_schools'].c.geo_level == geo_level)\
+                    .filter(Base.metadata.tables['secondary_schools'].c.geo_code == geo_code)\
+                    .order_by(asc(cast(rank_column, Integer)))\
+                    .all()
+
+    worst_schools = session.query(Base.metadata.tables['secondary_schools'])\
+                    .filter(Base.metadata.tables['secondary_schools'].c.geo_level == geo_level)\
+                    .filter(Base.metadata.tables['secondary_schools'].c.geo_code == geo_code)\
+                    .order_by(desc(cast(rank_column, Integer)))\
+                    .all()
+
+    schools['best_schools'] = best_schools
+    schools['worst_schools'] = worst_schools
+
+    return render(request,'leaguetable/homepage.html',{'schools':schools, 'root_geo': geo_data.root_geography()})
+    # def get_context_data(self, *args, **kwargs):
+    #     return {
+    #         'root_geo': geo_data.root_geography(),
+    #         'schools':schools,
+    #     }
 
 # handling schools page
 def schools(request):

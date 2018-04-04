@@ -1,25 +1,28 @@
 {
-  "Doctor": ["BIOLOGY", "CHEMISTRY"],
-  "Pilot": ["GEOGRAPHY", "PHYSICS", "MATHEMATICS"],
-  "Accountant": [],
-  "Journalist": [],
-  "Architect": [],
-  "Driver": [],
-  "Teacher": [],
-  "Chef": [],
-  "Lawyer": [],
-  "Clerks": [],
-  "Photographer": [],
-  "Musician": [],
-  "Chemist": [],
-  "Pharmacist": [],
-  "Social Worker": [],
-  "Computer Scientist": [],
-  "Artist": [],
-  "Dentist": [],
-  "Blogger": [],
-  "Technician": [],
-  "Engineer": [],
-  "Tv & Radio Presenter": [],
-  "Analyst": []
+    "Doctor" : {
+        "name" : "MEDECINE",
+        "must" : [
+            "PHYSICS",
+            "CHEMISTRY",
+            "BIOLOGY"
+        ],
+        "olevel_optional" : [
+            "MATHEMATICS",
+            "KISWAHILI",
+            "ENGLISH"
+        ]
+    },
+    "Engineer" : {
+        "name" : "ENGINEERING",
+        "must" : [
+            "PHYSICS",
+            "CHEMISTRY",
+            "MATHEMATICS"
+        ],
+        "olevel_optional" : [
+            "GEOGRAPHY",
+            "ENGLISH",
+            "KISWAHILI"
+        ]
+    }
 }

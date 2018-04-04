@@ -61,68 +61,70 @@
         {% endblock %}
     </div> -->
 
-    <div class="showcase schools" style="overflow:auto; display: none;">
-        <div class="holder" style="margin-left: 40px; margin-right: 40px; margin-bottom: 30px;">
-            <div class="" style="width: 50%; float: left; border-right: 1px solid #dedede;padding: 20px;">
-                <center><h2>10 Top Schools</h2></center>
-                <br />
-                <table style="width: 100%;">
-                    <thead>
-                        <tr>
-                            <th>No.</th>
-                            <th>Name</th>
-                            <th>Pass Rate</th>
-                            <th>National Ranking</th>
-                            <th>Regional Ranking</th>
-                            <th>District Ranking</th>
-                            <th>Stats</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-
-                <br />
-                <button type="button" class="button" style="float:right; display: none;">See More</button>
-            </div>
-            <div class="" style="width: 50%;float:left;padding:20px;">
-                <center><h2>10 Lowest Schools</h2></center>
-                <br />
-                <table style="width: 100%;">
-                    <thead>
-                        <tr>
-                            <th>No.</th>
-                            <th>Name</th>
-                            <th>Pass Rate</th>
-                            <th>National Ranking</th>
-                            <th>Regional Ranking</th>
-                            <th>District Ranking</th>
-                            <th>Stats</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-
-                <button type="button" class="button" style="float:right; display: none;">See More</button>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="title text-center">SCHOOL RANKINGS</h2>
+                <!--
+                * =================================
+                * Top School List
+                * =================================
+                -->
+                <div class="col-md-6">
+                    <h3 class="title">10 Top Schools</h3>
+                    <ul class="list-group school">
+                      {% for school in schools.best_schools|slice:":10" %}
+                        <li class="list-group-item">
+                            <a href="leaguetable/schools/{{ school.code }}">
+                                <div class="col-xs-5">
+                                    <div class="school-name">{{ school.name|slice:":-16" }} SCHOOL</div>
+                                    <div class="school-type">Mixed</div>
+                                </div>
+                                <div class="col-xs-5">
+                                    <div class="school-rank">#{{ school.national_rank_all }} in Tanzania</div>
+                                    <div class="school-rank">#{{ school.regional_rank_all }} in {{ school.region }}</div>
+                                </div>
+                                <div class="col-xs-2">
+                                    {{ school.pass_rate }}
+                                </div>
+                            </a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                </div>
+                <!--
+                * =================================
+                * Lowest School List
+                * =================================
+                -->
+                <div class="col-md-6">
+                    <h3 class="title">10 Lowest Schools</h3>
+                    <ul class="list-group school">
+                      {% for school in schools.worst_schools|slice:":10" %}
+                        <li class="list-group-item">
+                            <a href="leaguetable/schools/{{ school.code }}">
+                                <div class="col-xs-5">
+                                    <div class="school-name">{{ school.name|slice:":-16" }} SCHOOL</div>
+                                    <div class="school-type">Mixed</div>
+                                </div>
+                                <div class="col-xs-5">
+                                    <div class="school-rank">#{{ school.national_rank_all }} in Tanzania</div>
+                                    <div class="school-rank">#{{ school.regional_rank_all }} in {{ school.region }}</div>
+                                </div>
+                                <div class="col-xs-2">
+                                    {{ school.pass_rate }}
+                                </div>
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
+  </div>
 
-    <div class="showcase clearfix partners {{ extra_css_class }}">
-        <div class="wrapper text-center">
-            <h2>Partners</h2>
-            <p>League Table is made possible through support from the following partners:</p>
 
-            <a href="http://twaweza.org/" target="_blank" rel="noopener">
-                <img src="{{ STATIC_URL }}img/logos/world_bank_group_logo.png" alt="World Bank Group"></a>
-            <a href="https://datazetu.or.tz/" target="_blank" rel="noopener">
-                <img src="{{ STATIC_URL }}img/logos/datazetu.png" alt="Data Zetu"></a>
-            <a href="https://codeforafrica.org/" target="_blank" rel="noopener">
-                <img src="{{ STATIC_URL }}img/logos/cfafrica.png" alt="Code for Africa"></a>
-            <br/>
-        </div>
-    </div>
 {% endblock %}
 
 {% block footer_content %}

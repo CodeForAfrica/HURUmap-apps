@@ -6,7 +6,7 @@ import os, json
 from django.core import serializers
 from django.core.serializers.json import DjangoJSONEncoder
 from .forms import InputForm
-from django.db.models import Count, Avg
+from django.db.models import Avg
 from elimu_yangu.careerguide.models import Olevel_subject_performance, Olevel_overall_performance, Alevel_subject_performance, Olevel_student_performance_2017, Alevel_student_performance, Alevel_overall_performance
 # Create your views here.
 
@@ -26,14 +26,14 @@ def index(request):
             region = form.cleaned_data['region'].upper()
             gender = form.cleaned_data['gender']
             edu_level = form.cleaned_data['education_level']
-
+            career = data[career]
             schools = get_schools(career, region, gender, edu_level)
             if edu_level == '1':
                 school_level = "A levels"
             else:
                 school_level = "O levels"
             # redirect to a new URL:
-            return render(request, 'careerguide/homepage.html', {'form': form, 'schools': schools, 'school_level': school_level})
+            return render(request, 'careerguide/homepage.html', {'form': form, 'schools': schools, 'school_level': school_level, 'career':career})
 
     # if a GET (or any other method) we'll create a blank form
     else:
@@ -62,6 +62,7 @@ def school(request, schoolcode):
         school_name = olevel_subjects[0].schoolname
         school_region = olevel_subjects[0].region
         school_gpa = olevel_subjects[0].gpa
+        school_category = olevel_subjects[0].category.strip()
         OlevelOverallPerformance = Olevel_overall_performance.objects.filter(year="2017").filter(schoolcode = schoolcode).filter(gender = 'T')
         OlevelOverallPerformance = serializers.serialize("json", OlevelOverallPerformance)
         OlevelPerformanceTrends.append({"2017": (olevel_subjects[0].gpa).encode("utf8")})
@@ -70,6 +71,7 @@ def school(request, schoolcode):
         school_name = alevel_subjects[0].schoolname
         school_region = alevel_subjects[0].region
         school_gpa = alevel_subjects[0].gpa
+        school_category = alevel_subjects[0].category.strip()
         AlevelOverallPerformance = Alevel_overall_performance.objects.filter(year="2017").filter(schoolcode = schoolcode).filter(gender = 'T')
         AlevelOverallPerformance = serializers.serialize("json", AlevelOverallPerformance)
         AlevelPerformanceTrends.append({"2017": (alevel_subjects[0].gpa).encode("utf8")})
@@ -81,8 +83,10 @@ def school(request, schoolcode):
 
     for obj in olevel_subjects:
         subjectdetail = {}
-        subjectdetail["subjectname"] = obj.subjectname.encode("utf8")
-        subjectdetail["subjectgpa"] = obj.subjectgpa.encode("utf8")
+        subjectdetail["subjectname"] = obj.subjectname.encode("utf8").strip()
+        subjectdetail["subjectgpa"] = str(obj.subjectgpa)
+        subjectdetail["subjectnatranking"] = obj.subjectnatranking.encode("utf8").strip()
+        subjectdetail["subjectregranking"] = obj.subjectregranking.encode("utf8").strip()
         subjectCol = str(olsubjects[(obj.subjectname).strip()])
         len(subjectCol)
         subjectdetail["subjectPerformance"] =  list(definition.encode("utf8") for definition in SchoolPerformance.values_list(subjectCol, flat=True))
@@ -92,8 +96,10 @@ def school(request, schoolcode):
 
     for obj in alevel_subjects:
         subjectdetail = {}
-        subjectdetail["subjectname"] = obj.subjectname.encode("utf8")
-        subjectdetail["subjectgpa"] = obj.subjectgpa.encode("utf8").strip()
+        subjectdetail["subjectname"] = obj.subjectname.encode("utf8").strip()
+        subjectdetail["subjectgpa"] = str(obj.subjectgpa)
+        subjectdetail["subjectnatranking"] = obj.subjectnatranking.encode("utf8").strip()
+        subjectdetail["subjectregranking"] = obj.subjectregranking.encode("utf8").strip()
         subjectCol = str(alsubjects[(obj.subjectname).strip()])
         len(subjectCol)
         subjectdetail["subjectPerformance"] =  list(definition.encode("utf8") for definition in ASchoolPerformance.values_list(subjectCol, flat=True))
@@ -101,13 +107,13 @@ def school(request, schoolcode):
         subjectdetail["subjectMalePerformance"] =  list(definition.encode("utf8") for definition in ASchoolPerformance.filter(gender = 'M').values_list(subjectCol, flat=True))
         AlevelSchooldetailsList.append(subjectdetail)
 
-    return render (request, 'school.html', {'OlevelSchooldetailsList': OlevelSchooldetailsList, 'AlevelSchooldetailsList': AlevelSchooldetailsList, 'alevel_subjects': alevel_subjects, 'pageTitle': pageTitle,
+    return render (request, 'careerguide/school.html', {'OlevelSchooldetailsList': OlevelSchooldetailsList, 'AlevelSchooldetailsList': AlevelSchooldetailsList, 'alevel_subjects': alevel_subjects, 'pageTitle': pageTitle,
 'school_name': school_name, 'school_region': school_region, 'school_gpa': school_gpa, 'OlevelOverallPerformance': OlevelOverallPerformance, 'AlevelOverallPerformance': AlevelOverallPerformance, 'AlevelPerformanceTrends': AlevelPerformanceTrends, 'OlevelPerformanceTrends': OlevelPerformanceTrends})
 
 
 def get_schools(career, region, gender, edu_level):
     schools = []
-    subjects = data[career]
+    subjects = career["must"]
     if not region:
         if edu_level == '1':
             schools = Alevel_subject_performance.objects.filter(year = "2017").filter(subjectname__in = subjects).values('schoolcode', 'schoolname', 'gpa', 'region', 'natranking', 'regranking').annotate(career_avg=Avg('subjectgpa')).group_by('schoolcode').order_by('career_avg')[:10]

@@ -37,14 +37,10 @@
     }
 
     var subjectGrades = {
-        "Mathematics": "80%",
-        "English": "95%" 
+        "General Studies": "S"
     }
 
-    var preferedCourses = [
-        "Medecine",
-        "Electrical Engineering"
-    ]
+    var preferedCourses = []
 
     jQuery(document).ready(function () {
         /*
@@ -59,7 +55,7 @@
         })
 
         $("#person, #wishlist").niceSelect();
-        
+
         $("#person, #wishlist").change(function(e) {
             var values = $("#person").val() + " + " + $("#wishlist").val();
             $(".option-box.selected").removeClass("selected");
@@ -82,7 +78,7 @@
             }
 
         })
-        
+
         /*
          * ----------------------------------------------------------------------------------------
          *  TESTIMONIAL JS
@@ -115,16 +111,16 @@
          *  Hide Details
          * ----------------------------------------------------------------------------------------
          */
-        
-        $(".hide-details").click(function(e) {
-            var vis = $(".visualisation.sub");
-            vis.toggle();
-            if(vis.is(":visible")) {
-                $(this).text("Hide Details");
-            } else {
-                $(this).text("Show Details");
-            }
-        })
+
+        // $(".hide-details").click(function(e) {
+        //     var vis = $(".visualisation.sub");
+        //     vis.toggle();
+        //     if(vis.is(":visible")) {
+        //         $(this).text("Hide Details");
+        //     } else {
+        //         $(this).text("Show Details");
+        //     }
+        // })
 
         /*
          * ----------------------------------------------------------------------------------------
@@ -141,7 +137,7 @@
          $(".tab-pane").each(function(i) {
             var html = "<div class='nav-tab'>";
             var totalSize = $(".tab-pane").size() - 1;
-          
+
             if (i !== totalSize) {
                 html += "<span href='#' class='next-tab box'>NEXT</span>";
 
@@ -149,7 +145,7 @@
                     html += "<span href='#' class='prev-tab box'>BACK</span>";
                 }
             }
-  
+
             html += "</div>";
 
             $(this).append(html);
@@ -162,7 +158,7 @@
          */
         $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
             var $target = $(e.target);
-        
+
             if ($target.parent().hasClass('disabled')) {
                 return false;
             } else {
@@ -178,7 +174,7 @@
          *  change tab on next/prev arrow click
          * ----------------------------------------------------------------------------------------
          */
-        $('.next-tab, .prev-tab').click(function(e) { 
+        $('.next-tab, .prev-tab').click(function(e) {
             var $active = $('.wizard .nav-wizard li.active');
             $active.next().removeClass('disabled');
 
@@ -321,7 +317,7 @@
                 html += "</div>";
             }
 
-            $(parent).html(html);  
+            $(parent).html(html);
          }
 
          function updateSubjects() {

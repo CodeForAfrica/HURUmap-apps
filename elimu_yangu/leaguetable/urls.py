@@ -1,12 +1,12 @@
 from django.conf.urls import patterns, url
 from wazimap.urls import *
-from elimu_yangu.leaguetable.views import schools, specific_school, embed, HomepageView, EmbedGeographyDetailView, GeographyDetailView
+from elimu_yangu.leaguetable.views import index, schools, specific_school, embed, EmbedGeographyDetailView, GeographyDetailView
 
 urlpatterns = patterns('',
     # url for all schools page
     url(
         regex   = r'^$',
-        view    = cache_page(STANDARD_CACHE_TIME)(HomepageView.as_view()),
+        view    = index,
         kwargs  = {},
         name    = 'leaguetable',
     ),

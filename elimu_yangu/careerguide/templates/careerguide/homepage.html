@@ -36,12 +36,34 @@
                 <div class="col-md-12">
                     <div class="col-md-12 subject-box">
                         <div id="sub-must" class="col-xs-6">
-                            <div class="sub-rule"> TO STUDY <b class="course"> MEDICINE </b>, YOU NEED A PASS IN THE FOLLOWING SUBJECTS: </div>
-                            <div class="subjects"></div>
+                            <div class="sub-rule"> TO STUDY <b class="course"> {{ career.name }} </b>, YOU NEED A PASS IN THE FOLLOWING SUBJECTS: </div>
+                            <div class="subjects">
+                              <div class='col-sm-6'>
+                                {% for sub in career.must %}
+                                <div class='sub-name'>{{ sub }}</div>
+                                {% endfor %}
+                              </div>
+                            </div>
                         </div>
                         <div id="sub-optional" class="col-xs-6 border-left">
+                            {% if school_level == 'A levels' %}
+                            <div class="sub-rule">AND A SATISFACTORY PASS IN:</div>
+                            <div class="subjects">
+                              <div class='col-sm-6'>
+                                <div class='sub-name'>General Studies</div>
+                              </div>
+                            </div>
+                            {% else %}
                             <div class="sub-rule">AND A PASS IN AT LEAST 2 OF THE FOLLOWING SUBJECTS:</div>
-                            <div class="subjects"></div>
+                            <div class="subjects">
+                              <div class='col-sm-6'>
+                                {% for sub in career.olevel_optional %}
+                                  <div class='sub-name'>{{ sub }}</div>
+                                {% endfor %}
+                              </div>
+                            </div>
+                            {% endif %}
+
                         </div>
                     </div>
                 </div>
@@ -58,12 +80,12 @@
                     <table class="table table-hover">
                         <thead>
                           <tr>
-                            <th class="col-md-5">Name of School</th>
+                            <th class="col-md-7">Name of School</th>
                             <th class="col-md-1">Gender</th>
                             <th class="col-md-1">Region</th>
                             <th class="col-md-1">Average GPA</th>
-                            <th class="col-md-2">National Ranking</th>
-                            <th class="col-md-2">Regional Ranking</th>
+                            <th class="col-md-1">National Ranking</th>
+                            <th class="col-md-1">Regional Ranking</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -72,7 +94,7 @@
                             <td><a href="/careerguide/school/{{ school.schoolcode }}">{{ school.schoolname }}</td>
                               <td>Gender</td>
                               <td>{{ school.region }}</td>
-                              <td>{{ school.career_avg }}</td>
+                              <td>{{ school.career_avg| floatformat:3 }}</td>
                               <td>{{ school.natranking }}</td>
                               <td>{{ school.regranking }}</td>
                           </tr>
@@ -87,3 +109,7 @@
   </div>
 
 {% endblock %}
+
+{% block footer_content %}
+    {% include 'footer.html' %}
+{% endblock footer_content %}
