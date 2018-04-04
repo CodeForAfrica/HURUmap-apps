@@ -47,7 +47,7 @@ body {
 
   }
   .title {
-    color: #B7E4FF;
+    color: #0067a3;
     font-size: large;
     border-right: solid #d4d4d4;
     height: inherit;
@@ -93,17 +93,30 @@ body {
   }
 
 }
+.showcase h2 {
+  color:#0067a3;
+}
+
+.space{
+  padding-top:1rem;
+}
 
 .yellow-text {
   color: $color-yellow;
 }
 
 .how-it-works img {
-  max-width: 100px;
+  //max-width: 100px;
+  max-width: 100%;
+  width: 180px;
 }
 
 .how-it-works p {
   margin-bottom: 0;
+  padding-top:1.2rem;
+}
+.background{
+  background-color: #ededed;
 }
 
 .card {
@@ -111,4 +124,6 @@ body {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   padding: 50px 20px;
+  height:350px;
+  background-color:#fff;
 }

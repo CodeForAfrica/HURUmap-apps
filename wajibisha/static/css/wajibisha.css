@@ -1,5 +1,6 @@
 body {
-  background-color: #F6F9FC !important; }
+  background-color: #F6F9FC !important;
+  color: #707070!important;}
 
 #page-header {
   background-color: #0067a3; }
@@ -32,7 +33,7 @@ body {
     vertical-align: middle;
     text-align: center; }
   .mission .title {
-    color: #B7E4FF;
+    color: #0067a3;
     font-size: large;
     border-right: solid #d4d4d4;
     height: inherit;
@@ -53,7 +54,7 @@ body {
   position: relative;
   z-index: 100;
   transform-origin: -40px;
-  transform: skewY(-6deg);
+  transform: skewY(-5deg);
   box-shadow: 0 4px 2px -2px gray; }
   .clipped-header .wrapper {
     position: absolute;
@@ -62,7 +63,7 @@ body {
     top: 0;
     bottom: 0;
     z-index: 103;
-    transform: skewY(6deg);
+    transform: skewY(5deg);
     transform-origin: 0; }
   .clipped-header .wrapper .presentation-img {
     z-index: 1003;
@@ -70,19 +71,59 @@ body {
     position: absolute;
     right: 0; }
 
+.showcase h2 {
+  color: #0067a3; 
+  font-size:28px;}
+
+.space {
+  padding-top: 1rem; }
+
 .yellow-text {
   color: #f8ca0f; }
 
 .how-it-works img {
-  max-width: 100px; }
+  max-width: 100%;
+  width: 180px; }\
 
 .how-it-works p {
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  padding-top: 1.2rem; }
+
+.background {
+  background-color: #ededed; }
 
 .card {
   /* Add shadows to create the "card" effect */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
-  padding: 50px 20px; }
+  padding: 50px 20px;
+  height: 350px;
+  background-color: #fff; }
 
-/*# sourceMappingURL=../../../../../../../../static/css/wajibisha.css.map */
+
+span.input-group-btn {
+  position: absolute;
+  right: 8px;
+  top: 5px;
+  bottom:2px;
+  z-index: 999;
+}
+input.form-control-lg {
+  height:3.2rem;
+}
+
+.clipped-header select{
+  width:250px;
+  background-color:#4CAE4E;
+  border-color:#4CAE4E;
+  color: white;
+}
+.tweet-card {
+  height:180px;
+  width:23rem;
+  margin:1rem;
+  padding:0;
+  border:5px solid; 
+  border-color:#BFD9E8!important;
+}
+
