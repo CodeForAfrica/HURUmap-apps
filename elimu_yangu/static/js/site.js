@@ -178,6 +178,10 @@
             var $active = $('.wizard .nav-wizard li.active');
             $active.next().removeClass('disabled');
 
+            var activeTab = $('.tab-pane.active')
+            if(activeTab.attr("id") == "step2") {
+              getUniversityCourses(subjectGrades, preferedCourses)
+            }
             var $el;
             if($(this).hasClass("next-tab")) {
                 $el = $($active).next();
@@ -194,6 +198,27 @@
             $(".table tr.selected").removeClass("selected");
             $(this).addClass("selected");
          })
+
+
+         function getUniversityCourses(subjectGrades, preferedCourses) {
+           console.log(subjectGrades);
+           console.log(preferedCourses);
+
+           info = {subjectGrades: subjectGrades, preferedCourses:preferedCourses}
+           $.ajax({
+                type: "POST",
+                 url: '/university-finder/',
+                 dataType: 'json',
+                 data: info ,
+                 success: function(result){
+                    var resultHtml = "";
+                    for (var elem in result) {
+                        resultHtml += "<tr><td class='course-name'><div>"+"Course Name"+"</div></td><td>"+"University Name"+"</td></tr>"
+                      }
+                      $('#resultCourses').append(resultHtml);
+                 }
+             });
+         }
 
          /*
          * ----------------------------------------------------------------------------------------

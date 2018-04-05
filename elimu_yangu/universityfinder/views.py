@@ -17,25 +17,31 @@ grades_list= ["A","B","C","D","E","S","F"]
 def index(request):
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
-        form = InputForm(request.POST)
-        # check whether it's valid:
-        if form.is_valid():
-            #process the data in form.cleaned_data as required
-            subjects = form.cleaned_data['subjects']
-            diplomas = form.cleaned_data['diplomas']
-            olevel_subjects = form.cleaned_data['olevel_subjects']
-            courses = []
-            if subjects:
-                alevel_subjects = subjects.split(",")
-                olevel_subjects = olevel_subjects.split(",")
-                courses = alevelroute(alevel_subjects, olevel_subjects)
-            elif diplomas:
-                olevel_subjects = olevel_subjects.split(",")
-                diplomas = diplomas.strip()
+        # form = InputForm(request.POST)
+        # # check whether it's valid:
+        # if form.is_valid():
+        #     #process the data in form.cleaned_data as required
+        #     subjects = form.cleaned_data['subjects']
+        #     diplomas = form.cleaned_data['di[plomas']
+        #     olevel_subjects = form.cleaned_data['olevel_subjects']
+        #     courses = []
+        #     if subjects:
+        #         alevel_subjects = subjects.split(",")
+        #         olevel_subjects = olevel_subjects.split(",")
+        #         courses = alevelroute(alevel_subjects, olevel_subjects)
+        #     elif diplomas:
+        #         olevel_subjects = olevel_subjects.split(",")
+        #         diplomas = diplomas.strip()
+        #
+        #
+        #
+        #     return render(request, 'index.html', {'form': form, 'courses': courses})
+        subjects = request.POST["info"].subjectGrades
+        preferenceMajors = request.POST["info"].preferedCourses
 
-
-
-            return render(request, 'index.html', {'form': form, 'courses': courses})
+        print preferenceMajors
+        data = ["1","1","1","1"]
+        return HttpResponse(data)
 
     # if a GET (or any other method) we'll create a blank form
     else:
