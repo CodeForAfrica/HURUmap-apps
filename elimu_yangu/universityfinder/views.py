@@ -36,7 +36,7 @@ def index(request):
         #
         #
         #     return render(request, 'index.html', {'form': form, 'courses': courses})
-        subjects = request.POST["info"].subjectGrades
+        subjects = request.POST.get('subjectGrades')
         preferenceMajors = request.POST["info"].preferedCourses
 
         print preferenceMajors
