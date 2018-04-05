@@ -204,7 +204,7 @@
            console.log(subjectGrades);
            console.log(preferedCourses);
 
-           info = {subjectGrades: subjectGrades, preferedCourses:preferedCourses}
+           var info = {subjectGrades: subjectGrades, preferedCourses:preferedCourses}
            $.ajax({
                 type: "POST",
                  url: '/university-finder/',
