@@ -70,10 +70,10 @@ def school(request, schoolcode):
     if alevel_subjects:
         school_name = alevel_subjects[0].schoolname.capitalize()
         school_region = alevel_subjects[0].region.capitalize()
-        school_a_gpa = olevel_subjects[0].gpa
-        school_a_category = olevel_subjects[0].category.strip().capitalize()
-        school_a_natranking = olevel_subjects[0].natranking.strip()
-        school_a_regranking = olevel_subjects[0].regranking.strip()
+        school_a_gpa = alevel_subjects[0].gpa
+        school_a_category = alevel_subjects[0].category.strip().capitalize()
+        school_a_natranking = alevel_subjects[0].natranking.strip()
+        school_a_regranking = alevel_subjects[0].regranking.strip()
         AlevelOverallPerformance = Alevel_overall_performance.objects.filter(year="2017").filter(schoolcode = schoolcode).filter(gender = 'T')
         AlevelOverallPerformance = serializers.serialize("json", AlevelOverallPerformance)
         AlevelPerformanceTrends.append({"2017": (alevel_subjects[0].gpa).encode("utf8").strip()})
