@@ -14,8 +14,10 @@ Major_Options = [
 ("Religious Studies", "Religious Studies"), ("Religious Education", "Religious Education"), ("Law","Law"), ("Philosophy", "Philosophy"), ("Botanical Science","Botanical Science"), ("Theology","Theology"),
 ("Psychology","Psychology"), ("Counselling", "Counselling"), ("Health Systems Management", "Health Systems Management"), ("Commerce","Commerce"), ("Divinity","Divinity"), ("Tourism","Tourism"), ("Child Education", "Child Education"),
 ("Business Studies","Business Studies"),("Mathematics", "Mathematics"), ("Banking","Banking"), ("Biology", "Biology"), ("Kiswahili", "Kiswahili"), ("Community Education","Community Education"), ("Microbiology", "Microbiology"),
-("Taxation","Taxation"), ("Zoology","Zoology"), ("Family","Family"), ("Physics", "Physics"), ("Chemistry", "Chemistry")
-]
+("Taxation","Taxation"), ("Zoology","Zoology"), ("Family","Family"), ("Physics", "Physics"), ("Chemistry", "Chemistry"), ("Physiotherapy","Physiotherapy"), ("Social Work", "Social Work"), ("Interior Design","Interior Design"),
+("House Planning","House Planning"), ("Food Technology","Food Technology"), ("Regional Development Planning","Regional Development Planning"), ("Public Relations","Public Relations"), ("Petroleum Geology","Petroleum Geology"),
+("Social Protection","Social Protection"), ("Irrigation","Irrigation"), ("Economics","Economics"), ("Environment Studies","Environment Studies")
+],
 
 
 
