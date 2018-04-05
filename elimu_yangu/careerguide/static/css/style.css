@@ -1,0 +1,187 @@
+body {
+  min-height: 75rem; /* Can be removed; just added for demo purposes */
+  padding-top: 5rem;
+}
+
+.navbar {
+  margin-bottom: 0;
+}
+
+.navbar-brand {
+  font-size: 16px;
+}
+
+.starter-template {
+  padding: 3.5rem 1.5rem;
+  text-align: center;
+}
+
+.jumbotron {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  margin-bottom: 0;
+  background-color: #fff;
+}
+
+.jumbotron p:last-child {
+  margin-bottom: 0;
+}
+
+.jumbotron-heading {
+  font-weight: 300;
+  font-size: 18px;
+}
+
+.jumbotron .container {
+}
+.barfiller {
+  width: 100%;
+  height: 10px;
+  background: #fcfcfc;
+}
+
+.barfiller .fill {
+  display: block;
+  position: relative;
+  width: 0px;
+  height: 100%;
+  background: #333;
+  z-index: 1;
+}
+.barfiller .tipWrap { display: none; }
+
+.barfiller .tip {
+  margin-top: -30px;
+  padding: 2px 4px;
+  font-size: 11px;
+  color: #fff;
+  left: 0px;
+  position: absolute;
+  z-index: 2;
+  background: #333;
+}
+.list-group-item {
+  padding: 1.25rem;
+}
+/*.subjectPerformance{
+  display: none;
+}*/
+.barfiller .tip:after {
+  border: solid;
+  border-color: rgba(0,0,0,.8) transparent;
+  border-width: 6px 6px 0 6px;
+  content: "";
+  display: block;
+  position: absolute;
+  left: 9px;
+  top: 100%;
+  z-index: 9
+}
+.album {
+  min-height: 50rem; /* Can be removed; just added for demo purposes */
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  background-color: #f7f7f7;
+}
+
+table {
+
+}
+
+th {
+    height: 50px;
+}
+tr {
+  height: 40px;
+}
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+th, td {
+  width: 15%;
+  text-transform: capitalize;
+}
+
+
+th:first-child,td:first-child {
+  width: 32%;
+  text-align:left;
+}
+
+th:last-child, td:last-child {
+  width: 8%;
+}
+
+.tabSection {
+  display: none;
+  padding: 20px 0 0;
+  border-top: 1px solid #ddd;
+  font-family: Circular-Medium,sans-serif;
+}
+
+.radio {
+  display: none;
+}
+
+label {
+  display: inline-block;
+  margin: 0 0 -1px;
+  padding: 10px 20px;
+  font-weight: 400;
+  font-size: 18px;
+  text-align: center;
+  color: #bbb;
+  font-family: Circular-Medium,sans-serif;
+  border: 1px solid transparent;
+}
+
+label:before {
+  font-family: fontawesome;
+  font-weight: normal;
+  margin-right: 10px;
+}
+
+/*label[for*='1']:before {
+  content: '\f2c7';
+}
+
+label[for*='2']:before {
+  content: '\f17d';
+}
+
+label[for*='3']:before {
+  content: '\f16b';
+}
+
+label[for*='4']:before {
+  content: '\f1a9';
+}*/
+
+label:hover {
+  color: #888;
+  cursor: pointer;
+}
+
+input:checked + label {
+  color: #555;
+  border: 1px solid #ddd;
+  border-top: 2px solid orange;
+  border-bottom: 1px solid #fff;
+}
+
+#tab1:checked ~ #content1,
+#tab2:checked ~ #content2,
+#tab3:checked ~ #content3,
+#tab4:checked ~ #content4 {
+  display: block;
+}
+
+footer {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+footer p {
+  margin-bottom: .25rem;
+}

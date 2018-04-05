@@ -1,0 +1,743 @@
+﻿html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    padding-top: 90px;
+    padding-bottom: 0px;
+    color: #2e4668;
+    font-family: 'Lato', sans-serif !important;
+}
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px
+}
+
+.margin-top {
+    margin-top: 20px
+}
+
+.row {
+    margin: 0
+}
+
+button {
+    background: #5dadde;
+    border: none;
+    padding: 15px 50px;
+    border-radius: 3px;
+    color: #fff;
+    max-width: 300px
+}
+
+h2.title,
+h3.title {
+    margin: 16px;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+.no-margin {
+    margin: 0
+}
+
+.table tr {
+    cursor: pointer;
+}
+
+.logo {
+    height: 60px;
+}
+
+.navbar {
+    min-height: 90px;
+}
+
+.navbar-nav {
+    margin: 20px 0;
+}
+
+.navbar-toggle {
+    margin: 28px 15px;
+}
+/*
+* ----------------------------------------------------------------------------------------
+* NICE SELECT CSS STYLE
+* ----------------------------------------------------------------------------------------
+*/
+.nice-select.inline-select {
+    float: none;
+    background: transparent;
+    border: none;
+    font-size: inherit;
+    display: inline-block
+}
+
+.nice-select.inline-select:after {
+    height: 10px;
+    width: 10px
+}
+
+.nice-select .option:hover,
+.nice-select .option.focus,
+.nice-select .option.selected.focus {
+    color: #5badde;
+}
+
+.nice-select .option {
+    color: #a6b0bf;
+}
+/*
+* ----------------------------------------------------------------------------------------
+* NAVIGATION BAR CSS STYLE
+* ----------------------------------------------------------------------------------------
+*/
+.navbar-inverse {
+    background-color: #fff;
+    border-color: #a6b0bf;
+    margin-bottom: 0px
+}
+
+.navbar-inverse .navbar-nav > li > a,
+.navbar-inverse .navbar-nav > li > a:hover {
+    color: #A6B0BF
+}
+
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    border-color: #2E4668;
+}
+
+.navbar-inverse .navbar-toggle,
+.navbar-inverse .navbar-toggle:hover {
+    border-color: #2E4668;
+    Background: #2E4668;
+}
+/*----------------------------------------------------------------------------------------*/
+
+/*
+* ----------------------------------------------------------------------------------------
+* FOOTER CSS STYLE
+* ----------------------------------------------------------------------------------------
+*/
+footer {
+    background: #2E4668;
+    padding: 10px 30px 30px;
+    text-align: justify;
+    color: #ffffff;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-link .list-group-item {
+    background-color: transparent;
+    border: none
+}
+
+.footer-link .list-group-item a {
+    color: #fff
+}
+
+.img-fluid.img-thumbnail {
+    background-color: transparent;
+    border: none;
+    width: 180px
+}
+/*----------------------------------------------------------------------------------------*/
+
+/*
+* ----------------------------------------------------------------------------------------
+* LANDING PAGE CSS STYLE
+* ----------------------------------------------------------------------------------------
+*/
+.landing-main {
+    background: url("/static/img/bg.jpg");
+    height: 400px;
+    padding-top: 100px;
+    color: #ffffff;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.tagline {
+    width: 500px;
+    display: block;
+    margin: 0 auto 50px;
+    line-height: 45px;
+    max-width: 90%;
+}
+
+.more-info {
+    width: 340px;
+    display: block;
+    margin: 0 auto 150px;
+    line-height: 30px;
+    max-width: 90;
+}
+
+.help-box {
+    background: #2E4668;
+    display: block;
+    margin: 0;
+    padding: 20px;
+    border-top: 10px solid #D0A331;
+    color: #ffffff;
+}
+
+.help-text {
+    font-size: 30px;
+    color: #D0A331;
+    margin-bottom: 40px;
+}
+
+    .help-text.with-padding {
+        padding: 40px 20px;
+    }
+
+.inline-select {
+    background: transparent;
+    border: none;
+    color: #5badde;
+    outline: none;
+}
+
+.help-info {
+    font-size: 24px;
+}
+
+    .help-info > div {
+        display: inline-block;
+    }
+
+.option-box {
+    background: #a6b0bf;
+    margin: 4%;
+    color: #ffffff;
+    display: block;
+    padding: 10px;
+    height: 350px
+}
+
+.option-box:hover {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.option-box.selected {
+    background: #5badde
+}
+
+.description {
+    margin: 50px 25px 25px;
+    font-size: 16px;
+}
+
+.icon {
+    height: 100px;
+    width: 100px;
+    display: inline-block;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    padding: 35px;
+}
+/*----------------------------------------------------------------------------------------*/
+
+/*
+* ----------------------------------------------------------------------------------------
+* TESTIMONIAL CSS STYLE
+* ----------------------------------------------------------------------------------------
+*/
+
+
+.testimonial-area {
+    background: #ffffff;
+    margin-top: 30px;
+}
+
+    .testimonial-area .section-title h2 {
+        color: #fff
+    }
+
+.testimonial-list {
+}
+
+.single-testimonial {
+    background: transparent;
+    padding: 30px;
+    color: #5baDDe;
+    padding: 30px
+}
+
+    .single-testimonial h2 {
+        font-size: 16px;
+        text-transform: uppercase;
+        font-weight: 700
+    }
+
+    .single-testimonial h3 {
+        font-size: 12px;
+        text-transform: capitalize;
+        font-weight: 300;
+        margin-top: 0
+    }
+
+    .single-testimonial p {
+        line-height: 25px
+    }
+
+    .single-testimonial i {
+        color: #000;
+        background: #fff;
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        line-height: 40px
+    }
+
+.owl-theme .owl-controls .owl-page span {
+    display: block;
+    width: 10px;
+    height: 10px;
+    margin: 5px 7px;
+    border-radius: 20px;
+    background: #000
+}
+
+/*----------------------------------------------------------------------------------------*/
+
+/*
+* ----------------------------------------------------------------------------------------
+* MAP CSS STYLE
+* ----------------------------------------------------------------------------------------
+*/
+
+.map-box {
+    background: #2e4667;
+    color: #ffffff;
+    min-height: 80px;
+}
+
+.map-title {
+    margin-top: 0 !important;
+    padding-top: 20px;
+}
+
+.map-description {
+    color: #A6B0BF;
+}
+
+.map-title.center,
+.map-description.center {
+    max-width: 90%;
+    margin: 10px auto;
+    text-align: center;
+}
+
+.map {
+    background: url(/images/map.png);
+    height: 500px;
+}
+
+/*----------------------------------------------------------------------------------------*/
+
+/*
+* ----------------------------------------------------------------------------------------
+* SCHOOL CSS STYLE
+* ----------------------------------------------------------------------------------------
+*/
+
+.list-group.school .list-group-item {
+    height: 75px;
+    font-weight: 500;
+}
+
+    .list-group.school .list-group-item a {
+        color: #2e4668;
+    }
+
+.school-type {
+    color: #5BADDE;
+}
+
+.school-comapare {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+    /*
+* ----------------------------------------------------------------------------------------
+* SEARCH CSS STYLE
+* ----------------------------------------------------------------------------------------
+*/
+    .search {
+        padding: 15px 30px;
+        margin: 0
+    }
+
+
+/*
+* ----------------------------------------------------------------------------------------
+* CHART CSS STYLE
+* ----------------------------------------------------------------------------------------
+*/
+.chart-box,
+.detail-box {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px 0;
+    margin: 20px 0;
+}
+
+.chart {
+    padding: 10px 0;
+    margin: 10px 0;
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.chart img {
+    width: 100%;
+}
+
+/*
+* ----------------------------------------------------------------------------------------
+* FIND SCHOOL STYLE
+* ----------------------------------------------------------------------------------------
+*/
+
+.find-school {
+    background: #2E4668;
+    display: block;
+    margin: 0;
+    color: #ffffff;
+    padding: 20px;
+}
+
+.find-school button {
+    margin-top: 20px;
+}
+
+.subject-box {
+    border: 2px solid #CEA235;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: left;
+    border-radius: 5px;
+}
+
+.subject-box > div {
+    padding-bottom: 15px;
+}
+
+.subject-box .border-left {
+    border-left: 2px solid #CEA235
+}
+
+.sub-rule {
+    margin-bottom: 20px;
+    margin-left: 20px;
+    color: #CEA235;
+}
+
+.sub-name {
+    margin: 5px;
+}
+
+.box-table {
+    border: 1px solid;
+    border-radius: 5px;
+    margin: 10px 0 20px;
+}
+
+.box-table .table {
+    margin: 0;
+}
+
+/*
+* ----------------------------------------------------------------------------------------
+* SCHOOL PAGE STYLE
+* ----------------------------------------------------------------------------------------
+*/
+.visualisation {
+    height: 500px;
+    background:#A6B0BF;
+    border-radius: 5px;
+    margin: 20px 0;
+}
+
+.details > div{
+    display: inline-block;
+}
+
+.details-info {
+    margin-right: 20px;
+}
+
+.hide-details {
+    color: #A6B0BF;
+    cursor: pointer;    white-space: nowrap;
+}
+
+/*
+* ----------------------------------------------------------------------------------------
+* UNIVERSITY FIND STYLE
+* ----------------------------------------------------------------------------------------
+*/
+.tab-content{
+    margin-top: 50px;
+}
+
+.box-item,
+.add-box-item {
+    width: 500px;
+    margin: 10px auto;
+    border-radius: 3px;
+    clear: both;
+    max-width: 90%;
+}
+
+.box-item {
+    padding: 10px;
+    border: 1px solid #A6B0BF
+}
+
+.add-box-item {
+    border: 1px dotted #5BADDE;
+    color: #5BADDE;
+    text-align: center;
+    cursor: pointer
+}
+
+.add-box-item span {
+    vertical-align: text-bottom;
+}
+
+.add-box-item b {
+    font-size: 30px;
+    font-weight: 900;
+    vertical-align: sub;
+    padding-left: 15px
+}
+
+.box-item span {
+    display: inline-block
+}
+
+.box-item .name {
+    width: 415px;
+    max-width: 74%;
+}
+
+.box-item .grade {
+    width: 50px
+}
+
+.box-item .remove {
+    width: 10px;
+    text-align: center;
+    color: #a6b0bf;
+    cursor: pointer;
+    float: right;
+    font-size: 25px;
+    margin-top: -10px;
+}
+
+section .wizard {
+    min-height: 500px;
+    position: relative
+}
+
+.pagination > li > a,
+.pagination > li > span {
+    color: #A6B0BF;
+    cursor: pointer;
+}
+
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+    background-color: #A6B0BF;
+    border-color: #A6B0BF;
+}
+
+.pagination > .solid > a,
+.pagination > .solid > span {
+    background-color: #5BADDE;
+    border-color: #5BADDE;
+    color: #FFFFFF;
+}
+
+#page-title {
+    margin: 30px 10px;
+}
+
+/*
+* ----------------------------------------------------------------------------------------
+* COURSE DETAIL STYLE
+* ----------------------------------------------------------------------------------------
+*/
+.course-detail {
+    margin-top: 20px;
+    border-top: 1px solid #ddd;
+}
+
+.course-detail .title {
+    font-size: 16px;
+    margin: 20px 0;
+}
+
+.course-detail .description {
+    margin: 15px 50px;
+}
+
+.course-detail ol {
+    margin-left: 25px;
+}
+
+td.course-name {
+    color: #5BADDE;
+}
+
+.requirements {
+    display: none;
+    color: #a6b0bf;
+}
+
+.more-details {
+    display: none;
+    color: #5BADDE;
+    text-decoration: none;
+}
+
+.more-details:hover {
+    text-decoration: none;
+    color: #5BADDE;
+}
+
+.table tr.selected .requirements,
+.table tr.selected .more-details {
+    display: block
+}
+
+/*
+* ----------------------------------------------------------------------------------------
+* 400px
+* ----------------------------------------------------------------------------------------
+*/
+
+@media (max-width: 400px) {
+    .list-group.school .list-group-item {
+        height: 100px !important;
+    }
+}
+
+/*
+* ----------------------------------------------------------------------------------------
+* 480px
+* ----------------------------------------------------------------------------------------
+*/
+
+@media (max-width: 480px) {
+    .list-group.school .list-group-item {
+        height: 80px
+    }
+
+    .option-box {
+        height: 250px !important;
+    }
+}
+
+/*
+* ----------------------------------------------------------------------------------------
+* 768px
+* ----------------------------------------------------------------------------------------
+*/
+
+@media (min-width: 768px) {
+    .navbar-nav {
+        float: right
+    }
+}
+
+/*
+* ----------------------------------------------------------------------------------------
+* 992px
+* ----------------------------------------------------------------------------------------
+*/
+
+@media (min-width: 992px) {
+    .option-box {
+        height: 250px
+    }
+
+    .school-comapare .col-md-6:first-child .container {
+        margin-right: 0
+    }
+
+    .school-comapare .col-md-6:last-child .container {
+        margin-left: 0
+    }
+
+    .col-md-6 .map-box .container {
+        width: 485px
+    }
+}
+
+@media (max-width: 992px) {
+    body {
+        margin-bottom: 0; /* Margin bottom by footer height */
+    }
+
+    footer {
+        position: initial; /* Set the fixed height of the footer here */
+    }
+}
+
+/*
+* ----------------------------------------------------------------------------------------
+* 1200px
+* ----------------------------------------------------------------------------------------
+*/
+
+@media (min-width: 1200px) {
+    body {
+        margin-bottom: 260px /* Margin bottom by footer height */
+    }
+
+    footer {
+        height: 260px  /* Set the fixed height of the footer here */
+    }
+
+    .list-group.school .list-group-item {
+        height: 80px
+    }
+
+    .col-md-6 .map-box .container {
+        width: 585px
+    }
+}
+
+/*
+* ----------------------------------------------------------------------------------------
+* 992px - 1200px
+* ----------------------------------------------------------------------------------------
+*/
+
+@media (min-width: 992px) and (max-width: 1200px) {
+    body {
+        margin-bottom: 330px; /* Margin bottom by footer height */
+    }
+
+    footer {
+        height: 330px; /* Set the fixed height of the footer here */
+    }
+}

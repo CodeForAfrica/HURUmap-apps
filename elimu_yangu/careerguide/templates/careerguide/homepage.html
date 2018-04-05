@@ -1,0 +1,115 @@
+<!-- index.html-->
+{% extends 'homepage_country.html' %}{% load humanize partition staticfiles %}
+
+{% block head_title %}Career Guide{% endblock %}
+
+{% block content_container %}
+  <div class="main-content">
+    <div class="find-school text-center">
+      <form action="/careerguide/" method="post">
+        <div class="help-text">FIND THE BEST HIGHSCHOOL FOR YOUR CAREER</div>
+        <div class="help-info">
+          {% csrf_token %}
+            <div>
+                <span>I am a</span>
+                {{ form.gender }}
+            </div>
+            <div>
+                <span>from</span>
+                {{ form.region }}
+            </div>
+            <div>
+                <span>currently at</span>
+                {{ form.education_level }}
+            </div>
+            <div>
+                <span>and I want to be</span>
+                {{ form.career }}
+            </div>
+        </div>
+
+        <button id="findSchool" type="submit" >FIND</button>
+        </form>
+        {% if schools %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-12 subject-box">
+                        <div id="sub-must" class="col-xs-6">
+                            <div class="sub-rule"> TO STUDY <b class="course"> {{ career.name }} </b>, YOU NEED A PASS IN THE FOLLOWING SUBJECTS: </div>
+                            <div class="subjects">
+                              <div class='col-sm-6'>
+                                {% for sub in career.must %}
+                                <div class='sub-name'>{{ sub }}</div>
+                                {% endfor %}
+                              </div>
+                            </div>
+                        </div>
+                        <div id="sub-optional" class="col-xs-6 border-left">
+                            {% if school_level == 'A levels' %}
+                            <div class="sub-rule">AND A SATISFACTORY PASS IN:</div>
+                            <div class="subjects">
+                              <div class='col-sm-6'>
+                                <div class='sub-name'>General Studies</div>
+                              </div>
+                            </div>
+                            {% else %}
+                            <div class="sub-rule">AND A PASS IN AT LEAST 2 OF THE FOLLOWING SUBJECTS:</div>
+                            <div class="subjects">
+                              <div class='col-sm-6'>
+                                {% for sub in career.olevel_optional %}
+                                  <div class='sub-name'>{{ sub }}</div>
+                                {% endfor %}
+                              </div>
+                            </div>
+                            {% endif %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    {% if schools %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="title text-center">List of Schools doing well in {{ school_level }} subjects aligning to your career </h3>
+                <div class="box-table">
+                    <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th class="col-md-7">Name of School</th>
+                            <th class="col-md-1">Gender</th>
+                            <th class="col-md-1">Region</th>
+                            <th class="col-md-1">Average GPA</th>
+                            <th class="col-md-1">National Ranking</th>
+                            <th class="col-md-1">Regional Ranking</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for school in schools %}
+                          <tr>
+                            <td><a href="/careerguide/school/{{ school.schoolcode }}">{{ school.schoolname }}</td>
+                              <td>Gender</td>
+                              <td>{{ school.region }}</td>
+                              <td>{{ school.career_avg| floatformat:3 }}</td>
+                              <td>{{ school.natranking }}</td>
+                              <td>{{ school.regranking }}</td>
+                          </tr>
+                          {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+  </div>
+
+{% endblock %}
+
+{% block footer_content %}
+    {% include 'footer.html' %}
+{% endblock footer_content %}

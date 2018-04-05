@@ -1,0 +1,132 @@
+{% extends 'homepage_country.html' %}{% load humanize partition staticfiles %}
+
+{% block head_title %}League Table : Schools Ranking{% endblock %}
+
+{% block content_container %}
+
+  <div class="map-box">
+      <h3 class="map-title center">Discover The Stories Behind The Data</h3>
+      <h5 class="map-description center">HURUMap description comes here</h5>
+      <div id="slippy-map" class="map"></div>
+  </div>
+
+  <div class="help-box text-center">
+      <div class="help-text">HOW IT WORKS?</div>
+      <div class="container">
+          <div class="row">
+              <div class="col-sm-4 option-round">
+                  <span class="icon">Icon</span>
+                  <h3 class="title">FIND FACTS</h3>
+                  <div class="description">Fusce temper felis lacus, a hendrerit urna facilisis at. Sed sollocitudin bibendum tincidunt. Aenean a bibendum magna.</div>
+              </div>
+              <div class="col-sm-4 option-round">
+                  <span class="icon">Icon</span>
+                  <h3 class="title">VISUALISE</h3>
+                  <div class="description">Pellentesque feugiat urna a lectus consequat, quis vulpulate nunc feugiat. Fusce non augue ligula. Ut sed ultrices lacus.</div>
+              </div>
+              <div class="col-sm-4 option-round">
+                  <span class="icon">Icon</span>
+                  <h3 class="title">GET CONTENT</h3>
+                  <div class="description">Quisque volutpat mi consectetur, rutrum lacus nec, porttitor nunc. Vivamus non est vitae erat feugiat ultricies eu id sapien.</div>
+              </div>
+          </div>
+       </div>
+  </div>
+
+    <!-- <div class="showcase how-it-works bg-tan text-center">
+        {% block how_it_works %}
+            <div class="wrapper clearfix">
+                <h1>How It Works</h1>
+                <br/>
+                <div class="column-third">
+                    <p><img src="{% static 'img/icons/blurbs/facts.png' %}" alt=""></p>
+                    <h3>Find Facts</h3>
+                    <p>Population and financial figures are broken down by category: Elections, Demographics, Service Delivery, Economics, and Education.</p>
+                </div>
+                <div class="column-third">
+                    <p><img src="{% static 'img/icons/blurbs/visualise.png' %}" alt=""></p>
+                    <h3>Visualize</h3>
+                    <p>Our library of charts gives you insight into data from places you research. Look for them on profile pages. You can embed the charts on your own site.</p>
+                </div>
+                <div class="column-third">
+                    <p><img src="{% static 'img/icons/blurbs/context.png' %}" alt=""></p>
+                    <h3>Get Context</h3>
+                    <p>Pre-computed statistics are presented alongside each data point so you can see how each place fits into a large context.</p>
+                </div>
+            </div>
+            <div class="wrapper">
+                <br/><br/>
+                <p><a href="/help" class="btn btn-lg bg-bottle-green">Learn more</a></p>
+            </div>
+        {% endblock %}
+    </div> -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="title text-center">SCHOOL RANKINGS</h2>
+                <!--
+                * =================================
+                * Top School List
+                * =================================
+                -->
+                <div class="col-md-6">
+                    <h3 class="title">10 Top Schools</h3>
+                    <ul class="list-group school">
+                      {% for school in schools.best_schools|slice:":10" %}
+                        <li class="list-group-item">
+                            <a href="leaguetable/schools/{{ school.code }}">
+                                <div class="col-xs-5">
+                                    <div class="school-name">{{ school.name|slice:":-16" }} SCHOOL</div>
+                                    <div class="school-type">Mixed</div>
+                                </div>
+                                <div class="col-xs-5">
+                                    <div class="school-rank">#{{ school.national_rank_all }} in Tanzania</div>
+                                    <div class="school-rank">#{{ school.regional_rank_all }} in {{ school.region }}</div>
+                                </div>
+                                <div class="col-xs-2">
+                                    {{ school.pass_rate }}
+                                </div>
+                            </a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                </div>
+                <!--
+                * =================================
+                * Lowest School List
+                * =================================
+                -->
+                <div class="col-md-6">
+                    <h3 class="title">10 Lowest Schools</h3>
+                    <ul class="list-group school">
+                      {% for school in schools.worst_schools|slice:":10" %}
+                        <li class="list-group-item">
+                            <a href="leaguetable/schools/{{ school.code }}">
+                                <div class="col-xs-5">
+                                    <div class="school-name">{{ school.name|slice:":-16" }} SCHOOL</div>
+                                    <div class="school-type">Mixed</div>
+                                </div>
+                                <div class="col-xs-5">
+                                    <div class="school-rank">#{{ school.national_rank_all }} in Tanzania</div>
+                                    <div class="school-rank">#{{ school.regional_rank_all }} in {{ school.region }}</div>
+                                </div>
+                                <div class="col-xs-2">
+                                    {{ school.pass_rate }}
+                                </div>
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+{% endblock %}
+
+{% block footer_content %}
+    {% include 'footer.html' %}
+{% endblock footer_content %}

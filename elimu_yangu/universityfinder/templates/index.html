@@ -1,0 +1,482 @@
+{% extends 'homepage_country.html' %}{% load humanize partition staticfiles %}
+
+{% block head_title %}University Finder{% endblock %}
+
+{% block content_container %}
+<div class="main-content">
+
+<div class="container">
+<div class="row">
+    <h2 id="page-title" class="title text-center">FILL IN YOUR SUBJECTS AND GRADES</h2>
+    <section>
+        <div class="wizard">
+            <ul class="nav nav-wizard">
+
+                <li class="active">
+                    <a href="#step1" data-toggle="tab" data-title="FILL IN YOUR SUBJECTS AND GRADES">
+                        <span>Step 01</span>
+                        <span class="info">Fill in Subjects</span>
+                    </a>
+                </li>
+
+                <li class="disabled">
+                    <a href="#step2" data-toggle="tab" data-title="ENTER YOUR PREFFERED COURSES">
+                        <span>Step 02</span>
+                        <span class="info">Set Preferred Courceses</span>
+                    </a>
+                </li>
+
+                <li class="disabled">
+                    <a href="#step3" data-toggle="tab" data-title="SELECT A COURSE TO SEE MORE DETAILS">
+                        <span>Step 03</span>
+                        <span class="info">View Course Options</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane active" id="step1">
+                    <div id="subject-grades"></div>
+                    <div type="button" class="add-box-item" data-toggle="modal" data-target="#subModal">
+                        <span>Add Subject</span>
+                        <b> + </b>
+                    </div>
+
+                    <div class="modal fade" id="subModal" role="dialog">
+                        <div class="modal-dialog">
+
+                          <!-- Modal content-->
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title">Add Subject</h4>
+                            </div>
+                            <div class="modal-body">
+                              <div class="form-group">
+                                <label for="sub-name">Name:</label>
+                                {{ form.subjects}}
+                              </div>
+                              <div class="form-group">
+                                <label for="sub-grade">Grade:</label>
+                                {{ form.grades }}
+                              </div>
+                              <button id="add-sub-grade" type="button" class="btn btn-default">Save</button>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane" id="step2">
+                    <div id="prefered-courses"></div>
+                    <div type="button" class="add-box-item" data-toggle="modal" data-target="#courseModal">
+                        <span>Add Course</span>
+                        <b> + </b>
+                    </div>
+
+                    <div class="modal fade" id="courseModal" role="dialog">
+                        <div class="modal-dialog">
+
+                          <!-- Modal content-->
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title">Add Course</h4>
+                            </div>
+                            <div class="modal-body">
+                              <div class="form-group">
+                                <label for="course-name">Name:</label>
+                                {{ form.majors }}
+                              </div>
+                              <button id="add-prefered-course" type="button" class="btn btn-default">Save</button>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="tab-pane" id="step3">
+                    <div class="col-md-12">
+                        <h2 class="title text-center">PREFFERED COURSES</h2>
+                        <div class="box-table">
+                            <table class="table table-hover">
+                                <thead>
+                                  <tr>
+                                    <th class="col-md-5">Name of Course</th>
+                                    <th class="col-md-3">University</th>
+                                    <th class="col-md-2 text-center">Location</th>
+                                    <th class="col-md-2 text-center">Admission Likelihood</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td class="course-name">
+                                        <div>Course Name</div>
+                                        <div class="requirements">Requirements: Eng A, Mat A, Bio B+</div>
+                                    </td>
+                                    <td>University Name</td>
+                                    <td class="text-center">Name of Region</td>
+                                    <td class="text-center">
+                                      <span>85%</span>
+                                      <a class="more-details" href="CourseDetail.htm">More Details</a>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="course-name">
+                                        <div>Course Name</div>
+                                        <div class="requirements">Requirements: Eng A, Mat A, Bio B+</div>
+                                    </td>
+                                    <td>University Name</td>
+                                    <td class="text-center">Name of Region</td>
+                                    <td class="text-center">
+                                      <span>84%</span>
+                                      <a class="more-details" href="CourseDetail.htm">More Details</a>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="course-name">
+                                        <div>Course Name</div>
+                                        <div class="requirements">Requirements: Eng A, Mat A, Bio B+</div>
+                                    </td>
+                                    <td>University Name</td>
+                                    <td class="text-center">Name of Region</td>
+                                    <td class="text-center">
+                                      <span>83%</span>
+                                      <a class="more-details" href="CourseDetail.htm">More Details</a>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="course-name">
+                                        <div>Course Name</div>
+                                        <div class="requirements">Requirements: Eng A, Mat A, Bio B+</div>
+                                    </td>
+                                    <td>University Name</td>
+                                    <td class="text-center">Name of Region</td>
+                                    <td class="text-center">
+                                      <span>82%</span>
+                                      <a class="more-details" href="CourseDetail.htm">More Details</a>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="course-name">
+                                        <div>Course Name</div>
+                                        <div class="requirements">Requirements: Eng A, Mat A, Bio B+</div>
+                                    </td>
+                                    <td>University Name</td>
+                                    <td class="text-center">Name of Region</td>
+                                    <td class="text-center">
+                                      <span>80%</span>
+                                      <a class="more-details" href="CourseDetail.htm">More Details</a>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="course-name">
+                                        <div>Course Name</div>
+                                        <div class="requirements">Requirements: Eng A, Mat A, Bio B+</div>
+                                    </td>
+                                    <td>University Name</td>
+                                    <td class="text-center">Name of Region</td>
+                                    <td class="text-center">
+                                      <span>77%</span>
+                                      <a class="more-details" href="CourseDetail.htm">More Details</a>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="course-name">
+                                        <div>Course Name</div>
+                                        <div class="requirements">Requirements: Eng A, Mat A, Bio B+</div>
+                                    </td>
+                                    <td>University Name</td>
+                                    <td class="text-center">Name of Region</td>
+                                    <td class="text-center">
+                                      <span>75%</span>
+                                      <a class="more-details" href="CourseDetail.htm">More Details</a>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="course-name">
+                                        <div>Course Name</div>
+                                        <div class="requirements">Requirements: Eng A, Mat A, Bio B+</div>
+                                    </td>
+                                    <td>University Name</td>
+                                    <td class="text-center">Name of Region</td>
+                                    <td class="text-center">
+                                      <span>74%</span>
+                                      <a class="more-details" href="CourseDetail.htm">More Details</a>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="course-name">
+                                        <div>Course Name</div>
+                                        <div class="requirements">Requirements: Eng A, Mat A, Bio B+</div>
+                                    </td>
+                                    <td>University Name</td>
+                                    <td class="text-center">Name of Region</td>
+                                    <td class="text-center">
+                                      <span>70%</span>
+                                      <a class="more-details" href="CourseDetail.htm">More Details</a>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="course-name">
+                                        <div>Course Name</div>
+                                        <div class="requirements">Requirements: Eng A, Mat A, Bio B+</div>
+                                    </td>
+                                    <td>University Name</td>
+                                    <td class="text-center">Name of Region</td>
+                                    <td class="text-center">
+                                      <span>68%</span>
+                                      <a class="more-details" href="CourseDetail.htm">More Details</a>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="course-name">
+                                        <div>Course Name</div>
+                                        <div class="requirements">Requirements: Eng A, Mat A, Bio B+</div>
+                                    </td>
+                                    <td>University Name</td>
+                                    <td class="text-center">Name of Region</td>
+                                    <td class="text-center">
+                                      <span>65%</span>
+                                      <a class="more-details" href="CourseDetail.htm">More Details</a>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <h2 class="title text-center">OTHER COURSES THAT YOU'RE ADMISSIBLE FOR</h2>
+                        <div class="box-table">
+                            <table class="table table-hover">
+                                <thead>
+                                  <tr>
+                                    <th class="col-md-5">Name of Course</th>
+                                    <th class="col-md-3">University</th>
+                                    <th class="col-md-2 text-center">Location</th>
+                                    <th class="col-md-2 text-center">Admission Likelihood</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td class="course-name">
+                                        <div>Course Name</div>
+                                        <div class="requirements">Requirements: Eng A, Mat A, Bio B+</div>
+                                    </td>
+                                    <td>University Name</td>
+                                    <td class="text-center">Name of Region</td>
+                                    <td class="text-center">
+                                      <span>85%</span>
+                                      <a class="more-details" href="CourseDetail.htm">More Details</a>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="course-name">
+                                        <div>Course Name</div>
+                                        <div class="requirements">Requirements: Eng A, Mat A, Bio B+</div>
+                                    </td>
+                                    <td>University Name</td>
+                                    <td class="text-center">Name of Region</td>
+                                    <td class="text-center">
+                                      <span>84%</span>
+                                      <a class="more-details" href="CourseDetail.htm">More Details</a>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="course-name">
+                                        <div>Course Name</div>
+                                        <div class="requirements">Requirements: Eng A, Mat A, Bio B+</div>
+                                    </td>
+                                    <td>University Name</td>
+                                    <td class="text-center">Name of Region</td>
+                                    <td class="text-center">
+                                      <span>83%</span>
+                                      <a class="more-details" href="CourseDetail.htm">More Details</a>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="course-name">
+                                        <div>Course Name</div>
+                                        <div class="requirements">Requirements: Eng A, Mat A, Bio B+</div>
+                                    </td>
+                                    <td>University Name</td>
+                                    <td class="text-center">Name of Region</td>
+                                    <td class="text-center">
+                                      <span>82%</span>
+                                      <a class="more-details" href="CourseDetail.htm">More Details</a>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="course-name">
+                                        <div>Course Name</div>
+                                        <div class="requirements">Requirements: Eng A, Mat A, Bio B+</div>
+                                    </td>
+                                    <td>University Name</td>
+                                    <td class="text-center">Name of Region</td>
+                                    <td class="text-center">
+                                      <span>80%</span>
+                                      <a class="more-details" href="CourseDetail.htm">More Details</a>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="course-name">
+                                        <div>Course Name</div>
+                                        <div class="requirements">Requirements: Eng A, Mat A, Bio B+</div>
+                                    </td>
+                                    <td>University Name</td>
+                                    <td class="text-center">Name of Region</td>
+                                    <td class="text-center">
+                                      <span>77%</span>
+                                      <a class="more-details" href="CourseDetail.htm">More Details</a>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="course-name">
+                                        <div>Course Name</div>
+                                        <div class="requirements">Requirements: Eng A, Mat A, Bio B+</div>
+                                    </td>
+                                    <td>University Name</td>
+                                    <td class="text-center">Name of Region</td>
+                                    <td class="text-center">
+                                      <span>75%</span>
+                                      <a class="more-details" href="CourseDetail.htm">More Details</a>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="course-name">
+                                        <div>Course Name</div>
+                                        <div class="requirements">Requirements: Eng A, Mat A, Bio B+</div>
+                                    </td>
+                                    <td>University Name</td>
+                                    <td class="text-center">Name of Region</td>
+                                    <td class="text-center">
+                                      <span>74%</span>
+                                      <a class="more-details" href="CourseDetail.htm">More Details</a>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="course-name">
+                                        <div>Course Name</div>
+                                        <div class="requirements">Requirements: Eng A, Mat A, Bio B+</div>
+                                    </td>
+                                    <td>University Name</td>
+                                    <td class="text-center">Name of Region</td>
+                                    <td class="text-center">
+                                      <span>70%</span>
+                                      <a class="more-details" href="CourseDetail.htm">More Details</a>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="course-name">
+                                        <div>Course Name</div>
+                                        <div class="requirements">Requirements: Eng A, Mat A, Bio B+</div>
+                                    </td>
+                                    <td>University Name</td>
+                                    <td class="text-center">Name of Region</td>
+                                    <td class="text-center">
+                                      <span>68%</span>
+                                      <a class="more-details" href="CourseDetail.htm">More Details</a>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="course-name">
+                                        <div>Course Name</div>
+                                        <div class="requirements">Requirements: Eng A, Mat A, Bio B+</div>
+                                    </td>
+                                    <td>University Name</td>
+                                    <td class="text-center">Name of Region</td>
+                                    <td class="text-center">
+                                      <span>65%</span>
+                                      <a class="more-details" href="CourseDetail.htm">More Details</a>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-12 text-center">
+                        <ul class="pagination">
+                          <li class="page-item solid" data-page="prev"><span class="page-link">PREV</span></li>
+                          <li class="page-item active" data-page="1"><span class="page-link">1</span></li>
+                          <li class="page-item" data-page="2"><span class="page-link">2</span></li>
+                          <li class="page-item" data-page="3"><span class="page-link">3</span></li>
+                          <li class="page-item" data-page="4"><span class="page-link">4</span></li>
+                          <li class="page-item" data-page="5"><span class="page-link">5</span></li>
+                          <li class="page-item solid" data-page="next"><span class="page-link">NEXT</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="clearfix">
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+</div>
+</div>
+  <main role="main" class="container">
+    <section class="starter-template">
+      <div class="container">
+        <form action="/" method="post">
+          {% csrf_token %}
+          {{ form.non_field_errors }}
+          <h4>Fill in your A-level subjects and grades</h4>
+          <br />
+          <p class="jumbotron-heading"> {{ form.subjects.label }} {{ form.subjects }} </p>
+          <span>{{ form.subjects.help_text }}</span>
+          <br />
+          <span>OR</span>
+          <br />
+          <h4> Fill in your Diploma Course and GPA</h4>
+          <br />
+          <p class="jumbotron-heading"> {{ form.diplomas.label }} {{ form.diplomas }} </p>
+          <span>{{ form.diplomas.help_text }}</span>
+          <br />
+
+          <h4> Fill in your O-level subjects and grades</h4>
+          <br />
+          <p class="jumbotron-heading"> {{ form.olevel_subjects.label }} {{ form.olevel_subjects }} </p>
+          <span>{{ form.olevel_subjects.help_text }}</span>
+          <br />
+          <input type="submit" value="Submit" />
+        </form>
+        <!-- <p class="lead"> Dar-es-salaam</p> -->
+          <!-- <a href="/stations" class="btn btn-primary">Find Other Stations</a> -->
+          <!-- <a href="#" class="btn btn-secondary">Secondary action</a> -->
+      </div>
+    </section>
+    {% if courses %}
+      <section class=text-center>
+        <div class="container">
+          <h4>List of courses and university with higher chances of admission</h4>
+          <table>
+            <tr>
+              <th>University Name</th>
+              <th>Course Name</th>
+              <th></th>
+            </tr>
+            {% for course in courses %}
+              <tr>
+                <td>{{ course.university_name }}</td>
+                <td>{{ course.course_name }}</td>
+                <td><a href="#">More</a></td>
+              </tr>
+            {% endfor %}
+        </table>
+      </div>
+      </section>
+    {% endif %}
+  </main>
+
+{% endblock %}
+{% block footer_content %}
+    {% include 'footer.html' %}
+{% endblock footer_content %}

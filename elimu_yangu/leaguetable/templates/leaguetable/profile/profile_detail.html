@@ -1,0 +1,222 @@
+{% extends 'profile/profile_detail.html' %}
+{% load staticfiles %}
+{% block head_css_extra %}
+<link rel="stylesheet" href="{% static 'lib/bootstrap/dist/css/bootstrap.css' %}" />
+<link rel="stylesheet" href="{% static 'css/site.css' %}" />
+{% endblock %}
+{% block header %}
+<style>
+    #page-footer {
+        background: #2E4668;
+        padding: 10px 30px 30px;
+    }
+    #page-footer img {
+      max-height: 100%;
+      margin: 0;
+    }
+</style>
+<header id="page-header">
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container">
+              <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="">
+                      <img class="logo" src="{% static 'img/logo0.png' %}" />
+                  </a>
+              </div>
+              <div class="navbar-collapse collapse">
+                  <ul class="nav navbar-nav text-center">
+                      <li><a href="/leaguetable">SCHOOL LEAGUE</a></li>
+                      <li><a href="/careerguide">CAREER GUIDE</a></li>
+                      <li><a href="/university-finder">UNI FINDER</a></li>
+                      <li><a href="/about">ABOUT</a></li>
+                      <li><a href="/contact">CONTACT US</a></li>
+                  </ul>
+              </div>
+          </div>
+      </nav>
+</header>
+{% block header_content %}
+<div class="main-content">
+  <div class="map-box">
+
+    <div id="cover-map">
+    <div id="slippy-map"></div>
+  </div>
+  </div>
+</div>
+{% endblock %}
+<div class="container">
+    <div class="row">
+        <div class="form-group search">
+          <input type="text" class="form-control" placeHolder="Type in Region to Compare With">
+        </div>
+        <div class="col-md-12">
+            <!--
+            * =================================
+            * Top School List
+            * =================================
+            -->
+            <div class="col-md-6">
+                <h3 class="title">10 Top Schools</h3>
+                <ul class="list-group school">
+                  {% for school in schools.best_schools|slice:":10" %}
+                  <li class="list-group-item">
+                      <a href="leaguetable/schools/{{ school.code }}">
+                          <div class="col-xs-5">
+                              <div class="school-name">{{ school.name|slice:":-16" }} SCHOOL</div>
+                              <div class="school-type">Mixed</div>
+                          </div>
+                          <div class="col-xs-5">
+                              <div class="school-rank">#{{ school.national_rank_all }} in Tanzania</div>
+                              <div class="school-rank">#{{ school.regional_rank_all }} in {{ school.region }}</div>
+                          </div>
+                          <div class="col-xs-2">
+                              {{ school.pass_rate }}
+                          </div>
+                      </a>
+                  </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <!--
+            * =================================
+            * Lowest School List
+            * =================================
+            -->
+            <div class="col-md-6">
+                <h3 class="title">10 Lowest Schools</h3>
+                <ul class="list-group school">
+                  {% for school in schools.worst_schools|slice:":10" %}
+                  <li class="list-group-item">
+                      <a href="leaguetable/schools/{{ school.code }}">
+                          <div class="col-xs-5">
+                              <div class="school-name">{{ school.name|slice:":-16" }} SCHOOL</div>
+                              <div class="school-type">Mixed</div>
+                          </div>
+                          <div class="col-xs-5">
+                              <div class="school-rank">#{{ school.national_rank_all }} in Tanzania</div>
+                              <div class="school-rank">#{{ school.regional_rank_all }} in {{ school.region }}</div>
+                          </div>
+                          <div class="col-xs-2">
+                              {{ school.pass_rate }}
+                          </div>
+                      </a>
+                  </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block profile_detail %}
+<article id="schools" class="clearfix">
+    <header class="section-contents">
+        <h1> Ownership</h1>
+    </header>
+    <div class="section-container">
+        <section class="clearfix stat-row">
+            <br />
+            <div class="column-two-thirds" id="chart-bar-schools-schools_distribution" data-stat-type="scaled-percentage"
+                data-chart-title="Schools by ownership status" data-qualifier="Universe: {{ schools_distribution.metadata.universe }}"></div>
+        </section>
+    </div>
+</article>
+
+<article id="schools" class="clearfix" style="overflow:auto;">
+    <header class="section-contents">
+        <h1> Regions</h1>
+    </header>
+    <div class="section-container" style="overflow:auto;">
+        <section class="clearfix stat-row">
+            <br />
+            <div class="column-full" id="chart-column-schools-region_distribution" data-stat-type="scaled-percentage"
+                data-chart-title="Schools by region status" data-qualifier="Universe: {{ region_distribution.metadata.universe }}"></div>
+        </section>
+    </div>
+</article>
+
+<article id="schools" class="clearfix">
+    <header class="section-contents">
+        <h1> Averege GPA</h1>
+    </header>
+    <div class="section-container">
+        <section class="clearfix stat-row">
+            <h2 class="header-for-columns"><a class="permalink" href="#age" id="age">GPA <i class="fa fa-link"></i></a></h2>
+            <div class="column-quarter">
+                {% include 'profile/_blocks/_stat_list.html' with stat=schools.median_gpa stat_type='number' %}
+            </div>
+            <div class="column-half">
+                <div id="chart-histogram-schools-gpa_group_distribution" data-stat-type="scaled-percentage" data-chart-title="Average gpa range"></div>
+            </div>
+        </section>
+    </div>
+</article>
+
+{% endblock %}
+
+
+{% block footer_content %}
+    {% include 'footer.html' %}
+
+    <!-- Embed table -->
+    <div id="lightbox" style="display: none; color: #000;">
+        <div class="hovercard-wrapper">
+            <div class="hovercard">
+                <small class="close clearfix close-embed" onclick="javascript: closeEmbed();"><i class="fa fa-times-circle"></i> Close</small>
+                <h2 style="font-size: 22px;"></h2>
+                <p>Copy the code below, then paste into your own CMS or HTML.
+                    Embedded league tables are responsive to your page width,
+                    and have been tested in Firefox, Safari, Chrome, and IE8 and above.
+                </p>
+                <textarea></textarea>
+            </div>
+        </div>
+    </div>
+{% endblock footer_content %}
+
+{% block body_javascript_extra %}
+    {{ block.super }}
+
+    <!-- embed table script -->
+    <script type="text/javascript">
+        // Fx to show table embed code
+        function embedTable(geo_level, geo_code){
+            var text = '&lt;iframe src="{{ HURUMAP.url }}/embed/' + geo_level + '/' + geo_code +
+            '" frameborder="0" width="100%" height="300" style="margin: 1em; width: 100%;"&gt;&lt;/iframe&gt;';
+
+            $('#lightbox h2').html("");
+            $('#lightbox h2').html("Embed code for this league table");
+
+            $('#lightbox textarea').html("");
+            $('#lightbox textarea').html(text);
+            $('#lightbox').toggle();
+        }
+
+        // Fx to show map embed code
+        function embedMap(geo_level, geo_code, short_name){
+            var short_name = short_name.toLowerCase().replace(/ /g,"-");
+
+            var text = '&lt;iframe src="{{ HURUMAP.url }}/embed/' + geo_level + '-' + geo_code + '-' + short_name +
+            '" frameborder="0" width="100%" height="300" style="margin: 1em; width: 100%;"&gt;&lt;/iframe&gt;';
+
+            $('#lightbox h2').html("");
+            $('#lightbox h2').html("Embed code for this map");
+
+            $('#lightbox textarea').html("");
+            $('#lightbox textarea').html(text);
+            $('#lightbox').toggle();
+        }
+
+        function closeEmbed(){
+            $('#lightbox').toggle();
+        }
+    </script>
+{% endblock %}
