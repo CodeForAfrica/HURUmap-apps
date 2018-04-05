@@ -27,7 +27,7 @@ HURUMAP['url'] = 'https://elimu_yangu.codefortanzania.org'
 HURUMAP['country_code'] = 'TZ'
 HURUMAP['country_name'] = 'Tanzania'
 HURUMAP['country_profile'] = 'country-TZ-Tanzania'
-HURUMAP['profile_builder'] = 'elimu_yangu.profiles.get_census_profile'
+#HURUMAP['profile_builder'] = 'elimu_yangu.profiles.get_census_profile'
 
  # Define the profile to load
 
