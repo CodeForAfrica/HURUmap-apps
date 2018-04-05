@@ -45,36 +45,38 @@ def school(request, schoolcode):
     alevel_subjects16 = Alevel_subject_performance.objects.filter(year="2016").filter(schoolcode = schoolcode)
     olevel_subjects = Olevel_subject_performance.objects.filter(year="2017").filter(schoolcode = schoolcode)
     olevel_subjects16 = Olevel_subject_performance.objects.filter(year="2016").filter(schoolcode = schoolcode)
-    olevel_subjects15 = Olevel_subject_performance.objects.filter(year="2015").filter(schoolcode = schoolcode)
+
     pageTitle = "School Detail"
-    school_name = school_region = school_gpa = OlevelOverallPerformance = AlevelOverallPerformance = {}
+    school_name = school_region = school_o_category = school_a_category = school_o_gpa = school_a_gpa = school_o_natranking = school_a_natranking = school_o_regranking = school_a_regranking = OlevelOverallPerformance = AlevelOverallPerformance = {}
     AlevelPerformanceTrends = [];
     OlevelPerformanceTrends = [];
 
-    if olevel_subjects15:
-        OlevelPerformanceTrends.append({"2015": (olevel_subjects15[0].gpa).encode("utf8")})
     if olevel_subjects16:
-        OlevelPerformanceTrends.append({"2016": (olevel_subjects16[0].gpa).encode("utf8")})
+        OlevelPerformanceTrends.append({"2016": (olevel_subjects16[0].gpa).encode("utf8").strip()})
     if alevel_subjects16:
-        AlevelPerformanceTrends.append({"2016": (alevel_subjects16[0].gpa).encode("utf8")})
+        AlevelPerformanceTrends.append({"2016": (alevel_subjects16[0].gpa).encode("utf8").strip()})
 
     if olevel_subjects:
-        school_name = olevel_subjects[0].schoolname
-        school_region = olevel_subjects[0].region
-        school_gpa = olevel_subjects[0].gpa
-        school_category = olevel_subjects[0].category.strip()
+        school_name = olevel_subjects[0].schoolname.capitalize()
+        school_region = olevel_subjects[0].region.capitalize()
+        school_o_gpa = olevel_subjects[0].gpa
+        school_o_category = olevel_subjects[0].category.strip().capitalize()
+        school_o_natranking = olevel_subjects[0].natranking.strip()
+        school_o_regranking = olevel_subjects[0].regranking.strip()
         OlevelOverallPerformance = Olevel_overall_performance.objects.filter(year="2017").filter(schoolcode = schoolcode).filter(gender = 'T')
         OlevelOverallPerformance = serializers.serialize("json", OlevelOverallPerformance)
-        OlevelPerformanceTrends.append({"2017": (olevel_subjects[0].gpa).encode("utf8")})
+        OlevelPerformanceTrends.append({"2017": (olevel_subjects[0].gpa).encode("utf8").strip()})
 
     if alevel_subjects:
-        school_name = alevel_subjects[0].schoolname
-        school_region = alevel_subjects[0].region
-        school_gpa = alevel_subjects[0].gpa
-        school_category = alevel_subjects[0].category.strip()
+        school_name = alevel_subjects[0].schoolname.capitalize()
+        school_region = alevel_subjects[0].region.capitalize()
+        school_a_gpa = olevel_subjects[0].gpa
+        school_a_category = olevel_subjects[0].category.strip().capitalize()
+        school_a_natranking = olevel_subjects[0].natranking.strip()
+        school_a_regranking = olevel_subjects[0].regranking.strip()
         AlevelOverallPerformance = Alevel_overall_performance.objects.filter(year="2017").filter(schoolcode = schoolcode).filter(gender = 'T')
         AlevelOverallPerformance = serializers.serialize("json", AlevelOverallPerformance)
-        AlevelPerformanceTrends.append({"2017": (alevel_subjects[0].gpa).encode("utf8")})
+        AlevelPerformanceTrends.append({"2017": (alevel_subjects[0].gpa).encode("utf8").strip()})
 
     SchoolPerformance = Olevel_student_performance_2017.objects.filter(schoolcode = schoolcode)
     ASchoolPerformance = Alevel_student_performance.objects.filter(year="2017").filter(schoolcode = schoolcode)
@@ -108,7 +110,9 @@ def school(request, schoolcode):
         AlevelSchooldetailsList.append(subjectdetail)
 
     return render (request, 'careerguide/school.html', {'OlevelSchooldetailsList': OlevelSchooldetailsList, 'AlevelSchooldetailsList': AlevelSchooldetailsList, 'alevel_subjects': alevel_subjects, 'pageTitle': pageTitle,
-'school_name': school_name, 'school_region': school_region, 'school_gpa': school_gpa, 'OlevelOverallPerformance': OlevelOverallPerformance, 'AlevelOverallPerformance': AlevelOverallPerformance, 'AlevelPerformanceTrends': AlevelPerformanceTrends, 'OlevelPerformanceTrends': OlevelPerformanceTrends})
+'school_name': school_name, 'school_region': school_region, 'school_o_gpa': school_o_gpa, 'OlevelOverallPerformance': OlevelOverallPerformance, 'AlevelOverallPerformance': AlevelOverallPerformance, 'AlevelPerformanceTrends': AlevelPerformanceTrends, 'OlevelPerformanceTrends': OlevelPerformanceTrends,
+'school_a_gpa': school_a_gpa,'school_o_category': school_a_category,'school_a_category': school_o_category, 'school_o_natranking': school_o_natranking, 'school_a_natranking': school_a_natranking,
+'school_o_regranking': school_o_regranking, 'school_a_regranking': school_a_regranking })
 
 
 def get_schools(career, region, gender, edu_level):

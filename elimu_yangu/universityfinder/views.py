@@ -16,30 +16,13 @@ grades_list= ["A","B","C","D","E","S","F"]
 # Create your views here.
 def index(request):
     if request.method == 'POST':
-        # create a form instance and populate it with data from the request:
-        # form = InputForm(request.POST)
-        # # check whether it's valid:
-        # if form.is_valid():
-        #     #process the data in form.cleaned_data as required
-        #     subjects = form.cleaned_data['subjects']
-        #     diplomas = form.cleaned_data['di[plomas']
-        #     olevel_subjects = form.cleaned_data['olevel_subjects']
-        #     courses = []
-        #     if subjects:
-        #         alevel_subjects = subjects.split(",")
-        #         olevel_subjects = olevel_subjects.split(",")
-        #         courses = alevelroute(alevel_subjects, olevel_subjects)
-        #     elif diplomas:
-        #         olevel_subjects = olevel_subjects.split(",")
-        #         diplomas = diplomas.strip()
-        #
-        #
-        #
-        #     return render(request, 'index.html', {'form': form, 'courses': courses})
-        subjects = request.POST.get('subjectGrades')
-        preferenceMajors = request.POST["info"].preferedCourses
+        dataRequest = json.loads(request.body)
+        subjects = dataRequest['subjectGrade']
+        majors = dataRequest["preferedCourse"]
+        print subjects
 
-        print preferenceMajors
+        find_uni_courses(subjects, majors)
+
         data = ["1","1","1","1"]
         return HttpResponse(data)
 
@@ -48,8 +31,13 @@ def index(request):
         form = InputForm(label_suffix="  ")
         return render(request, 'index.html', {'form': form})
 
-def alevelroute(alevelsubjects, olevelsubjects):
+def find_uni_courses(subjects, majors):
     courses_list=[]
+
+    preferedCourses = []
+    #for major in majors:
+        #preferedCourse = UniversityFinder.objects.filter(general_major)
+
     for subject in alevelsubjects:
         subject_array = subject.split("-")
         subject = subject_array[0]
@@ -67,5 +55,3 @@ def alevelroute(alevelsubjects, olevelsubjects):
         courses_list += list(courses)
     print courses_list
     return courses_list
-
-#def diplomaroute(diplomas, olevelsubjects):

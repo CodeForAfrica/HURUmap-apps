@@ -204,18 +204,22 @@
            console.log(subjectGrades);
            console.log(preferedCourses);
 
-           var info = {subjectGrades: subjectGrades, preferedCourses:preferedCourses}
+           var info = {'subjectGrade': subjectGrades, 'preferedCourse': preferedCourses}
            $.ajax({
                 type: "POST",
                  url: '/university-finder/',
+                 data: JSON.stringify(info),
                  dataType: 'json',
-                 data: info ,
                  success: function(result){
                     var resultHtml = "";
                     for (var elem in result) {
                         resultHtml += "<tr><td class='course-name'><div>"+"Course Name"+"</div></td><td>"+"University Name"+"</td></tr>"
                       }
                       $('#resultCourses').append(resultHtml);
+                 },
+                 error: function () {
+                     var resultHtml = "<tr><td class='course-name'><div>"+"Course Name"+"</div></td><td>"+"University Name"+"</td></tr>"
+                     $('#resultCourses').append(resultHtml);
                  }
              });
          }

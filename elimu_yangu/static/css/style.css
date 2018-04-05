@@ -67,8 +67,14 @@ label {
   font-size: 18px;
   text-align: center;
   color: #bbb;
-  font-family: Circular-Medium,sans-serif;
   border: 1px solid transparent;
+}
+
+.chart-box-career {
+    border-bottom: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px 0;
+    margin: 20px 0;
 }
 
 label:before {
