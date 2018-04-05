@@ -6,13 +6,15 @@ Subject_Options = [('Accountacy','Accountancy'),('Advance Mathematics', 'Advance
 ('French Language', 'French Language'), ('Food and Human Nutrition','Food & Human Nutrition'), ('Geography','Geography'), ('History','History'), ('Kiswahili','Kiswahili'),('Physics','Physics'),]
 
 Major_Options = [
-("Political Science", "Political Science" ),("Telecommucation", "Telecommucation"),("Engineering", "Engineering"),
+("Archaeology","Archaeology"),("Architecture","Architecture"),("Agriculture","Agriculture"),("Political Science", "Political Science" ),("Telecommucation", "Telecommucation"),("Engineering", "Engineering"),
 ("Sociology", "Sociology"), ("Natural Resources", "Natural Resources"), ("Science", "Science"), ("Education", "Education"), ("Science Education", "Science Education"),
 ("Medicine", "Medicine"), ("Information Technology", "Information Technology"), ("Business Administration", "Business Administration"), ("Procurement", "Procurement"),
 ("Agritechnology", "Agritechnology"), ("Computer Science", "Computer science"), ("Information and Records Management", "Information and Records Managemnt"),
-("Finance", "Finance"), ("Accountancy","Accountancy"), ("Nursing", "Nursung"), ("Nursing Education", "Nursing Education"),("Mental Health","Mental Health"), ("Health Studies", "Health Studies"),
+("Finance", "Finance"),("Anthropology","Anthropology"), ("Accountancy","Accountancy"), ("Nursing", "Nursung"), ("Nursing Education", "Nursing Education"),("Mental Health","Mental Health"), ("Health Studies", "Health Studies"),
 ("Religious Studies", "Religious Studies"), ("Religious Education", "Religious Education"), ("Law","Law"), ("Philosophy", "Philosophy"), ("Botanical Science","Botanical Science"), ("Theology","Theology"),
-("Psychology","Psychology"), ("Counselling", "Counselling"), ("Health Systems Management", "Health Systems Management"), ("Commerce","Commerce")
+("Psychology","Psychology"), ("Counselling", "Counselling"), ("Health Systems Management", "Health Systems Management"), ("Commerce","Commerce"), ("Divinity","Divinity"), ("Tourism","Tourism"), ("Child Education", "Child Education"),
+("Business Studies","Business Studies"),("Mathematics", "Mathematics"), ("Banking","Banking"), ("Biology", "Biology"), ("Kiswahili", "Kiswahili"), ("Community Education","Community Education"), ("Microbiology", "Microbiology"),
+("Taxation","Taxation"), ("Zoology","Zoology"), ("Family","Family"), ("Physics", "Physics"), ("Chemistry", "Chemistry")
 ]
 
 

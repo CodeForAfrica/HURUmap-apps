@@ -21,8 +21,16 @@ from sqlalchemy import Column, ForeignKey, Integer, String, Table, func, or_, an
 from census.views import GeographyDetailView as BaseGeographyDetailView
 
 #override homepage
+
+# class HomepageView(TemplateView):
+#     template_name = 'leaguetable/homepage.html'
+#
+#     def get_context_data(self, *args, **kwargs):
+#         return {
+#             'root_geo': geo_data.root_geography(),
+#         }
 def index(request):
-    # Getting the session
+    #Getting the session
     session = get_session()
     schools = {}
     template_name = 'leaguetable/homepage.html'
@@ -45,11 +53,6 @@ def index(request):
     schools['worst_schools'] = worst_schools
 
     return render(request,'leaguetable/homepage.html',{'schools':schools, 'root_geo': geo_data.root_geography()})
-    # def get_context_data(self, *args, **kwargs):
-    #     return {
-    #         'root_geo': geo_data.root_geography(),
-    #         'schools':schools,
-    #     }
 
 # handling schools page
 def schools(request):
