@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.conf import settings
 import os, json
 from django.core import serializers
@@ -21,12 +21,13 @@ def index(request):
         majors = dataRequest["preferedCourse"]
         print subjects
 
-        find_uni_courses(subjects, majors)
+        data = find_uni_courses(subjects, majors)
+        result = []
+        for elem in data:
+            result.append({'course': elem.course_name, 'university': elem.university_name})
+        #return HttpResponse({'list_courses': data}, content_type="application/json")
+        return HttpResponse(result)
 
-        data = ["1","1","1","1"]
-        return HttpResponse(data)
-
-    # if a GET (or any other method) we'll create a blank form
     else:
         form = InputForm(label_suffix="  ")
         return render(request, 'index.html', {'form': form})
@@ -37,7 +38,8 @@ def find_uni_courses(subjects, majors):
     print majors
     preferedCourses = []
     for major in majors:
-        preferedCourse = UniversityFinder.objects.filter(major_name__contains=majors)
+        print major
+        preferedCourse = UniversityFinder.objects.filter(major_name__icontains=major)
         courses_list += list(preferedCourse)
     # for subject in alevelsubjects:
     #     subject_array = subject.split("-")
@@ -54,5 +56,4 @@ def find_uni_courses(subjects, majors):
     #     #subject_dict = {'compulsory_subjects_ar__icontains'=subjectslist}
     #     courses = UniversityFinder.objects.filter(compulsory_subjects_ar__icontains=subjectslist)#.filter(**subject_dict)
     #     courses_list += list(courses)
-    print courses_list
     return courses_list

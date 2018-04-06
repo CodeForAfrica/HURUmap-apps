@@ -209,10 +209,12 @@
                 type: "POST",
                  url: '/university-finder/',
                  data: JSON.stringify(info),
-                 dataType: 'json',
-                 success: function(result){
+                 success: function(data){
+                    //console.log(data)
                     var resultHtml = "";
-                    for (var elem in result) {
+                    console.log(JSON.parse(data))
+                    for (var elem in data) {
+                        console.log(elem)
                         resultHtml += "<tr><td class='course-name'><div>"+"Course Name"+"</div></td><td>"+"University Name"+"</td></tr>"
                       }
                       $('#resultCourses').append(resultHtml);
