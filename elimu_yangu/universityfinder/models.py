@@ -38,12 +38,14 @@ class DjangoSite(models.Model):
         db_table = 'django_site'
 
 class UniversityFinder(models.Model):
-    university_name = models.CharField(max_length=50)
-    course_name = models.CharField(max_length=100, blank=True, null=True)
-    compulsory_subjects_ar = models.CharField(max_length=500, blank=True, null=True)
-    other_subjects_ar = models.CharField(max_length=500, blank=True, null=True)
-    compulsory_subjects_dr = models.CharField(max_length=500, blank=True, null=True)
-    other_subjects_dr = models.CharField(max_length=500, blank=True, null=True)
+    #id = models.IntegerField(blank=True, null=True)
+    university_name = models.CharField(max_length=100, blank=True, null=True)
+    course_name = models.CharField(max_length=200, blank=True, null=True)
+    major_name = models.CharField(max_length=500, blank=True, null=True)
+    compulsory_alevel = models.TextField(blank=True, null=True)  # This field type is a guess.
+    compulsory_olevel = models.TextField(blank=True, null=True)  # This field type is a guess.
+    other_alevel = models.TextField(blank=True, null=True)  # This field type is a guess.
+    other_olevel = models.TextField(blank=True, null=True)  # This field type is a guess.
 
     class Meta:
         managed = False

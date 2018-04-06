@@ -34,24 +34,25 @@ def index(request):
 def find_uni_courses(subjects, majors):
     courses_list=[]
 
+    print majors
     preferedCourses = []
-    #for major in majors:
-        #preferedCourse = UniversityFinder.objects.filter(general_major)
-
-    for subject in alevelsubjects:
-        subject_array = subject.split("-")
-        subject = subject_array[0]
-        grade = subject_array[1]
-
-        position = grades_list.index(grade)
-        subjectslist = []
-
-        while position < len(grades_list):
-            subjectslist.append(subject +"-"+ grades_list[position])
-            position = position + 1
-        print subjectslist
-        #subject_dict = {'compulsory_subjects_ar__icontains'=subjectslist}
-        courses = UniversityFinder.objects.filter(compulsory_subjects_ar__icontains=subjectslist)#.filter(**subject_dict)
-        courses_list += list(courses)
+    for major in majors:
+        preferedCourse = UniversityFinder.objects.filter(major_name__contains=majors)
+        courses_list += list(preferedCourse)
+    # for subject in alevelsubjects:
+    #     subject_array = subject.split("-")
+    #     subject = subject_array[0]
+    #     grade = subject_array[1]
+    #
+    #     position = grades_list.index(grade)
+    #     subjectslist = []
+    #
+    #     while position < len(grades_list):
+    #         subjectslist.append(subject +"-"+ grades_list[position])
+    #         position = position + 1
+    #     print subjectslist
+    #     #subject_dict = {'compulsory_subjects_ar__icontains'=subjectslist}
+    #     courses = UniversityFinder.objects.filter(compulsory_subjects_ar__icontains=subjectslist)#.filter(**subject_dict)
+    #     courses_list += list(courses)
     print courses_list
     return courses_list
