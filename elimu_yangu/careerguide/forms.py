@@ -1,7 +1,7 @@
 from django import forms
 
-Gender_Options = [('F', 'young lady'), ('M', 'young man'),]
-Region_Options = [('ARUSHA','Arusha'),('DAR ES SALAAM', 'Dar es Salaam'),('DODOMA','Dodoma'),
+Gender_Options = [('gender','select gender'),('F', 'young lady'), ('M', 'young man'),]
+Region_Options = [('region','select region'),('ARUSHA','Arusha'),('DAR ES SALAAM', 'Dar es Salaam'),('DODOMA','Dodoma'),
 ('GEITA','Geita'),
 ('IRINGA','Iringa'),
 ('KAGERA','Kagera'),
@@ -30,8 +30,8 @@ Region_Options = [('ARUSHA','Arusha'),('DAR ES SALAAM', 'Dar es Salaam'),('DODOM
 ('SONGWE','Songwe'),
 ('TABORA','Tabora'),
 ('TANGA','Tanga'),]
-Career_Options = [('Doctor', 'a doctor'), ('Pilot', 'a pilot'), ('Engineer', 'an engineer')]
-Education_Level_Options = [('1', 'ordinary level'), ('2', 'primary level')]
+Career_Options = [('career', 'choose a career'),('Doctor', 'a doctor'), ('Pilot', 'a pilot'), ('Engineer', 'an engineer')]
+Education_Level_Options = [('level','choose study level'),('1', 'ordinary level'), ('2', 'primary level')]
 
 
 class InputForm(forms.Form):

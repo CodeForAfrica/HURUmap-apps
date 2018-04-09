@@ -15,6 +15,7 @@ olsubjects = json.load(open(os.path.join(settings.BASE_DIR, 'elimu_yangu/careerg
 alsubjects = json.load(open(os.path.join(settings.BASE_DIR, 'elimu_yangu/careerguide','alsubjects.json')))
 
 def index(request):
+    topschools = get_overall_topschools()
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
@@ -28,6 +29,10 @@ def index(request):
             edu_level = form.cleaned_data['education_level']
             career = data[career]
             schools = get_schools(career, region, gender, edu_level)
+
+            if career == 'career':
+                return render(request, 'careerguide/homepage.html', {'form': form, 'topschools':topschools})
+
             if edu_level == '1':
                 school_level = "A levels"
             else:
@@ -38,7 +43,7 @@ def index(request):
     # if a GET (or any other method) we'll create a blank form
     else:
         form = InputForm(label_suffix="  ")
-        return render(request, 'careerguide/homepage.html', {'form': form})
+        return render(request, 'careerguide/homepage.html', {'form': form, 'topschools':topschools})
 
 def school(request, schoolcode):
     alevel_subjects = Alevel_subject_performance.objects.filter(year="2017").filter(schoolcode = schoolcode)
@@ -120,9 +125,9 @@ def get_schools(career, region, gender, edu_level):
     subjects = career["must"]
     if not region:
         if edu_level == '1':
-            schools = Alevel_subject_performance.objects.filter(year = "2017").filter(subjectname__in = subjects).values('schoolcode', 'schoolname', 'gpa', 'region', 'natranking', 'regranking').annotate(career_avg=Avg('subjectgpa')).group_by('schoolcode').order_by('career_avg')[:10]
+            schools = Alevel_subject_performance.objects.filter(year = "2017").filter(subjectname__in = subjects).values('schoolcode', 'schoolname', 'gpa', 'region', 'natranking', 'regranking').annotate(career_avg=Avg('subjectgpa')).order_by('career_avg')[:10]
         else:
-            schools = Olevel_subject_performance.objects.filter(year = "2017").filter(subjectname__in = subjects).values('schoolcode', 'schoolname', 'gpa', 'region', 'natranking', 'regranking').annotate(career_avg=Avg('subjectgpa')).group_by('schoolcode').order_by('career_avg')[:10]
+            schools = Olevel_subject_performance.objects.filter(year = "2017").filter(subjectname__in = subjects).values('schoolcode', 'schoolname', 'gpa', 'region', 'natranking', 'regranking').annotate(career_avg=Avg('subjectgpa')).order_by('career_avg')[:10]
     else:
         if edu_level == '1':
             schools = Alevel_subject_performance.objects.filter(year = "2017").filter(region = region).filter(subjectname__in = subjects).values('schoolcode', 'schoolname', 'gpa', 'region', 'natranking', 'regranking').annotate(career_avg=Avg('subjectgpa')).order_by('career_avg')[:10]
@@ -141,3 +146,11 @@ def olevel_subjects(request):
     subjects = Olevel_subject_performance.objects.filter(year="2017").order_by().values('subjectname').distinct()
     pageTitle = "O-levels Subjects"
     return render(request, 'subjects.html', {'subjects': subjects, 'pageTitle': pageTitle})
+
+
+
+def get_overall_topschools():
+    schools = {}
+    schools['top_Alevel'] = Alevel_subject_performance.objects.filter(year = "2017").values('schoolcode', 'schoolname', 'gpa', 'category', 'region', 'natranking', 'regranking').distinct().order_by('gpa')[:5]
+    schools['top_Olevel'] = Olevel_subject_performance.objects.filter(year = "2017").values('schoolcode', 'schoolname', 'gpa', 'category', 'region', 'natranking', 'regranking').distinct().order_by('gpa')[:5]
+    return schools
