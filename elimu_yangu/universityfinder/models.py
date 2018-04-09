@@ -6,6 +6,7 @@
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from __future__ import unicode_literals
+from django.contrib.postgres.fields import HStoreField
 
 from django.db import models
 
@@ -42,10 +43,10 @@ class UniversityFinder(models.Model):
     university_name = models.CharField(max_length=100, blank=True, null=True)
     course_name = models.CharField(max_length=200, blank=True, null=True)
     major_name = models.CharField(max_length=500, blank=True, null=True)
-    compulsory_alevel = models.TextField(blank=True, null=True)  # This field type is a guess.
-    compulsory_olevel = models.TextField(blank=True, null=True)  # This field type is a guess.
-    other_alevel = models.TextField(blank=True, null=True)  # This field type is a guess.
-    other_olevel = models.TextField(blank=True, null=True)  # This field type is a guess.
+    compulsory_alevel = HStoreField()#models.TextField(blank=True, null=True)  # This field type is a guess.
+    compulsory_olevel = HStoreField()#models.TextField(blank=True, null=True)  # This field type is a guess.
+    other_alevel = HStoreField()#models.TextField(blank=True, null=True)  # This field type is a guess.
+    other_olevel = HStoreField()#models.TextField(blank=True, null=True)  # This field type is a guess.
 
     class Meta:
         managed = False

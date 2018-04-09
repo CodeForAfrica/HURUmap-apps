@@ -20,13 +20,22 @@ def index(request):
         subjects = dataRequest['subjectGrade']
         majors = dataRequest["preferedCourse"]
         print subjects
-
-        data = find_uni_courses(subjects, majors)
         result = []
+        #Check if general studies is not Satisfactoru
+        gsGrade = subjects["General Studies"]
+        if gsGrade != "S":
+            return HttpResponse(result)
+
+        #delete general studies from subjects dict
+        del subjects["General Studies"]
+        print subjects
+        data = find_uni_courses(subjects, majors)
+
+        print data
         for elem in data:
             result.append({'course': elem.course_name, 'university': elem.university_name})
         #return HttpResponse({'list_courses': data}, content_type="application/json")
-        return HttpResponse(result)
+        return HttpResponse(json.dumps(result), content_type='application/json')
 
     else:
         form = InputForm(label_suffix="  ")
@@ -37,23 +46,24 @@ def find_uni_courses(subjects, majors):
 
     print majors
     preferedCourses = []
+    subject_list = subjects.keys()
+    print subject_list
     for major in majors:
-        print major
-        preferedCourse = UniversityFinder.objects.filter(major_name__icontains=major)
-        courses_list += list(preferedCourse)
-    # for subject in alevelsubjects:
-    #     subject_array = subject.split("-")
-    #     subject = subject_array[0]
-    #     grade = subject_array[1]
-    #
-    #     position = grades_list.index(grade)
-    #     subjectslist = []
-    #
-    #     while position < len(grades_list):
-    #         subjectslist.append(subject +"-"+ grades_list[position])
-    #         position = position + 1
-    #     print subjectslist
-    #     #subject_dict = {'compulsory_subjects_ar__icontains'=subjectslist}
-    #     courses = UniversityFinder.objects.filter(compulsory_subjects_ar__icontains=subjectslist)#.filter(**subject_dict)
-    #     courses_list += list(courses)
+        if major == "None":
+            preferedCourse = UniversityFinder.objects.filter(compulsory_alevel__has_any_keys=subject_list)
+        else:
+            preferedCourse = UniversityFinder.objects.filter(major_name__icontains=major).filter(compulsory_alevel__has_any_keys=subject_list)
+
+        for subject, grade in subjects.items():
+            position = grades_list.index(grade)
+
+            subGrageList = grades_list[position:]
+            print subGrageList
+            subject_check = {'compulsory_alevel__has_key':subject}
+
+            for subGrade in subGrageList:
+                subject_dict = {'compulsory_alevel__'+subject+'__icontains': subGrade}
+                courses = preferedCourse.filter(**subject_check).filter(**subject_dict)
+                if courses:
+                    courses_list += list(courses)
     return courses_list

@@ -1,7 +1,7 @@
 from django import forms
 
 Grade_Options = [('A', 'A'), ('B', 'B'), ('C', 'C'), ('D', 'D'), ('E', 'E'), ('F', 'F'), ('S', 'S')]
-Subject_Options = [('Accountacy','Accountancy'),('Advance Mathematics', 'Advance Mathematics'),('Agriculture','Agriculture'), ('Arabic Language','Arabic Language'),
+Subject_Options = [('Accountacy','Accountancy'),('Advance Mathematics', 'Advance Mathematics'),('Agriculture','Agriculture'), ('Arabic Language','Arabic Language'),('Basic Mathematics', 'Basic Mathematics'),
 ('Biology', 'Biology'), ('Chemistry', 'Chemistry'), ('Commerce', 'Commerce'),('Computer Science', 'Computer Science'), ('Economics','Economics'), ('English Language','English Language'),
 ('French Language', 'French Language'), ('Food and Human Nutrition','Food & Human Nutrition'), ('Geography','Geography'), ('History','History'), ('Kiswahili','Kiswahili'),('Physics','Physics'),]
 
@@ -16,7 +16,7 @@ Major_Options = [
 ("Business Studies","Business Studies"),("Mathematics", "Mathematics"), ("Banking","Banking"), ("Biology", "Biology"), ("Kiswahili", "Kiswahili"), ("Community Education","Community Education"), ("Microbiology", "Microbiology"),
 ("Taxation","Taxation"), ("Zoology","Zoology"), ("Family","Family"), ("Physics", "Physics"), ("Chemistry", "Chemistry"), ("Physiotherapy","Physiotherapy"), ("Social Work", "Social Work"), ("Interior Design","Interior Design"),
 ("House Planning","House Planning"), ("Food Technology","Food Technology"), ("Regional Development Planning","Regional Development Planning"), ("Public Relations","Public Relations"), ("Petroleum Geology","Petroleum Geology"),
-("Social Protection","Social Protection"), ("Irrigation","Irrigation"), ("Economics","Economics"), ("Environment Studies","Environment Studies"), ("Library Information Studies","Library Information Studies"),("Arts", "Arts"),
+("Social Protection","Social Protection"), ("Irrigation","Irrigation"), ("Economics","Economics"), ("Environment Studies","Environment Studies"), ("Library Information Studies","Library Information Studies"),("Art", "Art"),
 ("Statistics", "Statistics"), ("Computer Engineering","Computer Engineering"), ("Information Systems","Information Systems"), ("Geology","Geology"), ("History", "History"), ("Human Resources","Human Resources"), ("Actuarial Science","Actuarial Science"),
 ("Music", "Music"),("Nutrition","Nutrition"),("African Studies","African Studies"), ("Multimedia Technology","Multimedia Technology"),("Marketing","Marketing"), ("Filming","Filming"), ("Mass Communication","Mass Communication"),
 ("Surveying","Surveying"),("Journalism","Journalism"),("Clinical Chemistry","Clinical Chemistry"),("Range Management","Range Management"),("Shariah", "Shariah"), ("Islamic studies","Islamic Studies"),("Law Enforcement","Law Enforcement"),
