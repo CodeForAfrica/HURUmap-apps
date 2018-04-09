@@ -26,6 +26,9 @@ def index(request):
         if gsGrade != "S":
             return HttpResponse(result)
 
+        #check preference majors choosen
+        if majors.length == 0:
+            majors = ["None"]
         #delete general studies from subjects dict
         del subjects["General Studies"]
         print subjects

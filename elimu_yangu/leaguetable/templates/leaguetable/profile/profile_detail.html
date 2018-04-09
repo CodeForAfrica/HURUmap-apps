@@ -2,6 +2,8 @@
 {% load staticfiles %}
 {% block head_css_extra %}
 <link rel="stylesheet" href="{% static 'lib/bootstrap/dist/css/bootstrap.css' %}" />
+<link rel="stylesheet" href="{% static 'css/vendor/leaflet-0.6.4.css' %}" />
+<link href="{% static 'css/vendor/leaflet.label.css' %}" rel="stylesheet" />
 <link rel="stylesheet" href="{% static 'css/site.css' %}" />
 {% endblock %}
 {% block header %}
@@ -41,21 +43,29 @@
           </div>
       </nav>
 </header>
-{% block header_content %}
 <div class="main-content">
+{% block header_content %}
   <div class="map-box">
+    <div class="container">
+        <div class="row">
+          <h3 class="map-title">{{ geography.this.short_name }}</h3>
+          <h5></h5>
+        </div>
+      </div>
 
-    <div id="cover-map">
-    <div id="slippy-map"></div>
+    <div class="map clearfix" id="cover-map">
+      <div id="slippy-map"></div>
+    </div>
   </div>
-  </div>
-</div>
 {% endblock %}
 <div class="container">
     <div class="row">
-        <div class="form-group search">
-          <input type="text" class="form-control" placeHolder="Type in Region to Compare With">
-        </div>
+        <section class="clearfix" id="compare-place-picker">
+          <h2>Compare this place with another</h2>
+            <div class="typeahead-container">
+                <input name="place_select" id="compare-place-select" type="text" placeholder="Type in Region to compare with..." autocomplete="off">
+            </div>
+        </section>
         <div class="col-md-12">
             <!--
             * =================================
@@ -65,7 +75,7 @@
             <div class="col-md-6">
                 <h3 class="title">10 Top Schools</h3>
                 <ul class="list-group school">
-                  {% for school in schools.best_schools|slice:":10" %}
+                  {% for school in schools.top_schools|slice:":10" %}
                   <li class="list-group-item">
                       <a href="leaguetable/schools/{{ school.code }}">
                           <div class="col-xs-5">
@@ -92,7 +102,7 @@
             <div class="col-md-6">
                 <h3 class="title">10 Lowest Schools</h3>
                 <ul class="list-group school">
-                  {% for school in schools.worst_schools|slice:":10" %}
+                  {% for school in schools.lowest_schools|slice:":10" %}
                   <li class="list-group-item">
                       <a href="leaguetable/schools/{{ school.code }}">
                           <div class="col-xs-5">
@@ -114,6 +124,11 @@
         </div>
     </div>
 </div>
+</div>
+{% endblock %}
+
+{% block profile_preamble %}
+<h3 class="title">Interact with charts and statistics for additional information.</h3>
 {% endblock %}
 
 {% block profile_detail %}
