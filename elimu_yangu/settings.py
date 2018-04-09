@@ -21,8 +21,9 @@ DATABASES['default']['ATOMIC_REQUESTS'] = True
 
 # Localise this instance of HURUmap
 HURUMAP['name'] = 'Elimu Yangu'
-HURUMAP['description'] = 'it shows ranking of different secondary schools\
-                            bassed on their performance in each year.'
+HURUMAP['description'] = 'Comprises of three tools: league table- that shows ranking of different secondary schools\
+                            bassed on their performance in each year, careerguide -finds best schools aligning to a choosen career\
+                            and university finder - shows list of university courses that an a-level student could have a chance to be admitted,'
 HURUMAP['url'] = 'https://elimu_yangu.codefortanzania.org'
 HURUMAP['country_code'] = 'TZ'
 HURUMAP['country_name'] = 'Tanzania'
