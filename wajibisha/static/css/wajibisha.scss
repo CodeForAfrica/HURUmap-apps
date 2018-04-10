@@ -115,6 +115,7 @@ body {
   margin-bottom: 0;
   padding-top:1.2rem;
 }
+
 .background{
   background-color: #ededed;
 }
@@ -124,6 +125,25 @@ body {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   padding: 50px 20px;
-  height:350px;
-  background-color:#fff;
+  height: 350px;
+  background-color: #fff;
+}
+
+.tweet-card {
+  height: 200px;
+  margin: 2rem;
+  border-color: #B7E4FF;
+  padding: 0;
+}
+
+.input-group-btn {
+  position: relative;
+  top: 5px;
+  z-index: 999;
+  margin-left: -190px;
+}
+.input-group>.form-control{
+  height: 3.4rem;
+  border-color: darkgrey;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }

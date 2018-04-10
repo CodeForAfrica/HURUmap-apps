@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="2422 153 210 209.999">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        fill: #4cae4e;
+      }
+
+      .cls-3 {
+        filter: url(#Path_42);
+      }
+    </style>
+    <filter id="Path_42" x="2422" y="153" width="210" height="209.999" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_38" data-name="Group 38" transform="translate(1443 -2)">
+    <ellipse id="Ellipse_4" data-name="Ellipse 4" class="cls-1" cx="62.5" cy="61" rx="62.5" ry="61" transform="translate(1022 196)"/>
+    <g id="group" transform="translate(1008.999 182)">
+      <g id="Group_37" data-name="Group 37" transform="translate(0.001)">
+        <g class="cls-3" transform="matrix(1, 0, 0, 1, -2452, -180)">
+          <path id="Path_42-2" data-name="Path 42" class="cls-2" d="M75,0a75,75,0,1,0,75,75A75,75,0,0,0,75,0ZM20.367,103.248c0-23.429,20.576-23.424,25.142-29.55l.523-2.794c-6.415-3.253-10.944-11.089-10.944-20.257,0-12.077,7.856-21.869,17.545-21.869,7.629,0,14.1,6.082,16.519,14.559-9.705,3.084-16.884,13.607-16.884,26.116,0,8.612,3.4,16.53,8.969,21.561-.9.459-1.891.927-2.747,1.328-4.495,2.108-10.725,5.039-15.219,10.906h-22.9Zm54.861,18.8H42.734c0-23.428,20.576-23.422,25.142-29.548L68.4,89.71c-6.415-3.253-10.944-11.089-10.944-20.257,0-12.077,7.856-21.869,17.545-21.869s17.545,9.792,17.545,21.869c0,9.089-4.448,16.879-10.778,20.18l.6,3.176c5.01,5.829,24.9,6.209,24.9,29.243H75.228Zm31.5-18.8h0c-4.5-5.866-10.726-8.8-15.221-10.9-.885-.415-1.865-.876-2.742-1.326,5.569-5.037,8.968-12.972,8.968-21.564,0-12.507-7.177-23.028-16.879-26.114,2.415-8.479,8.888-14.561,16.519-14.561,9.69,0,17.545,9.792,17.545,21.869,0,9.089-4.448,16.878-10.778,20.181l.6,3.176c5.01,5.828,24.9,6.207,24.9,29.244H106.728Z" transform="translate(2452 180)"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
