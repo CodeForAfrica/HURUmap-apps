@@ -386,4 +386,18 @@
         </section>
     </div>
 </article>
+<article id="airport_types" class="clearfix">
+    <header class="section-contents">
+        <h1>Airports</h1>
+    </header>
+    <div class="section-container">
+         <section class="clearfix stat-row">
+             <p class="source">Source: <a href="{{ airport_types.source_link }}">{{ airport_types.source_name }}</a></p>
+             <div class="column-half">
+                 {% include 'profile/_blocks/_stat_list.html' with stat=airport_types.number_of_airports stat_type='number' %}
+             </div>
+             <div class="column-half"  id="chart-pie-airport_types-airports" data-stat-type="percentage" data-initial-sort="-value" data-chart-title="Percentage of Airports types" data-initial-sort="{{airport_types.number_of_airports}}"></div>
+          </section>
+    </div>
+</article>
 {% endblock %}
