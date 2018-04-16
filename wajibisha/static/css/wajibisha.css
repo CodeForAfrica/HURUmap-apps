@@ -68,7 +68,30 @@ body {
     z-index: 1003;
     height: 200px;
     position: absolute;
-    right: 0; }
+    right: 0;}
+
+.promises-header {
+  background-color: #0067a3;
+  height: 300px;
+  color: white;
+  text-align: center;
+  padding-top: 50px;
+  position: relative;
+  z-index: 100;
+  box-shadow: 0 4px 2px -2px gray;}
+  .promises-header .wrapper {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 103; }
+  .promises-header .wrapper .presentation-img {
+    z-index: 1003;
+    height: 200px;
+    position: absolute;
+    right: 0; 
+    top: 0;}
 
 .showcase h2 {
   color: #0067a3; }

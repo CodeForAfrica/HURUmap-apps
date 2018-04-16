@@ -1,0 +1,138 @@
+{% extends '_base.html' %}{% load sass_tags staticfiles %}
+
+{% block body_id %}page{% endblock %}
+
+{% block header_content %}
+<div class="promises-header clearfix">
+	<div class="wrapper content-container">
+		<div class="column-third text-left">
+			<h2>Promises</h2>
+			<div>
+				<p style="margin:0;">Population: 3,138,369</p>
+				<p>Area: 696 sq.km</p>
+			</div>
+			<p>Censes data: 2009</p>
+		</div>
+		<div class="column-third">
+			<div class="form-group">
+				<input type="text" class="form-control form-control-lg border-right-5" id="validationDefault03" 
+				placeholder=" Search" required >
+			</div>
+		</div>
+		<div class="column-third push-right">
+			<img src="http://via.placeholder.com/30x30" class="presentation-img rounded-circle">
+		</div>
+	</div>
+</div>
+<div class="container p-0" style="height:350px;width:100%;max-width:1480px;">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d510564.6498664422!2d36.56720029142611!3d-1.3031933719272912!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1172d84d49a7%3A0xf7cf0254b297924c!2sNairobi!5e0!3m2!1sen!2ske!4v1523613390419" width="1480" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
+</div>
+{% endblock header_content %}
+
+{% block content_container %}
+<div class="showcase how-it-works text-center">
+  <div class="wrapper clearfix">
+    <h2>All the promises</h2>
+    <br/>
+
+  </div>
+
+  <div class="container">
+    <div class="row d-flex flex-row justify-content-end pb-5" style="color:#006699;">
+      <p class="small pt-3 pb-3">Group by:</p>
+      <div class="btn-group pl-4 pr-5" role="group" aria-label="Group by"">
+        <button type="button" class="btn" style="width:100px;">Status</button>
+        <button type="button" class="btn" style="width:100px;">Category</button>
+      </div>
+
+    </div>
+	<div class="row pt-5">
+    <!--start of card-->
+    <div class="col-4">
+      <div class="card p-0" style="width:300px;margin:10px;">
+        <div class="d-flex flex-row" style='height:150px;'>
+          <div class="justify-content-left">
+            <img class="card-img p-0" src="{% static 'img/tracker/categories/Health.svg' %}" style="height:150px;width:180px;margin-top:-3rem;padding-left:0;">
+          </div>
+          <div class="justify-content-right pt-3" >
+            <p class="text-small pr-2">14 Promises</p>
+            <p class="text-small pr-2">7% Complete</p>
+          </div>
+        </div>
+        <div class="card-block border" style="background-color:#ededed;height:200px;width:320px;margin-left:-10px;border-color:rgba(112, 112, 112, 0.2);">
+          <div class="flex-row d-flex pl-5">
+            <p class="pl-5">1<br> Fulfilled </p>
+            <p class="pl-5">13 <br> Unfufilled </p>
+          </div>
+          <div class="flex-row d-flex pl-5">
+            <p class="pl-5">0 <br> In Progress</p>
+            <p class="pl-4">0 <br> Stalled </p>
+          </div>
+        </div>
+        <div class="d-flex flex-row card-footer">
+          <p class="offset-1"><i class="fa fa-share-alt" aria-hidden="true">Share</i></p>
+          <p class="offset-4"><i class="fa fa-eye" aria-hidden="true">Watch</i></p>
+        </div>
+      </div>
+    </div>
+
+    <!--start of second card-->
+    <div class="col-4">
+    <div class="card p-0" style="width:300px;margin:10px;">
+        <div class="d-flex flex-row" style='height:150px;'>
+          <div class="justify-content-left">
+            <img class="card-img p-0" src="{% static 'img/tracker/categories/Housing.svg' %}" style="height:150px;width:180px;margin-top:-3rem;padding-left:0;">
+          </div>
+          <div class="justify-content-right pt-3" >
+            <p class="text-small pr-2">14 Promises</p>
+            <p class="text-small pr-2">7% Complete</p>
+          </div>
+        </div>
+        <div class="card-block border" style="background-color:#ededed;height:200px;width:320px;margin-left:-10px;border-color:rgba(112, 112, 112, 0.2);">
+          <div class="flex-row d-flex pl-5">
+            <p class="pl-5">1<br> Fulfilled </p>
+            <p class="pl-5">13 <br> Unfufilled </p>
+          </div>
+          <div class="flex-row d-flex pl-5">
+            <p class="pl-5">0 <br> In Progress</p>
+            <p class="pl-4">0 <br> Stalled </p>
+          </div>
+        </div>
+        <div class="d-flex flex-row card-footer">
+          <p class="offset-1"><i class="fa fa-share-alt" aria-hidden="true">Share</i></p>
+          <p class="offset-4"><i class="fa fa-eye" aria-hidden="true">Watch</i></p>
+        </div>
+      </div>
+    </div>
+    <!--start of third card-->
+    <div class="col-4">
+      <div class="card p-0" style="width:300px;margin:10px;">
+        <div class="d-flex flex-row" style='height:150px;'>
+          <div class="justify-content-left">
+            <img class="card-img p-0" src="{% static 'img/tracker/categories/Jobs.svg' %}" style="height:150px;width:180px;margin-top:-3rem;padding-left:0;">
+          </div>
+          <div class="justify-content-right pt-3" >
+            <p class="text-small pr-2">14 Promises</p>
+            <p class="text-small pr-2">7% Complete</p>
+          </div>
+        </div>
+        <div class="card-block border" style="background-color:#ededed;height:200px;width:320px;margin-left:-10px;border-color:rgba(112, 112, 112, 0.2);">
+          <div class="flex-row d-flex pl-5">
+            <p class="pl-5">1<br> Fulfilled </p>
+            <p class="pl-5">13 <br> Unfufilled </p>
+          </div>
+          <div class="flex-row d-flex pl-5">
+            <p class="pl-5">0 <br> In Progress</p>
+            <p class="pl-4">0 <br> Stalled </p>
+          </div>
+        </div>
+        <div class="d-flex flex-row card-footer">
+          <p class="offset-1"><i class="fa fa-share-alt" aria-hidden="true">Share</i></p>
+          <p class="offset-4"><i class="fa fa-eye" aria-hidden="true">Watch</i></p>
+        </div>
+      </div>
+    </div>
+</div>
+  </div>
+</div>
+{% endblock %}
