@@ -1087,3 +1087,27 @@ def get_primary_school_desks_profile(geo, session):
             'values': {'this': n_desks}
         },
     }
+
+def get_airport_types_profile(geo, session):
+
+    if geo.geo_level == 'ward':
+        return {}
+    try:
+
+        airports_dist, n_airports = get_stat_data('airport types',\
+            geo=geo, session=session, order_by='-total')
+
+    except Exception as e:
+        airports_dist = None
+        n_airports = None
+
+    return {
+        'number_of_airports': {
+            'name': 'Number of airports (2017)',
+            'numerators': {'this': n_airports},
+            'values': {'this': n_airports}
+        },
+        'source_name': 'http://www.taa.go.tz',
+        'source_link': 'http://www.taa.go.tz',
+        'airports': airports_dist
+    }

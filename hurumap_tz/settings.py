@@ -115,7 +115,8 @@ HURUMAP['topics']['development'] = {
     'desc': '',
     'profiles': [
         'traffic and crimes',
-        'water sources'
+        'water sources',
+        'airport types'
     ]
 }
 
