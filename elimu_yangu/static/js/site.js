@@ -98,6 +98,71 @@
             autoHeight: true,
         });
 
+
+        /*
+         *-----------------------------------------------------------------------------------------
+         * SCHOOL LEAGUE
+         *-----------------------------------------------------------------------------------------
+       */
+
+       function get_school_ranking(){
+         var year = $('rank-year').getValue();
+         var parameter = {'year': year};
+         var best_40 = "";
+         var worst_40 = "";
+         var best = "";
+         var worst = "";
+
+         $.ajax({
+              type: "POST",
+               url: '/leaguetable/',
+               data: JSON.stringify(parameter),
+               contentType: 'application/json',
+               success: function(data){
+                  var result1 = append_school_table(data, 'best-40');
+                  swap_ul('#best-40', result1)
+                  var result2 = append_school_table(data, 'worst-40');
+                  swap_ul('#worst-40', result2)
+                  var result3 = append_school_table(data, 'best');
+                  swap_ul('#best', result3)
+                  var result4 = append_school_table(data, 'worst');
+                  swap_ul('#worst', result4)
+               },
+               error: function() {
+
+               }
+             });
+        }
+
+        function swap_ul (item, data) {
+          var schoolTable = $(item);
+          schoolTable.fadeOut(1000, function(){
+              schoolTable.replace(data).fadeIn.fadeIn();
+          });
+
+        }
+
+        function append_school_table(data, ul_id) {
+          var result = "<ul id=" + ul_id +" class='list-group school'>";
+          for (elem in data) {
+            result += "<li class='list-group-item'>
+                <a href='leaguetable/schools/'"+ elem.code +">
+                    <div class='col-xs-5'>
+                        <div class='school-name'>" + elem.name + "School</div>
+                        <div class='school-type'>" + elem.gender + "</div>
+                    </div>
+                    <div class='col-xs-5'>
+                        <div class='school-rank'>#"+ elem.national_rank_all + " in Tanzania</div>
+                        <div class='school-rank'>#" + elem.regional_rank_all +" in "+ elem.region + "</div>
+                    </div>
+                    <div class='col-xs-2'>"
+                        + elem.avg_gpa.toFixed(3) + " GPA
+                    </div>
+                </a>
+            </li>"
+          }
+          return result + "</ul>";
+        }
         /*
          * ----------------------------------------------------------------------------------------
          *  CAREER GUIDE PAGE JS
@@ -216,11 +281,14 @@
                     for (var elem in data) {
                         console.log(elem)
                         resultHtml += "<tr><td class='course-name'><div>"+data[elem].course+"</div></td><td>"+data[elem].university+"</td></tr>"
-                      }
-                      $('#resultCourses').append(resultHtml);
+                    }
+                    if (data.length == 0) {
+                      resultHtml = "Your grade may not be sufficient for university courses"
+                    }
+                    $('#resultCourses').append(resultHtml);
                  },
                  error: function () {
-                     var resultHtml = "<tr><td class='course-name'><div>"+"Course Name"+"</div></td><td>"+"University Name"+"</td></tr>"
+                     var resultHtml = "<tr><td>Opps! something went wrong. Please try again later</td></tr>"
                      $('#resultCourses').append(resultHtml);
                  }
              });

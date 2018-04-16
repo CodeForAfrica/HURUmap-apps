@@ -2,8 +2,8 @@ from django import forms
 
 Grade_Options = [('A', 'A'), ('B', 'B'), ('C', 'C'), ('D', 'D'), ('E', 'E'), ('F', 'F'), ('S', 'S')]
 Subject_Options = [('Accountacy','Accountancy'),('Advance Mathematics', 'Advance Mathematics'),('Agriculture','Agriculture'), ('Arabic Language','Arabic Language'),('Basic Mathematics', 'Basic Mathematics'),
-('Biology', 'Biology'), ('Chemistry', 'Chemistry'), ('Commerce', 'Commerce'),('Computer Science', 'Computer Science'), ('Economics','Economics'), ('English Language','English Language'),
-('French Language', 'French Language'), ('Food and Human Nutrition','Food & Human Nutrition'), ('Geography','Geography'), ('History','History'), ('Kiswahili','Kiswahili'),('Physics','Physics'),]
+('Biology', 'Biology'), ('Chemistry', 'Chemistry'), ('Commerce', 'Commerce'),('Computer Science', 'Computer Science'), ('Divinity','Divinity'), ('Economics','Economics'), ('English Language','English Language'),
+('French Language', 'French Language'), ('Food and Human Nutrition','Food & Human Nutrition'), ('Geography','Geography'), ('History','History'), ('Islamic Knowledge','Islamic Knowledge'), ('Kiswahili','Kiswahili'),('Physics','Physics'),]
 
 Major_Options = [
 ("None","None"),("Archaeology","Archaeology"),("Architecture","Architecture"),("Agriculture","Agriculture"),("Agribusiness", "Agribusiness"),("Political Science", "Political Science" ),("Telecommucation", "Telecommucation"),("Engineering", "Engineering"),

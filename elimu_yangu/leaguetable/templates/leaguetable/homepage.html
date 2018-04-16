@@ -10,82 +10,44 @@
       <div id="slippy-map" class="map"></div>
   </div>
 
-  <div class="help-box text-center">
-      <div class="help-text">HOW IT WORKS?</div>
-      <div class="container">
-          <div class="row">
-              <div class="col-sm-4 option-round">
-                  <span class="icon">Icon</span>
-                  <h3 class="title">FIND FACTS</h3>
-                  <div class="description">Fusce temper felis lacus, a hendrerit urna facilisis at. Sed sollocitudin bibendum tincidunt. Aenean a bibendum magna.</div>
-              </div>
-              <div class="col-sm-4 option-round">
-                  <span class="icon">Icon</span>
-                  <h3 class="title">VISUALISE</h3>
-                  <div class="description">Pellentesque feugiat urna a lectus consequat, quis vulpulate nunc feugiat. Fusce non augue ligula. Ut sed ultrices lacus.</div>
-              </div>
-              <div class="col-sm-4 option-round">
-                  <span class="icon">Icon</span>
-                  <h3 class="title">GET CONTENT</h3>
-                  <div class="description">Quisque volutpat mi consectetur, rutrum lacus nec, porttitor nunc. Vivamus non est vitae erat feugiat ultricies eu id sapien.</div>
-              </div>
-          </div>
-       </div>
-  </div>
-
-    <!-- <div class="showcase how-it-works bg-tan text-center">
-        {% block how_it_works %}
-            <div class="wrapper clearfix">
-                <h1>How It Works</h1>
-                <br/>
-                <div class="column-third">
-                    <p><img src="{% static 'img/icons/blurbs/facts.png' %}" alt=""></p>
-                    <h3>Find Facts</h3>
-                    <p>Population and financial figures are broken down by category: Elections, Demographics, Service Delivery, Economics, and Education.</p>
-                </div>
-                <div class="column-third">
-                    <p><img src="{% static 'img/icons/blurbs/visualise.png' %}" alt=""></p>
-                    <h3>Visualize</h3>
-                    <p>Our library of charts gives you insight into data from places you research. Look for them on profile pages. You can embed the charts on your own site.</p>
-                </div>
-                <div class="column-third">
-                    <p><img src="{% static 'img/icons/blurbs/context.png' %}" alt=""></p>
-                    <h3>Get Context</h3>
-                    <p>Pre-computed statistics are presented alongside each data point so you can see how each place fits into a large context.</p>
-                </div>
-            </div>
-            <div class="wrapper">
-                <br/><br/>
-                <p><a href="/help" class="btn btn-lg bg-bottle-green">Learn more</a></p>
-            </div>
-        {% endblock %}
-    </div> -->
-
+  <div class="help-box">
+      <div class="help-text text-center">SCHOOL RANKINGS
+        <span>
+          <select id="rank-year" class="inline-select" style="color: #D0A331" onchange="get_school_ranking();">
+                <option value="2017">2017</option>
+                <option value="2016">2016</option>
+                <option value="2015">2015</option>
+                <option value="2014">2014</option>
+                <option value="2013">2013</option>
+                <option value="2012">2012</option>
+            </select>
+          </span></div>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2 class="title text-center">SCHOOL RANKINGS</h2>
+
                 <!--
                 * =================================
                 * Top School List
                 * =================================
                 -->
                 <div class="col-md-6">
-                    <h3 class="title">10 Top Schools</h3>
-                    <ul class="list-group school">
-                      {% for school in schools.best_schools|slice:":10" %}
+                    <h3 class="title text-center">10 Top Schools </h3>
+                    <h4 class="title text-center">Schools Category with 40 Students and More</h4>
+                    <ul id="best-40" class="list-group school">
+                      {% for school in schools.best_schools_more_40|slice:":10" %}
                         <li class="list-group-item">
                             <a href="leaguetable/schools/{{ school.code }}">
                                 <div class="col-xs-5">
-                                    <div class="school-name">{{ school.name|slice:":-16" }} SCHOOL</div>
-                                    <div class="school-type">Mixed</div>
+                                    <div class="school-name">{{ school.name | title }} School</div>
+                                    <div class="school-type">{{ school.gender | title }}</div>
                                 </div>
                                 <div class="col-xs-5">
                                     <div class="school-rank">#{{ school.national_rank_all }} in Tanzania</div>
-                                    <div class="school-rank">#{{ school.regional_rank_all }} in {{ school.region }}</div>
+                                    <div class="school-rank">#{{ school.regional_rank_all }} in {{ school.region | title }}</div>
                                 </div>
                                 <div class="col-xs-2">
-                                    {{ school.pass_rate }}
+                                    {{ school.avg_gpa | floatformat:3 }} GPA
                                 </div>
                             </a>
                         </li>
@@ -98,27 +60,90 @@
                 * =================================
                 -->
                 <div class="col-md-6">
-                    <h3 class="title">10 Lowest Schools</h3>
-                    <ul class="list-group school">
-                      {% for school in schools.worst_schools|slice:":10" %}
+                  <h3 class="title text-center">10 Lowest Schools </h3>
+                  <h4 class="title text-center">Schools Category with 40 Students and More</h4>
+                    <ul id="worst-40" class="list-group school">
+                      {% for school in schools.worst_schools_more_40|slice:":10" %}
                         <li class="list-group-item">
                             <a href="leaguetable/schools/{{ school.code }}">
                                 <div class="col-xs-5">
-                                    <div class="school-name">{{ school.name|slice:":-16" }} SCHOOL</div>
-                                    <div class="school-type">Mixed</div>
+                                    <div class="school-name">{{ school.name | title }} School</div>
+                                    <div class="school-type">{{ school.gender | title }}</div>
                                 </div>
                                 <div class="col-xs-5">
                                     <div class="school-rank">#{{ school.national_rank_all }} in Tanzania</div>
-                                    <div class="school-rank">#{{ school.regional_rank_all }} in {{ school.region }}</div>
+                                    <div class="school-rank">#{{ school.regional_rank_all }} in {{ school.region | title }}</div>
                                 </div>
                                 <div class="col-xs-2">
-                                    {{ school.pass_rate }}
+                                    {{ school.avg_gpa| floatformat:3 }} GPA
                                 </div>
                             </a>
                         </li>
                         {% endfor %}
                     </ul>
                 </div>
+            </div>
+
+            <div class="col-md-12">
+
+                <!--
+                * =================================
+                * Top School List
+                * =================================
+                -->
+                <div class="col-md-6">
+                  <h3 class="title text-center">10 Top Schools </h3>
+                  <h4 class="title text-center">Schools Category with less than 40 Students</h4>
+                    <ul id="best" class="list-group school">
+                      {% for school in schools.best_schools_less_40|slice:":10" %}
+                        <li class="list-group-item">
+                            <a href="leaguetable/schools/{{ school.code }}">
+                                <div class="col-xs-5">
+                                    <div class="school-name">{{ school.name |title }} School</div>
+                                    <div class="school-type">{{ school.gender|title }}</div>
+                                </div>
+                                <div class="col-xs-5">
+                                    <div class="school-rank">#{{ school.national_rank_all }} in Tanzania</div>
+                                    <div class="school-rank">#{{ school.regional_rank_all }} in {{ school.region | title }}</div>
+                                </div>
+                                <div class="col-xs-2">
+                                    {{ school.avg_gpa| floatformat:3}} GPA
+                                </div>
+                            </a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                </div>
+                <!--
+                * =================================
+                * Lowest School List
+                * =================================
+                -->
+                <div class="col-md-6">
+                  <h3 class="title text-center">10 Lowest Schools </h3>
+                  <h4 class="title text-center">Schools Category less than 40 Students</h4>
+                    <ul id="worst" class="list-group school">
+                      {% for school in schools.worst_schools_less_40|slice:":10" %}
+                        <li class="list-group-item">
+                            <a href="leaguetable/schools/{{ school.code }}">
+                                <div class="col-xs-5">
+                                    <div class="school-name">{{ school.name| title }} School</div>
+                                    <div class="school-type">{{ school.gender| title }}</div>
+                                </div>
+                                <div class="col-xs-5">
+                                    <div class="school-rank">#{{ school.national_rank_all }} in Tanzania</div>
+                                    <div class="school-rank">#{{ school.regional_rank_all }} in {{ school.region | title }}</div>
+                                </div>
+                                <div class="col-xs-2">
+                                    {{ school.avg_gpa| floatformat:3 }} GPA
+                                </div>
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+              </div>
+            </div>
             </div>
         </div>
     </div>

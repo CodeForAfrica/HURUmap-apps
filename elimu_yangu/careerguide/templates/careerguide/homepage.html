@@ -91,9 +91,9 @@
                         <tbody>
                           {% for school in schools %}
                           <tr>
-                            <td><a href="/careerguide/school/{{ school.schoolcode }}">{{ school.schoolname }}</td>
+                            <td><a href="/careerguide/school/{{ school.schoolcode }}">{{ school.schoolname | title }}</td>
                               <td>Gender</td>
-                              <td>{{ school.region }}</td>
+                              <td>{{ school.region | title }}</td>
                               <td>{{ school.career_avg| floatformat:3 }}</td>
                               <td>{{ school.natranking }}</td>
                               <td>{{ school.regranking }}</td>
@@ -127,9 +127,9 @@
                         <tbody>
                           {% for school in topschools.top_Olevel %}
                           <tr>
-                            <td><a href="/careerguide/school/{{ school.schoolcode }}">{{ school.schoolname }}</td>
+                            <td><a href="/careerguide/school/{{ school.schoolcode }}">{{ school.schoolname | title }}</td>
                               <td>{{ school.category }}</td>
-                              <td>{{ school.region }}</td>
+                              <td>{{ school.region | title }}</td>
                               <td>{{ school.gpa| floatformat:3 }}</td>
                               <td>{{ school.natranking }}</td>
                               <td>{{ school.regranking }}</td>

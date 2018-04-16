@@ -41,33 +41,42 @@ def get_schools_profile(geo, session):
     region_dist, total_schools = get_stat_data(['region'], geo, session)
 
     # Choosing sorting option
-    if geo.geo_level == "country":
-        rank_column = Base.metadata.tables['secondary_schools'].c.national_rank_all
-    elif geo.geo_level == "region":
-        rank_column = Base.metadata.tables['secondary_schools'].c.regional_rank_all
-    elif geo.geo_level == "district":
-        rank_column = Base.metadata.tables['secondary_schools'].c.district_rank_all
+    #Sorting will only be done using national_rank all, as regional and district ranks are unknown for some result esp historical
+    rank_column = Base.metadata.tables['secondary_school'].c.national_rank_all
 
-
-    # Getting top schools
-    top_schools = session.query(Base.metadata.tables['secondary_schools'])\
-                    .filter(Base.metadata.tables['secondary_schools'].c.geo_level == geo.geo_level)\
-                    .filter(Base.metadata.tables['secondary_schools'].c.geo_code == geo.geo_code)\
+    # Getting top for schools with more than 40 students
+    top_schools_40_more = session.query(Base.metadata.tables['secondary_school'])\
+                    .filter(Base.metadata.tables['secondary_school'].c.geo_level == geo.geo_level)\
+                    .filter(Base.metadata.tables['secondary_school'].c.geo_code == geo.geo_code)\
+                    .filter(Base.metadata.tables['secondary_school'].c.more_than_40 == "yes")\
+                    .order_by(asc(cast(rank_column, Integer)))\
+                    .all()
+    # Getting top for schools with less than 40 students
+    top_schools_40_less = session.query(Base.metadata.tables['secondary_school'])\
+                    .filter(Base.metadata.tables['secondary_school'].c.geo_level == geo.geo_level)\
+                    .filter(Base.metadata.tables['secondary_school'].c.geo_code == geo.geo_code)\
+                    .filter(Base.metadata.tables['secondary_school'].c.more_than_40 == "no")\
                     .order_by(asc(cast(rank_column, Integer)))\
                     .all()
 
-    # Getting lowest schools
-    lowest_schools = session.query(Base.metadata.tables['secondary_schools'])\
-                    .filter(Base.metadata.tables['secondary_schools'].c.geo_level == geo.geo_level)\
-                    .filter(Base.metadata.tables['secondary_schools'].c.geo_code == geo.geo_code)\
+    # Getting lowest schools with more than 40 students
+    lowest_schools_40_more = session.query(Base.metadata.tables['secondary_school'])\
+                    .filter(Base.metadata.tables['secondary_school'].c.geo_level == geo.geo_level)\
+                    .filter(Base.metadata.tables['secondary_school'].c.geo_code == geo.geo_code)\
+                    .filter(Base.metadata.tables['secondary_school'].c.more_than_40 == "yes")\
+                    .order_by(desc(cast(rank_column, Integer)))\
+                    .all()
+    # Getting lowest for schools with less than 40 students
+    lowest_schools_40_less = session.query(Base.metadata.tables['secondary_school'])\
+                    .filter(Base.metadata.tables['secondary_school'].c.geo_level == geo.geo_level)\
+                    .filter(Base.metadata.tables['secondary_school'].c.geo_code == geo.geo_code)\
+                    .filter(Base.metadata.tables['secondary_school'].c.more_than_40 == "no")\
                     .order_by(desc(cast(rank_column, Integer)))\
                     .all()
 
     # median gpa
-    db_model_age = get_model_from_fields(
-        ['code', 'name', 'avg_gpa'], geo.geo_level)
-    objects = get_objects_by_geo(db_model_age, geo, session, [
-                                 'avg_gpa'])
+    db_model_age = get_model_from_fields(['code', 'name', 'avg_gpa'], geo.geo_level)
+    objects = get_objects_by_geo(db_model_age, geo, session, ['avg_gpa'])
     median = calculate_median(objects, 'avg_gpa')
 
     # gpa in 1 point groups

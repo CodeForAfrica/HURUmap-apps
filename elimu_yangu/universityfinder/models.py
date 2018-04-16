@@ -47,6 +47,7 @@ class UniversityFinder(models.Model):
     compulsory_olevel = HStoreField()#models.TextField(blank=True, null=True)  # This field type is a guess.
     other_alevel = HStoreField()#models.TextField(blank=True, null=True)  # This field type is a guess.
     other_olevel = HStoreField()#models.TextField(blank=True, null=True)  # This field type is a guess.
+    total_point = models.IntegerField()
 
     class Meta:
         managed = False
