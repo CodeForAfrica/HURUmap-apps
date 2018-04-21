@@ -1,10 +1,31 @@
 import os
+from django.utils.translation import ugettext_lazy as _
 from collections import OrderedDict
 
 from hurumap.settings import *  # noqa
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+LANGUAGE_CODE = 'en'
+ugettext = lambda s: s
+LANGUAGES = (
+('sw', _('Swahili')),
+('en', _('English')),
+)
+
+USE_I18N = True
+
+TEMPLATE_CONTEXT_PROCESSORS = ('django.template.context_processors.i18n',) + TEMPLATE_CONTEXT_PROCESSORS
+# Tell Django where the project's translation files should be.
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+    os.path.join(BASE_DIR, 'careerguide/locale'),
+    os.path.join(BASE_DIR, 'leaguetable/locale'),
+    os.path.join(BASE_DIR, 'universityfinder/locale'),
+)
+
+MIDDLEWARE_CLASSES = ( 'django.contrib.sessions.middleware.SessionMiddleware','django.middleware.locale.LocaleMiddleware',) + MIDDLEWARE_CLASSES
 
 # insert our overrides before both census and HURUmap
 INSTALLED_APPS = ['elimu_yangu', 'elimu_yangu.careerguide', 'elimu_yangu.leaguetable', 'elimu_yangu.universityfinder'] + INSTALLED_APPS

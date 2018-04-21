@@ -7,6 +7,7 @@ from django.core import serializers
 from django.core.serializers.json import DjangoJSONEncoder
 from elimu_yangu.careerguide.forms import InputForm
 from django.db.models import Avg
+from django.utils.translation import activate
 from elimu_yangu.careerguide.models import Olevel_subject_performance, Olevel_overall_performance, Alevel_subject_performance, Olevel_student_performance_2017, Alevel_student_performance, Alevel_overall_performance
 # Create your views here.
 
@@ -15,6 +16,7 @@ olsubjects = json.load(open(os.path.join(settings.BASE_DIR, 'elimu_yangu/careerg
 alsubjects = json.load(open(os.path.join(settings.BASE_DIR, 'elimu_yangu/careerguide','alsubjects.json')))
 
 def index(request):
+    #activate('en')
     topschools = get_overall_topschools()
     # if this is a POST request we need to process the form data
     if request.method == 'POST':

@@ -1,0 +1,145 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-04-21 08:29+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: careerguide/templates/careerguide/homepage.html:11
+msgid "FIND THE BEST HIGHSCHOOL FOR YOUR CAREER"
+msgstr "TAFUTA SHULE BORA YA TAALUMA YAKO"
+
+#: careerguide/templates/careerguide/homepage.html:15
+msgid "I am a"
+msgstr "Mimi ni"
+
+#: careerguide/templates/careerguide/homepage.html:19
+msgid "from"
+msgstr "kutoka"
+
+#: careerguide/templates/careerguide/homepage.html:23
+msgid "currently at"
+msgstr "hivi sasa nipo"
+
+#: careerguide/templates/careerguide/homepage.html:27
+msgid "and I want to be"
+msgstr "na nitaka kuwa"
+
+#: careerguide/templates/careerguide/homepage.html:32
+msgid "FIND"
+msgstr "TAFUTA"
+
+#: careerguide/templates/careerguide/homepage.html:40
+msgid "TO STUDY"
+msgstr "KUSOMA"
+
+#: careerguide/templates/careerguide/homepage.html:42
+msgid "YOU NEED A PASS IN THE FOLLOWING SUBJECTS:"
+msgstr ""
+
+#: careerguide/templates/careerguide/homepage.html:54
+msgid "AND A SATISFACTORY PASS IN:"
+msgstr ""
+
+#: careerguide/templates/careerguide/homepage.html:62
+msgid "AND A PASS IN AT LEAST 2 OF THE FOLLOWING SUBJECTS:"
+msgstr ""
+
+#: careerguide/templates/careerguide/homepage.html:85
+#, python-format
+msgid ""
+"List of Schools doing well in %(school_level)s subjects aligning to your "
+"career"
+msgstr ""
+
+#: careerguide/templates/careerguide/homepage.html:91
+#: careerguide/templates/careerguide/homepage.html:130
+#: careerguide/templates/careerguide/homepage.html:163
+msgid "Name of School"
+msgstr ""
+
+#: careerguide/templates/careerguide/homepage.html:92
+#: careerguide/templates/careerguide/homepage.html:131
+#: careerguide/templates/careerguide/homepage.html:164
+msgid "Category"
+msgstr ""
+
+#: careerguide/templates/careerguide/homepage.html:93
+#: careerguide/templates/careerguide/homepage.html:132
+#: careerguide/templates/careerguide/homepage.html:165
+msgid "Region"
+msgstr ""
+
+#: careerguide/templates/careerguide/homepage.html:94
+#: careerguide/templates/careerguide/homepage.html:133
+#: careerguide/templates/careerguide/homepage.html:166
+msgid "Average GPA"
+msgstr ""
+
+#: careerguide/templates/careerguide/homepage.html:95
+#: careerguide/templates/careerguide/homepage.html:134
+#: careerguide/templates/careerguide/homepage.html:167
+msgid "National Ranking"
+msgstr ""
+
+#: careerguide/templates/careerguide/homepage.html:96
+#: careerguide/templates/careerguide/homepage.html:135
+#: careerguide/templates/careerguide/homepage.html:168
+msgid "Regional Ranking"
+msgstr ""
+
+#: careerguide/templates/careerguide/homepage.html:125
+msgid "Overall best performing schools for Ordinary Level 2017"
+msgstr ""
+
+#: careerguide/templates/careerguide/homepage.html:158
+msgid "Overall best performing schools for Advance Level 2017"
+msgstr ""
+
+#: careerguide/templates/careerguide/school.html:47
+#: careerguide/templates/careerguide/school.html:48
+#: careerguide/templates/careerguide/school.html:118
+#: careerguide/templates/careerguide/school.html:119
+msgid "in"
+msgstr ""
+
+#: careerguide/templates/careerguide/school.html:62
+#: careerguide/templates/careerguide/school.html:133
+msgid "Click on A Subject In The Bar Chart To View More Details"
+msgstr ""
+
+#: careerguide/templates/careerguide/school.html:65
+#: careerguide/templates/careerguide/school.html:136
+msgid "Subject Perfomance"
+msgstr ""
+
+#: careerguide/templates/careerguide/school.html:72
+msgid "Regional Rank:"
+msgstr ""
+
+#: careerguide/templates/careerguide/school.html:73
+msgid "National Rank:"
+msgstr ""
+
+#: careerguide/templates/careerguide/school.html:109
+msgid "Overall Performance"
+msgstr ""
+
+#~ msgid "Swahili"
+#~ msgstr "Kiswahili"
+
+#~ msgid "English"
+#~ msgstr "Kingereza"

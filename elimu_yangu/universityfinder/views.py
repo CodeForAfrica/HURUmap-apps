@@ -6,6 +6,7 @@ from django.views.generic import TemplateView
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.conf import settings
 import os, json
+from django.http import HttpResponse, Http404
 from django.core import serializers
 from django.core.serializers.json import DjangoJSONEncoder
 from elimu_yangu.universityfinder.forms import InputForm

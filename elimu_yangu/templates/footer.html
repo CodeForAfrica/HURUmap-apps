@@ -7,25 +7,40 @@
     <a href="https://worldbank.org/" target="_blank">
         <img src="{% static 'img/logos/world_bank_group_vertial_white_logo.png' %}" alt="World Bank Group" style="max-width: 105px; max-height: 50px;"></a>
 {% endblock %} -->
-
+{% load i18n %}
 {% load staticfiles %}
 <div class="container">
     <div class="row">
         <div class="col-sm-6 margin-top">
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui.
+          <p class="smaller"><strong>{{ HURUMAP.name }}</strong> {{ HURUMAP.description }}</p>
+          <p class="small">
+                      The project is built on <a href="http://wazimap.readthedocs.org/" target="_blank" rel="noopener">Wazimap</a>, an open source platform by <a href="https://openup.org.za/" target="_blank" rel="noopener">OpenUp</a> and <a href="http://www.mediamonitoringafrica.org/" target="_blank" rel="noopener">Media Monitoring Africa</a> for making census data more understandable.</p>
+          <p class="small">This site is a project of <strong><a
+                  href="https://codeforafrica.org" target="_blank">Code for Africa</a></strong>. All content is released under a
+              <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons 4 Attribution license</a>. Reuse it to help empower your own community. The code is available on
+              <a href="{{ HURUMAP.github_url }}" target="_blank">GitHub</a> and data is available on <a
+                      href="{{ HURUMAP.openafrica_url }}" target="_blank">​openAFRICA​</a>.</p>
+          <br/>
         </div>
         <div class="col-sm-6 text-center margin-top footer-link">
             <div class="col-xs-6">
-                <div>RESOURCES</div>
+
+                <div>{%trans 'RESOURCES' %}</div>
                 <ul class="list-group">
-                    <li class="list-group-item"> <a href="#">Link 1</a></li>
-                    <li class="list-group-item"> <a href="#">Link 2</a></li>
-                    <li class="list-group-item"> <a href="#">Link 3</a></li>
-                    <li class="list-group-item"> <a href="#">Link 4</a></li>
+                    <li class="list-group-item"><a href="https://pesacheck.org" target="_blank">PesaYetu</a></li>
+                    <li class="list-group-item"> <a href="https://facebook.com/HacksHackersAfrica" target="_blank">Hacks/Hackers Africa</a></li>
+                    <!-- <li class="list-group-item"> <a href="#">Link 3</a></li>
+                    <li class="list-group-item"> <a href="#">Link 4</a></li> -->
                 </ul>
             </div>
             <div class="col-xs-6">
+              <div class="col-xs-12">
                 <img class="img-fluid img-thumbnail" src="{% static 'img/cfafrica-white.png' %}" />
+              </div>
+              <div class="col-xs-12" style="padding-top: 10px;">
+                <a href="https://datazetu.or.tz/" target="_blank" rel="noopener">
+                    <img class="img-fluid img-thumbnail" src="{{ STATIC_URL }}img/logos/datazetu.png" alt="Data Zetu"></a>
+              </div>
             </div>
         </div>
     </div>

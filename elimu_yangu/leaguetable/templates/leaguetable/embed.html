@@ -1,3 +1,4 @@
+{% load i18n %}
 {% load staticfiles %}
 <!-- <div class="content-container wrapper clearfix" style="overflow:auto;">
     <div class="holder" style="width: 100%; margin-bottom: 0px;">
@@ -55,62 +56,126 @@
 <div class="content-container wrapper clearfix" style="overflow:auto;">
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
-            <!--
-            * =================================
-            * Top School List
-            * =================================
-            -->
-            <div class="col-md-6">
-                <h3 class="title">10 Top Schools</h3>
-                <ul class="list-group school">
-                  {% for school in schools.top_schools|slice:":10" %}
+      <div class="col-md-12">
+
+          <!--
+          * =================================
+          * Top School List
+          * =================================
+          -->
+          <div class="col-md-6">
+              <h3 class="title text-center">{%trans '10 Top Schools' %} </h3>
+              <h4 class="title text-center">{%trans 'Schools Category with 40 Students and More' %}</h4>
+              <ul id="best-40" class="list-group school">
+                {% for school in schools.best_schools_more_40|slice:":10" %}
                   <li class="list-group-item">
                       <a href="leaguetable/schools/{{ school.code }}">
                           <div class="col-xs-5">
-                              <div class="school-name">{{ school.name|slice:":-16" }} SCHOOL</div>
-                              <div class="school-type">Mixed</div>
+                              <div class="school-name">{{ school.name | title }} School</div>
+                              <div class="school-type">{{ school.gender | title }}</div>
                           </div>
                           <div class="col-xs-5">
-                              <div class="school-rank">#{{ school.national_rank_all }} in Tanzania</div>
-                              <div class="school-rank">#{{ school.regional_rank_all }} in {{ school.region }}</div>
+                              <div class="school-rank">#{{ school.national_rank_all }} {%trans 'in' %} Tanzania</div>
+                              <div class="school-rank">#{{ school.regional_rank_all }} {%trans 'in' %} {{ school.region | title }}</div>
                           </div>
                           <div class="col-xs-2">
-                              {{ school.pass_rate }}
+                              {{ school.avg_gpa | floatformat:3 }} GPA
                           </div>
                       </a>
                   </li>
-                    {% endfor %}
-                </ul>
-            </div>
-            <!--
-            * =================================
-            * Lowest School List
-            * =================================
-            -->
-            <div class="col-md-6">
-                <h3 class="title">10 Lowest Schools</h3>
-                <ul class="list-group school">
-                  {% for school in schools.lowest_schools|slice:":10" %}
-                  <li class="list-group-item">
-                      <a href="leaguetable/schools/{{ school.code }}">
-                          <div class="col-xs-5">
-                              <div class="school-name">{{ school.name|slice:":-16" }} SCHOOL</div>
-                              <div class="school-type">Mixed</div>
-                          </div>
-                          <div class="col-xs-5">
-                              <div class="school-rank">#{{ school.national_rank_all }} in Tanzania</div>
-                              <div class="school-rank">#{{ school.regional_rank_all }} in {{ school.region }}</div>
-                          </div>
-                          <div class="col-xs-2">
-                              {{ school.pass_rate }}
-                          </div>
-                      </a>
-                  </li>
-                    {% endfor %}
-                </ul>
-            </div>
+                {% endfor %}
+              </ul>
+          </div>
+          <!--
+          * =================================
+          * Lowest School List
+          * =================================
+          -->
+          <div class="col-md-6">
+            <h3 class="title text-center">{% trans '10 Lowest Schools' %} </h3>
+            <h4 class="title text-center">{% trans 'Schools Category with 40 Students and More' %}</h4>
+              <ul id="worst-40" class="list-group school">
+                {% for school in schools.worst_schools_more_40|slice:":10" %}
+                <li class="list-group-item">
+                    <a href="leaguetable/schools/{{ school.code }}">
+                        <div class="col-xs-5">
+                            <div class="school-name">{{ school.name | title }} School</div>
+                            <div class="school-type">{{ school.gender | title }}</div>
+                        </div>
+                        <div class="col-xs-5">
+                            <div class="school-rank">#{{ school.national_rank_all }} {%trans 'in' %} Tanzania</div>
+                            <div class="school-rank">#{{ school.regional_rank_all }} {%trans 'in' %} {{ school.region | title }}</div>
+                        </div>
+                        <div class="col-xs-2">
+                            {{ school.avg_gpa | floatformat:3 }} GPA
+                        </div>
+                    </a>
+                </li>
+                  {% endfor %}
+              </ul>
+          </div>
+      </div>
+
+      <div class="col-md-12">
+
+          <!--
+          * =================================
+          * Top School List
+          * =================================
+          -->
+          <div class="col-md-6">
+            <h3 class="title text-center">{% trans '10 Top Schools' %} </h3>
+            <h4 class="title text-center">{% trans 'Schools Category with less than 40 Students' %}</h4>
+              <ul id="best" class="list-group school">
+                {% for school in schools.best_schools_less_40|slice:":10" %}
+                <li class="list-group-item">
+                    <a href="leaguetable/schools/{{ school.code }}">
+                        <div class="col-xs-5">
+                            <div class="school-name">{{ school.name | title }} School</div>
+                            <div class="school-type">{{ school.gender | title }}</div>
+                        </div>
+                        <div class="col-xs-5">
+                            <div class="school-rank">#{{ school.national_rank_all }} {%trans 'in' %} Tanzania</div>
+                            <div class="school-rank">#{{ school.regional_rank_all }} {%trans 'in' %} {{ school.region | title }}</div>
+                        </div>
+                        <div class="col-xs-2">
+                            {{ school.avg_gpa | floatformat:3 }} GPA
+                        </div>
+                    </a>
+                </li>
+                {% endfor %}
+              </ul>
+          </div>
+          <!--
+          * =================================
+          * Lowest School List
+          * =================================
+          -->
+          <div class="col-md-6">
+            <h3 class="title text-center">{% trans '10 Lowest Schools' %} </h3>
+            <h4 class="title text-center">{% trans 'Schools Category less than 40 Students' %}</h4>
+              <ul id="worst" class="list-group school">
+                {% for school in schools.worst_schools_less_40|slice:":10" %}
+                <li class="list-group-item">
+                    <a href="leaguetable/schools/{{ school.code }}">
+                        <div class="col-xs-5">
+                            <div class="school-name">{{ school.name | title }} School</div>
+                            <div class="school-type">{{ school.gender | title }}</div>
+                        </div>
+                        <div class="col-xs-5">
+                            <div class="school-rank">#{{ school.national_rank_all }} {%trans 'in' %} Tanzania</div>
+                            <div class="school-rank">#{{ school.regional_rank_all }} {%trans 'in' %} {{ school.region | title }}</div>
+                        </div>
+                        <div class="col-xs-2">
+                            {{ school.avg_gpa | floatformat:3 }} GPA
+                        </div>
+                    </a>
+                </li>
+                  {% endfor %}
+              </ul>
+          </div>
         </div>
+      </div>
     </div>
 </div>
 </div>

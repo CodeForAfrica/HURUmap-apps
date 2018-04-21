@@ -20,6 +20,14 @@ from sqlalchemy import Column, ForeignKey, Integer, String, Table, func, or_, an
 
 from census.views import GeographyDetailView as BaseGeographyDetailView
 
+class HomepageView(TemplateView):
+    template_name = 'homepage.html'
+
+    def get_context_data(self, *args, **kwargs):
+        return {
+            'root_geo': geo_data.root_geography(),
+        }
+
 # handling schools page
 def schools(request):
     # Getting the session

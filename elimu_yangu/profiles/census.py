@@ -40,6 +40,9 @@ def get_schools_profile(geo, session):
     # region status
     region_dist, total_schools = get_stat_data(['region'], geo, session)
 
+    #current result year
+    year = '2017'
+
     # Choosing sorting option
     #Sorting will only be done using national_rank all, as regional and district ranks are unknown for some result esp historical
     rank_column = Base.metadata.tables['secondary_school'].c.national_rank_all
@@ -48,6 +51,7 @@ def get_schools_profile(geo, session):
     top_schools_40_more = session.query(Base.metadata.tables['secondary_school'])\
                     .filter(Base.metadata.tables['secondary_school'].c.geo_level == geo.geo_level)\
                     .filter(Base.metadata.tables['secondary_school'].c.geo_code == geo.geo_code)\
+                    .filter(Base.metadata.tables['secondary_school'].c.year_of_result == year)\
                     .filter(Base.metadata.tables['secondary_school'].c.more_than_40 == "yes")\
                     .order_by(asc(cast(rank_column, Integer)))\
                     .all()
@@ -55,6 +59,7 @@ def get_schools_profile(geo, session):
     top_schools_40_less = session.query(Base.metadata.tables['secondary_school'])\
                     .filter(Base.metadata.tables['secondary_school'].c.geo_level == geo.geo_level)\
                     .filter(Base.metadata.tables['secondary_school'].c.geo_code == geo.geo_code)\
+                    .filter(Base.metadata.tables['secondary_school'].c.year_of_result == year)\
                     .filter(Base.metadata.tables['secondary_school'].c.more_than_40 == "no")\
                     .order_by(asc(cast(rank_column, Integer)))\
                     .all()
@@ -63,6 +68,7 @@ def get_schools_profile(geo, session):
     lowest_schools_40_more = session.query(Base.metadata.tables['secondary_school'])\
                     .filter(Base.metadata.tables['secondary_school'].c.geo_level == geo.geo_level)\
                     .filter(Base.metadata.tables['secondary_school'].c.geo_code == geo.geo_code)\
+                    .filter(Base.metadata.tables['secondary_school'].c.year_of_result == year)\
                     .filter(Base.metadata.tables['secondary_school'].c.more_than_40 == "yes")\
                     .order_by(desc(cast(rank_column, Integer)))\
                     .all()
@@ -70,6 +76,7 @@ def get_schools_profile(geo, session):
     lowest_schools_40_less = session.query(Base.metadata.tables['secondary_school'])\
                     .filter(Base.metadata.tables['secondary_school'].c.geo_level == geo.geo_level)\
                     .filter(Base.metadata.tables['secondary_school'].c.geo_code == geo.geo_code)\
+                    .filter(Base.metadata.tables['secondary_school'].c.year_of_result == year)\
                     .filter(Base.metadata.tables['secondary_school'].c.more_than_40 == "no")\
                     .order_by(desc(cast(rank_column, Integer)))\
                     .all()
@@ -100,8 +107,10 @@ def get_schools_profile(geo, session):
     return {
         'schools_distribution': schools_dist,
         'region_distribution': region_dist,
-        'top_schools': top_schools,
-        'lowest_schools': lowest_schools,
+        'best_schools_more_40': top_schools_40_more,
+        'worst_schools_more_40': lowest_schools_40_more,
+        'best_schools_less_40': top_schools_40_less,
+        'worst_schools_less_40': lowest_schools_40_less,
         'gpa_group_distribution': gpa_dist_data,
         'median_gpa': {
             "name": "Median GPA",

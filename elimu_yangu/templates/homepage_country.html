@@ -1,4 +1,4 @@
-{% extends '_base.html' %}{% load staticfiles %}
+{% extends '_base.html' %}{% load i18n %}{% load staticfiles %}
 {% block head_meta_description %}{{ HURUmap.name }} provides useful facts on schools data across regions, and suggests best schools and university courses for students{% endblock %}
 {% block body_id %}homepage{% endblock %}
 
@@ -31,6 +31,9 @@
     #page-footer img {
       max-height: 100%;
       margin: 0;
+    }
+    #page-footer ul a {
+      text-decoration: none;
     }
     #page .bg-ocean-green {
           background-color: #2E4668

@@ -1,0 +1,168 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-04-21 08:29+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: settings.py:13
+msgid "Swahili"
+msgstr "Kiswahili"
+
+#: settings.py:14
+msgid "English"
+msgstr "Kingereza"
+
+#: templates/about.html:7
+msgid ""
+"contains three different tools: School league, Career guide and University "
+"finder."
+msgstr ""
+"ina jumuisha programu tatu tofauti: School league, Career guide na "
+"University finder."
+
+#: templates/about.html:10
+msgid ""
+"Career Guide assists student to find schools to go in any location that "
+"align best with their career choice"
+msgstr ""
+"Career Guide inawasaidia wanafunzi kutafuta shule katika maeneo yao au "
+"maeneo mengine zinazo fanya vizuri kwenye "
+
+#: templates/about.html:11
+msgid ""
+"University Finder helps Advance Level Students to find the best possible "
+"university course to attend based on their ACSEE erformance and preferences."
+msgstr ""
+
+#: templates/about.html:12
+msgid "The school league tool is built on"
+msgstr "School League imetengenezwa juu ya"
+
+#: templates/about.html:12
+msgid " an open source platform by "
+msgstr "programu huria"
+
+#: templates/about.html:12
+msgid "and"
+msgstr "na"
+
+#: templates/about.html:13
+msgid "for making census data more understandable."
+msgstr "ili kufanya taarifa za sensa kueleweka zaidi "
+
+#: templates/footer.html:28
+msgid "RESOURCES"
+msgstr ""
+
+#: templates/homepage.html:14
+msgid "MAP OUT YOUR EDUCATION"
+msgstr "PANGA ELIMU YAKO"
+
+#: templates/homepage.html:15
+msgid "A smarter way to plan and search for the right schools and universities"
+msgstr "Njia bora ya kupanga na kutafuta shule na vyuo bora"
+
+#: templates/homepage.html:29
+msgid "I am a"
+msgstr "Mimi ni"
+
+#: templates/homepage.html:31
+msgid "journalist"
+msgstr "mwandishi wa habari"
+
+#: templates/homepage.html:32
+msgid "student"
+msgstr "mwanafunzi"
+
+#: templates/homepage.html:34
+msgid "looking for"
+msgstr "ninatafuta"
+
+#: templates/homepage.html:36
+msgid "suitable university courses to attend"
+msgstr "kozi za chuo zitakazo nifaa"
+
+#: templates/homepage.html:37
+msgid "data on high schools"
+msgstr "taarifa za shule"
+
+#: templates/homepage.html:38
+msgid "best high school to go to"
+msgstr "shule bora ya kwenda"
+
+#: templates/homepage.html:40
+msgid "in the country"
+msgstr "nchini"
+
+#: templates/homepage.html:46
+msgid ""
+"Explore the complete list of schools in Tanzania and compare performances "
+"within the different regions."
+msgstr ""
+"Fanya utafiti kwenye oradha ya shule nchini Tanzania na linganisha matokea "
+"kati ya mikoa na wilaya"
+
+#: templates/homepage.html:50
+msgid ""
+"Find schools for you to go in your location that align best with your career "
+"choice."
+msgstr ""
+"Tafuta shule ya kwenda kwenye eneo lako au lingine inayofanya vizuri kwenye "
+"masomo yanayoanisha na taaluma yako"
+
+#: templates/homepage.html:54
+msgid ""
+"Find the best possible university course to attend based on your performance "
+"and preferences."
+msgstr ""
+"Tafuta kozi bora ya chuo unayoweza kufanya kutokana na matekeo yako ya shule "
+
+#: templates/homepage.html:68
+msgid "WHAT THEY SAY ABOUT US"
+msgstr "WANACHOSEMA KUHUSU SISI"
+
+#: templates/homepage.html:74
+msgid "On"
+msgstr "Juu ya"
+
+#~ msgid ""
+#~ "School League gives infomediaries like journalists and civic activists an "
+#~ "easy ‘plug & play’ toolkit for finding school rankings information and "
+#~ "embedding interactive data visualisations into their storytelling. The "
+#~ "tool"
+#~ msgstr ""
+#~ "School league inawapa wanahabari kama waandishi wa wahabari na "
+#~ "wanaharakati nyanja ya kutafuta habari za ligi za shule za secondari na "
+#~ "kuweza kuambatanisha kwenye hadithi zao. Programu"
+
+#~ msgid "FIND THE BEST HIGHSCHOOL FOR YOUR CAREER"
+#~ msgstr "TAFUTA SHULE BORA YA TAALUMA YAKO"
+
+#~ msgid "from"
+#~ msgstr "kutoka"
+
+#~ msgid "currently at"
+#~ msgstr "hivi sasa nipo"
+
+#~ msgid "and I want to be"
+#~ msgstr "na nitaka kuwa"
+
+#~ msgid "FIND"
+#~ msgstr "TAFUTA"
+
+#~ msgid "TO STUDY"
+#~ msgstr "KUSOMA"
