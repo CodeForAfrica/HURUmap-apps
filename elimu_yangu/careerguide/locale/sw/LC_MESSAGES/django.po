@@ -48,95 +48,95 @@ msgstr "KUSOMA"
 
 #: careerguide/templates/careerguide/homepage.html:42
 msgid "YOU NEED A PASS IN THE FOLLOWING SUBJECTS:"
-msgstr ""
+msgstr "INABIDI UFAULU MASOMO HAYA:"
 
 #: careerguide/templates/careerguide/homepage.html:54
 msgid "AND A SATISFACTORY PASS IN:"
-msgstr ""
+msgstr "NA UFANYE VIZURI KWENYE:"
 
 #: careerguide/templates/careerguide/homepage.html:62
 msgid "AND A PASS IN AT LEAST 2 OF THE FOLLOWING SUBJECTS:"
-msgstr ""
+msgstr "NA UFAULU ANGALAU MASOMO MAWILI KATI YA HAYA"
 
 #: careerguide/templates/careerguide/homepage.html:85
 #, python-format
 msgid ""
 "List of Schools doing well in %(school_level)s subjects aligning to your "
 "career"
-msgstr ""
+msgstr "Shule zinavyofanya vizuri katika masomo ya %(school_level)s yanayoendana na taaluma utakayo"
 
 #: careerguide/templates/careerguide/homepage.html:91
 #: careerguide/templates/careerguide/homepage.html:130
 #: careerguide/templates/careerguide/homepage.html:163
 msgid "Name of School"
-msgstr ""
+msgstr "Jina la Shule"
 
 #: careerguide/templates/careerguide/homepage.html:92
 #: careerguide/templates/careerguide/homepage.html:131
 #: careerguide/templates/careerguide/homepage.html:164
 msgid "Category"
-msgstr ""
+msgstr "Kundi"
 
 #: careerguide/templates/careerguide/homepage.html:93
 #: careerguide/templates/careerguide/homepage.html:132
 #: careerguide/templates/careerguide/homepage.html:165
 msgid "Region"
-msgstr ""
+msgstr "Mkoa"
 
 #: careerguide/templates/careerguide/homepage.html:94
 #: careerguide/templates/careerguide/homepage.html:133
 #: careerguide/templates/careerguide/homepage.html:166
 msgid "Average GPA"
-msgstr ""
+msgstr "Wastani wa GPA"
 
 #: careerguide/templates/careerguide/homepage.html:95
 #: careerguide/templates/careerguide/homepage.html:134
 #: careerguide/templates/careerguide/homepage.html:167
 msgid "National Ranking"
-msgstr ""
+msgstr "Nafasi ya Kitaifa"
 
 #: careerguide/templates/careerguide/homepage.html:96
 #: careerguide/templates/careerguide/homepage.html:135
 #: careerguide/templates/careerguide/homepage.html:168
 msgid "Regional Ranking"
-msgstr ""
+msgstr "Nafasi ya Kimkoa"
 
 #: careerguide/templates/careerguide/homepage.html:125
 msgid "Overall best performing schools for Ordinary Level 2017"
-msgstr ""
+msgstr "Shule bora kwa ujumla za O-level mwaka 2017"
 
 #: careerguide/templates/careerguide/homepage.html:158
 msgid "Overall best performing schools for Advance Level 2017"
-msgstr ""
+msgstr "Shule bora kwa ujumla za A-level mwaka 2017"
 
 #: careerguide/templates/careerguide/school.html:47
 #: careerguide/templates/careerguide/school.html:48
 #: careerguide/templates/careerguide/school.html:118
 #: careerguide/templates/careerguide/school.html:119
 msgid "in"
-msgstr ""
+msgstr "katika"
 
 #: careerguide/templates/careerguide/school.html:62
 #: careerguide/templates/careerguide/school.html:133
 msgid "Click on A Subject In The Bar Chart To View More Details"
-msgstr ""
+msgstr "Bonyeza kwenye somo upata taarifa zaidi"
 
 #: careerguide/templates/careerguide/school.html:65
 #: careerguide/templates/careerguide/school.html:136
 msgid "Subject Perfomance"
-msgstr ""
+msgstr "Matokea ya Masomo"
 
 #: careerguide/templates/careerguide/school.html:72
 msgid "Regional Rank:"
-msgstr ""
+msgstr "Nafasi ya Kimkoa"
 
 #: careerguide/templates/careerguide/school.html:73
 msgid "National Rank:"
-msgstr ""
+msgstr "Nafasi ya Kitaifa"
 
 #: careerguide/templates/careerguide/school.html:109
 msgid "Overall Performance"
-msgstr ""
+msgstr "Matokeo kwa Ujumla"
 
 #~ msgid "Swahili"
 #~ msgstr "Kiswahili"

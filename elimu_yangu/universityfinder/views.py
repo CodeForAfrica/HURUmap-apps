@@ -6,6 +6,7 @@ from django.views.generic import TemplateView
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.conf import settings
 import os, json
+from django.utils import translation
 from django.http import HttpResponse, Http404
 from django.core import serializers
 from django.core.serializers.json import DjangoJSONEncoder
@@ -17,6 +18,9 @@ grades_point_list = [5,4,3,2,1,0.5,0]
 
 # Create your views here.
 def index(request):
+    user_language = translation.get_language()
+    print LANGUAGE_CODE
+    translation.activate(user_language)
     try:
         if request.method == 'POST':
             dataRequest = json.loads(request.body)

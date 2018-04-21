@@ -62,7 +62,29 @@
                             <li><a href="/careerguide">CAREER GUIDE</a></li>
                             <li><a href="/university-finder">UNI FINDER</a></li>
                             <li><a href="/about">ABOUT</a></li>
-                            <!-- <li><a href="/contact">CONTACT US</a></li> -->
+                            {% ifequal LANGUAGE_CODE "en" %}
+                              <li><a href="/sw{{ request.get_full_path|slice:'3:' }}">sw</a></li>
+                            {% else %}
+                              <li><a href="/en{{ request.get_full_path|slice:'3:' }}">en</a></li>
+                            {% endifequal %}
+                            <!-- <li>
+                              <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                                <input name="next" type="hidden" value="{{ redirect_to }}" />
+                                <select name="language">
+                                    {% get_current_language as LANGUAGE_CODE %}
+                                    {% get_available_languages as LANGUAGES %}
+                                    {% get_language_info_list for LANGUAGES as languages %}
+                                    {% for language in languages %}
+                                        <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                                            {{ language.name_local }} ({{ language.code }})
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                                <input type="submit" value="Go" />
+                            </form>
+                            </li> -->
+                            <!-- <li><a href="/sw">sw</a></li>
+                            <li><a href="/en">en</a></li> -->
                         </ul>
                     </div>
                 </div>

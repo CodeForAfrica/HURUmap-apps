@@ -1,5 +1,6 @@
 import logging
 import json
+from django.utils import translation
 
 from django.http import HttpResponse
 from django.shortcuts import render_to_response, render, redirect
@@ -20,18 +21,9 @@ from sqlalchemy import Column, ForeignKey, Integer, String, Table, func, or_, an
 
 from census.views import GeographyDetailView as BaseGeographyDetailView
 
-#override homepage
 
-# class HomepageView(TemplateView):
-#     template_name = 'leaguetable/homepage.html'
-#
-#     def get_context_data(self, *args, **kwargs):
-#         return {
-#             'root_geo': geo_data.root_geography(),
-#         }
 def index(request):
     #Getting the session
-    session = get_session()
     schools = {}
     template_name = 'leaguetable/homepage.html'
     geo_level = "country"
@@ -40,7 +32,6 @@ def index(request):
     year = '2017'
     #Getting Schools from overall top schools method
     schools = get_overall_topschools(year, geo_level, geo_code)
-
     return render(request,'leaguetable/homepage.html',{'schools':schools, 'root_geo': geo_data.root_geography()})
 
 # handling schools page
@@ -230,6 +221,7 @@ class GeographyCompareView(TemplateView):
 
 def get_overall_topschools(year, geo_level, geo_code):
     schools = {}
+    session = get_session()
 
     # Choosing sorting option
     rank_column = Base.metadata.tables['secondary_school'].c.national_rank_all

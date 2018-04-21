@@ -66,7 +66,7 @@ msgstr "ili kufanya taarifa za sensa kueleweka zaidi "
 
 #: templates/footer.html:28
 msgid "RESOURCES"
-msgstr ""
+msgstr "MENGINEYO"
 
 #: templates/homepage.html:14
 msgid "MAP OUT YOUR EDUCATION"

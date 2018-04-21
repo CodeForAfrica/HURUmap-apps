@@ -127,8 +127,8 @@
                     <table class="table table-hover">
                         <thead>
                           <tr>
-                            <th class="col-md-7">{%trans 'Name of School' %}</th>
-                            <th class="col-md-1">{%trans 'Category' %}</th>
+                            <th class="col-md-5">{%trans 'Name of School' %}</th>
+                            <th class="col-md-3">{%trans 'Category' %}</th>
                             <th class="col-md-1">{%trans 'Region' %}</th>
                             <th class="col-md-1">{%trans 'Average GPA' %}</th>
                             <th class="col-md-1">{%trans 'National Ranking' %}</th>
@@ -160,9 +160,9 @@
                     <table class="table table-hover">
                         <thead>
                           <tr>
-                            <th class="col-md-7">{%trans 'Name of School' %}</th>
-                            <th class="col-md-1">{%trans 'Category' %}</th>
-                            <th class="col-md-1">{%trans 'Region' %}</th>
+                            <th class="col-md-5">{%trans 'Name of School' %}</th>
+                            <th class="col-md-3">{%trans 'Category' %}</th>
+                            <th class="col-md-2">{%trans 'Region' %}</th>
                             <th class="col-md-1">{%trans 'Average GPA' %}</th>
                             <th class="col-md-1">{%trans 'National Ranking' %}</th>
                             <th class="col-md-1">{%trans 'Regional Ranking' %}</th>
@@ -171,9 +171,9 @@
                         <tbody>
                           {% for school in topschools.top_Alevel %}
                           <tr>
-                            <td><a href="/careerguide/school/{{ school.schoolcode }}">{{ school.schoolname }}</td>
+                            <td><a href="/careerguide/school/{{ school.schoolcode }}">{{ school.schoolname | title }}</td>
                               <td>{{ school.category }}</td>
-                              <td>{{ school.region }}</td>
+                              <td>{{ school.region | title }}</td>
                               <td>{{ school.gpa| floatformat:3 }}</td>
                               <td>{{ school.natranking }}</td>
                               <td>{{ school.regranking }}</td>

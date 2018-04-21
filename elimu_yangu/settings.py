@@ -25,7 +25,7 @@ LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'universityfinder/locale'),
 )
 
-MIDDLEWARE_CLASSES = ( 'django.contrib.sessions.middleware.SessionMiddleware','django.middleware.locale.LocaleMiddleware',) + MIDDLEWARE_CLASSES
+MIDDLEWARE_CLASSES = ( 'django.contrib.sessions.middleware.SessionMiddleware','django.middleware.locale.LocaleMiddleware', 'django.middleware.common.CommonMiddleware',) + MIDDLEWARE_CLASSES
 
 # insert our overrides before both census and HURUmap
 INSTALLED_APPS = ['elimu_yangu', 'elimu_yangu.careerguide', 'elimu_yangu.leaguetable', 'elimu_yangu.universityfinder'] + INSTALLED_APPS
