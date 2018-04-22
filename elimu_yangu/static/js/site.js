@@ -145,21 +145,7 @@
         function append_school_table(data, ul_id) {
           var result = "<ul id=" + ul_id +" class='list-group school'>";
           for (elem in data) {
-            result += "<li class='list-group-item'>
-                <a href='leaguetable/schools/'"+ elem.code +">
-                    <div class='col-xs-5'>
-                        <div class='school-name'>" + elem.name + "School</div>
-                        <div class='school-type'>" + elem.gender + "</div>
-                    </div>
-                    <div class='col-xs-5'>
-                        <div class='school-rank'>#"+ elem.national_rank_all + " in Tanzania</div>
-                        <div class='school-rank'>#" + elem.regional_rank_all +" in "+ elem.region + "</div>
-                    </div>
-                    <div class='col-xs-2'>"
-                        + elem.avg_gpa.toFixed(3) + " GPA
-                    </div>
-                </a>
-            </li>"
+            result += "<li class='list-group-item'><a href='leaguetable/schools/'"+ elem.code +"><div class='col-xs-5'><div class='school-name'>" + elem.name + "School</div><div class='school-type'>" + elem.gender + "</div></div><div class='col-xs-5'><div class='school-rank'>#"+ elem.national_rank_all + " in Tanzania</div><div class='school-rank'>#" + elem.regional_rank_all +" in "+ elem.region + "</div></div><div class='col-xs-2'>"+ elem.avg_gpa.toFixed(3) + " GPA</div></a></li>"
           }
           return result + "</ul>";
         }
