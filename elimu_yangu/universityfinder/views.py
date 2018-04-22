@@ -18,9 +18,9 @@ grades_point_list = [5,4,3,2,1,0.5,0]
 
 # Create your views here.
 def index(request):
-    user_language = translation.get_language()
-    print LANGUAGE_CODE
-    translation.activate(user_language)
+    # user_language = translation.get_language()
+    # print LANGUAGE_CODE
+    # translation.activate(user_language)
     try:
         if request.method == 'POST':
             dataRequest = json.loads(request.body)
