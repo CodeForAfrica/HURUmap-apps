@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-21 08:29+0300\n"
+"POT-Creation-Date: 2018-04-23 11:00+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,8 +22,8 @@ msgstr ""
 #: leaguetable/templates/leaguetable/embed.html:127
 #: leaguetable/templates/leaguetable/homepage.html:35
 #: leaguetable/templates/leaguetable/homepage.html:95
-#: leaguetable/templates/leaguetable/profile/profile_detail.html:78
-#: leaguetable/templates/leaguetable/profile/profile_detail.html:138
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:80
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:140
 msgid "10 Top Schools"
 msgstr "Shule 10 Bora"
 
@@ -31,8 +31,8 @@ msgstr "Shule 10 Bora"
 #: leaguetable/templates/leaguetable/embed.html:96
 #: leaguetable/templates/leaguetable/homepage.html:36
 #: leaguetable/templates/leaguetable/homepage.html:64
-#: leaguetable/templates/leaguetable/profile/profile_detail.html:79
-#: leaguetable/templates/leaguetable/profile/profile_detail.html:107
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:81
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:109
 msgid "Schools Category with 40 Students and More"
 msgstr "Kundi la Shule zenye ya wanafunzi 40 na zaidi"
 
@@ -52,14 +52,14 @@ msgstr "Kundi la Shule zenye ya wanafunzi 40 na zaidi"
 #: leaguetable/templates/leaguetable/homepage.html:107
 #: leaguetable/templates/leaguetable/homepage.html:134
 #: leaguetable/templates/leaguetable/homepage.html:135
-#: leaguetable/templates/leaguetable/profile/profile_detail.html:89
-#: leaguetable/templates/leaguetable/profile/profile_detail.html:90
-#: leaguetable/templates/leaguetable/profile/profile_detail.html:117
-#: leaguetable/templates/leaguetable/profile/profile_detail.html:118
-#: leaguetable/templates/leaguetable/profile/profile_detail.html:149
-#: leaguetable/templates/leaguetable/profile/profile_detail.html:150
-#: leaguetable/templates/leaguetable/profile/profile_detail.html:177
-#: leaguetable/templates/leaguetable/profile/profile_detail.html:178
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:91
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:92
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:119
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:120
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:151
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:152
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:179
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:180
 msgid "in"
 msgstr "katika"
 
@@ -67,20 +67,20 @@ msgstr "katika"
 #: leaguetable/templates/leaguetable/embed.html:155
 #: leaguetable/templates/leaguetable/homepage.html:63
 #: leaguetable/templates/leaguetable/homepage.html:123
-#: leaguetable/templates/leaguetable/profile/profile_detail.html:106
-#: leaguetable/templates/leaguetable/profile/profile_detail.html:166
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:108
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:168
 msgid "10 Lowest Schools"
 msgstr "Shule 10 za Mwisho"
 
 #: leaguetable/templates/leaguetable/embed.html:128
 #: leaguetable/templates/leaguetable/homepage.html:96
-#: leaguetable/templates/leaguetable/profile/profile_detail.html:139
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:141
 msgid "Schools Category with less than 40 Students"
 msgstr "Kundi la Shule zenye ya wanafunzi chini ya 40"
 
 #: leaguetable/templates/leaguetable/embed.html:156
 #: leaguetable/templates/leaguetable/homepage.html:124
-#: leaguetable/templates/leaguetable/profile/profile_detail.html:167
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:169
 msgid "Schools Category less than 40 Students"
 msgstr "Kundi la Shule zenye ya wanafunzi chini ya 40"
 
@@ -100,18 +100,18 @@ msgstr ""
 msgid "SCHOOL RANKINGS"
 msgstr "MATOKEO YA SHULE"
 
-#: leaguetable/templates/leaguetable/profile/profile_detail.html:196
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:198
 msgid "Interact with charts and statistics for additional information."
 msgstr "Fanya utafiti wa chati na takwimu ili kupata taarifa zaidi"
 
-#: leaguetable/templates/leaguetable/profile/profile_detail.html:202
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:204
 msgid "Ownership"
 msgstr "Umiliki"
 
-#: leaguetable/templates/leaguetable/profile/profile_detail.html:215
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:217
 msgid "Regions"
 msgstr "Mikoa"
 
-#: leaguetable/templates/leaguetable/profile/profile_detail.html:228
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:230
 msgid "Averege GPA"
 msgstr "Wastani wa GPA"

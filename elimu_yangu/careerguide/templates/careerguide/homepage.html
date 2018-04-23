@@ -3,11 +3,11 @@
 {% load humanize partition staticfiles %}
 {% get_current_language as 'sw' %}
 {% block head_title %}Career Guide{% endblock %}
-
+{% get_current_language as LANGUAGE_CODE %}
 {% block content_container %}
   <div class="main-content">
     <div class="find-school text-center">
-      <form action="/careerguide/" method="post">
+      <form action="/{{ LANGUAGE_CODE }}/careerguide/" method="post">
         <div class="help-text">{% trans 'FIND THE BEST HIGHSCHOOL FOR YOUR CAREER' %}</div>
         <div class="help-info">
           {% csrf_token %}
@@ -88,9 +88,9 @@
                     <table class="table table-hover">
                         <thead>
                           <tr>
-                            <th class="col-md-7">{%trans 'Name of School' %}</th>
-                            <th class="col-md-1">{%trans 'Category' %}</th>
-                            <th class="col-md-1">{%trans 'Region' %}</th>
+                            <th class="col-md-4">{%trans 'Name of School' %}</th>
+                            <th class="col-md-3">{%trans 'Category' %}</th>
+                            <th class="col-md-2">{%trans 'Region' %}</th>
                             <th class="col-md-1">{%trans 'Average GPA' %}</th>
                             <th class="col-md-1">{%trans 'National Ranking' %}</th>
                             <th class="col-md-1">{%trans 'Regional Ranking' %}</th>
@@ -102,7 +102,19 @@
                             <td><a href="/careerguide/school/{{ school.schoolcode }}">
                               {{ school.schoolname | title }}
                             </td>
-                            <td>{{ school.category }}</td>
+                            {% if school_level == " A levels" %}
+                              {% if school.category == 'CENTRE WITH 30 CANDIDATES OR MORE                 '%}
+                                <td>{%trans 'Centre With 30 Candidates or More' %}</td>
+                              {% else %}
+                                <td>{%trans 'Centre With less than 30 Candidates' %}</td>
+                              {% endif %}
+                            {% else %}
+                              {% if school.category == 'CENTRE WITH 40 CANDIDATES OR MORE                 '%}
+                                <td>{%trans 'Centre With 40 Candidates or More' %}</td>
+                              {% else %}
+                                <td>{%trans 'Centre With less than 40 Candidates' %}</td>
+                              {% endif %}
+                            {% endif %}
                             <td>{{ school.region | title }}</td>
                             <td>{{ school.career_avg| floatformat:3 }}</td>
                             <td>{{ school.natranking }}</td>
@@ -127,9 +139,9 @@
                     <table class="table table-hover">
                         <thead>
                           <tr>
-                            <th class="col-md-5">{%trans 'Name of School' %}</th>
+                            <th class="col-md-4">{%trans 'Name of School' %}</th>
                             <th class="col-md-3">{%trans 'Category' %}</th>
-                            <th class="col-md-1">{%trans 'Region' %}</th>
+                            <th class="col-md-2">{%trans 'Region' %}</th>
                             <th class="col-md-1">{%trans 'Average GPA' %}</th>
                             <th class="col-md-1">{%trans 'National Ranking' %}</th>
                             <th class="col-md-1">{%trans 'Regional Ranking' %}</th>
@@ -141,7 +153,11 @@
                             <td><a href="/careerguide/school/{{ school.schoolcode }}">
                               {{ school.schoolname | title }}
                             </td>
-                            <td>{{ school.category }}</td>
+                            {% if school.category == 'CENTRE WITH 40 CANDIDATES OR MORE                 '%}
+                              <td>{%trans 'Centre With 40 Candidates or More' %}</td>
+                            {% else %}
+                              <td>{%trans 'Centre With less than 40 Candidates' %}</td>
+                            {% endif %}
                             <td>{{ school.region | title }}</td>
                             <td>{{ school.gpa| floatformat:3 }}</td>
                             <td>{{ school.natranking }}</td>
@@ -160,7 +176,7 @@
                     <table class="table table-hover">
                         <thead>
                           <tr>
-                            <th class="col-md-5">{%trans 'Name of School' %}</th>
+                            <th class="col-md-4">{%trans 'Name of School' %}</th>
                             <th class="col-md-3">{%trans 'Category' %}</th>
                             <th class="col-md-2">{%trans 'Region' %}</th>
                             <th class="col-md-1">{%trans 'Average GPA' %}</th>
@@ -172,7 +188,11 @@
                           {% for school in topschools.top_Alevel %}
                           <tr>
                             <td><a href="/careerguide/school/{{ school.schoolcode }}">{{ school.schoolname | title }}</td>
-                              <td>{{ school.category }}</td>
+                              {% if school.category == 'CENTRE WITH 30 CANDIDATES OR MORE                 '%}
+                                <td>{%trans 'Centre With 30 Candidates or More' %}</td>
+                              {% else %}
+                                <td>{%trans 'Centre With less than 30 Candidates' %}</td>
+                              {% endif %}
                               <td>{{ school.region | title }}</td>
                               <td>{{ school.gpa| floatformat:3 }}</td>
                               <td>{{ school.natranking }}</td>

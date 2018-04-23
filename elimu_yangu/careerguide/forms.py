@@ -1,7 +1,8 @@
 from django import forms
+from django.utils.translation import ugettext_lazy as _
 
-Gender_Options = [('gender','select gender'),('F', 'young lady'), ('M', 'young man'),]
-Region_Options = [('region','select region'),('ARUSHA','Arusha'),('DAR ES SALAAM', 'Dar es Salaam'),('DODOMA','Dodoma'),
+Gender_Options = [('gender',_('select gender')),('F', _('young lady')), ('M', _('young man')),]
+Region_Options = [('region',_('select region')),('ARUSHA','Arusha'),('DAR ES SALAAM', 'Dar es Salaam'),('DODOMA','Dodoma'),
 ('GEITA','Geita'),
 ('IRINGA','Iringa'),
 ('KAGERA','Kagera'),
@@ -30,8 +31,8 @@ Region_Options = [('region','select region'),('ARUSHA','Arusha'),('DAR ES SALAAM
 ('SONGWE','Songwe'),
 ('TABORA','Tabora'),
 ('TANGA','Tanga'),]
-Career_Options = [('career', 'choose a career'),('Doctor', 'a doctor'), ('Pilot', 'a pilot'), ('Engineer', 'an engineer')]
-Education_Level_Options = [('level','choose study level'),('1', 'ordinary level'), ('2', 'primary level')]
+Career_Options = [('career', _('choose a career')),('Doctor', _('a doctor')), ('Pilot', _('a pilot')), ('Engineer', _('an engineer'))]
+Education_Level_Options = [('level',_('choose study level')),('1', _('ordinary level')), ('2', _('primary level'))]
 
 
 class InputForm(forms.Form):
