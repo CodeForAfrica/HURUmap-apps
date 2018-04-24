@@ -68,5 +68,10 @@ STATIC_ROOT = 'wajibisha/static/'
 
 LOGGING['loggers']['wajibisha'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
 
+# Trello Settings
+BOARDS = {
+    'Nairobi': 'https://api.trello.com/1/boards/hmtAAEVr'
+}
+
 # Making sure they are the same
 WAZIMAP = WAJIBISHA
