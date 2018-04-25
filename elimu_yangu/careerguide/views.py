@@ -3,6 +3,7 @@ from django.views.generic import TemplateView
 from django.http import HttpResponse, HttpResponseRedirect
 from django.conf import settings
 import os, json
+import career
 from django.core import serializers
 from django.core.serializers.json import DjangoJSONEncoder
 from elimu_yangu.careerguide.forms import InputForm
@@ -12,7 +13,7 @@ from django.utils.translation import activate
 from elimu_yangu.careerguide.models import Olevel_subject_performance, Olevel_overall_performance, Alevel_subject_performance, Olevel_student_performance_2017, Alevel_student_performance, Alevel_overall_performance
 # Create your views here.
 
-data = json.load(open(os.path.join(settings.BASE_DIR, 'elimu_yangu/careerguide','career.json')))
+data = career.career#json.load(open(os.path.join(settings.BASE_DIR, 'elimu_yangu/careerguide','career.json')))
 olsubjects = json.load(open(os.path.join(settings.BASE_DIR, 'elimu_yangu/careerguide','olsubjects.json')))
 alsubjects = json.load(open(os.path.join(settings.BASE_DIR, 'elimu_yangu/careerguide','alsubjects.json')))
 
