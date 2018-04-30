@@ -1,7 +1,7 @@
 ﻿(function ($) {
     'use strict';
     var lang;
-    var subjects = = {
+    var subjects = {
         "Accountant" : {
             "name" : _("ACCOUNTANT"),
             "must" : [
