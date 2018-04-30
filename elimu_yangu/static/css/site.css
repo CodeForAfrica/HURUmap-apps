@@ -44,6 +44,10 @@ h3.title {
 .no-margin {
     margin: 0
 }
+.col-xs-5, .col-xs-2 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
 
 .table tr {
     cursor: pointer;
