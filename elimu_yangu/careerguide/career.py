@@ -1,6 +1,55 @@
 from django.utils.translation import ugettext_lazy as _
 
 career = {
+    "Accountant" : {
+        "name" : _("ACCOUNTANT"),
+        "must" : [
+            "BASIC MATHEMATICS",
+            "ACCOUNTANCY",
+            "COMMERCE",
+            "BOOK-KEEPING"
+        ],
+        "olevel_optional" : [
+            "ENGLISH LANGUAGE",
+            "KISWAHILI"
+        ]
+    },
+    "Architect" : {
+        "name" : _("ARCHITECT"),
+        "must" : [
+            "PHYSICS",
+            "MATHEMATICS"
+        ],
+        "olevel_optional" : [
+            "ENGLISH LANGUAGE LANGUAGE",
+            "KISWAHILI"
+        ]
+    },
+    "Auditor" : {
+        "name" : _("AUDITOR"),
+        "must" : [
+            "BASIC MATHEMATICS",
+            "ACCOUNTANCY",
+            "COMMERCE",
+            "BOOK-KEEPING"
+        ],
+        "olevel_optional" : [
+            "GEOGRAPHY",
+            "ENGLISH LANGUAGE",
+            "KISWAHILI"
+        ]
+    },
+    "Computer Scientist/Engineer" : {
+        "name" : _("COMPUTER SCIENTIST/ENGINEER"),
+        "must" : [
+            "PHYSICS",
+            "MATHEMATICS",
+        ],
+        "olevel_optional" : [
+            "KISWAHILI",
+            "ENGLISH LANGUAGE"
+        ]
+    },
     "Doctor" : {
         "name" : _("MEDECINE"),
         "must" : [
@@ -11,20 +60,20 @@ career = {
         "olevel_optional" : [
             "MATHEMATICS",
             "KISWAHILI",
-            "ENGLISH"
+            "ENGLISH LANGUAGE"
         ]
     },
-    "Science Teacher" : {
-        "name" : _("MEDECINE"),
+    "Economist" : {
+        "name" : _("ECONOMIST"),
         "must" : [
-            "PHYSICS",
-            "CHEMISTRY",
-            "BIOLOGY"
+            "MATHEMATICS",
+            "COMMERCE",
+            "ECONOMICS"
         ],
         "olevel_optional" : [
-            "MATHEMATICS",
-            "KISWAHILI",
-            "ENGLISH"
+            "GEOGRAPHY",
+            "ENGLISH LANGUAGE",
+            "KISWAHILI"
         ]
     },
     "Engineer" : {
@@ -36,7 +85,46 @@ career = {
         ],
         "olevel_optional" : [
             "GEOGRAPHY",
-            "ENGLISH",
+            "ENGLISH LANGUAGE",
+            "KISWAHILI"
+        ]
+    },
+    "Financial Analyst" : {
+        "name" : _("FINANCIAL ANALYST"),
+        "must" : [
+            "BASIC MATHEMATICS",
+            "ACCOUNTANCY",
+            "COMMERCE",
+            "BOOK-KEEPING"
+        ],
+        "olevel_optional" : [
+            "GEOGRAPHY",
+            "ENGLISH LANGUAGE",
+            "KISWAHILI"
+        ]
+    },
+    "Science Teacher" : {
+        "name" : _("SCIENCE TEACHER"),
+        "must" : [
+            "KISWAHILI",
+            "PHYSICS",
+            "CHEMISTRY",
+            "BIOLOGY"
+        ],
+        "olevel_optional" : [
+            "MATHEMATICS",
+            "ENGLISH LANGUAGE"
+        ]
+    },
+    "Teacher" : {
+        "name" : _("TEACHER"),
+        "must" : [
+            "ENGLISH LANGUAGE",
+            "KISWAHILI",
+        ],
+        "olevel_optional" : [
+            "GEOGRAPHY",
+            "HISTORY",
             "KISWAHILI"
         ]
     },
@@ -49,7 +137,7 @@ career = {
         ],
         "olevel_optional" : [
             "CHEMISTRY",
-            "ENGLISH",
+            "ENGLISH LANGUAGE",
             "KISWAHILI"
         ]
     },
@@ -57,12 +145,12 @@ career = {
         "name" : _("LAWYER"),
         "must" : [
             "HISTORY",
-            "ENGLISH LANGUAGE",
+            "ENGLISH LANGUAGE LANGUAGE",
             "KISWAHILI"
         ],
         "olevel_optional" : [
             "GEOGRAPHY",
             "CIVICS"
         ]
-    }
+    },
 }

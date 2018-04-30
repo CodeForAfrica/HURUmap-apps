@@ -1,39 +1,159 @@
 ﻿(function ($) {
     'use strict';
-
-    var subjects = {
-        "doctor" : {
-            "name" : "MEDECINE",
+    var lang;
+    var subjects = = {
+        "Accountant" : {
+            "name" : _("ACCOUNTANT"),
             "must" : [
-                "PHYSICS",
-                "CHEMISTRY",
-                "BIOLOGY",
-                "ENGLISH"
+                "BASIC MATHEMATICS",
+                "ACCOUNTANCY",
+                "COMMERCE",
+                "BOOK-KEEPING"
             ],
-            "optional" : [
-                "MATHEMATICS",
-                "GEOGRAPHY",
-                "HISTORY",
-                "KISWAHILI",
-                "FRENCH"
+            "olevel_optional" : [
+                "ENGLISH LANGUAGE",
+                "KISWAHILI"
             ]
         },
-        "engineer" : {
-            "name" : "ENGINEERING",
+        "Architect" : {
+            "name" : _("ARCHITECT"),
+            "must" : [
+                "PHYSICS",
+                "MATHEMATICS"
+            ],
+            "olevel_optional" : [
+                "ENGLISH LANGUAGE LANGUAGE",
+                "KISWAHILI"
+            ]
+        },
+        "Auditor" : {
+            "name" : _("AUDITOR"),
+            "must" : [
+                "BASIC MATHEMATICS",
+                "ACCOUNTANCY",
+                "COMMERCE",
+                "BOOK-KEEPING"
+            ],
+            "olevel_optional" : [
+                "GEOGRAPHY",
+                "ENGLISH LANGUAGE",
+                "KISWAHILI"
+            ]
+        },
+        "Computer Scientist/Engineer" : {
+            "name" : _("COMPUTER SCIENTIST/ENGINEER"),
+            "must" : [
+                "PHYSICS",
+                "MATHEMATICS",
+            ],
+            "olevel_optional" : [
+                "KISWAHILI",
+                "ENGLISH LANGUAGE"
+            ]
+        },
+        "Doctor" : {
+            "name" : _("MEDECINE"),
             "must" : [
                 "PHYSICS",
                 "CHEMISTRY",
-                "MATHEMATICS",
-                "ENGLISH"
+                "BIOLOGY"
             ],
-            "optional" : [
-                "BIOLOGY",
+            "olevel_optional" : [
+                "MATHEMATICS",
+                "KISWAHILI",
+                "ENGLISH LANGUAGE"
+            ]
+        },
+        "Economist" : {
+            "name" : _("ECONOMIST"),
+            "must" : [
+                "MATHEMATICS",
+                "COMMERCE",
+                "ECONOMICS"
+            ],
+            "olevel_optional" : [
+                "GEOGRAPHY",
+                "ENGLISH LANGUAGE",
+                "KISWAHILI"
+            ]
+        },
+        "Engineer" : {
+            "name" : _("ENGINEERING"),
+            "must" : [
+                "PHYSICS",
+                "CHEMISTRY",
+                "MATHEMATICS"
+            ],
+            "olevel_optional" : [
+                "GEOGRAPHY",
+                "ENGLISH LANGUAGE",
+                "KISWAHILI"
+            ]
+        },
+        "Financial Analyst" : {
+            "name" : _("FINANCIAL ANALYST"),
+            "must" : [
+                "BASIC MATHEMATICS",
+                "ACCOUNTANCY",
+                "COMMERCE",
+                "BOOK-KEEPING"
+            ],
+            "olevel_optional" : [
+                "GEOGRAPHY",
+                "ENGLISH LANGUAGE",
+                "KISWAHILI"
+            ]
+        },
+        "Science Teacher" : {
+            "name" : _("SCIENCE TEACHER"),
+            "must" : [
+                "KISWAHILI",
+                "PHYSICS",
+                "CHEMISTRY",
+                "BIOLOGY"
+            ],
+            "olevel_optional" : [
+                "MATHEMATICS",
+                "ENGLISH LANGUAGE"
+            ]
+        },
+        "Teacher" : {
+            "name" : _("TEACHER"),
+            "must" : [
+                "ENGLISH LANGUAGE",
+                "KISWAHILI",
+            ],
+            "olevel_optional" : [
                 "GEOGRAPHY",
                 "HISTORY",
-                "KISWAHILI",
-                "FRENCH"
+                "KISWAHILI"
             ]
-        }
+        },
+        "Pilot" : {
+            "name" : _("PILOT"),
+            "must" : [
+                "PHYSICS",
+                "MATHEMATICS",
+                "GEOGRAPHY"
+            ],
+            "olevel_optional" : [
+                "CHEMISTRY",
+                "ENGLISH LANGUAGE",
+                "KISWAHILI"
+            ]
+        },
+        "Lawyer" : {
+            "name" : _("LAWYER"),
+            "must" : [
+                "HISTORY",
+                "ENGLISH LANGUAGE LANGUAGE",
+                "KISWAHILI"
+            ],
+            "olevel_optional" : [
+                "GEOGRAPHY",
+                "CIVICS"
+            ]
+        },
     }
 
     var subjectGrades = {
@@ -104,48 +224,65 @@
          * SCHOOL LEAGUE
          *-----------------------------------------------------------------------------------------
        */
+       $('#rank-year').on('change', function() {
+          var selected = $(this).find('option:selected');
+          lang = selected.data('language');
+          get_school_ranking( this.value );
+      });
 
-       function get_school_ranking(){
-         var year = $('rank-year').getValue();
+       function get_school_ranking(year) {
          var parameter = {'year': year};
+         var url = "/" + lang + "/leaguetable/";
          var best_40 = "";
          var worst_40 = "";
          var best = "";
          var worst = "";
-
          $.ajax({
-              type: "POST",
-               url: '/leaguetable/',
-               data: JSON.stringify(parameter),
-               contentType: 'application/json',
-               success: function(data){
-                  var result1 = append_school_table(data, 'best-40');
-                  swap_ul('#best-40', result1)
-                  var result2 = append_school_table(data, 'worst-40');
-                  swap_ul('#worst-40', result2)
-                  var result3 = append_school_table(data, 'best');
-                  swap_ul('#best', result3)
-                  var result4 = append_school_table(data, 'worst');
-                  swap_ul('#worst', result4)
-               },
-               error: function() {
-
-               }
-             });
-        }
+           type: "POST",
+           url: url,
+           data: JSON.stringify(parameter),
+           contentType: 'application/json',
+           success: function(data){
+              var result = data.schools;
+              var result1 = append_school_table(result['best_schools_more_40'], 'best-40');
+              swap_ul('#best-40', result1)
+              var result2 = append_school_table(result['worst_schools_more_40'], 'worst-40');
+              swap_ul('#worst-40', result2)
+              var result3 = append_school_table(result['best_schools_less_40'], 'best');
+              swap_ul('#best', result3)
+              var result4 = append_school_table(result['worst_schools_less_40'], 'worst');
+              swap_ul('#worst', result4)
+            },
+            error: function() {
+                  alert("Opps! Something went wrong");
+                  $('#rank-year').value = '2017';
+           }
+         });
+      }
 
         function swap_ul (item, data) {
           var schoolTable = $(item);
           schoolTable.fadeOut(1000, function(){
-              schoolTable.replace(data).fadeIn.fadeIn();
+              schoolTable.html(data).fadeIn();
           });
 
         }
 
+        function editCapitalize(name) {
+          var arrname = name.replace('SECONDARY SCHOOL', '').split(' ');
+          var item;
+          for (item=0; item < arrname.length; item++) {
+            arrname[item] = arrname[item].charAt(0).toUpperCase() + arrname[item].slice(1).toLowerCase();
+          }
+          return arrname.join(' ')
+        }
+
         function append_school_table(data, ul_id) {
           var result = "<ul id=" + ul_id +" class='list-group school'>";
-          for (elem in data) {
-            result += "<li class='list-group-item'><a href='leaguetable/schools/'"+ elem.code +"><div class='col-xs-5'><div class='school-name'>" + elem.name + "School</div><div class='school-type'>" + elem.gender + "</div></div><div class='col-xs-5'><div class='school-rank'>#"+ elem.national_rank_all + " in Tanzania</div><div class='school-rank'>#" + elem.regional_rank_all +" in "+ elem.region + "</div></div><div class='col-xs-2'>"+ elem.avg_gpa.toFixed(3) + " GPA</div></a></li>"
+          for (var elem in data) {
+            var arr = data[elem]
+
+            result += "<li class='list-group-item'><a href='leaguetable/schools/'"+ arr[3] +"><div class='col-xs-5'><div class='school-name'>" + editCapitalize(arr[4]) + " School</div><div class='school-type'>" + arr[9] +"</div></div><div class='col-xs-5'><div class='school-rank'>#"+ arr[15] + " in Tanzania</div><div class='school-rank'>#" + arr[16].trim() +" in "+ arr[5] + "</div></div><div class='col-xs-2'>"+ arr[12] + " GPA</div></a></li>"
           }
           return result + "</ul>";
         }
@@ -231,6 +368,7 @@
 
             var activeTab = $('.tab-pane.active')
             if(activeTab.attr("id") == "step2") {
+              lang = activeTab.data('language');
               getUniversityCourses(subjectGrades, preferedCourses)
             }
             var $el;
@@ -252,20 +390,16 @@
 
 
          function getUniversityCourses(subjectGrades, preferedCourses) {
-           console.log(subjectGrades);
-           console.log(preferedCourses);
-
            var info = {'subjectGrade': subjectGrades, 'preferedCourse': preferedCourses}
+           var url = "/" + lang + "/university-finder/";
            $.ajax({
                 type: "POST",
-                 url: '/university-finder/',
+                 url: url,
                  data: JSON.stringify(info),
                  contentType: 'application/json',
                  success: function(data){
-                    console.log(data)
                     var resultHtml = "";
                     for (var elem in data) {
-                        console.log(elem)
                         resultHtml += "<tr><td class='course-name'><div>"+data[elem].course+"</div></td><td>"+data[elem].university+"</td></tr>"
                     }
                     if (data.length == 0) {

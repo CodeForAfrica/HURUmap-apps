@@ -38,8 +38,21 @@
                       <li><a href="/careerguide">CAREER GUIDE</a></li>
                       <li><a href="/university-finder">UNI FINDER</a></li>
                       <li><a href="/about">ABOUT</a></li>
-                      <li><a href="/sw">sw</a></li>
-                      <li><a href="/en">en</a></li>
+                      <li>
+                        <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                          <input name="next" type="hidden" value="{{ redirect_to }}" />
+                          {% get_current_language as LANGUAGE_CODE %}
+                          {% ifequal LANGUAGE_CODE "en" %}
+                              <!-- {{ language.name_local }} ({{ language.code }}) -->
+                            <input type="hidden" name="language" value="sw" />
+                            <input type="image" value="submit" src="{% static 'img/tz.png' %}" style="padding-top: 17px;" />
+                          {% else %}
+                            <input  type="hidden" name="language" value="en" />
+                            <input type="image" value="submit" src="{% static 'img/us.png' %}" style="padding-top: 17px;" />
+                          {% endifequal %}
+                          <!-- </select> -->
+                      </form>
+                      </li>
                       <!-- <li><a href="/contact">CONTACT US</a></li> -->
                   </ul>
               </div>
@@ -100,7 +113,7 @@
                     <tr>
                         <th>No.</th>
                         <th style="text-align:left;">Name</th>
-                        <th>Pass Rate</th>
+                        <th>Average GPA</th>
                         <th>National Ranking</th>
                         <th>Regional Ranking</th>
                         <!-- <th>District Ranking</th> -->
@@ -112,7 +125,7 @@
                         <tr>
                             <td style="text-align:center;">{{ forloop.counter }}</td>
                             <td>{{ school.name }}</td>
-                            <td style="text-align:center;">{{ school.pass_rate }}</td>
+                            <td style="text-align:center;">{{ school.avg_gpa }}</td>
                             <td style="text-align:center;">{{ school.national_rank_all }}</td>
                             <td style="text-align:center;">{{ school.regional_rank_all }}</td>
                             <!-- <td style="text-align:center;">{{ school.district_rank_all }}</td> -->

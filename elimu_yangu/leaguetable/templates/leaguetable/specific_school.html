@@ -38,8 +38,21 @@
                       <li><a href="/careerguide">CAREER GUIDE</a></li>
                       <li><a href="/university-finder">UNI FINDER</a></li>
                       <li><a href="/about">ABOUT</a></li>
-                      <li><a href="/sw">sw</a></li>
-                      <li><a href="/en">en</a></li>
+                      <li>
+                        <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                          <input name="next" type="hidden" value="{{ redirect_to }}" />
+                          {% get_current_language as LANGUAGE_CODE %}
+                          {% ifequal LANGUAGE_CODE "en" %}
+                              <!-- {{ language.name_local }} ({{ language.code }}) -->
+                            <input type="hidden" name="language" value="sw" />
+                            <input type="image" value="submit" src="{% static 'img/tz.png' %}" style="padding-top: 17px;" />
+                          {% else %}
+                            <input  type="hidden" name="language" value="en" />
+                            <input type="image" value="submit" src="{% static 'img/us.png' %}" style="padding-top: 17px;" />
+                          {% endifequal %}
+                          <!-- </select> -->
+                      </form>
+                      </li>
                       <!-- <li><a href="/contact">CONTACT US</a></li> -->
                   </ul>
               </div>
@@ -59,7 +72,7 @@
                   {% if geography.parents %}
                       in
                       {% for level, g in geography.parents.items %}
-                        <a href="/profiles/{{ g.full_geoid }}-{{ g.short_name|slugify }}/">{{ g.short_name }}</a>{% if not forloop.last %},{%endif%}
+                        <a href="/leaguetable/profiles/{{ g.full_geoid }}-{{ g.short_name|slugify }}/">{{ g.short_name }}</a>{% if not forloop.last %},{%endif%}
                       {% endfor %}
                   {% endif %}
                 </p>

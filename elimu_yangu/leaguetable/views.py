@@ -29,10 +29,16 @@ def index(request):
     geo_level = "country"
     geo_code = "TZ"
 
-    year = '2017'
-    #Getting Schools from overall top schools method
-    schools = get_overall_topschools(year, geo_level, geo_code)
-    return render(request,'leaguetable/homepage.html',{'schools':schools, 'root_geo': geo_data.root_geography()})
+    if request.method == 'POST':
+        params = json.loads(request.body)
+        year = params['year'].encode("utf8")
+        schools = get_overall_topschools(year, geo_level, geo_code)
+        return HttpResponse(json.dumps({'schools': schools}), content_type='application/json')
+    else:
+        year = '2017'
+        #Getting Schools from overall top schools method
+        schools = get_overall_topschools(year, geo_level, geo_code)
+        return render(request,'leaguetable/homepage.html',{'schools':schools, 'root_geo': geo_data.root_geography()})
 
 # handling schools page
 def schools(request):
@@ -222,48 +228,45 @@ class GeographyCompareView(TemplateView):
 def get_overall_topschools(year, geo_level, geo_code):
     schools = {}
     session = get_session()
-
     # Choosing sorting option
     rank_column = Base.metadata.tables['secondary_school'].c.national_rank_all
-
     # Fetching schools
     top_schools_40_more = session.query(Base.metadata.tables['secondary_school'])\
                     .filter(Base.metadata.tables['secondary_school'].c.geo_level == geo_level)\
                     .filter(Base.metadata.tables['secondary_school'].c.geo_code == geo_code)\
                     .filter(Base.metadata.tables['secondary_school'].c.year_of_result == year)\
-                    .filter(Base.metadata.tables['secondary_school'].c.more_than_40 == "yes")\
+                    .filter(Base.metadata.tables['secondary_school'].c.more_than_40.like("yes%"))\
                     .order_by(asc(cast(rank_column, Integer)))\
-                    .all()
+                    .all()[:10]
     # Getting top for schools with less than 40 students
     top_schools_40_less = session.query(Base.metadata.tables['secondary_school'])\
                     .filter(Base.metadata.tables['secondary_school'].c.geo_level == geo_level)\
                     .filter(Base.metadata.tables['secondary_school'].c.geo_code == geo_code)\
                     .filter(Base.metadata.tables['secondary_school'].c.year_of_result == year)\
-                    .filter(Base.metadata.tables['secondary_school'].c.more_than_40 == "no")\
+                    .filter(Base.metadata.tables['secondary_school'].c.more_than_40.like("no%"))\
                     .order_by(asc(cast(rank_column, Integer)))\
-                    .all()
+                    .all()[:10]
 
-    # Getting lowest schools with more than 40 students
+    # limitting lowest schools with more than 40 students
     lowest_schools_40_more = session.query(Base.metadata.tables['secondary_school'])\
                     .filter(Base.metadata.tables['secondary_school'].c.geo_level == geo_level)\
                     .filter(Base.metadata.tables['secondary_school'].c.geo_code == geo_code)\
                     .filter(Base.metadata.tables['secondary_school'].c.year_of_result == year)\
-                    .filter(Base.metadata.tables['secondary_school'].c.more_than_40 == "yes")\
+                    .filter(Base.metadata.tables['secondary_school'].c.more_than_40.like("yes%"))\
                     .order_by(desc(cast(rank_column, Integer)))\
-                    .all()
+                    .all()[:10]
     # Getting lowest for schools with less than 40 students
     lowest_schools_40_less = session.query(Base.metadata.tables['secondary_school'])\
                     .filter(Base.metadata.tables['secondary_school'].c.geo_level == geo_level)\
                     .filter(Base.metadata.tables['secondary_school'].c.geo_code == geo_code)\
                     .filter(Base.metadata.tables['secondary_school'].c.year_of_result == year)\
-                    .filter(Base.metadata.tables['secondary_school'].c.more_than_40 == "no")\
+                    .filter(Base.metadata.tables['secondary_school'].c.more_than_40.like("no%"))\
                     .order_by(desc(cast(rank_column, Integer)))\
-                    .all()
+                    .all()[:10]
 
     schools['best_schools_more_40'] = top_schools_40_more
     schools['worst_schools_more_40'] = lowest_schools_40_more
     schools['best_schools_less_40'] = top_schools_40_less
     schools['worst_schools_less_40'] = lowest_schools_40_less
-
 
     return schools

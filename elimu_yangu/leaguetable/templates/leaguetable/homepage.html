@@ -3,6 +3,7 @@
 {% block head_title %}School League : School{% endblock %}
 
 {% block content_container %}
+{% get_current_language as LANGUAGE_CODE %}
 
   <div class="map-box">
       <h3 class="map-title center">{%trans 'Discover The Stories Behind The Data' %}</h3>
@@ -13,18 +14,19 @@
   <div class="help-box">
       <div class="help-text text-center">{%trans 'SCHOOL RANKINGS' %}
         <span>
-          <select id="rank-year" class="inline-select" style="color: #D0A331" onchange="get_school_ranking();">
-                <option value="2017">2017</option>
-                <!-- <option value="2016">2016</option> -->
-                <!-- <option value="2015">2015</option>
-                <option value="2014">2014</option>
+          <select id="rank-year" class="inline-select" style="color: #D0A331">
+                <option data-language={{ LANGUAGE_CODE }} value="2017">2017</option>
+                <option data-language={{ LANGUAGE_CODE }} value="2016">2016</option>
+                <option data-language={{ LANGUAGE_CODE }} value="2015">2015</option>
+                <!-- <option value="2014">2014</option>
                 <option value="2013">2013</option>
                 <option value="2012">2012</option> -->
             </select>
-          </span></div>
+          </span>
+        </div>
     <div class="container">
         <div class="row">
-            <            <div class="col-md-12">
+              <div class="col-md-12">
 
                             <!--
                             * =================================
@@ -37,10 +39,20 @@
                                 <ul id="best-40" class="list-group school">
                                   {% for school in schools.best_schools_more_40|slice:":10" %}
                                     <li class="list-group-item">
-                                        <a href="leaguetable/schools/{{ school.code }}">
+                                        <a href="/leaguetable/schools/{{ school.code }}">
                                             <div class="col-xs-5">
                                                 <div class="school-name">{{ school.name | title }} School</div>
-                                                <div class="school-type">{{ school.gender | title }}</div>
+                                                <div class="school-type">
+                                                  {% if school.gender == "Boys" %}
+                                                      {%trans 'Boys' %}
+                                                  {% else %}
+                                                    {% if school.gender == 'Mixed'%}
+                                                      {%trans 'Mixed' %}
+                                                    {% else %}
+                                                      {%trans 'Girls' %}
+                                                    {% endif %}
+                                                  {% endif %}
+                                                </div>
                                             </div>
                                             <div class="col-xs-5">
                                                 <div class="school-rank">#{{ school.national_rank_all }} {%trans 'in' %} Tanzania</div>
@@ -65,7 +77,7 @@
                                 <ul id="worst-40" class="list-group school">
                                   {% for school in schools.worst_schools_more_40|slice:":10" %}
                                   <li class="list-group-item">
-                                      <a href="leaguetable/schools/{{ school.code }}">
+                                      <a href="/leaguetable/schools/{{ school.code }}">
                                           <div class="col-xs-5">
                                               <div class="school-name">{{ school.name | title }} School</div>
                                               <div class="school-type">{{ school.gender | title }}</div>
@@ -97,7 +109,7 @@
                                 <ul id="best" class="list-group school">
                                   {% for school in schools.best_schools_less_40|slice:":10" %}
                                   <li class="list-group-item">
-                                      <a href="leaguetable/schools/{{ school.code }}">
+                                      <a href="/leaguetable/schools/{{ school.code }}">
                                           <div class="col-xs-5">
                                               <div class="school-name">{{ school.name | title }} School</div>
                                               <div class="school-type">{{ school.gender | title }}</div>
@@ -125,7 +137,7 @@
                                 <ul id="worst" class="list-group school">
                                   {% for school in schools.worst_schools_less_40|slice:":10" %}
                                   <li class="list-group-item">
-                                      <a href="leaguetable/schools/{{ school.code }}">
+                                      <a href="/leaguetable/schools/{{ school.code }}">
                                           <div class="col-xs-5">
                                               <div class="school-name">{{ school.name | title }} School</div>
                                               <div class="school-type">{{ school.gender | title }}</div>

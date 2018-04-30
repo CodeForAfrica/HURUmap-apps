@@ -69,7 +69,7 @@
               <ul id="best-40" class="list-group school">
                 {% for school in schools.best_schools_more_40|slice:":10" %}
                   <li class="list-group-item">
-                      <a href="leaguetable/schools/{{ school.code }}">
+                      <a href="/leaguetable/schools/{{ school.code }}">
                           <div class="col-xs-5">
                               <div class="school-name">{{ school.name | title }} School</div>
                               <div class="school-type">{{ school.gender | title }}</div>
@@ -97,7 +97,7 @@
               <ul id="worst-40" class="list-group school">
                 {% for school in schools.worst_schools_more_40|slice:":10" %}
                 <li class="list-group-item">
-                    <a href="leaguetable/schools/{{ school.code }}">
+                    <a href="/leaguetable/schools/{{ school.code }}">
                         <div class="col-xs-5">
                             <div class="school-name">{{ school.name | title }} School</div>
                             <div class="school-type">{{ school.gender | title }}</div>
@@ -129,7 +129,7 @@
               <ul id="best" class="list-group school">
                 {% for school in schools.best_schools_less_40|slice:":10" %}
                 <li class="list-group-item">
-                    <a href="leaguetable/schools/{{ school.code }}">
+                    <a href="/leaguetable/schools/{{ school.code }}">
                         <div class="col-xs-5">
                             <div class="school-name">{{ school.name | title }} School</div>
                             <div class="school-type">{{ school.gender | title }}</div>
@@ -157,7 +157,7 @@
               <ul id="worst" class="list-group school">
                 {% for school in schools.worst_schools_less_40|slice:":10" %}
                 <li class="list-group-item">
-                    <a href="leaguetable/schools/{{ school.code }}">
+                    <a href="/leaguetable/schools/{{ school.code }}">
                         <div class="col-xs-5">
                             <div class="school-name">{{ school.name | title }} School</div>
                             <div class="school-type">{{ school.gender | title }}</div>

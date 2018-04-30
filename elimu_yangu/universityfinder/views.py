@@ -3,11 +3,10 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse, Http404
 from django.conf import settings
 import os, json
 from django.utils import translation
-from django.http import HttpResponse, Http404
 from django.core import serializers
 from django.core.serializers.json import DjangoJSONEncoder
 from elimu_yangu.universityfinder.forms import InputForm
