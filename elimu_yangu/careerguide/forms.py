@@ -32,7 +32,7 @@ Region_Options = [('region',_('select region')),('ARUSHA','Arusha'),('DAR ES SAL
 ('SONGWE','Songwe'),
 ('TABORA','Tabora'),
 ('TANGA','Tanga'),]
-Career_Options = [('career', _('choose a career')),('Accountanct', _('an accountant')),('Architect', _('an architect')),('Auditor', _('an auditor')),
+Career_Options = [('career', _('choose a career')),('Accountant', _('an accountant')),('Architect', _('an architect')),('Auditor', _('an auditor')),
 ('Computer Scientist/Engineer', _('a computer scientist/engineer')), ('Doctor', _('a doctor')),('Economist', _('an economist')), ('Pilot', _('a pilot')), ('Engineer', _('an engineer'))]
 Education_Level_Options = [('level',_('choose study level')),('1', _('ordinary level')), ('2', _('primary level'))]
 

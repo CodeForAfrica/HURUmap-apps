@@ -44,10 +44,12 @@ def index(request):
 def schools(request):
     # Getting the session
     session = get_session()
+    year = '2017'
 
     # Fetching schools
     schools = session.query(Base.metadata.tables['secondary_school'])\
                     .filter(Base.metadata.tables['secondary_school'].c.geo_level == "country")\
+                    .filter(Base.metadata.tables['secondary_school'].c.year_of_result == year)\
                     .order_by(asc(cast(Base.metadata.tables['secondary_school'].c.national_rank_all, Integer)))\
                     .all()
 
@@ -57,10 +59,12 @@ def schools(request):
 def specific_school(request, code):
     # Getting the session
     session = get_session()
+    year = '2017'
 
     # Fetching schools
     school = session.query(Base.metadata.tables['secondary_school'])\
                     .filter(Base.metadata.tables['secondary_school'].c.geo_level == "country")\
+                    .filter(Base.metadata.tables['secondary_school'].c.year_of_result == year)\
                     .filter(Base.metadata.tables['secondary_school'].c.code == code)\
                     .one()
 
