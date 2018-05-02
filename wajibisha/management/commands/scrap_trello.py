@@ -18,6 +18,12 @@ class Command(BaseCommand):
     help = ('This helper script pulls promises from trello for each county '
             'and saves them to the database in the appropriate geography')
 
+    def __init__(self, stdout=None, stderr=None, no_color=False):
+        super(Command, self).__init__(stdout=None, stderr=None, no_color=False)
+        self.session = get_session()
+        self.table = get_datatable('promises')
+
+
     def handle(self, *args, **options):
         # fetch promises
         promises = self.fetch_promises()
@@ -26,13 +32,9 @@ class Command(BaseCommand):
 
         self.save_promises_to_db(promises)
 
-        # save promises to DB
-        pass
-
     def setup_table(self):
         logger.info('Setting up the table')
         try:
-            self.table = get_datatable('promises')
             self.stdout.write(
                 "Table is %s" %
                 self.table.id)
@@ -50,6 +52,10 @@ class Command(BaseCommand):
                       + '/lists?fields=name&cards=all&card_fields=name,labels'
                 r = requests.get(url)
                 if r.status_code == requests.codes.ok:
+                    # clear DB only if the request for new promises is
+                    # successful
+                    self.clearDB()
+
                     board = r.json()
                     promises_list = []
                     for board_list in board:
@@ -62,8 +68,6 @@ class Command(BaseCommand):
                                 labels = card.get('labels', [])
                                 if len(labels) > 0:
                                     status = labels[0].get('name', 'unknown')
-                                    row = []
-
                                     promises_list.append(
                                         [county, sector, card_name, status])
 
@@ -87,15 +91,13 @@ class Command(BaseCommand):
             raise CommandError(geo_name + " does not exist")
 
     def save_promises_to_db(self, promises):
-        '''
+        """
         [county, sector, card_name, status]
-        '''
+        """
         logger.info('saving promises to DB')
         geo_version = os.environ.get('DEFAULT_GEO_VERSION', '2009')
-        session = get_session()
-        session.e
+
         for row in promises:
-            print row
             model_row = {}
             geo_code, geo_level = self.get_geo_data(row[0])
             model_row['geo_version'] = geo_version
@@ -106,7 +108,12 @@ class Command(BaseCommand):
             model_row['status'] = row[3]
 
             entry = self.table.model(**model_row)
-            session.add(entry)
-            session.commit()
+            self.session.add(entry)
+            self.session.commit()
 
-        session.close()
+        self.session.close()
+
+    def clearDB(self):
+        # clear DB to update the promises
+        self.session.execute('TRUNCATE promises;')
+
