@@ -1,9 +1,13 @@
+import os
+from django.core.exceptions import ObjectDoesNotExist
 from django.core.management.base import BaseCommand, CommandError
 import requests
 from wajibisha.settings import BOARDS
 import logging
-import json
-from django.conf import settings
+from wazimap.data.tables import get_datatable
+from wazimap.models import Geography
+from wazimap.data.utils import get_session
+
 
 logging.basicConfig()
 # logging.getLogger('sqlalchemy.engine').setLevel(logging.WARN)
@@ -18,15 +22,32 @@ class Command(BaseCommand):
         # fetch promises
         promises = self.fetch_promises()
 
+        self.setup_table()
+
+        self.save_promises_to_db(promises)
+
         # save promises to DB
         pass
+
+    def setup_table(self):
+        logger.info('Setting up the table')
+        try:
+            self.table = get_datatable('promises')
+            self.stdout.write(
+                "Table is %s" %
+                self.table.id)
+        except KeyError:
+            raise CommandError(
+                "Couldn't establish which table to use for these fields. "
+                "Have you added a FieldTable entry in wazimap_za/tables.py?\n")
 
     def fetch_promises(self):
         # fetch the promises
         logger.info('Fetching promises')
         try:
             for board_key in BOARDS.keys():
-                url = BOARDS[board_key] + '/lists?fields=name&cards=all&card_fields=name,labels'
+                url = BOARDS[board_key] \
+                      + '/lists?fields=name&cards=all&card_fields=name,labels'
                 r = requests.get(url)
                 if r.status_code == requests.codes.ok:
                     board = r.json()
@@ -41,7 +62,10 @@ class Command(BaseCommand):
                                 labels = card.get('labels', [])
                                 if len(labels) > 0:
                                     status = labels[0].get('name', 'unknown')
-                                    promises_list += [county, sector, card_name, status]
+                                    row = []
+
+                                    promises_list.append(
+                                        [county, sector, card_name, status])
 
                                 else:
                                     continue
@@ -49,28 +73,40 @@ class Command(BaseCommand):
                             pass
                     return promises_list
                 else:
-                    logger.error('Host replied with status code {}'.format(r.status_code))
+                    logger.error('Host replied with status code {}'.format(
+                        r.status_code))
         except Exception as e:
             raise CommandError(
                 'Error: {}'.format(e.message))
 
+    def get_geo_data(self, geo_name):
+        try:
+            query = Geography.objects.get(name__iexact=geo_name)
+            return query.geo_code, query.geo_level
+        except ObjectDoesNotExist:
+            raise CommandError(geo_name + " does not exist")
+
     def save_promises_to_db(self, promises):
-        # first check if DB exists, if it does clear it, if not create it
+        '''
+        [county, sector, card_name, status]
+        '''
+        logger.info('saving promises to DB')
+        geo_version = os.environ.get('DEFAULT_GEO_VERSION', '2009')
+        session = get_session()
+        session.e
+        for row in promises:
+            print row
+            model_row = {}
+            geo_code, geo_level = self.get_geo_data(row[0])
+            model_row['geo_version'] = geo_version
+            model_row['geo_code'] = geo_code
+            model_row['geo_level'] = geo_level
+            model_row['sector'] = row[1]
+            model_row['promise'] = row[2]
+            model_row['status'] = row[3]
 
-        # write the promises into the DB
+            entry = self.table.model(**model_row)
+            session.add(entry)
+            session.commit()
 
-        pass
-
-    def checkDB_status(self):
-        # does the DB exit
-
-        # create DB
-
-        # clear DB
-        pass
-
-    def createDB(self):
-        pass
-
-    def clearDB(self):
-        pass
+        session.close()
