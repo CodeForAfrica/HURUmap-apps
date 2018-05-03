@@ -7,12 +7,13 @@ PROMISE_STATUS = [
     'Done', 'Five years plans', 'Altered Promise', 'In Progress', 'Not done'
 ]
 
+
 def get_profile(geo, profile_name, request):
     session = get_session()
     data = {}
 
     try:
-        return data
+        data['promises'] = get_promises(geo, session)
     finally:
         # tidy up the session
         session.close()
@@ -61,17 +62,10 @@ def get_promises(geo, session):
 
     print data_status_totals
 
+    return {
+        'sectors': promises_data,
+        'totals': data_status_totals
+    }
 
 
-
-
-
-    # get promises by status per sector
-
-    # get total promises by sector
-
-
-
-
-    pass
 
