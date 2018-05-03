@@ -7,4 +7,12 @@ class AboutView(TemplateView):
 	template_name = 'about.html'
 class PromisesView(TemplateView):
 	template_name = 'promises.html'
+class ContactView(TemplateView):
+	template_name = 'contact.html'
+class CategoriesView (TemplateView):
+	template_name = 'categories.html'
+class FulfilledView (TemplateView):
+	template_name = 'fulfilled.html'
+class HealthView (TemplateView):
+	template_name = 'health.html'
 
