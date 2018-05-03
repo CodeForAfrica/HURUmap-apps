@@ -70,15 +70,12 @@ body {
 
 .promises-header {
   background-color: #0067a3;
-  height: 280px;
+  height: 300px;
   color: white;
   text-align: center;
   padding-top: 50px;
   position: relative;
-  z-index: 100;
-  transform-origin: -40px;
-  transform: skewY(-6deg);
-  box-shadow: 0 4px 2px -2px #b7b7b7; }
+  z-index: 100;}
 
 .promises-header .wrapper {
   position: absolute;
@@ -86,9 +83,7 @@ body {
   right: 0;
   top: 0;
   bottom: 0;
-  z-index: 103;
-  transform: skewY(6deg);
-  transform-origin: 0; }
+  z-index: 103;}
 
 .promises-header .wrapper .presentation-img {
   z-index: 1003;
