@@ -2,11 +2,12 @@ import os
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.management.base import BaseCommand, CommandError
 import requests
-from wajibisha.settings import BOARDS
+from wajibisha.settings import BOARDS, LAST_UPDATED
 import logging
 from wazimap.data.tables import get_datatable
 from wazimap.models import Geography
 from wazimap.data.utils import get_session
+from datetime import datetime
 
 
 logging.basicConfig()
@@ -23,7 +24,6 @@ class Command(BaseCommand):
         self.session = get_session()
         self.table = get_datatable('promises')
 
-
     def handle(self, *args, **options):
         # fetch promises
         promises = self.fetch_promises()
@@ -32,7 +32,14 @@ class Command(BaseCommand):
 
         self.save_promises_to_db(promises)
 
+        LAST_UPDATED = datetime.now()
+
     def setup_table(self):
+        """
+        Creates the Table in the Database
+        :rtype: None
+
+        """
         logger.info('Setting up the table')
         try:
             self.stdout.write(
