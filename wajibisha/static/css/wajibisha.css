@@ -75,7 +75,8 @@ body {
   text-align: center;
   padding-top: 50px;
   position: relative;
-  z-index: 100;}
+  z-index: 100;
+  box-shadow: 0 4px 2px -2px #b7b7b7; }
 
 .promises-header .wrapper {
   position: absolute;
@@ -83,7 +84,7 @@ body {
   right: 0;
   top: 0;
   bottom: 0;
-  z-index: 103;}
+  z-index: 103; }
 
 .promises-header .wrapper .presentation-img {
   z-index: 1003;
