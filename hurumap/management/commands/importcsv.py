@@ -74,7 +74,6 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         self.filepath = options['filepath']
-
         self.verbosity = options.get('verbosity', 1)
         self.table_id = options.get('table')
         self.geo_version = options.get('geo_version')

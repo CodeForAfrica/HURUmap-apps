@@ -68,5 +68,17 @@ STATIC_ROOT = 'wajibisha/static/'
 
 LOGGING['loggers']['wajibisha'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
 
+# Trello Settings
+BOARDS = {
+    'Nairobi': 'https://api.trello.com/1/boards/hmtAAEVr'
+}
+
+PROMISE_STATUS = [
+    'Done', 'Five years plans', 'Altered Promise', 'In Progress', 'Not done'
+]
+
+# Time when the promises were last updated
+LAST_UPDATED = None
+
 # Making sure they are the same
 WAZIMAP = WAJIBISHA
