@@ -20,7 +20,7 @@ body {
 }
 
 #page-footer {
-  background-color: $color-blue;
+  background: linear-gradient(to right bottom, #0067A3, #0066A2, #005688);
 }
 
 .mission {
@@ -61,10 +61,8 @@ body {
 }
 
 .clipped-header {
-  /*-webkit-clip-path: polygon(0 0, 100% 0, 100% 46%, 0% 100%);
-  clip-path: polygon(0 0, 100% 0, 100% 46%, 0% 100%);*/
   background-color: $color-blue;
-  height: 250px;
+  height: 280px;
   color: white;
   text-align: center;
   padding-top: 50px;
@@ -72,7 +70,7 @@ body {
   z-index: 100;
   transform-origin: -40px;
   transform: skewY(-6deg);
-  box-shadow: 0 4px 2px -2px gray;
+  box-shadow: 0 4px 2px -2px #b7b7b7;
 
   .wrapper {
     position: absolute;
@@ -93,7 +91,29 @@ body {
   }
 
 }
-.showcase h2 {
+.promises-header {
+  background-color: #0067a3;
+  height: 300px;
+  color: white;
+  text-align: center;
+  padding-top: 50px;
+  position: relative;
+  z-index: 100;
+  box-shadow: 0 4px 2px -2px #b7b7b7; }
+.promises-header .wrapper {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 103; }
+.promises-header .wrapper .presentation-img {
+  z-index: 1003;
+  height: 200px;
+  position: absolute;
+  right: 0; }
+
+.showcase h4 {
   color:#0067a3;
 }
 
@@ -115,6 +135,7 @@ body {
   margin-bottom: 0;
   padding-top:1.2rem;
 }
+
 .background{
   background-color: #ededed;
 }
@@ -124,6 +145,41 @@ body {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   padding: 50px 20px;
-  height:350px;
-  background-color:#fff;
+  height: 350px;
+  background-color: #fff;
 }
+
+.tweet-card {
+  height: 200px;
+  margin: 2rem;
+  border-color: #B7E4FF;
+  padding: 0;
+}
+
+.team {
+  padding:0;
+  margin:3rem;
+  height:230px;
+}
+
+.input-group-btn {
+  position: relative;
+  top: 6.5px;
+  z-index: 999;
+  margin-left: -190px;
+}
+.input-group>.form-control{
+  height: 3.6rem;
+  border-color: darkgrey;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+input.form-control.form-control-lg.rounded::placeholder {
+    color: #d4d4d4;
+    padding-left:2rem;
+    font-size:0.8rem;
+    top: 6px;
+}
+select.form-control.form-control-lg {
+  color:white;
+}
+

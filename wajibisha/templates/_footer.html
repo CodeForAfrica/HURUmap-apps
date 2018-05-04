@@ -1,38 +1,58 @@
-{% extends '_footer.html' %}
 
 {% load staticfiles %}
-
-{% block footer_projects %}
-  <p>Other africaSPENDING Tools:</p>
-  <ul class="smaller">
-    <li>
-      <a href="https://biscuitindex.codeforkenya.org" target="_blank">Biscuit
-        Index</a>
-
-    </li>
-    <li><a href="https://taxclock.codeforkenya.org" target="_blank">TaxClock
-      Kenya</a></li>
-    <li><a href="https://pesacheck.org" target="_blank">PesaCheck</a></li>
-  </ul>
-  <br/>
-  <p>Join Our Community:</p>
-  <ul class="smaller">
-    <li>
-      <a href="https://facebook.com/HacksHackersAfrica" target="_blank">Hacks/Hackers
-        Africa</a>
-    </li>
-  </ul>
-
-{% endblock %}
-{% block footer_branding %}
-  <a href="https://codeforafrica.org" target="_blank">
-    <img src="{% static 'img/logos/cfafrica-white.png' %}"
-         alt="Code for Africa" style="margin-top: 0;"></a>
-  <a href="https://icfj.org" target="_blank">
-    <img src="{% static 'img/logos/icfj-white.png' %}" alt="ICFJ"
-         style="max-height: 42px;"></a>
-  <a href="https://www.thomsonreuters.com/en.html"><img src="{% static 'img/logos/Thomson-Reuters.svg' %}"
-          alt="Thomson Reuters"
-          style="max-height: 42px;"></a>
-
-{% endblock %}
+{% block footer %}
+<footer class="footer">
+  <div class="container">
+    <div class="row small">
+      <div class="col-md-5 col-sm-6 small">
+        <p><strong>Wajibisha</strong> tracks the progress on delivery of electrol promises by kenya's governors.</p>
+        <p>It helps citizens better understand how far along these promises are in terms of implemetation</p>
+        <p>
+          This site is a <strong>PesaCheck</strong> project implemented by <strong>Code for Africa. </strong> All content is released under a <u>creative commons 4 Attribution license.</u> Reuse it to help empower your own comunity. The code is available on <strong><u>GitHub</u></strong> and data is available on <u>openAfrica.</u>
+        </p>  
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <p>
+          Other StoryLab projects:
+        </p>
+        <ul >
+          <li>
+            <a href="https://biscuitindex.codeforkenya.org" target="_blank" style="text-decoration:none;">Biscuit Index</a>
+          </li>
+          <li>
+            <a href="https://taxclock.codeforkenya.org" target="_blank" style="text-decoration:none;">Task Clock</a>
+          </li>
+          <li>
+            <a href="https://pesacheck.org" target="_blank" style="text-decoration:none;">PesaCheck</a>
+          </li>
+        </ul>
+        <br>
+        <p>
+          Join Our Community:
+        </p>
+        <ul>
+          <li>
+            <a href="https://facebook.com/HacksHackersAfrica" target="_blank" style="text-decoration:none;">Hacks/Hackers Africa</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-4 col-sm-12 mt-md-0 mt-sm-5 text-left">
+        <p class="pt-3">
+          <a href="https://codeforafrica.org" target="_blank">
+            <img src="{% static 'img/logos/cfafrica-transparent.png' %}"
+            alt="Code for Africa" style="max-height:65px;margin:2rem;width:100px;"></a>
+          
+            <a href="https://icfj.org" target="_blank">
+              <img class="pl-3" src="{% static 'img/logos/icfj-white.png' %}" alt="ICFJ" style="max-height:65px;width:100px;margin:2rem"></a>
+            </p>
+            <p>
+              <a href="https://www.thomsonreuters.com/en.html">
+                <img src="{% static 'img/logos/Thomson-Reuters.svg' %}"
+                alt="Thomson Reuters" style="max-height:65px;margin:10px"></a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    {% endblock %}

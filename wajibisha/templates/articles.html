@@ -1,9 +1,210 @@
-{% extends 'homepage.html' %}
+{% extends '_base.html' %}{% load sass_tags staticfiles %}
 
 {% block body_id %}page{% endblock %}
+{% block header_content %}
+<div class="clipped-header clearfix">
+	<div class="wrapper content-container">
+		<div class="column-third text-left">
+			<h2>Articles</h2>
+		</div>
+		<div class="column-third"></div>
+		<div class="column-third push-right">
+			<img src="{% static 'img/articles/article.svg' %}" class="presentation-img">
+		</div>
+	</div>
+</div>
+{% endblock header_content %}
 
 {% block content_container %}
+<div class="container pt-5">
+	<div class="row justify-content-center align-items-center">
+		<div class="col-lg-12">
+			<div class="card text-white p-0" style="height:500px;">
+        <img class="card-img img-fluid" src="{% static 'img/articles/igathe.png' %}" style="height:500px;">
+        <div class="card-img-overlay p-0">
+          <button type="button" class="btn rounded-0" style="margin:-45px;margin-top: -80px;background-color: #0067A3;color: #ededed;padding-left:2rem;padding-right:2rem;">LATEST ARTICLE</button>
+          <div class="card-body" style="margin-top: 13.2rem;">
+            <div class="row border-0" style="background-color:grey;background:linear-gradient(0deg,black,#333 70%);opacity:0.7;padding-top:25px;height:240px;background-blend-mode:lighten;">
+              <div class="col-lg-12">
 
-<h3>My articles page</h3>
+                <div class="d-flex flex-row justify-content-between">
+                  <h6 class="small pull-left">NAIROBI COUNTY</h6>
+                  <h6 class="small pull-right">Mon,15th Jan 2018</h6>
+                </div>
 
-{% endblock %}
+                <div>
+                  <h4 class="card-title lead text-white"><strong>Mike Sonko Lauches Neighbourhood Street Naming Exercise</strong></h4>
+                </div>
+
+                <div>
+                  <p class="pt-0" style="color:#ededed;">By Eric Mugendi</p>
+                  <p class="text-white">In a dramatic move, Nairobi Deputy Governor Polycarp Igathe quit his position and attributed it to his own failure to win the trust
+                    of his boss, Governor Mike Sonko. The move finally lifted the lid on the uneasy relationship between the pair that has...<b class="yellow-text">read more</b></p>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<!--Articles in cards-->
+<div class="container pl-5 pr-2">
+  <div class="row pt-5" style="color:#707070;">
+    <div class="col-8 d-flex flex-column">
+      <div class="card d-flex flex-lg-row p-0" style="height:280px;width:660px">
+        <div class="col-md-5 p-0"><img src="{% static 'img/articles/fidelodingaroad.jpg' %}" class="card-img p-0" alt="Image of story" height="280px"></div>
+        <div class="col-md-7">
+          <h6 class="pt-4 small" style="margin:0!important;">NAIROBI COUNTY</h6>
+          <h4 class="card-title lead" style="width:18rem;">
+            <strong>Mike Sonko Lauches Neighbourhood Street Naming Exercise</strong>
+          </h4>
+          <div class="d-flex flex-row small text-muted">
+            <p class="offset-0">By Eric Mugendi</p>
+            <p class="offset-3">Sat 16th Dec 2017</p>
+          </div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut....<a href="">Read more</a></p>
+          </div>
+        </div><br>
+
+        <div class="card d-flex flex-lg-row p-0" style="height:280px;width:660px;margin-top:1.5rem;">
+          <div class="col-md-5 p-0"><img src="{% static 'img/articles/fidelodingaroad.jpg' %}" class="card-img p-0" alt="Image of story" height="280px"></div>
+          <div class="col-md-7">
+            <h6 class="pt-4 small" style="margin:0!important;">NAIROBI COUNTY</h6>
+            <h4 class="card-title lead" style="width:18rem;">
+              <strong>Mike Sonko Lauches Neighbourhood Street Naming Exercise</strong>
+            </h4>
+            <div class="d-flex flex-row small text-muted">
+              <p class="offset-0">By Eric Mugendi</p>
+              <p class="offset-3">Sat 16th Dec 2017</p>
+            </div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut....<a href="">Read more</a></p>
+            </div>
+          </div><br>
+        </div>
+
+        <div class="col-4">
+          <div class="card p-0" style="height:610px;width:300px;">
+            <img src="{% static 'img/articles/fidelodingaroad.jpg' %}" class="card-img-body p-0" alt="Story Image" style="height:300px;">
+            <div class="card-body">
+              <h6 class="pt-2 small" style="margin:0!important;">NAIROBI COUNTY</h6>
+              <h4 class="card-title lead" style="width:18rem;">
+                <strong>Mike Sonko Lauches Neighbourhood Street Naming Exercise</strong>
+              </h4>
+              <div class="d-flex small text-muted">
+                <p class="pull-left">By Eric Mugendi</p>
+                <p class="pull-right">Sat 16th Dec 2017</p>
+              </div>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut....<a href="">Read more</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--End of articles-->
+
+      <div class="container pl-2" style="height:200vh;min-height;100%;color:#707070;">
+        <div class="row pl-5 pr-5 pt-5 pb-5">
+        <div class="card-deck">
+          <div class="card p-0" style="height:580px;">
+            <img class="card-img-top" src="{% static 'img/articles/fidelodingaroad.jpg' %}" alt="Card image cap">
+            <div class="card-body">
+              <h6 class="pt-2 small" style="margin:0!important;">NAIROBI COUNTY</h6>
+              <h4 class="card-title lead" style="width:18rem;"><strong>Mike Sonko Lauches Neighbourhood Street Naming Exercise</strong></h4>
+              <div class="d-flex small justify-content-between text-muted">
+                <p class="pull-left">By Eric Mugendi</p>
+                <p class="pull-right">Sat 16th Dec 2017</p>
+              </div>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut....<a href="">Read more</a></p>
+            </div>
+          </div>
+
+            <div class="card p-0" style="height:580px;">
+            <img class="card-img-top" src="{% static 'img/articles/fidelodingaroad.jpg' %}" alt="Card image cap">
+            <div class="card-body">
+              <h6 class="pt-2 small" style="margin:0!important;">NAIROBI COUNTY</h6>
+              <h4 class="card-title lead" style="width:18rem;"><strong>Mike Sonko Lauches Neighbourhood Street Naming Exercise</strong></h4>
+              <div class="d-flex small justify-content-between text-muted">
+                <p class="pull-left">By Eric Mugendi</p>
+                <p class="pull-right">Sat 16th Dec 2017</p>
+              </div>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut....<a href="">Read more</a></p>
+            </div>
+          </div>
+
+            <div class="card p-0" style="height:580px;">
+            <img class="card-img-top" src="{% static 'img/articles/fidelodingaroad.jpg' %}" alt="Card image cap">
+            <div class="card-body">
+              <h6 class="pt-2 small" style="margin:0!important;">NAIROBI COUNTY</h6>
+              <h4 class="card-title lead" style="width:18rem;"><strong>Mike Sonko Lauches Neighbourhood Street Naming Exercise</strong></h4>
+              <div class="d-flex small justify-content-between text-muted">
+                <p class="pull-left">By Eric Mugendi</p>
+                <p class="pull-right">Sat 16th Dec 2017</p>
+              </div>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut....<a href="">Read more</a></p>
+            </div>
+          </div>
+          </div>
+        </div>
+        
+
+        <div class="row pl-5 pr-5 pt-5 pb-5">
+        <div class="card-deck">
+          <div class="card p-0" style="height:580px;">
+            <img class="card-img-top" src="{% static 'img/articles/fidelodingaroad.jpg' %}" alt="Card image cap">
+            <div class="card-body">
+              <h6 class="pt-2 small" style="margin:0!important;">NAIROBI COUNTY</h6>
+              <h4 class="card-title lead" style="width:18rem;"><strong>Mike Sonko Lauches Neighbourhood Street Naming Exercise</strong></h4>
+              <div class="d-flex small justify-content-between text-muted">
+                <p class="pull-left">By Eric Mugendi</p>
+                <p class="pull-right">Sat 16th Dec 2017</p>
+              </div>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut....<a href="">Read more</a></p>
+            </div>
+          </div>
+
+            <div class="card p-0" style="height:580px;">
+            <img class="card-img-top" src="{% static 'img/articles/fidelodingaroad.jpg' %}" alt="Card image cap">
+            <div class="card-body">
+              <h6 class="pt-2 small" style="margin:0!important;">NAIROBI COUNTY</h6>
+              <h4 class="card-title lead" style="width:18rem;"><strong>Mike Sonko Lauches Neighbourhood Street Naming Exercise</strong></h4>
+              <div class="d-flex small justify-content-between text-muted">
+                <p class="pull-left">By Eric Mugendi</p>
+                <p class="pull-right">Sat 16th Dec 2017</p>
+              </div>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut....<a href="">Read more</a></p>
+            </div>
+          </div>
+
+            <div class="card p-0" style="height:580px;">
+            <img class="card-img-top" src="{% static 'img/articles/fidelodingaroad.jpg' %}" alt="Card image cap">
+            <div class="card-body">
+              <h6 class="pt-2 small" style="margin:0!important;">NAIROBI COUNTY</h6>
+              <h4 class="card-title lead" style="width:18rem;"><strong>Mike Sonko Lauches Neighbourhood Street Naming Exercise</strong></h4>
+              <div class="d-flex small justify-content-between text-muted">
+                <p class="pull-left">By Eric Mugendi</p>
+                <p class="pull-right">Sat 16th Dec 2017</p>
+              </div>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut....<a href="">Read more</a></p>
+            </div>
+          </div>
+          </div>
+        </div>
+
+
+      </div>
+
+        {% endblock %}
