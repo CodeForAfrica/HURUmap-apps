@@ -64,6 +64,10 @@ WAJIBISHA['geometry_data'] = {
     }
 }
 
+TEMPLATE_CONTEXT_PROCESSORS += (
+    'wajibisha.utils.context_processors.get_homepage_promises',
+)
+
 STATIC_ROOT = 'wajibisha/static/'
 
 LOGGING['loggers']['wajibisha'] = {'level': 'DEBUG' if DEBUG else 'INFO'}

@@ -18,10 +18,8 @@
           <p style="color:#b7e4ff;font-size:1.2rem;">Keep track of your county's <span class="yellow-text">promises</span></p>
           <div class="colum-third pt-3">
           <select class=" country form-control form-control-lg" style="width: 200px;font-size:1rem;background-color:#4CAE4E;border-color: #4CAE4E;">
-            <option value="default" disabled selected>SELECT A COUNTRY</option>
-            <option style="background-color:#4CAE4E;">Kenya</option> 
-            <option style="background-color:#4CAE4E;">Uganda</option>
-            <option style="background-color:#4CAE4E;">Tanzania</option>
+            <option value="default" disabled selected>SELECT A COUNTY</option>
+            <option style="background-color:#4CAE4E;">Nairobi</option>
           </select>
         </div>
       </div>
@@ -51,8 +49,8 @@
           </div>
           <div class="card-block text-left pt-3" style="height:11rem;background-color:#f6f9fc;">
             <p class="pl-4">Country: <b>Nairobi</b></p>
-            <p class="pl-4">Total no. of promises: <b>10</b></p>
-            <p class="pl-4" >Promises fulfilled: <b>0</b></p> 
+            <p class="pl-4">Total no. of promises: <b>{{ housing_total }}</b></p>
+            <p class="pl-4" >Promises fulfilled: <b>{{ housing_fulfilled }}</b></p>
           </div>
         </div>
 
@@ -64,8 +62,8 @@
           </div>
           <div class="card-block text-left pt-3" style="height:11rem;background-color:#f6f9fc;">
             <p class="pl-4">Country: <b>Nairobi </b></p>
-             <p class="pl-4">Total no. of promises: <b>10</b></p>
-              <p class="pl-4">Promises fulfilled:<b>1</b></p>
+             <p class="pl-4">Total no. of promises: <b>{{ health_total }}</b></p>
+              <p class="pl-4">Promises fulfilled:<b>{{ health_fulfilled }}</b></p>
           </div>
         </div>
 
@@ -77,8 +75,8 @@
           </div>
           <div class="card-block text-left pt-3" style="height:11rem;background-color:#f6f9fc;">
             <p class="pl-4">Country: <b>Nairobi</b></p>
-             <p class="pl-4">Total no. of promises: <b>10</b></p>
-              <p class="pl-4">Promises fulfilled: <b>0</b></p>
+             <p class="pl-4">Total no. of promises: <b>{{ jobs_total }}</b></p>
+              <p class="pl-4">Promises fulfilled: <b>{{ jobs_fulfilled }}</b></p>
           </div>
         </div>
         
