@@ -6,17 +6,17 @@
 <link rel="stylesheet" href="{% static 'css/vendor/leaflet-0.6.4.css' %}" />
 <!--[if lte IE 8]>
     <link rel="stylesheet" href="{% static 'css/vendor/leaflet-0.6.4.ie.css' %}" />
-<![endif]-->
-<link href="{% static 'css/vendor/leaflet.label.css' %}" rel="stylesheet" />
-{% endblock %}
+  <![endif]-->
+  <link href="{% static 'css/vendor/leaflet.label.css' %}" rel="stylesheet" />
+  {% endblock %}
 
-{% block header_content %}
-<div class="clipped-header clearfix">
+  {% block header_content %}
+  <div class="clipped-header clearfix">
     <div class="wrapper content-container">
       <div class="column-third text-left">
-          <h2>WAJIBISHA</h2>
-          <p style="color:#b7e4ff;font-size:1.2rem;">Keep track of your county's <span class="yellow-text">promises</span></p>
-          <div class="colum-third pt-3">
+        <h2>WAJIBISHA</h2>
+        <p style="color:#b7e4ff;font-size:1.2rem;">Keep track of your county's <span class="yellow-text">promises</span></p>
+        <div class="colum-third pt-3">
           <select class=" country form-control form-control-lg" style="width: 200px;font-size:1rem;background-color:#4CAE4E;border-color: #4CAE4E;">
             <option value="default" disabled selected>SELECT A COUNTRY</option>
             <option style="background-color:#4CAE4E;">Kenya</option> 
@@ -27,76 +27,72 @@
       </div>
       <div class="column-third"></div>
       <div class="column-third push-right">
-          <img src="{% static 'img/Presentation.svg' %}" class="presentation-img">
+        <img src="{% static 'img/Presentation.svg' %}" class="presentation-img">
       </div>
+    </div>
   </div>
+  {% endblock header_content %}`
 
-</div>
-{% endblock header_content %}`
+  {% block content_container %}
 
-{% block content_container %}
-
-<div class="showcase how-it-works text-center">
+  <div class="showcase how-it-works text-center">
     {% block how_it_works %}
     <div class="wrapper clearfix">
-        <h4>SOME OF THE PROMISES WE'RE TRACKING</h4>
-        <br/>
-      <!--start of cards-->
+      <h4>SOME OF THE PROMISES WE'RE TRACKING</h4>
+      <br/>
+      <!--Start of cards-->
       <div class="card-group">
         <div class="card" style="margin:1rem;padding:0;color:#707070;">
           <div class="pt-4">
-          <img class="card-img-top rounded mx-auto d-block" src="{% static 'img/icons/landing/Housing.svg' %}" alt="Card image cap"></div>
-          <div class="card-block">
-            <h5 class="card-title">HOUSING</h5>
+            <img class="card-img-top rounded mx-auto d-block" src="{% static 'img/icons/landing/Housing.svg' %}" alt="Card image cap"></div>
+            <div class="card-block">
+              <h5 class="card-title">HOUSING</h5>
+            </div>
+            <div class="card-block text-left pt-3" style="height:11rem;background-color:#f6f9fc;">
+              <p class="pl-4">Country: <b>Nairobi</b></p>
+              <p class="pl-4">Total no. of promises: <b>10</b></p>
+              <p class="pl-4" >Promises fulfilled: <b>0</b></p> 
+            </div>
           </div>
-          <div class="card-block text-left pt-3" style="height:11rem;background-color:#f6f9fc;">
-            <p class="pl-4">Country: <b>Nairobi</b></p>
-            <p class="pl-4">Total no. of promises: <b>10</b></p>
-            <p class="pl-4" >Promises fulfilled: <b>0</b></p> 
+          <div class="card" style="margin:1rem;padding:0;color:#707070;">
+            <div class="pt-4">
+              <img class="card-img-top rounded mx-auto d-block" src="{% static 'img/icons/landing/health.svg' %}" alt="Card image cap"></div>
+              <div class="card-block">
+                <h5 class="card-title">HEALTH</h5>
+              </div>
+              <div class="card-block text-left pt-3" style="height:11rem;background-color:#f6f9fc;">
+                <p class="pl-4">Country: <b>Nairobi </b></p>
+                <p class="pl-4">Total no. of promises: <b>10</b></p>
+                <p class="pl-4">Promises fulfilled:<b>1</b></p>
+              </div>
+            </div>
+            <div class="card" style="margin:1rem;padding:0;color:#707070;">
+              <div class="pt-4">
+                <img class="card-img-top rounded mx-auto d-block" src="{% static 'img/icons/landing/Jobs.svg' %}" alt="Card image cap"></div>
+                <div class="card-block">
+                  <h5 class="card-title">JOBS</h5>
+                </div>
+                <div class="card-block text-left pt-3" style="height:11rem;background-color:#f6f9fc;">
+                  <p class="pl-4">Country: <b>Nairobi</b></p>
+                  <p class="pl-4">Total no. of promises: <b>10</b></p>
+                  <p class="pl-4">Promises fulfilled: <b>0</b></p>
+                </div>
+              </div>
+            </div>
           </div>
+          {% endblock %}
         </div>
 
-        <div class="card" style="margin:1rem;padding:0;color:#707070;">
-          <div class="pt-4">
-          <img class="card-img-top rounded mx-auto d-block" src="{% static 'img/icons/landing/health.svg' %}" alt="Card image cap"></div>
-          <div class="card-block">
-            <h5 class="card-title">HEALTH</h5>
-          </div>
-          <div class="card-block text-left pt-3" style="height:11rem;background-color:#f6f9fc;">
-            <p class="pl-4">Country: <b>Nairobi </b></p>
-             <p class="pl-4">Total no. of promises: <b>10</b></p>
-              <p class="pl-4">Promises fulfilled:<b>1</b></p>
-          </div>
-        </div>
-
-        <div class="card" style="margin:1rem;padding:0;color:#707070;">
-          <div class="pt-4">
-          <img class="card-img-top rounded mx-auto d-block" src="{% static 'img/icons/landing/Jobs.svg' %}" alt="Card image cap"></div>
-          <div class="card-block">
-            <h5 class="card-title">JOBS</h5>
-          </div>
-          <div class="card-block text-left pt-3" style="height:11rem;background-color:#f6f9fc;">
-            <p class="pl-4">Country: <b>Nairobi</b></p>
-             <p class="pl-4">Total no. of promises: <b>10</b></p>
-              <p class="pl-4">Promises fulfilled: <b>0</b></p>
-          </div>
-        </div>
-        
-      </div>
-    </div>
-    {% endblock %}
-</div>
-
-{% include 'blocks/mission.html' %}
-{% include 'blocks/tweets.html' %}
-{% include 'blocks/newsletter.html' %}
-{% endblock %}
+        {% include 'blocks/mission.html' %}
+        {% include 'blocks/tweets.html' %}
+        {% include 'blocks/newsletter.html' %}
+        {% endblock %}
 
 
-{% block body_javascript_extra %}
-{{ block.super }}
+        {% block body_javascript_extra %}
+        {{ block.super }}
 
-{% block homepage_javascripb_libs %}
-{% endblock %}
+        {% block homepage_javascripb_libs %}
+        {% endblock %}
 
-{% endblock %}
+        {% endblock %}
