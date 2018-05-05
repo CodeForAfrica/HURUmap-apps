@@ -151,4 +151,7 @@ input.form-control.form-control-lg.rounded::placeholder {
 select.form-control.form-control-lg {
   color: white; }
 
+.links li a:hover {
+  font-size: 18px; }
+
 /*# sourceMappingURL=../../../../../../../../static/css/wajibisha.css.map */
