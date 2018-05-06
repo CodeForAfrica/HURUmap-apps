@@ -4,5 +4,9 @@
             2015, 2016, 2017</p>
     </div>
 {% endblock %} {% block profile_detail %}
+<h3>Promises by status: {{ status }}</h3>
 
+  {% for promise in promises %}
+    <p> {{ promise.promise }} -> {{ promise.sector }}</p>
+  {% endfor%}
 {% endblock %}

@@ -1,20 +1,15 @@
-from django.conf.urls import url
 from wazimap.urls import *
-from .views import ArticlesView
-from views import AboutView
-from views import PromisesView
-from views import CategoriesView
-from views import FulfilledView
-from views import HealthView
+from views import PromisesByStatusDetailView
+from django.conf.urls import url, patterns
 
-urlpatterns += [
-    url(r'^articles/$', ArticlesView.as_view(), name='articles'),
-    url(r'^about/$', AboutView.as_view(), name='about'),
-    url(r'^promises/$', PromisesView.as_view(), name='promises'),
-    url(r'^categories/$', CategoriesView.as_view(), name='categories'),
-    url(r'^fulfilled/$', FulfilledView.as_view(), name='fulfilled'),
-    url(r'^health/$', HealthView.as_view(), name='health')
-]
+urlpatterns += patterns('',
 
+    url(
+        regex='^promises/(?P<status>[\w-]+)/(?P<geography_id>\w+-\w+)(-(?P<slug>[\w-]+))?/$',
+        view=cache_page(STANDARD_CACHE_TIME)(
+            PromisesByStatusDetailView.as_view()),
+        kwargs={},
+        name='embed_map',
+    ),
 
-
+)
