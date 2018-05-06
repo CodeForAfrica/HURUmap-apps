@@ -151,4 +151,22 @@ input.form-control.form-control-lg.rounded::placeholder {
 select.form-control.form-control-lg {
   color: white; }
 
+.card_status_img {
+  display: block;
+  width: 100%; }
+
+.promise-item {
+  height: 180px;
+  width: 100%;
+  margin-bottom: 2rem !important; }
+
+#compare-place-picker {
+  display: none !important; }
+
+.explain {
+  display: none; }
+
+.display-inline {
+  display: inline-block; }
+
 /*# sourceMappingURL=../../../../../../../../static/css/wajibisha.css.map */
