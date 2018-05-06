@@ -1,7 +1,53 @@
-{% extends 'profile/profile_detail.html' %} {% block profile_header_tail %}
+{% extends 'profile/profile_detail.html' %} {% load sass_tags staticfiles %}
+{% block profile_header_tail %}
     <div class="column-full">
         <p class="caption"><strong>Budget Allocation data:</strong> 2013, 2014,
             2015, 2016, 2017</p>
     </div>
 {% endblock %} {% block profile_detail %}
+<div class="showcase how-it-works text-center">
+	<div class="wrapper clearfix">
+		<h2>{{ category }} Promises</h2>
+		<br/>
+	</div>
+
+  <!--fulfilled card section-->
+  <div class="container pt-5">
+    <div class="row pt-5 pb-5">
+      {% for promise in promises %}
+      <div class="col-6">
+        <table class="table table-bordered bg-light" style="height:180px;width:600px;">
+          <tbody>
+            <tr>
+              <td style="width:120px;height:150px;">
+                <img class="p-0" src="{% static 'img/tracker/statuses/Fulfilled-portrait.svg' %}" alt="Fulfilled"
+                style="display:block;width:100%;">
+              </td>
+              <td colspan="3">
+                <button class="btn btn-primary rounded-0 pull-right" type="button" style="margin-top:-28px">{{ category }}</button>
+                <div class="pt-2"><p class="text-center pt-5">{{ promise.promise }}</p></div>
+              </td>
+            </tr>
+
+            <tr>
+              <td><p class="font-weight-normal text-center">{{ promise.status | upper }}</p></td>
+              <td colspan="3">
+                <div class="d-flex flex-row">
+                  <p class="offset-1"><img src="{% static 'img/tracker/Share.svg' %}" height="15px" width="15px"> Share</p>
+                  <p class="offset-1"><img src="{% static 'img/tracker/Watch.svg' %}" height="15px" width="15px"> Watch</p>
+                  <p class="offset-1"><img src="{% static 'img/tracker/Clap.svg' %}" height="15px" width="15px"> Congratulate</p>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+
+        </table>
+      </div>
+      {% endfor %}
+    </div>
+    <!--./end of fulfilled card section-->
+
+
+  </div>
+</div>
 {% endblock %}

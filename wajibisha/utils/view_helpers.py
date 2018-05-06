@@ -27,7 +27,7 @@ def get_promises_by_category(geo_code, geo_level, category):
                 geo_code, geo_level, category)
             session = get_session()
             result = session.execute(query).fetchall()
-            return [{'promise': i[0], 'sector': i[1]} for i in result]
+            return [{'promise': i[0], 'status': i[1]} for i in result]
         else:
             return [{'promise': None, 'sector': None}]
     except Exception as e:
