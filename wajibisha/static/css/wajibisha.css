@@ -1,6 +1,5 @@
 body {
-  background-color: #F6F9FC !important;
-  color: #707070!important;}
+  background-color: #F6F9FC !important; }
 
 #page-header {
   background-color: #0067a3; }
@@ -11,7 +10,7 @@ body {
     margin: 0 auto; } }
 
 #page-footer {
-  background-color: #0067a3; }
+  background: linear-gradient(to right bottom, #0067A3, #0066A2, #005688); }
 
 .mission {
   background-color: white;
@@ -44,18 +43,16 @@ body {
     padding: 30px 0; }
 
 .clipped-header {
-  /*-webkit-clip-path: polygon(0 0, 100% 0, 100% 46%, 0% 100%);
-  clip-path: polygon(0 0, 100% 0, 100% 46%, 0% 100%);*/
   background-color: #0067a3;
-  height: 250px;
+  height: 280px;
   color: white;
   text-align: center;
   padding-top: 50px;
   position: relative;
   z-index: 100;
   transform-origin: -40px;
-  transform: skewY(-5deg);
-  box-shadow: 0 4px 2px -2px gray; }
+  transform: skewY(-6deg);
+  box-shadow: 0 4px 2px -2px #b7b7b7; }
   .clipped-header .wrapper {
     position: absolute;
     left: 0;
@@ -63,7 +60,7 @@ body {
     top: 0;
     bottom: 0;
     z-index: 103;
-    transform: skewY(5deg);
+    transform: skewY(6deg);
     transform-origin: 0; }
   .clipped-header .wrapper .presentation-img {
     z-index: 1003;
@@ -71,9 +68,32 @@ body {
     position: absolute;
     right: 0; }
 
-.showcase h2 {
-  color: #0067a3; 
-  font-size:28px;}
+.promises-header {
+  background-color: #0067a3;
+  height: 300px;
+  color: white;
+  text-align: center;
+  padding-top: 50px;
+  position: relative;
+  z-index: 100;
+  box-shadow: 0 4px 2px -2px #b7b7b7; }
+
+.promises-header .wrapper {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 103; }
+
+.promises-header .wrapper .presentation-img {
+  z-index: 1003;
+  height: 200px;
+  position: absolute;
+  right: 0; }
+
+.showcase h4 {
+  color: #0067a3; }
 
 .space {
   padding-top: 1rem; }
@@ -83,7 +103,7 @@ body {
 
 .how-it-works img {
   max-width: 100%;
-  width: 180px; }\
+  width: 180px; }
 
 .how-it-works p {
   margin-bottom: 0;
@@ -100,30 +120,35 @@ body {
   height: 350px;
   background-color: #fff; }
 
-
-span.input-group-btn {
-  position: absolute;
-  right: 8px;
-  top: 5px;
-  bottom:2px;
-  z-index: 999;
-}
-input.form-control-lg {
-  height:3.2rem;
-}
-
-.clipped-header select{
-  width:250px;
-  background-color:#4CAE4E;
-  border-color:#4CAE4E;
-  color: white;
-}
 .tweet-card {
-  height:180px;
-  width:23rem;
-  margin:1rem;
-  padding:0;
-  border:5px solid; 
-  border-color:#BFD9E8!important;
-}
+  height: 200px;
+  margin: 2rem;
+  border-color: #B7E4FF;
+  padding: 0; }
 
+.team {
+  padding: 0;
+  margin: 3rem;
+  height: 230px; }
+
+.input-group-btn {
+  position: relative;
+  top: 6.5px;
+  z-index: 999;
+  margin-left: -190px; }
+
+.input-group > .form-control {
+  height: 3.6rem;
+  border-color: darkgrey;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); }
+
+input.form-control.form-control-lg.rounded::placeholder {
+  color: #d4d4d4;
+  padding-left: 2rem;
+  font-size: 0.8rem;
+  top: 6px; }
+
+select.form-control.form-control-lg {
+  color: white; }
+
+/*# sourceMappingURL=../../../../../../../../static/css/wajibisha.css.map */

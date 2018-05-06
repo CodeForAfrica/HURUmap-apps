@@ -1,10 +1,75 @@
-{% extends 'profile/profile_detail.html' %} {% block profile_header_tail %}
+{% extends 'profile/profile_detail.html' %}{% load sass_tags staticfiles %}
+
+{% block profile_header_content %}
+  {% block profile_header_tail %}
     <div class="column-full">
-        <p class="caption"><strong>Budget Allocation data:</strong> 2009</p>
+      <p class="caption"><strong>Budget Allocation data:</strong> 2009</p>
     </div>
-{% endblock %} {% block profile_detail %}
+
+  {% endblock %}
+
+{% endblock %}
+
+{% block profile_detail %}
+
+  <div class="showcase how-it-works text-center">
+    <div class="wrapper clearfix">
+      <h2>All the promises</h2>
+      <br/>
+    </div>
+    <div class="container">
+      <div class="row d-flex flex-row justify-content-end pb-5"
+           style="color:#006699;">
+        <p class="small pt-3 pb-3">Group by:</p>
+        <div class="btn-group pl-4 pr-5" role="group" aria-label="Group by"
+        ">
+        <button type="button" class="btn btn-primary pl-4 pr-3 border-2"
+                style="border-top-left-radius:50px;border-bottom-left-radius:50px;border-color:#0067A3;background-color:#0067A3;">
+          STATUS
+        </button>
+        <button type="button" class="btn pr-4 border-2" disabled
+                style="border-top-right-radius:50px;border-bottom-right-radius:50px;border-color:#808080;background-color:#f9f9f9!important;">
+          CATEGORY
+        </button>
+      </div>
+    </div>
+
+    <div class="row pt-5">
+      <!--start of card-->
+      <div class="col-4">
+        {% include 'profile/_blocks/_promise_card.html' with stat=promises.health card_img='img/tracker/categories/Health.svg'%}
+      </div>
+      <!--second column-->
+      <div class="col-4">
+        {% include 'profile/_blocks/_promise_card.html' with stat=promises.housing card_img='img/tracker/categories/Housing.svg'%}
+      </div>
+
+      <!--third column-->
+      <div class="col-4">
+        {% include 'profile/_blocks/_promise_card.html' with stat=promises.jobs card_img='img/tracker/categories/Jobs.svg'%}
+      </div>
+
+      <!--second container start here-->
+      <div class="container pt-5">
+        <div class="row pt-5">
+
+          <div class="col-4">
+            {% include 'profile/_blocks/_promise_card.html' with stat=promises.governance card_img='img/tracker/categories/Governance.svg'%}
+          </div>
 
 
+          <div class="col-4">
+            {% include 'profile/_blocks/_promise_card.html' with stat=promises.environment card_img='img/tracker/categories/Environment.svg'%}
+          </div>
+
+
+          <div class="col-4">
+            {% include 'profile/_blocks/_promise_card.html' with stat=promises.traffic card_img='img/tracker/categories/Traffic Management.svg'%}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 {% endblock %}

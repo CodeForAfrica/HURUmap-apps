@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-5136 300 150 150">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #f7971d;
+      }
+
+      .cls-2 {
+        fill: #0067a3;
+      }
+
+      .cls-3 {
+        fill: #4cae4e;
+      }
+
+      .cls-4 {
+        fill: #ee4538;
+      }
+
+      .cls-5 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g id="Group_257" data-name="Group 257" transform="translate(-5744)">
+    <g id="finances" transform="translate(581.517 285)">
+      <path id="Path_10" data-name="Path 10" class="cls-1" d="M159.085,127.537l-57.6,48L47.411,123.63a74.984,74.984,0,1,0,111.673,3.907Z" transform="translate(0 -85.539)"/>
+      <path id="Path_11" data-name="Path 11" class="cls-2" d="M90.475,76.041l54.089,51.925v-75A74.761,74.761,0,0,0,90.475,76.041Z" transform="translate(-43.081 -37.966)"/>
+      <path id="Path_12" data-name="Path 12" class="cls-3" d="M338.143,27l0-.015A74.833,74.833,0,0,0,280.541,0V75Z" transform="translate(-179.116 15)"/>
+      <path id="Path_13" data-name="Path 13" class="cls-4" d="M101.483,92.308,47.4,40.377s-2.412,2.557-4.865,5.614a77.95,77.95,0,0,0-4.741,6.772Z" transform="translate(0 -2.308)"/>
+    </g>
+    <path id="Path_15" data-name="Path 15" class="cls-5" d="M60,0A60,60,0,1,1,0,60,60,60,0,0,1,60,0Z" transform="translate(623 315)"/>
+  </g>
+</svg>
