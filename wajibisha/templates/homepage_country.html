@@ -17,9 +17,9 @@
           <h2>WAJIBISHA</h2>
           <p style="color:#b7e4ff;font-size:1.2rem;">Keep track of your county's <span class="yellow-text">promises</span></p>
           <div class="colum-third pt-3">
-          <select class=" country form-control form-control-lg" style="width: 200px;font-size:1rem;background-color:#4CAE4E;border-color: #4CAE4E;">
+          <select class=" country form-control form-control-lg" style="width: 200px;font-size:1rem;background-color:#4CAE4E;border-color: #4CAE4E;" id="county_select" onchange="selectCounty()">
             <option value="default" disabled selected>SELECT A COUNTY</option>
-            <option style="background-color:#4CAE4E;">Nairobi</option>
+            <option value="nairobi" style="background-color:#4CAE4E;">Nairobi</option>
           </select>
         </div>
       </div>
@@ -84,6 +84,16 @@
     </div>
     {% endblock %}
 </div>
+
+  <script>
+  function selectCounty() {
+      var selectedCounty = document.getElementById("county_select").value;
+      if (selectedCounty === 'nairobi') {
+          window.location.href = '/profiles/county-47-nairobi/';
+      }
+
+  }
+  </script>
 
 {% include 'blocks/mission.html' %}
 {% include 'blocks/tweets.html' %}

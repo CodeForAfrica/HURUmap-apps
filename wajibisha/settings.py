@@ -28,7 +28,7 @@ WAJIBISHA['description'] = "Wajibisha (Swahili for ‘hold accountable’) is a 
                            "general election."
 WAJIBISHA['title_tagline'] = 'Hold Accountable'
 
-wajibisha_profile = os.environ.get('WAJIBISHA_PROFILE', 'census')
+wajibisha_profile = os.environ.get('WAJIBISHA_PROFILE', 'promises')
 
 PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
 
