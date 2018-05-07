@@ -227,13 +227,46 @@ select.form-control.form-control-lg {
   height: 12px;
   width: 100%; }
 
-.article.card.row-height {
-  height: 500px; }
-
-.article.img-height {
-  height: 500px; }
-
 .card-height {
   height: 580px; }
+
+/*Category section*/
+.btn.btn-primary-right {
+  color: #808080;
+  border-color: #808080;
+  background-color: #f9f9f9 !important;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px; }
+
+.btn.btn-primary-left {
+  color: #F5F5F5;
+  border-color: #0067A3;
+  background-color: #0067A3 !important;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px; }
+
+.card.p-0.offset-1 {
+  height: 200px; }
+
+img.category-card-img.card-img.p-0.pl-0 {
+  height: 150px;
+  width: 180px;
+  margin-top: -3rem; }
+
+/*Fulfilled section*/
+/*health*/
+.btn.btn-primary-buttons {
+  color: white;
+  border-color: #0067A3;
+  background-color: #0067A3;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px; }
+
+.btn.btn-primary-label {
+  margin-top: -28px;
+  background-color: #0067A3;
+  color: #ededed; }
 
 /*# sourceMappingURL=../../../../../../../../static/css/wajibisha.css.map */
