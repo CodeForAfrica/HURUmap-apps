@@ -101,6 +101,9 @@ body {
 .yellow-text {
   color: #f8ca0f; }
 
+.blue-text {
+  color: #B7E4FF; }
+
 .how-it-works img {
   max-width: 100%;
   width: 180px; }
@@ -153,5 +156,8 @@ select.form-control.form-control-lg {
 
 .links li a:hover {
   font-size: 18px; }
+
+.footer-text {
+  text-decoration: none; }
 
 /*# sourceMappingURL=../../../../../../../../static/css/wajibisha.css.map */
