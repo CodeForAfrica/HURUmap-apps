@@ -292,6 +292,8 @@ select.form-control.form-control-lg {
   border-top-right-radius:50px;
   border-bottom-right-radius:50px;
 }
+
+
 .card.p-0.offset-1 {
   height:200px;
 }
@@ -318,4 +320,29 @@ img.category-card-img.card-img.p-0.pl-0 {
   margin-top:-28px;
   background-color: #0067A3;
   color: #ededed;
+}
+
+/*Promises*/
+.card-block.border {
+  height:200px;
+  width:320px;
+  margin-left:-10px;
+  background-color:#ededed;
+  border-color:rgba(112, 112, 112, 0.2);
+
+}
+
+img.status-img.card-img.p-0.pl-0 {
+  height:150px;
+  width:180px;
+  margin-top:-2rem;
+}
+
+.status-card.card.p-0.body-text {
+  width:300px;
+  margin:10px;
+}
+
+.status-card-height.d-flex.flex-row {
+  height:150px;
 }
