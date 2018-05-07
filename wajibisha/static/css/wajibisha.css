@@ -222,4 +222,18 @@ select.form-control.form-control-lg {
   height: 610px;
   width: 300px; }
 
+.hr-nav {
+  border-color: #0067A3;
+  height: 12px;
+  width: 100%; }
+
+.article.card.row-height {
+  height: 500px; }
+
+.article.img-height {
+  height: 500px; }
+
+.card-height {
+  height: 580px; }
+
 /*# sourceMappingURL=../../../../../../../../static/css/wajibisha.css.map */
