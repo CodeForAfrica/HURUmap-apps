@@ -289,4 +289,14 @@ img.status-img.card-img.p-0.pl-0 {
 .status-card-height.d-flex.flex-row {
   height: 150px; }
 
+.button.pl-5.pr-5.pt-3.pb-3.m-5.btn.lead.share-button {
+  color: white !important;
+  font-size: 1rem;
+  font-weight: 100;
+  background-color: #0067A3;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px; }
+
 /*# sourceMappingURL=../../../../../../../../static/css/wajibisha.css.map */
