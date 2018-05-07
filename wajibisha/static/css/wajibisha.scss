@@ -59,7 +59,7 @@ body {
 
   }
 }
-
+/*Header section*/
 .clipped-header {
   background-color: $color-blue;
   height: 280px;
@@ -129,8 +129,29 @@ body {
   color:#B7E4FF; 
 }
 
+.body-text {
+  color:#707070;
+}
+.body-text:hover{
+  color:#707070;
+}
+
+.country.form-control.form-control-lg {
+  width: 200px;
+  font-size:1rem;
+  background-color:#4CAE4E;
+  border-color: #4CAE4E;
+}
+.country option {
+  background-color:#4CAE4E;
+}
+
+.details {
+  height:11rem;
+  background-color:#f6f9fc;
+}
+
 .how-it-works img {
-  //max-width: 100px;
   max-width: 100%;
   width: 180px;
 }
@@ -145,7 +166,6 @@ body {
 }
 
 .card {
-  /* Add shadows to create the "card" effect */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   padding: 50px 20px;
@@ -191,7 +211,58 @@ select.form-control.form-control-lg {
   font-size: 18px;
 }
 
+/*Footer section*/
 .footer-text {
   text-decoration:none;
+}
+
+.footer-logo {
+  max-height:65px;
+  width:100px;
+}
+
+.tr-logo{
+  max-height:65px;
+  margin:10px
+}
+/* Article section */
+.article-label{
+  margin:-45px;
+  margin-top: -80px;
+  background-color: #0067A3;
+  color: #ededed;
+  padding-left:2rem;
+  padding-right:2rem;
+}
+
+.lead-content {
+  background-color:grey;
+  background:linear-gradient(0deg,black,#333 70%);
+  opacity:0.7;
+  padding-top:25px;
+  height:240px;
+  background-blend-mode:lighten;
+}
+
+.card-content{
+  margin-top:13.5rem;
+}
+
+.author-text{
+  color:#ededed;
+}
+
+.article-card {
+  height:280px;
+  width:660px
+}
+
+.article-width {
+  width:18rem;
+}
+
+.card-hw {
+  height:610px;
+  width:300px;
 }
 
