@@ -111,6 +111,9 @@ body {
 .body-text:hover {
   color: #707070; }
 
+.borders-color {
+  border-color: #707070; }
+
 .country.form-control.form-control-lg {
   width: 200px;
   font-size: 1rem;
@@ -147,6 +150,13 @@ body {
   margin: 2rem;
   border-color: #B7E4FF;
   padding: 0; }
+
+.tweet-section {
+  width: 100%;
+  height: auto; }
+
+.tweet-card.card.border.rounded {
+  border-color: #bfd9e8 !important; }
 
 .team {
   padding: 0;
@@ -289,14 +299,43 @@ img.status-img.card-img.p-0.pl-0 {
 .status-card-height.d-flex.flex-row {
   height: 150px; }
 
-.button.pl-5.pr-5.pt-3.pb-3.m-5.btn.lead.share-button {
+.card-slider {
+  height: 250px;
+  width: 450px;
+  color: white;
+  background: linear-gradient(to bottom, #499bea 0%, #003452 100%); }
+
+.card-slider:hover {
+  height: 250px;
+  width: 450px;
+  color: white;
+  background: linear-gradient(to bottom, #499bea 0%, #003452 100%); }
+
+.newsletter button {
   color: white !important;
-  font-size: 1rem;
+  background-color: #0067a3;
+  width: 180px;
+  border-color: #0067a3;
+  font-size: 1.2rem;
   font-weight: 100;
-  background-color: #0067A3;
-  border-top-left-radius: 50px;
-  border-bottom-left-radius: 50px;
-  border-top-right-radius: 50px;
-  border-bottom-right-radius: 50px; }
+  border-radius: 4px; }
+
+.overview {
+  padding-left: 15rem; }
+
+.card-position.p-0.body-text {
+  width: 600px;
+  height: 260px;
+  margin-top: -8rem; }
+
+.content-font-size {
+  font-size: 1.4rem; }
+
+.overview-img-text {
+  margin-top: -8rem; }
+
+.container.iframe-map.p-0 {
+  height: 350px;
+  max-width: 100%; }
 
 /*# sourceMappingURL=../../../../../../../../static/css/wajibisha.css.map */
