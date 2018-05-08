@@ -1,29 +1,42 @@
-{% extends 'homepage.html' %}
+{% extends '_base.html' %}{% load sass_tags staticfiles %}
 
 {% block body_id %}page{% endblock %}
-
+{% block header_content %}
+<div class="clipped-header clearfix">
+    <div class="wrapper content-container">
+      <div class="column-third text-left">
+          <h2>About</h2>
+      </div>
+      <div class="column-third"></div>
+      <div class="column-third push-right">
+          <img src="{% static 'img/about/team.svg' %}" class="presentation-img">
+      </div>
+  </div>
+</div>
+{% endblock header_content %}
 {% block content_container %}
-    <div class="content container-narrowest clearfix">
-        <h1>About {{ HURUMAP.name }}</h1>
-        <p><em>What’s the data behind the story?</em></p>
-
-        <p>One essential tool that Kenyan citizens need to engage the government is information on how money collected from taxpayers is allocated.
-            With this information, we can ask what our elected officials are doing with it, and from there the discussion can proceed towards how money
-            is spent in the future to better our lives.</p>
-        <p>The 47 county governments of Kenya are in charge of overseeing functions such as the provision of healthcare, pre-primary education and
-            management of local roads, which were previously the responsibility of Kenya’s national government. In order to do this, the national government
-            allocates a share of national revenues using a set formula. This information is contained in copies of the Kenya Gazette, breaking down
-            allocations per year for every financial year since 2013/14.</p>
-        <p>
-            This concept is already being used to visualize revenues and other budget information in South Africa on Municipal Money, a web-based tool
-            designed to inform citizens on their local authority’s financial performance and allows comparisons between municipalities.
-
-        </p>
-
-
-        <p>The project is built on <a href="http://wazimap.readthedocs.org/" target="_blank" rel="noopener">Wazimap</a>, an open source platform by <a href="https://openup.org.za/" target="_blank" rel="noopener">OpenUp</a> and <a href="http://www.mediamonitoringafrica.org/" target="_blank" rel="noopener">Media Monitoring Africa</a> for making census data more understandable.</p>
-
+<div class="showcase how-it-works text-center">
+    {% block about %}
+    <div class="body-text wrapper clearfix text-center pl-5 pr-5">
+        <h2>WHO WE ARE</h2>
         <br/>
-        {% include 'blocks/about/manifesto.html' %}
+        <p>Lorem ipsum dolor sit amet et delectus accommodare his consul copiosae legendos at vix ad putent delectus delicata
+          usu. Vidit dissentiet eos cu eum an brute copiosae hendrerit. Eos erant dolorum an. Per facer affert ut. Mei iisque
+          mentitum moderatius cu. Sit munere facilis accusam eu dicat falli consulatu at vis. Te facilisis mnesarchum qui posse omnium mediocritatem est cu. Modus argumentum ne qui tation efficiendi in eos. Ei mea falli legere efficiantur et tollit aliquip debitis mei. No deserunt mediocritatem mel. Lorem ipsum dolor sit amet et delectus accommodare his consul copiosae legendos at vix ad putent delectus delicata usu.<br>
+          Vidit dissentiet eos cu eum an brute copiosae hendrerit. Eos erant dolorum an. Per facer affert ut. Mei iisque mentitum moderatius cu. Sit munere facilis accusam eu dicat falli consulatu at vis. Te facilisis mnesarchum qui posse omnium mediocritatem est cu. Modus argumentum ne qui tation efficiendi in eos. Ei mea falli legere efficiantur et tollit aliquip debitis mei.<br>
+          No deserunt mediocritatem mel. Lorem ipsum dolor sit amet et delectus accommodare his consul copiosae legendos at
+          vix ad putent delectus delicata usu. Vidit dissentiet eos cu eum an brute copiosae hendrerit. Eos erant dolorum an. Per facer affert ut. Mei iisque mentitum moderatius cu. Sit munere facilis accusam eu dicat falli consulatu at vis. Te facilisis mnesarchum qui posse omnium mediocritatem est cu. Modus argumentum ne qui tation efficiendi in eos. Ei mea falli legere efficiantur et tollit aliquip debitis mei. No deserunt mediocritatem mel. Lorem ipsum dolor sit amet et delectus accommodare his consul copiosae legendos at vix ad putent delectus delicata usu. Vidit dissentiet eos cu eum an brute copiosae hendrerit. Eos erant dolorum an. Per facer affert ut. Mei iisque mentitum moderatius cu. Sit munere facilis accusam eu dicat falli consulatu at vis. Te facilisis mnesarchum qui posse omnium mediocritatem est cu. Modus</p>
+          
+      </div>
     </div>
+    {% include 'blocks/team.html' %}
+
+    {% endblock %}
+</div>
 {% endblock %}
+
+
+
+
+
+
