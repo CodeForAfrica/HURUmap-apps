@@ -42,7 +42,7 @@ body {
     text-align: center;
     padding: 30px 0; }
 
-/*Header section*/
+/*HEADER SECTION*/
 .clipped-header {
   background-color: #0067a3;
   height: 280px;
@@ -93,9 +93,24 @@ body {
   position: absolute;
   right: 0; }
 
+.container.iframe-map.p-0 {
+  height: 350px;
+  max-width: 100%; }
+
+/* LANDING PAGE SEARCH FORM */
+.country.form-control.form-control-lg {
+  width: 200px;
+  font-size: 1rem;
+  background-color: #4CAE4E;
+  border-color: #4CAE4E; }
+
+.country option {
+  background-color: #4CAE4E; }
+
 .showcase h4 {
   color: #0067a3; }
 
+/*COLORS AND TEXT */
 .space {
   padding-top: 1rem; }
 
@@ -111,17 +126,17 @@ body {
 .body-text:hover {
   color: #707070; }
 
+.breadcrumb-color {
+  color: #006699; }
+
 .borders-color {
   border-color: #707070; }
 
-.country.form-control.form-control-lg {
-  width: 200px;
-  font-size: 1rem;
-  background-color: #4CAE4E;
-  border-color: #4CAE4E; }
+.card-promise-text {
+  font-size: 14px; }
 
-.country option {
-  background-color: #4CAE4E; }
+.number-text {
+  font-size: 28px; }
 
 .details {
   height: 11rem;
@@ -137,19 +152,6 @@ body {
 
 .background {
   background-color: #ededed; }
-
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  transition: 0.3s;
-  padding: 50px 20px;
-  height: 350px;
-  background-color: #fff; }
-
-.tweet-card {
-  height: 200px;
-  margin: 2rem;
-  border-color: #B7E4FF;
-  padding: 0; }
 
 .tweet-section {
   width: 100%;
@@ -186,7 +188,7 @@ select.form-control.form-control-lg {
 .links li a:hover {
   font-size: 18px; }
 
-/*Footer section*/
+/*FOOTER SECTION*/
 .footer-text {
   text-decoration: none; }
 
@@ -198,7 +200,7 @@ select.form-control.form-control-lg {
   max-height: 65px;
   margin: 10px; }
 
-/* Article section */
+/* ARTICLE SECTION */
 .article-label {
   margin: -45px;
   margin-top: -80px;
@@ -228,19 +230,12 @@ select.form-control.form-control-lg {
 .article-width {
   width: 18rem; }
 
-.card-hw {
-  height: 610px;
-  width: 300px; }
-
 .hr-nav {
   border-color: #0067A3;
   height: 12px;
   width: 100%; }
 
-.card-height {
-  height: 580px; }
-
-/*Category section*/
+/*CATEGORY SECTION*/
 .btn.btn-primary-right {
   color: #808080;
   border-color: #808080;
@@ -255,16 +250,7 @@ select.form-control.form-control-lg {
   border-top-right-radius: 50px;
   border-bottom-right-radius: 50px; }
 
-.card.p-0.offset-1 {
-  height: 200px; }
-
-img.category-card-img.card-img.p-0.pl-0 {
-  height: 150px;
-  width: 180px;
-  margin-top: -3rem; }
-
-/*Fulfilled section*/
-/*health*/
+/* BUTTONS */
 .btn.btn-primary-buttons {
   color: white;
   border-color: #0067A3;
@@ -279,7 +265,35 @@ img.category-card-img.card-img.p-0.pl-0 {
   background-color: #0067A3;
   color: #ededed; }
 
-/*Promises*/
+/* CARDS*/
+.card-hw {
+  height: 610px;
+  width: 300px; }
+
+.card-height {
+  height: 580px; }
+
+.card.p-0.offset-1 {
+  height: 200px; }
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  padding: 50px 20px;
+  height: 350px;
+  background-color: #fff; }
+
+.tweet-card {
+  height: 200px;
+  margin: 2rem;
+  border-color: #B7E4FF;
+  padding: 0; }
+
+img.category-card-img.card-img.p-0.pl-0 {
+  height: 150px;
+  width: 180px;
+  margin-top: -3rem; }
+
 .card-block.border {
   height: 200px;
   width: 320px;
@@ -311,6 +325,21 @@ img.status-img.card-img.p-0.pl-0 {
   color: white;
   background: linear-gradient(to bottom, #499bea 0%, #003452 100%); }
 
+.card-position.p-0.body-text {
+  width: 600px;
+  height: 260px;
+  margin-top: -8rem; }
+
+.overview {
+  padding-left: 15rem; }
+
+.content-font-size {
+  font-size: 1.4rem; }
+
+.overview-img-text {
+  margin-top: -8rem; }
+
+/*NEWSLETTER SECTION*/
 .newsletter button {
   color: white !important;
   background-color: #0067a3;
@@ -320,22 +349,16 @@ img.status-img.card-img.p-0.pl-0 {
   font-weight: 100;
   border-radius: 4px; }
 
-.overview {
-  padding-left: 15rem; }
+/* TABLES */
+.table.table.table-bordered.bg-light {
+  height: 180px;
+  width: 520px; }
 
-.card-position.p-0.body-text {
-  width: 600px;
-  height: 260px;
-  margin-top: -8rem; }
+td.table-img {
+  width: 120px;
+  height: 150px; }
 
-.content-font-size {
-  font-size: 1.4rem; }
-
-.overview-img-text {
-  margin-top: -8rem; }
-
-.container.iframe-map.p-0 {
-  height: 350px;
-  max-width: 100%; }
+img.img-width.d-block.p-0 {
+  width: 100%; }
 
 /*# sourceMappingURL=../../../../../../../../static/css/wajibisha.css.map */

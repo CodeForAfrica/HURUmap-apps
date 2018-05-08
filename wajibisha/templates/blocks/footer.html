@@ -1,0 +1,58 @@
+
+{% load staticfiles %}
+{% block footer %}
+<footer class="footer">
+  <div class="container">
+    <div class="row small">
+      <div class="col-md-5 col-sm-6 small">
+        <p><strong>Wajibisha</strong> tracks the progress on delivery of electrol promises by kenya's governors.</p>
+        <p>It helps citizens better understand how far along these promises are in terms of implemetation</p>
+        <p>
+          This site is a <strong>PesaCheck</strong> project implemented by <strong>Code for Africa. </strong> All content is released under a <u>creative commons 4 Attribution license.</u> Reuse it to help empower your own comunity. The code is available on <strong><u>GitHub</u></strong> and data is available on <u>openAfrica.</u>
+        </p>  
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <p>
+          Other StoryLab projects:
+        </p>
+        <ul >
+          <li>
+            <a class="footer-text" href="https://biscuitindex.codeforkenya.org" target="_blank">Biscuit Index</a>
+          </li>
+          <li>
+            <a class="footer-text" href="https://taxclock.codeforkenya.org" target="_blank">Task Clock</a>
+          </li>
+          <li>
+            <a class="footer-text" href="https://pesacheck.org" target="_blank">PesaCheck</a>
+          </li>
+        </ul>
+        <br>
+        <p>
+          Join Our Community:
+        </p>
+        <ul>
+          <li>
+            <a class="footer-text" href="https://facebook.com/HacksHackersAfrica" target="_blank">Hacks/Hackers Africa</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-4 col-sm-12 mt-md-0 mt-sm-5 text-left">
+        <p class="pt-3">
+          <a href="https://codeforafrica.org" target="_blank">
+            <img class="footer-logo m-4" src="{% static 'img/logo/cfafrica-logo.png' %}"
+            alt="Code for Africa"></a>
+          
+            <a href="https://icfj.org" target="_blank">
+              <img class="pl-3 footer-logo m-4" src="{% static 'img/logo/icfj-logo.png' %}" alt="ICFJ"></a>
+            </p>
+            <p>
+              <a href="https://www.thomsonreuters.com/en.html">
+                <img class="tr-logo" src="{% static 'img/logo/thomson-reuters-logo.svg' %}"
+                alt="Thomson Reuters"></a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    {% endblock %}
