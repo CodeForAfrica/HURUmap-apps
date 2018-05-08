@@ -1,11 +1,7 @@
 {% extends 'profile/profile_detail.html' %}{% load sass_tags staticfiles %}
-{% block profile_header_tail %}
-  <div class="column-full">
-    <p class="caption"><strong>Budget Allocation data:</strong> 2013, 2014,
-      2015, 2016, 2017</p>
-  </div>
-{% endblock %}
+
 {% block profile_detail %}
+  <div class="mt-200">
   <div class="showcase how-it-works text-center">
     <div class="wrapper clearfix">
       <h2>Promises</h2>
@@ -14,12 +10,12 @@
 
     <div class="row">
       <div class="column-half text-left">
-        <p>GO BACK</p>
+        <p class="text-blue"><span>&lt; </span> GO BACK</p>
       </div>
       <div class="column-half text-right display-inline">
-        <p>Filter By: </p>
+        <p class="float-left filter-text">Filter By: </p>
         <div class="display-inline">
-          <select class="form-control" id="status_select" onchange="filter()">
+          <select class="form-control promise-select" id="status_select" onchange="filter()">
             <option value="all">Status</option>
             {% for status in statuses %}
               <option value="{{ status | safe }}">{{ status }}</option>
@@ -27,7 +23,7 @@
           </select>
         </div>
         <div class="display-inline">
-          <select class="form-control" id="sector_select" onchange="filter()">
+          <select class="form-control promise-select" id="sector_select" onchange="filter()">
             <option value="all">Sector</option>
             {% for sector in sectors %}
               <option value="{{ sector | safe }}">{{ sector }}</option>
@@ -37,6 +33,7 @@
         </div>
       </div>
     </div>
+
 
     <!--fulfilled card section-->
     <div class="container pt-5">
@@ -92,27 +89,27 @@
               "              <tbody>\n" +
               "              <tr>\n" +
               "                <td>\n" +
-              "                <img class=\"p-0 card_status_img\" src=\"/static/img/tracker/statuses/";
+              "                <img class=\"p-0 card_status_img\" src=\"/static/img/tracker/status/";
 
           var card_img = "";
           switch (promise.status) {
               case 'In Progress':
-                  card_img = "In-Progress-portrait.svg\" ";
+                  card_img = "in-Progress-portrait.svg\" ";
                   break;
               case 'Done':
-                  card_img = "Fulfilled-portrait.svg\" ";
+                  card_img = "fulfilled-portrait.svg\" ";
                   break;
               case 'Five years plans':
-                  card_img = "Stalled-portrait.svg\" ";
+                  card_img = "stalled-portrait.svg\" ";
                   break;
               case 'Altered Promise':
-                  card_img = "Stalled-portrait.svg\" ";
+                  card_img = "stalled-portrait.svg\" ";
                   break;
               case 'Not done':
-                  card_img = "Unfulfilled-portrait.svg\" ";
+                  card_img = "unfulfilled-portrait.svg\" ";
                   break;
               default:
-                  card_img = "Unfulfilled-portrait.svg\" ";
+                  card_img = "unfulfilled-portrait.svg\" ";
           }
 
           html += card_img + "alt=\"card_image\">\n" +
@@ -182,5 +179,5 @@
 
       }
   </script>
-
+</div>
 {% endblock %}
