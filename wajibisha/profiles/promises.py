@@ -12,6 +12,7 @@ def get_profile(geo, profile_name, request):
     try:
         data['demographics'] = get_demographics_profile(geo, session)
         data['promises'] = get_promises(geo, session)
+        data['promise_totals'] = get_promise_totals(geo, session)
 
         return data
     finally:
@@ -30,6 +31,33 @@ def get_demographics_profile(geo, session):
             "values": {"this": total_pop}
         }
     }
+
+
+def get_promise_totals(geo, session):
+    totals = {}
+    total_promises = 0
+    try:
+        query = "SELECT status,COUNT(status) FROM promises WHERE " \
+                "geo_code='{}' AND geo_level='{}' GROUP BY sector,status" \
+            .format(geo.geo_code, geo.geo_level)
+        promises = session.execute(query).fetchall()
+        # returns ('promise', 'count')
+
+        for i in promises:
+            totals[i[0].lower().replace(' ', '_')] = i[1]
+            total_promises += i[1]
+
+        totals['total'] = total_promises
+
+        return {
+            'totals': totals
+        }
+
+    except Exception as e:
+        return {
+            'totals': totals
+        }
+
 
 def get_promises(geo, session):
     # TODO clean up, optimize this whole function

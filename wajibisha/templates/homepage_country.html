@@ -30,7 +30,7 @@
       </div>
       <div class="column-third"></div>
       <div class="column-third push-right">
-        <img src="{% static 'img/Presentation.svg' %}" class="presentation-img">
+        <img src="{% static 'img/presentation.svg' %}" class="presentation-img">
       </div>
     </div>
   </div>
@@ -39,83 +39,65 @@
 {% block content_container %}
   <div class="showcase how-it-works text-center">
     {% block how_it_works %}
-      <div class="wrapper clearfix">
+    <div class="wrapper clearfix">
       <h4>SOME OF THE PROMISES WE'RE TRACKING</h4>
       <br/>
       <!--Start of cards-->
       <div class="card-group">
-      <div class="card" style="margin:1rem;padding:0;color:#707070;">
-        <div class="pt-4">
-          <img class="card-img-top rounded mx-auto d-block"
-               src="{% static 'img/icons/landing/Housing.svg' %}"
-               alt="Card image cap"></div>
-        <div class="card-block">
-          <h5 class="card-title">HOUSING</h5>
-        </div>
-        <div class="card-block text-left pt-3"
-             style="height:11rem;background-color:#f6f9fc;">
-          <p class="pl-4">Country: <b>Nairobi</b></p>
-          <p class="pl-4">Total no. of promises: <b>{{ housing_total }}</b></p>
-          <p class="pl-4">Promises fulfilled: <b>{{ housing_fulfilled }}</b></p>
-        </div>
-      </div>
-
-      <div class="card" style="margin:1rem;padding:0;color:#707070;">
-
-        <div class="pt-4">
-          <img class="card-img-top rounded mx-auto d-block"
-               src="{% static 'img/icons/landing/housing.svg' %}"
-               alt="Card image cap"></div>
-        <div class="card-block">
-          <h5 class="card-title">HOUSING</h5>
-        </div>
-        <div class="details card-block text-left pt-3">
-          <p class="pl-4">Country: <b>Nairobi</b></p>
-          <p class="pl-4">Total no. of promises: <b>10</b></p>
-          <p class="pl-4">Promises fulfilled: <b>0</b></p>
-        </div>
-      </div>
-      <div class="card-block text-left pt-3"
-           style="height:11rem;background-color:#f6f9fc;">
-        <p class="pl-4">Country: <b>Nairobi </b></p>
-        <p class="pl-4">Total no. of promises: <b>{{ health_total }}</b></p>
-        <p class="pl-4">Promises fulfilled:<b>{{ health_fulfilled }}</b></p>
-      </div>
-    {% endblock %}
-    </div>
-
-    <div class="card" style="margin:1rem;padding:0;color:#707070;">
-      <div class="pt-4">
-        <img class="card-img-top rounded mx-auto d-block"
-             src="{% static 'img/icons/landing/Jobs.svg' %}"
-             alt="Card image cap"></div>
-      <div class="card-block">
-        <h5 class="card-title">JOBS</h5>
-      </div>
-      <div class="card-block text-left pt-3"
-           style="height:11rem;background-color:#f6f9fc;">
-        <p class="pl-4">Country: <b>Nairobi</b></p>
-        <p class="pl-4">Total no. of promises: <b>{{ jobs_total }}</b></p>
-        <p class="pl-4">Promises fulfilled: <b>{{ jobs_fulfilled }}</b></p>
-      </div>
-    </div>
-
-    </div>
+        <div class="card p-0 m-3 body-text">
+          <div class="pt-4">
+            <img class="card-img-top rounded mx-auto d-block" src="{% static 'img/icons/landing/housing.svg' %}" alt="Card image cap"></div>
+            <div class="card-block">
+              <h5 class="card-title">HOUSING</h5>
+            </div>
+            <div class="details card-block text-left pt-3">
+              <p class="pl-4">Country: <b>Nairobi</b></p>
+              <p class="pl-4">Total no. of promises: <b>{{ housing_total }}</b></p>
+              <p class="pl-4" >Promises fulfilled: <b>{{ housing_fulfilled }}</b></p>
+            </div>
+          </div>
+          <div class="card p-0 m-3 body-text">
+            <div class="pt-4">
+              <img class="card-img-top rounded mx-auto d-block" src="{% static 'img/icons/landing/health.svg' %}" alt="Card image cap"></div>
+              <div class="card-block">
+                <h5 class="card-title">HEALTH</h5>
+              </div>
+              <div class="details card-block text-left pt-3">
+                <p class="pl-4">Country: <b>Nairobi </b></p>
+                <p class="pl-4">Total no. of promises: <b>{{ health_total }}</b></p>
+                <p class="pl-4">Promises fulfilled:<b>{{ health_fulfilled }}</b></p>
+              </div>
+            </div>
+            <div class="card p-0 m-3 body-text">
+              <div class="pt-4">
+                <img class="card-img-top rounded mx-auto d-block" src="{% static 'img/icons/landing/jobs.svg' %}" alt="Card image cap"></div>
+                <div class="card-block">
+                  <h5 class="card-title">JOBS</h5>
+                </div>
+                <div class="details card-block text-left pt-3">
+                  <p class="pl-4">Country: <b>Nairobi</b></p>
+                  <p class="pl-4">Total no. of promises: <b>{{ jobs_total }}</b></p>
+                  <p class="pl-4">Promises fulfilled: <b>{{ jobs_fulfilled }}</b></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endblock %}
   </div>
 
-<script>
-    function selectCounty() {
-        var selectedCounty = document.getElementById("county_select").value;
-        if (selectedCounty === 'nairobi') {
-            window.location.href = '/profiles/county-47-nairobi/';
-        }
+  <script>
+      function selectCounty() {
+          var selectedCounty = document.getElementById("county_select").value;
+          if (selectedCounty === 'nairobi') {
+              window.location.href = '/profiles/county-47-nairobi/';
+          }
 
-    }
-</script>
+      }
+  </script>
 
-{% include 'blocks/mission.html' %}
-{% include 'blocks/tweets.html' %}
-{% include 'blocks/newsletter.html' %}
+  {% include 'blocks/mission.html' %}
+  {% include 'blocks/tweets.html' %}
+  {% include 'blocks/newsletter.html' %}
 {% endblock %}
 
 

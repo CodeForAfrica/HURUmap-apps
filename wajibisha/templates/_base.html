@@ -1,17 +1,21 @@
 {% extends '_base.html' %}
-{% load sass_tags staticfiles %}
+{% load sass_tags staticfiles %}#}
 
 
 {% block head_css %}
-    {{ block.super }}
-    <link rel="stylesheet" href="{% sass_src 'css/wajibisha.scss' %}">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    
-    
+  {{ block.super }}
+  <link rel="stylesheet" href="{% sass_src 'css/wajibisha.scss' %}">
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+
 {% endblock %}
 
 
@@ -23,9 +27,9 @@
 
 
 {% block header_menu %}
-    <li class="pl-5"><a href="/promises">Promise Tracker</a></li>
-    <li class="pl-5" ><a href="/articles">Articles</a></li>
-    <li class="pl-5"><a href="/about">About</a></li>
+  <li class="pl-5"><a href="{% url 'homepage' %}">Promise Tracker</a></li>
+  <li class="pl-5"><a href="{% url 'articles' %}">Articles</a></li>
+  <li class="pl-5"><a href="{% url 'about' %}">About</a></li>
 {% endblock header_menu %}
 
 {% block nav_tools %} {% endblock %}

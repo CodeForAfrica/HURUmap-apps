@@ -29,7 +29,7 @@ urlpatterns += patterns('',
 
     # url for embedding the map
     url(
-        regex   = '^embed/(?P<geography_id>\w+-\w+)(-(?P<slug>[\w-]+))?/$',
+        regex   ='^embed/(?P<geography_id>\w+-\w+)(-(?P<slug>[\w-]+))?/$',
         view    = cache_page(STANDARD_CACHE_TIME)(EmbedGeographyDetailView.as_view()),
         kwargs  = {},
         name    = 'embed_map',
