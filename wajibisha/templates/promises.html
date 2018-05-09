@@ -1,301 +1,183 @@
-{% extends '_base.html' %}{% load sass_tags staticfiles %}
+{% extends 'profile/profile_detail.html' %}{% load sass_tags staticfiles %}
 
-{% block body_id %}page{% endblock %}
+{% block profile_detail %}
+  <div class="mt-200">
+  <div class="showcase how-it-works text-center">
+    <div class="wrapper clearfix">
+      <h2>Promises</h2>
+      <br/>
+    </div>
 
-{% block header_content %}
-{% include 'blocks/promises-header.html' %}
-{% endblock header_content %}
+    <div class="row">
+      <div class="column-half text-left">
+        <p class="text-blue"><span>&lt; </span> GO BACK</p>
+      </div>
+      <div class="column-half text-right display-inline">
+        <p class="float-left filter-text">Filter By: </p>
+        <div class="display-inline">
+          <select class="form-control promise-select" id="status_select" onchange="filter()">
+            <option value="all">Status</option>
+            {% for status in statuses %}
+              <option value="{{ status | safe }}">{{ status }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="display-inline">
+          <select class="form-control promise-select" id="sector_select" onchange="filter()">
+            <option value="all">Sector</option>
+            {% for sector in sectors %}
+              <option value="{{ sector | safe }}">{{ sector }}</option>
+            {% endfor %}
 
-{% block content_container %}
-<div class="showcase how-it-works text-center">
-  <div class="wrapper clearfix">
-    <h4>ALL PROMISES</h4>
-    <br/>
-  </div>
-  <div class="container">
-    <div class="row d-flex flex-row justify-content-end pb-5 breadcrumb-color">
-      <p class="small pt-3 pb-3">Group by:</p>
-      <div class="btn-group pl-4 pr-5" role="group" aria-label="Group by"">
-        <button type="button" class="btn btn-primary pl-4 pr-3 border-2" style="border-top-left-radius:50px;border-bottom-left-radius:50px;border-color:#0067A3;background-color:#0067A3!important;">STATUS</button>
-        <button type="button" class="btn pr-4 border-2" disabled style="border-top-right-radius:50px;border-bottom-right-radius:50px;border-color:#808080;background-color:#f9f9f9!important;">CATEGORY</button>
+          </select>
+        </div>
       </div>
     </div>
 
-    <div class="row pt-5">
-      <!--Start of Card-->
-      <div class="col-4">
-        <div class="status-card card p-0 body-text">
-          <div class="status-card-height d-flex flex-row">
-            <div class="col-6 p-0">
-              <img class="status-img card-img p-0 pl-0" src="{% static 'img/tracker/category/health.svg' %}">
-            </div>
-            <div class="col-6 p-0">
-              <div>
-                <p class="lead pr-5"><b class="text-large">14 </b><span class="card-promise-text"> Promises</span></p>
-                <p class="lead pt-0 pr-4"><b class="number-text">7% </b><span class="card-promise-text"> Complete</span></p>
-              </div>
-            </div>
-          </div>
-          <div class="card-block border">
-          <div class="d-flex flex-row">
-            <div class="justify-content-start font-weight-light">
-              <p class="pl-4"><b>1</b></p>
-              <p class="pl-4 pt-2 ml-5">Fulfilled</p>
-              <p class="pl-4"><b>0</b></p>
-              <p class="pt-2 pl-4 ml-5">In Progress</p>
-            </div>
-            <div class="justify-content-end offset-1 font-weight-light">
-              <p><b>13</b><br></p>
-              <p class="pt-2 pl-5">Unfulfilled</p>
-              <p><b>0</b><br></p>
-              <p class="pt-2 pl-4">Stalled</p>
-            </div>
-          </div>
-        </div>
-        <div class="d-flex flex-row pb-3 pt-3">
-          <p class="pt-0 mr-auto">
-            <img src="{% static 'img/tracker/share.svg' %}" height="15px" width="15px"> 
-            <span >Share</span></p>
-            <p class="pt-0"><img src="{% static 'img/tracker/watch.svg' %}" height="15px" width="15px"> Watch</p>
-          </div>
-        </div>
-      </div>
-      <!--Second card column-->
-      <div class="col-4">
-        <div class="status-card card p-0 body-text">
-          <div class="status-card-height d-flex flex-row">
-            <div class="col-6 p-0">
-              <img class="status-img card-img p-0 pl-0" src="{% static 'img/tracker/category/housing.svg' %}" >
-            </div>
-            <div class="col-6 p-0">
-              <div>
-                <p class="lead pr-5"><b class="text-large">14 </b><span class="card-promise-text"> Promises</span></p>
-                <p class="lead pt-0 pr-4"><b class="number-text">7% </b><span class="card-promise-text"> Complete</span></p>
-              </div>
-            </div>
-          </div>
-          <div class="card-block border">
-          <div class="d-flex flex-row">
-            <div class="justify-content-start font-weight-light">
-              <p class="pl-4"><b>1</b></p>
-              <p class="pl-4 pt-2 ml-5">Fulfilled</p>
-              <p class="pl-4"><b>0</b></p>
-              <p class="pt-2 pl-4 ml-5">In Progress</p>
-            </div>
-            <div class="justify-content-end offset-1 font-weight-light">
-              <p><b>13</b><br></p>
-              <p class="pt-2 pl-5">Unfulfilled</p>
-              <p><b>0</b><br></p>
-              <p class="pt-2 pl-4">Stalled</p>
-            </div>
-          </div>
-        </div>
-        <div class="d-flex flex-row pb-3 pt-3">
-          <p class="pt-0 mr-auto">
-            <img src="{% static 'img/tracker/Share.svg' %}" height="15px" width="15px"> 
-            <span >Share</span></p>
-            <p class="pt-0"><img src="{% static 'img/tracker/watch.svg' %}" height="15px" width="15px"> Watch</p>
-          </div>
-        </div>
-      </div>
-      <!--Third card column-->
-      <div class="col-4">
-        <div class="status-card card p-0 body-text">
-          <div class="status-card-height d-flex flex-row">
-            <div class="col-6 p-0">
-              <img class="status-img card-img p-0 pl-0" src="{% static 'img/tracker/category/jobs.svg' %}">
-            </div>
-            <div class="col-6 p-0">
-              <div>
-                <p class="lead pr-5"><b class="text-large">14 </b><span class="card-promise-text"> Promises</span></p>
-                <p class="lead pt-0 pr-4"><b class="number-text">7% </b><span class="card-promise-text"> Complete</span></p>
-              </div>
-            </div>
-          </div>
-          <div class="card-block border">
-          <div class="d-flex flex-row">
-            <div class="justify-content-start font-weight-light">
-              <p class="pl-4"><b>1</b></p>
-              <p class="pl-4 pt-2 ml-5">Fulfilled</p>
-              <p class="pl-4"><b>0</b></p>
-              <p class="pt-2 pl-4 ml-5">In Progress</p>
-            </div>
-            <div class="justify-content-end offset-1 font-weight-light">
-              <p><b>13</b><br></p>
-              <p class="pt-2 pl-5">Unfulfilled</p>
-              <p><b>0</b><br></p>
-              <p class="pt-2 pl-4">Stalled</p>
-            </div>
-          </div>
-        </div>
-        <div class="d-flex flex-row pb-3 pt-3">
-          <p class="pt-0 mr-auto">
-            <img src="{% static 'img/tracker/share.svg' %}" height="15px" width="15px"> 
-            <span >Share</span></p>
-            <p class="pt-0"><img src="{% static 'img/tracker/watch.svg' %}" height="15px" width="15px"> Watch</p>
-          </div>
-        </div>
-      </div>
 
-      <!--Container starts here-->
-      <div class="container pt-5">
-        <div class="row pt-5">
-          <div class="col-4">
-            <div class="status-card card p-0 body-text">
-              <div class="status-card-height d-flex flex-row">
-                <div class="col-6 p-0">
-                  <img class="status-img card-img p-0 pl-0" src="{% static 'img/tracker/category/governance.svg' %}">
-                </div>
-                <div class="col-6 p-0">
-                  <div>
-                    <p class="lead pr-5"><b class="text-large">14 </b><span class="card-promise-text"> Promises</span></p>
-                    <p class="lead pt-0 pr-4"><b class="number-text">7% </b><span class="card-promise-text"> Complete</span></p>
-                  </div>
-                </div>
-              </div>
-              <div class="card-block border">
-              <div class="d-flex flex-row">
-                <div class="justify-content-start font-weight-light">
-                  <p class="pl-4"><b>1</b></p>
-                  <p class="pl-4 pt-2 ml-5">Fulfilled</p>
-                  <p class="pl-4"><b>0</b></p>
-                  <p class="pt-2 pl-4 ml-5">In Progress</p>
-                </div>
-                <div class="justify-content-end offset-1 font-weight-light">
-                  <p><b>13</b><br></p>
-                  <p class="pt-2 pl-5">Unfulfilled</p>
-                  <p><b>0</b><br></p>
-                  <p class="pt-2 pl-4">Stalled</p>
-                </div>
-              </div>
-            </div>
-            <div class="d-flex flex-row pb-3 pt-3">
-              <p class="pt-0 mr-auto">
-                <img src="{% static 'img/tracker/share.svg' %}" height="15px" width="15px"> 
-                <span >Share</span></p>
-                <p class="pt-0"><img src="{% static 'img/tracker/watch.svg' %}" height="15px" width="15px"> Watch</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-4">
-            <div class="status-card card p-0 body-text">
-              <div class="status-card-height d-flex flex-row">
-                <div class="col-6 p-0">
-                  <img class="status-img card-img p-0 pl-0" src="{% static 'img/tracker/category/environment.svg' %}">
-                </div>
-                <div class="col-6 p-0">
-                  <div>
-                    <p class="lead pr-5"><b class="text-large">14 </b><span class="card-promise-text"> Promises</span></p>
-                    <p class="lead pt-0 pr-4"><b class="number-text">7% </b><span class="card-promise-text"> Complete</span></p>
-                  </div>
-                </div>
-              </div>
-              <div class="card-block border">
-              <div class="d-flex flex-row">
-                <div class="justify-content-start font-weight-light">
-                  <p class="pl-4"><b>1</b></p>
-                  <p class="pl-4 pt-2 ml-5">Fulfilled</p>
-                  <p class="pl-4"><b>0</b></p>
-                  <p class="pt-2 pl-4 ml-5">In Progress</p>
-                </div>
-                <div class="justify-content-end offset-1 font-weight-light">
-                  <p><b>13</b><br></p>
-                  <p class="pt-2 pl-5">Unfulfilled</p>
-                  <p><b>0</b><br></p>
-                  <p class="pt-2 pl-4">Stalled</p>
-                </div>
-              </div>
-            </div>
-            <div class="d-flex flex-row pb-3 pt-3">
-              <p class="pt-0 mr-auto">
-                <img src="{% static 'img/tracker/share.svg' %}" height="15px" width="15px"> 
-                <span >Share</span></p>
-                <p class="pt-0"><img src="{% static 'img/tracker/watch.svg' %}" height="15px" width="15px"> Watch</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-4">
-            <div class="status-card card p-0 body-text">
-              <div class="status-card-height d-flex flex-row">
-                <div class="col-6 p-0">
-                  <img class="status-img card-img p-0 pl-0" src="{% static 'img/tracker/category/traffic-management.svg' %}" >
-                </div>
-                <div class="col-6 p-0">
-                  <div class="">
-                    <p class="lead pr-5"><b class="text-large">14 </b><span class="card-promise-text""> Promises</span></p>
-                    <p class="lead pt-0 pr-4"><b sclass="number-text">7% </b><span class="card-promise-text"> Complete</span></p>
-                  </div>
-                </div>
-              </div>
-              <div class="card-block border">
-              <div class="d-flex flex-row">
-                <div class="justify-content-start font-weight-light">
-                  <p class="pl-4"><b>1</b></p>
-                  <p class="pl-4 pt-2 ml-5">Fulfilled</p>
-                  <p class="pl-4"><b>0</b></p>
-                  <p class="pt-2 pl-4 ml-5">In Progress</p>
-                </div>
-                <div class="justify-content-end offset-1 font-weight-light">
-                  <p><b>13</b><br></p>
-                  <p class="pt-2 pl-5">Unfulfilled</p>
-                  <p><b>0</b><br></p>
-                  <p class="pt-2 pl-4">Stalled</p>
-                </div>
-              </div>
-            </div>
-            <div class="d-flex flex-row pb-3 pt-3">
-              <p class="pt-0 mr-auto">
-                <img src="{% static 'img/tracker/share.svg' %}" height="15px" width="15px"> 
-                <span >Share</span></p>
-                <p class="pt-0"><img src="{% static 'img/tracker/watch.svg' %}" height="15px" width="15px"> Watch</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-4 pt-5">
-            <div class="status-card card p-0 body-text">
-              <div class="status-card-height d-flex flex-row">
-                <div class="col-6 p-0">
-                  <img class="status-img card-img p-0 pl-0" src="{% static 'img/tracker/category/social-inclusion.svg' %}" >
-                </div>
-                <div class="col-6 p-0">
-                  <div>
-                    <p class="lead pr-5"><b class="text-large">14 </b><span class="card-promise-text"> Promises</span></p>
-                    <p class="lead pt-0 pr-4"><b class="number-text">7% </b><span class="card-promise-text"> Complete</span></p>
-                  </div>
-                </div>
-              </div>
-              <div class="card-block border">
-              <div class="d-flex flex-row">
-                <div class="justify-content-start font-weight-light">
-                  <p class="pl-4"><b>1</b></p>
-                  <p class="pl-4 pt-2 ml-5">Fulfilled</p>
-                  <p class="pl-4"><b>0</b></p>
-                  <p class="pt-2 pl-4 ml-5">In Progress</p>
-                </div>
-                <div class="justify-content-end offset-1 font-weight-light">
-                  <p><b>13</b><br></p>
-                  <p class="pt-2 pl-5">Unfulfilled</p>
-                  <p><b>0</b><br></p>
-                  <p class="pt-2 pl-4">Stalled</p>
-                </div>
-              </div>
-            </div>
-            <div class="d-flex flex-row pb-3 pt-3">
-              <p class="pt-0 mr-auto">  
-                <img src="{% static 'img/tracker/share.svg' %}" height="15px" width="15px"> 
-                <span >Share</span></p>
-                <p class="pt-0"><img src="{% static 'img/tracker/watch.svg' %}" height="15px" width="15px"> Watch</p>
-              </div>
-            </div>
-          </div>
-        </div>
+    <!--fulfilled card section-->
+    <div class="container pt-5">
+      <div class="row pt-5 pb-5" id="promises_container">
+
       </div>
-    </div>s
+      <!--./end of fulfilled card section-->
+
+
+    </div>
   </div>
-  {% include 'blocks/info-card.html' %}
-  {% include 'blocks/buttons.html' %}
-  {% include 'blocks/newsletter.html' %}
 
-</div>
+  <script>
+      var promises_list = {{ promises_json }};
+      var promises_display_list = {{ promises_json }};
+      writeHTML(promises_display_list);
+
+      function filterByStatus(list) {
+          var selectedStatus = document.getElementById("status_select").value;
+          console.log(selectedStatus);
+          var first_round_filter = _.filter(list, function (promise) {
+              if (selectedStatus === 'all') {
+                  return true;
+              } else {
+                  return promise.status === selectedStatus;
+              }
+
+          });
+
+          return first_round_filter
+
+      }
+
+      function filterBySector(list) {
+          var selectedSector = document.getElementById("sector_select").value;
+          console.log(selectedSector);
+          var second_filter = _.filter(list, function (promise) {
+              if (selectedSector === 'all') {
+                  return true;
+              } else {
+                  return promise.sector === selectedSector;
+              }
+
+          });
+
+          return second_filter;
+
+      }
+
+      function getPromiseHTML(promise) {
+          var html = "<div class=\"col-6\">\n" +
+              "            <table class=\"table table-bordered bg-light promise-item\">\n" +
+              "              <tbody>\n" +
+              "              <tr>\n" +
+              "                <td>\n" +
+              "                <img class=\"p-0 card_status_img\" src=\"/static/img/tracker/status/";
+
+          var card_img = "";
+          switch (promise.status) {
+              case 'In Progress':
+                  card_img = "in-Progress-portrait.svg\" ";
+                  break;
+              case 'Done':
+                  card_img = "fulfilled-portrait.svg\" ";
+                  break;
+              case 'Five years plans':
+                  card_img = "stalled-portrait.svg\" ";
+                  break;
+              case 'Altered Promise':
+                  card_img = "stalled-portrait.svg\" ";
+                  break;
+              case 'Not done':
+                  card_img = "unfulfilled-portrait.svg\" ";
+                  break;
+              default:
+                  card_img = "unfulfilled-portrait.svg\" ";
+          }
+
+          html += card_img + "alt=\"card_image\">\n" +
+              "\n" +
+              "                </td>\n" +
+              "                <td colspan=\"3\">\n" +
+              "                  <button class=\"btn btn-primary rounded-0 pull-right\"\n" +
+              "                          type=\"button\"\n" +
+              "                          style=\"margin-top:-28px\">";
+
+          html += promise.sector + "</button>\n" +
+              "                  <div class=\"pt-2\"><p\n" +
+              "                      class=\"text-center pt-5\">" + promise.promise;
+
+          html += "</p></div>\n" +
+              "                </td>\n" +
+              "              </tr>\n" +
+              "\n" +
+              "              <tr>\n" +
+              "                <td><p\n" +
+              "                    class=\"font-weight-normal text-center\">" + promise.status.toUpperCase();
+
+          html += "</p>\n" +
+              "                </td>\n" +
+              "                <td colspan=\"3\">\n" +
+              "                  <div class=\"d-flex flex-row\">\n" +
+              "                    <p class=\"offset-1\"><img\n" +
+              "                        src=\"{% static 'img/tracker/Share.svg' %}\" height=\"15px\"\n" +
+              "                        width=\"15px\"> Share</p>\n" +
+              "                    <p class=\"offset-1\"><img\n" +
+              "                        src=\"{% static 'img/tracker/Watch.svg' %}\" height=\"15px\"\n" +
+              "                        width=\"15px\"> Watch</p>\n" +
+              "                    <p class=\"offset-1\"><img\n" +
+              "                        src=\"{% static 'img/tracker/Clap.svg' %}\" height=\"15px\"\n" +
+              "                        width=\"15px\"> Congratulate</p>\n" +
+              "                  </div>\n" +
+              "                </td>\n" +
+              "              </tr>\n" +
+              "              </tbody>\n" +
+              "\n" +
+              "            </table>\n" +
+              "          </div>";
+
+          return html;
+      }
+
+      function writeHTML(list) {
+          var full_html = "";
+          for (let promise of list) {
+              full_html += getPromiseHTML(promise)
+          }
+
+          var promises_div = document.getElementById("promises_container");
+          promises_div.innerHTML = "";
+          promises_div.innerHTML = full_html;
+      }
+
+
+      function filter() {
+          var temp_list = filterByStatus(promises_list);
+          console.log("First List");
+          console.log(temp_list);
+          promises_display_list = filterBySector(temp_list);
+          console.log("Final list");
+          console.log(promises_display_list);
+          writeHTML(promises_display_list);
+
+      }
+  </script>
 </div>
 {% endblock %}

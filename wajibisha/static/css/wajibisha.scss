@@ -225,6 +225,29 @@ select.form-control.form-control-lg {
   color:white;
 }
 
+.card_status_img {
+  display: block;
+  width: 100%;
+}
+
+.promise-item {
+  height: 180px;
+  width: 100%;
+  margin-bottom: 2rem !important;
+}
+
+#compare-place-picker {
+  display: none !important;
+}
+
+.explain {
+  display: none;
+}
+
+.display-inline {
+  display: inline-block;
+}
+
 .links li a:hover {
   font-size: 18px;
 }
@@ -435,4 +458,37 @@ td.table-img{
 
 img.img-width.d-block.p-0 {
   width:100%;
+}
+
+#slippy-map {
+  top: 250px !important;
+}
+
+.mt-200 {
+  margin-top: 200px;
+}
+
+.promise-select {
+  border-radius: 5px !important;
+  background-color: #0067a3 !important;
+  color: #FFFFFF !important;
+}
+
+.filter-text {
+  display: table-cell;
+  vertical-align: middle;
+  height: 100%;
+  line-height: 5px;
+}
+
+.text-blue {
+  color: #0067a3;
+}
+
+.text-white {
+  color: #FFFFFF;
+}
+
+.mt-20 {
+  margin-top: 20px;
 }

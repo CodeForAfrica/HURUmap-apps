@@ -3,35 +3,40 @@
 {% block body_id %}homepage{% endblock %}
 
 {% block head_css_extra %}
-<link rel="stylesheet" href="{% static 'css/vendor/leaflet-0.6.4.css' %}" />
-<!--[if lte IE 8]>
+  <link rel="stylesheet" href="{% static 'css/vendor/leaflet-0.6.4.css' %}"/>
+  <!--[if lte IE 8]>
     <link rel="stylesheet" href="{% static 'css/vendor/leaflet-0.6.4.ie.css' %}" />
   <![endif]-->
-  <link href="{% static 'css/vendor/leaflet.label.css' %}" rel="stylesheet" />
-  {% endblock %}
+  <link href="{% static 'css/vendor/leaflet.label.css' %}" rel="stylesheet"/>
+{% endblock %}
 
-  {% block header_content %}
+{% block header_content %}
   <div class="clipped-header clearfix">
     <div class="wrapper content-container">
       <div class="column-third text-left">
         <h2>WAJIBISHA</h2>
-        <h5 class="blue-text font-weight-normal">Keep track of your county's <span class="yellow-text">promises</span></h5>
+        <p style="color:#b7e4ff;font-size:1.2rem;">Keep track of your county's
+          <span class="yellow-text">promises</span></p>
         <div class="colum-third pt-3">
-          <select class="country form-control form-control-lg">
+          <select class=" country form-control form-control-lg"
+                  style="width: 200px;font-size:1rem;background-color:#4CAE4E;border-color: #4CAE4E;"
+                  id="county_select" onchange="selectCounty()">
             <option value="default" disabled selected>SELECT A COUNTY</option>
-            <option>NAIROBI</option> 
+            <option value="nairobi" style="background-color:#4CAE4E;">Nairobi
+            </option>
+
           </select>
         </div>
       </div>
       <div class="column-third"></div>
       <div class="column-third push-right">
-        <img src="{% static 'img/Presentation.svg' %}" class="presentation-img">
+        <img src="{% static 'img/presentation.svg' %}" class="presentation-img">
       </div>
     </div>
   </div>
-  {% endblock header_content %}`
+{% endblock header_content %}`
 
-  {% block content_container %}
+{% block content_container %}
   <div class="showcase how-it-works text-center">
     {% block how_it_works %}
     <div class="wrapper clearfix">
@@ -47,8 +52,8 @@
             </div>
             <div class="details card-block text-left pt-3">
               <p class="pl-4">Country: <b>Nairobi</b></p>
-              <p class="pl-4">Total no. of promises: <b>10</b></p>
-              <p class="pl-4" >Promises fulfilled: <b>0</b></p> 
+              <p class="pl-4">Total no. of promises: <b>{{ housing_total }}</b></p>
+              <p class="pl-4" >Promises fulfilled: <b>{{ housing_fulfilled }}</b></p>
             </div>
           </div>
           <div class="card p-0 m-3 body-text">
@@ -59,8 +64,8 @@
               </div>
               <div class="details card-block text-left pt-3">
                 <p class="pl-4">Country: <b>Nairobi </b></p>
-                <p class="pl-4">Total no. of promises: <b>10</b></p>
-                <p class="pl-4">Promises fulfilled:<b>1</b></p>
+                <p class="pl-4">Total no. of promises: <b>{{ health_total }}</b></p>
+                <p class="pl-4">Promises fulfilled:<b>{{ health_fulfilled }}</b></p>
               </div>
             </div>
             <div class="card p-0 m-3 body-text">
@@ -71,25 +76,29 @@
                 </div>
                 <div class="details card-block text-left pt-3">
                   <p class="pl-4">Country: <b>Nairobi</b></p>
-                  <p class="pl-4">Total no. of promises: <b>10</b></p>
-                  <p class="pl-4">Promises fulfilled: <b>0</b></p>
+                  <p class="pl-4">Total no. of promises: <b>{{ jobs_total }}</b></p>
+                  <p class="pl-4">Promises fulfilled: <b>{{ jobs_fulfilled }}</b></p>
                 </div>
               </div>
             </div>
           </div>
           {% endblock %}
-        </div>
+  </div>
 
-        {% include 'blocks/mission.html' %}
-        {% include 'blocks/tweets.html' %}
-        {% include 'blocks/newsletter.html' %}
-        {% endblock %}
+  <script>
+      function selectCounty() {
+          var selectedCounty = document.getElementById("county_select").value;
+          if (selectedCounty === 'nairobi') {
+              window.location.href = '/profiles/county-47-nairobi/';
+          }
+
+      }
+  </script>
+
+  {% include 'blocks/mission.html' %}
+  {% include 'blocks/tweets.html' %}
+  {% include 'blocks/newsletter.html' %}
+{% endblock %}
 
 
-        {% block body_javascript_extra %}
-        {{ block.super }}
 
-        {% block homepage_javascripb_libs %}
-        {% endblock %}
-
-        {% endblock %}

@@ -28,7 +28,7 @@ WAJIBISHA['description'] = "Wajibisha (Swahili for ‘hold accountable’) is a 
                            "general election."
 WAJIBISHA['title_tagline'] = 'Hold Accountable'
 
-wajibisha_profile = os.environ.get('WAJIBISHA_PROFILE', 'census')
+wajibisha_profile = os.environ.get('WAJIBISHA_PROFILE', 'promises')
 
 PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
 
@@ -64,9 +64,25 @@ WAJIBISHA['geometry_data'] = {
     }
 }
 
+TEMPLATE_CONTEXT_PROCESSORS += (
+    'wajibisha.utils.context_processors.get_homepage_promises',
+)
+
 STATIC_ROOT = 'wajibisha/static/'
 
 LOGGING['loggers']['wajibisha'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
+
+# Trello Settings
+BOARDS = {
+    'Nairobi': 'https://api.trello.com/1/boards/hmtAAEVr'
+}
+
+PROMISE_STATUS = [
+    'Done', 'Five years plans', 'Altered Promise', 'In Progress', 'Not done'
+]
+
+# Time when the promises were last updated
+LAST_UPDATED = None
 
 # Making sure they are the same
 WAZIMAP = WAJIBISHA
