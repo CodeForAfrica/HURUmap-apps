@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, url
 from wazimap.urls import *
-from elimu_yangu.leaguetable.views import index, schools, specific_school, embed, EmbedGeographyDetailView, GeographyDetailView, GeographyCompareView
+from elimu_yangu.leaguetable.views import index, schools, embed, EmbedGeographyDetailView, GeographyDetailView, GeographyCompareView, SchoolPageView
 
 urlpatterns = patterns('',
     # url for all schools page
@@ -28,7 +28,7 @@ urlpatterns = patterns('',
     # url for specific school page
     url(
         regex = r'^schools/(?P<code>[a-zA-Z0-9_-]+)/$',
-        view = specific_school,
+        view = cache_page(STANDARD_CACHE_TIME)(SchoolPageView.as_view()),
         kwargs = {},
         name = 'specific_schools',
     ),

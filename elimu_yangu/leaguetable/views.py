@@ -56,20 +56,55 @@ def schools(request):
     return render(request,'leaguetable/schools.html',{'schools':schools})
 
 # handling specific school page
-def specific_school(request, code):
-    # Getting the session
-    session = get_session()
-    year = '2017'
+class SchoolPageView(TemplateView):
+    template_name = 'leaguetable/specific_school.html'
 
-    # Fetching schools
-    school = session.query(Base.metadata.tables['secondary_school'])\
-                    .filter(Base.metadata.tables['secondary_school'].c.geo_level == "country")\
-                    .filter(Base.metadata.tables['secondary_school'].c.year_of_result == year)\
-                    .filter(Base.metadata.tables['secondary_school'].c.code == code)\
-                    .one()
+    def get_context_data(self, *args, **kwargs):
+        session = get_session()
+        page_context = {}
+        year = '2017'
+        code = self.kwargs.get('code', None)
 
-    return render(request, 'leaguetable/specific_school.html',{'school':school})
+        #Fetch school perfromance over the year
+        school_results = session.query(Base.metadata.tables['secondary_school'])\
+                        .filter(Base.metadata.tables['secondary_school'].c.geo_level == "region")\
+                        .filter(Base.metadata.tables['secondary_school'].c.code == code)\
+                        .all()
+        # Fetching schools
+        school = session.query(Base.metadata.tables['secondary_school'])\
+                        .filter(Base.metadata.tables['secondary_school'].c.geo_level == "region")\
+                        .filter(Base.metadata.tables['secondary_school'].c.year_of_result == year)\
+                        .filter(Base.metadata.tables['secondary_school'].c.code == code)\
+                        .one()
 
+        #Fetch the region where school is
+        try:
+            self.geo_level = 'region'
+            self.geo_code = school.geo_code
+            version = '2009'
+            self.geo = geo_data.get_geography(self.geo_code, self.geo_level, version)
+        except (ValueError, LocationNotFound):
+            raise Http404
+        # load the profile
+        profile_method = settings.WAZIMAP.get('profile_builder', None)
+        self.profile_name = settings.WAZIMAP.get('default_profile', 'default')
+
+        if not profile_method:
+            raise ValueError("You must define WAZIMAP.profile_builder in settings.py")
+        profile_method = import_string(profile_method)
+        profile_data = profile_method(self.geo, self.profile_name, self.request)
+
+        profile_data['geography'] = self.geo.as_dict_deep()
+
+        profile_data = enhance_api_data(profile_data)
+        page_context.update(profile_data)
+
+        profile_data_json = SafeString(json.dumps(profile_data, cls=DjangoJSONEncoder))
+        return {
+            'school':school,
+            'school_results': school_results,
+            'profile_data_json': profile_data_json,
+        }
 
 # embed league table
 def embed(request, geo_level, geo_code):
