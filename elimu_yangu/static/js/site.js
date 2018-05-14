@@ -230,6 +230,12 @@
           get_school_ranking( this.value );
       });
 
+      $('#rank-year-profile').on('change', function() {
+         var selected = $(this).find('option:selected');
+         lang = selected.data('language');
+         get_school_profile_ranking( this.value );
+     });
+
        function get_school_ranking(year) {
          var parameter = {'year': year};
          var url = "/" + lang + "/leaguetable/";
@@ -259,6 +265,36 @@
            }
          });
       }
+
+      function get_school_profile_ranking(year) {
+        var parameter = {'year': year};
+        var url = "/" + lang + "/leaguetable/";
+        var best_40 = "";
+        var worst_40 = "";
+        var best = "";
+        var worst = "";
+        $.ajax({
+          type: "POST",
+          url: url,
+          data: JSON.stringify(parameter),
+          contentType: 'application/json',
+          success: function(data){
+             var result = data.schools;
+             var result1 = append_school_table(result['best_schools_more_40'], 'best-40-profile');
+             swap_ul('#best-40-profile', result1)
+             var result2 = append_school_table(result['worst_schools_more_40'], 'worst-40-profile');
+             swap_ul('#worst-40-profile', result2)
+             var result3 = append_school_table(result['best_schools_less_40'], 'best-profile');
+             swap_ul('#best-profile', result3)
+             var result4 = append_school_table(result['worst_schools_less_40'], 'worst-profile');
+             swap_ul('#worst-profile', result4)
+           },
+           error: function() {
+                 alert("Opps! Something went wrong");
+                 $('#rank-year').value = '2017';
+          }
+        });
+     }
 
         function swap_ul (item, data) {
           var schoolTable = $(item);

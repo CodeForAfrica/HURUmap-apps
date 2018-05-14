@@ -85,7 +85,7 @@
         <div class="col-md-12">
           <div class="help-text text-center">{%trans 'SCHOOL RANKINGS' %}
             <span>
-              <select id="rank-year-profile" class="inline-select" style="color: #D0A331">
+              <select id="rank-year-profile3" class="inline-select" style="color: #D0A331">
                     <option data-language={{ LANGUAGE_CODE }} value="2017">2017</option>
                     <option data-language={{ LANGUAGE_CODE }} value="2016">2016</option>
                     <option data-language={{ LANGUAGE_CODE }} value="2015">2015</option>
@@ -104,7 +104,7 @@
             <div class="col-md-6">
                 <h3 class="title text-center">{%trans '10 Top Schools' %} </h3>
                 <h4 class="title text-center">{%trans 'Schools Category with 40 Students and More' %}</h4>
-                <ul id="best-40" class="list-group school">
+                <ul id="best-40-profile" class="list-group school">
                   {% for school in schools.best_schools_more_40|slice:":10" %}
                     <li class="list-group-item">
                         <a href="/leaguetable/schools/{{ school.code }}">
@@ -132,7 +132,7 @@
             <div class="col-md-6">
               <h3 class="title text-center">{% trans '10 Lowest Schools' %} </h3>
               <h4 class="title text-center">{% trans 'Schools Category with 40 Students and More' %}</h4>
-                <ul id="worst-40" class="list-group school">
+                <ul id="worst-40-profile" class="list-group school">
                   {% for school in schools.worst_schools_more_40|slice:":10" %}
                   <li class="list-group-item">
                       <a href="/leaguetable/schools/{{ school.code }}">
@@ -164,7 +164,7 @@
             <div class="col-md-6">
               <h3 class="title text-center">{% trans '10 Top Schools' %} </h3>
               <h4 class="title text-center">{% trans 'Schools Category with less than 40 Students' %}</h4>
-                <ul id="best" class="list-group school">
+                <ul id="best-profile" class="list-group school">
                   {% for school in schools.best_schools_less_40|slice:":10" %}
                   <li class="list-group-item">
                       <a href="/leaguetable/schools/{{ school.code }}">
@@ -192,7 +192,7 @@
             <div class="col-md-6">
               <h3 class="title text-center">{% trans '10 Lowest Schools' %} </h3>
               <h4 class="title text-center">{% trans 'Schools Category less than 40 Students' %}</h4>
-                <ul id="worst" class="list-group school">
+                <ul id="worst-profile" class="list-group school">
                   {% for school in schools.worst_schools_less_40|slice:":10" %}
                   <li class="list-group-item">
                       <a href="/leaguetable/schools/{{ school.code }}">
@@ -295,6 +295,22 @@
     <!-- embed table script -->
     <script type="text/javascript">
         // Fx to show table embed code
+        // var coordinates = {{ coordinates }}
+        // if (coordinates) {
+        //   var geojsonFeature = {
+        //     "type": "Feature",
+        //     "properties": {
+        //         "name": "Schools",
+        //         "amenity": "Baseball Stadium",
+        //         "popupContent": "This is where the Rockies play!"
+        //     },
+        //     "geometry": {
+        //         "type": "Point",
+        //         "coordinates": [ coordinates.latitude, coordinates.longitude ]
+        //     }
+        //   };
+        //   L.geoJson(geojsonFeature).addTo(maps.map)
+        // }
         function embedTable(geo_level, geo_code){
             var text = '&lt;iframe src="{{ HURUMAP.url }}/embed/' + geo_level + '/' + geo_code +
             '" frameborder="0" width="100%" height="300" style="margin: 1em; width: 100%;"&gt;&lt;/iframe&gt;';
