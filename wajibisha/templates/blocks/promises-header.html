@@ -1,4 +1,4 @@
-{% load sass_tags staticfiles %}
+{% load sass_tags staticfiles wajibisha_tags %}
 <div class="promises-header clearfix">
 	<div class="wrapper content-container">
 		<div class="column-third text-left">
@@ -37,28 +37,28 @@
           <div class="column-third body-text">
             <div class="d-flex flex-column pl-3">
               <p class="text-left">
-                <b class="content-font-size text-success" >7</b><br>
+                <b class="content-font-size text-success" >{% value_or_zero stat.done %}</b><br>
                 Promises fulfilled
               </p>
               <p class="text-left">
-                <b class="content-font-size text-primary">12</b><br>
+                <b class="content-font-size text-primary">{% value_or_zero stat.in_progress %}</b><br>
                 Promises in progress
               </p>
             </div>
           </div>
           <div class="column-third body-text">
             <img src="{% static 'img/tracker/ring-pie-chart.svg' %}">
-            <p class="pt-0 overview-img-text text-center pr-5 pl-5 font-weight-light"><b style="font-size:2rem;">63</b> Promises in total</p>
+            <p class="pt-0 overview-img-text text-center pr-5 pl-5 font-weight-light"><b style="font-size:2rem;">{% value_or_zero stat.total %}</b> Promises in total</p>
           </div>
 
           <div class="column-third body-text">
             <div class="d-flex flex-column pl-3 pr-2">
               <p class="text-left">
-                <b class="content-font-size text-warning">6</b><br>
+                <b class="content-font-size text-warning">{% value_or_zero stat.not_done %}</b><br>
                 Promises not fulfilled
               </p>
               <p class="text-left">
-                <b class="content-font-size text-danger">3</b><br>
+                <b class="content-font-size text-danger">{% value_or_zero stat.five_years_plans %}</b><br>
               Promises stalled</p>
             </div>
           </div> 

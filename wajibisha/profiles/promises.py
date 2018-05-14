@@ -1,9 +1,16 @@
 from __future__ import division
+
+import json
+
+from django.core.serializers.json import DjangoJSONEncoder
+from django.utils.safestring import SafeString
 from wazimap.data.utils import get_session, get_stat_data
+from wajibisha.utils import view_helpers
 
 PROMISE_STATUS = [
     'Done', 'Five years plans', 'Altered Promise', 'In Progress', 'Not done'
 ]
+
 
 def get_profile(geo, profile_name, request):
     session = get_session()
@@ -11,8 +18,10 @@ def get_profile(geo, profile_name, request):
 
     try:
         data['demographics'] = get_demographics_profile(geo, session)
-        data['promises'] = get_promises(geo, session)
-        data['promise_totals'] = get_promise_totals(geo, session)
+        data['promises'] = get_promises_by_sector(geo, session)
+        data['promise_by_status'] = get_promises_by_status(geo, session)
+        data['filtered_promises'] = get_filtered_promises(geo, session)
+        print data
 
         return data
     finally:
@@ -33,6 +42,38 @@ def get_demographics_profile(geo, session):
     }
 
 
+def get_sector_stats(sector_name, dict=None):
+    """
+    :param sector_name: name of sector
+    :param dict: A dict
+    :return: dictionary
+    """
+    name = sector_name.title()
+    if dict:
+        return {
+            'name': name,
+            'done': dict.get('Done', 0),
+            'not_done': dict.get('Not done', 0),
+            'five_yr_plans': dict.get('Five years plans', 0),
+            'altered_promise': dict.get('Altered Promise', 0),
+            'in_progress': dict.get('In Progress', 0),
+            'total': sum(dict.values()),
+            'completed_percentage': round(
+                (dict.get('Done', 0) / sum(dict.values())) * 100, 3)
+        }
+    else:
+        return {
+            'name': name,
+            'done': 0,
+            'not_done': 0,
+            'five_yr_plans': 0,
+            'altered_promise': 0,
+            'in_progress': 0,
+            'total': 0,
+            'completed_percentage': 0
+        }
+
+
 def get_promise_totals(geo, session):
     totals = {}
     total_promises = 0
@@ -44,10 +85,11 @@ def get_promise_totals(geo, session):
         # returns ('promise', 'count')
 
         for i in promises:
-            totals[i[0].lower().replace(' ', '_')] = i[1]
-            total_promises += i[1]
+            totals[i[0].lower().replace(' ', '_')] = int(i[1])
+            total_promises += int(i[1])
 
         totals['total'] = total_promises
+        print totals
 
         return {
             'totals': totals
@@ -59,7 +101,7 @@ def get_promise_totals(geo, session):
         }
 
 
-def get_promises(geo, session):
+def get_promises_by_sector(geo, session):
     # TODO clean up, optimize this whole function
     try:
         query = "SELECT sector,status,COUNT(status) FROM promises WHERE " \
@@ -92,91 +134,16 @@ def get_promises(geo, session):
         women = promises_data['Women, Youth, Persons With Disabilities']
 
         final_data = {
-            'housing': {
-                'name': 'Housing',
-                'done': housing['Done'],
-                'not_done': housing['Not done'],
-                'five_yr_plans': housing['Five years plans'],
-                'altered_promise': housing['Altered Promise'],
-                'in_progress': housing['In Progress'],
-                'total': sum(housing.values()),
-                'completed_percentage': round(
-                    (housing['Done'] / sum(housing.values())) * 100, 3),
-                'card_img_name': 'Housing.svg'
-            },
-            'health': {
-                'name': 'Health',
-                'done': health['Done'],
-                'not_done': health['Not done'],
-                'five_yr_plans': health['Five years plans'],
-                'altered_promise': health['Altered Promise'],
-                'in_progress': health['In Progress'],
-                'total': sum(health.values()),
-                'completed_percentage': round(
-                    (health['Done'] / sum(health.values())) * 100, 3),
-                'card_img_name': 'Health.svg'
-            },
-            'jobs': {
-                'name': 'Jobs, Business Creation',
-                'done': jobs['Done'],
-                'not_done': jobs['Not done'],
-                'five_yr_plans': jobs['Five years plans'],
-                'altered_promise': jobs['Altered Promise'],
-                'in_progress': jobs['In Progress'],
-                'total': sum(jobs.values()),
-                'completed_percentage': round(
-                    (jobs['Done'] / sum(jobs.values())) * 100, 3),
-                'card_img_name': 'Jobs.svg'
-            },
-            'traffic': {
-                'name': 'Traffic Management',
-                'done': traffic['Done'],
-                'not_done': traffic['Not done'],
-                'five_yr_plans': traffic['Five years plans'],
-                'altered_promise': traffic['Altered Promise'],
-                'in_progress': traffic['In Progress'],
-                'total': sum(traffic.values()),
-                'completed_percentage': round(
-                    (traffic['Done'] / sum(traffic.values())) * 100, 3),
-                'card_img_name': 'Traffic Management.svg'
-            },
-            'governance': {
-                'name': 'Governance',
-                'done': governance['Done'],
-                'not_done': governance['Not done'],
-                'five_yr_plans': governance['Five years plans'],
-                'altered_promise': governance['Altered Promise'],
-                'in_progress': governance['In Progress'],
-                'total': sum(governance.values()),
-                'completed_percentage': round(
-                    (governance['Done'] / sum(governance.values())) * 100, 3),
-                'card_img_name': 'Governance.svg'
-            },
-            'environment': {
-                'name': 'Environment and Sanitation',
-                'done': environment['Done'],
-                'not_done': environment['Not done'],
-                'five_yr_plans': environment['Five years plans'],
-                'altered_promise': environment['Altered Promise'],
-                'in_progress': environment['In Progress'],
-                'total': sum(environment.values()),
-                'completed_percentage': round(
-                    (environment['Done'] / sum(environment.values())) * 100, 3),
-                'card_img_name': 'Environment.svg'
-            },
-            'women': {
-                'name': 'Women, Youth, Persons With Disabilities',
-                'done': women['Done'],
-                'not_done': women['Not done'],
-                'five_yr_plans': women['Five years plans'],
-                'altered_promise': women['Altered Promise'],
-                'in_progress': women['In Progress'],
-                'total': sum(women.values()),
-                'completed_percentage': round(
-                    (women['Done'] / sum(women.values())) * 100, 3),
-                'card_img_name': 'Social Inclusion.svg'
-            }
-
+            'housing': get_sector_stats('Housing', dict=housing),
+            'health': get_sector_stats('Health', dict=health),
+            'jobs': get_sector_stats('jobs', dict=jobs),
+            'traffic': get_sector_stats('Traffic Management', dict=traffic),
+            'governance': get_sector_stats('Governance',
+                                           dict=governance),
+            'environment': get_sector_stats('Environment and Sanitation',
+                                            dict=environment),
+            'women': get_sector_stats('Women, Youth, Persons With Disabilities',
+                                      dict=women)
         }
 
         return final_data
@@ -184,83 +151,50 @@ def get_promises(geo, session):
     except Exception as e:
         print e.message
         return {
-            'housing': {
-                'name': 'Housing',
-                'done': 0,
-                'not_done': 0,
-                'five_yr_plans': 0,
-                'altered_promise': 0,
-                'in_progress': 0,
-                'total': 0,
-                'completed_percentage': 0,
-                'card_img_name': 'Housing.svg'
-            },
-            'health': {
-                'name': 'Housing',
-                'done': 0,
-                'not_done': 0,
-                'five_yr_plans': 0,
-                'altered_promise': 0,
-                'in_progress': 0,
-                'total': 0,
-                'completed_percentage': 0,
-                'card_img_name': 'Health.svg'
-            },
-            'jobs': {
-                'name': 'Jobs, Business Creation',
-                'done': 0,
-                'not_done': 0,
-                'five_yr_plans': 0,
-                'altered_promise': 0,
-                'in_progress': 0,
-                'total': 0,
-                'completed_percentage': 0,
-                'card_img_name': 'Jobs.svg'
-            },
-            'traffic': {
-                'name': 'Traffic Management',
-                'done': 0,
-                'not_done': 0,
-                'five_yr_plans': 0,
-                'altered_promise': 0,
-                'in_progress': 0,
-                'total': 0,
-                'completed_percentage': 0,
-                'card_img_name': 'Traffic Management.svg'
-            },
-            'governance': {
-                'name': 'Governance',
-                'done': 0,
-                'not_done': 0,
-                'five_yr_plans': 0,
-                'altered_promise': 0,
-                'in_progress': 0,
-                'total': 0,
-                'completed_percentage': 0,
-                'card_img_name': 'Governance.svg'
-            },
-            'environment': {
-                'name': 'Environment and Sanitation',
-                'done': 0,
-                'not_done': 0,
-                'five_yr_plans': 0,
-                'altered_promise': 0,
-                'in_progress': 0,
-                'total': 0,
-                'completed_percentage': 0,
-                'card_img_name': 'Environment.svg'
-            },
-            'women': {
-                'name': 'Women, Youth, Persons With Disabilities',
-                'done': 0,
-                'not_done': 0,
-                'five_yr_plans': 0,
-                'altered_promise': 0,
-                'in_progress': 0,
-                'total': 0,
-                'completed_percentage': 0,
-                'card_img_name': 'Social Inclusion.svg'
-            }
-
+            'housing': get_sector_stats('Housing'),
+            'health': get_sector_stats('Health'),
+            'jobs': get_sector_stats('Jobs'),
+            'traffic': get_sector_stats('Traffic Management'),
+            'governance': get_sector_stats('Governance'),
+            'environment': get_sector_stats('Environment and Sanitation'),
+            'women': get_sector_stats('Women, Youth, Persons With Disabilities')
         }
+
+
+def get_filtered_promises(geo, session):
+    sectors = view_helpers.get_promise_sectors(geo.geo_code, geo.geo_level)
+    statuses = view_helpers.get_promise_statuses(geo.geo_code, geo.geo_level)
+    promises = view_helpers.get_promises(geo.geo_code, geo.geo_level)
+
+    return {
+        'sectors': sectors,
+        'statuses': statuses,
+        'promises': SafeString(json.dumps(promises, cls=DjangoJSONEncoder))
+    }
+
+
+def get_promises_by_status(geo, session):
+    data = {}
+    try:
+        query = "SELECT status,COUNT(status) FROM promises WHERE " \
+                "geo_code='{}' AND geo_level='{}' GROUP BY status" \
+            .format(geo.geo_code, geo.geo_level)
+
+        promises = session.execute(query).fetchall()
+        # returns (('Status', 'Occurence'), ....)
+
+        for i in promises:
+            data[i[0].lower().replace(' ', '_')] = int(i[1])
+        data['total'] = sum(data.values())
+
+        return data
+
+    except Exception as e:
+        print e.message
+        for i in PROMISE_STATUS:
+            data[i.lower().replace(' ', '_')] = 0
+        data['total'] = 0
+        return data
+
+
 
