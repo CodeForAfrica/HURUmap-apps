@@ -1,5 +1,6 @@
 from __future__ import division
 from wazimap.data.utils import get_session, get_stat_data
+from wajibisha.utils import view_helpers
 
 PROMISE_STATUS = [
     'Done', 'Five years plans', 'Altered Promise', 'In Progress', 'Not done'
@@ -13,7 +14,8 @@ def get_profile(geo, profile_name, request):
     try:
         data['demographics'] = get_demographics_profile(geo, session)
         data['promises'] = get_promises_by_sector(geo, session)
-        data['promise_totals'] = get_promise_totals(geo, session)
+        data['promise_by_status'] = get_promises_by_status(geo, session)
+        print data
 
         return data
     finally:
@@ -151,3 +153,34 @@ def get_promises_by_sector(geo, session):
             'environment': get_sector_stats('Environment and Sanitation'),
             'women': get_sector_stats('Women, Youth, Persons With Disabilities')
         }
+
+
+def get_filtered_promises(geo, session):
+    pass
+
+
+def get_promises_by_status(geo, session):
+    data = {}
+    try:
+        query = "SELECT status,COUNT(status) FROM promises WHERE " \
+                "geo_code='{}' AND geo_level='{}' GROUP BY status" \
+            .format(geo.geo_code, geo.geo_level)
+
+        promises = session.execute(query).fetchall()
+        # returns (('Status', 'Occurence'), ....)
+
+        for i in promises:
+            data[i[0].lower().replace(' ', '_')] = int(i[1])
+        data['total'] = sum(data.values())
+
+        return data
+
+    except Exception as e:
+        print e.message
+        for i in PROMISE_STATUS:
+            data[i.lower().replace(' ', '_')] = 0
+        data['total'] = 0
+        return data
+
+
+
