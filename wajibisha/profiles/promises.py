@@ -1,4 +1,9 @@
 from __future__ import division
+
+import json
+
+from django.core.serializers.json import DjangoJSONEncoder
+from django.utils.safestring import SafeString
 from wazimap.data.utils import get_session, get_stat_data
 from wajibisha.utils import view_helpers
 
@@ -15,6 +20,7 @@ def get_profile(geo, profile_name, request):
         data['demographics'] = get_demographics_profile(geo, session)
         data['promises'] = get_promises_by_sector(geo, session)
         data['promise_by_status'] = get_promises_by_status(geo, session)
+        data['filtered_promises'] = get_filtered_promises(geo, session)
         print data
 
         return data
@@ -156,7 +162,15 @@ def get_promises_by_sector(geo, session):
 
 
 def get_filtered_promises(geo, session):
-    pass
+    sectors = view_helpers.get_promise_sectors(geo.geo_code, geo.geo_level)
+    statuses = view_helpers.get_promise_statuses(geo.geo_code, geo.geo_level)
+    promises = view_helpers.get_promises(geo.geo_code, geo.geo_level)
+
+    return {
+        'sectors': sectors,
+        'statuses': statuses,
+        'promises': SafeString(json.dumps(promises, cls=DjangoJSONEncoder))
+    }
 
 
 def get_promises_by_status(geo, session):

@@ -75,9 +75,12 @@
         </div>
         <br>
 
-        <button class="btn btn-success mt-20"><a href="/promises/county-47-nairobi" class="text-white">View Breakdown...</a></button>
       </div>
 
+    </div>
+
+    <div>
+      {% include 'blocks/filter_promises.html' with promises_json=filtered_promises.promises sectors=filtered_promises.sectors statuses=filtered_promises.statuses %}
     </div>
 
   </div>
