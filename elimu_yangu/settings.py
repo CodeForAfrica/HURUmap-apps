@@ -45,7 +45,7 @@ HURUMAP['name'] = 'Elimu Yangu'
 HURUMAP['description'] = 'Comprises of three tools: league table- that shows ranking of different secondary schools\
                             bassed on their performance in each year, careerguide -finds best schools aligning to a choosen career\
                             and university finder - shows list of university courses that an a-level student could have a chance to be admitted,'
-HURUMAP['url'] = 'https://elimu_yangu.codefortanzania.org'
+HURUMAP['url'] = 'https://elimu-yangu.codefortanzania.org'
 HURUMAP['country_code'] = 'TZ'
 HURUMAP['country_name'] = 'Tanzania'
 HURUMAP['country_profile'] = 'country-TZ-Tanzania'
@@ -86,8 +86,8 @@ HURUMAP['geometry_data'] = {
             }
 }
 
-HURUMAP['ga_tracking_id'] = ''
-HURUMAP['ga_tracking_ids'] = ['UA-44795600-8','UA-91133100-4', 'UA-91133100-X', 'UA-91133100-Y']
+HURUMAP['ga_tracking_id'] = 'UA-91133100-8'
+HURUMAP['ga_tracking_ids'] = ['UA-44795600-8','UA-91133100-4']
 
 HURUMAP['twitter'] = '@Code4Africa'
 
