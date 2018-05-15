@@ -60,14 +60,7 @@ HURUMAP['geometry_data'] = {
         }
 }
 
-# Default tracker. Blank means no default tracking will be set (see
-# `ga_tracking_ids` for multiple, named trackers support.
-HURUMAP['ga_tracking_id'] = ''
-
-# Multiple trackers.
-# Supports sending data to multiple properties from a single page. All these
-# will be named trackers (t1, t2, ..., tn).
-HURUMAP['ga_tracking_ids'] = ['UA-91133100-4']
+HURUMAP['ga_tracking_id'] = 'UA-91133100-4'
 
 HURUMAP['twitter'] = '@Code4Africa'
 

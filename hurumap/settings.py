@@ -27,7 +27,14 @@ HURUMAP['url'] = 'https://hurumap.org'
 WAZIMAP['geodata'] = 'hurumap.geo.GeoData'
 HURUMAP['geometry_data'] = {}
 
+# Default tracker. Blank means no default tracking will be set (see
+# `ga_tracking_ids` for multiple, named trackers support.
 HURUMAP['ga_tracking_id'] = 'UA-44795600-8'
+
+# Multiple trackers.
+# Supports sending data to multiple properties from a single page. All these
+# will be named trackers (t1, t2, ..., tn).
+HURUMAP['ga_tracking_ids'] = []
 
 HURUMAP['facebook'] = 'CodeForAfrica'
 HURUMAP['twitter'] = '@Code4Africa'
