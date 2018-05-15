@@ -17,6 +17,14 @@
       max-height: 100%;
       margin: 0;
     }
+    .leaflet-popup-content {
+      color: #D0A331;
+    }
+    .leaflet-marker-pane img {
+      width: 10px;
+      height: 5px;
+    }
+
 </style>
 <header id="page-header">
       <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -293,24 +301,34 @@
     {{ block.super }}
 
     <!-- embed table script -->
+    <!-- <script src="{% static 'js/vendor/leaflet.label.js' %}"></script> -->
     <script type="text/javascript">
         // Fx to show table embed code
-        // var coordinates = {{ coordinates }}
-        // if (coordinates) {
-        //   var geojsonFeature = {
-        //     "type": "Feature",
-        //     "properties": {
-        //         "name": "Schools",
-        //         "amenity": "Baseball Stadium",
-        //         "popupContent": "This is where the Rockies play!"
-        //     },
-        //     "geometry": {
-        //         "type": "Point",
-        //         "coordinates": [ coordinates.latitude, coordinates.longitude ]
-        //     }
-        //   };
-        //   L.geoJson(geojsonFeature).addTo(maps.map)
-        // }
+
+      function onEachFeature(feature, layer) {
+          layer.bindPopup("<a href=" + feature.properties.code+">"+feature.properties.name+" SCHOOL </a><br />"+ feature.properties.latitude + "," + feature.properties.longitude );
+      }
+      var coordinates = {{ coordinates | safe }};
+      if (coordinates) {
+        var cordLength = coordinates.length;
+        var geojsonFeature = [];
+        for (var i = 0; i < cordLength; i++) {
+          var latitude = parseFloat(coordinates[i][3])
+          var longitude = parseFloat(coordinates[i][2])
+          var name = coordinates[i][1]
+          var code = coordinates[i][0]
+          geojsonFeature.push({
+              "type": "Feature",
+              "properties": {"name":  name, "latitude": latitude, "longitude": longitude, "code": "/leaguetable/schools/" + code},
+              "geometry": {
+                  "type": "Point",
+                  "coordinates": [ longitude, latitude ]
+              }
+            });
+          }
+
+          L.geoJson(geojsonFeature, {onEachFeature: onEachFeature}).addTo(maps.map)
+        }
         function embedTable(geo_level, geo_code){
             var text = '&lt;iframe src="{{ HURUMAP.url }}/embed/' + geo_level + '/' + geo_code +
             '" frameborder="0" width="100%" height="300" style="margin: 1em; width: 100%;"&gt;&lt;/iframe&gt;';

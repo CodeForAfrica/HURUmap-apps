@@ -90,15 +90,14 @@ class SchoolPageView(TemplateView):
                         .filter(Base.metadata.tables['secondary_school'].c.year_of_result == year)\
                         .filter(Base.metadata.tables['secondary_school'].c.code == code)\
                         .one()
-
-        #check school coordinates
-        latitude = school.latitude
-        longitude = school.longitude
-        coordinates = {}
-        if (latitude != 'UNKNOWN' or latitude != 'UNKNOWN'):
-            coordinates['latitude'] = latitude
-            coordinates['longitude'] = longitude
-
+        #get school coordinates
+        coordinates = session.query(Base.metadata.tables['secondary_school'].c.code, Base.metadata.tables['secondary_school'].c.name, Base.metadata.tables['secondary_school'].c.longitude, Base.metadata.tables['secondary_school'].c.latitude )\
+                    .filter(Base.metadata.tables['secondary_school'].c.geo_level == "region")\
+                    .filter(Base.metadata.tables['secondary_school'].c.code == code)\
+                    .filter(Base.metadata.tables['secondary_school'].c.year_of_result == year)\
+                    .filter(Base.metadata.tables['secondary_school'].c.longitude != 'UNKNOWN')\
+                    .filter(Base.metadata.tables['secondary_school'].c.latitude != 'UNKNOWN')\
+                    .all()
         #Fetch the region where school is
         try:
             self.geo_level = 'region'
@@ -117,18 +116,19 @@ class SchoolPageView(TemplateView):
         profile_data = profile_method(self.geo, self.profile_name, self.request)
 
         profile_data['geography'] = self.geo.as_dict_deep()
+        profile_data['coordinates'] = json.dumps(coordinates, cls=DjangoJSONEncoder)
+        profile_data['school'] = school
+        profile_data['school_results'] = school_results
 
         profile_data = enhance_api_data(profile_data)
         page_context.update(profile_data)
 
         profile_data_json = SafeString(json.dumps(profile_data, cls=DjangoJSONEncoder))
+        page_context.update({
+            'profile_data_json': profile_data_json
+        })
         session.close()
-        return {
-            'school':school,
-            'coordinates': coordinates,
-            'school_results': school_results,
-            'profile_data_json': profile_data_json,
-        }
+        return page_context
 
 # embed league table
 def embed(request, geo_level, geo_code):
@@ -244,6 +244,8 @@ class GeographyDetailView(BaseGeographyDetailView):
         profile_data = profile_method(self.geo, self.profile_name, self.request)
 
         profile_data['geography'] = self.geo.as_dict_deep()
+        coordinates = get_schools_coordinates(self.geo, '2017')
+        profile_data['coordinates'] = json.dumps(coordinates, cls=DjangoJSONEncoder)
 
         profile_data = enhance_api_data(profile_data)
         page_context.update(profile_data)
@@ -274,7 +276,6 @@ class GeographyCompareView(TemplateView):
             'geo_id1': geo_id1,
             'geo_id2': geo_id2,
         }
-
         try:
             level, code = geo_id1.split('-', 1)
             page_context['geo1'] = geo_data.get_geography(code, level)
@@ -341,3 +342,18 @@ def get_overall_topschools(year, geo_level, geo_code):
             session.close()
 
     return schools
+
+def get_schools_coordinates(geo, year):
+    session = get_session()
+
+    try:
+        coordinates = session.query(Base.metadata.tables['secondary_school'].c.code, Base.metadata.tables['secondary_school'].c.name, Base.metadata.tables['secondary_school'].c.longitude, Base.metadata.tables['secondary_school'].c.latitude )\
+                    .filter(Base.metadata.tables['secondary_school'].c.geo_level == geo.geo_level)\
+                    .filter(Base.metadata.tables['secondary_school'].c.geo_code == geo.geo_code)\
+                    .filter(Base.metadata.tables['secondary_school'].c.year_of_result == year)\
+                    .filter(Base.metadata.tables['secondary_school'].c.longitude != 'UNKNOWN')\
+                    .filter(Base.metadata.tables['secondary_school'].c.latitude != 'UNKNOWN')\
+                    .all()
+    finally:
+        session.close()
+    return coordinates

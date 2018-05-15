@@ -1,4 +1,5 @@
 import logging
+import json
 
 from wazimap.geo import geo_data
 from wazimap.data.tables import get_model_from_fields, get_model_for_db_table
@@ -80,6 +81,13 @@ def get_schools_profile(geo, session):
                     .filter(Base.metadata.tables['secondary_school'].c.more_than_40 == "no")\
                     .order_by(desc(cast(rank_column, Integer)))\
                     .all()
+    coordinates = session.query(Base.metadata.tables['secondary_school'].c.longitude, Base.metadata.tables['secondary_school'].c.latitude )\
+                    .filter(Base.metadata.tables['secondary_school'].c.geo_level == geo.geo_level)\
+                    .filter(Base.metadata.tables['secondary_school'].c.geo_code == geo.geo_code)\
+                    .filter(Base.metadata.tables['secondary_school'].c.year_of_result == year)\
+                    .filter(Base.metadata.tables['secondary_school'].c.longitude != 'UNKNOWN')\
+                    .filter(Base.metadata.tables['secondary_school'].c.latitude != 'UNKNOWN')\
+                    .all()
 
     # median gpa
     db_model_age = get_model_from_fields(['code', 'name', 'avg_gpa'], geo.geo_level)
@@ -111,6 +119,7 @@ def get_schools_profile(geo, session):
         'worst_schools_more_40': lowest_schools_40_more,
         'best_schools_less_40': top_schools_40_less,
         'worst_schools_less_40': lowest_schools_40_less,
+        'coordinates': json.dumps(coordinates),
         'gpa_group_distribution': gpa_dist_data,
         'median_gpa': {
             "name": "Median GPA",
