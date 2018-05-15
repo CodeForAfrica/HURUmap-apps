@@ -44,6 +44,12 @@ def get_schools_profile(geo, session):
     #current result year
     year = '2017'
 
+    totalschools = session.query(func.count(Base.metadata.tables['secondary_school'].c.code))\
+                .filter(Base.metadata.tables['secondary_school'].c.geo_level == geo.geo_level)\
+                .filter(Base.metadata.tables['secondary_school'].c.geo_code == geo.geo_code)\
+                .filter(Base.metadata.tables['secondary_school'].c.year_of_result == year)\
+                .one()
+
     # Choosing sorting option
     #Sorting will only be done using national_rank all, as regional and district ranks are unknown for some result esp historical
     rank_column = Base.metadata.tables['secondary_school'].c.national_rank_all

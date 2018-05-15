@@ -1,4 +1,4 @@
-{% extends 'profile/profile_detail.html' %}
+{% extends 'leaguetable/profile/profile_detail.html' %}
 {% load i18n %}
 {% load staticfiles %}
 
@@ -10,7 +10,37 @@
         footer{
             display: none;
         }
-
+        .column-full {
+          color: #000;
+        }
+        .leaflet-popup-content {
+          color: #D0A331;
+        }
+        .leaflet-marker-shadow {
+          width: 30px !important;
+          height: 30px !important;
+          margin-top: 0px !important;
+        }
+        .leaflet-marker-icon {
+          width: 18px !important;
+          height: 30px !important;
+          margin-top: 0px !important;
+        }
+        .leaflet-div-icon {
+          width: 15px;
+          height: 15px;
+          background: #fff;
+            border: 1px solid #666;
+        }
+        .leaflet-div-icon2
+        {
+          background:#D0A331;
+          border:5px solid rgba(255,255,255,0.5);
+          font-weight:bold;
+          text-align:center;
+          border-radius:50%;
+          line-height:30px;
+        }
         .content-container{
             display: none;
         }
@@ -37,8 +67,8 @@
                     <div class="stat">
                         <span class="primary pull-left">
                             {% block profile_header_population %}
-                            <span class="value">{{ schools.top_schools|length }}</span>
-                            <span class="name">Total Secondary Schools</span>
+                            <span class="value">{{ totalschools }}</span>
+                            <span class="name">Total Secondary Schools in {{ year }}</span>
                             {% endblock %}
                         </span>
                     </div>

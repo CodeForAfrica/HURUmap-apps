@@ -17,12 +17,44 @@
       max-height: 100%;
       margin: 0;
     }
+    #cover-profile article {
+      border: 1px solid #2E4668;
+      z-index: 1;
+      position: absolute;
+    }
+    .column-full {
+      color: #000;
+    }
     .leaflet-popup-content {
       color: #D0A331;
     }
-    .leaflet-marker-pane img {
-      width: 10px;
-      height: 5px;
+    .leaflet-marker-shadow {
+      width: 30px !important;
+      height: 30px !important;
+      margin-top: 0px !important;
+    }
+    .leaflet-marker-icon {
+      width: 18px !important;
+      height: 30px !important;
+      margin-top: 0px !important;
+    }
+    .leaflet-div-icon {
+      width: 15px;
+      height: 15px;
+      background: #fff;
+        border: 1px solid #666;
+    }
+    .leaflet-div-icon2
+    {
+      background:#D0A331;
+      border:5px solid rgba(255,255,255,0.5);
+      font-weight:bold;
+      text-align:center;
+      border-radius:50%;
+      line-height:30px;
+    }
+    #profile #compare-place-picker h2 {
+      margin-top: 5px;
     }
 
 </style>
@@ -73,12 +105,40 @@
     <div class="container">
         <div class="row">
           <h3 class="map-title">{{ geography.this.short_name }}</h3>
-          <h5></h5>
+          <h4><a href="javascript:;" style="color: #fff" onclick="javascript: embedMap('{{ geography.this.geo_level }}', '{{geography.this.geo_code}}', '{{geography.this.short_name}}');">Embed Map</a></h4>
         </div>
       </div>
 
     <div class="map clearfix" id="cover-map">
-      <div id="slippy-map"></div>
+      <div id="slippy-map">
+        <div id="cover-profile" class="wrapper">
+            <article class="clearfix column-half">
+                <header id="header-box" class="column-full">
+                    <h1 class="title">{{ geography.this.short_name }} </h1>
+                    <span>
+                      {{ geography.this.geo_level|capfirst }}
+                      {% if geography.parents %}
+                          in
+                          {% for level, g in geography.parents.items %}
+                              <a href="/leaguetable/profiles/{{ g.full_geoid }}-{{ g.short_name|slugify }}/">{{ g.short_name }}</a>{% if not forloop.last %},{%endif%}
+                          {% endfor %}
+                      {% endif %}
+                    </span>
+                </header>
+
+                <div class="column-full">
+                    <div class="stat">
+                        <span class="primary pull-left">
+                            {% block profile_header_population %}
+                            <span class="value">{{ totalschools }}</span>
+                            <span class="name">Total Secondary Schools in {{ year }}</span>
+                            {% endblock %}
+                        </span>
+                    </div>
+                </div>
+            </article>
+        </div>
+      </div>
     </div>
   </div>
 {% endblock %}
@@ -102,6 +162,10 @@
                     <option value="2012">2012</option> -->
                 </select>
               </span>
+            </div>
+            <div style="width: 100%; text-align:right;">
+                <a href="javascript: ;"  onclick="javascript: embedTable('{{ geography.this.geo_level }}', '{{geography.this.geo_code}}');">Embed School League Table</a>
+                <span class="fa fa-code"></span>
             </div>
 
             <!--
@@ -287,7 +351,7 @@
             <div class="hovercard">
                 <small class="close clearfix close-embed" onclick="javascript: closeEmbed();"><i class="fa fa-times-circle"></i> Close</small>
                 <h2 style="font-size: 22px;"></h2>
-                <p>Copy the code below, then paste into your own CMS or HTML.
+                <p>Copy the url below, and paste into your own CMS or HTML.
                     Embedded league tables are responsive to your page width,
                     and have been tested in Firefox, Safari, Chrome, and IE8 and above.
                 </p>
@@ -304,6 +368,16 @@
     <!-- <script src="{% static 'js/vendor/leaflet.label.js' %}"></script> -->
     <script type="text/javascript">
         // Fx to show table embed code
+        var greenIcon = L.icon({
+          iconUrl: 'marker-icon-yellow.png',
+          shadowUrl: 'marker-shadow.png',
+
+          iconSize:     [38, 95], // size of the icon
+          shadowSize:   [50, 64], // size of the shadow
+          iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+          shadowAnchor: [4, 62],  // the same for the shadow
+          popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+      });
 
       function onEachFeature(feature, layer) {
           layer.bindPopup("<a href=" + feature.properties.code+">"+feature.properties.name+" SCHOOL </a><br />"+ feature.properties.latitude + "," + feature.properties.longitude );
@@ -327,11 +401,10 @@
             });
           }
 
-          L.geoJson(geojsonFeature, {onEachFeature: onEachFeature}).addTo(maps.map)
+          L.geoJson(geojsonFeature, {onEachFeature: onEachFeature}, {icon: greenIcon}).addTo(maps.map)
         }
         function embedTable(geo_level, geo_code){
-            var text = '&lt;iframe src="{{ HURUMAP.url }}/embed/' + geo_level + '/' + geo_code +
-            '" frameborder="0" width="100%" height="300" style="margin: 1em; width: 100%;"&gt;&lt;/iframe&gt;';
+            var text = '{{ HURUMAP.url }}/embed/' + geo_level + '/' + geo_code;
 
             $('#lightbox h2').html("");
             $('#lightbox h2').html("Embed code for this league table");
@@ -345,8 +418,7 @@
         function embedMap(geo_level, geo_code, short_name){
             var short_name = short_name.toLowerCase().replace(/ /g,"-");
 
-            var text = '&lt;iframe src="{{ HURUMAP.url }}/embed/' + geo_level + '-' + geo_code + '-' + short_name +
-            '" frameborder="0" width="100%" height="300" style="margin: 1em; width: 100%;"&gt;&lt;/iframe&gt;';
+            var text = '{{ HURUMAP.url }}/embed/' + geo_level + '-' + geo_code + '-' + short_name 
 
             $('#lightbox h2').html("");
             $('#lightbox h2').html("Embed code for this map");

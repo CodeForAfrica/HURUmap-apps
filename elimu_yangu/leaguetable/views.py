@@ -118,6 +118,7 @@ class SchoolPageView(TemplateView):
         profile_data['geography'] = self.geo.as_dict_deep()
         profile_data['coordinates'] = json.dumps(coordinates, cls=DjangoJSONEncoder)
         profile_data['school'] = school
+        profile_data['year'] = year
         profile_data['school_results'] = school_results
 
         profile_data = enhance_api_data(profile_data)
@@ -146,6 +147,7 @@ def embed(request, geo_level, geo_code):
 class EmbedGeographyDetailView(BaseGeographyDetailView):
     adjust_slugs = True
     default_geo_version = None
+    year = '2017'
 
     def dispatch(self, *args, **kwargs):
         request = args[0]
@@ -181,6 +183,10 @@ class EmbedGeographyDetailView(BaseGeographyDetailView):
         profile_data = profile_method(self.geo, self.profile_name, self.request)
 
         profile_data['geography'] = self.geo.as_dict_deep()
+        coordinates, totalschools = get_schools_coordinates(self.geo, self.year)
+        profile_data['coordinates'] = json.dumps(coordinates, cls=DjangoJSONEncoder)
+        profile_data['totalschools'] = totalschools
+        profile_data['year'] = self.year
 
         profile_data = enhance_api_data(profile_data)
         page_context.update(profile_data)
@@ -209,6 +215,7 @@ class EmbedGeographyDetailView(BaseGeographyDetailView):
 class GeographyDetailView(BaseGeographyDetailView):
     adjust_slugs = True
     default_geo_version = None
+    year = '2017'
 
     def dispatch(self, *args, **kwargs):
         request = args[0]
@@ -244,8 +251,10 @@ class GeographyDetailView(BaseGeographyDetailView):
         profile_data = profile_method(self.geo, self.profile_name, self.request)
 
         profile_data['geography'] = self.geo.as_dict_deep()
-        coordinates = get_schools_coordinates(self.geo, '2017')
+        coordinates, totalschools = get_schools_coordinates(self.geo, self.year)
         profile_data['coordinates'] = json.dumps(coordinates, cls=DjangoJSONEncoder)
+        profile_data['totalschools'] = totalschools
+        profile_data['year'] = self.year
 
         profile_data = enhance_api_data(profile_data)
         page_context.update(profile_data)
@@ -354,6 +363,12 @@ def get_schools_coordinates(geo, year):
                     .filter(Base.metadata.tables['secondary_school'].c.longitude != 'UNKNOWN')\
                     .filter(Base.metadata.tables['secondary_school'].c.latitude != 'UNKNOWN')\
                     .all()
+
+        totalschools = session.query(func.count(Base.metadata.tables['secondary_school'].c.code)\
+                    .filter(Base.metadata.tables['secondary_school'].c.geo_level == geo.geo_level)\
+                    .filter(Base.metadata.tables['secondary_school'].c.geo_code == geo.geo_code)\
+                    .filter(Base.metadata.tables['secondary_school'].c.year_of_result == year))\
+                    .scalar()
     finally:
         session.close()
-    return coordinates
+    return coordinates, totalschools

@@ -86,7 +86,8 @@ HURUMAP['geometry_data'] = {
             }
 }
 
-HURUMAP['ga_tracking_id'] = 'UA-91133100-8'
+HURUMAP['ga_tracking_id'] = ''
+HURUMAP['ga_tracking_ids'] = ['UA-44795600-8','UA-91133100-4', 'UA-91133100-X', 'UA-91133100-Y']
 
 HURUMAP['twitter'] = '@Code4Africa'
 
