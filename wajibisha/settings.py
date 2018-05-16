@@ -14,7 +14,7 @@ DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
 
-WAJIBISHA = WAZIMAP
+WAJIBISHA = WAZIMAP = HURUMAP
 
 WAJIBISHA['name'] = 'Wajibisha'
 WAJIBISHA['url'] = 'https://wajibisha.hurumap.org'
@@ -68,8 +68,6 @@ TEMPLATE_CONTEXT_PROCESSORS += (
     'wajibisha.utils.context_processors.get_homepage_promises',
 )
 
-STATIC_ROOT = 'wajibisha/static/'
-
 LOGGING['loggers']['wajibisha'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
 
 # Trello Settings
@@ -85,4 +83,4 @@ PROMISE_STATUS = [
 LAST_UPDATED = None
 
 # Making sure they are the same
-WAZIMAP = WAJIBISHA
+WAZIMAP = HURUMAP = WAJIBISHA

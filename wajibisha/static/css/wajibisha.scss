@@ -538,3 +538,17 @@ img.img-width.d-block.p-0 {
   background-color: #f9f9f9;
   color: #001b1b !important;
 }
+.progress-bar {
+  height:4px!important;
+}
+
+/* disable the hover effect on boostrap table /safari/firefox*/
+.table tbody tr:hover td,
+.table tbody tr:hover th {
+    background-color: inherit;
+}
+/* Diaable the hover effect on boostrap table on chrome*/
+table tr:hover td { 
+   background-color: inherit;     
+   opacity: 1.0;
+}
