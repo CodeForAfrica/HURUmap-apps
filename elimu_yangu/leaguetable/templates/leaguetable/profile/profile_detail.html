@@ -79,19 +79,17 @@
                       <li><a href="/careerguide">CAREER GUIDE</a></li>
                       <li><a href="/university-finder">UNI FINDER</a></li>
                       <li><a href="/about">ABOUT</a></li>
-                      <li>
+                      <li style="right: -20%">
                         <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
                           <input name="next" type="hidden" value="{{ redirect_to }}" />
                           {% get_current_language as LANGUAGE_CODE %}
                           {% ifequal LANGUAGE_CODE "en" %}
-                              <!-- {{ language.name_local }} ({{ language.code }}) -->
                             <input type="hidden" name="language" value="sw" />
-                            <input type="image" value="submit" src="{% static 'img/tz.png' %}" style="padding-top: 17px;" />
+                            <input type="image" value="submit" src="{% static 'img/tz.png' %}" style="margin-bottom: -16px;" />
                           {% else %}
                             <input  type="hidden" name="language" value="en" />
-                            <input type="image" value="submit" src="{% static 'img/us.png' %}" style="padding-top: 17px;" />
+                            <input type="image" value="submit" src="{% static 'img/us.png' %}" style="margin-bottom: -16px;" />
                           {% endifequal %}
-                          <!-- </select> -->
                         </form>
                       </li>
                       <!-- <li><a href="/contact">CONTACT US</a></li> -->
@@ -352,7 +350,7 @@
             <div class="hovercard">
                 <small class="close clearfix close-embed" onclick="javascript: closeEmbed();"><i class="fa fa-times-circle"></i> Close</small>
                 <h2 style="font-size: 22px;"></h2>
-                <p>Copy the url below, and paste into your own CMS or HTML.
+                <p>Copy the code below, and paste into your own CMS or HTML.
                     Embedded league tables are responsive to your page width,
                     and have been tested in Firefox, Safari, Chrome, and IE8 and above.
                 </p>
@@ -409,7 +407,8 @@
           L.geoJson(geojsonFeature, {onEachFeature: onEachFeature}, {icon: greenIcon}).addTo(maps.map)
         }
         function embedTable(geo_level, geo_code){
-            var text = '{{ HURUMAP.url }}/embed/' + geo_level + '/' + geo_code;
+            var text = '&lt;iframe src="{{ HURUMAP.url }}/leaguetable/embed/' + geo_level + '/' + geo_code +
+            '" frameborder="0" width="100%" height="300" style="margin: 1em; width: 100%;"&gt;&lt;/iframe&gt;';
 
             $('#lightbox h2').html("");
             $('#lightbox h2').html("Embed code for this league table");
@@ -423,7 +422,8 @@
         function embedMap(geo_level, geo_code, short_name){
             var short_name = short_name.toLowerCase().replace(/ /g,"-");
 
-            var text = '{{ HURUMAP.url }}/embed/' + geo_level + '-' + geo_code + '-' + short_name
+            var text = '&lt;iframe src="{{ HURUMAP.url }}/leaguetable/embed/' + geo_level + '-' + geo_code + '-' + short_name +
+            '" frameborder="0" width="100%" height="300" style="margin: 1em; width: 100%;"&gt;&lt;/iframe&gt;';
 
             $('#lightbox h2').html("");
             $('#lightbox h2').html("Embed code for this map");

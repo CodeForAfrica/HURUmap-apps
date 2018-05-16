@@ -85,17 +85,17 @@
                             {% else %}
                               <li><a href="/en{{ request.get_full_path|slice:'3:' }}">en</a></li>
                             {% endifequal %} -->
-                            <li>
+                            <li style="right: -20%">
                               <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
                                 <input name="next" type="hidden" value="{{ redirect_to }}" />
                                 {% get_current_language as LANGUAGE_CODE %}
                                 {% ifequal LANGUAGE_CODE "en" %}
                                     <!-- {{ language.name_local }} ({{ language.code }}) -->
                                   <input type="hidden" name="language" value="sw" />
-                                  <input type="image" value="submit" src="{% static 'img/tz.png' %}" style="padding-top: 17px;" />
+                                  <input type="image" value="submit" src="{% static 'img/tz.png' %}" style="margin-bottom: -16px;" />
                                 {% else %}
                                   <input  type="hidden" name="language" value="en" />
-                                  <input type="image" value="submit" src="{% static 'img/us.png' %}" style="padding-top: 17px;" />
+                                  <input type="image" value="submit" src="{% static 'img/us.png' %}" style="margin-bottom: -16px;" />
                                 {% endifequal %}
                                 <!-- </select> -->
                             </form>

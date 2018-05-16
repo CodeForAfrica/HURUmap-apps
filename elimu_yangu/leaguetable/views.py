@@ -118,7 +118,7 @@ class SchoolPageView(TemplateView):
         profile_data['geography'] = self.geo.as_dict_deep()
         profile_data['coordinates'] = json.dumps(coordinates, cls=DjangoJSONEncoder)
         profile_data['school'] = school
-        profile_data['year'] = year
+        profile_data['year'] = self.year
         profile_data['school_results'] = school_results
 
         profile_data = enhance_api_data(profile_data)
@@ -263,7 +263,6 @@ class GeographyDetailView(BaseGeographyDetailView):
             profile_data['totalschools'] = totalschools
             profile_data['year'] = year
 
-            print profile_data['coordinates']
             profile_data = enhance_api_data(profile_data)
             page_context.update(profile_data)
 
