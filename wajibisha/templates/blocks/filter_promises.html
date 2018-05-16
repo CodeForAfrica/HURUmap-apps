@@ -2,28 +2,31 @@
 <div class="">
   <div class="showcase how-it-works text-center">
 
-    <div class="row">
-      <div class="column-half text-right display-inline">
-        <p class="float-left filter-text">Filter By: </p>
-        <div class="display-inline">
-          <select class="form-control promise-select" id="status_select" onchange="filter()">
-            <option value="all">Status</option>
-            {% for status in statuses %}
-              <option value="{{ status | safe }}">{{ status }}</option>
-            {% endfor %}
-          </select>
-        </div>
-        <div class="display-inline">
-          <select class="form-control promise-select" id="sector_select" onchange="filter()">
-            <option value="all">Sector</option>
-            {% for sector in sectors %}
-              <option value="{{ sector | safe }}">{{ sector }}</option>
-            {% endfor %}
+    <div clas="col-6 text-left">
+      <div class="d-flex flex-row justify-content-start">
+        <div class="row d-flex flex-row justify-content-end pb-5 breadcrumb-color">
+          <p class="small pt-2 pb-3">Filter by:</p>
+            <div class="pl-3">
+              <select class="form-control promise-select" id="status_select" onchange="filter()">
+                <option value="all">Status</option>
+                {% for status in statuses %}
+                <option value="{{ status | safe }}">{{ status }}</option>
+                {% endfor %}
+              </select>
+            </div>
 
-          </select>
+            <div class="pl-3">
+              <select class="form-control promise-select" id="sector_select" onchange="filter()">
+                <option value="all">Sector</option>
+                {% for sector in sectors %}
+                <option value="{{ sector | safe }}">{{ sector }}</option>
+                {% endfor %}
+
+              </select>
+            </div>
+
+          </div>
         </div>
-      </div>
-    </div>
 
 
     <!--fulfilled card section-->
