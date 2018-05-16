@@ -19,6 +19,7 @@
     }
     #cover-profile article {
       border: 1px solid #2E4668;
+      background-color: #f7f8f9;
       z-index: 1;
       position: absolute;
     }
@@ -42,7 +43,7 @@
       width: 15px;
       height: 15px;
       background: #fff;
-        border: 1px solid #666;
+      border: 1px solid #666;
     }
     .leaflet-div-icon2
     {
@@ -120,7 +121,7 @@
                       {% if geography.parents %}
                           in
                           {% for level, g in geography.parents.items %}
-                              <a href="/leaguetable/profiles/{{ g.full_geoid }}-{{ g.short_name|slugify }}/">{{ g.short_name }}</a>{% if not forloop.last %},{%endif%}
+                              <a href="/leaguetable/profiles/{{ g.full_geoid }}-{{ g.short_name|slugify }}/?year={{ year }}">{{ g.short_name }}</a>{% if not forloop.last %},{%endif%}
                           {% endfor %}
                       {% endif %}
                     </span>
@@ -153,10 +154,10 @@
         <div class="col-md-12">
           <div class="help-text text-center">{%trans 'SCHOOL RANKINGS' %}
             <span>
-              <select id="rank-year-profile3" class="inline-select" style="color: #D0A331">
-                    <option data-language={{ LANGUAGE_CODE }} value="2017">2017</option>
-                    <option data-language={{ LANGUAGE_CODE }} value="2016">2016</option>
-                    <option data-language={{ LANGUAGE_CODE }} value="2015">2015</option>
+              <select id="rank-year-profile" class="inline-select" style="color: #D0A331">
+                    <option data-language={{ LANGUAGE_CODE }} value="2017" {% if year == "2017" %} selected {% endif %}>2017</option>
+                    <option data-language={{ LANGUAGE_CODE }} value="2016" {% if year == "2016" %} selected {% endif %}>2016</option>
+                    <option data-language={{ LANGUAGE_CODE }} value="2015" {% if year == "2015" %} selected {% endif %}>2015</option>
                     <!-- <option value="2014">2014</option>
                     <option value="2013">2013</option>
                     <option value="2012">2012</option> -->
@@ -365,7 +366,11 @@
     {{ block.super }}
 
     <!-- embed table script -->
-    <!-- <script src="{% static 'js/vendor/leaflet.label.js' %}"></script> -->
+    <script src="{% static 'lib/jquery/dist/jquery.js' %}"></script>
+    <script src="{% static 'lib/bootstrap/dist/js/bootstrap.js' %}"></script>
+    <script src="{% static 'lib/owlcarousel/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'lib/jquery.nice-select/js/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'js/site.js' %}"></script>
     <script type="text/javascript">
         // Fx to show table embed code
         var greenIcon = L.icon({
@@ -418,7 +423,7 @@
         function embedMap(geo_level, geo_code, short_name){
             var short_name = short_name.toLowerCase().replace(/ /g,"-");
 
-            var text = '{{ HURUMAP.url }}/embed/' + geo_level + '-' + geo_code + '-' + short_name 
+            var text = '{{ HURUMAP.url }}/embed/' + geo_level + '-' + geo_code + '-' + short_name
 
             $('#lightbox h2').html("");
             $('#lightbox h2').html("Embed code for this map");

@@ -233,7 +233,9 @@
       $('#rank-year-profile').on('change', function() {
          var selected = $(this).find('option:selected');
          lang = selected.data('language');
-         get_school_profile_ranking( this.value );
+         var url = window.location.href.split('?')[0];
+         console.log(url);
+         window.location = url + '?year=' + this.value;
      });
 
        function get_school_ranking(year) {
@@ -266,62 +268,32 @@
          });
       }
 
-      function get_school_profile_ranking(year) {
-        var parameter = {'year': year};
-        var url = "/" + lang + "/leaguetable/";
-        var best_40 = "";
-        var worst_40 = "";
-        var best = "";
-        var worst = "";
-        $.ajax({
-          type: "POST",
-          url: url,
-          data: JSON.stringify(parameter),
-          contentType: 'application/json',
-          success: function(data){
-             var result = data.schools;
-             var result1 = append_school_table(result['best_schools_more_40'], 'best-40-profile');
-             swap_ul('#best-40-profile', result1)
-             var result2 = append_school_table(result['worst_schools_more_40'], 'worst-40-profile');
-             swap_ul('#worst-40-profile', result2)
-             var result3 = append_school_table(result['best_schools_less_40'], 'best-profile');
-             swap_ul('#best-profile', result3)
-             var result4 = append_school_table(result['worst_schools_less_40'], 'worst-profile');
-             swap_ul('#worst-profile', result4)
-           },
-           error: function() {
-                 alert("Opps! Something went wrong");
-                 $('#rank-year').value = '2017';
-          }
+      function swap_ul (item, data) {
+        var schoolTable = $(item);
+        schoolTable.fadeOut(1000, function(){
+            schoolTable.html(data).fadeIn();
         });
-     }
 
-        function swap_ul (item, data) {
-          var schoolTable = $(item);
-          schoolTable.fadeOut(1000, function(){
-              schoolTable.html(data).fadeIn();
-          });
+      }
 
+      function editCapitalize(name) {
+        var arrname = name.replace('SECONDARY SCHOOL', '').split(' ');
+        var item;
+        for (item=0; item < arrname.length; item++) {
+          arrname[item] = arrname[item].charAt(0).toUpperCase() + arrname[item].slice(1).toLowerCase();
         }
+        return arrname.join(' ')
+      }
 
-        function editCapitalize(name) {
-          var arrname = name.replace('SECONDARY SCHOOL', '').split(' ');
-          var item;
-          for (item=0; item < arrname.length; item++) {
-            arrname[item] = arrname[item].charAt(0).toUpperCase() + arrname[item].slice(1).toLowerCase();
-          }
-          return arrname.join(' ')
+      function append_school_table(data, ul_id) {
+        var result = "<ul id=" + ul_id +" class='list-group school'>";
+        for (var elem in data) {
+          var arr = data[elem]
+
+          result += "<li class='list-group-item'><a href='leaguetable/schools/'"+ arr[3] +"><div class='col-xs-5'><div class='school-name'>" + editCapitalize(arr[4]) + " School</div><div class='school-type'>" + arr[9] +"</div></div><div class='col-xs-5'><div class='school-rank'>#"+ arr[15] + " in Tanzania</div><div class='school-rank'>#" + arr[16].trim() +" in "+ arr[5] + "</div></div><div class='col-xs-2'>"+ arr[12] + " GPA</div></a></li>"
         }
-
-        function append_school_table(data, ul_id) {
-          var result = "<ul id=" + ul_id +" class='list-group school'>";
-          for (var elem in data) {
-            var arr = data[elem]
-
-            result += "<li class='list-group-item'><a href='leaguetable/schools/'"+ arr[3] +"><div class='col-xs-5'><div class='school-name'>" + editCapitalize(arr[4]) + " School</div><div class='school-type'>" + arr[9] +"</div></div><div class='col-xs-5'><div class='school-rank'>#"+ arr[15] + " in Tanzania</div><div class='school-rank'>#" + arr[16].trim() +" in "+ arr[5] + "</div></div><div class='col-xs-2'>"+ arr[12] + " GPA</div></a></li>"
-          }
-          return result + "</ul>";
-        }
+        return result + "</ul>";
+      }
         /*
          * ----------------------------------------------------------------------------------------
          *  CAREER GUIDE PAGE JS

@@ -34,7 +34,7 @@ def index(request):
         try:
             params = json.loads(request.body)
             year = params['year'].encode("utf8")
-            schools = get_overall_topschools(year, geo_level, geo_code)
+            schools = get_overall_topschools(year, geo_level, geo_code, session)
 
         finally:
             session.close()
@@ -44,7 +44,7 @@ def index(request):
         year = '2017'
         #Getting Schools from overall top schools method
         try:
-            schools = get_overall_topschools(year, geo_level, geo_code)
+            schools = get_overall_topschools(year, geo_level, geo_code, session)
         finally:
             session.close()
 
@@ -72,11 +72,11 @@ def schools(request):
 # handling specific school page
 class SchoolPageView(TemplateView):
     template_name = 'leaguetable/specific_school.html'
+    year = '2017'
 
     def get_context_data(self, *args, **kwargs):
         session = get_session()
         page_context = {}
-        year = '2017'
         code = self.kwargs.get('code', None)
 
         #Fetch school perfromance over the year
@@ -87,14 +87,14 @@ class SchoolPageView(TemplateView):
         # Fetching schools
         school = session.query(Base.metadata.tables['secondary_school'])\
                         .filter(Base.metadata.tables['secondary_school'].c.geo_level == "region")\
-                        .filter(Base.metadata.tables['secondary_school'].c.year_of_result == year)\
+                        .filter(Base.metadata.tables['secondary_school'].c.year_of_result == self.year)\
                         .filter(Base.metadata.tables['secondary_school'].c.code == code)\
                         .one()
         #get school coordinates
         coordinates = session.query(Base.metadata.tables['secondary_school'].c.code, Base.metadata.tables['secondary_school'].c.name, Base.metadata.tables['secondary_school'].c.longitude, Base.metadata.tables['secondary_school'].c.latitude )\
                     .filter(Base.metadata.tables['secondary_school'].c.geo_level == "region")\
                     .filter(Base.metadata.tables['secondary_school'].c.code == code)\
-                    .filter(Base.metadata.tables['secondary_school'].c.year_of_result == year)\
+                    .filter(Base.metadata.tables['secondary_school'].c.year_of_result == self.year)\
                     .filter(Base.metadata.tables['secondary_school'].c.longitude != 'UNKNOWN')\
                     .filter(Base.metadata.tables['secondary_school'].c.latitude != 'UNKNOWN')\
                     .all()
@@ -107,14 +107,14 @@ class SchoolPageView(TemplateView):
         except (ValueError, LocationNotFound):
             raise Http404
         # load the profile
-        profile_method = settings.WAZIMAP.get('profile_builder', None)
-        self.profile_name = settings.WAZIMAP.get('default_profile', 'default')
-
-        if not profile_method:
-            raise ValueError("You must define WAZIMAP.profile_builder in settings.py")
-        profile_method = import_string(profile_method)
-        profile_data = profile_method(self.geo, self.profile_name, self.request)
-
+        # profile_method = settings.WAZIMAP.get('profile_builder', None)
+        # self.profile_name = settings.WAZIMAP.get('default_profile', 'default')
+        #
+        # if not profile_method:
+        #     raise ValueError("You must define WAZIMAP.profile_builder in settings.py")
+        # profile_method = import_string(profile_method)
+        # profile_data = profile_method(self.geo, self.profile_name, self.request)
+        profile_data = {}
         profile_data['geography'] = self.geo.as_dict_deep()
         profile_data['coordinates'] = json.dumps(coordinates, cls=DjangoJSONEncoder)
         profile_data['school'] = school
@@ -138,7 +138,7 @@ def embed(request, geo_level, geo_code):
     year = '2017'
     schools = []
     try:
-        schools = get_overall_topschools(year, geo_level, geo_code)
+        schools = get_overall_topschools(year, geo_level, geo_code, session)
     finally:
             session.close()
 
@@ -172,33 +172,36 @@ class EmbedGeographyDetailView(BaseGeographyDetailView):
 
     def get_context_data(self, *args, **kwargs):
         page_context = {}
-
+        session = get_session()
+        try:
         # load the profile
-        profile_method = settings.WAZIMAP.get('profile_builder', None)
-        self.profile_name = settings.WAZIMAP.get('default_profile', 'default')
+            profile_method = settings.WAZIMAP.get('profile_builder', None)
+            self.profile_name = settings.WAZIMAP.get('default_profile', 'default')
 
-        if not profile_method:
-            raise ValueError("You must define WAZIMAP.profile_builder in settings.py")
-        profile_method = import_string(profile_method)
-        profile_data = profile_method(self.geo, self.profile_name, self.request)
+            if not profile_method:
+                raise ValueError("You must define WAZIMAP.profile_builder in settings.py")
+            profile_method = import_string(profile_method)
+            profile_data = profile_method(self.geo, self.profile_name, self.request)
 
-        profile_data['geography'] = self.geo.as_dict_deep()
-        coordinates, totalschools = get_schools_coordinates(self.geo, self.year)
-        profile_data['coordinates'] = json.dumps(coordinates, cls=DjangoJSONEncoder)
-        profile_data['totalschools'] = totalschools
-        profile_data['year'] = self.year
+            profile_data['geography'] = self.geo.as_dict_deep()
+            coordinates, totalschools = get_schools_coordinates(self.geo, self.year, session)
+            profile_data['coordinates'] = json.dumps(coordinates, cls=DjangoJSONEncoder)
+            profile_data['totalschools'] = totalschools
+            profile_data['year'] = self.year
 
-        profile_data = enhance_api_data(profile_data)
-        page_context.update(profile_data)
+            profile_data = enhance_api_data(profile_data)
+            page_context.update(profile_data)
 
-        profile_data_json = SafeString(json.dumps(profile_data, cls=DjangoJSONEncoder))
+            profile_data_json = SafeString(json.dumps(profile_data, cls=DjangoJSONEncoder))
 
-        page_context.update({
-            'profile_data_json': profile_data_json
-        })
+            page_context.update({
+                'profile_data_json': profile_data_json
+            })
 
-        # is this a head-to-head view?
-        page_context['head2head'] = 'h2h' in self.request.GET
+            # is this a head-to-head view?
+            page_context['head2head'] = 'h2h' in self.request.GET
+        finally:
+            session.close()
 
         return page_context
 
@@ -240,33 +243,38 @@ class GeographyDetailView(BaseGeographyDetailView):
 
     def get_context_data(self, *args, **kwargs):
         page_context = {}
+        session = get_session()
+        try:
+            request = self.request
+            year = request.GET.get('year') or self.year
+            # load the profile
+            profile_method = settings.WAZIMAP.get('profile_builder', None)
+            self.profile_name = settings.WAZIMAP.get('default_profile', 'default')
 
-        # load the profile
-        profile_method = settings.WAZIMAP.get('profile_builder', None)
-        self.profile_name = settings.WAZIMAP.get('default_profile', 'default')
+            if not profile_method:
+                raise ValueError("You must define WAZIMAP.profile_builder in settings.py")
+            profile_method = import_string(profile_method)
+            profile_data = profile_method(self.geo, self.profile_name, self.request, year)
+            profile_data['geography'] = self.geo.as_dict_deep()
+            coordinates, totalschools = get_schools_coordinates(self.geo, year, session)
+            profile_data['coordinates'] = json.dumps(coordinates, cls=DjangoJSONEncoder)
+            profile_data['totalschools'] = totalschools
+            profile_data['year'] = year
 
-        if not profile_method:
-            raise ValueError("You must define WAZIMAP.profile_builder in settings.py")
-        profile_method = import_string(profile_method)
-        profile_data = profile_method(self.geo, self.profile_name, self.request)
+            print profile_data['coordinates']
+            profile_data = enhance_api_data(profile_data)
+            page_context.update(profile_data)
 
-        profile_data['geography'] = self.geo.as_dict_deep()
-        coordinates, totalschools = get_schools_coordinates(self.geo, self.year)
-        profile_data['coordinates'] = json.dumps(coordinates, cls=DjangoJSONEncoder)
-        profile_data['totalschools'] = totalschools
-        profile_data['year'] = self.year
+            profile_data_json = SafeString(json.dumps(profile_data, cls=DjangoJSONEncoder))
 
-        profile_data = enhance_api_data(profile_data)
-        page_context.update(profile_data)
+            page_context.update({
+                'profile_data_json': profile_data_json
+            })
 
-        profile_data_json = SafeString(json.dumps(profile_data, cls=DjangoJSONEncoder))
-
-        page_context.update({
-            'profile_data_json': profile_data_json
-        })
-
-        # is this a head-to-head view?
-        page_context['head2head'] = 'h2h' in self.request.GET
+            # is this a head-to-head view?
+            page_context['head2head'] = 'h2h' in self.request.GET
+        finally:
+            session.close()
 
         return page_context
 
@@ -296,79 +304,63 @@ class GeographyCompareView(TemplateView):
 
         return page_context
 
-
-
-
-
-
-def get_overall_topschools(year, geo_level, geo_code):
+def get_overall_topschools(year, geo_level, geo_code, session):
     schools = {}
-    session = get_session()
+    # Choosing sorting option
+    rank_column = Base.metadata.tables['secondary_school'].c.national_rank_all
+    # Fetching schools
+    top_schools_40_more = session.query(Base.metadata.tables['secondary_school'])\
+                    .filter(Base.metadata.tables['secondary_school'].c.geo_level == geo_level)\
+                    .filter(Base.metadata.tables['secondary_school'].c.geo_code == geo_code)\
+                    .filter(Base.metadata.tables['secondary_school'].c.year_of_result == year)\
+                    .filter(Base.metadata.tables['secondary_school'].c.more_than_40.like("yes%"))\
+                    .order_by(asc(cast(rank_column, Integer)))\
+                    .all()[:10]
+    # Getting top for schools with less than 40 students
+    top_schools_40_less = session.query(Base.metadata.tables['secondary_school'])\
+                    .filter(Base.metadata.tables['secondary_school'].c.geo_level == geo_level)\
+                    .filter(Base.metadata.tables['secondary_school'].c.geo_code == geo_code)\
+                    .filter(Base.metadata.tables['secondary_school'].c.year_of_result == year)\
+                    .filter(Base.metadata.tables['secondary_school'].c.more_than_40.like("no%"))\
+                    .order_by(asc(cast(rank_column, Integer)))\
+                    .all()[:10]
 
-    try:
-        # Choosing sorting option
-        rank_column = Base.metadata.tables['secondary_school'].c.national_rank_all
-        # Fetching schools
-        top_schools_40_more = session.query(Base.metadata.tables['secondary_school'])\
-                        .filter(Base.metadata.tables['secondary_school'].c.geo_level == geo_level)\
-                        .filter(Base.metadata.tables['secondary_school'].c.geo_code == geo_code)\
-                        .filter(Base.metadata.tables['secondary_school'].c.year_of_result == year)\
-                        .filter(Base.metadata.tables['secondary_school'].c.more_than_40.like("yes%"))\
-                        .order_by(asc(cast(rank_column, Integer)))\
-                        .all()[:10]
-        # Getting top for schools with less than 40 students
-        top_schools_40_less = session.query(Base.metadata.tables['secondary_school'])\
-                        .filter(Base.metadata.tables['secondary_school'].c.geo_level == geo_level)\
-                        .filter(Base.metadata.tables['secondary_school'].c.geo_code == geo_code)\
-                        .filter(Base.metadata.tables['secondary_school'].c.year_of_result == year)\
-                        .filter(Base.metadata.tables['secondary_school'].c.more_than_40.like("no%"))\
-                        .order_by(asc(cast(rank_column, Integer)))\
-                        .all()[:10]
+    # limitting lowest schools with more than 40 students
+    lowest_schools_40_more = session.query(Base.metadata.tables['secondary_school'])\
+                    .filter(Base.metadata.tables['secondary_school'].c.geo_level == geo_level)\
+                    .filter(Base.metadata.tables['secondary_school'].c.geo_code == geo_code)\
+                    .filter(Base.metadata.tables['secondary_school'].c.year_of_result == year)\
+                    .filter(Base.metadata.tables['secondary_school'].c.more_than_40.like("yes%"))\
+                    .order_by(desc(cast(rank_column, Integer)))\
+                    .all()[:10]
+    # Getting lowest for schools with less than 40 students
+    lowest_schools_40_less = session.query(Base.metadata.tables['secondary_school'])\
+                    .filter(Base.metadata.tables['secondary_school'].c.geo_level == geo_level)\
+                    .filter(Base.metadata.tables['secondary_school'].c.geo_code == geo_code)\
+                    .filter(Base.metadata.tables['secondary_school'].c.year_of_result == year)\
+                    .filter(Base.metadata.tables['secondary_school'].c.more_than_40.like("no%"))\
+                    .order_by(desc(cast(rank_column, Integer)))\
+                    .all()[:10]
 
-        # limitting lowest schools with more than 40 students
-        lowest_schools_40_more = session.query(Base.metadata.tables['secondary_school'])\
-                        .filter(Base.metadata.tables['secondary_school'].c.geo_level == geo_level)\
-                        .filter(Base.metadata.tables['secondary_school'].c.geo_code == geo_code)\
-                        .filter(Base.metadata.tables['secondary_school'].c.year_of_result == year)\
-                        .filter(Base.metadata.tables['secondary_school'].c.more_than_40.like("yes%"))\
-                        .order_by(desc(cast(rank_column, Integer)))\
-                        .all()[:10]
-        # Getting lowest for schools with less than 40 students
-        lowest_schools_40_less = session.query(Base.metadata.tables['secondary_school'])\
-                        .filter(Base.metadata.tables['secondary_school'].c.geo_level == geo_level)\
-                        .filter(Base.metadata.tables['secondary_school'].c.geo_code == geo_code)\
-                        .filter(Base.metadata.tables['secondary_school'].c.year_of_result == year)\
-                        .filter(Base.metadata.tables['secondary_school'].c.more_than_40.like("no%"))\
-                        .order_by(desc(cast(rank_column, Integer)))\
-                        .all()[:10]
-
-        schools['best_schools_more_40'] = top_schools_40_more
-        schools['worst_schools_more_40'] = lowest_schools_40_more
-        schools['best_schools_less_40'] = top_schools_40_less
-        schools['worst_schools_less_40'] = lowest_schools_40_less
-
-    finally:
-            session.close()
+    schools['best_schools_more_40'] = top_schools_40_more
+    schools['worst_schools_more_40'] = lowest_schools_40_more
+    schools['best_schools_less_40'] = top_schools_40_less
+    schools['worst_schools_less_40'] = lowest_schools_40_less
 
     return schools
 
-def get_schools_coordinates(geo, year):
-    session = get_session()
+def get_schools_coordinates(geo, year, session):
+    coordinates = session.query(Base.metadata.tables['secondary_school'].c.code, Base.metadata.tables['secondary_school'].c.name, Base.metadata.tables['secondary_school'].c.longitude, Base.metadata.tables['secondary_school'].c.latitude )\
+                .filter(Base.metadata.tables['secondary_school'].c.geo_level == geo.geo_level)\
+                .filter(Base.metadata.tables['secondary_school'].c.geo_code == geo.geo_code)\
+                .filter(Base.metadata.tables['secondary_school'].c.year_of_result == year)\
+                .filter(Base.metadata.tables['secondary_school'].c.longitude != 'UNKNOWN')\
+                .filter(Base.metadata.tables['secondary_school'].c.latitude != 'UNKNOWN')\
+                .all()
 
-    try:
-        coordinates = session.query(Base.metadata.tables['secondary_school'].c.code, Base.metadata.tables['secondary_school'].c.name, Base.metadata.tables['secondary_school'].c.longitude, Base.metadata.tables['secondary_school'].c.latitude )\
-                    .filter(Base.metadata.tables['secondary_school'].c.geo_level == geo.geo_level)\
-                    .filter(Base.metadata.tables['secondary_school'].c.geo_code == geo.geo_code)\
-                    .filter(Base.metadata.tables['secondary_school'].c.year_of_result == year)\
-                    .filter(Base.metadata.tables['secondary_school'].c.longitude != 'UNKNOWN')\
-                    .filter(Base.metadata.tables['secondary_school'].c.latitude != 'UNKNOWN')\
-                    .all()
-
-        totalschools = session.query(func.count(Base.metadata.tables['secondary_school'].c.code)\
-                    .filter(Base.metadata.tables['secondary_school'].c.geo_level == geo.geo_level)\
-                    .filter(Base.metadata.tables['secondary_school'].c.geo_code == geo.geo_code)\
-                    .filter(Base.metadata.tables['secondary_school'].c.year_of_result == year))\
-                    .scalar()
-    finally:
-        session.close()
+    totalschools = session.query(func.count(Base.metadata.tables['secondary_school'].c.code)\
+                .filter(Base.metadata.tables['secondary_school'].c.geo_level == geo.geo_level)\
+                .filter(Base.metadata.tables['secondary_school'].c.geo_code == geo.geo_code)\
+                .filter(Base.metadata.tables['secondary_school'].c.year_of_result == year))\
+                .scalar()
     return coordinates, totalschools
