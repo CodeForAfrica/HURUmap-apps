@@ -174,14 +174,16 @@ class EmbedGeographyDetailView(BaseGeographyDetailView):
         page_context = {}
         session = get_session()
         try:
-        # load the profile
+            request = self.request
+            year = request.GET.get('year') or self.year
+            # load the profile
             profile_method = settings.WAZIMAP.get('profile_builder', None)
             self.profile_name = settings.WAZIMAP.get('default_profile', 'default')
 
             if not profile_method:
                 raise ValueError("You must define WAZIMAP.profile_builder in settings.py")
             profile_method = import_string(profile_method)
-            profile_data = profile_method(self.geo, self.profile_name, self.request)
+            profile_data = profile_method(self.geo, self.profile_name, self.request, year)
 
             profile_data['geography'] = self.geo.as_dict_deep()
             coordinates, totalschools = get_schools_coordinates(self.geo, self.year, session)
