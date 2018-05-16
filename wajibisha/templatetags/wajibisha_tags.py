@@ -1,3 +1,4 @@
+from __future__ import division
 from django import template
 
 register = template.Library()
@@ -13,3 +14,11 @@ def value_or_zero(val):
         return 0
     else:
         return val
+
+@register.simple_tag
+def get_percentage(val, total):
+    try:
+        result = round(val/total, 3) * 100
+        return str(result) + '%'
+    except:
+        return '0.0%'

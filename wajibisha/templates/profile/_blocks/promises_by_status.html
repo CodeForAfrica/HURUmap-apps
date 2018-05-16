@@ -1,0 +1,32 @@
+{% load wajibisha_tags staticfiles%}
+<div class="col-6">
+  <div class="card p-0 pull-left" style="height:200px;width:400px;">
+    <div class="d-flex flex-row" style='height:150px;'>
+      <div class="justify-content-left">
+        <img class="card-img p-0"
+             {% if status == 'done' %}
+               src="{% static 'img/tracker/status/fulfilled-portrait.svg' %}"
+             {% elif status == 'not done'%}
+                src="{% static 'img/tracker/status/unfulfilled-portrait.svg' %}"
+             {% elif status == 'in progress'%}
+                src="{% static 'img/tracker/status/in-progress-portrait.svg' %}"
+             {% elif status == "stalled"%}
+                src="{% static 'img/tracker/status/stalled-portrait.svg' %}"
+             {% endif %}
+
+             style="height:150px;width:180px;margin-top:-3rem;padding-left:0;">
+      </div>
+      <div class="justify-content-right pt-3">
+        <p class="lead pr-5"><b class="text-large">{% value_or_zero value %} </b><span
+            style="font-size:14px;"> Promises</span></p>
+        <p class="lead pt-0 pr-4"><b style="font-size:28px;">{% get_percentage value total %} </b><span
+            style="font-size:14px;"> Complete</span></p>
+      </div>
+    </div>
+    <div class="d-flex flex-row card-footer">
+      <p class="offset-1"><i class="fa fa-share-alt"
+                             aria-hidden="true">Share</i></p>
+      <p class="offset-4"><i class="fa fa-eye" aria-hidden="true">Watch</i></p>
+    </div>
+  </div>
+</div>
