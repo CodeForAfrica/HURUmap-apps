@@ -561,3 +561,11 @@ table tr:hover td {
    background-color: inherit;     
    opacity: 1.0;
 }
+
+img.team-image {
+  border-bottom-left-radius: 140px;
+  border-bottom-right-radius: 140px;
+  border-top-left-radius: 140px;
+  border-top-right-radius: 140px;
+  max-width: 100%;
+}
