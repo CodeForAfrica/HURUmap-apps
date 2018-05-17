@@ -38,13 +38,6 @@
   </div>
 
   <script>
-
-
-      $(".dropdown-menu li a").click(function(){
-        $(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
-        $(this).parents(".dropdown").find('.btn').val($(this).data('value'));
-      });
-
       var promises_list = {{ promises_json }};
       var promises_display_list = {{ promises_json }};
       writeHTML(promises_display_list);
