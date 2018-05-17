@@ -1,22 +1,20 @@
 {% load sass_tags staticfiles %}
 <div class="">
   <div class="showcase how-it-works text-center body-text">
-  
       <div class="d-flex flex-row justify-content-center">
         <div class="row d-flex flex-row justify-content-end pb-5 breadcrumb-color">
           <p class="small pt-2 pb-3">Filter by:</p>
-            <div class="pl-3">
-              <select class="form-control promise-select" data-style="btn-primary" id="status_select" onchange="filter()">
-                <option value="all" >Status</option>
+            <div class="pl-3 dropdown" style="width:300px;font-size:14px;font-weight:100;">
+              <select class="form-control promise-select dropdown-toggle" data-style="btn-primary" id="status_select" onchange="filter()">
+                <option value="all" class="dropdown-menu">Status</option>
                 {% for status in statuses %}
-                <option value="{{ status | safe }}">{{ status }}</option>
+                <option class="dropdown-item" value="{{ status | safe }}">{{ status }}</option>
                 {% endfor %}
               </select>
             </div>
-
-            <div class="pl-5">
+            <div class="dropdown pl-3" style="font-size:14px;font-weight:100;">
               <select class="form-control promise-select" id="sector_select" onchange="filter()">
-                <option value="all">Sector</option>
+                <option class="dropdown-menu" value="all">Sector</option>
                 {% for sector in sectors %}
                 <option value="{{ sector | safe }}">{{ sector }}</option>
                 {% endfor %}
@@ -40,6 +38,13 @@
   </div>
 
   <script>
+
+
+      $(".dropdown-menu li a").click(function(){
+        $(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
+        $(this).parents(".dropdown").find('.btn').val($(this).data('value'));
+      });
+
       var promises_list = {{ promises_json }};
       var promises_display_list = {{ promises_json }};
       writeHTML(promises_display_list);
@@ -77,7 +82,7 @@
       }
 
       function getPromiseHTML(promise) {
-          var html = "<div class=\"col-6 pt-5 pr-2\">\n" +
+          var html = "<div class=\"col-6 pt-5 pr-5 pl-5\">\n" +
               "            <table class=\"table table-bordered bg-light promise-item\">\n" +
               "              <tbody>\n" +
               "              <tr>\n" +

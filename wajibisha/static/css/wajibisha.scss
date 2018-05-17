@@ -572,3 +572,13 @@ img.team-image {
 td.table-width{
   width:8rem!important;
 }
+.stat-font {
+  font-size:larger;
+}
+.btn-group.pl-4.pr-5.tab {
+  position:relative;
+  display:inline-block;
+  font-size:0;
+  vertical-align:middle;
+  white-space:nowrap;
+}
