@@ -21,16 +21,16 @@
           margin-left:-10px;border-color:rgba(112, 112, 112, 0.2);">
     <div class="d-flex flex-row">
       <div class="justify-content-start" style="font-weight:300;">
-        <p class="pl-4"><b>{{ stat.done }}</b></p>
+        <p class="pl-4 pt-3" style="font-size:larger;"><b>{{ stat.done }}</b></p>
         <p class="pl-4 pt-2 ml-5">Fulfilled</p>
-        <p class="pl-4"><b>{{ stat.in_progress }}</b></p>
-        <p class="pt-2 pl-4 ml-5">In Progress</p>
+        <p class="pl-4 pt-3" style="font-size:larger;"><b>{{ stat.in_progress }}</b></p>
+        <p class="pl-4 ml-5 pt-0">In Progress</p>
       </div>
       <div class="justify-content-end offset-1"
            style="font-weight:300;">
-        <p><b>{{ stat.not_done }}</b><br></p>
+        <p><b style="font-size:larger;">{{ stat.not_done }}</b><br></p>
         <p class="pt-2 pl-5">Unfulfilled</p>
-        <p><b>{{ stat.five_yr_plans }}</b><br></p>
+        <p><b style="font-size:larger;">{{ stat.five_yr_plans }}</b><br></p>
         <p class="pt-2 pl-4">Stalled</p>
       </div>
     </div>
