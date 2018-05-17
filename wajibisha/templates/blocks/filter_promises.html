@@ -1,20 +1,20 @@
 {% load sass_tags staticfiles %}
 <div class="">
   <div class="showcase how-it-works text-center body-text">
-    <div clas="col-6 text-left">
-      <div class="d-flex flex-row justify-content-start">
+  
+      <div class="d-flex flex-row justify-content-center">
         <div class="row d-flex flex-row justify-content-end pb-5 breadcrumb-color">
           <p class="small pt-2 pb-3">Filter by:</p>
             <div class="pl-3">
-              <select class="form-control promise-select" id="status_select" onchange="filter()">
-                <option value="all">Status</option>
+              <select class="form-control promise-select" data-style="btn-primary" id="status_select" onchange="filter()">
+                <option value="all" >Status</option>
                 {% for status in statuses %}
                 <option value="{{ status | safe }}">{{ status }}</option>
                 {% endfor %}
               </select>
             </div>
 
-            <div class="pl-3">
+            <div class="pl-5">
               <select class="form-control promise-select" id="sector_select" onchange="filter()">
                 <option value="all">Sector</option>
                 {% for sector in sectors %}
@@ -26,9 +26,8 @@
 
           </div>
         </div>
-      </div>
 
-
+        
     <!--fulfilled card section-->
     <div class="container pt-5">
       <div class="row pt-5 pb-5" id="promises_container">
