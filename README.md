@@ -112,6 +112,36 @@ do
 done
 ```
 
+## Adding Google Analytics
+
+HURUmap supports the use of both single and multiple tracking ids on a single page.
+
+For the case of a single tracking id (or when one tracking id needs to be identified as the "default" tracking id), the variable `ga_tracking_id` should be set to the [*string*](https://developers.google.com/edu/python/strings) value of the tracking id.
+
+For example:
+
+```
+[hurumap_ke/settings.py]
+
+...
+HURUMAP['ga_tracking_id'] = 'UA-44795600-8'
+...
+```
+
+And in those cases were multiple tracking ids need to be set, `ga_tracking_ids` (with an s) should be set as a [*list*](https://developers.google.com/edu/python/lists) of tracking ids.
+
+For example:
+
+```
+[hurumap_ke/settings.py]
+
+...
+HURUMAP['ga_tracking_ids'] = ['UA-44795600-1', 'UA-44795600-2', 'UA-44795600-3']
+...
+```
+
+**NOTE:** By default, `HURUMAP['ga_tracking_id'] = 'UA-44795600-8'`. If you're not using `ga_tracking_id` at all (such as in those situation where you're only using multiple tracking ids or you're not using Google Analytics altogether), remember to set this variable to blank i.e. `HURUMAP['ga_tracking_id'] = ''`
+
 ### Tests
 
 ?

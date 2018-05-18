@@ -125,5 +125,14 @@
 
             lastScrollTop = st;
         }
+
+        // Google Analytics: multiple trackers supports
+        //                   default tracker is internally named 't0', we'll name these
+        //                   t1, t2, etc.
+        // see: https://developers.google.com/analytics/devguides/collection/analyticsjs/creating-trackers
+        {% for ga_tracking_id in HURUMAP.ga_tracking_ids %}
+           ga('create', '{{ ga_tracking_id }}', 'auto', {'name': 't{{ forloop.counter }}' });
+           ga('t{{ forloop.counter }}.send', 'pageview');
+        {% endfor %}
     </script>
 {%  endblock %}
