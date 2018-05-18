@@ -16,12 +16,14 @@
 {% endblock header_content %}
 {% block content_container %}
 <div class="showcase how-it-works text-center">
+
+    {% include 'blocks/team.html' %}
     {% block about %}
-    <div class="body-text wrapper clearfix text-center pl-5 pr-5">
+    <div class="body-text wrapper clearfix text-center pl-5 pr-5 pb-5">
       <h4 style="color:#0067A3;">CONTACT US</h4>
       <br/>
-      <div class="d-flex flex-row justify-content-center">
-        <div class="col-4 text-center">
+      <div class="d-flex flex-row justify-content-center pb-5">
+        <div class="col-5 text-left pb-5 pl-5 offset-1">
           PesaCheck HQ:<br>
           Nairobi Garage, 8th Floor, Pinetree Plaza, <br>
           Kaburu Drive, Kilimani, Nairobi, Kenya.<br>
@@ -32,7 +34,7 @@
           </p>
         </div>
 
-        <div class="col-4 text-left pl-5">
+        <div class="col-4 text-left pb-5">
           PesaCheck Tanzania:<br>
           Bongo Live, No 6, Zanaki Street,<br>
           Dar es Salaam, Tanzania.<br>
@@ -40,7 +42,7 @@
           <p>tanzania@pesacheck.orgs</p>
         </div>
 
-        <div class="col-4 text-left pl-5">
+        <div class="col-4 text-left pl-5 pb-5">
           PesaCheck Uganda:<br>
           Design Hub, Plot 3, Bata Close,<br>
           5th Street, Kampala, Uganda.<br>
@@ -50,7 +52,6 @@
       </div>
     </div>
   </div>
-    {% include 'blocks/team.html' %}
     {% endblock %}
 </div>
 {% endblock %}
