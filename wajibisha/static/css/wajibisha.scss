@@ -4,6 +4,7 @@ $color-orange: #f7971d;
 $color-yellow: #f8ca0f;
 $color-green: #4cae4e;
 
+
 body {
   background-color: #F6F9FC !important;
 }
@@ -151,10 +152,6 @@ body {
 }
 
 /*COLORS AND TEXT */
-.space {
-  padding-top: 1rem;
-}
-
 .yellow-text {
   color: $color-yellow;
 }
@@ -169,10 +166,6 @@ body {
 
 .body-text:hover {
   color: #707070;
-}
-
-.breadcrumb-color {
-  color: #006699;
 }
 
 .borders-color {
@@ -328,7 +321,7 @@ select.form-control.form-control-lg {
   width: 100%;
 }
 
-/*CATEGORY SECTION*/
+/* CATEGORY SECTION */
 .btn.btn-primary-right {
   color: #808080;
   border-color: #808080;
@@ -363,7 +356,7 @@ select.form-control.form-control-lg {
   color: #ededed;
 }
 
-/* CARDS*/
+/* CARDS */
 
 .card-hw {
   height:610px;
@@ -550,35 +543,42 @@ img.img-width.d-block.p-0 {
   height:4px!important;
 }
 
-/* disable the hover effect on boostrap table /safari/firefox*/
+/* disable the hover effect on boostrap table /safari/firefox */
 .table tbody tr:hover td,
 .table tbody tr:hover th {
     background-color: inherit;
 }
+
 /* Diaable the hover effect on boostrap table on chrome*/
 table tr:hover td { 
    background-color: inherit;     
    opacity: 1.0;
 }
 
-img.team-image {
-  border-bottom-left-radius: 150px;
-  border-bottom-right-radius: 150px;
-  border-top-left-radius: 150px;
-  border-top-right-radius: 150px;
-  max-width: 100%;
+
+/* TEAM SECTION */
+
+.team {
+  height:300px;
+  margin:10px;
+}
+
+.team img {
+  display:block;
+  width:250px;
+  height:auto;
+  max-width:100%;
+  max-height:250px; 
 }
 
 td.table-width{
   width:8rem!important;
 }
-.stat-font {
-  font-size:larger;
-}
-.btn-group.pl-4.pr-5.tab {
+
+btn-group.pl-4.pr-5.tab {
   position:relative;
   display:inline-block;
   font-size:0;
   vertical-align:middle;
   white-space:nowrap;
-}
+} 
