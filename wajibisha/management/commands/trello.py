@@ -11,7 +11,6 @@ from datetime import datetime
 
 
 logging.basicConfig()
-# logging.getLogger('sqlalchemy.engine').setLevel(logging.WARN)
 logger = logging.getLogger(__name__)
 
 

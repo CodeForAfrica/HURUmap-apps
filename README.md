@@ -119,6 +119,20 @@ do
 done
 ```
 
+## CRON Job for updating WAJIBISHA promises
+
+To keep the promises updated, we run a job to get promises from trello and update the database
+```sh
+sudo su dokku
+crontab -e
+```
+
+Add the following entry to your crontab
+
+```sh
+0 * * * * echo '{}' | dokku --rm run wajibisha python manage.py scrape_trello
+```
+
 ### Tests
 
 ?
