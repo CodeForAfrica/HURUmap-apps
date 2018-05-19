@@ -579,8 +579,22 @@ table tr:hover td {
 }
 
 td.table-width {
-  width:8rem!important;
+  width:10rem!important;
 }
+
+.table-content {
+  padding-bottom:2rem;
+}
+
+.table td, 
+.table th {
+  padding:0!important;
+}
+
+img.p-0.card_status_img {
+  height:150px;
+}
+
 .dropdown {
   width:300px;
   font-size:14px;
