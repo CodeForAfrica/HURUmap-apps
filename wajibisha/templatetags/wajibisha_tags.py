@@ -3,6 +3,7 @@ from django import template
 
 register = template.Library()
 
+
 @register.simple_tag
 def value_or_zero(val):
     """
@@ -15,10 +16,11 @@ def value_or_zero(val):
     else:
         return val
 
+
 @register.simple_tag
 def get_percentage(val, total):
     try:
-        result = round(val/total, 3) * 100
+        result = round(val / total, 3) * 100
         return str(result) + '%'
     except:
         return '0.0%'

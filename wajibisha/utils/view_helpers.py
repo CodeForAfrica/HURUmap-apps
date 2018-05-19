@@ -12,7 +12,8 @@ def get_promises(geo_code, geo_level):
             geo_code, geo_level)
         session = get_session()
         result = session.execute(query).fetchall()
-        return [{'promise': i[0], 'status': i[1], 'sector':i[2]} for i in result]
+        return [{'promise': i[0], 'status': i[1], 'sector': i[2]} for i in
+                result]
 
     except Exception as e:
         return [
@@ -46,6 +47,3 @@ def get_promise_statuses(geo_code, geo_level):
 
     except Exception as e:
         return []
-
-
-

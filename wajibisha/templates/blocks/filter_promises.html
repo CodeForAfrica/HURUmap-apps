@@ -6,7 +6,8 @@
       <div class="column-half text-right display-inline">
         <p class="float-left filter-text">Filter By: </p>
         <div class="display-inline">
-          <select class="form-control promise-select" id="status_select" onchange="filter()">
+          <select class="form-control promise-select" id="status_select"
+                  onchange="filter()">
             <option value="all">Status</option>
             {% for status in statuses %}
               <option value="{{ status | safe }}">{{ status }}</option>
@@ -14,7 +15,8 @@
           </select>
         </div>
         <div class="display-inline">
-          <select class="form-control promise-select" id="sector_select" onchange="filter()">
+          <select class="form-control promise-select" id="sector_select"
+                  onchange="filter()">
             <option value="all">Sector</option>
             {% for sector in sectors %}
               <option value="{{ sector | safe }}">{{ sector }}</option>

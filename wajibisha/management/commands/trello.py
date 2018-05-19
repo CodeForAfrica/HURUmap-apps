@@ -2,13 +2,12 @@ import os
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.management.base import BaseCommand, CommandError
 import requests
-from wajibisha.settings import BOARDS, LAST_UPDATED
+from wajibisha.settings import WAJIBISHA
 import logging
 from wazimap.data.tables import get_datatable
 from wazimap.models import Geography
 from wazimap.data.utils import get_session
 from datetime import datetime
-
 
 logging.basicConfig()
 logger = logging.getLogger(__name__)
@@ -22,6 +21,7 @@ class Command(BaseCommand):
         super(Command, self).__init__(stdout=None, stderr=None, no_color=False)
         self.session = get_session()
         self.table = get_datatable('promises')
+        self.boards = WAJIBISHA['trello_boards']
 
     def handle(self, *args, **options):
         # fetch promises
@@ -53,8 +53,8 @@ class Command(BaseCommand):
         # fetch the promises
         logger.info('Fetching promises')
         try:
-            for board_key in BOARDS.keys():
-                url = BOARDS[board_key] \
+            for board_key in self.boards.keys():
+                url = self.boards[board_key] \
                       + '/lists?fields=name&cards=all&card_fields=name,labels'
                 r = requests.get(url)
                 if r.status_code == requests.codes.ok:
@@ -122,4 +122,3 @@ class Command(BaseCommand):
     def clearDB(self):
         # clear DB to update the promises
         self.session.execute('TRUNCATE promises;')
-

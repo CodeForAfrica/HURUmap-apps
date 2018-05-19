@@ -7,17 +7,15 @@ INSTALLED_APPS = ['wajibisha'] + INSTALLED_APPS
 # Wajibisha URLS
 ROOT_URLCONF = 'wajibisha.urls'
 
-
 DATABASE_URL = os.environ.get('DATABASE_URL',
                               'postgresql://wajibisha:wajibisha@localhost/wajibisha')
 DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
-
 WAJIBISHA = WAZIMAP
 
 WAJIBISHA['name'] = 'Wajibisha'
-WAJIBISHA['url'] = 'https://wajibisha.hurumap.org'
+WAJIBISHA['url'] = ' https://wajibisha.pesacheck.org'
 WAJIBISHA['country_code'] = 'KE'
 WAJIBISHA['country_name'] = 'Kenya'
 WAJIBISHA['description'] = "Wajibisha (Swahili for ‘hold accountable’) is a " \
@@ -35,7 +33,6 @@ PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
 TEMPLATE_DIRS = (
     os.path.join(PROJECT_PATH, 'wajibisha', 'templates'),
 )
-
 
 WAJIBISHA['default_profile'] = wajibisha_profile
 
@@ -73,16 +70,11 @@ STATIC_ROOT = 'wajibisha/static/'
 LOGGING['loggers']['wajibisha'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
 
 # Trello Settings
-BOARDS = {
+
+
+WAJIBISHA['trello_boards'] = {
     'Nairobi': 'https://api.trello.com/1/boards/hmtAAEVr'
 }
 
-PROMISE_STATUS = [
-    'Done', 'Five years plans', 'Altered Promise', 'In Progress', 'Not done'
-]
-
-# Time when the promises were last updated
-LAST_UPDATED = None
-
 # Making sure they are the same
-WAZIMAP = WAJIBISHA
+HURUMAP = WAJIBISHA
