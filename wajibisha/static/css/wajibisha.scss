@@ -151,7 +151,19 @@ body {
   color: #0067a3;
 }
 
+.main-card {
+  height:600px;
+}
+.height-card {
+  height:450px;
+}
+
 /*COLORS AND TEXT */
+.sub-title {
+  color:#b7e4ff;
+  font-size:1.2rem;
+}
+
 .yellow-text {
   color: $color-yellow;
 }
@@ -559,7 +571,7 @@ table tr:hover td {
 /* TEAM SECTION */
 
 .team {
-  height:300px;
+  height:400px;
   margin:10px;
 }
 
@@ -571,14 +583,21 @@ table tr:hover td {
   max-height:250px; 
 }
 
-td.table-width{
+td.table-width {
   width:8rem!important;
 }
+.dropdown {
+  width:300px;
+  font-size:14px;
+  font-weight:100;
+}
 
-btn-group.pl-4.pr-5.tab {
+
+
+/*btn-group.pl-4.pr-5.tab {
   position:relative;
   display:inline-block;
   font-size:0;
   vertical-align:middle;
   white-space:nowrap;
-} 
+} */

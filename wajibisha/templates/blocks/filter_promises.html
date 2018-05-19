@@ -4,7 +4,7 @@
       <div class="d-flex flex-row justify-content-center">
         <div class="row d-flex flex-row justify-content-end pb-5 ">
           <p class="small pt-2 pb-3">Filter by:</p>
-            <div class="pl-3 dropdown" style="width:300px;font-size:14px;font-weight:100;">
+            <div class="pl-3 dropdown">
               <select class="form-control promise-select dropdown-toggle" data-style="btn-primary" id="status_select" onchange="filter()">
                 <option value="all" class="dropdown-menu">Status</option>
                 {% for status in statuses %}
@@ -12,7 +12,7 @@
                 {% endfor %}
               </select>
             </div>
-            <div class="dropdown pl-3" style="font-size:14px;font-weight:100;">
+            <div class="dropdown pl-3">
               <select class="form-control promise-select" id="sector_select" onchange="filter()">
                 <option class="dropdown-menu" value="all">Sector</option>
                 {% for sector in sectors %}
@@ -24,8 +24,6 @@
 
           </div>
         </div>
-   
-
         
     <!--fulfilled card section-->
     <div class="container pt-5">
