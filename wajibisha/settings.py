@@ -12,7 +12,8 @@ DATABASE_URL = os.environ.get('DATABASE_URL',
 DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
-WAJIBISHA = WAZIMAP
+WAJIBISHA = HURUMAP
+
 
 WAJIBISHA['name'] = 'Wajibisha'
 WAJIBISHA['url'] = ' https://wajibisha.pesacheck.org'
@@ -65,8 +66,6 @@ TEMPLATE_CONTEXT_PROCESSORS += (
     'wajibisha.utils.context_processors.get_homepage_promises',
 )
 
-STATIC_ROOT = 'wajibisha/static/'
-
 LOGGING['loggers']['wajibisha'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
 
 # Trello Settings
@@ -77,4 +76,6 @@ WAJIBISHA['trello_boards'] = {
 }
 
 # Making sure they are the same
+
 HURUMAP = WAJIBISHA
+

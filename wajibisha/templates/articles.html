@@ -60,17 +60,26 @@
 
   <!--Card articles-->
   <div class="container pl-5 pr-2">
-    <div class="d-flex flex-column pr-5 pt-4">
-      <hr class="text-center border-6" size="10">
-      <p class="pt-0" style="color:blue;">MOST VIEWED ARTICLES</p>
+
+    <div class="row pt-5" style="margin-right:1.4rem;">
+      <div class="col-12">
+        <div class="progress" style="background-color:#0067A3;height:1px;">
+          <div class="progress-bar" role="progressbar"
+               style="width:10%;height:150%;margin-bottom:-4px;background-color:black;"
+               aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"
+               style="height:2px;"></div>
+        </div>
+        <p class="pt-3" style="color:#0067A3;">MOST VIEWED ARTICLES</p>
+      </div>
     </div>
 
     <div class="row pt-5 body-text">
       <div class="col-8 d-flex flex-column">
-        <div class="article-card card d-flex flex-lg-row p-0">
+        <div class="article-card card d-flex flex-lg-row p-0"
+             style="height:280px;">
           <div class="col-md-5 p-0"><img
               src="{% static 'img/article/fidel-odinga-road.jpg' %}"
-              class="card-img p-0" alt="Image of story" height="280px"></div>
+              class="card-img p-0" alt="Image of story" height="100%"></div>
           <div class="col-md-7">
             <h6 class="pt-4 m-0 small">NAIROBI COUNTY</h6>
             <h4 class="article-width card-title lead">
@@ -85,14 +94,18 @@
               eiusmod
               tempor incididunt ut labore et dolore magna aliqua. Ut....<a
                   href="">Read more</a></p>
+
           </div>
         </div>
         <br>
 
-        <div class="article-card card d-flex flex-lg-row p-0 mt-4">
+
+        <div class="article-card card d-flex flex-lg-row p-0 mt-4"
+             style="height:280px;">
           <div class="col-md-5 p-0"><img
               src="{% static 'img/article/fidel-odinga-road.jpg' %}"
-              class="card-img p-0" alt="Image of story" height="280px"></div>
+              class="card-img p-0" alt="Image of story" height="100%"></div>
+
           <div class="col-md-7">
             <h6 class="pt-4 small m-0">NAIROBI COUNTY</h6>
             <h4 class="article-width card-title lead">
@@ -112,8 +125,9 @@
         <br>
       </div>
 
+      <<<<<<< HEAD
       <div class="col-4">
-        <div class="card-hw card p-0">
+        <div class="card-hw card p-0" style="height: 610px;max-height: 100%;">
           <img src="{% static 'img/article/fidel-odinga-road.jpg' %}"
                class="card-img-body p-0" alt="Story Image"
                style="height:300px;">
@@ -132,134 +146,306 @@
               tempor incididunt ut labore et dolore magna aliqua. Ut....<a
                   href="">Read more</a></p>
           </div>
+          =======
+          <div class="col-4">
+            <div class="card-hw card p-0">
+              <img src="{% static 'img/article/fidel-odinga-road.jpg' %}"
+                   class="card-img-body p-0" alt="Story Image"
+                   style="height:300px;">
+              <div class="card-body">
+                <h6 class="pt-2 small m-0">NAIROBI COUNTY</h6>
+                <h4 class="article-width card-title lead">
+                  <strong>Mike Sonko Lauches Neighbourhood Street Naming
+                    Exercise</strong>
+                </h4>
+                <div class="d-flex small text-muted">
+                  <p class="pull-left">By Eric Mugendi</p>
+                  <p class="pull-right">Sat 16th Dec 2017</p>
+                  >>>>>>> ft_wajibisha
+                </div>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur
+                  adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut....<a
+                      href="">Read more</a></p>
+              </div>
+            </div>
+          </div>
+          <<<<<<< HEAD
+          <!--End of articles-->
+          <div class="container pl-2 body-text "
+               style="height:200vh;min-height;100%;">
+            <div class="container ml-3 pl-4">
+              <div class="row pt-5" style="margin-right:1.4rem;">
+                <div class="col-12">
+                  <div class="progress"
+                       style="background-color:#0067A3;height:1px;">
+                    <div class="progress-bar" role="progressbar"
+                         style="width: 14%;" aria-valuenow="25"
+                         aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <p class="pt-3 blue-text" style="color:#0067A3;">PREVIOUS
+                    ARTICLES</p>
+                </div>
+              </div>
+            </div>
+            <div class="row pl-5 pr-5 pt-5 pb-5">
+              <div class="card-deck">
+                <div class="card-height card p-0" style="height:580px;">
+                  <img class="card-img-top"
+                       src="{% static 'img/article/fidel-odinga-road.jpg' %}"
+                       alt="Card image cap">
+                  <div class="card-body">
+                    <h6 class="pt-2 small m-0">NAIROBI COUNTY</h6>
+                    <h4 class="card-width card-title lead"><strong>Mike Sonko
+                      Lauches Neighbourhood Street Naming Exercise</strong></h4>
+                    <div
+                        class="d-flex small justify-content-between text-muted">
+                      <p class="pull-left">By Eric Mugendi</p>
+                      <p class="pull-right">Sat 16th Dec 2017</p>
+                    </div>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur
+                      adipisicing elit, sed do eiusmod
+                      tempor incididunt ut labore et dolore magna aliqua. Ut....<a
+                          href="">Read more</a></p>
+                  </div>
+                </div>
+                <div class="card-height card p-0" style="height:580px;">
+                  <img class="card-img-top"
+                       src="{% static 'img/article/fidel-odinga-road.jpg' %}"
+                       alt="Card image cap">
+                  <div class="card-body">
+                    <h6 class="pt-2 small m-0">NAIROBI COUNTY</h6>
+                    <h4 class="card-width card-title lead"><strong>Mike Sonko
+                      Lauches Neighbourhood Street Naming Exercise</strong></h4>
+                    <div
+                        class="d-flex small justify-content-between text-muted">
+                      <p class="pull-left">By Eric Mugendi</p>
+                      <p class="pull-right">Sat 16th Dec 2017</p>
+                    </div>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur
+                      adipisicing elit, sed do eiusmod
+                      tempor incididunt ut labore et dolore magna aliqua. Ut....<a
+                          href="">Read more</a></p>
+                  </div>
+                </div>
+                <div class="card-height card p-0" style="height:580px;">
+                  <img class="card-img-top"
+                       src="{% static 'img/article/fidel-odinga-road.jpg' %}"
+                       alt="Card image cap">
+                  <div class="card-body">
+                    <h6 class="pt-2 small m-0">NAIROBI COUNTY</h6>
+                    <h4 class="card-width card-title lead"><strong>Mike Sonko
+                      Lauches Neighbourhood Street Naming Exercise</strong></h4>
+                    <div
+                        class="d-flex small justify-content-between text-muted">
+                      <p class="pull-left">By Eric Mugendi</p>
+                      <p class="pull-right">Sat 16th Dec 2017</p>
+                    </div>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur
+                      adipisicing elit, sed do eiusmod
+                      tempor incididunt ut labore et dolore magna aliqua. Ut....<a
+                          href="">Read more</a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row pl-5 pr-5 pt-5 pb-5">
+              <div class="card-deck">
+                <div class="card-height card p-0" style="height:580px;">
+                  <img class="card-img-top"
+                       src="{% static 'img/article/fidel-odinga-road.jpg' %}"
+                       alt="Card image cap">
+                  <div class="card-body">
+                    <h6 class="pt-2 small m-0">NAIROBI COUNTY</h6>
+                    <h4 class="card-width card-title lead"><strong>Mike Sonko
+                      Lauches Neighbourhood Street Naming Exercise</strong></h4>
+                    <div
+                        class="d-flex small justify-content-between text-muted">
+                      <p class="pull-left">By Eric Mugendi</p>
+                      <p class="pull-right">Sat 16th Dec 2017</p>
+                    </div>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur
+                      adipisicing elit, sed do eiusmod
+                      tempor incididunt ut labore et dolore magna aliqua. Ut....<a
+                          href="">Read more</a></p>
+                  </div>
+                </div>
+                <div class="card-height card p-0" style="height:580px;">
+                  <img class="card-img-top"
+                       src="{% static 'img/article/fidel-odinga-road.jpg' %}"
+                       alt="Card image cap">
+                  <div class="card-body">
+                    <h6 class="pt-2 small m-0">NAIROBI COUNTY</h6>
+                    <h4 class="card-width card-title lsead"><strong>Mike Sonko
+                      Lauches Neighbourhood Street Naming Exercise</strong></h4>
+                    <div
+                        class="d-flex small justify-content-between text-muted">
+                      <p class="pull-left">By Eric Mugendi</p>
+                      <p class="pull-right">Sat 16th Dec 2017</p>
+                    </div>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur
+                      adipisicing elit, sed do eiusmod
+                      tempor incididunt ut labore et dolore magna aliqua. Ut....<a
+                          href="">Read more</a></p>
+                  </div>
+                </div>
+                <div class="card-height card p-0" style="height:580px;">
+                  <img class="card-img-top"
+                       src="{% static 'img/article/fidel-odinga-road.jpg' %}"
+                       alt="Card image cap">
+                  <div class="card-body">
+                    <h6 class="pt-2 small m-0">NAIROBI COUNTY</h6>
+                    <h4 class="card-width card-title lead"><strong>Mike Sonko
+                      Lauches Neighbourhood Street Naming Exercise</strong></h4>
+                    <div
+                        class="d-flex small justify-content-between text-muted">
+                      <p class="pull-left">By Eric Mugendi</p>
+                      <p class="pull-right">Sat 16th Dec 2017</p>
+                    </div>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur
+                      adipisicing elit, sed do eiusmod
+                      tempor incididunt ut labore et dolore magna aliqua. Ut....<a
+                          href="">Read more</a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          =======
         </div>
       </div>
-    </div>
-  </div>
-  <!--End of articles-->
-  <div class="container pl-2 body-text " style="height:200vh;min-height;100%;">
-    <div class="container ml-3 pl-4">
-      <div class="d-flex flex-column pr-5 pt-5">
-        <hr class="hr-nav text-center border-6" size="10">
-        <p class="pt-0 blue-text" style="color:blue;">PREVIOUS ARTICLES</p>
+      <!--End of articles-->
+      <div class="container pl-2 body-text "
+           style="height:200vh;min-height;100%;">
+        <div class="container ml-3 pl-4">
+          <div class="d-flex flex-column pr-5 pt-5">
+            <hr class="hr-nav text-center border-6" size="10">
+            <p class="pt-0 blue-text" style="color:blue;">PREVIOUS ARTICLES</p>
+          </div>
+        </div>
+        <div class="row pl-5 pr-5 pt-5 pb-5">
+          <div class="card-deck">
+            <div class="card-height card p-0">
+              <img class="card-img-top"
+                   src="{% static 'img/article/fidel-odinga-road.jpg' %}"
+                   alt="Card image cap">
+              <div class="card-body">
+                <h6 class="pt-2 small m-0">NAIROBI COUNTY</h6>
+                <h4 class="card-width card-title lead"><strong>Mike Sonko
+                  Lauches
+                  Neighbourhood Street Naming Exercise</strong></h4>
+                <div class="d-flex small justify-content-between text-muted">
+                  <p class="pull-left">By Eric Mugendi</p>
+                  <p class="pull-right">Sat 16th Dec 2017</p>
+                </div>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur
+                  adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut....<a
+                      href="">Read more</a></p>
+              </div>
+            </div>
+            <div class="card-height card p-0">
+              <img class="card-img-top"
+                   src="{% static 'img/article/fidel-odinga-road.jpg' %}"
+                   alt="Card image cap">
+              <div class="card-body">
+                <h6 class="pt-2 small m-0">NAIROBI COUNTY</h6>
+                <h4 class="card-width card-title lead"><strong>Mike Sonko
+                  Lauches
+                  Neighbourhood Street Naming Exercise</strong></h4>
+                <div class="d-flex small justify-content-between text-muted">
+                  <p class="pull-left">By Eric Mugendi</p>
+                  <p class="pull-right">Sat 16th Dec 2017</p>
+                </div>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur
+                  adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut....<a
+                      href="">Read more</a></p>
+              </div>
+            </div>
+            <div class="card-height card p-0">
+              <img class="card-img-top"
+                   src="{% static 'img/article/fidel-odinga-road.jpg' %}"
+                   alt="Card image cap">
+              <div class="card-body">
+                <h6 class="pt-2 small m-0">NAIROBI COUNTY</h6>
+                <h4 class="card-width card-title lead"><strong>Mike Sonko
+                  Lauches
+                  Neighbourhood Street Naming Exercise</strong></h4>
+                <div class="d-flex small justify-content-between text-muted">
+                  <p class="pull-left">By Eric Mugendi</p>
+                  <p class="pull-right">Sat 16th Dec 2017</p>
+                </div>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur
+                  adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut....<a
+                      href="">Read more</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row pl-5 pr-5 pt-5 pb-5">
+          <div class="card-deck">
+            <div class="card-height card p-0">
+              <img class="card-img-top"
+                   src="{% static 'img/article/fidel-odinga-road.jpg' %}"
+                   alt="Card image cap">
+              <div class="card-body">
+                <h6 class="pt-2 small m-0">NAIROBI COUNTY</h6>
+                <h4 class="card-width card-title lead"><strong>Mike Sonko
+                  Lauches
+                  Neighbourhood Street Naming Exercise</strong></h4>
+                <div class="d-flex small justify-content-between text-muted">
+                  <p class="pull-left">By Eric Mugendi</p>
+                  <p class="pull-right">Sat 16th Dec 2017</p>
+                </div>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur
+                  adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut....<a
+                      href="">Read more</a></p>
+              </div>
+            </div>
+            <div class="card-height card p-0">
+              <img class="card-img-top"
+                   src="{% static 'img/article/fidel-odinga-road.jpg' %}"
+                   alt="Card image cap">
+              <div class="card-body">
+                <h6 class="pt-2 small m-0">NAIROBI COUNTY</h6>
+                <h4 class="card-width card-title lead"><strong>Mike Sonko
+                  Lauches
+                  Neighbourhood Street Naming Exercise</strong></h4>
+                <div class="d-flex small justify-content-between text-muted">
+                  <p class="pull-left">By Eric Mugendi</p>
+                  <p class="pull-right">Sat 16th Dec 2017</p>
+                </div>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur
+                  adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut....<a
+                      href="">Read more</a></p>
+              </div>
+            </div>
+            <div class="card-height card p-0">
+              <img class="card-img-top"
+                   src="{% static 'img/article/fidel-odinga-road.jpg' %}"
+                   alt="Card image cap">
+              <div class="card-body">
+                <h6 class="pt-2 small m-0">NAIROBI COUNTY</h6>
+                <h4 class="card-width card-title lead"><strong>Mike Sonko
+                  Lauches
+                  Neighbourhood Street Naming Exercise</strong></h4>
+                <div class="d-flex small justify-content-between text-muted">
+                  <p class="pull-left">By Eric Mugendi</p>
+                  <p class="pull-right">Sat 16th Dec 2017</p>
+                </div>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur
+                  adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut....<a
+                      href="">Read more</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="row pl-5 pr-5 pt-5 pb-5">
-      <div class="card-deck">
-        <div class="card-height card p-0">
-          <img class="card-img-top"
-               src="{% static 'img/article/fidel-odinga-road.jpg' %}"
-               alt="Card image cap">
-          <div class="card-body">
-            <h6 class="pt-2 small m-0">NAIROBI COUNTY</h6>
-            <h4 class="card-width card-title lead"><strong>Mike Sonko Lauches
-              Neighbourhood Street Naming Exercise</strong></h4>
-            <div class="d-flex small justify-content-between text-muted">
-              <p class="pull-left">By Eric Mugendi</p>
-              <p class="pull-right">Sat 16th Dec 2017</p>
-            </div>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur
-              adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut....<a
-                  href="">Read more</a></p>
-          </div>
-        </div>
-        <div class="card-height card p-0">
-          <img class="card-img-top"
-               src="{% static 'img/article/fidel-odinga-road.jpg' %}"
-               alt="Card image cap">
-          <div class="card-body">
-            <h6 class="pt-2 small m-0">NAIROBI COUNTY</h6>
-            <h4 class="card-width card-title lead"><strong>Mike Sonko Lauches
-              Neighbourhood Street Naming Exercise</strong></h4>
-            <div class="d-flex small justify-content-between text-muted">
-              <p class="pull-left">By Eric Mugendi</p>
-              <p class="pull-right">Sat 16th Dec 2017</p>
-            </div>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur
-              adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut....<a
-                  href="">Read more</a></p>
-          </div>
-        </div>
-        <div class="card-height card p-0">
-          <img class="card-img-top"
-               src="{% static 'img/article/fidel-odinga-road.jpg' %}"
-               alt="Card image cap">
-          <div class="card-body">
-            <h6 class="pt-2 small m-0">NAIROBI COUNTY</h6>
-            <h4 class="card-width card-title lead"><strong>Mike Sonko Lauches
-              Neighbourhood Street Naming Exercise</strong></h4>
-            <div class="d-flex small justify-content-between text-muted">
-              <p class="pull-left">By Eric Mugendi</p>
-              <p class="pull-right">Sat 16th Dec 2017</p>
-            </div>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur
-              adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut....<a
-                  href="">Read more</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row pl-5 pr-5 pt-5 pb-5">
-      <div class="card-deck">
-        <div class="card-height card p-0">
-          <img class="card-img-top"
-               src="{% static 'img/article/fidel-odinga-road.jpg' %}"
-               alt="Card image cap">
-          <div class="card-body">
-            <h6 class="pt-2 small m-0">NAIROBI COUNTY</h6>
-            <h4 class="card-width card-title lead"><strong>Mike Sonko Lauches
-              Neighbourhood Street Naming Exercise</strong></h4>
-            <div class="d-flex small justify-content-between text-muted">
-              <p class="pull-left">By Eric Mugendi</p>
-              <p class="pull-right">Sat 16th Dec 2017</p>
-            </div>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur
-              adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut....<a
-                  href="">Read more</a></p>
-          </div>
-        </div>
-        <div class="card-height card p-0">
-          <img class="card-img-top"
-               src="{% static 'img/article/fidel-odinga-road.jpg' %}"
-               alt="Card image cap">
-          <div class="card-body">
-            <h6 class="pt-2 small m-0">NAIROBI COUNTY</h6>
-            <h4 class="card-width card-title lead"><strong>Mike Sonko Lauches
-              Neighbourhood Street Naming Exercise</strong></h4>
-            <div class="d-flex small justify-content-between text-muted">
-              <p class="pull-left">By Eric Mugendi</p>
-              <p class="pull-right">Sat 16th Dec 2017</p>
-            </div>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur
-              adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut....<a
-                  href="">Read more</a></p>
-          </div>
-        </div>
-        <div class="card-height card p-0">
-          <img class="card-img-top"
-               src="{% static 'img/article/fidel-odinga-road.jpg' %}"
-               alt="Card image cap">
-          <div class="card-body">
-            <h6 class="pt-2 small m-0">NAIROBI COUNTY</h6>
-            <h4 class="card-width card-title lead"><strong>Mike Sonko Lauches
-              Neighbourhood Street Naming Exercise</strong></h4>
-            <div class="d-flex small justify-content-between text-muted">
-              <p class="pull-left">By Eric Mugendi</p>
-              <p class="pull-right">Sat 16th Dec 2017</p>
-            </div>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur
-              adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut....<a
-                  href="">Read more</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+      >>>>>>> ft_wajibisha
 
 {% endblock %}

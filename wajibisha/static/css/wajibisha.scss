@@ -4,6 +4,7 @@ $color-orange: #f7971d;
 $color-yellow: #f8ca0f;
 $color-green: #4cae4e;
 
+
 body {
   background-color: #F6F9FC !important;
 }
@@ -93,6 +94,15 @@ body {
 
 }
 
+.column-third-promise{
+  width: 48%;
+}
+
+.column-third-profile.text-right {
+    margin-top: -130px!important;
+    //width: 110%;
+}
+
 .promises-header {
   background-color: #0067a3;
   height: 300px;
@@ -141,9 +151,17 @@ body {
   color: #0067a3;
 }
 
+.main-card {
+  height:600px;
+}
+.height-card {
+  height:450px;
+}
+
 /*COLORS AND TEXT */
-.space {
-  padding-top: 1rem;
+.sub-title {
+  color:#b7e4ff;
+  font-size:1.2rem;
 }
 
 .yellow-text {
@@ -160,10 +178,6 @@ body {
 
 .body-text:hover {
   color: #707070;
-}
-
-.breadcrumb-color {
-  color: #006699;
 }
 
 .borders-color {
@@ -204,12 +218,6 @@ body {
 
 .tweet-card.card.border.rounded {
   border-color: #bfd9e8 !important;
-}
-
-.team {
-  padding: 0;
-  margin: 3rem;
-  height: 230px;
 }
 
 .input-group-btn {
@@ -320,7 +328,7 @@ select.form-control.form-control-lg {
   width: 100%;
 }
 
-/*CATEGORY SECTION*/
+/* CATEGORY SECTION */
 .btn.btn-primary-right {
   color: #808080;
   border-color: #808080;
@@ -355,11 +363,11 @@ select.form-control.form-control-lg {
   color: #ededed;
 }
 
-/* CARDS*/
+/* CARDS */
 
 .card-hw {
-  height: 610px;
-  width: 300px;
+  height:610px;
+  width:300px;
 }
 
 .card-height {
@@ -538,3 +546,67 @@ img.img-width.d-block.p-0 {
   background-color: #f9f9f9;
   color: #001b1b !important;
 }
+.progress-bar {
+  height:4px!important;
+}
+
+/* disable the hover effect on boostrap table /safari/firefox */
+.table tbody tr:hover td,
+.table tbody tr:hover th {
+    background-color: inherit;
+}
+
+/* Diaable the hover effect on boostrap table on chrome*/
+table tr:hover td { 
+   background-color: inherit;     
+   opacity: 1.0;
+}
+
+
+/* TEAM SECTION */
+
+.team {
+  height:400px;
+  margin:10px;
+}
+
+.team img {
+  display:block;
+  width:250px;
+  height:auto;
+  max-width:100%;
+  max-height:250px; 
+}
+
+td.table-width {
+  width:10rem!important;
+}
+
+.table-content {
+  padding-bottom:2rem;
+}
+
+.table td, 
+.table th {
+  padding:0!important;
+}
+
+img.p-0.card_status_img {
+  height:150px;
+}
+
+.dropdown {
+  width:300px;
+  font-size:14px;
+  font-weight:100;
+}
+
+
+
+/*btn-group.pl-4.pr-5.tab {
+  position:relative;
+  display:inline-block;
+  font-size:0;
+  vertical-align:middle;
+  white-space:nowrap;
+} */
