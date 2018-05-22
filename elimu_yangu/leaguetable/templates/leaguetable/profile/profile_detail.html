@@ -370,18 +370,7 @@
     <script src="{% static 'lib/jquery.nice-select/js/jquery.nice-select.min.js' %}"></script>
     <script src="{% static 'js/site.js' %}"></script>
     <script type="text/javascript">
-        // Fx to show table embed code
-        var greenIcon = L.icon({
-          iconUrl: 'marker-icon-yellow.png',
-          shadowUrl: 'marker-shadow.png',
-
-          iconSize:     [38, 95], // size of the icon
-          shadowSize:   [50, 64], // size of the shadow
-          iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-          shadowAnchor: [4, 62],  // the same for the shadow
-          popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-      });
-
+      //for each point show school name and url
       function onEachFeature(feature, layer) {
           layer.bindPopup("<a href=" + feature.properties.code+">"+feature.properties.name+" SCHOOL </a><br />"+ feature.properties.latitude + "," + feature.properties.longitude );
       }
@@ -404,7 +393,7 @@
             });
           }
 
-          L.geoJson(geojsonFeature, {onEachFeature: onEachFeature}, {icon: greenIcon}).addTo(maps.map)
+          L.geoJson(geojsonFeature, {onEachFeature: onEachFeature}).addTo(maps.map)
         }
         function embedTable(geo_level, geo_code){
             var text = '&lt;iframe src="{{ HURUMAP.url }}/leaguetable/embed/' + geo_level + '/' + geo_code +
