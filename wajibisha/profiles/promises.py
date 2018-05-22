@@ -195,6 +195,3 @@ def get_promises_by_status(geo, session):
             data[i.lower().replace(' ', '_')] = 0
         data['total'] = 0
         return data
-
-
-
