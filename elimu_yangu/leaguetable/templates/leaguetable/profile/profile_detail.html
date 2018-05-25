@@ -57,6 +57,19 @@
     #profile #compare-place-picker h2 {
       margin-top: 5px;
     }
+    .stat-row {
+      border: none;
+    }
+    .chart {
+      border: none;
+      padding: 5px 0;
+    }
+    article .section-container {
+      border-bottom: none;
+    }
+    .section-container .area {
+      background-color: #D0A331;
+    }
 
 </style>
 <header id="page-header">
@@ -297,31 +310,44 @@
 {% block profile_detail %}
 <article id="schools" class="clearfix">
     <header class="section-contents">
-        <h1>{% trans 'Ownership' %}</h1>
+        <h1>{% trans 'Schools Demographics' %}</h1>
     </header>
     <div class="section-container">
         <section class="clearfix stat-row">
-            <br />
-            <div class="column-two-thirds" id="chart-bar-schools-schools_distribution" data-stat-type="scaled-percentage"
-                data-chart-title="Schools by ownership status" data-qualifier="Universe: {{ schools_distribution.metadata.universe }}"></div>
+          <div class="column-quarter">
+              {% include 'profile/_blocks/_stat_list.html' with stat=schools.total_schools stat_type='number'  %}
+          </div>
+          <div class="column-quarter">
+              <div id="chart-pie-schools-schools_distribution" data-stat-type="scaled-percentage" data-chart-title="Ownership Distribution"></div>
+          </div>
+          <div class="column-half"><div id="chart-column-schools-region_distribution" data-stat-type="scaled-percentage"
+              data-chart-title="Schools by region status"></div>
+          </div>
         </section>
+        <!-- <section class="clearfix stat-row">
+          <div class="column-third">
+            <div id="chart-bar-schools-category_distribution" data-stat-type="scaled-percentage" data-chart-title="School Has Equal or More Than 40 Students?"></div>
+          </div>
+          <div class="column-third">
+            <div id="chart-bar-schools-gpa_group_distribution" data-stat-type="number" data-chart-title="School Has Equal or More Than 40 Students?"></div>
+          </div>
+        </section> -->
     </div>
 </article>
 
-<article id="schools" class="clearfix" style="overflow:auto;">
+<!-- <article id="schools" class="clearfix" style="overflow:auto;">
     <header class="section-contents">
         <h1>{%trans 'Regions' %}</h1>
     </header>
     <div class="section-container" style="overflow:auto;">
         <section class="clearfix stat-row">
             <br />
-            <div class="column-full" id="chart-column-schools-region_distribution" data-stat-type="scaled-percentage"
-                data-chart-title="Schools by region status" data-qualifier="Universe: {{ region_distribution.metadata.universe }}"></div>
+
         </section>
     </div>
-</article>
+</article> -->
 
-<article id="schools" class="clearfix">
+<!-- <article id="schools" class="clearfix">
     <header class="section-contents">
         <h1>{% trans 'Averege GPA' %}</h1>
     </header>
@@ -336,7 +362,7 @@
             </div>
         </section>
     </div>
-</article>
+</article> -->
 
 {% endblock %}
 

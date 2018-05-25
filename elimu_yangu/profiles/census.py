@@ -32,22 +32,21 @@ def get_profile(geo, profile_name, request, year):
         session.close()
 
 def get_schools_profile(geo, session, year):
-    print geo.geo_level
     # ownership status
-    schools_dist, total_schools = get_stat_data(['ownership'], geo, session)
-    # region status
-    region_dist, total_schools = get_stat_data(['region'], geo, session)
+    schools_dist, total_schools = get_stat_data(['ownership'], geo=geo, session=session, only={'year_of_result': [year]})
+    #school_dist_data, _ = get_stat_data('age in completed years',geo=geo, session=session, only={'year_of_result': [year]})
+    if geo.geo_level == "country":
+        reg = 'region'
+    elif geo.geo_level == "region":
+        reg = 'district'
+    elif geo.geo_level == "district":
+        reg = 'ward'
+    region_dist, total_schools = get_stat_data([reg], geo=geo, session=session, only={'year_of_result': [year]})
 
-    totalschools = session.query(func.count(Base.metadata.tables['secondary_school'].c.code))\
-                .filter(Base.metadata.tables['secondary_school'].c.geo_level == geo.geo_level)\
-                .filter(Base.metadata.tables['secondary_school'].c.geo_code == geo.geo_code)\
-                .filter(Base.metadata.tables['secondary_school'].c.year_of_result == year)\
-                .one()
-
+    category_dist, _ = get_stat_data(['more_than_40'], geo=geo, session=session, only={'year_of_result': [year]})
     # Choosing sorting option
     #Sorting will only be done using national_rank all, as regional and district ranks are unknown for some result esp historical
     rank_column = Base.metadata.tables['secondary_school'].c.national_rank_all
-
     # Getting top for schools with more than 40 students
     top_schools_40_more = session.query(Base.metadata.tables['secondary_school'])\
                     .filter(Base.metadata.tables['secondary_school'].c.geo_level == geo.geo_level)\
@@ -94,24 +93,29 @@ def get_schools_profile(geo, session, year):
         bucket = 1 * (gpa / 1)
         return '%d-%d' % (bucket, bucket + 2)
 
-    gpa_dist_data, _ = get_stat_data(
+    gpa_dist_data, total_schools = get_stat_data(
         'avg_gpa', geo, session,
         table_fields=['code', 'name', 'avg_gpa'],
-        recode=gpa_recode, exclude=['unspecified'])
+        recode=gpa_recode, exclude=['unspecified'], only={'year_of_result': [year]})
 
     total_private = 0.0
-    for data in schools_dist['PRIVATE'].itervalues():
+    for data in schools_dist['Non-Government'].itervalues():
         if 'numerators' in data:
             total_private += data['numerators']['this']
 
     return {
         'schools_distribution': schools_dist,
         'region_distribution': region_dist,
+        'category_distribution': category_dist,
         'best_schools_more_40': top_schools_40_more,
         'worst_schools_more_40': lowest_schools_40_more,
         'best_schools_less_40': top_schools_40_less,
         'worst_schools_less_40': lowest_schools_40_less,
         'gpa_group_distribution': gpa_dist_data,
+        'total_schools': {
+            "name": "Schools",
+            "values": {"this": total_schools}
+        },
         'median_gpa': {
             "name": "Median GPA",
             "values": {"this": median},
