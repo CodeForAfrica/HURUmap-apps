@@ -44,6 +44,8 @@ def get_schools_profile(geo, session, year):
     region_dist, total_schools = get_stat_data([reg], geo=geo, session=session, only={'year_of_result': [year]})
 
     category_dist, _ = get_stat_data(['more_than_40'], geo=geo, session=session, only={'year_of_result': [year]})
+
+    gender_dist, _ = get_stat_data(['gender'], geo=geo, session=session, only={'year_of_result': [year]})
     # Choosing sorting option
     #Sorting will only be done using national_rank all, as regional and district ranks are unknown for some result esp historical
     rank_column = Base.metadata.tables['secondary_school'].c.national_rank_all
@@ -112,6 +114,7 @@ def get_schools_profile(geo, session, year):
         'best_schools_less_40': top_schools_40_less,
         'worst_schools_less_40': lowest_schools_40_less,
         'gpa_group_distribution': gpa_dist_data,
+        'gender_distribution': gender_dist,
         'total_schools': {
             "name": "Schools",
             "values": {"this": total_schools}
