@@ -19,7 +19,6 @@ gunicorn==19.7.1
 idna==2.6
 libsass==0.13.3
 paramiko==1.18.4
-pkg-resources==0.0.0
 psycopg2==2.7.4
 pycrypto==2.6.1
 PyYAML==3.12
