@@ -7,6 +7,7 @@ from django.http import HttpResponse, HttpResponseRedirect, JsonResponse, Http40
 from django.conf import settings
 import os, json
 from django.utils import translation
+from django.db.models import Q
 from django.core import serializers
 from django.core.serializers.json import DjangoJSONEncoder
 from elimu_yangu.universityfinder.forms import InputForm
@@ -25,9 +26,10 @@ def index(request):
             dataRequest = json.loads(request.body)
             subjects = dataRequest['subjectGrade']
             majors = dataRequest["preferedCourse"]
-
             result = []
             #Check if general studies has no Satisfactory grade
+            if 'General Studies' not in subjects:
+                return HttpResponse(json.dumps([{'course': "General Studies should be Satisfactory", 'university': "General Studies should be Satisfactory"}]),  content_type='application/json')
             gsGrade = subjects["General Studies"]
             if gsGrade != "S":
                 return HttpResponse(json.dumps([{'course': "General Studies should be Satisfactory", 'university': "General Studies should be Satisfactory"}]),  content_type='application/json')
@@ -37,22 +39,22 @@ def index(request):
                 return HttpResponse(json.dumps([{'course': "You have entered less than 3 subjects", 'university': "You have entered less than 3 subjects"}]),  content_type='application/json')
 
             #check preference majors choosen
-            if majors.length == 0:
+            if len(majors) == 0:
                 majors = ["None"]
             #delete general studies from subjects dict
             del subjects["General Studies"]
-
             data = find_uni_courses(subjects, majors)
-
             for elem in data:
-                result.append({'course': elem.course_name, 'university': elem.university_name})
+                if ({'course': elem.course_name, 'university': elem.university_name} not in result):
+                    result.append({'course': elem.course_name, 'university': elem.university_name})
             #return HttpResponse({'list_courses': data}, content_type="application/json")
             return HttpResponse(json.dumps(result), content_type='application/json')
 
         else:
             form = InputForm(label_suffix="  ")
             return render(request, 'index.html', {'form': form})
-    except:
+    except Exception as e:
+        print e
         raise Http404("Oops, something went wrong!")
 
 def find_uni_courses(subjects, majors):
@@ -61,17 +63,16 @@ def find_uni_courses(subjects, majors):
     total_points = count_grade_points(subjects)
     subject_list = subjects.keys()
     for major in majors:
-        points_check = {'total_points__lte': total_points}
+        points_check = {'total_point__lte': total_points}
         if major == "None":
             preferedCourse = UniversityFinder.objects.filter(compulsory_alevel__has_any_keys=subject_list).filter(**points_check)
         else:
-            preferedCourse = UniversityFinder.objects.filter(Q(major_name__icontains=major)| Q(university_name__icontains=major)).filter(**points_check).filter(compulsory_alevel__has_any_keys=subject_list)
+            preferedCourse = UniversityFinder.objects.filter(Q(major_name__icontains=major)| Q(course_name__icontains=major)).filter(**points_check).filter(compulsory_alevel__has_any_keys=subject_list)
 
         for subject, grade in subjects.items():
             position = grades_list.index(grade)
 
             subGrageList = grades_list[position:]
-            print subGrageList
             subject_check = {'compulsory_alevel__has_key':subject}
 
             for subGrade in subGrageList:

@@ -197,25 +197,6 @@
                 break;
             }
 
-        })
-
-        /*
-         * ----------------------------------------------------------------------------------------
-         *  TESTIMONIAL JS
-         * ----------------------------------------------------------------------------------------
-         */
-
-        $(".testimonial-list").owlCarousel({
-            items: 1,
-            autoPlay: true,
-            navigation: false,
-            itemsDesktop: [1199, 1],
-            itemsDesktopSmall: [980, 1],
-            itemsTablet: [768, 1],
-            itemsTabletSmall: false,
-            itemsMobile: [479, 1],
-            pagination: true,
-            autoHeight: true,
         });
 
 
@@ -398,7 +379,7 @@
 
 
          function getUniversityCourses(subjectGrades, preferedCourses) {
-           var info = {'subjectGrade': subjectGrades, 'preferedCourse': preferedCourses}
+           var info = {"subjectGrade": subjectGrades, "preferedCourse": preferedCourses}
            var url = "/" + lang + "/university-finder/";
            $.ajax({
                 type: "POST",
