@@ -8,22 +8,23 @@
       <div class="card-group pb-2 body-text">
         {% for tweet in tweets %}
           <div class="tweet-card card border rounded">
-          <div class="d-flex flex-row">
-            <div class="pl-2 pt-4"><img class="rounded-circle"
-                                        src="{{ tweet.profile_image_url }}"
-                                        alt="Placeholder" height="70" width="70"></div>
-            <div class="pl-3 pr-2 pt-4">
-              <p>{{ tweet.name }}@{{ tweet.screen_name }}</p>
-              <p class="pr-4">{{ tweet.text | urlize }}</p>
-              <p class="text-right pr-2 pt-3">
+            <div class="d-flex flex-row">
+              <div class="pl-2 pt-4"><img class="rounded-circle"
+                                          src="{{ tweet.profile_image_url }}"
+                                          alt="Placeholder" height="70"
+                                          width="70"></div>
+              <div class="pl-3 pr-2 pt-4">
+                <p>{{ tweet.name }}@{{ tweet.screen_name }}</p>
+                <p class="pr-4">{{ tweet.text | urlize }}</p>
+                <p class="text-right pr-2 pt-3">
                 <span><i class="fa fa-retweet fa-lg ml-3"
                          aria-hidden="true">{{ tweet.retweet_count }}</i></span>
-                <span><i class="fa fa-heart-o fa-lg ml-3"
-                         aria-hidden="true">{{ tweet.favorite_count }}</i></span>
-              </p>
+                  <span><i class="fa fa-heart-o fa-lg ml-3"
+                           aria-hidden="true">{{ tweet.favorite_count }}</i></span>
+                </p>
+              </div>
             </div>
           </div>
-        </div>
         {% endfor %}
 
       </div>
