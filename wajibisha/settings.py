@@ -64,6 +64,7 @@ WAJIBISHA['geometry_data'] = {
 
 TEMPLATE_CONTEXT_PROCESSORS += (
     'wajibisha.utils.context_processors.get_homepage_promises',
+    'wajibisha.utils.context_processors.fetch_tweets',
 )
 
 LOGGING['loggers']['wajibisha'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
@@ -75,6 +76,11 @@ WAJIBISHA['trello_boards'] = {
     'Nairobi': 'https://api.trello.com/1/boards/hmtAAEVr'
 }
 
+# twitter
+TWITTER_CONSUMER_KEY = os.environ.get('TWITTER_CONSUMER_KEY')
+TWITTER_CONSUMER_SECRET = os.environ.get('TWITTER_CONSUMER_SECRET')
+TWITTER_ACCESS_TOKEN = os.environ.get('TWITTER_ACCESS_TOKEN')
+TWITTER_ACCESS_TOKEN_SECRET = os.environ.get('TWITTER_ACCESS_TOKEN_SECRET')
 # Making sure they are the same
 
 HURUMAP = WAJIBISHA
