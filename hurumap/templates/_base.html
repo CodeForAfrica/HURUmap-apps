@@ -81,4 +81,59 @@
 
 {% block body_javascript %}
     {{ block.super }}
+
+    {#  Navbar scroll stuff  #}
+    <script>
+        // Hide Header on on scroll down
+        var didScroll;
+        var lastScrollTop = 0;
+        var delta = 5;
+        var navbarHeight = $('header').outerHeight();
+
+        $(window).scroll(function(event){
+            didScroll = true;
+        });
+
+        setInterval(function() {
+            if (didScroll) {
+                hasScrolled();
+                didScroll = false;
+            }
+        }, 250);
+
+        function hasScrolled() {
+            var st = $(this).scrollTop();
+
+            // Make sure they scroll more than delta
+            if(Math.abs(lastScrollTop - st) <= delta)
+                return;
+
+            // If they scrolled down and are past the navbar, add class .nav-up.
+            // This is necessary so you never see what is "behind" the navbar.
+            if (st > lastScrollTop && st > navbarHeight){
+                // Scroll Down
+                $('#page-header').removeClass('nav-down').addClass('nav-up');
+                $('.floating-nav').removeClass('affix-top').addClass('affix');
+            } else {
+                // Scroll Up
+{#                if(st + $(window).height() < $(document).height()) {#}
+                if(st == 0) {
+                    $('#page-header').removeClass('nav-up').addClass('nav-down');
+                    $('.floating-nav').removeClass('affix').addClass('affix-top');
+                }
+            }
+
+            lastScrollTop = st;
+        }
+
+        // Google Analytics: multiple trackers supports
+        //                   default tracker is internally named 't0', we'll name these
+        //                   t1, t2, etc.
+        // see: https://developers.google.com/analytics/devguides/collection/analyticsjs/creating-trackers
+        {% for ga_tracking_id in HURUMAP.ga_tracking_ids %}
+           ga('create', '{{ ga_tracking_id }}', 'auto', {'name': 't{{ forloop.counter }}' });
+           ga('t{{ forloop.counter }}.send', 'pageview');
+        {% endfor %}
+    </script>
+
 {%  endblock %}

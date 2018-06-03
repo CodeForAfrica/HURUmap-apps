@@ -60,7 +60,8 @@ HURUMAP['geometry_data'] = {
         }
 }
 
-HURUMAP['ga_tracking_ids'] = ['UA-91133100-4']
+HURUMAP['ga_tracking_id'] = 'UA-91133100-4'
+
 HURUMAP['twitter'] = '@Code4Africa'
 
 HURUMAP['map_centre'] = [-6.1523563, 35.6754813]
@@ -115,7 +116,8 @@ HURUMAP['topics']['development'] = {
     'desc': '',
     'profiles': [
         'traffic and crimes',
-        'water sources'
+        'water sources',
+        'airport types'
     ]
 }
 
