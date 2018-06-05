@@ -9,17 +9,16 @@
         {% for tweet in tweets %}
           <div class="tweet-card card border rounded">
             <div class="d-flex flex-row">
-              <div class="pl-2 pt-4"><img class="rounded-circle"
+              <div class="pl-2 pt-3"><img class="rounded-circle"
                                           src="{{ tweet.profile_image_url }}"
-                                          alt="Placeholder" height="70"
-                                          width="70"></div>
+                                          alt="Twitter Image"></div>
               <div class="pl-3 pr-2 pt-4">
                 <p>{{ tweet.name }}@{{ tweet.screen_name }}</p>
                 <p class="pr-4">{{ tweet.text | urlize }}</p>
-                <p class="text-right pr-2 pt-3">
-                <span><i class="fa fa-retweet fa-lg ml-3"
+                <p class="text-right pr-2">
+                <span><i class="fa fa-retweet fa-sm ml-3"
                          aria-hidden="true">{{ tweet.retweet_count }}</i></span>
-                  <span><i class="fa fa-heart-o fa-lg ml-3"
+                  <span><i class="fa fa-heart-o fa-sm ml-3"
                            aria-hidden="true">{{ tweet.favorite_count }}</i></span>
                 </p>
               </div>
