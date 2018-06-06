@@ -4,6 +4,10 @@ import tweepy
 from wajibisha.settings import TWITTER_ACCESS_TOKEN, \
     TWITTER_ACCESS_TOKEN_SECRET, TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET
 
+import logging
+
+log = logging.getLogger(__name__)
+
 
 BASE_URL = 'https://twitter.com/'
 
@@ -48,6 +52,7 @@ def get_homepage_promises(request):
 
 def fetch_tweets(request):
     try:
+        log.info('Getting Tweets')
         auth = tweepy.OAuthHandler(TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET)
         auth.set_access_token(TWITTER_ACCESS_TOKEN, TWITTER_ACCESS_TOKEN_SECRET)
 
@@ -55,6 +60,7 @@ def fetch_tweets(request):
 
         # get the 3 latest tweets
         public_tweets = api.user_timeline(screen_name='PesaCheck', count=3)
+        # log.debug(public_tweets)
 
         formated_tweets = [
             {'url': BASE_URL + tweet.user.screen_name + '/' + str(tweet.id),
@@ -64,11 +70,11 @@ def fetch_tweets(request):
              'profile_image_url': tweet.author.profile_image_url,
              'name': tweet.author.name} for tweet in public_tweets]
 
-        print formated_tweets
+        log.debug(formated_tweets[1]['text'])
 
         return {
             'tweets': formated_tweets
         }
     except Exception as e:
-        print e.message
+        log.error(e.message)
         return []
