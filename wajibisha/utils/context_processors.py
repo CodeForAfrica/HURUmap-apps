@@ -70,4 +70,5 @@ def fetch_tweets(request):
             'tweets': formated_tweets
         }
     except Exception as e:
+        print e.message
         return []
