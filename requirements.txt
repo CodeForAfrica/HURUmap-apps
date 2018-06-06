@@ -1,4 +1,4 @@
-gevent==1.0.1
+gevent==1.2.1
 gunicorn==19.7.1
 wazimap==1.1.1
 GDAL==1.11.0
