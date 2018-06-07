@@ -1,0 +1,172 @@
+{% load sass_tags staticfiles %}
+<div class="">
+  <div class="showcase how-it-works text-center body-text">
+    <div class="d-flex flex-row justify-content-center">
+      <div class="row d-flex flex-row justify-content-end pb-5 ">
+        <p class="small pt-2 pb-3">Filter by:</p>
+        <div class="pl-3 dropdown">
+          <select class="form-control promise-select dropdown-toggle"
+                  data-style="btn-primary" id="status_select"
+                  onchange="filter()">
+            <option value="all" class="dropdown-menu">Status</option>
+            {% for status in statuses %}
+              <option class="dropdown-item"
+                      value="{{ status | safe }}">{{ status }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="dropdown pl-3">
+          <select class="form-control promise-select" id="sector_select"
+                  onchange="filter()">
+            <option class="dropdown-menu" value="all">Sector</option>
+            {% for sector in sectors %}
+              <option value="{{ sector | safe }}">{{ sector }}</option>
+            {% endfor %}
+
+          </select>
+        </div>
+
+      </div>
+    </div>
+
+    <!--fulfilled card section-->
+    <div class="container pt-5">
+      <div class="row pt-5 pb-5" id="promises_container">
+
+      </div>
+
+      <!--./end of fulfilled card section-->
+
+
+    </div>
+  </div>
+
+  <script>
+      var promises_list = {{ promises_json }};
+      var promises_display_list = {{ promises_json }};
+      writeHTML(promises_display_list);
+
+      function filterByStatus(list) {
+          var selectedStatus = document.getElementById("status_select").value;
+          console.log(selectedStatus);
+          var first_round_filter = _.filter(list, function (promise) {
+              if (selectedStatus === 'all') {
+                  return true;
+              } else {
+                  return promise.status === selectedStatus;
+              }
+
+          });
+
+          return first_round_filter
+
+      }
+
+      function filterBySector(list) {
+          var selectedSector = document.getElementById("sector_select").value;
+          console.log(selectedSector);
+          var second_filter = _.filter(list, function (promise) {
+              if (selectedSector === 'all') {
+                  return true;
+              } else {
+                  return promise.sector === selectedSector;
+              }
+
+          });
+
+          return second_filter;
+
+      }
+
+      function getPromiseHTML(promise) {
+          var html = "<div class=\"col-6 pt-5 pr-5 pl-5\">\n" +
+              "            <table class=\"table table-bordered bg-light promise-item\"\n" +
+              "              style=\"table-layout:fixed;\">\n" +
+              "              <tbody>\n" +
+              "              <tr>\n" +
+              "                <td class=\"table-width\">\n" +
+              "                <img class=\"p-0 card_status_img\" src=\"/static/img/tracker/status/";
+
+          var card_img = "";
+          switch (promise.status) {
+              case 'In Progress':
+                  card_img = "in-progress-portrait.svg\" ";
+                  break;
+              case 'Done':
+                  card_img = "fulfilled-portrait.svg\" ";
+                  break;
+              case 'Five years plans':
+                  card_img = "stalled-portrait.svg\" ";
+                  break;
+              case 'Altered Promise':
+                  card_img = "stalled-portrait.svg\" ";
+                  break;
+              case 'Not done':
+                  card_img = "unfulfilled-portrait.svg\" ";
+                  break;
+              default:
+                  card_img = "unfulfilled-portrait.svg\" ";
+          }
+
+          html += card_img + "alt=\"card_image\">\n" +
+              "\n" +
+              "                </td>\n" +
+              "                <td colspan=\"3\">\n" +
+              "                  <button class=\"btn btn-primary rounded-0 pull-right\"\n" +
+              "                          type=\"button\"\n" +
+              "                          style=\"margin-top:-28px;background-color: #0067a3;padding-left: 2rem;padding-right: 2rem;text-transform: uppercase;color:#e6e6e6;letter-spacing:0.04rem;\">"
+
+          html += promise.sector + "</button>\n" +
+              "                  <div class=\"pt-2\"><p\n" +
+              "                      class=\"text-center pt-5\">" + promise.promise;
+
+          html += "</p></div>\n" +
+              "                </td>\n" +
+              "              </tr>\n" +
+              "\n" +
+              "              <tr>\n" +
+              "                <td><p\n" +
+              "                    class=\"m-0 pb-3 pt-3 font-weight-normal text-center\">" + promise.status.toUpperCase();
+
+          html += "</p>\n" +
+              "                </td>\n" +
+              "                <td colspan=\"3\">\n" +
+              "                  <div class=\"d-flex flex-row\">\n" +
+              "                    <p class=\"offset-1\"><img\n" +
+              "                        src=\"{% static 'img/tracker/share.svg' %}\" height=\"15px\"\n" +
+              "                        width=\"15px\"> Share</p>\n" +
+              "                  </div>\n" +
+              "                </td>\n" +
+              "              </tr>\n" +
+              "              </tbody>\n" +
+              "\n" +
+              "            </table>\n" +
+              "          </div>";
+
+          return html;
+      }
+
+      function writeHTML(list) {
+          var full_html = "";
+          for (let promise of list) {
+              full_html += getPromiseHTML(promise)
+          }
+
+          var promises_div = document.getElementById("promises_container");
+          promises_div.innerHTML = "";
+          promises_div.innerHTML = full_html;
+      }
+
+
+      function filter() {
+          var temp_list = filterByStatus(promises_list);
+          console.log("First List");
+          console.log(temp_list);
+          promises_display_list = filterBySector(temp_list);
+          console.log("Final list");
+          console.log(promises_display_list);
+          writeHTML(promises_display_list);
+
+      }
+  </script>
+</div>

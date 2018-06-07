@@ -1,0 +1,139 @@
+{% extends 'profile/profile_detail.html' %}{% load sass_tags staticfiles %}
+
+{% block header_content %}
+  <div id="cover-map" class="clearfix" id="wajibisha_profile_header">
+    <div id="slippy-map"></div>
+    <div id="cover-profile" class="">
+      {% include 'blocks/promises-header.html' with stat=promise_by_status %}
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block profile_detail %}
+  <div class="mt-200">
+
+    <div class="showcase how-it-works text-center">
+      <div class="wrapper clearfix">
+        <h4>PROMISES</h4>
+        <br/>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-12 pull-right">
+            <div class="row d-flex flex-row justify-content-end pb-5"
+                 style="color:#006699;">
+              <p class="small pt-3 pb-3">Group by:</p>
+              <div class="btn-group pl-4 pr-5 tab" role="group"
+                   aria-label="Group by">
+                <button type="button" onclick="openTab(event, 'tab_all')"
+                        class="btn btn-primary pl-4 pr-3 border-2 tablinks"
+                        style="border-top-left-radius:50px;border-bottom-left-radius:50px;">
+                  ALL
+                </button>
+                <button type="button" class="btn pr-4 tablinks"
+                        onclick="openTab(event, 'tab_status')">
+                  STATUS
+                </button>
+                <button type="button" class="btn pr-4 border-2 tablinks active"
+                        onclick="openTab(event, 'tab_sector')"
+                        style="border-top-right-radius:50px;border-bottom-right-radius:50px;">
+                  CATEGORY
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="tabcontent" id="tab_sector" style="display:block;">
+
+        <div class="row pt-5">
+          <!--start of card-->
+          <div class="col-4">
+            {% include 'profile/_blocks/_promise_card.html' with stat=promises.health card_img='img/tracker/category/health.svg' %}
+          </div>
+          <!--second column-->
+          <div class="col-4">
+            {% include 'profile/_blocks/_promise_card.html' with stat=promises.housing card_img='img/tracker/category/housing.svg' %}
+          </div>
+
+          <!--third column-->
+          <div class="col-4">
+            {% include 'profile/_blocks/_promise_card.html' with stat=promises.jobs card_img='img/tracker/category/jobs.svg' %}
+          </div>
+
+          <!--second container start here-->
+          <div class="container pt-5">
+            <div class="row pt-5">
+
+              <div class="col-4">
+                {% include 'profile/_blocks/_promise_card.html' with stat=promises.governance card_img='img/tracker/category/governance.svg' %}
+              </div>
+
+
+              <div class="col-4">
+                {% include 'profile/_blocks/_promise_card.html' with stat=promises.environment card_img='img/tracker/category/environment.svg' %}
+              </div>
+
+
+              <div class="col-4">
+                {% include 'profile/_blocks/_promise_card.html' with stat=promises.traffic card_img='img/tracker/category/traffic-management.svg' %}
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+
+      </div>
+
+      <div class="tabcontent" id="tab_all">
+        {% include 'blocks/filter_promises.html' with promises_json=filtered_promises.promises sectors=filtered_promises.sectors statuses=filtered_promises.statuses %}
+      </div>
+
+      <div class="tabcontent" id="tab_status">
+        <div class="row">
+
+          {% include 'profile/_blocks/promises_by_status.html' with value=promise_by_status.done total=promise_by_status.total status='done' %}
+          {% include 'profile/_blocks/promises_by_status.html' with value=promise_by_status.not_done total=promise_by_status.total status='not done' %}
+
+
+        </div>
+        <div class="row" style="margin-top: 60px">
+          {% include 'profile/_blocks/promises_by_status.html' with value=promise_by_status.in_progress total=promise_by_status.total status='in progress' %}
+          {% include 'profile/_blocks/promises_by_status.html' with value=promise_by_status.five_years_plans total=promise_by_status.total status='stalled' %}
+
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+  <script>
+
+      document.getElementById("tab_sector").click();
+
+      function openTab(evt, tabName) {
+          // Declare all variables
+          var i, tabcontent, tablinks;
+
+          // Get all elements with class="tabcontent" and hide them
+          tabcontent = document.getElementsByClassName("tabcontent");
+          for (i = 0; i < tabcontent.length; i++) {
+              tabcontent[i].style.display = "none";
+          }
+
+          // Get all elements with class="tablinks" and remove the class "active"
+          tablinks = document.getElementsByClassName("tablinks");
+          for (i = 0; i < tablinks.length; i++) {
+              tablinks[i].className = tablinks[i].className.replace(" active", "");
+          }
+
+          // Show the current tab, and add an "active" class to the button that opened the tab
+          document.getElementById(tabName).style.display = "block";
+          evt.currentTarget.className += " active";
+      }
+  </script>
+{% endblock %}

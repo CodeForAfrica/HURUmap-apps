@@ -34,6 +34,13 @@ export DJANGO_SETTINGS_MODULE=hurumap_ke.settings
 export DATABASE_URL=postgresql://hurumap_ke:hurumap_ke@localhost/hurumap_ke
 ```
 
+
+To use Wajibisha,set the environment variables with this:
+```
+export DJANGO_SETTINGS_MODULE=wajibisha.settings
+
+```
+
 Run migrations to keep Django happy:
 ```
 python manage.py migrate
@@ -110,6 +117,20 @@ do
       | egrep -v "(idle_in_transaction_session_timeout|row_security)" \
       > hurumap_ke/sql/$(basename $t .sql).sql
 done
+```
+
+## CRON Job for updating WAJIBISHA promises
+
+To keep the promises updated, we run a job to get promises from trello and update the database
+```sh
+sudo su dokku
+crontab -e
+```
+
+Add the following entry to your crontab
+
+```sh
+0 * * * * echo '{}' | dokku --rm run wajibisha python manage.py scrape_trello
 ```
 
 ## Adding Google Analytics

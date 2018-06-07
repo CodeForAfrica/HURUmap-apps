@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-6185 888 200 226.667">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #0067a3;
+      }
+
+      .cls-2 {
+        fill: #f7971d;
+      }
+
+      .cls-3 {
+        fill: #ee4538;
+      }
+    </style>
+  </defs>
+  <g id="finances" transform="translate(-6211.483 893)">
+    <path id="Path_10" data-name="Path 10" class="cls-1" d="M203.285,128.84l-76.8,64-72.1-69.212a99.978,99.978,0,1,0,148.9,5.21Z" transform="translate(0 -71.175)"/>
+    <path id="Path_11" data-name="Path 11" class="cls-2" d="M90.475,83.732l72.119,69.234v-100A99.682,99.682,0,0,0,90.475,83.732Z" transform="translate(-36.111 -31.299)"/>
+    <path id="Path_12" data-name="Path 12" class="cls-3" d="M357.343,36l.005-.02A99.778,99.778,0,0,0,280.541,0V100Z" transform="translate(-140.801 -5)"/>
+  </g>
+</svg>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="1610 1076 318 318">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        fill: #e7eced;
+      }
+
+      .cls-3 {
+        fill: #556080;
+      }
+
+      .cls-4 {
+        filter: url(#Rectangle_23);
+      }
+    </style>
+    <filter id="Rectangle_23" x="1610" y="1076" width="318" height="318" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_272" data-name="Group 272" transform="translate(1436)">
+    <g class="cls-4" transform="matrix(1, 0, 0, 1, -1436, 0)">
+      <rect id="Rectangle_23-2" data-name="Rectangle 23" class="cls-1" width="300" height="300" transform="translate(1619 1082)"/>
+    </g>
+    <g id="user" transform="translate(208 1107)">
+      <path id="Path_43" data-name="Path 43" class="cls-2" d="M52.722,166.267l-37.3,20.345a33.518,33.518,0,0,0-5.986,4.26,124.925,124.925,0,0,0,160.511.415,33.091,33.091,0,0,0-6.576-4.406l-39.94-19.968a15.231,15.231,0,0,1-8.42-13.623v-15.67a60.327,60.327,0,0,0,3.778-4.859,91.9,91.9,0,0,0,12.416-25.02,12.545,12.545,0,0,0,8.9-11.934V79.079a12.487,12.487,0,0,0-4.179-9.269V45.63S140.89,8,89.931,8,43.938,45.63,43.938,45.63V69.81a12.471,12.471,0,0,0-4.179,9.269V95.806a12.54,12.54,0,0,0,5.783,10.524,83.007,83.007,0,0,0,15.123,31.289V152.9A15.247,15.247,0,0,1,52.722,166.267Z" transform="translate(35.079 29.741)"/>
+      <g id="Group_41" data-name="Group 41" transform="translate(0 0)">
+        <path id="Path_44" data-name="Path 44" class="cls-3" d="M127.141.019A124.926,124.926,0,0,0,44.568,220.574a33.215,33.215,0,0,1,5.929-4.217l37.3-20.345a15.237,15.237,0,0,0,7.939-13.373V167.355a82.928,82.928,0,0,1-15.123-31.289,12.545,12.545,0,0,1-5.783-10.524V108.815a12.487,12.487,0,0,1,4.179-9.269V75.366S74.04,37.737,125,37.737s45.992,37.629,45.992,37.629v24.18a12.471,12.471,0,0,1,4.179,9.269v16.727a12.545,12.545,0,0,1-8.9,11.934,91.9,91.9,0,0,1-12.416,25.02,60.324,60.324,0,0,1-3.778,4.859v15.67a15.226,15.226,0,0,0,8.42,13.623l39.94,19.968a33.257,33.257,0,0,1,6.557,4.4A124.976,124.976,0,0,0,127.141.019Z" transform="translate(0 0)"/>
+      </g>
+    </g>
+  </g>
+</svg>

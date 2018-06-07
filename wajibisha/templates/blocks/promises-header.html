@@ -1,0 +1,75 @@
+{% load sass_tags staticfiles wajibisha_tags %}
+<div class="promises-header clearfix">
+  <div class="wrapper content-container">
+    <div class="column-third-promise text-left">
+      <h2>{{ geography.this.short_name }}</h2>
+      <div class="blue-text">
+        <p class="m-0">
+          Population: {{ demographics.total_population.values.this|floatformat:"0" }}</p>
+        <p>Area: {% if geography.this.square_kms < 1.0 %}
+          {{ geography.this.square_kms|floatformat:"3" }}{% else %}
+          {{ geography.this.square_kms|floatformat:"1" }}{% endif %} sq.km</p>
+      </div>
+      <p class="blue-text">Censes data: 2009</p>
+    </div>
+    <!--<div class="column-third-promise">
+            <div id="custom-search-input">
+                <div class="row">
+                    <div class="col-md-12">
+                        <input class="search-query form-control form-control-lg" placeholder="Search" type="text">
+                    </div>
+                </div>
+            </div>
+        </div>-->
+    <div class="column-third-profile text-right">
+      <img src="{% static 'img/profile/mike-sonko.jpg' %}"
+           class="rounded-circle" height="150px;">
+      <div class="blue-text">
+        <p class="pb-0">
+          <b>Governor : </b> &nbsp Mike Sonko<br>
+          <b>Days in Office:</b> &nbsp 138<br>
+          <b>Term:</b> &nbsp 1st<br>
+        </p>
+      </div>
+    </div>
+
+    <div class="column-third overview">
+      <div class="card-position card p-0 body-text">
+        <div class="card-title pt-3 body-text">OVERVIEW</div>
+        <div class="card-body">
+
+          <div class="column-third body-text">
+            <div class="d-flex flex-column pl-3">
+              <p class="text-left">
+                <b class="content-font-size text-success">{% value_or_zero stat.done %}</b><br>
+                Promises fulfilled
+              </p>
+              <p class="text-left">
+                <b class="content-font-size text-primary">{% value_or_zero stat.in_progress %}</b><br>
+                Promises in progress
+              </p>
+            </div>
+          </div>
+          <div class="column-third body-text">
+            <img src="{% static 'img/tracker/ring-pie-chart.svg' %}">
+            <p class="pt-0 overview-img-text text-center pr-5 pl-5 font-weight-light">
+              <b style="font-size:2rem;">{% value_or_zero stat.total %}</b>
+              Promises in total</p>
+          </div>
+
+          <div class="column-third body-text">
+            <div class="d-flex flex-column pl-3 pr-2">
+              <p class="text-left">
+                <b class="content-font-size text-warning">{% value_or_zero stat.not_done %}</b><br>
+                Promises not fulfilled
+              </p>
+              <p class="text-left">
+                <b class="content-font-size text-danger">{% value_or_zero stat.five_years_plans %}</b><br>
+                Promises stalled</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

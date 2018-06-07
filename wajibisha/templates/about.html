@@ -1,0 +1,69 @@
+{% extends '_base.html' %}{% load sass_tags staticfiles %}
+
+{% block body_id %}page{% endblock %}
+{% block header_content %}
+  <div class="clipped-header clearfix">
+    <div class="wrapper content-container">
+      <div class="column-third text-left">
+        <h2>About</h2>
+      </div>
+      <div class="column-third"></div>
+      <div class="column-third push-right">
+        <img src="{% static 'img/about/team.svg' %}" class="presentation-img">
+      </div>
+    </div>
+  </div>
+{% endblock header_content %}
+{% block content_container %}
+  <div class="showcase how-it-works text-center">
+
+    {% include 'blocks/team.html' %}
+    {% block about %}
+      <div class="body-text wrapper clearfix text-center pl-5 pr-5 pb-5">
+        <h4 style="color:#0067A3;">CONTACT US</h4>
+        <br/>
+        <div class="d-flex flex-row justify-content-center pb-5">
+          <div class="col-5 text-left pb-5 pl-5 offset-1">
+            PesaCheck HQ:<br>
+            Nairobi Garage, 8th Floor, Pinetree Plaza, <br>
+            Kaburu Drive, Kilimani, Nairobi, Kenya.<br>
+
+            <p>
+              Phone: +254 727 588456<br>
+              Email: hello@pesacheck.org
+            </p>
+          </div>
+
+          <div class="col-4 text-left pb-5">
+            PesaCheck Tanzania:<br>
+            Bongo Live, No 6, Zanaki Street,<br>
+            Dar es Salaam, Tanzania.<br>
+
+            <p>tanzania@pesacheck.orgs</p>
+          </div>
+
+          <div class="col-4 text-left pl-5 pb-5">
+            PesaCheck Uganda:<br>
+            Design Hub, Plot 3, Bata Close,<br>
+            5th Street, Kampala, Uganda.<br>
+
+            <p>uganda@pesacheck.org</p>
+          </div>
+        </div>
+      </div>
+      </div>
+
+
+
+      </div>
+
+      </div>
+    {% endblock %}
+  </div>
+{% endblock %}
+
+
+
+
+
+
