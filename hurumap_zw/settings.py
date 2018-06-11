@@ -33,39 +33,40 @@ HURUMAP['default_profile'] = hurumap_profile
 
 HURUMAP['country_profile'] = 'country-ZW-Zimbabwe'
 HURUMAP['profile_builder'] = 'hurumap_zw.profiles.census.get_profile'
-HURUMAP['default_geo_version'] = os.environ.get('DEFAULT_GEO_VERSION', '2014')
-HURUMAP['legacy_embed_geo_version'] = '2014'
+HURUMAP['default_geo_version'] = os.environ.get('DEFAULT_GEO_VERSION', '2009')
+HURUMAP['legacy_embed_geo_version'] = '2009'
 HURUMAP['levels'] = {
     'country': {
         'plural': 'countries',
-        'children': ['region'],
+        'children': ['province'],
     },
-    'region': {
-        'plural': 'regions',
+    'province': {
+        'plural': 'provinces',
         'children': ['district'],
     },
     'district': {
         'plural': 'districts',
-        'children': ['subcounty'],
+        'children': ['ward'],
     },
-    'subcounty': {
-        'plural': 'subcounties',
-        'children': []
-    }
-}
+    'ward': {
+        'plural': 'wards',
+        'children': [],
+    },
 
+}
+HURUMAP['comparative_levels'] = ['country', 'province']
 HURUMAP['geometry_data'] = {
-    '2014': {
+    '2009': {
         'country': 'geo/country.topojson',
         'province': 'geo/province.topojson',
         'district': 'geo/district.topojson',
-        'ward': 'geo/ward.topojson',
+        'ward': 'geo/ward.topojson'
     }
 }
-
 HURUMAP['twitter'] = '@Code4Africa'
 
 HURUMAP['topics'] = OrderedDict()
+HURUMAP['map_zoom'] = 12
 
 
 LOGGING['loggers']['hurumap_zw'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
