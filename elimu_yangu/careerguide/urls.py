@@ -8,9 +8,4 @@ urlpatterns = patterns('',
     url(regex = 'school/(?P<schoolcode>[\w.-]+)/$', view = school, name='school'),
     url(regex = 'subjects/a-level', view = alevel_subjects, name='subjects/a-level'),
     url(regex = 'subjects/o-level', view = olevel_subjects, name='subjects/o-level'),
-    #(r'^i18n/', include('django.conf.urls.i18n')),
     )
-
-# urlpatterns += i18n_patterns(
-#     url(r'^i18n/', include('django.conf.urls.i18n'))
-# )
