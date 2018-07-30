@@ -194,7 +194,17 @@
                         <a href="/leaguetable/schools/{{ school.code }}">
                             <div class="col-xs-5">
                                 <div class="school-name">{{ school.name | title }} School</div>
-                                <div class="school-type">{{ school.gender | title }}</div>
+                                <div class="school-type">
+                                  {% if school.gender == "Boys" %}
+                                      {%trans 'Boys' %}
+                                  {% else %}
+                                    {% if school.gender == 'Mixed'%}
+                                      {%trans 'Mixed' %}
+                                    {% else %}
+                                      {%trans 'Girls' %}
+                                    {% endif %}
+                                  {% endif %}
+                                </div>
                             </div>
                             <div class="col-xs-5">
                                 <div class="school-rank">#{{ school.national_rank_all }} {%trans 'in' %} Tanzania</div>
@@ -222,7 +232,17 @@
                       <a href="/leaguetable/schools/{{ school.code }}">
                           <div class="col-xs-5">
                               <div class="school-name">{{ school.name | title }} School</div>
-                              <div class="school-type">{{ school.gender | title }}</div>
+                              <div class="school-type">
+                                {% if school.gender == "Boys" %}
+                                    {%trans 'Boys' %}
+                                {% else %}
+                                  {% if school.gender == 'Mixed'%}
+                                    {%trans 'Mixed' %}
+                                  {% else %}
+                                    {%trans 'Girls' %}
+                                  {% endif %}
+                                {% endif %}
+                              </div>
                           </div>
                           <div class="col-xs-5">
                               <div class="school-rank">#{{ school.national_rank_all }} {%trans 'in' %} Tanzania</div>
@@ -254,7 +274,17 @@
                       <a href="/leaguetable/schools/{{ school.code }}">
                           <div class="col-xs-5">
                               <div class="school-name">{{ school.name | title }} School</div>
-                              <div class="school-type">{{ school.gender | title }}</div>
+                              <div class="school-type">
+                                {% if school.gender == "Boys" %}
+                                    {%trans 'Boys' %}
+                                {% else %}
+                                  {% if school.gender == 'Mixed'%}
+                                    {%trans 'Mixed' %}
+                                  {% else %}
+                                    {%trans 'Girls' %}
+                                  {% endif %}
+                                {% endif %}
+                              </div>
                           </div>
                           <div class="col-xs-5">
                               <div class="school-rank">#{{ school.national_rank_all }} {%trans 'in' %} Tanzania</div>
@@ -282,7 +312,17 @@
                       <a href="/leaguetable/schools/{{ school.code }}">
                           <div class="col-xs-5">
                               <div class="school-name">{{ school.name | title }} School</div>
-                              <div class="school-type">{{ school.gender | title }}</div>
+                              <div class="school-type">
+                                {% if school.gender == "Boys" %}
+                                    {%trans 'Boys' %}
+                                {% else %}
+                                  {% if school.gender == 'Mixed'%}
+                                    {%trans 'Mixed' %}
+                                  {% else %}
+                                    {%trans 'Girls' %}
+                                  {% endif %}
+                                {% endif %}
+                              </div>
                           </div>
                           <div class="col-xs-5">
                               <div class="school-rank">#{{ school.national_rank_all }} {%trans 'in' %} Tanzania</div>

@@ -130,6 +130,7 @@ def get_schools(career, region, gender, edu_level):
     if not region:
         if edu_level == '1':
             schools = Alevel_subject_performance.objects.filter(year = "2017").filter(subjectname__in = subjects).values('schoolcode', 'schoolname', 'gpa', 'region', 'natranking', 'regranking').annotate(career_avg=Avg('subjectgpa')).order_by('career_avg')[:10]
+            gender_schools = Alevel_overall_performance.objects.filter(year="2017").filter()
         else:
             schools = Olevel_subject_performance.objects.filter(year = "2017").filter(subjectname__in = subjects).values('schoolcode', 'schoolname', 'gpa', 'region', 'natranking', 'regranking').annotate(career_avg=Avg('subjectgpa')).order_by('career_avg')[:10]
     else:

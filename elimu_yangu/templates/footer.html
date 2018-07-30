@@ -14,8 +14,11 @@
         <div class="col-sm-6 margin-top">
           <p class="smaller"><strong>{{ HURUMAP.name }}</strong> {{ HURUMAP.description }}</p>
           <p class="small">
-                      The project is built on <a href="http://wazimap.readthedocs.org/" target="_blank" rel="noopener">Wazimap</a>, an open source platform by <a href="https://openup.org.za/" target="_blank" rel="noopener">OpenUp</a> and <a href="http://www.mediamonitoringafrica.org/" target="_blank" rel="noopener">Media Monitoring Africa</a> for making census data more understandable.</p>
+                      The project is built on <a href="http://wazimap.readthedocs.org/" target="_blank" rel="noopener">Wazimap</a>,
+                      an open source platform by <a href="https://openup.org.za/" target="_blank" rel="noopener">OpenUp</a> and
+                      <a href="http://www.mediamonitoringafrica.org/" target="_blank" rel="noopener">Media Monitoring Africa</a> for making census data more understandable.</p>
           <p class="small">This site is a project of <strong><a
+                  href="http://nukta.co.tz" target="_blank">Nukta Africa</a></strong> and <strong><a
                   href="https://codeforafrica.org" target="_blank">Code for Africa</a></strong>. All content is released under a
               <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons 4 Attribution license</a>. Reuse it to help empower your own community. The code is available on
               <a href="{{ HURUMAP.github_url }}" target="_blank">GitHub</a> and data is available on <a
@@ -30,21 +33,23 @@
                   <li class="list-group-item"><a href="https://pesacheck.org" target="_blank">PesaYetu</a></li>
               		<li class="list-group-item"><a href="http://www.opendata.go.tz">Open Data TZ</a></li>
               	</ul>
-              	<div>{% trans 'Join our community' %}</div>
-              	<ul class="list-group">
-              		<li class="list-group-item"><a href="https://facebook.com/HacksHackersAfrica">HacksHackers Africa</a></li>
-              	</ul>
+                <div>
+                  <a href="http://nukta.co.tz/" target="_blank" rel="noopener">
+                      <img style="width: 240px; height: 60px" src="{{ STATIC_URL }}img/logos/nukta.png" alt="Nukta Africa"></a>
+                </div>
             </div>
             <div class="col-xs-6">
-              <!-- <div class="col-xs-12"> -->
-              <a href="https://codefortanzania.org/" target="_blank" rel="noopener">
-                <img class="img-fluid img-thumbnail" src="{% static 'img/logos/cftanzania-white.png' %}" />
-              </a>
-              <!-- </div> -->
-              <!-- <div class="col-xs-12" style="padding-top: 10px;">
-                <a href="https://datazetu.or.tz/" target="_blank" rel="noopener">
-                    <img class="img-fluid img-thumbnail" src="{{ STATIC_URL }}img/logos/datazetu.png" alt="Data Zetu"></a>
-              </div> -->
+              <div>{% trans 'Join our community' %}</div>
+              <ul class="list-group">
+                <li class="list-group-item"><a href="https://facebook.com/HacksHackersAfrica">HacksHackers Africa</a></li>
+              </ul>
+
+              <div style="padding-top: 10px;">
+                <a href="https://codefortanzania.org/" target="_blank" rel="noopener">
+                  <img class="img-fluid img-thumbnail" src="{% static 'img/logos/cftanzania-white.png' %}" />
+                </a>
+              </div>
+
             </div>
         </div>
     </div>
