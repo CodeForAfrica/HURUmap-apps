@@ -1,4 +1,4 @@
-{% extends '_footer.html' %}
+<!--
 {% load staticfiles %}
 
 {% block footer_branding %}
@@ -6,4 +6,51 @@
         <img src="{% static 'img/logos/cftanzania-white.png' %}" alt="Code for Africa" style="margin-top: 20px; max-width: 105px;"></a>
     <a href="https://worldbank.org/" target="_blank">
         <img src="{% static 'img/logos/world_bank_group_vertial_white_logo.png' %}" alt="World Bank Group" style="max-width: 105px; max-height: 50px;"></a>
-{% endblock %}
+{% endblock %} -->
+{% load i18n %}
+{% load staticfiles %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 margin-top">
+          <p class="smaller"><strong>{{ HURUMAP.name }}</strong> {{ HURUMAP.description }}</p>
+          <p class="small">
+                      The project is built on <a href="http://wazimap.readthedocs.org/" target="_blank" rel="noopener">Wazimap</a>,
+                      an open source platform by <a href="https://openup.org.za/" target="_blank" rel="noopener">OpenUp</a> and
+                      <a href="http://www.mediamonitoringafrica.org/" target="_blank" rel="noopener">Media Monitoring Africa</a> for making census data more understandable.</p>
+          <p class="small">This site is a project of <strong><a
+                  href="http://nukta.co.tz" target="_blank">Nukta Africa</a></strong> and <strong><a
+                  href="https://codeforafrica.org" target="_blank">Code for Africa</a></strong>. All content is released under a
+              <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons 4 Attribution license</a>. Reuse it to help empower your own community. The code is available on
+              <a href="{{ HURUMAP.github_url }}" target="_blank">GitHub</a> and data is available on <a
+                      href="{{ HURUMAP.openafrica_url }}" target="_blank">​openAFRICA​</a>.</p>
+          <br/>
+        </div>
+        <div class="col-sm-6 text-center margin-top footer-link">
+            <div class="col-xs-6">
+              	<div>{%trans 'Other Projects' %}</div>
+              	<ul class="list-group">
+              		<li class="list-group-item"><a href="https://tanzania.hurumap.org/">HURUmap Tanzania</a></li>
+                  <li class="list-group-item"><a href="https://pesacheck.org" target="_blank">PesaYetu</a></li>
+              		<li class="list-group-item"><a href="http://www.opendata.go.tz">Open Data TZ</a></li>
+              	</ul>
+                <div>
+                  <a href="http://nukta.co.tz/" target="_blank" rel="noopener">
+                      <img style="width: 240px; height: 60px" src="{{ STATIC_URL }}img/logos/nukta.png" alt="Nukta Africa"></a>
+                </div>
+            </div>
+            <div class="col-xs-6">
+              <div>{% trans 'Join our community' %}</div>
+              <ul class="list-group">
+                <li class="list-group-item"><a href="https://facebook.com/HacksHackersAfrica">HacksHackers Africa</a></li>
+              </ul>
+
+              <div style="padding-top: 10px;">
+                <a href="https://codefortanzania.org/" target="_blank" rel="noopener">
+                  <img class="img-fluid img-thumbnail" src="{% static 'img/logos/cftanzania-white.png' %}" />
+                </a>
+              </div>
+
+            </div>
+        </div>
+    </div>
+</div>

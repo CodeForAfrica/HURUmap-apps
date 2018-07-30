@@ -23,7 +23,7 @@ SET default_with_oids = false;
 
 --
 -- TOC entry 181 (class 1259 OID 27864)
--- Name: secondary_schools; Type: TABLE; Schema: public; Owner: league_table
+-- Name: secondary_schools; Type: TABLE; Schema: public; Owner: elimu_yangu
 --
 
 CREATE TABLE secondary_schools (
@@ -52,12 +52,12 @@ CREATE TABLE secondary_schools (
 );
 
 
-ALTER TABLE secondary_schools OWNER TO league_table;
+ALTER TABLE secondary_schools OWNER TO elimu_yangu;
 
 --
 -- TOC entry 2155 (class 0 OID 27864)
 -- Dependencies: 181
--- Data for Name: secondary_schools; Type: TABLE DATA; Schema: public; Owner: league_table
+-- Data for Name: secondary_schools; Type: TABLE DATA; Schema: public; Owner: elimu_yangu
 --
 
 COPY secondary_schools (geo_level, geo_code, geo_version, code, name, region, district, ward, ownership, latitude, longitude, pass_rate, change_previous_year_pass_rate, avg_gpa, chane_previous_year_gpa, rank, year_of_result, more_than_40, national_rank_all, regional_rank_all, district_rank_all, total) FROM stdin;
@@ -12969,7 +12969,7 @@ district	27	2009	S4792	KONJE SECONDARY SCHOOL	TANGA	HANDENI	KONJE	PRIVATE	-5.408
 
 --
 -- TOC entry 2040 (class 2606 OID 27872)
--- Name: pk_secondary_schools; Type: CONSTRAINT; Schema: public; Owner: league_table
+-- Name: pk_secondary_schools; Type: CONSTRAINT; Schema: public; Owner: elimu_yangu
 --
 
 ALTER TABLE ONLY secondary_schools
@@ -12981,4 +12981,3 @@ ALTER TABLE ONLY secondary_schools
 --
 -- PostgreSQL database dump complete
 --
-

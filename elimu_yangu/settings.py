@@ -1,4 +1,5 @@
 import os
+from django.utils.translation import ugettext_lazy as _
 from collections import OrderedDict
 
 from hurumap.settings import *  # noqa
@@ -6,11 +7,31 @@ from hurumap.settings import *  # noqa
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# insert our overrides before both census and HURUmap
-INSTALLED_APPS = ['elimu_yangu', 'elimu_yangu.careerguide', 'elimu_yangu.leaguetable'] + INSTALLED_APPS
+LANGUAGE_CODE = 'en'
+ugettext = lambda s: s
+LANGUAGES = (
+('sw', _('Swahili')),
+('en', _('English')),
+)
 
+USE_I18N = True
+
+TEMPLATE_CONTEXT_PROCESSORS = ('django.template.context_processors.i18n',) + TEMPLATE_CONTEXT_PROCESSORS
+# Tell Django where the project's translation files should be.
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+    os.path.join(BASE_DIR, 'careerguide/locale'),
+    os.path.join(BASE_DIR, 'leaguetable/locale'),
+    os.path.join(BASE_DIR, 'universityfinder/locale'),
+)
+
+# insert our overrides before both census and HURUmap
+INSTALLED_APPS = ['elimu_yangu', 'elimu_yangu.careerguide', 'elimu_yangu.leaguetable', 'elimu_yangu.universityfinder',  'django.contrib.sessions' ] + INSTALLED_APPS
 # League Table URLS
 ROOT_URLCONF = 'elimu_yangu.urls'
+
+MIDDLEWARE_CLASSES = ( 'django.contrib.sessions.middleware.SessionMiddleware','django.middleware.locale.LocaleMiddleware', 'django.middleware.common.CommonMiddleware',) + MIDDLEWARE_CLASSES
+
 
 DATABASE_URL = os.environ.get(
     'DATABASE_URL',
@@ -20,14 +41,15 @@ DATABASES['default']['ATOMIC_REQUESTS'] = True
 
 
 # Localise this instance of HURUmap
-HURUMAP['name'] = 'League Table'
-HURUMAP['description'] = 'it shows ranking of different secondary schools\
-                            bassed on their performance in each year.'
-HURUMAP['url'] = 'https://leaguetable.codefortanzania.org'
+HURUMAP['name'] = 'Elimu Yangu'
+HURUMAP['description'] = 'Comprises of three tools: league table- that shows ranking of different secondary schools\
+                            bassed on their performance in each year, careerguide -finds best schools aligning to a choosen career\
+                            and university finder - shows list of university courses that an a-level student could have a chance to be admitted,'
+HURUMAP['url'] = 'https://elimuyangu.codefortanzania.org'
 HURUMAP['country_code'] = 'TZ'
 HURUMAP['country_name'] = 'Tanzania'
 HURUMAP['country_profile'] = 'country-TZ-Tanzania'
-HURUMAP['profile_builder'] = 'elimu_yangu.profiles.get_census_profile'
+#HURUMAP['profile_builder'] = 'elimu_yangu.profiles.get_census_profile'
 
  # Define the profile to load
 
@@ -64,10 +86,9 @@ HURUMAP['geometry_data'] = {
             }
 }
 
-HURUMAP['ga_tracking_ids'] = [
-    'UA-91133100-4',
-    'UA-44795600-27',
-    'UA-92541368-2']
+HURUMAP['ga_tracking_id'] = 'UA-91133100-8'
+# HURUMAP['ga_tracking_ids'] = ['UA-44795600-8','UA-91133100-4']
+
 HURUMAP['twitter'] = '@Code4Africa'
 
 HURUMAP['map_centre'] = [-6.1523563, 35.6754813]

@@ -1,28 +1,44 @@
 from django import forms
+from django.utils.translation import ugettext_lazy as _
+import career
 
-Gender_Options = [('', 'Select Gender'),('F', 'Female'), ('M', 'Male'),]
-Region_Options = [('', 'Select Region'),('Mwanza', 'Mwanza'),('Arusha','Arusha'),('DAR ES SALAAM','DAR ES SALAAM'),('Dodoma','Dodoma'),
-('Singida','Singida'),
-('Mtwara','Mtwara'),
-('Mara','Mara'),
-('Morogoro','Morogoro'),
-('Arusha','Arusha'),
-('Arusha','Arusha'),
-('Arusha','Arusha'),
-('Arusha','Arusha'),
-('Arusha','Arusha'),
-('Arusha','Arusha'),
-('Arusha','Arusha'),
-('Arusha','Arusha'),
-('Arusha','Arusha'),
-('Arusha','Arusha'),
-('Arusha','Arusha'),]
-Career_Options = [('Doctor', 'Doctor'), ('Pilot', 'Pilot')]
-Education_Level_Options = [('0', 'Education Level'), ('1', 'O-level'), ('2', 'Primary Education level')]
+Gender_Options = [('gender',_('select gender')),('F', _('young lady')), ('M', _('young man')),]
+Region_Options = [('region',_('select region')),('ARUSHA','Arusha'),('DAR ES SALAAM', 'Dar es Salaam'),('DODOMA','Dodoma'),
+('GEITA','Geita'),
+('IRINGA','Iringa'),
+('KAGERA','Kagera'),
+('KASKAZINI PEMBA','Kaskazini Pemba'),
+('KASKAZINI UNGUJA','Kaskazini Unguja'),
+('KATAVI','Katavi'),
+('KIGOMA','Kigoma'),
+('KILIMANJARO','Kilimanjaro'),
+('KUSINI PEMBA','Kusini Pemba'),
+('KUSINI UNGUJA','Kusini Unguja'),
+('LINDI','Lindi'),
+('MARA','Mara'),
+('MANYARA','Manyara'),
+('MBEYA','Mbeya'),
+('MJINI MAGHARIBI','Mjini Magharibi'),
+('MOROGORO','Morogoro'),
+('MTWARA','Mtwara'),
+('MWANZA','Mwanza'),
+('NJOMBE','Njombe'),
+('PWANI','Pwani'),
+('RUKWA','Rukwa'),
+('RUVUMA','Ruvuma'),
+('SHINYANGA','Shinyanga'),
+('SIMIYU','Simiyu'),
+('SINGINDA','Singida'),
+('SONGWE','Songwe'),
+('TABORA','Tabora'),
+('TANGA','Tanga'),]
+Career_Options = [('career', _('choose a career')),('Accountant', _('an accountant')),('Architect', _('an architect')),('Auditor', _('an auditor')),
+('Computer Scientist/Engineer', _('a computer scientist/engineer')), ('Doctor', _('a doctor')),('Economist', _('an economist')), ('Pilot', _('a pilot')), ('Engineer', _('an engineer'))]
+Education_Level_Options = [('level',_('choose study level')),('1', _('ordinary level')), ('2', _('primary level'))]
 
 
 class InputForm(forms.Form):
-    gender = forms.CharField(label='gender', widget=forms.Select(choices=Gender_Options), required=False)
-    region = forms.ChoiceField(label='region', choices=Region_Options, required=False)
-    career = forms.CharField(label='career', widget=forms.Select(choices=Career_Options), required=True)
-    education_level = forms.CharField(label='education level', widget=forms.Select(choices=Education_Level_Options), required=False)
+    gender = forms.CharField(label='gender', widget=forms.Select(choices=Gender_Options, attrs={'class': 'inline-select'}), required=False)
+    region = forms.CharField(label='region', widget=forms.Select(choices=Region_Options, attrs={'class': 'inline-select'}), required=False)
+    career = forms.CharField(label='career', widget=forms.Select(choices=Career_Options, attrs={'class': 'inline-select'}), required=True)
+    education_level = forms.CharField(label='education level', widget=forms.Select(choices=Education_Level_Options, attrs={'class': 'inline-select'}), required=False)
