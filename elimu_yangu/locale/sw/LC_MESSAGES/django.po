@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-11 16:03+0300\n"
+"POT-Creation-Date: 2018-07-30 11:14+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -64,11 +64,11 @@ msgstr "na"
 msgid "for making census data more understandable."
 msgstr "ili kufanya taarifa za sensa kueleweka zaidi "
 
-#: templates/footer.html:27
+#: templates/footer.html:30
 msgid "Other Projects"
 msgstr "Miradi Mingine"
 
-#: templates/footer.html:33
+#: templates/footer.html:42
 msgid "Join our community"
 msgstr "Ungana nasi kwenye"
 
