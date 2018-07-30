@@ -1,0 +1,125 @@
+﻿ul.nav-wizard {
+    border: 1px solid #2e4667;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 3px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 5px;
+    width: 500px;
+    margin: 0 auto;
+    max-width: 90%
+}
+
+    ul.nav-wizard span {
+        text-align: left
+    }
+
+.nav-wizard:before {
+    position: absolute
+}
+
+ul.nav-wizard:after {
+    display: block;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 138px;
+    height: 47px;
+    border-top: 1px solid #A6B0BF;
+    border-bottom: 1px solid #A6B0BF;
+    z-index: 11;
+    content: " "
+}
+
+ul.nav-wizard li {
+    position: relative;
+    float: left;
+    height: 46px;
+    display: inline-block;
+    text-align: center;
+    padding: 5px 10px 5px 15px;
+    margin: 0;
+    font-size: 16px;
+    border-left: 16px solid transparent
+}
+
+
+    ul.nav-wizard li:before {
+        position: absolute;
+        display: block;
+        border: 24px solid transparent;
+        border-left: 16px solid #2e4667;
+        border-right: 0;
+        top: -1px;
+        z-index: 10;
+        content: '';
+        right: -16px
+    }
+
+    ul.nav-wizard li:after {
+        position: absolute;
+        display: block;
+        border: 24px solid transparent;
+        border-left: 16px solid #ffffff;
+        border-right: 0;
+        top: -1px;
+        z-index: 10;
+        content: '';
+        right: -15px
+    }
+
+    ul.nav-wizard li a {
+        padding: 0;
+        background: inherit !important
+    }
+
+        ul.nav-wizard li a span {
+            color: #2e4667;
+            display: block
+        }
+
+            ul.nav-wizard li a span.info {
+                font-size: 12px;
+                color: #5BADDE
+            }
+
+    ul.nav-wizard li:first-child {
+        padding-left: 0
+    }
+
+    ul.nav-wizard li.active {
+        /* border-left: 16px solid #2E4668; */
+        background: #2E4668
+    }
+
+        ul.nav-wizard li.active:after {
+            border-left: 16px solid #2E4668
+        }
+
+        ul.nav-wizard li.active a span {
+            color: #ffffff
+        }
+
+            ul.nav-wizard li.active a span.info {
+                color: #D0A331
+            }
+
+    ul.nav-wizard li.prev {
+        border-left: 16px solid #A6B0BF;
+        background: #A6B0BF
+    }
+
+        ul.nav-wizard li.prev:after {
+            border-left: 16px solid #A6B0BF
+        }
+
+        ul.nav-wizard li.prev a span.info {
+            color: #2E4668
+        }
+
+@media (max-width: 768px) {
+    ul.nav-wizard li a span.info {
+        display: none
+    }
+}

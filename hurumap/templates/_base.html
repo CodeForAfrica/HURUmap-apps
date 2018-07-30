@@ -135,4 +135,11 @@
            ga('t{{ forloop.counter }}.send', 'pageview');
         {% endfor %}
     </script>
+    <script>
+        {% for ga_tracking_id in HURUMAP.ga_tracking_ids %}
+            ga('create', '{{ ga_tracking_id }}', 'auto', {'name': 'ga_{{ forloop.counter }}' });
+            ga('ga_{{ forloop.counter }}.send', 'pageview');
+        {% endfor %}
+
+    </script>
 {%  endblock %}

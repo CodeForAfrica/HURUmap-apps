@@ -1,0 +1,151 @@
+{% extends '_base.html' %}{% load i18n %}{% load staticfiles %}
+{% block head_meta_description %}{{ HURUmap.name }} provides useful facts on schools data across regions, and suggests best schools and university courses for students{% endblock %}
+{% block body_id %}homepage{% endblock %}
+
+{% block head_css_extra %}
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+
+<link rel="stylesheet" href="{% static 'lib/bootstrap/dist/css/bootstrap.css' %}" />
+<link rel="stylesheet" href="{% static 'css/vendor/leaflet-0.6.4.css' %}" />
+<link href="{% static 'css/vendor/leaflet.label.css' %}" rel="stylesheet" />
+<link rel="stylesheet" href="{% static 'css/site.css' %}" />
+<link rel=stylesheet type=text/css href="{% static 'css/style.css' %}">
+     <!-- UNI FINDER STEP CSS -->
+<link rel="stylesheet" href="{% static 'css/step.css' %}" />
+<link rel="stylesheet" href="{% static 'css/arrow.css' %}" />
+    <!-- OWL CAROSEL CSS -->
+<!-- <link rel="stylesheet" href="{% static 'lib/owlcarousel/css/owl.carousel.css' %}">
+<link rel="stylesheet" href="{% static 'lib/owlcarousel/css/owl.theme.css' %}"> -->
+   <!-- Jquery nice select -->
+<link rel="stylesheet" href="{% static 'lib/jquery.nice-select/css/nice-select.css' %}">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+{% endblock %}
+
+{% block header %}
+<style>
+    #page-footer {
+        background: #2E4668;
+        padding: 10px 30px 30px;
+        text-align: left;
+    }
+    #page-footer div{
+        text-align: left;
+    }
+    #page-footer img {
+      max-height: 100%;
+      margin: 0;
+    }
+    #page-footer .list-group {
+      padding: 10px;
+      text-align: left;
+    }
+    #page-footer .list-group-item {
+      padding: 0px 10px;
+    }
+    #page-footer ul a {
+      text-decoration: underline;
+      color: #fff;
+      font-size: .9em;
+    }
+    #page-footer ul a:hover {
+      text-decoration: underline;
+      color: #fff;
+      font-size: .9em;
+    }
+    #page .bg-ocean-green {
+          background-color: #2E4668
+    }
+    #page .bg-ocean-green:hover {
+      background-color: #2E4668
+    }
+</style>
+    <header  id="page-header">
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="/">
+                            <img class="logo" src="{% static 'img/logo0.png' %}" />
+                        </a>
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav text-center">
+                            <li><a href="/leaguetable">SCHOOL LEAGUE</a></li>
+                            <li><a href="/careerguide">CAREER GUIDE</a></li>
+                            <li><a href="/university-finder">UNI FINDER</a></li>
+                            <li><a href="/about">ABOUT</a></li>
+                            <!-- {% ifequal LANGUAGE_CODE "en" %}
+                              <li><a href="/sw{{ request.get_full_path|slice:'3:' }}">sw</a></li>
+                            {% else %}
+                              <li><a href="/en{{ request.get_full_path|slice:'3:' }}">en</a></li>
+                            {% endifequal %} -->
+                            <li style="right: -20%">
+                              <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                                <input name="next" type="hidden" value="{{ redirect_to }}" />
+                                {% get_current_language as LANGUAGE_CODE %}
+                                {% ifequal LANGUAGE_CODE "en" %}
+                                    <!-- {{ language.name_local }} ({{ language.code }}) -->
+                                  <input type="hidden" name="language" value="sw" />
+                                  <input type="image" value="submit" src="{% static 'img/tz.png' %}" style="margin-bottom: -16px;" />
+                                {% else %}
+                                  <input  type="hidden" name="language" value="en" />
+                                  <input type="image" value="submit" src="{% static 'img/us.png' %}" style="margin-bottom: -16px;" />
+                                {% endifequal %}
+                                <!-- </select> -->
+                            </form>
+                            </li>
+                            <!-- <li><a href="/sw">sw</a></li>
+                            <li><a href="/en">en</a></li> -->
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+    </header>
+{% endblock %}
+
+{% block body_javascript_extra %}
+    {{ block.super }}
+
+    {% block homepage_javascripb_libs %}
+    <script src="{% static 'lib/jquery/dist/jquery.js' %}"></script>
+    <script src="{% static 'lib/bootstrap/dist/js/bootstrap.js' %}"></script>
+    <script src="{% static 'lib/owlcarousel/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'lib/jquery.nice-select/js/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'js/site.js' %}"></script>
+
+    <script src="{% static 'js/vendor/leaflet-0.6.4.js' %}"></script>
+    <script src="{% static 'js/vendor/topojson.v1.min.js' %}"></script>
+    <script src="{% static 'js/vendor/leaflet.label.js' %}"></script>
+    <script src="{% static 'js/maps_static.js' %}"></script>
+    <script src="{% static 'js/profile_map.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="{% static 'js/vendor/jquery.min.js'  %}"></script>
+    <script src="{% static 'js/vendor/popper.min.js'  %}"></script>
+    <script src="{% static 'js/bootstrap/bootstrap.min.js'  %}"></script>
+    <script src="{% static 'js/vendor/holder.min.js'  %}"></script>
+    <script src="{% static 'js/jquery.barfiller.js' %}" type="text/javascript"></script>
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+    {% endblock %}
+
+    <script>
+    // show 'use my current location' button
+    if (Modernizr.geolocation) {
+        $('.geolocate-only').show();
+    }
+    // geoSelect already defined by widget.geo.select.js
+    geoSelect.focus();
+
+    var maps = new ProfileMaps();
+    var centre = {% if HURUMAP.map_centre %}{{ HURUMAP.map_centre }}{% else %}null{% endif %};
+    var zoom = {% if HURUMAP.map_zoom %}{{ HURUMAP.map_zoom }}{% else %}null{% endif %};
+
+    maps.drawMapForHomepage('{{ geo_data.first_child_level }}', '{{ HURUMAP.default_geo_version }}', centre, zoom);
+    </script>
+    <!-- <script src="{% static 'js/data.query.builder.js' %}"></script> -->
+{% endblock %}
