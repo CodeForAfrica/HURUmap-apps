@@ -1,0 +1,7 @@
+{% extends 'homepage.html' %}{% load humanize partition staticfiles %}
+
+{% block homepage_javascripb_libs %}
+{{ block.super }}
+<script src="{% static 'js/maps_mapit.js' %}"></script>
+
+{% endblock %}
