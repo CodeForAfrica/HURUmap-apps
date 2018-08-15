@@ -1,0 +1,6 @@
+{% extends 'settings_js.html' %}{% load jsonify %}
+
+{% block settings_javascript %}
+{{ block.super }}
+var MAPIT = {{ WAZIMAP.mapit|jsonify|safe }};
+{% endblock settings_javascript %}

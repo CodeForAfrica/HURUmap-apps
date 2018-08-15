@@ -68,6 +68,9 @@ WAZIMAP['available_release_years'] = {
     # Other geo_levels have data for all releases.
     'ward': [2011]
 }
+# If not set, the centre is determined from the geometry.
+HURUMAP['map_centre']= None
+HURUMAP['map_zoom']= None
 
 HURUMAP['mapit'] = {
     'generations': {
