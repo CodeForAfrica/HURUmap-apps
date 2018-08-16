@@ -1,0 +1,65 @@
+﻿/* https://codepen.io/ewayma/pen/AJFzG */
+.nav-tab {
+    height: 50px;
+    margin: 10px;
+    position: absolute;
+    right: 0px;
+    bottom: 0px
+}
+
+.box {
+    padding: 10px 20px;
+    position: absolute;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    height: 40px;
+    background: #5BADDE;
+    width: 80px;
+    cursor: pointer;
+}
+
+    .box:after {
+        content: "";
+        display: block;
+        border-width: 20px 20px 0;
+        border-style: solid;
+        border-color: #5BADDE transparent transparent;
+        margin-left: -20px;
+        position: absolute;
+        bottom: -20px;
+        left: 50%
+    }
+
+    .box.prev-tab {
+        right: 100px;    
+    } 
+
+    .box.prev-tab:after {
+        border-width: 20px;
+        border-left-color: transparent;
+        border-left-width: 0;
+        border-top-color: transparent;
+        border-right-color: #5BADDE;
+        margin: -20px 0 0;
+        left: -20px;
+        right: auto;
+        top: 50%;
+        bottom: auto
+    }
+
+    .box.next-tab {
+        right: 10px;
+    }
+
+    .box.next-tab:after {
+        border-width: 20px;
+        border-right-width: 0;
+        border-top-color: transparent;
+        border-left-color: #5BADDE;
+        margin: -20px 0 0;
+        left: auto;
+        right: -20px;
+        top: 50%;
+        bottom: auto
+    }

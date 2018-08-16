@@ -1,0 +1,282 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-07-30 11:14+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: careerguide/career.py:5
+msgid "ACCOUNTANT"
+msgstr "MHASIBU"
+
+#: careerguide/career.py:18
+msgid "ARCHITECT"
+msgstr "UWANDISHI WA MAJENGO"
+
+#: careerguide/career.py:29
+msgid "AUDITOR"
+msgstr "UKAGUZI "
+
+#: careerguide/career.py:43
+msgid "COMPUTER SCIENTIST/ENGINEER"
+msgstr "MASOMO YA KOMPYUTA"
+
+#: careerguide/career.py:54
+msgid "MEDECINE"
+msgstr "UDAKTARI NA MADAWA"
+
+#: careerguide/career.py:67
+msgid "ECONOMIST"
+msgstr "UCHUMI"
+
+#: careerguide/career.py:80
+msgid "ENGINEERING"
+msgstr "UHANDISI"
+
+#: careerguide/career.py:93
+msgid "FINANCIAL ANALYST"
+msgstr "UCHAMBUZI WA FEDHA/HAZINA"
+
+#: careerguide/career.py:107
+msgid "SCIENCE TEACHER"
+msgstr "UWALIMU WA SAYANSI"
+
+#: careerguide/career.py:120
+msgid "TEACHER"
+msgstr "UWALIMU"
+
+#: careerguide/career.py:132
+msgid "PILOT"
+msgstr "RUBANI"
+
+#: careerguide/career.py:145
+msgid "LAWYER"
+msgstr "MWANASHERIA"
+
+#: careerguide/forms.py:5
+msgid "select gender"
+msgstr "chagua jinsia"
+
+#: careerguide/forms.py:5
+msgid "young lady"
+msgstr "msichana"
+
+#: careerguide/forms.py:5
+msgid "young man"
+msgstr "mvulana"
+
+#: careerguide/forms.py:6
+msgid "select region"
+msgstr "chagua mkoa"
+
+#: careerguide/forms.py:35
+msgid "choose a career"
+msgstr "chagua taaluma"
+
+#: careerguide/forms.py:35
+msgid "an accountant"
+msgstr "mhasibu"
+
+#: careerguide/forms.py:35
+msgid "an architect"
+msgstr "mwandishi wa majengo"
+
+#: careerguide/forms.py:35
+msgid "an auditor"
+msgstr "mkaguzi"
+
+#: careerguide/forms.py:36
+msgid "a computer scientist/engineer"
+msgstr "msanifu wa kompyuta"
+
+#: careerguide/forms.py:36
+msgid "a doctor"
+msgstr "daktari"
+
+#: careerguide/forms.py:36
+msgid "an economist"
+msgstr "mwanauchumi"
+
+#: careerguide/forms.py:36
+msgid "a pilot"
+msgstr "rubani"
+
+#: careerguide/forms.py:36
+msgid "an engineer"
+msgstr "mhandisi"
+
+#: careerguide/forms.py:37
+msgid "choose study level"
+msgstr "chagua ngazi ya elimu yako"
+
+#: careerguide/forms.py:37
+msgid "ordinary level"
+msgstr "shule ya sekondari"
+
+#: careerguide/forms.py:37
+msgid "primary level"
+msgstr "shule ya msingi"
+
+#: careerguide/templates/careerguide/homepage.html:11
+msgid "FIND THE BEST HIGHSCHOOL FOR YOUR CAREER"
+msgstr "TAFUTA SHULE BORA YA TAALUMA YAKO"
+
+#: careerguide/templates/careerguide/homepage.html:15
+msgid "I am a"
+msgstr "Mimi ni"
+
+#: careerguide/templates/careerguide/homepage.html:19
+msgid "from"
+msgstr "kutoka"
+
+#: careerguide/templates/careerguide/homepage.html:23
+msgid "currently at"
+msgstr "hivi sasa nipo"
+
+#: careerguide/templates/careerguide/homepage.html:27
+msgid "and I want to be"
+msgstr "na nitaka kuwa"
+
+#: careerguide/templates/careerguide/homepage.html:32
+msgid "FIND"
+msgstr "TAFUTA"
+
+#: careerguide/templates/careerguide/homepage.html:40
+msgid "TO STUDY"
+msgstr "KUSOMA"
+
+#: careerguide/templates/careerguide/homepage.html:42
+msgid "YOU NEED A PASS IN THE FOLLOWING SUBJECTS:"
+msgstr "INABIDI UFAULU MASOMO HAYA:"
+
+#: careerguide/templates/careerguide/homepage.html:54
+msgid "AND A SATISFACTORY PASS IN:"
+msgstr "NA UFANYE VIZURI KWENYE:"
+
+#: careerguide/templates/careerguide/homepage.html:62
+msgid "AND A PASS IN AT LEAST 2 OF THE FOLLOWING SUBJECTS:"
+msgstr "NA UFAULU ANGALAU MASOMO MAWILI KATI YA HAYA"
+
+#: careerguide/templates/careerguide/homepage.html:85
+#, python-format
+msgid ""
+"List of Schools doing well in %(school_level)s subjects aligning to your "
+"career"
+msgstr ""
+"Shule zinavyofanya vizuri katika masomo ya %(school_level)s yanayoendana na "
+"taaluma utakayo"
+
+#: careerguide/templates/careerguide/homepage.html:91
+#: careerguide/templates/careerguide/homepage.html:142
+#: careerguide/templates/careerguide/homepage.html:179
+msgid "Name of School"
+msgstr "Jina la Shule"
+
+#: careerguide/templates/careerguide/homepage.html:92
+#: careerguide/templates/careerguide/homepage.html:143
+#: careerguide/templates/careerguide/homepage.html:180
+msgid "Category"
+msgstr "Kundi"
+
+#: careerguide/templates/careerguide/homepage.html:93
+#: careerguide/templates/careerguide/homepage.html:144
+#: careerguide/templates/careerguide/homepage.html:181
+msgid "Region"
+msgstr "Mkoa"
+
+#: careerguide/templates/careerguide/homepage.html:94
+#: careerguide/templates/careerguide/homepage.html:145
+#: careerguide/templates/careerguide/homepage.html:182
+msgid "Average GPA"
+msgstr "Wastani wa GPA"
+
+#: careerguide/templates/careerguide/homepage.html:95
+#: careerguide/templates/careerguide/homepage.html:146
+#: careerguide/templates/careerguide/homepage.html:183
+msgid "National Ranking"
+msgstr "Nafasi ya Kitaifa"
+
+#: careerguide/templates/careerguide/homepage.html:96
+#: careerguide/templates/careerguide/homepage.html:147
+#: careerguide/templates/careerguide/homepage.html:184
+msgid "Regional Ranking"
+msgstr "Nafasi ya Kimkoa"
+
+#: careerguide/templates/careerguide/homepage.html:107
+#: careerguide/templates/careerguide/homepage.html:192
+msgid "Centre With 30 Candidates or More"
+msgstr "Kituo Chenye Wanafunzi 30 na Zaidi"
+
+#: careerguide/templates/careerguide/homepage.html:109
+#: careerguide/templates/careerguide/homepage.html:194
+msgid "Centre With less than 30 Candidates"
+msgstr "Kituo Chenye Watahaniwa chini ya 30"
+
+#: careerguide/templates/careerguide/homepage.html:113
+#: careerguide/templates/careerguide/homepage.html:157
+msgid "Centre With 40 Candidates or More"
+msgstr "Kituo Chenye Watahiniwa 40 na Zaidi"
+
+#: careerguide/templates/careerguide/homepage.html:115
+#: careerguide/templates/careerguide/homepage.html:159
+msgid "Centre With less than 40 Candidates"
+msgstr "Kituo Chenye Wanafunzi chini ya 40"
+
+#: careerguide/templates/careerguide/homepage.html:137
+msgid "Overall best performing schools for Ordinary Level 2017"
+msgstr "Shule bora kwa ujumla za O-level mwaka 2017"
+
+#: careerguide/templates/careerguide/homepage.html:174
+msgid "Overall best performing schools for Advance Level 2017"
+msgstr "Shule bora kwa ujumla za A-level mwaka 2017"
+
+#: careerguide/templates/careerguide/school.html:47
+#: careerguide/templates/careerguide/school.html:48
+#: careerguide/templates/careerguide/school.html:118
+#: careerguide/templates/careerguide/school.html:119
+msgid "in"
+msgstr "katika"
+
+#: careerguide/templates/careerguide/school.html:62
+#: careerguide/templates/careerguide/school.html:133
+msgid "Click on A Subject In The Bar Chart To View More Details"
+msgstr "Bonyeza kwenye somo upata taarifa zaidi"
+
+#: careerguide/templates/careerguide/school.html:65
+#: careerguide/templates/careerguide/school.html:136
+msgid "Subject Perfomance"
+msgstr "Matokea ya Masomo"
+
+#: careerguide/templates/careerguide/school.html:72
+msgid "Regional Rank:"
+msgstr "Nafasi ya Kimkoa"
+
+#: careerguide/templates/careerguide/school.html:73
+msgid "National Rank:"
+msgstr "Nafasi ya Kitaifa"
+
+#: careerguide/templates/careerguide/school.html:109
+msgid "Overall Performance"
+msgstr "Matokeo kwa Ujumla"
+
+#~ msgid "Centre with 30 Candidates or More"
+#~ msgstr "Kituo Chenye Wanafunzi 30 na Zaidi"
+
+#~ msgid "Swahili"
+#~ msgstr "Kiswahili"
+
+#~ msgid "English"
+#~ msgstr "Kingereza"

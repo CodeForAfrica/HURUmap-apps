@@ -1,0 +1,140 @@
+{% extends 'profile/profile_detail.html' %}
+{% load i18n %}
+{% load staticfiles %}
+{% block head_css_extra %}
+<link rel="stylesheet" href="{% static 'lib/bootstrap/dist/css/bootstrap.css' %}" />
+<link rel="stylesheet" href="{% static 'css/vendor/leaflet-0.6.4.css' %}" />
+<link href="{% static 'css/vendor/leaflet.label.css' %}" rel="stylesheet" />
+<link rel="stylesheet" href="{% static 'css/site.css' %}" />
+{% endblock %}
+{% block header %}
+<style>
+    #page-footer {
+        background: #2E4668;
+        padding: 10px 30px 30px;
+    }
+    #page-footer img {
+      max-height: 100%;
+      margin: 0;
+    }
+</style>
+<header id="page-header">
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container">
+              <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="/">
+                      <img class="logo" src="{% static 'img/logo0.png' %}" />
+                  </a>
+              </div>
+              <div class="navbar-collapse collapse">
+                  <ul class="nav navbar-nav text-center">
+                      <li><a href="/leaguetable">SCHOOL LEAGUE</a></li>
+                      <li><a href="/careerguide">CAREER GUIDE</a></li>
+                      <li><a href="/university-finder">UNI FINDER</a></li>
+                      <li><a href="/about">ABOUT</a></li>
+                      <li>
+                        <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                          <input name="next" type="hidden" value="{{ redirect_to }}" />
+                          {% get_current_language as LANGUAGE_CODE %}
+                          {% ifequal LANGUAGE_CODE "en" %}
+                              <!-- {{ language.name_local }} ({{ language.code }}) -->
+                            <input type="hidden" name="language" value="sw" />
+                            <input type="image" value="submit" src="{% static 'img/tz.png' %}" style="padding-top: 17px;" />
+                          {% else %}
+                            <input  type="hidden" name="language" value="en" />
+                            <input type="image" value="submit" src="{% static 'img/us.png' %}" style="padding-top: 17px;" />
+                          {% endifequal %}
+                          <!-- </select> -->
+                      </form>
+                      </li>
+                      <!-- <li><a href="/contact">CONTACT US</a></li> -->
+                  </ul>
+              </div>
+          </div>
+      </nav>
+</header>
+{% endblock %}
+<div class="main-content">
+
+{% block content_container %}
+    <div class="content-container wrapper clearfix">
+        <div class="wrapper clearfix">
+            <br />
+            <h2><i class="fa fa-binoculars"></i>&nbsp;&nbsp;&nbsp;Explore the Landscape</h2>
+            <br/><br />
+
+            <div class="column-third">
+                <Label><strong>Region</strong></Label><br />
+                <select style="width:100%;">
+                    <option>Choose Region</option>
+                </select>
+            </div>
+
+            <div class="column-third">
+                <Label><strong>District</strong></Label><br />
+                <select style="width:100%;">
+                    <option>Choose Region</option>
+                </select>
+            </div>
+
+            <div class="column-third">
+                <Label><strong>Ward</strong></Label><br />
+                <select style="width:100%;">
+                    <option>Choose Region</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="wrapper">
+            <br/><br/>
+            <div class="column-full">
+                <button class="pull-right" type="button">Explore</button>
+            </div>
+            <br /><br />
+        </div>
+
+        <div class="wrapper">
+            <br/><br/>
+            <hr />
+            <br /><br />
+        </div>
+
+        <div class="wrapper">
+            <h2>All Schools</h2>
+            <br />
+            <table style="width: 100%; margin-bottom: 0px;">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th style="text-align:left;">Name</th>
+                        <th>Average GPA</th>
+                        <th>National Ranking</th>
+                        <th>Regional Ranking</th>
+                        <!-- <th>District Ranking</th> -->
+                        <th style="text-align: right;">Stats</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for school in schools|slice:":50" %}
+                        <tr>
+                            <td style="text-align:center;">{{ forloop.counter }}</td>
+                            <td>{{ school.name }}</td>
+                            <td style="text-align:center;">{{ school.avg_gpa }}</td>
+                            <td style="text-align:center;">{{ school.national_rank_all }}</td>
+                            <td style="text-align:center;">{{ school.regional_rank_all }}</td>
+                            <!-- <td style="text-align:center;">{{ school.district_rank_all }}</td> -->
+                            <td style="text-align: right;"><a href="/schools/{{ school.code }}"><i class="fa fa-bar-chart"></i></a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+</div>

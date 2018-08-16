@@ -3923,6 +3923,7 @@ COPY wazimap_geography (id, geo_level, geo_code, name, square_kms, parent_level,
 3842	ward	3642	Mwisenge	3	district	169	Mwisenge	2009
 3843	ward	3643	Buhare	10	district	169	Buhare	2009
 3844	ward	3644	Makoko	13	district	169	Makoko	2009
+3845	region	31	Songwe	285	country	TZ	Songwe	2009
 \.
 
 
@@ -3994,4 +3995,3 @@ CREATE INDEX wazimap_geography_version_01953818_like ON wazimap_geography USING 
 --
 -- PostgreSQL database dump complete
 --
-

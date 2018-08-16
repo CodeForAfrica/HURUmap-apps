@@ -1,0 +1,687 @@
+{% extends 'homepage_country.html' %}
+{% load i18n %}{% load humanize partition staticfiles %}
+
+{% block head_title %}School Page: Career Guide{% endblock %}
+
+{% block content_container %}
+<div class="main-content">
+  <div class="map-box">
+    <div class="container">
+        <div class="row">
+            <h3 class="map-title">{{ school_name }} Secondary School </h3>
+            <h5 class="map-description">{{ school_region }}</h5>
+        </div>
+    </div>
+  </div>
+  <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <!-- <div class="chart-box-career"> -->
+            {% if OlevelSchooldetailsList %}
+              <input class="radio" id="tab1" type="radio" name="tabs" checked>
+              <label for="tab1">Ordinary Level</label>
+            {% endif %}
+
+            {% if AlevelSchooldetailsList %}
+              <input class="radio" id="tab2" type="radio" name="tabs" {% if not OlevelSchooldetailsList %}checked{% endif %}>
+              <label for="tab2">Advance Level</label>
+            {% endif %}
+            <input class="radio" id="tab3" type="radio" name="tabs">
+            <label for="tab3">Performance Trend</label>
+        <!-- </div> -->
+            <section class="tabSection" id="content1">
+              <div class="row">
+                  <div class="chart-box col-xs-12">
+                      <div class="col-xs-12 chart-header">
+                          <div class="col-sm-4">
+                              <div class="col-xs-12">
+                                  <h4>Overall Performance</h4>
+                              </div>
+                          </div>
+                          <div class="col-sm-8">
+                              <div class="col-xs-6">
+                                  <div class="school-name">{{ school_o_category }} </div>
+                                  <!-- <div class="school-type">Mixed</div> -->
+                              </div>
+                              <div class="col-xs-4">
+                                  <div class="school-rank">#{{ school_o_natranking }} {%trans 'in' %} Tanzania</div>
+                                  <div class="school-rank">#{{ school_o_regranking }} {%trans 'in' %} {{ school_region }}</div>
+                              </div>
+                              <div class="col-xs-2">
+                                  {{ school_o_gpa }} GPA
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-xs-12 chart">
+                        <div class="col-md-12 col-lg-12 col-xs-12">
+                          <div id="chartContainer" style="width: 100%; height: 300px"></div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12">
+                        <div class="col-sm-12">
+                        <span class="details-info">{%trans 'Click on A Subject In The Bar Chart To View More Details' %}</span>
+                      </div>
+                      <div class="col-sm-6">
+                          <h3 class="no-margin">{%trans 'Subject Perfomance' %}</h3>
+                          <br />
+                          <ul class="list-group">
+                          {% for subject in OlevelSchooldetailsList %}
+                            <li class="list-group-item" id="subject{{ forloop.counter0 }}" data-position={{ forloop.counter0 }}>
+                              <div style="min-height: 30px;">
+                                <span style="width: 33%; float: left">{{ subject.subjectname| title }}</span>
+                                <span style="width: 33%; float: left"> {%trans 'Regional Rank:' %} {{ subject.subjectregranking }}</span>
+                                <span style="width: 33%; float: left">{%trans 'National Rank:' %} {{ subject.subjectnatranking }}</span>
+                              </div>
+                            <div id="bar{{ forloop.counter }}" class="barfiller">
+                              <div class="tipWrap">
+                          		<span class="tip"></span>
+                          	    </div>
+                              <span class="fill" data-percentage={{ subject.subjectgpa }}></span>
+                            </div>
+                            </li>
+                          {% endfor %}
+                          </ul>
+                      </div>
+                      <div class="col-sm-6 details">
+                          <div class ="col-sm-12">
+                            <div id="subjectPerformance" class = "subjectPerformance">
+                              <h3 class="no-margin" id="subjectPerformanceHead" style="transform: capitalize"> </h3>
+                              <div id="subjectChartContainer" style="width: 100%; height: 300px"></div>
+                            </div>
+                          </div>
+                          <br />
+                          <br />
+                          <div class="col-sm-12">
+                            <h3 class="no-margin" id="genderPerformanceHead"> </h3>
+                            <div id="genderSubjectPerformance" style="width: 100%; height: 350px"></div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+            </div>
+          </section>
+          <section class="tabSection" id="content2">
+              <div class="row">
+                  <div class="chart-box col-xs-12">
+                      <div class="col-xs-12 chart-header">
+                          <div class="col-sm-6">
+                              <div class="col-xs-12">
+                                  <h4>{%trans 'Overall Performance' %}</h4>
+                              </div>
+                          </div>
+                          <div class="col-sm-6">
+                              <div class="col-xs-5">
+                                  <div class="school-name">{{ school_a_category }} </div>
+                                  <!-- <div class="school-type">Mixed</div> -->
+                              </div>
+                              <div class="col-xs-5">
+                                  <div class="school-rank">#{{ school_a_natranking }} {%trans 'in' %} Tanzania</div>
+                                  <div class="school-rank">#{{ school_a_regranking }} {%trans 'in' %} {{ school_region }}</div>
+                              </div>
+                              <div class="col-xs-2">
+                                  {{ school_a_gpa }} GPA
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-xs-12 chart">
+                        <div class="col-md-12 col-lg-12 col-xs-12">
+                          <div id="chart2Container" style="width: 100%; height: 300px"></div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12">
+                        <div class="col-sm-12">
+                        <span class="details-info">{%trans 'Click on A Subject In The Bar Chart To View More Details' %}</span>
+                      </div>
+                      <div class="col-sm-6">
+                          <h3 class="no-margin">{%trans 'Subject Perfomance' %}</h3>
+                          <br />
+                          <ul class="list-group">
+                            {% for subject in AlevelSchooldetailsList %}
+                              <li class="list-group-item" id="subjectA{{ forloop.counter0 }}" data-position={{ forloop.counter0 }}>{{ subject.subjectname }}
+                              <div id="barA{{ forloop.counter }}" class="barfiller">
+                                <div class="tipWrap">
+                            		<span class="tip"></span>
+                            	    </div>
+                                <span class="fill" data-percentage={{ subject.subjectgpa }}></span>
+                              </div>
+                              </li>
+                            {% endfor %}
+                          </ul>
+                      </div>
+                      <div class="col-sm-6 details">
+                          <div class ="col-sm-12">
+                            <div id="subjectPerformance2" class = "subjectPerformance">
+                              <h3 class="no-margin" id="subjectPerformanceHead2" style="transform: capitalize"> </h3>
+                              <div id="subjectChartContainer2" style="width: 100%; height: 300px"></div>
+                            </div>
+                          </div>
+                          <br />
+                          <br />
+                          <div class="col-sm-12">
+                            <h3 class="no-margin" id="genderPerformanceHead2"> </h3>
+                            <div id="genderSubjectPerformance2" style="width: 100%; height: 350px"></div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+            </div>
+          </section>
+          <section class="tabSection" id="content3">
+            <div class="row">
+              <div class="chart-box">
+                <div class="col-xs-12 chart">
+                  {% if OlevelSchooldetailsList %}
+                      <div class="col-md-6 col-lg-6 col-xs-12">
+                        <div id="olevelTrend"> </div>
+                      </div>
+                  {% endif %}
+                  {% if AlevelSchooldetailsList %}
+                    <div class="col-md-6 col-lg-6 col-xs-12">
+                      <div id="alevelTrend"></div>
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </section>
+    </div>
+  </div>
+</div>
+  <script type="text/javascript">
+  $(document).ready(function(){
+    var count = {{ OlevelSchooldetailsList|length }}
+    for (var i= 1; i <= count; i++) {
+      elemId = '#bar'+i
+      $(elemId).barfiller({ barColor: 'orange' });
+    };
+
+    var countAl = {{ AlevelSchooldetailsList|length }}
+    for (var i= 1; i <= countAl; i++) {
+      elemId = '#barA'+i
+      $(elemId).barfiller({ barColor: 'orange' });
+    };
+
+    for (var i= 0; i < count; i++) {
+      elemId = '#subject'+i;
+
+      $(elemId).click(function(){
+          var subjectPos = $(this).attr('data-position');
+          var subjectsPerformance = {{ OlevelSchooldetailsList | safe }};
+          var subject = subjectsPerformance[subjectPos];
+          var countA = 0;
+          var countB = 0;
+          var countC = 0;
+          var countD = 0;
+          var countE = 0;
+          var countF = 0;
+          var countABS = 0;
+          var len = subject.subjectPerformance.length;
+          for (var i = 0; i < len; i++) {
+            if (subject.subjectPerformance[i] == 'A') {
+              countA++;
+            } else if ( subject.subjectPerformance[i] == 'B') {
+              countB++;
+            } else if ( subject.subjectPerformance[i] == 'C') {
+              countC++;
+            } else if ( subject.subjectPerformance[i] == 'D') {
+              countD++;
+            } else if ( subject.subjectPerformance[i] == 'E') {
+              countE++;
+            } else if ( subject.subjectPerformance[i] == 'F') {
+              countF++;
+            } else {
+              countABS++
+            }
+          }
+          var perc = (100/len).toFixed(2);
+          $('#subjectPerformanceHead').text(subject.subjectname.charAt(0).toUpperCase() + subject.subjectname.slice(1).toLowerCase() + ' Grade Distribution 2017')
+
+          $("#subjectChartContainer").CanvasJSChart({
+            title: {
+              fontSize: 18
+            },
+            axisY: {
+              title: "Products in %"
+            },
+            data: [
+            {
+              type: "pie",
+              showInLegend: true,
+              toolTipContent: "{label} <br/> {y} %",
+              indexLabel: "{label}: {y} %",
+              dataPoints: [
+                { label: "A", y: countA * perc, legendText: "A"},
+                { label: "B", y: countB * perc, legendText: "B"  },
+                { label: "C", y: countC * perc, legendText: "C" },
+                { label: "D", y: countD * perc,  legendText: "D"},
+                { label: "E", y: countE * perc,  legendText: "E" },
+                { label: "F", y: countF * perc,  legendText: "F" },
+              ]
+            }
+            ]
+        });
+        var countFA = 0;
+        var countFB = 0;
+        var countFC = 0;
+        var countFD = 0;
+        var countFE = 0;
+        var countFF = 0;
+        var countFABS = 0;
+        var lenF = subject.subjectFemalePerformance.length;
+        for (var i = 0; i < lenF; i++) {
+          if (subject.subjectFemalePerformance[i] == 'A') {
+            countFA++;
+          } else if ( subject.subjectFemalePerformance[i] == 'B') {
+            countFB++;
+          } else if ( subject.subjectFemalePerformance[i] == 'C') {
+            countFC++;
+          } else if ( subject.subjectFemalePerformance[i] == 'D') {
+            countFD++;
+          } else if ( subject.subjectFemalePerformance[i] == 'E') {
+            countFE++;
+          } else if ( subject.subjectFemalePerformance[i] == 'F') {
+            countFF++;
+          } else {
+            countFABS++
+          }
+        }
+        var percF = (100/lenF).toFixed(2);
+
+        var countMA = 0;
+        var countMB = 0;
+        var countMC = 0;
+        var countMD = 0;
+        var countME = 0;
+        var countMF = 0;
+        var countMABS = 0;
+        var lenM = subject.subjectMalePerformance.length;
+        for (var i = 0; i < lenM; i++) {
+          if (subject.subjectMalePerformance[i] == 'A') {
+            countMA++;
+          } else if ( subject.subjectMalePerformance[i] == 'B') {
+            countMB++;
+          } else if ( subject.subjectMalePerformance[i] == 'C') {
+            countMC++;
+          } else if ( subject.subjectMalePerformance[i] == 'D') {
+            countMD++;
+          } else if ( subject.subjectMalePerformance[i] == 'E') {
+            countME++;
+          } else if ( subject.subjectMalePerformance[i] == 'F') {
+            countMF++;
+          } else {
+            countMABS++;
+          }
+        }
+        var percM = (100/lenM).toFixed(2);
+
+        var genderHead = subject.subjectname.charAt(0).toUpperCase() + subject.subjectname.slice(1).toLowerCase() + " Gender Performance "
+        $('#genderPerformanceHead').text(genderHead)
+        $("#genderSubjectPerformance").CanvasJSChart ({
+        	title:{
+            fontSize: 18
+        	},
+        	axisY: {
+        		titleFontColor: "#2e4668",
+        		lineColor: "#2e4668",
+        		labelFontColor: "#2e4668",
+        		tickColor: "#2e4668"
+        	},
+        	axisY2: {
+        		titleFontColor: "#C0504E",
+        		lineColor: "#C0504E",
+        		labelFontColor: "#C0504E",
+        		tickColor: "#C0504E"
+        	},
+        	toolTip: {
+        		shared: true
+        	},
+        	legend: {
+        		cursor:"pointer"
+        	},
+        	data: [{
+        		type: "column",
+        		name: "F",
+        		legendText: "Female",
+        		showInLegend: true,
+        		dataPoints:[
+        			{ label: "A", y: countFA * percF },
+        			{ label: "B", y: countFB * percF },
+        			{ label: "C", y: countFC * percF },
+        			{ label: "D", y: countFD * percF },
+        			{ label: "E", y: countFE * percF },
+        			{ label: "F", y: countFF * percF }
+        		]
+        	},
+        	{
+        		type: "column",
+        		name: "M",
+        		legendText: "Male",
+        		axisYType: "secondary",
+        		showInLegend: true,
+        		dataPoints:[
+              { label: "A", y: countMA * percM },
+        			{ label: "B", y: countMB * percM },
+        			{ label: "C", y: countMC * percM },
+        			{ label: "D", y: countMD * percM },
+        			{ label: "E", y: countME * percM },
+        			{ label: "F", y: countMF * percM }
+        		]
+        	}]
+        });
+      });
+    }
+
+    for (var i= 0; i < countAl; i++) {
+      elemId = '#subjectA'+i;
+
+      $(elemId).click(function(){
+          var subjectPos = $(this).attr('data-position');
+          var subjectsPerformance = {{ AlevelSchooldetailsList | safe }};
+          var subject = subjectsPerformance[subjectPos];
+          var countA = 0;
+          var countB = 0;
+          var countC = 0;
+          var countD = 0;
+          var countE = 0;
+          var countF = 0;
+          var countABS = 0;
+          var len = subject.subjectPerformance.length;
+          for (var i = 0; i < len; i++) {
+            if (subject.subjectPerformance[i] == 'A') {
+              countA++;
+            } else if ( subject.subjectPerformance[i] == 'B') {
+              countB++;
+            } else if ( subject.subjectPerformance[i] == 'C') {
+              countC++;
+            } else if ( subject.subjectPerformance[i] == 'D') {
+              countD++;
+            } else if ( subject.subjectPerformance[i] == 'E') {
+              countE++;
+            } else if ( subject.subjectPerformance[i] == 'F') {
+              countF++;
+            } else {
+              countABS++
+            }
+          }
+          var perc = (100/len).toFixed(2);
+          $('#subjectPerformanceHead2').text(subject.subjectname.charAt(0).toUpperCase() + subject.subjectname.slice(1).toLowerCase() + ' Grade Distribution 2017')
+          $("#subjectChartContainer2").CanvasJSChart({
+            title: {
+              fontSize: 18
+            },
+            axisY: {
+              title: "Products in %"
+            },
+            data: [
+            {
+              type: "pie",
+              showInLegend: true,
+              toolTipContent: "{label} <br/> {y} %",
+              indexLabel: "{label}: {y} %",
+              dataPoints: [
+                { label: "A", y: countA * perc, legendText: "A"},
+                { label: "B", y: countB * perc, legendText: "B"  },
+                { label: "C", y: countC * perc, legendText: "C" },
+                { label: "D", y: countD * perc,  legendText: "D"},
+                { label: "E", y: countE * perc,  legendText: "E" },
+                { label: "F", y: countF * perc,  legendText: "F" },
+              ]
+            }
+            ]
+        });
+        var countFA = 0;
+        var countFB = 0;
+        var countFC = 0;
+        var countFD = 0;
+        var countFE = 0;
+        var countFF = 0;
+        var countFABS = 0;
+        var lenF = subject.subjectFemalePerformance.length;
+        for (var i = 0; i < lenF; i++) {
+          if (subject.subjectFemalePerformance[i] == 'A') {
+            countFA++;
+          } else if ( subject.subjectFemalePerformance[i] == 'B') {
+            countFB++;
+          } else if ( subject.subjectFemalePerformance[i] == 'C') {
+            countFC++;
+          } else if ( subject.subjectFemalePerformance[i] == 'D') {
+            countFD++;
+          } else if ( subject.subjectFemalePerformance[i] == 'E') {
+            countFE++;
+          } else if ( subject.subjectFemalePerformance[i] == 'F') {
+            countFF++;
+          } else {
+            countFABS++
+          }
+        }
+        var percF = (100/lenF).toFixed(2);
+
+        var countMA = 0;
+        var countMB = 0;
+        var countMC = 0;
+        var countMD = 0;
+        var countME = 0;
+        var countMF = 0;
+        var countMABS = 0;
+        var lenM = subject.subjectMalePerformance.length;
+        for (var i = 0; i < lenM; i++) {
+          if (subject.subjectMalePerformance[i] == 'A') {
+            countMA++;
+          } else if ( subject.subjectMalePerformance[i] == 'B') {
+            countMB++;
+          } else if ( subject.subjectMalePerformance[i] == 'C') {
+            countMC++;
+          } else if ( subject.subjectMalePerformance[i] == 'D') {
+            countMD++;
+          } else if ( subject.subjectMalePerformance[i] == 'E') {
+            countME++;
+          } else if ( subject.subjectMalePerformance[i] == 'F') {
+            countMF++;
+          } else {
+            countMABS++;
+          }
+        }
+        var percM = (100/lenM).toFixed(2);
+
+        var genderHead2 = subject.subjectname.charAt(0).toUpperCase() + subject.subjectname.slice(1).toLowerCase() + " Gender Performance "
+        $('#genderPerformanceHead2').text(genderHead2)
+        $("#genderSubjectPerformance2").CanvasJSChart ({
+        	title:{
+            fontSize: 18
+        	},
+        	axisY: {
+        		titleFontColor: "#2e4668",
+        		lineColor: "#2e4668",
+        		labelFontColor: "#2e4668",
+        		tickColor: "#2e4668"
+        	},
+        	axisY2: {
+        		titleFontColor: "#C0504E",
+        		lineColor: "#C0504E",
+        		labelFontColor: "#C0504E",
+        		tickColor: "#C0504E"
+        	},
+        	toolTip: {
+        		shared: true
+        	},
+        	legend: {
+        		cursor:"pointer"
+        	},
+        	data: [{
+        		type: "column",
+        		name: "F",
+        		legendText: "Female",
+        		showInLegend: true,
+        		dataPoints:[
+        			{ label: "A", y: countFA * percF },
+        			{ label: "B", y: countFB * percF },
+        			{ label: "C", y: countFC * percF },
+        			{ label: "D", y: countFD * percF },
+        			{ label: "E", y: countFE * percF },
+        			{ label: "F", y: countFF * percF }
+        		]
+        	},
+        	{
+        		type: "column",
+        		name: "M",
+        		legendText: "Male",
+        		axisYType: "secondary",
+        		showInLegend: true,
+        		dataPoints:[
+              { label: "A", y: countMA * percM },
+        			{ label: "B", y: countMB * percM },
+        			{ label: "C", y: countMC * percM },
+        			{ label: "D", y: countMD * percM },
+        			{ label: "E", y: countME * percM },
+        			{ label: "F", y: countMF * percM }
+        		]
+        	}]
+        });
+      });
+    }
+
+    var AlevelOverallPerf = {{ AlevelOverallPerformance|safe }};
+    if (AlevelOverallPerf.length > 0) {
+      var div1 = AlevelOverallPerf[0].fields.division_i;
+      var div2 = AlevelOverallPerf[0].fields.division_ii;
+      var div3 = AlevelOverallPerf[0].fields.division_iii;
+      var div4 = AlevelOverallPerf[0].fields.division_iv;
+      var div0 = AlevelOverallPerf[0].fields.division_0;
+      var totalAl = div1 + div2 + div3 + div4 + div0;
+      var percAl = (100/totalAl).toFixed(2);
+      $("#chart2Container").CanvasJSChart({
+        title: {
+          text: "Overall School Performance 2017",
+          fontSize: 18
+        },
+        axisY: {
+          title: "Products in %"
+        },
+        data: [
+          {
+            type: "pie",
+            showInLegend: true,
+            toolTipContent: "{label} <br/> {y} %",
+            indexLabel: "{label}: {y} %",
+            dataPoints: [
+              { label: "Division I",  y: div1 * percAl, legendText: "Division I"},
+              { label: "Division II", y: div2 * percAl, legendText: "Division II"  },
+              { label: "Division III",y: div3 * percAl,  legendText: "Division III" },
+              { label: "Division IV", y: div4 * percAl,  legendText: "Division IV"},
+              { label: "Division 0",  y: div0 * percAl,  legendText: "Division 0" },
+            ]
+          }
+        ]
+      });
+
+    }
+    //var olevelOverallPerf = JSON.parse({{ OlevelOverallPerformance }});
+    var olevelOverallPerf = {{ OlevelOverallPerformance | safe}};
+    if (olevelOverallPerf.length > 0) {
+      var div1 = olevelOverallPerf[0].fields.division_i;
+      var div2 = olevelOverallPerf[0].fields.division_ii;
+      var div3 = olevelOverallPerf[0].fields.division_iii;
+      var div4 = olevelOverallPerf[0].fields.division_iv;
+      var div0 = olevelOverallPerf[0].fields.division_0;
+
+      var totalAl = div1 + div2 + div3 + div4 + div0;
+      var percent = (100/totalAl).toFixed(2)
+      $("#chartContainer").CanvasJSChart({
+        title: {
+          text: "Overall School Performance 2017",
+          fontSize: 18
+        },
+        axisY: {
+          title: "Products in %"
+        },
+        data: [
+        {
+          type: "pie",
+          showInLegend: true,
+          toolTipContent: "{label} <br/> {y} %",
+          indexLabel: "{label}: {y} %",
+          dataPoints: [
+            { label: "Division I",  y: div1 * percent, legendText: "Division I"},
+            { label: "Division II", y: div2* percent, legendText: "Division II"  },
+            { label: "Division III",y: div3 * percent,  legendText: "Division III" },
+            { label: "Division IV", y: div4 * percent,  legendText: "Division IV"},
+            { label: "Division 0",  y: div0 * percent,  legendText: "Division 0" },
+          ]
+        }
+        ]
+      });
+    }
+
+    $('#tab3').click(function(){
+      var olTrend = {{ OlevelPerformanceTrends | safe }};
+      var alTrend = {{ AlevelPerformanceTrends | safe }};
+      console.log(olTrend)
+      if (olTrend.length > 0) {
+        $("#olevelTrend").CanvasJSChart ({
+          title:{
+            text: "Performance Trend - Ordinary Level",
+            fontSize: 18
+          },
+          axisY: {
+            gridThickness: 0,
+            tickLength: 5,
+      	    tickThickness: 0
+          },
+          legend: {
+            cursor:"pointer"
+          },
+          data: [{
+            type: "column",
+            name: "GPA",
+            color: "#4F81BC",
+            legendText: "School GPA",
+            showInLegend: false,
+            dataPoints:[
+              { label: "2016", y: parseFloat(olTrend[0]["2016"])  },
+              { label: "2017", y: parseFloat(olTrend[1]["2017"]) }
+            ]
+          }]
+        });
+      }
+
+      if (alTrend.length > 0) {
+        $("#alevelTrend").CanvasJSChart ({
+          title:{
+            text: "Performance Trend - Advance Level",
+            fontSize: 18
+          },
+          axisY: {
+            titleFontColor: "#C0504E",
+            lineColor: "#C0504E",
+            labelFontColor: "#C0504E",
+            tickLength: 5,
+      	    tickThickness: 0,
+            gridThickness: 0
+          },
+          toolTip: {
+            shared: true
+          },
+          legend: {
+            cursor:"pointer"
+          },
+          data: [{
+            type: "column",
+            name: "GPA",
+            legendText: "School GPA",
+            showInLegend: true,
+            dataPoints:[
+              { label: "2016", y: parseFloat(alTrend[0]["2016"]) },
+              { label: "2017", y: parseFloat(alTrend[1]["2017"]) }
+            ]
+          }]
+        });
+      }
+
+    });
+
+  });
+  </script>
+{% endblock %}
+{% block footer_content %}
+    {% include 'footer.html' %}
+{% endblock footer_content %}
