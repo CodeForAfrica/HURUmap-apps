@@ -16,6 +16,8 @@ SET row_security = off;
 
 SET search_path = public, pg_catalog;
 
+ALTER TABLE IF EXISTS ONLY public.householddistributionbyenergysource DROP CONSTRAINT IF EXISTS pk_householddistributionbyenergysource;
+DROP TABLE IF EXISTS public.householddistributionbyenergysource;
 SET default_tablespace = '';
 
 SET default_with_oids = false;

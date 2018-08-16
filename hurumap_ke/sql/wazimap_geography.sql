@@ -25,8 +25,6 @@ ALTER TABLE IF EXISTS ONLY public.wazimap_geography DROP CONSTRAINT IF EXISTS wa
 ALTER TABLE IF EXISTS public.wazimap_geography ALTER COLUMN id DROP DEFAULT;
 DROP SEQUENCE IF EXISTS public.wazimap_geography_id_seq;
 DROP TABLE IF EXISTS public.wazimap_geography;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
