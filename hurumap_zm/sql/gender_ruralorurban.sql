@@ -7,21 +7,21 @@
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
 
 SET search_path = public, pg_catalog;
 
+ALTER TABLE IF EXISTS ONLY public.gender_ruralorurban DROP CONSTRAINT IF EXISTS pk_gender_ruralorurban;
+DROP TABLE IF EXISTS public.gender_ruralorurban;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
 
 --
--- Name: gender_ruralorurban; Type: TABLE; Schema: public; Owner: hurumap_zm
+-- Name: gender_ruralorurban; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE gender_ruralorurban (
@@ -34,10 +34,8 @@ CREATE TABLE gender_ruralorurban (
 );
 
 
-ALTER TABLE gender_ruralorurban OWNER TO hurumap_zm;
-
 --
--- Data for Name: gender_ruralorurban; Type: TABLE DATA; Schema: public; Owner: hurumap_zm
+-- Data for Name: gender_ruralorurban; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY gender_ruralorurban (geo_level, geo_code, gender, "rural or urban", total, geo_version) FROM stdin;
@@ -93,7 +91,7 @@ province	10	female	urban	59547	2010
 --
 
 ALTER TABLE ONLY gender_ruralorurban
-    ADD CONSTRAINT gender_ruralorurban_pkey PRIMARY KEY (geo_level, geo_code, gender, "rural or urban");
+    ADD CONSTRAINT pk_gender_ruralorurban PRIMARY KEY (geo_level, geo_code, gender, "rural or urban");
 
 
 --
