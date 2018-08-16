@@ -16,6 +16,8 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET row_security = off;
 
+ALTER TABLE IF EXISTS ONLY public.airporttypes DROP CONSTRAINT IF EXISTS pk_airporttypes;
+DROP TABLE IF EXISTS public.airporttypes;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -33,8 +35,6 @@ CREATE TABLE public.airporttypes (
     total integer
 );
 
-
-ALTER TABLE public.airporttypes OWNER TO hurumap_tz;
 
 --
 -- TOC entry 2265 (class 0 OID 29052)

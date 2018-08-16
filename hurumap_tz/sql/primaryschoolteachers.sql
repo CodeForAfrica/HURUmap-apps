@@ -15,6 +15,8 @@ SET row_security = off;
 
 SET search_path = public, pg_catalog;
 
+ALTER TABLE IF EXISTS ONLY public.primaryschoolteachers DROP CONSTRAINT IF EXISTS pk_primaryschoolteachers;
+DROP TABLE IF EXISTS public.primaryschoolteachers;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
