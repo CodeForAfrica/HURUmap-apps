@@ -16,6 +16,9 @@ SET row_security = off;
 
 SET search_path = public, pg_catalog;
 
+ALTER TABLE IF EXISTS ONLY public.financial_year DROP CONSTRAINT IF EXISTS pk_financial_year;
+DROP TABLE IF EXISTS public.financial_year;
+
 SET default_tablespace = '';
 
 SET default_with_oids = false;
