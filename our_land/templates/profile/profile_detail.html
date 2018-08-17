@@ -1,34 +1,34 @@
 {% extends 'profile/profile_detail.html' %} {% load humanize lookup staticfiles %}
 
-{% block header_content %}
+{% block secondary_nav %}
     <div class="floating-nav-wrapper" id="sticky-nav">
-        <nav class="floating-nav affix-top" data-spy="affix" data-offset-top="197">
-            <div class="wrapper clearfix">
-                <div class="geography-ico">
+      <nav class="floating-nav affix-top" data-spy="affix" data-offset-top="197">
+        <div class="wrapper clearfix">
+          <div class="geography-ico">
                     <span><img
                         src="{% static 'img/icons/favicon.ico' %}">{{ geography.this.name }}
                     </span>
-                </div>
-
-                <ul>
-                    <li><a href="#demographics"><i class="fa fa-user"></i>
-                        <span>Demographics</span></a></li>
-                </ul>
-            </div>
-        </nav>
+          </div>
+          <ul>
+            <li><a href="#all_land"><i class="fa fa-check"></i>
+              <span>All Land</span></a></li>
+            <li><a href="#firm_land"><i class="fa fa-user"></i>
+              <span>Firms & Agricultural Land</span></a></li>
+            <li><a href="#urban_land"><i class="fa fa-home"></i>
+              <span>Erven & Urban Land</span></a></li>
+          </ul>
+        </div>
+      </nav>
     </div>
-
-    {{ block.super }}
 {% endblock %}
 
 {% block profile_header_tail %}
 {% endblock %}
 
 {% block profile_detail %}
-{% endblock %}
-
-{% block homepage_javascripb_libs %}
-    {{ block.super }}
-    <script src="{% static 'js/maps_mapit.js' %}"></script>
-    <script src="{% static 'js/profile_map_mapit.js' %}"></script>
+  {% block profile_javascript_libs %}
+      {{ block.super }}
+      <script src="{% static 'js/maps_mapit.js' %}"></script>
+      <script src="{% static 'js/profile_map_mapit.js' %}"></script>
+  {% endblock %}
 {% endblock %}

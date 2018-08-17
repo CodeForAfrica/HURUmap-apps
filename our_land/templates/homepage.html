@@ -1,5 +1,31 @@
 {% extends 'homepage.html' %}{% load humanize partition staticfiles %}
 
+{% block how_it_works %}
+    <div class="wrapper clearfix">
+        <h1>How It Works</h1>
+        <br/>
+        <div class="column-third">
+            <p><img src="{% static 'img/icons/blurbs/facts.png' %}" alt=""></p>
+            <h3>Find Facts</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+        </div>
+        <div class="column-third">
+            <p><img src="{% static 'img/icons/blurbs/visualise.png' %}" alt=""></p>
+            <h3>Visualize</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+        </div>
+        <div class="column-third">
+            <p><img src="{% static 'img/icons/blurbs/context.png' %}" alt=""></p>
+            <h3>Get Context</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+    </div>
+    <div class="wrapper">
+        <br/><br/>
+        <p><a href="/help" class="btn btn-lg bg-bottle-green">Learn more</a></p>
+    </div>
+{% endblock %}
+
 {% block homepage_javascripb_libs %}
 {{ block.super }}
 <script src="{% static 'js/maps_mapit.js' %}"></script>
