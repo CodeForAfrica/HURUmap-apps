@@ -101,7 +101,7 @@ def get_schools_profile(geo, session, year):
         recode=gpa_recode, exclude=['unspecified'], only={'year_of_result': [year]})
 
     total_private = 0.0
-    for data in schools_dist['Non-Government'].itervalues():
+    for data in schools_dist.get('Non-Government', {}).itervalues():
         if 'numerators' in data:
             total_private += data['numerators']['this']
 
