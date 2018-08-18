@@ -14,15 +14,16 @@ SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
 
+ALTER TABLE IF EXISTS ONLY public.alevel_overall_performance DROP CONSTRAINT IF EXISTS pk_alevel_overall_performance;
+DROP TABLE IF EXISTS public.alevel_overall_performance;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
 
 --
 -- TOC entry 193 (class 1259 OID 17240)
--- Name: alevel_overall_performance; Type: TABLE; Schema: public; Owner: elimu_yangu
+-- Name: alevel_overall_performance; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.alevel_overall_performance (
@@ -41,12 +42,10 @@ CREATE TABLE public.alevel_overall_performance (
 );
 
 
-ALTER TABLE public.alevel_overall_performance OWNER TO elimu_yangu;
-
 --
 -- TOC entry 2176 (class 0 OID 17240)
 -- Dependencies: 193
--- Data for Name: alevel_overall_performance; Type: TABLE DATA; Schema: public; Owner: elimu_yangu
+-- Data for Name: alevel_overall_performance; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.alevel_overall_performance (id, year, schoolcode, schoolname, gender, gendertotal, division_i, division_ii, division_iii, division_iv, division_0, abswithheld) FROM stdin;
@@ -3460,11 +3459,11 @@ COPY public.alevel_overall_performance (id, year, schoolcode, schoolname, gender
 
 --
 -- TOC entry 2061 (class 2606 OID 17253)
--- Name: alevel_overall_performance_pkey; Type: CONSTRAINT; Schema: public; Owner: elimu_yangu
+-- Name: pk_alevel_overall_performance; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.alevel_overall_performance
-    ADD CONSTRAINT alevel_overall_performance_pkey PRIMARY KEY (id);
+    ADD CONSTRAINT pk_overall_performance PRIMARY KEY (id);
 
 
 -- Completed on 2018-03-14 11:18:56 EAT

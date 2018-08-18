@@ -1,13 +1,10 @@
 import os
 from collections import OrderedDict
 
-import dj_database_url
-
 from hurumap.settings import *  # noqa
 
 # insert our overrides before both census and hurumap
 INSTALLED_APPS = ['hurumap_ke'] + INSTALLED_APPS
-
 
 DATABASE_URL = os.environ.get('DATABASE_URL',
                               'postgresql://hurumap_ke:hurumap_ke@localhost/hurumap_ke')
@@ -17,7 +14,7 @@ DATABASES['default']['ATOMIC_REQUESTS'] = True
 
 # Localise this instance of HURUmap
 HURUMAP['name'] = 'HURUmap Kenya'
-HURUMAP['url'] = 'https://kenya.hurumap.org'
+HURUMAP['url'] = os.environ.get('HURUMAP_URL','https://kenya.hurumap.org')
 HURUMAP['country_code'] = 'KE'
 HURUMAP['country_name'] = 'Kenya'
 

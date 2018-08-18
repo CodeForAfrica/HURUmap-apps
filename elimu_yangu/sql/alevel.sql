@@ -11,19 +11,19 @@ SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
 
 SET search_path = public, pg_catalog;
 
+ALTER TABLE IF EXISTS ONLY public.alevel_subject_performance DROP CONSTRAINT IF EXISTS pk_alevel_subject_performance;
+DROP TABLE IF EXISTS public.alevel_subject_performance;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
 
+
 --
--- Name: alevel_subject_performance; Type: TABLE; Schema: public; Owner: elimu_yangu
+-- Name: alevel_subject_performance; Type: TABLE; Schema: public; Owner: -
 --
-ALTER TABLE IF EXISTS ONLY public.maintypeofcookingfuel DROP CONSTRAINT IF EXISTS maintypeofcookingfuel_pkey;
-DROP TABLE IF EXISTS public.maintypeofcookingfuel;
 
 CREATE TABLE alevel_subject_performance (
     geo_level character varying(15) NOT NULL,
@@ -43,10 +43,8 @@ CREATE TABLE alevel_subject_performance (
 );
 
 
-ALTER TABLE alevel_subject_performance OWNER TO elimu_yangu;
-
 --
--- Data for Name: alevel_subject_performance; Type: TABLE DATA; Schema: public; Owner: elimu_yangu
+-- Data for Name: alevel_subject_performance; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY alevel_subject_performance (geo_level, geo_code, geo_version, year, schoolcode, schoolname, region, gpa, subjectcode, subjectname, subjectgpa, subjectregranking, subjectnatranking, total) FROM stdin;
@@ -54,7 +52,7 @@ COPY alevel_subject_performance (geo_level, geo_code, geo_version, year, schoolc
 
 
 --
--- Name: pk_alevel_subject_performance; Type: CONSTRAINT; Schema: public; Owner: elimu_yangu
+-- Name: pk_alevel_subject_performance; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY alevel_subject_performance

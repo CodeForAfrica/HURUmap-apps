@@ -14,15 +14,16 @@ SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
 
+ALTER TABLE IF EXISTS ONLY public.django_session DROP CONSTRAINT IF EXISTS pk_django_session;
+DROP TABLE IF EXISTS public.django_session;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
 
 --
 -- TOC entry 203 (class 1259 OID 25427)
--- Name: django_session; Type: TABLE; Schema: public; Owner: elimu_yangu
+-- Name: django_session; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.django_session (
@@ -32,12 +33,10 @@ CREATE TABLE public.django_session (
 );
 
 
-ALTER TABLE public.django_session OWNER TO elimu_yangu;
-
 --
 -- TOC entry 2294 (class 0 OID 25427)
 -- Dependencies: 203
--- Data for Name: django_session; Type: TABLE DATA; Schema: public; Owner: elimu_yangu
+-- Data for Name: django_session; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.django_session (session_key, session_data, expire_date) FROM stdin;
@@ -47,16 +46,16 @@ j7en14dciwz1vnhm3vr22r00908eucx8	OTk0MGEwZmQ5ZTg4YTJlOWNlMzk3Y2QyNjZjYTFjYWRlYjA
 
 --
 -- TOC entry 2178 (class 2606 OID 25434)
--- Name: django_session_pkey; Type: CONSTRAINT; Schema: public; Owner: elimu_yangu
+-- Name: django_session_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.django_session
-    ADD CONSTRAINT django_session_pkey PRIMARY KEY (session_key);
+    ADD CONSTRAINT pk_django_session PRIMARY KEY (session_key);
 
 
 --
 -- TOC entry 2176 (class 1259 OID 25435)
--- Name: django_session_de54fa62; Type: INDEX; Schema: public; Owner: elimu_yangu
+-- Name: django_session_de54fa62; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX django_session_de54fa62 ON public.django_session USING btree (expire_date);
@@ -64,7 +63,7 @@ CREATE INDEX django_session_de54fa62 ON public.django_session USING btree (expir
 
 --
 -- TOC entry 2179 (class 1259 OID 25436)
--- Name: django_session_session_key_c0390e0f_like; Type: INDEX; Schema: public; Owner: elimu_yangu
+-- Name: django_session_session_key_c0390e0f_like; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX django_session_session_key_c0390e0f_like ON public.django_session USING btree (session_key varchar_pattern_ops);
