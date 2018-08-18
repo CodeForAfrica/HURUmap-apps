@@ -13,17 +13,24 @@ SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
 
 SET search_path = public, pg_catalog;
 
+ALTER TABLE IF EXISTS ONLY public.university_finder DROP CONSTRAINT IF EXISTS pk_university_finder;
+ALTER TABLE IF EXISTS public.university_finder ALTER COLUMN id DROP DEFAULT;
+DROP SEQUENCE IF EXISTS public.university_finder_id_seq;
+DROP TABLE IF EXISTS public.university_finder;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
 
 --
+--
+--
+-- NOTE: HSTORE EXTENSION IS REQUIRED
+
 -- TOC entry 201 (class 1259 OID 24930)
--- Name: university_finder; Type: TABLE; Schema: public; Owner: elimu_yangu
+-- Name: university_finder; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE university_finder (
@@ -38,11 +45,9 @@ CREATE TABLE university_finder (
 );
 
 
-ALTER TABLE university_finder OWNER TO elimu_yangu;
-
 --
 -- TOC entry 200 (class 1259 OID 24928)
--- Name: university_finder_id_seq; Type: SEQUENCE; Schema: public; Owner: elimu_yangu
+-- Name: university_finder_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE university_finder_id_seq
@@ -53,12 +58,10 @@ CREATE SEQUENCE university_finder_id_seq
     CACHE 1;
 
 
-ALTER TABLE university_finder_id_seq OWNER TO elimu_yangu;
-
 --
 -- TOC entry 2292 (class 0 OID 0)
 -- Dependencies: 200
--- Name: university_finder_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: elimu_yangu
+-- Name: university_finder_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE university_finder_id_seq OWNED BY university_finder.id;
@@ -66,7 +69,7 @@ ALTER SEQUENCE university_finder_id_seq OWNED BY university_finder.id;
 
 --
 -- TOC entry 2169 (class 2604 OID 24933)
--- Name: id; Type: DEFAULT; Schema: public; Owner: elimu_yangu
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY university_finder ALTER COLUMN id SET DEFAULT nextval('university_finder_id_seq'::regclass);
@@ -75,7 +78,7 @@ ALTER TABLE ONLY university_finder ALTER COLUMN id SET DEFAULT nextval('universi
 --
 -- TOC entry 2287 (class 0 OID 24930)
 -- Dependencies: 201
--- Data for Name: university_finder; Type: TABLE DATA; Schema: public; Owner: elimu_yangu
+-- Data for Name: university_finder; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY university_finder (id, university_name, course_name, major_name, compulsory_alevel, compulsory_olevel, other_alevel, other_olevel) FROM stdin;
@@ -96,7 +99,7 @@ COPY university_finder (id, university_name, course_name, major_name, compulsory
 --
 -- TOC entry 2293 (class 0 OID 0)
 -- Dependencies: 200
--- Name: university_finder_id_seq; Type: SEQUENCE SET; Schema: public; Owner: elimu_yangu
+-- Name: university_finder_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('university_finder_id_seq', 11, true);
@@ -104,11 +107,11 @@ SELECT pg_catalog.setval('university_finder_id_seq', 11, true);
 
 --
 -- TOC entry 2171 (class 2606 OID 24938)
--- Name: university_finder_pkey; Type: CONSTRAINT; Schema: public; Owner: elimu_yangu
+-- Name: pk_university_finder; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY university_finder
-    ADD CONSTRAINT university_finder_pkey PRIMARY KEY (id);
+    ADD CONSTRAINT pk_university_finder PRIMARY KEY (id);
 
 
 -- Completed on 2018-04-09 12:07:22 EAT

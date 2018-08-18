@@ -11,11 +11,13 @@ SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
-SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
 
+SET search_path = public, pg_catalog;
+
+ALTER TABLE IF EXISTS ONLY public.universityfinder DROP CONSTRAINT IF EXISTS pk_universityfinder;
+DROP TABLE IF EXISTS public.universityfinder;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -28,16 +30,14 @@ SET default_with_oids = false;
 CREATE TABLE public.universityfinder (
     geo_level character varying,
     geo_code character varying(10),
-    geo_version character varying(10),
     university_name character varying(300),
     course_name character varying(500),
     general_major character varying(300),
     cumpulsory_subjects_ar character varying,
-    other_subjects_ar character varying
+    other_subjects_ar character varying,
+    geo_version character varying(10)
 );
 
-
-ALTER TABLE public.universityfinder OWNER TO elimu_yangu;
 
 --
 -- TOC entry 2227 (class 0 OID 18220)
@@ -563,6 +563,14 @@ country	TZ	2018	Teofilo Kisanji University\\, Dar es Salaam Centre	Education	Bac
 country	TZ	2018	Teofilo Kisanji University\\, Dar es Salaam Centre	Business Studies\\, Business Administration	Bachelor of Business Administration (BBA)	Amathematics-S\\,Aaccounts-E	Acommerce-E\\,Omathematics-D\\,Ohistory-D
 country	TZ	2018	Teofilo Kisanji University\\, Dar es Salaam Centre	Sociology\\, Social Work	Bachelor of Arts in Sociology and Social Work	Ageneralstudies-S\\,Ahistory-E\\, Aenglish-E	Ohistory-D\\,Oenglish-D\\,Okiswahili-D
 \.
+
+
+--
+-- Name: pk_universityfinder; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY universityfinder
+    ADD CONSTRAINT pk_universityfinder PRIMARY KEY (geo_level, geo_code, geo_version, university_name, course_name, general_major);
 
 
 -- Completed on 2018-03-27 17:05:15 EAT
