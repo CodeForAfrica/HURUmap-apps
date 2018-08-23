@@ -43,15 +43,15 @@ ALTER TABLE public.privatelandownershipinhectarespercategory OWNER TO our_land;
 --
 
 COPY public.privatelandownershipinhectarespercategory (geo_level, geo_code, geo_version, "private land ownership in hectares per category", total) FROM stdin;
-province	EC	2011		4692320
-province	FS	2011		5005878
-province	GT	2011		546612
-province	KZN	2011		1579543
-province	LIM	2011		1718861
-province	MP	2011		1432232
-province	NW	2011		3215926
-province	NC	2011		15083393
-province	WC	2011		3756518
+province	EC	2011	Individual	4692320
+province	FS	2011	Individual	5005878
+province	GT	2011	Individual	546612
+province	KZN	2011	Individual	1579543
+province	LIM	2011	Individual	1718861
+province	MP	2011	Individual	1432232
+province	NW	2011	Individual	3215926
+province	NC	2011	Individual	15083393
+province	WC	2011	Individual	3756518
 province	EC	2011	Company	1982479
 province	FS	2011	Company	1978952
 province	GT	2011	Company	618342
@@ -88,7 +88,7 @@ province	MP	2011	Co-ownership	36185
 province	NW	2011	Co-ownership	117724
 province	NC	2011	Co-ownership	126464
 province	WC	2011	Co-ownership	267807
-country	ZA	2011		37031283
+country	ZA	2011	Individual	37031283
 country	ZA	2011	Company	23199904
 country	ZA	2011	CBOs	3549489
 country	ZA	2011	Trust	29291857
@@ -101,4 +101,3 @@ country	ZA	2011	Co-ownership	883589
 --
 -- PostgreSQL database dump complete
 --
-

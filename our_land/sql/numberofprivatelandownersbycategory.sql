@@ -43,15 +43,15 @@ ALTER TABLE public.numberofprivatelandownersbycategory OWNER TO our_land;
 --
 
 COPY public.numberofprivatelandownersbycategory (geo_level, geo_code, geo_version, "number of private land owners by category", total) FROM stdin;
-province	EC	2011		659469
-province	FS	2011		484942
-province	GT	2011		2031370
-province	KZN	2011		812027
-province	LM	2011		196256
-province	MP	2011		336211
-province	NW	2011		300486
-province	NC	2011		195052
-province	WC	2011		1134283
+province	EC	2011	Individual	659469
+province	FS	2011	Individual	484942
+province	GT	2011	Individual	2031370
+province	KZN	2011	Individual	812027
+province	LM	2011	Individual	196256
+province	MP	2011	Individual	336211
+province	NW	2011	Individual	300486
+province	NC	2011	Individual	195052
+province	WC	2011	Individual	1134283
 province	EC	2011	Company	10554
 province	FS	2011	Company	8527
 province	GT	2011	Company	61350
@@ -79,7 +79,7 @@ province	MP	2011	CBOs	1645
 province	NW	2011	CBOs	1586
 province	NC	2011	CBOs	1224
 province	WC	2011	CBOs	5188
-country	ZA	2011		6150096
+country	ZA	2011	Individual	6150096
 country	ZA	2011	Company	176062
 country	ZA	2011	Trust	118214
 country	ZA	2011	CBOs	25927
@@ -91,4 +91,3 @@ country	ZA	2011	CBOs	25927
 --
 -- PostgreSQL database dump complete
 --
-

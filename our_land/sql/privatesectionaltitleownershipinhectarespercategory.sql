@@ -43,15 +43,15 @@ ALTER TABLE public.sectionaltitleownershipinhectarespercategory OWNER TO our_lan
 --
 
 COPY public.sectionaltitleownershipinhectarespercategory (geo_level, geo_code, geo_version, "sectional title ownership in hectares per category", total) FROM stdin;
-province	EC	2011		680
-province	FS	2011		1232
-province	GT	2011		4770
-province	KZN	2011		979
-province	LIM	2011		1541
-province	MP	2011		104
-province	NW	2011		1134
-province	NC	2011		6
-province	WC	2011		533
+province	EC	2011	Individual	680
+province	FS	2011	Individual	1232
+province	GT	2011	Individual	4770
+province	KZN	2011	Individual	979
+province	LIM	2011	Individual	1541
+province	MP	2011	Individual	104
+province	NW	2011	Individual	1134
+province	NC	2011	Individual	6
+province	WC	2011	Individual	533
 province	EC	2011	Company	54
 province	FS	2011	Company	48
 province	GT	2011	Company	36187
@@ -88,7 +88,7 @@ province	MP	2011	Co-ownership	18
 province	NW	2011	Co-ownership	13
 province	NC	2011	Co-ownership	0
 province	WC	2011	Co-ownership	109
-country	ZA	2011		10980
+country	ZA	2011	Individual	10980
 country	ZA	2011	Company	37523
 country	ZA	2011	CBOs	24
 country	ZA	2011	Trust	1059

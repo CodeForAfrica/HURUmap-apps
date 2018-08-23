@@ -43,15 +43,15 @@ ALTER TABLE public.numberofsectionaltitleownersbycategory OWNER TO our_land;
 --
 
 COPY public.numberofsectionaltitleownersbycategory (geo_level, geo_code, geo_version, "number of sectional title owners by category", total) FROM stdin;
-province	EC	2011		30162
-province	FS	2011		25844
-province	GT	2011		360802
-province	KZN	2011		154106
-province	LIM	2011		8607
-province	MP	2011		11718
-province	NW	2011		18394
-province	NC	2011		817
-province	WC	2011		116516
+province	EC	2011	Individual	30162
+province	FS	2011	Individual	25844
+province	GT	2011	Individual	360802
+province	KZN	2011	Individual	154106
+province	LIM	2011	Individual	8607
+province	MP	2011	Individual	11718
+province	NW	2011	Individual	18394
+province	NC	2011	Individual	817
+province	WC	2011	Individual	116516
 province	EC	2011	Company	1153
 province	FS	2011	Company	1004
 province	GT	2011	Company	19022
@@ -79,7 +79,7 @@ province	MP	2011	Trust	939
 province	NW	2011	Trust	1410
 province	NC	2011	Trust	81
 province	WC	2011	Trust	11645
-country	ZA	2011		726966
+country	ZA	2011	Individual	726966
 country	ZA	2011	Company	46927
 country	ZA	2011	CBOs	1228
 country	ZA	2011	Trust	42878
