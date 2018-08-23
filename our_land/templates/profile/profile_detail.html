@@ -10,12 +10,12 @@
                     </span>
           </div>
           <ul>
-            <li><a href="#all_land"><i class="fa fa-check"></i>
-              <span>All Land</span></a></li>
-            <li><a href="#firm_land"><i class="fa fa-user"></i>
+            <li><a href="#firm-land"><i class="fa fa-check"></i>
               <span>Firms & Agricultural Land</span></a></li>
-            <li><a href="#urban_land"><i class="fa fa-home"></i>
+            <li><a href="#erven-land"><i class="fa fa-home"></i>
               <span>Erven & Urban Land</span></a></li>
+            <li><a href="#sectional-title-land"><i class="fa fa-user"></i>
+              <span>Sectional Title Land</span></a></li>
           </ul>
         </div>
       </nav>
@@ -26,7 +26,39 @@
 {% endblock %}
 
 {% block profile_detail %}
+  <article id="firm-land" class="clearfix">
+      <header class="section-contents">
+          <h1>Individual Land</h1>
+      </header>
+      <div class="section-container">
+        <section class="clearfix stat-row">
+            <h2 class="header-for-columns"><a class="permalink" href="#age" id="age">Age <i class="fa fa-link"></i></a></h2>
+            <div class="column-quarter">
+            </div>
+            <div class="column-half">
+                <div id="chart-histogram-firmland-private_land_ownership_in_hectares_per_category" data-stat-type="scaled-percentage" data-chart-title="Private land Ownership"></div>
+            </div>
+            <div class="column-quarter" id="chart-pie-firmland-number_of_private_land_owners_by_category" data-stat-type="percentage" data-chart-title="Number of Private Land Owners by Category" data-initial-sort="-value"></div>
+        </section>
+      </div>
+  </article>
+  <article id="erven-land" class="clearfix">
+      <header class="section-contents">
+          <h1>Erven Land</h1>
+      </header>
+      <div class="section-container">
+      </div>
+  </article>
+  <article id="sectional-title-land" class="clearfix">
+    <header class="section-contents">
+        <h1>Sectional Title Land</h1>
+    </header>
+    <div class="section-container">
+    </div>
+  </article>
+
   {% block profile_javascript_libs %}
+      {% include 'settings_js.html' %}
       {{ block.super }}
       <script src="{% static 'js/maps_mapit.js' %}"></script>
       <script src="{% static 'js/profile_map_mapit.js' %}"></script>
