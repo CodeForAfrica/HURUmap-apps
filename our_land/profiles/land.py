@@ -42,10 +42,11 @@ def get_land_topic_profiles(geo, session, topic_name):
     topic_profiles = SECTIONS[topic_name]['profiles']
     topic_profiles_data = {}
 
-    for profile in topic_profiles:
-        profile_table = profile.lower()
-        print profile_table
-        profile_name = profile.lower().replace(' ', '_')
-        topic_profiles_data[profile_name],_  = get_stat_data([profile_table], geo, session)
+    if geo.geo_level == 'province' or geo.geo_level == 'country':   #we do not have data geos level less than province
+        for profile in topic_profiles:
+            profile_table = profile.lower()
+            print profile_table
+            profile_name = profile.lower().replace(' ', '_')
+            topic_profiles_data[profile_name],_  = get_stat_data([profile_table], geo, session)
 
     return topic_profiles_data

@@ -21,6 +21,8 @@
       </nav>
     </div>
 {% endblock %}
+{% block profile_header_population %}
+{% endblock %}
 
 {% block profile_header_tail %}
 {% endblock %}
@@ -32,13 +34,36 @@
       </header>
       <div class="section-container">
         <section class="clearfix stat-row">
-            <h2 class="header-for-columns"><a class="permalink" href="#age" id="age">Age <i class="fa fa-link"></i></a></h2>
-            <div class="column-quarter">
-            </div>
             <div class="column-half">
                 <div id="chart-histogram-firmland-private_land_ownership_in_hectares_per_category" data-stat-type="scaled-percentage" data-chart-title="Private land Ownership"></div>
             </div>
-            <div class="column-quarter" id="chart-pie-firmland-number_of_private_land_owners_by_category" data-stat-type="percentage" data-chart-title="Number of Private Land Owners by Category" data-initial-sort="-value"></div>
+            <div class="column-half">
+              <div id="chart-pie-firmland-number_of_private_land_owners_by_category" data-stat-type="percentage" data-chart-title="Number of Private Land Owners by Category" data-initial-sort="-value"></div>
+            </div>
+        </section>
+        <section class="clearfix stat-row">
+            <div class="column-half">
+                <div id="chart-pie-firmland-land_ownership_in_hectares_by_race" data-stat-type="scaled-percentage" data-chart-title="Individual Land Ownership in Hectares by Race"></div>
+            </div>
+            <div class="column-half">
+              <div id="chart-pie-firmland-number_of_land_owners_per_race" data-stat-type="percentage" data-chart-title="Number of Individual Land Owners per Race" data-initial-sort="-value"></div>
+            </div>
+        </section>
+        <section class="clearfix stat-row">
+            <div class="column-half">
+                <div id="chart-histogram-firmland-land_ownership_in_hectares_by_gender" data-stat-type="scaled-percentage" data-chart-title="Individual Land Ownership in Hectares by Gender"></div>
+            </div>
+            <div class="column-half">
+              <div id="chart-column-firmland-number_of_land_owners_per_gender" data-stat-type="number" data-chart-title="Number of Individual Land Owners per Gender"></div>
+            </div>
+        </section>
+        <section class="clearfix stat-row">
+            <div class="column-half">
+                <div id="chart-pie-firmland-land_ownership_in_hectares_by_nationality" data-stat-type="scaled-percentage" data-chart-title="Individual Land Ownership in Hectares by Nationality"></div>
+            </div>
+            <div class="column-half">
+              <div id="chart-histogram-firmland-number_of_land_owners_per_nationality" data-stat-type="number" data-chart-title="Number of Individual Land Owners per Nationality"></div>
+            </div>
         </section>
       </div>
   </article>
@@ -47,6 +72,30 @@
           <h1>Erven Land</h1>
       </header>
       <div class="section-container">
+        <section class="clearfix stat-row">
+            <div class="column-half">
+                <div id="chart-histogram-ervenland-erven_land_ownership_in_hectares_by_race" data-stat-type="scaled-percentage" data-chart-title="Individual Erven Land Ownership in Hectares by Race"></div>
+            </div>
+            <div class="column-half">
+              <div id="chart-pie-ervenland-number_of_erven_land_owners_per_race" data-stat-type="percentage" data-chart-title="Number of Individual Erven Land Owners per Race" data-initial-sort="-value"></div>
+            </div>
+        </section>
+        <section class="clearfix stat-row">
+            <div class="column-half">
+                <div id="chart-pie-ervenland-erven_land_ownership_in_hectares_by_gender" data-stat-type="scaled-percentage" data-chart-title="Individual Erven Land Ownership in Hectares by Gender"></div>
+            </div>
+            <div class="column-half">
+              <div id="chart-pie-ervenland-number_of_erven_land_owners_per_gender" data-stat-type="percentage" data-chart-title="Number of Individual Erven Land Owners per Gender" data-initial-sort="-value"></div>
+            </div>
+        </section>
+        <section class="clearfix stat-row">
+            <div class="column-half">
+                <div id="chart-histogram-ervenland-erven_land_ownership_in_hectares_by_nationality" data-stat-type="scaled-percentage" data-chart-title="Individual Erven Land Ownership in Hectares by Nationality"></div>
+            </div>
+            <div class="column-half">
+              <div id="chart-column-ervenland-number_of_erven_land_owners_per_nationality" data-stat-type="number" data-chart-title="Number of Individual Erven Land Owners per Nationality"></div>
+            </div>
+        </section>
       </div>
   </article>
   <article id="sectional-title-land" class="clearfix">
@@ -54,6 +103,38 @@
         <h1>Sectional Title Land</h1>
     </header>
     <div class="section-container">
+      <section class="clearfix stat-row">
+          <div class="column-half">
+              <div id="chart-histogram-sectionaltitleland-sectional_title_ownership_in_hectares_per_category" data-stat-type="scaled-percentage" data-chart-title="Individual Sectional Title Ownership in Hectares by Category"></div>
+          </div>
+          <div class="column-half">
+            <div id="chart-pie-sectionaltitleland-number_of_sectional_title_owners_by_category" data-stat-type="percentage" data-chart-title="Number of Individual Sectional Title Owners per Category" data-initial-sort="-value"></div>
+          </div>
+      </section>
+      <section class="clearfix stat-row">
+          <div class="column-half">
+              <div id="chart-pie-sectionaltitleland-sectional_title_ownership_in_hectares_per_race" data-stat-type="scaled-percentage" data-chart-title="Individual Sectional Title Ownership in Hectares by Race"></div>
+          </div>
+          <div class="column-half">
+            <div id="chart-pie-sectionaltitleland-number_of_sectional_title_owners_by_race" data-stat-type="percentage" data-chart-title="Number of Individual Sectional Title Owners per Race" data-initial-sort="-value"></div>
+          </div>
+      </section>
+      <section class="clearfix stat-row">
+          <div class="column-half">
+              <div id="chart-histogram-sectionaltitleland-sectional_title_ownership_in_hectares_per_gender" data-stat-type="scaled-percentage" data-chart-title="Individual Sectional Title Ownership in Hectares by Gender"></div>
+          </div>
+          <div class="column-half">
+            <div id="chart-column-sectionaltitleland-number_of_sectional_title_owners_by_gender" data-stat-type="number" data-chart-title="Number of Individual Sectional Title Owners per Gender"></div>
+          </div>
+      </section>
+      <section class="clearfix stat-row">
+          <div class="column-half">
+              <div id="chart-pie-sectionaltitleland-sectional_title_ownership_in_hectares_per_nationality" data-stat-type="scaled-percentage" data-chart-title="Individual Sectional Title Ownership in Hectares by Nationality"></div>
+          </div>
+          <div class="column-half">
+            <div id="chart-histogram-sectionaltitleland-number_of_sectional_title_owners_by_nationality" data-stat-type="number" data-chart-title="Number of Individual Sectional Title Owners per Nationality"></div>
+          </div>
+      </section>
     </div>
   </article>
 
