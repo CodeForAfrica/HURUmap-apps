@@ -169,11 +169,6 @@ HURUMAP['showcase_stories'] = [
     }
 ]
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-]
-
-
 LOGGING['loggers']['our_land'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
 
 # Making sure they are the same
