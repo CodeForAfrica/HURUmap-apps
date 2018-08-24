@@ -11,12 +11,11 @@ tail -n 0 -f /src/logs/*.log &
 
 # Start Gunicorn processes
 echo Starting Gunicorn.
-exec gunicorn our_land.wsgi:application \
-    --name our_land \
+exec gunicorn --name our_land \
     --bind 0.0.0.0:8000 \
     --workers 3 \
     --log-level=info \
     --log-file=/src/logs/gunicorn.log \
     --access-logfile=/src/logs/access.log \
     --reload \
-    "$@"
+    our_land.wsgi:application 
