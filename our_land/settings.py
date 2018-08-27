@@ -8,7 +8,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 INSTALLED_APPS = ['our_land'] + INSTALLED_APPS
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+ROOT_URLCONF = 'our_land.urls'
 
 DATABASE_URL = os.environ.get('DATABASE_URL',
                               'postgresql://our_land:our_land@localhost/our_land')
@@ -168,6 +168,9 @@ HURUMAP['showcase_stories'] = [
         'img':    STATIC_URL + 'img/showcase/our_land.jpg'
     }
 ]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGGING['loggers']['our_land'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
 
