@@ -15,6 +15,12 @@ DATABASE_URL = os.environ.get('DATABASE_URL',
 DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
+STATIC_ROOT = '/staticfiles/'
+STATICFILES_DIRS = (
+  os.path.join(BASE_DIR, 'static/'),
+)
+
+
 # Localise this instance of HURUmap
 HURUMAP['name'] = 'Our Land'
 HURUMAP['url'] = 'https://our-land.org'
