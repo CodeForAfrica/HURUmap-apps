@@ -28,6 +28,7 @@
 {% endblock %}
 
 {% block profile_detail %}
+{% if geography.this.geo_level == 'country' or geography.this.geo_level == 'province'%}
   <article id="firm-land" class="clearfix">
       <header class="section-contents">
           <h1>Individual Land</h1>
@@ -137,6 +138,7 @@
       </section>
     </div>
   </article>
+  {% endif %}
 
   {% include 'settings_js.html' %}
   {% block body_javascript %}
