@@ -10,16 +10,6 @@ services:
       - POSTGRES_PASSWORD=our_land
       - POSTGRES_DB=our_land
 
-  nginx:
-    image: nginx:latest
-    ports:
-      - "8000:8000"
-    volumes:
-      - ./:/src/
-      - ./config/nginx:/etc/nginx/conf.d
-      - /static:/static
-    depends_on:
-      - web
   web:
     build: .
     ports:

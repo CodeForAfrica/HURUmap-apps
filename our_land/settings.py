@@ -6,9 +6,24 @@ import dj_database_url
 from hurumap.settings import *  # noqa
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+DEBUG = False
+
 INSTALLED_APPS = ['our_land'] + INSTALLED_APPS
 
 ROOT_URLCONF = 'our_land.urls'
+
+MIDDLEWARE_CLASSES = (
+        'whitenoise.middleware.WhiteNoiseMiddleware',
+    ) + MIDDLEWARE_CLASSES
+
+
+# Static Files Handler
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
+# -------------------------------------------------------------------------------------
+# Database Configs
+# -------------------------------------------------------------------------------------
 
 DATABASE_URL = os.environ.get('DATABASE_URL',
                               'postgresql://our_land:our_land@localhost/our_land')
