@@ -9,13 +9,13 @@ services:
       - POSTGRES_USER=our_land
       - POSTGRES_PASSWORD=our_land
       - POSTGRES_DB=our_land
-      
+
   nginx:
     image: nginx:latest
     ports:
       - "8000:8000"
     volumes:
-      - ./:/src/our_land
+      - ./:/src/
       - ./config/nginx:/etc/nginx/conf.d
       - /static:/static
     depends_on:
