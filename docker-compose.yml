@@ -17,7 +17,8 @@ services:
     depends_on:
       - db
     volumes:
-      - "./:/src/our_land"
+      - ./:/src/our_land
+      - /static:/static
     environment:
       - DATABASE_URL=postgresql://our_land:our_land@db:5432/our_land
       - DJANGO_SECRET_KEY=somethingsecret
