@@ -15,8 +15,8 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET row_security = off;
 
-ALTER TABLE ONLY public.landownershipinhectaresbyrace DROP CONSTRAINT pk_landownershipinhectaresbyrace;
-DROP TABLE public.landownershipinhectaresbyrace;
+ALTER TABLE IF EXISTS ONLY public.landownershipinhectaresbyrace DROP CONSTRAINT IF EXISTS pk_landownershipinhectaresbyrace;
+DROP TABLE IF EXISTS public.landownershipinhectaresbyrace;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -108,7 +108,7 @@ province	LIM	2011	Co-own	20165
 -- Name: landownershipinhectaresbyrace pk_landownershipinhectaresbyrace; Type: CONSTRAINT; Schema: public; Owner: our_land
 --
 
-ALTER TABLE ONLY public.landownershipinhectaresbyrace
+ALTER TABLE IF EXISTS ONLY public.landownershipinhectaresbyrace
     ADD CONSTRAINT pk_landownershipinhectaresbyrace PRIMARY KEY (geo_level, geo_code, geo_version, "land ownership in hectares by race");
 
 

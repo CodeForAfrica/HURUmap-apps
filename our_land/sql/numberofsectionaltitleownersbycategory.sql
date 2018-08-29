@@ -15,8 +15,8 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET row_security = off;
 
-ALTER TABLE ONLY public.numberofsectionaltitleownersbycategory DROP CONSTRAINT pk_numberofsectionaltitleownersbycategory;
-DROP TABLE public.numberofsectionaltitleownersbycategory;
+ALTER TABLE IF EXISTS ONLY public.numberofsectionaltitleownersbycategory DROP CONSTRAINT IF EXISTS pk_numberofsectionaltitleownersbycategory;
+DROP TABLE IF EXISTS public.numberofsectionaltitleownersbycategory;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -88,7 +88,7 @@ country	ZA	2011	Trust	42878
 -- Name: numberofsectionaltitleownersbycategory pk_numberofsectionaltitleownersbycategory; Type: CONSTRAINT; Schema: public; Owner: our_land
 --
 
-ALTER TABLE ONLY public.numberofsectionaltitleownersbycategory
+ALTER TABLE IF EXISTS ONLY public.numberofsectionaltitleownersbycategory
     ADD CONSTRAINT pk_numberofsectionaltitleownersbycategory PRIMARY KEY (geo_level, geo_code, geo_version, "number of sectional title owners by category");
 
 

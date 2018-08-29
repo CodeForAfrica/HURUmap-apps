@@ -9226,7 +9226,7 @@ ward	94706039	8929	2016
 -- Name: population pk_population; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY population
+ALTER TABLE IF EXISTS ONLY population
     ADD CONSTRAINT pk_population PRIMARY KEY (geo_level, geo_code, geo_version);
 
 

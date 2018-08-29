@@ -15,8 +15,8 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET row_security = off;
 
-ALTER TABLE ONLY public.sectionaltitleownershipinhectarespernationality DROP CONSTRAINT pk_sectionaltitleownershipinhectarespernationality;
-DROP TABLE public.sectionaltitleownershipinhectarespernationality;
+ALTER TABLE IF EXISTS ONLY public.sectionaltitleownershipinhectarespernationality DROP CONSTRAINT IF EXISTS pk_sectionaltitleownershipinhectarespernationality;
+DROP TABLE IF EXISTS public.sectionaltitleownershipinhectarespernationality;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -88,7 +88,7 @@ province	LIM	2011	Other	1
 -- Name: sectionaltitleownershipinhectarespernationality pk_sectionaltitleownershipinhectarespernationality; Type: CONSTRAINT; Schema: public; Owner: our_land
 --
 
-ALTER TABLE ONLY public.sectionaltitleownershipinhectarespernationality
+ALTER TABLE IF EXISTS ONLY public.sectionaltitleownershipinhectarespernationality
     ADD CONSTRAINT pk_sectionaltitleownershipinhectarespernationality PRIMARY KEY (geo_level, geo_code, geo_version, "sectional title ownership in hectares per nationality");
 
 

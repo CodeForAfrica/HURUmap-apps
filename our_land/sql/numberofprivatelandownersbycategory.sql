@@ -15,8 +15,8 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET row_security = off;
 
-ALTER TABLE ONLY public.numberofprivatelandownersbycategory DROP CONSTRAINT pk_numberofprivatelandownersbycategory;
-DROP TABLE public.numberofprivatelandownersbycategory;
+ALTER TABLE IF EXISTS ONLY public.numberofprivatelandownersbycategory DROP CONSTRAINT IF EXISTS pk_numberofprivatelandownersbycategory;
+DROP TABLE IF EXISTS public.numberofprivatelandownersbycategory;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -88,7 +88,7 @@ province	LIM	2011	CBOs	1153
 -- Name: numberofprivatelandownersbycategory pk_numberofprivatelandownersbycategory; Type: CONSTRAINT; Schema: public; Owner: our_land
 --
 
-ALTER TABLE ONLY public.numberofprivatelandownersbycategory
+ALTER TABLE IF EXISTS ONLY public.numberofprivatelandownersbycategory
     ADD CONSTRAINT pk_numberofprivatelandownersbycategory PRIMARY KEY (geo_level, geo_code, geo_version, "number of private land owners by category");
 
 

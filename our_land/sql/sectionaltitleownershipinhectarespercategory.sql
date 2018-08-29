@@ -15,8 +15,8 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET row_security = off;
 
-ALTER TABLE ONLY public.sectionaltitleownershipinhectarespercategory DROP CONSTRAINT pk_sectionaltitleownershipinhectarespercategory;
-DROP TABLE public.sectionaltitleownershipinhectarespercategory;
+ALTER TABLE IF EXISTS ONLY public.sectionaltitleownershipinhectarespercategory DROP CONSTRAINT IF EXISTS pk_sectionaltitleownershipinhectarespercategory;
+DROP TABLE IF EXISTS public.sectionaltitleownershipinhectarespercategory;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -98,7 +98,7 @@ country	ZA	2011	Co-ownership	453
 -- Name: sectionaltitleownershipinhectarespercategory pk_sectionaltitleownershipinhectarespercategory; Type: CONSTRAINT; Schema: public; Owner: our_land
 --
 
-ALTER TABLE ONLY public.sectionaltitleownershipinhectarespercategory
+ALTER TABLE IF EXISTS ONLY public.sectionaltitleownershipinhectarespercategory
     ADD CONSTRAINT pk_sectionaltitleownershipinhectarespercategory PRIMARY KEY (geo_level, geo_code, geo_version, "sectional title ownership in hectares per category");
 
 

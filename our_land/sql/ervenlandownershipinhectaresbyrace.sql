@@ -15,8 +15,8 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET row_security = off;
 
-ALTER TABLE ONLY public.ervenlandownershipinhectaresbyrace DROP CONSTRAINT pk_ervenlandownershipinhectaresbyrace;
-DROP TABLE public.ervenlandownershipinhectaresbyrace;
+ALTER TABLE IF EXISTS ONLY public.ervenlandownershipinhectaresbyrace DROP CONSTRAINT IF EXISTS pk_ervenlandownershipinhectaresbyrace;
+DROP TABLE IF EXISTS public.ervenlandownershipinhectaresbyrace;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -108,7 +108,7 @@ province	LIM	2011	Co-ownership	207
 -- Name: ervenlandownershipinhectaresbyrace pk_ervenlandownershipinhectaresbyrace; Type: CONSTRAINT; Schema: public; Owner: our_land
 --
 
-ALTER TABLE ONLY public.ervenlandownershipinhectaresbyrace
+ALTER TABLE IF EXISTS ONLY public.ervenlandownershipinhectaresbyrace
     ADD CONSTRAINT pk_ervenlandownershipinhectaresbyrace PRIMARY KEY (geo_level, geo_code, geo_version, "erven land ownership in hectares by race");
 
 

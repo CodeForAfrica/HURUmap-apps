@@ -15,8 +15,8 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET row_security = off;
 
-ALTER TABLE ONLY public.numberofervenlandownersperrace DROP CONSTRAINT pk_numberofervenlandownersperrace;
-DROP TABLE public.numberofervenlandownersperrace;
+ALTER TABLE IF EXISTS ONLY public.numberofervenlandownersperrace DROP CONSTRAINT IF EXISTS pk_numberofervenlandownersperrace;
+DROP TABLE IF EXISTS public.numberofervenlandownersperrace;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -98,7 +98,7 @@ province	LIM	2011	Other	1804
 -- Name: numberofervenlandownersperrace pk_numberofervenlandownersperrace; Type: CONSTRAINT; Schema: public; Owner: our_land
 --
 
-ALTER TABLE ONLY public.numberofervenlandownersperrace
+ALTER TABLE IF EXISTS ONLY public.numberofervenlandownersperrace
     ADD CONSTRAINT pk_numberofervenlandownersperrace PRIMARY KEY (geo_level, geo_code, geo_version, "number of erven land owners per race");
 
 

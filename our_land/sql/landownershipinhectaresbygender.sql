@@ -15,8 +15,8 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET row_security = off;
 
-ALTER TABLE ONLY public.landownershipinhectaresbygender DROP CONSTRAINT pk_landownershipinhectaresbygender;
-DROP TABLE public.landownershipinhectaresbygender;
+ALTER TABLE IF EXISTS ONLY public.landownershipinhectaresbygender DROP CONSTRAINT IF EXISTS pk_landownershipinhectaresbygender;
+DROP TABLE IF EXISTS public.landownershipinhectaresbygender;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -98,7 +98,7 @@ province	LIM	2011	Other	90310
 -- Name: landownershipinhectaresbygender pk_landownershipinhectaresbygender; Type: CONSTRAINT; Schema: public; Owner: our_land
 --
 
-ALTER TABLE ONLY public.landownershipinhectaresbygender
+ALTER TABLE IF EXISTS ONLY public.landownershipinhectaresbygender
     ADD CONSTRAINT pk_landownershipinhectaresbygender PRIMARY KEY (geo_level, geo_code, geo_version, "land ownership in hectares by gender");
 
 

@@ -15,8 +15,8 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET row_security = off;
 
-ALTER TABLE ONLY public.sectionaltitleownershipinhectaresperrace DROP CONSTRAINT pk_sectionaltitleownershipinhectaresperrace;
-DROP TABLE public.sectionaltitleownershipinhectaresperrace;
+ALTER TABLE IF EXISTS ONLY public.sectionaltitleownershipinhectaresperrace DROP CONSTRAINT IF EXISTS pk_sectionaltitleownershipinhectaresperrace;
+DROP TABLE IF EXISTS public.sectionaltitleownershipinhectaresperrace;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -108,7 +108,7 @@ province	LIM	2011	Co-own	6
 -- Name: sectionaltitleownershipinhectaresperrace pk_sectionaltitleownershipinhectaresperrace; Type: CONSTRAINT; Schema: public; Owner: our_land
 --
 
-ALTER TABLE ONLY public.sectionaltitleownershipinhectaresperrace
+ALTER TABLE IF EXISTS ONLY public.sectionaltitleownershipinhectaresperrace
     ADD CONSTRAINT pk_sectionaltitleownershipinhectaresperrace PRIMARY KEY (geo_level, geo_code, geo_version, "sectional title ownership in hectares per race");
 
 

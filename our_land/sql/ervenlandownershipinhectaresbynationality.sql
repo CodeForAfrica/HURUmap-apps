@@ -15,8 +15,8 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET row_security = off;
 
-ALTER TABLE ONLY public.ervenlandownershipinhectaresbynationality DROP CONSTRAINT pk_ervenlandownershipinhectaresbynationality;
-DROP TABLE public.ervenlandownershipinhectaresbynationality;
+ALTER TABLE IF EXISTS ONLY public.ervenlandownershipinhectaresbynationality DROP CONSTRAINT IF EXISTS pk_ervenlandownershipinhectaresbynationality;
+DROP TABLE IF EXISTS public.ervenlandownershipinhectaresbynationality;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -88,7 +88,7 @@ province	LIM	2011	Other	2058
 -- Name: ervenlandownershipinhectaresbynationality pk_ervenlandownershipinhectaresbynationality; Type: CONSTRAINT; Schema: public; Owner: our_land
 --
 
-ALTER TABLE ONLY public.ervenlandownershipinhectaresbynationality
+ALTER TABLE IF EXISTS ONLY public.ervenlandownershipinhectaresbynationality
     ADD CONSTRAINT pk_ervenlandownershipinhectaresbynationality PRIMARY KEY (geo_level, geo_code, geo_version, "erven land ownership in hectares by nationality");
 
 

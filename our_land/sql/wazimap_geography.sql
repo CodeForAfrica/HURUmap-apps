@@ -64,7 +64,7 @@ ALTER SEQUENCE public.wazimap_geography_id_seq OWNED BY public.wazimap_geography
 -- Name: wazimap_geography id; Type: DEFAULT; Schema: public; Owner: our_land
 --
 
-ALTER TABLE ONLY public.wazimap_geography ALTER COLUMN id SET DEFAULT nextval('public.wazimap_geography_id_seq'::regclass);
+ALTER TABLE IF EXISTS ONLY public.wazimap_geography ALTER COLUMN id SET DEFAULT nextval('public.wazimap_geography_id_seq'::regclass);
 
 
 --
@@ -9310,7 +9310,7 @@ SELECT pg_catalog.setval('public.wazimap_geography_id_seq', 31485, true);
 -- Name: wazimap_geography wazimap_geography_geo_level_bbe3c9fc_uniq; Type: CONSTRAINT; Schema: public; Owner: our_land
 --
 
-ALTER TABLE ONLY public.wazimap_geography
+ALTER TABLE IF EXISTS ONLY public.wazimap_geography
     ADD CONSTRAINT wazimap_geography_geo_level_bbe3c9fc_uniq UNIQUE (geo_level, geo_code, version);
 
 
@@ -9318,7 +9318,7 @@ ALTER TABLE ONLY public.wazimap_geography
 -- Name: wazimap_geography wazimap_geography_pkey; Type: CONSTRAINT; Schema: public; Owner: our_land
 --
 
-ALTER TABLE ONLY public.wazimap_geography
+ALTER TABLE IF EXISTS ONLY public.wazimap_geography
     ADD CONSTRAINT wazimap_geography_pkey PRIMARY KEY (id);
 
 

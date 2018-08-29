@@ -15,8 +15,8 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET row_security = off;
 
-ALTER TABLE ONLY public.numberofsectionaltitleownersbygender DROP CONSTRAINT pk_numberofsectionaltitleownersbygender;
-DROP TABLE public.numberofsectionaltitleownersbygender;
+ALTER TABLE IF EXISTS ONLY public.numberofsectionaltitleownersbygender DROP CONSTRAINT IF EXISTS pk_numberofsectionaltitleownersbygender;
+DROP TABLE IF EXISTS public.numberofsectionaltitleownersbygender;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -78,7 +78,7 @@ province	LIM	2011	Other	236
 -- Name: numberofsectionaltitleownersbygender pk_numberofsectionaltitleownersbygender; Type: CONSTRAINT; Schema: public; Owner: our_land
 --
 
-ALTER TABLE ONLY public.numberofsectionaltitleownersbygender
+ALTER TABLE IF EXISTS ONLY public.numberofsectionaltitleownersbygender
     ADD CONSTRAINT pk_numberofsectionaltitleownersbygender PRIMARY KEY (geo_level, geo_code, geo_version, "number of sectional title owners by gender");
 
 

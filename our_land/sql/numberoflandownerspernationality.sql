@@ -15,8 +15,8 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET row_security = off;
 
-ALTER TABLE ONLY public.numberoflandownerspernationality DROP CONSTRAINT pk_numberoflandownerspernationality;
-DROP TABLE public.numberoflandownerspernationality;
+ALTER TABLE IF EXISTS ONLY public.numberoflandownerspernationality DROP CONSTRAINT IF EXISTS pk_numberoflandownerspernationality;
+DROP TABLE IF EXISTS public.numberoflandownerspernationality;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -78,7 +78,7 @@ province	LIM	2011	Other	2494
 -- Name: numberoflandownerspernationality pk_numberoflandownerspernationality; Type: CONSTRAINT; Schema: public; Owner: our_land
 --
 
-ALTER TABLE ONLY public.numberoflandownerspernationality
+ALTER TABLE IF EXISTS ONLY public.numberoflandownerspernationality
     ADD CONSTRAINT pk_numberoflandownerspernationality PRIMARY KEY (geo_level, geo_code, geo_version, "number of land owners per nationality");
 
 

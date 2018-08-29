@@ -15,8 +15,8 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET row_security = off;
 
-ALTER TABLE ONLY public.numberoflandownersperrace DROP CONSTRAINT pk_numberoflandownersperrace;
-DROP TABLE public.numberoflandownersperrace;
+ALTER TABLE IF EXISTS ONLY public.numberoflandownersperrace DROP CONSTRAINT IF EXISTS pk_numberoflandownersperrace;
+DROP TABLE IF EXISTS public.numberoflandownersperrace;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -98,7 +98,7 @@ province	LIM	2011	Other	542
 -- Name: numberoflandownersperrace pk_numberoflandownersperrace; Type: CONSTRAINT; Schema: public; Owner: our_land
 --
 
-ALTER TABLE ONLY public.numberoflandownersperrace
+ALTER TABLE IF EXISTS ONLY public.numberoflandownersperrace
     ADD CONSTRAINT pk_numberoflandownersperrace PRIMARY KEY (geo_level, geo_code, geo_version, "number of land owners per race");
 
 

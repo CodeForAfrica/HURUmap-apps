@@ -15,8 +15,8 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET row_security = off;
 
-ALTER TABLE ONLY public.ervenlandownershipinhectaresbygender DROP CONSTRAINT pk_ervenlandownershipinhectaresbygender;
-DROP TABLE public.ervenlandownershipinhectaresbygender;
+ALTER TABLE IF EXISTS ONLY public.ervenlandownershipinhectaresbygender DROP CONSTRAINT IF EXISTS pk_ervenlandownershipinhectaresbygender;
+DROP TABLE IF EXISTS public.ervenlandownershipinhectaresbygender;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -98,11 +98,10 @@ province	LIM	2011	Other	2058
 -- Name: ervenlandownershipinhectaresbygender pk_ervenlandownershipinhectaresbygender; Type: CONSTRAINT; Schema: public; Owner: our_land
 --
 
-ALTER TABLE ONLY public.ervenlandownershipinhectaresbygender
+ALTER TABLE IF EXISTS ONLY public.ervenlandownershipinhectaresbygender
     ADD CONSTRAINT pk_ervenlandownershipinhectaresbygender PRIMARY KEY (geo_level, geo_code, geo_version, "erven land ownership in hectares by gender");
 
 
 --
 -- PostgreSQL database dump complete
 --
-

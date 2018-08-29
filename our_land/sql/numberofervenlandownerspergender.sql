@@ -15,8 +15,8 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET row_security = off;
 
-ALTER TABLE ONLY public.numberofervenlandownerspergender DROP CONSTRAINT pk_numberofervenlandownerspergender;
-DROP TABLE public.numberofervenlandownerspergender;
+ALTER TABLE IF EXISTS ONLY public.numberofervenlandownerspergender DROP CONSTRAINT IF EXISTS pk_numberofervenlandownerspergender;
+DROP TABLE IF EXISTS public.numberofervenlandownerspergender;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -78,7 +78,7 @@ province	LIM	2011	Other	23744
 -- Name: numberofervenlandownerspergender pk_numberofervenlandownerspergender; Type: CONSTRAINT; Schema: public; Owner: our_land
 --
 
-ALTER TABLE ONLY public.numberofervenlandownerspergender
+ALTER TABLE IF EXISTS ONLY public.numberofervenlandownerspergender
     ADD CONSTRAINT pk_numberofervenlandownerspergender PRIMARY KEY (geo_level, geo_code, geo_version, "number of erven land owners per gender");
 
 

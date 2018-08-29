@@ -15,8 +15,8 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET row_security = off;
 
-ALTER TABLE ONLY public.privatelandownershipinhectarespercategory DROP CONSTRAINT pk_privatelandownershipinhectarespercategory;
-DROP TABLE public.privatelandownershipinhectarespercategory;
+ALTER TABLE IF EXISTS ONLY public.privatelandownershipinhectarespercategory DROP CONSTRAINT IF EXISTS pk_privatelandownershipinhectarespercategory;
+DROP TABLE IF EXISTS public.privatelandownershipinhectarespercategory;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -98,7 +98,7 @@ country	ZA	2011	Co-ownership	883589
 -- Name: privatelandownershipinhectarespercategory pk_privatelandownershipinhectarespercategory; Type: CONSTRAINT; Schema: public; Owner: our_land
 --
 
-ALTER TABLE ONLY public.privatelandownershipinhectarespercategory
+ALTER TABLE IF EXISTS ONLY public.privatelandownershipinhectarespercategory
     ADD CONSTRAINT pk_privatelandownershipinhectarespercategory PRIMARY KEY (geo_level, geo_code, geo_version, "private land ownership in hectares per category");
 
 
