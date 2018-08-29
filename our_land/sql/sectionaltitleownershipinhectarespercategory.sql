@@ -2,13 +2,12 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.12
--- Dumped by pg_dump version 9.5.12
-
--- Started on 2018-08-23 12:32:57 EAT
+-- Dumped from database version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
+-- Dumped by pg_dump version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
@@ -16,17 +15,18 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET row_security = off;
 
+ALTER TABLE ONLY public.sectionaltitleownershipinhectarespercategory DROP CONSTRAINT pk_sectionaltitleownershipinhectarespercategory;
+DROP TABLE public.sectionaltitleownershipinhectarespercategory;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
 
 --
--- TOC entry 193 (class 1259 OID 80393)
 -- Name: sectionaltitleownershipinhectarespercategory; Type: TABLE; Schema: public; Owner: our_land
 --
 
 CREATE TABLE public.sectionaltitleownershipinhectarespercategory (
-    geo_level character varying(25) NOT NULL,
+    geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     geo_version character varying(100) DEFAULT ''::character varying NOT NULL,
     "sectional title ownership in hectares per category" character varying(128) NOT NULL,
@@ -37,8 +37,6 @@ CREATE TABLE public.sectionaltitleownershipinhectarespercategory (
 ALTER TABLE public.sectionaltitleownershipinhectarespercategory OWNER TO our_land;
 
 --
--- TOC entry 2194 (class 0 OID 80393)
--- Dependencies: 193
 -- Data for Name: sectionaltitleownershipinhectarespercategory; Type: TABLE DATA; Schema: public; Owner: our_land
 --
 
@@ -96,8 +94,15 @@ country	ZA	2011	Co-ownership	453
 \.
 
 
--- Completed on 2018-08-23 12:32:57 EAT
+--
+-- Name: sectionaltitleownershipinhectarespercategory pk_sectionaltitleownershipinhectarespercategory; Type: CONSTRAINT; Schema: public; Owner: our_land
+--
+
+ALTER TABLE ONLY public.sectionaltitleownershipinhectarespercategory
+    ADD CONSTRAINT pk_sectionaltitleownershipinhectarespercategory PRIMARY KEY (geo_level, geo_code, geo_version, "sectional title ownership in hectares per category");
+
 
 --
 -- PostgreSQL database dump complete
 --
+

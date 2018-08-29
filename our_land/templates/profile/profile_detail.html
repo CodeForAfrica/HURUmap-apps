@@ -28,7 +28,7 @@
 {% endblock %}
 
 {% block profile_detail %}
-{% if geography.this.geo_level == 'country' or geography.this.geo_level == 'province'%}
+{% if not firmland.is_missing %}
   <article id="firm-land" class="clearfix">
       <header class="section-contents">
           <h1>Individual Land</h1>
@@ -68,6 +68,8 @@
         </section>
       </div>
   </article>
+{% endif %}
+{% if not ervenland.is_missing %}
   <article id="erven-land" class="clearfix">
       <header class="section-contents">
           <h1>Erven Land</h1>
@@ -99,6 +101,8 @@
         </section>
       </div>
   </article>
+{% endif %}
+{% if not sectionaltitleland.is_missing %}
   <article id="sectional-title-land" class="clearfix">
     <header class="section-contents">
         <h1>Sectional Title Land</h1>
@@ -138,7 +142,7 @@
       </section>
     </div>
   </article>
-  {% endif %}
+{% endif %}
 
   {% include 'settings_js.html' %}
   {% block body_javascript %}

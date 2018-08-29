@@ -2,13 +2,12 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.12
--- Dumped by pg_dump version 9.5.12
-
--- Started on 2018-08-23 12:31:38 EAT
+-- Dumped from database version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
+-- Dumped by pg_dump version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
@@ -16,17 +15,18 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET row_security = off;
 
+ALTER TABLE ONLY public.privatelandownershipinhectarespercategory DROP CONSTRAINT pk_privatelandownershipinhectarespercategory;
+DROP TABLE public.privatelandownershipinhectarespercategory;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
 
 --
--- TOC entry 181 (class 1259 OID 80345)
 -- Name: privatelandownershipinhectarespercategory; Type: TABLE; Schema: public; Owner: our_land
 --
 
 CREATE TABLE public.privatelandownershipinhectarespercategory (
-    geo_level character varying(50) NOT NULL,
+    geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     geo_version character varying(100) DEFAULT ''::character varying NOT NULL,
     "private land ownership in hectares per category" character varying(128) NOT NULL,
@@ -37,8 +37,6 @@ CREATE TABLE public.privatelandownershipinhectarespercategory (
 ALTER TABLE public.privatelandownershipinhectarespercategory OWNER TO our_land;
 
 --
--- TOC entry 2194 (class 0 OID 80345)
--- Dependencies: 181
 -- Data for Name: privatelandownershipinhectarespercategory; Type: TABLE DATA; Schema: public; Owner: our_land
 --
 
@@ -96,8 +94,15 @@ country	ZA	2011	Co-ownership	883589
 \.
 
 
--- Completed on 2018-08-23 12:31:38 EAT
+--
+-- Name: privatelandownershipinhectarespercategory pk_privatelandownershipinhectarespercategory; Type: CONSTRAINT; Schema: public; Owner: our_land
+--
+
+ALTER TABLE ONLY public.privatelandownershipinhectarespercategory
+    ADD CONSTRAINT pk_privatelandownershipinhectarespercategory PRIMARY KEY (geo_level, geo_code, geo_version, "private land ownership in hectares per category");
+
 
 --
 -- PostgreSQL database dump complete
 --
+

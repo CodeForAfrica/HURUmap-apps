@@ -20,6 +20,12 @@ MIDDLEWARE_CLASSES = (
 # Static Files Handler
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+# -------------------------------------------------------------------------------------
+# HURUmap Config
+# -------------------------------------------------------------------------------------
+
+OUR_LAND = WAZIMAP
+
 
 # -------------------------------------------------------------------------------------
 # Database Configs
@@ -30,39 +36,39 @@ DATABASE_URL = os.environ.get('DATABASE_URL',
 DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
-# Localise this instance of HURUmap
-HURUMAP['name'] = 'Our Land'
-HURUMAP['url'] = 'https://our-land.org'
-HURUMAP['description'] = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit,'\
+# Localise this instance of OUR_LAND
+OUR_LAND['name'] = 'Our Land'
+OUR_LAND['url'] = 'https://our-land.org'
+OUR_LAND['description'] = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit,'\
  'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'\
  ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut'\
  'aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in'\
  'voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
-HURUMAP['title_tagline'] = 'Making Census Data Easy to Use'
+OUR_LAND['title_tagline'] = 'Making Census Data Easy to Use'
 
-HURUMAP['facebook'] = 'CodeForAfrica'
-HURUMAP['twitter'] = '@Code4Africa'
-HURUMAP['email'] = 'hello@hurumap.org'
+OUR_LAND['facebook'] = 'CodeForAfrica'
+OUR_LAND['twitter'] = '@Code4Africa'
+OUR_LAND['email'] = 'info@codeforafrica.org'
 
-HURUMAP['github_url'] = 'https://github.com/CodeForAfrica/HURUmap-apps'
+OUR_LAND['github_url'] = 'https://github.com/CodeForAfrica/HURUmap-apps'
 
-HURUMAP['ga_tracking_id'] = 'UA-44795600-21'
+OUR_LAND['ga_tracking_id'] = 'UA-44795600-21'
 
-HURUMAP['country_code'] = 'ZA'
-HURUMAP['country_name'] = 'South Africa'
-HURUMAP['comparative_levels'] = ['district', 'province', 'country']
+OUR_LAND['country_code'] = 'ZA'
+OUR_LAND['country_name'] = 'South Africa'
+OUR_LAND['comparative_levels'] = ['district', 'province', 'country']
 
-hurumap_profile = os.environ.get('HURUMAP_PROFILE', 'land')
+our_land_profile = os.environ.get('OUR_LAND_PROFILE', 'land')
 
-HURUMAP['default_profile'] = hurumap_profile
-HURUMAP['profile_builder'] = 'our_land.profiles.land.get_land_profile'
-HURUMAP['default_geo_version'] = os.environ.get('DEFAULT_GEO_VERSION', '2011')
-HURUMAP['legacy_embed_geo_version'] = '2011'
+OUR_LAND['default_profile'] = our_land_profile
+OUR_LAND['profile_builder'] = 'our_land.profiles.land.get_land_profile'
+OUR_LAND['default_geo_version'] = os.environ.get('DEFAULT_GEO_VERSION', '2011')
+OUR_LAND['legacy_embed_geo_version'] = '2011'
 
 # this is provided by mapit
-HURUMAP['geodata'] = 'our_land.geo.GeoData'
-HURUMAP['geometry_data'] = {}
-HURUMAP['levels'] = {
+OUR_LAND['geodata'] = 'our_land.geo.GeoData'
+OUR_LAND['geometry_data'] = {}
+OUR_LAND['levels'] = {
     'country': {
         'plural': 'countries',
         'children': ['province', 'district', 'municipality'],
@@ -82,22 +88,22 @@ HURUMAP['levels'] = {
     }
 }
 
-HURUMAP['primary_release_year'] = {
+OUR_LAND['primary_release_year'] = {
     # use the 2011 release for wards, use the latest (2016) for everything else
     'ward': 2011,
 }
-HURUMAP['latest_release_year'] = '2016'
-WAZIMAP['available_release_years'] = {
+OUR_LAND['latest_release_year'] = '2016'
+OUR_LAND['available_release_years'] = {
     # Release years with data for geo_levels.
     # Only specify geo_levels with limited releases.
     # Other geo_levels have data for all releases.
     'ward': [2011]
 }
 # If not set, the centre is determined from the geometry.
-HURUMAP['map_centre']= None
-HURUMAP['map_zoom']= None
+OUR_LAND['map_centre']= None
+OUR_LAND['map_zoom']= None
 
-HURUMAP['mapit'] = {
+OUR_LAND['mapit'] = {
     'generations': {
         '2011': '1',
         '2016': '2',
@@ -107,7 +113,7 @@ HURUMAP['mapit'] = {
 # -------------------------------------------------------------------------------
 #topics
 
-HURUMAP['topics']['firmland'] = {
+OUR_LAND['topics']['firmland'] = {
     'topic': 'firmland',
     'name': 'Firm & Agricultural Land',
     'icon': '/static/img/education.png',
@@ -124,7 +130,7 @@ HURUMAP['topics']['firmland'] = {
     ]
 }
 
-HURUMAP['topics']['ervenland'] = {
+OUR_LAND['topics']['ervenland'] = {
         'topic': 'ervenland',
         'name': 'Erven & Urban Land',
         'icon': '/static/img/education.png',
@@ -141,7 +147,7 @@ HURUMAP['topics']['ervenland'] = {
         ]
 }
 
-HURUMAP['topics']['sectionaltitleland'] = {
+OUR_LAND['topics']['sectionaltitleland'] = {
     'topic': 'sectionaltitleland',
     'name': 'Sectional Title Land',
     'icon': '/static/img/education.png',
@@ -160,7 +166,7 @@ HURUMAP['topics']['sectionaltitleland'] = {
 # -------------------------------------------------------------------------------------
 # Showcase Stories
 
-HURUMAP['showcase_stories'] = [
+OUR_LAND['showcase_stories'] = [
     {
         'title':  'Sample Story Title',
         'author': 'Stephen Rutto',
@@ -189,5 +195,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGGING['loggers']['our_land'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
 
-# Making sure they are the same
-WAZIMAP = HURUMAP
+WAZIMAP = OUR_LAND

@@ -2,13 +2,16 @@ import logging
 
 from wazimap.geo import geo_data
 from wazimap.data.tables import get_model_from_fields
-from wazimap.data.utils import get_session, calculate_median, merge_dicts, get_stat_data, get_objects_by_geo, group_remainder
+from wazimap.data.utils import get_session, calculate_median, merge_dicts, get_stat_data, get_objects_by_geo, group_remainder, LocationNotFound
 from django.conf import settings
 
 # ensure tables are loaded
 import our_land.tables  # noqa
 
-SECTIONS = settings.HURUMAP.get('topics', {})
+SECTIONS = settings.OUR_LAND.get('topics', {})
+
+LOCATIONNOTFOUND = {'is_missing': True, 'name': 'No Data Found', 'numerators': {'this': 0},
+                    'values': {'this': 0}}
 
 def get_land_profile(geo, profile_name, request):
     session = get_session()
@@ -40,12 +43,16 @@ def get_land_profile(geo, profile_name, request):
 
 def get_land_topic_profiles(geo, session, topic_name):
     topic_profiles = SECTIONS[topic_name]['profiles']
-    topic_profiles_data = {}
+    topic_profiles_data = LOCATIONNOTFOUND
+    profiles_data = {}
 
-    if geo.geo_level == 'province' or geo.geo_level == 'country':   #we do not have data geos level less than province
+    try:
         for profile in topic_profiles:
             profile_table = profile.lower()
             profile_name = profile.lower().replace(' ', '_')
-            topic_profiles_data[profile_name],_  = get_stat_data([profile_table], geo, session)
+            profiles_data[profile_name],_  = get_stat_data([profile_table], geo, session)
+        topic_profiles_data = profiles_data
+    except LocationNotFound:
+        pass
 
     return topic_profiles_data
