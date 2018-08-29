@@ -36,7 +36,7 @@ CREATE TABLE public.wazimap_geography (
 );
 
 
-ALTER TABLE public.wazimap_geography OWNER TO our_land;
+ALTER TABLE IF EXISTS public.wazimap_geography OWNER TO our_land;
 
 --
 -- Name: wazimap_geography_id_seq; Type: SEQUENCE; Schema: public; Owner: our_land
@@ -51,13 +51,13 @@ CREATE SEQUENCE public.wazimap_geography_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.wazimap_geography_id_seq OWNER TO our_land;
+ALTER TABLE IF EXISTS public.wazimap_geography_id_seq OWNER TO our_land;
 
 --
 -- Name: wazimap_geography_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: our_land
 --
 
-ALTER SEQUENCE public.wazimap_geography_id_seq OWNED BY public.wazimap_geography.id;
+ALTER SEQUENCE IF EXISTS public.wazimap_geography_id_seq OWNED BY public.wazimap_geography.id;
 
 
 --
@@ -9367,4 +9367,3 @@ CREATE INDEX wazimap_geography_version_01953818_like ON public.wazimap_geography
 --
 -- PostgreSQL database dump complete
 --
-
