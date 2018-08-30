@@ -1,0 +1,174 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-07-30 11:14+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: leaguetable/templates/leaguetable/embed.html:67
+#: leaguetable/templates/leaguetable/embed.html:127
+#: leaguetable/templates/leaguetable/homepage.html:37
+#: leaguetable/templates/leaguetable/homepage.html:117
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:189
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:269
+msgid "10 Top Schools"
+msgstr "Shule 10 Bora"
+
+#: leaguetable/templates/leaguetable/embed.html:68
+#: leaguetable/templates/leaguetable/embed.html:96
+#: leaguetable/templates/leaguetable/homepage.html:38
+#: leaguetable/templates/leaguetable/homepage.html:76
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:190
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:228
+msgid "Schools Category with 40 Students and More"
+msgstr "Kundi la Shule zenye ya wanafunzi 40 na zaidi"
+
+#: leaguetable/templates/leaguetable/embed.html:78
+#: leaguetable/templates/leaguetable/embed.html:79
+#: leaguetable/templates/leaguetable/embed.html:106
+#: leaguetable/templates/leaguetable/embed.html:107
+#: leaguetable/templates/leaguetable/embed.html:138
+#: leaguetable/templates/leaguetable/embed.html:139
+#: leaguetable/templates/leaguetable/embed.html:166
+#: leaguetable/templates/leaguetable/embed.html:167
+#: leaguetable/templates/leaguetable/homepage.html:58
+#: leaguetable/templates/leaguetable/homepage.html:59
+#: leaguetable/templates/leaguetable/homepage.html:96
+#: leaguetable/templates/leaguetable/homepage.html:97
+#: leaguetable/templates/leaguetable/homepage.html:138
+#: leaguetable/templates/leaguetable/homepage.html:139
+#: leaguetable/templates/leaguetable/homepage.html:176
+#: leaguetable/templates/leaguetable/homepage.html:177
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:210
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:211
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:248
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:249
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:290
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:291
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:328
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:329
+msgid "in"
+msgstr "katika"
+
+#: leaguetable/templates/leaguetable/embed.html:95
+#: leaguetable/templates/leaguetable/embed.html:155
+#: leaguetable/templates/leaguetable/homepage.html:75
+#: leaguetable/templates/leaguetable/homepage.html:155
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:227
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:307
+msgid "10 Lowest Schools"
+msgstr "Shule 10 za Mwisho"
+
+#: leaguetable/templates/leaguetable/embed.html:128
+#: leaguetable/templates/leaguetable/homepage.html:118
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:270
+msgid "Schools Category with less than 40 Students"
+msgstr "Kundi la Shule zenye ya wanafunzi chini ya 40"
+
+#: leaguetable/templates/leaguetable/embed.html:156
+#: leaguetable/templates/leaguetable/homepage.html:156
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:308
+msgid "Schools Category less than 40 Students"
+msgstr "Kundi la Shule zenye ya wanafunzi chini ya 40"
+
+#: leaguetable/templates/leaguetable/homepage.html:9
+msgid "Discover The Stories Behind The Data"
+msgstr "Vumbua undani wa Takwimu"
+
+#: leaguetable/templates/leaguetable/homepage.html:10
+msgid ""
+"School League helps storytellers and campaigners use data to add context and "
+"depth to stories."
+msgstr ""
+"School League inasawasaidia waandishi wa habari na wanaharakati kutumia "
+"takwimu/taarifakwenye habari zao"
+
+#: leaguetable/templates/leaguetable/homepage.html:15
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:166
+msgid "SCHOOL RANKINGS"
+msgstr "MATOKEO YA SHULE"
+
+#: leaguetable/templates/leaguetable/homepage.html:47
+#: leaguetable/templates/leaguetable/homepage.html:85
+#: leaguetable/templates/leaguetable/homepage.html:127
+#: leaguetable/templates/leaguetable/homepage.html:165
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:199
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:237
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:279
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:317
+msgid "Boys"
+msgstr "Wavulana"
+
+#: leaguetable/templates/leaguetable/homepage.html:50
+#: leaguetable/templates/leaguetable/homepage.html:88
+#: leaguetable/templates/leaguetable/homepage.html:130
+#: leaguetable/templates/leaguetable/homepage.html:168
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:202
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:240
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:282
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:320
+msgid "Mixed"
+msgstr "Mchanganyiko"
+
+#: leaguetable/templates/leaguetable/homepage.html:52
+#: leaguetable/templates/leaguetable/homepage.html:90
+#: leaguetable/templates/leaguetable/homepage.html:132
+#: leaguetable/templates/leaguetable/homepage.html:170
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:204
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:242
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:284
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:322
+msgid "Girls"
+msgstr "Wasichana"
+
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:347
+msgid "Interact with charts and statistics for additional information."
+msgstr "Fanya utafiti wa chati na takwimu ili kupata taarifa zaidi"
+
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:353
+msgid "Schools Demographics"
+msgstr ""
+
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:380
+msgid "Regions"
+msgstr "Mikoa"
+
+#: leaguetable/templates/leaguetable/profile/profile_detail.html:392
+msgid "Averege GPA"
+msgstr "Wastani wa GPA"
+
+#: leaguetable/templates/leaguetable/specific_school.html:79
+msgid "Boys School"
+msgstr "Shule ya Wavulana"
+
+#: leaguetable/templates/leaguetable/specific_school.html:82
+msgid "Mixed School"
+msgstr "Shule ya Mchanganyiko"
+
+#: leaguetable/templates/leaguetable/specific_school.html:84
+msgid "Girls School"
+msgstr "Shule ya Wasichana"
+
+#: leaguetable/templates/leaguetable/specific_school.html:87
+msgid "In"
+msgstr "wilayani"
+
+#: leaguetable/templates/leaguetable/specific_school.html:97
+msgid "SCHOOL RANKING"
+msgstr "MATOKEO YA SHULE"
+
+#~ msgid "Ownership"
+#~ msgstr "Umiliki"

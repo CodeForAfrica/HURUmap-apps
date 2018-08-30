@@ -1,0 +1,215 @@
+{% extends 'homepage_country.html' %}
+{% load i18n %}
+{% load humanize partition staticfiles %}
+{% get_current_language as 'sw' %}
+{% block head_title %}Career Guide{% endblock %}
+{% get_current_language as LANGUAGE_CODE %}
+{% block content_container %}
+  <div class="main-content">
+    <div class="find-school text-center">
+      <form action="/{{ LANGUAGE_CODE }}/careerguide/" method="post">
+        <div class="help-text">{% trans 'FIND THE BEST HIGHSCHOOL FOR YOUR CAREER' %}</div>
+        <div class="help-info">
+          {% csrf_token %}
+            <div>
+                <span>{% trans 'I am a' %}</span>
+                 {{ form.gender }}
+            </div>
+            <div>
+                <span>{% trans 'from' %}</span>
+                {{ form.regional }}
+            </div>
+            <div>
+                <span>{% trans 'currently at' %}</span>
+                {{ form.education_level }}
+            </div>
+            <div>
+                <span>{% trans 'and I want to be' %}</span>
+                {{ form.career }}
+            </div>
+        </div>
+
+        <button id="findSchool" type="submit" >{% trans 'FIND' %}</button>
+        </form>
+        {% if schools %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-12 subject-box">
+                        <div id="sub-must" class="col-xs-6">
+                            <div class="sub-rule"> {% trans 'TO STUDY' %}
+                              <b class="course"> {{ career.name }} </b>,
+                              {%trans 'YOU NEED A PASS IN THE FOLLOWING SUBJECTS:' %}
+                            </div>
+                            <div class="subjects">
+                              <div class='col-sm-6'>
+                                {% for sub in career.must %}
+                                <div class='sub-name'>{{ sub }}</div>
+                                {% endfor %}
+                              </div>
+                            </div>
+                        </div>
+                        <div id="sub-optional" class="col-xs-6 border-left">
+                            {% if school_level == 'A levels' %}
+                            <div class="sub-rule">{%trans 'AND A SATISFACTORY PASS IN:' %}</div>
+                            <div class="subjects">
+                              <div class='col-sm-6'>
+                                <div class='sub-name'>General Studies</div>
+                              </div>
+                            </div>
+                            {% else %}
+                            <div class="sub-rule">
+                              {%trans 'AND A PASS IN AT LEAST 2 OF THE FOLLOWING SUBJECTS:' %}
+                            </div>
+                            <div class="subjects">
+                              <div class='col-sm-6'>
+                                {% for sub in career.olevel_optional %}
+                                  <div class='sub-name'>{{ sub }}</div>
+                                {% endfor %}
+                              </div>
+                            </div>
+                            {% endif %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    {% if schools %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="title text-center">
+                {% blocktrans %}List of Schools doing well in {{ school_level }} subjects aligning to your career{% endblocktrans %}
+                </h3>
+                <div class="box-table">
+                    <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th class="col-md-4">{%trans 'Name of School' %}</th>
+                            <th class="col-md-3">{%trans 'Category' %}</th>
+                            <th class="col-md-2">{%trans 'Region' %}</th>
+                            <th class="col-md-1">{%trans 'Average GPA' %}</th>
+                            <th class="col-md-1">{%trans 'National Ranking' %}</th>
+                            <th class="col-md-1">{%trans 'Regional Ranking' %}</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for school in schools %}
+                          <tr>
+                            <td><a href="/careerguide/school/{{ school.schoolcode }}">
+                              {{ school.schoolname | title }}
+                            </td>
+                            {% if school_level == " A levels" %}
+                              {% if school.category == 'CENTRE WITH 30 CANDIDATES OR MORE                 '%}
+                                <td>{%trans 'Centre With 30 Candidates or More' %}</td>
+                              {% else %}
+                                <td>{%trans 'Centre With less than 30 Candidates' %}</td>
+                              {% endif %}
+                            {% else %}
+                              {% if school.category == 'CENTRE WITH 40 CANDIDATES OR MORE                 '%}
+                                <td>{%trans 'Centre With 40 Candidates or More' %}</td>
+                              {% else %}
+                                <td>{%trans 'Centre With less than 40 Candidates' %}</td>
+                              {% endif %}
+                            {% endif %}
+                            <td>{{ school.region | title }}</td>
+                            <td>{{ school.career_avg| floatformat:3 }}</td>
+                            <td>{{ school.natranking }}</td>
+                            <td>{{ school.regranking }}</td>
+                          </tr>
+                          {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if topschools %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="title text-center">
+                  {%trans 'Overall best performing schools for Ordinary Level 2017' %} </h3>
+                <div class="box-table">
+                    <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th class="col-md-4">{%trans 'Name of School' %}</th>
+                            <th class="col-md-3">{%trans 'Category' %}</th>
+                            <th class="col-md-2">{%trans 'Region' %}</th>
+                            <th class="col-md-1">{%trans 'Average GPA' %}</th>
+                            <th class="col-md-1">{%trans 'National Ranking' %}</th>
+                            <th class="col-md-1">{%trans 'Regional Ranking' %}</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for school in topschools.top_Olevel %}
+                          <tr>
+                            <td><a href="/careerguide/school/{{ school.schoolcode }}">
+                              {{ school.schoolname | title }}
+                            </td>
+                            {% if school.category == 'CENTRE WITH 40 CANDIDATES OR MORE                 '%}
+                              <td>{%trans 'Centre With 40 Candidates or More' %}</td>
+                            {% else %}
+                              <td>{%trans 'Centre With less than 40 Candidates' %}</td>
+                            {% endif %}
+                            <td>{{ school.region | title }}</td>
+                            <td>{{ school.gpa| floatformat:3 }}</td>
+                            <td>{{ school.natranking }}</td>
+                            <td>{{ school.regranking }}</td>
+                          </tr>
+                          {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="title text-center">{%trans 'Overall best performing schools for Advance Level 2017' %} </h3>
+                <div class="box-table">
+                    <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th class="col-md-4">{%trans 'Name of School' %}</th>
+                            <th class="col-md-3">{%trans 'Category' %}</th>
+                            <th class="col-md-2">{%trans 'Region' %}</th>
+                            <th class="col-md-1">{%trans 'Average GPA' %}</th>
+                            <th class="col-md-1">{%trans 'National Ranking' %}</th>
+                            <th class="col-md-1">{%trans 'Regional Ranking' %}</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for school in topschools.top_Alevel %}
+                          <tr>
+                            <td><a href="/careerguide/school/{{ school.schoolcode }}">{{ school.schoolname | title }}</td>
+                              {% if school.category == 'CENTRE WITH 30 CANDIDATES OR MORE                 '%}
+                                <td>{%trans 'Centre With 30 Candidates or More' %}</td>
+                              {% else %}
+                                <td>{%trans 'Centre With less than 30 Candidates' %}</td>
+                              {% endif %}
+                              <td>{{ school.region | title }}</td>
+                              <td>{{ school.gpa| floatformat:3 }}</td>
+                              <td>{{ school.natranking }}</td>
+                              <td>{{ school.regranking }}</td>
+                          </tr>
+                          {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+  </div>
+
+{% endblock %}
+
+{% block footer_content %}
+    {% include 'footer.html' %}
+{% endblock footer_content %}

@@ -1,0 +1,76 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-07-30 11:14+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: universityfinder/templates/index.html:10
+msgid "FILL IN YOUR SUBJECTS AND GRADES"
+msgstr "JAZA MASOMO NA DARAJA YAKO"
+
+#: universityfinder/templates/index.html:18
+msgid "Fill in Subjects"
+msgstr "Jaza Masomo yako"
+
+#: universityfinder/templates/index.html:25
+msgid "Set Preferred Courses"
+msgstr "Chagua Kozi utakayo"
+
+#: universityfinder/templates/index.html:32
+msgid "View Course Options"
+msgstr "Angalia Kozi"
+
+#: universityfinder/templates/index.html:41
+#: universityfinder/templates/index.html:52
+msgid "Add Subject"
+msgstr "Ongeza Somo"
+
+#: universityfinder/templates/index.html:56
+#: universityfinder/templates/index.html:91
+msgid "Name:"
+msgstr "Jina"
+
+#: universityfinder/templates/index.html:60
+msgid "Grade"
+msgstr "Daraja"
+
+#: universityfinder/templates/index.html:63
+#: universityfinder/templates/index.html:94
+msgid "Save"
+msgstr "Tunza"
+
+#: universityfinder/templates/index.html:66
+#: universityfinder/templates/index.html:97
+msgid "Close"
+msgstr "Funga"
+
+#: universityfinder/templates/index.html:76
+#: universityfinder/templates/index.html:87
+msgid "Add Course"
+msgstr "Ongeza Kozi"
+
+#: universityfinder/templates/index.html:106
+msgid "PREFFERED COURSES"
+msgstr "KOZI UTAKAZO"
+
+#: universityfinder/templates/index.html:111
+msgid "Name of Course"
+msgstr "Jina la Kozi"
+
+#: universityfinder/templates/index.html:112
+msgid "University"
+msgstr "Jina la Chuo"

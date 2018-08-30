@@ -1,0 +1,495 @@
+{% extends 'profile/profile_detail.html' %}
+{% load i18n %}
+{% load staticfiles %}
+{% block head_css_extra %}
+<link rel="stylesheet" href="{% static 'lib/bootstrap/dist/css/bootstrap.css' %}" />
+<link rel="stylesheet" href="{% static 'css/vendor/leaflet-0.6.4.css' %}" />
+<link href="{% static 'css/vendor/leaflet.label.css' %}" rel="stylesheet" />
+<link rel="stylesheet" href="{% static 'css/site.css' %}" />
+{% endblock %}
+{% block header %}
+<style>
+    #page-footer {
+        background: #2E4668;
+        padding: 10px 30px 30px;
+    }
+    #page-footer img {
+      max-height: 100%;
+      margin: 0;
+    }
+    #cover-profile article {
+      border: 1px solid #2E4668;
+      background-color: #f7f8f9;
+      z-index: 1;
+      position: absolute;
+    }
+    .column-full {
+      color: #000;
+    }
+    .leaflet-popup-content {
+      color: #D0A331;
+    }
+    .leaflet-marker-shadow {
+      width: 30px !important;
+      height: 30px !important;
+      margin-top: 0px !important;
+    }
+    .leaflet-marker-icon {
+      width: 18px !important;
+      height: 30px !important;
+      margin-top: 0px !important;
+    }
+    .leaflet-div-icon {
+      width: 15px;
+      height: 15px;
+      background: #fff;
+      border: 1px solid #666;
+    }
+    .leaflet-div-icon2
+    {
+      background:#D0A331;
+      border:5px solid rgba(255,255,255,0.5);
+      font-weight:bold;
+      text-align:center;
+      border-radius:50%;
+      line-height:30px;
+    }
+    #profile #compare-place-picker h2 {
+      margin-top: 5px;
+    }
+    .stat-row {
+      border: none;
+    }
+    .chart {
+      border: none;
+      padding: 5px 0;
+    }
+    article .section-container {
+      border-bottom: none;
+    }
+    .section-container .area {
+      background-color: #D0A331;
+    }
+
+</style>
+<header id="page-header">
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container">
+              <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="/">
+                      <img class="logo" src="{% static 'img/logo0.png' %}" />
+                  </a>
+              </div>
+              <div class="navbar-collapse collapse">
+                  <ul class="nav navbar-nav text-center">
+                      <li><a href="/leaguetable">SCHOOL LEAGUE</a></li>
+                      <li><a href="/careerguide">CAREER GUIDE</a></li>
+                      <li><a href="/university-finder">UNI FINDER</a></li>
+                      <li><a href="/about">ABOUT</a></li>
+                      <li style="right: -20%">
+                        <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                          <input name="next" type="hidden" value="{{ redirect_to }}" />
+                          {% get_current_language as LANGUAGE_CODE %}
+                          {% ifequal LANGUAGE_CODE "en" %}
+                            <input type="hidden" name="language" value="sw" />
+                            <input type="image" value="submit" src="{% static 'img/tz.png' %}" style="margin-bottom: -16px;" />
+                          {% else %}
+                            <input  type="hidden" name="language" value="en" />
+                            <input type="image" value="submit" src="{% static 'img/us.png' %}" style="margin-bottom: -16px;" />
+                          {% endifequal %}
+                        </form>
+                      </li>
+                      <!-- <li><a href="/contact">CONTACT US</a></li> -->
+                  </ul>
+              </div>
+          </div>
+      </nav>
+</header>
+<div class="main-content">
+{% block header_content %}
+  <div class="map-box">
+    <div class="container">
+        <div class="row">
+          <h3 class="map-title">{{ geography.this.short_name }}</h3>
+          <h4><a href="javascript:;" style="color: #fff" onclick="javascript: embedMap('{{ geography.this.geo_level }}', '{{geography.this.geo_code}}', '{{geography.this.short_name}}');">Embed Map</a></h4>
+        </div>
+      </div>
+
+    <div class="map clearfix" id="cover-map">
+      <div id="slippy-map">
+        <div id="cover-profile" class="wrapper">
+            <article class="clearfix column-half">
+                <header id="header-box" class="column-full">
+                    <h1 class="title">{{ geography.this.short_name }} </h1>
+                    <span>
+                      {{ geography.this.geo_level|capfirst }}
+                      {% if geography.parents %}
+                          in
+                          {% for level, g in geography.parents.items %}
+                              <a href="/leaguetable/profiles/{{ g.full_geoid }}-{{ g.short_name|slugify }}/?year={{ year }}">{{ g.short_name }}</a>{% if not forloop.last %},{%endif%}
+                          {% endfor %}
+                      {% endif %}
+                    </span>
+                </header>
+
+                <div class="column-full">
+                    <div class="stat">
+                        <span class="primary pull-left">
+                            {% block profile_header_population %}
+                            <span class="value">{{ totalschools }}</span>
+                            <span class="name">Total Secondary Schools in {{ year }}</span>
+                            {% endblock %}
+                        </span>
+                    </div>
+                </div>
+            </article>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+<div class="container">
+    <div class="row">
+        <section class="clearfix" id="compare-place-picker">
+          <h2>Compare this place with another</h2>
+            <div class="typeahead-container">
+                <input name="place_select" id="compare-place-select" type="text" placeholder="Type in Region to compare with..." autocomplete="off">
+            </div>
+        </section>
+        <div class="col-md-12">
+          <div class="help-text text-center">{%trans 'SCHOOL RANKINGS' %}
+            <span>
+              <select id="rank-year-profile" class="inline-select" style="color: #D0A331">
+                    <option data-language={{ LANGUAGE_CODE }} value="2017" {% if year == "2017" %} selected {% endif %}>2017</option>
+                    <option data-language={{ LANGUAGE_CODE }} value="2016" {% if year == "2016" %} selected {% endif %}>2016</option>
+                    <option data-language={{ LANGUAGE_CODE }} value="2015" {% if year == "2015" %} selected {% endif %}>2015</option>
+                    <!-- <option value="2014">2014</option>
+                    <option value="2013">2013</option>
+                    <option value="2012">2012</option> -->
+                </select>
+              </span>
+            </div>
+            <div style="width: 100%; text-align:right;">
+                <a href="javascript: ;"  onclick="javascript: embedTable('{{ geography.this.geo_level }}', '{{geography.this.geo_code}}');">Embed School League Table</a>
+                <span class="fa fa-code"></span>
+            </div>
+
+            <!--
+            * =================================
+            * Top School List
+            * =================================
+            -->
+            <div class="col-md-6">
+                <h3 class="title text-center">{%trans '10 Top Schools' %} </h3>
+                <h4 class="title text-center">{%trans 'Schools Category with 40 Students and More' %}</h4>
+                <ul id="best-40-profile" class="list-group school">
+                  {% for school in schools.best_schools_more_40|slice:":10" %}
+                    <li class="list-group-item">
+                        <a href="/leaguetable/schools/{{ school.code }}">
+                            <div class="col-xs-5">
+                                <div class="school-name">{{ school.name | title }} School</div>
+                                <div class="school-type">
+                                  {% if school.gender == "Boys" %}
+                                      {%trans 'Boys' %}
+                                  {% else %}
+                                    {% if school.gender == 'Mixed'%}
+                                      {%trans 'Mixed' %}
+                                    {% else %}
+                                      {%trans 'Girls' %}
+                                    {% endif %}
+                                  {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-xs-5">
+                                <div class="school-rank">#{{ school.national_rank_all }} {%trans 'in' %} Tanzania</div>
+                                <div class="school-rank">#{{ school.regional_rank_all }} {%trans 'in' %} {{ school.region | title }}</div>
+                            </div>
+                            <div class="col-xs-2">
+                                {{ school.avg_gpa | floatformat:3 }} GPA
+                            </div>
+                        </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+            </div>
+            <!--
+            * =================================
+            * Lowest School List
+            * =================================
+            -->
+            <div class="col-md-6">
+              <h3 class="title text-center">{% trans '10 Lowest Schools' %} </h3>
+              <h4 class="title text-center">{% trans 'Schools Category with 40 Students and More' %}</h4>
+                <ul id="worst-40-profile" class="list-group school">
+                  {% for school in schools.worst_schools_more_40|slice:":10" %}
+                  <li class="list-group-item">
+                      <a href="/leaguetable/schools/{{ school.code }}">
+                          <div class="col-xs-5">
+                              <div class="school-name">{{ school.name | title }} School</div>
+                              <div class="school-type">
+                                {% if school.gender == "Boys" %}
+                                    {%trans 'Boys' %}
+                                {% else %}
+                                  {% if school.gender == 'Mixed'%}
+                                    {%trans 'Mixed' %}
+                                  {% else %}
+                                    {%trans 'Girls' %}
+                                  {% endif %}
+                                {% endif %}
+                              </div>
+                          </div>
+                          <div class="col-xs-5">
+                              <div class="school-rank">#{{ school.national_rank_all }} {%trans 'in' %} Tanzania</div>
+                              <div class="school-rank">#{{ school.regional_rank_all }} {%trans 'in' %} {{ school.region | title }}</div>
+                          </div>
+                          <div class="col-xs-2">
+                              {{ school.avg_gpa | floatformat:3 }} GPA
+                          </div>
+                      </a>
+                  </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+
+            <!--
+            * =================================
+            * Top School List
+            * =================================
+            -->
+            <div class="col-md-6">
+              <h3 class="title text-center">{% trans '10 Top Schools' %} </h3>
+              <h4 class="title text-center">{% trans 'Schools Category with less than 40 Students' %}</h4>
+                <ul id="best-profile" class="list-group school">
+                  {% for school in schools.best_schools_less_40|slice:":10" %}
+                  <li class="list-group-item">
+                      <a href="/leaguetable/schools/{{ school.code }}">
+                          <div class="col-xs-5">
+                              <div class="school-name">{{ school.name | title }} School</div>
+                              <div class="school-type">
+                                {% if school.gender == "Boys" %}
+                                    {%trans 'Boys' %}
+                                {% else %}
+                                  {% if school.gender == 'Mixed'%}
+                                    {%trans 'Mixed' %}
+                                  {% else %}
+                                    {%trans 'Girls' %}
+                                  {% endif %}
+                                {% endif %}
+                              </div>
+                          </div>
+                          <div class="col-xs-5">
+                              <div class="school-rank">#{{ school.national_rank_all }} {%trans 'in' %} Tanzania</div>
+                              <div class="school-rank">#{{ school.regional_rank_all }} {%trans 'in' %} {{ school.region | title }}</div>
+                          </div>
+                          <div class="col-xs-2">
+                              {{ school.avg_gpa | floatformat:3 }} GPA
+                          </div>
+                      </a>
+                  </li>
+                  {% endfor %}
+                </ul>
+            </div>
+            <!--
+            * =================================
+            * Lowest School List
+            * =================================
+            -->
+            <div class="col-md-6">
+              <h3 class="title text-center">{% trans '10 Lowest Schools' %} </h3>
+              <h4 class="title text-center">{% trans 'Schools Category less than 40 Students' %}</h4>
+                <ul id="worst-profile" class="list-group school">
+                  {% for school in schools.worst_schools_less_40|slice:":10" %}
+                  <li class="list-group-item">
+                      <a href="/leaguetable/schools/{{ school.code }}">
+                          <div class="col-xs-5">
+                              <div class="school-name">{{ school.name | title }} School</div>
+                              <div class="school-type">
+                                {% if school.gender == "Boys" %}
+                                    {%trans 'Boys' %}
+                                {% else %}
+                                  {% if school.gender == 'Mixed'%}
+                                    {%trans 'Mixed' %}
+                                  {% else %}
+                                    {%trans 'Girls' %}
+                                  {% endif %}
+                                {% endif %}
+                              </div>
+                          </div>
+                          <div class="col-xs-5">
+                              <div class="school-rank">#{{ school.national_rank_all }} {%trans 'in' %} Tanzania</div>
+                              <div class="school-rank">#{{ school.regional_rank_all }} {%trans 'in' %} {{ school.region | title }}</div>
+                          </div>
+                          <div class="col-xs-2">
+                              {{ school.avg_gpa | floatformat:3 }} GPA
+                          </div>
+                      </a>
+                  </li>
+                    {% endfor %}
+                </ul>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}
+
+{% block profile_preamble %}
+<h3 class="title"> {% trans 'Interact with charts and statistics for additional information.' %}</h3>
+{% endblock %}
+
+{% block profile_detail %}
+<article id="schools" class="clearfix">
+    <header class="section-contents">
+        <h1>{% trans 'Schools Demographics' %}</h1>
+    </header>
+    <div class="section-container">
+        <section class="clearfix stat-row">
+          <div class="column-quarter">
+              {% include 'profile/_blocks/_stat_list.html' with stat=schools.total_schools stat_type='number'  %}
+          </div>
+          <div class="column-quarter">
+              <div id="chart-pie-schools-schools_distribution" data-stat-type="scaled-percentage" data-chart-title="Ownership Distribution"></div>
+          </div>
+          <div class="column-half"><div id="chart-column-schools-region_distribution" data-stat-type="scaled-percentage"
+              data-chart-title="Schools by region status"></div>
+          </div>
+        </section>
+        <section class="clearfix stat-row">
+          <div class="column-third">
+            <div id="chart-bar-schools-category_distribution" data-stat-type="scaled-percentage" data-chart-title="School Has Equal or More Than 40 Students?"></div>
+          </div>
+          <div class="column-third">
+            <div id="chart-pie-schools-gender_distribution" data-stat-type="scaled-percentage" data-chart-title="Gender of Schools"></div>
+          </div>
+        </section>
+    </div>
+</article>
+
+<!-- <article id="schools" class="clearfix" style="overflow:auto;">
+    <header class="section-contents">
+        <h1>{%trans 'Regions' %}</h1>
+    </header>
+    <div class="section-container" style="overflow:auto;">
+        <section class="clearfix stat-row">
+            <br />
+
+        </section>
+    </div>
+</article> -->
+
+<!-- <article id="schools" class="clearfix">
+    <header class="section-contents">
+        <h1>{% trans 'Averege GPA' %}</h1>
+    </header>
+    <div class="section-container">
+        <section class="clearfix stat-row">
+            <h2 class="header-for-columns"><a class="permalink" href="#age" id="age">GPA <i class="fa fa-link"></i></a></h2>
+            <div class="column-quarter">
+                {% include 'profile/_blocks/_stat_list.html' with stat=schools.median_gpa stat_type='number' %}
+            </div>
+            <div class="column-half">
+                <div id="chart-histogram-schools-gpa_group_distribution" data-stat-type="scaled-percentage" data-chart-title="Average gpa range"></div>
+            </div>
+        </section>
+    </div>
+</article> -->
+
+{% endblock %}
+
+
+{% block footer_content %}
+    {% include 'footer.html' %}
+
+    <!-- Embed table -->
+    <div id="lightbox" style="display: none; color: #000;">
+        <div class="hovercard-wrapper">
+            <div class="hovercard">
+                <small class="close clearfix close-embed" onclick="javascript: closeEmbed();"><i class="fa fa-times-circle"></i> Close</small>
+                <h2 style="font-size: 22px;"></h2>
+                <p>Copy the code below, and paste into your own CMS or HTML.
+                    Embedded league tables are responsive to your page width,
+                    and have been tested in Firefox, Safari, Chrome, and IE8 and above.
+                </p>
+                <textarea></textarea>
+            </div>
+        </div>
+    </div>
+{% endblock footer_content %}
+
+{% block body_javascript_extra %}
+    {{ block.super }}
+
+    <!-- embed table script -->
+    <script src="{% static 'lib/jquery/dist/jquery.js' %}"></script>
+    <script src="{% static 'lib/bootstrap/dist/js/bootstrap.js' %}"></script>
+    <script src="{% static 'lib/owlcarousel/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'lib/jquery.nice-select/js/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'js/site.js' %}"></script>
+    <script type="text/javascript">
+      //for each point show school name and url
+      function onEachFeature(feature, layer) {
+          layer.bindPopup("<a href=" + feature.properties.code+">"+feature.properties.name+" SCHOOL </a><br />"+ feature.properties.latitude + "," + feature.properties.longitude );
+      }
+      var coordinates = {{ coordinates | safe }};
+      if (coordinates) {
+        var cordLength = coordinates.length;
+        var geojsonFeature = [];
+        for (var i = 0; i < cordLength; i++) {
+          var latitude = parseFloat(coordinates[i][3])
+          var longitude = parseFloat(coordinates[i][2])
+          var name = coordinates[i][1]
+          var code = coordinates[i][0]
+          geojsonFeature.push({
+              "type": "Feature",
+              "properties": {"name":  name, "latitude": latitude, "longitude": longitude, "code": "/leaguetable/schools/" + code},
+              "geometry": {
+                  "type": "Point",
+                  "coordinates": [ longitude, latitude ]
+              }
+            });
+          }
+
+          L.geoJson(geojsonFeature, {onEachFeature: onEachFeature}).addTo(maps.map)
+        }
+        function embedTable(geo_level, geo_code){
+            var text = '&lt;iframe src="{{ HURUMAP.url }}/leaguetable/embed/' + geo_level + '/' + geo_code +
+            '" frameborder="0" width="100%" height="300" style="margin: 1em; width: 100%;"&gt;&lt;/iframe&gt;';
+
+            $('#lightbox h2').html("");
+            $('#lightbox h2').html("Embed code for this league table");
+
+            $('#lightbox textarea').html("");
+            $('#lightbox textarea').html(text);
+            $('#lightbox').toggle();
+        }
+
+        // Fx to show map embed code
+        function embedMap(geo_level, geo_code, short_name){
+            var short_name = short_name.toLowerCase().replace(/ /g,"-");
+
+            var text = '&lt;iframe src="{{ HURUMAP.url }}/leaguetable/embed/' + geo_level + '-' + geo_code + '-' + short_name +
+            '" frameborder="0" width="100%" height="300" style="margin: 1em; width: 100%;"&gt;&lt;/iframe&gt;';
+
+            $('#lightbox h2').html("");
+            $('#lightbox h2').html("Embed code for this map");
+
+            $('#lightbox textarea').html("");
+            $('#lightbox textarea').html(text);
+            $('#lightbox').toggle();
+        }
+
+        function closeEmbed(){
+            $('#lightbox').toggle();
+        }
+    </script>
+{% endblock %}
