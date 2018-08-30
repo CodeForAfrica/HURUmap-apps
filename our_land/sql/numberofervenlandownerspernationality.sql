@@ -34,8 +34,6 @@ CREATE TABLE public.numberofervenlandownerspernationality (
 );
 
 
-ALTER TABLE public.numberofervenlandownerspernationality OWNER TO our_land;
-
 --
 -- Data for Name: numberofervenlandownerspernationality; Type: TABLE DATA; Schema: public; Owner: our_land
 --

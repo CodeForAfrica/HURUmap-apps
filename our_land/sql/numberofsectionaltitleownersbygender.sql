@@ -34,8 +34,6 @@ CREATE TABLE public.numberofsectionaltitleownersbygender (
 );
 
 
-ALTER TABLE public.numberofsectionaltitleownersbygender OWNER TO our_land;
-
 --
 -- Data for Name: numberofsectionaltitleownersbygender; Type: TABLE DATA; Schema: public; Owner: our_land
 --

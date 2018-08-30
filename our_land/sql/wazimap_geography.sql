@@ -15,6 +15,17 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET row_security = off;
 
+DROP INDEX IF EXISTS public.wazimap_geography_version_01953818_like;
+DROP INDEX IF EXISTS public.wazimap_geography_name_36b79089_like;
+DROP INDEX IF EXISTS public.wazimap_geography_long_name_9b8409f5_like;
+DROP INDEX IF EXISTS public.wazimap_geography_b068931c;
+DROP INDEX IF EXISTS public.wazimap_geography_2fc6351a;
+DROP INDEX IF EXISTS public.wazimap_geography_2af72f10;
+ALTER TABLE IF EXISTS ONLY public.wazimap_geography DROP CONSTRAINT IF EXISTS wazimap_geography_pkey;
+ALTER TABLE IF EXISTS ONLY public.wazimap_geography DROP CONSTRAINT IF EXISTS wazimap_geography_geo_level_bbe3c9fc_uniq;
+ALTER TABLE IF EXISTS public.wazimap_geography ALTER COLUMN id DROP DEFAULT;
+DROP SEQUENCE IF EXISTS public.wazimap_geography_id_seq;
+DROP TABLE IF EXISTS public.wazimap_geography;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -36,22 +47,17 @@ CREATE TABLE public.wazimap_geography (
 );
 
 
-ALTER TABLE IF EXISTS public.wazimap_geography OWNER TO our_land;
-
 --
 -- Name: wazimap_geography_id_seq; Type: SEQUENCE; Schema: public; Owner: our_land
 --
 
 CREATE SEQUENCE public.wazimap_geography_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
 
-
-ALTER TABLE IF EXISTS public.wazimap_geography_id_seq OWNER TO our_land;
 
 --
 -- Name: wazimap_geography_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: our_land
@@ -9310,7 +9316,7 @@ SELECT pg_catalog.setval('public.wazimap_geography_id_seq', 31485, true);
 -- Name: wazimap_geography wazimap_geography_geo_level_bbe3c9fc_uniq; Type: CONSTRAINT; Schema: public; Owner: our_land
 --
 
-ALTER TABLE IF EXISTS ONLY public.wazimap_geography
+ALTER TABLE ONLY public.wazimap_geography
     ADD CONSTRAINT wazimap_geography_geo_level_bbe3c9fc_uniq UNIQUE (geo_level, geo_code, version);
 
 
@@ -9318,7 +9324,7 @@ ALTER TABLE IF EXISTS ONLY public.wazimap_geography
 -- Name: wazimap_geography wazimap_geography_pkey; Type: CONSTRAINT; Schema: public; Owner: our_land
 --
 
-ALTER TABLE IF EXISTS ONLY public.wazimap_geography
+ALTER TABLE ONLY public.wazimap_geography
     ADD CONSTRAINT wazimap_geography_pkey PRIMARY KEY (id);
 
 
