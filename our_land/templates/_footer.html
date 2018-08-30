@@ -1,0 +1,15 @@
+{% load staticfiles %}
+<div class="column-half">
+    <p class="smaller"><strong>{{ HURUMAP.name }}</strong> {{ HURUMAP.description }}</p>
+    <p class="smaller">
+        The project is built on <a href="http://wazimap.readthedocs.org/" target="_blank" rel="noopener">Wazimap</a>, an open source platform by <a href="https://openup.org.za/" target="_blank" rel="noopener">OpenUp</a> and <a href="http://www.mediamonitoringafrica.org/" target="_blank" rel="noopener">Media Monitoring Africa</a> for making census data more understandable.
+    </p>
+    <br/>
+</div>
+<div class="column-half text-center">
+    <p>A project by:</p>
+    {% block footer_branding %}
+    <a href="https://facebook.com/CodeForAfrica/" target="_blank" rel="noopener">
+        <img src="{% static 'img/logos/cfafrica-white.png' %}" alt="Code for Africa" style="margin-top: 0;"></a>
+    {% endblock %}
+</div>

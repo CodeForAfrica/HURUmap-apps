@@ -42,8 +42,10 @@ python manage.py migrate
 Import the data into the new database (will overwrite some tables created by Django, but that's ok).
 ```
 cat hurumap_ke/sql/*.sql | psql -U hurumap_ke -W hurumap_ke
+```
 
 Run collectstatic to collect static filles from apps and packeges into a single path:
+
 ```
 python manage.py collectstatic
 ```

@@ -4,3 +4,5 @@ git+https://github.com/CodeForAfricaLabs/HURUmap.git@develop#egg=hurumap
 
 # workaround: setup keeps installing wazimap from PYPI
 git+https://github.com/CodeForAfricaLabs/wazimap.git@master#egg=wazimap
+
+Shapely>=1.5.13
