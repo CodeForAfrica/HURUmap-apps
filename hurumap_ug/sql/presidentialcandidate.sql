@@ -16,6 +16,8 @@ SET row_security = off;
 
 SET search_path = public, pg_catalog;
 
+ALTER TABLE IF EXISTS ONLY public.presidentialcandidate DROP CONSTRAINT IF EXISTS pk_presidentialcandidate;
+DROP TABLE IF EXISTS public.presidentialcandidate;
 SET default_tablespace = '';
 
 SET default_with_oids = false;

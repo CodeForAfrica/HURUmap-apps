@@ -34,8 +34,6 @@ CREATE TABLE public.sectionaltitleownershipinhectarespergender (
 );
 
 
-ALTER TABLE public.sectionaltitleownershipinhectarespergender OWNER TO our_land;
-
 --
 -- Data for Name: sectionaltitleownershipinhectarespergender; Type: TABLE DATA; Schema: public; Owner: our_land
 --

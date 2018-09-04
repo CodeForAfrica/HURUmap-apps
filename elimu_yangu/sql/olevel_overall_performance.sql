@@ -16,13 +16,15 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET row_security = off;
 
+ALTER TABLE IF EXISTS ONLY public.olevel_overall_performance DROP CONSTRAINT IF EXISTS pk_olevel_overall_performance;
+DROP TABLE IF EXISTS public.olevel_overall_performance;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
 
 --
 -- TOC entry 190 (class 1259 OID 17202)
--- Name: olevel_overall_performance; Type: TABLE; Schema: public; Owner: elimu_yangu
+-- Name: olevel_overall_performance; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.olevel_overall_performance (
@@ -41,12 +43,10 @@ CREATE TABLE public.olevel_overall_performance (
 );
 
 
-ALTER TABLE public.olevel_overall_performance OWNER TO elimu_yangu;
-
 --
 -- TOC entry 2176 (class 0 OID 17202)
 -- Dependencies: 190
--- Data for Name: olevel_overall_performance; Type: TABLE DATA; Schema: public; Owner: elimu_yangu
+-- Data for Name: olevel_overall_performance; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.olevel_overall_performance (id, year, schoolcode, schoolname, gender, gendertotal, division_i, division_ii, division_iii, division_iv, division_0, abswithheld) FROM stdin;
@@ -28594,11 +28594,11 @@ COPY public.olevel_overall_performance (id, year, schoolcode, schoolname, gender
 
 --
 -- TOC entry 2061 (class 2606 OID 17239)
--- Name: id; Type: CONSTRAINT; Schema: public; Owner: elimu_yangu
+-- Name: pk_olevel_overall_performance; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.olevel_overall_performance
-    ADD CONSTRAINT id PRIMARY KEY (id);
+    ADD CONSTRAINT pk_olevel_overall_performance PRIMARY KEY (id);
 
 
 -- Completed on 2018-03-14 11:24:17 EAT

@@ -15,6 +15,8 @@ SET row_security = off;
 
 SET search_path = public, pg_catalog;
 
+ALTER TABLE IF EXISTS ONLY public.hivcenters DROP CONSTRAINT IF EXISTS pk_hivcenters;
+DROP TABLE IF EXISTS public.hivcenters;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -31,8 +33,6 @@ CREATE TABLE hivcenters (
     geo_version character varying(100) DEFAULT ''::character varying NOT NULL
 );
 
-
-ALTER TABLE hivcenters OWNER TO hurumap_tz;
 
 --
 -- Data for Name: hivcenters; Type: TABLE DATA; Schema: public; Owner: hurumap_tz

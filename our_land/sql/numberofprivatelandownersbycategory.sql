@@ -34,8 +34,6 @@ CREATE TABLE public.numberofprivatelandownersbycategory (
 );
 
 
-ALTER TABLE public.numberofprivatelandownersbycategory OWNER TO our_land;
-
 --
 -- Data for Name: numberofprivatelandownersbycategory; Type: TABLE DATA; Schema: public; Owner: our_land
 --

@@ -33,8 +33,6 @@ CREATE TABLE public.privatelandownershipinhectares (
 );
 
 
-ALTER TABLE public.privatelandownershipinhectares OWNER TO our_land;
-
 --
 -- Data for Name: privatelandownershipinhectares; Type: TABLE DATA; Schema: public; Owner: our_land
 --

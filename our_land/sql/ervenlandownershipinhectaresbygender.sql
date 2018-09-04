@@ -34,8 +34,6 @@ CREATE TABLE public.ervenlandownershipinhectaresbygender (
 );
 
 
-ALTER TABLE public.ervenlandownershipinhectaresbygender OWNER TO our_land;
-
 --
 -- Data for Name: ervenlandownershipinhectaresbygender; Type: TABLE DATA; Schema: public; Owner: our_land
 --

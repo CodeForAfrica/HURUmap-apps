@@ -14,15 +14,16 @@ SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
 
+ALTER TABLE IF EXISTS ONLY public.secondary_school DROP CONSTRAINT IF EXISTS pk_secondary_school;
+DROP TABLE IF EXISTS public.secondary_school;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
 
 --
 -- TOC entry 202 (class 1259 OID 25415)
--- Name: secondary_school; Type: TABLE; Schema: public; Owner: elimu_yangu
+-- Name: secondary_school; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.secondary_school (
@@ -47,12 +48,10 @@ CREATE TABLE public.secondary_school (
 );
 
 
-ALTER TABLE public.secondary_school OWNER TO elimu_yangu;
-
 --
 -- TOC entry 2289 (class 0 OID 25415)
 -- Dependencies: 202
--- Data for Name: secondary_school; Type: TABLE DATA; Schema: public; Owner: elimu_yangu
+-- Data for Name: secondary_school; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.secondary_school (geo_level, geo_code, geo_version, code, name, region, district, ward, ownership, gender, latitude, longitude, avg_gpa, year_of_result, more_than_40, regional_rank_all, national_rank_all, total) FROM stdin;
@@ -4837,7 +4836,7 @@ country	TZ	2009	S5555	KEMEBOS	KAGERA	UNKNOWN	UNKNOWN	UNKNOWN	Mixed	UNKNOWN	UNKNO
 
 --
 -- TOC entry 2174 (class 2606 OID 25423)
--- Name: pk_secondary_school; Type: CONSTRAINT; Schema: public; Owner: elimu_yangu
+-- Name: pk_secondary_school; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.secondary_school

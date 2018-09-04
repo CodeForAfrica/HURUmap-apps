@@ -17,13 +17,15 @@ SET row_security = off;
 
 SET search_path = public, pg_catalog;
 
+ALTER TABLE IF EXISTS ONLY public.secondary_schools DROP CONSTRAINT IF EXISTS pk_secondary_schools;
+DROP TABLE IF EXISTS public.secondary_schools;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
 
 --
 -- TOC entry 181 (class 1259 OID 27864)
--- Name: secondary_schools; Type: TABLE; Schema: public; Owner: elimu_yangu
+-- Name: secondary_schools; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE secondary_schools (
@@ -52,12 +54,10 @@ CREATE TABLE secondary_schools (
 );
 
 
-ALTER TABLE secondary_schools OWNER TO elimu_yangu;
-
 --
 -- TOC entry 2155 (class 0 OID 27864)
 -- Dependencies: 181
--- Data for Name: secondary_schools; Type: TABLE DATA; Schema: public; Owner: elimu_yangu
+-- Data for Name: secondary_schools; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY secondary_schools (geo_level, geo_code, geo_version, code, name, region, district, ward, ownership, latitude, longitude, pass_rate, change_previous_year_pass_rate, avg_gpa, chane_previous_year_gpa, rank, year_of_result, more_than_40, national_rank_all, regional_rank_all, district_rank_all, total) FROM stdin;
@@ -12969,7 +12969,7 @@ district	27	2009	S4792	KONJE SECONDARY SCHOOL	TANGA	HANDENI	KONJE	PRIVATE	-5.408
 
 --
 -- TOC entry 2040 (class 2606 OID 27872)
--- Name: pk_secondary_schools; Type: CONSTRAINT; Schema: public; Owner: elimu_yangu
+-- Name: pk_secondary_schools; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY secondary_schools
