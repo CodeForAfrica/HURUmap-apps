@@ -34,7 +34,6 @@ OUR_LAND = WAZIMAP
 DATABASE_URL = os.environ.get('DATABASE_URL',
                               'postgresql://our_land:our_land@localhost/our_land')
 DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
-DATABASES['default']['ATOMIC_REQUESTS'] = True
 
 # Localise this instance of OUR_LAND
 OUR_LAND['name'] = 'OurLand'

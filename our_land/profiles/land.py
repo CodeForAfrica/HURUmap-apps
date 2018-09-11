@@ -36,6 +36,8 @@ def get_land_profile(geo, profile_name, request):
                         geo.geoid, topic_name, comp_geo.geoid, e)
                     log.fatal(msg, exc_info=e)
                     raise ValueError(msg)
+
+        data['redistribution_and_restitution'] = get_redistribution_and_restitution_profiles(geo, session)
         return data
 
     finally:
@@ -56,3 +58,13 @@ def get_land_topic_profiles(geo, session, topic_name):
         pass
 
     return topic_profiles_data
+
+def get_redistribution_and_restitution_profiles(geo, session):
+
+    projects_households_beneficiaries, _ = get_stat_data(
+        ['number of projects', 'number of households', 'number of beneficiaries'], geo, session,
+        table_fields=['number of projects', 'number of households', 'number of beneficiaries'])
+
+    return {
+        'projects_households_beneficiaries_landcost': projects_households_beneficiaries
+    }
