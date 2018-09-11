@@ -18,7 +18,7 @@ def get_land_profile(geo, profile_name, request):
     try:
         comparative_geos = geo_data.get_comparative_geos(geo)
         data = {}
-        land_sections = ['firmland', 'ervenland', 'sectionaltitleland']
+        land_sections = ['farmland', 'ervenland', 'sectionaltitleland']
         #for each topic in sections
         #get data for that topic profiles
         for section in land_sections:

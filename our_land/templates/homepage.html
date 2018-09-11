@@ -1,5 +1,14 @@
 {% extends 'homepage.html' %}{% load humanize partition staticfiles %}
 
+{% block header_content %}
+<div class="content-container clearfix bg-color-secondary text-center">
+    <div class="wrapper">
+        <h1>Discover the Stories Behind the Data</h1>
+        <h4>{{ HURUMAP.name }} OurLand provides useful facts about land ownership in South Africa.</h4>
+    </div>
+</div>
+{% endblock header_content %}
+
 {% block how_it_works %}
     <div class="wrapper clearfix">
         <h1>How It Works</h1>
@@ -7,17 +16,17 @@
         <div class="column-third">
             <p><img src="{% static 'img/icons/blurbs/facts.png' %}" alt=""></p>
             <h3>Find Facts</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+            <p>Land ownership data is broken down by province and category: agricultural land, erven and urban land and sectional title land. </p>
         </div>
         <div class="column-third">
             <p><img src="{% static 'img/icons/blurbs/visualise.png' %}" alt=""></p>
             <h3>Visualize</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+            <p>Our library of charts gives you insight into land data from provinces you research. Look for them on profile pages. You can embed the charts on your own site. </p>
         </div>
         <div class="column-third">
             <p><img src="{% static 'img/icons/blurbs/context.png' %}" alt=""></p>
             <h3>Get Context</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p>Pre-computed land statistics are presented alongside each data point so you can see how each place fits into a large context.</p>
         </div>
     </div>
     <div class="wrapper">

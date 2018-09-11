@@ -37,14 +37,13 @@ DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
 # Localise this instance of OUR_LAND
-OUR_LAND['name'] = 'Our Land'
-OUR_LAND['url'] = 'https://our-land.org'
-OUR_LAND['description'] = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit,'\
- 'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'\
- ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut'\
- 'aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in'\
- 'voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
-OUR_LAND['title_tagline'] = 'Making Census Data Easy to Use'
+OUR_LAND['name'] = 'OurLand'
+OUR_LAND['url'] = 'https://ourland.hurumap.org'
+OUR_LAND['description'] = 'gives infomediaries like journalists '\
+'and civic activists an easy \'plug & play\' toolkit for finding and embedding '\
+'interactive data visualizations into their storytelling on land ownership '\
+'in South Africa. Land ownership is a slow-burn issue in South Africa that will '\
+'continue to shape the national discourse and economy for decades to come.'
 
 OUR_LAND['facebook'] = 'CodeForAfrica'
 OUR_LAND['twitter'] = '@Code4Africa'
@@ -113,11 +112,11 @@ OUR_LAND['mapit'] = {
 # -------------------------------------------------------------------------------
 #topics
 
-OUR_LAND['topics']['firmland'] = {
-    'topic': 'firmland',
-    'name': 'Firm & Agricultural Land',
+OUR_LAND['topics']['farmland'] = {
+    'topic': 'farmland',
+    'name': 'Farm & Agricultural Land',
     'icon': '/static/img/education.png',
-    'desc': 'South Africa Firm and Agricultural Land',
+    'desc': 'South Africa farm and Agricultural Land',
     'profiles': [
         'Private land ownership in hectares per category',
         'Number of private land owners by category',
