@@ -43,6 +43,14 @@ input {
   padding: 0 15px;
   margin: 0 auto; }
 
+.bg-color-primary {
+  background-color: #084a49;
+  color: #fff; }
+
+.bg-color-secondary {
+  background-color: #1c9d95;
+  color: #fff; }
+
 .bg-ocean-green {
   background-color: #1c9d95;
   color: #fff; }
@@ -191,6 +199,12 @@ body {
   .btn.bg-bottle-green:hover {
     background-color: #1c9d95;
     color: #fff; }
+  .btn.bg-color-primary:hover {
+    background-color: #1c9d95;
+    color: #fff; }
+  .btn.bg-color-secondary:hover {
+    background-color: #084a49;
+    color: #fff; }
 
 .select2-container .select2-choice div {
   background-color: #1c9d95 !important;
@@ -301,4 +315,4 @@ body {
 .geography-ico {
   display: none; }
 
-/*# sourceMappingURL=../../../../../../../../static/css/hurumap.css.map */
+/*# sourceMappingURL=../../../../../../../../../../../../../static/css/hurumap.css.map */

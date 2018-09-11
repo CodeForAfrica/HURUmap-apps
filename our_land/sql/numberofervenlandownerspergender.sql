@@ -39,36 +39,36 @@ CREATE TABLE public.numberofervenlandownerspergender (
 --
 
 COPY public.numberofervenlandownerspergender (geo_level, geo_code, geo_version, "number of erven land owners per gender", total) FROM stdin;
-province	EC	2011	Female	322019
-province	FS	2011	Female	237052
-province	GT	2011	Female	988938
-province	KZN	2011	Female	376103
-province	MP	2011	Female	156603
-province	NW	2011	Female	134455
-province	NC	2011	Female	96757
-province	WC	2011	Female	568349
-country	ZA	2011	Female	2961794
-province	EC	2011	Male	270152
-province	FS	2011	Male	205216
-province	GT	2011	Male	870928
-province	KZN	2011	Male	338674
-province	MP	2011	Male	147428
-province	NW	2011	Male	124246
-province	NC	2011	Male	84995
-province	WC	2011	Male	540662
-country	ZA	2011	Male	2655724
-province	EC	2011	Other	55635
-province	FS	2011	Other	27497
-province	GT	2011	Other	123914
-province	KZN	2011	Other	67258
-province	MP	2011	Other	18435
-province	NW	2011	Other	19900
-province	NC	2011	Other	7143
-province	WC	2011	Other	8421
-country	ZA	2011	Other	351947
-province	LIM	2011	Female	81518
-province	LIM	2011	Male	73423
-province	LIM	2011	Other	23744
+province	EC	2016	Female	322019
+province	FS	2016	Female	237052
+province	GT	2016	Female	988938
+province	KZN	2016	Female	376103
+province	MP	2016	Female	156603
+province	NW	2016	Female	134455
+province	NC	2016	Female	96757
+province	WC	2016	Female	568349
+country	ZA	2016	Female	2961794
+province	EC	2016	Male	270152
+province	FS	2016	Male	205216
+province	GT	2016	Male	870928
+province	KZN	2016	Male	338674
+province	MP	2016	Male	147428
+province	NW	2016	Male	124246
+province	NC	2016	Male	84995
+province	WC	2016	Male	540662
+country	ZA	2016	Male	2655724
+province	EC	2016	Other	55635
+province	FS	2016	Other	27497
+province	GT	2016	Other	123914
+province	KZN	2016	Other	67258
+province	MP	2016	Other	18435
+province	NW	2016	Other	19900
+province	NC	2016	Other	7143
+province	WC	2016	Other	8421
+country	ZA	2016	Other	351947
+province	LIM	2016	Female	81518
+province	LIM	2016	Male	73423
+province	LIM	2016	Other	23744
 \.
 
 

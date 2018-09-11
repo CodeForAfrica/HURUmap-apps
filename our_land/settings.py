@@ -60,8 +60,8 @@ our_land_profile = os.environ.get('OUR_LAND_PROFILE', 'land')
 
 OUR_LAND['default_profile'] = our_land_profile
 OUR_LAND['profile_builder'] = 'our_land.profiles.land.get_land_profile'
-OUR_LAND['default_geo_version'] = os.environ.get('DEFAULT_GEO_VERSION', '2011')
-OUR_LAND['legacy_embed_geo_version'] = '2011'
+OUR_LAND['default_geo_version'] = os.environ.get('DEFAULT_GEO_VERSION', '2016')
+OUR_LAND['legacy_embed_geo_version'] = '2016'
 
 # this is provided by mapit
 OUR_LAND['geodata'] = 'our_land.geo.GeoData'
@@ -86,17 +86,17 @@ OUR_LAND['levels'] = {
     }
 }
 
-OUR_LAND['primary_release_year'] = {
-    # use the 2011 release for wards, use the latest (2016) for everything else
-    'ward': 2011,
-}
+# OUR_LAND['primary_release_year'] = {
+#     # use the 2011 release for wards, use the latest (2016) for everything else
+#     'ward': 2016,
+# }
 OUR_LAND['latest_release_year'] = '2016'
-OUR_LAND['available_release_years'] = {
-    # Release years with data for geo_levels.
-    # Only specify geo_levels with limited releases.
-    # Other geo_levels have data for all releases.
-    'ward': [2011]
-}
+# OUR_LAND['available_release_years'] = {
+#     # Release years with data for geo_levels.
+#     # Only specify geo_levels with limited releases.
+#     # Other geo_levels have data for all releases.
+#     'ward': [2011]
+# }
 # If not set, the centre is determined from the geometry.
 OUR_LAND['map_centre']= None
 OUR_LAND['map_zoom']= None

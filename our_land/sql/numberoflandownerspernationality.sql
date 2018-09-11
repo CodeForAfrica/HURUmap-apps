@@ -39,36 +39,36 @@ CREATE TABLE public.numberoflandownerspernationality (
 --
 
 COPY public.numberoflandownerspernationality (geo_level, geo_code, geo_version, "number of land owners per nationality", total) FROM stdin;
-province	EC	2011	South African	8616
-province	FS	2011	South African	13765
-province	GT	2011	South African	40734
-province	KZN	2011	South African	19807
-province	MP	2011	South African	10774
-province	NW	2011	South African	17067
-province	NC	2011	South African	6601
-province	WC	2011	South African	13705
-country	ZA	2011	South African	143493
-province	EC	2011	Foreign	545
-province	FS	2011	Foreign	536
-province	GT	2011	Foreign	5099
-province	KZN	2011	Foreign	1647
-province	MP	2011	Foreign	845
-province	NW	2011	Foreign	828
-province	NC	2011	Foreign	253
-province	WC	2011	Foreign	1465
-country	ZA	2011	Foreign	12213
-province	EC	2011	Other	2519
-province	FS	2011	Other	876
-province	GT	2011	Other	1758
-province	KZN	2011	Other	8538
-province	MP	2011	Other	1401
-province	NW	2011	Other	6226
-province	NC	2011	Other	333
-province	WC	2011	Other	1681
-country	ZA	2011	Other	25826
-province	LIM	2011	South African	12424
-province	LIM	2011	Foreign	995
-province	LIM	2011	Other	2494
+province	EC	2016	South African	8616
+province	FS	2016	South African	13765
+province	GT	2016	South African	40734
+province	KZN	2016	South African	19807
+province	MP	2016	South African	10774
+province	NW	2016	South African	17067
+province	NC	2016	South African	6601
+province	WC	2016	South African	13705
+country	ZA	2016	South African	143493
+province	EC	2016	Foreign	545
+province	FS	2016	Foreign	536
+province	GT	2016	Foreign	5099
+province	KZN	2016	Foreign	1647
+province	MP	2016	Foreign	845
+province	NW	2016	Foreign	828
+province	NC	2016	Foreign	253
+province	WC	2016	Foreign	1465
+country	ZA	2016	Foreign	12213
+province	EC	2016	Other	2519
+province	FS	2016	Other	876
+province	GT	2016	Other	1758
+province	KZN	2016	Other	8538
+province	MP	2016	Other	1401
+province	NW	2016	Other	6226
+province	NC	2016	Other	333
+province	WC	2016	Other	1681
+country	ZA	2016	Other	25826
+province	LIM	2016	South African	12424
+province	LIM	2016	Foreign	995
+province	LIM	2016	Other	2494
 \.
 
 

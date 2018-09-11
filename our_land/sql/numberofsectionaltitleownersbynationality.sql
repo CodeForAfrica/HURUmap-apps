@@ -39,36 +39,36 @@ CREATE TABLE public.numberofsectionaltitleownersbynationality (
 --
 
 COPY public.numberofsectionaltitleownersbynationality (geo_level, geo_code, geo_version, "number of sectional title owners by nationality", total) FROM stdin;
-province	EC	2011	South African	24096
-province	FS	2011	South African	23009
-province	GT	2011	South African	299462
-province	KZN	2011	South African	100693
-province	MP	2011	South African	9368
-province	NW	2011	South African	16951
-province	NC	2011	South African	700
-province	WC	2011	South African	85069
-country	ZA	2011	South African	567148
-province	EC	2011	Foreign	5352
-province	FS	2011	Foreign	2524
-province	GT	2011	Foreign	47401
-province	KZN	2011	Foreign	49624
-province	MP	2011	Foreign	2058
-province	NW	2011	Foreign	1031
-province	NC	2011	Foreign	111
-province	WC	2011	Foreign	24000
-country	ZA	2011	Foreign	132672
-province	EC	2011	Other	714
-province	FS	2011	Other	311
-province	GT	2011	Other	13939
-province	KZN	2011	Other	3789
-province	MP	2011	Other	292
-province	NW	2011	Other	412
-province	NC	2011	Other	6
-province	WC	2011	Other	7447
-country	ZA	2011	Other	27146
-province	LIM	2011	South African	7800
-province	LIM	2011	Foreign	571
-province	LIM	2011	Other	236
+province	EC	2016	South African	24096
+province	FS	2016	South African	23009
+province	GT	2016	South African	299462
+province	KZN	2016	South African	100693
+province	MP	2016	South African	9368
+province	NW	2016	South African	16951
+province	NC	2016	South African	700
+province	WC	2016	South African	85069
+country	ZA	2016	South African	567148
+province	EC	2016	Foreign	5352
+province	FS	2016	Foreign	2524
+province	GT	2016	Foreign	47401
+province	KZN	2016	Foreign	49624
+province	MP	2016	Foreign	2058
+province	NW	2016	Foreign	1031
+province	NC	2016	Foreign	111
+province	WC	2016	Foreign	24000
+country	ZA	2016	Foreign	132672
+province	EC	2016	Other	714
+province	FS	2016	Other	311
+province	GT	2016	Other	13939
+province	KZN	2016	Other	3789
+province	MP	2016	Other	292
+province	NW	2016	Other	412
+province	NC	2016	Other	6
+province	WC	2016	Other	7447
+country	ZA	2016	Other	27146
+province	LIM	2016	South African	7800
+province	LIM	2016	Foreign	571
+province	LIM	2016	Other	236
 \.
 
 

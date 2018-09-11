@@ -39,46 +39,46 @@ CREATE TABLE public.landownershipinhectaresbynationality (
 --
 
 COPY public.landownershipinhectaresbynationality (geo_level, geo_code, geo_version, "land ownership in hectares by nationality", total) FROM stdin;
-province	EC	2011	South African	4308421
-province	FS	2011	South African	4700599
-province	GT	2011	South African	392636
-province	KZN	2011	South African	1140986
-province	MP	2011	South African	1328961
-province	NW	2011	South African	2978894
-province	NC	2011	South African	14126948
-province	WC	2011	South African	3496840
-country	ZA	2011	South African	33996255
-province	EC	2011	Foreign	47444
-province	FS	2011	Foreign	72538
-province	GT	2011	Foreign	45117
-province	KZN	2011	Foreign	43666
-province	MP	2011	Foreign	27291
-province	NW	2011	Foreign	56055
-province	NC	2011	Foreign	294779
-province	WC	2011	Foreign	112238
-country	ZA	2011	Foreign	769284
-province	EC	2011	Co-ownership	77355
-province	FS	2011	Co-ownership	58502
-province	GT	2011	Co-ownership	14268
-province	KZN	2011	Co-ownership	102666
-province	MP	2011	Co-ownership	35769
-province	NW	2011	Co-ownership	143346
-province	NC	2011	Co-ownership	321317
-province	WC	2011	Co-ownership	112964
-country	ZA	2011	Co-ownership	933728
-province	EC	2011	Other	178308
-province	FS	2011	Other	177626
-province	GT	2011	Other	10648
-province	KZN	2011	Other	330176
-province	MP	2011	Other	49131
-province	NW	2011	Other	132914
-province	NC	2011	Other	267958
-province	WC	2011	Other	141951
-country	ZA	2011	Other	1379023
-province	LIM	2011	South African	1521969
-province	LIM	2011	Foreign	70157
-province	LIM	2011	Co-ownership	67541
-province	LIM	2011	Other	90310
+province	EC	2016	South African	4308421
+province	FS	2016	South African	4700599
+province	GT	2016	South African	392636
+province	KZN	2016	South African	1140986
+province	MP	2016	South African	1328961
+province	NW	2016	South African	2978894
+province	NC	2016	South African	14126948
+province	WC	2016	South African	3496840
+country	ZA	2016	South African	33996255
+province	EC	2016	Foreign	47444
+province	FS	2016	Foreign	72538
+province	GT	2016	Foreign	45117
+province	KZN	2016	Foreign	43666
+province	MP	2016	Foreign	27291
+province	NW	2016	Foreign	56055
+province	NC	2016	Foreign	294779
+province	WC	2016	Foreign	112238
+country	ZA	2016	Foreign	769284
+province	EC	2016	Co-ownership	77355
+province	FS	2016	Co-ownership	58502
+province	GT	2016	Co-ownership	14268
+province	KZN	2016	Co-ownership	102666
+province	MP	2016	Co-ownership	35769
+province	NW	2016	Co-ownership	143346
+province	NC	2016	Co-ownership	321317
+province	WC	2016	Co-ownership	112964
+country	ZA	2016	Co-ownership	933728
+province	EC	2016	Other	178308
+province	FS	2016	Other	177626
+province	GT	2016	Other	10648
+province	KZN	2016	Other	330176
+province	MP	2016	Other	49131
+province	NW	2016	Other	132914
+province	NC	2016	Other	267958
+province	WC	2016	Other	141951
+country	ZA	2016	Other	1379023
+province	LIM	2016	South African	1521969
+province	LIM	2016	Foreign	70157
+province	LIM	2016	Co-ownership	67541
+province	LIM	2016	Other	90310
 \.
 
 
