@@ -25,3 +25,4 @@ FieldTable(['number of sectional title owners by nationality'], universe='Sectio
 
 #Redistribution Data
 FieldTable(['redistributed land use breakdown'], universe='Land Redistribution', year='2016')
+FieldTable(['redistributed land in hectares'], universe='Land Redistribution', year='2016')
