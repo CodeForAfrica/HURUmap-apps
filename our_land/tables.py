@@ -24,4 +24,4 @@ FieldTable(['sectional title ownership in hectares per nationality'], universe='
 FieldTable(['number of sectional title owners by nationality'], universe='Sectional Title')
 
 #Redistribution Data
-FieldTable(['projects', 'households', 'beneficiaries'], universe='Land Redistribution and Restitution', id='projects_households_beneficiaries_landcost')
+FieldTable(['redistributed land use breakdown'], universe='Land Redistribution', year='2016')

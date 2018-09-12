@@ -1,5 +1,19 @@
 {% extends 'homepage.html' %}{% load humanize partition staticfiles %}
 
+{% block header_menu %}
+  <li><a href="/about">About</a></li>
+  <li><a href="/blog">Blog</a></li>
+  <li><a href="/#showcase">Showcase</a></li>
+  <li><a href="https://facebook.com/HacksHackersAfrica"
+         target="_blank" rel="noopener">Community</a></li>
+  <li class="social-icons">
+    <a href="https://twitter.com/{{ HURUMAP.twitter }}"><i
+        class="fa fa-twitter fa-lg fa-fw"></i></a>
+    <a href="https://facebook.com/{{ HURUMAP.facebook }}"><i
+        class="fa fa-facebook fa-lg fa-fw"></i></a>
+  </li>
+{% endblock header_menu %}
+
 {% block header_content %}
 <div class="content-container clearfix bg-color-secondary text-center">
     <div class="wrapper">
