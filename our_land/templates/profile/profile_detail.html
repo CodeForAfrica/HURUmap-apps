@@ -184,9 +184,22 @@
     </header>
     <div class="section-container">
       <section class="clearfix stat-row">
-          <div class="column-half">
-              <div id="chart-column-redistributionandrestitution-redistributedlandusebreakdown" data-chart-title="Number of Projects, Households and Beneficiearies for Redistributed Land 2017/2018"></div>
-          </div>
+        <h2 class="header-for-columns"><a class="permalink"> Redistributed Land <i class="fa fa-link"></i></a></h2>
+        <div class="column-half">
+            {% include 'profile/_blocks/_stat_list.html' with stat=redistributionandrestitution.redistributedlandinhectares_stat stat_type='number' decimals="-2" %}
+        </div>
+        <div class="column-half">
+            <div id="chart-pie-redistributionandrestitution-redistributedlandusebreakdown" data-chart-title="Redistributed Land Use breakdown, year 2017/2018"></div>
+        </div>
+      </section>
+      <section class="clearfix stat-row">
+        <h2 class="header-for-columns"><a class="permalink"> Redistributed Land Cost <i class="fa fa-link"></i></a></h2>
+        <div class="column-half">
+            {% include 'profile/_blocks/_stat_list.html' with stat=redistributionandrestitution.redistributedlandaveragecostperhectares_stat stat_type='number' decimals="-2" %}
+        </div>
+        <div class="column-half">
+            {% include 'profile/_blocks/_stat_list.html' with stat=redistributionandrestitution.redistributedlandcostinrands_stat stat_type='number' decimals="-2" %}
+        </div>
       </section>
     </div>
   </article>

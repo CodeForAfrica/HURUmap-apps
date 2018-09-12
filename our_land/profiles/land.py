@@ -1,7 +1,7 @@
 import logging
 
 from wazimap.geo import geo_data
-from wazimap.data.tables import get_model_from_fields
+from wazimap.data.tables import get_model_from_fields, get_datatable
 from wazimap.data.utils import get_session, calculate_median, merge_dicts, get_stat_data, get_objects_by_geo, group_remainder, LocationNotFound
 from django.conf import settings
 
@@ -38,6 +38,16 @@ def get_land_profile(geo, profile_name, request):
                     raise ValueError(msg)
 
         data['redistributionandrestitution'] = get_redistribution_and_restitution_profiles(geo, session)
+        for comp_geo in comparative_geos:
+            try:
+                merge_dicts(
+                    data['redistributionandrestitution'], get_redistribution_and_restitution_profiles(comp_geo, session),
+                        comp_geo.geo_level)
+            except KeyError as e:
+                msg = "Error merging data into %s for section redistributionandrestitution from %s: KeyError: %s" % (
+                    geo.geoid, comp_geo.geoid, e)
+                log.fatal(msg, exc_info=e)
+                raise ValueError(msg)
         return data
 
     finally:
@@ -63,6 +73,20 @@ def get_redistribution_and_restitution_profiles(geo, session):
 
     redistributedlandusebreakdown, _ = get_stat_data(['redistributed land use breakdown'], geo, session)
 
+    redistributedlandinhectarestable = get_datatable('redistributedlandinhectares')
+    redistributedlandinhectares, tot  = redistributedlandinhectarestable.get_stat_data(geo, percent=False)
+    redistributedlandinhectares['redistributedlandinhectares']['name'] = "Total land redistributed in hectares for the year 2017/2018"
+
+    redistributedlandcostinrandstable = get_datatable('redistributedlandcostinrands')
+    redistributedlandcostinrands, tot_cost  = redistributedlandcostinrandstable.get_stat_data(geo, percent=False)
+    redistributedlandcostinrands['redistributedlandcostinrands']['name'] = "Cost in Rands (ZAR) of Redistributed Land for the year 2017/2018"
+
+    redistributedlandaveragecostperhectarestable = get_datatable('redistributedlandaveragecostperhectares')
+    redistributedlandaveragecostperhectares, tot_avg_cost  = redistributedlandaveragecostperhectarestable.get_stat_data(geo, percent=False)
+    redistributedlandaveragecostperhectares['redistributedlandaveragecostperhectares']['name'] = "Average Cost in Rands (ZAR) per Hectares for Redistributed Land in 2017/2018"
     return {
-    'redistributedlandusebreakdown': redistributedlandusebreakdown
+    'redistributedlandusebreakdown': redistributedlandusebreakdown,
+    'redistributedlandinhectares_stat': redistributedlandinhectares['redistributedlandinhectares'],
+    'redistributedlandcostinrands_stat': redistributedlandcostinrands['redistributedlandcostinrands'],
+    'redistributedlandaveragecostperhectares_stat': redistributedlandaveragecostperhectares['redistributedlandaveragecostperhectares']
     }

@@ -1,4 +1,4 @@
-from wazimap.data.tables import FieldTable
+from wazimap.data.tables import FieldTable, SimpleTable
 
 FieldTable(['private land ownership in hectares per category'], universe='Private Land')
 FieldTable(['number of private land owners by category'], universe='Private Land')
@@ -25,4 +25,31 @@ FieldTable(['number of sectional title owners by nationality'], universe='Sectio
 
 #Redistribution Data
 FieldTable(['redistributed land use breakdown'], universe='Land Redistribution', year='2016')
-FieldTable(['redistributed land in hectares'], universe='Land Redistribution', year='2016')
+
+# Simple tables
+SimpleTable(
+    id='redistributedlandcostinrands',
+    universe='Land Redistribution',
+    total_column=None,
+    description='Total Cost in Rands (ZAR) for Redistributed Land in 2017/2018',
+    dataset='',
+    year='2016'
+)
+
+SimpleTable(
+    id='redistributedlandinhectares',
+    universe='Land Redistribution',
+    total_column=None,
+    description='Redistributed Land Hectares in 2017/2018',
+    dataset='',
+    year='2016'
+)
+
+SimpleTable(
+    id='redistributedlandaveragecostperhectares',
+    universe='Land Redistribution',
+    total_column=None,
+    description='Average Cost in Rands (ZAR) per Hectares for Redistributed Land in 2017/2018',
+    dataset='',
+    year='2016'
+)
