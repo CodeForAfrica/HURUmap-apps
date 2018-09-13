@@ -71,10 +71,30 @@ def get_land_topic_profiles(geo, session, topic_name):
 
 def get_redistribution_and_restitution_profiles(geo, session):
 
-    redistributedlandusebreakdown, _ = get_stat_data(['redistributed land use breakdown'], geo, session)
+    redistributedlandusebreakdown, _ = get_stat_data(
+                    ['redistributed land use breakdown'], geo, session)
+
+    redistributeprogrammeprojectsbyyear, _ = get_stat_data(
+        ['year'], geo, session,
+        table_fields=['year', 'outcome of redistribution programme'],
+        only={'outcome of redistribution programme': ['projects transferred']},
+        percent=False)
+
+    redistributeprogrammehouseholdsbyyear, _ = get_stat_data(
+        ['year'], geo, session,
+        table_fields=['year', 'outcome of redistribution programme'],
+        only={'outcome of redistribution programme': ['benefited households']},
+        percent=False)
+
+    redistributeprogrammebeneficiariesbyyear, _ = get_stat_data(
+        ['year'], geo, session,
+        table_fields=['year', 'outcome of redistribution programme'],
+        only={'outcome of redistribution programme': ['benefited beneficiaries']},
+        percent=False)
 
     redistributedlandinhectarestable = get_datatable('redistributedlandinhectares')
-    redistributedlandinhectares, tot  = redistributedlandinhectarestable.get_stat_data(geo, percent=False)
+    redistributedlandinhectares, tot  = redistributedlandinhectarestable.get_stat_data(
+                        geo, percent=False)
     redistributedlandinhectares['redistributedlandinhectares']['name'] = "Total land redistributed in hectares for the year 2017/2018"
 
     redistributedlandcostinrandstable = get_datatable('redistributedlandcostinrands')
@@ -88,5 +108,9 @@ def get_redistribution_and_restitution_profiles(geo, session):
     'redistributedlandusebreakdown': redistributedlandusebreakdown,
     'redistributedlandinhectares_stat': redistributedlandinhectares['redistributedlandinhectares'],
     'redistributedlandcostinrands_stat': redistributedlandcostinrands['redistributedlandcostinrands'],
-    'redistributedlandaveragecostperhectares_stat': redistributedlandaveragecostperhectares['redistributedlandaveragecostperhectares']
+    'redistributedlandaveragecostperhectares_stat': redistributedlandaveragecostperhectares['redistributedlandaveragecostperhectares'],
+    'redistributeprogrammeprojectsbyyear': redistributeprogrammeprojectsbyyear,
+    'redistributeprogrammehouseholdsbyyear': redistributeprogrammehouseholdsbyyear,
+    'redistributeprogrammebeneficiariesbyyear': redistributeprogrammebeneficiariesbyyear
+
     }

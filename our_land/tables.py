@@ -25,6 +25,7 @@ FieldTable(['number of sectional title owners by nationality'], universe='Sectio
 
 #Redistribution Data
 FieldTable(['redistributed land use breakdown'], universe='Land Redistribution', year='2016')
+FieldTable(['year', 'outcome of redistribution programme'], id='redistributionprogrammeoutcomebyyear', universe='Land Redistribution', year='2016')
 
 # Simple tables
 SimpleTable(
