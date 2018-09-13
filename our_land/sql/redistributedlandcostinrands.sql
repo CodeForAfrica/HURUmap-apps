@@ -15,8 +15,9 @@ SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
 
+ALTER TABLE IF EXISTS ONLY public.redistributedlandcostinrands DROP CONSTRAINT IF EXISTS pk_privateredistributedlandcostinrands;
+DROP TABLE IF EXISTS public.privatelandownershipinhectarespercategory;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -33,8 +34,6 @@ CREATE TABLE public.redistributedlandcostinrands (
     redistributedlandcostinrands numeric
 );
 
-
-ALTER TABLE public.redistributedlandcostinrands OWNER TO our_land;
 
 --
 -- TOC entry 3366 (class 0 OID 71270)
@@ -56,9 +55,11 @@ country	ZA	2016	512054994
 \.
 
 
+ALTER TABLE IF EXISTS ONLY public.redistributedlandcostinrands
+    ADD CONSTRAINT pk_privateredistributedlandcostinrands PRIMARY KEY (geo_level, geo_code, geo_version, redistributedlandcostinrands);
+
 -- Completed on 2018-09-12 17:03:17 EAT
 
 --
 -- PostgreSQL database dump complete
 --
-

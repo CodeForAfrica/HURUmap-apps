@@ -5,6 +5,7 @@ from wazimap.data.tables import get_model_from_fields, get_datatable
 from wazimap.data.utils import get_session, calculate_median, merge_dicts, get_stat_data, get_objects_by_geo, group_remainder, LocationNotFound
 from django.conf import settings
 
+log = logging.getLogger(__name__)
 # ensure tables are loaded
 import our_land.tables  # noqa
 
@@ -38,16 +39,17 @@ def get_land_profile(geo, profile_name, request):
                     raise ValueError(msg)
 
         data['redistributionandrestitution'] = get_redistribution_and_restitution_profiles(geo, session)
-        for comp_geo in comparative_geos:
-            try:
-                merge_dicts(
-                    data['redistributionandrestitution'], get_redistribution_and_restitution_profiles(comp_geo, session),
-                        comp_geo.geo_level)
-            except KeyError as e:
-                msg = "Error merging data into %s for section redistributionandrestitution from %s: KeyError: %s" % (
-                    geo.geoid, comp_geo.geoid, e)
-                log.fatal(msg, exc_info=e)
-                raise ValueError(msg)
+        if not data['redistributionandrestitution'] == LOCATIONNOTFOUND:
+            for comp_geo in comparative_geos:
+                try:
+                    merge_dicts(
+                        data['redistributionandrestitution'], get_redistribution_and_restitution_profiles(comp_geo, session),
+                            comp_geo.geo_level)
+                except KeyError as e:
+                    msg = "Error merging data into %s for section redistributionandrestitution from %s: KeyError: %s" % (
+                        geo.geoid, comp_geo.geoid, e)
+                    log.fatal(msg, exc_info=e)
+                    raise ValueError(msg)
         return data
 
     finally:
@@ -70,47 +72,67 @@ def get_land_topic_profiles(geo, session, topic_name):
     return topic_profiles_data
 
 def get_redistribution_and_restitution_profiles(geo, session):
+    redistribution_and_restitution_data = LOCATIONNOTFOUND
+    redistribution_and_restitution = {}
+    try:
+        redistributedlandusebreakdown, _ = get_stat_data(
+                        ['redistributed land use breakdown'], geo, session)
 
-    redistributedlandusebreakdown, _ = get_stat_data(
-                    ['redistributed land use breakdown'], geo, session)
+        redistributeprogrammeprojectsbyyear, _ = get_stat_data(
+            ['year'], geo, session,
+            table_fields=['year', 'outcome of redistribution programme'],
+            only={'outcome of redistribution programme': ['projects transferred']},
+            percent=False)
 
-    redistributeprogrammeprojectsbyyear, _ = get_stat_data(
-        ['year'], geo, session,
-        table_fields=['year', 'outcome of redistribution programme'],
-        only={'outcome of redistribution programme': ['projects transferred']},
-        percent=False)
+        redistributeprogrammehouseholdsbyyear, _ = get_stat_data(
+            ['year'], geo, session,
+            table_fields=['year', 'outcome of redistribution programme'],
+            only={'outcome of redistribution programme': ['benefited households']},
+            percent=False)
 
-    redistributeprogrammehouseholdsbyyear, _ = get_stat_data(
-        ['year'], geo, session,
-        table_fields=['year', 'outcome of redistribution programme'],
-        only={'outcome of redistribution programme': ['benefited households']},
-        percent=False)
+        redistributeprogrammebeneficiariesbyyear, _ = get_stat_data(
+            ['year'], geo, session,
+            table_fields=['year', 'outcome of redistribution programme'],
+            only={'outcome of redistribution programme': ['benefited beneficiaries']},
+            percent=False)
 
-    redistributeprogrammebeneficiariesbyyear, _ = get_stat_data(
-        ['year'], geo, session,
-        table_fields=['year', 'outcome of redistribution programme'],
-        only={'outcome of redistribution programme': ['benefited beneficiaries']},
-        percent=False)
+        redistributedlandinhectarestable = get_datatable('redistributedlandinhectares')
+        redistributedlandinhectares, tot  = redistributedlandinhectarestable.get_stat_data(
+                            geo, percent=False)
+        redistributedlandinhectares['redistributedlandinhectares']['name'] = "Total land redistributed in hectares for the year 2017/2018"
 
-    redistributedlandinhectarestable = get_datatable('redistributedlandinhectares')
-    redistributedlandinhectares, tot  = redistributedlandinhectarestable.get_stat_data(
-                        geo, percent=False)
-    redistributedlandinhectares['redistributedlandinhectares']['name'] = "Total land redistributed in hectares for the year 2017/2018"
+        redistributedlandcostinrandstable = get_datatable('redistributedlandcostinrands')
+        redistributedlandcostinrands, tot_cost  = redistributedlandcostinrandstable.get_stat_data(geo, percent=False)
+        redistributedlandcostinrands['redistributedlandcostinrands']['name'] = "Cost in Rands (ZAR) of Redistributed Land for the year 2017/2018"
 
-    redistributedlandcostinrandstable = get_datatable('redistributedlandcostinrands')
-    redistributedlandcostinrands, tot_cost  = redistributedlandcostinrandstable.get_stat_data(geo, percent=False)
-    redistributedlandcostinrands['redistributedlandcostinrands']['name'] = "Cost in Rands (ZAR) of Redistributed Land for the year 2017/2018"
+        redistributedlandaveragecostperhectarestable = get_datatable('redistributedlandaveragecostperhectares')
+        redistributedlandaveragecostperhectares, tot_avg_cost  = redistributedlandaveragecostperhectarestable.get_stat_data(geo, percent=False)
+        redistributedlandaveragecostperhectares['redistributedlandaveragecostperhectares']['name'] = "Average Cost in Rands (ZAR) per Hectares for Redistributed Land in 2017/2018"
 
-    redistributedlandaveragecostperhectarestable = get_datatable('redistributedlandaveragecostperhectares')
-    redistributedlandaveragecostperhectares, tot_avg_cost  = redistributedlandaveragecostperhectarestable.get_stat_data(geo, percent=False)
-    redistributedlandaveragecostperhectares['redistributedlandaveragecostperhectares']['name'] = "Average Cost in Rands (ZAR) per Hectares for Redistributed Land in 2017/2018"
-    return {
-    'redistributedlandusebreakdown': redistributedlandusebreakdown,
-    'redistributedlandinhectares_stat': redistributedlandinhectares['redistributedlandinhectares'],
-    'redistributedlandcostinrands_stat': redistributedlandcostinrands['redistributedlandcostinrands'],
-    'redistributedlandaveragecostperhectares_stat': redistributedlandaveragecostperhectares['redistributedlandaveragecostperhectares'],
-    'redistributeprogrammeprojectsbyyear': redistributeprogrammeprojectsbyyear,
-    'redistributeprogrammehouseholdsbyyear': redistributeprogrammehouseholdsbyyear,
-    'redistributeprogrammebeneficiariesbyyear': redistributeprogrammebeneficiariesbyyear
+        redistribution_and_restitution['redistributedlandusebreakdown']= redistributedlandusebreakdown
+        redistribution_and_restitution['redistributedlandinhectares_stat']= redistributedlandinhectares['redistributedlandinhectares']
+        redistribution_and_restitution['redistributedlandcostinrands_stat']= redistributedlandcostinrands['redistributedlandcostinrands']
+        redistribution_and_restitution['redistributedlandaveragecostperhectares_stat']= redistributedlandaveragecostperhectares['redistributedlandaveragecostperhectares']
+        redistribution_and_restitution['redistributeprogrammeprojectsbyyear']= redistributeprogrammeprojectsbyyear
+        redistribution_and_restitution['redistributeprogrammehouseholdsbyyear']= redistributeprogrammehouseholdsbyyear
+        redistribution_and_restitution['redistributeprogrammebeneficiariesbyyear']= redistributeprogrammebeneficiariesbyyear
 
-    }
+        redistribution_and_restitution_data = redistribution_and_restitution
+
+    except LocationNotFound:
+        pass
+        # redistribution_and_restitution['redistributedlandusebreakdown']= LOCATIONNOTFOUND, 0
+        # redistribution_and_restitution['redistributedlandinhectares_stat']= LOCATIONNOTFOUND, 0
+        # redistribution_and_restitution['redistributedlandcostinrands_stat']= LOCATIONNOTFOUND, 0
+        # redistribution_and_restitution['redistributedlandaveragecostperhectares_stat']= LOCATIONNOTFOUND, 0
+        # redistribution_and_restitution['redistributeprogrammeprojectsbyyear']= redistributeprogrammeprojectsbyyear,
+        # redistribution_and_restitution['redistributeprogrammehouseholdsbyyear']= redistributeprogrammehouseholdsbyyear,
+        # redistribution_and_restitution['redistributeprogrammebeneficiariesbyyear']=
+        # redistributedlandusebreakdown, _ = LOCATIONNOTFOUND, 0
+        # redistributeprogrammeprojectsbyyear, _ = LOCATIONNOTFOUND, 0
+        # redistributeprogrammehouseholdsbyyear, _ = LOCATIONNOTFOUND, 0
+        # redistributeprogrammebeneficiariesbyyear, _ = LOCATIONNOTFOUND, 0
+        # redistributedlandcostinrands, tot_cost = LOCATIONNOTFOUND, 0
+        # redistributedlandaveragecostperhectares, tot_avg_cost = LOCATIONNOTFOUND, 0
+
+    return redistribution_and_restitution_data
