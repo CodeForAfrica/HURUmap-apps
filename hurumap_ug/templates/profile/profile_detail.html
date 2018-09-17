@@ -1,6 +1,6 @@
 {% extends 'profile/profile_detail.html' %} {% load humanize lookup staticfiles %}
 
-{% block header_content %}
+{% block secondary_nav %}
     <div class="floating-nav-wrapper" id="sticky-nav">
         <nav class="floating-nav affix-top" data-spy="affix" data-offset-top="197">
             <div class="wrapper clearfix">
@@ -12,20 +12,21 @@
 
                 <ul>
                     <li><a href="#demographics"><i class="fa fa-user"></i>
-                        <span>Demographics</span></a></li>
-                    <li><a href="#elections2016"><i class="fa fa-check"></i>
-                        <span>Elections</span></a></li>
+                        <span>Demographics</span></a>
+                    </li>
                     <li><a href="#households"><i class="fa fa-home"></i>
-                        <span>Households</span></a></li>
-                    <li><a href="#disability"><i
-                            class="fa fa-medkit"></i>
-                        <span>Disability</span></a></li>
+                        <span>Households</span></a>
+                    </li>
+                    <li><a href="#disability"><i class="fa fa-medkit"></i>
+                        <span>Disability</span></a>
+                    </li>
+                    <li><a href="#elections2016"><i class="fa fa-check"></i>
+                        <span>Elections</span></a>
+                    </li>
                 </ul>
             </div>
         </nav>
     </div>
-
-    {{ block.super }}
 {% endblock %}
 
 {% block profile_header_tail %}
