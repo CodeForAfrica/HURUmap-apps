@@ -143,12 +143,14 @@
     </div>
   </article>
 {% endif %}
+{% endblock %}
 
-  {% include 'settings_js.html' %}
 
-  {% block profile_javascript_libs %}
-    {{ block.super }}
-    <script src="{% static 'js/maps_mapit.js' %}"></script>
-    <script src="{% static 'js/profile_map_mapit.js' %}"></script>
-  {% endblock %}
+{% include 'settings_js.html' %}
+
+{% block profile_javascript_libs %}
+{{ block.super }}
+
+<script src="{% static 'js/maps_mapit.js' %}"></script>
+<script src="{% static 'js/profile_map_mapit.js' %}"></script>
 {% endblock %}
