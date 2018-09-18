@@ -62,7 +62,7 @@
 
 
 {% block profile_detail %}
-{% if not farmland.is_missing %}
+{% if not farmland.private_land_ownership_in_hectares_per_category.is_missing or not farmland.number_of_private_land_owners_by_category.is_missing %}
   <article id="farm-land" class="clearfix">
       <header class="section-contents">
           <h1>Individual Land</h1>

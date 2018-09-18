@@ -27,16 +27,17 @@ def get_land_profile(geo, profile_name, request):
             data[topic_name] = get_land_topic_profiles(geo, session, topic_name)
 
             # get profiles for comparative geometries
-            for comp_geo in comparative_geos:
-                try:
-                    merge_dicts(
-                        data[topic_name], get_land_topic_profiles(comp_geo, session, topic_name),
-                            comp_geo.geo_level)
-                except KeyError as e:
-                    msg = "Error merging data into %s for section '%s' from %s: KeyError: %s" % (
-                        geo.geoid, topic_name, comp_geo.geoid, e)
-                    log.fatal(msg, exc_info=e)
-                    raise ValueError(msg)
+            if not data[topic_name] == LOCATIONNOTFOUND:
+                for comp_geo in comparative_geos:
+                    try:
+                        merge_dicts(
+                            data[topic_name], get_land_topic_profiles(comp_geo, session, topic_name),
+                                comp_geo.geo_level)
+                    except KeyError as e:
+                        msg = "Error merging data into %s for section '%s' from %s: KeyError: %s" % (
+                            geo.geoid, topic_name, comp_geo.geoid, e)
+                        log.fatal(msg, exc_info=e)
+                        raise ValueError(msg)
 
         data['redistributionandrestitution'] = get_redistribution_and_restitution_profiles(geo, session)
         if not data['redistributionandrestitution'] == LOCATIONNOTFOUND:
@@ -57,77 +58,105 @@ def get_land_profile(geo, profile_name, request):
 
 def get_land_topic_profiles(geo, session, topic_name):
     topic_profiles = SECTIONS[topic_name]['profiles']
-    topic_profiles_data = LOCATIONNOTFOUND
     profiles_data = {}
 
-    try:
-        for profile in topic_profiles:
+    for profile in topic_profiles:
+        try:
             profile_table = profile.lower()
             profile_name = profile.lower().replace(' ', '_')
+            profiles_data[profile_name] = LOCATIONNOTFOUND
             profiles_data[profile_name],_  = get_stat_data([profile_table], geo, session)
-        topic_profiles_data = profiles_data
-    except LocationNotFound:
-        pass
+        except LocationNotFound:
+            pass
 
-    return topic_profiles_data
+    return profiles_data
 
 def get_redistribution_and_restitution_profiles(geo, session):
-    redistribution_and_restitution_data = LOCATIONNOTFOUND
+    redistributedlandusebreakdown = redistributeprogrammeprojectsbyyear = redistributeprogrammehouseholdsbyyear = LOCATIONNOTFOUND
+    redistributeprogrammebeneficiariesbyyear = femalepartybenefited = youthpartybenefited = disabledpeoplepartybenefited = LOCATIONNOTFOUND
+    redistributedlandinhectares = redistributedlandcostinrands = redistributedlandaveragecostperhectares = LOCATIONNOTFOUND
     redistribution_and_restitution = {}
     try:
         redistributedlandusebreakdown, _ = get_stat_data(
                         ['redistributed land use breakdown'], geo, session)
+    except LocationNotFound:
+        pass
 
+    try:
         redistributeprogrammeprojectsbyyear, _ = get_stat_data(
             ['year'], geo, session,
             table_fields=['year', 'outcome of redistribution programme'],
             only={'outcome of redistribution programme': ['projects transferred']},
             percent=False)
+    except LocationNotFound:
+        pass
 
+    try:
         redistributeprogrammehouseholdsbyyear, _ = get_stat_data(
             ['year'], geo, session,
             table_fields=['year', 'outcome of redistribution programme'],
             only={'outcome of redistribution programme': ['benefited households']},
             percent=False)
+    except LocationNotFound:
+        pass
 
+    try:
         redistributeprogrammebeneficiariesbyyear, _ = get_stat_data(
             ['year'], geo, session,
             table_fields=['year', 'outcome of redistribution programme'],
             only={'outcome of redistribution programme': ['benefited beneficiaries']},
             percent=False)
+    except LocationNotFound:
+        pass
 
-
+    try:
         femalepartybenefited, _ = get_stat_data(
             ['year'], geo, session,
             table_fields=['year', 'party_benefited'],
             only={'party_benefited': ['female']},
             percent=False)
+    except LocationNotFound:
+        pass
 
+    try:
         youthpartybenefited, _ = get_stat_data(
             ['year'], geo, session,
             table_fields=['year', 'party_benefited'],
             only={'party_benefited': ['youth']},
             percent=False)
+    except LocationNotFound:
+        pass
 
+    try:
         disabledpeoplepartybenefited, _ = get_stat_data(
             ['year'], geo, session,
             table_fields=['year', 'party_benefited'],
             only={'party_benefited': ['disable people']},
             percent=False)
+    except LocationNotFound:
+        pass
 
-
+    try:
         redistributedlandinhectarestable = get_datatable('redistributedlandinhectares')
         redistributedlandinhectares, tot  = redistributedlandinhectarestable.get_stat_data(
                             geo, percent=False)
         redistributedlandinhectares['redistributedlandinhectares']['name'] = "Total land redistributed in hectares for the year 2017/2018"
+    except LocationNotFound:
+        pass
 
+    try:
         redistributedlandcostinrandstable = get_datatable('redistributedlandcostinrands')
         redistributedlandcostinrands, tot_cost  = redistributedlandcostinrandstable.get_stat_data(geo, percent=False)
         redistributedlandcostinrands['redistributedlandcostinrands']['name'] = "Cost in Rands (ZAR) of Redistributed Land for the year 2017/2018"
+    except LocationNotFound:
+        pass
 
+    try:
         redistributedlandaveragecostperhectarestable = get_datatable('redistributedlandaveragecostperhectares')
         redistributedlandaveragecostperhectares, tot_avg_cost  = redistributedlandaveragecostperhectarestable.get_stat_data(geo, percent=False)
         redistributedlandaveragecostperhectares['redistributedlandaveragecostperhectares']['name'] = "Average Cost in Rands (ZAR) per Hectares for Redistributed Land in 2017/2018"
+    except LocationNotFound:
+        pass
 
         redistribution_and_restitution['redistributedlandusebreakdown']= redistributedlandusebreakdown
         redistribution_and_restitution['redistributedlandinhectares_stat']= redistributedlandinhectares['redistributedlandinhectares']
@@ -141,24 +170,4 @@ def get_redistribution_and_restitution_profiles(geo, session):
         redistribution_and_restitution['youthpartybenefited'] = youthpartybenefited
         redistribution_and_restitution['disabledpeoplepartybenefited'] = disabledpeoplepartybenefited
 
-
-        redistribution_and_restitution_data = redistribution_and_restitution
-
-    except LocationNotFound as e:
-        print e
-        pass
-        # redistribution_and_restitution['redistributedlandusebreakdown']= LOCATIONNOTFOUND, 0
-        # redistribution_and_restitution['redistributedlandinhectares_stat']= LOCATIONNOTFOUND, 0
-        # redistribution_and_restitution['redistributedlandcostinrands_stat']= LOCATIONNOTFOUND, 0
-        # redistribution_and_restitution['redistributedlandaveragecostperhectares_stat']= LOCATIONNOTFOUND, 0
-        # redistribution_and_restitution['redistributeprogrammeprojectsbyyear']= redistributeprogrammeprojectsbyyear,
-        # redistribution_and_restitution['redistributeprogrammehouseholdsbyyear']= redistributeprogrammehouseholdsbyyear,
-        # redistribution_and_restitution['redistributeprogrammebeneficiariesbyyear']=
-        # redistributedlandusebreakdown, _ = LOCATIONNOTFOUND, 0
-        # redistributeprogrammeprojectsbyyear, _ = LOCATIONNOTFOUND, 0
-        # redistributeprogrammehouseholdsbyyear, _ = LOCATIONNOTFOUND, 0
-        # redistributeprogrammebeneficiariesbyyear, _ = LOCATIONNOTFOUND, 0
-        # redistributedlandcostinrands, tot_cost = LOCATIONNOTFOUND, 0
-        # redistributedlandaveragecostperhectares, tot_avg_cost = LOCATIONNOTFOUND, 0
-
-    return redistribution_and_restitution_data
+    return redistribution_and_restitution
