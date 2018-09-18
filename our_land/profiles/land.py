@@ -96,6 +96,26 @@ def get_redistribution_and_restitution_profiles(geo, session):
             only={'outcome of redistribution programme': ['benefited beneficiaries']},
             percent=False)
 
+
+        femalepartybenefited, _ = get_stat_data(
+            ['year'], geo, session,
+            table_fields=['year', 'party_benefited'],
+            only={'party_benefited': ['female']},
+            percent=False)
+
+        youthpartybenefited, _ = get_stat_data(
+            ['year'], geo, session,
+            table_fields=['year', 'party_benefited'],
+            only={'party_benefited': ['youth']},
+            percent=False)
+
+        disabledpeoplepartybenefited, _ = get_stat_data(
+            ['year'], geo, session,
+            table_fields=['year', 'party_benefited'],
+            only={'party_benefited': ['disable people']},
+            percent=False)
+
+
         redistributedlandinhectarestable = get_datatable('redistributedlandinhectares')
         redistributedlandinhectares, tot  = redistributedlandinhectarestable.get_stat_data(
                             geo, percent=False)
@@ -117,9 +137,15 @@ def get_redistribution_and_restitution_profiles(geo, session):
         redistribution_and_restitution['redistributeprogrammehouseholdsbyyear']= redistributeprogrammehouseholdsbyyear
         redistribution_and_restitution['redistributeprogrammebeneficiariesbyyear']= redistributeprogrammebeneficiariesbyyear
 
+        redistribution_and_restitution['femalepartybenefited'] = femalepartybenefited
+        redistribution_and_restitution['youthpartybenefited'] = youthpartybenefited
+        redistribution_and_restitution['disabledpeoplepartybenefited'] = disabledpeoplepartybenefited
+
+
         redistribution_and_restitution_data = redistribution_and_restitution
 
-    except LocationNotFound:
+    except LocationNotFound as e:
+        print e
         pass
         # redistribution_and_restitution['redistributedlandusebreakdown']= LOCATIONNOTFOUND, 0
         # redistribution_and_restitution['redistributedlandinhectares_stat']= LOCATIONNOTFOUND, 0
