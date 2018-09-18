@@ -15,7 +15,9 @@ SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
+
+ALTER TABLE IF EXISTS ONLY public.redistributionprogrammeoutcomebyyear DROP CONSTRAINT IF EXISTS pk_redistributionprogrammeoutcomebyyear;
+DROP TABLE IF EXISTS public.redistributionprogrammeoutcomebyyear;
 
 SET default_tablespace = '';
 
@@ -34,9 +36,6 @@ CREATE TABLE public.redistributionprogrammeoutcomebyyear (
     "outcome of redistribution programme" character varying(128) NOT NULL,
     total integer
 );
-
-
-ALTER TABLE public.redistributionprogrammeoutcomebyyear OWNER TO our_land;
 
 --
 -- TOC entry 3369 (class 0 OID 71288)
@@ -317,10 +316,11 @@ country	ZA	2016	2016/2017	benefited households	496
 country	ZA	2016	2017/2018	benefited households	478
 \.
 
+ALTER TABLE IF EXISTS ONLY public.redistributionprogrammeoutcomebyyear
+    ADD CONSTRAINT pk_redistributionprogrammeoutcomebyyear PRIMARY KEY (geo_level, geo_code, geo_version, "outcome of redistribution programme");
 
 -- Completed on 2018-09-13 12:54:41 EAT
 
 --
 -- PostgreSQL database dump complete
 --
-

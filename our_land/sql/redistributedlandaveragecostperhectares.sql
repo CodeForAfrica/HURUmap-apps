@@ -15,7 +15,9 @@ SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
+
+ALTER TABLE IF EXISTS ONLY public.redistributedlandaveragecostperhectares DROP CONSTRAINT IF EXISTS pk_redistributedlandaveragecostperhectares;
+DROP TABLE IF EXISTS public.redistributedlandaveragecostperhectares;
 
 SET default_tablespace = '';
 
@@ -32,9 +34,6 @@ CREATE TABLE public.redistributedlandaveragecostperhectares (
     geo_version character varying(100) DEFAULT ''::character varying NOT NULL,
     redistributedlandaveragecostperhectares numeric
 );
-
-
-ALTER TABLE public.redistributedlandaveragecostperhectares OWNER TO our_land;
 
 --
 -- TOC entry 3366 (class 0 OID 71277)
@@ -55,10 +54,11 @@ province	WC	2016	17212
 country	ZA	2016	5563.86
 \.
 
+ALTER TABLE IF EXISTS ONLY public.redistributedlandaveragecostperhectares
+    ADD CONSTRAINT pk_redistributedlandaveragecostperhectares PRIMARY KEY (geo_level, geo_code, geo_version, redistributedlandaveragecostperhectares);
 
 -- Completed on 2018-09-12 17:03:52 EAT
 
 --
 -- PostgreSQL database dump complete
 --
-

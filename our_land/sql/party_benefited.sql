@@ -12,9 +12,10 @@ SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
 
-DROP TABLE public.party_benefited;
+
+ALTER TABLE IF EXISTS ONLY public.party_benefited DROP CONSTRAINT IF EXISTS pk_party_benefited;
+DROP TABLE IF EXISTS public.party_benefited;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -31,10 +32,6 @@ CREATE TABLE public.party_benefited (
     party_benefited character varying(128) NOT NULL,
     total integer
 );
-
-
-ALTER TABLE public.party_benefited OWNER TO our_land;
-
 --
 -- Data for Name: party_benefited; Type: TABLE DATA; Schema: public; Owner: our_land
 --
@@ -312,8 +309,8 @@ province	WC	2016	2017/2018	disable people	0
 country	ZA	2016	2017/2018	disable people	1
 \.
 
-
+ALTER TABLE IF EXISTS ONLY public.party_benefited
+    ADD CONSTRAINT pk_party_benefited PRIMARY KEY (geo_level, geo_code, geo_version, year, party_benefited);
 --
 -- PostgreSQL database dump complete
 --
-

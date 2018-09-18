@@ -15,7 +15,9 @@ SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
+
+ALTER TABLE IF EXISTS ONLY public.redistributedlandusebreakdown DROP CONSTRAINT IF EXISTS pk_redistributedlandusebreakdown;
+DROP TABLE IF EXISTS public.redistributedlandusebreakdown;
 
 SET default_tablespace = '';
 
@@ -33,9 +35,6 @@ CREATE TABLE public.redistributedlandusebreakdown (
     "redistributed land use breakdown" character varying(128) NOT NULL,
     total integer
 );
-
-
-ALTER TABLE public.redistributedlandusebreakdown OWNER TO our_land;
 
 --
 -- TOC entry 3354 (class 0 OID 71246)
@@ -76,10 +75,11 @@ province	WC	2016	beneficiaries	9
 country	ZA	2016	beneficiaries	1348
 \.
 
+ALTER TABLE IF EXISTS ONLY public.redistributedlandusebreakdown
+    ADD CONSTRAINT pk_redistributedlandusebreakdown PRIMARY KEY (geo_level, geo_code, geo_version, "redistributed land use breakdown");
 
 -- Completed on 2018-09-12 11:26:52 EAT
 
 --
 -- PostgreSQL database dump complete
 --
-

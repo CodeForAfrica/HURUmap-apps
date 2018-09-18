@@ -16,8 +16,8 @@ SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-ALTER TABLE IF EXISTS ONLY public.redistributedlandcostinrands DROP CONSTRAINT IF EXISTS pk_privateredistributedlandcostinrands;
-DROP TABLE IF EXISTS public.privatelandownershipinhectarespercategory;
+ALTER TABLE IF EXISTS ONLY public.redistributedlandcostinrands DROP CONSTRAINT IF EXISTS pk_redistributedlandcostinrands;
+DROP TABLE IF EXISTS public.redistributedlandcostinrands;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -56,7 +56,7 @@ country	ZA	2016	512054994
 
 
 ALTER TABLE IF EXISTS ONLY public.redistributedlandcostinrands
-    ADD CONSTRAINT pk_privateredistributedlandcostinrands PRIMARY KEY (geo_level, geo_code, geo_version, redistributedlandcostinrands);
+    ADD CONSTRAINT pk_redistributedlandcostinrands PRIMARY KEY (geo_level, geo_code, geo_version, redistributedlandcostinrands);
 
 -- Completed on 2018-09-12 17:03:17 EAT
 

@@ -15,7 +15,9 @@ SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
+
+ALTER TABLE IF EXISTS ONLY public.redistributedlandinhectares DROP CONSTRAINT IF EXISTS pk_redistributedlandinhectares;
+DROP TABLE IF EXISTS public.redistributedlandinhectares;
 
 
 SET default_tablespace = '';
@@ -33,9 +35,6 @@ CREATE TABLE public.redistributedlandinhectares (
     geo_version character varying(100) DEFAULT ''::character varying NOT NULL,
     redistributedlandinhectares numeric
 );
-
-
-ALTER TABLE public.redistributedlandinhectares OWNER TO our_land;
 
 --
 -- TOC entry 3366 (class 0 OID 71263)
@@ -56,6 +55,9 @@ province	WC	2016	859.87
 country	ZA	2016	92032.35
 \.
 
+
+ALTER TABLE IF EXISTS ONLY public.redistributedlandinhectares
+    ADD CONSTRAINT pk_redistributedlandinhectares PRIMARY KEY (geo_level, geo_code, geo_version, redistributedlandinhectares);
 
 -- Completed on 2018-09-12 17:02:50 EAT
 
