@@ -158,16 +158,16 @@ def get_redistribution_and_restitution_profiles(geo, session):
     except LocationNotFound:
         pass
 
-        redistribution_and_restitution['redistributedlandusebreakdown']= redistributedlandusebreakdown
-        redistribution_and_restitution['redistributedlandinhectares_stat']= redistributedlandinhectares['redistributedlandinhectares']
-        redistribution_and_restitution['redistributedlandcostinrands_stat']= redistributedlandcostinrands['redistributedlandcostinrands']
-        redistribution_and_restitution['redistributedlandaveragecostperhectares_stat']= redistributedlandaveragecostperhectares['redistributedlandaveragecostperhectares']
-        redistribution_and_restitution['redistributeprogrammeprojectsbyyear']= redistributeprogrammeprojectsbyyear
-        redistribution_and_restitution['redistributeprogrammehouseholdsbyyear']= redistributeprogrammehouseholdsbyyear
-        redistribution_and_restitution['redistributeprogrammebeneficiariesbyyear']= redistributeprogrammebeneficiariesbyyear
+    redistribution_and_restitution['redistributedlandusebreakdown']= redistributedlandusebreakdown
+    redistribution_and_restitution['redistributedlandinhectares_stat']= redistributedlandinhectares['redistributedlandinhectares']
+    redistribution_and_restitution['redistributedlandcostinrands_stat']= redistributedlandcostinrands['redistributedlandcostinrands']
+    redistribution_and_restitution['redistributedlandaveragecostperhectares_stat']= redistributedlandaveragecostperhectares['redistributedlandaveragecostperhectares']
+    redistribution_and_restitution['redistributeprogrammeprojectsbyyear']= redistributeprogrammeprojectsbyyear
+    redistribution_and_restitution['redistributeprogrammehouseholdsbyyear']= redistributeprogrammehouseholdsbyyear
+    redistribution_and_restitution['redistributeprogrammebeneficiariesbyyear']= redistributeprogrammebeneficiariesbyyear
 
-        redistribution_and_restitution['femalepartybenefited'] = femalepartybenefited
-        redistribution_and_restitution['youthpartybenefited'] = youthpartybenefited
-        redistribution_and_restitution['disabledpeoplepartybenefited'] = disabledpeoplepartybenefited
+    redistribution_and_restitution['femalepartybenefited'] = femalepartybenefited
+    redistribution_and_restitution['youthpartybenefited'] = youthpartybenefited
+    redistribution_and_restitution['disabledpeoplepartybenefited'] = disabledpeoplepartybenefited
 
     return redistribution_and_restitution
