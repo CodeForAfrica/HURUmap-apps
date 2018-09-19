@@ -28,7 +28,7 @@ FieldTable(['redistributed land use breakdown'], universe='Land Redistribution',
 FieldTable(['year', 'outcome of redistribution programme'], id='redistributionprogrammeoutcomebyyear', universe='Land Redistribution', year='2016')
 FieldTable(['year', 'party_benefited'], id='party_benefited', universe='Land Redistribution', year='2016')
 FieldTable(['restitutionoutcomestatistic',  'year'], id='restitutionoutcomestatistic', universe='Land Restitution', year='2016')
-FieldTable(['year', 'hectares transferred per province by year'], id='hectarestransferredperprovincebyyear', universe='Land Restitution', year='2016')
+# FieldTable(['year', 'hectares transferred per province by year'], id='hectarestransferredperprovincebyyear', universe='Land Restitution', year='2016')
 
 # Simple tables
 SimpleTable(
@@ -54,6 +54,24 @@ SimpleTable(
     universe='Land Redistribution',
     total_column=None,
     description='Average Cost in Rands (ZAR) per Hectares for Redistributed Land in 2017/2018',
+    dataset='',
+    year='2016'
+)
+
+SimpleTable(
+    id='hectarestransferredperprovincebyyear',
+    universe='Land Restitution',
+    total_column=None,
+    description='Hectares transferred Land Redistribution Programme',
+    dataset='',
+    year='2016'
+)
+
+SimpleTable(
+    id='landsalesdistribution',
+    universe='Land Restitution',
+    total_column=None,
+    description='Land Sales Distribution August 2017 to July 2018 ',
     dataset='',
     year='2016'
 )

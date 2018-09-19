@@ -15,7 +15,7 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET row_security = off;
 
-DROP TABLE public.hectarestransferredperprovincebyyear;
+DROP TABLE IF EXISTS public.hectarestransferredperprovincebyyear;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -33,7 +33,7 @@ CREATE TABLE public.hectarestransferredperprovincebyyear (
 );
 
 
-ALTER TABLE public.hectarestransferredperprovincebyyear OWNER TO our_land;
+ALTER TABLE IF EXISTS public.hectarestransferredperprovincebyyear OWNER TO our_land;
 
 --
 -- Data for Name: hectarestransferredperprovincebyyear; Type: TABLE DATA; Schema: public; Owner: our_land
@@ -136,4 +136,3 @@ country	ZA	2016	2017/2018	92032.4
 --
 -- PostgreSQL database dump complete
 --
-

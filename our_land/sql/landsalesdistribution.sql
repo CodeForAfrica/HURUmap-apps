@@ -15,7 +15,7 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET row_security = off;
 
-DROP TABLE public.landsalesdistribution;
+DROP TABLE IF EXISTS public.landsalesdistribution;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -40,7 +40,7 @@ CREATE TABLE public.landsalesdistribution (
 );
 
 
-ALTER TABLE public.landsalesdistribution OWNER TO our_land;
+ALTER TABLE IF EXISTS public.landsalesdistribution OWNER TO our_land;
 
 --
 -- Data for Name: landsalesdistribution; Type: TABLE DATA; Schema: public; Owner: our_land
@@ -213,4 +213,3 @@ province	WC	2016	>1 000 000	5	115	1250000	3159091	2014205	133675	6.6	1818182
 --
 -- PostgreSQL database dump complete
 --
-
