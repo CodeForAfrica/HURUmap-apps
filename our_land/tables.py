@@ -27,7 +27,7 @@ FieldTable(['number of sectional title owners by nationality'], universe='Sectio
 FieldTable(['redistributed land use breakdown'], universe='Land Redistribution', year='2016')
 FieldTable(['year', 'outcome of redistribution programme'], id='redistributionprogrammeoutcomebyyear', universe='Land Redistribution', year='2016')
 FieldTable(['year', 'party_benefited'], id='party_benefited', universe='Land Redistribution', year='2016')
-FieldTable(['restitutionoutcomestatistic',  'year'], id='restitutionoutcomestatistic', universe='Land Restitution', year='2016')
+FieldTable(['restitutionoutcomestatistic',  'year'], id='restitutionoutcomestatistic', universe='Land Restitution', year='2016', value_type='Float', has_total=False)
 # FieldTable(['year', 'hectares transferred per province by year'], id='hectarestransferredperprovincebyyear', universe='Land Restitution', year='2016')
 
 # Simple tables
@@ -61,11 +61,18 @@ SimpleTable(
 SimpleTable(
     id='hectarestransferredperprovincebyyear',
     universe='Land Restitution',
-    total_column=None,
+    total_column='hectarestransferredperprovincebyyear',
     description='Hectares transferred Land Redistribution Programme',
     dataset='',
     year='2016'
 )
+# SimpleTable(
+#     id='restitutionoutcomestatistic',
+#     universe='Land Restitution',
+#     description='Hectares Acquired in the Land Restitution Programme',
+#     dataset='',
+#     year='2016'
+# )
 
 SimpleTable(
     id='landsalesdistribution',

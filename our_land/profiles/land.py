@@ -137,6 +137,31 @@ def get_redistribution_and_restitution_profiles(geo, session):
         pass
 
     try:
+        hectarestransferredperprovincebyyear, _ = get_stat_data(
+            ['year'], geo, session,
+            percent=False)
+    except LocationNotFound:
+        pass
+
+    try:
+        hectaresacquiredrestitution, _ = get_stat_data(
+            ['year'], geo, session,
+            table_fields=['year', 'restitutionoutcomestatistic'],
+            only={'restitutionoutcomestatistic': ['hectares acquired']},
+            percent=False)
+    except LocationNotFound:
+        pass
+
+    try:
+        claimssettledrestitution, _ = get_stat_data(
+            ['year'], geo, session,
+            table_fields=['year', 'restitutionoutcomestatistic'],
+            only={'restitutionoutcomestatistic': ['claims settled']},
+            percent=False)
+    except LocationNotFound:
+        pass
+
+    try:
         redistributedlandinhectarestable = get_datatable('redistributedlandinhectares')
         redistributedlandinhectares, tot  = redistributedlandinhectarestable.get_stat_data(
                             geo, percent=False)
@@ -158,6 +183,7 @@ def get_redistribution_and_restitution_profiles(geo, session):
     except LocationNotFound:
         pass
 
+
     redistribution_and_restitution['redistributedlandusebreakdown']= redistributedlandusebreakdown
     redistribution_and_restitution['redistributedlandinhectares_stat']= redistributedlandinhectares['redistributedlandinhectares']
     redistribution_and_restitution['redistributedlandcostinrands_stat']= redistributedlandcostinrands['redistributedlandcostinrands']
@@ -169,5 +195,8 @@ def get_redistribution_and_restitution_profiles(geo, session):
     redistribution_and_restitution['femalepartybenefited'] = femalepartybenefited
     redistribution_and_restitution['youthpartybenefited'] = youthpartybenefited
     redistribution_and_restitution['disabledpeoplepartybenefited'] = disabledpeoplepartybenefited
+    redistribution_and_restitution['hectarestransferredperprovincebyyear'] = hectarestransferredperprovincebyyear
+    redistribution_and_restitution['hectaresacquiredrestitution'] = hectaresacquiredrestitution
+    redistribution_and_restitution['claimssettledrestitution'] = claimssettledrestitution
 
     return redistribution_and_restitution

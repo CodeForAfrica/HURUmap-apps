@@ -184,12 +184,17 @@
     </header>
     <div class="section-container">
       <section class="clearfix stat-row">
-        <h2 class="header-for-columns"><a class="permalink"> Redistributed Land <i class="fa fa-link"></i></a></h2>
-        <div class="column-half">
+        <h2 class="header-for-columns"><a class="permalink"> Land Redistribution Programme <i class="fa fa-link"></i></a></h2>
+        <div class="column-third">
             {% include 'profile/_blocks/_stat_list.html' with stat=redistributionandrestitution.redistributedlandinhectares_stat stat_type='number' decimals="-2" %}
         </div>
+        <div class="column-thirds">
+          <div id="chart-histogram-redistributionandrestitution-hectarestransferredperprovincebyyear" data-chart-title="Hectares transferred in the Redistributiton Programme from 2009/2010 to 2017/2018"></div>
+        </div>
+      </section>
+      <section class="clearfix stat-row">
         <div class="column-half">
-            <div id="chart-pie-redistributionandrestitution-redistributedlandusebreakdown" data-chart-title="Redistributed Land Use breakdown, year 2017/2018"></div>
+            <div id="chart-pie-redistributionandrestitution-redistributedlandusebreakdown" data-chart-title="Redistribution Programme Statistic, year 2017/2018"></div>
         </div>
       </section>
       <section class="clearfix stat-row">
@@ -231,6 +236,14 @@
           <div id="chart-column-redistributionandrestitution-youthpartybenefited" data-chart-title="Number of youth benefited from the Redistribution Programme in the Financial Year 2009/2010 to 2017/2018"></div>
         </div>
 
+      </section>
+      <section class="clearfix stat-row">
+        <h2 class="header-for-columns"><a class="permalink"> Land Restitution Programme <i class="fa fa-link"></i></a></h2>
+        <div class="column-third">
+        </div>
+        <div class="column-two-thirds">
+          <div id="chart-histogram-redistributionandrestitution-hectaresacquiredrestitution" data-chart-title="Hectares Acquired in the Restitution Programme from 2009/2010 to 2017/2018"></div>
+        </div>
       </section>
     </div>
   </article>

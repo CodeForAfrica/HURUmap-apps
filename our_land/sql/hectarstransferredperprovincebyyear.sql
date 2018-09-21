@@ -29,7 +29,7 @@ CREATE TABLE public.hectarestransferredperprovincebyyear (
     geo_code character varying(10) NOT NULL,
     geo_version character varying(100) DEFAULT ''::character varying NOT NULL,
     year character varying(128) NOT NULL,
-    "hectares transferred per province by year" numeric
+    hectarestransferredperprovincebyyear numeric
 );
 
 
@@ -39,7 +39,7 @@ ALTER TABLE IF EXISTS public.hectarestransferredperprovincebyyear OWNER TO our_l
 -- Data for Name: hectarestransferredperprovincebyyear; Type: TABLE DATA; Schema: public; Owner: our_land
 --
 
-COPY public.hectarestransferredperprovincebyyear (geo_level, geo_code, geo_version, year, "hectares transferred per province by year") FROM stdin;
+COPY public.hectarestransferredperprovincebyyear (geo_level, geo_code, geo_version, year, hectarestransferredperprovincebyyear) FROM stdin;
 province	EC	2016	2009/2010	39677.9
 province	FS	2016	2009/2010	30211.5
 province	GT	2016	2009/2010	1745
