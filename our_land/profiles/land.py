@@ -160,6 +160,58 @@ def get_redistribution_and_restitution_profiles(geo, session):
             percent=False)
     except LocationNotFound:
         pass
+    try:
+        disabilitiesrestitution, _ = get_stat_data(
+            ['year'], geo, session,
+            table_fields=['year', 'restitutionoutcomestatistic'],
+            only={'restitutionoutcomestatistic': ['people with disabilities']},
+            percent=False)
+    except LocationNotFound:
+        pass
+    try:
+        beneficiariesrestitution, _ = get_stat_data(
+            ['year'], geo, session,
+            table_fields=['year', 'restitutionoutcomestatistic'],
+            only={'restitutionoutcomestatistic': ['beneficiaries']},
+            percent=False)
+    except LocationNotFound:
+        pass
+
+    try:
+        householdsrestitution, _ = get_stat_data(
+            ['year'], geo, session,
+            table_fields=['year', 'restitutionoutcomestatistic'],
+            only={'restitutionoutcomestatistic': ['households']},
+            percent=False)
+    except LocationNotFound:
+        pass
+
+    try:
+        landcostrestitution, _ = get_stat_data(
+            ['year'], geo, session,
+            table_fields=['year', 'restitutionoutcomestatistic'],
+            only={'restitutionoutcomestatistic': ['landcost']},
+            percent=False)
+    except LocationNotFound:
+        pass
+
+    try:
+        financialcompensationrestitution, _ = get_stat_data(
+            ['year'], geo, session,
+            table_fields=['year', 'restitutionoutcomestatistic'],
+            only={'restitutionoutcomestatistic': ['financial compensation']},
+            percent=False)
+    except LocationNotFound:
+        pass
+
+    try:
+        femaleheadedhouseholdsrestitution, _ = get_stat_data(
+            ['year'], geo, session,
+            table_fields=['year', 'restitutionoutcomestatistic'],
+            only={'restitutionoutcomestatistic': ['female headed households']},
+            percent=False)
+    except LocationNotFound:
+        pass
 
     try:
         redistributedlandinhectarestable = get_datatable('redistributedlandinhectares')
@@ -198,5 +250,10 @@ def get_redistribution_and_restitution_profiles(geo, session):
     redistribution_and_restitution['hectarestransferredperprovincebyyear'] = hectarestransferredperprovincebyyear
     redistribution_and_restitution['hectaresacquiredrestitution'] = hectaresacquiredrestitution
     redistribution_and_restitution['claimssettledrestitution'] = claimssettledrestitution
+    redistribution_and_restitution['householdsrestitution'] = householdsrestitution
+    redistribution_and_restitution['femaleheadedhouseholdsrestitution'] = femaleheadedhouseholdsrestitution
+    redistribution_and_restitution['disabilitiesrestitution'] = disabilitiesrestitution
+    redistribution_and_restitution['projecrestitution'] = projecrestitution
+    redistribution_and_restitution['beneficiariesrestitution'] = beneficiariesrestitution
 
     return redistribution_and_restitution
