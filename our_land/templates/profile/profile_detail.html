@@ -302,8 +302,26 @@
   <div class="section-container">
     <section class="clearfix stat-row">
       <h2 class="header-for-columns"><a class="permalink">Land Sales Distribution <i class="fa fa-link"></i></a></h2>
+      <div class="column-third">
+        {% include 'profile/_blocks/_stat_list.html' with stat=landsales.landsalestransaction_tot stat_type='number' %}
+      </div>
       <div class="column-two-thirds">
-        <div id="chart-histogram-landsale-landsalestransaction" data-chart-title="Number of transactions in 12 month"></div>
+        <div id="chart-column-landsales-landsalestransaction" data-chart-title="Number of transactions in 12 month"></div>
+      </div>
+    </section>
+    <section class="clearfix stat-row">
+      <div class="column-third">
+        {% include 'profile/_blocks/_stat_list.html' with stat=landsales.landsaleshectares_tot stat_type='number' %}
+      </div>
+      <div class="column-two-thirds">
+        <div id="chart-column-landsales-landsalestransaction" data-chart-title="Number of hectares sold in 12 month"></div>
+      </div>
+    </section>
+    <section class="clearfix stat-row">
+      <div class="column-third">
+      </div>
+      <div class="column-two-thirds">
+        <div id="chart-histogram-landsales-landsalesaverageprice" data-chart-title="Number of hectares sold in 12 month"></div>
       </div>
     </section>
   </div>

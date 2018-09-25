@@ -6,6 +6,8 @@ from wazimap.data.tables import get_model_from_fields, get_datatable
 from wazimap.data.utils import get_session, calculate_median, merge_dicts, get_stat_data, get_objects_by_geo, group_remainder, LocationNotFound
 from django.conf import settings
 from collections import OrderedDict
+from wazimap.data.base import Base
+from sqlalchemy import Column, ForeignKey, Integer, String, Table, func, or_, and_, desc, asc, cast
 
 log = logging.getLogger(__name__)
 # ensure tables are loaded
@@ -18,6 +20,7 @@ LOCATIONNOTFOUND = {'is_missing': True, 'name': 'No Data Found', 'numerators': {
 
 LAND_CLASS = OrderedDict()
 LAND_CLASS["<1 500"] = "Under 1,500 ha"
+LAND_CLASS[" < 1 500"] = "Under 1,500 ha"
 LAND_CLASS["1 501-3 000"] = "1,500-3,000 ha"
 LAND_CLASS["3 001-5 000"] = "3,001-5,000 ha"
 LAND_CLASS["5 001-10 000"] = "5,001-10,000 ha"
@@ -60,6 +63,19 @@ def get_land_profile(geo, profile_name, request):
                         log.fatal(msg, exc_info=e)
                         raise ValueError(msg)
 
+        data['landsales'] = get_landsales_profiles(geo, session)
+        if not data['landsales'] == LOCATIONNOTFOUND:
+            for comp_geo in comparative_geos:
+                try:
+                    merge_dicts(
+                        data['landsales'], get_landsales_profiles(comp_geo, session),
+                            comp_geo.geo_level)
+                except KeyError as e:
+                    msg = "Error merging data into %s for section landsale from %s: KeyError: %s" % (
+                        geo.geoid, comp_geo.geoid, e)
+                    log.fatal(msg, exc_info=e)
+                    raise ValueError(msg)
+
         data['redistributionandrestitution'] = get_redistribution_and_restitution_profiles(geo, session)
         if not data['redistributionandrestitution'] == LOCATIONNOTFOUND:
             for comp_geo in comparative_geos:
@@ -72,19 +88,6 @@ def get_land_profile(geo, profile_name, request):
                         geo.geoid, comp_geo.geoid, e)
                     log.fatal(msg, exc_info=e)
                     raise ValueError(msg)
-
-        # data['landsale'] = get_landsales_profiles(geo, session)
-        # if not data['landsale'] == LOCATIONNOTFOUND:
-        #     for comp_geo in comparative_geos:
-        #         try:
-        #             merge_dicts(
-        #                 data['landsale'], get_landsales_profiles(comp_geo, session),
-        #                     comp_geo.geo_level)
-        #         except KeyError as e:
-        #             msg = "Error merging data into %s for section landsale from %s: KeyError: %s" % (
-        #                 geo.geoid, comp_geo.geoid, e)
-        #             log.fatal(msg, exc_info=e)
-        #             raise ValueError(msg)
         return data
 
     finally:
@@ -110,7 +113,7 @@ def get_redistribution_and_restitution_profiles(geo, session):
     redistributeprogrammebeneficiariesbyyear = femalepartybenefited = youthpartybenefited = disabledpeoplepartybenefited = LOCATIONNOTFOUND
     redistributedlandinhectares = redistributedlandcostinrands = redistributedlandaveragecostperhectares = LOCATIONNOTFOUND
     hectarestransferredperprovincebyyear = hectaresacquiredrestitution = projectsrestitution = beneficiariesrestitution = LOCATIONNOTFOUND
-    claimssettledrestitution = disabilitiesrestitution = femaleheadedhouseholdsrestitution = financialcompensationrestitution = landsalestransaction = LOCATIONNOTFOUND
+    claimssettledrestitution = disabilitiesrestitution = femaleheadedhouseholdsrestitution = financialcompensationrestitution = LOCATIONNOTFOUND
     redistribution_and_restitution = {}
     try:
         redistributedlandusebreakdown, _ = get_stat_data(
@@ -280,13 +283,6 @@ def get_redistribution_and_restitution_profiles(geo, session):
     except LocationNotFound:
         pass
 
-    try:
-        landsalestransaction, _ = get_stat_data(
-            ['class'], geo, session,
-            percent=False)
-        print landsalestransaction
-    except LocationNotFound:
-        pass
     redistribution_and_restitution['redistributedlandusebreakdown']= redistributedlandusebreakdown
     redistribution_and_restitution['redistributedlandinhectares_stat']= redistributedlandinhectares['redistributedlandinhectares']
     redistribution_and_restitution['redistributedlandcostinrands_stat']= redistributedlandcostinrands['redistributedlandcostinrands']
@@ -307,23 +303,98 @@ def get_redistribution_and_restitution_profiles(geo, session):
     redistribution_and_restitution['projectsrestitution'] = projectsrestitution
     redistribution_and_restitution['beneficiariesrestitution'] = beneficiariesrestitution
     redistribution_and_restitution['landcostrestitution'] = landcostrestitution
-    redistribution_and_restitution['landsalestransaction'] = landsalestransaction
 
     return redistribution_and_restitution
-
-
 
 def get_landsales_profiles(geo, session):
     landsales = {}
     landsalestransaction = LOCATIONNOTFOUND
     try:
-        landsalestransaction, _ = get_stat_data(
-            ['class'], geo, session,
+        landsalestransaction,landsalestransaction_tot = get_stat_data(
+            ['class'], geo, session, exclude_zero=True,
+            table_fields=['class'],
+            table_name= 'landsalesdistributiontransaction',
             percent=False)
-        print landsalestransaction
-        print "I am here"
-    except LocationNotFound:
+    except LocationNotFound as e:
+        pass
+
+    try:
+        landsaleshectares,landsaleshectares_tot = get_stat_data(
+            ['class'], geo, session, exclude_zero=True,
+            table_fields=['class'],
+            table_name= 'landsalesdistributionhectares',
+            percent=False)
+    except LocationNotFound as e:
+        pass
+
+    try:
+        landsalesaverageprice,landsalesaverageprice_tot = get_stat_data(
+            ['class'], geo, session, exclude_zero=True,
+            table_fields=['class'],
+            table_name= 'landsalesdistributionaverageprice',
+            percent=False)
+    except LocationNotFound as e:
+        pass
+    try:
+        landsalespricetrends,landsalespricetrends_tot = get_stat_data(
+            ['class'], geo, session, exclude_zero=True,
+            table_fields=['class'],
+            table_name= 'landsalesdistributionpricetrends',
+            percent=False)
+    except LocationNotFound as e:
+        pass
+
+    try:
+        landsalesaveragetrends,landsalesaveragetrends_tot = get_stat_data(
+            ['class'], geo, session, exclude_zero=True,
+            table_fields=['class'],
+            table_name= 'landsalesdistributionaveragetrends',
+            percent=False)
+    except LocationNotFound as e:
+        pass
+
+    # try:
+    #     landsalesaveragepricejuly,landsalesaveragepricejuly_tot = get_stat_data(
+    #         ['class'], geo, session, exclude_zero=True,
+    #         table_fields=['class'],
+    #         table_name= 'landsalesdistributionaveragepricejuly',
+    #         percent=False)
+    # except LocationNotFound as e:
+    #     pass
+    #
+    # try:
+    #     landsaleslowestprice,landsaleslowestprice_tot = get_stat_data(
+    #         ['class'], geo, session, exclude_zero=True,
+    #         table_fields=['class'],
+    #         table_name= 'landsalesdistributionlowestprice',
+    #         percent=False)
+    # except LocationNotFound as e:
+    #     pass
+    #
+    try:
+        landsaleshighestprice,landsaleshighestprice_tot = get_stat_data(
+            ['class'], geo, session, exclude_zero=True,
+            table_fields=['class'],
+            table_name= 'landsalesdistributionhighestprice',
+            percent=False)
+    except LocationNotFound as e:
         pass
 
     landsales['landsalestransaction'] = landsalestransaction
+    landsales['landsaleshectares'] = landsaleshectares
+    # landsales['landsaleslowestprice'] = landsaleslowestprice
+    # landsales['landsaleshighestprice'] = landsaleshighestprice
+    landsales['landsalesaverageprice'] = landsalesaverageprice
+    landsales['landsalespricetrends'] = landsalespricetrends
+    #landsales['landsalesaveragetrends'] = landsalesaveragetrends
+    # landsales['landsalesaveragepricejuly'] = landsalesaveragepricejuly
+
+    landsales['landsaleshectares_tot'] = { "name": "Total Number of Hectares",
+                                               "values": {"this": int(landsaleshectares_tot)},
+                                            }
+
+    landsales['landsalestransaction_tot'] = { "name": "Total Number of transactions",
+                                               "values": {"this": int(landsalestransaction_tot)},
+                                            }
+
     return landsales
