@@ -62,6 +62,64 @@
 
 
 {% block profile_detail %}
+{%if not landsales.landsalestransaction.is_missing or landsales.landsaleshectares.is_missing %}
+<article id="redistribution-restitution" class="clearfix">
+  <header class="section-contents">
+      <h1>Agricultural Land Sales</h1>
+  </header>
+  <div class="section-container">
+    <section class="clearfix stat-row">
+      <h2 class="header-for-columns"><a class="permalink">Land Sales Distribution from August 2017 to July 2018 <i class="fa fa-link"></i></a></h2>
+      <div class="column-half">
+        {% include 'profile/_blocks/_stat_list.html' with stat=landsales.landsalestransaction_tot stat_type='number' %}
+      </div>
+      <div class="column-half">
+        {% include 'profile/_blocks/_stat_list.html' with stat=landsales.landsaleshectares_tot stat_type='number' %}
+      </div>
+    </section>
+    <section class="clearfix stat-row">
+      <div class="column-full-thirds">
+        <div id="chart-histogram-landsales-landsalestransaction" data-stat-type="number" data-chart-title="Number of transactions in 12 months per land Class in (R/ha)"></div>
+      </div>
+    </section>
+    <section class="clearfix stat-row">
+      <div class="column-full-thirds">
+        <div id="chart-histogram-landsales-landsaleshectares" data-stat-type="number" data-chart-title="Number of hectares sold in 12 month per land Class in (R/ha)"></div>
+      </div>
+    </section>
+    <section class="clearfix stat-row">
+      <div class="column-full-thirds">
+        <div id="chart-histogram-landsales-landsalesaverageprice" data-stat-type="number" data-chart-title="Number of hectares sold in 12 months per Land Class in (R/ha)"></div>
+      </div>
+    </section>
+    <!-- <section class="clearfix stat-row">
+      <div class="column-full-thirds">
+        <div id="chart-histogram-landsales-landsalesaveragetrends" data-stat-type="number" data-chart-title="Average trends in 12 months per Land Class"></div>
+      </div>
+    </section>
+    <section class="clearfix stat-row">
+      <div class="column-full-thirds">
+        <div id="chart-histogram-landsales-landsaleslowestprice" data-stat-type="number" data-chart-title="Lowest price per Land Class(R/ha) sold in 12 months"></div>
+      </div>
+    </section>
+    <section class="clearfix stat-row">
+      <div class="column-full-thirds">
+        <div id="chart-histogram-landsales-landsaleshighestprice" data-stat-type="number" data-chart-title="Highest price per Land Class(R/ha) sold in 12 months"></div>
+      </div>
+    </section>
+    <section class="clearfix stat-row">
+      <div class="column-full-thirds">
+        <div id="chart-histogram-landsales-landsalesaverageprice" data-stat-type="number" data-chart-title="Number of hectares sold in 12 month"></div>
+      </div>
+    </section>
+    <section class="clearfix stat-row">
+      <div class="column-full-thirds">
+        <div id="chart-histogram-landsales-landsalesaverageprice" data-stat-type="number" data-chart-title="Number of hectares sold in 12 month"></div>
+      </div>
+    </section> -->
+  </div>
+</article>
+{% endif %}
 {% if not farmland.private_land_ownership_in_hectares_per_category.is_missing or not farmland.number_of_private_land_owners_by_category.is_missing %}
   <article id="farm-land" class="clearfix">
       <header class="section-contents">
@@ -70,7 +128,7 @@
       <div class="section-container">
         <section class="clearfix stat-row">
             <div class="column-half">
-                <div id="chart-histogram-farmland-private_land_ownership_in_hectares_per_category" data-stat-type="percentage" data-chart-title="Private land Ownership"></div>
+                <div id="chart-histogram-farmland-private_land_ownership_in_hectares_per_category" data-stat-type="scaled-percentage" data-chart-title="Private land Ownership"></div>
             </div>
             <div class="column-half">
               <div id="chart-pie-farmland-number_of_private_land_owners_by_category" data-stat-type="percentage" data-chart-title="Percent Number of Private Land Owners by Category" data-initial-sort="-value"></div>
@@ -78,15 +136,15 @@
         </section>
         <section class="clearfix stat-row">
             <div class="column-half">
-                <div id="chart-pie-farmland-land_ownership_in_hectares_by_race" data-stat-type="percentage" data-chart-title="Individual Land Ownership percent Hectares by Race" data-initial-sort="-value"></div>
+                <div id="chart-pie-farmland-land_ownership_in_hectares_by_race" data-stat-type="percentage" data-chart-title="Percent Number of Hectares owned by Individual per Race" data-initial-sort="-value"></div>
             </div>
             <div class="column-half">
-              <div id="chart-pie-farmland-number_of_land_owners_per_race" data-stat-type="number" data-chart-title="Number of Individual Land Owners per Race" data-initial-sort="-value"></div>
+              <div id="chart-pie-farmland-number_of_land_owners_per_race" data-stat-type="percentage" data-chart-title="Percent Number of Individual owning land per Race" data-initial-sort="-value"></div>
             </div>
         </section>
         <section class="clearfix stat-row">
             <div class="column-half">
-                <div id="chart-histogram-farmland-land_ownership_in_hectares_by_gender" data-stat-type="percentage" data-chart-title="Individual Land Ownership percent Hectares by Gender"></div>
+                <div id="chart-histogram-farmland-land_ownership_in_hectares_by_gender" data-stat-type="scaled-percentage" data-chart-title="Percent Number of Hectares owned by Individual per Race"></div>
             </div>
             <div class="column-half">
               <div id="chart-column-farmland-number_of_land_owners_per_gender" data-stat-type="number" data-chart-title="Number of Individual Land Owners per Gender"></div>
@@ -295,37 +353,6 @@
     </div>
   </article>
 {% endif %}
-<article id="redistribution-restitution" class="clearfix">
-  <header class="section-contents">
-      <h1>Agricultural Land Sales</h1>
-  </header>
-  <div class="section-container">
-    <section class="clearfix stat-row">
-      <h2 class="header-for-columns"><a class="permalink">Land Sales Distribution <i class="fa fa-link"></i></a></h2>
-      <div class="column-third">
-        {% include 'profile/_blocks/_stat_list.html' with stat=landsales.landsalestransaction_tot stat_type='number' %}
-      </div>
-      <div class="column-two-thirds">
-        <div id="chart-column-landsales-landsalestransaction" data-chart-title="Number of transactions in 12 month"></div>
-      </div>
-    </section>
-    <section class="clearfix stat-row">
-      <div class="column-third">
-        {% include 'profile/_blocks/_stat_list.html' with stat=landsales.landsaleshectares_tot stat_type='number' %}
-      </div>
-      <div class="column-two-thirds">
-        <div id="chart-column-landsales-landsalestransaction" data-chart-title="Number of hectares sold in 12 month"></div>
-      </div>
-    </section>
-    <section class="clearfix stat-row">
-      <div class="column-third">
-      </div>
-      <div class="column-two-thirds">
-        <div id="chart-histogram-landsales-landsalesaverageprice" data-chart-title="Number of hectares sold in 12 month"></div>
-      </div>
-    </section>
-  </div>
-</article>
 
   {% include 'settings_js.html' %}
   {% block body_javascript %}

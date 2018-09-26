@@ -19,23 +19,22 @@ LOCATIONNOTFOUND = {'is_missing': True, 'name': 'No Data Found', 'numerators': {
                     'values': {'this': 0}}
 
 LAND_CLASS = OrderedDict()
-LAND_CLASS["<1 500"] = "Under 1,500 ha"
-LAND_CLASS[" < 1 500"] = "Under 1,500 ha"
-LAND_CLASS["1 501-3 000"] = "1,500-3,000 ha"
-LAND_CLASS["3 001-5 000"] = "3,001-5,000 ha"
-LAND_CLASS["5 001-10 000"] = "5,001-10,000 ha"
-LAND_CLASS["10 001-20 000"] = "10,001-20,000 ha"
-LAND_CLASS["20 001-30 000"] = "20,001-30,000 ha"
-LAND_CLASS["30 001-40 000"] = "30,001-40,000 ha"
-LAND_CLASS["40 001-50 000"] = "40,001-50,000 ha"
-LAND_CLASS["50 001-100 000"] = "50,001-100,000 ha"
-LAND_CLASS["100 001-150 000"] = "100,001-150,000 ha"
-LAND_CLASS["150 001-200 000"] = "150,001-200,000 ha"
-LAND_CLASS["200 001-300 000"] = "200,001-300,000 ha"
-LAND_CLASS["300 001-500 000"] = "300,001-500,000 ha"
-LAND_CLASS["500 001-800 000"] = "500,001-800,000 ha"
-LAND_CLASS["800 001-1 000 000"] = "800,001-1,000,000 ha"
-LAND_CLASS[">1 000 000"] = "Above 1,000,000 ha"
+LAND_CLASS[u'less than 1\xa0500'] = "Under 1,500"
+LAND_CLASS[u'1\xa0501 - 3\xa0000'] = "1,500-3,000"
+LAND_CLASS[u'3\xa0001 - 5\xa0000'] = "3,001-5,000"
+LAND_CLASS[u'5\xa0001 - 10\xa0000'] = "5,001-10,000"
+LAND_CLASS[u'10\xa0001 - 20\xa0000'] = "10,001-20,000"
+LAND_CLASS[u'20\xa0001 - 30\xa0000'] = "20,001-30,000"
+LAND_CLASS[u'30\xa0001 - 40\xa0000'] = "30,001-40,000"
+LAND_CLASS[u'40\xa0001 - 50\xa0000'] = "40,001-50,000"
+LAND_CLASS[u'50\xa0001 - 100\xa0000'] = "50,001-100,000"
+LAND_CLASS[u'100\xa0001 - 150\xa0000'] = "100,001-150,000"
+LAND_CLASS[u'150\xa0001 - 200\xa0000'] = "150,001-200,000"
+LAND_CLASS[u'200\xa0001 - 300\xa0000'] = "200,001-300,000"
+LAND_CLASS[u'300\xa0001 - 500\xa0000'] = "300,001-500,000"
+LAND_CLASS[u'500\xa0001 - 800\xa0000'] = "500,001-800,000"
+LAND_CLASS[u'800\xa0001 - 1\xa0000\xa0000'] = "800,001-1,000,000"
+LAND_CLASS[u'greater than 1\xa0000\xa0000'] = "Above 1,000,000"
 
 
 def get_land_profile(geo, profile_name, request):
@@ -308,38 +307,50 @@ def get_redistribution_and_restitution_profiles(geo, session):
 
 def get_landsales_profiles(geo, session):
     landsales = {}
-    landsalestransaction = LOCATIONNOTFOUND
+    landsalestransaction = landsaleshectares = landsalesaverageprice = landsalespricetrends = LOCATIONNOTFOUND
+    landsaleslowestprice = landsaleshighestprice = landsalesaveragetrends = landsalesaveragepricejuly = LOCATIONNOTFOUND
     try:
         landsalestransaction,landsalestransaction_tot = get_stat_data(
-            ['class'], geo, session, exclude_zero=True,
-            table_fields=['class'],
+            ['class'], geo, session,
             table_name= 'landsalesdistributiontransaction',
+            recode=LAND_CLASS,
+            key_order=LAND_CLASS.values(),
             percent=False)
+        for key, data in landsalestransaction.iteritems():
+            print key
+            #print LAND_CLASS[key]
+        print landsalestransaction
     except LocationNotFound as e:
         pass
 
     try:
         landsaleshectares,landsaleshectares_tot = get_stat_data(
-            ['class'], geo, session, exclude_zero=True,
+            ['class'], geo, session,
             table_fields=['class'],
             table_name= 'landsalesdistributionhectares',
+            recode=LAND_CLASS,
+            key_order=LAND_CLASS.values(),
             percent=False)
     except LocationNotFound as e:
         pass
 
     try:
         landsalesaverageprice,landsalesaverageprice_tot = get_stat_data(
-            ['class'], geo, session, exclude_zero=True,
+            ['class'], geo, session,
             table_fields=['class'],
             table_name= 'landsalesdistributionaverageprice',
+            recode=LAND_CLASS,
+            key_order=LAND_CLASS.values(),
             percent=False)
     except LocationNotFound as e:
         pass
     try:
         landsalespricetrends,landsalespricetrends_tot = get_stat_data(
-            ['class'], geo, session, exclude_zero=True,
+            ['class'], geo, session,
             table_fields=['class'],
             table_name= 'landsalesdistributionpricetrends',
+            recode=LAND_CLASS,
+            key_order=LAND_CLASS.values(),
             percent=False)
     except LocationNotFound as e:
         pass
@@ -349,6 +360,8 @@ def get_landsales_profiles(geo, session):
             ['class'], geo, session, exclude_zero=True,
             table_fields=['class'],
             table_name= 'landsalesdistributionaveragetrends',
+            recode=LAND_CLASS,
+            key_order=LAND_CLASS.values(),
             percent=False)
     except LocationNotFound as e:
         pass
@@ -389,11 +402,11 @@ def get_landsales_profiles(geo, session):
     #landsales['landsalesaveragetrends'] = landsalesaveragetrends
     # landsales['landsalesaveragepricejuly'] = landsalesaveragepricejuly
 
-    landsales['landsaleshectares_tot'] = { "name": "Total Number of Hectares",
+    landsales['landsaleshectares_tot'] = { "name": "Total number of sold hectares in 12 months",
                                                "values": {"this": int(landsaleshectares_tot)},
                                             }
 
-    landsales['landsalestransaction_tot'] = { "name": "Total Number of transactions",
+    landsales['landsalestransaction_tot'] = { "name": "Total number of sales transactions in 12 months",
                                                "values": {"this": int(landsalestransaction_tot)},
                                             }
 

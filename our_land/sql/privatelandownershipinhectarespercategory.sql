@@ -66,15 +66,15 @@ province	MP	2016	CBOs	240947
 province	NW	2016	CBOs	341807
 province	NC	2016	CBOs	1247673
 province	WC	2016	CBOs	336097
-province	EC	2016	Trust	3964671
-province	FS	2016	Trust	4894214
-province	GT	2016	Trust	133797
-province	KZN	2016	Trust	1562455
-province	LIM	2016	Trust	1355839
-province	MP	2016	Trust	1219721
-province	NW	2016	Trust	1953015
-province	NC	2016	Trust	10057482
-province	WC	2016	Trust	4150662
+province	EC	2016	Trusts	3964671
+province	FS	2016	Trusts	4894214
+province	GT	2016	Trusts	133797
+province	KZN	2016	Trusts	1562455
+province	LIM	2016	Trusts	1355839
+province	MP	2016	Trusts	1219721
+province	NW	2016	Trusts	1953015
+province	NC	2016	Trusts	10057482
+province	WC	2016	Trusts	4150662
 province	EC	2016	Co-ownership	69870
 province	FS	2016	Co-ownership	31470
 province	GT	2016	Co-ownership	11556
@@ -87,7 +87,7 @@ province	WC	2016	Co-ownership	267807
 country	ZA	2016	Individual	37031283
 country	ZA	2016	Company	23199904
 country	ZA	2016	CBOs	3549489
-country	ZA	2016	Trust	29291857
+country	ZA	2016	Trusts	29291857
 country	ZA	2016	Co-ownership	883589
 \.
 

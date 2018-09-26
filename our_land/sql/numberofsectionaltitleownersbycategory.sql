@@ -66,19 +66,19 @@ province	MP	2016	CBOs	10
 province	NW	2016	CBOs	13
 province	NC	2016	CBOs	2
 province	WC	2016	CBOs	377
-province	EC	2016	Trust	2146
-province	FS	2016	Trust	2504
-province	GT	2016	Trust	15254
-province	KZN	2016	Trust	7999
-province	LIM	2016	Trust	900
-province	MP	2016	Trust	939
-province	NW	2016	Trust	1410
-province	NC	2016	Trust	81
-province	WC	2016	Trust	11645
+province	EC	2016	Trusts	2146
+province	FS	2016	Trusts	2504
+province	GT	2016	Trusts	15254
+province	KZN	2016	Trusts	7999
+province	LIM	2016	Trusts	900
+province	MP	2016	Trusts	939
+province	NW	2016	Trusts	1410
+province	NC	2016	Trusts	81
+province	WC	2016	Trusts	11645
 country	ZA	2016	Individual	726966
 country	ZA	2016	Company	46927
 country	ZA	2016	CBOs	1228
-country	ZA	2016	Trust	42878
+country	ZA	2016	Trusts	42878
 \.
 
 
