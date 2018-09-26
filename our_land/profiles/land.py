@@ -104,6 +104,8 @@ def get_land_topic_profiles(geo, session, topic_name):
             profiles_data[profile_name],_  = get_stat_data([profile_table], geo, session)
         except LocationNotFound:
             pass
+    print "*********************************"
+    print profiles_data
     return profiles_data
 
 def get_redistribution_and_restitution_profiles(geo, session):
