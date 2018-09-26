@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import os
 from collections import OrderedDict
 
@@ -166,25 +167,25 @@ OUR_LAND['topics']['sectionaltitleland'] = {
 
 OUR_LAND['showcase_stories'] = [
     {
-        'title':  'Sample Story Title',
-        'author': 'Stephen Rutto',
-        'brief':  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
-        'link':   'https://city-press.news24.com/news/land-cleveage-and-conflict-201806215',
-        'img':    STATIC_URL + 'img/showcase/our_land.jpg'
+        'title':  'A farmer\'s 15-year wait for land justice',
+        'author': 'Jeanne-Marié Versluis',
+        'brief':  'The government offered the farm to Rakgase in 2002 and accepted the offer he made, but nothing has come of the agreement. ',
+        'link':   'https://city-press.news24.com/News/a-farmers-15-year-wait-for-land-justice-20180822',
+        'img':    STATIC_URL + 'img/showcase/showcase_1.jpg'
     },
     {
-        'title':  'Sample Story Two Title',
-        'author': 'Nancy Agutu',
-        'brief':  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
-        'link':   'https://city-press.news24.com/news/land-cleveage-and-conflict-20180621',
-        'img':    STATIC_URL + 'img/showcase/our_land.jpg'
+        'title':  'Be prepared: It’s getting hotter and drier',
+        'author': 'Mandi Smallhorne',
+        'brief':  'What changes can we expect for our country and our lives as climate change takes hold? ',
+        'link':   'https://city-press.news24.com/News/be-prepared-its-getting-hotter-and-drier-20180910',
+        'img':    STATIC_URL + 'img/showcase/showcase_2.jpg'
     },
     {
-        'title':  'Sample Story Three Title',
-        'author': 'Monicah Mwangi',
-        'brief':  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
-        'link':   'https://city-press.news24.com/news/land-cleveage-and-conflict-20180621',
-        'img':    STATIC_URL + 'img/showcase/our_land.jpg'
+        'title':  'What will climate change mean for SA agriculture?',
+        'author': 'Mandi Smallhorne',
+        'brief':  'What are the small shifts that mean big changes, particularly for agriculture, in a changing climate? ',
+        'link':   'https://city-press.news24.com/News/what-will-climate-change-mean-for-sa-agriculture-20180817',
+        'img':    STATIC_URL + 'img/showcase/showcase_3.jpg'
     }
 ]
 

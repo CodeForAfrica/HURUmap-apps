@@ -62,7 +62,7 @@
 
 
 {% block profile_detail %}
-{%if not landsales.landsalestransaction.is_missing or landsales.landsaleshectares.is_missing %}
+{% if not landsales.landsalestransaction.is_missing or not landsales.landsaleshectares.is_missing %}
 <article id="redistribution-restitution" class="clearfix">
   <header class="section-contents">
       <h1>Agricultural Land Sales</h1>
@@ -136,7 +136,7 @@
         </section>
         <section class="clearfix stat-row">
             <div class="column-half">
-                <div id="chart-pie-farmland-land_ownership_in_hectares_by_race" data-stat-type="percentage" data-chart-title="Percent Number of Hectares owned by Individual per Race" data-initial-sort="-value"></div>
+                <div id="chart-pie-farmland-land_ownership_in_hectares_by_race" data-stat-type="percentage" data-chart-title="Percent total Hectares owned by Individual per Race" data-initial-sort="-value"></div>
             </div>
             <div class="column-half">
               <div id="chart-pie-farmland-number_of_land_owners_per_race" data-stat-type="percentage" data-chart-title="Percent Number of Individual owning land per Race" data-initial-sort="-value"></div>
@@ -144,7 +144,7 @@
         </section>
         <section class="clearfix stat-row">
             <div class="column-half">
-                <div id="chart-histogram-farmland-land_ownership_in_hectares_by_gender" data-stat-type="scaled-percentage" data-chart-title="Percent Number of Hectares owned by Individual per Race"></div>
+                <div id="chart-histogram-farmland-land_ownership_in_hectares_by_gender" data-stat-type="scaled-percentage" data-chart-title="Percent Number of Hectares owned by Individual per Gender"></div>
             </div>
             <div class="column-half">
               <div id="chart-column-farmland-number_of_land_owners_per_gender" data-stat-type="number" data-chart-title="Number of Individual Land Owners per Gender"></div>
@@ -161,7 +161,7 @@
       </div>
   </article>
 {% endif %}
-{% if not ervenland.is_missing %}
+{% if not ervenland.erven_land_ownership_in_hectares_by_race.is_missing %}
   <article id="erven-land" class="clearfix">
       <header class="section-contents">
           <h1>Erven Land</h1>
@@ -169,23 +169,23 @@
       <div class="section-container">
         <section class="clearfix stat-row">
             <div class="column-half">
-                <div id="chart-histogram-ervenland-erven_land_ownership_in_hectares_by_race" data-stat-type="scaled-percentage" data-chart-title="Individual Erven Land Ownership percent Hectares by Race"></div>
+                <div id="chart-histogram-ervenland-erven_land_ownership_in_hectares_by_race" data-stat-type="scaled-percentage" data-chart-title="Percent total Hectares of Erven Land owned by Individual  by Race"></div>
             </div>
             <div class="column-half">
-              <div id="chart-pie-ervenland-number_of_erven_land_owners_per_race" data-stat-type="percentage" data-chart-title="Number of Individual Erven Land Owners per Race" data-initial-sort="-value"></div>
-            </div>
-        </section>
-        <section class="clearfix stat-row">
-            <div class="column-half">
-                <div id="chart-pie-ervenland-erven_land_ownership_in_hectares_by_gender" data-stat-type="scaled-percentage" data-chart-title="Individual Erven Land Ownership percent Hectares by Gender" data-initial-sort="-value"></div>
-            </div>
-            <div class="column-half">
-              <div id="chart-pie-ervenland-number_of_erven_land_owners_per_gender" data-stat-type="percentage" data-chart-title="Number of Individual Erven Land Owners per Gender" data-initial-sort="-value"></div>
+              <div id="chart-pie-ervenland-number_of_erven_land_owners_per_race" data-stat-type="percentage" data-chart-title="Percent Number of Individual owning Erven Land per Race" data-initial-sort="-value"></div>
             </div>
         </section>
         <section class="clearfix stat-row">
             <div class="column-half">
-                <div id="chart-histogram-ervenland-erven_land_ownership_in_hectares_by_nationality" data-stat-type="scaled-percentage" data-chart-title="Individual Erven Land Ownership percent Hectares by Nationality"></div>
+                <div id="chart-pie-ervenland-erven_land_ownership_in_hectares_by_gender" data-stat-type="scaled-percentage" data-chart-title="Percent Number of Erven Land Hectares owned Individual by Gender" data-initial-sort="-value"></div>
+            </div>
+            <div class="column-half">
+              <div id="chart-pie-ervenland-number_of_erven_land_owners_per_gender" data-stat-type="percentage" data-chart-title="Percent Number of Individual owning Erven Land per Gender" data-initial-sort="-value"></div>
+            </div>
+        </section>
+        <section class="clearfix stat-row">
+            <div class="column-half">
+                <div id="chart-histogram-ervenland-erven_land_ownership_in_hectares_by_nationality" data-stat-type="scaled-percentage" data-chart-title="Percent Number of Erven Land Hectares Ownership by Nationality"></div>
             </div>
             <div class="column-half">
               <div id="chart-column-ervenland-number_of_erven_land_owners_per_nationality" data-stat-type="number" data-chart-title="Number of Individual Erven Land Owners per Nationality"></div>
@@ -194,7 +194,7 @@
       </div>
   </article>
 {% endif %}
-{% if not sectionaltitleland.is_missing %}
+{% if not sectionaltitleland.sectional_title_ownership_in_hectares_per_race.is_missing %}
   <article id="sectional-title-land" class="clearfix">
     <header class="section-contents">
         <h1>Sectional Title Land</h1>
@@ -202,23 +202,23 @@
     <div class="section-container">
       <section class="clearfix stat-row">
           <div class="column-half">
-              <div id="chart-histogram-sectionaltitleland-sectional_title_ownership_in_hectares_per_category" data-stat-type="scaled-percentage" data-chart-title="Individual Sectional Title Ownership percent Hectares by Category"></div>
+              <div id="chart-histogram-sectionaltitleland-sectional_title_ownership_in_hectares_per_category" data-stat-type="scaled-percentage" data-chart-title="Percent Number of Individual Sectional Title Ownership in Hectares by Category"></div>
           </div>
           <div class="column-half">
-            <div id="chart-pie-sectionaltitleland-number_of_sectional_title_owners_by_category" data-stat-type="percentage" data-chart-title="Number of Individual Sectional Title Owners per Category" data-initial-sort="-value"></div>
-          </div>
-      </section>
-      <section class="clearfix stat-row">
-          <div class="column-half">
-              <div id="chart-pie-sectionaltitleland-sectional_title_ownership_in_hectares_per_race" data-stat-type="scaled-percentage" data-chart-title="Individual Sectional Title Ownership percent Hectares by Race" data-initial-sort="-value"></div>
-          </div>
-          <div class="column-half">
-            <div id="chart-pie-sectionaltitleland-number_of_sectional_title_owners_by_race" data-stat-type="percentage" data-chart-title="Number of Individual Sectional Title Owners per Race" data-initial-sort="-value"></div>
+            <div id="chart-pie-sectionaltitleland-number_of_sectional_title_owners_by_category" data-stat-type="percentage" data-chart-title="Percent Number of Individual owning Sectional Title per Category" data-initial-sort="-value"></div>
           </div>
       </section>
       <section class="clearfix stat-row">
           <div class="column-half">
-              <div id="chart-histogram-sectionaltitleland-sectional_title_ownership_in_hectares_per_gender" data-stat-type="scaled-percentage" data-chart-title="Individual Sectional Title Ownership percent Hectares by Gender"></div>
+              <div id="chart-pie-sectionaltitleland-sectional_title_ownership_in_hectares_per_race" data-stat-type="scaled-percentage" data-chart-title="Percent Number of Individual Sectional Title Ownership in Hectares by Race" data-initial-sort="-value"></div>
+          </div>
+          <div class="column-half">
+            <div id="chart-pie-sectionaltitleland-number_of_sectional_title_owners_by_race" data-stat-type="percentage" data-chart-title="Number of Individual owning Sectional Title per Race" data-initial-sort="-value"></div>
+          </div>
+      </section>
+      <section class="clearfix stat-row">
+          <div class="column-half">
+              <div id="chart-histogram-sectionaltitleland-sectional_title_ownership_in_hectares_per_gender" data-stat-type="scaled-percentage" data-chart-title="Percent Number of Individual Sectional Title Ownership in Hectares by Gender"></div>
           </div>
           <div class="column-half">
             <div id="chart-column-sectionaltitleland-number_of_sectional_title_owners_by_gender" data-stat-type="number" data-chart-title="Number of Individual Sectional Title Owners per Gender"></div>
@@ -226,7 +226,7 @@
       </section>
       <section class="clearfix stat-row">
           <div class="column-half">
-              <div id="chart-pie-sectionaltitleland-sectional_title_ownership_in_hectares_per_nationality" data-stat-type="scaled-percentage" data-chart-title="Individual Sectional Title Ownership percent Hectares by Nationality" data-initial-sort="-value"></div>
+              <div id="chart-pie-sectionaltitleland-sectional_title_ownership_in_hectares_per_nationality" data-stat-type="scaled-percentage" data-chart-title="Percent Number of Individual Sectional Title Ownership in Hectares by Nationality" data-initial-sort="-value"></div>
           </div>
           <div class="column-half">
             <div id="chart-histogram-sectionaltitleland-number_of_sectional_title_owners_by_nationality" data-stat-type="number" data-chart-title="Number of Individual Sectional Title Owners per Nationality"></div>
@@ -235,7 +235,7 @@
     </div>
   </article>
 {% endif %}
-{% if not redistributionandrestitution.is_missing %}
+{% if not redistributionandrestitution.hectarestransferredperprovincebyyear.is_missing %}
   <article id="redistribution-restitution" class="clearfix">
     <header class="section-contents">
         <h1>Land Redistribution and Restitution</h1>
@@ -252,7 +252,7 @@
       </section>
       <section class="clearfix stat-row">
         <div class="column-half">
-            <div id="chart-pie-redistributionandrestitution-redistributedlandusebreakdown" data-chart-title="Redistribution Programme Statistic, year 2017/2018"></div>
+            <div id="chart-pie-redistributionandrestitution-redistributedlandusebreakdown" data-stat-type="percentage" data-chart-title="Redistribution Programme Statistic, year 2017/2018"></div>
         </div>
       </section>
       <section class="clearfix stat-row">
@@ -305,15 +305,7 @@
         </div>
       </section>
       <section class="clearfix stat-row">
-        <div class="column-third">
-            {% include 'profile/_blocks/_stat_list.html' with stat=redistributionandrestitution.redistributedlandinhectares_stat stat_type='number' decimals="-2" %}
-        </div>
-        <div class="column-two-thirds">
-          <div id="chart-histogram-redistributionandrestitution-landcostrestitution" data-chart-title="Land Cost Restitution Programme from 2009/2010 to 2017/2018"></div>
-        </div>
-      </section>
-      <section class="clearfix stat-row">
-        <div class="column-third">  {% include 'profile/_blocks/_stat_list.html' with stat=redistributionandrestitution.redistributedlandinhectares_stat stat_type='number' decimals="-2" %}
+        <div class="column-third">  {% include 'profile/_blocks/_stat_list.html' with stat=redistributionandrestitution.householdsrestitution_stat stat_type='number' decimals="-2" %}
 
         </div>
         <div class="column-two-thirds">
@@ -322,7 +314,7 @@
       </section>
       <section class="clearfix stat-row">
         <div class="column-third">
-            {% include 'profile/_blocks/_stat_list.html' with stat=redistributionandrestitution.redistributedlandinhectares_stat stat_type='number' decimals="-2" %}
+            {% include 'profile/_blocks/_stat_list.html' with stat=redistributionandrestitution.beneficiariesrestitution_stat stat_type='number' decimals="-2" %}
         </div>
         <div class="column-two-thirds">
           <div id="chart-histogram-redistributionandrestitution-beneficiariesrestitution" data-chart-title="Beneficiaries in the Restitution Programme from 2009/2010 to 2017/2018"></div>
@@ -330,14 +322,7 @@
       </section>
       <section class="clearfix stat-row">
         <div class="column-third">
-            {% include 'profile/_blocks/_stat_list.html' with stat=redistributionandrestitution.redistributedlandinhectares_stat stat_type='number' decimals="-2" %}
-        </div>
-        <div class="column-two-thirds">
-          <div id="chart-histogram-redistributionandrestitution-disabilitiesrestitution" data-chart-title="People with disabilities benefited Restitution Programme from 2009/2010 to 2017/2018"></div>
-        </div>
-      </section>
-      <section class="clearfix stat-row">
-        <div class="column-third">
+          {% include 'profile/_blocks/_stat_list.html' with stat=redistributionandrestitution.femaleheadedhouseholdsrestitution_stat stat_type='number' decimals="-2" %}
         </div>
         <div class="column-two-thirds">
           <div id="chart-histogram-redistributionandrestitution-femaleheadedhouseholdsrestitution" data-chart-title="Number of female headed households restitution Programme from 2009/2010 to 2017/2018"></div>
@@ -345,9 +330,13 @@
       </section>
       <section class="clearfix stat-row">
         <div class="column-third">
+          <div id="chart-histogram-redistributionandrestitution-financialcompensationrestitution" data-chart-title="Financial Compensation, Restitution Programme in 2017/2018"></div>
         </div>
-        <div class="column-two-thirds">
-          <div id="chart-histogram-redistributionandrestitution-financialcompensationrestitution" data-chart-title="Financial Compensation, Restitution Programme from 2009/2010 to 2017/2018"></div>
+        <div class="column-third">
+          <div id="chart-histogram-redistributionandrestitution-disabilitiesrestitution" data-chart-title="People with disabilities benefited Restitution Programme in 2017/2018"></div>
+        </div>
+        <div class="column-third">
+          <div id="chart-histogram-redistributionandrestitution-landcostrestitution" data-chart-title="Land Cost in Restitution Programme in 2017/2018"></div>
         </div>
       </section>
     </div>
