@@ -87,6 +87,8 @@ def get_land_profile(geo, profile_name, request):
                         geo.geoid, comp_geo.geoid, e)
                     log.fatal(msg, exc_info=e)
                     raise ValueError(msg)
+
+        data['districtdistribution'] = districtdistribution(geo, session)
         return data
 
     finally:
@@ -104,8 +106,6 @@ def get_land_topic_profiles(geo, session, topic_name):
             profiles_data[profile_name],_  = get_stat_data([profile_table], geo, session)
         except LocationNotFound:
             pass
-    print "*********************************"
-    print profiles_data
     return profiles_data
 
 def get_redistribution_and_restitution_profiles(geo, session):
@@ -443,3 +443,31 @@ def get_landsales_profiles(geo, session):
                                             }
 
     return landsales
+
+
+def districtdistribution(geo, session):
+    districtdist = LOCATIONNOTFOUND
+    dist = {}
+    try:
+        #get towns
+        districttown = session.query(Base.metadata.tables['landsalesdistrictdistribution'].c.town_name )\
+                    .filter(Base.metadata.tables['landsalesdistrictdistribution'].c.geo_level == geo.geo_level)\
+                    .filter(Base.metadata.tables['landsalesdistrictdistribution'].c.geo_code == geo.geo_code)\
+                    .filter(Base.metadata.tables['landsalesdistrictdistribution'].c.number_of_transactions != None)\
+                    .all()
+
+        for town in districttown:
+            town = str(town)[3:-3]
+            print town
+            dist[town] = session.query(Base.metadata.tables['landsalesdistrictdistribution'])\
+                    .filter(Base.metadata.tables['landsalesdistrictdistribution'].c.geo_level == geo.geo_level)\
+                    .filter(Base.metadata.tables['landsalesdistrictdistribution'].c.geo_code == geo.geo_code)\
+                    .filter(Base.metadata.tables['landsalesdistrictdistribution'].c.number_of_transactions != None)\
+                    .filter(Base.metadata.tables['landsalesdistrictdistribution'].c.town_name == town)\
+                    .all()
+        districtdist = dist
+    except LocationNotFound:
+        pass
+
+    print districtdist
+    return districtdist
