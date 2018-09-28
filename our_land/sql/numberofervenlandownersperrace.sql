@@ -47,14 +47,14 @@ province	MP	2016	White	54466
 province	NW	2016	White	52034
 province	NC	2016	White	84041
 province	WC	2016	White	543008
-province	EC	2016	African	169622
-province	FS	2016	African	74287
-province	GT	2016	African	414120
-province	KZN	2016	African	139287
-province	MP	2016	African	54466
-province	NW	2016	African	52034
-province	NC	2016	African	84041
-province	WC	2016	African	543008
+province	EC	2016	African	361469
+province	FS	2016	African	354461
+province	GT	2016	African	1296797
+province	KZN	2016	African	438085
+province	MP	2016	African	242427
+province	NW	2016	African	198429
+province	NC	2016	African	56926
+province	WC	2016	African	227227
 province	EC	2016	Coloured	62054
 province	FS	2016	Coloured	22608
 province	GT	2016	Coloured	118635
@@ -85,7 +85,7 @@ country	ZA	2016	Coloured	507829
 country	ZA	2016	Indian	414069
 country	ZA	2016	Other	173418
 province	LIM	2016	White	21788
-province	LIM	2016	African	21788
+province	LIM	2016	African	145655
 province	LIM	2016	Coloured	5604
 province	LIM	2016	Indian	3834
 province	LIM	2016	Other	1804
@@ -103,4 +103,3 @@ ALTER TABLE IF EXISTS ONLY public.numberofervenlandownersperrace
 --
 -- PostgreSQL database dump complete
 --
-
