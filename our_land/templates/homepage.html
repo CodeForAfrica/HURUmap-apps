@@ -1,5 +1,9 @@
 {% extends 'homepage.html' %}{% load humanize partition staticfiles %}
 
+{% block head_meta_description %}{{ HURUmap.name }} provides useful facts and
+data about land ownership in South Africa. Compare places using tables and maps,
+ download data, and embed charts on your site.{% endblock %}
+
 {% block header_menu %}
   <li><a href="/about">About</a></li>
   <li><a href="/#showcase">Showcase</a></li>
@@ -15,7 +19,7 @@
 <div class="content-container clearfix bg-color-secondary text-center">
     <div class="wrapper">
         <h1>Discover the Stories Behind the Data</h1>
-        <h4>{{ HURUMAP.name }} OurLand provides useful facts about land ownership in South Africa.</h4>
+        <h4>{{ HURUMAP.name }} provides useful facts and data about land ownership in South Africa.</h4>
     </div>
 </div>
 {% endblock header_content %}

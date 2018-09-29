@@ -458,7 +458,6 @@ def districtdistribution(geo, session):
 
         for town in districttown:
             town = str(town)[3:-3]
-            print town
             dist[town] = session.query(Base.metadata.tables['landsalesdistrictdistribution'])\
                     .filter(Base.metadata.tables['landsalesdistrictdistribution'].c.geo_level == geo.geo_level)\
                     .filter(Base.metadata.tables['landsalesdistrictdistribution'].c.geo_code == geo.geo_code)\
@@ -468,6 +467,4 @@ def districtdistribution(geo, session):
         districtdist = dist
     except LocationNotFound:
         pass
-
-    print districtdist
     return districtdist
