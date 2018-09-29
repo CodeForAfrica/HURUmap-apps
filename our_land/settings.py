@@ -91,6 +91,7 @@ OUR_LAND['levels'] = {
 #     # use the 2011 release for wards, use the latest (2016) for everything else
 #     'ward': 2016,
 # }
+OUR_LAND['primary_dataset_name'] = 'Land Reports'
 OUR_LAND['latest_release_year'] = '2016'
 # OUR_LAND['available_release_years'] = {
 #     # Release years with data for geo_levels.

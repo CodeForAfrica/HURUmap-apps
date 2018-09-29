@@ -6,9 +6,11 @@ node_modules/
 debug
 .vagrant
 /static/
-elimu_yangu/static/
 .vscode/
 .DS_Store
 /env/
+/venv/
+.venv/
+venv
 .env/
 env

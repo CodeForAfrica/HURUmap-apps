@@ -76,8 +76,23 @@ FieldTable(['class'], id='landsalesdistributionaveragepricejuly', dataset='Land 
 universe='Agricultural Land Sales', year='2016', value_type='Float', has_total=False)
 FieldTable(['class'], id='landsalesdistributionhectares', dataset='Land Sales',
  universe='Agricultural Land Sales', year='2016', has_total=False)
+
+# FieldTable(['town name', 'class (R/ha)', 'number_of_transactions',
+# 'total hectares traded in 12 months', 'lowest price per hectares (R/ha) in 12 months',
+#  'highest price per hectares (R/ha) in 12 months', 'average price per hectares (R/ha) in 12 months',
+#  'price trends in 12 months','average trends in 12 months', 'average price in July 2918'],
+#  id='landsalesdistrictdistribution', has_total=False)
+
 # FieldTable(['year', 'hectares transferred per province by year'], id='hectarestransferredperprovincebyyear', universe='Land Restitution', year='2016')
 
+SimpleTable(
+    id='landsalesdistrictdistribution',
+    description='Land Traded per class',
+    total_column=None,
+    universe='Agricultural Land Sales',
+    dataset='Land Sales',
+    year='2016'
+)
 # Simple tables
 SimpleTable(
     id='redistributedlandcostinrands',
