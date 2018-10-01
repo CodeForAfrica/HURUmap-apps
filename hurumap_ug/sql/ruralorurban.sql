@@ -16,6 +16,8 @@ SET row_security = off;
 
 SET search_path = public, pg_catalog;
 
+ALTER TABLE IF EXISTS ONLY public.ruralorurban DROP CONSTRAINT IF EXISTS pk_ruralorurban;
+DROP TABLE IF EXISTS public.ruralorurban;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -32,8 +34,6 @@ CREATE TABLE ruralorurban (
     total integer
 );
 
-
-ALTER TABLE ruralorurban OWNER TO hurumap_ug;
 
 --
 -- Data for Name: ruralorurban; Type: TABLE DATA; Schema: public; Owner: hurumap_ug

@@ -7,15 +7,24 @@
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
 
 SET search_path = public, pg_catalog;
 
+DROP INDEX IF EXISTS public.wazimap_geography_version_01953818_like;
+DROP INDEX IF EXISTS public.wazimap_geography_name_36b79089_like;
+DROP INDEX IF EXISTS public.wazimap_geography_long_name_9b8409f5_like;
+DROP INDEX IF EXISTS public.wazimap_geography_b068931c;
+DROP INDEX IF EXISTS public.wazimap_geography_2fc6351a;
+DROP INDEX IF EXISTS public.wazimap_geography_2af72f10;
+ALTER TABLE IF EXISTS ONLY public.wazimap_geography DROP CONSTRAINT IF EXISTS wazimap_geography_pkey;
+ALTER TABLE IF EXISTS ONLY public.wazimap_geography DROP CONSTRAINT IF EXISTS wazimap_geography_geo_level_bbe3c9fc_uniq;
+ALTER TABLE IF EXISTS public.wazimap_geography ALTER COLUMN id DROP DEFAULT;
+DROP SEQUENCE IF EXISTS public.wazimap_geography_id_seq;
+DROP TABLE IF EXISTS public.wazimap_geography;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -29,15 +38,13 @@ CREATE TABLE wazimap_geography (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     name character varying(100) NOT NULL,
-    version integer,
     square_kms double precision,
     parent_level character varying(15),
     parent_code character varying(10),
-    long_name character varying(100)
+    long_name character varying(100),
+    version character varying(100) NOT NULL
 );
 
-
-ALTER TABLE wazimap_geography OWNER TO hurumap_ug;
 
 --
 -- Name: wazimap_geography_id_seq; Type: SEQUENCE; Schema: public; Owner: hurumap_ug
@@ -50,8 +57,6 @@ CREATE SEQUENCE wazimap_geography_id_seq
     NO MAXVALUE
     CACHE 1;
 
-
-ALTER TABLE wazimap_geography_id_seq OWNER TO hurumap_ug;
 
 --
 -- Name: wazimap_geography_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hurumap_ug

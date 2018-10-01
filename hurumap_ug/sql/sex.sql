@@ -16,6 +16,8 @@ SET row_security = off;
 
 SET search_path = public, pg_catalog;
 
+ALTER TABLE IF EXISTS ONLY public.sex DROP CONSTRAINT IF EXISTS pk_sex;
+DROP TABLE IF EXISTS public.sex;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -32,8 +34,6 @@ CREATE TABLE sex (
     total integer
 );
 
-
-ALTER TABLE sex OWNER TO hurumap_ug;
 
 --
 -- Data for Name: sex; Type: TABLE DATA; Schema: public; Owner: hurumap_ug

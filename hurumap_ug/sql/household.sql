@@ -16,6 +16,8 @@ SET row_security = off;
 
 SET search_path = public, pg_catalog;
 
+ALTER TABLE IF EXISTS ONLY public.household DROP CONSTRAINT IF EXISTS pk_household;
+DROP TABLE IF EXISTS public.household;
 SET default_tablespace = '';
 
 SET default_with_oids = false;

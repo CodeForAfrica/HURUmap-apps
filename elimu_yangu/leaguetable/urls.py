@@ -1,8 +1,8 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 from wazimap.urls import *
 from elimu_yangu.leaguetable.views import index, schools, embed, EmbedGeographyDetailView, GeographyDetailView, GeographyCompareView, SchoolPageView
 
-urlpatterns = patterns('',
+urlpatterns = [
     # url for all schools page
     url(
         regex   = r'^$',
@@ -35,7 +35,7 @@ urlpatterns = patterns('',
 
     # url for embedding league table
     url(
-        regex = 'embed/(?P<geo_level>[a-zA-Z]+)/(?P<geo_code>[a-zA-Z0-9_-]+)$',
+        regex = r'embed/(?P<geo_level>[a-zA-Z]+)/(?P<geo_code>[a-zA-Z0-9_-]+)$',
         view = embed,
         kwargs = {},
         name = 'embed',
@@ -43,7 +43,7 @@ urlpatterns = patterns('',
 
     # url for embedding the map
     url(
-        regex   = 'embed/(?P<geography_id>\w+-\w+)(-(?P<slug>[\w-]+))?/$',
+        regex   = r'embed/(?P<geography_id>\w+-\w+)(-(?P<slug>[\w-]+))?/$',
         view    = cache_page(STANDARD_CACHE_TIME)(EmbedGeographyDetailView.as_view()),
         kwargs  = {},
         name    = 'embed_map',
@@ -55,4 +55,4 @@ urlpatterns = patterns('',
         kwargs  = {},
         name    = 'geography_compare',
     ),
-)
+]

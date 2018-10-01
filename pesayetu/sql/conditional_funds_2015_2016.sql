@@ -16,6 +16,8 @@ SET row_security = off;
 
 SET search_path = public, pg_catalog;
 
+ALTER TABLE IF EXISTS ONLY public.conditional_fund DROP CONSTRAINT IF EXISTS pk_conditional_fund;
+DROP TABLE IF EXISTS public.conditional_fund;
 SET default_tablespace = '';
 
 SET default_with_oids = false;

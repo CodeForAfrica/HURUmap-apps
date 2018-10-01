@@ -16,6 +16,8 @@ SET row_security = off;
 
 SET search_path = public, pg_catalog;
 
+ALTER TABLE IF EXISTS ONLY public.disabledornot DROP CONSTRAINT IF EXISTS pk_disabledornot;
+DROP TABLE IF EXISTS public.disabledornot;
 SET default_tablespace = '';
 
 SET default_with_oids = false;

@@ -1,49 +1,12 @@
 {% extends 'profile/profile_detail.html' %} {% load humanize lookup staticfiles %}
 
-
-{% block header_content %}
-    <div class="floating-nav-wrapper" id="sticky-nav">
-        <nav class="floating-nav affix-top" data-spy="affix" data-offset-top="197">
-            <div class="wrapper clearfix">
-                <div class="geography-ico">
-                    <span><img
-                        src="{% static 'img/icons/favicon.ico' %}">{{ geography.this.name }}
-                    </span>
-                </div>
-                <ul>
-                    <li><a href="#elections"><i class="fa fa-check"></i>
-                        <span>Elections</span></a></li>
-                    <li><a href="#demographics"><i class="fa fa-user"></i>
-                        <span>Demographics</span></a></li>
-                    <li><a href="#households"><i class="fa fa-home"></i>
-                        <span>Households</span></a></li>
-                    <li><a href="#employment"><i
-                            class="fa fa-briefcase"></i>
-                        <span>Employment</span></a></li>
-                    <li><a href="#crime_report"><i class="fa fa-shield"></i>
-                        <span>Crime Reports</span></a></li>
-                    <li><a href="#education"><i
-                            class="fa fa-graduation-cap"></i>
-                        <span>Education</span></a>
-                    </li>
-                    <li><a href="#health"><i class="fa fa-medkit"></i>
-                        <span>Health</span></a></li>
-                    <li><a href="#nutrition"><i class="fa fa-cutlery"></i>
-                        <span>Nutrition</span></a></li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-
-    {{ block.super }}
-{% endblock %}
 {% block profile_header_tail %}
     <div class="column-full">
         <p class="caption"><strong>Census data:</strong> 2009</p>
     </div>
-{% endblock %} {% block profile_detail %}
+{% endblock %}
 
-
+{% block profile_detail %}
     <article id="demographics"
              class="clearfix {% if 'demographics' not in selected_sections %}hide{% endif %}">
         <header class="section-contents">
