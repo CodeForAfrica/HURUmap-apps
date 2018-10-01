@@ -17,24 +17,27 @@ SECTIONS = settings.OUR_LAND.get('topics', {})
 
 LOCATIONNOTFOUND = {'is_missing': True, 'name': 'No Data Found', 'numerators': {'this': 0},
                     'values': {'this': 0}}
+#
+# LAND_CLASS = OrderedDict()
+# LAND_CLASS[u'less than 1\xa0500'] = "Under 1,500"
+# LAND_CLASS[u'1\xa0501 - 3\xa0000'] = "1,500-3,000"
+# LAND_CLASS[u'3\xa0001 - 5\xa0000'] = "3,001-5,000"
+# LAND_CLASS[u'5\xa0001 - 10\xa0000'] = "5,001-10,000"
+# LAND_CLASS[u'10\xa0001 - 20\xa0000'] = "10,001-20,000"
+# LAND_CLASS[u'20\xa0001 - 30\xa0000'] = "20,001-30,000"
+# LAND_CLASS[u'30\xa0001 - 40\xa0000'] = "30,001-40,000"
+# LAND_CLASS[u'40\xa0001 - 50\xa0000'] = "40,001-50,000"
+# LAND_CLASS[u'50\xa0001 - 100\xa0000'] = "50,001-100,000"
+# LAND_CLASS[u'100\xa0001 - 150\xa0000'] = "100,001-150,000"
+# LAND_CLASS[u'150\xa0001 - 200\xa0000'] = "150,001-200,000"
+# LAND_CLASS[u'200\xa0001 - 300\xa0000'] = "200,001-300,000"
+# LAND_CLASS[u'300\xa0001 - 500\xa0000'] = "300,001-500,000"
+# LAND_CLASS[u'500\xa0001 - 800\xa0000'] = "500,001-800,000"
+# LAND_CLASS[u'800\xa0001 - 1\xa0000\xa0000'] = "800,001-1,000,000"
+# LAND_CLASS[u'greater than 1\xa0000\xa0000'] = "Above 1,000,000"
 
-LAND_CLASS = OrderedDict()
-LAND_CLASS[u'less than 1\xa0500'] = "Under 1,500"
-LAND_CLASS[u'1\xa0501 - 3\xa0000'] = "1,500-3,000"
-LAND_CLASS[u'3\xa0001 - 5\xa0000'] = "3,001-5,000"
-LAND_CLASS[u'5\xa0001 - 10\xa0000'] = "5,001-10,000"
-LAND_CLASS[u'10\xa0001 - 20\xa0000'] = "10,001-20,000"
-LAND_CLASS[u'20\xa0001 - 30\xa0000'] = "20,001-30,000"
-LAND_CLASS[u'30\xa0001 - 40\xa0000'] = "30,001-40,000"
-LAND_CLASS[u'40\xa0001 - 50\xa0000'] = "40,001-50,000"
-LAND_CLASS[u'50\xa0001 - 100\xa0000'] = "50,001-100,000"
-LAND_CLASS[u'100\xa0001 - 150\xa0000'] = "100,001-150,000"
-LAND_CLASS[u'150\xa0001 - 200\xa0000'] = "150,001-200,000"
-LAND_CLASS[u'200\xa0001 - 300\xa0000'] = "200,001-300,000"
-LAND_CLASS[u'300\xa0001 - 500\xa0000'] = "300,001-500,000"
-LAND_CLASS[u'500\xa0001 - 800\xa0000'] = "500,001-800,000"
-LAND_CLASS[u'800\xa0001 - 1\xa0000\xa0000'] = "800,001-1,000,000"
-LAND_CLASS[u'greater than 1\xa0000\xa0000'] = "Above 1,000,000"
+LAND_CLASS = [u'Under 1.5K',u'1,501-3K',u'3,001-5K',u'5,001-10K',u'10,001-20K',u'20,001-30K', u'30,001-40K',
+u'40,001-50K', u'50,001-100K',u'100,001-150K',u'150,001-200K',u'200,001-300K',u'300,001-500K',u'500,001-800K',u'800,001-1M',u'Above 1M']
 
 
 def get_land_profile(geo, profile_name, request):
@@ -349,8 +352,7 @@ def get_landsales_profiles(geo, session):
         landsalestransaction,landsalestransaction_tot = get_stat_data(
             ['class'], geo, session,
             table_name= 'landsalesdistributiontransaction',
-            recode=LAND_CLASS,
-            key_order=LAND_CLASS.values(),
+            key_order=LAND_CLASS,
             percent=False)
     except LocationNotFound as e:
         pass
@@ -358,10 +360,8 @@ def get_landsales_profiles(geo, session):
     try:
         landsaleshectares,landsaleshectares_tot = get_stat_data(
             ['class'], geo, session,
-            table_fields=['class'],
             table_name= 'landsalesdistributionhectares',
-            recode=LAND_CLASS,
-            key_order=LAND_CLASS.values(),
+            key_order=LAND_CLASS,
             percent=False)
     except LocationNotFound as e:
         pass
@@ -369,20 +369,16 @@ def get_landsales_profiles(geo, session):
     try:
         landsalesaverageprice,_ = get_stat_data(
             ['class'], geo, session,
-            table_fields=['class'],
             table_name= 'landsalesdistributionaverageprice',
-            recode=LAND_CLASS,
-            key_order=LAND_CLASS.values(),
+            key_order=LAND_CLASS,
             percent=False)
     except LocationNotFound as e:
         pass
     try:
         landsalespricetrends,_ = get_stat_data(
             ['class'], geo, session,
-            table_fields=['class'],
             table_name= 'landsalesdistributionpricetrends',
-            recode=LAND_CLASS,
-            key_order=LAND_CLASS.values(),
+            key_order=LAND_CLASS,
             percent=False)
     except LocationNotFound as e:
         pass
@@ -390,10 +386,8 @@ def get_landsales_profiles(geo, session):
     try:
         landsalesaveragetrends,_ = get_stat_data(
             ['class'], geo, session, exclude_zero=True,
-            table_fields=['class'],
             table_name= 'landsalesdistributionaveragetrends',
-            recode=LAND_CLASS,
-            key_order=LAND_CLASS.values(),
+            key_order=LAND_CLASS,
             percent=False)
     except LocationNotFound as e:
         pass
@@ -419,7 +413,6 @@ def get_landsales_profiles(geo, session):
     try:
         landsaleshighestprice,landsaleshighestprice_tot = get_stat_data(
             ['class'], geo, session, exclude_zero=True,
-            table_fields=['class'],
             table_name= 'landsalesdistributionhighestprice',
             percent=False)
     except LocationNotFound as e:
@@ -446,28 +439,52 @@ def get_landsales_profiles(geo, session):
 
 
 def districtdistribution(geo, session):
-    districtdist = LOCATIONNOTFOUND
+    districtdist = towndistrictdistributiontransactions = LOCATIONNOTFOUND
+    towndistrictdistributionhectares = towndistrictdistributionavgprice = towndistrictdistributionpricetrends = LOCATIONNOTFOUND
+    towndistrictdistributionhectares_tot = towndistrictdistributiontransactions_tot = 0
     dist = {}
-    try:
-        # districtdistributiontable = get_datatable('landsalesdistrictdistribution')
-        # disttown, _ = districtdistributiontable.get_stat_data(geo,  ['town_name', 'number_of_transactions'], total='number_of_transactions', percent=False)
-        # print disttown
-        #get towns
-        districttown = session.query(Base.metadata.tables['landsalesdistrictdistribution'].c.town_name )\
-                    .filter(Base.metadata.tables['landsalesdistrictdistribution'].c.geo_level == geo.geo_level)\
-                    .filter(Base.metadata.tables['landsalesdistrictdistribution'].c.geo_code == geo.geo_code)\
-                    .filter(Base.metadata.tables['landsalesdistrictdistribution'].c.number_of_transactions != None)\
-                    .all()
 
-        for town in districttown:
-            town = str(town)[3:-3]
-            dist[town] = session.query(Base.metadata.tables['landsalesdistrictdistribution'])\
-                    .filter(Base.metadata.tables['landsalesdistrictdistribution'].c.geo_level == geo.geo_level)\
-                    .filter(Base.metadata.tables['landsalesdistrictdistribution'].c.geo_code == geo.geo_code)\
-                    .filter(Base.metadata.tables['landsalesdistrictdistribution'].c.number_of_transactions != None)\
-                    .filter(Base.metadata.tables['landsalesdistrictdistribution'].c.town_name == town)\
-                    .all()
-        districtdist = dist
-    except LocationNotFound:
+    try:
+        towndistrictdistributiontransactions,towndistrictdistributiontransactions_tot = get_stat_data(
+            ['town_name', 'class'], geo, session,
+            table_name= 'towndistrictdistributiontransactions',
+            exclude_zero=True,
+            percent=False)
+    except LocationNotFound as e:
         pass
+
+    try:
+        towndistrictdistributionhectares,towndistrictdistributionhectares_tot = get_stat_data(
+            ['town_name', 'class'], geo, session,
+            table_name= 'towndistrictdistributionhectares',
+            exclude_zero=True,
+            percent=False)
+    except LocationNotFound as e:
+        pass
+
+    try:
+        towndistrictdistributionavgprice,_ = get_stat_data(
+            ['town_name', 'class'], geo, session,
+            table_name= 'towndistrictdistributionavgprice',
+            table_fields=['class','town_name'],
+            exclude_zero=True,
+            percent=False)
+    except LocationNotFound as e:
+        pass
+
+    try:
+        towndistrictdistributionpricetrends,_= get_stat_data(
+            ['town_name', 'class'], geo, session,
+            table_name= 'towndistrictdistributionpricetrends',
+            exclude_zero=True,
+            percent=False)
+    except LocationNotFound as e:
+        pass
+
+
+    dist['towndistrictdistributiontransactions'] = towndistrictdistributiontransactions
+    dist['towndistrictdistributionhectares'] = towndistrictdistributionhectares
+    dist['towndistrictdistributionavgprice'] = towndistrictdistributionavgprice
+    dist['towndistrictdistributionpricetrends'] = towndistrictdistributionpricetrends
+    districtdist = dist
     return districtdist

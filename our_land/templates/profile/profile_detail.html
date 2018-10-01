@@ -61,10 +61,33 @@
 
 
 {% block profile_detail %}
-{% if districtdistribution|length > 0 %}
-<artilce>
-  <div class="section-container">
+{% if not districtdistribution.towndistrictdistributiontransactions.is_missing %}
+<article>
+  <header class="section-contents">
+      <h1>Agricultural Land Sales Statistic for Towns in {{geo.long_name}}</h1>
+  </header>
+  <div class="section-container" style="margin-left: 0">
     <section class="clearfix stat-row">
+      <div class="column-full">
+        <div id="chart-grouped_column-districtdistribution-towndistrictdistributiontransactions" data-stat-type="number" data-chart-title="Number of transactions in 12 months per land Class in (R/ha)"></div>
+      </div>
+    </section>
+    <section class="clearfix stat-row">
+      <div class="column-full">
+        <div id="chart-grouped_column-districtdistribution-towndistrictdistributionhectares" data-stat-type="number" data-chart-title="Total Number of hectares in 12 months per land Class in (R/ha)"></div>
+      </div>
+    </section>
+    <section class="clearfix stat-row">
+      <div class="column-full">
+        <div id="chart-grouped_column-districtdistribution-towndistrictdistributionavgprice" data-stat-type="number" data-chart-title="Average price per hectares in 12 months per land Class in (R/ha)"></div>
+      </div>
+    </section>
+    <section class="clearfix stat-row">
+      <div class="column-full">
+        <div id="chart-grouped_column-districtdistribution-towndistrictdistributionpricetrends" data-stat-type="number" data-chart-title="Price trends per hectares in 12 months per land Class in (R/ha)"></div>
+      </div>
+    </section>
+    <!-- <section class="clearfix stat-row">
       <div class="column-full">
         <h3 class="chart-title">Land traded per class for town district from August 2017 to July 2018</h3>
         <table>
@@ -93,7 +116,7 @@
           </tbody>
         </table>
         </div>
-      </section>
+      </section> -->
   </div>
 </article>
 {% endif %}
@@ -114,42 +137,42 @@
       </div>
     </section>
     <section class="clearfix stat-row">
-      <div class="column-full-thirds">
+      <div class="column-full">
         <div id="chart-histogram-landsales-landsalestransaction" data-stat-type="number" data-chart-title="Number of transactions in 12 months per land Class in (R/ha)"></div>
       </div>
     </section>
     <section class="clearfix stat-row">
-      <div class="column-full-thirds">
+      <div class="column-full">
         <div id="chart-histogram-landsales-landsaleshectares" data-stat-type="number" data-chart-title="Number of hectares sold in 12 month per land Class in (R/ha)"></div>
       </div>
     </section>
     <section class="clearfix stat-row">
-      <div class="column-full-thirds">
+      <div class="column-full">
         <div id="chart-histogram-landsales-landsalesaverageprice" data-stat-type="number" data-chart-title="Number of hectares sold in 12 months per Land Class in (R/ha)"></div>
       </div>
     </section>
     <section class="clearfix stat-row">
-      <div class="column-full-thirds">
+      <div class="column-full">
         <div id="chart-histogram-landsales-landsalespricetrends" data-stat-type="number" data-chart-title="Average Price trends in 12 months per Land Class"></div>
       </div>
     </section>
   <!--   <section class="clearfix stat-row">
-      <div class="column-full-thirds">
+      <div class="column-full">
         <div id="chart-histogram-landsales-landsaleslowestprice" data-stat-type="number" data-chart-title="Lowest price per Land Class(R/ha) sold in 12 months"></div>
       </div>
     </section>
     <section class="clearfix stat-row">
-      <div class="column-full-thirds">
+      <div class="column-full">
         <div id="chart-histogram-landsales-landsaleshighestprice" data-stat-type="number" data-chart-title="Highest price per Land Class(R/ha) sold in 12 months"></div>
       </div>
     </section>
     <section class="clearfix stat-row">
-      <div class="column-full-thirds">
+      <div class="column-full">
         <div id="chart-histogram-landsales-landsalesaverageprice" data-stat-type="number" data-chart-title="Number of hectares sold in 12 month"></div>
       </div>
     </section>
     <section class="clearfix stat-row">
-      <div class="column-full-thirds">
+      <div class="column-full">
         <div id="chart-histogram-landsales-landsalesaverageprice" data-stat-type="number" data-chart-title="Number of hectares sold in 12 month"></div>
       </div>
     </section> -->

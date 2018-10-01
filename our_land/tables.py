@@ -77,6 +77,17 @@ universe='Agricultural Land Sales', year='2016', value_type='Float', has_total=F
 FieldTable(['class'], id='landsalesdistributionhectares', dataset='Land Sales',
  universe='Agricultural Land Sales', year='2016', has_total=False)
 
+FieldTable(['town_name','class'], id='towndistrictdistributiontransactions', dataset='Land Sales',
+ universe='Agricultural Land Sales', year='2016', value_type='Float', has_total=False)
+
+FieldTable(['town_name', 'class'], id='towndistrictdistributionpricetrends', dataset='Land Sales',
+universe='Agricultural Land Sales', year='2016', value_type='Float', has_total=False)
+
+FieldTable(['town_name','class'], id='towndistrictdistributionhectares', dataset='Land Sales',
+universe='Agricultural Land Sales', year='2016', value_type='Float', has_total=False)
+
+FieldTable(['town_name', 'class'], id='towndistrictdistributionavgprice', dataset='Land Sales',
+universe='Agricultural Land Sales', year='2016', value_type='Float', has_total=False)
 # FieldTable(['town name', 'class (R/ha)', 'number_of_transactions',
 # 'total hectares traded in 12 months', 'lowest price per hectares (R/ha) in 12 months',
 #  'highest price per hectares (R/ha) in 12 months', 'average price per hectares (R/ha) in 12 months',

@@ -40,166 +40,166 @@ ALTER TABLE public.landsalesdistributionaveragetrends OWNER TO our_land;
 --
 
 COPY public.landsalesdistributionaveragetrends (geo_level, geo_code, geo_version, class, total) FROM stdin;
-country	ZA	2016	less than 1 500	-3
-country	ZA	2016	1 501 - 3 000	0
-country	ZA	2016	3 001 - 5 000	0.2
-country	ZA	2016	5 001 - 10 000	-0.4
-country	ZA	2016	10 001 - 20 000	-0.1
-country	ZA	2016	20 001 - 30 000	0.2
-country	ZA	2016	30 001 - 40 000	0
-country	ZA	2016	40 001 - 50 000	0
-country	ZA	2016	50 001 - 100 000	0
-country	ZA	2016	100 001 - 150 000	-0.2
-country	ZA	2016	150 001 - 200 000	-0.3
-country	ZA	2016	200 001 - 300 000	-0.2
-country	ZA	2016	300 001 - 500 000	0.4
-country	ZA	2016	500 001 - 800 000	0.6
-country	ZA	2016	800 001 - 1 000 000	0.5
-country	ZA	2016	greater than 1 000 000	-19.3
-province	EC	2016	less than 1 500	-1.7
-province	EC	2016	1 501 - 3 000	-0.8
-province	EC	2016	3 001 - 5 000	1.7
-province	EC	2016	5 001 - 10 000	-0.8
-province	EC	2016	10 001 - 20 000	-0.8
-province	EC	2016	20 001 - 30 000	-0.1
-province	EC	2016	30 001 - 40 000	1.4
-province	EC	2016	40 001 - 50 000	0.3
-province	EC	2016	50 001 - 100 000	1.3
-province	EC	2016	100 001 - 150 000	1.6
-province	EC	2016	150 001 - 200 000	-2
-province	EC	2016	200 001 - 300 000	0.7
-province	EC	2016	300 001 - 500 000	1.7
-province	EC	2016	500 001 - 800 000	-9.8
-province	EC	2016	800 001 - 1 000 000	\N
-province	EC	2016	greater than 1 000 000	\N
-province	FS	2016	less than 1 500	-7.2
-province	FS	2016	1 501 - 3 000	-1
-province	FS	2016	3 001 - 5 000	1.4
-province	FS	2016	5 001 - 10 000	-1.3
-province	FS	2016	10 001 - 20 000	-0.5
-province	FS	2016	20 001 - 30 000	-0.9
-province	FS	2016	30 001 - 40 000	-0.1
-province	FS	2016	40 001 - 50 000	-1.6
-province	FS	2016	50 001 - 100 000	-1.6
-province	FS	2016	100 001 - 150 000	0.3
-province	FS	2016	150 001 - 200 000	-1.5
-province	FS	2016	200 001 - 300 000	-1.6
-province	FS	2016	300 001 - 500 000	-8.5
-province	FS	2016	500 001 - 800 000	\N
-province	FS	2016	800 001 - 1 000 000	\N
-province	FS	2016	greater than 1 000 000	\N
-province	GT	2016	less than 1 500	3.8
-province	GT	2016	1 501 - 3 000	\N
-province	GT	2016	3 001 - 5 000	0.2
-province	GT	2016	5 001 - 10 000	-2.2
-province	GT	2016	10 001 - 20 000	0.8
-province	GT	2016	20 001 - 30 000	0.4
-province	GT	2016	30 001 - 40 000	0.1
-province	GT	2016	40 001 - 50 000	-0.3
-province	GT	2016	50 001 - 100 000	1.8
-province	GT	2016	100 001 - 150 000	1
-province	GT	2016	150 001 - 200 000	0
-province	GT	2016	200 001 - 300 000	0.7
-province	GT	2016	300 001 - 500 000	-1.6
-province	GT	2016	500 001 - 800 000	-0.8
-province	GT	2016	800 001 - 1 000 000	\N
-province	GT	2016	greater than 1 000 000	-2.2
-province	KZN	2016	less than 1 500	-11.6
-province	KZN	2016	1 501 - 3 000	3.6
-province	KZN	2016	3 001 - 5 000	1.3
-province	KZN	2016	5 001 - 10 000	0.7
-province	KZN	2016	10 001 - 20 000	-0.2
-province	KZN	2016	20 001 - 30 000	-0.6
-province	KZN	2016	30 001 - 40 000	-0.5
-province	KZN	2016	40 001 - 50 000	0.2
-province	KZN	2016	50 001 - 100 000	0
-province	KZN	2016	100 001 - 150 000	-0.4
-province	KZN	2016	150 001 - 200 000	0.8
-province	KZN	2016	200 001 - 300 000	-0.1
-province	KZN	2016	300 001 - 500 000	0.7
-province	KZN	2016	500 001 - 800 000	1.9
-province	KZN	2016	800 001 - 1 000 000	\N
-province	KZN	2016	greater than 1 000 000	-21.8
-province	LIM	2016	less than 1 500	13.8
-province	LIM	2016	1 501 - 3 000	2
-province	LIM	2016	3 001 - 5 000	-0.8
-province	LIM	2016	5 001 - 10 000	-1.4
-province	LIM	2016	10 001 - 20 000	-0.1
-province	LIM	2016	20 001 - 30 000	-0.7
-province	LIM	2016	30 001 - 40 000	-0.5
-province	LIM	2016	40 001 - 50 000	-0.2
-province	LIM	2016	50 001 - 100 000	0.8
-province	LIM	2016	100 001 - 150 000	-1.9
-province	LIM	2016	150 001 - 200 000	0
-province	LIM	2016	200 001 - 300 000	-1.4
-province	LIM	2016	300 001 - 500 000	-0.4
-province	LIM	2016	500 001 - 800 000	3.9
-province	LIM	2016	800 001 - 1 000 000	\N
-province	LIM	2016	greater than 1 000 000	\N
-province	MP	2016	less than 1 500	\N
-province	MP	2016	1 501 - 3 000	2.5
-province	MP	2016	3 001 - 5 000	1.1
-province	MP	2016	5 001 - 10 000	0.3
-province	MP	2016	10 001 - 20 000	0.9
-province	MP	2016	20 001 - 30 000	2
-province	MP	2016	30 001 - 40 000	1.3
-province	MP	2016	40 001 - 50 000	-0.1
-province	MP	2016	50 001 - 100 000	-1
-province	MP	2016	100 001 - 150 000	0.7
-province	MP	2016	150 001 - 200 000	2
-province	MP	2016	200 001 - 300 000	0.8
-province	MP	2016	300 001 - 500 000	0.4
-province	MP	2016	500 001 - 800 000	1.6
-province	MP	2016	800 001 - 1 000 000	\N
-province	MP	2016	greater than 1 000 000	\N
-province	NC	2016	less than 1 500	-2.9
-province	NC	2016	1 501 - 3 000	-0.7
-province	NC	2016	3 001 - 5 000	-1.4
-province	NC	2016	5 001 - 10 000	1.1
-province	NC	2016	10 001 - 20 000	0.5
-province	NC	2016	20 001 - 30 000	\N
-province	NC	2016	30 001 - 40 000	\N
-province	NC	2016	40 001 - 50 000	\N
-province	NC	2016	50 001 - 100 000	-2.5
-province	NC	2016	100 001 - 150 000	-0.9
-province	NC	2016	150 001 - 200 000	-0.6
-province	NC	2016	200 001 - 300 000	0.3
-province	NC	2016	300 001 - 500 000	0.1
-province	NC	2016	500 001 - 800 000	-2.9
-province	NC	2016	800 001 - 1 000 000	\N
-province	NC	2016	greater than 1 000 000	\N
-province	NW	2016	less than 1 500	13.4
-province	NW	2016	1 501 - 3 000	1.2
-province	NW	2016	3 001 - 5 000	-0.2
-province	NW	2016	5 001 - 10 000	1.7
-province	NW	2016	10 001 - 20 000	-0.1
-province	NW	2016	20 001 - 30 000	-0.6
-province	NW	2016	30 001 - 40 000	0
-province	NW	2016	40 001 - 50 000	0.2
-province	NW	2016	50 001 - 100 000	-0.3
-province	NW	2016	100 001 - 150 000	0.7
-province	NW	2016	150 001 - 200 000	0.3
-province	NW	2016	200 001 - 300 000	1.9
-province	NW	2016	300 001 - 500 000	0.4
-province	NW	2016	500 001 - 800 000	-1.1
-province	NW	2016	800 001 - 1 000 000	0.1
-province	NW	2016	greater than 1 000 000	\N
-province	WC	2016	less than 1 500	0.2
-province	WC	2016	1 501 - 3 000	0.1
-province	WC	2016	3 001 - 5 000	0.7
-province	WC	2016	5 001 - 10 000	-0.8
-province	WC	2016	10 001 - 20 000	0
-province	WC	2016	20 001 - 30 000	0.8
-province	WC	2016	30 001 - 40 000	0.5
-province	WC	2016	40 001 - 50 000	-0.1
-province	WC	2016	50 001 - 100 000	-0.8
-province	WC	2016	100 001 - 150 000	-1
-province	WC	2016	150 001 - 200 000	0.5
-province	WC	2016	200 001 - 300 000	-0.5
-province	WC	2016	300 001 - 500 000	0.6
-province	WC	2016	500 001 - 800 000	-2.3
-province	WC	2016	800 001 - 1 000 000	\N
-province	WC	2016	greater than 1 000 000	6.6
+country	ZA	2016	Under 1.5K	-3
+country	ZA	2016	1,501-3K	0
+country	ZA	2016	3,001-5K	0.2
+country	ZA	2016	5,001-10K	-0.4
+country	ZA	2016	10,001-20K	-0.1
+country	ZA	2016	20,001-30K	0.2
+country	ZA	2016	30,001-40K	0
+country	ZA	2016	40,001-50K	0
+country	ZA	2016	50,001-100K	0
+country	ZA	2016	100,001-150K	-0.2
+country	ZA	2016	150,001-200K	-0.3
+country	ZA	2016	200,001-300K	-0.2
+country	ZA	2016	300,001-500K	0.4
+country	ZA	2016	500,001-800K	0.6
+country	ZA	2016	800,001-1M	0.5
+country	ZA	2016	Above 1M	-19.3
+province	EC	2016	Under 1.5K	-1.7
+province	EC	2016	1,501-3K	-0.8
+province	EC	2016	3,001-5K	1.7
+province	EC	2016	5,001-10K	-0.8
+province	EC	2016	10,001-20K	-0.8
+province	EC	2016	20,001-30K	-0.1
+province	EC	2016	30,001-40K	1.4
+province	EC	2016	40,001-50K	0.3
+province	EC	2016	50,001-100K	1.3
+province	EC	2016	100,001-150K	1.6
+province	EC	2016	150,001-200K	-2
+province	EC	2016	200,001-300K	0.7
+province	EC	2016	300,001-500K	1.7
+province	EC	2016	500,001-800K	-9.8
+province	EC	2016	800,001-1M	\N
+province	EC	2016	Above 1M	\N
+province	FS	2016	Under 1.5K	-7.2
+province	FS	2016	1,501-3K	-1
+province	FS	2016	3,001-5K	1.4
+province	FS	2016	5,001-10K	-1.3
+province	FS	2016	10,001-20K	-0.5
+province	FS	2016	20,001-30K	-0.9
+province	FS	2016	30,001-40K	-0.1
+province	FS	2016	40,001-50K	-1.6
+province	FS	2016	50,001-100K	-1.6
+province	FS	2016	100,001-150K	0.3
+province	FS	2016	150,001-200K	-1.5
+province	FS	2016	200,001-300K	-1.6
+province	FS	2016	300,001-500K	-8.5
+province	FS	2016	500,001-800K	\N
+province	FS	2016	800,001-1M	\N
+province	FS	2016	Above 1M	\N
+province	GT	2016	Under 1.5K	3.8
+province	GT	2016	1,501-3K	\N
+province	GT	2016	3,001-5K	0.2
+province	GT	2016	5,001-10K	-2.2
+province	GT	2016	10,001-20K	0.8
+province	GT	2016	20,001-30K	0.4
+province	GT	2016	30,001-40K	0.1
+province	GT	2016	40,001-50K	-0.3
+province	GT	2016	50,001-100K	1.8
+province	GT	2016	100,001-150K	1
+province	GT	2016	150,001-200K	0
+province	GT	2016	200,001-300K	0.7
+province	GT	2016	300,001-500K	-1.6
+province	GT	2016	500,001-800K	-0.8
+province	GT	2016	800,001-1M	\N
+province	GT	2016	Above 1M	-2.2
+province	KZN	2016	Under 1.5K	-11.6
+province	KZN	2016	1,501-3K	3.6
+province	KZN	2016	3,001-5K	1.3
+province	KZN	2016	5,001-10K	0.7
+province	KZN	2016	10,001-20K	-0.2
+province	KZN	2016	20,001-30K	-0.6
+province	KZN	2016	30,001-40K	-0.5
+province	KZN	2016	40,001-50K	0.2
+province	KZN	2016	50,001-100K	0
+province	KZN	2016	100,001-150K	-0.4
+province	KZN	2016	150,001-200K	0.8
+province	KZN	2016	200,001-300K	-0.1
+province	KZN	2016	300,001-500K	0.7
+province	KZN	2016	500,001-800K	1.9
+province	KZN	2016	800,001-1M	\N
+province	KZN	2016	Above 1M	-21.8
+province	LIM	2016	Under 1.5K	13.8
+province	LIM	2016	1,501-3K	2
+province	LIM	2016	3,001-5K	-0.8
+province	LIM	2016	5,001-10K	-1.4
+province	LIM	2016	10,001-20K	-0.1
+province	LIM	2016	20,001-30K	-0.7
+province	LIM	2016	30,001-40K	-0.5
+province	LIM	2016	40,001-50K	-0.2
+province	LIM	2016	50,001-100K	0.8
+province	LIM	2016	100,001-150K	-1.9
+province	LIM	2016	150,001-200K	0
+province	LIM	2016	200,001-300K	-1.4
+province	LIM	2016	300,001-500K	-0.4
+province	LIM	2016	500,001-800K	3.9
+province	LIM	2016	800,001-1M	\N
+province	LIM	2016	Above 1M	\N
+province	MP	2016	Under 1.5K	\N
+province	MP	2016	1,501-3K	2.5
+province	MP	2016	3,001-5K	1.1
+province	MP	2016	5,001-10K	0.3
+province	MP	2016	10,001-20K	0.9
+province	MP	2016	20,001-30K	2
+province	MP	2016	30,001-40K	1.3
+province	MP	2016	40,001-50K	-0.1
+province	MP	2016	50,001-100K	-1
+province	MP	2016	100,001-150K	0.7
+province	MP	2016	150,001-200K	2
+province	MP	2016	200,001-300K	0.8
+province	MP	2016	300,001-500K	0.4
+province	MP	2016	500,001-800K	1.6
+province	MP	2016	800,001-1M	\N
+province	MP	2016	Above 1M	\N
+province	NC	2016	Under 1.5K	-2.9
+province	NC	2016	1,501-3K	-0.7
+province	NC	2016	3,001-5K	-1.4
+province	NC	2016	5,001-10K	1.1
+province	NC	2016	10,001-20K	0.5
+province	NC	2016	20,001-30K	\N
+province	NC	2016	30,001-40K	\N
+province	NC	2016	40,001-50K	\N
+province	NC	2016	50,001-100K	-2.5
+province	NC	2016	100,001-150K	-0.9
+province	NC	2016	150,001-200K	-0.6
+province	NC	2016	200,001-300K	0.3
+province	NC	2016	300,001-500K	0.1
+province	NC	2016	500,001-800K	-2.9
+province	NC	2016	800,001-1M	\N
+province	NC	2016	Above 1M	\N
+province	NW	2016	Under 1.5K	13.4
+province	NW	2016	1,501-3K	1.2
+province	NW	2016	3,001-5K	-0.2
+province	NW	2016	5,001-10K	1.7
+province	NW	2016	10,001-20K	-0.1
+province	NW	2016	20,001-30K	-0.6
+province	NW	2016	30,001-40K	0
+province	NW	2016	40,001-50K	0.2
+province	NW	2016	50,001-100K	-0.3
+province	NW	2016	100,001-150K	0.7
+province	NW	2016	150,001-200K	0.3
+province	NW	2016	200,001-300K	1.9
+province	NW	2016	300,001-500K	0.4
+province	NW	2016	500,001-800K	-1.1
+province	NW	2016	800,001-1M	0.1
+province	NW	2016	Above 1M	\N
+province	WC	2016	Under 1.5K	0.2
+province	WC	2016	1,501-3K	0.1
+province	WC	2016	3,001-5K	0.7
+province	WC	2016	5,001-10K	-0.8
+province	WC	2016	10,001-20K	0
+province	WC	2016	20,001-30K	0.8
+province	WC	2016	30,001-40K	0.5
+province	WC	2016	40,001-50K	-0.1
+province	WC	2016	50,001-100K	-0.8
+province	WC	2016	100,001-150K	-1
+province	WC	2016	150,001-200K	0.5
+province	WC	2016	200,001-300K	-0.5
+province	WC	2016	300,001-500K	0.6
+province	WC	2016	500,001-800K	-2.3
+province	WC	2016	800,001-1M	\N
+province	WC	2016	Above 1M	6.6
 \.
 
 
