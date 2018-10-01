@@ -39,11 +39,15 @@ DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
 # Localise this instance of OUR_LAND
 OUR_LAND['name'] = 'OurLand'
 OUR_LAND['url'] = 'https://ourland.hurumap.org'
-OUR_LAND['description'] = 'gives infomediaries like journalists '\
-'and civic activists an easy \'plug & play\' toolkit for finding and embedding '\
+OUR_LAND['description'] = 'is a joint project of City Press, Rapport, '\
+'Landbou Weekblad and Code for Africa. The data site gives infomediaries like '\
+'journalists and civic activists an easy toolkit for finding and embedding '\
 'interactive data visualizations into their storytelling on land ownership '\
-'in South Africa. Land ownership is a slow-burn issue in South Africa that will '\
-'continue to shape the national discourse and economy for decades to come.'
+'in South Africa. The data that informs the land ownership debate is often '\
+'contested and incomplete,  We will keep sourcing, cleaning and adding data '\
+'sets to this site, and work towards becoming the authoritative data source on this issue.'
+
+OUR_LAND['title_tagline'] = 'Who owns the land in South Africa'
 
 OUR_LAND['facebook'] = 'CodeForAfrica'
 OUR_LAND['twitter'] = '@Code4Africa'

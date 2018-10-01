@@ -21,13 +21,15 @@
                     </span>
           </div>
           <ul>
-            <li><a href="#farm-land"><i class="fa fa-check"></i>
+            <!-- <li><a href="#farm-land"><i class="fa fa-check"></i>
               <span>Farms & Agricultural Land</span></a></li>
             <li><a href="#erven-land"><i class="fa fa-home"></i>
               <span>Erven & Urban Land</span></a></li>
             <li><a href="#sectional-title-land"><i class="fa fa-user"></i>
-              <span>Sectional Title Land</span></a></li>
-              <li><a href="#redistribution-restitution"><i class="fa fa-user"></i>
+              <span>Sectional Title Land</span></a></li> -->
+              <li><a href="#agricultural-land-sales"><i class="fa fa-money"></i>
+                <span>Sales of Agricultural Land</span></a></li>
+              <li><a href="#redistribution-restitution"><i class="fa fa-check"></i>
                 <span>Land Redistribution and Restitution</span></a></li>
           </ul>
         </div>
@@ -83,6 +85,7 @@
                 <td class="name" colspan="2">{{towndetails.town_name}}</td>
                 <td class="name" colspan="2">{{towndetails.class}}</td>
                 <td class="name" colspan="2">{{towndetails.number_of_transactions}}</td>
+                <td class="name" colspan="2">{{towndetails.total_hecatres}}</td>
                 <td class="name" colspan="2">{{towndetails.average_price_per_hectares}}</td>
             </tr>
             {% endfor %}
@@ -96,7 +99,7 @@
 {% endif %}
 
 {% if not landsales.landsalestransaction.is_missing or not landsales.landsaleshectares.is_missing %}
-<article id="redistribution-restitution" class="clearfix">
+<article id="agricultural-land-sales" class="clearfix">
   <header class="section-contents">
       <h1>Agricultural Land Sales</h1>
   </header>
@@ -125,12 +128,12 @@
         <div id="chart-histogram-landsales-landsalesaverageprice" data-stat-type="number" data-chart-title="Number of hectares sold in 12 months per Land Class in (R/ha)"></div>
       </div>
     </section>
-    <!-- <section class="clearfix stat-row">
+    <section class="clearfix stat-row">
       <div class="column-full-thirds">
-        <div id="chart-histogram-landsales-landsalesaveragetrends" data-stat-type="number" data-chart-title="Average trends in 12 months per Land Class"></div>
+        <div id="chart-histogram-landsales-landsalespricetrends" data-stat-type="number" data-chart-title="Average Price trends in 12 months per Land Class"></div>
       </div>
     </section>
-    <section class="clearfix stat-row">
+  <!--   <section class="clearfix stat-row">
       <div class="column-full-thirds">
         <div id="chart-histogram-landsales-landsaleslowestprice" data-stat-type="number" data-chart-title="Lowest price per Land Class(R/ha) sold in 12 months"></div>
       </div>
@@ -154,13 +157,13 @@
 </article>
 {% endif %}
 {% if not farmland.private_land_ownership_in_hectares_per_category.is_missing or not farmland.number_of_private_land_owners_by_category.is_missing %}
-  <article id="farm-land" class="clearfix">
+  <!-- <article id="farm-land" class="clearfix">
       <header class="section-contents">
           <h1>Individual Land</h1>
       </header>
       <div class="section-container">
         <section class="clearfix stat-row">
-          <aside style="float:left;margin-left:-14.4em;width:13em;padding:.25em .67em .67em 1.1em;">
+          <aside style="font-size: 14px;margin-left:-16.4em;width:14.4em;">
             <br/>
             <br/>
             CBOs,Community-Based Organisations, includes non-governmental organizations, churches, etc.
@@ -173,7 +176,7 @@
             </div>
         </section>
         <section class="clearfix stat-row">
-          <aside style="float:left;margin-left:-14.4em;width:13em;padding:.25em .67em .67em 1.1em;">
+          <aside style="font-size: 14px;margin-left:-16.4em;width:14.4em;">
             <br/>
             Co-ownership: Land owned by owners who are classified in different categories e.g. land parcel co-owned by Individual(s) and a Trusts, male and female, etc.
           </aside>
@@ -201,16 +204,16 @@
             </div>
         </section>
       </div>
-  </article>
+  </article> -->
 {% endif %}
 {% if not ervenland.erven_land_ownership_in_hectares_by_race.is_missing %}
-  <article id="erven-land" class="clearfix">
+  <!-- <article id="erven-land" class="clearfix">
       <header class="section-contents">
           <h1>Erven Land</h1>
       </header>
       <div class="section-container">
         <section class="clearfix stat-row">
-          <aside style="float:left;margin-left:-14.4em;width:13em;padding:.25em .67em .67em 1.1em;">
+          <aside style="font-size: 14px;margin-left:-16.4em;width:14.4em;">
             <br/>
             <br />
           Erven Land: legal term used in Namibia, South Africa and Swaziland to describe a piece of
@@ -224,7 +227,7 @@
             </div>
         </section>
         <section class="clearfix stat-row">
-          <aside style="float:left;margin-left:-14.4em;width:13em;padding:.25em .67em .67em 1.1em;">
+          <aside style="font-size: 14px;margin-left:-16.4em;width:14.4em;">
             Erven includes every defined portion,
             not intended to be a public place, of a piece of land laid out as a township,
             whether or not it has been formally recognized, approved or proclaimed as such.
@@ -245,20 +248,20 @@
             </div>
         </section>
       </div>
-  </article>
+  </article> -->
 {% endif %}
 {% if not sectionaltitleland.sectional_title_ownership_in_hectares_per_race.is_missing %}
-  <article id="sectional-title-land" class="clearfix">
+  <!-- <article id="sectional-title-land" class="clearfix">
     <header class="section-contents">
         <h1>Sectional Title Land</h1>
     </header>
     <div class="section-container">
       <section class="clearfix stat-row">
-        <aside style="float:left;margin-left:-14.4em;width:13em;padding:.25em .67em .67em 1.1em;">
+        <aside style="font-size: 14px;margin-left:-16.4em;width:14.4em;">
           <br/>
           <br/>
           Sectional Title Land: Separate ownership of units or sections within a complex or development
-        </aside style="float:left;margin-left:-14.4em;width:13em;padding:.25em .67em .67em 1.1em;">
+        </aside style="font-size: 14px;margin-left:-16.4em;width:14.4em;">
           <div class="column-half">
               <div id="chart-histogram-sectionaltitleland-sectional_title_ownership_in_hectares_per_category" data-stat-type="scaled-percentage" data-chart-title="Percent Number of Individual Sectional Title Ownership in Hectares by Category"></div>
           </div>
@@ -267,7 +270,7 @@
           </div>
       </section>
       <section class="clearfix stat-row">
-        <aside style="float:left;margin-left:-14.4em;width:13em;padding:.25em .67em .67em 1.1em;">
+        <aside style="font-size: 14px;margin-left:-16.4em;width:14.4em;">
           Trusts in terms of Trust Property Control Act, No 57 of 1988 <a href="http://www.justice.gov.za/legislation/acts/1988-57.pdf">the Trust Act</a>
         </aside>
           <div class="column-half">
@@ -294,7 +297,7 @@
           </div>
       </section>
     </div>
-  </article>
+  </article> -->
 {% endif %}
 {% if not redistributionandrestitution.hectarestransferredperprovincebyyear.is_missing %}
   <article id="redistribution-restitution" class="clearfix">
@@ -304,7 +307,7 @@
     <div class="section-container">
       <section class="clearfix stat-row">
         <h2 class="header-for-columns"><a class="permalink"> Land Redistribution Programme <i class="fa fa-link"></i></a></h2>
-        <aside style="float:left;margin-left:-14.4em;width:13em;padding:.25em .67em .67em 1.1em;">
+        <aside style="font-size: 14px;margin-left:-16.4em;width:14.4em;">
           <br />
           Following centuries of colonial rule and decades of apartheid rule,
           democratic South Africa set out to redistribute rights in land as a way
@@ -338,33 +341,33 @@
       </section>
       <section class="clearfix stat-row">
         <div class="column-full">
-            <div id="chart-column-redistributionandrestitution-redistributeprogrammebeneficiariesbyyear" data-chart-title="Beneficiaries Benefitted from the Redistribution Programme in the Financial Year 2009/2010 to 2017/2018"></div>
+            <div id="chart-column-redistributionandrestitution-redistributeprogrammebeneficiariesbyyear" data-chart-title="Beneficiaries Benefitted from Redistribution Programme in the Financial Year 2009/2010 to 2017/2018"></div>
         </div>
       </section>
       <section class="clearfix stat-row">
         <div class="column-full">
-            <div id="chart-column-redistributionandrestitution-redistributeprogrammehouseholdsbyyear" data-chart-title="Households Benefitted from the Redistribution Programme in the Financial Year 2009/2010 to 2017/2018"></div>
+            <div id="chart-column-redistributionandrestitution-redistributeprogrammehouseholdsbyyear" data-chart-title="Households Benefitted from Redistribution Programme in the Financial Year 2009/2010 to 2017/2018"></div>
         </div>
       </section>
       <section class="clearfix stat-row">
         <div class="column-full">
-          <div id="chart-column-redistributionandrestitution-femalepartybenefited" data-chart-title="Number of females benefited from thee Redistribution Programme in the Financial Year 2009/2010 to 2017/2018"></div>
+          <div id="chart-column-redistributionandrestitution-femalepartybenefited" data-chart-title="Number of females benefited from Redistribution Programme in the Financial Year 2009/2010 to 2017/2018"></div>
         </div>
       </section>
       <section class="clearfix stat-row">
         <div class="column-full">
-          <div id="chart-column-redistributionandrestitution-disabledpeoplepartybenefited" data-chart-title="Number of disabled people benefited from the Redistribution Programme in the Financial Year 2009/2010 to 2017/2018"></div>
+          <div id="chart-column-redistributionandrestitution-disabledpeoplepartybenefited" data-chart-title="Number of disabled people benefited from Redistribution Programme in the Financial Year 2009/2010 to 2017/2018"></div>
         </div>
       </section>
       <section class="clearfix stat-row">
         <div class="column-full">
-          <div id="chart-column-redistributionandrestitution-youthpartybenefited" data-chart-title="Number of youth benefited from the Redistribution Programme in the Financial Year 2009/2010 to 2017/2018"></div>
+          <div id="chart-column-redistributionandrestitution-youthpartybenefited" data-chart-title="Number of youth benefited from Redistribution Programme in the Financial Year 2009/2010 to 2017/2018"></div>
         </div>
 
       </section>
       <section class="clearfix stat-row">
         <h2 class="header-for-columns"><a class="permalink"> Land Restitution Programme <i class="fa fa-link"></i></a></h2>
-        <aside style="float:left;margin-left:-14.4em;width:13em;padding:.25em .67em .67em 1.1em;">
+        <aside style="font-size: 14px;margin-left:-16.4em;width:14.4em;">
           <br />
           Restitution of Land Rights is to offer a solution to people who had
           lost their land as a result of racially discriminatory practices such as forced removals.
