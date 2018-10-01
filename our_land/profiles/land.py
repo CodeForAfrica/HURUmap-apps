@@ -439,52 +439,83 @@ def get_landsales_profiles(geo, session):
 
 
 def districtdistribution(geo, session):
-    districtdist = towndistrictdistributiontransactions = LOCATIONNOTFOUND
+    districtdist = towndistrictdistributiontransactions = all_town = LOCATIONNOTFOUND
     towndistrictdistributionhectares = towndistrictdistributionavgprice = towndistrictdistributionpricetrends = LOCATIONNOTFOUND
     towndistrictdistributionhectares_tot = towndistrictdistributiontransactions_tot = 0
     dist = {}
+    towns = []
 
+    towndistrictdistributiontransactionsdata = towndistrictdistributionhectaresdata = LOCATIONNOTFOUND
+    towndistrictdistributionpricetrendsdata = towndistrictdistributionavgpricedata = LOCATIONNOTFOUND
     try:
-        towndistrictdistributiontransactions,towndistrictdistributiontransactions_tot = get_stat_data(
-            ['town_name', 'class'], geo, session,
+        all_town, _ = get_stat_data(
+            ['town_name'], geo, session,
             table_name= 'towndistrictdistributiontransactions',
             exclude_zero=True,
             percent=False)
+
+        for keys, townname in all_town.iteritems():
+            if keys != 'metadata':
+                towns.append(keys)
+        towndistrictdistributiontransactionsdata = towndistrictdistributionhectaresdata = {}
+        towndistrictdistributionpricetrendsdata = towndistrictdistributionavgpricedata = {}
+
+        for town in towns:
+            town_code = town.replace(' ', '_').replace('-', '_').replace('/', '_').replace('(','').replace(')','').lower()
+            towndistrictdistributiontransactionsdata[town_code] = LOCATIONNOTFOUND
+            towndistrictdistributionhectaresdata[town_code] = LOCATIONNOTFOUND
+            towndistrictdistributionavgpricedata[town_code] = LOCATIONNOTFOUND
+            towndistrictdistributionpricetrendsdata[town_code] = LOCATIONNOTFOUND
+
+            try:
+                towndistrictdistributiontransactionsdata[town_code], _ = get_stat_data(
+                    ['class'], geo, session,
+                    table_name= 'towndistrictdistributiontransactions',
+                    table_fields = ['town_name', 'class'],
+                    only={'town_name': [town]},
+                    exclude_zero=True,
+                    percent=False)
+            except LocationNotFound as e:
+                pass
+
+            try:
+                towndistrictdistributionhectaresdata[town_code], _ = get_stat_data(
+                    ['class'], geo, session,
+                    table_name= 'towndistrictdistributionhectares',
+                    table_fields = ['town_name', 'class'],
+                    only={'town_name': [town]},
+                    exclude_zero=True,
+                    percent=False)
+            except LocationNotFound as e:
+                pass
+
+            try:
+                towndistrictdistributionavgpricedata[town_code], _ = get_stat_data(
+                    ['class'], geo, session,
+                    table_name= 'towndistrictdistributionavgprice',
+                    table_fields = ['town_name', 'class'],
+                    only={'town_name': [town]},
+                    exclude_zero=True,
+                    percent=False)
+            except LocationNotFound as e:
+                pass
+
+            try:
+                towndistrictdistributionpricetrendsdata[town_code], _= get_stat_data(
+                    ['class'], geo, session,
+                    table_name= 'towndistrictdistributionpricetrends',
+                    table_fields = ['town_name', 'class'],
+                    only={'town_name': [town]},
+                    exclude_zero=True,
+                    percent=False)
+            except LocationNotFound as e:
+                pass
     except LocationNotFound as e:
         pass
 
-    try:
-        towndistrictdistributionhectares,towndistrictdistributionhectares_tot = get_stat_data(
-            ['town_name', 'class'], geo, session,
-            table_name= 'towndistrictdistributionhectares',
-            exclude_zero=True,
-            percent=False)
-    except LocationNotFound as e:
-        pass
-
-    try:
-        towndistrictdistributionavgprice,_ = get_stat_data(
-            ['town_name', 'class'], geo, session,
-            table_name= 'towndistrictdistributionavgprice',
-            table_fields=['class','town_name'],
-            exclude_zero=True,
-            percent=False)
-    except LocationNotFound as e:
-        pass
-
-    try:
-        towndistrictdistributionpricetrends,_= get_stat_data(
-            ['town_name', 'class'], geo, session,
-            table_name= 'towndistrictdistributionpricetrends',
-            exclude_zero=True,
-            percent=False)
-    except LocationNotFound as e:
-        pass
-
-
-    dist['towndistrictdistributiontransactions'] = towndistrictdistributiontransactions
-    dist['towndistrictdistributionhectares'] = towndistrictdistributionhectares
-    dist['towndistrictdistributionavgprice'] = towndistrictdistributionavgprice
-    dist['towndistrictdistributionpricetrends'] = towndistrictdistributionpricetrends
+    dist['towndistrictdistributiontransactionsdata'] = towndistrictdistributiontransactionsdata
+    dist['towndistrictdistributionhectaresdata'] = towndistrictdistributionhectaresdata
+    dist['towndistrictdistributionavgpricedata'] = towndistrictdistributionavgpricedata
+    dist['towndistrictdistributionpricetrendsdata'] = towndistrictdistributionpricetrendsdata
     districtdist = dist
     return districtdist
