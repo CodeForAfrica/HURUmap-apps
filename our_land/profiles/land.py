@@ -449,6 +449,9 @@ def districtdistribution(geo, session):
     districtdist = LOCATIONNOTFOUND
     dist = {}
     try:
+        # districtdistributiontable = get_datatable('landsalesdistrictdistribution')
+        # disttown, _ = districtdistributiontable.get_stat_data(geo,  ['town_name', 'number_of_transactions'], total='number_of_transactions', percent=False)
+        # print disttown
         #get towns
         districttown = session.query(Base.metadata.tables['landsalesdistrictdistribution'].c.town_name )\
                     .filter(Base.metadata.tables['landsalesdistrictdistribution'].c.geo_level == geo.geo_level)\
