@@ -102,7 +102,7 @@ def get_land_profile(geo, profile_name, request):
                         data['landsalescolour'], get_landsales_colour_profiles(comp_geo, session),
                             comp_geo.geo_level)
                 except KeyError as e:
-                    msg = "Error merging data into %s for land sale color from %s: KeyError: %s" % (
+                    msg = "Error merging data into %s for land sale colour from %s: KeyError: %s" % (
                         geo.geoid, comp_geo.geoid, e)
                     log.fatal(msg, exc_info=e)
                     raise ValueError(msg)
@@ -454,20 +454,20 @@ def get_landsales_profiles(geo, session):
 
 
 def get_landsales_colour_profiles(geo, session):
-    landsalescolorhectares = landsalescolorhectarespermonth = LOCATIONNOTFOUND
-    landsalescolorhectarespermonthperga = landsalescolorhectarespermonthpergu = LOCATIONNOTFOUND
-    landsalescolorhectarespermonthperot = landsalescolorhectarespermonthperpr = LOCATIONNOTFOUND
-    landsalescolorcostpermonth = landsalescolortattransactionpermonth = LOCATIONNOTFOUND
-    landsalescolorpricehecpermonth = LOCATIONNOTFOUND
-    landsalescolortransactionpermonthperga = landsalescolortransactionpermonthpergu = LOCATIONNOTFOUND
-    landsalescolortransactionpermonthperot = landsalescolortransactionpermonthperpr = LOCATIONNOTFOUND
+    landsalescolourhectares = landsalescolourhectarespermonth = LOCATIONNOTFOUND
+    landsalescolourhectarespermonthperga = landsalescolourhectarespermonthpergu = LOCATIONNOTFOUND
+    landsalescolourhectarespermonthperot = landsalescolourhectarespermonthperpr = LOCATIONNOTFOUND
+    landsalescolourcostpermonth = landsalescolourtattransactionpermonth = LOCATIONNOTFOUND
+    landsalescolourpricehecpermonth = LOCATIONNOTFOUND
+    landsalescolourtransactionpermonthperga = landsalescolourtransactionpermonthpergu = LOCATIONNOTFOUND
+    landsalescolourtransactionpermonthperot = landsalescolourtransactionpermonthperpr = LOCATIONNOTFOUND
 
-    landsalescolorhectares_tot = 0
-    landsalescolortransactions_tot = 0
-    landsalescolorcost_tot = 0
+    landsalescolourhectares_tot = 0
+    landsalescolourtransactions_tot = 0
+    landsalescolourcost_tot = 0
 
     try:
-        landsalescolorhectares, landsalescolorhectares_tot = get_stat_data (
+        landsalescolourhectares, landsalescolourhectares_tot = get_stat_data (
             ['land_breakdown'], geo, session,
             table_name='landsalessummaryhectarestcolour'
         )
@@ -475,7 +475,7 @@ def get_landsales_colour_profiles(geo, session):
         pass
 
     try:
-        landsalescolortransaction, landsalescolortransaction_tot = get_stat_data (
+        landsalescolourtransaction, landsalescolourtransaction_tot = get_stat_data (
             ['land_breakdown'], geo, session,
             table_name='landsalessummarytransactionscolour',
             only={'land_breakdown': ['Government Agriculture', 'Government Urban', 'Private', 'Other']}
@@ -484,7 +484,7 @@ def get_landsales_colour_profiles(geo, session):
         pass
 
     try:
-        landsalescolortattransaction, _ = get_stat_data (
+        landsalescolourtattransaction, _ = get_stat_data (
             ['land_breakdown'], geo, session,
             table_name='landsalessummarytransactionscolour',
             only={'land_breakdown': ['all', 'colour']}
@@ -493,7 +493,7 @@ def get_landsales_colour_profiles(geo, session):
         pass
 
     try:
-        landsalescolortattransactionpermonth, _ = get_stat_data (
+        landsalescolourtattransactionpermonth, _ = get_stat_data (
             ['month', 'land_breakdown'], geo, session,
             table_name='landsalessummarytransactionscolour',
             only={'land_breakdown': ['all', 'colour']},
@@ -502,10 +502,10 @@ def get_landsales_colour_profiles(geo, session):
     except LocationNotFound as e:
         pass
 
-    print landsalescolortattransactionpermonth
+    print landsalescolourtattransactionpermonth
 
     try:
-        landsalescolorhectarespermonth, _ = get_stat_data (
+        landsalescolourhectarespermonth, _ = get_stat_data (
             ['month'], geo, session,
             table_name='landsalessummaryhectarestcolour',
             key_order=('Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul')
@@ -514,7 +514,7 @@ def get_landsales_colour_profiles(geo, session):
         pass
 
     try:
-        landsalescolortransactionpermonth, _ = get_stat_data (
+        landsalescolourtransactionpermonth, _ = get_stat_data (
             ['month'], geo, session,
             table_name='landsalessummarytransactionscolour',
             key_order=('Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul')
@@ -523,7 +523,7 @@ def get_landsales_colour_profiles(geo, session):
         pass
 
     try:
-        landsalescolorcostpermonth, landsalescolorcost_tot = get_stat_data (
+        landsalescolourcostpermonth, landsalescolourcost_tot = get_stat_data (
             ['month'], geo, session,
             table_name='landsalessummarycosttcolour',
             key_order=('Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul')
@@ -532,7 +532,7 @@ def get_landsales_colour_profiles(geo, session):
         pass
 
     try:
-        landsalescolorpricehecpermonth, _ = get_stat_data (
+        landsalescolourpricehecpermonth, _ = get_stat_data (
             ['month'], geo, session,
             table_name='landsalessummarypricetcolour',
             key_order=('Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul')
@@ -541,7 +541,7 @@ def get_landsales_colour_profiles(geo, session):
         pass
 
     try:
-        landsalescolorhectarespermonthperga, _ = get_stat_data (
+        landsalescolourhectarespermonthperga, _ = get_stat_data (
             ['month'], geo, session,
             table_name='landsalessummaryhectarestcolour',
             only={'land_breakdown': ['Government Agriculture']},
@@ -551,7 +551,7 @@ def get_landsales_colour_profiles(geo, session):
         pass
 
     try:
-        landsalescolortransactionpermonthperga, _ = get_stat_data (
+        landsalescolourtransactionpermonthperga, _ = get_stat_data (
             ['month'], geo, session,
             table_name='landsalessummarytransactionscolour',
             only={'land_breakdown': ['Government Agriculture']},
@@ -561,7 +561,7 @@ def get_landsales_colour_profiles(geo, session):
         pass
 
     try:
-        landsalescolorhectarespermonthpergu, _ = get_stat_data (
+        landsalescolourhectarespermonthpergu, _ = get_stat_data (
             ['month'], geo, session,
             table_name='landsalessummaryhectarestcolour',
             only={'land_breakdown': ['Government Urban']},
@@ -571,7 +571,7 @@ def get_landsales_colour_profiles(geo, session):
         pass
 
     try:
-        landsalescolortransactionpermonthpergu, _ = get_stat_data (
+        landsalescolourtransactionpermonthpergu, _ = get_stat_data (
             ['month'], geo, session,
             table_name='landsalessummarytransactionscolour',
             only={'land_breakdown': ['Government Urban']},
@@ -581,7 +581,7 @@ def get_landsales_colour_profiles(geo, session):
         pass
 
     try:
-        landsalescolorhectarespermonthperpr, _ = get_stat_data (
+        landsalescolourhectarespermonthperpr, _ = get_stat_data (
             ['month'], geo, session,
             table_name='landsalessummaryhectarestcolour',
             only={'land_breakdown': ['Private']},
@@ -590,7 +590,7 @@ def get_landsales_colour_profiles(geo, session):
     except LocationNotFound as e:
         pass
     try:
-        landsalescolortransactionpermonthperpr, _ = get_stat_data (
+        landsalescolourtransactionpermonthperpr, _ = get_stat_data (
             ['month'], geo, session,
             table_name='landsalessummarytransactionscolour',
             only={'land_breakdown': ['Private']},
@@ -600,7 +600,7 @@ def get_landsales_colour_profiles(geo, session):
         pass
 
     try:
-        landsalescolorhectarespermonthperot, _ = get_stat_data (
+        landsalescolourhectarespermonthperot, _ = get_stat_data (
             ['month'], geo, session,
             table_name='landsalessummaryhectarestcolour',
             only={'land_breakdown': ['Other']},
@@ -610,7 +610,7 @@ def get_landsales_colour_profiles(geo, session):
         pass
 
     try:
-        landsalescolortransactionpermonthperot, _ = get_stat_data (
+        landsalescolourtransactionpermonthperot, _ = get_stat_data (
             ['month'], geo, session,
             table_name='landsalessummarytransactionscolour',
             only={'land_breakdown': ['Other']},
@@ -620,30 +620,30 @@ def get_landsales_colour_profiles(geo, session):
         pass
 
     return {
-        'landsalescolorhectares': landsalescolorhectares,
-        'landsalescolortransaction': landsalescolortransaction,
-        'landsalescolortattransaction': landsalescolortattransaction,
-        'landsalescolortattransactionpermonth': landsalescolortattransactionpermonth,
-        'landsalescolorpricehecpermonth': landsalescolorpricehecpermonth,
-        'landsalescolorcostpermonth': landsalescolorcostpermonth,
-        'landsalescolortransactionpermonth': landsalescolortransactionpermonth,
-        'landsalescolorhectarespermonth': landsalescolorhectarespermonth,
-        'landsalescolorhectarespermonthperpr': landsalescolorhectarespermonthperpr,
-        'landsalescolorhectarespermonthperga': landsalescolorhectarespermonthperga,
-        'landsalescolorhectarespermonthpergu': landsalescolorhectarespermonthpergu,
-        'landsalescolorhectarespermonthperot': landsalescolorhectarespermonthperot,
-        'landsalescolortransactionpermonthperpr': landsalescolortransactionpermonthperpr,
-        'landsalescolortransactionpermonthperga': landsalescolortransactionpermonthperga,
-        'landsalescolortransactionpermonthpergu': landsalescolortransactionpermonthpergu,
-        'landsalescolortransactionpermonthperot': landsalescolortransactionpermonthperot,
-        'landsalescolorhectares_stat': { "name": "Total hectares (Ha) traded from Aug 2017/July8 for transaction of color",
-                                         "values": {"this": landsalescolorhectares_tot},
+        'landsalescolourhectares': landsalescolourhectares,
+        'landsalescolourtransaction': landsalescolourtransaction,
+        'landsalescolourtattransaction': landsalescolourtattransaction,
+        'landsalescolourtattransactionpermonth': landsalescolourtattransactionpermonth,
+        'landsalescolourpricehecpermonth': landsalescolourpricehecpermonth,
+        'landsalescolourcostpermonth': landsalescolourcostpermonth,
+        'landsalescolourtransactionpermonth': landsalescolourtransactionpermonth,
+        'landsalescolourhectarespermonth': landsalescolourhectarespermonth,
+        'landsalescolourhectarespermonthperpr': landsalescolourhectarespermonthperpr,
+        'landsalescolourhectarespermonthperga': landsalescolourhectarespermonthperga,
+        'landsalescolourhectarespermonthpergu': landsalescolourhectarespermonthpergu,
+        'landsalescolourhectarespermonthperot': landsalescolourhectarespermonthperot,
+        'landsalescolourtransactionpermonthperpr': landsalescolourtransactionpermonthperpr,
+        'landsalescolourtransactionpermonthperga': landsalescolourtransactionpermonthperga,
+        'landsalescolourtransactionpermonthpergu': landsalescolourtransactionpermonthpergu,
+        'landsalescolourtransactionpermonthperot': landsalescolourtransactionpermonthperot,
+        'landsalescolourhectares_stat': { "name": "Total hectares (Ha) traded from Aug 2017/July8 for transaction of colour",
+                                         "values": {"this": landsalescolourhectares_tot},
                                         },
-        'landsalescolorcost_stat': { "name": "Total Cost in R (million) traded from Aug 2017/July8 for transaction of color",
-                                         "values": {"this": landsalescolorcost_tot},
+        'landsalescolourcost_stat': { "name": "Total Cost in R (million) traded from Aug 2017/July8 for transaction of colour",
+                                         "values": {"this": landsalescolourcost_tot},
                                         },
-        'landsalescolortransaction_stat': { "name": "Total transactions traded from Aug 2017/July8 for transaction of color",
-                                         "values": {"this": landsalescolortransaction_tot},
+        'landsalescolourtransaction_stat': { "name": "Total transactions traded from Aug 2017/July8 for transaction of colour",
+                                         "values": {"this": landsalescolourtransaction_tot},
                                         }
 
         }

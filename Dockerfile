@@ -5,16 +5,16 @@ MAINTAINER Code for Africa
 
 # Set env variables used in this Dockerfile
 # Local directory with project source
-ENV OUR_LAND_SRC=.
+ENV HURUMAP_APP_SRC=.
 # Directory in container for all project files
-ENV OUR_LAND_SRVHOME=/src
+ENV HURUMAP_APP_SRVHOME=/src
 # Directory in container for project source files
-ENV OUR_LAND_SRVPROJ=/src/our_land
+ENV HURUMAP_APP_SRVPROJ=/src/our_land
 
 # Create application subdirectories
-WORKDIR $OUR_LAND_SRVHOME
+WORKDIR $HURUMAP_APP_SRVHOME
 RUN mkdir media static logs
-VOLUME ["$OUR_LAND_SRVHOME/media/", "$OUR_LAND_SRVHOME/logs/"]
+VOLUME ["$HURUMAP_APP_SRVHOME/media/", "$HURUMAP_APP_SRVHOME/logs/"]
 
 # Install Python dependencies
 COPY ./requirements.txt /
@@ -26,13 +26,13 @@ RUN pip install -q GDAL==2.1.3 --global-option=build_ext --global-option="-I/usr
 RUN pip install -q "Shapely>=1.5.13"
 
 # Add application source code to SRCDIR
-ADD $OUR_LAND_SRC $OUR_LAND_SRVPROJ
+ADD $HURUMAP_APP_SRC $HURUMAP_APP_SRVPROJ
 
 # Server
 EXPOSE 8000
 
 
 # Copy entrypoint script into the image
-WORKDIR $OUR_LAND_SRVPROJ
+WORKDIR $HURUMAP_APP_SRVPROJ
 COPY ./docker-entrypoint.sh /
 ENTRYPOINT ["/docker-entrypoint.sh"]

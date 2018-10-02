@@ -1,13 +1,15 @@
 {% load staticfiles %}
-<div class="column-two-thirds">
+<div class="column-full">
     <p class="smaller"><strong>{{ HURUMAP.name }}</strong> {{ HURUMAP.description }}
     </p>
     <p class="smaller">
-        The project is built on <a href="http://wazimap.readthedocs.org/" target="_blank" rel="noopener">Wazimap</a>, an open source platform by <a href="https://openup.org.za/" target="_blank" rel="noopener">OpenUp</a> and <a href="http://www.mediamonitoringafrica.org/" target="_blank" rel="noopener">Media Monitoring Africa</a> for making census data more understandable.
-    </p>
+      This project is build on software originally created by
+      the Knight Lab in the U.S.A. for their CensusReporter.org project,
+       which has been repurposed by  <a href="https://openup.org.za/" target="_blank" rel="noopener">OpenUp</a> and Media Monitoring Africa for
+        <a href="http://wazimap.readthedocs.org/" target="_blank" rel="noopener">Wazimap</a> in South Africa and by Code for Africa for HURUmap in Kenya, Tanzania, Uganda and Zambia.
     <br/>
 </div>
-<div class="column-third text-center">
+<!-- <div class="column-third text-center">
     <p>A project by:</p>
     {% block footer_branding %}
     <a href="https://codeforafrica.org/" target="_blank" rel="noopener">
@@ -22,4 +24,4 @@
                 <a href="https://codeforafrica.org/" target="_blank" rel="noopener">
                     <img src="{% static 'img/logos/cfafrica-white.png' %}" alt="Code for Africa" style="margin-top: 0;"></a>
     {% endblock %}
-</div>
+</div> -->
