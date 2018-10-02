@@ -636,7 +636,7 @@ def get_landsales_colour_profiles(geo, session):
         'landsalescolourtransactionpermonthperga': landsalescolourtransactionpermonthperga,
         'landsalescolourtransactionpermonthpergu': landsalescolourtransactionpermonthpergu,
         'landsalescolourtransactionpermonthperot': landsalescolourtransactionpermonthperot,
-        'landsalescolourhectares_stat': { "name": "Total hectares (Ha) traded from Aug 2017/July8 for transaction of colour",
+        'landsalescolourhectares_stat': { "name": "Total hectares (ha) traded from Aug 2017/July8 for transaction of colour",
                                          "values": {"this": landsalescolourhectares_tot},
                                         },
         'landsalescolourcost_stat': { "name": "Total Cost in R (million) traded from Aug 2017/July8 for transaction of colour",
