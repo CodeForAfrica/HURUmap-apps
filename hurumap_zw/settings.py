@@ -46,13 +46,8 @@ HURUMAP['levels'] = {
     },
     'district': {
         'plural': 'districts',
-        'children': ['ward'],
-    },
-    'ward': {
-        'plural': 'wards',
         'children': [],
     },
-
 }
 HURUMAP['comparative_levels'] = ['country', 'province']
 HURUMAP['geometry_data'] = {
@@ -67,7 +62,7 @@ HURUMAP['twitter'] = '@Code4Africa'
 
 HURUMAP['topics'] = OrderedDict()
 HURUMAP['map_zoom'] = 6
-HURUMAP['map_centre'] = [29.1549, 19.0154]
+HURUMAP['map_centre'] = [-19.0154, 29.1549]
 
 
 LOGGING['loggers']['hurumap_zw'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
