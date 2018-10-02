@@ -1,7 +1,5 @@
 gunicorn==19.8.1
 
-git+https://github.com/CodeForAfricaLabs/HURUmap.git@master#egg=hurumap
-
-Shapely>=1.5.13
+git+https://github.com/CodeForAfrica/HURUmap.git@master#egg=hurumap
 
 git+https://github.com/CodeForAfricaLabs/wazimap.git@master#egg=wazimap
