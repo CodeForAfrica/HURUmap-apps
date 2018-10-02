@@ -496,11 +496,13 @@ def get_landsales_colour_profiles(geo, session):
         landsalescolortattransactionpermonth, _ = get_stat_data (
             ['month', 'land_breakdown'], geo, session,
             table_name='landsalessummarytransactionscolour',
-            key_order={'land_breakdown': ['all', 'color']},
-            only={'land_breakdown': ['all', 'colour']}
+            only={'land_breakdown': ['all', 'colour']},
+            key_order={'month': MONTH, 'land_breakdown': ['All', 'Colour']}
         )
     except LocationNotFound as e:
         pass
+
+    print landsalescolortattransactionpermonth
 
     try:
         landsalescolorhectarespermonth, _ = get_stat_data (
