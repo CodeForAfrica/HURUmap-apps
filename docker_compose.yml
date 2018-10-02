@@ -1,0 +1,31 @@
+version: '3.3'
+
+services:
+  db:
+    image: postgres:9.5
+    ports:
+      - "54321:5432"
+    environment:
+      - POSTGRES_USER=hurumap_zw
+      - POSTGRES_PASSWORD=hurumap_zw
+      - POSTGRES_DB=hurumap_zw
+
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    volumes:
+      - ./:/src/hurumap_zw
+      - /static:/static
+    environment:
+      - DATABASE_URL=postgresql://hurumap_zw:hurumap_zw@db:5432/hurumap_zw
+      - DJANGO_SECRET_KEY=somethingsecret
+      - HURUMAP_URL='http://localhost:8000'
+      - PGHOST=db
+      - PGDATABASE=hurumap_zw
+      - PGUSER=hurumap_zw
+      - PGPASSWORD=hurumap_zw
+      - PYTHONDONTWRITEBYTECODE="True"
+      # - DJANGO_DEBUG=False  # For testing deploys
