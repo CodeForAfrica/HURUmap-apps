@@ -16,7 +16,6 @@ LANGUAGES = (
 
 USE_I18N = True
 
-TEMPLATE_CONTEXT_PROCESSORS = ('django.template.context_processors.i18n',) + TEMPLATE_CONTEXT_PROCESSORS
 # Tell Django where the project's translation files should be.
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),
