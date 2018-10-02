@@ -131,8 +131,7 @@
           data-stat-type="number"
           data-chart-title="Number of transactions in 12 months per land Class in (R/ha)"
           data-source-title="AGRIDS, 2018"
-          data-source-link="http://land.agrids.co.za/"
-          data-qualifier="Universe: {{town_data.metadata.universe }}"></div>
+          data-source-link="http://land.agrids.co.za/"></div>
       </div>
     </section>
     <section class="clearfix stat-row">
@@ -141,21 +140,19 @@
           data-stat-type="number"
           data-chart-title="Number of hectares sold in 12 month per land Class in (R/ha)"
           data-source-title="AGRIDS, 2018"
-          data-source-link="http://land.agrids.co.za/"
-          data-qualifier="Universe: {{town_data.metadata.universe }}"></div>
+          data-source-link="http://land.agrids.co.za/"></div>
       </div>
     </section>
     <section class="clearfix stat-row">
       <div class="column-full">
         <div id="chart-histogram-landsales-landsalesaverageprice"
           data-stat-type="number"
-          data-chart-title="Number of hectares sold in 12 months per Land Class in (R/ha)"
+          data-chart-title="Average price per hectares sold in 12 months per Land Class in (R/ha)"
           data-source-title="AGRIDS, 2018"
-          data-source-link="http://land.agrids.co.za/"
-          data-qualifier="Universe: {{town_data.metadata.universe }}"></div>
+          data-source-link="http://land.agrids.co.za/"></div>
       </div>
     </section>
-    <section class="clearfix stat-row">
+    <!-- <section class="clearfix stat-row">
       <div class="column-full">
         <div id="chart-histogram-landsales-landsalespricetrends"
           data-stat-type="number"
@@ -163,7 +160,124 @@
           data-source-title="AGRIDS, 2018"
           data-source-link="http://land.agrids.co.za/"></div>
       </div>
+    </section> -->
+  </div>
+</article>
+{% endif %}
+{% if not landsalescolour.landsalescolorhectares.is_missing %}
+<article id="agricultural-land-sales" class="clearfix">
+  <header class="section-contents">
+      <h1>Total Hectares traded for Land sales transactions of colour</h1>
+  </header>
+  <div class="section-container">
+    <section class="clearfix stat-row">
+      <div class="column-half">
+        {% include 'profile/_blocks/_stat_list.html' with stat=landsalescolour.landsalescolorhectares_stat stat_type='number' %}
+      </div>
+      <div class="column-half">
+        {% include 'profile/_blocks/_stat_list.html' with stat=landsalescolour.landsalescolortransaction_stat stat_type='number' %}
+      </div>
     </section>
+    <section class="clearfix stat-row">
+      <div class="column-half">
+        <div id="chart-pie-landsalescolour-landsalescolorhectares"
+          data-stat-type="number"
+          data-chart-title="Total hectares breakdown for transaction of colour for 12 months"
+          data-source-title="AGRIDS, 2018"
+          data-source-link="http://land.agrids.co.za/"></div>
+      </div>
+      <div class="column-half">
+        <div id="chart-pie-landsalescolour-landsalescolortransaction"
+          data-stat-type="number"
+          data-chart-title="Total transaction of colour for 12 months"
+          data-source-title="AGRIDS, 2018"
+          data-source-link="http://land.agrids.co.za/"></div>
+      </div>
+    </section>
+    <section>
+      <div class="column-half">
+        <div id="chart-column-landsalescolour-landsalescolortattransaction"
+          data-stat-type="number"
+          data-chart-title="Number of all transaction and number of transaction for colours"
+          data-source-title="AGRIDS, 2018"
+          data-source-link="http://land.agrids.co.za/"></div>
+      </div>
+      <div class="column-half">
+        {% include 'profile/_blocks/_stat_list.html' with stat=landsalescolour.landsalescolorcost_stat stat_type='number' %}
+      </div>
+    </section>
+    <section>
+      <div class="column-full">
+        <div id="chart-grouped_column-landsalescolour-landsalescolortattransactionpermonth"
+          data-stat-type="number"
+          data-chart-title="Number of all transaction and number of transaction for colours per month"
+          data-source-title="AGRIDS, 2018"
+          data-source-link="http://land.agrids.co.za/"></div>
+      </div>
+    </section>
+    <section>
+        <div class="column-half">
+          <div id="chart-grouped_column-landsalescolour-landsalescolorcostpermonth"
+            data-stat-type="number"
+            data-chart-title="Total cost for transaction of colour in each months"
+            data-source-title="AGRIDS, 2018"
+            data-source-link="http://land.agrids.co.za/"></div>
+        </div>
+    </section>
+    <section class="clearfix stat-row">
+        <div class="column-full">
+          <div id="chart-column-landsalescolour-landsalescolorhectarespermonth"
+            data-stat-type="number"
+            data-chart-title="Total hectares traded for transaction of colour in each months"
+            data-source-title="AGRIDS, 2018"
+            data-source-link="http://land.agrids.co.za/"></div>
+        </div>
+    </section>
+    <!-- <section class="clearfix stat-row">
+        <div class="column-full">
+          <div id="chart-grouped_column-landsalescolour-landsalescolorpricehecpermonth"
+            data-stat-type="number"
+            data-chart-title="Price per hectares for transaction of colour in each months"
+            data-source-title="AGRIDS, 2018"
+            data-source-link="http://land.agrids.co.za/"></div>
+        </div>
+    </section> -->
+    <!-- <section class="clearfix stat-row">
+        <div class="column-full">
+          <div id="chart-column-landsalescolour-landsalescolorhectarespermonthpergu"
+            data-stat-type="number"
+            data-chart-title="Government Urban: Hectares traded for transaction of colour in each months"
+            data-source-title="AGRIDS, 2018"
+            data-source-link="http://land.agrids.co.za/"></div>
+        </div>
+    </section>
+    <section class="clearfix stat-row">
+        <div class="column-full">
+          <div id="chart-column-landsalescolour-landsalescolorhectarespermonthperga"
+            data-stat-type="number"
+            data-chart-title="Government Agriculture: Hectares traded for transaction of colour in each months"
+            data-source-title="AGRIDS, 2018"
+            data-source-link="http://land.agrids.co.za/"></div>
+        </div>
+    </section>
+    <section class="clearfix stat-row">
+        <div class="column-full">
+          <div id="chart-column-landsalescolour-landsalescolorhectarespermonthperot"
+            data-stat-type="number"
+            data-chart-title="Other: Hectares traded for transaction of colour in each months"
+            data-source-title="AGRIDS, 2018"
+            data-source-link="http://land.agrids.co.za/"></div>
+        </div>
+    </section>
+    <section class="clearfix stat-row">
+        <div class="column-full">
+          <div id="chart-column-landsalescolour-landsalescolorhectarespermonthperpr"
+            data-stat-type="number"
+            data-chart-title="Private: Hectares traded for transaction of colour in each months"
+            data-source-title="AGRIDS, 2018"
+            data-source-link="http://land.agrids.co.za/"></div>
+        </div>
+    </section> -->
   </div>
 </article>
 {% endif %}

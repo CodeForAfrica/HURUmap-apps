@@ -77,6 +77,18 @@ universe='Agricultural Land Sales', year='2016', value_type='Float', has_total=F
 FieldTable(['class'], id='landsalesdistributionhectares', dataset='Land Sales',
  universe='Agricultural Land Sales', year='2016', has_total=False)
 
+FieldTable(['land_breakdown', 'month'], id='landsalessummaryhectarestcolour', dataset='Land Sales',
+  universe='Agricultural Land Sales', year='2016')
+
+FieldTable(['land_breakdown', 'month'], id='landsalessummarycosttcolour', dataset='Land Sales',
+  universe='Agricultural Land Sales', year='2016')
+
+FieldTable(['land_breakdown', 'month'], id='landsalessummarypricetcolour', dataset='Land Sales',
+   universe='Agricultural Land Sales', year='2016')
+
+FieldTable(['land_breakdown', 'month'], id='landsalessummarytransactionscolour', dataset='Land Sales',
+   universe='Agricultural Land Sales', year='2016')
+
 FieldTable(['town_name','class'], id='towndistrictdistributiontransactions', dataset='Land Sales',
  universe='Agricultural Land Sales', year='2016', value_type='Float', has_total=False)
 

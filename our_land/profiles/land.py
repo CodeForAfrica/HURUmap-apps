@@ -17,6 +17,8 @@ SECTIONS = settings.OUR_LAND.get('topics', {})
 
 LOCATIONNOTFOUND = {'is_missing': True, 'name': 'No Data Found', 'numerators': {'this': 0},
                     'values': {'this': 0}}
+
+MONTH = ['Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul']
 #
 # LAND_CLASS = OrderedDict()
 # LAND_CLASS[u'less than 1\xa0500'] = "Under 1,500"
@@ -92,6 +94,18 @@ def get_land_profile(geo, profile_name, request):
                     raise ValueError(msg)
 
         data['districtdistribution'] = districtdistribution(geo, session)
+        data['landsalescolour'] = get_landsales_colour_profiles (geo, session)
+        if not data['landsalescolour'] == LOCATIONNOTFOUND and (geo.geo_level == 'province' or  geo.geo_level == 'country'):
+            for comp_geo in comparative_geos:
+                try:
+                    merge_dicts(
+                        data['landsalescolour'], get_landsales_colour_profiles(comp_geo, session),
+                            comp_geo.geo_level)
+                except KeyError as e:
+                    msg = "Error merging data into %s for land sale color from %s: KeyError: %s" % (
+                        geo.geoid, comp_geo.geoid, e)
+                    log.fatal(msg, exc_info=e)
+                    raise ValueError(msg)
         return data
 
     finally:
@@ -438,6 +452,200 @@ def get_landsales_profiles(geo, session):
     return landsales
 
 
+
+def get_landsales_colour_profiles(geo, session):
+    landsalescolorhectares = landsalescolorhectarespermonth = LOCATIONNOTFOUND
+    landsalescolorhectarespermonthperga = landsalescolorhectarespermonthpergu = LOCATIONNOTFOUND
+    landsalescolorhectarespermonthperot = landsalescolorhectarespermonthperpr = LOCATIONNOTFOUND
+    landsalescolorcostpermonth = landsalescolortattransactionpermonth = LOCATIONNOTFOUND
+    landsalescolorpricehecpermonth = LOCATIONNOTFOUND
+    landsalescolortransactionpermonthperga = landsalescolortransactionpermonthpergu = LOCATIONNOTFOUND
+    landsalescolortransactionpermonthperot = landsalescolortransactionpermonthperpr = LOCATIONNOTFOUND
+
+    landsalescolorhectares_tot = 0
+    landsalescolortransactions_tot = 0
+    landsalescolorcost_tot = 0
+
+    try:
+        landsalescolorhectares, landsalescolorhectares_tot = get_stat_data (
+            ['land_breakdown'], geo, session,
+            table_name='landsalessummaryhectarestcolour'
+        )
+    except LocationNotFound as e:
+        pass
+
+    try:
+        landsalescolortransaction, landsalescolortransaction_tot = get_stat_data (
+            ['land_breakdown'], geo, session,
+            table_name='landsalessummarytransactionscolour',
+            only={'land_breakdown': ['Government Agriculture', 'Government Urban', 'Private', 'Other']}
+        )
+    except LocationNotFound as e:
+        pass
+
+    try:
+        landsalescolortattransaction, _ = get_stat_data (
+            ['land_breakdown'], geo, session,
+            table_name='landsalessummarytransactionscolour',
+            only={'land_breakdown': ['all', 'colour']}
+        )
+    except LocationNotFound as e:
+        pass
+
+    try:
+        landsalescolortattransactionpermonth, _ = get_stat_data (
+            ['month', 'land_breakdown'], geo, session,
+            table_name='landsalessummarytransactionscolour',
+            only={'land_breakdown': ['all', 'colour']}
+        )
+    except LocationNotFound as e:
+        pass
+
+    try:
+        landsalescolorhectarespermonth, _ = get_stat_data (
+            ['month'], geo, session,
+            table_name='landsalessummaryhectarestcolour',
+            key_order=('Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul')
+        )
+    except LocationNotFound as e:
+        pass
+
+    try:
+        landsalescolortransactionpermonth, _ = get_stat_data (
+            ['month'], geo, session,
+            table_name='landsalessummarytransactionscolour',
+            key_order=('Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul')
+        )
+    except LocationNotFound as e:
+        pass
+    try:
+        landsalescolorcostpermonth, landsalescolorcost_tot = get_stat_data (
+            ['month'], geo, session,
+            table_name='landsalessummarycosttcolour',
+            key_order=('Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul')
+        )
+    except LocationNotFound as e:
+        pass
+    try:
+        landsalescolorpricehecpermonth, _ = get_stat_data (
+            ['month'], geo, session,
+            table_name='landsalessummarypricetcolour',
+            key_order=('Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul')
+        )
+    except LocationNotFound as e:
+        pass
+
+    try:
+        landsalescolorhectarespermonthperga, _ = get_stat_data (
+            ['land_breakdown','month'], geo, session,
+            table_name='landsalessummaryhectarestcolour',
+            only={'land_breakdown': ['Government Agriculture']},
+            key_order={ 'month': MONTH}
+        )
+    except LocationNotFound as e:
+        pass
+
+    try:
+        landsalescolortransactionpermonthperga, _ = get_stat_data (
+            ['land_breakdown','month'], geo, session,
+            table_name='landsalessummarytransactionscolour',
+            only={'land_breakdown': ['Government Agriculture']},
+            key_order={ 'month': MONTH}
+        )
+    except LocationNotFound as e:
+        pass
+
+    try:
+        landsalescolorhectarespermonthpergu, _ = get_stat_data (
+            ['land_breakdown','month'], geo, session,
+            table_name='landsalessummaryhectarestcolour',
+            only={'land_breakdown': ['Government Urban']},
+            key_order={ 'month': MONTH}
+        )
+    except LocationNotFound as e:
+        pass
+
+    try:
+        landsalescolortransactionpermonthpergu, _ = get_stat_data (
+            ['land_breakdown','month'], geo, session,
+            table_name='landsalessummarytransactionscolour',
+            only={'land_breakdown': ['Government Urban']},
+            key_order={ 'month': MONTH}
+        )
+    except LocationNotFound as e:
+        pass
+
+    try:
+        landsalescolorhectarespermonthperpr, _ = get_stat_data (
+            ['land_breakdown','month'], geo, session,
+            table_name='landsalessummaryhectarestcolour',
+            only={'land_breakdown': ['Private']},
+            exclude_zero=True,
+            key_order={ 'month': MONTH}
+        )
+    except LocationNotFound as e:
+        pass
+    try:
+        landsalescolortransactionpermonthperpr, _ = get_stat_data (
+            ['land_breakdown','month'], geo, session,
+            table_name='landsalessummarytransactionscolour',
+            only={'land_breakdown': ['Private']},
+            exclude_zero=True,
+            key_order={ 'month': MONTH}
+        )
+    except LocationNotFound as e:
+        pass
+
+    try:
+        landsalescolorhectarespermonthperot, _ = get_stat_data (
+            ['land_breakdown','month'], geo, session,
+            table_name='landsalessummaryhectarestcolour',
+            only={'land_breakdown': ['Other']},
+            exclude_zero=True,
+            key_order={ 'month': MONTH}
+        )
+    except LocationNotFound as e:
+        pass
+
+    try:
+        landsalescolortransactionpermonthperot, _ = get_stat_data (
+            ['land_breakdown','month'], geo, session,
+            table_name='landsalessummarytransactionscolour',
+            only={'land_breakdown': ['Other']},
+            exclude_zero=True,
+            key_order={ 'month': MONTH}
+        )
+    except LocationNotFound as e:
+        pass
+
+    return {
+        'landsalescolorhectares': landsalescolorhectares,
+        'landsalescolortransaction': landsalescolortransaction,
+        'landsalescolortattransaction': landsalescolortattransaction,
+        'landsalescolortattransactionpermonth': landsalescolortattransactionpermonth,
+        'landsalescolorpricehecpermonth': landsalescolorpricehecpermonth,
+        'landsalescolorcostpermonth': landsalescolorcostpermonth,
+        'landsalescolortransactionpermonth': landsalescolortransactionpermonth,
+        'landsalescolorhectarespermonth': landsalescolorhectarespermonth,
+        'landsalescolorhectarespermonthperpr': landsalescolorhectarespermonthperpr,
+        'landsalescolorhectarespermonthperga': landsalescolorhectarespermonthperga,
+        'landsalescolorhectarespermonthpergu': landsalescolorhectarespermonthpergu,
+        'landsalescolorhectarespermonthperot': landsalescolorhectarespermonthperot,
+        'landsalescolortransactionpermonthperpr': landsalescolortransactionpermonthperpr,
+        'landsalescolortransactionpermonthperga': landsalescolortransactionpermonthperga,
+        'landsalescolortransactionpermonthpergu': landsalescolortransactionpermonthpergu,
+        'landsalescolortransactionpermonthperot': landsalescolortransactionpermonthperot,
+        'landsalescolorhectares_stat': { "name": "Total hectares (Ha) traded from Aug 2017/July8 for transaction of color",
+                                         "values": {"this": landsalescolorhectares_tot},
+                                        },
+        'landsalescolorcost_stat': { "name": "Total Cost in R (million) traded from Aug 2017/July8 for transaction of color",
+                                         "values": {"this": landsalescolorcost_tot},
+                                        },
+        'landsalescolortransaction_stat': { "name": "Total transactions traded from Aug 2017/July8 for transaction of color",
+                                         "values": {"this": landsalescolortransaction_tot},
+                                        }
+
+        }
 def districtdistribution(geo, session):
     districtdist = towndistrictdistributiontransactions = all_town = LOCATIONNOTFOUND
     towndistrictdistributionhectares = towndistrictdistributionavgprice = towndistrictdistributionpricetrends = LOCATIONNOTFOUND
