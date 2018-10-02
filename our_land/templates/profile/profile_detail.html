@@ -194,7 +194,7 @@
           data-source-link="http://land.agrids.co.za/"></div>
       </div>
     </section>
-    <section>
+    <section class="clearfix stat-row">
       <div class="column-half">
         <div id="chart-column-landsalescolour-landsalescolortattransaction"
           data-stat-type="number"
@@ -206,7 +206,7 @@
         {% include 'profile/_blocks/_stat_list.html' with stat=landsalescolour.landsalescolorcost_stat stat_type='number' %}
       </div>
     </section>
-    <section>
+    <section class="clearfix stat-row">
       <div class="column-full">
         <div id="chart-grouped_column-landsalescolour-landsalescolortattransactionpermonth"
           data-stat-type="number"
@@ -215,9 +215,9 @@
           data-source-link="http://land.agrids.co.za/"></div>
       </div>
     </section>
-    <section>
+    <section class="clearfix stat-row">
         <div class="column-half">
-          <div id="chart-grouped_column-landsalescolour-landsalescolorcostpermonth"
+          <div id="chart-column-landsalescolour-landsalescolorcostpermonth"
             data-stat-type="number"
             data-chart-title="Total cost for transaction of colour in each months"
             data-source-title="AGRIDS, 2018"
@@ -233,16 +233,16 @@
             data-source-link="http://land.agrids.co.za/"></div>
         </div>
     </section>
-    <!-- <section class="clearfix stat-row">
+    <section class="clearfix stat-row">
         <div class="column-full">
-          <div id="chart-grouped_column-landsalescolour-landsalescolorpricehecpermonth"
+          <div id="chart-column-landsalescolour-landsalescolorpricehecpermonth"
             data-stat-type="number"
             data-chart-title="Price per hectares for transaction of colour in each months"
             data-source-title="AGRIDS, 2018"
             data-source-link="http://land.agrids.co.za/"></div>
         </div>
-    </section> -->
-    <!-- <section class="clearfix stat-row">
+    </section>
+    <section class="clearfix stat-row">
         <div class="column-full">
           <div id="chart-column-landsalescolour-landsalescolorhectarespermonthpergu"
             data-stat-type="number"
@@ -277,7 +277,7 @@
             data-source-title="AGRIDS, 2018"
             data-source-link="http://land.agrids.co.za/"></div>
         </div>
-    </section> -->
+    </section>
   </div>
 </article>
 {% endif %}

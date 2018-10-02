@@ -518,6 +518,7 @@ def get_landsales_colour_profiles(geo, session):
         )
     except LocationNotFound as e:
         pass
+
     try:
         landsalescolorcostpermonth, landsalescolorcost_tot = get_stat_data (
             ['month'], geo, session,
@@ -526,6 +527,7 @@ def get_landsales_colour_profiles(geo, session):
         )
     except LocationNotFound as e:
         pass
+
     try:
         landsalescolorpricehecpermonth, _ = get_stat_data (
             ['month'], geo, session,
@@ -537,7 +539,7 @@ def get_landsales_colour_profiles(geo, session):
 
     try:
         landsalescolorhectarespermonthperga, _ = get_stat_data (
-            ['land_breakdown','month'], geo, session,
+            ['month'], geo, session,
             table_name='landsalessummaryhectarestcolour',
             only={'land_breakdown': ['Government Agriculture']},
             key_order={ 'month': MONTH}
@@ -547,7 +549,7 @@ def get_landsales_colour_profiles(geo, session):
 
     try:
         landsalescolortransactionpermonthperga, _ = get_stat_data (
-            ['land_breakdown','month'], geo, session,
+            ['month'], geo, session,
             table_name='landsalessummarytransactionscolour',
             only={'land_breakdown': ['Government Agriculture']},
             key_order={ 'month': MONTH}
@@ -557,7 +559,7 @@ def get_landsales_colour_profiles(geo, session):
 
     try:
         landsalescolorhectarespermonthpergu, _ = get_stat_data (
-            ['land_breakdown','month'], geo, session,
+            ['month'], geo, session,
             table_name='landsalessummaryhectarestcolour',
             only={'land_breakdown': ['Government Urban']},
             key_order={ 'month': MONTH}
@@ -567,7 +569,7 @@ def get_landsales_colour_profiles(geo, session):
 
     try:
         landsalescolortransactionpermonthpergu, _ = get_stat_data (
-            ['land_breakdown','month'], geo, session,
+            ['month'], geo, session,
             table_name='landsalessummarytransactionscolour',
             only={'land_breakdown': ['Government Urban']},
             key_order={ 'month': MONTH}
@@ -577,20 +579,18 @@ def get_landsales_colour_profiles(geo, session):
 
     try:
         landsalescolorhectarespermonthperpr, _ = get_stat_data (
-            ['land_breakdown','month'], geo, session,
+            ['month'], geo, session,
             table_name='landsalessummaryhectarestcolour',
             only={'land_breakdown': ['Private']},
-            exclude_zero=True,
             key_order={ 'month': MONTH}
         )
     except LocationNotFound as e:
         pass
     try:
         landsalescolortransactionpermonthperpr, _ = get_stat_data (
-            ['land_breakdown','month'], geo, session,
+            ['month'], geo, session,
             table_name='landsalessummarytransactionscolour',
             only={'land_breakdown': ['Private']},
-            exclude_zero=True,
             key_order={ 'month': MONTH}
         )
     except LocationNotFound as e:
@@ -598,10 +598,9 @@ def get_landsales_colour_profiles(geo, session):
 
     try:
         landsalescolorhectarespermonthperot, _ = get_stat_data (
-            ['land_breakdown','month'], geo, session,
+            ['month'], geo, session,
             table_name='landsalessummaryhectarestcolour',
             only={'land_breakdown': ['Other']},
-            exclude_zero=True,
             key_order={ 'month': MONTH}
         )
     except LocationNotFound as e:
@@ -609,10 +608,9 @@ def get_landsales_colour_profiles(geo, session):
 
     try:
         landsalescolortransactionpermonthperot, _ = get_stat_data (
-            ['land_breakdown','month'], geo, session,
+            ['month'], geo, session,
             table_name='landsalessummarytransactionscolour',
             only={'land_breakdown': ['Other']},
-            exclude_zero=True,
             key_order={ 'month': MONTH}
         )
     except LocationNotFound as e:
