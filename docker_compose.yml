@@ -6,9 +6,10 @@ services:
     ports:
       - "54321:5432"
     environment:
-      - POSTGRES_USER=hurumap_zw
-      - POSTGRES_PASSWORD=hurumap_zw
-      - POSTGRES_DB=hurumap_zw
+      - POSTGRES_USER=hurumap
+      - POSTGRES_PASSWORD=hurumap
+      - PGUSER=hurumap
+      - PGPASSWORD=hurumap
 
   web:
     build: .
@@ -17,15 +18,32 @@ services:
     depends_on:
       - db
     volumes:
-      - ./:/src/hurumap_zw
-      - /static:/static
+      - ./:/src/hurumap
     environment:
-      - DATABASE_URL=postgresql://hurumap_zw:hurumap_zw@db:5432/hurumap_zw
+      - DATABASE_URL=postgresql://hurumap:hurumap@db:5432/our_land
       - DJANGO_SECRET_KEY=somethingsecret
       - HURUMAP_URL='http://localhost:8000'
       - PGHOST=db
-      - PGDATABASE=hurumap_zw
-      - PGUSER=hurumap_zw
-      - PGPASSWORD=hurumap_zw
+      - PGDATABASE=our_land
+      - PGUSER=hurumap
+      - PGPASSWORD=hurumap
       - PYTHONDONTWRITEBYTECODE="True"
       # - DJANGO_DEBUG=False  # For testing deploys
+  
+  hurumap-zm:
+    build: ./hurumap_zm/
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    volumes:
+      - ./:/src/hurumap
+    environment:
+      - DATABASE_URL=postgresql://hurumap:hurumap@db:5432/hurumap_zm
+      - DJANGO_SECRET_KEY=somethingsecret
+      - HURUMAP_URL='http://localhost:8000'
+      - PGHOST=db
+      - PGDATABASE=hurumap_zm
+      - PGUSER=hurumap
+      - PGPASSWORD=hurumap
+      - PYTHONDONTWRITEBYTECODE="True"
