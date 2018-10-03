@@ -13,33 +13,21 @@ log = logging.getLogger(__name__)
 # ensure tables are loaded
 import our_land.tables  # noqa
 
-SECTIONS = settings.OUR_LAND.get('topics', {})
+SECTIONS = settings.HURUMAP.get('topics', {})
 
-LOCATIONNOTFOUND = {'is_missing': True, 'name': 'No Data Found', 'numerators': {'this': 0},
-                    'values': {'this': 0}}
+LOCATIONNOTFOUND = {'is_missing': True,
+                    'name': 'No Data Found',
+                    'numerators': {'this': 0},
+                    'values': {'this': 0}
+                    }
 
-MONTH = ['Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul']
-#
-# LAND_CLASS = OrderedDict()
-# LAND_CLASS[u'less than 1\xa0500'] = "Under 1,500"
-# LAND_CLASS[u'1\xa0501 - 3\xa0000'] = "1,500-3,000"
-# LAND_CLASS[u'3\xa0001 - 5\xa0000'] = "3,001-5,000"
-# LAND_CLASS[u'5\xa0001 - 10\xa0000'] = "5,001-10,000"
-# LAND_CLASS[u'10\xa0001 - 20\xa0000'] = "10,001-20,000"
-# LAND_CLASS[u'20\xa0001 - 30\xa0000'] = "20,001-30,000"
-# LAND_CLASS[u'30\xa0001 - 40\xa0000'] = "30,001-40,000"
-# LAND_CLASS[u'40\xa0001 - 50\xa0000'] = "40,001-50,000"
-# LAND_CLASS[u'50\xa0001 - 100\xa0000'] = "50,001-100,000"
-# LAND_CLASS[u'100\xa0001 - 150\xa0000'] = "100,001-150,000"
-# LAND_CLASS[u'150\xa0001 - 200\xa0000'] = "150,001-200,000"
-# LAND_CLASS[u'200\xa0001 - 300\xa0000'] = "200,001-300,000"
-# LAND_CLASS[u'300\xa0001 - 500\xa0000'] = "300,001-500,000"
-# LAND_CLASS[u'500\xa0001 - 800\xa0000'] = "500,001-800,000"
-# LAND_CLASS[u'800\xa0001 - 1\xa0000\xa0000'] = "800,001-1,000,000"
-# LAND_CLASS[u'greater than 1\xa0000\xa0000'] = "Above 1,000,000"
+MONTH = ['Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan',
+                    'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul']
 
-LAND_CLASS = [u'Under 1.5K',u'1,501-3K',u'3,001-5K',u'5,001-10K',u'10,001-20K',u'20,001-30K', u'30,001-40K',
-u'40,001-50K', u'50,001-100K',u'100,001-150K',u'150,001-200K',u'200,001-300K',u'300,001-500K',u'500,001-800K',u'800,001-1M',u'Above 1M']
+LAND_CLASS = [u'Under 1.5K',u'1,501-3K',u'3,001-5K',u'5,001-10K'
+    ,u'10,001-20K',u'20,001-30K', u'30,001-40K', u'40,001-50K', u'50,001-100K',
+    u'100,001-150K',u'150,001-200K',u'200,001-300K',u'300,001-500K',
+    u'500,001-800K',u'800,001-1M',u'Above 1M']
 
 
 def get_land_profile(geo, profile_name, request):
@@ -54,9 +42,9 @@ def get_land_profile(geo, profile_name, request):
             topic_name = SECTIONS[section]['topic']
             data[topic_name] = get_land_topic_profiles(geo, session, topic_name)
 
-            # get profiles for comparative geometries
-            if not data[topic_name] == LOCATIONNOTFOUND and (geo.geo_level == 'province' or  geo.geo_level == 'country'):
-                for comp_geo in comparative_geos:
+            # get profiles data for comparative geometries for land sections
+            for comp_geo in comparative_geos:
+                if not data[topic_name]['is_missing']:
                     try:
                         merge_dicts(
                             data[topic_name], get_land_topic_profiles(comp_geo, session, topic_name),
@@ -68,41 +56,47 @@ def get_land_profile(geo, profile_name, request):
                         raise ValueError(msg)
 
         data['landsales'] = get_landsales_profiles(geo, session)
-        if not data['landsales'] == LOCATIONNOTFOUND and (geo.geo_level == 'province' or  geo.geo_level == 'country'):
-            for comp_geo in comparative_geos:
-                try:
-                    merge_dicts(
-                        data['landsales'], get_landsales_profiles(comp_geo, session),
-                            comp_geo.geo_level)
-                except KeyError as e:
-                    msg = "Error merging data into %s for section landsale from %s: KeyError: %s" % (
-                        geo.geoid, comp_geo.geoid, e)
-                    log.fatal(msg, exc_info=e)
-                    raise ValueError(msg)
-
-        data['redistributionandrestitution'] = get_redistribution_and_restitution_profiles(geo, session)
-        if not data['redistributionandrestitution'] == LOCATIONNOTFOUND and (geo.geo_level == 'province' or  geo.geo_level == 'country'):
-            for comp_geo in comparative_geos:
-                try:
-                    merge_dicts(
-                        data['redistributionandrestitution'], get_redistribution_and_restitution_profiles(comp_geo, session),
-                            comp_geo.geo_level)
-                except KeyError as e:
-                    msg = "Error merging data into %s for section redistributionandrestitution from %s: KeyError: %s" % (
-                        geo.geoid, comp_geo.geoid, e)
-                    log.fatal(msg, exc_info=e)
-                    raise ValueError(msg)
-
+        data['redistributionandrestitution'] = get_redistributionrestitution_profiles(geo, session)
         data['districtdistribution'] = districtdistribution(geo, session)
         data['landsalescolour'] = get_landsales_colour_profiles (geo, session)
-        if not data['landsalescolour'] == LOCATIONNOTFOUND and (geo.geo_level == 'province' or  geo.geo_level == 'country'):
-            for comp_geo in comparative_geos:
+
+        for comp_geo in comparative_geos:
+            if not data['landsales']['is_missing']:
                 try:
                     merge_dicts(
-                        data['landsalescolour'], get_landsales_colour_profiles(comp_geo, session),
+                        data['landsales'],
+                        get_landsales_profiles(comp_geo, session),
                             comp_geo.geo_level)
                 except KeyError as e:
-                    msg = "Error merging data into %s for land sale colour from %s: KeyError: %s" % (
+                    msg = "Error merging data into %s for section landsale "\
+                        "from %s: KeyError: %s" % (
+                        geo.geoid, comp_geo.geoid, e)
+                    log.fatal(msg, exc_info=e)
+                    raise ValueError(msg)
+
+            if not data['redistributionandrestitution']['is_missing']:
+                try:
+                    merge_dicts(
+                        data['redistributionandrestitution'],
+                        get_redistributionrestitution_profiles(comp_geo, session),
+                            comp_geo.geo_level)
+                except KeyError as e:
+                    msg = "Error merging data into %s for section "\
+                        "redistributionandrestitution from %s: KeyError: %s" % (
+                        geo.geoid, comp_geo.geoid, e)
+                    log.fatal(msg, exc_info=e)
+                    raise ValueError(msg)
+
+
+            if not data['landsalescolour']['is_missing']:
+                try:
+                    merge_dicts(
+                        data['landsalescolour'],
+                        get_landsales_colour_profiles(comp_geo, session),
+                            comp_geo.geo_level)
+                except KeyError as e:
+                    msg = "Error merging data into %s for land sale colour "\
+                        "from %s: KeyError: %s" % (
                         geo.geoid, comp_geo.geoid, e)
                     log.fatal(msg, exc_info=e)
                     raise ValueError(msg)
@@ -113,25 +107,34 @@ def get_land_profile(geo, profile_name, request):
 
 def get_land_topic_profiles(geo, session, topic_name):
     topic_profiles = SECTIONS[topic_name]['profiles']
-    profiles_data = {}
+    profiles_data = {'is_missing': True }
 
     for profile in topic_profiles:
         try:
             profile_table = profile.lower()
             profile_name = profile.lower().replace(' ', '_')
             profiles_data[profile_name] = LOCATIONNOTFOUND
-            profiles_data[profile_name],_  = get_stat_data([profile_table], geo, session)
+            profiles_data[profile_name], _  = get_stat_data([profile_table],
+                                                geo, session)
         except LocationNotFound:
             pass
+
+        profiles_data['is_missing'] = profiles_data.get('is_missing') and \
+                profiles_data[profile_name].get('is_missing')
+
     return profiles_data
 
-def get_redistribution_and_restitution_profiles(geo, session):
-    redistributedlandusebreakdown = redistributeprogrammeprojectsbyyear = redistributeprogrammehouseholdsbyyear = LOCATIONNOTFOUND
-    redistributeprogrammebeneficiariesbyyear = femalepartybenefited = youthpartybenefited = disabledpeoplepartybenefited = LOCATIONNOTFOUND
+def get_redistributionrestitution_profiles(geo, session):
+    redistributedlandusebreakdown = redistributeprogrammeprojectsbyyear = LOCATIONNOTFOUND
+    redistributeprogrammehouseholdsbyyear = landcostrestitution = LOCATIONNOTFOUND
+    redistributeprogrammebeneficiariesbyyear = femalepartybenefited = LOCATIONNOTFOUND
+    youthpartybenefited = disabledpeoplepartybenefited = LOCATIONNOTFOUND
     redistributedlandinhectares = redistributedlandcostinrands =  LOCATIONNOTFOUND
-    redistributedlandaveragecostperhectares = householdsrestitution = landcostrestitution = LOCATIONNOTFOUND
-    hectarestransferredperprovincebyyear = hectaresacquiredrestitution = projectsrestitution = beneficiariesrestitution = LOCATIONNOTFOUND
-    claimssettledrestitution = disabilitiesrestitution = femaleheadedhouseholdsrestitution = financialcompensationrestitution = LOCATIONNOTFOUND
+    redistributedlandaveragecostperhectares = householdsrestitution = LOCATIONNOTFOUND
+    hectarestransferredperprovincebyyear = hectaresacquiredrestitution = LOCATIONNOTFOUND
+    projectsrestitution = beneficiariesrestitution = LOCATIONNOTFOUND
+    claimssettledrestitution = disabilitiesrestitution = LOCATIONNOTFOUND
+    femaleheadedhouseholdsrestitution = financialcompensationrestitution = LOCATIONNOTFOUND
 
     femaleheadedhouseholdsrestitution_tot = beneficiariesrestitution_tot = projectsrestitution_tot = 0
     financialcompensationrestitution_tot = claimssettledrestitution_tot = 0
@@ -139,7 +142,8 @@ def get_redistribution_and_restitution_profiles(geo, session):
     hectarestransferredperprovincebyyear_tot = hectaresacquiredrestitution_tot = 0
     householdsrestitution_tot = disabilitiesrestitution_tot = 0
 
-    redistribution_and_restitution = {}
+    redistributionrestitution = {'is_missing': True}
+
     try:
         redistributedlandusebreakdown, _ = get_stat_data(
                         ['redistributed land use breakdown'], geo, session)
@@ -308,57 +312,69 @@ def get_redistribution_and_restitution_profiles(geo, session):
     except LocationNotFound:
         pass
 
-    redistribution_and_restitution['redistributedlandusebreakdown']= redistributedlandusebreakdown
-    redistribution_and_restitution['redistributedlandinhectares_stat']= redistributedlandinhectares['redistributedlandinhectares']
-    redistribution_and_restitution['redistributedlandcostinrands_stat']= redistributedlandcostinrands['redistributedlandcostinrands']
-    redistribution_and_restitution['redistributedlandaveragecostperhectares_stat']= redistributedlandaveragecostperhectares['redistributedlandaveragecostperhectares']
-    redistribution_and_restitution['redistributeprogrammeprojectsbyyear']= redistributeprogrammeprojectsbyyear
-    redistribution_and_restitution['redistributeprogrammehouseholdsbyyear']= redistributeprogrammehouseholdsbyyear
-    redistribution_and_restitution['redistributeprogrammebeneficiariesbyyear']= redistributeprogrammebeneficiariesbyyear
+    redistributionrestitution['redistributedlandusebreakdown']= redistributedlandusebreakdown
+    redistributionrestitution['redistributedlandinhectares_stat']= redistributedlandinhectares['redistributedlandinhectares']
+    redistributionrestitution['redistributedlandcostinrands_stat']= redistributedlandcostinrands['redistributedlandcostinrands']
+    redistributionrestitution['redistributedlandaveragecostperhectares_stat']= \
+                    redistributedlandaveragecostperhectares['redistributedlandaveragecostperhectares']
+    redistributionrestitution['redistributeprogrammeprojectsbyyear']= redistributeprogrammeprojectsbyyear
+    redistributionrestitution['redistributeprogrammehouseholdsbyyear']= redistributeprogrammehouseholdsbyyear
+    redistributionrestitution['redistributeprogrammebeneficiariesbyyear']= redistributeprogrammebeneficiariesbyyear
 
-    redistribution_and_restitution['femalepartybenefited'] = femalepartybenefited
-    redistribution_and_restitution['youthpartybenefited'] = youthpartybenefited
-    redistribution_and_restitution['disabledpeoplepartybenefited'] = disabledpeoplepartybenefited
-    redistribution_and_restitution['hectarestransferredperprovincebyyear'] = hectarestransferredperprovincebyyear
-    redistribution_and_restitution['hectaresacquiredrestitution'] = hectaresacquiredrestitution
-    redistribution_and_restitution['claimssettledrestitution'] = claimssettledrestitution
-    redistribution_and_restitution['householdsrestitution'] = householdsrestitution
-    redistribution_and_restitution['femaleheadedhouseholdsrestitution'] = femaleheadedhouseholdsrestitution
-    redistribution_and_restitution['disabilitiesrestitution'] = disabilitiesrestitution
-    redistribution_and_restitution['projectsrestitution'] = projectsrestitution
-    redistribution_and_restitution['beneficiariesrestitution'] = beneficiariesrestitution
-    redistribution_and_restitution['landcostrestitution'] = landcostrestitution
-    redistribution_and_restitution['financialcompensationrestitution'] = financialcompensationrestitution
-    redistribution_and_restitution['femalepartybenefited_tot'] = femalepartybenefited_tot
-    redistribution_and_restitution['youthpartybenefited_tot'] = youthpartybenefited_tot
-    redistribution_and_restitution['disabledpeoplepartybenefited_tot'] = disabledpeoplepartybenefited_tot
-    redistribution_and_restitution['hectarestransferredperprovincebyyear_tot'] = hectarestransferredperprovincebyyear_tot
-    redistribution_and_restitution['hectaresacquiredrestitution_tot'] = hectaresacquiredrestitution_tot
-    redistribution_and_restitution['claimssettledrestitution_tot'] = claimssettledrestitution_tot
-    redistribution_and_restitution['householdsrestitution_stat'] = {"name": "Total households benefited in restitution programme from 2009/2018",
-                                                                    "values": {"this": householdsrestitution_tot}
-                                                                    }
-    redistribution_and_restitution['femaleheadedhouseholdsrestitution_stat'] = {"name": "Female headed households benefited in restitution programme from 2009/2018",
-                                                                    "values": {"this": femaleheadedhouseholdsrestitution_tot}
-                                                                    }
-    redistribution_and_restitution['disabilitiesrestitution_stat'] = {"name": "Number of people with disabilities benefited in restitution programme from 2009/2018",
-                                                                    "values": {"this": disabilitiesrestitution_tot}
-                                                                    }
-    redistribution_and_restitution['projectsrestitution_stat'] = {"name": "Number of projects in the restitution programme from 2009/2018",
-                                                                    "values": {"this": projectsrestitution_tot}
-                                                                    }
-    redistribution_and_restitution['beneficiariesrestitution_stat'] = {"name": "Number of beneficiaries in the restitution programme from 2009/2018",
-                                                                    "values": {"this": beneficiariesrestitution_tot}
-                                                                    }
+    redistributionrestitution['femalepartybenefited'] = femalepartybenefited
+    redistributionrestitution['youthpartybenefited'] = youthpartybenefited
+    redistributionrestitution['disabledpeoplepartybenefited'] = disabledpeoplepartybenefited
+    redistributionrestitution['hectarestransferredperprovincebyyear'] = hectarestransferredperprovincebyyear
+    redistributionrestitution['hectaresacquiredrestitution'] = hectaresacquiredrestitution
+    redistributionrestitution['claimssettledrestitution'] = claimssettledrestitution
+    redistributionrestitution['householdsrestitution'] = householdsrestitution
+    redistributionrestitution['femaleheadedhouseholdsrestitution'] = femaleheadedhouseholdsrestitution
+    redistributionrestitution['disabilitiesrestitution'] = disabilitiesrestitution
+    redistributionrestitution['projectsrestitution'] = projectsrestitution
+    redistributionrestitution['beneficiariesrestitution'] = beneficiariesrestitution
+    redistributionrestitution['landcostrestitution'] = landcostrestitution
+    redistributionrestitution['financialcompensationrestitution'] = financialcompensationrestitution
+    redistributionrestitution['femalepartybenefited_tot'] = femalepartybenefited_tot
+    redistributionrestitution['youthpartybenefited_tot'] = youthpartybenefited_tot
+    redistributionrestitution['disabledpeoplepartybenefited_tot'] = disabledpeoplepartybenefited_tot
+    redistributionrestitution['hectarestransferredperprovincebyyear_tot'] = hectarestransferredperprovincebyyear_tot
+    redistributionrestitution['hectaresacquiredrestitution_tot'] = hectaresacquiredrestitution_tot
+    redistributionrestitution['claimssettledrestitution_tot'] = claimssettledrestitution_tot
+    redistributionrestitution['landcostrestitution'] = landcostrestitution
+    redistributionrestitution['householdsrestitution_stat'] = \
+                  { "name": "Total households benefited in restitution programme from 2009/2018",
+                    "values": {"this": householdsrestitution_tot}
+                  }
+    redistributionrestitution['femaleheadedhouseholdsrestitution_stat'] = \
+                { "name": "Female headed households benefited in restitution programme from 2009/2018",
+                   "values": {"this": femaleheadedhouseholdsrestitution_tot}
+                }
+    redistributionrestitution['disabilitiesrestitution_stat'] = \
+                { "name": "Number of people with disabilities benefited in restitution programme from 2009/2018",
+                  "values": {"this": disabilitiesrestitution_tot}
+                }
+    redistributionrestitution['projectsrestitution_stat'] = \
+                { "name": "Number of projects in the restitution programme from 2009/2018",
+                  "values": {"this": projectsrestitution_tot}
+                }
+    redistributionrestitution['beneficiariesrestitution_stat'] = \
+                {   "name": "Number of beneficiaries in the restitution programme from 2009/2018",
+                     "values": {"this": beneficiariesrestitution_tot}
+                }
 
-    redistribution_and_restitution['landcostrestitution'] = landcostrestitution
+    #if total hectares of redistruted land is missing
+    # and total hectares acquired under restitution is missing, then there's no data
+    redistributionrestitution['is_missing'] = hectarestransferredperprovincebyyear.get('is_missing') \
+                            and hectaresacquiredrestitution.get('is_missing')
 
-    return redistribution_and_restitution
+    return redistributionrestitution
 
 def get_landsales_profiles(geo, session):
-    landsales = {}
-    landsalestransaction = landsaleshectares = landsalesaverageprice = landsalespricetrends = LOCATIONNOTFOUND
-    landsaleslowestprice = landsaleshighestprice = landsalesaveragetrends = landsalesaveragepricejuly = LOCATIONNOTFOUND
+    landsales = {'is_missing': True }
+    landsalestransaction = landsaleshectares = LOCATIONNOTFOUND
+    landsalesaverageprice = landsalespricetrends = LOCATIONNOTFOUND
+    landsaleslowestprice = landsaleshighestprice = LOCATIONNOTFOUND
+    landsalesaveragetrends = landsalesaveragepricejuly = LOCATIONNOTFOUND
 
     landsalestransaction_tot = landsaleshectares_tot = 0
 
@@ -409,7 +425,6 @@ def get_landsales_profiles(geo, session):
     # try:
     #     landsalesaveragepricejuly,landsalesaveragepricejuly_tot = get_stat_data(
     #         ['class'], geo, session, exclude_zero=True,
-    #         table_fields=['class'],
     #         table_name= 'landsalesdistributionaveragepricejuly',
     #         percent=False)
     # except LocationNotFound as e:
@@ -418,7 +433,6 @@ def get_landsales_profiles(geo, session):
     # try:
     #     landsaleslowestprice,landsaleslowestprice_tot = get_stat_data(
     #         ['class'], geo, session, exclude_zero=True,
-    #         table_fields=['class'],
     #         table_name= 'landsalesdistributionlowestprice',
     #         percent=False)
     # except LocationNotFound as e:
@@ -434,20 +448,18 @@ def get_landsales_profiles(geo, session):
 
     landsales['landsalestransaction'] = landsalestransaction
     landsales['landsaleshectares'] = landsaleshectares
-    # landsales['landsaleslowestprice'] = landsaleslowestprice
-    # landsales['landsaleshighestprice'] = landsaleshighestprice
     landsales['landsalesaverageprice'] = landsalesaverageprice
     landsales['landsalespricetrends'] = landsalespricetrends
-    #landsales['landsalesaveragetrends'] = landsalesaveragetrends
-    # landsales['landsalesaveragepricejuly'] = landsalesaveragepricejuly
-
-    landsales['landsaleshectares_tot'] = { "name": "Total number of sold hectares in 12 months",
-                                               "values": {"this": int(landsaleshectares_tot)},
-                                            }
-
-    landsales['landsalestransaction_tot'] = { "name": "Total number of sales transactions in 12 months",
-                                               "values": {"this": int(landsalestransaction_tot)},
-                                            }
+    landsales['landsaleshectares_tot'] = \
+            { "name": "Total number of sold hectares in 12 months",
+               "values": {"this": int(landsaleshectares_tot)},
+            }
+    landsales['landsalestransaction_tot'] = \
+            { "name": "Total number of sales transactions in 12 months",
+              "values": {"this": int(landsalestransaction_tot)},
+            }
+    landsales['is_missing'] = landsalestransaction.get('is_missing') and \
+                            landsaleshectares.get('is_missing')
 
     return landsales
 
@@ -458,12 +470,13 @@ def get_landsales_colour_profiles(geo, session):
     landsalescolourhectarespermonthperga = landsalescolourhectarespermonthpergu = LOCATIONNOTFOUND
     landsalescolourhectarespermonthperot = landsalescolourhectarespermonthperpr = LOCATIONNOTFOUND
     landsalescolourcostpermonth = landsalescolourtattransactionpermonth = LOCATIONNOTFOUND
-    landsalescolourpricehecpermonth = LOCATIONNOTFOUND
+    landsalescolourpricehecpermonth = landsalescolourtransaction = LOCATIONNOTFOUND
+    landsalescolourtattransaction = landsalescolourtransactionpermonth = LOCATIONNOTFOUND
     landsalescolourtransactionpermonthperga = landsalescolourtransactionpermonthpergu = LOCATIONNOTFOUND
     landsalescolourtransactionpermonthperot = landsalescolourtransactionpermonthperpr = LOCATIONNOTFOUND
 
     landsalescolourhectares_tot = 0
-    landsalescolourtransactions_tot = 0
+    landsalescolourtransaction_tot = 0
     landsalescolourcost_tot = 0
 
     try:
@@ -502,13 +515,12 @@ def get_landsales_colour_profiles(geo, session):
     except LocationNotFound as e:
         pass
 
-    print landsalescolourtattransactionpermonth
-
     try:
         landsalescolourhectarespermonth, _ = get_stat_data (
             ['month'], geo, session,
             table_name='landsalessummaryhectarestcolour',
-            key_order=('Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul')
+            key_order=('Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', \
+                    'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul')
         )
     except LocationNotFound as e:
         pass
@@ -517,7 +529,8 @@ def get_landsales_colour_profiles(geo, session):
         landsalescolourtransactionpermonth, _ = get_stat_data (
             ['month'], geo, session,
             table_name='landsalessummarytransactionscolour',
-            key_order=('Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul')
+            key_order=('Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', \
+                'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul')
         )
     except LocationNotFound as e:
         pass
@@ -526,7 +539,8 @@ def get_landsales_colour_profiles(geo, session):
         landsalescolourcostpermonth, landsalescolourcost_tot = get_stat_data (
             ['month'], geo, session,
             table_name='landsalessummarycosttcolour',
-            key_order=('Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul')
+            key_order=('Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', \
+                'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul')
         )
     except LocationNotFound as e:
         pass
@@ -535,7 +549,8 @@ def get_landsales_colour_profiles(geo, session):
         landsalescolourpricehecpermonth, _ = get_stat_data (
             ['month'], geo, session,
             table_name='landsalessummarypricetcolour',
-            key_order=('Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul')
+            key_order=('Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', \
+                'Mar', 'Apr', 'May', 'Jun', 'Jul')
         )
     except LocationNotFound as e:
         pass
@@ -636,26 +651,32 @@ def get_landsales_colour_profiles(geo, session):
         'landsalescolourtransactionpermonthperga': landsalescolourtransactionpermonthperga,
         'landsalescolourtransactionpermonthpergu': landsalescolourtransactionpermonthpergu,
         'landsalescolourtransactionpermonthperot': landsalescolourtransactionpermonthperot,
-        'landsalescolourhectares_stat': { "name": "Total hectares (ha) traded from Aug 2017/July8 for transaction of colour",
-                                         "values": {"this": landsalescolourhectares_tot},
-                                        },
-        'landsalescolourcost_stat': { "name": "Total Cost in R (million) traded from Aug 2017/July8 for transaction of colour",
-                                         "values": {"this": landsalescolourcost_tot},
-                                        },
-        'landsalescolourtransaction_stat': { "name": "Total transactions traded from Aug 2017/July8 for transaction of colour",
-                                         "values": {"this": landsalescolourtransaction_tot},
-                                        }
+        'landsalescolourhectares_stat': {
+                    "name": "Total hectares (ha) traded from Aug 2017/July 2018 for transaction of colour",
+                    "values": {"this": landsalescolourhectares_tot},
+                        },
+        'landsalescolourcost_stat': {
+                        "name": "Total Cost in R (million) traded from Aug 2017/July 2018 for transaction of colour",
+                        "values": {"this": landsalescolourcost_tot},
+                    },
+        'landsalescolourtransaction_stat': {
+                    "name": "Total transactions traded from Aug 2017/July 2018 for transaction of colour",
+                    "values": {"this": landsalescolourtransaction_tot},
+                    },
+         'is_missing': landsalescolourtattransaction.get('is_missing')
 
         }
 def districtdistribution(geo, session):
-    districtdist = towndistrictdistributiontransactions = all_town = LOCATIONNOTFOUND
-    towndistrictdistributionhectares = towndistrictdistributionavgprice = towndistrictdistributionpricetrends = LOCATIONNOTFOUND
+    towndistrictdistributiontransactions = all_town = LOCATIONNOTFOUND
+    towndistrictdistributionhectares = towndistrictdistributionavgprice = LOCATIONNOTFOUND
+    towndistrictdistributionpricetrends = LOCATIONNOTFOUND
+    towndistrictdistributiontransactionsdata = towndistrictdistributionhectaresdata = LOCATIONNOTFOUND
+    towndistrictdistributionpricetrendsdata = towndistrictdistributionavgpricedata = LOCATIONNOTFOUND
     towndistrictdistributionhectares_tot = towndistrictdistributiontransactions_tot = 0
     dist = {}
     towns = []
 
-    towndistrictdistributiontransactionsdata = towndistrictdistributionhectaresdata = LOCATIONNOTFOUND
-    towndistrictdistributionpricetrendsdata = towndistrictdistributionavgpricedata = LOCATIONNOTFOUND
+
     try:
         all_town, _ = get_stat_data(
             ['town_name'], geo, session,
@@ -671,11 +692,6 @@ def districtdistribution(geo, session):
 
         for town in towns:
             town_code = town.replace(' ', '_').replace('-', '_').replace('/', '_').replace('(','').replace(')','').lower()
-            towndistrictdistributiontransactionsdata[town_code] = LOCATIONNOTFOUND
-            towndistrictdistributionhectaresdata[town_code] = LOCATIONNOTFOUND
-            towndistrictdistributionavgpricedata[town_code] = LOCATIONNOTFOUND
-            towndistrictdistributionpricetrendsdata[town_code] = LOCATIONNOTFOUND
-
             try:
                 towndistrictdistributiontransactionsdata[town_code], _ = get_stat_data(
                     ['class'], geo, session,
@@ -726,5 +742,5 @@ def districtdistribution(geo, session):
     dist['towndistrictdistributionhectaresdata'] = towndistrictdistributionhectaresdata
     dist['towndistrictdistributionavgpricedata'] = towndistrictdistributionavgpricedata
     dist['towndistrictdistributionpricetrendsdata'] = towndistrictdistributionpricetrendsdata
-    districtdist = dist
-    return districtdist
+    dist['is_missing'] = all_town.get('is_missing')
+    return dist

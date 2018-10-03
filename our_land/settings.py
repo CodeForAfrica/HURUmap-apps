@@ -22,13 +22,6 @@ MIDDLEWARE_CLASSES = (
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # -------------------------------------------------------------------------------------
-# HURUmap Config
-# -------------------------------------------------------------------------------------
-
-OUR_LAND = WAZIMAP
-
-
-# -------------------------------------------------------------------------------------
 # Database Configs
 # -------------------------------------------------------------------------------------
 
@@ -36,10 +29,14 @@ DATABASE_URL = os.environ.get('DATABASE_URL',
                               'postgresql://our_land:our_land@localhost/our_land')
 DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
 
+# -------------------------------------------------------------------------------------
+# HURUmap Config
+# -------------------------------------------------------------------------------------
+
 # Localise this instance of OUR_LAND
-OUR_LAND['name'] = 'OurLand'
-OUR_LAND['url'] = 'https://ourland.hurumap.org'
-OUR_LAND['description'] = 'is a joint project of City Press, Rapport, '\
+HURUMAP['name'] = 'OurLand'
+HURUMAP['url'] = 'https://ourland.hurumap.org'
+HURUMAP['description'] = 'is a joint project of City Press, Rapport, '\
 'Landbou Weekblad and Code for Africa. The data site gives infomediaries like '\
 'journalists and civic activists an easy toolkit for finding and embedding '\
 'interactive data visualizations into their storytelling on land ownership '\
@@ -47,31 +44,31 @@ OUR_LAND['description'] = 'is a joint project of City Press, Rapport, '\
 'contested and incomplete,  We will keep sourcing, cleaning and adding data '\
 'sets to this site, and work towards becoming the authoritative data source on this issue.'
 
-OUR_LAND['title_tagline'] = 'Who owns the land in South Africa'
+HURUMAP['title_tagline'] = 'Who owns the land in South Africa'
 
-OUR_LAND['facebook'] = 'CodeForAfrica'
-OUR_LAND['twitter'] = '@Code4Africa'
-OUR_LAND['email'] = 'info@codeforafrica.org'
+HURUMAP['facebook'] = 'CodeForAfrica'
+HURUMAP['twitter'] = '@Code4Africa'
+HURUMAP['email'] = 'info@codeforafrica.org'
 
-OUR_LAND['github_url'] = 'https://github.com/CodeForAfrica/HURUmap-apps'
+HURUMAP['github_url'] = 'https://github.com/CodeForAfrica/HURUmap-apps'
 
-OUR_LAND['ga_tracking_id'] = 'UA-44795600-21'
+HURUMAP['ga_tracking_id'] = 'UA-44795600-21'
 
-OUR_LAND['country_code'] = 'ZA'
-OUR_LAND['country_name'] = 'South Africa'
-OUR_LAND['comparative_levels'] = ['district', 'province', 'country']
+HURUMAP['country_code'] = 'ZA'
+HURUMAP['country_name'] = 'South Africa'
+HURUMAP['comparative_levels'] = ['district', 'province', 'country']
 
 our_land_profile = os.environ.get('OUR_LAND_PROFILE', 'land')
 
-OUR_LAND['default_profile'] = our_land_profile
-OUR_LAND['profile_builder'] = 'our_land.profiles.land.get_land_profile'
-OUR_LAND['default_geo_version'] = os.environ.get('DEFAULT_GEO_VERSION', '2016')
-OUR_LAND['legacy_embed_geo_version'] = '2016'
+HURUMAP['default_profile'] = our_land_profile
+HURUMAP['profile_builder'] = 'our_land.profiles.land.get_land_profile'
+HURUMAP['default_geo_version'] = os.environ.get('DEFAULT_GEO_VERSION', '2016')
+HURUMAP['legacy_embed_geo_version'] = '2016'
 
 # this is provided by mapit
-OUR_LAND['geodata'] = 'our_land.geo.GeoData'
-OUR_LAND['geometry_data'] = {}
-OUR_LAND['levels'] = {
+HURUMAP['geodata'] = 'our_land.geo.GeoData'
+HURUMAP['geometry_data'] = {}
+HURUMAP['levels'] = {
     'country': {
         'plural': 'countries',
         'children': ['province', 'district', 'municipality'],
@@ -91,23 +88,23 @@ OUR_LAND['levels'] = {
     }
 }
 
-# OUR_LAND['primary_release_year'] = {
+# HURUMAP['primary_release_year'] = {
 #     # use the 2011 release for wards, use the latest (2016) for everything else
 #     'ward': 2016,
 # }
-OUR_LAND['primary_dataset_name'] = 'Land Reports'
-OUR_LAND['latest_release_year'] = '2016'
-# OUR_LAND['available_release_years'] = {
+HURUMAP['primary_dataset_name'] = 'Land Reports'
+HURUMAP['latest_release_year'] = '2016'
+# HURUMAP['available_release_years'] = {
 #     # Release years with data for geo_levels.
 #     # Only specify geo_levels with limited releases.
 #     # Other geo_levels have data for all releases.
 #     'ward': [2011]
 # }
 # If not set, the centre is determined from the geometry.
-OUR_LAND['map_centre']= None
-OUR_LAND['map_zoom']= None
+HURUMAP['map_centre']= None
+HURUMAP['map_zoom']= None
 
-OUR_LAND['mapit'] = {
+HURUMAP['mapit'] = {
     'generations': {
         '2011': '1',
         '2016': '2',
@@ -117,7 +114,7 @@ OUR_LAND['mapit'] = {
 # -------------------------------------------------------------------------------
 #topics
 
-OUR_LAND['topics']['farmland'] = {
+HURUMAP['topics']['farmland'] = {
     'topic': 'farmland',
     'name': 'Farm & Agricultural Land',
     'icon': '/static/img/education.png',
@@ -134,7 +131,7 @@ OUR_LAND['topics']['farmland'] = {
     ]
 }
 
-OUR_LAND['topics']['ervenland'] = {
+HURUMAP['topics']['ervenland'] = {
         'topic': 'ervenland',
         'name': 'Erven & Urban Land',
         'icon': '/static/img/education.png',
@@ -151,7 +148,7 @@ OUR_LAND['topics']['ervenland'] = {
         ]
 }
 
-OUR_LAND['topics']['sectionaltitleland'] = {
+HURUMAP['topics']['sectionaltitleland'] = {
     'topic': 'sectionaltitleland',
     'name': 'Sectional Title Land',
     'icon': '/static/img/education.png',
@@ -170,7 +167,7 @@ OUR_LAND['topics']['sectionaltitleland'] = {
 # -------------------------------------------------------------------------------------
 # Showcase Stories
 
-OUR_LAND['showcase_stories'] = [
+HURUMAP['showcase_stories'] = [
     {
         'title':  'A farmer\'s 15-year wait for land justice',
         'author': 'Jeanne-Marié Versluis',
@@ -199,4 +196,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGGING['loggers']['our_land'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
 
-WAZIMAP = OUR_LAND
+WAZIMAP = HURUMAP

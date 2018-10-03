@@ -28,4 +28,5 @@ services:
       - PGUSER=our_land
       - PGPASSWORD=our_land
       - PYTHONDONTWRITEBYTECODE="True"
+      - HURUMAP_APP_NAME='our_land'
       # - DJANGO_DEBUG=False  # For testing deploys

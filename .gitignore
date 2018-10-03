@@ -9,8 +9,5 @@ debug
 .vscode/
 .DS_Store
 /env/
-/venv/
-.venv/
-venv
 .env/
 env
