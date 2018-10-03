@@ -11,9 +11,8 @@ DEBUG = os.environ.get('DJANGO_DEBUG', True)
 DJANGO_SETTINGS_MODULE = os.environ.get('DJANGO_SETTINGS_MODULE',
                                         'hurumap_zw.settings')
 
-DATABASES = {
-    'default': dj_database_url.parse(DATABASE_URL),
-}
+DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
+
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
 # install this app before HURUmap
@@ -24,6 +23,8 @@ HURUMAP['name'] = 'HURUmap Zimbabwe'
 HURUMAP['url'] = 'https://zimbabwe.hurumap.org'
 HURUMAP['country_code'] = 'ZW'
 HURUMAP['country_name'] = 'Zimbabwe'
+
+HURUMAP['ga_tracking_id'] = 'UA-44795600-45'
 
 # Define the profile to load
 
@@ -69,5 +70,3 @@ LOGGING['loggers']['hurumap_zw'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
 
 # Making sure they are the same
 WAZIMAP = HURUMAP
-
-
