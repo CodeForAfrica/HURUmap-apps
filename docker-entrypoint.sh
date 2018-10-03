@@ -1,6 +1,6 @@
 #!/bin/bash
 python manage.py migrate --noinput        # Apply database migrations
-cat our_land/sql/*.sql | psql              # Upload tables / data
+cat ${HURUMAP_APP_NAME}/sql/*.sql | psql              # Upload tables / data
 python manage.py compilescss              # Compile SCSS (offline)
 python manage.py collectstatic --noinput  # Collect static files
 
@@ -18,4 +18,4 @@ exec gunicorn --name ${HURUMAP_APP_NAME} \
     --log-file=/src/logs/gunicorn.log \
     --access-logfile=/src/logs/access.log \
     --reload \
-    ${HURUMAP_APP_NAME}.wsgi:application 
+    ${HURUMAP_APP_NAME}.wsgi:application

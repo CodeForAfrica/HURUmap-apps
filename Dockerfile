@@ -5,7 +5,6 @@ MAINTAINER Code for Africa
 
 # Set env variables used in this Dockerfile
 # Local directory with project source
-ARG HURUMAP_APP_NAME="hurumap_tz"
 
 ENV HURUMAP_APP_SRC=.
 # Directory in container for all project files
