@@ -10,7 +10,7 @@ services:
       - POSTGRES_PASSWORD=hurumap
       - POSTGRES_DB=hurumap
       - PGUSER=hurumap
-      - PGPASSWORD=hurumap
+-     - PGPASSWORD=hurumap
 
   web:
     build: .
@@ -20,6 +20,7 @@ services:
       - db
     volumes:
       - ./:/src/hurumap
+      - /static:/static
     environment:
       - DATABASE_URL=postgresql://hurumap:hurumap@db:5432/hurumap
       - DJANGO_SECRET_KEY=somethingsecret
@@ -29,5 +30,5 @@ services:
       - PGUSER=hurumap
       - PGPASSWORD=hurumap
       - PYTHONDONTWRITEBYTECODE="True"
-      - HURUMAP_APP_NAME='our_land'
+      - HURUMAP_APP_NAME=hurumapname
       # - DJANGO_DEBUG=False  # For testing deploys
