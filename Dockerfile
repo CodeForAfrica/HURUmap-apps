@@ -6,11 +6,13 @@ MAINTAINER Code for Africa
 # Set env variables used in this Dockerfile
 # Local directory with project source
 
+ARG HURUMAP_NAME=${HURUMAP_APP_NAME}
+
 ENV HURUMAP_APP_SRC=.
 # Directory in container for all project files
 ENV HURUMAP_APP_SRVHOME=/src
 # Directory in container for project source files
-ENV HURUMAP_APP_SRVPROJ=/src/$HURUMAP_APP_NAME
+ENV HURUMAP_APP_SRVPROJ=/src/$HURUMAP_NAME
 
 # Create application subdirectories
 WORKDIR $HURUMAP_APP_SRVHOME
@@ -37,4 +39,4 @@ EXPOSE 8000
 WORKDIR $HURUMAP_APP_SRVPROJ
 COPY ./docker-entrypoint.sh /
 ENTRYPOINT ["/docker-entrypoint.sh"]
-CMD [$HURUMAP_APP_NAME]
+CMD [$HURUMAPAPP_NAME]
