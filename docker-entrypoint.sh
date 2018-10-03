@@ -1,4 +1,5 @@
 #!/bin/bash
+echo ${HURUMAP_NAME}
 python manage.py migrate --noinput        # Apply database migrations
 cat ${HURUMAP_NAME}/sql/*.sql | psql              # Upload tables / data
 python manage.py compilescss              # Compile SCSS (offline)
