@@ -38,3 +38,4 @@ EXPOSE 8000
 WORKDIR $HURUMAP_APP_SRVPROJ
 COPY ./docker-entrypoint.sh /
 ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD [$HURUMAP_APP_NAME]
