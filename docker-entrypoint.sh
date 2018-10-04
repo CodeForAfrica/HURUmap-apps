@@ -19,4 +19,4 @@ exec gunicorn --name hurumap \
     --log-file=/src/logs/gunicorn.log \
     --access-logfile=/src/logs/access.log \
     --reload \
-    our_land.wsgi:application 
+    our_land.wsgi:application

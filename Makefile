@@ -28,4 +28,13 @@ hurumap-zm:
 hurumap-zm-build:
 	make build
 	docker-comopse build hurumap-zm
+
+# HURUmap Zimbabwe
+hurumap-zw:
+	rm -fr static/*
+	docker-compose up hurumap-zw
+
+hurumap-zm-build:
+	make build
+	docker-comopse build hurumap-zw
 	
