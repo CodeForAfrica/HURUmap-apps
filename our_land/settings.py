@@ -5,9 +5,9 @@ from collections import OrderedDict
 import dj_database_url
 
 from hurumap.settings import *  # noqa
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-DEBUG = False
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 INSTALLED_APPS = ['our_land'] + INSTALLED_APPS
 
