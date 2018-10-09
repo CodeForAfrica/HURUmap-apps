@@ -1,5 +1,6 @@
 {% load staticfiles %}
-<div class="column-full">
+
+<div class="column-two-thirds">
     <p class="smaller"><strong>{{ HURUMAP.name }}</strong> {{ HURUMAP.description }}
     </p>
     <p class="smaller">
@@ -9,19 +10,16 @@
         <a href="http://wazimap.readthedocs.org/" target="_blank" rel="noopener">Wazimap</a> in South Africa and by Code for Africa for HURUmap in Kenya, Tanzania, Uganda and Zambia.
     <br/>
 </div>
-<!-- <div class="column-third text-center">
+<div class="column-third text-center">
     <p>A project by:</p>
     {% block footer_branding %}
     <a href="https://codeforafrica.org/" target="_blank" rel="noopener">
-        <img src="{% static 'img/logos/cpwhite.png' %}" alt="City Press" style="margin-top: 0;"></a>
+        <img src="{% static 'img/logos/cfafrica-white.png' %}" alt="Code for Africa" style="margin-top: 0;"></a>
+    <a href="https://codeforafrica.org/" target="_blank" rel="noopener">
+        <img src="{% static 'img/logos/cfafrica-white.png' %}" alt="Code for Africa" style="margin-top: 0;"></a>
 
-        <a href="https://codeforafrica.org/" target="_blank" rel="noopener">
-            <img src="{% static 'img/logos/land.png' %}" alt="Landbou" style="margin-top: 0;"></a>
-
-            <a href="https://codeforafrica.org/" target="_blank" rel="noopener">
-                <img src="{% static 'img/logos/rapooo.png' %}" alt="Rapport" style="margin-top: 0;"></a>
-
-                <a href="https://codeforafrica.org/" target="_blank" rel="noopener">
-                    <img src="{% static 'img/logos/cfafrica-white.png' %}" alt="Code for Africa" style="margin-top: 0;"></a>
     {% endblock %}
-</div> -->
+    <hr style="margin: 15px auto; width: 40%; border-top: 0.5px solid rgba(255, 255, 255, 0.5);"/>
+    <p style="margin-bottom: 0;"><small>ANCIR is incubated by Code for Africa.</small></p>
+    <p><small>Code for Africa is an initiative of ICFJ.</small></p>
+</div>

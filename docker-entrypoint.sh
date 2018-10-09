@@ -1,7 +1,12 @@
 #!/bin/bash
-echo ${HURUMAP_APP_NAME}
+
+# Check if HURUMAP_APP set, defaults to our_land
+[[ -z "${HURUMAP_APP}" ]] && HURUMAP_APP='our_land' || HURUMAP_APP="${HURUMAP_APP}"
+echo "HURUmap App: " $HURUMAP_APP
+
+createdb ${HURUMAP_APP}                   # Create DB
 python manage.py migrate --noinput        # Apply database migrations
-cat ${HURUMAP_APP_NAME}/sql/*.sql | psql              # Upload tables / data
+cat ${HURUMAP_APP}/sql/*.sql | psql       # Upload tables / data
 python manage.py compilescss              # Compile SCSS (offline)
 python manage.py collectstatic --noinput  # Collect static files
 
@@ -12,11 +17,11 @@ tail -n 0 -f /src/logs/*.log &
 
 # Start Gunicorn processes
 echo Starting Gunicorn.
-exec gunicorn --name ${HURUMAP_APP_NAME} \
+exec gunicorn --name ${HURUMAP_APP} \
     --bind 0.0.0.0:8000 \
     --workers 3 \
     --log-level=info \
     --log-file=/src/logs/gunicorn.log \
     --access-logfile=/src/logs/access.log \
     --reload \
-    ${HURUMAP_APP_NAME}.wsgi:application
+    ${HURUMAP_APP}.wsgi:application
