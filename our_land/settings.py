@@ -34,7 +34,7 @@ DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
 # -------------------------------------------------------------------------------------
 
 # Localise this instance of OUR_LAND
-HURUMAP['name'] = 'OurLand'
+HURUMAP['name'] = 'Our Land / Ons Grond'
 HURUMAP['url'] = 'https://ourland.hurumap.org'
 HURUMAP['description'] = 'is a joint project of City Press, Rapport, '\
 'Landbou Weekblad and Code for Africa. The data site gives infomediaries like '\
