@@ -1,0 +1,12 @@
+{% extends '_base.html' %}
+{% load sass_tags %}
+
+{% block head_css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% sass_src 'css/ourland.scss' %}">
+{% endblock %}
+
+{% block header_logo %}
+  {{ block.super }}
+  <span>{{ HURUMAP.name }}</span>
+{% endblock %}

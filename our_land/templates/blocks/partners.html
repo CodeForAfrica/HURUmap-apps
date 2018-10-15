@@ -1,17 +1,20 @@
-<div class="showcase clearfix partners {{ extra_css_class }}">
+<div class="showcase partners clearfix partners {{ extra_css_class }}">
     <div class="wrapper text-center">
-        <h2>Partners</h2>
-        <p>Our Land is made possible through support from the following partners:</p>
-          <a href="https://www.netwerk24.com/landbou/" target="_blank" rel="noopener">
-            <img src="{{ STATIC_URL }}img/logos/lad.png" alt="landbouweekblad"></a>
-          <a href="https://www.netwerk24.com/za/rapport/" target="_blank" rel="noopener">
-            <img src="{{ STATIC_URL }}img/logos/rap.png" alt="Rapport"></a>
-          <a href="https://codeforafrica.org/" target="_blank" rel="noopener">
-            <img src="{{ STATIC_URL }}img/logos/cfa.png" alt="City Press"></a>
-          <a href="https://city-press.news24.com/" target="_blank" rel="noopener">
-            <img src="{{ STATIC_URL }}img/logos/city-press-logo.png" alt="City Press"></a>
-            <a href="https://ourland.hurumap.org/" target="_blank" rel="noopener">
-              <img src="{{ STATIC_URL }}img/logos/our_land.png"
-              style="max-height: 85px; max-width: 350px; margin: 0px 10px 10px 15px" alt="Our Land"></a>
+        <h1>Partners</h1>
+        <p>{{ HURUMAP.name }} is made possible through support from the following partners:</p>
+        <a href="https://www.netwerk24.com/landbou/" target="_blank" rel="noopener">
+          <img src="{{ STATIC_URL }}img/logos/landbou.png" alt="Landbou" style="max-height: 50px;"></a>
+        <a href="https://www.netwerk24.com/za/rapport/" target="_blank" rel="noopener">
+          <img src="{{ STATIC_URL }}img/logos/rapport.jpg" alt="Rapport" style="max-height: 50px;"></a>
+        <a href="https://codeforafrica.org/" target="_blank" rel="noopener">
+          <img src="{{ STATIC_URL }}img/logos/cfafrica.png" alt="Code for Africa"></a>
+        <a href="https://city-press.news24.com/" target="_blank" rel="noopener">
+          <img src="{{ STATIC_URL }}img/logos/citypress.png" alt="City Press"></a>
     </div>
 </div>
+
+<style>
+  .showcase.partners img {
+    margin: 10px 20px; 
+  }
+</style>

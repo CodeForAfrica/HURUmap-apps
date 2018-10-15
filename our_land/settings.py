@@ -46,8 +46,8 @@ HURUMAP['description'] = 'is a joint project of City Press, Rapport, '\
 
 HURUMAP['title_tagline'] = 'Who owns the land in South Africa'
 
-HURUMAP['facebook'] = 'CodeForAfrica'
-HURUMAP['twitter'] = '@Code4Africa'
+HURUMAP['facebook'] = 'hashtag/onsgrond'
+HURUMAP['twitter'] = 'hashtag/OnsGrond'
 HURUMAP['email'] = 'info@codeforafrica.org'
 
 HURUMAP['github_url'] = 'https://github.com/CodeForAfrica/HURUmap-apps'

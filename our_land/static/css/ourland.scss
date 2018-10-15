@@ -1,0 +1,176 @@
+// HURUmap.scss
+
+// VARIABLES
+
+// Colours
+$blue: #0085C3;
+$blue-light: #62B9E9;
+
+$green: #85AC1D;
+$green-light: #94C11F;
+
+$yellow: #D5D400;
+
+$brown: #936037;
+$brown-light: #B07E4A;
+
+$grey: #575656;
+
+$brand-primary-color: #fff;
+$brand-secondary-color: $green-light;
+
+$brand-color-tan: rgb(240,236,227);
+
+
+// Override classes
+a {
+  color: $green;
+  &:hover {
+    color: $green-light;
+  }
+}
+
+
+// Re-usable classes
+.text-muted {
+  color: $grey;
+}
+.rounded {
+  border-radius: 99999px;
+}
+
+// Background colors
+.bg-primary {
+  background-color: $green;
+}
+.bg-color-secondary {
+  background-color: $brand-secondary-color;
+}
+.bg-tan {
+  background-color: $brand-color-tan;
+}
+.bg-bottle-green {
+  background-color: $green;
+}
+.bg-ocean-green {
+  background-color: $green-light;
+}
+
+
+// Buttons
+.btn.bg-bottle-green:hover {
+  background-color: $green-light;
+}
+.btn.bg-ocean-green:hover {
+  background-color: $green;
+}
+
+// Images within spans
+span.img-bg {
+  display: inline-block;
+  padding: 20px;
+}
+
+
+// Navbar
+#page-header {
+  border-bottom: 1px solid $green;
+}
+#page-header, .box-header {
+  background-color: $brand-primary-color;
+  a {
+    color: #000;
+    &.title {
+      display: flex;
+      align-items: center;
+      span {
+        margin-left: 10px;
+      }
+    }
+  }
+}
+#page-header #page-header-title .nav-menu ul#site-menu li a:hover {
+  color: $green;
+}
+#page-header #page-header-title .nav-menu #menu .tool-group {
+  border: 1px #000 solid;
+}
+// Floating Nav
+.floating-nav {
+  background-color: $brand-color-tan;
+  &.affix .geography-ico {
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    span {
+      height: auto;  // TODO: Fix on HURUmap
+    }
+  }
+}
+
+// Footer
+#page-footer {
+  background-color: $brand-primary-color;
+  color: #000;
+  border-top-color: $green-light;
+  a {
+    color: $green;
+    &:hover {
+      color: $green-light;
+    }
+  }
+}
+
+// Showcase sections
+.showcase {
+  padding: 70px 0;
+}
+
+
+// Select2
+.select2-drop .select2-results .select2-highlighted {
+  background-color: $green !important;
+}
+
+// Leaflet
+.leaflet-label {
+  background-color: $green !important;
+  border-color: $green !important;
+}
+
+
+// Pages + Sections
+
+
+// Homepage
+
+// Blurbs
+.how-it-works {
+  img {
+    height: 45px;
+  }
+}
+
+// Stories Showcase
+.showcase.stories {
+  background-color: #fff;
+  .img {
+    display: flex;
+    height: auto;
+    min-height: 200px;
+    padding: 10px 10px 0 0;
+    h3 {
+      text-align: left;
+      line-height: 1.7;
+      span {
+        background-color: $brand-primary-color;
+        color: $brown;
+      }
+    }
+  }
+}
+
+// Profile Page
+
+#cover-profile article {
+  border: 1px solid $green;
+}
