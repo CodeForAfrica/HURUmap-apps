@@ -9,9 +9,9 @@ from hurumap.settings import *  # noqa
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-INSTALLED_APPS = ['our_land'] + INSTALLED_APPS
+INSTALLED_APPS = ['hurumap_land'] + INSTALLED_APPS
 
-ROOT_URLCONF = 'our_land.urls'
+ROOT_URLCONF = 'hurumap_land.urls'
 
 MIDDLEWARE_CLASSES = (
         'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -26,16 +26,15 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # -------------------------------------------------------------------------------------
 
 DATABASE_URL = os.environ.get('DATABASE_URL',
-                              'postgresql://our_land:our_land@localhost/our_land')
+                              'postgresql://hurumap:hurumap@localhost/hurumap_land')
 DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
 
 # -------------------------------------------------------------------------------------
 # HURUmap Config
 # -------------------------------------------------------------------------------------
-
-# Localise this instance of OUR_LAND
-HURUMAP['name'] = 'Our Land / Ons Grond'
-HURUMAP['url'] = 'https://ourland.hurumap.org'
+ 
+HURUMAP['name'] = 'HURUmap Land'
+HURUMAP['url'] = 'https://land.hurumap.org'
 HURUMAP['description'] = 'is a joint project of City Press, Rapport, '\
 'Landbou Weekblad and Code for Africa. The data site gives infomediaries like '\
 'journalists and civic activists an easy toolkit for finding and embedding '\
@@ -58,15 +57,15 @@ HURUMAP['country_code'] = 'ZA'
 HURUMAP['country_name'] = 'South Africa'
 HURUMAP['comparative_levels'] = ['district', 'province', 'country']
 
-our_land_profile = os.environ.get('OUR_LAND_PROFILE', 'land')
+hurumap_profile = os.environ.get('HURUMAP_PROFILE', 'land')
 
-HURUMAP['default_profile'] = our_land_profile
-HURUMAP['profile_builder'] = 'our_land.profiles.land.get_land_profile'
+HURUMAP['default_profile'] = hurumap_profile
+HURUMAP['profile_builder'] = 'hurumap_land.profiles.land.get_land_profile'
 HURUMAP['default_geo_version'] = os.environ.get('DEFAULT_GEO_VERSION', '2016')
 HURUMAP['legacy_embed_geo_version'] = '2016'
 
 # this is provided by mapit
-HURUMAP['geodata'] = 'our_land.geo.GeoData'
+HURUMAP['geodata'] = 'hurumap_land.geo.GeoData'
 HURUMAP['geometry_data'] = {}
 HURUMAP['levels'] = {
     'country': {
@@ -194,6 +193,6 @@ HURUMAP['showcase_stories'] = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-LOGGING['loggers']['our_land'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
+LOGGING['loggers']['hurumap_land'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
 
 WAZIMAP = HURUMAP

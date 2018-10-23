@@ -13,7 +13,7 @@ The project is built on [Wazimap](http://wazimap.readthedocs.org/en/latest/), an
 We use Docker compose to simplify development. To get started, set the HURUmap App you want to work on and sping up the container like so:
 
 ```
-export HURUMAP_APP=our_land
+export HURUMAP_APP=hurumap_land
 make web
 ```
 
