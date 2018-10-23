@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Check if HURUMAP_APP set, defaults to our_land
-[[ -z "${HURUMAP_APP}" ]] && HURUMAP_APP='our_land' || HURUMAP_APP="${HURUMAP_APP}"
+# Check if HURUMAP_APP set, defaults to hurumap_land
+[[ -z "${HURUMAP_APP}" ]] && HURUMAP_APP='hurumap_land' || HURUMAP_APP="${HURUMAP_APP}"
 echo "HURUmap App: " $HURUMAP_APP
 
 createdb ${HURUMAP_APP}                   # Create DB
