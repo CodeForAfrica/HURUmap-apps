@@ -19,15 +19,16 @@ services:
     depends_on:
       - db
     volumes:
-      - ./:/src/hurumap
+      - ./:/src/hurumap-apps
     environment:
-      - DATABASE_URL=postgresql://hurumap:hurumap@db:5432/hurumap
+      - HURUMAP_APP=${HURUMAP_APP}
+      - DJANGO_SETTINGS_MODULE=${HURUMAP_APP}.settings
+      - DATABASE_URL=postgresql://hurumap:hurumap@db:5432/${HURUMAP_APP}
       - DJANGO_SECRET_KEY=somethingsecret
       - HURUMAP_URL='http://localhost:8000'
       - PGHOST=db
-      - PGDATABASE=hurumap
+      - PGDATABASE=${HURUMAP_APP}
       - PGUSER=hurumap
       - PGPASSWORD=hurumap
       - PYTHONDONTWRITEBYTECODE="True"
-      - HURUMAP_APP=${HURUMAP_APP}
       # - DJANGO_DEBUG=False  # For testing deploys
