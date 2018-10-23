@@ -4,3 +4,73 @@
  * Customizations for HURUmap Land site
  *
  */
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
+
+// Heading font
+h1 {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 3em;
+}
+
+// Re-usable classes
+
+// Fonts
+.font-raleway {
+  font-family: 'Raleway', sans-serif;
+}
+.font-weight-bold {
+  font-weight: 700;
+}
+
+// Rounded radius
+.rounded {
+  border-radius: 99999px;
+}
+
+// Images with backgrounds
+span.img-bg {
+  display: inline-block;
+  padding: 24px;
+}
+
+
+// Footer
+
+#page-footer img {
+  max-width: 200px;
+}
+
+// Homepage
+
+// How it works
+.how-it-works {
+  img {
+    max-width: 50px;
+  }
+}
+
+// Stories Showcase
+.showcase.stories {
+  .img {
+    display: flex;
+    height: auto;
+    min-height: 200px;
+    padding: 15px 15px;
+    h2 {
+      display: inline-block;
+      width: 100%;
+      max-width: 400px;
+      margin: auto auto 0;
+      padding: 5px 10px;
+
+      background-color: #1c9d95;
+      color: #fff;
+
+      text-transform: uppercase;
+      text-align: center;
+    }
+  }
+}
