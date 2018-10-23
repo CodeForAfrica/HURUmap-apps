@@ -8,7 +8,7 @@ ENV APP_SRC=.
 # Directory in container for all project files
 ENV APP_SRVHOME=/src
 # Directory in container for project source files
-ENV APP_SRVPROJ=/src/hurumap
+ENV APP_SRVPROJ=/src/hurumap-apps
 
 # Create application subdirectories
 WORKDIR $APP_SRVHOME
