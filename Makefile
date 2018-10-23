@@ -9,3 +9,4 @@ compilescss:
 	docker-compose exec web ./manage.py compilescss
 	rm -fr static/*
 	docker-compose exec web ./manage.py collectstatic --noinput
+	

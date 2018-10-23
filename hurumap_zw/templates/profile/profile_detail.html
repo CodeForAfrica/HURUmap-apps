@@ -1,0 +1,40 @@
+{% extends 'profile/profile_detail.html' %} {% load humanize lookup staticfiles %}
+
+{% block header_content %}
+  {{ block.super }}
+{% endblock %}
+
+{% block profile_header_tail %}
+  <div class="column-full">
+    <p class="caption"><strong>Census data:</strong> 2017</p>
+  </div>
+{% endblock %}
+
+{% block profile_detail %}
+  {% if not demographics.is_missing %}
+    <article class="clearfix">
+      <header class="section-contents">
+        <h1>Demographics</h1>
+      </header>
+      <div class="section-container">
+        <section class="clearfix stat-row">
+          <h2 class="header-for-columns">Population </h2>
+          <div class="column-third">
+            {% include 'profile/_blocks/_stat_list.html' with stat=demographics.total_population stat_type='number' %}
+          </div>
+          {% if not demographics.sex_dist.is_missing %}
+            <div class="column-third" id="chart-pie-demographics-sex_dist" data-stat-type="percentage" data-chart-title="Sex" data-initial-sort="-value"></div>
+          {% endif %}
+          {% if not demographics.residence_dist.is_missing %}
+            <div class="column-third" id="chart-histogram-demographics-residence_dist" data-stat-type="scaled-percentage" data-chart-title="Residence" data-initial-sort="-value"></div>
+          {% endif %}
+        </section>
+        <section class="clearfix stat-row">
+          {% if not demographics.religion_dist.is_missing %}
+            <div class="column-full" id="chart-histogram-demographics-religion_dist" data-stat-type="scaled-percentage" data-chart-title="Religion" data-initial-sort="-value"></div>
+          {% endif %}
+        </section>
+      </div>
+    </article>
+  {% endif %}
+{% endblock %}
