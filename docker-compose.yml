@@ -1,0 +1,34 @@
+version: '3.3'
+
+services:
+  db:
+    image: postgres:9.5
+    ports:
+      - "54321:5432"
+    environment:
+      - POSTGRES_USER=hurumap
+      - POSTGRES_PASSWORD=hurumap
+      - POSTGRES_DB=hurumap
+      - PGUSER=hurumap
+      - PGPASSWORD=hurumap
+
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    volumes:
+      - ./:/src/hurumap-apps
+    environment:
+      - HURUMAP_APP=${HURUMAP_APP}
+      - DJANGO_SETTINGS_MODULE=${HURUMAP_APP}.settings
+      - DATABASE_URL=postgresql://hurumap:hurumap@db:5432/${HURUMAP_APP}
+      - DJANGO_SECRET_KEY=somethingsecret
+      - HURUMAP_URL='http://localhost:8000'
+      - PGHOST=db
+      - PGDATABASE=${HURUMAP_APP}
+      - PGUSER=hurumap
+      - PGPASSWORD=hurumap
+      - PYTHONDONTWRITEBYTECODE="True"
+      # - DJANGO_DEBUG=False  # For testing deploys

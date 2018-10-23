@@ -10,49 +10,11 @@ The project is built on [Wazimap](http://wazimap.readthedocs.org/en/latest/), an
 
 ## Development
 
-1. Clone the repo
-2. ``cd HURUmap``
-3. ``virtualenv --no-site-packages env``
-4. ``source env/bin/activate``
-5. ``pip install -r requirements.txt``
-
-
-***NB:** The set up docs from here assume setting up HURUmap Kenya but is applicable to the rest of the projects.*
-
-You will need a Postgres database:
+We use Docker compose to simplify development. To get started, set the HURUmap App you want to work on and sping up the container like so:
 
 ```
-psql
-create user hurumap_ke with password hurumap_ke;
-create database hurumap_ke;
-grant all privileges on database hurumap_ke to hurumap_ke;
-```
-
-Set the environment variables as needed:
-```
-export DJANGO_SETTINGS_MODULE=hurumap_ke.settings
-export DATABASE_URL=postgresql://hurumap_ke:hurumap_ke@localhost/hurumap_ke
-```
-
-Run migrations to keep Django happy:
-```
-python manage.py migrate
-```
-
-Import the data into the new database (will overwrite some tables created by Django, but that's ok).
-```
-cat hurumap_ke/sql/*.sql | psql -U hurumap_ke -W hurumap_ke
-```
-
-Run collectstatic to collect static filles from apps and packeges into a single path:
-
-```
-python manage.py collectstatic
-```
-
-Start the server:
-```
-python manage.py runserver
+export HURUMAP_APP=hurumap_land
+make web
 ```
 
 ## Deployment

@@ -1,0 +1,57 @@
+{% extends 'homepage.html' %}{% load sass_tags humanize partition static %}
+
+{% block head_meta_description %}{{ HURUmap.name }} provides useful facts and
+data about land ownership in South Africa. Compare places using tables and maps,
+download data, and embed charts on your site.{% endblock %}
+
+{% block header_menu %}
+<li><a href="/about">About</a></li>
+<li><a href="/#showcase">Showcase</a></li>
+<li class="social-icons">
+  <a href="https://twitter.com/{{ HURUMAP.twitter }}"><i
+    class="fa fa-twitter fa-lg fa-fw"></i></a>
+  <a href="https://facebook.com/{{ HURUMAP.facebook }}"><i
+    class="fa fa-facebook fa-lg fa-fw"></i></a>
+</li>
+{% endblock header_menu %}
+
+{% block header_content %}
+<div class="content-container clearfix bg-color-secondary text-center">
+  <div class="wrapper">
+    <h1>Discover the Data behind our Land</h1>
+    <h4>{{ HURUMAP.name }} provides useful facts and data about land ownership in South Africa.</h4>
+  </div>
+</div>
+{% endblock header_content %}
+
+{% block how_it_works %}
+<div class="wrapper clearfix how-it-works">
+  <h1>How It Works</h1>
+  <br/>
+  <div class="column-third">
+    <p><span class="img-bg rounded bg-color-primary"><img src="{% static 'img/icons/blurbs/checklist.svg' %}"/></span></p>
+    <h3>Find Facts</h3>
+    <p>Land ownership data is broken down by province and category: agricultural land, erven and urban land and sectional title land. </p>
+  </div>
+  <div class="column-third">
+    <p><span class="img-bg rounded bg-color-primary"><img src="{% static 'img/icons/blurbs/analysis.svg' %}"/></span></p>
+    <h3>Visualize</h3>
+    <p>Our library of charts gives you insight into land data from provinces you research. Look for them on profile pages. You can embed the charts on your own site. </p>
+  </div>
+  <div class="column-third">
+    <p><span class="img-bg rounded bg-color-primary"><img src="{% static 'img/icons/blurbs/visualization.svg' %}"/></span></p>
+    <h3>Get Context</h3>
+    <p>Pre-computed land statistics are presented alongside each data point so you can see how each place fits into a large context.</p>
+  </div>
+</div>
+<div class="wrapper">
+  <br/><br/>
+  <p><a href="/help" class="btn btn-lg bg-bottle-green">Learn more</a></p>
+</div>
+{% endblock %}
+
+{% block homepage_javascripb_libs %}
+{{ block.super }}
+<script src="{% static 'js/maps_mapit.js' %}"></script>
+
+{% endblock %}
