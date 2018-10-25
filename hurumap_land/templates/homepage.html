@@ -24,10 +24,15 @@ download data, and embed charts on your site.{% endblock %}
       <div id="map-div" class="map-box">
         <i class="fa fa-times" style="float:right;margin-top:-18px; margin-right:-20px"
          onclick="javascript:$('#map-div').css('display', 'none')"></i>
-        <h2 class="font-weight-bold">Discover the stories behind Our lands</h2>
-        <p>{{ HURUMAP.name }} provides useful facts and
-        data about land ownership in South Africa. Compare places using tables and maps,
-        download data, and embed charts on your site.</p>
+         <div style="padding-bottom: 2%">
+            <h2 class="font-weight-bold" style="border-bottom: 2px solid; font-size: 2em">
+              Discover the stories behind <br/> our <span style="color: #269a92;">lands</span></h2>
+        </div>
+        <p>{{ HURUMAP.name }} gives journalist and civic activists
+          useful facts and data about land ownership in South Africa</p>
+        <button class="btn btn-primary btn-sm text-uppercase font-weight-light">
+          SEARCH RESULTS
+        </button>
 
       </div>
   </div>
@@ -65,18 +70,28 @@ download data, and embed charts on your site.{% endblock %}
 
   <style>
     .map-box {
-      position: absolute;
-      top: 20%;
-      left: 35%;
+      position: fixed;
+      top: 18%;
+      left: 33%;
       border-radius: 2px;
-      width: 600px;
-      height: 200px;
+      width: 33%;
+      height: auto;
       background-color: #ffffff;
-      padding: 40px 60px;
+      padding: 2% 3% 1%;
+      text-align: center;
+      color: rgb(8, 74, 73);
       box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.23);
     }
-    .map-close {
-
+    button {
+      border-radius: 24px;
+      padding: .6rem 1.25rem;
+      max-width: 100%;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      font-size: 13px;
+      color: #fff;
+      border: 0px;
+      background-image: linear-gradient(to right, #0e4b49, #16635f, #269a92);
     }
   </style>
 
