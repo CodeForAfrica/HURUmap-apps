@@ -26,7 +26,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # -------------------------------------------------------------------------------------
 
 DATABASE_URL = os.environ.get('DATABASE_URL',
-                              'postgresql://our_land:our_land@localhost/our_land')
+                              'postgresql://hurumap:hurumap@localhost/hurumap_land')
 DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
 
 # -------------------------------------------------------------------------------------
