@@ -1,21 +1,64 @@
-<a name="showcase"></a>
-<div class="container-fluid stories {{ extra_css_class }}">
-    <div class="container wrapper text-center section-container">
-        <h1 class="text-center section-title">Story Showcase</h1>
-        <p></p>
-        <br/>
-        {% for story in HURUMAP.showcase_stories %}
-            <div class="">
-              <a href="{{ story.link }}" target="_blank" rel="noopener" style="text-decoration: none; color: #222">
-                <div class="img" style="background-image: url('{{ story.img }}');" style="display: flex;">
-                    <h2><span>{{ story.title }}</span></h2>
-                </div>
-
-                <p class="text-muted">By {{ story.author }}</p>
-                <p>{{ story.brief }}</p>
-                <br/>
-              </a>
+{% load sass_tags static %}
+<div class="container border-top wrapper text-center section-container"
+  style="border-top: 1px solid #aed4df; height: 900px;">
+  <div style="top: -7.5%;position: relative;">
+  <p>
+    <span class="img-bg rounded bg-gradient-background" style="font-size:13px">
+    <img src="{% static 'img/icons/blurbs/story.svg' %}"/><br/>STORIES</span></p>
+    <h1 class="text-center section-title">Story Showcase</h1>
+    <div class="story" style="width: 100%; padding: 3% 6%;">
+        <div class="img"
+         style="background-image: url('{{ HURUMAP.showcase_stories.0.img }}');
+         height: 400px; margin-bottom: 10px; border-bottom: 1px solid #aed4df;
+         opacity: 0.8">
+            <div class="story-title">
+              <h2><span>{{ HURUMAP.showcase_stories.0.title }}</span></h2>
             </div>
-        {% endfor %}
+            <a class="story-button" href="{{ HURUMAP.showcase_stories.0.link }}" target="_blank" rel="noopener"
+              style="text-decoration: none; bottom: 20%; left: 45%; position: absolute">Read More</a>
+        </div>
     </div>
+
+    <div style="width: 50%; float:left; padding-right: 4%; padding-left: 6%">
+      <div class="img"
+       style="background-image: url('{{ HURUMAP.showcase_stories.1.img }}');
+       height: 200px; margin-bottom: 10px; border-bottom: 1px solid #aed4df;">
+          <h2 class="text-upper-case"><span>{{ HURUMAP.showcase_stories.1.title }}</span></h2>
+          <a class="story-button" href="{{ HURUMAP.showcase_stories.1.link }}" target="_blank" rel="noopener"
+            style="text-decoration: none;">Read More</a>
+      </div>
+    </div>
+    <div style="width: 50%; float: left; padding-right: 6%; padding-left: 4%">
+      <div class="img"
+       style="background-image: url('{{ HURUMAP.showcase_stories.2.img }}');
+       height: 200px; margin-bottom: 10px; border-bottom: 1px solid #aed4df;">
+          <h2><span>{{ HURUMAP.showcase_stories.2.title }}</span></h2>
+          <a class="story-button" href="{{ HURUMAP.showcase_stories.2.link }}" target="_blank" rel="noopener"
+            style="text-decoration: none;">Read More</a>
+      </div>
+    </div>
+  </div>
 </div>
+
+<style>
+.story-button {
+    border-radius: 24px;
+    padding: .6rem 1.25rem;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 13px;
+    font-weight: bold;
+    color: #fff;
+    border: 0px;
+    background-image: linear-gradient(to right, #0e4b49, #16635f, #269a92);
+  }
+  .story-title {
+    bottom: 30%;
+    left: 30%;
+    position: absolute;
+    padding: 3px 8px;
+    color: white;
+    background-color: #279c94;
+  }
+</style>
