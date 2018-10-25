@@ -1,16 +1,16 @@
 <a name="showcase"></a>
-<div class="showcase stories {{ extra_css_class }}">
-    <div class="container-narrow clearfix">
-        <h1 class="text-center">Story Showcase</h1>
+<div class="container-fluid stories {{ extra_css_class }}">
+    <div class="container wrapper text-center section-container">
+        <h1 class="text-center section-title">Story Showcase</h1>
         <p></p>
         <br/>
         {% for story in HURUMAP.showcase_stories %}
-            <div class="column-third">
+            <div class="">
               <a href="{{ story.link }}" target="_blank" rel="noopener" style="text-decoration: none; color: #222">
                 <div class="img" style="background-image: url('{{ story.img }}');" style="display: flex;">
                     <h2><span>{{ story.title }}</span></h2>
                 </div>
-                
+
                 <p class="text-muted">By {{ story.author }}</p>
                 <p>{{ story.brief }}</p>
                 <br/>

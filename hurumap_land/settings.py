@@ -26,13 +26,13 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # -------------------------------------------------------------------------------------
 
 DATABASE_URL = os.environ.get('DATABASE_URL',
-                              'postgresql://hurumap:hurumap@localhost/hurumap_land')
+                              'postgresql://our_land:our_land@localhost/our_land')
 DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
 
 # -------------------------------------------------------------------------------------
 # HURUmap Config
 # -------------------------------------------------------------------------------------
- 
+
 HURUMAP['name'] = 'HURUmap Land'
 HURUMAP['url'] = 'https://land.hurumap.org'
 HURUMAP['description'] = 'is a joint project of City Press, Rapport, '\
