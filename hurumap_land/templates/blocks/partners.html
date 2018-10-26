@@ -1,8 +1,12 @@
 {% load sass_tags static %}
 <div class="container wrapper text-center section-container"
-  style="border-top: 1px solid #aed4df;">
+  style="height: 400px;">
+  <div style="border: 1px solid #aed4df;">
+  <p>
+    <span class="img-bg rounded bg-color-gradient" style="font-size:13px">
+    <img src="{% static 'img/icons/blurbs/group.svg' %}"/><br/>PARTNERS</span></p>
     <h1 class="section-title">Partners</h1>
-    <p>{{ HURUMAP.name }} is made possible through support from the following partners:</p>
+    <p>{{ HURUMAP.name }} is made possible through support from the following partners.</p>
     <div>
     <a href="https://www.netwerk24.com/landbou/" target="_blank" rel="noopener noreferrer">
       <img src="{{ STATIC_URL }}img/logos/landbou.png" alt="Landbou" style="max-height: 50px;"></a>
@@ -23,6 +27,7 @@
     <a href="https://city-press.news24.com/News/land-cleveage-and-conflict-20180621" target="_blank" rel="noopener noreferrer">
       <img src="{{ STATIC_URL }}img/logos/ourland.png" alt="Our Land / Ons Grond"></a>
     </div>
+  </div>
 </div>
 
 <style>
