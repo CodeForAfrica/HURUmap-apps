@@ -55,11 +55,38 @@ span.img-bg {
 .grayscale {
     filter: grayscale(100%);
     -webkit-filter: grayscale(100%);
+    z-index: -1;
 }
 
 .bg-color-gradient {
   background-image: linear-gradient(to right, #0e4b49, #16635f, #269a92);
   color: white;
+}
+
+.showcase-story {
+  text-align: center;
+   a {
+    text-decoration: none;
+    border-radius: 24px;
+    padding: .6rem 1.25rem;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 13px;
+    font-weight: bold;
+    border: 0px;
+  }
+  hr {
+    border-color: #aed4df;
+  }
+}
+
+.showcase-story-title {
+  padding: 3px 8px;
+  color: white;
+  background-color: #279c94;
+  max-width: 50%;
+  display: inline-block;
 }
 
 // Stories Showcase
