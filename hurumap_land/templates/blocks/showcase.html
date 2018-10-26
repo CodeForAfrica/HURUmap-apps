@@ -1,46 +1,45 @@
 {% load sass_tags static %}
 <div class="container border-top wrapper text-center section-container"
-  style="border-top: 1px solid #aed4df; height: 900px;">
+  style="height: 950px;">
   <div class="showcase-stories">
   <p>
-    <span class="img-bg rounded bg-color-gradient" style="font-size:13px">
+    <span class="img-bg rounded bg-color-gradient">
     <img src="{% static 'img/icons/blurbs/story.svg' %}"/><br/>STORIES</span></p>
-    <h1 class="text-center section-title">Story Showcase</h1>
+    <h1 class="text-center text-primary">Story Showcase</h1>
     <div class="showcase-story showcase-story-full">
-        <div class="img grayscale"
-         style="background-image: url('{{ HURUMAP.showcase_stories.0.img }}');
-         height: 400px; margin-bottom: 10px; border-bottom: 1px solid #aed4df;">
+        <div class="img-story grayscale"
+         style="background-image: url('{{ HURUMAP.showcase_stories.0.img }}');">
         </div>
         <div class="showcase-story-title">
-          <h2 class="text-uppercase"><span>{{ HURUMAP.showcase_stories.0.title }}</span></h2>
+          <h2 class="text-uppercase">
+            <span>{{ HURUMAP.showcase_stories.0.title }}</span></h2>
         </div>
-        <a class="bg-color-gradient" href="{{ HURUMAP.showcase_stories.0.link }}" target="_blank" rel="noopener"
-          style="bottom: 20%; left: 45%; position: absolute">Read More</a>
+        <a class="bg-color-gradient" href="{{ HURUMAP.showcase_stories.0.link }}"
+        target="_blank" rel="noopener"
+          style="left: 45%;">Read More</a>
     </div>
     <hr>
     <div class="showcase-story showcase-story-half story-left">
-      <div class="img grayscale"
-       style="background-image: url('{{ HURUMAP.showcase_stories.1.img }}');
-       height: 200px; margin-bottom: 10px; border-bottom: 1px solid #aed4df;">
+      <div class="img-story grayscale"
+       style="background-image: url('{{ HURUMAP.showcase_stories.1.img }}');">
       </div>
       <div class="showcase-story-title">
         <h2 class="text-uppercase"><span>Climate Change</span></h2>
       </div>
       <a class="bg-color-gradient" href="{{ HURUMAP.showcase_stories.1.link }}"
         target="_blank" rel="noopener"
-        style="bottom: 15%; left: 35%; position: absolute">Read More</a>
+        style="left: 35%;">Read More</a>
     </div>
     <div class="showcase-story showcase-story-half story-right">
-      <div class="img grayscale"
-       style="background-image: url('{{ HURUMAP.showcase_stories.2.img }}');
-       height: 200px; margin-bottom: 10px; border-bottom: 1px solid #aed4df;">
+      <div class="img-story grayscale"
+       style="background-image: url('{{ HURUMAP.showcase_stories.2.img }}');">
       </div>
       <div class="showcase-story-title">
         <h2 class="text-uppercase"><span>Land Reform</span></h2>
       </div>
       <a class="bg-color-gradient" href="{{ HURUMAP.showcase_stories.2.link }}"
       target="_blank" rel="noopener"
-      style="bottom: 15%; left: 45%; position: absolute">Read More</a>
+      style="left: 45%;">Read More</a>
     </div>
   </div>
 </div>
