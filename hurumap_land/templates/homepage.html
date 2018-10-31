@@ -23,32 +23,45 @@ download data, and embed charts on your site.{% endblock %}
   </div>
 </div>
 {% endblock header_content %}
+{% block content_container %}
 
-{% block how_it_works %}
-<div class="wrapper clearfix how-it-works">
-  <h1>How It Works</h1>
-  <br/>
-  <div class="column-third">
-    <p><span class="img-bg rounded bg-color-primary"><img src="{% static 'img/icons/blurbs/checklist.svg' %}"/></span></p>
-    <h3>Find Facts</h3>
-    <p>Land ownership data is broken down by province and category: agricultural land, erven and urban land and sectional title land. </p>
+  <div class="clearfix">
+      <div id="slippy-map"></div>
   </div>
-  <div class="column-third">
-    <p><span class="img-bg rounded bg-color-primary"><img src="{% static 'img/icons/blurbs/analysis.svg' %}"/></span></p>
-    <h3>Visualize</h3>
-    <p>Our library of charts gives you insight into land data from provinces you research. Look for them on profile pages. You can embed the charts on your own site. </p>
-  </div>
-  <div class="column-third">
-    <p><span class="img-bg rounded bg-color-primary"><img src="{% static 'img/icons/blurbs/visualization.svg' %}"/></span></p>
-    <h3>Get Context</h3>
-    <p>Pre-computed land statistics are presented alongside each data point so you can see how each place fits into a large context.</p>
-  </div>
-</div>
-<div class="wrapper">
-  <br/><br/>
-  <p><a href="/help" class="btn btn-lg bg-bottle-green">Learn more</a></p>
-</div>
-{% endblock %}
+  <div class="showcase how-it-works bg-white text-center">
+    {% block how_it_works %}
+    <div class="wrapper clearfix how-it-works">
+      <h1>How It Works</h1>
+      <br/>
+      <div class="column-third">
+        <p><span class="img-bg rounded bg-color-primary"><img src="{% static 'img/icons/blurbs/checklist.svg' %}"/></span></p>
+        <h3>Find Facts</h3>
+        <p>Land ownership data is broken down by province and category: agricultural land, erven and urban land and sectional title land. </p>
+      </div>
+      <div class="column-third">
+        <p><span class="img-bg rounded bg-color-primary"><img src="{% static 'img/icons/blurbs/analysis.svg' %}"/></span></p>
+        <h3>Visualize</h3>
+        <p>Our library of charts gives you insight into land data from provinces you research. Look for them on profile pages. You can embed the charts on your own site. </p>
+      </div>
+      <div class="column-third">
+        <p><span class="img-bg rounded bg-color-primary"><img src="{% static 'img/icons/blurbs/visualization.svg' %}"/></span></p>
+        <h3>Get Context</h3>
+        <p>Pre-computed land statistics are presented alongside each data point so you can see how each place fits into a large context.</p>
+      </div>
+    </div>
+    <div class="wrapper">
+      <br/><br/>
+      <p><a href="/help" class="btn btn-lg bg-bottle-green">Learn more</a></p>
+    </div>
+    {% endblock %}
+    </div>
+
+{% include 'blocks/showcase.html' %}
+
+{% include 'blocks/partners.html' with extra_css_class='bg-tan' %}
+
+
+{% endblock content_container %}
 
 {% block homepage_javascripb_libs %}
 {{ block.super }}
