@@ -28,6 +28,37 @@ download data, and embed charts on your site.{% endblock %}
   <div class="clearfix">
       <div id="slippy-map"></div>
   </div>
+  <div class="home-nav text-center section-container bg-color-white">
+    <ul style="list-style-type: none;display: block; margin: 0;padding-left: 20%;overflow: hidden; display: inline-block; width: 100%; margin-top: -3%;
+    z-index: 1;
+    position: relative;">
+      <li style="float: left; padding:0 5%">
+        <a style="display: block; padding-left: 20px;font-size:12px;">
+          <span class="img-bg rounded text-white bg-color-gradient" style="padding: 20px 27px; line-height: 2">
+          <img src="{% static 'img/icons/blurbs/papyrus.svg'%}"/>
+          <br/>ABOUT</span></a>
+      </li>
+      <li style="float: left; padding:0 5%">
+        <a style="display: block; padding-left: 20px;font-size:12px;">
+          <span class="img-bg rounded text-white bg-color-gradient" style="padding: 20px 32px; line-height: 2">
+          <img src="{% static 'img/icons/blurbs/map.svg' %}"/><br/>MAP</span>
+        </a>
+      </li>
+      <li style="float: left; padding:0 5%">
+        <a style="display: block; padding-left: 20px;font-size:12px;">
+          <span class="img-bg rounded text-white bg-color-gradient" style="padding: 20px 24px;line-height: 2">
+          <img src="{% static 'img/icons/blurbs/story.svg' %}"/><br/>STORIES</span>
+        </a>
+      </li>
+      <li style="float: left; padding:0 5%">
+        <a style="display: block; padding-left: 20px;font-size:12px;">
+          <span class="img-bg rounded text-white bg-color-gradient" style="padding: 23px 18px; line-height: 1">
+          <img style="max-width: 41px; margin-top: -5px" src="{% static 'img/icons/blurbs/group.png' %}"/><br>PARTNERS</span>
+        </a>
+      </li>
+
+    </ul>
+  </div>
   <div class="showcase how-it-works bg-white text-center">
     {% block how_it_works %}
     <div class="wrapper clearfix how-it-works">

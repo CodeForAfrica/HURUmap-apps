@@ -8,6 +8,7 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
 
+
 // Heading font
 h1 {
   font-family: 'Raleway', sans-serif;
@@ -44,10 +45,27 @@ span.img-bg {
 }
 
 // Homepage
-.bg-white {
+.home-nav img {
+  max-width: 30px;
+}
+.bg-color-white {
   background-color: #fff;
 }
 
+.text-white {
+  color: #fff;
+}
+
+.section-container {
+  border-top: 2px solid #a5d0dc;
+}
+.bg-color-gradient {
+  background-image: linear-gradient(to right, #0e4b49, #16635f, #269a92);
+}
+
+.bg-color-green {
+  background-color: #279c94;
+}
 // How it works
 .how-it-works {
   img {
