@@ -51,6 +51,19 @@ span.img-bg {
   max-width: 30px;
 }
 
+.home-nav ul {
+  list-style-type: none;
+  display: block;
+  margin: 0;
+  padding-left: 15%;
+  overflow: hidden;
+  display: inline-block;
+  width: 100%;
+  margin-top: -3%;
+  z-index: 1;
+  position: relative;
+}
+
 .home-nav ul li {
   float: left;
   padding:0 6%
@@ -72,6 +85,7 @@ span.img-bg {
 
 .home-nav ul li a span {
   background-color: $brand-color-green;
+  line-height: 2;
 }
 
 .bg-color-white {
