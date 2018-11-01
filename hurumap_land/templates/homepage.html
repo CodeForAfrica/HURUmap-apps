@@ -15,12 +15,14 @@ download data, and embed charts on your site.{% endblock %}
 </li>
 {% endblock header_menu %}
 
+<!-- Empty header content to override top discover banner -->
 {% block header_content %}{% endblock header_content %}
 
 {% block content_container %}
 
   <div class="clearfix">
       <div id="slippy-map"></div>
+      <!-- floating discover banner -->
       <div id="map-div" class="map-explainer">
         <i class="fa fa-times cross"
         onclick="javascript:$('#map-div').css('display', 'none')"></i>
