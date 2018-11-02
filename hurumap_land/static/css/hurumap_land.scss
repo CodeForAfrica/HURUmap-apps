@@ -46,13 +46,17 @@ h1 {
 span.img-bg {
   display: inline-block;
   padding: 24px;
+  font-size:12px;
+}
+
+.text-uppercase {
+  text-transform: uppercase!important;
 }
 
 .section-container {
   background-color: #fff;
   border-top: 1px solid #aed4df
 }
-
 
 // Footer
 
@@ -69,26 +73,26 @@ span.img-bg {
   }
 }
 
-// Stories Showcase
-.showcase.stories {
-  .img {
-    display: flex;
-    height: auto;
-    min-height: 200px;
-    padding: 15px 15px;
-    h2 {
-      display: inline-block;
-      width: 100%;
-      max-width: 400px;
-      margin: auto auto 0;
-      padding: 5px 10px;
+.grayscale {
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%); /* Chrome 19+ & Safari 6+ */
+  &:hover {
+    filter: grayscale(0%);
+    -webkit-filter: grayscale(0%); /* Chrome 19+ & Safari 6+ */
+  }
+}
 
-      background-color: #1c9d95;
-      color: #fff;
+//PARTNERS
+.partners-section {
+  top: -24%;
+  position: relative;
+  padding: 4% 6%;
+}
+.partners-section .img-bg {
+  padding:20px 18px;
 
-      text-transform: uppercase;
-      text-align: center;
-    }
+  img {
+    max-width: 40px
   }
 }
 
