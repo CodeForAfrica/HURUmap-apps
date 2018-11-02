@@ -20,6 +20,26 @@ h1 {
 
 // Re-usable classes
 
+// Colors
+.bg-color-white {
+  background-color: #fff;
+}
+
+.text-white {
+  color: #fff;
+}
+
+.section-container {
+  border-top: 2px solid #a5d0dc;
+}
+.bg-color-gradient {
+  background-image: linear-gradient(to right, #0e4b49, #16635f, #269a92);
+}
+
+.bg-color-green {
+  background-color: $brand-color-green;
+}
+
 // Fonts
 .font-raleway {
   font-family: 'Raleway', sans-serif;
@@ -47,6 +67,8 @@ span.img-bg {
 }
 
 // Homepage
+
+// Homepage nav
 .home-nav img {
   max-width: 30px;
 }
@@ -62,50 +84,29 @@ span.img-bg {
   margin-top: -3%;
   z-index: 1;
   position: relative;
+
+  li {
+    float: left;
+    padding: 0 6%;
+    a {
+      display: block;
+      padding-left: 20px;
+      font-size: 12px;
+
+      span {
+        background-color: $brand-color-green;
+        line-height: 2;
+        &.active {
+          background-image: linear-gradient(to right, #0e4b49, #16635f, #269a92);
+        }
+        &:hover {
+          background-image: linear-gradient(to right, #0e4b49, #16635f, #269a92);
+        }
+      }
+    }
+  }
 }
 
-.home-nav ul li {
-  float: left;
-  padding:0 6%
-}
-
-.home-nav ul li a {
-  display: block;
-  padding-left: 20px;
-  font-size:12px;
-}
-
-.home-nav ul li a span:hover {
-  background-image: linear-gradient(to right, #0e4b49, #16635f, #269a92);
-}
-
-.home-nav ul li a span.active {
-  background-image: linear-gradient(to right, #0e4b49, #16635f, #269a92);
-}
-
-.home-nav ul li a span {
-  background-color: $brand-color-green;
-  line-height: 2;
-}
-
-.bg-color-white {
-  background-color: #fff;
-}
-
-.text-white {
-  color: #fff;
-}
-
-.section-container {
-  border-top: 2px solid #a5d0dc;
-}
-.bg-color-gradient {
-  background-image: linear-gradient(to right, #0e4b49, #16635f, #269a92);
-}
-
-.bg-color-green {
-  background-color: $brand-color-green;
-}
 // How it works
 .how-it-works {
   img {
