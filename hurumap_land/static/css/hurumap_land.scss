@@ -8,6 +8,8 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
 
+$brand-color-solid-green: #279c94;
+
 // Heading font
 h1 {
   font-family: 'Raleway', sans-serif;
@@ -26,6 +28,12 @@ h1 {
 }
 .text-white {
     color: white;
+}
+.text-uppercase {
+  text-transform: uppercase;
+}
+.text-center {
+  text-align: center;
 }
 
 // Rounded radius
@@ -75,7 +83,6 @@ span.img-bg {
 }
 
 .showcase-story {
-  text-align: center;
   position: relative;
 
    a {
@@ -91,6 +98,11 @@ span.img-bg {
     position: absolute;
     bottom: 15%;
   }
+  .img-story {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 
 }
 
@@ -98,8 +110,9 @@ span.img-bg {
   padding-top: 3%;
 
   .showcase-story-title {
-      left: 25%;
-      top: 50%;
+      left: 30%;
+      top: 55%;
+      width: 40%
   }
   .img-story {
     height: 400px;
@@ -110,7 +123,7 @@ span.img-bg {
   float:left;
 
   .img-story {
-    height: 200px;
+    height: 250px;
   }
 }
 
@@ -118,8 +131,7 @@ span.img-bg {
   padding-left: 3%;
 
   .showcase-story-title {
-      left: 36%;
-      top: 40%;
+      left: 25%;
   }
 }
 
@@ -127,18 +139,23 @@ span.img-bg {
   padding-right: 3%;
 
   .showcase-story-title {
-      left: 25%;
-      top: 40%;
+      left: 15%;
   }
 }
 
 .showcase-story-title {
   padding: 3px 8px;
   color: white;
-  background-color: #279c94;
-  max-width: 50%;
+  width: 60%;
+  left: 50%;
+  top: 35%;
   display: inline-block;
   position: absolute;
+
+  h2 {
+    display: inline-block;
+    padding: 2px 5px;
+  }
 
 }
 
@@ -152,7 +169,11 @@ span.img-bg {
 }
 
 .bg-color-gradient {
-  background-image: linear-gradient(to right, #0e4b49, #16635f, #269a92);
+  background-image: linear-gradient(to right, #0e4b49, #16635f, #269a92) !important;
+}
+
+.bg-color-solid-green {
+  background-color: $brand-color-solid-green;
 }
 
 .section-container {
