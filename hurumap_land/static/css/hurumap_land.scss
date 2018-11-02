@@ -26,9 +26,15 @@ h1 {
 .font-weight-bold {
   font-weight: 700;
 }
-
 .text-primary {
   color: $brand-color-primary
+}
+.text-white {
+  color: white;
+}
+
+.bg-color-gradient {
+  background-image: linear-gradient(to right, #0e4b49, #16635f, #269a92);
 }
 
 // Rounded radius
@@ -88,12 +94,21 @@ span.img-bg {
 
 //PARTNERS
 .partners-section {
-  top: -24%;
-  position: relative;
-  padding: 4% 6%;
+  padding-top: 0;
+  padding-left: 6%;
+  padding-right: 6%;
+  padding-bottom: 4%;
+  margin-top: -3%;
+
+  .partners-desc {
+    font-size: 21px;
+    width: 30%;
+    display: inline-block;
+  }
 }
 .partners-section .img-bg {
   padding:20px 18px;
+  font-size:12px;
 
   img {
     max-width: 40px

@@ -1,63 +1,29 @@
 {% load sass_tags static %}
-<div class="section-container partners clearfix partners {{ extra_css_class }}">
+<div class="section-container partners clearfix">
     <div class="text-center partners-section">
-      <p><span class="img-bg rounded bg-color-gradient">
+      <p><span class="img-bg rounded text-white bg-color-gradient">
         <img src="{% static 'img/icons/blurbs/group.png' %}"/><br/>PARTNERS</span></p>
         <h1 class="text-primary">Partners</h1>
-        <p class="text-primary">{{ HURUMAP.name }} is made possible through support from the following partners:</p>
+        <p class="text-primary partners-desc">
+          {{ HURUMAP.name }} is made possible through support from the following partners:</p>
         <div class="patners-logo">
-          <a href="https://www.netwerk24.com/landbou/" target="_blank" rel="noopener noreferrer">
-            <img src="{{ STATIC_URL }}img/logos/landbou.png" alt="Landbou" style="max-height: 50px;"></a>
+          <a href="https://www.netwerk24.com/landbou/" target="_blank"
+          rel="noopener noreferrer">
+            <img src="{{ STATIC_URL }}img/logos/landbou.png"
+            alt="Landbou" style="max-height: 50px;"></a>
           <a href="https://www.netwerk24.com/za/rapport/" target="_blank" rel="noopener noreferrer">
-            <img src="{{ STATIC_URL }}img/logos/rapport.jpg" alt="Rapport" style="max-height: 50px;"></a>
-          <a href="https://codeforafrica.org/" target="_blank" rel="noopener noreferrer">
-            <img src="{{ STATIC_URL }}img/logos/cfafrica.png" alt="Code for Africa"></a>
-          <a href="https://city-press.news24.com/" target="_blank" rel="noopener noreferrer">
+            <img src="{{ STATIC_URL }}img/logos/rapport.jpg"
+            alt="Rapport" style="max-height: 50px;"></a>
+          <a href="https://codeforafrica.org/" target="_blank"
+          rel="noopener noreferrer">
+            <img src="{{ STATIC_URL }}img/logos/cfafrica.png"
+            alt="Code for Africa"></a>
+          <a href="https://city-press.news24.com/" target="_blank"
+          rel="noopener noreferrer">
             <img src="{{ STATIC_URL }}img/logos/citypress.png" alt="City Press"></a>
-          <a href="https://city-press.news24.com/News/land-cleveage-and-conflict-20180621" target="_blank" rel="noopener noreferrer">
+          <a href="https://city-press.news24.com/News/land-cleveage-and-conflict-20180621"
+          target="_blank" rel="noopener noreferrer">
             <img src="{{ STATIC_URL }}img/logos/ourland.png" alt="Our Land / Ons Grond"></a>
         </div>
     </div>
 </div>
-
-<style>
-  .showcase.partners img {
-    margin: 10px 20px;
-  }
-</style>
-
-
-
-<!-- <div class="container wrapper text-center section-container"
-  style="height: 400px">
-  <div class="partners-section">
-  <p><span class="img-bg rounded bg-color-gradient">
-    <img src="{% static 'img/icons/blurbs/group.png' %}"/><br/>PARTNERS</span></p>
-    <h1 class="text-primary">Partners</h1>
-    <p class="text-primary" style="font-size: 21px;">
-      {{ HURUMAP.name }} is made possible through support from<br/> the following partners.
-    </p>
-
-    <div class="patners-logo">
-      <a href="https://www.netwerk24.com/landbou/" target="_blank"
-      rel="noopener noreferrer">
-        <img src="{{ STATIC_URL }}img/logos/landbou.png" alt="Landbou"></a>
-
-
-      <a href="https://www.netwerk24.com/za/rapport/" target="_blank"
-      rel="noopener noreferrer">
-        <img src="{{ STATIC_URL }}img/logos/rapport.jpg" alt="Rapport"></a>
-
-      <a href="https://codeforafrica.org/" target="_blank"
-      rel="noopener noreferrer">
-        <img src="{{ STATIC_URL }}img/logos/cfafrica.png" alt="Code for Africa"></a>
-
-      <a href="https://city-press.news24.com/" target="_blank"
-      rel="noopener noreferrer">
-        <img src="{{ STATIC_URL }}img/logos/citypress.png" alt="City Press"></a>
-
-      <a href="https://city-press.news24.com/News/land-cleveage-and-conflict-20180621"
-      target="_blank" rel="noopener noreferrer">
-        <img src="{{ STATIC_URL }}img/logos/ourland.png" alt="Our Land / Ons Grond"></a>
-    </div>
-</div> -->
