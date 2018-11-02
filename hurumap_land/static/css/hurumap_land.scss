@@ -1,4 +1,4 @@
-/* 
+/*
  * HURUmap Land SCSS
  * -----------------
  * Customizations for HURUmap Land site
@@ -7,6 +7,8 @@
 
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
+
+$brand-color-primary: #0e4a48;
 
 // Heading font
 h1 {
@@ -25,6 +27,10 @@ h1 {
   font-weight: 700;
 }
 
+.text-primary {
+  color: $brand-color-primary
+}
+
 // Rounded radius
 .rounded {
   border-radius: 99999px;
@@ -34,6 +40,11 @@ h1 {
 span.img-bg {
   display: inline-block;
   padding: 24px;
+}
+
+.section-container {
+  background-color: #fff;
+  border-top: 1px solid #aed4df
 }
 
 
@@ -73,4 +84,23 @@ span.img-bg {
       text-align: center;
     }
   }
+}
+
+//PARTNERS
+.partners-section {
+  top: -24%;
+  position: relative;
+  padding: 4% 6%;
+}
+.partners-section .img-bg {
+  padding:20px 18px;
+
+  img {
+    max-width: 40px
+  }
+}
+.patners-logo img {
+  margin: 10px 20px;
+  max-width: 150px;
+  max-height: 70px;
 }
