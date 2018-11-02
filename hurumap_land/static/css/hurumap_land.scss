@@ -82,6 +82,27 @@ span.img-bg {
   }
 }
 
+// Stories Showcase
+.showcase.stories {
+  .img {
+    display: flex;
+    height: auto;
+    min-height: 200px;
+    padding: 15px 15px;
+    h2 {
+      display: inline-block;
+      width: 100%;
+      max-width: 400px;
+      margin: auto auto 0;
+      padding: 5px 10px;
+       background-color: #1c9d95;
+      color: #fff;
+       text-transform: uppercase;
+      text-align: center;
+    }
+  }
+}
+
 //PARTNERS
 .partners-section {
   top: -24%;
