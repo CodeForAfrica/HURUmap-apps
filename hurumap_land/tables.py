@@ -107,7 +107,7 @@ universe='Agricultural Land Sales', year='2016', value_type='Float', has_total=F
 FieldTable(['town_name', 'class'], id='towndistrictdistributionavgprice', dataset='Land Sales',
 universe='Agricultural Land Sales', year='2016', value_type='Float', has_total=False)
 
-FieldTable(['population group'], id='populationgroup', year='2016')
+FieldTable(['population group'], id='populationgroup_2016', year='2016')
 # FieldTable(['town name', 'class (R/ha)', 'number_of_transactions',
 # 'total hectares traded in 12 months', 'lowest price per hectares (R/ha) in 12 months',
 #  'highest price per hectares (R/ha) in 12 months', 'average price per hectares (R/ha) in 12 months',
