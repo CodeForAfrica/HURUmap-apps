@@ -14,7 +14,6 @@ log = logging.getLogger(__name__)
 import hurumap_land.tables  # noqa
 
 SECTIONS = settings.HURUMAP.get('topics', {})
-
 LOCATIONNOTFOUND = {'is_missing': True,
                     'name': 'No Data Found',
                     'numerators': {'this': 0},
@@ -35,6 +34,7 @@ def get_land_profile(geo, profile_name, request):
     try:
         comparative_geos = geo_data.get_comparative_geos(geo)
         data = {}
+
         land_sections = ['farmland', 'ervenland', 'sectionaltitleland']
         #for each topic in sections
         #get data for that topic profiles
@@ -55,6 +55,7 @@ def get_land_profile(geo, profile_name, request):
                         log.fatal(msg, exc_info=e)
                         raise ValueError(msg)
 
+        data['demographics'] = get_demographics_profiles(geo,session)
         data['landsales'] = get_landsales_profiles(geo, session)
         data['redistributionandrestitution'] = get_redistributionrestitution_profiles(geo, session)
         data['districtdistribution'] = districtdistribution(geo, session)
@@ -100,10 +101,41 @@ def get_land_profile(geo, profile_name, request):
                         geo.geoid, comp_geo.geoid, e)
                     log.fatal(msg, exc_info=e)
                     raise ValueError(msg)
+
+            if not data['demographics']['is_missing']:
+                try:
+                    merge_dicts(
+                        data['demographics'],
+                        get_demographics_profiles(comp_geo, session),
+                            comp_geo.geo_level)
+                except KeyError as e:
+                    msg = "Error merging data into %s for land sale colour "\
+                        "from %s: KeyError: %s" % (
+                        geo.geoid, comp_geo.geoid, e)
+                    log.fatal(msg, exc_info=e)
+                    raise ValueError(msg)
         return data
 
     finally:
         session.close()
+
+def get_demographics_profiles(geo, session):
+    pop_dist_data = LOCATIONNOTFOUND
+    total_pop = 0
+    try:
+        pop_dist_data, total_pop = get_stat_data(
+            ['population group'], geo, session)
+    except LocationNotFound:
+        pass
+
+    return {
+        'total_population': {
+            "name": "People",
+            "values": {"this": total_pop},
+        },
+        'is_missing': pop_dist_data.get('is_missing')
+
+    }
 
 def get_land_topic_profiles(geo, session, topic_name):
     topic_profiles = SECTIONS[topic_name]['profiles']
