@@ -6,6 +6,10 @@ from hurumap.settings import *  # noqa
 # insert our overrides before both census and HURUmap
 INSTALLED_APPS = ['hurumap_tz'] + INSTALLED_APPS
 
+MIDDLEWARE_CLASSES = (
+        'whitenoise.middleware.WhiteNoiseMiddleware',
+    ) + MIDDLEWARE_CLASSES
+
 DATABASE_URL = os.environ.get(
     'DATABASE_URL',
     'postgresql://hurumap_tz:hurumap_tz@localhost/hurumap_tz')
