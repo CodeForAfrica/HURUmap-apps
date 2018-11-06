@@ -3,7 +3,8 @@ import logging
 
 from wazimap.geo import geo_data
 from wazimap.data.tables import get_model_from_fields, get_datatable
-from wazimap.data.utils import get_session, calculate_median, merge_dicts, get_stat_data, get_objects_by_geo, group_remainder, LocationNotFound
+from wazimap.data.utils import get_session, calculate_median, \
+merge_dicts, get_stat_data, get_objects_by_geo, group_remainder, LocationNotFound
 from django.conf import settings
 from collections import OrderedDict
 from wazimap.data.base import Base
@@ -14,6 +15,16 @@ log = logging.getLogger(__name__)
 import hurumap_land.tables  # noqa
 
 SECTIONS = settings.HURUMAP.get('topics', {})
+
+PROFILE_SECTIONS = (
+    'demographics',  # population group
+    'farmland',  # farm and Agricultural land
+    'ervenland',  # erven land
+    'sectionaltitleland',  # sectional title land
+    'redistributionandrestitution',  # redistribution and restitution
+    'landsales',  #
+    'landsalescolour',  # land sales transcations per color
+)
 LOCATIONNOTFOUND = {'is_missing': True,
                     'name': 'No Data Found',
                     'numerators': {'this': 0},
@@ -28,98 +39,40 @@ LAND_CLASS = [u'Under 1.5K',u'1,501-3K',u'3,001-5K',u'5,001-10K'
     u'100,001-150K',u'150,001-200K',u'200,001-300K',u'300,001-500K',
     u'500,001-800K',u'800,001-1M',u'Above 1M']
 
-
 def get_land_profile(geo, profile_name, request):
     session = get_session()
+
     try:
         comparative_geos = geo_data.get_comparative_geos(geo)
         data = {}
 
-        land_sections = ['farmland', 'ervenland', 'sectionaltitleland']
-        #for each topic in sections
-        #get data for that topic profiles
-        for section in land_sections:
-            topic_name = SECTIONS[section]['topic']
-            data[topic_name] = get_land_topic_profiles(geo, session, topic_name)
+        sections = list(PROFILE_SECTIONS)
 
-            # get profiles data for comparative geometries for land sections
-            for comp_geo in comparative_geos:
-                if not data[topic_name]['is_missing']:
+        for section in sections:
+            function_name = 'get_%s_profile' % section
+            if function_name in globals():
+                func = globals()[function_name]
+                data[section] = func(geo, session)
+
+                # get profiles for comparative geometries
+                for comp_geo in comparative_geos:
                     try:
                         merge_dicts(
-                            data[topic_name], get_land_topic_profiles(comp_geo, session, topic_name),
-                                comp_geo.geo_level)
+                        data[section], func(
+                        comp_geo, session), comp_geo.geo_level)
                     except KeyError as e:
                         msg = "Error merging data into %s for section '%s' from %s: KeyError: %s" % (
-                            geo.geoid, topic_name, comp_geo.geoid, e)
+                        geo.geoid, section, comp_geo.geoid, e)
                         log.fatal(msg, exc_info=e)
                         raise ValueError(msg)
-
-        data['demographics'] = get_demographics_profiles(geo,session)
-        data['landsales'] = get_landsales_profiles(geo, session)
-        data['redistributionandrestitution'] = get_redistributionrestitution_profiles(geo, session)
         data['districtdistribution'] = districtdistribution(geo, session)
-        data['landsalescolour'] = get_landsales_colour_profiles (geo, session)
-
-        for comp_geo in comparative_geos:
-            if not data['landsales']['is_missing']:
-                try:
-                    merge_dicts(
-                        data['landsales'],
-                        get_landsales_profiles(comp_geo, session),
-                            comp_geo.geo_level)
-                except KeyError as e:
-                    msg = "Error merging data into %s for section landsale "\
-                        "from %s: KeyError: %s" % (
-                        geo.geoid, comp_geo.geoid, e)
-                    log.fatal(msg, exc_info=e)
-                    raise ValueError(msg)
-
-            if not data['redistributionandrestitution']['is_missing']:
-                try:
-                    merge_dicts(
-                        data['redistributionandrestitution'],
-                        get_redistributionrestitution_profiles(comp_geo, session),
-                            comp_geo.geo_level)
-                except KeyError as e:
-                    msg = "Error merging data into %s for section "\
-                        "redistributionandrestitution from %s: KeyError: %s" % (
-                        geo.geoid, comp_geo.geoid, e)
-                    log.fatal(msg, exc_info=e)
-                    raise ValueError(msg)
-
-
-            if not data['landsalescolour']['is_missing']:
-                try:
-                    merge_dicts(
-                        data['landsalescolour'],
-                        get_landsales_colour_profiles(comp_geo, session),
-                            comp_geo.geo_level)
-                except KeyError as e:
-                    msg = "Error merging data into %s for land sale colour "\
-                        "from %s: KeyError: %s" % (
-                        geo.geoid, comp_geo.geoid, e)
-                    log.fatal(msg, exc_info=e)
-                    raise ValueError(msg)
-
-            if not data['demographics']['is_missing']:
-                try:
-                    merge_dicts(
-                        data['demographics'],
-                        get_demographics_profiles(comp_geo, session),
-                            comp_geo.geo_level)
-                except KeyError as e:
-                    msg = "Error merging data into %s for land sale colour "\
-                        "from %s: KeyError: %s" % (
-                        geo.geoid, comp_geo.geoid, e)
-                    log.fatal(msg, exc_info=e)
-                    raise ValueError(msg)
         return data
 
     finally:
         session.close()
 
-def get_demographics_profiles(geo, session):
+
+def get_demographics_profile(geo, session):
     pop_dist_data = LOCATIONNOTFOUND
     total_pop = 0
     try:
@@ -133,12 +86,31 @@ def get_demographics_profiles(geo, session):
             "name": "People",
             "values": {"this": total_pop},
         },
-        'is_missing': pop_dist_data.get('is_missing')
+        'is_missing': pop_dist_data.get('is_missing', False)
 
     }
 
-def get_land_topic_profiles(geo, session, topic_name):
-    topic_profiles = SECTIONS[topic_name]['profiles']
+def get_farmland_profile(geo, session):
+    topic_profiles = SECTIONS['farmland']['profiles']
+    profiles_data = {'is_missing': True }
+
+    for profile in topic_profiles:
+        try:
+            profile_table = profile.lower()
+            profile_name = profile.lower().replace(' ', '_')
+            profiles_data[profile_name] = LOCATIONNOTFOUND
+            profiles_data[profile_name], _  = get_stat_data([profile_table],
+                                                geo, session)
+        except LocationNotFound:
+            pass
+
+        profiles_data['is_missing'] = profiles_data.get('is_missing') and \
+                profiles_data[profile_name].get('is_missing', False)
+
+    return profiles_data
+
+def get_ervenland_profile(geo, session):
+    topic_profiles = SECTIONS['ervenland']['profiles']
     profiles_data = {'is_missing': True }
 
     for profile in topic_profiles:
@@ -156,7 +128,26 @@ def get_land_topic_profiles(geo, session, topic_name):
 
     return profiles_data
 
-def get_redistributionrestitution_profiles(geo, session):
+def get_sectionaltitleland_profile(geo, session):
+    topic_profiles = SECTIONS['sectionaltitleland']['profiles']
+    profiles_data = {'is_missing': True }
+
+    for profile in topic_profiles:
+        try:
+            profile_table = profile.lower()
+            profile_name = profile.lower().replace(' ', '_')
+            profiles_data[profile_name] = LOCATIONNOTFOUND
+            profiles_data[profile_name], _  = get_stat_data([profile_table],
+                                                geo, session)
+        except LocationNotFound:
+            pass
+
+        profiles_data['is_missing'] = profiles_data.get('is_missing') and \
+                profiles_data[profile_name].get('is_missing')
+
+    return profiles_data
+
+def get_redistributionandrestitution_profile(geo, session):
     redistributedlandusebreakdown = redistributeprogrammeprojectsbyyear = LOCATIONNOTFOUND
     redistributeprogrammehouseholdsbyyear = landcostrestitution = LOCATIONNOTFOUND
     redistributeprogrammebeneficiariesbyyear = femalepartybenefited = LOCATIONNOTFOUND
@@ -401,7 +392,7 @@ def get_redistributionrestitution_profiles(geo, session):
 
     return redistributionrestitution
 
-def get_landsales_profiles(geo, session):
+def get_landsales_profile(geo, session):
     landsales = {'is_missing': True }
     landsalestransaction = landsaleshectares = LOCATIONNOTFOUND
     landsalesaverageprice = landsalespricetrends = LOCATIONNOTFOUND
@@ -495,9 +486,7 @@ def get_landsales_profiles(geo, session):
 
     return landsales
 
-
-
-def get_landsales_colour_profiles(geo, session):
+def get_landsalescolour_profile(geo, session):
     landsalescolourhectares = landsalescolourhectarespermonth = LOCATIONNOTFOUND
     landsalescolourhectarespermonthperga = landsalescolourhectarespermonthpergu = LOCATIONNOTFOUND
     landsalescolourhectarespermonthperot = landsalescolourhectarespermonthperpr = LOCATIONNOTFOUND
@@ -698,6 +687,7 @@ def get_landsales_colour_profiles(geo, session):
          'is_missing': landsalescolourtattransaction.get('is_missing')
 
         }
+
 def districtdistribution(geo, session):
     towndistrictdistributiontransactions = all_town = LOCATIONNOTFOUND
     towndistrictdistributionhectares = towndistrictdistributionavgprice = LOCATIONNOTFOUND
