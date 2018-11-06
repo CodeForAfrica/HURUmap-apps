@@ -32,7 +32,7 @@ DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
 # -------------------------------------------------------------------------------------
 # HURUmap Config
 # -------------------------------------------------------------------------------------
- 
+
 HURUMAP['name'] = 'HURUmap Land'
 HURUMAP['url'] = 'https://land.hurumap.org'
 HURUMAP['description'] = 'is a joint project of City Press, Rapport, '\
@@ -107,7 +107,7 @@ HURUMAP['mapit'] = {
     'generations': {
         '2011': '1',
         '2016': '2',
-        None: '1',
+        None: '2',
     }
 }
 # -------------------------------------------------------------------------------
