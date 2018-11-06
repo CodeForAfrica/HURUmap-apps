@@ -64,22 +64,16 @@ FieldTable(['class'], id='landsalesdistributiontransaction', dataset='Land Sales
 
 FieldTable(['class'], id='landsalesdistributionlowestprice', dataset='Land Sales',
  universe='Agricultural Land Sales', year='2016', value_type='Float', has_total=False)
-
 FieldTable(['class'], id='landsalesdistributionhighestprice', dataset='Land Sales',
  universe='Agricultural Land Sales', year='2016', value_type='Float', has_total=False)
-
 FieldTable(['class'], id='landsalesdistributionaverageprice', dataset='Land Sales',
  universe='Agricultural Land Sales', year='2016', value_type='Float', has_total=False)
-
 FieldTable(['class'], id='landsalesdistributionpricetrends', dataset='Land Sales',
 universe='Agricultural Land Sales', year='2016', value_type='Float', has_total=False)
-
 FieldTable(['class'], id='landsalesdistributionaveragetrends', dataset='Land Sales',
  universe='Agricultural Land Sales', year='2016', value_type='Float', has_total=False)
-
 FieldTable(['class'], id='landsalesdistributionaveragepricejuly', dataset='Land Sales',
 universe='Agricultural Land Sales', year='2016', value_type='Float', has_total=False)
-
 FieldTable(['class'], id='landsalesdistributionhectares', dataset='Land Sales',
  universe='Agricultural Land Sales', year='2016', has_total=False)
 
@@ -115,14 +109,6 @@ FieldTable(['population group'], id='populationgroup_2016', year='2016')
 #  id='landsalesdistrictdistribution', has_total=False)
 
 # FieldTable(['year', 'hectares transferred per province by year'], id='hectarestransferredperprovincebyyear', universe='Land Restitution', year='2016')
-SimpleTable(
-    id='population',
-    universe='Population',
-    total_column=None,
-    description='Total population',
-    dataset='',
-    year='2016'
-)
 SimpleTable(
     id='landsalesdistrictdistribution',
     description='Land Traded per class',
