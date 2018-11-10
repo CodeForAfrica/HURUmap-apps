@@ -8,7 +8,10 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
 
+$brand-color-light-green: #b6d9e2;
+$brand-color-solid-light-green: #269c94;
 $brand-color-solid-green: #279c94;
+$brand-color-gray: #b1b1b1;
 $font-raleway: 'Raleway', sans-serif;
 
 // Heading font
@@ -84,6 +87,54 @@ span.img-bg {
 
 // Homepage
 
+// Map Explainer; floating box
+.map-explainer-wrapper {
+  position: absolute;
+  top: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 27em;
+}
+.map-explainer {
+  display: inline-block;
+  border-radius: 2px;
+  width: 450px;
+  max-width: 100%;
+  height: auto;
+  background-color: #ffffff;
+  padding: 20px 30px 30px;
+  text-align: center;
+  color: rgb(8, 74, 73);
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.23);
+
+  .cross {
+    float: right;
+    margin-top: -12px;
+    margin-right: -20px;
+    color: $brand-color-gray;
+  }
+
+  hr {
+    border-color: $brand-color-light-green;
+    margin: 0;
+  }
+
+  a {
+    border-radius: 24px;
+    padding: 5px 15px 7px;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 13px;
+    color: #fff;
+    font-weight: 600;
+    border: 0px;
+    background-color: $brand-color-solid-light-green;
+  }
+}
+
 // How it works
 .how-it-works {
   img {
@@ -95,7 +146,7 @@ span.img-bg {
 .showcase-stories {
   top: -60px;
   position: relative;
-  padding: 15px;
+  padding: 15px 30px 0px;
   max-width: 1024px;
   margin: 0 auto;
 
@@ -153,4 +204,3 @@ span.img-bg {
   
   }
 }
-
