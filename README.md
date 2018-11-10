@@ -17,6 +17,15 @@ export HURUMAP_APP=hurumap_land
 make web
 ```
 
+## Updating django model data:
+
+Be sure to dump the data to the appropriate fixture when making changes to django models data:
+
+```
+export HURUMAP_APP=<hurumap_app>
+make dumpdata
+```
+
 ## Deployment
 
 We use [dokku](https://dokku.viewdocs.com/dokku) to deploy on our own servers. It's awesome like sliced bread or [*chapati*](https://google.com/search?q=chapati). Check out their docs on getting started: https://dokku.viewdocs.com/dokku
