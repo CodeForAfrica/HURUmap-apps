@@ -22,7 +22,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: sectionaltitleownershipinhectarespergender; Type: TABLE; Schema: public; Owner: our_land
+-- Name: sectionaltitleownershipinhectarespergender; Type: TABLE; Schema: public
 --
 
 CREATE TABLE public.sectionaltitleownershipinhectarespergender (
@@ -35,7 +35,7 @@ CREATE TABLE public.sectionaltitleownershipinhectarespergender (
 
 
 --
--- Data for Name: sectionaltitleownershipinhectarespergender; Type: TABLE DATA; Schema: public; Owner: our_land
+-- Data for Name: sectionaltitleownershipinhectarespergender; Type: TABLE DATA; Schema: public
 --
 
 COPY public.sectionaltitleownershipinhectarespergender (geo_level, geo_code, geo_version, "sectional title ownership in hectares per gender", total) FROM stdin;
@@ -93,7 +93,7 @@ province	LIM	2016	Other	1
 
 
 --
--- Name: sectionaltitleownershipinhectarespergender pk_sectionaltitleownershipinhectarespergender; Type: CONSTRAINT; Schema: public; Owner: our_land
+-- Name: sectionaltitleownershipinhectarespergender pk_sectionaltitleownershipinhectarespergender; Type: CONSTRAINT; Schema: public
 --
 
 ALTER TABLE IF EXISTS ONLY public.sectionaltitleownershipinhectarespergender

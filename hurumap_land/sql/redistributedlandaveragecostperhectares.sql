@@ -9,7 +9,7 @@
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
+
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
@@ -25,7 +25,7 @@ SET default_with_oids = false;
 
 --
 -- TOC entry 355 (class 1259 OID 71277)
--- Name: redistributedlandaveragecostperhectares; Type: TABLE; Schema: public; Owner: our_land
+-- Name: redistributedlandaveragecostperhectares; Type: TABLE; Schema: public
 --
 
 CREATE TABLE public.redistributedlandaveragecostperhectares (
@@ -38,7 +38,7 @@ CREATE TABLE public.redistributedlandaveragecostperhectares (
 --
 -- TOC entry 3366 (class 0 OID 71277)
 -- Dependencies: 355
--- Data for Name: redistributedlandaveragecostperhectares; Type: TABLE DATA; Schema: public; Owner: our_land
+-- Data for Name: redistributedlandaveragecostperhectares; Type: TABLE DATA; Schema: public
 --
 
 COPY public.redistributedlandaveragecostperhectares (geo_level, geo_code, geo_version, redistributedlandaveragecostperhectares) FROM stdin;

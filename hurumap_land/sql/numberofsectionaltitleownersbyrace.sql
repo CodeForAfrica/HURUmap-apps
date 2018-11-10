@@ -22,7 +22,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: numberofsectionaltitleownersbyrace; Type: TABLE; Schema: public; Owner: our_land
+-- Name: numberofsectionaltitleownersbyrace; Type: TABLE; Schema: public
 --
 
 CREATE TABLE public.numberofsectionaltitleownersbyrace (
@@ -35,7 +35,7 @@ CREATE TABLE public.numberofsectionaltitleownersbyrace (
 
 
 --
--- Data for Name: numberofsectionaltitleownersbyrace; Type: TABLE DATA; Schema: public; Owner: our_land
+-- Data for Name: numberofsectionaltitleownersbyrace; Type: TABLE DATA; Schema: public
 --
 
 COPY public.numberofsectionaltitleownersbyrace (geo_level, geo_code, geo_version, "number of sectional title owners by race", total) FROM stdin;
@@ -93,7 +93,7 @@ province	LIM	2016	Other	291
 
 
 --
--- Name: numberofsectionaltitleownersbyrace pk_numberofsectionaltitleownersbyrace; Type: CONSTRAINT; Schema: public; Owner: our_land
+-- Name: numberofsectionaltitleownersbyrace pk_numberofsectionaltitleownersbyrace; Type: CONSTRAINT; Schema: public
 --
 
 ALTER TABLE IF EXISTS ONLY public.numberofsectionaltitleownersbyrace

@@ -22,7 +22,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: numberofprivatelandownersbycategory; Type: TABLE; Schema: public; Owner: our_land
+-- Name: numberofprivatelandownersbycategory; Type: TABLE; Schema: public
 --
 
 CREATE TABLE public.numberofprivatelandownersbycategory (
@@ -35,7 +35,7 @@ CREATE TABLE public.numberofprivatelandownersbycategory (
 
 
 --
--- Data for Name: numberofprivatelandownersbycategory; Type: TABLE DATA; Schema: public; Owner: our_land
+-- Data for Name: numberofprivatelandownersbycategory; Type: TABLE DATA; Schema: public
 --
 
 COPY public.numberofprivatelandownersbycategory (geo_level, geo_code, geo_version, "number of private land owners by category", total) FROM stdin;
@@ -83,7 +83,7 @@ province	LIM	2016	CBOs	1153
 
 
 --
--- Name: numberofprivatelandownersbycategory pk_numberofprivatelandownersbycategory; Type: CONSTRAINT; Schema: public; Owner: our_land
+-- Name: numberofprivatelandownersbycategory pk_numberofprivatelandownersbycategory; Type: CONSTRAINT; Schema: public
 --
 
 ALTER TABLE IF EXISTS ONLY public.numberofprivatelandownersbycategory

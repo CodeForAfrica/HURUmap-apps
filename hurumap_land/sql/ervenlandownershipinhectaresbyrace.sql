@@ -22,7 +22,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: ervenlandownershipinhectaresbyrace; Type: TABLE; Schema: public; Owner: our_land
+-- Name: ervenlandownershipinhectaresbyrace; Type: TABLE; Schema: public
 --
 
 CREATE TABLE public.ervenlandownershipinhectaresbyrace (
@@ -35,7 +35,7 @@ CREATE TABLE public.ervenlandownershipinhectaresbyrace (
 
 
 --
--- Data for Name: ervenlandownershipinhectaresbyrace; Type: TABLE DATA; Schema: public; Owner: our_land
+-- Data for Name: ervenlandownershipinhectaresbyrace; Type: TABLE DATA; Schema: public
 --
 
 COPY public.ervenlandownershipinhectaresbyrace (geo_level, geo_code, geo_version, "erven land ownership in hectares by race", total) FROM stdin;
@@ -103,7 +103,7 @@ province	LIM	2016	Co-ownership	207
 
 
 --
--- Name: ervenlandownershipinhectaresbyrace pk_ervenlandownershipinhectaresbyrace; Type: CONSTRAINT; Schema: public; Owner: our_land
+-- Name: ervenlandownershipinhectaresbyrace pk_ervenlandownershipinhectaresbyrace; Type: CONSTRAINT; Schema: public
 --
 
 ALTER TABLE IF EXISTS ONLY public.ervenlandownershipinhectaresbyrace
