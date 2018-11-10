@@ -4,7 +4,7 @@ from collections import OrderedDict
 from hurumap.settings import *  # noqa
 
 DATABASE_URL = os.environ.get('DATABASE_URL',
-                              'postgresql://hurumap_ug:hurumap_ug@localhost/hurumap_ug')
+                              'postgresql://hurumap:hurumap@localhost/hurumap_ug')
 DJANGO_SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY',
                                    'this is some not so secret key but..')
 DEBUG = os.environ.get('DJANGO_DEBUG', True)
@@ -18,6 +18,10 @@ DATABASES['default']['ATOMIC_REQUESTS'] = True
 
 # install this app before HURUmap
 INSTALLED_APPS = ['hurumap_ug'] + INSTALLED_APPS
+
+MIDDLEWARE_CLASSES = (
+        'whitenoise.middleware.WhiteNoiseMiddleware',
+    ) + MIDDLEWARE_CLASSES
 
 # Localise this instance of HURUmap
 HURUMAP['name'] = 'HURUmap Uganda'
