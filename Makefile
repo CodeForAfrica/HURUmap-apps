@@ -1,12 +1,17 @@
+COMPOSE=docker-compose
+DEVDOCKER=$(COMPOSE) run --rm web
+
 build:
-	docker-compose build
+	$(COMPOSE) build
 
 web:
 	rm -fr static/*  # Workaround for whitenoise busyness in dev
-	docker-compose up web
+	$(COMPOSE) up web
 
 compilescss:
-	docker-compose exec web ./manage.py compilescss
+	$(COMPOSE) exec web ./manage.py compilescss
 	rm -fr static/*
-	docker-compose exec web ./manage.py collectstatic --noinput
-	
+	$(COMPOSE) exec web ./manage.py collectstatic --noinput
+
+dumpdata:
+	$(COMPOSE) exec web python manage.py dumpdata wazimap hurumap ${HURUMAP_APP} -o ${HURUMAP_APP}/fixtures/${HURUMAP_APP}.json
