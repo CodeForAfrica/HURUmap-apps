@@ -1,6 +1,6 @@
 {% load sass_tags static %}
 <div class="section-container text-center">
-  <div class="showcase-stories">
+  <div class="showcase-stories wrapper">
     <p class="section-title-icon">
       <span class="img-bg rounded bg-color-gradient text-white">
         <img src="{% static 'img/icons/blurbs/story.svg' %}"/>
@@ -32,7 +32,7 @@
         </div>
       </a>
     </div>
-    <div class="column-half">
+    <div class="column-half-end">
       <a href="{{ HURUMAP.showcase_stories.2.link }}" target="_blank" rel="noopener">
         <div class="showcase-story img-story grayscale"
             style="background-image: url('{{ HURUMAP.showcase_stories.2.img }}');">
