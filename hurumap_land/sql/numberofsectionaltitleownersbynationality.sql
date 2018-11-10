@@ -22,7 +22,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: numberofsectionaltitleownersbynationality; Type: TABLE; Schema: public; Owner: our_land
+-- Name: numberofsectionaltitleownersbynationality; Type: TABLE; Schema: public
 --
 
 CREATE TABLE public.numberofsectionaltitleownersbynationality (
@@ -35,7 +35,7 @@ CREATE TABLE public.numberofsectionaltitleownersbynationality (
 
 
 --
--- Data for Name: numberofsectionaltitleownersbynationality; Type: TABLE DATA; Schema: public; Owner: our_land
+-- Data for Name: numberofsectionaltitleownersbynationality; Type: TABLE DATA; Schema: public
 --
 
 COPY public.numberofsectionaltitleownersbynationality (geo_level, geo_code, geo_version, "number of sectional title owners by nationality", total) FROM stdin;
@@ -73,7 +73,7 @@ province	LIM	2016	Other	236
 
 
 --
--- Name: numberofsectionaltitleownersbynationality pk_numberofsectionaltitleownersbynationality; Type: CONSTRAINT; Schema: public; Owner: our_land
+-- Name: numberofsectionaltitleownersbynationality pk_numberofsectionaltitleownersbynationality; Type: CONSTRAINT; Schema: public
 --
 
 ALTER TABLE IF EXISTS ONLY public.numberofsectionaltitleownersbynationality

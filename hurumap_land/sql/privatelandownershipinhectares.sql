@@ -21,7 +21,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: privatelandownershipinhectares; Type: TABLE; Schema: public; Owner: our_land
+-- Name: privatelandownershipinhectares; Type: TABLE; Schema: public
 --
 
 CREATE TABLE public.privatelandownershipinhectares (
@@ -34,7 +34,7 @@ CREATE TABLE public.privatelandownershipinhectares (
 
 
 --
--- Data for Name: privatelandownershipinhectares; Type: TABLE DATA; Schema: public; Owner: our_land
+-- Data for Name: privatelandownershipinhectares; Type: TABLE DATA; Schema: public
 --
 
 COPY public.privatelandownershipinhectares (geo_level, geo_code, geo_version, "private land ownership in hectares", total) FROM stdin;

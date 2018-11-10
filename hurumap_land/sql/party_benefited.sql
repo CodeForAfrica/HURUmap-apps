@@ -21,7 +21,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: party_benefited; Type: TABLE; Schema: public; Owner: our_land
+-- Name: party_benefited; Type: TABLE; Schema: public
 --
 
 CREATE TABLE public.party_benefited (
@@ -33,7 +33,7 @@ CREATE TABLE public.party_benefited (
     total integer
 );
 --
--- Data for Name: party_benefited; Type: TABLE DATA; Schema: public; Owner: our_land
+-- Data for Name: party_benefited; Type: TABLE DATA; Schema: public
 --
 
 COPY public.party_benefited (geo_level, geo_code, geo_version, year, party_benefited, total) FROM stdin;

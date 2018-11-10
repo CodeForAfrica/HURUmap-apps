@@ -22,7 +22,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: numberoflandownerspergender; Type: TABLE; Schema: public; Owner: our_land
+-- Name: numberoflandownerspergender; Type: TABLE; Schema: public
 --
 
 CREATE TABLE public.numberoflandownerspergender (
@@ -35,7 +35,7 @@ CREATE TABLE public.numberoflandownerspergender (
 
 
 --
--- Data for Name: numberoflandownerspergender; Type: TABLE DATA; Schema: public; Owner: our_land
+-- Data for Name: numberoflandownerspergender; Type: TABLE DATA; Schema: public
 --
 
 COPY public.numberoflandownerspergender (geo_level, geo_code, geo_version, "number of land owners per gender", total) FROM stdin;
@@ -73,7 +73,7 @@ province	LIM	2016	Other	2495
 
 
 --
--- Name: numberoflandownerspergender pk_numberoflandownerspergender; Type: CONSTRAINT; Schema: public; Owner: our_land
+-- Name: numberoflandownerspergender pk_numberoflandownerspergender; Type: CONSTRAINT; Schema: public
 --
 
 ALTER TABLE IF EXISTS ONLY public.numberoflandownerspergender

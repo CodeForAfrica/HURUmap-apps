@@ -22,7 +22,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: landownershipinhectaresbyrace; Type: TABLE; Schema: public; Owner: our_land
+-- Name: landownershipinhectaresbyrace; Type: TABLE; Schema: public
 --
 
 CREATE TABLE public.landownershipinhectaresbyrace (
@@ -35,7 +35,7 @@ CREATE TABLE public.landownershipinhectaresbyrace (
 
 
 --
--- Data for Name: landownershipinhectaresbyrace; Type: TABLE DATA; Schema: public; Owner: our_land
+-- Data for Name: landownershipinhectaresbyrace; Type: TABLE DATA; Schema: public
 --
 
 COPY public.landownershipinhectaresbyrace (geo_level, geo_code, geo_version, "land ownership in hectares by race", total) FROM stdin;
@@ -103,7 +103,7 @@ province	LIM	2016	Co-own	20165
 
 
 --
--- Name: landownershipinhectaresbyrace pk_landownershipinhectaresbyrace; Type: CONSTRAINT; Schema: public; Owner: our_land
+-- Name: landownershipinhectaresbyrace pk_landownershipinhectaresbyrace; Type: CONSTRAINT; Schema: public
 --
 
 ALTER TABLE IF EXISTS ONLY public.landownershipinhectaresbyrace

@@ -9,7 +9,7 @@
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
+
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
@@ -25,7 +25,7 @@ SET default_with_oids = false;
 
 --
 -- TOC entry 356 (class 1259 OID 71288)
--- Name: redistributionprogrammeoutcomebyyear; Type: TABLE; Schema: public; Owner: our_land
+-- Name: redistributionprogrammeoutcomebyyear; Type: TABLE; Schema: public
 --
 
 CREATE TABLE public.redistributionprogrammeoutcomebyyear (
@@ -40,7 +40,7 @@ CREATE TABLE public.redistributionprogrammeoutcomebyyear (
 --
 -- TOC entry 3369 (class 0 OID 71288)
 -- Dependencies: 356
--- Data for Name: redistributionprogrammeoutcomebyyear; Type: TABLE DATA; Schema: public; Owner: our_land
+-- Data for Name: redistributionprogrammeoutcomebyyear; Type: TABLE DATA; Schema: public
 --
 
 COPY public.redistributionprogrammeoutcomebyyear (geo_level, geo_code, geo_version, year, "outcome of redistribution programme", total) FROM stdin;

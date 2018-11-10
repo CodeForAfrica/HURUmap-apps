@@ -9,7 +9,7 @@
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
+
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
@@ -25,7 +25,7 @@ SET default_with_oids = false;
 
 --
 -- TOC entry 355 (class 1259 OID 76460)
--- Name: landsalesdistributiontransaction; Type: TABLE; Schema: public; Owner: our_land
+-- Name: landsalesdistributiontransaction; Type: TABLE; Schema: public
 --
 
 CREATE TABLE public.landsalesdistributiontransaction (
@@ -37,12 +37,12 @@ CREATE TABLE public.landsalesdistributiontransaction (
 );
 
 
-ALTER TABLE public.landsalesdistributiontransaction OWNER TO our_land;
+
 
 --
 -- TOC entry 3366 (class 0 OID 76460)
 -- Dependencies: 355
--- Data for Name: landsalesdistributiontransaction; Type: TABLE DATA; Schema: public; Owner: our_land
+-- Data for Name: landsalesdistributiontransaction; Type: TABLE DATA; Schema: public
 --
 
 COPY public.landsalesdistributiontransaction (geo_level, geo_code, geo_version, class, total) FROM stdin;

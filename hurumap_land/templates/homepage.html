@@ -21,12 +21,13 @@ download data, and embed charts on your site.{% endblock %}
 {% block content_container %}
 
   <div class="clearfix">
-      <div id="slippy-map"></div>
-      <!-- floating discover banner -->
-      <div id="map-div" class="map-explainer">
+    <div id="slippy-map"></div>
+    <!-- Map Explainer; floating discover banner -->
+    <div class="map-explainer-wrapper">
+      <div class="map-explainer">
         <i class="fa fa-times cross"
-        onclick="javascript:$('#map-div').css('display', 'none')"></i>
-         <div style="padding-bottom: 2%">
+        onclick="javascript:$('.map-explainer-wrapper').css('display', 'none')"></i>
+          <div style="padding-bottom: 2%">
             <h2 class="font-weight-bold" style="font-size: 2em">
               Discover the stories behind <br/> our <span style="color: #269a92;">land</span></h2>
             <hr>
@@ -37,44 +38,44 @@ download data, and embed charts on your site.{% endblock %}
         href="{{HURUMAP.url}}/profiles/country-ZA-south-africa/">
           EXPLORE SOUTH AFRICA
           <img class="border-0" src="{% static 'img/icons/blurbs/button-arrow.svg' %}"
-           alt="button arrow"
-           style="height:15px; width: 18px; box-shadow: none; object-fit: contain;">
+            alt="button arrow"
+            style="height:15px; width: 18px; box-shadow: none; object-fit: contain;">
         </a>
-
       </div>
+    </div>
   </div>
+  
   <div class="showcase how-it-works bg-tan text-center">
     {% block how_it_works %}
-    <div class="wrapper clearfix how-it-works">
-      <h1>How It Works</h1>
-      <br/>
-      <div class="column-third">
-        <p><span class="img-bg rounded bg-color-primary"><img src="{% static 'img/icons/blurbs/checklist.svg' %}"/></span></p>
-        <h3>Find Facts</h3>
-        <p>Land ownership data is broken down by province and category: agricultural land, erven and urban land and sectional title land. </p>
+      <div class="wrapper clearfix how-it-works">
+        <h1>How It Works</h1>
+        <br/>
+        <div class="column-third">
+          <p><span class="img-bg rounded bg-color-primary"><img src="{% static 'img/icons/blurbs/checklist.svg' %}"/></span></p>
+          <h3>Find Facts</h3>
+          <p>Land ownership data is broken down by province and category: agricultural land, erven and urban land and sectional title land. </p>
+        </div>
+        <div class="column-third">
+          <p><span class="img-bg rounded bg-color-primary"><img src="{% static 'img/icons/blurbs/analysis.svg' %}"/></span></p>
+          <h3>Visualize</h3>
+          <p>Our library of charts gives you insight into land data from provinces you research. Look for them on profile pages. You can embed the charts on your own site. </p>
+        </div>
+        <div class="column-third-end">
+          <p><span class="img-bg rounded bg-color-primary"><img src="{% static 'img/icons/blurbs/visualization.svg' %}"/></span></p>
+          <h3>Get Context</h3>
+          <p>Pre-computed land statistics are presented alongside each data point so you can see how each place fits into a large context.</p>
+        </div>
       </div>
-      <div class="column-third">
-        <p><span class="img-bg rounded bg-color-primary"><img src="{% static 'img/icons/blurbs/analysis.svg' %}"/></span></p>
-        <h3>Visualize</h3>
-        <p>Our library of charts gives you insight into land data from provinces you research. Look for them on profile pages. You can embed the charts on your own site. </p>
+      <div class="clearfix"></div>
+      <div class="wrapper" style="margin: 30px auto;">
+        <a href="/help" class="btn btn-lg bg-bottle-green">Learn more</a>
       </div>
-      <div class="column-third">
-        <p><span class="img-bg rounded bg-color-primary"><img src="{% static 'img/icons/blurbs/visualization.svg' %}"/></span></p>
-        <h3>Get Context</h3>
-        <p>Pre-computed land statistics are presented alongside each data point so you can see how each place fits into a large context.</p>
-      </div>
-    </div>
-    <div class="wrapper">
-      <br/><br/>
-      <p><a href="/help" class="btn btn-lg bg-bottle-green">Learn more</a></p>
-    </div>
     {% endblock %}
   </div>
 
   {% include 'blocks/showcase.html' %}
 
   {% include 'blocks/partners.html' with extra_css_class='bg-tan' %}
-
 
 {% endblock content_container %}
 

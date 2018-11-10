@@ -7,7 +7,7 @@
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
+
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
@@ -21,7 +21,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: landsalesdistributionlowestprice; Type: TABLE; Schema: public; Owner: our_land
+-- Name: landsalesdistributionlowestprice; Type: TABLE; Schema: public
 --
 
 CREATE TABLE public.landsalesdistributionlowestprice (
@@ -33,10 +33,10 @@ CREATE TABLE public.landsalesdistributionlowestprice (
 );
 
 
-ALTER TABLE public.landsalesdistributionlowestprice OWNER TO our_land;
+
 
 --
--- Data for Name: landsalesdistributionlowestprice; Type: TABLE DATA; Schema: public; Owner: our_land
+-- Data for Name: landsalesdistributionlowestprice; Type: TABLE DATA; Schema: public
 --
 
 COPY public.landsalesdistributionlowestprice (geo_level, geo_code, geo_version, class, total) FROM stdin;
