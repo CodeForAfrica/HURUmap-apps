@@ -4,11 +4,14 @@
 [[ -z "${HURUMAP_APP}" ]] && HURUMAP_APP='hurumap_land' || HURUMAP_APP="${HURUMAP_APP}"
 echo "HURUmap App: " $HURUMAP_APP
 
-createdb ${HURUMAP_APP}                   # Create DB
-python manage.py migrate --noinput        # Apply database migrations
-cat ${HURUMAP_APP}/sql/*.sql | psql       # Upload tables / data
-python manage.py compilescss              # Compile SCSS (offline)
-python manage.py collectstatic --noinput  # Collect static files
+export DJANGO_SETTINGS_MODULE="${HURUMAP_APP}.settings"
+
+createdb ${HURUMAP_APP}                        # Create DB
+cat ${HURUMAP_APP}/sql/*.sql | psql            # Upload tables / data
+python manage.py migrate --noinput             # Apply database migrations
+python manage.py loaddata ${HURUMAP_APP}.json  # Load fixtures
+python manage.py compilescss                   # Compile SCSS (offline)
+python manage.py collectstatic --noinput       # Collect static files
 
 # Prepare log files and start outputting logs to stdout
 touch /src/logs/gunicorn.log

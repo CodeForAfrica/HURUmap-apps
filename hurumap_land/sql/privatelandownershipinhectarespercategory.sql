@@ -22,7 +22,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: privatelandownershipinhectarespercategory; Type: TABLE; Schema: public; Owner: our_land
+-- Name: privatelandownershipinhectarespercategory; Type: TABLE; Schema: public
 --
 
 CREATE TABLE public.privatelandownershipinhectarespercategory (
@@ -35,7 +35,7 @@ CREATE TABLE public.privatelandownershipinhectarespercategory (
 
 
 --
--- Data for Name: privatelandownershipinhectarespercategory; Type: TABLE DATA; Schema: public; Owner: our_land
+-- Data for Name: privatelandownershipinhectarespercategory; Type: TABLE DATA; Schema: public
 --
 
 COPY public.privatelandownershipinhectarespercategory (geo_level, geo_code, geo_version, "private land ownership in hectares per category", total) FROM stdin;
@@ -93,7 +93,7 @@ country	ZA	2016	Co-ownership	883589
 
 
 --
--- Name: privatelandownershipinhectarespercategory pk_privatelandownershipinhectarespercategory; Type: CONSTRAINT; Schema: public; Owner: our_land
+-- Name: privatelandownershipinhectarespercategory pk_privatelandownershipinhectarespercategory; Type: CONSTRAINT; Schema: public
 --
 
 ALTER TABLE IF EXISTS ONLY public.privatelandownershipinhectarespercategory

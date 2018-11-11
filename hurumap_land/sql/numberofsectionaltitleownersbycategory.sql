@@ -22,7 +22,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: numberofsectionaltitleownersbycategory; Type: TABLE; Schema: public; Owner: our_land
+-- Name: numberofsectionaltitleownersbycategory; Type: TABLE; Schema: public
 --
 
 CREATE TABLE public.numberofsectionaltitleownersbycategory (
@@ -35,7 +35,7 @@ CREATE TABLE public.numberofsectionaltitleownersbycategory (
 
 
 --
--- Data for Name: numberofsectionaltitleownersbycategory; Type: TABLE DATA; Schema: public; Owner: our_land
+-- Data for Name: numberofsectionaltitleownersbycategory; Type: TABLE DATA; Schema: public
 --
 
 COPY public.numberofsectionaltitleownersbycategory (geo_level, geo_code, geo_version, "number of sectional title owners by category", total) FROM stdin;
@@ -83,7 +83,7 @@ country	ZA	2016	Trusts	42878
 
 
 --
--- Name: numberofsectionaltitleownersbycategory pk_numberofsectionaltitleownersbycategory; Type: CONSTRAINT; Schema: public; Owner: our_land
+-- Name: numberofsectionaltitleownersbycategory pk_numberofsectionaltitleownersbycategory; Type: CONSTRAINT; Schema: public
 --
 
 ALTER TABLE IF EXISTS ONLY public.numberofsectionaltitleownersbycategory

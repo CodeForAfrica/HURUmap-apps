@@ -9,10 +9,15 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
 
 $brand-color-primary: #0e4a48;
+$brand-color-light-green: #b6d9e2;
+$brand-color-solid-light-green: #269c94;
+$brand-color-solid-green: #279c94;
+$brand-color-gray: #b1b1b1;
+$font-raleway: 'Raleway', sans-serif;
 
 // Heading font
 h1 {
-  font-family: 'Raleway', sans-serif;
+  font-family: $font-raleway;
   font-weight: 700;
   font-size: 3em;
 }
@@ -21,7 +26,7 @@ h1 {
 
 // Fonts
 .font-raleway {
-  font-family: 'Raleway', sans-serif;
+  font-family: $font-raleway;
 }
 .font-weight-bold {
   font-weight: 700;
@@ -35,6 +40,28 @@ h1 {
 
 .bg-color-gradient {
   background-image: linear-gradient(to right, #0e4b49, #16635f, #269a92);
+}
+
+// Colors
+.bg-color-gradient {
+  background-image: linear-gradient(to right, #0e4b49, #16635f, #269a92) !important;
+}
+.bg-color-solid-green {
+  background-color: $brand-color-solid-green;
+}
+
+// Text
+.text-white {
+    color: white;
+}
+.text-primary {
+  color: #084a49;
+}
+.text-uppercase {
+  text-transform: uppercase;
+}
+.text-center {
+  text-align: center;
 }
 
 // Rounded radius
@@ -53,18 +80,76 @@ span.img-bg {
   text-transform: uppercase!important;
 }
 
+// Section containers
 .section-container {
   background-color: #fff;
-  border-top: 1px solid #aed4df
+  border-top: 2px solid #aed4df
+}
+.section-title-icon {
+  img {
+    margin-bottom: 5px;
+  }
 }
 
-// Footer
 
+// Global Components
+
+// Footer
 #page-footer img {
   max-width: 200px;
 }
 
+// Pages
+
 // Homepage
+
+// Map Explainer; floating box
+.map-explainer-wrapper {
+  position: absolute;
+  top: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 27em;
+}
+.map-explainer {
+  display: inline-block;
+  border-radius: 2px;
+  width: 450px;
+  max-width: 100%;
+  height: auto;
+  background-color: #ffffff;
+  padding: 20px 30px 30px;
+  text-align: center;
+  color: rgb(8, 74, 73);
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.23);
+
+  .cross {
+    float: right;
+    margin-top: -12px;
+    margin-right: -20px;
+    color: $brand-color-gray;
+  }
+
+  hr {
+    border-color: $brand-color-light-green;
+    margin: 0;
+  }
+
+  a {
+    border-radius: 24px;
+    padding: 5px 15px 7px;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 13px;
+    color: #fff;
+    font-weight: 600;
+    border: 0px;
+    background-color: $brand-color-solid-light-green;
+  }
+}
 
 // How it works
 .how-it-works {
@@ -73,37 +158,70 @@ span.img-bg {
   }
 }
 
-.grayscale {
-  filter: grayscale(100%);
-  -webkit-filter: grayscale(100%); /* Chrome 19+ & Safari 6+ */
-  &:hover {
-    filter: grayscale(0%);
-    -webkit-filter: grayscale(0%); /* Chrome 19+ & Safari 6+ */
-  }
-}
+// Stories
+.showcase-stories {
+  top: -60px;
+  position: relative;
+  padding: 15px 30px 0px;
+  max-width: 1024px;
+  margin: 0 auto;
 
-// Stories Showcase
-.showcase.stories {
-  .img {
+  hr {
+    border-color: #aed4df;
+    border-top-width: 2px;
+    margin: 2em 0;
+  }
+
+  .img-bg {
+    font-size:12px;
+     img {
+       max-width: 30px;
+     }
+  }
+
+  a {
+    text-decoration: none;
+  }
+  .showcase-story {
+    position: relative;
+    text-decoration: none;
+
+    padding: 20px;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    min-height: 250px;
+
     display: flex;
-    height: auto;
-    min-height: 200px;
-    padding: 15px 15px;
+    flex-direction: column;
+
     h2 {
-      display: inline-block;
-      width: 100%;
-      max-width: 400px;
-      margin: auto auto 0;
-      padding: 5px 10px;
-       background-color: #1c9d95;
+      margin: auto auto 10px;
+      max-width: 300px;
       color: #fff;
-       text-transform: uppercase;
-      text-align: center;
+      padding: 10px;
+      font-family: $font-raleway;
+      font-weight: 700;
     }
+
+    button {
+      border-radius: 24px;
+      padding: .6rem 1.25rem;
+      max-width: 140px;
+      margin: 0 auto;
+      text-overflow: ellipsis;
+      font-size: 13px;
+      font-weight: bold;
+      border: 0px;
+      font-family: $font-raleway;
+    }
+  
   }
 }
 
-//PARTNERS
+// Partners
 .partners-section {
   top: -24%;
   position: relative;
