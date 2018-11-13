@@ -94,9 +94,16 @@ span.img-bg {
 }
 .section-title-icon {
   font-size:12px;
+  display: flex;
+  justify-content: center;
   span {
     height: 110px;
     width: 110px;
+    padding: 20px 20px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   img {
     margin-bottom: 5px;
