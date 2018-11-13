@@ -2,22 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.5
--- Dumped by pg_dump version 10.0
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-SET search_path = public, pg_catalog;
-
 ALTER TABLE IF EXISTS ONLY public.ageincompletedyears_ruralorurban_sex DROP CONSTRAINT IF EXISTS pk_ageincompletedyears_ruralorurban_sex;
 DROP TABLE IF EXISTS public.ageincompletedyears_ruralorurban_sex;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -26,7 +23,7 @@ SET default_with_oids = false;
 -- Name: ageincompletedyears_ruralorurban_sex; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE ageincompletedyears_ruralorurban_sex (
+CREATE TABLE public.ageincompletedyears_ruralorurban_sex (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     "rural or urban" character varying(128) NOT NULL,
@@ -41,7 +38,7 @@ CREATE TABLE ageincompletedyears_ruralorurban_sex (
 -- Data for Name: ageincompletedyears_ruralorurban_sex; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY ageincompletedyears_ruralorurban_sex (geo_level, geo_code, "rural or urban", sex, "age in completed years", total, geo_version) FROM stdin;
+COPY public.ageincompletedyears_ruralorurban_sex (geo_level, geo_code, "rural or urban", sex, "age in completed years", total, geo_version) FROM stdin;
 country	KE	rural	female	0	412072	2009
 country	KE	rural	male	0	420982	2009
 country	KE	rural	female	1	363382	2009
@@ -6966,6 +6963,7 @@ county	41	urban	male	80+	181	2009
 county	41	urban	female	9	1169	2009
 county	41	urban	male	9	1100	2009
 county	41	urban	female	unspecified	12	2009
+county	42	rural	male	61	863	2009
 county	41	urban	male	unspecified	14	2009
 county	42	rural	female	0	8116	2009
 county	42	rural	male	0	8348	2009
@@ -7086,7 +7084,6 @@ county	42	rural	male	6	6972	2009
 county	42	rural	female	60	1993	2009
 county	42	rural	male	60	1482	2009
 county	42	rural	female	61	807	2009
-county	42	rural	male	61	863	2009
 county	42	rural	female	62	697	2009
 county	42	rural	male	62	726	2009
 county	42	rural	female	63	629	2009
@@ -15465,7 +15462,7 @@ county	47	urban	male	unspecified	1810	2009
 -- Name: ageincompletedyears_ruralorurban_sex pk_ageincompletedyears_ruralorurban_sex; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY ageincompletedyears_ruralorurban_sex
+ALTER TABLE ONLY public.ageincompletedyears_ruralorurban_sex
     ADD CONSTRAINT pk_ageincompletedyears_ruralorurban_sex PRIMARY KEY (geo_level, geo_code, geo_version, "rural or urban", sex, "age in completed years");
 
 

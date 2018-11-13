@@ -2,22 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.5
--- Dumped by pg_dump version 10.0
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-SET search_path = public, pg_catalog;
-
 ALTER TABLE IF EXISTS ONLY public.protests DROP CONSTRAINT IF EXISTS pk_protests;
 DROP TABLE IF EXISTS public.protests;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -26,7 +23,7 @@ SET default_with_oids = false;
 -- Name: protests; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE protests (
+CREATE TABLE public.protests (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     protests character varying(128) NOT NULL,
@@ -39,7 +36,7 @@ CREATE TABLE protests (
 -- Data for Name: protests; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY protests (geo_level, geo_code, protests, total, geo_version) FROM stdin;
+COPY public.protests (geo_level, geo_code, protests, total, geo_version) FROM stdin;
 county	1	number of protests	5	2009
 county	2	number of protests	0	2009
 county	3	number of protests	0	2009
@@ -95,7 +92,7 @@ country	KE	number of protests	140	2009
 -- Name: protests pk_protests; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY protests
+ALTER TABLE ONLY public.protests
     ADD CONSTRAINT pk_protests PRIMARY KEY (geo_level, geo_code, geo_version, protests);
 
 

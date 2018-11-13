@@ -2,22 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.5
--- Dumped by pg_dump version 10.0
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-SET search_path = public, pg_catalog;
-
 ALTER TABLE IF EXISTS ONLY public.maintypeofroofingmaterial DROP CONSTRAINT IF EXISTS pk_maintypeofroofingmaterial;
 DROP TABLE IF EXISTS public.maintypeofroofingmaterial;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -26,7 +23,7 @@ SET default_with_oids = false;
 -- Name: maintypeofroofingmaterial; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE maintypeofroofingmaterial (
+CREATE TABLE public.maintypeofroofingmaterial (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     "main type of roofing material" character varying(128) NOT NULL,
@@ -39,7 +36,7 @@ CREATE TABLE maintypeofroofingmaterial (
 -- Data for Name: maintypeofroofingmaterial; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY maintypeofroofingmaterial (geo_level, geo_code, "main type of roofing material", total, geo_version) FROM stdin;
+COPY public.maintypeofroofingmaterial (geo_level, geo_code, "main type of roofing material", total, geo_version) FROM stdin;
 country	KE	asbestos sheets	197217	2009
 county	47	other	1638	2009
 country	KE	concrete	311379	2009
@@ -479,7 +476,7 @@ county	24	tin	53	2009
 -- Name: maintypeofroofingmaterial pk_maintypeofroofingmaterial; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY maintypeofroofingmaterial
+ALTER TABLE ONLY public.maintypeofroofingmaterial
     ADD CONSTRAINT pk_maintypeofroofingmaterial PRIMARY KEY (geo_level, geo_code, geo_version, "main type of roofing material");
 
 

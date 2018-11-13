@@ -2,22 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.5
--- Dumped by pg_dump version 10.0
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-SET search_path = public, pg_catalog;
-
 ALTER TABLE IF EXISTS ONLY public.fertility DROP CONSTRAINT IF EXISTS pk_fertility;
 DROP TABLE IF EXISTS public.fertility;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -26,7 +23,7 @@ SET default_with_oids = false;
 -- Name: fertility; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE fertility (
+CREATE TABLE public.fertility (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     fertility character varying(128) NOT NULL,
@@ -39,7 +36,7 @@ CREATE TABLE fertility (
 -- Data for Name: fertility; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY fertility (geo_level, geo_code, fertility, total, geo_version) FROM stdin;
+COPY public.fertility (geo_level, geo_code, fertility, total, geo_version) FROM stdin;
 country	KE	rate	3.89999999999999991	2009
 country	KE	pregnant	6.29999999999999982	2009
 country	KE	mean	5	2009
@@ -191,7 +188,7 @@ county	34	mean	4.29999999999999982	2009
 -- Name: fertility pk_fertility; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY fertility
+ALTER TABLE ONLY public.fertility
     ADD CONSTRAINT pk_fertility PRIMARY KEY (geo_level, geo_code, geo_version, fertility);
 
 

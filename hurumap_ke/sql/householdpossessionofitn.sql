@@ -2,22 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.5
--- Dumped by pg_dump version 10.0
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-SET search_path = public, pg_catalog;
-
 ALTER TABLE IF EXISTS ONLY public.householdpossessionofitn DROP CONSTRAINT IF EXISTS pk_householdpossessionofitn;
 DROP TABLE IF EXISTS public.householdpossessionofitn;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -26,7 +23,7 @@ SET default_with_oids = false;
 -- Name: householdpossessionofitn; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE householdpossessionofitn (
+CREATE TABLE public.householdpossessionofitn (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     "household possession of itn" character varying(128) NOT NULL,
@@ -39,7 +36,7 @@ CREATE TABLE householdpossessionofitn (
 -- Data for Name: householdpossessionofitn; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY householdpossessionofitn (geo_level, geo_code, "household possession of itn", total, geo_version) FROM stdin;
+COPY public.householdpossessionofitn (geo_level, geo_code, "household possession of itn", total, geo_version) FROM stdin;
 county	1	households with at least one ITN	56.8999999999999986	2009
 county	1	average ITN per household	0.900000000000000022	2009
 county	1	Percentage households with ITN for every 2 people in household	38.8999999999999986	2009
@@ -191,7 +188,7 @@ country	KE	Percentage households with ITN for every 2 people in household	34.299
 -- Name: householdpossessionofitn pk_householdpossessionofitn; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY householdpossessionofitn
+ALTER TABLE ONLY public.householdpossessionofitn
     ADD CONSTRAINT pk_householdpossessionofitn PRIMARY KEY (geo_level, geo_code, geo_version, "household possession of itn");
 
 

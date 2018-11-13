@@ -2,22 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.5
--- Dumped by pg_dump version 10.0
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-SET search_path = public, pg_catalog;
-
 ALTER TABLE IF EXISTS ONLY public.health_facilities_type DROP CONSTRAINT IF EXISTS health_facilities_type_pkey;
 DROP TABLE IF EXISTS public.health_facilities_type;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -26,7 +23,7 @@ SET default_with_oids = false;
 -- Name: health_facilities_type; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE health_facilities_type (
+CREATE TABLE public.health_facilities_type (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     type character varying(128) NOT NULL,
@@ -38,7 +35,7 @@ CREATE TABLE health_facilities_type (
 -- Data for Name: health_facilities_type; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY health_facilities_type (geo_level, geo_code, type, total) FROM stdin;
+COPY public.health_facilities_type (geo_level, geo_code, type, total) FROM stdin;
 country	KE	Stand Alone VCT Centre	174
 country	KE	Health Training Institution	7
 country	KE	Sub District Hospital	137
@@ -521,7 +518,7 @@ county	24	Sub District Hospital	2
 -- Name: health_facilities_type health_facilities_type_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY health_facilities_type
+ALTER TABLE ONLY public.health_facilities_type
     ADD CONSTRAINT health_facilities_type_pkey PRIMARY KEY (geo_level, geo_code, type, total);
 
 

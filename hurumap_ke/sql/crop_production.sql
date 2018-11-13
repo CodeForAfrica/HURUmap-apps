@@ -2,22 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.5
--- Dumped by pg_dump version 10.0
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-SET search_path = public, pg_catalog;
-
 ALTER TABLE IF EXISTS ONLY public.crop_production DROP CONSTRAINT IF EXISTS pk_crop_production;
 DROP TABLE IF EXISTS public.crop_production;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -26,7 +23,7 @@ SET default_with_oids = false;
 -- Name: crop_production; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE crop_production (
+CREATE TABLE public.crop_production (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     crop_production character varying(128) NOT NULL,
@@ -39,7 +36,7 @@ CREATE TABLE crop_production (
 -- Data for Name: crop_production; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY crop_production (geo_level, geo_code, crop_production, total, geo_version) FROM stdin;
+COPY public.crop_production (geo_level, geo_code, crop_production, total, geo_version) FROM stdin;
 county	23	maize	1310	2009
 county	15	greengrams	89487	2009
 county	47	maize	913	2009
@@ -1916,7 +1913,7 @@ county	47	cocoyam yield	0	2009
 -- Name: crop_production pk_crop_production; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY crop_production
+ALTER TABLE ONLY public.crop_production
     ADD CONSTRAINT pk_crop_production PRIMARY KEY (geo_level, geo_code, geo_version, crop_production);
 
 

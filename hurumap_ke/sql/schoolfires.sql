@@ -2,22 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.5
--- Dumped by pg_dump version 10.0
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-SET search_path = public, pg_catalog;
-
 ALTER TABLE IF EXISTS ONLY public.schoolfires DROP CONSTRAINT IF EXISTS pk_schoolfires;
 DROP TABLE IF EXISTS public.schoolfires;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -26,7 +23,7 @@ SET default_with_oids = false;
 -- Name: schoolfires; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE schoolfires (
+CREATE TABLE public.schoolfires (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     total integer NOT NULL,
@@ -39,7 +36,7 @@ CREATE TABLE schoolfires (
 -- Data for Name: schoolfires; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY schoolfires (geo_level, geo_code, total, schoolfires, geo_version) FROM stdin;
+COPY public.schoolfires (geo_level, geo_code, total, schoolfires, geo_version) FROM stdin;
 county	1	0	""	2009
 county	2	0	""	2009
 county	3	2	"Ganze Girls Secondary School,Malindi High"	2009
@@ -95,7 +92,7 @@ country	KE	126	""	2009
 -- Name: schoolfires pk_schoolfires; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY schoolfires
+ALTER TABLE ONLY public.schoolfires
     ADD CONSTRAINT pk_schoolfires PRIMARY KEY (geo_level, geo_code, geo_version, schoolfires);
 
 

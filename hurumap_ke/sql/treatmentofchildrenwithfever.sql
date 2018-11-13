@@ -2,22 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.5
--- Dumped by pg_dump version 10.0
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-SET search_path = public, pg_catalog;
-
 ALTER TABLE IF EXISTS ONLY public.treatmentofchildrenwithfever DROP CONSTRAINT IF EXISTS pk_treatmentofchildrenwithfever;
 DROP TABLE IF EXISTS public.treatmentofchildrenwithfever;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -26,7 +23,7 @@ SET default_with_oids = false;
 -- Name: treatmentofchildrenwithfever; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE treatmentofchildrenwithfever (
+CREATE TABLE public.treatmentofchildrenwithfever (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     "treatment of children with fever" character varying(128) NOT NULL,
@@ -39,7 +36,7 @@ CREATE TABLE treatmentofchildrenwithfever (
 -- Data for Name: treatmentofchildrenwithfever; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY treatmentofchildrenwithfever (geo_level, geo_code, "treatment of children with fever", total, geo_version) FROM stdin;
+COPY public.treatmentofchildrenwithfever (geo_level, geo_code, "treatment of children with fever", total, geo_version) FROM stdin;
 county	1	had fever	22.5	2009
 county	1	sort advice or treatment	91.0999999999999943	2009
 county	1	blood drawn for testing	46.7000000000000028	2009
@@ -335,7 +332,7 @@ country	KE	took any ACT on same or next day	13.0999999999999996	2009
 -- Name: treatmentofchildrenwithfever pk_treatmentofchildrenwithfever; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY treatmentofchildrenwithfever
+ALTER TABLE ONLY public.treatmentofchildrenwithfever
     ADD CONSTRAINT pk_treatmentofchildrenwithfever PRIMARY KEY (geo_level, geo_code, geo_version, "treatment of children with fever");
 
 

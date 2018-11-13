@@ -2,22 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.5
--- Dumped by pg_dump version 10.0
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-SET search_path = public, pg_catalog;
-
 ALTER TABLE IF EXISTS ONLY public.maintypeofwallmaterial DROP CONSTRAINT IF EXISTS pk_maintypeofwallmaterial;
 DROP TABLE IF EXISTS public.maintypeofwallmaterial;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -26,7 +23,7 @@ SET default_with_oids = false;
 -- Name: maintypeofwallmaterial; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE maintypeofwallmaterial (
+CREATE TABLE public.maintypeofwallmaterial (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     "main type of wall material" character varying(128) NOT NULL,
@@ -39,7 +36,7 @@ CREATE TABLE maintypeofwallmaterial (
 -- Data for Name: maintypeofwallmaterial; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY maintypeofwallmaterial (geo_level, geo_code, "main type of wall material", total, geo_version) FROM stdin;
+COPY public.maintypeofwallmaterial (geo_level, geo_code, "main type of wall material", total, geo_version) FROM stdin;
 country	KE	brick/block	1470779	2009
 country	KE	corrugated iron sheets	577500	2009
 country	KE	grass/reeds	264557	2009
@@ -479,7 +476,7 @@ county	24	stone	360	2009
 -- Name: maintypeofwallmaterial pk_maintypeofwallmaterial; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY maintypeofwallmaterial
+ALTER TABLE ONLY public.maintypeofwallmaterial
     ADD CONSTRAINT pk_maintypeofwallmaterial PRIMARY KEY (geo_level, geo_code, geo_version, "main type of wall material");
 
 

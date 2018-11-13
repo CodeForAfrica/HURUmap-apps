@@ -2,22 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.5
--- Dumped by pg_dump version 10.0
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-SET search_path = public, pg_catalog;
-
 ALTER TABLE IF EXISTS ONLY public.useofipt DROP CONSTRAINT IF EXISTS pk_useofipt;
 DROP TABLE IF EXISTS public.useofipt;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -26,7 +23,7 @@ SET default_with_oids = false;
 -- Name: useofipt; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE useofipt (
+CREATE TABLE public.useofipt (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     "use of ipt" character varying(128) NOT NULL,
@@ -39,7 +36,7 @@ CREATE TABLE useofipt (
 -- Data for Name: useofipt; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY useofipt (geo_level, geo_code, "use of ipt", total, geo_version) FROM stdin;
+COPY public.useofipt (geo_level, geo_code, "use of ipt", total, geo_version) FROM stdin;
 county	1	1 or more	67.2999999999999972	2009
 county	1	2 or more	46.3999999999999986	2009
 county	1	3 or more	24.8999999999999986	2009
@@ -191,7 +188,7 @@ country	KE	3 or more	10.0999999999999996	2009
 -- Name: useofipt pk_useofipt; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY useofipt
+ALTER TABLE ONLY public.useofipt
     ADD CONSTRAINT pk_useofipt PRIMARY KEY (geo_level, geo_code, geo_version, "use of ipt");
 
 

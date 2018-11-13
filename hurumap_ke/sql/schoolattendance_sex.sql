@@ -2,22 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.5
--- Dumped by pg_dump version 10.0
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-SET search_path = public, pg_catalog;
-
 ALTER TABLE IF EXISTS ONLY public.schoolattendance_sex DROP CONSTRAINT IF EXISTS pk_schoolattendance_sex;
 DROP TABLE IF EXISTS public.schoolattendance_sex;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -26,7 +23,7 @@ SET default_with_oids = false;
 -- Name: schoolattendance_sex; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE schoolattendance_sex (
+CREATE TABLE public.schoolattendance_sex (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     "school attendance" character varying(128) NOT NULL,
@@ -40,7 +37,7 @@ CREATE TABLE schoolattendance_sex (
 -- Data for Name: schoolattendance_sex; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY schoolattendance_sex (geo_level, geo_code, "school attendance", sex, total, geo_version) FROM stdin;
+COPY public.schoolattendance_sex (geo_level, geo_code, "school attendance", sex, total, geo_version) FROM stdin;
 country	KE	at school	male	14579976	2009
 country	KE	left school	male	14149928	2009
 country	KE	never attended	male	5317852	2009
@@ -432,7 +429,7 @@ county	47	unspecified	female	27302	2009
 -- Name: schoolattendance_sex pk_schoolattendance_sex; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY schoolattendance_sex
+ALTER TABLE ONLY public.schoolattendance_sex
     ADD CONSTRAINT pk_schoolattendance_sex PRIMARY KEY (geo_level, geo_code, geo_version, "school attendance", sex);
 
 

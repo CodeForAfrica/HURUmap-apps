@@ -2,22 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.5
--- Dumped by pg_dump version 10.0
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-SET search_path = public, pg_catalog;
-
 ALTER TABLE IF EXISTS ONLY public.livestock_population DROP CONSTRAINT IF EXISTS pk_livestock_population;
 DROP TABLE IF EXISTS public.livestock_population;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -26,7 +23,7 @@ SET default_with_oids = false;
 -- Name: livestock_population; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE livestock_population (
+CREATE TABLE public.livestock_population (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     livestock_population character varying(128) NOT NULL,
@@ -39,7 +36,7 @@ CREATE TABLE livestock_population (
 -- Data for Name: livestock_population; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY livestock_population (geo_level, geo_code, livestock_population, total, geo_version) FROM stdin;
+COPY public.livestock_population (geo_level, geo_code, livestock_population, total, geo_version) FROM stdin;
 county	26	cattle dairy	17050	2009
 county	26	cattle meat	1690	2009
 county	26	sheep wool	200	2009
@@ -1437,7 +1434,7 @@ county	36	pegions	0	2009
 -- Name: livestock_population pk_livestock_population; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY livestock_population
+ALTER TABLE ONLY public.livestock_population
     ADD CONSTRAINT pk_livestock_population PRIMARY KEY (geo_level, geo_code, geo_version, livestock_population);
 
 

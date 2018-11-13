@@ -2,24 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 10.0
--- Dumped by pg_dump version 10.0
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
-
-SET search_path = public, pg_catalog;
 
 ALTER TABLE IF EXISTS ONLY public.household_heads DROP CONSTRAINT IF EXISTS pk_household_heads;
 DROP TABLE IF EXISTS public.household_heads;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -28,7 +23,7 @@ SET default_with_oids = false;
 -- Name: household_heads; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE household_heads (
+CREATE TABLE public.household_heads (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     geo_version character varying(100) DEFAULT ''::character varying NOT NULL,
@@ -41,7 +36,7 @@ CREATE TABLE household_heads (
 -- Data for Name: household_heads; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY household_heads (geo_level, geo_code, geo_version, "Household_Heads", total) FROM stdin;
+COPY public.household_heads (geo_level, geo_code, geo_version, "Household_Heads", total) FROM stdin;
 county	47	2009	Female Headed Households	233000
 county	1	2009	Female Headed Households	59900
 county	2	2009	Female Headed Households	40300
@@ -145,7 +140,7 @@ country	KE	2009	Youth Headed Households	42200
 -- Name: household_heads pk_household_heads; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY household_heads
+ALTER TABLE ONLY public.household_heads
     ADD CONSTRAINT pk_household_heads PRIMARY KEY (geo_level, geo_code, geo_version, "Household_Heads");
 
 

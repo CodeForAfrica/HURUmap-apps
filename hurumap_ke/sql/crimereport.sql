@@ -2,22 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.5
--- Dumped by pg_dump version 10.0
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-SET search_path = public, pg_catalog;
-
 ALTER TABLE IF EXISTS ONLY public.crimereport DROP CONSTRAINT IF EXISTS pk_crimereport;
 DROP TABLE IF EXISTS public.crimereport;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -26,7 +23,7 @@ SET default_with_oids = false;
 -- Name: crimereport; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE crimereport (
+CREATE TABLE public.crimereport (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     crimereport character varying(128) NOT NULL,
@@ -39,7 +36,7 @@ CREATE TABLE crimereport (
 -- Data for Name: crimereport; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY crimereport (geo_level, geo_code, crimereport, total, geo_version) FROM stdin;
+COPY public.crimereport (geo_level, geo_code, crimereport, total, geo_version) FROM stdin;
 county	20	crimes	1177	2009
 county	20	crimesindex	223	2009
 county	6	crimes	961	2009
@@ -143,7 +140,7 @@ country	KE	crimesindex	188	2009
 -- Name: crimereport pk_crimereport; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY crimereport
+ALTER TABLE ONLY public.crimereport
     ADD CONSTRAINT pk_crimereport PRIMARY KEY (geo_level, geo_code, geo_version, crimereport);
 
 

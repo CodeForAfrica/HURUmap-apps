@@ -2,22 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.5
--- Dumped by pg_dump version 10.0
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-SET search_path = public, pg_catalog;
-
 ALTER TABLE IF EXISTS ONLY public.contraceptive_method DROP CONSTRAINT IF EXISTS contraceptive_method_pkey;
 DROP TABLE IF EXISTS public.contraceptive_method;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -26,7 +23,7 @@ SET default_with_oids = false;
 -- Name: contraceptive_method; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE contraceptive_method (
+CREATE TABLE public.contraceptive_method (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     contraceptive_method character varying(128) NOT NULL,
@@ -38,7 +35,7 @@ CREATE TABLE contraceptive_method (
 -- Data for Name: contraceptive_method; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY contraceptive_method (geo_level, geo_code, contraceptive_method, total) FROM stdin;
+COPY public.contraceptive_method (geo_level, geo_code, contraceptive_method, total) FROM stdin;
 county	1	modern	43.6000000000000014
 county	1	traditional	11.4000000000000004
 county	2	modern	38.2000000000000028
@@ -142,7 +139,7 @@ country	KE	traditional	4.79999999999999982
 -- Name: contraceptive_method contraceptive_method_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY contraceptive_method
+ALTER TABLE ONLY public.contraceptive_method
     ADD CONSTRAINT contraceptive_method_pkey PRIMARY KEY (geo_level, geo_code, contraceptive_method, total);
 
 

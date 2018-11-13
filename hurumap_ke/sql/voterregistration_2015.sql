@@ -2,22 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.5
--- Dumped by pg_dump version 10.0
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-SET search_path = public, pg_catalog;
-
 ALTER TABLE IF EXISTS ONLY public.voterregistration_2015 DROP CONSTRAINT IF EXISTS pk_voterregistration_2015;
 DROP TABLE IF EXISTS public.voterregistration_2015;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -26,7 +23,7 @@ SET default_with_oids = false;
 -- Name: voterregistration_2015; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE voterregistration_2015 (
+CREATE TABLE public.voterregistration_2015 (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     voterregistration_2015 character varying(128) NOT NULL,
@@ -39,7 +36,7 @@ CREATE TABLE voterregistration_2015 (
 -- Data for Name: voterregistration_2015; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY voterregistration_2015 (geo_level, geo_code, voterregistration_2015, total, geo_version) FROM stdin;
+COPY public.voterregistration_2015 (geo_level, geo_code, voterregistration_2015, total, geo_version) FROM stdin;
 county	10	wards	20	2009
 county	1	IDs issued	799735	2009
 county	1	dead with IDs	84532	2009
@@ -575,7 +572,7 @@ country	KE	bvr kits	5756	2009
 -- Name: voterregistration_2015 pk_voterregistration_2015; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY voterregistration_2015
+ALTER TABLE ONLY public.voterregistration_2015
     ADD CONSTRAINT pk_voterregistration_2015 PRIMARY KEY (geo_level, geo_code, geo_version, voterregistration_2015);
 
 

@@ -2,22 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.5
--- Dumped by pg_dump version 10.0
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-SET search_path = public, pg_catalog;
-
 ALTER TABLE IF EXISTS ONLY public.weightforheight DROP CONSTRAINT IF EXISTS pk_weightforheight;
 DROP TABLE IF EXISTS public.weightforheight;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -26,7 +23,7 @@ SET default_with_oids = false;
 -- Name: weightforheight; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE weightforheight (
+CREATE TABLE public.weightforheight (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     "weight for height" character varying(128) NOT NULL,
@@ -39,7 +36,7 @@ CREATE TABLE weightforheight (
 -- Data for Name: weightforheight; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY weightforheight (geo_level, geo_code, "weight for height", total, geo_version) FROM stdin;
+COPY public.weightforheight (geo_level, geo_code, "weight for height", total, geo_version) FROM stdin;
 county	1	below -3	0	2009
 county	1	below -2	4.09999999999999964	2009
 county	1	above +2	4.20000000000000018	2009
@@ -239,7 +236,7 @@ country	KE	mean Z-score	0	2009
 -- Name: weightforheight pk_weightforheight; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY weightforheight
+ALTER TABLE ONLY public.weightforheight
     ADD CONSTRAINT pk_weightforheight PRIMARY KEY (geo_level, geo_code, geo_version, "weight for height");
 
 

@@ -2,22 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.5
--- Dumped by pg_dump version 10.0
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-SET search_path = public, pg_catalog;
-
 ALTER TABLE IF EXISTS ONLY public.maintypeoffloormaterial DROP CONSTRAINT IF EXISTS pk_maintypeoffloormaterial;
 DROP TABLE IF EXISTS public.maintypeoffloormaterial;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -26,7 +23,7 @@ SET default_with_oids = false;
 -- Name: maintypeoffloormaterial; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE maintypeoffloormaterial (
+CREATE TABLE public.maintypeoffloormaterial (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     "main type of floor material" character varying(128) NOT NULL,
@@ -39,7 +36,7 @@ CREATE TABLE maintypeoffloormaterial (
 -- Data for Name: maintypeoffloormaterial; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY maintypeoffloormaterial (geo_level, geo_code, "main type of floor material", total, geo_version) FROM stdin;
+COPY public.maintypeoffloormaterial (geo_level, geo_code, "main type of floor material", total, geo_version) FROM stdin;
 county	30	cement	110426	2009
 county	30	earth	1856	2009
 county	30	other	80603	2009
@@ -287,7 +284,7 @@ country	KE	wood	135692	2009
 -- Name: maintypeoffloormaterial pk_maintypeoffloormaterial; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY maintypeoffloormaterial
+ALTER TABLE ONLY public.maintypeoffloormaterial
     ADD CONSTRAINT pk_maintypeoffloormaterial PRIMARY KEY (geo_level, geo_code, geo_version, "main type of floor material");
 
 

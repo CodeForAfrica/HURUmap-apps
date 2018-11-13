@@ -2,22 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.5
--- Dumped by pg_dump version 10.0
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-SET search_path = public, pg_catalog;
-
 ALTER TABLE IF EXISTS ONLY public.healthratios DROP CONSTRAINT IF EXISTS pk_healthratios;
 DROP TABLE IF EXISTS public.healthratios;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -26,7 +23,7 @@ SET default_with_oids = false;
 -- Name: healthratios; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE healthratios (
+CREATE TABLE public.healthratios (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     healthratios character varying(30) NOT NULL,
@@ -39,7 +36,7 @@ CREATE TABLE healthratios (
 -- Data for Name: healthratios; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY healthratios (geo_level, geo_code, healthratios, total, geo_version) FROM stdin;
+COPY public.healthratios (geo_level, geo_code, healthratios, total, geo_version) FROM stdin;
 county	27	doctor ratio	4000	2009
 county	19	doctor ratio	5000	2009
 county	1	doctor ratio	7000	2009
@@ -143,7 +140,7 @@ country	KE	nurse ratio	3049	2009
 -- Name: healthratios pk_healthratios; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY healthratios
+ALTER TABLE ONLY public.healthratios
     ADD CONSTRAINT pk_healthratios PRIMARY KEY (geo_level, geo_code, geo_version, healthratios);
 
 
