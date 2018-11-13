@@ -83,11 +83,24 @@ span.img-bg {
 // Section containers
 .section-container {
   background-color: #fff;
-  border-top: 2px solid #aed4df
+  border-top: 2px solid #aed4df;
+  .wrapper {
+    top: -60px;
+    position: relative;
+    padding: 15px 30px 0px;
+    max-width: 1024px;
+    margin: 0 auto;
+  }
 }
 .section-title-icon {
+  font-size:12px;
+  span {
+    height: 110px;
+    width: 110px;
+  }
   img {
     margin-bottom: 5px;
+    max-width: 30px;
   }
 }
 
@@ -160,23 +173,10 @@ span.img-bg {
 
 // Stories
 .showcase-stories {
-  top: -60px;
-  position: relative;
-  padding: 15px 30px 0px;
-  max-width: 1024px;
-  margin: 0 auto;
-
   hr {
     border-color: #aed4df;
     border-top-width: 2px;
     margin: 2em 0;
-  }
-
-  .img-bg {
-    font-size:12px;
-     img {
-       max-width: 30px;
-     }
   }
 
   a {
@@ -222,42 +222,7 @@ span.img-bg {
 }
 
 // Partners
-.partners-section {
-  top: -24%;
-  position: relative;
-  padding: 4% 6%;
-}
-.partners-section .img-bg {
-  padding:20px 18px;
-
-  img {
-    max-width: 40px
-  }
-}
-
-//PARTNERS
-.partners-section {
-  padding-top: 0;
-  padding-left: 6%;
-  padding-right: 6%;
-  padding-bottom: 4%;
-  margin-top: -3%;
-
-  .partners-desc {
-    font-size: 21px;
-    width: 30%;
-    display: inline-block;
-  }
-}
-.partners-section .img-bg {
-  padding:20px 18px;
-  font-size:12px;
-
-  img {
-    max-width: 40px
-  }
-}
-.patners-logo img {
+.showcase-partners .logos img {
   margin: 10px 20px;
   max-width: 150px;
   max-height: 70px;
