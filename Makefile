@@ -15,3 +15,6 @@ compilescss:
 
 dumpdata:
 	$(COMPOSE) exec web python manage.py dumpdata wazimap hurumap ${HURUMAP_APP} -o ${HURUMAP_APP}/fixtures/${HURUMAP_APP}.json
+
+enter:
+	$(COMPOSE) exec web bash
