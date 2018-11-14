@@ -134,8 +134,11 @@ span.img-bg {
 // Global Components
 
 // Footer
-#page-footer img {
-  max-width: 200px;
+#page-footer {
+  padding: 60px 0 55px;
+  img {
+    max-width: 200px;
+  }
 }
 
 // Pages
