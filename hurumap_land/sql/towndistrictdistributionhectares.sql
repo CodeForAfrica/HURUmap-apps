@@ -7,7 +7,7 @@
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
+
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
@@ -21,7 +21,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: towndistrictdistributionhectares; Type: TABLE; Schema: public; Owner: our_land
+-- Name: towndistrictdistributionhectares; Type: TABLE; Schema: public
 --
 
 CREATE TABLE public.towndistrictdistributionhectares (
@@ -34,10 +34,10 @@ CREATE TABLE public.towndistrictdistributionhectares (
 );
 
 
-ALTER TABLE public.towndistrictdistributionhectares OWNER TO our_land;
+
 
 --
--- Data for Name: towndistrictdistributionhectares; Type: TABLE DATA; Schema: public; Owner: our_land
+-- Data for Name: towndistrictdistributionhectares; Type: TABLE DATA; Schema: public
 --
 
 COPY public.towndistrictdistributionhectares (geo_level, geo_code, geo_version, town_name, class, total) FROM stdin;

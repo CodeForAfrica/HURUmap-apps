@@ -7,7 +7,7 @@
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
+
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
@@ -21,7 +21,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: landsalesdistribution; Type: TABLE; Schema: public; Owner: our_land
+-- Name: landsalesdistribution; Type: TABLE; Schema: public
 --
 
 CREATE TABLE public.landsalesdistrictdistribution (
@@ -41,10 +41,10 @@ CREATE TABLE public.landsalesdistrictdistribution (
 );
 
 
-ALTER TABLE IF EXISTS public.landsalesdistribution OWNER TO our_land;
+
 
 --
--- Data for Name: landsalesdistribution; Type: TABLE DATA; Schema: public; Owner: our_land
+-- Data for Name: landsalesdistribution; Type: TABLE DATA; Schema: public
 --
 
 COPY public.landsalesdistribution (geo_level, geo_code, geo_version, "class (R/ha)", "number of transactions in 12 months", "total hectares traded in 12 months", "lowest price per hectares (R/ha) in 12 months", "highest price per hectares (R/ha) in 12 months", "average price per hectares (R/ha) in 12 months", "price trends in 12 months", "average trends in 12 months", "average price in July 2918") FROM stdin;
