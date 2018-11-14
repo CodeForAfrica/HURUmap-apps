@@ -22,6 +22,7 @@ download data, and embed charts on your site.{% endblock %}
 
   <div class="clearfix">
     <div id="slippy-map"></div>
+
     <!-- Map Explainer; floating discover banner -->
     <div class="map-explainer-wrapper">
       <div class="map-explainer">
@@ -35,17 +36,46 @@ download data, and embed charts on your site.{% endblock %}
         <p>{{ HURUMAP.name }} gives journalist and civic activists
           useful facts and data about land ownership in South Africa</p>
         <a class="btn btn-primary btn-sm text-uppercase font-weight-light"
-        href="{{HURUMAP.url}}/profiles/country-ZA-south-africa/">
+            href="/profiles/country-ZA-south-africa/">
           EXPLORE SOUTH AFRICA
           <img class="border-0" src="{% static 'img/icons/blurbs/button-arrow.svg' %}"
-            alt="button arrow"
             style="height:15px; width: 18px; box-shadow: none; object-fit: contain;">
         </a>
       </div>
     </div>
+
+    <!--  -->
+    <div class="home-nav text-center section-container bg-color-white">
+      <ul>
+        <li class="section-title-icon"><a href='/about'>
+          <span class="img-bg rounded bg-color-gradient text-white">
+            <img src="{% static 'img/icons/blurbs/papyrus.svg' %}"/>
+            ABOUT
+          </span>
+        </a></li>
+        <li class="section-title-icon"><a href="javascript:$('.map-explainer-wrapper').css('display', 'none')">
+          <span class="img-bg rounded bg-color-gradient text-white">
+            <img src="{% static 'img/icons/blurbs/map.svg' %}"/>
+            MAP
+          </span>
+        </a></li>
+        <li class="section-title-icon"><a href='#showcase-stories'>
+          <span class="img-bg rounded bg-color-gradient text-white">
+            <img src="{% static 'img/icons/blurbs/script.svg' %}"/>
+            STORIES
+          </span>
+        </a></li>
+        <li class="section-title-icon"><a href='#partners'>
+          <span class="img-bg rounded bg-color-gradient text-white">
+            <img src="{% static 'img/icons/blurbs/group.svg' %}"/>
+            PARTNERS
+          </span>
+        </a></li>
+      </ul>
+    </div>
   </div>
   
-  <div class="showcase how-it-works bg-tan text-center">
+  <div class="showcase how-it-works bg-white text-center">
     {% block how_it_works %}
       <div class="wrapper clearfix how-it-works">
         <h1>How It Works</h1>
@@ -75,11 +105,19 @@ download data, and embed charts on your site.{% endblock %}
 
   {% include 'blocks/showcase.html' %}
 
-  {% include 'blocks/partners.html' with extra_css_class='bg-tan' %}
+  {% include 'blocks/partners.html' %}
 
 {% endblock content_container %}
 
 {% block homepage_javascripb_libs %}
   {{ block.super }}
   <script src="{% static 'js/maps_mapit.js' %}"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      $('.img-bg').on('click', function () {
+        $('.img-bg').not(this).removeClass('active');
+        $(this).toggleClass('active');
+      });
+    });
+  </script>
 {% endblock %}

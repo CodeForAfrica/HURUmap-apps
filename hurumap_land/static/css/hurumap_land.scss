@@ -24,6 +24,22 @@ h1 {
 
 // Re-usable classes
 
+// Colors
+
+.text-white {
+  color: #fff;
+}
+
+.bg-color-white, .bg-white {
+  background-color: #fff;
+}
+.bg-color-gradient, .bg-gradient {
+  background-image: linear-gradient(to right, #0e4b49, #16635f, #269a92);
+}
+.bg-color-green, .bg-green {
+  background-color: $brand-color-solid-green;
+}
+
 // Fonts
 .font-raleway {
   font-family: $font-raleway;
@@ -83,7 +99,7 @@ span.img-bg {
 // Section containers
 .section-container {
   background-color: #fff;
-  border-top: 2px solid #aed4df;
+  border-top: 2px solid #a5d0dc;
   .wrapper {
     top: -60px;
     position: relative;
@@ -109,14 +125,20 @@ span.img-bg {
     margin-bottom: 5px;
     max-width: 30px;
   }
+  a {
+    text-decoration: none;
+  }
 }
 
 
 // Global Components
 
 // Footer
-#page-footer img {
-  max-width: 200px;
+#page-footer {
+  padding: 60px 0 55px;
+  img {
+    max-width: 200px;
+  }
 }
 
 // Pages
@@ -171,7 +193,46 @@ span.img-bg {
   }
 }
 
-// How it works
+// Nav
+.home-nav img {
+  max-width: 30px;
+}
+
+.home-nav ul {
+  list-style-type: none;
+  display: block;
+  margin: 0;
+  padding-left: 15%;
+  overflow: hidden;
+  display: inline-block;
+  width: 100%;
+  margin-top: -3%;
+  z-index: 1;
+  position: relative;
+
+  li {
+    float: left;
+    padding: 0 6%;
+    a {
+      display: block;
+      padding-left: 20px;
+      font-size: 12px;
+
+      span {
+        background-color: $brand-color-solid-green;
+        line-height: 2;
+        &.active {
+          background-image: linear-gradient(to right, #0e4b49, #16635f, #269a92);
+        }
+        &:hover {
+          background-image: linear-gradient(to right, #0e4b49, #16635f, #269a92);
+        }
+      }
+    }
+  }
+}
+
+// How It Works
 .how-it-works {
   img {
     max-width: 50px;
@@ -229,8 +290,11 @@ span.img-bg {
 }
 
 // Partners
-.showcase-partners .logos img {
-  margin: 10px 20px;
-  max-width: 150px;
-  max-height: 70px;
+.showcase-partners .logos {
+  a { text-decoration: none; }
+  img {
+    margin: 10px 20px;
+    max-width: 150px;
+    max-height: 70px;
+  }
 }
