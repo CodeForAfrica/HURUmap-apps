@@ -55,16 +55,17 @@ def get_land_profile(geo, profile_name, request):
                 data[section] = func(geo, session)
 
                 # get profiles for comparative geometries
-                for comp_geo in comparative_geos:
-                    try:
-                        merge_dicts(
-                        data[section], func(
-                        comp_geo, session), comp_geo.geo_level)
-                    except KeyError as e:
-                        msg = "Error merging data into %s for section '%s' from %s: KeyError: %s" % (
-                        geo.geoid, section, comp_geo.geoid, e)
-                        log.fatal(msg, exc_info=e)
-                        raise ValueError(msg)
+                if not data[section]['is_missing']:
+                    for comp_geo in comparative_geos:
+                            try:
+                                merge_dicts(
+                                data[section], func(
+                                comp_geo, session), comp_geo.geo_level)
+                            except KeyError as e:
+                                msg = "Error merging data into %s for section '%s' from %s: KeyError: %s" % (
+                                geo.geoid, section, comp_geo.geoid, e)
+                                log.fatal(msg, exc_info=e)
+                                raise ValueError(msg)
         data['districtdistribution'] = districtdistribution(geo, session)
         return data
 
