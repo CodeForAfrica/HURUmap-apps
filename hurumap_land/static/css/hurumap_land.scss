@@ -17,9 +17,11 @@ $font-raleway: 'Raleway', sans-serif;
 
 // Heading font
 h1 {
+  font-size: 3em;
+}
+h1, h2, h3 {
   font-family: $font-raleway;
   font-weight: 700;
-  font-size: 3em;
 }
 
 // Re-usable classes
@@ -118,12 +120,13 @@ span.img-bg {
     padding: 20px 20px 24px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
   }
-  img {
+  img, svg {
     margin-bottom: 5px;
     max-width: 30px;
+    max-height: 30px;
   }
   a {
     text-decoration: none;
@@ -135,7 +138,7 @@ span.img-bg {
 
 // Footer
 #page-footer {
-  padding: 60px 0 55px;
+  padding: 0;
   img {
     max-width: 200px;
   }
@@ -190,14 +193,20 @@ span.img-bg {
     font-weight: 600;
     border: 0px;
     background-color: $brand-color-solid-light-green;
+
+    display: flex;
+    width: 250px;
+    margin: 0 auto;
+    justify-content: space-evenly;
+    align-items: center;
   }
 }
 
 // Nav
-.home-nav img {
+.home-nav img, .home-nav svg {
   max-width: 30px;
+  max-height: 30px;
 }
-
 .home-nav ul {
   list-style-type: none;
   display: block;
@@ -231,11 +240,18 @@ span.img-bg {
     }
   }
 }
+.leaflet-bottom {
+  z-index: 1 !important;
+}
 
 // How It Works
 .how-it-works {
-  img {
+  img, svg {
     max-width: 50px;
+    max-height: 50px;
+    path, rect {
+      fill: #084a49;
+    }
   }
 }
 
@@ -292,9 +308,9 @@ span.img-bg {
 // Partners
 .showcase-partners .logos {
   a { text-decoration: none; }
-  img {
+  img, svg {
     margin: 10px 20px;
-    max-width: 150px;
-    max-height: 70px;
+    max-width: 320px;
+    max-height: 80px;
   }
 }
