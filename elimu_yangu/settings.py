@@ -143,8 +143,6 @@ HURUMAP['topics']['development'] = {
     ]
 }
 
-STATIC_ROOT = 'elimu_yangu/static/'
-
 LOGGING['loggers']['elimu_yangu'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
 
 # Making sure they are the same
