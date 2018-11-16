@@ -10,21 +10,49 @@ The project is built on [Wazimap](http://wazimap.readthedocs.org/en/latest/), an
 
 ## Development
 
-We use Docker compose to simplify development. To get started, set the HURUmap App you want to work on and sping up the container like so:
+We use [Docker Compose](https://docs.docker.com/compose/) to simplify development. To get started, set the HURUmap App you want to work on and spin up the container like so:
 
 ```
 export HURUMAP_APP=hurumap_land
 make web
 ```
 
-## Updating django model data:
+### Import Data into HURUmap
 
-Be sure to dump the data to the appropriate fixture when making changes to django models data:
+TODO: Needs to use docker-compose, test, and QA
 
-```
+1. Ensure ``${HURUMAP_APP}/tables.py`` has a ``FieldTable`` that has exactly the columns that you're importing. If there are multiple tables with exactly the same columns, perhaps because their Universes are different, then be sure to take note of the **table id**.
+2. Do a dry-run of the import, using the table name if necessary.
+
+        python manage.py importsimplecsv yourfile.csv --dry-run [--table TABLENAME]
+
+3. If it all looks good, run it without ``--dry-run``.
+4. Update (or create) the raw SQL data:
+
+        python manage.py dumppsql --table TABLENAME > sql/TABLENAME.sql
+
+5. Commit to git.
+6. All done!
+
+
+### Downloading / Archive Data:
+
+We make the data available in our repository for added availability in two primary ways:
+
+1. Django fixtures (primarily `wazimap_geography`)
+2. FieldTables as SQL files.
+
+To do this, run the following command:
+```shell
 export HURUMAP_APP=<hurumap_app>
 make dumpdata
 ```
+
+
+
+
+
+---
 
 ## Deployment
 
