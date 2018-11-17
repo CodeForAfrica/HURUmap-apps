@@ -1,7 +1,6 @@
 COMPOSE = docker-compose
 DEVDOCKER = $(COMPOSE) exec web
 
-
 build:
 	$(COMPOSE) build
 

@@ -22,7 +22,7 @@ tail -n 0 -f /src/logs/*.log &
 echo Starting Gunicorn.
 exec gunicorn --name ${HURUMAP_APP} \
     --bind 0.0.0.0:8000 \
-    --workers 3 \
+    --worker-class gevent \
     --log-level=info \
     --log-file=/src/logs/gunicorn.log \
     --access-logfile=/src/logs/access.log \
