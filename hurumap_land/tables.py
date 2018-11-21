@@ -153,3 +153,9 @@ SimpleTable(
     dataset='Land Redistribution and Restitution Statistic 2018',
     year='2016'
 )
+
+
+FieldTable(['gender'], id='privatelanddistributionbygender', dataset='Land Audit Report 2013', year=2013)
+FieldTable(['use'], id='landuse', dataset='Land Audit Report 2013', year=2013)
+FieldTable(['user'], id='landuser', dataset='Land Audit Report 2013', year=2013)
+FieldTable(['ownership'], id='landownership', dataset='Land Audit Report 2013', year=2013)
