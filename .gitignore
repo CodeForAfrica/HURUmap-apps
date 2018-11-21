@@ -5,6 +5,7 @@
 # Visual Studio Code - https://code.visualstudio.com/
 .settings/
 .vscode/
+.idea/
 tsconfig.json
 jsconfig.json
 
