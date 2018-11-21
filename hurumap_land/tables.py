@@ -153,3 +153,28 @@ SimpleTable(
     dataset='Land Redistribution and Restitution Statistic 2018',
     year='2016'
 )
+
+FieldTable(['gender'], id='privatelanddistributionbygender', dataset='Land Audit Report 2013', year=2013)
+FieldTable(['use'], id='landuse', dataset='Land Audit Report 2013', year=2013)
+FieldTable(['user'], id='landuser', dataset='Land Audit Report 2013', year=2013)
+FieldTable(['ownership'], id='landownership', dataset='Land Audit Report 2013', year=2013)
+
+SimpleTable(
+    id='stateownedland',
+    universe='Land Redistribution',
+    total_column=None,
+    description='Total Land Owned by the State',
+    dataset='Land Audit Report 2013',
+    year='2013'
+)
+
+"""
+for t in `ls hurumap_land/sql/[a-z]*.sql`
+do
+    echo $t
+    pg_dump "postgres://hurumap:hurumap@localhost/hurumap_land" \
+        -O -c --if-exists -t $(basename $t .sql) \
+      | egrep -v "(idle_in_transaction_session_timeout|row_security)" \
+      > hurumap_land/sql/$(basename $t .sql).sql
+done
+"""

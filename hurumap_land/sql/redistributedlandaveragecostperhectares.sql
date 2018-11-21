@@ -2,14 +2,11 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
--- Dumped by pg_dump version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
-
--- Started on 2018-09-12 17:03:52 EAT
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
@@ -18,27 +15,24 @@ SET client_min_messages = warning;
 
 ALTER TABLE IF EXISTS ONLY public.redistributedlandaveragecostperhectares DROP CONSTRAINT IF EXISTS pk_redistributedlandaveragecostperhectares;
 DROP TABLE IF EXISTS public.redistributedlandaveragecostperhectares;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
 
 --
--- TOC entry 355 (class 1259 OID 71277)
--- Name: redistributedlandaveragecostperhectares; Type: TABLE; Schema: public
+-- Name: redistributedlandaveragecostperhectares; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.redistributedlandaveragecostperhectares (
     geo_level character varying(50) NOT NULL,
     geo_code character varying(10) NOT NULL,
     geo_version character varying(100) DEFAULT ''::character varying NOT NULL,
-    redistributedlandaveragecostperhectares numeric
+    redistributedlandaveragecostperhectares numeric NOT NULL
 );
 
+
 --
--- TOC entry 3366 (class 0 OID 71277)
--- Dependencies: 355
--- Data for Name: redistributedlandaveragecostperhectares; Type: TABLE DATA; Schema: public
+-- Data for Name: redistributedlandaveragecostperhectares; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.redistributedlandaveragecostperhectares (geo_level, geo_code, geo_version, redistributedlandaveragecostperhectares) FROM stdin;
@@ -54,11 +48,16 @@ province	WC	2016	17212
 country	ZA	2016	5563.86
 \.
 
-ALTER TABLE IF EXISTS ONLY public.redistributedlandaveragecostperhectares
+
+--
+-- Name: redistributedlandaveragecostperhectares pk_redistributedlandaveragecostperhectares; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.redistributedlandaveragecostperhectares
     ADD CONSTRAINT pk_redistributedlandaveragecostperhectares PRIMARY KEY (geo_level, geo_code, geo_version, redistributedlandaveragecostperhectares);
 
--- Completed on 2018-09-12 17:03:52 EAT
 
 --
 -- PostgreSQL database dump complete
 --
+

@@ -2,14 +2,11 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
--- Dumped by pg_dump version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
-
--- Started on 2018-09-12 11:26:51 EAT
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
@@ -18,14 +15,12 @@ SET client_min_messages = warning;
 
 ALTER TABLE IF EXISTS ONLY public.redistributedlandusebreakdown DROP CONSTRAINT IF EXISTS pk_redistributedlandusebreakdown;
 DROP TABLE IF EXISTS public.redistributedlandusebreakdown;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
 
 --
--- TOC entry 351 (class 1259 OID 71246)
--- Name: redistributedlandusebreakdown; Type: TABLE; Schema: public
+-- Name: redistributedlandusebreakdown; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.redistributedlandusebreakdown (
@@ -36,10 +31,9 @@ CREATE TABLE public.redistributedlandusebreakdown (
     total integer
 );
 
+
 --
--- TOC entry 3354 (class 0 OID 71246)
--- Dependencies: 351
--- Data for Name: redistributedlandusebreakdown; Type: TABLE DATA; Schema: public
+-- Data for Name: redistributedlandusebreakdown; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.redistributedlandusebreakdown (geo_level, geo_code, geo_version, "redistributed land use breakdown", total) FROM stdin;
@@ -75,11 +69,16 @@ province	WC	2016	beneficiaries	9
 country	ZA	2016	beneficiaries	1348
 \.
 
-ALTER TABLE IF EXISTS ONLY public.redistributedlandusebreakdown
+
+--
+-- Name: redistributedlandusebreakdown pk_redistributedlandusebreakdown; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.redistributedlandusebreakdown
     ADD CONSTRAINT pk_redistributedlandusebreakdown PRIMARY KEY (geo_level, geo_code, geo_version, "redistributed land use breakdown");
 
--- Completed on 2018-09-12 11:26:52 EAT
 
 --
 -- PostgreSQL database dump complete
 --
+

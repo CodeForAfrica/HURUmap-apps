@@ -2,22 +2,18 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.2
--- Dumped by pg_dump version 9.6.3
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-SET search_path = public, pg_catalog;
-
-ALTER TABLE IF EXISTS ONLY public.population DROP CONSTRAINT IF EXISTS pk_population;
 DROP TABLE IF EXISTS public.population;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -26,7 +22,7 @@ SET default_with_oids = false;
 -- Name: population; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE population (
+CREATE TABLE public.population (
     geo_level character varying(16) NOT NULL,
     geo_code character varying(8) NOT NULL,
     population integer,
@@ -38,7 +34,7 @@ CREATE TABLE population (
 -- Data for Name: population; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY population (geo_level, geo_code, population, geo_version) FROM stdin;
+COPY public.population (geo_level, geo_code, population, geo_version) FROM stdin;
 ward	21001001	8745	2016
 ward	21001002	7258	2016
 ward	21001003	5919	2016
@@ -9220,14 +9216,6 @@ ward	94706037	11766	2016
 ward	94706038	8920	2016
 ward	94706039	8929	2016
 \.
-
-
---
--- Name: population pk_population; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE IF EXISTS ONLY population
-    ADD CONSTRAINT pk_population PRIMARY KEY (geo_level, geo_code, geo_version);
 
 
 --

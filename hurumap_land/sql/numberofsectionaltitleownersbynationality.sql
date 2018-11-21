@@ -2,18 +2,16 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
--- Dumped by pg_dump version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-
 
 ALTER TABLE IF EXISTS ONLY public.numberofsectionaltitleownersbynationality DROP CONSTRAINT IF EXISTS pk_numberofsectionaltitleownersbynationality;
 DROP TABLE IF EXISTS public.numberofsectionaltitleownersbynationality;
@@ -22,7 +20,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: numberofsectionaltitleownersbynationality; Type: TABLE; Schema: public
+-- Name: numberofsectionaltitleownersbynationality; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.numberofsectionaltitleownersbynationality (
@@ -35,7 +33,7 @@ CREATE TABLE public.numberofsectionaltitleownersbynationality (
 
 
 --
--- Data for Name: numberofsectionaltitleownersbynationality; Type: TABLE DATA; Schema: public
+-- Data for Name: numberofsectionaltitleownersbynationality; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.numberofsectionaltitleownersbynationality (geo_level, geo_code, geo_version, "number of sectional title owners by nationality", total) FROM stdin;
@@ -73,10 +71,10 @@ province	LIM	2016	Other	236
 
 
 --
--- Name: numberofsectionaltitleownersbynationality pk_numberofsectionaltitleownersbynationality; Type: CONSTRAINT; Schema: public
+-- Name: numberofsectionaltitleownersbynationality pk_numberofsectionaltitleownersbynationality; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE IF EXISTS ONLY public.numberofsectionaltitleownersbynationality
+ALTER TABLE ONLY public.numberofsectionaltitleownersbynationality
     ADD CONSTRAINT pk_numberofsectionaltitleownersbynationality PRIMARY KEY (geo_level, geo_code, geo_version, "number of sectional title owners by nationality");
 
 

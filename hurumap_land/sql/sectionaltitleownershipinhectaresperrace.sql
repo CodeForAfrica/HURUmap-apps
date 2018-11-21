@@ -2,18 +2,16 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
--- Dumped by pg_dump version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-
 
 ALTER TABLE IF EXISTS ONLY public.sectionaltitleownershipinhectaresperrace DROP CONSTRAINT IF EXISTS pk_sectionaltitleownershipinhectaresperrace;
 DROP TABLE IF EXISTS public.sectionaltitleownershipinhectaresperrace;
@@ -22,7 +20,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: sectionaltitleownershipinhectaresperrace; Type: TABLE; Schema: public
+-- Name: sectionaltitleownershipinhectaresperrace; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.sectionaltitleownershipinhectaresperrace (
@@ -35,7 +33,7 @@ CREATE TABLE public.sectionaltitleownershipinhectaresperrace (
 
 
 --
--- Data for Name: sectionaltitleownershipinhectaresperrace; Type: TABLE DATA; Schema: public
+-- Data for Name: sectionaltitleownershipinhectaresperrace; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.sectionaltitleownershipinhectaresperrace (geo_level, geo_code, geo_version, "sectional title ownership in hectares per race", total) FROM stdin;
@@ -103,10 +101,10 @@ province	LIM	2016	Co-own	6
 
 
 --
--- Name: sectionaltitleownershipinhectaresperrace pk_sectionaltitleownershipinhectaresperrace; Type: CONSTRAINT; Schema: public
+-- Name: sectionaltitleownershipinhectaresperrace pk_sectionaltitleownershipinhectaresperrace; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE IF EXISTS ONLY public.sectionaltitleownershipinhectaresperrace
+ALTER TABLE ONLY public.sectionaltitleownershipinhectaresperrace
     ADD CONSTRAINT pk_sectionaltitleownershipinhectaresperrace PRIMARY KEY (geo_level, geo_code, geo_version, "sectional title ownership in hectares per race");
 
 

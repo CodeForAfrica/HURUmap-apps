@@ -2,18 +2,16 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
--- Dumped by pg_dump version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
 
 DROP TABLE IF EXISTS public.landsalesdistributiontransaction;
 SET default_tablespace = '';
@@ -21,7 +19,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: landsalesdistributiontransaction; Type: TABLE; Schema: public
+-- Name: landsalesdistributiontransaction; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.landsalesdistributiontransaction (
@@ -33,10 +31,8 @@ CREATE TABLE public.landsalesdistributiontransaction (
 );
 
 
-
-
 --
--- Data for Name: landsalesdistributiontransaction; Type: TABLE DATA; Schema: public
+-- Data for Name: landsalesdistributiontransaction; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.landsalesdistributiontransaction (geo_level, geo_code, geo_version, class, total) FROM stdin;
@@ -206,3 +202,4 @@ province	NW	2016	Above 1M	\N
 --
 -- PostgreSQL database dump complete
 --
+

@@ -2,18 +2,16 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
--- Dumped by pg_dump version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-
 
 ALTER TABLE IF EXISTS ONLY public.numberofsectionaltitleownersbygender DROP CONSTRAINT IF EXISTS pk_numberofsectionaltitleownersbygender;
 DROP TABLE IF EXISTS public.numberofsectionaltitleownersbygender;
@@ -22,7 +20,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: numberofsectionaltitleownersbygender; Type: TABLE; Schema: public
+-- Name: numberofsectionaltitleownersbygender; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.numberofsectionaltitleownersbygender (
@@ -35,7 +33,7 @@ CREATE TABLE public.numberofsectionaltitleownersbygender (
 
 
 --
--- Data for Name: numberofsectionaltitleownersbygender; Type: TABLE DATA; Schema: public
+-- Data for Name: numberofsectionaltitleownersbygender; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.numberofsectionaltitleownersbygender (geo_level, geo_code, geo_version, "number of sectional title owners by gender", total) FROM stdin;
@@ -73,10 +71,10 @@ province	LIM	2016	Other	236
 
 
 --
--- Name: numberofsectionaltitleownersbygender pk_numberofsectionaltitleownersbygender; Type: CONSTRAINT; Schema: public
+-- Name: numberofsectionaltitleownersbygender pk_numberofsectionaltitleownersbygender; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE IF EXISTS ONLY public.numberofsectionaltitleownersbygender
+ALTER TABLE ONLY public.numberofsectionaltitleownersbygender
     ADD CONSTRAINT pk_numberofsectionaltitleownersbygender PRIMARY KEY (geo_level, geo_code, geo_version, "number of sectional title owners by gender");
 
 

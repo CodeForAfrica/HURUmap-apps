@@ -2,14 +2,11 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
--- Dumped by pg_dump version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
-
--- Started on 2018-09-12 17:02:49 EAT
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
@@ -18,28 +15,24 @@ SET client_min_messages = warning;
 
 ALTER TABLE IF EXISTS ONLY public.redistributedlandinhectares DROP CONSTRAINT IF EXISTS pk_redistributedlandinhectares;
 DROP TABLE IF EXISTS public.redistributedlandinhectares;
-
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
 
 --
--- TOC entry 353 (class 1259 OID 71263)
--- Name: redistributedlandinhectares; Type: TABLE; Schema: public
+-- Name: redistributedlandinhectares; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.redistributedlandinhectares (
     geo_level character varying(50) NOT NULL,
     geo_code character varying(10) NOT NULL,
     geo_version character varying(100) DEFAULT ''::character varying NOT NULL,
-    redistributedlandinhectares numeric
+    redistributedlandinhectares numeric NOT NULL
 );
 
+
 --
--- TOC entry 3366 (class 0 OID 71263)
--- Dependencies: 353
--- Data for Name: redistributedlandinhectares; Type: TABLE DATA; Schema: public
+-- Data for Name: redistributedlandinhectares; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.redistributedlandinhectares (geo_level, geo_code, geo_version, redistributedlandinhectares) FROM stdin;
@@ -56,11 +49,15 @@ country	ZA	2016	92032.35
 \.
 
 
-ALTER TABLE IF EXISTS ONLY public.redistributedlandinhectares
+--
+-- Name: redistributedlandinhectares pk_redistributedlandinhectares; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.redistributedlandinhectares
     ADD CONSTRAINT pk_redistributedlandinhectares PRIMARY KEY (geo_level, geo_code, geo_version, redistributedlandinhectares);
 
--- Completed on 2018-09-12 17:02:50 EAT
 
 --
 -- PostgreSQL database dump complete
 --
+
