@@ -767,3 +767,51 @@ def districtdistribution(geo, session):
     dist['towndistrictdistributionpricetrendsdata'] = towndistrictdistributionpricetrendsdata
     dist['is_missing'] = all_town.get('is_missing')
     return dist
+
+
+def get_land_audit_2013_profile(geo, session):
+    land_use_dist = LOCATIONNOTFOUND
+    land_user_dist = LOCATIONNOTFOUND
+    land_distribution_gender = LOCATIONNOTFOUND
+    land_ownership = LOCATIONNOTFOUND
+
+    try:
+        land_use_dist, _ = get_stat_data('use', geo, session,
+                                         table_name='landuse',
+                                         table_fields=['use'])
+    except LocationNotFound:
+        pass
+
+    try:
+        land_user_dist, _ = get_stat_data('user', geo, session,
+                                         table_name='landuser',
+                                         table_fields=['user'])
+    except LocationNotFound:
+        pass
+
+    try:
+        land_distribution_gender, _ = get_stat_data('gender', geo, session,
+                                         table_name='privatelanddistributionbygender',
+                                         table_fields=['gender'])
+    except LocationNotFound:
+        pass
+
+    try:
+        land_ownership, _ = get_stat_data('ownership', geo, session,
+                                         table_name='landownership',
+                                         table_fields=['ownership'])
+    except LocationNotFound:
+        pass
+
+    is_missing = land_user_dist.get('is_missing') and \
+                 land_use_dist.get('is_missing') and \
+                 land_distribution_gender.get('is_missing') and \
+                 land_ownership.get('is_missing')
+
+    return {
+        'is_missing': is_missing,
+        'land_user_dist': land_user_dist,
+        'land_use_dist': land_use_dist,
+        'land_distribution_gender': land_distribution_gender,
+        'land_ownership': land_ownership,
+    }
