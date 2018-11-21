@@ -67,6 +67,7 @@ def get_land_profile(geo, profile_name, request):
                                 log.fatal(msg, exc_info=e)
                                 raise ValueError(msg)
         data['districtdistribution'] = districtdistribution(geo, session)
+        data['land_audit_2013'] = get_land_audit_2013_profile(geo, session)
         return data
 
     finally:
