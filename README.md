@@ -10,11 +10,19 @@ The project is built on [Wazimap](http://wazimap.readthedocs.org/en/latest/), an
 
 ## Development
 
-We use [Docker Compose](https://docs.docker.com/compose/) to simplify development. To get started, set the HURUmap App you want to work on and spin up the container like so:
+We use [Docker Compose](https://docs.docker.com/compose/) to simplify development.
 
-```
-export HURUMAP_APP=hurumap_land
+To get started, set the HURUmap App you want to work on and spin up the container like so:
+
+```shell
+export HURUMAP_APP=hurumap_ke
 make web
+```
+
+If the app needs to create a db and load data, the following should work;
+```shell
+make createdb
+make loaddata
 ```
 
 ### Import Data into HURUmap
@@ -49,9 +57,6 @@ make dumpdata
 ```
 
 
-
-
-
 ---
 
 ## Deployment
@@ -65,6 +70,7 @@ dokku apps:create hurumap-ke
 
 # Set environment variables
 dokku config:set hurumap-ke \
+  HURUMAP_APP=hurumap_ke \
   DJANGO_SETTINGS_MODULE=hurumap_ke.settings \
   DATABASE_URL=postgresql://hurumap_ke:hurumap_ke@localhost/hurumap_ke
 ```
