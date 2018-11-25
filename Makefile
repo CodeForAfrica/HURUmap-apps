@@ -7,7 +7,7 @@ web:
 	$(COMPOSE) up web
 
 enter:
-	$(DEVDOCKER) bash
+	$(COMPOSE) exec web bash
 
 compilescss:
 	$(COMPOSE) exec web python manage.py compilescss
