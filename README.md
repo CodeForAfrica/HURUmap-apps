@@ -10,11 +10,27 @@ The project is built on [Wazimap](http://wazimap.readthedocs.org/en/latest/), an
 
 ## Development
 
-We use [Docker Compose](https://docs.docker.com/compose/) to simplify development. To get started, set the HURUmap App you want to work on and spin up the container like so:
+We use [Docker Compose](https://docs.docker.com/compose/) to simplify development.
 
-```
-export HURUMAP_APP=hurumap_land
+To get started, set the HURUmap App you want to work on and spin up the container like so:
+
+```shell
+export HURUMAP_APP=hurumap_ke
 make web
+```
+
+You can create a db and load initial data by running the the following commands;
+```shell
+make createdb
+make loaddata
+
+# (Optional) If sqlalchemy.exc.NoSuchTableError error thrown:
+export HURUMAP_APP=hurumap_land
+# 1. Local Docker DB
+docker-compose up -d db
+cat $HURUMAP_APP/sql/*.sql | docker-compose exec -T db psql $HURUMAP_APP
+# 2. Remote DB option
+cat $HURUMAP_APP/sql/*.sql | docker-compose exec -T -e PGPASSWORD=<pass> db psql -h <db.host.com> -U <user> $HURUMAP_APP
 ```
 
 ### Import Data into HURUmap
@@ -49,9 +65,6 @@ make dumpdata
 ```
 
 
-
-
-
 ---
 
 ## Deployment
@@ -65,6 +78,7 @@ dokku apps:create hurumap-ke
 
 # Set environment variables
 dokku config:set hurumap-ke \
+  HURUMAP_APP=hurumap_ke \
   DJANGO_SETTINGS_MODULE=hurumap_ke.settings \
   DATABASE_URL=postgresql://hurumap_ke:hurumap_ke@localhost/hurumap_ke
 ```

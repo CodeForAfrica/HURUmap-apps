@@ -1,4 +1,4 @@
-git+https://github.com/CodeForAfrica/HURUmap.git@v0.0.1#egg=hurumap
+git+https://github.com/CodeForAfrica/HURUmap.git@v0.0.7#egg=hurumap
 
 # Workaround for dependency links
 # Comment out when changes / updates / PR accepted

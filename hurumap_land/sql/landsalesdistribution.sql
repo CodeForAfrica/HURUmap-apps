@@ -24,11 +24,11 @@ SET default_with_oids = false;
 -- Name: landsalesdistribution; Type: TABLE; Schema: public
 --
 
-CREATE TABLE public.landsalesdistrictdistribution (
+CREATE TABLE public.landsalesdistribution (
     geo_level character varying(50) NOT NULL,
     geo_code character varying(10) NOT NULL,
     geo_version character varying(100) DEFAULT ''::character varying NOT NULL,
-    "town name" character varying(128) NOT NULL
+    "town name" character varying(128) NOT NULL,
     "class (R/ha)" character varying(128) NOT NULL,
     "number of transactions in 12 months" numeric,
     "total hectares traded in 12 months" numeric,
