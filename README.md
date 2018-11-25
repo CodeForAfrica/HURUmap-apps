@@ -28,7 +28,7 @@ make loaddata
 export HURUMAP_APP=hurumap_land
 # 1. Local Docker DB
 docker-compose up -d db
-cat $HURUMAP_APP/sql/*.sql | docker-compose exec -T db psql
+cat $HURUMAP_APP/sql/*.sql | docker-compose exec -T db psql $HURUMAP_APP
 # 2. Remote DB option
 cat $HURUMAP_APP/sql/*.sql | docker-compose exec -T -e PGPASSWORD=<pass> db psql -h <db.host.com> -U <user> $HURUMAP_APP
 ```
