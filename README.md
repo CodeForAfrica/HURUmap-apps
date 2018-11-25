@@ -19,10 +19,18 @@ export HURUMAP_APP=hurumap_ke
 make web
 ```
 
-If the app needs to create a db and load data, the following should work;
+You can create a db and load initial data by running the the following commands;
 ```shell
 make createdb
 make loaddata
+
+# (Optional) If sqlalchemy.exc.NoSuchTableError error thrown:
+export HURUMAP_APP=hurumap_land
+# 1. Local Docker DB
+docker-compose up -d db
+cat $HURUMAP_APP/sql/*.sql | docker-compose exec -T db psql
+# 2. Remote DB option
+cat $HURUMAP_APP/sql/*.sql | docker-compose exec -T -e PGPASSWORD=<pass> db psql -h <db.host.com> -U <user> $HURUMAP_APP
 ```
 
 ### Import Data into HURUmap
