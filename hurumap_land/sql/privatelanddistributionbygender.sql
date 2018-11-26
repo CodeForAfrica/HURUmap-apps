@@ -36,7 +36,7 @@ CREATE TABLE public.privatelanddistributionbygender (
 -- Data for Name: privatelanddistributionbygender; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.privatelanddistributionbygender (geo_level, geo_code, geo_version, gender, total) FROM stdin;
+COPY public.privatelanddistributionbygender (geo_level, geo_code, geo_version, land_ownership_by_gender, total) FROM stdin;
 province	NC	2016	Not Identified	146520
 province	NC	2016	Female	2083258
 province	NC	2016	Male	9080590

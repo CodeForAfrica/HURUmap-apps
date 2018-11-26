@@ -36,7 +36,7 @@ CREATE TABLE public.landownership (
 -- Data for Name: landownership; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.landownership (geo_level, geo_code, geo_version, ownership, total) FROM stdin;
+COPY public.landownership (geo_level, geo_code, geo_version, private_vs_state_ownership, total) FROM stdin;
 province	EC	2016	State Owned	1510553
 province	FS	2016	State Owned	845084
 province	GT	2016	State Owned	304137

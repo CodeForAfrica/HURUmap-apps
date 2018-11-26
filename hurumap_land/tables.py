@@ -155,7 +155,7 @@ SimpleTable(
 )
 
 
-FieldTable(['gender'], id='privatelanddistributionbygender', dataset='Land Audit Report 2013', year=2013)
+FieldTable(['land_ownership_by_gender'], id='privatelanddistributionbygender', dataset='Land Audit Report 2013', year=2013)
 FieldTable(['use'], id='landuse', dataset='Land Audit Report 2013', year=2013)
 FieldTable(['user'], id='landuser', dataset='Land Audit Report 2013', year=2013)
-FieldTable(['ownership'], id='landownership', dataset='Land Audit Report 2013', year=2013)
+FieldTable(['private_vs_state_ownership'], id='landownership', dataset='Land Audit Report 2013', year=2013)
