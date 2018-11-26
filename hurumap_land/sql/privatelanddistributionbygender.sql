@@ -27,7 +27,7 @@ CREATE TABLE public.privatelanddistributionbygender (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     geo_version character varying(100) DEFAULT ''::character varying NOT NULL,
-    gender character varying(128) NOT NULL,
+    land_ownership_by_gender character varying(128) NOT NULL,
     total integer
 );
 

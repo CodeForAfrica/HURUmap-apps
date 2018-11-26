@@ -27,7 +27,7 @@ CREATE TABLE public.landuse (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     geo_version character varying(100) DEFAULT ''::character varying NOT NULL,
-    use character varying(128) NOT NULL,
+    land_use character varying(128) NOT NULL,
     total integer
 );
 
@@ -36,7 +36,7 @@ CREATE TABLE public.landuse (
 -- Data for Name: landuse; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.landuse (geo_level, geo_code, geo_version, use, total) FROM stdin;
+COPY public.landuse (geo_level, geo_code, geo_version, land_use, total) FROM stdin;
 province	GT	2016	Agriculture & Fisheries	23249
 province	GT	2016	Commercial	2264
 province	GT	2016	Community Services	6111

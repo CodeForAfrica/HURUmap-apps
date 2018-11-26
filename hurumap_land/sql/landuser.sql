@@ -27,7 +27,7 @@ CREATE TABLE public.landuser (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     geo_version character varying(100) DEFAULT ''::character varying NOT NULL,
-    "user" character varying(128) NOT NULL,
+    "land_user" character varying(128) NOT NULL,
     total integer
 );
 
@@ -36,7 +36,7 @@ CREATE TABLE public.landuser (
 -- Data for Name: landuser; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.landuser (geo_level, geo_code, geo_version, "user", total) FROM stdin;
+COPY public.landuser (geo_level, geo_code, geo_version, "land_user", total) FROM stdin;
 province	GT	2016	Government department	46850
 province	GT	2016	Municipality	61400
 province	GT	2016	Organization	6898
