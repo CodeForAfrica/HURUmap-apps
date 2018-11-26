@@ -767,3 +767,81 @@ def districtdistribution(geo, session):
     dist['towndistrictdistributionpricetrendsdata'] = towndistrictdistributionpricetrendsdata
     dist['is_missing'] = all_town.get('is_missing')
     return dist
+
+
+def get_afrobarometer_profile(geo, session):
+    access_to_information = LOCATIONNOTFOUND
+    allow_farmers_retain_land_ownership = LOCATIONNOTFOUND
+    maintain_willing_buyer_willing_seller_policy = LOCATIONNOTFOUND
+    land_acquisation_challenges = LOCATIONNOTFOUND
+    land_to_prioritise_for_redistribution = LOCATIONNOTFOUND
+    women_have_equal_right_to_land = LOCATIONNOTFOUND
+    women_men_equal_chance_own_land = LOCATIONNOTFOUND
+
+    try:
+        access_to_information, _ = get_stat_data('access_to_information', geo,
+                                                 session, table_fields=[
+                'access_to_information'])
+    except LocationNotFound:
+        pass
+
+    try:
+        allow_farmers_retain_land_ownership, _ = get_stat_data(
+            'allow_farmers_retain_land_ownership', geo, session,
+            table_fields=['allow_farmers_retain_land_ownership'])
+    except LocationNotFound:
+        pass
+
+    try:
+        maintain_willing_buyer_willing_seller_policy, _ = get_stat_data(
+            'maintain_willing_buyer_willing_seller_policy', geo, session,
+            table_fields=['maintain_willing_buyer_willing_seller_policy'])
+    except LocationNotFound:
+        pass
+
+    try:
+        land_acquisation_challenges, _ = get_stat_data(
+            'land_acquisation_challenges', geo, session,
+            table_fields=['land_acquisation_challenges'])
+    except LocationNotFound:
+        pass
+
+    try:
+        land_to_prioritise_for_redistribution, _ = get_stat_data(
+            'land_to_prioritise_for_redistribution', geo, session,
+            table_fields=['land_to_prioritise_for_redistribution'])
+    except LocationNotFound:
+        pass
+
+    try:
+        women_have_equal_right_to_land, _ = get_stat_data(
+            'women_have_equal_right_to_land', geo, session,
+            table_fields=['women_have_equal_right_to_land'])
+    except LocationNotFound:
+        pass
+
+    try:
+        women_men_equal_chance_own_land, _ = get_stat_data(
+            'women_men_equal_chance_own_land', geo, session,
+            table_fields=['women_men_equal_chance_own_land'])
+    except LocationNotFound:
+        pass
+    
+    is_missing = access_to_information.get('is_missing') and \
+                 allow_farmers_retain_land_ownership.get('is_missing') and \
+                 maintain_willing_buyer_willing_seller_policy.get('is_missing') \
+                 and land_acquisation_challenges.get('is_missing') and \
+                 land_to_prioritise_for_redistribution.get('is_missing') and \
+                 women_have_equal_right_to_land.get('is_missing') and \
+                 women_men_equal_chance_own_land.get('is_missing')
+
+    return {
+        'is_missing': is_missing,
+        'access_to_information': access_to_information,
+        'allow_farmers_retain_land_ownership': allow_farmers_retain_land_ownership,
+        'maintain_willing_buyer_willing_seller_policy': maintain_willing_buyer_willing_seller_policy,
+        'land_acquisation_challenges': land_acquisation_challenges,
+        'land_to_prioritise_for_redistribution': land_to_prioritise_for_redistribution,
+        'women_have_equal_right_to_land': women_have_equal_right_to_land,
+        'women_men_equal_chance_own_land': women_men_equal_chance_own_land,
+    }

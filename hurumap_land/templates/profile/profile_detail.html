@@ -670,6 +670,68 @@
   </article>
 {% endif %}
 
+{% if not afrobarometer.is_missing %}
+  <article>
+  <header class="section-contents">
+      <h1>Afrobarometer Round 7</h1>
+  </header>
+  <div class="section-container">
+    <section class="clearfix stat-row">
+        <div class="column-half">
+          <div id="chart-pie-afrobarometer-access_to_information"
+            data-chart-title="Access to information: land ownership"
+            data-source-link="http://afrobarometer.org/publications/south-africa-summary-results-2018"
+            data-source-title="Afrobarometer Round 7: Survey in South Africa, 2018"></div>
+        </div>
+      <div class="column-half">
+          <div id="chart-pie-afrobarometer-land_to_prioritise_for_redistribution"
+            data-chart-title="Type of land that government should prioritise for redistribution"
+            data-source-link="http://afrobarometer.org/publications/south-africa-summary-results-2018"
+            data-source-title="Afrobarometer Round 7: Survey in South Africa, 2018"></div>
+        </div>
+      </section>
+        <section class="clearfix stat-row">
+      <div class="column-half">
+          <div id="chart-pie-afrobarometer-maintain_willing_buyer_willing_seller_policy"
+            data-chart-title="The government must abide by willing buyer-willing seller policy in acquiring any property?"
+            data-source-link="http://afrobarometer.org/publications/south-africa-summary-results-2018"
+            data-source-title="Afrobarometer Round 7: Survey in South Africa, 2018"></div>
+        </div>
+                  <div class="column-half">
+          <div id="chart-pie-afrobarometer-allow_farmers_retain_land_ownership"
+            data-chart-title="The government should allow farmers to retain ownership of land on which their labourers live?"
+            data-source-link="http://afrobarometer.org/publications/south-africa-summary-results-2018"
+            data-source-title="Afrobarometer Round 7: Survey in South Africa, 2018"></div>
+        </div>
+      </section>
+            <section class="clearfix stat-row">
+        <div class="column-half">
+          <div id="chart-pie-afrobarometer-women_men_equal_chance_own_land"
+            data-chart-title="Women and men have equal chance to own/inherit land?"
+            data-source-link="http://afrobarometer.org/publications/south-africa-summary-results-2018"
+            data-source-title="Afrobarometer Round 7: Survey in South Africa, 2018"></div>
+        </div>
+      <div class="column-half">
+          <div id="chart-pie-afrobarometer-women_have_equal_right_to_land"
+            data-chart-title="Women have equal right to land?"
+            data-source-link="http://afrobarometer.org/publications/south-africa-summary-results-2018"
+            data-source-title="Afrobarometer Round 7: Survey in South Africa, 2018"></div>
+        </div>
+      </section>
+
+        <section class="clearfix stat-row">
+        <div class="column-half">
+          <div id="chart-pie-afrobarometer-land_acquisation_challenges"
+            data-chart-title="Greatest challenge to acquire land today?"
+            data-source-link="http://afrobarometer.org/publications/south-africa-summary-results-2018"
+            data-source-title="Afrobarometer Round 7: Survey in South Africa, 2018"></div>
+        </div>
+      </section>
+
+  </div>
+</article>
+{% endif %}
+
   {% include 'settings_js.html' %}
   {% block body_javascript %}
       {{ block.super }}
