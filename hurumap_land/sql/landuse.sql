@@ -165,10 +165,9 @@ country	ZA	2016	Utilities & Infrastructure	486287
 --
 
 ALTER TABLE ONLY public.landuse
-    ADD CONSTRAINT pk_landuse PRIMARY KEY (geo_level, geo_code, geo_version, use);
+    ADD CONSTRAINT pk_landuse PRIMARY KEY (geo_level, geo_code, geo_version, land_use);
 
 
 --
 -- PostgreSQL database dump complete
 --
-

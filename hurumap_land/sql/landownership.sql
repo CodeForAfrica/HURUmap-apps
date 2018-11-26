@@ -75,10 +75,9 @@ country	ZA	2016	Unaccounted	8360527
 --
 
 ALTER TABLE ONLY public.landownership
-    ADD CONSTRAINT pk_landownership PRIMARY KEY (geo_level, geo_code, geo_version, ownership);
+    ADD CONSTRAINT pk_landownership PRIMARY KEY (geo_level, geo_code, geo_version, private_vs_state_ownership);
 
 
 --
 -- PostgreSQL database dump complete
 --
-

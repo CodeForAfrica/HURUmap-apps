@@ -2,26 +2,24 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
--- Dumped by pg_dump version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
 
-DROP TABLE public.landsalessummarypricetcolour;
+DROP TABLE IF EXISTS public.landsalessummarypricetcolour;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
 
 --
--- Name: landsalessummarypricetcolour; Type: TABLE; Schema: public
+-- Name: landsalessummarypricetcolour; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.landsalessummarypricetcolour (
@@ -34,10 +32,8 @@ CREATE TABLE public.landsalessummarypricetcolour (
 );
 
 
-
-
 --
--- Data for Name: landsalessummarypricetcolour; Type: TABLE DATA; Schema: public
+-- Data for Name: landsalessummarypricetcolour; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.landsalessummarypricetcolour (geo_level, geo_code, geo_version, land_breakdown, month, total) FROM stdin;

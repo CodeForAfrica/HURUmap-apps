@@ -2,18 +2,16 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
--- Dumped by pg_dump version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-
 
 ALTER TABLE IF EXISTS ONLY public.numberofprivatelandownersbycategory DROP CONSTRAINT IF EXISTS pk_numberofprivatelandownersbycategory;
 DROP TABLE IF EXISTS public.numberofprivatelandownersbycategory;
@@ -22,7 +20,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: numberofprivatelandownersbycategory; Type: TABLE; Schema: public
+-- Name: numberofprivatelandownersbycategory; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.numberofprivatelandownersbycategory (
@@ -35,7 +33,7 @@ CREATE TABLE public.numberofprivatelandownersbycategory (
 
 
 --
--- Data for Name: numberofprivatelandownersbycategory; Type: TABLE DATA; Schema: public
+-- Data for Name: numberofprivatelandownersbycategory; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.numberofprivatelandownersbycategory (geo_level, geo_code, geo_version, "number of private land owners by category", total) FROM stdin;
@@ -83,10 +81,10 @@ province	LIM	2016	CBOs	1153
 
 
 --
--- Name: numberofprivatelandownersbycategory pk_numberofprivatelandownersbycategory; Type: CONSTRAINT; Schema: public
+-- Name: numberofprivatelandownersbycategory pk_numberofprivatelandownersbycategory; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE IF EXISTS ONLY public.numberofprivatelandownersbycategory
+ALTER TABLE ONLY public.numberofprivatelandownersbycategory
     ADD CONSTRAINT pk_numberofprivatelandownersbycategory PRIMARY KEY (geo_level, geo_code, geo_version, "number of private land owners by category");
 
 

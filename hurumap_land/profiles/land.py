@@ -777,30 +777,30 @@ def get_land_audit_2013_profile(geo, session):
     land_ownership = LOCATIONNOTFOUND
 
     try:
-        land_use_dist, _ = get_stat_data('use', geo, session,
+        land_use_dist, _ = get_stat_data('land_use', geo, session,
                                          table_name='landuse',
-                                         table_fields=['use'])
+                                         table_fields=['land_use'])
     except LocationNotFound:
         pass
 
     try:
-        land_user_dist, _ = get_stat_data('user', geo, session,
+        land_user_dist, _ = get_stat_data('land_user', geo, session,
                                          table_name='landuser',
-                                         table_fields=['user'])
+                                         table_fields=['land_user'])
     except LocationNotFound:
         pass
 
     try:
-        land_distribution_gender, _ = get_stat_data('gender', geo, session,
+        land_distribution_gender, _ = get_stat_data('land_ownership_by_gender', geo, session,
                                          table_name='privatelanddistributionbygender',
-                                         table_fields=['gender'])
+                                         table_fields=['land_ownership_by_gender'])
     except LocationNotFound:
         pass
 
     try:
-        land_ownership, _ = get_stat_data('ownership', geo, session,
+        land_ownership, _ = get_stat_data('private_vs_state_ownership', geo, session,
                                          table_name='landownership',
-                                         table_fields=['ownership'])
+                                         table_fields=['private_vs_state_ownership'])
     except LocationNotFound:
         pass
 

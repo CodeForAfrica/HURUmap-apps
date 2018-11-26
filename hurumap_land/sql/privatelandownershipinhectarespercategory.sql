@@ -2,18 +2,16 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
--- Dumped by pg_dump version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-
 
 ALTER TABLE IF EXISTS ONLY public.privatelandownershipinhectarespercategory DROP CONSTRAINT IF EXISTS pk_privatelandownershipinhectarespercategory;
 DROP TABLE IF EXISTS public.privatelandownershipinhectarespercategory;
@@ -22,7 +20,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: privatelandownershipinhectarespercategory; Type: TABLE; Schema: public
+-- Name: privatelandownershipinhectarespercategory; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.privatelandownershipinhectarespercategory (
@@ -35,7 +33,7 @@ CREATE TABLE public.privatelandownershipinhectarespercategory (
 
 
 --
--- Data for Name: privatelandownershipinhectarespercategory; Type: TABLE DATA; Schema: public
+-- Data for Name: privatelandownershipinhectarespercategory; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.privatelandownershipinhectarespercategory (geo_level, geo_code, geo_version, "private land ownership in hectares per category", total) FROM stdin;
@@ -93,10 +91,10 @@ country	ZA	2016	Co-ownership	883589
 
 
 --
--- Name: privatelandownershipinhectarespercategory pk_privatelandownershipinhectarespercategory; Type: CONSTRAINT; Schema: public
+-- Name: privatelandownershipinhectarespercategory pk_privatelandownershipinhectarespercategory; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE IF EXISTS ONLY public.privatelandownershipinhectarespercategory
+ALTER TABLE ONLY public.privatelandownershipinhectarespercategory
     ADD CONSTRAINT pk_privatelandownershipinhectarespercategory PRIMARY KEY (geo_level, geo_code, geo_version, "private land ownership in hectares per category");
 
 

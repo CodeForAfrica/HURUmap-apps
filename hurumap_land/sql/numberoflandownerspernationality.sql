@@ -2,18 +2,16 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
--- Dumped by pg_dump version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-
 
 ALTER TABLE IF EXISTS ONLY public.numberoflandownerspernationality DROP CONSTRAINT IF EXISTS pk_numberoflandownerspernationality;
 DROP TABLE IF EXISTS public.numberoflandownerspernationality;
@@ -22,7 +20,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: numberoflandownerspernationality; Type: TABLE; Schema: public
+-- Name: numberoflandownerspernationality; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.numberoflandownerspernationality (
@@ -35,7 +33,7 @@ CREATE TABLE public.numberoflandownerspernationality (
 
 
 --
--- Data for Name: numberoflandownerspernationality; Type: TABLE DATA; Schema: public
+-- Data for Name: numberoflandownerspernationality; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.numberoflandownerspernationality (geo_level, geo_code, geo_version, "number of land owners per nationality", total) FROM stdin;
@@ -73,10 +71,10 @@ province	LIM	2016	Other	2494
 
 
 --
--- Name: numberoflandownerspernationality pk_numberoflandownerspernationality; Type: CONSTRAINT; Schema: public
+-- Name: numberoflandownerspernationality pk_numberoflandownerspernationality; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE IF EXISTS ONLY public.numberoflandownerspernationality
+ALTER TABLE ONLY public.numberoflandownerspernationality
     ADD CONSTRAINT pk_numberoflandownerspernationality PRIMARY KEY (geo_level, geo_code, geo_version, "number of land owners per nationality");
 
 

@@ -75,10 +75,9 @@ country	ZA	2016	Male	9302350
 --
 
 ALTER TABLE ONLY public.privatelanddistributionbygender
-    ADD CONSTRAINT pk_privatelanddistributionbygender PRIMARY KEY (geo_level, geo_code, geo_version, gender);
+    ADD CONSTRAINT pk_privatelanddistributionbygender PRIMARY KEY (geo_level, geo_code, geo_version, land_ownership_by_gender);
 
 
 --
 -- PostgreSQL database dump complete
 --
-

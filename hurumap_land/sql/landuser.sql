@@ -115,10 +115,9 @@ country	ZA	2016	Unknown	3011559
 --
 
 ALTER TABLE ONLY public.landuser
-    ADD CONSTRAINT pk_landuser PRIMARY KEY (geo_level, geo_code, geo_version, "user");
+    ADD CONSTRAINT pk_landuser PRIMARY KEY (geo_level, geo_code, geo_version, "land_user");
 
 
 --
 -- PostgreSQL database dump complete
 --
-

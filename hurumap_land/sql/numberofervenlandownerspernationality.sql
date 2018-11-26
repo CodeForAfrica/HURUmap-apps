@@ -2,18 +2,16 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
--- Dumped by pg_dump version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-
 
 ALTER TABLE IF EXISTS ONLY public.numberofervenlandownerspernationality DROP CONSTRAINT IF EXISTS pk_numberofervenlandownerspernationality;
 DROP TABLE IF EXISTS public.numberofervenlandownerspernationality;
@@ -22,7 +20,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: numberofervenlandownerspernationality; Type: TABLE; Schema: public
+-- Name: numberofervenlandownerspernationality; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.numberofervenlandownerspernationality (
@@ -35,7 +33,7 @@ CREATE TABLE public.numberofervenlandownerspernationality (
 
 
 --
--- Data for Name: numberofervenlandownerspernationality; Type: TABLE DATA; Schema: public
+-- Data for Name: numberofervenlandownerspernationality; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.numberofervenlandownerspernationality (geo_level, geo_code, geo_version, "number of erven land owners per nationality", total) FROM stdin;
@@ -73,10 +71,10 @@ province	LIM	2016	Other	23744
 
 
 --
--- Name: numberofervenlandownerspernationality pk_numberofervenlandownerspernationality; Type: CONSTRAINT; Schema: public
+-- Name: numberofervenlandownerspernationality pk_numberofervenlandownerspernationality; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE IF EXISTS ONLY public.numberofervenlandownerspernationality
+ALTER TABLE ONLY public.numberofervenlandownerspernationality
     ADD CONSTRAINT pk_numberofervenlandownerspernationality PRIMARY KEY (geo_level, geo_code, geo_version, "number of erven land owners per nationality");
 
 
