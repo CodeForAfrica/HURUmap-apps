@@ -21,13 +21,13 @@ services:
     volumes:
       - ./:/src/hurumap-apps
     environment:
-      - HURUMAP_APP=${HURUMAP_APP}
-      - DJANGO_SETTINGS_MODULE=${HURUMAP_APP}.settings
-      - DATABASE_URL=postgresql://hurumap:hurumap@db:5432/${HURUMAP_APP}
+      - HURUMAP_APP=${HURUMAP_APP:-hurumap_land}
+      - DJANGO_SETTINGS_MODULE=${HURUMAP_APP:-hurumap_land}.settings
+      - DATABASE_URL=postgresql://hurumap:hurumap@db:5432/${HURUMAP_APP:-hurumap_land}
       - DJANGO_SECRET_KEY=somethingsecret
       - HURUMAP_URL="http://localhost:8000"
       - PGHOST=db
-      - PGDATABASE=${HURUMAP_APP}
+      - PGDATABASE=${HURUMAP_APP:-hurumap_land}
       - PGUSER=hurumap
       - PGPASSWORD=hurumap
       - PYTHONDONTWRITEBYTECODE="True"
