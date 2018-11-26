@@ -144,7 +144,6 @@ HURUMAP['topics']['ervenland'] = {
             'Number of erven land owners per gender',
             'erven land ownership in hectares by nationality',
             'Number of erven land owners per nationality',
-            'Afrobarometer',
         ]
 }
 

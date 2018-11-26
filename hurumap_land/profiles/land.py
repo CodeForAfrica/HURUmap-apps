@@ -24,6 +24,7 @@ PROFILE_SECTIONS = (
     'redistributionandrestitution',  # redistribution and restitution
     'landsales',  #
     'landsalescolour',  # land sales transcations per color
+    'afrobarometer',
 )
 LOCATIONNOTFOUND = {'is_missing': True,
                     'name': 'No Data Found',
@@ -813,19 +814,19 @@ def get_afrobarometer_profile(geo, session):
     except LocationNotFound:
         pass
 
-    try:
-        women_have_equal_right_to_land, _ = get_stat_data(
-            'women_have_equal_right_to_land', geo, session,
-            table_fields=['women_have_equal_right_to_land'])
-    except LocationNotFound:
-        pass
-
-    try:
-        women_men_equal_chance_own_land, _ = get_stat_data(
-            'women_men_equal_chance_own_land', geo, session,
-            table_fields=['women_men_equal_chance_own_land'])
-    except LocationNotFound:
-        pass
+    # try:
+    #     women_have_equal_right_to_land, _ = get_stat_data(
+    #         'women_have_equal_right_to_land', geo, session,
+    #         table_fields=['women_have_equal_right_to_land'])
+    # except LocationNotFound:
+    #     pass
+    #
+    # try:
+    #     women_men_equal_chance_own_land, _ = get_stat_data(
+    #         'women_men_equal_chance_own_land', geo, session,
+    #         table_fields=['women_men_equal_chance_own_land'])
+    # except LocationNotFound:
+    #     pass
     
     is_missing = access_to_information.get('is_missing') and \
                  allow_farmers_retain_land_ownership.get('is_missing') and \
