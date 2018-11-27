@@ -48,7 +48,7 @@ HURUMAP['geometry_data'] = {
 }
 
 HURUMAP['map_centre'] = [9.005401, 38.763611]
-HURUMAP['map_zoom'] = 6
+HURUMAP['map_zoom'] = 5
 
 # TODO: Move these
 
