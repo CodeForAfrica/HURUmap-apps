@@ -49,6 +49,8 @@ province	6	male	0-14 Years	173033	2010
 province	7	male	0-14 Years	269359	2010
 province	8	male	0-14 Years	177019	2010
 province	9	male	0-14 Years	375728	2010
+province	10	male	0-14 Years	77019	2010
+province	11	male	0-14 Years	35728	2010
 country	ET	female	0-14 Years	2988797	2010
 province	1	female	0-14 Years	305623	2010
 province	2	female	0-14 Years	408528	2010
@@ -59,6 +61,8 @@ province	6	female	0-14 Years	172981	2010
 province	7	female	0-14 Years	268767	2010
 province	8	female	0-14 Years	177475	2010
 province	9	female	0-14 Years	378841	2010
+province	10	female	0-14 Years	35728	2010
+province	11	female	0-14 Years	77019	2010
 country	ET	male	15-34 Years	2224884	2010
 province	1	male	15-34 Years	217901	2010
 province	2	male	15-34 Years	369307	2010
@@ -69,6 +73,8 @@ province	6	male	15-34 Years	110133	2010
 province	7	male	15-34 Years	169887	2010
 province	8	male	15-34 Years	115472	2010
 province	9	male	15-34 Years	269219	2010
+province	10	male	15-34 Years	10133	2010
+province	11	male	15-34 Years	50133	2010
 country	ET	female	15-34 Years	2398258	2010
 province	1	female	15-34 Years	230600	2010
 province	2	female	15-34 Years	386957	2010
@@ -79,6 +85,8 @@ province	6	female	15-34 Years	121315	2010
 province	7	female	15-34 Years	185981	2010
 province	8	female	15-34 Years	124050	2010
 province	9	female	15-34 Years	287057	2010
+province	10	female	15-34 Years	24050	2010
+province	11	female	15-34 Years	27057	2010
 country	ET	male	35 and above	1250964	2010
 province	1	male	35 and above	122423	2010
 province	2	male	35 and above	194945	2010
@@ -89,6 +97,8 @@ province	6	male	35 and above	67489	2010
 province	7	male	35 and above	104225	2010
 province	8	male	35 and above	67378	2010
 province	9	male	35 and above	144369	2010
+province	10	male	35 and above	73780	2010
+province	11	male	35 and above	144000	2010
 country	ET	female	35 and above	1250964	2010
 province	1	female	35 and above	122423	2010
 province	2	female	35 and above	194945	2010
@@ -99,6 +109,8 @@ province	6	female	35 and above	67489	2010
 province	7	female	35 and above	104225	2010
 province	8	female	35 and above	67378	2010
 province	9	female	35 and above	144369	2010
+province	10	female	35 and above	73780	2010
+province	11	female	35 and above	136944	2010
 \.
 
 

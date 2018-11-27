@@ -78,15 +78,17 @@ ALTER TABLE ONLY wazimap_geography ALTER COLUMN id SET DEFAULT nextval('wazimap_
 
 COPY wazimap_geography (id, geo_level, geo_code, name, version, square_kms, parent_level, parent_code, long_name) FROM stdin;
 1	country	ET	Ethiopia	2010	\N	\N	\N	\N
-2	province	1	Tigray	2010	\N	country	ET	\N
-3	province	2	Afar	2010	\N	country	ET	\N
-4	province	3	Amhara	2010	\N	country	ET	\N
+2	province	1	Amhara	2010	\N	country	ET	\N
+3	province	2	Gambella	2010	\N	country	ET	\N
+4	province	3	Addis-Ababa	2010	\N	country	ET	\N
 5	province	4	Oromia	2010	\N	country	ET	\N
-6	province	5	Somali	2010	\N	country	ET	\N
+6	province	5	Southern-Nations	2010	\N	country	ET	\N
 7	province	6	Benishangul-Gumuz	2010	\N	country	ET	\N
-8	province	7	Southern_Nations_Nationalities_and_People_Region (SNNPR)	2010	\N	country	ET	\N
-9	province	8	Gambella	2010	\N	country	ET	\N
-10	province	9	Harari	2010	\N	country	ET	\N
+8	province	7	Dire-Dawa	2010	\N	country	ET	\N
+9	province	8	Harari	2010	\N	country	ET	\N
+10	province	9	Tigray	2010	\N	country	ET	\N
+11	province	10	Afar	2010	\N	country	ET	\N
+12	province	11	Somali	2010	\N	country	ET	\N
 \.
 
 
@@ -137,4 +139,3 @@ CREATE INDEX wazimap_geography_name_36b79089_like ON wazimap_geography USING btr
 --
 -- PostgreSQL database dump complete
 --
-
