@@ -37,57 +37,36 @@ CREATE TABLE public.numberofsectionaltitleownersbygender (
 --
 
 COPY public.numberofsectionaltitleownersbygender (geo_level, geo_code, geo_version, "number of sectional title owners by gender", total) FROM stdin;
-province	EC	2016	Male	323
-province	FS	2016	Male	170
-province	GT	2016	Male	1253
-province	KZN	2016	Male	475
-province	LIM	2016	Male	203
-province	MP	2016	Male	26
-province	NW	2016	Male	33
-province	NC	2016	Male	2
-province	WC	2016	Male	151
-country	ZA	2016	Male	2636
-province	EC	2016	Female	57
-province	FS	2016	Female	550
-province	GT	2016	Female	1466
-province	KZN	2016	Female	219
-province	LIM	2016	Female	1057
-province	MP	2016	Female	39
-province	NW	2016	Female	28
-province	NC	2016	Female	3
-province	WC	2016	Female	249
-country	ZA	2016	Female	3668
-province	EC	2016	Male-Female	313
-province	FS	2016	Male-Female	529
-province	GT	2016	Male-Female	1832
-province	KZN	2016	Male-Female	340
-province	LIM	2016	Male-Female	284
-province	MP	2016	Male-Female	43
-province	NW	2016	Male-Female	1081
-province	NC	2016	Male-Female	1
-province	WC	2016	Male-Female	162
-country	ZA	2016	Male-Female	4585
-province	EC	2016	Co-ownership	5
-province	FS	2016	Co-ownership	3
-province	GT	2016	Co-ownership	197
-province	KZN	2016	Co-ownership	25
-province	LIM	2016	Co-ownership	1
-province	MP	2016	Co-ownership	12
-province	NW	2016	Co-ownership	2
-province	NC	2016	Co-ownership	0
-province	WC	2016	Co-ownership	31
-country	ZA	2016	Co-ownership	277
-province	EC	2016	Other	3
-province	FS	2016	Other	1
-province	GT	2016	Other	175
-province	KZN	2016	Other	15
-province	LIM	2016	Other	1
-province	MP	2016	Other	1
-province	NW	2016	Other	2
-province	NC	2016	Other	0
-province	WC	2016	Other	31
-country	ZA	2016	Other	229
-
+province	EC	2016	Female	16059
+province	FS	2016	Female	13998
+province	GT	2016	Female	184221
+province	KZN	2016	Female	80483
+province	MP	2016	Female	5603
+province	NW	2016	Female	8945
+province	NC	2016	Female	465
+province	WC	2016	Female	57388
+country	ZA	2016	Female	371525
+province	EC	2016	Male	13389
+province	FS	2016	Male	11535
+province	GT	2016	Male	162642
+province	KZN	2016	Male	69834
+province	MP	2016	Male	5823
+province	NW	2016	Male	9037
+province	NC	2016	Male	346
+province	WC	2016	Male	51681
+country	ZA	2016	Male	328295
+province	EC	2016	Other	714
+province	FS	2016	Other	311
+province	GT	2016	Other	13939
+province	KZN	2016	Other	3789
+province	MP	2016	Other	292
+province	NW	2016	Other	412
+province	NC	2016	Other	6
+province	WC	2016	Other	7447
+country	ZA	2016	Other	27146
+province	LIM	2016	Female	4363
+province	LIM	2016	Male	4008
+province	LIM	2016	Other	236
 \.
 
 

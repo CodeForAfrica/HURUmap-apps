@@ -171,11 +171,11 @@ FieldTable(['land_to_prioritise_for_redistribution'],
            universe='Land in South Africa', year='2017',
            dataset='Afrobarometer Survey')
 
-FieldTable(['women_have_equal_right_to_land'], universe='Land in South Africa',
-           year='2017', dataset='Afrobarometer Survey')
-
-FieldTable(['women_men_equal_chance_own_land'], universe='Land in South Africa',
-           year='2017', dataset='Afrobarometer Survey')
+# FieldTable(['women_have_equal_right_to_land'], universe='Land in South Africa',
+#            year='2017', dataset='Afrobarometer Survey')
+#
+# FieldTable(['women_men_equal_chance_own_land'], universe='Land in South Africa',
+#            year='2017', dataset='Afrobarometer Survey')
 
 
 
