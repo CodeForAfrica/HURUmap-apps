@@ -8,6 +8,9 @@
 tsconfig.json
 jsconfig.json
 
+# PyCharm
+.idea/
+
 ### Django ###
 *.log
 *.pot
