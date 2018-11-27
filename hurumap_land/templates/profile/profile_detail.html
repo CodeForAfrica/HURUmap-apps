@@ -117,7 +117,7 @@
           <div class="column-full">
             <div id="chart-histogram-landsales-landsalestransaction"
                  data-stat-type="number"
-                 data-chart-title="Number of transactions in 12 months per land Class(R/ha)"
+                 data-chart-title="Number of transactions from August 2017 to July 2018 by land class in R/ha"
                  data-source-title="AGRIDS, 2018"
                  data-source-link="http://land.agrids.co.za/"></div>
           </div>
@@ -126,7 +126,7 @@
           <div class="column-full">
             <div id="chart-histogram-landsales-landsaleshectares"
                  data-stat-type="number"
-                 data-chart-title="Number of hectares sold in 12 month per land Class in (R/ha)"
+                 data-chart-title="Amount of hectares sold from August 2017 to July 2018 by land class in R/ha"
                  data-source-title="AGRIDS, 2018"
                  data-source-link="http://land.agrids.co.za/"></div>
           </div>
@@ -135,7 +135,7 @@
           <div class="column-full">
             <div id="chart-histogram-landsales-landsalesaverageprice"
                  data-stat-type="number"
-                 data-chart-title="Average price per hectares sold in 12 months per Land Class in (R/ha)"
+                 data-chart-title=" Average price of hectares sold from August 2017 to July 2018 by Land Class in R/ha"
                  data-source-title="AGRIDS, 2018"
                  data-source-link="http://land.agrids.co.za/"></div>
           </div>
@@ -170,14 +170,14 @@
           <div class="column-half">
             <div id="chart-pie-landsalescolour-landsalescolourhectares"
                  data-stat-type="number"
-                 data-chart-title="Total hectares breakdown for transactions of colour for 12 months"
+                 data-chart-title="Transactions of colour from August 2017 to July 2018 in hectares"
                  data-source-title="AGRIDS, 2018"
                  data-source-link="http://land.agrids.co.za/"></div>
           </div>
           <div class="column-half">
             <div id="chart-pie-landsalescolour-landsalescolourtransaction"
                  data-stat-type="number"
-                 data-chart-title="Total transaction of colour for 12 months"
+                 data-chart-title="Number of transactions of colour from August 2017 to July 2018"
                  data-source-title="AGRIDS, 2018"
                  data-source-link="http://land.agrids.co.za/"></div>
           </div>
@@ -207,7 +207,7 @@
           <div class="column-half">
             <div id="chart-column-landsalescolour-landsalescolourcostpermonth"
                  data-stat-type="number"
-                 data-chart-title="Total cost in R million for transaction of colour in each months"
+                 data-chart-title="Total cost in R million for transaction of colour in each month"
                  data-source-title="AGRIDS, 2018"
                  data-source-link="http://land.agrids.co.za/"></div>
           </div>
@@ -216,7 +216,7 @@
           <div class="column-full">
             <div id="chart-column-landsalescolour-landsalescolourhectarespermonth"
                  data-stat-type="number"
-                 data-chart-title="Total hectares (ha) traded for transaction of colour in each months"
+                 data-chart-title="Total hectares (ha) traded for transaction of colour in each month"
                  data-source-title="AGRIDS, 2018"
                  data-source-link="http://land.agrids.co.za/"></div>
           </div>
@@ -225,7 +225,7 @@
           <div class="column-full">
             <div id="chart-column-landsalescolour-landsalescolourpricehecpermonth"
                  data-stat-type="number"
-                 data-chart-title="Price per hectares (R/ha) for transaction of colour in each months"
+                 data-chart-title="Price per hectares (R/ha) for transaction of colour in each month"
                  data-source-title="AGRIDS, 2018"
                  data-source-link="http://land.agrids.co.za/"></div>
           </div>
@@ -234,7 +234,7 @@
           <div class="column-full">
             <div id="chart-column-landsalescolour-landsalescolourhectarespermonthpergu"
                  data-stat-type="number"
-                 data-chart-title="Government Urban: Hectares(ha) traded for transaction of colour in each months"
+                 data-chart-title="Government Urban: Hectares(ha) traded for transaction of colour in each month"
                  data-source-title="AGRIDS, 2018"
                  data-source-link="http://land.agrids.co.za/"></div>
           </div>
@@ -243,7 +243,7 @@
           <div class="column-full">
             <div id="chart-column-landsalescolour-landsalescolourhectarespermonthperga"
                  data-stat-type="number"
-                 data-chart-title="Government Agriculture: Hectares(ha) traded for transaction of colour in each months"
+                 data-chart-title="Government Agriculture: Hectares(ha) traded for transaction of colour in each month"
                  data-source-title="AGRIDS, 2018"
                  data-source-link="http://land.agrids.co.za/"></div>
           </div>
@@ -252,7 +252,7 @@
           <div class="column-full">
             <div id="chart-column-landsalescolour-landsalescolourhectarespermonthperot"
                  data-stat-type="number"
-                 data-chart-title="Other: Hectares traded for transaction of colour in each months"
+                 data-chart-title="Other: Hectares traded for transaction of colour in each month"
                  data-source-title="AGRIDS, 2018"
                  data-source-link="http://land.agrids.co.za/"></div>
           </div>
@@ -261,7 +261,7 @@
           <div class="column-full">
             <div id="chart-column-landsalescolour-landsalescolourhectarespermonthperpr"
                  data-stat-type="number"
-                 data-chart-title="Private: Hectares(ha) traded for transaction of colour in each months"
+                 data-chart-title="Private: Hectares(ha) traded for transaction of colour in each month"
                  data-source-title="AGRIDS, 2018"
                  data-source-link="http://land.agrids.co.za/"></div>
           </div>
@@ -272,11 +272,13 @@
   {% if not farmland.is_missing %}
     <article id="farm-land" class="clearfix">
       <header class="section-contents">
-        <h1>Individual Land</h1>
+        <h1>Individual Land Ownership of farms and agricultural holdings</h1>
       </header>
       <div class="section-container">
         <section class="clearfix stat-row">
           <aside style="font-size: 14px;margin-left:-16.4em;width:14.4em;">
+            <br/>
+            <br/>
             <br/>
             <br/>
             CBOs,Community-Based Organisations, includes non-governmental
@@ -285,14 +287,14 @@
           <div class="column-half">
             <div id="chart-histogram-farmland-private_land_ownership_in_hectares_per_category"
                  data-stat-type="scaled-percentage"
-                 data-chart-title="Private land Ownership"
+                 data-chart-title="Private land ownership in hectares by category (%)"
                  data-source-title="Land Audit Report, 2017"
                  data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
           </div>
           <div class="column-half">
             <div id="chart-pie-farmland-number_of_private_land_owners_by_category"
                  data-stat-type="percentage"
-                 data-chart-title="Percent Number of Private Land Owners by Category"
+                 data-chart-title="Number of Private Land Owners by Category (%)"
                  data-initial-sort="-value"
                  data-source-title="Land Audit Report, 2017"
                  data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
@@ -308,7 +310,7 @@
           <div class="column-half">
             <div id="chart-pie-farmland-land_ownership_in_hectares_by_race"
                  data-stat-type="percentage"
-                 data-chart-title="Percent total Hectares owned by Individual per Race"
+                 data-chart-title="Individual land ownership of farms and agricultural holdings in hectares by race (%)"
                  data-initial-sort="-value"
                  data-source-title="Land Audit Report, 2017"
                  data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
@@ -316,7 +318,7 @@
           <div class="column-half">
             <div id="chart-pie-farmland-number_of_land_owners_per_race"
                  data-stat-type="percentage"
-                 data-chart-title="Percent Number of Individual owning land per Race"
+                 data-chart-title="Number of individuals owning farms and agricultural holdings by race (%)"
                  data-initial-sort="-value"
                  data-source-title="Land Audit Report, 2017"
                  data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
@@ -326,14 +328,14 @@
           <div class="column-half">
             <div id="chart-histogram-farmland-land_ownership_in_hectares_by_gender"
                  data-stat-type="scaled-percentage"
-                 data-chart-title="Percent Number of Hectares owned by Individual per Gender"
+                 data-chart-title="Individual land ownership of farms and agricultural holdings in hectares by gender (%)"
                  data-source-title="Land Audit Report, 2017"
                  data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
           </div>
           <div class="column-half">
             <div id="chart-column-farmland-number_of_land_owners_per_gender"
                  data-stat-type="number"
-                 data-chart-title="Number of Individual Land Owners per Gender"
+                 data-chart-title="Number of individuals owning farms and agricultural holdings by gender"
                  data-source-title="Land Audit Report, 2017"
                  data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
           </div>
@@ -350,7 +352,7 @@
           <div class="column-half">
             <div id="chart-histogram-farmland-number_of_land_owners_per_nationality"
                  data-stat-type="number"
-                 data-chart-title="Number of Individual Land Owners per Nationality"
+                 data-chart-title="Number of individuals owning farms and agricultural holdings by nationality"
                  data-source-title="Land Audit Report, 2017"
                  data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
           </div>
@@ -413,14 +415,14 @@
           <div class="column-half">
             <div id="chart-histogram-ervenland-erven_land_ownership_in_hectares_by_race"
                  data-stat-type="scaled-percentage"
-                 data-chart-title="Percent total Hectares of Erven Land owned by Individual  by Race"
+                 data-chart-title="Individual ownership of erven land in hectares by race (%)"
                  data-source-title="Land Audit Report, 2017"
                  data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
           </div>
           <div class="column-half">
             <div id="chart-pie-ervenland-number_of_erven_land_owners_per_race"
                  data-stat-type="percentage"
-                 data-chart-title="Percent Number of Individual owning Erven Land per Race"
+                 data-chart-title="Number of individuals owning erven land by race (%)"
                  data-initial-sort="-value"
                  data-source-title="Land Audit Report, 2017"
                  data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
@@ -437,7 +439,7 @@
           <div class="column-half">
             <div id="chart-pie-ervenland-erven_land_ownership_in_hectares_by_gender"
                  data-stat-type="scaled-percentage"
-                 data-chart-title="Percent Number of Erven Land Hectares owned Individual by Gender"
+                 data-chart-title="Individual ownership of erven land in hectares by gender (%)"
                  data-initial-sort="-value"
                  data-source-title="Land Audit Report, 2017"
                  data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
@@ -445,7 +447,7 @@
           <div class="column-half">
             <div id="chart-pie-ervenland-number_of_erven_land_owners_per_gender"
                  data-stat-type="percentage"
-                 data-chart-title="Percent Number of Individual owning Erven Land per Gender"
+                 data-chart-title="Number of individuals owning erven land by gender (%)"
                  data-initial-sort="-value"
                  data-source-title="Land Audit Report, 2017"
                  data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
@@ -455,14 +457,14 @@
           <div class="column-half">
             <div id="chart-histogram-ervenland-erven_land_ownership_in_hectares_by_nationality"
                  data-stat-type="scaled-percentage"
-                 data-chart-title="Percent Number of Erven Land Hectares Ownership by Nationality"
+                 data-chart-title="Individual ownership of erven land in hectares by nationality (%)"
                  data-source-title="Land Audit Report, 2017"
                  data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
           </div>
           <div class="column-half">
             <div id="chart-column-ervenland-number_of_erven_land_owners_per_nationality"
                  data-stat-type="number"
-                 data-chart-title="Number of Individual Erven Land Owners per Nationality"
+                 data-chart-title=" Number of individuals owning erven land by nationality"
                  data-source-title="Land Audit Report, 2017"
                  data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
           </div>
@@ -491,14 +493,14 @@
           <div class="column-half">
             <div id="chart-histogram-sectionaltitleland-sectional_title_ownership_in_hectares_per_category"
                  data-stat-type="scaled-percentage"
-                 data-chart-title="Percent Number of Individual Sectional Title Ownership in Hectares by Category"
+                 data-chart-title="Individual ownership of sectional title land in hectares by category (%)"
                  data-source-title="Land Audit Report, 2017"
                  data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
           </div>
           <div class="column-half">
             <div id="chart-pie-sectionaltitleland-number_of_sectional_title_owners_by_category"
                  data-stat-type="percentage"
-                 data-chart-title="Percent Number of Individual owning Sectional Title per Category"
+                 data-chart-title="Number of individuals owning sectional title land by category (%)"
                  data-initial-sort="-value"
                  data-source-title="Land Audit Report, 2017"
                  data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
@@ -513,7 +515,7 @@
           <div class="column-half">
             <div id="chart-pie-sectionaltitleland-sectional_title_ownership_in_hectares_per_race"
                  data-stat-type="scaled-percentage"
-                 data-chart-title="Percent Number of Individual Sectional Title Ownership in Hectares by Race"
+                 data-chart-title="Individual ownership of sectional title land in hectares by race (%)"
                  data-initial-sort="-value"
                  data-source-title="Land Audit Report, 2017"
                  data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
@@ -521,7 +523,7 @@
           <div class="column-half">
             <div id="chart-pie-sectionaltitleland-number_of_sectional_title_owners_by_race"
                  data-stat-type="percentage"
-                 data-chart-title="Number of Individual owning Sectional Title per Race"
+                 data-chart-title="Number of individuals owning sectional title land by race (%)"
                  data-initial-sort="-value"
                  data-source-title="Land Audit Report, 2017"
                  data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
@@ -531,14 +533,14 @@
           <div class="column-half">
             <div id="chart-histogram-sectionaltitleland-sectional_title_ownership_in_hectares_per_gender"
                  data-stat-type="scaled-percentage"
-                 data-chart-title="Percent Number of Individual Sectional Title Ownership in Hectares by Gender"
+                 data-chart-title=" Individual ownership of sectional title land in hectares by gender (%)"
                  data-source-title="Land Audit Report, 2017"
                  data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
           </div>
           <div class="column-half">
             <div id="chart-column-sectionaltitleland-number_of_sectional_title_owners_by_gender"
                  data-stat-type="number"
-                 data-chart-title="Number of Individual Sectional Title Owners per Gender"
+                 data-chart-title="Number of individuals owning sectional title land by gender "
                  data-source-title="Land Audit Report, 2017"
                  data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
           </div>
@@ -547,7 +549,7 @@
           <div class="column-half">
             <div id="chart-pie-sectionaltitleland-sectional_title_ownership_in_hectares_per_nationality"
                  data-stat-type="scaled-percentage"
-                 data-chart-title="Percent Number of Individual Sectional Title Ownership in Hectares by Nationality"
+                 data-chart-title=" Individual ownership of sectional title land in hectares by nationality (%)"
                  data-initial-sort="-value"
                  data-source-title="Land Audit Report, 2017"
                  data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
@@ -555,7 +557,7 @@
           <div class="column-half">
             <div id="chart-histogram-sectionaltitleland-number_of_sectional_title_owners_by_nationality"
                  data-stat-type="number"
-                 data-chart-title="Number of Individual Sectional Title Owners per Nationality"
+                 data-chart-title="Number of individuals owning sectional title land by nationality"
                  data-source-title="Land Audit Report, 2017"
                  data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
           </div>
@@ -612,7 +614,7 @@
         <section class="clearfix stat-row">
           <div class="column-full">
             <div id="chart-column-redistributionandrestitution-redistributeprogrammeprojectsbyyear"
-                 data-chart-title="Project Transfered through Redistribution Programme in the Financial Year 2009/2010 to 2017/2018"
+                 data-chart-title="Projects transferred through Redistribution Programme in the Financial Year 2009/2010 to 2017/2018"
                  data-source-link="http://www.ruraldevelopment.gov.za/publications/evaluation-reports/file/6466"
                  data-source-title="Annual statistical report for selected service delivery programmes of the Department of Rural Development and Land Reform, 2018"></div>
           </div>
@@ -620,7 +622,7 @@
         <section class="clearfix stat-row">
           <div class="column-full">
             <div id="chart-column-redistributionandrestitution-redistributeprogrammebeneficiariesbyyear"
-                 data-chart-title="Beneficiaries Benefitted from Redistribution Programme in the Financial Year 2009/2010 to 2017/2018"
+                 data-chart-title="Beneficiaries of Redistribution Programme in the Financial Year 2009/2010 to 2017/2018"
                  data-source-link="http://www.ruraldevelopment.gov.za/publications/evaluation-reports/file/6466"
                  data-source-title="Annual statistical report for selected service delivery programmes of the Department of Rural Development and Land Reform, 2018"></div>
           </div>
@@ -636,7 +638,7 @@
         <section class="clearfix stat-row">
           <div class="column-full">
             <div id="chart-column-redistributionandrestitution-femalepartybenefited"
-                 data-chart-title="Number of females benefited from Redistribution Programme in the Financial Year 2009/2010 to 2017/2018"
+                 data-chart-title="Number of female headed households benefited in restitution Programme from 2009/2010 to 2017/2018"
                  data-source-link="http://www.ruraldevelopment.gov.za/publications/evaluation-reports/file/6466"
                  data-source-title="Annual statistical report for selected service delivery programmes of the Department of Rural Development and Land Reform, 2018"></div>
           </div>
@@ -719,7 +721,7 @@
           </div>
           <div class="column-third">
             <div id="chart-histogram-redistributionandrestitution-disabilitiesrestitution"
-                 data-chart-title="People with disabilities benefited Restitution Programme in 2017/2018"
+                 data-chart-title="People with disabilities benefited in Restitution Programme in 2017/2018"
                  data-source-link="http://www.ruraldevelopment.gov.za/publications/evaluation-reports/file/6466"
                  data-source-title="Annual statistical report for selected service delivery programmes of the Department of Rural Development and Land Reform, 2018"></div>
           </div>

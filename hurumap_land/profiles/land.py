@@ -368,23 +368,23 @@ def get_redistributionandrestitution_profile(geo, session):
     redistributionrestitution['claimssettledrestitution_tot'] = claimssettledrestitution_tot
     redistributionrestitution['landcostrestitution'] = landcostrestitution
     redistributionrestitution['householdsrestitution_stat'] = \
-                  { "name": "Total households benefited in restitution programme from 2009/2018",
+                  { "name": "Total households benefited in restitution programme from 2009 to 2018",
                     "values": {"this": householdsrestitution_tot}
                   }
     redistributionrestitution['femaleheadedhouseholdsrestitution_stat'] = \
-                { "name": "Female headed households benefited in restitution programme from 2009/2018",
+                { "name": "Female headed households benefited in restitution programme from 2009 to 2018",
                    "values": {"this": femaleheadedhouseholdsrestitution_tot}
                 }
     redistributionrestitution['disabilitiesrestitution_stat'] = \
-                { "name": "Number of people with disabilities benefited in restitution programme from 2009/2018",
+                { "name": "Number of people with disabilities benefited in restitution programme from 2009 to 2018",
                   "values": {"this": disabilitiesrestitution_tot}
                 }
     redistributionrestitution['projectsrestitution_stat'] = \
-                { "name": "Number of projects in the restitution programme from 2009/2018",
+                { "name": "Number of projects in the restitution programme from 2009 to 2018",
                   "values": {"this": projectsrestitution_tot}
                 }
     redistributionrestitution['beneficiariesrestitution_stat'] = \
-                {   "name": "Number of beneficiaries in the restitution programme from 2009/2018",
+                {   "name": "Number of beneficiaries in the restitution programme from 2009 to 2018",
                      "values": {"this": beneficiariesrestitution_tot}
                 }
 
@@ -477,11 +477,11 @@ def get_landsales_profile(geo, session):
     landsales['landsalesaverageprice'] = landsalesaverageprice
     landsales['landsalespricetrends'] = landsalespricetrends
     landsales['landsaleshectares_tot'] = \
-            { "name": "Total number of sold hectares in 12 months",
+            { "name": " Total number of sold hectares from August 2017 to July 2018",
                "values": {"this": int(landsaleshectares_tot)},
             }
     landsales['landsalestransaction_tot'] = \
-            { "name": "Total number of sales transactions in 12 months",
+            { "name": "Total number of sales transactions from August 2017 to July 2018",
               "values": {"this": int(landsalestransaction_tot)},
             }
     landsales['is_missing'] = landsalestransaction.get('is_missing') and \
