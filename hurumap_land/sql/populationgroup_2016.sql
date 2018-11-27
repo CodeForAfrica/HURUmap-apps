@@ -2,24 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.4.15
--- Dumped by pg_dump version 10.1
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
-
-SET search_path = public, pg_catalog;
 
 ALTER TABLE IF EXISTS ONLY public.populationgroup_2016 DROP CONSTRAINT IF EXISTS pk_populationgroup_2016;
 DROP TABLE IF EXISTS public.populationgroup_2016;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -28,7 +23,7 @@ SET default_with_oids = false;
 -- Name: populationgroup_2016; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE populationgroup_2016 (
+CREATE TABLE public.populationgroup_2016 (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     geo_version character varying(100) DEFAULT ''::character varying NOT NULL,
@@ -41,7 +36,7 @@ CREATE TABLE populationgroup_2016 (
 -- Data for Name: populationgroup_2016; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY populationgroup_2016 (geo_level, geo_code, geo_version, "population group", total) FROM stdin;
+COPY public.populationgroup_2016 (geo_level, geo_code, geo_version, "population group", total) FROM stdin;
 province	WC	2016	Black African	2242042
 province	WC	2016	Coloured	2984398
 province	WC	2016	Indian or Asian	48720
@@ -1117,7 +1112,7 @@ country	ZA	2016	White	4516691
 -- Name: populationgroup_2016 pk_populationgroup_2016; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY populationgroup_2016
+ALTER TABLE ONLY public.populationgroup_2016
     ADD CONSTRAINT pk_populationgroup_2016 PRIMARY KEY (geo_level, geo_code, geo_version, "population group");
 
 

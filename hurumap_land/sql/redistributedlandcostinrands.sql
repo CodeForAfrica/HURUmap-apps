@@ -2,14 +2,11 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
--- Dumped by pg_dump version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
-
--- Started on 2018-09-12 17:03:17 EAT
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
@@ -23,22 +20,19 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- TOC entry 354 (class 1259 OID 71270)
--- Name: redistributedlandcostinrands; Type: TABLE; Schema: public
+-- Name: redistributedlandcostinrands; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.redistributedlandcostinrands (
     geo_level character varying(50) NOT NULL,
     geo_code character varying(10) NOT NULL,
     geo_version character varying(100) DEFAULT ''::character varying NOT NULL,
-    redistributedlandcostinrands numeric
+    redistributedlandcostinrands numeric NOT NULL
 );
 
 
 --
--- TOC entry 3366 (class 0 OID 71270)
--- Dependencies: 354
--- Data for Name: redistributedlandcostinrands; Type: TABLE DATA; Schema: public
+-- Data for Name: redistributedlandcostinrands; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.redistributedlandcostinrands (geo_level, geo_code, geo_version, redistributedlandcostinrands) FROM stdin;
@@ -55,11 +49,15 @@ country	ZA	2016	512054994
 \.
 
 
-ALTER TABLE IF EXISTS ONLY public.redistributedlandcostinrands
+--
+-- Name: redistributedlandcostinrands pk_redistributedlandcostinrands; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.redistributedlandcostinrands
     ADD CONSTRAINT pk_redistributedlandcostinrands PRIMARY KEY (geo_level, geo_code, geo_version, redistributedlandcostinrands);
 
--- Completed on 2018-09-12 17:03:17 EAT
 
 --
 -- PostgreSQL database dump complete
 --
+

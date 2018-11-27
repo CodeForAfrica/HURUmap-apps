@@ -2,18 +2,16 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
--- Dumped by pg_dump version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-
 
 ALTER TABLE IF EXISTS ONLY public.numberofsectionaltitleownersbycategory DROP CONSTRAINT IF EXISTS pk_numberofsectionaltitleownersbycategory;
 DROP TABLE IF EXISTS public.numberofsectionaltitleownersbycategory;
@@ -22,7 +20,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: numberofsectionaltitleownersbycategory; Type: TABLE; Schema: public
+-- Name: numberofsectionaltitleownersbycategory; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.numberofsectionaltitleownersbycategory (
@@ -35,7 +33,7 @@ CREATE TABLE public.numberofsectionaltitleownersbycategory (
 
 
 --
--- Data for Name: numberofsectionaltitleownersbycategory; Type: TABLE DATA; Schema: public
+-- Data for Name: numberofsectionaltitleownersbycategory; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.numberofsectionaltitleownersbycategory (geo_level, geo_code, geo_version, "number of sectional title owners by category", total) FROM stdin;
@@ -83,10 +81,10 @@ country	ZA	2016	Trusts	42878
 
 
 --
--- Name: numberofsectionaltitleownersbycategory pk_numberofsectionaltitleownersbycategory; Type: CONSTRAINT; Schema: public
+-- Name: numberofsectionaltitleownersbycategory pk_numberofsectionaltitleownersbycategory; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE IF EXISTS ONLY public.numberofsectionaltitleownersbycategory
+ALTER TABLE ONLY public.numberofsectionaltitleownersbycategory
     ADD CONSTRAINT pk_numberofsectionaltitleownersbycategory PRIMARY KEY (geo_level, geo_code, geo_version, "number of sectional title owners by category");
 
 

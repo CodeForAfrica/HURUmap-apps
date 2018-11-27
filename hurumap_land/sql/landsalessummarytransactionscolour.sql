@@ -2,18 +2,16 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
--- Dumped by pg_dump version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
 
 DROP TABLE IF EXISTS public.landsalessummarytransactionscolour;
 SET default_tablespace = '';
@@ -21,7 +19,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: landsalessummarytransactionscolour; Type: TABLE; Schema: public
+-- Name: landsalessummarytransactionscolour; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.landsalessummarytransactionscolour (
@@ -34,10 +32,8 @@ CREATE TABLE public.landsalessummarytransactionscolour (
 );
 
 
-
-
 --
--- Data for Name: landsalessummarytransactionscolour; Type: TABLE DATA; Schema: public
+-- Data for Name: landsalessummarytransactionscolour; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.landsalessummarytransactionscolour (geo_level, geo_code, geo_version, land_breakdown, month, total) FROM stdin;
@@ -767,3 +763,4 @@ province	WC	2016	Other	Jul	\N
 --
 -- PostgreSQL database dump complete
 --
+

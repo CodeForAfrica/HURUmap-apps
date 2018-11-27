@@ -2,18 +2,16 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
--- Dumped by pg_dump version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-
 
 ALTER TABLE IF EXISTS ONLY public.numberoflandownerspergender DROP CONSTRAINT IF EXISTS pk_numberoflandownerspergender;
 DROP TABLE IF EXISTS public.numberoflandownerspergender;
@@ -22,7 +20,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: numberoflandownerspergender; Type: TABLE; Schema: public
+-- Name: numberoflandownerspergender; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.numberoflandownerspergender (
@@ -35,7 +33,7 @@ CREATE TABLE public.numberoflandownerspergender (
 
 
 --
--- Data for Name: numberoflandownerspergender; Type: TABLE DATA; Schema: public
+-- Data for Name: numberoflandownerspergender; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.numberoflandownerspergender (geo_level, geo_code, geo_version, "number of land owners per gender", total) FROM stdin;
@@ -73,13 +71,14 @@ province	LIM	2016	Other	2495
 
 
 --
--- Name: numberoflandownerspergender pk_numberoflandownerspergender; Type: CONSTRAINT; Schema: public
+-- Name: numberoflandownerspergender pk_numberoflandownerspergender; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE IF EXISTS ONLY public.numberoflandownerspergender
+ALTER TABLE ONLY public.numberoflandownerspergender
     ADD CONSTRAINT pk_numberoflandownerspergender PRIMARY KEY (geo_level, geo_code, geo_version, "number of land owners per gender");
 
 
 --
 -- PostgreSQL database dump complete
 --
+

@@ -2,26 +2,24 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
--- Dumped by pg_dump version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
 
-DROP TABLE public.landsalesdistrictdistribution;
+DROP TABLE IF EXISTS public.landsalesdistrictdistribution;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
 
 --
--- Name: landsalesdistrictdistribution; Type: TABLE; Schema: public
+-- Name: landsalesdistrictdistribution; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.landsalesdistrictdistribution (
@@ -41,10 +39,8 @@ CREATE TABLE public.landsalesdistrictdistribution (
 );
 
 
-
-
 --
--- Data for Name: landsalesdistrictdistribution; Type: TABLE DATA; Schema: public
+-- Data for Name: landsalesdistrictdistribution; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.landsalesdistrictdistribution (geo_level, geo_code, geo_version, town_name, class, number_of_transactions, total_hecatres, lowest_price_per_hectares, highest_price_per_hectares, average_price_per_hectares, price_trends, average_trends, avg_price_july) FROM stdin;
@@ -292,6 +288,7 @@ district	DC19	2016	Bethlehem Dihlabeng	Under 1.5K	1	737	543	543	543	\N	\N	\N
 district	DC19	2016	Bethlehem Dihlabeng	1,501-3K	\N	\N	\N	\N	\N	\N	\N	\N
 district	DC19	2016	Bethlehem Dihlabeng	3,001-5K	\N	\N	\N	\N	\N	\N	\N	\N
 district	DC19	2016	Bethlehem Dihlabeng	5,001-10K	2	256	6927	9865	8396	-735	-8.7	6927
+district	DC6	2016	Calvinia Hantam	500,001-800K	\N	\N	\N	\N	\N	\N	\N	\N
 district	DC19	2016	Bethlehem Dihlabeng	10,001-20K	6	1876	10750	19108	14276	711	5	19108
 district	DC19	2016	Bethlehem Dihlabeng	20,001-30K	10	3525	21001	27321	23459	-265	-1.1	\N
 district	DC19	2016	Bethlehem Dihlabeng	30,001-40K	5	1375	30052	34154	32586	-205	-0.6	\N
@@ -452,6 +449,7 @@ district	DC18	2016	Bultfontein Tswelopele	Under 1.5K	\N	\N	\N	\N	\N	\N	\N	\N
 district	DC18	2016	Bultfontein Tswelopele	1,501-3K	\N	\N	\N	\N	\N	\N	\N	\N
 district	DC18	2016	Bultfontein Tswelopele	3,001-5K	1	1055	4455	4455	4455	\N	\N	4455
 district	DC18	2016	Bultfontein Tswelopele	5,001-10K	4	959	6977	8780	7784	-231	-3	\N
+district	DC6	2016	Calvinia Hantam	800,001-1M	\N	\N	\N	\N	\N	\N	\N	\N
 district	DC18	2016	Bultfontein Tswelopele	10,001-20K	1	236	10169	10169	10169	\N	\N	\N
 district	DC18	2016	Bultfontein Tswelopele	20,001-30K	2	202	23585	27907	25746	-1081	-4.2	\N
 district	DC18	2016	Bultfontein Tswelopele	30,001-40K	\N	\N	\N	\N	\N	\N	\N	\N
@@ -525,8 +523,6 @@ district	DC6	2016	Calvinia Hantam	100,001-150K	\N	\N	\N	\N	\N	\N	\N	\N
 district	DC6	2016	Calvinia Hantam	150,001-200K	\N	\N	\N	\N	\N	\N	\N	\N
 district	DC6	2016	Calvinia Hantam	200,001-300K	\N	\N	\N	\N	\N	\N	\N	\N
 district	DC6	2016	Calvinia Hantam	300,001-500K	\N	\N	\N	\N	\N	\N	\N	\N
-district	DC6	2016	Calvinia Hantam	500,001-800K	\N	\N	\N	\N	\N	\N	\N	\N
-district	DC6	2016	Calvinia Hantam	800,001-1M	\N	\N	\N	\N	\N	\N	\N	\N
 district	DC6	2016	Calvinia Hantam	Above 1M	\N	\N	\N	\N	\N	\N	\N	\N
 municipality	CPT	2016	Cape Town	Under 1.5K	\N	\N	\N	\N	\N	\N	\N	\N
 municipality	CPT	2016	Cape Town	1,501-3K	\N	\N	\N	\N	\N	\N	\N	\N
@@ -682,6 +678,7 @@ district	DC13	2016	Cradock Inxuba Yethemba	30,001-40K	\N	\N	\N	\N	\N	\N	\N	\N
 district	DC13	2016	Cradock Inxuba Yethemba	40,001-50K	1	559	40250	40250	40250	\N	\N	\N
 district	DC13	2016	Cradock Inxuba Yethemba	50,001-100K	2	508	59226	63380	61303	-519	-0.8	\N
 district	DC13	2016	Cradock Inxuba Yethemba	100,001-150K	\N	\N	\N	\N	\N	\N	\N	\N
+district	DC16	2016	Fauresmith Kopanong	800,001-1M	\N	\N	\N	\N	\N	\N	\N	\N
 district	DC13	2016	Cradock Inxuba Yethemba	150,001-200K	1	141	153901	153901	153901	\N	\N	153901
 district	DC13	2016	Cradock Inxuba Yethemba	200,001-300K	\N	\N	\N	\N	\N	\N	\N	\N
 district	DC13	2016	Cradock Inxuba Yethemba	300,001-500K	\N	\N	\N	\N	\N	\N	\N	\N
@@ -846,7 +843,6 @@ district	DC16	2016	Fauresmith Kopanong	150,001-200K	\N	\N	\N	\N	\N	\N	\N	\N
 district	DC16	2016	Fauresmith Kopanong	200,001-300K	\N	\N	\N	\N	\N	\N	\N	\N
 district	DC16	2016	Fauresmith Kopanong	300,001-500K	\N	\N	\N	\N	\N	\N	\N	\N
 district	DC16	2016	Fauresmith Kopanong	500,001-800K	\N	\N	\N	\N	\N	\N	\N	\N
-district	DC16	2016	Fauresmith Kopanong	800,001-1M	\N	\N	\N	\N	\N	\N	\N	\N
 district	DC16	2016	Fauresmith Kopanong	Above 1M	\N	\N	\N	\N	\N	\N	\N	\N
 district	DC19	2016	Ficksburg Setso	Under 1.5K	\N	\N	\N	\N	\N	\N	\N	\N
 district	DC19	2016	Ficksburg Setso	1,501-3K	\N	\N	\N	\N	\N	\N	\N	\N
@@ -2592,6 +2588,7 @@ municipality	DC40	2016	Vostershoop	300,001-500K	\N	\N	\N	\N	\N	\N	\N	\N
 municipality	DC40	2016	Vostershoop	500,001-800K	\N	\N	\N	\N	\N	\N	\N	\N
 municipality	DC40	2016	Vostershoop	800,001-1M	\N	\N	\N	\N	\N	\N	\N	\N
 municipality	DC40	2016	Vostershoop	Above 1M	\N	\N	\N	\N	\N	\N	\N	\N
+municipality	MAN	2016	Wepener Naledi	30,001-40K	\N	\N	\N	\N	\N	\N	\N	\N
 district	DC19	2016	Vrede Phumelela	Under 1.5K	1	472	9	9	9	\N	\N	\N
 district	DC19	2016	Vrede Phumelela	1,501-3K	1	184	1928	1928	1928	\N	\N	\N
 district	DC19	2016	Vrede Phumelela	3,001-5K	4	866	3457	3910	3568	\N	\N	\N
@@ -2678,7 +2675,6 @@ municipality	MAN	2016	Wepener Naledi	3,001-5K	6	3089	3094	3774	3442	34	1	3774
 municipality	MAN	2016	Wepener Naledi	5,001-10K	2	460	7405	7723	7564	46	0.6	7723
 municipality	MAN	2016	Wepener Naledi	10,001-20K	\N	\N	\N	\N	\N	\N	\N	\N
 municipality	MAN	2016	Wepener Naledi	20,001-30K	\N	\N	\N	\N	\N	\N	\N	\N
-municipality	MAN	2016	Wepener Naledi	30,001-40K	\N	\N	\N	\N	\N	\N	\N	\N
 municipality	MAN	2016	Wepener Naledi	40,001-50K	\N	\N	\N	\N	\N	\N	\N	\N
 municipality	MAN	2016	Wepener Naledi	50,001-100K	\N	\N	\N	\N	\N	\N	\N	\N
 municipality	MAN	2016	Wepener Naledi	100,001-150K	\N	\N	\N	\N	\N	\N	\N	\N
@@ -3571,6 +3567,7 @@ district	DC19	2016	Fouriesburg Dikabeng	Above 1M	\N	\N	\N	\N	\N	\N	\N	\N
 district	DC20	2016	Frankfort Mafube	Under 1.5K	\N	\N	\N	\N	\N	\N	\N	\N
 district	DC20	2016	Frankfort Mafube	1,501-3K	\N	\N	\N	\N	\N	\N	\N	\N
 district	DC20	2016	Frankfort Mafube	3,001-5K	\N	\N	\N	\N	\N	\N	\N	\N
+district	DC18	2016	Odendaalsrus Matjhabeng	100,001-150K	\N	\N	\N	\N	\N	\N	\N	\N
 district	DC20	2016	Frankfort Mafube	5,001-10K	3	519	7888	10000	9296	-568	-6.1	\N
 district	DC20	2016	Frankfort Mafube	10,001-20K	13	5380	10141	19966	15040	522	3.5	\N
 district	DC20	2016	Frankfort Mafube	20,001-30K	5	1612	20022	28902	25849	-1	0	\N
@@ -3737,7 +3734,6 @@ district	DC18	2016	Odendaalsrus Matjhabeng	20,001-30K	\N	\N	\N	\N	\N	\N	\N	\N
 district	DC18	2016	Odendaalsrus Matjhabeng	30,001-40K	\N	\N	\N	\N	\N	\N	\N	\N
 district	DC18	2016	Odendaalsrus Matjhabeng	40,001-50K	1	38	44474	44474	44474	\N	\N	\N
 district	DC18	2016	Odendaalsrus Matjhabeng	50,001-100K	1	38	76316	76316	76316	\N	\N	\N
-district	DC18	2016	Odendaalsrus Matjhabeng	100,001-150K	\N	\N	\N	\N	\N	\N	\N	\N
 district	DC18	2016	Odendaalsrus Matjhabeng	150,001-200K	\N	\N	\N	\N	\N	\N	\N	\N
 district	DC18	2016	Odendaalsrus Matjhabeng	200,001-300K	\N	\N	\N	\N	\N	\N	\N	\N
 district	DC18	2016	Odendaalsrus Matjhabeng	300,001-500K	\N	\N	\N	\N	\N	\N	\N	\N
@@ -5590,3 +5586,4 @@ district	DC2	2016	Worcester Breede Valley	Above 1M	\N	\N	\N	\N	\N	\N	\N	\N
 --
 -- PostgreSQL database dump complete
 --
+

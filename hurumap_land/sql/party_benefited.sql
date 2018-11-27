@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.14
--- Dumped by pg_dump version 9.5.14
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -13,7 +13,6 @@ SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-
 ALTER TABLE IF EXISTS ONLY public.party_benefited DROP CONSTRAINT IF EXISTS pk_party_benefited;
 DROP TABLE IF EXISTS public.party_benefited;
 SET default_tablespace = '';
@@ -21,7 +20,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: party_benefited; Type: TABLE; Schema: public
+-- Name: party_benefited; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.party_benefited (
@@ -32,8 +31,10 @@ CREATE TABLE public.party_benefited (
     party_benefited character varying(128) NOT NULL,
     total integer
 );
+
+
 --
--- Data for Name: party_benefited; Type: TABLE DATA; Schema: public
+-- Data for Name: party_benefited; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.party_benefited (geo_level, geo_code, geo_version, year, party_benefited, total) FROM stdin;
@@ -309,8 +310,16 @@ province	WC	2016	2017/2018	disable people	0
 country	ZA	2016	2017/2018	disable people	1
 \.
 
-ALTER TABLE IF EXISTS ONLY public.party_benefited
+
+--
+-- Name: party_benefited pk_party_benefited; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.party_benefited
     ADD CONSTRAINT pk_party_benefited PRIMARY KEY (geo_level, geo_code, geo_version, year, party_benefited);
+
+
 --
 -- PostgreSQL database dump complete
 --
+

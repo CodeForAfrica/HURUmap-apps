@@ -2,30 +2,24 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
--- Dumped by pg_dump version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
-
--- Started on 2018-09-24 18:16:18 EAT
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
 
 DROP TABLE IF EXISTS public.landsalesdistributiontransaction;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
 
 --
--- TOC entry 355 (class 1259 OID 76460)
--- Name: landsalesdistributiontransaction; Type: TABLE; Schema: public
+-- Name: landsalesdistributiontransaction; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.landsalesdistributiontransaction (
@@ -33,16 +27,12 @@ CREATE TABLE public.landsalesdistributiontransaction (
     geo_code character varying(10) NOT NULL,
     geo_version character varying(100) DEFAULT ''::character varying NOT NULL,
     class character varying(128) NOT NULL,
-    total numeric
+    total integer
 );
 
 
-
-
 --
--- TOC entry 3366 (class 0 OID 76460)
--- Dependencies: 355
--- Data for Name: landsalesdistributiontransaction; Type: TABLE DATA; Schema: public
+-- Data for Name: landsalesdistributiontransaction; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.landsalesdistributiontransaction (geo_level, geo_code, geo_version, class, total) FROM stdin;
@@ -92,8 +82,6 @@ province	FS	2016	150,001-200K	4
 province	FS	2016	200,001-300K	4
 province	FS	2016	300,001-500K	2
 province	FS	2016	500,001-800K	1
-province	FS	2016	800,001-1M	NaN
-province	FS	2016	Above 1M	NaN
 province	GT	2016	Under 1.5K	4
 province	GT	2016	1,501-3K	1
 province	GT	2016	3,001-5K	2
@@ -156,16 +144,12 @@ province	MP	2016	150,001-200K	18
 province	MP	2016	200,001-300K	13
 province	MP	2016	300,001-500K	11
 province	MP	2016	500,001-800K	3
-province	MP	2016	800,001-1M	NaN
-province	MP	2016	Above 1M	NaN
 province	NC	2016	Under 1.5K	72
 province	NC	2016	1,501-3K	87
 province	NC	2016	3,001-5K	32
 province	NC	2016	5,001-10K	30
 province	NC	2016	10,001-20K	9
 province	NC	2016	20,001-30K	3
-province	NC	2016	30,001-40K	NaN
-province	NC	2016	40,001-50K	NaN
 province	NC	2016	50,001-100K	11
 province	NC	2016	100,001-150K	7
 province	NC	2016	150,001-200K	9
@@ -189,7 +173,6 @@ province	NW	2016	200,001-300K	6
 province	NW	2016	300,001-500K	3
 province	NW	2016	500,001-800K	5
 province	NW	2016	800,001-1M	3
-province	NW	2016	Above 1M	NaN
 province	WC	2016	Under 1.5K	39
 province	WC	2016	1,501-3K	40
 province	WC	2016	3,001-5K	25
@@ -206,11 +189,17 @@ province	WC	2016	300,001-500K	23
 province	WC	2016	500,001-800K	17
 province	WC	2016	800,001-1M	1
 province	WC	2016	Above 1M	5
+province	FS	2016	800,001-1M	\N
+province	FS	2016	Above 1M	\N
+province	MP	2016	800,001-1M	\N
+province	MP	2016	Above 1M	\N
+province	NC	2016	30,001-40K	\N
+province	NC	2016	40,001-50K	\N
+province	NW	2016	Above 1M	\N
 \.
 
-
--- Completed on 2018-09-24 18:16:18 EAT
 
 --
 -- PostgreSQL database dump complete
 --
+
