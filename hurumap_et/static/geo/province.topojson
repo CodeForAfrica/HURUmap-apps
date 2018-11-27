@@ -8,9 +8,9 @@
                     "type": "Polygon",
                     "properties": {
                         "name": "Tigray",
-                        "code": 1,
+                        "code": 9,
                         "level": "province",
-                        "geoid": "province-1"
+                        "geoid": "province-9"
                     },
                     "arcs": [
                         [
@@ -24,9 +24,9 @@
                     "type": "Polygon",
                     "properties": {
                         "name": "Afar",
-                        "code": 2,
+                        "code": 10,
                         "level": "province",
-                        "geoid": "province-2"
+                        "geoid": "province-10"
                     },
                     "arcs": [
                         [
@@ -39,13 +39,15 @@
                     ]
                 },
                 {
-                    "type": "Polygon",
+                    "type": "MultiPolygon",
+
                     "properties": {
                         "name": "Amhara",
-                        "code": 3,
+                        "code": 1,
                         "level": "province",
-                        "geoid": "province-3"
+                        "geoid": "province-1"
                     },
+
                     "arcs": [
                         [
                             [
@@ -67,12 +69,12 @@
                     ]
                 },
                 {
-                    "type": "Polygon",
+                    "type": "MultiPolygon",
                     "properties": {
-                        "name": "Oromia",
-                        "code": 4,
+                        "name": "Benishangul-Gumuz",
+                        "code": 6,
                         "level": "province",
-                        "geoid": "province-4"
+                        "geoid": "province-6"
                     },
                     "arcs": [
                         [
@@ -102,10 +104,10 @@
                 {
                     "type": "Polygon",
                     "properties": {
-                        "name": "Somali",
-                        "code": 5,
+                        "name": "Oromia",
+                        "code": 4,
                         "level": "province",
-                        "geoid": "province-5"
+                        "geoid": "province-4"
                     },
                     "arcs": [
                         [
@@ -140,10 +142,10 @@
                 {
                     "type": "Polygon",
                     "properties": {
-                        "name": "Benishangul-Gumuz",
-                        "code": 6,
+                        "name": "Somali",
+                        "code": 11,
                         "level": "province",
-                        "geoid": "province-6"
+                        "geoid": "province-11"
                     },
                     "arcs": [
                         [
@@ -158,7 +160,7 @@
                 {
                     "type": "Polygon",
                     "properties": {
-                        "name": "Southern Nations Nationalities and People Region (SNNPR)",
+                        "name": "Dire Dawa",
                         "code": 7,
                         "level": "province",
                         "geoid": "province-7"
@@ -173,7 +175,7 @@
                 {
                     "type": "Polygon",
                     "properties": {
-                        "name": "Gambella",
+                        "name": "Harari",
                         "code": 8,
                         "level": "province",
                         "geoid": "province-8"
@@ -187,20 +189,53 @@
                 {
                     "type": "Polygon",
                     "properties": {
-                        "name": "Harari",
-                        "code": 9,
+                        "name": "Addis Ababa",
+                        "code": 3,
                         "level": "province",
-                        "geoid": "province-9"
+                        "geoid": "province-3"
                     },
                     "arcs": [
                         [
                             -25
                         ]
                     ]
+                },
+                {
+                    "type": "Polygon",
+                    "properties": {
+                        "name": "Southern Nations",
+                        "code": 5,
+                        "level": "province",
+                        "geoid": "province-5"
+                    },
+                    "arcs": [
+                        [
+                            28,
+                            -23,
+                            29
+                        ]
+                    ]
+                },
+                {
+                    "type": "Polygon",
+                    "properties": {
+                        "name": "Gambella",
+                        "code": 2,
+                        "level": "province",
+                        "geoid": "province-2"
+                    },
+                    "arcs": [
+                        [
+                            -24,
+                            -29,
+                            30
+                        ]
+                    ]
                 }
             ]
         }
     },
+
     "arcs": [
         [
             [
