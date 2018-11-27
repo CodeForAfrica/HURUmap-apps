@@ -37,36 +37,46 @@ CREATE TABLE public.numberofsectionaltitleownersbynationality (
 --
 
 COPY public.numberofsectionaltitleownersbynationality (geo_level, geo_code, geo_version, "number of sectional title owners by nationality", total) FROM stdin;
-province	EC	2016	South African	24096
-province	FS	2016	South African	23009
-province	GT	2016	South African	299462
-province	KZN	2016	South African	100693
-province	MP	2016	South African	9368
-province	NW	2016	South African	16951
-province	NC	2016	South African	700
-province	WC	2016	South African	85069
-country	ZA	2016	South African	567148
-province	EC	2016	Foreign	5352
-province	FS	2016	Foreign	2524
-province	GT	2016	Foreign	47401
-province	KZN	2016	Foreign	49624
-province	MP	2016	Foreign	2058
-province	NW	2016	Foreign	1031
-province	NC	2016	Foreign	111
-province	WC	2016	Foreign	24000
-country	ZA	2016	Foreign	132672
-province	EC	2016	Other	714
-province	FS	2016	Other	311
-province	GT	2016	Other	13939
-province	KZN	2016	Other	3789
-province	MP	2016	Other	292
-province	NW	2016	Other	412
-province	NC	2016	Other	6
-province	WC	2016	Other	7447
-country	ZA	2016	Other	27146
-province	LIM	2016	South African	7800
-province	LIM	2016	Foreign	571
-province	LIM	2016	Other	236
+province	EC	2016	South African	534
+province	FS	2016	South African	1216
+province	GT	2016	South African	3878
+province	KZN	2016	South African	513
+province	LIM	2016	South African	1538
+province	MP	2016	South African	85
+province	NW	2016	South African	1132
+province	NC	2016	South African	5
+province	WC	2016	South African	403
+country	ZA	2016	South African	9305
+province	EC	2016	Foreign	135
+province	FS	2016	Foreign	17
+province	GT	2016	Foreign	498
+province	KZN	2016	Foreign	386
+province	LIM	2016	Foreign	4
+province	MP	2016	Foreign	6
+province	NW	2016	Foreign	4
+province	NC	2016	Foreign	1
+province	WC	2016	Foreign	87
+country	ZA	2016	Foreign	1138
+province	EC	2016	Co-ownership	29
+province	FS	2016	Co-ownership	18
+province	GT	2016	Co-ownership	372
+province	KZN	2016	Co-ownership	160
+province	LIM	2016	Co-ownership	4
+province	MP	2016	Co-ownership	28
+province	NW	2016	Co-ownership	8
+province	NC	2016	Co-ownership	1
+province	WC	2016	Co-ownership	104
+country	ZA	2016	Co-ownership	724
+province	EC	2016	Other	3
+province	FS	2016	Other	1
+province	GT	2016	Other	175
+province	KZN	2016	Other	15
+province	LIM	2016	Other	1
+province	MP	2016	Other	1
+province	NW	2016	Other	2
+province	NC	2016	Other	0
+province	WC	2016	Other	31
+country	ZA	2016	Other	229
 \.
 
 
