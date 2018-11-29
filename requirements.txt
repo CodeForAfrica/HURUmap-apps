@@ -1,5 +1,3 @@
-git+https://github.com/CodeForAfrica/HURUmap.git@v0.0.7#egg=hurumap
-
+git+https://github.com/CodeForAfrica/HURUmap.git@feature/upgrade_to_releases#egg=hurumap
 # Workaround for dependency links
 # Comment out when changes / updates / PR accepted
-git+https://github.com/CodeForAfricaLabs/wazimap.git@master#egg=wazimap

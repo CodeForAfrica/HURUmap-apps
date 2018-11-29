@@ -737,12 +737,18 @@
   {% endif %}
 
   {% if not afrobarometer.is_missing %}
-    <article>
+    <article id="afrobarometer">
       <header class="section-contents">
         <h1>Afrobarometer Round 7</h1>
       </header>
       <div class="section-container">
         <section class="clearfix stat-row">
+          <aside style="font-size: 14px;margin-left:-16.4em;width:14.4em;">
+            <br/>
+            <br/>
+            Afrobarometer is a pan-African, non-partisan research network that conducts public attitude surveys on democracy,
+            governance, economic conditions, and related issues in more than 35 countries in Africa.
+          </aside>
           <div class="column-half">
             <div id="chart-pie-afrobarometer-access_to_information"
                  data-stat-type="percentage"
