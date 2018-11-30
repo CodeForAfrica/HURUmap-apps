@@ -96,12 +96,12 @@ HURUMAP['topics']['agriculture'] = {
 }
 
 HURUMAP['primary_release_year'] = {
-    'region': 2010,
+    'province': 2010,
 }
 HURUMAP['latest_release_year'] = '2010'
 HURUMAP['primary_dataset_name'] = 'Census'
 HURUMAP['available_release_years'] = {
-    'region': [2010]
+    'province': [2010]
 }
 
 LOGGING['loggers']['hurumap_zm'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
