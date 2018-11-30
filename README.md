@@ -37,7 +37,7 @@ cat $HURUMAP_APP/sql/*.sql | docker-compose exec -T -e PGPASSWORD=<pass> db psql
 
 TODO: Needs to use docker-compose, test, and QA
 
-1. Ensure ``${HURUMAP_APP}/tables_x.py`` has a ``FieldTable`` that has exactly the columns that you're importing. If there are multiple tables with exactly the same columns, perhaps because their Universes are different, then be sure to take note of the **table id**.
+1. Ensure ``${HURUMAP_APP}/tables.py`` has a ``FieldTable`` that has exactly the columns that you're importing. If there are multiple tables with exactly the same columns, perhaps because their Universes are different, then be sure to take note of the **table id**.
 2. Do a dry-run of the import, using the table name if necessary.
 
         python manage.py importsimplecsv yourfile.csv --dry-run [--table TABLENAME]
@@ -106,7 +106,7 @@ If you'd like to contribute to HURUmap, check out the [CONTRIBUTING.md](CONTRIBU
 
 ## Importing data into HURUmap
 
-1. Ensure ``hurumap_ke/tables_x.py`` has a ``FieldTable`` that has exactly the columns that you're importing. If there are multiple tables with exactly the same columns, perhaps because their Universes are different, then be sure to take note of the **table id**.
+1. Ensure ``hurumap_ke/tables.py`` has a ``FieldTable`` that has exactly the columns that you're importing. If there are multiple tables with exactly the same columns, perhaps because their Universes are different, then be sure to take note of the **table id**.
 2. Do a dry-run of the import, using the table name if necessary.
 
         python manage.py importcsv yourfile.csv --dry-run [--table TABLENAME]

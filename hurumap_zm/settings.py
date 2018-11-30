@@ -13,7 +13,7 @@ MIDDLEWARE_CLASSES = (
     ) + MIDDLEWARE_CLASSES
 
 DATABASE_URL = os.environ.get('DATABASE_URL',
-                              'postgresql://hurumap_zm:hurumap_zm@localhost/hurumap_zm')
+                              'postgresql://hurumap:hurumap_zm@localhost/hurumap_zm')
 DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
@@ -93,6 +93,15 @@ HURUMAP['topics']['agriculture'] = {
     'profiles': [
 
     ],
+}
+
+HURUMAP['primary_release_year'] = {
+    'region': 2010,
+}
+HURUMAP['latest_release_year'] = '2010'
+HURUMAP['primary_dataset_name'] = 'Census'
+HURUMAP['available_release_years'] = {
+    'region': [2010]
 }
 
 LOGGING['loggers']['hurumap_zm'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
