@@ -12,7 +12,7 @@ from sqlalchemy import Column, ForeignKey, Integer, String, Table, func, or_, an
 
 log = logging.getLogger(__name__)
 # ensure tables are loaded
-import hurumap_land.tables  # noqa
+import hurumap_land.tables_X  # noqa
 
 SECTIONS = settings.HURUMAP.get('topics', {})
 

@@ -2,19 +2,16 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 10.0
--- Dumped by pg_dump version 10.0
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
-
-SET search_path = public, pg_catalog;
 
 ALTER TABLE IF EXISTS ONLY public.disabledornot DROP CONSTRAINT IF EXISTS pk_disabledornot;
 DROP TABLE IF EXISTS public.disabledornot;
@@ -23,10 +20,10 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: disabledornot; Type: TABLE; Schema: public; Owner: hurumap_ug
+-- Name: disabledornot; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE disabledornot (
+CREATE TABLE public.disabledornot (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     geo_version character varying(100) DEFAULT '2009'::character varying NOT NULL,
@@ -35,13 +32,11 @@ CREATE TABLE disabledornot (
 );
 
 
-ALTER TABLE disabledornot OWNER TO hurumap_ug;
-
 --
--- Data for Name: disabledornot; Type: TABLE DATA; Schema: public; Owner: hurumap_ug
+-- Data for Name: disabledornot; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY disabledornot (geo_level, geo_code, geo_version, "disabled or not", total) FROM stdin;
+COPY public.disabledornot (geo_level, geo_code, geo_version, "disabled or not", total) FROM stdin;
 district	80	2014	without disability	350347
 district	80	2014	with disability	46583
 district	16	2014	without disability	126904
@@ -280,10 +275,10 @@ country	UG	2014	without disability	26564919
 
 
 --
--- Name: disabledornot pk_disabledornot; Type: CONSTRAINT; Schema: public; Owner: hurumap_ug
+-- Name: disabledornot pk_disabledornot; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY disabledornot
+ALTER TABLE ONLY public.disabledornot
     ADD CONSTRAINT pk_disabledornot PRIMARY KEY (geo_level, geo_code, geo_version, "disabled or not");
 
 

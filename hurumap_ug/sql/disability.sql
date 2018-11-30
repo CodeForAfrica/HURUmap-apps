@@ -2,19 +2,16 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 10.0
--- Dumped by pg_dump version 10.0
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
-
-SET search_path = public, pg_catalog;
 
 ALTER TABLE IF EXISTS ONLY public.disability DROP CONSTRAINT IF EXISTS pk_disability;
 DROP TABLE IF EXISTS public.disability;
@@ -23,10 +20,10 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: disability; Type: TABLE; Schema: public; Owner: hurumap_ug
+-- Name: disability; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE disability (
+CREATE TABLE public.disability (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     geo_version character varying(100) DEFAULT '2009'::character varying NOT NULL,
@@ -35,13 +32,11 @@ CREATE TABLE disability (
 );
 
 
-ALTER TABLE disability OWNER TO hurumap_ug;
-
 --
--- Data for Name: disability; Type: TABLE DATA; Schema: public; Owner: hurumap_ug
+-- Data for Name: disability; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY disability (geo_level, geo_code, geo_version, disability, total) FROM stdin;
+COPY public.disability (geo_level, geo_code, geo_version, disability, total) FROM stdin;
 district	80	2014	seeing disability	24071
 district	80	2014	hearing disability	11655
 district	80	2014	remembering disability	19421
@@ -514,10 +509,10 @@ country	UG	2014	walking disability	1352319
 
 
 --
--- Name: disability pk_disability; Type: CONSTRAINT; Schema: public; Owner: hurumap_ug
+-- Name: disability pk_disability; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY disability
+ALTER TABLE ONLY public.disability
     ADD CONSTRAINT pk_disability PRIMARY KEY (geo_level, geo_code, geo_version, disability);
 
 

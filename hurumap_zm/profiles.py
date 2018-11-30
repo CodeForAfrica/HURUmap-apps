@@ -4,7 +4,7 @@ from django.conf import settings
 from wazimap.data.utils import get_session, get_stat_data, group_remainder
 
 # ensure tables are loaded
-import hurumap_zm.tables  # noqa
+import hurumap_zm.tables_x  # noqa
 
 SECTIONS = settings.HURUMAP.get('topics', {})
 

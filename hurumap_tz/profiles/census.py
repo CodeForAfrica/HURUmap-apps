@@ -10,7 +10,7 @@ from django.conf import settings
 log = logging.getLogger(__name__)
 
 # ensure tables are loaded
-import hurumap_tz.tables  # noqa
+import hurumap_tz.tables_x  # noqa
 
 SECTIONS = settings.HURUMAP.get('topics', {})
 
