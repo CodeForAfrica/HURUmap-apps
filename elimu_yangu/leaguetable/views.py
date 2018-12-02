@@ -2,7 +2,7 @@ import logging
 import json
 from django.utils import translation
 
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django.shortcuts import render_to_response, render, redirect
 from django.utils.module_loading import import_string
 from django.utils.safestring import SafeString
@@ -11,11 +11,9 @@ from django.views.generic import View, TemplateView
 from django.conf import settings
 
 from wazimap.geo import geo_data
-from wazimap.data.tables import get_model_from_fields, get_model_for_db_table
 from wazimap.profiles import enhance_api_data
 from wazimap.data.base import Base
-from wazimap.data.utils import (LocationNotFound, calculate_median, get_session, get_stat_data,
-                                merge_dicts, get_objects_by_geo, group_remainder)
+from wazimap.data.utils import (get_session)
 
 from sqlalchemy import Column, ForeignKey, Integer, String, Table, func, or_, and_, desc, asc, cast
 
@@ -104,7 +102,7 @@ class SchoolPageView(TemplateView):
             self.geo_code = school.geo_code
             version = '2009'
             self.geo = geo_data.get_geography(self.geo_code, self.geo_level, version)
-        except (ValueError, LocationNotFound):
+        except (ValueError, Exception):
             raise Http404
         # load the profile
         # profile_method = settings.WAZIMAP.get('profile_builder', None)
@@ -157,7 +155,7 @@ class EmbedGeographyDetailView(BaseGeographyDetailView):
         try:
             self.geo_level, self.geo_code = self.geo_id.split('-', 1)
             self.geo = geo_data.get_geography(self.geo_code, self.geo_level, version)
-        except (ValueError, LocationNotFound):
+        except (ValueError, Exception):
             raise Http404
 
         # check slug
@@ -230,7 +228,7 @@ class GeographyDetailView(BaseGeographyDetailView):
         try:
             self.geo_level, self.geo_code = self.geo_id.split('-', 1)
             self.geo = geo_data.get_geography(self.geo_code, self.geo_level, version)
-        except (ValueError, LocationNotFound):
+        except (ValueError, Exception):
             raise Http404
 
         # check slug
@@ -300,7 +298,7 @@ class GeographyCompareView(TemplateView):
 
             level, code = geo_id2.split('-', 1)
             page_context['geo2'] = geo_data.get_geography(code, level)
-        except (ValueError, LocationNotFound):
+        except (ValueError, Exception):
             raise Http404
 
         return page_context
@@ -308,6 +306,9 @@ class GeographyCompareView(TemplateView):
 def get_overall_topschools(year, geo_level, geo_code, session):
     schools = {}
     # Choosing sorting option
+    print '\n\n\n\n\n'
+    print Base.metadata.tables
+    print '\n\n\n\n\n'
     rank_column = Base.metadata.tables['secondary_school'].c.national_rank_all
     # Fetching schools
     top_schools_40_more = session.query(Base.metadata.tables['secondary_school'])\

@@ -12,7 +12,7 @@ MIDDLEWARE_CLASSES = (
 
 DATABASE_URL = os.environ.get(
     'DATABASE_URL',
-    'postgresql://hurumap_tz:hurumap_tz@localhost/hurumap_tz')
+    'postgresql://hurumap:hurumap_tz@localhost/hurumap_tz')
 DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
@@ -152,6 +152,15 @@ HURUMAP['showcase_stories'] = [
         'img': STATIC_URL + 'img/showcase/cti.jpg'
      }
 ]
+
+HURUMAP['primary_release_year'] = {
+    'region': 2012,
+}
+HURUMAP['latest_release_year'] = '2012'
+HURUMAP['primary_dataset_name'] = 'Census'
+HURUMAP['available_release_years'] = {
+    'region': [2012]
+}
 
 LOGGING['loggers']['hurumap_tz'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
 
