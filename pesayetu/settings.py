@@ -53,6 +53,14 @@ PESAYETU['geometry_data'] = {
         'county': 'geo/county.topojson'
     }
 }
+PESAYETU['primary_release_year'] = {
+    'county': 2016,
+}
+PESAYETU['latest_release_year'] = '2016'
+PESAYETU['primary_dataset_name'] = 'Budget'
+PESAYETU['available_release_years'] = {
+    'county': [2016]
+}
 FORMAT_MODULE_PATH = 'pesayetu.formats'
 
 LOGGING['loggers']['pesayetu'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
