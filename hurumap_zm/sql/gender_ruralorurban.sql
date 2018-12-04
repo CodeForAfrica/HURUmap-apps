@@ -2,17 +2,16 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 10.0
--- Dumped by pg_dump version 10.0
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-
-SET search_path = public, pg_catalog;
 
 ALTER TABLE IF EXISTS ONLY public.gender_ruralorurban DROP CONSTRAINT IF EXISTS pk_gender_ruralorurban;
 DROP TABLE IF EXISTS public.gender_ruralorurban;
@@ -24,7 +23,7 @@ SET default_with_oids = false;
 -- Name: gender_ruralorurban; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE gender_ruralorurban (
+CREATE TABLE public.gender_ruralorurban (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     gender character varying(128) NOT NULL,
@@ -38,7 +37,7 @@ CREATE TABLE gender_ruralorurban (
 -- Data for Name: gender_ruralorurban; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY gender_ruralorurban (geo_level, geo_code, gender, "rural or urban", total, geo_version) FROM stdin;
+COPY public.gender_ruralorurban (geo_level, geo_code, gender, "rural or urban", total, geo_version) FROM stdin;
 country	ZM	male	rural	3664349	2010
 province	1	male	rural	460146	2010
 province	2	male	rural	181734	2010
@@ -87,10 +86,10 @@ province	10	female	urban	59547	2010
 
 
 --
--- Name: gender_ruralorurban gender_ruralorurban_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_zm
+-- Name: gender_ruralorurban pk_gender_ruralorurban; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY gender_ruralorurban
+ALTER TABLE ONLY public.gender_ruralorurban
     ADD CONSTRAINT pk_gender_ruralorurban PRIMARY KEY (geo_level, geo_code, gender, "rural or urban");
 
 
