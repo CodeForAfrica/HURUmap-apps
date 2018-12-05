@@ -65,7 +65,6 @@ province	3	2010	The quality of Chinese products	22
 province	4	2010	China's extraction of resources from Africa	3
 province	4	2010	China's willingness to cooperate with undemocratic rulers	1
 province	4	2010	Don't know / Haven't heard enough	11
-province	4	2010	Missing	1
 province	4	2010	None of these	2
 province	4	2010	Taking jobs or business from the locals	4
 province	4	2010	The behavior of Chinese citizens in the country	10
@@ -113,7 +112,6 @@ province	10	2010	The quality of Chinese products	23
 country	ZM	2010	Don't know / Haven't heard enough	134
 country	ZM	2010	The quality of Chinese products	362
 country	ZM	2010	The behavior of Chinese citizens in the country	197
-country	ZM	2010	Missing	1
 country	ZM	2010	Taking jobs or business from the locals	143
 country	ZM	2010	Some other factor	23
 country	ZM	2010	None of these	57

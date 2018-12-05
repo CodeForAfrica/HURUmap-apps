@@ -39,8 +39,7 @@ CREATE TABLE public.people_must_obey_the_law (
 COPY public.people_must_obey_the_law (geo_level, geo_code, geo_version, people_must_obey_the_law, total) FROM stdin;
 province	1	2010	Agree	350
 province	1	2010	Disagree	115
-province	1	2010	Don�t Know	15
-province	1	2010	Missing	2
+province	1	2010	Don't Know	15
 province	1	2010	Neither Agree Nor Disagree	34
 province	1	2010	Strongly Agree	206
 province	1	2010	Strongly Disagree	109
@@ -61,8 +60,7 @@ province	4	2010	Strongly Agree	14
 province	4	2010	Strongly Disagree	5
 province	6	2010	Agree	24
 province	6	2010	Disagree	7
-province	6	2010	Don�t Know	1
-province	6	2010	Missing	1
+province	6	2010	Don't Know	1
 province	6	2010	Neither Agree Nor Disagree	1
 province	6	2010	Strongly Agree	13
 province	6	2010	Strongly Disagree	1
@@ -83,17 +81,16 @@ province	9	2010	Strongly Agree	15
 province	9	2010	Strongly Disagree	6
 province	10	2010	Agree	10
 province	10	2010	Disagree	2
-province	10	2010	Don�t Know	1
+province	10	2010	Don't Know	1
 province	10	2010	Neither Agree Nor Disagree	6
 province	10	2010	Strongly Agree	24
 province	10	2010	Strongly Disagree	13
 country	ZM	2010	Neither Agree Nor Disagree	50
-country	ZM	2010	Missing	3
 country	ZM	2010	Disagree	158
 country	ZM	2010	Strongly Agree	304
 country	ZM	2010	Strongly Disagree	146
 country	ZM	2010	Agree	521
-country	ZM	2010	Don�t Know	17
+country	ZM	2010	Don't Know	17
 \.
 
 

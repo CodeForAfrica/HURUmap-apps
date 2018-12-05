@@ -57,7 +57,6 @@ province	3	2010	Somewhat good job	10
 province	3	2010	Very bad job	1
 province	3	2010	Very good job	14
 province	4	2010	Don't know / Haven't heard enough	6
-province	4	2010	Missing	1
 province	4	2010	Neither good nor bad job	3
 province	4	2010	Somewhat bad job	1
 province	4	2010	Somewhat good job	12
@@ -92,7 +91,6 @@ province	10	2010	Very bad job	1
 province	10	2010	Very good job	30
 country	ZM	2010	Very bad job	81
 country	ZM	2010	Don't know / Haven't heard enough	121
-country	ZM	2010	Missing	1
 country	ZM	2010	Somewhat bad job	62
 country	ZM	2010	Very good job	460
 country	ZM	2010	Somewhat good job	363

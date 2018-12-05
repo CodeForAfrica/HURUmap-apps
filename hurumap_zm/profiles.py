@@ -148,7 +148,6 @@ def get_afrobarometer_profile(geo, session):
     corruption_members_of_parliament = LOCATIONNOTFOUND
     corruption_office_of_the_presidency = LOCATIONNOTFOUND
     satisfaction_with_democracy = LOCATIONNOTFOUND
-    corruption_business_executives = LOCATIONNOTFOUND
     corruption_religious_leaders = LOCATIONNOTFOUND
     corruption_traditional_leaders = LOCATIONNOTFOUND
     difficulty_to_obtain_public_school_services = LOCATIONNOTFOUND
@@ -426,13 +425,6 @@ def get_afrobarometer_profile(geo, session):
         pass
 
     try:
-        corruption_business_executives, _ = get_stat_data(
-            'corruption_business_executives', geo, session,
-            table_fields=['corruption_business_executives'])
-    except LocationNotFound:
-        pass
-
-    try:
         corruption_religious_leaders, _ = get_stat_data(
             'corruption_religious_leaders', geo, session,
             table_fields=['corruption_religious_leaders'])
@@ -547,7 +539,6 @@ def get_afrobarometer_profile(geo, session):
         'is_missing') and corruption_members_of_parliament.get(
         'is_missing') and corruption_office_of_the_presidency.get(
         'is_missing') and satisfaction_with_democracy.get(
-        'is_missing') and corruption_business_executives.get(
         'is_missing') and corruption_religious_leaders.get(
         'is_missing') and corruption_traditional_leaders.get(
         'is_missing') and difficulty_to_obtain_public_school_services.get(
@@ -560,115 +551,115 @@ def get_afrobarometer_profile(geo, session):
         'is_missing') and pay_bribe_for_document_or_permit.get(
         'is_missing') and pay_bribe_for_household_services.get('is_missing')
 
-    free_and_fair_key_order = ["Don't know", "Not free and fair",
-                               "Free and fair, with major problems",
-                               "Free and fair, but with minor problems",
-                               "Completely free and fair",
-                               "Do not understand the question",
-                               "metadata"]
+    if not is_missing:
 
-    elections_key_order = ["Don't know", "Not at all well", "Not very well",
-                           "Well", "Very well", "metadata"]
+        free_and_fair_key_order = ["Don't know", "Not free and fair",
+                                   "Free and fair, with major problems",
+                                   "Free and fair, but with minor problems",
+                                   "Completely free and fair",
+                                   "Do not understand the question",
+                                   "metadata"]
 
-    chinas_influence_key_order = ["Don't know / Haven't heard enough",
-                                  "Very negative", "Somewhat negative",
-                                  "Neither positive nor negative",
-                                  "Somewhat positive", "Very positive",
-                                  "metadata"]
+        elections_key_order = ["Don't know", "Not at all well", "Not very well",
+                               "Well", "Very well", "metadata"]
 
-    china_influence_on_economy_key_order = ["Don't know / Haven't heard enough",
-                                            "None", "Some", "A little", "A lot",
-                                            "metadata"]
+        chinas_influence_key_order = ["Don't know / Haven't heard enough",
+                                      "Very negative", "Somewhat negative",
+                                      "Neither positive nor negative",
+                                      "Somewhat positive", "Very positive",
+                                      "metadata"]
 
-    mobile_phone_usage_key_order = ["Don't know", "Never",
-                                    "A few times a month", "A few times a week",
-                                    "Less than once a month", "Everyday",
-                                    "metadata"]
+        china_influence_on_economy_key_order = ["Don't know / Haven't heard enough",
+                                                "None", "Some", "A little", "A lot",
+                                                "metadata"]
 
-    internet_usage_key_order = mobile_phone_usage_key_order + ["Missing"]
-    corruption_amongst_key_order = ["Don't know/ Haven't heard enough", "None",
-                                    "Some of them", "Most of them",
-                                    "All of them", "metadata"]
-    corruption_level_key_order = ["Don't know", "Decreased a lot",
-                                  "Decreased somewhat", "Stayed the same",
-                                  "Increased somewhat", "Increased a lot",
-                                  "metadata"]
-    pay_bribes_key_order = ["Don't know", "No contact", "Never",
-                            "Once or Twice", "A Few times", "Often", "metadata"]
-    difficulty_key_order = ["Don't Know", "No contact", "Very Easy", "Easy",
-                            "Difficult", "Very Difficult", "metadata"]
+        mobile_phone_usage_key_order = ["Don't know", "Never",
+                                        "A few times a month", "A few times a week",
+                                        "Less than once a month", "Everyday",
+                                        "metadata"]
 
-    corruption_business_executives = sort_keys(corruption_amongst_key_order,
-                                               corruption_business_executives)
-    corruption_government_officials = sort_keys(
-        corruption_amongst_key_order + ["Missing"],
-        corruption_government_officials)
-    corruption_judges_and_magistrates = sort_keys(corruption_amongst_key_order,
-                                                  corruption_judges_and_magistrates)
-    corruption_local_government_councilors = sort_keys(
-        corruption_amongst_key_order, corruption_local_government_councilors)
-    corruption_members_of_parliament = sort_keys(corruption_amongst_key_order,
-                                                 corruption_members_of_parliament)
-    corruption_office_of_the_presidency = sort_keys(
-        corruption_amongst_key_order, corruption_office_of_the_presidency)
-    corruption_police = sort_keys(corruption_amongst_key_order,
-                                  corruption_police)
-    corruption_religious_leaders = sort_keys(corruption_amongst_key_order,
-                                             corruption_religious_leaders)
-    corruption_traditional_leaders = sort_keys(corruption_amongst_key_order,
-                                               corruption_traditional_leaders)
-    corruption_tax_officials = sort_keys(corruption_amongst_key_order,
-                                         corruption_tax_officials)
-    level_of_corruption = sort_keys(corruption_level_key_order,
-                                    level_of_corruption)
-    pay_bribe_for_document_or_permit = sort_keys(pay_bribes_key_order,
-                                                 pay_bribe_for_document_or_permit)
-    pay_bribe_for_household_services = sort_keys(pay_bribes_key_order,
-                                                 pay_bribe_for_household_services)
-    pay_bribe_for_school_services = sort_keys(pay_bribes_key_order,
-                                              pay_bribe_for_school_services)
-    pay_bribe_for_treatment_at_public_clinic_or_hospital = sort_keys(
-        pay_bribes_key_order,
-        pay_bribe_for_treatment_at_public_clinic_or_hospital)
+        internet_usage_key_order = mobile_phone_usage_key_order + ["Missing"]
+        corruption_amongst_key_order = ["Don't know/ Haven't heard enough", "None",
+                                        "Some of them", "Most of them",
+                                        "All of them", "metadata"]
+        corruption_level_key_order = ["Don't know", "Decreased a lot",
+                                      "Decreased somewhat", "Stayed the same",
+                                      "Increased somewhat", "Increased a lot",
+                                      "metadata"]
+        pay_bribes_key_order = ["Don't know", "No contact", "Never",
+                                "Once or Twice", "A Few times", "Often", "metadata"]
+        difficulty_key_order = ["Don't Know", "No contact", "Very Easy", "Easy",
+                                "Difficult", "Very Difficult", "metadata"]
 
-    freeness_and_fairness_of_the_last_national_election = sort_keys(
-        free_and_fair_key_order,
-        freeness_and_fairness_of_the_last_national_election)
-    elections_ensure_voters_views_are_reflected = sort_keys(elections_key_order,
-                                                            elections_ensure_voters_views_are_reflected)
-    elections_enable_voters_to_remove_leaders_from_office = sort_keys(
-        elections_key_order,
-        elections_enable_voters_to_remove_leaders_from_office)
-    chinas_influence_positive_or_negative = sort_keys(
-        chinas_influence_key_order, chinas_influence_positive_or_negative)
-    chinas_influence_on_economy = sort_keys(
-        china_influence_on_economy_key_order, chinas_influence_on_economy)
-    how_often_use_a_mobile_phone = sort_keys(mobile_phone_usage_key_order,
-                                             how_often_use_a_mobile_phone)
-    how_often_use_the_internet = sort_keys(internet_usage_key_order,
-                                           how_often_use_the_internet)
+        corruption_government_officials = sort_keys(
+            corruption_amongst_key_order + ["Missing"],
+            corruption_government_officials)
+        corruption_judges_and_magistrates = sort_keys(corruption_amongst_key_order,
+                                                      corruption_judges_and_magistrates)
+        corruption_local_government_councilors = sort_keys(
+            corruption_amongst_key_order, corruption_local_government_councilors)
+        corruption_members_of_parliament = sort_keys(corruption_amongst_key_order,
+                                                     corruption_members_of_parliament)
+        corruption_office_of_the_presidency = sort_keys(
+            corruption_amongst_key_order, corruption_office_of_the_presidency)
+        corruption_police = sort_keys(corruption_amongst_key_order,
+                                      corruption_police)
+        corruption_religious_leaders = sort_keys(corruption_amongst_key_order,
+                                                 corruption_religious_leaders)
+        corruption_traditional_leaders = sort_keys(corruption_amongst_key_order,
+                                                   corruption_traditional_leaders)
+        corruption_tax_officials = sort_keys(corruption_amongst_key_order,
+                                             corruption_tax_officials)
+        level_of_corruption = sort_keys(corruption_level_key_order,
+                                        level_of_corruption)
+        pay_bribe_for_document_or_permit = sort_keys(pay_bribes_key_order,
+                                                     pay_bribe_for_document_or_permit)
+        pay_bribe_for_household_services = sort_keys(pay_bribes_key_order,
+                                                     pay_bribe_for_household_services)
+        pay_bribe_for_school_services = sort_keys(pay_bribes_key_order,
+                                                  pay_bribe_for_school_services)
+        pay_bribe_for_treatment_at_public_clinic_or_hospital = sort_keys(
+            pay_bribes_key_order,
+            pay_bribe_for_treatment_at_public_clinic_or_hospital)
 
-    difficulty_to_obtain_household_services = sort_keys(difficulty_key_order,
-                                                        difficulty_to_obtain_household_services)
-    difficulty_to_obtain_identity_document = sort_keys(difficulty_key_order,
-                                                       difficulty_to_obtain_identity_document)
-    difficulty_to_obtain_medical_treatment = sort_keys(difficulty_key_order,
-                                                       difficulty_to_obtain_medical_treatment)
-    difficulty_to_obtain_public_school_services = sort_keys(
-        difficulty_key_order, difficulty_to_obtain_public_school_services)
-    people_must_obey_the_law = sort_keys(
-        ["Don't Know", "Strongly Disagree", "Disagree",
-         "Neither Agree Nor Disagree", "Agree", "Strongly Agree", "metadata"],
-        people_must_obey_the_law)
-    extent_of_democracy = sort_keys(
-        ["Don't know", "Not a democracy", "A democracy, with major problems",
-         "A democracy, but with minor problems",
-         "Do not understand question / democracy", "A full democracy",
-         "metadata"], extent_of_democracy)
-    satisfaction_with_democracy = sort_keys(
-        ["Do not know", "The country is not a democracy",
-         "Not at all satisfied", "Not very satisfied", "Fairly satisfied",
-         "Very satisfied", "metadata"], satisfaction_with_democracy)
+        freeness_and_fairness_of_the_last_national_election = sort_keys(
+            free_and_fair_key_order,
+            freeness_and_fairness_of_the_last_national_election)
+        elections_ensure_voters_views_are_reflected = sort_keys(elections_key_order,
+                                                                elections_ensure_voters_views_are_reflected)
+        elections_enable_voters_to_remove_leaders_from_office = sort_keys(
+            elections_key_order,
+            elections_enable_voters_to_remove_leaders_from_office)
+        chinas_influence_positive_or_negative = sort_keys(
+            chinas_influence_key_order, chinas_influence_positive_or_negative)
+        chinas_influence_on_economy = sort_keys(
+            china_influence_on_economy_key_order, chinas_influence_on_economy)
+        how_often_use_a_mobile_phone = sort_keys(mobile_phone_usage_key_order,
+                                                 how_often_use_a_mobile_phone)
+        how_often_use_the_internet = sort_keys(internet_usage_key_order,
+                                               how_often_use_the_internet)
+
+        difficulty_to_obtain_household_services = sort_keys(difficulty_key_order,
+                                                            difficulty_to_obtain_household_services)
+        difficulty_to_obtain_identity_document = sort_keys(difficulty_key_order,
+                                                           difficulty_to_obtain_identity_document)
+        difficulty_to_obtain_medical_treatment = sort_keys(difficulty_key_order,
+                                                           difficulty_to_obtain_medical_treatment)
+        difficulty_to_obtain_public_school_services = sort_keys(
+            difficulty_key_order, difficulty_to_obtain_public_school_services)
+        people_must_obey_the_law = sort_keys(
+            ["Don't Know", "Strongly Disagree", "Disagree",
+             "Neither Agree Nor Disagree", "Agree", "Strongly Agree", "metadata"],
+            people_must_obey_the_law)
+        extent_of_democracy = sort_keys(
+            ["Don't know", "Not a democracy", "A democracy, with major problems",
+             "A democracy, but with minor problems",
+             "Do not understand question / democracy", "A full democracy",
+             "metadata"], extent_of_democracy)
+        satisfaction_with_democracy = sort_keys(
+            ["Do not know", "The country is not a democracy",
+             "Not at all satisfied", "Not very satisfied", "Fairly satisfied",
+             "Very satisfied", "metadata"], satisfaction_with_democracy)
 
     final_data = {
         'is_missing': is_missing,
@@ -710,7 +701,6 @@ def get_afrobarometer_profile(geo, session):
         'corruption_members_of_parliament': corruption_members_of_parliament,
         'corruption_office_of_the_presidency': corruption_office_of_the_presidency,
         'satisfaction_with_democracy': satisfaction_with_democracy,
-        'corruption_business_executives': corruption_business_executives,
         'corruption_religious_leaders': corruption_religious_leaders,
         'corruption_traditional_leaders': corruption_traditional_leaders,
         'difficulty_to_obtain_public_school_services': difficulty_to_obtain_public_school_services,

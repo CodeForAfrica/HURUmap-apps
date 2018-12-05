@@ -38,14 +38,12 @@ CREATE TABLE public.own_mobile_phone (
 
 COPY public.own_mobile_phone (geo_level, geo_code, geo_version, own_mobile_phone, total) FROM stdin;
 province	1	2010	Don't know	3
-province	1	2010	Missing	2
 province	1	2010	No, don't own	217
 province	1	2010	Yes, do own	609
 province	2	2010	No, don't own	8
 province	2	2010	Yes, do own	24
 province	3	2010	No, don't own	17
 province	3	2010	Yes, do own	23
-province	4	2010	Missing	1
 province	4	2010	No, don't own	14
 province	4	2010	Yes, do own	25
 province	6	2010	No, don't own	12
@@ -61,7 +59,6 @@ province	10	2010	Yes, do own	48
 country	ZM	2010	Yes, do own	872
 country	ZM	2010	No, don't own	321
 country	ZM	2010	Don't know	3
-country	ZM	2010	Missing	3
 \.
 
 

@@ -40,7 +40,6 @@ COPY public.vote_for_which_party (geo_level, geo_code, geo_version, vote_for_whi
 province	1	2010	Don't know	97
 province	1	2010	Forum for Democrasy and Development (FDD)	7
 province	1	2010	Heritage Party (HP)	1
-province	1	2010	Missing	3
 province	1	2010	Movement for Multiparty Democracy (MMD)	60
 province	1	2010	National Restoration Party (NAREP)	19
 province	1	2010	Other	5
@@ -63,7 +62,6 @@ province	3	2010	Patriotic Front (PF)	8
 province	3	2010	Refused to answer	4
 province	3	2010	United Party for National Development (UPND)	4
 province	4	2010	Don't know	3
-province	4	2010	Missing	1
 province	4	2010	Movement for Multiparty Democracy (MMD)	2
 province	4	2010	National Restoration Party (NAREP)	1
 province	4	2010	Patriotic Front (PF)	29
@@ -83,7 +81,6 @@ province	8	2010	Refused to answer	5
 province	8	2010	United Party for National Development (UPND)	9
 province	8	2010	Would not vote	1
 province	7	2010	Don't know	2
-province	7	2010	Missing	1
 province	7	2010	Movement for Multiparty Democracy (MMD)	3
 province	7	2010	National Restoration Party (NAREP)	1
 province	7	2010	Other	1
@@ -108,7 +105,6 @@ province	10	2010	United Party for National Development (UPND)	20
 province	10	2010	Would not vote	5
 country	ZM	2010	Patriotic Front (PF)	422
 country	ZM	2010	Refused to answer	175
-country	ZM	2010	Missing	5
 country	ZM	2010	Movement for Multiparty Democracy (MMD)	100
 country	ZM	2010	United Party for National Development (UPND)	229
 country	ZM	2010	Forum for Democrasy and Development (FDD)	9

@@ -38,8 +38,7 @@ CREATE TABLE public.pay_bribe_for_household_services (
 
 COPY public.pay_bribe_for_household_services (geo_level, geo_code, geo_version, pay_bribe_for_household_services, total) FROM stdin;
 province	1	2010	A Few times	6
-province	1	2010	Don�t know	3
-province	1	2010	Missing	3
+province	1	2010	Don't know	3
 province	1	2010	Never	148
 province	1	2010	No contact	665
 province	1	2010	Once or Twice	6
@@ -47,10 +46,8 @@ province	2	2010	Never	8
 province	2	2010	No contact	23
 province	2	2010	Once or Twice	1
 province	3	2010	A Few times	1
-province	3	2010	Missing	1
 province	3	2010	Never	8
 province	3	2010	No contact	30
-province	4	2010	Missing	1
 province	4	2010	Never	2
 province	4	2010	No contact	37
 province	6	2010	Never	2
@@ -64,16 +61,14 @@ province	9	2010	No contact	70
 province	9	2010	Often	1
 province	9	2010	Once or Twice	1
 province	10	2010	A Few times	1
-province	10	2010	Missing	1
 province	10	2010	Never	6
 province	10	2010	No contact	48
 country	ZM	2010	Often	1
-country	ZM	2010	Missing	6
 country	ZM	2010	Never	184
 country	ZM	2010	A Few times	8
 country	ZM	2010	Once or Twice	8
 country	ZM	2010	No contact	989
-country	ZM	2010	Don�t know	3
+country	ZM	2010	Don't know	3
 \.
 
 

@@ -38,7 +38,6 @@ CREATE TABLE public.education_of_respondent (
 
 COPY public.education_of_respondent (geo_level, geo_code, geo_version, education_of_respondent, total) FROM stdin;
 province	1	2010	Informal schooling only	4
-province	1	2010	Missing	2
 province	1	2010	No formal schooling	62
 province	1	2010	Post-graduate	2
 province	1	2010	Post-secondary qualifications, other than university	77
@@ -62,7 +61,6 @@ province	3	2010	Secondary school / high school completed	4
 province	3	2010	Some primary schooling	13
 province	3	2010	Some secondary school / high school	6
 province	3	2010	University completed	2
-province	4	2010	Missing	1
 province	4	2010	No formal schooling	3
 province	4	2010	Post-secondary qualifications, other than university	5
 province	4	2010	Primary school completed	1
@@ -91,7 +89,6 @@ province	7	2010	Secondary school / high school completed	2
 province	7	2010	Some primary schooling	13
 province	7	2010	Some secondary school / high school	10
 province	7	2010	Some university	1
-province	9	2010	Missing	1
 province	9	2010	No formal schooling	2
 province	9	2010	Post-secondary qualifications, other than university	14
 province	9	2010	Primary school completed	23
@@ -107,7 +104,6 @@ province	10	2010	Secondary school / high school completed	9
 province	10	2010	Some primary schooling	10
 province	10	2010	Some secondary school / high school	13
 country	ZM	2010	Some secondary school / high school	312
-country	ZM	2010	Missing	4
 country	ZM	2010	Some primary schooling	215
 country	ZM	2010	No formal schooling	91
 country	ZM	2010	University completed	16

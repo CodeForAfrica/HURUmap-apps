@@ -43,7 +43,6 @@ province	1	2010	Clerical or secretarial	10
 province	1	2010	Don't know	4
 province	1	2010	Housewife / homemaker	91
 province	1	2010	Mid-level professional	48
-province	1	2010	Missing	3
 province	1	2010	Never had a job	130
 province	1	2010	Other	40
 province	1	2010	Retail / Shop	20
@@ -76,7 +75,6 @@ province	4	2010	Agriculture / farming / fishing / forestry	2
 province	4	2010	Artisan or skilled manual worker	1
 province	4	2010	Clerical or secretarial	1
 province	4	2010	Housewife / homemaker	2
-province	4	2010	Missing	1
 province	4	2010	Never had a job	14
 province	4	2010	Retail / Shop	1
 province	4	2010	Security services	1
@@ -142,7 +140,6 @@ province	10	2010	Trader / hawker / vendor	2
 province	10	2010	Unskilled manual worker	1
 country	ZM	2010	Agriculture / farming / fishing / forestry	285
 country	ZM	2010	Student	137
-country	ZM	2010	Missing	4
 country	ZM	2010	Unskilled manual worker	128
 country	ZM	2010	Artisan or skilled manual worker	45
 country	ZM	2010	Trader / hawker / vendor	61

@@ -39,7 +39,6 @@ CREATE TABLE public.most_effective_way_to_combat_corruption (
 COPY public.most_effective_way_to_combat_corruption (geo_level, geo_code, geo_version, most_effective_way_to_combat_corruption, total) FROM stdin;
 province	1	2010	Don't know	48
 province	1	2010	Join or support an organization that is fighting corruption	36
-province	1	2010	Missing	1
 province	1	2010	Nothing / Ordinary people cannot do anything	139
 province	1	2010	Other	8
 province	1	2010	Participate in protest marches	4
@@ -113,7 +112,6 @@ province	10	2010	Vote for clean candidates	7
 country	ZM	2010	Join or support an organization that is fighting corruption	50
 country	ZM	2010	Talk to friends and relatives about the problem	31
 country	ZM	2010	Participate in protest marches	5
-country	ZM	2010	Missing	1
 country	ZM	2010	Vote for clean candidates	83
 country	ZM	2010	Nothing / Ordinary people cannot do anything	218
 country	ZM	2010	Other	12

@@ -55,7 +55,6 @@ province	3	2010	Somewhat positive	5
 province	3	2010	Very negative	1
 province	3	2010	Very positive	20
 province	4	2010	Don't know / Haven't heard enough	7
-province	4	2010	Missing	1
 province	4	2010	Neither positive nor negative	1
 province	4	2010	Somewhat negative	4
 province	4	2010	Somewhat positive	8
@@ -91,7 +90,6 @@ province	10	2010	Very negative	1
 province	10	2010	Very positive	37
 country	ZM	2010	Don't know / Haven't heard enough	115
 country	ZM	2010	Somewhat positive	277
-country	ZM	2010	Missing	1
 country	ZM	2010	Somewhat negative	55
 country	ZM	2010	Neither positive nor negative	83
 country	ZM	2010	Very negative	72

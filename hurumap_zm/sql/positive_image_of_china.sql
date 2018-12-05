@@ -63,7 +63,6 @@ province	4	2010	China's business investment	5
 province	4	2010	China's investment in infrastructure in the country	23
 province	4	2010	China's support for the country in international affairs	2
 province	4	2010	Don't know / Haven't heard enough	4
-province	4	2010	Missing	1
 province	4	2010	Non-interference in the internal affairs of African countries	1
 province	4	2010	Some other factor	1
 province	4	2010	The quality or cost of Chinese products	3
@@ -101,7 +100,6 @@ province	10	2010	Don't know / Haven't heard enough	1
 province	10	2010	The quality or cost of Chinese products	7
 country	ZM	2010	Don't know / Haven't heard enough	85
 country	ZM	2010	Non-interference in the internal affairs of African countries	37
-country	ZM	2010	Missing	1
 country	ZM	2010	The quality or cost of Chinese products	110
 country	ZM	2010	An appreciation of the Chinese people, culture and language	6
 country	ZM	2010	Some other factor	7

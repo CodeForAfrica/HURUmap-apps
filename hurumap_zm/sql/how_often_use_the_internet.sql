@@ -42,7 +42,6 @@ province	1	2010	A few times a week	55
 province	1	2010	Don't know	23
 province	1	2010	Everyday	97
 province	1	2010	Less than once a month	11
-province	1	2010	Missing	1
 province	1	2010	Never	617
 province	2	2010	A few times a month	2
 province	2	2010	Don't know	2
@@ -55,7 +54,6 @@ province	4	2010	A few times a month	2
 province	4	2010	A few times a week	2
 province	4	2010	Everyday	3
 province	4	2010	Less than once a month	2
-province	4	2010	Missing	1
 province	4	2010	Never	30
 province	6	2010	A few times a month	2
 province	6	2010	A few times a week	2
@@ -84,7 +82,6 @@ province	10	2010	Less than once a month	3
 province	10	2010	Never	43
 country	ZM	2010	A few times a month	41
 country	ZM	2010	Less than once a month	17
-country	ZM	2010	Missing	2
 country	ZM	2010	Never	906
 country	ZM	2010	Don't know	34
 country	ZM	2010	A few times a week	74

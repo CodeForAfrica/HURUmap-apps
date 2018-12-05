@@ -37,8 +37,7 @@ CREATE TABLE public.last_national_election_attend_a_campaign_rally (
 --
 
 COPY public.last_national_election_attend_a_campaign_rally (geo_level, geo_code, geo_version, last_national_election_attend_a_campaign_rally, total) FROM stdin;
-province	1	2010	Don�t know	2
-province	1	2010	Missing	1
+province	1	2010	Don't know	2
 province	1	2010	No	508
 province	1	2010	Yes	320
 province	2	2010	No	20
@@ -47,7 +46,6 @@ province	3	2010	No	20
 province	3	2010	Yes	20
 province	4	2010	No	24
 province	4	2010	Yes	16
-province	6	2010	Missing	1
 province	6	2010	No	30
 province	6	2010	Yes	17
 province	8	2010	No	18
@@ -60,8 +58,7 @@ province	10	2010	No	29
 province	10	2010	Yes	27
 country	ZM	2010	No	730
 country	ZM	2010	Yes	465
-country	ZM	2010	Missing	2
-country	ZM	2010	Don�t know	2
+country	ZM	2010	Don't know	2
 \.
 
 

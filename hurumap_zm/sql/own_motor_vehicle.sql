@@ -38,17 +38,14 @@ CREATE TABLE public.own_motor_vehicle (
 
 COPY public.own_motor_vehicle (geo_level, geo_code, geo_version, own_motor_vehicle, total) FROM stdin;
 province	1	2010	Don't know	8
-province	1	2010	Missing	3
 province	1	2010	No, don't own	702
 province	1	2010	Yes, do own	118
 province	2	2010	No, don't own	27
 province	2	2010	Yes, do own	5
 province	3	2010	No, don't own	36
 province	3	2010	Yes, do own	4
-province	4	2010	Missing	1
 province	4	2010	No, don't own	38
 province	4	2010	Yes, do own	1
-province	6	2010	Missing	1
 province	6	2010	No, don't own	41
 province	6	2010	Yes, do own	6
 province	8	2010	No, don't own	20
@@ -63,7 +60,6 @@ province	10	2010	Yes, do own	10
 country	ZM	2010	Yes, do own	175
 country	ZM	2010	No, don't own	1010
 country	ZM	2010	Don't know	9
-country	ZM	2010	Missing	5
 \.
 
 

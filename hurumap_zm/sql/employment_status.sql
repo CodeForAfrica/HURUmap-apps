@@ -38,7 +38,6 @@ CREATE TABLE public.employment_status (
 
 COPY public.employment_status (geo_level, geo_code, geo_version, employment_status, total) FROM stdin;
 province	1	2010	Don't know	8
-province	1	2010	Missing	1
 province	1	2010	No (looking)	244
 province	1	2010	No (not looking)	331
 province	1	2010	Yes, full time	155
@@ -50,7 +49,6 @@ province	2	2010	Yes, part time	2
 province	3	2010	No (looking)	9
 province	3	2010	No (not looking)	22
 province	3	2010	Yes, full time	9
-province	4	2010	Missing	1
 province	4	2010	No (looking)	10
 province	4	2010	No (not looking)	21
 province	4	2010	Yes, full time	6
@@ -77,7 +75,6 @@ province	10	2010	No (not looking)	19
 province	10	2010	Yes, full time	16
 province	10	2010	Yes, part time	4
 country	ZM	2010	No (looking)	346
-country	ZM	2010	Missing	2
 country	ZM	2010	No (not looking)	501
 country	ZM	2010	Yes, full time	218
 country	ZM	2010	Yes, part time	123

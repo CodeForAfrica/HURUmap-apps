@@ -39,7 +39,6 @@ CREATE TABLE public.corruption_police (
 COPY public.corruption_police (geo_level, geo_code, geo_version, corruption_police, total) FROM stdin;
 province	1	2010	All of them	190
 province	1	2010	Don't know/ Haven't heard enough	32
-province	1	2010	Missing	2
 province	1	2010	Most of them	246
 province	1	2010	None	52
 province	1	2010	Some of them	309
@@ -81,7 +80,6 @@ province	10	2010	Most of them	11
 province	10	2010	None	10
 province	10	2010	Some of them	19
 country	ZM	2010	None	82
-country	ZM	2010	Missing	2
 country	ZM	2010	Don't know/ Haven't heard enough	47
 country	ZM	2010	Some of them	459
 country	ZM	2010	All of them	259

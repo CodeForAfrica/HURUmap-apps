@@ -57,7 +57,6 @@ province	4	2010	Not very well	8
 province	4	2010	Very well	13
 province	4	2010	Well	10
 province	6	2010	Don't know	9
-province	6	2010	Missing	1
 province	6	2010	Not at all well	3
 province	6	2010	Not very well	3
 province	6	2010	Very well	21
@@ -81,7 +80,6 @@ province	10	2010	Not at all well	10
 province	10	2010	Not very well	18
 province	10	2010	Very well	14
 province	10	2010	Well	12
-country	ZM	2010	Missing	1
 country	ZM	2010	Well	365
 country	ZM	2010	Very well	329
 country	ZM	2010	Not at all well	114

@@ -39,7 +39,6 @@ CREATE TABLE public.corruption_judges_and_magistrates (
 COPY public.corruption_judges_and_magistrates (geo_level, geo_code, geo_version, corruption_judges_and_magistrates, total) FROM stdin;
 province	1	2010	All of them	100
 province	1	2010	Don't know/ Haven't heard enough	64
-province	1	2010	Missing	1
 province	1	2010	Most of them	160
 province	1	2010	None	100
 province	1	2010	Some of them	406
@@ -60,7 +59,6 @@ province	4	2010	None	5
 province	4	2010	Some of them	23
 province	6	2010	All of them	5
 province	6	2010	Don't know/ Haven't heard enough	4
-province	6	2010	Missing	1
 province	6	2010	Most of them	12
 province	6	2010	None	9
 province	6	2010	Some of them	17
@@ -84,7 +82,6 @@ province	10	2010	Most of them	9
 province	10	2010	None	14
 province	10	2010	Some of them	22
 country	ZM	2010	None	158
-country	ZM	2010	Missing	2
 country	ZM	2010	Don't know/ Haven't heard enough	89
 country	ZM	2010	Some of them	590
 country	ZM	2010	All of them	130

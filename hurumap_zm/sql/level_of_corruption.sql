@@ -83,14 +83,12 @@ province	9	2010	Decreased somewhat	10
 province	9	2010	Don't know	3
 province	9	2010	Increased a lot	45
 province	9	2010	Increased somewhat	10
-province	9	2010	Missing	1
 province	9	2010	Stayed the same	10
 province	10	2010	Decreased somewhat	8
 province	10	2010	Don't know	2
 province	10	2010	Increased a lot	32
 province	10	2010	Increased somewhat	6
 province	10	2010	Stayed the same	8
-country	ZM	2010	Missing	1
 country	ZM	2010	Increased somewhat	141
 country	ZM	2010	Decreased a lot	68
 country	ZM	2010	Increased a lot	507

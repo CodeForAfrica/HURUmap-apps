@@ -38,7 +38,6 @@ CREATE TABLE public.pay_bribe_for_treatment_at_public_clinic_or_hospital (
 
 COPY public.pay_bribe_for_treatment_at_public_clinic_or_hospital (geo_level, geo_code, geo_version, pay_bribe_for_treatment_at_public_clinic_or_hospital, total) FROM stdin;
 province	1	2010	A Few times	14
-province	1	2010	Missing	22
 province	1	2010	Never	530
 province	1	2010	No contact	246
 province	1	2010	Often	2
@@ -47,19 +46,15 @@ province	2	2010	A Few times	1
 province	2	2010	Never	27
 province	2	2010	No contact	3
 province	2	2010	Once or Twice	1
-province	3	2010	Missing	1
 province	3	2010	Never	26
 province	3	2010	No contact	13
-province	4	2010	Missing	1
 province	4	2010	Never	25
 province	4	2010	No contact	14
-province	6	2010	Missing	3
 province	6	2010	Never	30
 province	6	2010	No contact	13
 province	6	2010	Once or Twice	2
 province	8	2010	Never	16
 province	8	2010	No contact	8
-province	7	2010	Missing	11
 province	7	2010	Never	20
 province	7	2010	No contact	17
 province	9	2010	A Few times	1
@@ -72,7 +67,6 @@ province	10	2010	Never	40
 province	10	2010	No contact	14
 province	10	2010	Once or Twice	1
 country	ZM	2010	Often	3
-country	ZM	2010	Missing	38
 country	ZM	2010	Never	776
 country	ZM	2010	A Few times	17
 country	ZM	2010	Once or Twice	22

@@ -38,14 +38,12 @@ CREATE TABLE public.own_television (
 
 COPY public.own_television (geo_level, geo_code, geo_version, own_television, total) FROM stdin;
 province	1	2010	Don't know	2
-province	1	2010	Missing	1
 province	1	2010	No, don't own	432
 province	1	2010	Yes, do own	396
 province	2	2010	No, don't own	8
 province	2	2010	Yes, do own	24
 province	3	2010	No, don't own	23
 province	3	2010	Yes, do own	17
-province	4	2010	Missing	1
 province	4	2010	No, don't own	27
 province	4	2010	Yes, do own	12
 province	6	2010	No, don't own	34
@@ -61,7 +59,6 @@ province	10	2010	Yes, do own	22
 country	ZM	2010	Yes, do own	548
 country	ZM	2010	No, don't own	647
 country	ZM	2010	Don't know	2
-country	ZM	2010	Missing	2
 \.
 
 

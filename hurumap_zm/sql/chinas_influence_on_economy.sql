@@ -55,7 +55,6 @@ province	3	2010	Some	2
 province	4	2010	A little	5
 province	4	2010	A lot	17
 province	4	2010	Don't know / Haven't heard enough	8
-province	4	2010	Missing	1
 province	4	2010	None	1
 province	4	2010	Some	8
 province	6	2010	A little	5
@@ -81,7 +80,6 @@ province	10	2010	Don't know / Haven't heard enough	2
 province	10	2010	None	1
 province	10	2010	Some	8
 country	ZM	2010	Don't know / Haven't heard enough	113
-country	ZM	2010	Missing	1
 country	ZM	2010	Some	155
 country	ZM	2010	None	52
 country	ZM	2010	A lot	745

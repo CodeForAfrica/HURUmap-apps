@@ -69,10 +69,8 @@ province	9	2010	No contact	70
 province	9	2010	Very Difficult	2
 province	10	2010	Difficult	2
 province	10	2010	Easy	2
-province	10	2010	Missing	1
 province	10	2010	No contact	48
 province	10	2010	Very Difficult	3
-country	ZM	2010	Missing	1
 country	ZM	2010	Very Easy	21
 country	ZM	2010	No contact	989
 country	ZM	2010	Easy	73

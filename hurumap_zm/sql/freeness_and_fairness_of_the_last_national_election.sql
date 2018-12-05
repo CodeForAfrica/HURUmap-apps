@@ -42,7 +42,6 @@ province	1	2010	Do not understand the question	2
 province	1	2010	Don't know	59
 province	1	2010	Free and fair, but with minor problems	165
 province	1	2010	Free and fair, with major problems	83
-province	1	2010	Missing	1
 province	1	2010	Not free and fair	47
 province	2	2010	Completely free and fair	20
 province	2	2010	Do not understand the question	1
@@ -85,7 +84,6 @@ province	10	2010	Free and fair, with major problems	6
 province	10	2010	Not free and fair	2
 country	ZM	2010	Free and fair, with major problems	121
 country	ZM	2010	Free and fair, but with minor problems	249
-country	ZM	2010	Missing	1
 country	ZM	2010	Don't know	79
 country	ZM	2010	Do not understand the question	4
 country	ZM	2010	Not free and fair	62

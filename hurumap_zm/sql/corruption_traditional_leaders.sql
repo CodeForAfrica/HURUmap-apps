@@ -39,7 +39,6 @@ CREATE TABLE public.corruption_traditional_leaders (
 COPY public.corruption_traditional_leaders (geo_level, geo_code, geo_version, corruption_traditional_leaders, total) FROM stdin;
 province	1	2010	All of them	69
 province	1	2010	Don't know/ Haven't heard enough	62
-province	1	2010	Missing	2
 province	1	2010	Most of them	113
 province	1	2010	None	173
 province	1	2010	Some of them	412
@@ -82,7 +81,6 @@ province	10	2010	Most of them	8
 province	10	2010	None	21
 province	10	2010	Some of them	16
 country	ZM	2010	None	277
-country	ZM	2010	Missing	2
 country	ZM	2010	Don't know/ Haven't heard enough	80
 country	ZM	2010	Some of them	590
 country	ZM	2010	All of them	87

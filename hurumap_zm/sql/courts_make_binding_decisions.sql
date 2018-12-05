@@ -39,8 +39,7 @@ CREATE TABLE public.courts_make_binding_decisions (
 COPY public.courts_make_binding_decisions (geo_level, geo_code, geo_version, courts_make_binding_decisions, total) FROM stdin;
 province	1	2010	Agree	354
 province	1	2010	Disagree	105
-province	1	2010	Don�t Know	25
-province	1	2010	Missing	1
+province	1	2010	Don't Know	25
 province	1	2010	Neither Agree Nor Disagree	37
 province	1	2010	Strongly Agree	203
 province	1	2010	Strongly Disagree	106
@@ -61,8 +60,7 @@ province	4	2010	Strongly Agree	13
 province	4	2010	Strongly Disagree	4
 province	6	2010	Agree	17
 province	6	2010	Disagree	10
-province	6	2010	Don�t Know	2
-province	6	2010	Missing	1
+province	6	2010	Don't Know	2
 province	6	2010	Neither Agree Nor Disagree	2
 province	6	2010	Strongly Agree	15
 province	6	2010	Strongly Disagree	1
@@ -75,23 +73,22 @@ province	7	2010	Strongly Agree	12
 province	7	2010	Strongly Disagree	5
 province	9	2010	Agree	34
 province	9	2010	Disagree	18
-province	9	2010	Don�t Know	1
+province	9	2010	Don't Know	1
 province	9	2010	Neither Agree Nor Disagree	2
 province	9	2010	Strongly Agree	17
 province	9	2010	Strongly Disagree	8
 province	10	2010	Agree	13
 province	10	2010	Disagree	4
-province	10	2010	Don�t Know	3
+province	10	2010	Don't Know	3
 province	10	2010	Neither Agree Nor Disagree	3
 province	10	2010	Strongly Agree	21
 province	10	2010	Strongly Disagree	12
 country	ZM	2010	Neither Agree Nor Disagree	49
-country	ZM	2010	Missing	2
 country	ZM	2010	Disagree	158
 country	ZM	2010	Strongly Agree	305
 country	ZM	2010	Strongly Disagree	147
 country	ZM	2010	Agree	507
-country	ZM	2010	Don�t Know	31
+country	ZM	2010	Don't Know	31
 \.
 
 
