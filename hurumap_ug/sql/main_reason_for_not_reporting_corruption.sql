@@ -70,7 +70,6 @@ region	116	2014	Corruption is too difficult to prove	32
 region	116	2014	Don't know	61
 region	116	2014	It's government's money, so it's not our problem	4
 region	116	2014	It's too expensive to report	24
-region	116	2014	Missing	1
 region	116	2014	Most people do report incidents of corruption	2
 region	116	2014	Nothing will be done / It wouldn't make a difference	68
 region	116	2014	Other	6
@@ -94,7 +93,6 @@ region	117	2014	People don't know how to report it	39
 region	117	2014	People don't know where to report it	71
 region	117	2014	The officials where they would report to are also corrupt	63
 region	117	2014	They would implicate themselves as bribe-givers	16
-country	UG	2014	Missing	1
 country	UG	2014	People are afraid of the consequences	717
 country	UG	2014	It's government's money, so it's not our problem	13
 country	UG	2014	They would implicate themselves as bribe-givers	80

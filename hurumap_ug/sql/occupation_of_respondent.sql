@@ -58,7 +58,6 @@ region	115	2014	Clerical or secretarial	1
 region	115	2014	Don't know	1
 region	115	2014	Housewife / homemaker	69
 region	115	2014	Mid-level professional	30
-region	115	2014	Missing	1
 region	115	2014	Never had a job	127
 region	115	2014	Other	9
 region	115	2014	Retail / Shop	17
@@ -98,7 +97,6 @@ region	117	2014	Unskilled manual worker	47
 region	117	2014	Upper-level professional	3
 country	UG	2014	Agriculture / farming / fishing / forestry	1108
 country	UG	2014	Student	148
-country	UG	2014	Missing	1
 country	UG	2014	Unskilled manual worker	129
 country	UG	2014	Artisan or skilled manual worker	78
 country	UG	2014	Trader / hawker / vendor	135

@@ -48,7 +48,6 @@ region	115	2014	A few times a week	18
 region	115	2014	Don't know	12
 region	115	2014	Everyday	26
 region	115	2014	Less than once a month	14
-region	115	2014	Missing	2
 region	115	2014	Never	541
 region	116	2014	A few times a month	6
 region	116	2014	A few times a week	10
@@ -64,7 +63,6 @@ region	117	2014	Less than once a month	6
 region	117	2014	Never	544
 country	UG	2014	A few times a month	44
 country	UG	2014	Less than once a month	44
-country	UG	2014	Missing	2
 country	UG	2014	Never	1999
 country	UG	2014	Don't know	113
 country	UG	2014	A few times a week	96

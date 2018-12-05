@@ -44,13 +44,11 @@ region	115	2014	Yes, do own	337
 region	116	2014	Don't know	1
 region	116	2014	No, don't own	263
 region	116	2014	Yes, do own	240
-region	117	2014	Missing	1
 region	117	2014	No, don't own	192
 region	117	2014	Yes, do own	415
 country	UG	2014	Yes, do own	1538
 country	UG	2014	No, don't own	860
 country	UG	2014	Don't know	1
-country	UG	2014	Missing	1
 \.
 
 

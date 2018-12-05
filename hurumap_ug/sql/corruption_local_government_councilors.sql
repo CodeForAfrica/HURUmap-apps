@@ -54,12 +54,10 @@ region	116	2014	None	53
 region	116	2014	Some of them	239
 region	117	2014	All of them	25
 region	117	2014	Don't know/ Haven't heard enough	35
-region	117	2014	Missing	1
 region	117	2014	Most of them	141
 region	117	2014	None	86
 region	117	2014	Some of them	320
 country	UG	2014	None	220
-country	UG	2014	Missing	1
 country	UG	2014	Don't know/ Haven't heard enough	190
 country	UG	2014	Some of them	1081
 country	UG	2014	All of them	284

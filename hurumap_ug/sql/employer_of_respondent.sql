@@ -39,31 +39,26 @@ CREATE TABLE public.employer_of_respondent (
 COPY public.employer_of_respondent (geo_level, geo_code, geo_version, employer_of_respondent, total) FROM stdin;
 region	114	2014	Don't know	1
 region	114	2014	Government	17
-region	114	2014	Missing	22
 region	114	2014	Non Governmental Organizations/ civil society sector	6
 region	114	2014	Not applicable	108
 region	114	2014	Private sector	70
 region	114	2014	Works for  self	440
 region	115	2014	Government	17
-region	115	2014	Missing	22
 region	115	2014	Non Governmental Organizations/ civil society sector	7
 region	115	2014	Not applicable	169
 region	115	2014	Private sector	45
 region	115	2014	Works for  self	364
 region	116	2014	Don't know	1
 region	116	2014	Government	11
-region	116	2014	Missing	22
 region	116	2014	Non Governmental Organizations/ civil society sector	4
 region	116	2014	Not applicable	95
 region	116	2014	Private sector	21
 region	116	2014	Works for  self	350
 region	117	2014	Government	17
-region	117	2014	Missing	12
 region	117	2014	Non Governmental Organizations/ civil society sector	2
 region	117	2014	Not applicable	61
 region	117	2014	Private sector	45
 region	117	2014	Works for  self	471
-country	UG	2014	Missing	78
 country	UG	2014	Government	62
 country	UG	2014	Private sector	181
 country	UG	2014	Works for  self	1625

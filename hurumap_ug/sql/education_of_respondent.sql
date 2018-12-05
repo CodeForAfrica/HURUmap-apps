@@ -48,7 +48,6 @@ region	114	2014	Some university	21
 region	114	2014	University completed	24
 region	115	2014	Don't know	1
 region	115	2014	Informal schooling only	20
-region	115	2014	Missing	1
 region	115	2014	No formal schooling	86
 region	115	2014	Post-graduate	2
 region	115	2014	Post-secondary qualifications, other than university	34
@@ -59,7 +58,6 @@ region	115	2014	Some secondary school / high school	126
 region	115	2014	Some university	9
 region	115	2014	University completed	10
 region	116	2014	Informal schooling only	2
-region	116	2014	Missing	1
 region	116	2014	No formal schooling	104
 region	116	2014	Post-graduate	1
 region	116	2014	Post-secondary qualifications, other than university	31
@@ -79,7 +77,6 @@ region	117	2014	Some secondary school / high school	103
 region	117	2014	Some university	1
 region	117	2014	University completed	2
 country	UG	2014	Some secondary school / high school	456
-country	UG	2014	Missing	2
 country	UG	2014	Some primary schooling	724
 country	UG	2014	No formal schooling	340
 country	UG	2014	University completed	38

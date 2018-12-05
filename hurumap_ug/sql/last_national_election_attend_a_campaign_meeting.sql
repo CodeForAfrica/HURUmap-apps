@@ -44,7 +44,6 @@ region	115	2014	Don't know	2
 region	115	2014	No	432
 region	115	2014	Yes	190
 region	116	2014	Don't know	1
-region	116	2014	Missing	1
 region	116	2014	No	336
 region	116	2014	Yes	166
 region	117	2014	Don't know	2
@@ -52,7 +51,6 @@ region	117	2014	No	449
 region	117	2014	Yes	157
 country	UG	2014	No	1686
 country	UG	2014	Yes	707
-country	UG	2014	Missing	1
 country	UG	2014	Don't know	6
 \.
 

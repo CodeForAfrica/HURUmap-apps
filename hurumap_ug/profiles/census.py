@@ -665,7 +665,7 @@ def get_afrobarometer_profile(geo, session):
                                         "Less than once a month", "Everyday",
                                         "metadata"]
 
-        internet_usage_key_order = mobile_phone_usage_key_order + ["Missing"]
+        internet_usage_key_order = mobile_phone_usage_key_order
         corruption_amongst_key_order = ["Don't know/ Haven't heard enough", "None",
                                         "Some of them", "Most of them",
                                         "All of them", "metadata"]
@@ -681,7 +681,7 @@ def get_afrobarometer_profile(geo, session):
         corruption_business_executives = sort_keys(corruption_amongst_key_order,
                                                    corruption_business_executives)
         corruption_government_officials = sort_keys(
-            corruption_amongst_key_order + ["Missing"],
+            corruption_amongst_key_order,
             corruption_government_officials)
         corruption_judges_and_magistrates = sort_keys(corruption_amongst_key_order,
                                                       corruption_judges_and_magistrates)
