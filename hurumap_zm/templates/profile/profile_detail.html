@@ -14,8 +14,11 @@
           <li><a href="#demographics"><i class="fa fa-user"></i>
             <span>Demographics</span></a>
           </li>
-            <li><a href="#afrobarometer"><i class="fa fa-signal"></i>
-              <span>Afrobarometer</span></a></li>
+          {% if not afrobarometer.is_missing %}
+          <li><a href="#afrobarometer"><i class="fa fa-signal"></i>
+              <span>Afrobarometer</span></a>
+          </li>
+          {% endif %}
         </ul>
       </div>
     </nav>
@@ -62,7 +65,7 @@
   </article>
 
   {% if not afrobarometer.is_missing %}
-    <article id="afrobaromter">
+    <article id="afrobarometer">
       <header class="section-contents">
         <h1>Afrobarometer Round 7</h1>
       </header>
@@ -304,6 +307,7 @@
           </div>
         </section>
       </div>
-    </article>{% endif %}
+    </article>
+    {% endif %}
 
 {% endblock %}
