@@ -2,19 +2,16 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 10.0
--- Dumped by pg_dump version 10.0
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
-
-SET search_path = public, pg_catalog;
 
 ALTER TABLE IF EXISTS ONLY public.householddistributionbylightsource DROP CONSTRAINT IF EXISTS pk_householddistributionbylightsource;
 DROP TABLE IF EXISTS public.householddistributionbylightsource;
@@ -23,10 +20,10 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: householddistributionbylightsource; Type: TABLE; Schema: public; Owner: hurumap_ug
+-- Name: householddistributionbylightsource; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE householddistributionbylightsource (
+CREATE TABLE public.householddistributionbylightsource (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     geo_version character varying(100) DEFAULT '2009'::character varying NOT NULL,
@@ -35,13 +32,11 @@ CREATE TABLE householddistributionbylightsource (
 );
 
 
-ALTER TABLE householddistributionbylightsource OWNER TO hurumap_ug;
-
 --
--- Data for Name: householddistributionbylightsource; Type: TABLE DATA; Schema: public; Owner: hurumap_ug
+-- Data for Name: householddistributionbylightsource; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY householddistributionbylightsource (geo_level, geo_code, geo_version, "household distribution by light source", total) FROM stdin;
+COPY public.householddistributionbylightsource (geo_level, geo_code, geo_version, "household distribution by light source", total) FROM stdin;
 district	7	2014	gas	210
 district	80	2014	electricity	26984
 district	80	2014	gas	383
@@ -865,10 +860,10 @@ region	117	2014	electricity	244355
 
 
 --
--- Name: householddistributionbylightsource pk_householddistributionbylightsource; Type: CONSTRAINT; Schema: public; Owner: hurumap_ug
+-- Name: householddistributionbylightsource pk_householddistributionbylightsource; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY householddistributionbylightsource
+ALTER TABLE ONLY public.householddistributionbylightsource
     ADD CONSTRAINT pk_householddistributionbylightsource PRIMARY KEY (geo_level, geo_code, geo_version, "household distribution by light source");
 
 

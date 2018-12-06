@@ -2,19 +2,16 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 10.0
--- Dumped by pg_dump version 10.0
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
-
-SET search_path = public, pg_catalog;
 
 ALTER TABLE IF EXISTS ONLY public.ruralorurban DROP CONSTRAINT IF EXISTS pk_ruralorurban;
 DROP TABLE IF EXISTS public.ruralorurban;
@@ -23,10 +20,10 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: ruralorurban; Type: TABLE; Schema: public; Owner: hurumap_ug
+-- Name: ruralorurban; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE ruralorurban (
+CREATE TABLE public.ruralorurban (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     geo_version character varying(100) DEFAULT '2009'::character varying NOT NULL,
@@ -36,10 +33,10 @@ CREATE TABLE ruralorurban (
 
 
 --
--- Data for Name: ruralorurban; Type: TABLE DATA; Schema: public; Owner: hurumap_ug
+-- Data for Name: ruralorurban; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY ruralorurban (geo_level, geo_code, geo_version, "rural or urban", total) FROM stdin;
+COPY public.ruralorurban (geo_level, geo_code, geo_version, "rural or urban", total) FROM stdin;
 district	80	2014	rural	214149
 district	80	2014	urban	208622
 district	16	2014	rural	138588
@@ -278,10 +275,10 @@ region	117	2014	urban	1214987
 
 
 --
--- Name: ruralorurban pk_ruralorurban; Type: CONSTRAINT; Schema: public; Owner: hurumap_ug
+-- Name: ruralorurban pk_ruralorurban; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY ruralorurban
+ALTER TABLE ONLY public.ruralorurban
     ADD CONSTRAINT pk_ruralorurban PRIMARY KEY (geo_level, geo_code, geo_version, "rural or urban");
 
 
