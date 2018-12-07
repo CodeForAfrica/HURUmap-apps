@@ -2,19 +2,16 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 10.0
--- Dumped by pg_dump version 10.0
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
-
-SET search_path = public, pg_catalog;
 
 ALTER TABLE IF EXISTS ONLY public.householdpercentagebypermanency DROP CONSTRAINT IF EXISTS pk_householdpercentagebypermanency;
 DROP TABLE IF EXISTS public.householdpercentagebypermanency;
@@ -23,10 +20,10 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: householdpercentagebypermanency; Type: TABLE; Schema: public; Owner: hurumap_ug
+-- Name: householdpercentagebypermanency; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE householdpercentagebypermanency (
+CREATE TABLE public.householdpercentagebypermanency (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     geo_version character varying(100) DEFAULT '2009'::character varying NOT NULL,
@@ -35,13 +32,11 @@ CREATE TABLE householdpercentagebypermanency (
 );
 
 
-ALTER TABLE householdpercentagebypermanency OWNER TO hurumap_ug;
-
 --
--- Data for Name: householdpercentagebypermanency; Type: TABLE DATA; Schema: public; Owner: hurumap_ug
+-- Data for Name: householdpercentagebypermanency; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY householdpercentagebypermanency (geo_level, geo_code, geo_version, "household percentage by permanency", total) FROM stdin;
+COPY public.householdpercentagebypermanency (geo_level, geo_code, geo_version, "household percentage by permanency", total) FROM stdin;
 district	1	2014	detached house	69
 district	1	2014	semi-detached house	9
 district	1	2014	flat	0
@@ -351,10 +346,10 @@ country	UG	2014	others	8
 
 
 --
--- Name: householdpercentagebypermanency pk_householdpercentagebypermanency; Type: CONSTRAINT; Schema: public; Owner: hurumap_ug
+-- Name: householdpercentagebypermanency pk_householdpercentagebypermanency; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY householdpercentagebypermanency
+ALTER TABLE ONLY public.householdpercentagebypermanency
     ADD CONSTRAINT pk_householdpercentagebypermanency PRIMARY KEY (geo_level, geo_code, geo_version, "household percentage by permanency");
 
 
