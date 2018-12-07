@@ -37,100 +37,130 @@ CREATE TABLE public.main_reason_for_not_reporting_corruption (
 --
 
 COPY public.main_reason_for_not_reporting_corruption (geo_level, geo_code, geo_version, main_reason_for_not_reporting_corruption, total) FROM stdin;
-province	1	2010	Corruption is normal / Everyone does it	43
-province	1	2010	Corruption is too difficult to prove	36
-province	1	2010	Don't know	49
+province	1	2010	Corruption is normal / Everyone does it	7
+province	1	2010	Corruption is too difficult to prove	12
+province	1	2010	Don't know	5
 province	1	2010	It's government's money, so it's not our problem	1
-province	1	2010	It's too expensive to report	19
-province	1	2010	Most people do report incidents of corruption	20
-province	1	2010	Nothing will be done / It wouldn't make a difference	131
-province	1	2010	Other	21
-province	1	2010	People are afraid of the consequences	279
-province	1	2010	People don't have enough time to report it	23
-province	1	2010	People don't know how to report it	38
-province	1	2010	People don't know where to report it	90
-province	1	2010	The officials where they would report to are also corrupt	57
-province	1	2010	They would implicate themselves as bribe-givers	24
-province	2	2010	Corruption is normal / Everyone does it	3
-province	2	2010	Corruption is too difficult to prove	1
-province	2	2010	Don't know	1
-province	2	2010	Nothing will be done / It wouldn't make a difference	3
-province	2	2010	Other	1
-province	2	2010	People are afraid of the consequences	11
-province	2	2010	People don't know where to report it	4
-province	2	2010	The officials where they would report to are also corrupt	7
-province	2	2010	They would implicate themselves as bribe-givers	1
-province	3	2010	Don't know	4
-province	3	2010	It's too expensive to report	1
-province	3	2010	Most people do report incidents of corruption	1
-province	3	2010	Nothing will be done / It wouldn't make a difference	9
-province	3	2010	Other	1
-province	3	2010	People are afraid of the consequences	19
-province	3	2010	People don't know where to report it	3
+province	1	2010	It's too expensive to report	2
+province	1	2010	Most people do report incidents of corruption	1
+province	1	2010	Nothing will be done / It wouldn't make a difference	17
+province	1	2010	Other	2
+province	1	2010	People are afraid of the consequences	40
+province	1	2010	People don't have enough time to report it	2
+province	1	2010	People don't know how to report it	1
+province	1	2010	People don't know where to report it	13
+province	1	2010	The officials where they would report to are also corrupt	11
+province	1	2010	They would implicate themselves as bribe-givers	6
+province	2	2010	Corruption is normal / Everyone does it	14
+province	2	2010	Corruption is too difficult to prove	8
+province	2	2010	Don't know	5
+province	2	2010	It's too expensive to report	4
+province	2	2010	Most people do report incidents of corruption	1
+province	2	2010	Nothing will be done / It wouldn't make a difference	30
+province	2	2010	Other	3
+province	2	2010	People are afraid of the consequences	56
+province	2	2010	People don't have enough time to report it	5
+province	2	2010	People don't know how to report it	8
+province	2	2010	People don't know where to report it	19
+province	2	2010	The officials where they would report to are also corrupt	32
+province	2	2010	They would implicate themselves as bribe-givers	7
+province	3	2010	Corruption is normal / Everyone does it	8
+province	3	2010	Corruption is too difficult to prove	5
+province	3	2010	Don't know	10
+province	3	2010	It's too expensive to report	3
+province	3	2010	Most people do report incidents of corruption	4
+province	3	2010	Nothing will be done / It wouldn't make a difference	19
+province	3	2010	Other	2
+province	3	2010	People are afraid of the consequences	68
+province	3	2010	People don't know how to report it	2
+province	3	2010	People don't know where to report it	10
+province	3	2010	The officials where they would report to are also corrupt	3
 province	3	2010	They would implicate themselves as bribe-givers	2
-province	4	2010	Corruption is normal / Everyone does it	1
+province	4	2010	Corruption is normal / Everyone does it	3
 province	4	2010	Corruption is too difficult to prove	1
-province	4	2010	Don't know	1
-province	4	2010	Nothing will be done / It wouldn't make a difference	6
-province	4	2010	Other	4
-province	4	2010	People are afraid of the consequences	19
-province	4	2010	People don't have enough time to report it	1
-province	4	2010	People don't know how to report it	1
-province	4	2010	People don't know where to report it	2
-province	4	2010	The officials where they would report to are also corrupt	2
+province	4	2010	Don't know	5
+province	4	2010	It's too expensive to report	1
+province	4	2010	Most people do report incidents of corruption	1
+province	4	2010	Nothing will be done / It wouldn't make a difference	11
+province	4	2010	Other	5
+province	4	2010	People are afraid of the consequences	44
+province	4	2010	People don't have enough time to report it	3
+province	4	2010	People don't know how to report it	3
+province	4	2010	People don't know where to report it	5
+province	4	2010	The officials where they would report to are also corrupt	3
 province	4	2010	They would implicate themselves as bribe-givers	2
+province	5	2010	Corruption is normal / Everyone does it	8
+province	5	2010	Corruption is too difficult to prove	7
+province	5	2010	Don't know	15
+province	5	2010	It's too expensive to report	5
+province	5	2010	Most people do report incidents of corruption	12
+province	5	2010	Nothing will be done / It wouldn't make a difference	45
+province	5	2010	Other	7
+province	5	2010	People are afraid of the consequences	60
+province	5	2010	People don't have enough time to report it	8
+province	5	2010	People don't know how to report it	16
+province	5	2010	People don't know where to report it	25
+province	5	2010	The officials where they would report to are also corrupt	11
+province	5	2010	They would implicate themselves as bribe-givers	5
 province	6	2010	Corruption is normal / Everyone does it	6
-province	6	2010	Corruption is too difficult to prove	3
-province	6	2010	Don't know	3
+province	6	2010	Corruption is too difficult to prove	4
+province	6	2010	Don't know	6
 province	6	2010	It's too expensive to report	2
-province	6	2010	Nothing will be done / It wouldn't make a difference	4
+province	6	2010	Nothing will be done / It wouldn't make a difference	8
 province	6	2010	Other	2
-province	6	2010	People are afraid of the consequences	17
+province	6	2010	People are afraid of the consequences	22
 province	6	2010	People don't know how to report it	2
 province	6	2010	People don't know where to report it	5
-province	6	2010	The officials where they would report to are also corrupt	3
-province	6	2010	They would implicate themselves as bribe-givers	1
+province	6	2010	The officials where they would report to are also corrupt	4
+province	6	2010	They would implicate themselves as bribe-givers	3
+province	8	2010	Corruption is normal / Everyone does it	2
 province	8	2010	Corruption is too difficult to prove	1
-province	8	2010	Nothing will be done / It wouldn't make a difference	3
-province	8	2010	Other	3
-province	8	2010	People are afraid of the consequences	6
-province	8	2010	People don't have enough time to report it	3
+province	8	2010	Don't know	2
+province	8	2010	Nothing will be done / It wouldn't make a difference	11
+province	8	2010	Other	6
+province	8	2010	People are afraid of the consequences	16
+province	8	2010	People don't have enough time to report it	6
 province	8	2010	People don't know how to report it	3
-province	8	2010	The officials where they would report to are also corrupt	5
-province	7	2010	Corruption is too difficult to prove	1
-province	7	2010	Don't know	3
-province	7	2010	It's too expensive to report	4
-province	7	2010	Nothing will be done / It wouldn't make a difference	8
-province	7	2010	Other	3
-province	7	2010	People are afraid of the consequences	18
-province	7	2010	People don't know how to report it	3
-province	7	2010	People don't know where to report it	5
+province	8	2010	People don't know where to report it	8
+province	8	2010	The officials where they would report to are also corrupt	8
+province	8	2010	They would implicate themselves as bribe-givers	1
+province	7	2010	Corruption is too difficult to prove	3
+province	7	2010	Don't know	11
+province	7	2010	It's too expensive to report	7
+province	7	2010	Most people do report incidents of corruption	1
+province	7	2010	Nothing will be done / It wouldn't make a difference	11
+province	7	2010	Other	6
+province	7	2010	People are afraid of the consequences	40
+province	7	2010	People don't know how to report it	4
+province	7	2010	People don't know where to report it	10
 province	7	2010	The officials where they would report to are also corrupt	1
 province	7	2010	They would implicate themselves as bribe-givers	2
-province	9	2010	Corruption is normal / Everyone does it	3
-province	9	2010	Corruption is too difficult to prove	2
-province	9	2010	Don't know	6
+province	9	2010	Corruption is normal / Everyone does it	7
+province	9	2010	Corruption is too difficult to prove	3
+province	9	2010	Don't know	8
 province	9	2010	It's government's money, so it's not our problem	1
-province	9	2010	It's too expensive to report	4
-province	9	2010	Nothing will be done / It wouldn't make a difference	9
+province	9	2010	It's too expensive to report	5
+province	9	2010	Most people do report incidents of corruption	1
+province	9	2010	Nothing will be done / It wouldn't make a difference	15
 province	9	2010	Other	1
-province	9	2010	People are afraid of the consequences	33
-province	9	2010	People don't have enough time to report it	2
-province	9	2010	People don't know how to report it	3
-province	9	2010	People don't know where to report it	9
-province	9	2010	The officials where they would report to are also corrupt	3
-province	9	2010	They would implicate themselves as bribe-givers	4
-province	10	2010	Corruption is too difficult to prove	4
+province	9	2010	People are afraid of the consequences	55
+province	9	2010	People don't have enough time to report it	5
+province	9	2010	People don't know how to report it	7
+province	9	2010	People don't know where to report it	18
+province	9	2010	The officials where they would report to are also corrupt	4
+province	9	2010	They would implicate themselves as bribe-givers	6
+province	10	2010	Corruption is normal / Everyone does it	1
+province	10	2010	Corruption is too difficult to prove	5
 province	10	2010	Don't know	6
-province	10	2010	It's too expensive to report	4
-province	10	2010	Nothing will be done / It wouldn't make a difference	12
-province	10	2010	Other	1
-province	10	2010	People are afraid of the consequences	10
+province	10	2010	It's too expensive to report	5
+province	10	2010	Nothing will be done / It wouldn't make a difference	18
+province	10	2010	Other	3
+province	10	2010	People are afraid of the consequences	11
 province	10	2010	People don't have enough time to report it	1
-province	10	2010	People don't know how to report it	2
-province	10	2010	People don't know where to report it	6
-province	10	2010	The officials where they would report to are also corrupt	6
-province	10	2010	They would implicate themselves as bribe-givers	4
+province	10	2010	People don't know how to report it	6
+province	10	2010	People don't know where to report it	11
+province	10	2010	The officials where they would report to are also corrupt	7
+province	10	2010	They would implicate themselves as bribe-givers	6
 country	ZM	2010	People are afraid of the consequences	412
 country	ZM	2010	It's government's money, so it's not our problem	2
 country	ZM	2010	They would implicate themselves as bribe-givers	40

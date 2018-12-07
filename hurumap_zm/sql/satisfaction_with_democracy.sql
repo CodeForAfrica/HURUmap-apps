@@ -37,49 +37,57 @@ CREATE TABLE public.satisfaction_with_democracy (
 --
 
 COPY public.satisfaction_with_democracy (geo_level, geo_code, geo_version, satisfaction_with_democracy, total) FROM stdin;
-province	1	2010	Do not know	79
-province	1	2010	Fairly satisfied	274
-province	1	2010	Not at all satisfied	65
-province	1	2010	Not very satisfied	177
-province	1	2010	The country is not a democracy	3
-province	1	2010	Very satisfied	233
-province	2	2010	Fairly satisfied	13
-province	2	2010	Not at all satisfied	3
-province	2	2010	Not very satisfied	7
-province	2	2010	Very satisfied	9
-province	3	2010	Do not know	12
-province	3	2010	Fairly satisfied	9
-province	3	2010	Not very satisfied	5
-province	3	2010	Very satisfied	14
-province	4	2010	Do not know	2
-province	4	2010	Fairly satisfied	16
-province	4	2010	Not at all satisfied	3
-province	4	2010	Not very satisfied	7
-province	4	2010	Very satisfied	12
-province	6	2010	Do not know	7
-province	6	2010	Fairly satisfied	15
+province	1	2010	Do not know	7
+province	1	2010	Fairly satisfied	44
+province	1	2010	Not at all satisfied	13
+province	1	2010	Not very satisfied	28
+province	1	2010	Very satisfied	28
+province	2	2010	Do not know	3
+province	2	2010	Fairly satisfied	81
+province	2	2010	Not at all satisfied	23
+province	2	2010	Not very satisfied	40
+province	2	2010	Very satisfied	45
+province	3	2010	Do not know	40
+province	3	2010	Fairly satisfied	23
+province	3	2010	Not very satisfied	13
+province	3	2010	Very satisfied	60
+province	4	2010	Do not know	3
+province	4	2010	Fairly satisfied	34
+province	4	2010	Not at all satisfied	5
+province	4	2010	Not very satisfied	11
+province	4	2010	Very satisfied	34
+province	5	2010	Do not know	23
+province	5	2010	Fairly satisfied	81
+province	5	2010	Not at all satisfied	14
+province	5	2010	Not very satisfied	51
+province	5	2010	The country is not a democracy	2
+province	5	2010	Very satisfied	53
+province	6	2010	Do not know	9
+province	6	2010	Fairly satisfied	20
 province	6	2010	Not at all satisfied	2
-province	6	2010	Not very satisfied	9
-province	6	2010	Very satisfied	15
-province	8	2010	Do not know	2
-province	8	2010	Fairly satisfied	6
-province	8	2010	Not at all satisfied	1
-province	8	2010	Not very satisfied	8
-province	8	2010	Very satisfied	7
-province	7	2010	Do not know	1
-province	7	2010	Fairly satisfied	15
-province	7	2010	Not at all satisfied	3
-province	7	2010	Not very satisfied	10
-province	7	2010	Very satisfied	19
-province	9	2010	Fairly satisfied	14
-province	9	2010	Not at all satisfied	12
-province	9	2010	Not very satisfied	30
-province	9	2010	Very satisfied	24
-province	10	2010	Do not know	2
-province	10	2010	Fairly satisfied	13
-province	10	2010	Not at all satisfied	8
-province	10	2010	Not very satisfied	26
-province	10	2010	Very satisfied	7
+province	6	2010	Not very satisfied	11
+province	6	2010	Very satisfied	22
+province	8	2010	Do not know	3
+province	8	2010	Fairly satisfied	21
+province	8	2010	Not at all satisfied	3
+province	8	2010	Not very satisfied	23
+province	8	2010	Very satisfied	14
+province	7	2010	Do not know	10
+province	7	2010	Fairly satisfied	25
+province	7	2010	Not at all satisfied	8
+province	7	2010	Not very satisfied	14
+province	7	2010	Very satisfied	39
+province	9	2010	Do not know	4
+province	9	2010	Fairly satisfied	26
+province	9	2010	Not at all satisfied	19
+province	9	2010	Not very satisfied	55
+province	9	2010	The country is not a democracy	1
+province	9	2010	Very satisfied	31
+province	10	2010	Do not know	3
+province	10	2010	Fairly satisfied	20
+province	10	2010	Not at all satisfied	10
+province	10	2010	Not very satisfied	33
+province	10	2010	Very satisfied	14
 country	ZM	2010	The country is not a democracy	3
 country	ZM	2010	Not very satisfied	279
 country	ZM	2010	Do not know	105

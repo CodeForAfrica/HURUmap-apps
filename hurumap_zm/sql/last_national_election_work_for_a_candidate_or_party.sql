@@ -37,28 +37,32 @@ CREATE TABLE public.last_national_election_work_for_a_candidate_or_party (
 --
 
 COPY public.last_national_election_work_for_a_candidate_or_party (geo_level, geo_code, geo_version, last_national_election_work_for_a_candidate_or_party, total) FROM stdin;
-province	1	2010	Don't know	4
-province	1	2010	No	720
-province	1	2010	Yes	105
-province	2	2010	No	28
-province	2	2010	Yes	4
-province	3	2010	No	30
-province	3	2010	Yes	10
-province	4	2010	No	34
-province	4	2010	Yes	6
-province	6	2010	No	41
-province	6	2010	Yes	7
-province	8	2010	No	22
-province	8	2010	Yes	2
+province	1	2010	No	103
+province	1	2010	Yes	15
+province	2	2010	No	166
+province	2	2010	Yes	26
+province	3	2010	No	107
+province	3	2010	Yes	29
+province	4	2010	Don't know	1
+province	4	2010	No	74
+province	4	2010	Yes	12
+province	5	2010	Don't know	2
+province	5	2010	No	204
+province	5	2010	Yes	18
+province	6	2010	No	54
+province	6	2010	Yes	10
+province	8	2010	No	58
+province	8	2010	Yes	6
 province	7	2010	Don't know	1
-province	7	2010	No	39
-province	7	2010	Yes	8
-province	9	2010	No	69
-province	9	2010	Yes	11
-province	10	2010	No	47
-province	10	2010	Yes	9
-country	ZM	2010	No	1030
+province	7	2010	No	78
+province	7	2010	Yes	17
+province	9	2010	No	122
+province	9	2010	Yes	14
+province	10	2010	Don't know	1
+province	10	2010	No	64
+province	10	2010	Yes	15
 country	ZM	2010	Yes	162
+country	ZM	2010	No	1030
 country	ZM	2010	Don't know	5
 \.
 

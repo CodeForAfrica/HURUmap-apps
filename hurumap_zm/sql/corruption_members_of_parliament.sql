@@ -37,49 +37,56 @@ CREATE TABLE public.corruption_members_of_parliament (
 --
 
 COPY public.corruption_members_of_parliament (geo_level, geo_code, geo_version, corruption_members_of_parliament, total) FROM stdin;
-province	1	2010	All of them	97
-province	1	2010	Don't know/ Haven't heard enough	57
-province	1	2010	Most of them	183
-province	1	2010	None	82
-province	1	2010	Some of them	412
-province	2	2010	All of them	6
-province	2	2010	Don't know/ Haven't heard enough	1
-province	2	2010	Most of them	8
-province	2	2010	None	1
-province	2	2010	Some of them	16
-province	3	2010	Don't know/ Haven't heard enough	1
-province	3	2010	Most of them	10
-province	3	2010	None	7
-province	3	2010	Some of them	22
-province	4	2010	All of them	1
-province	4	2010	Don't know/ Haven't heard enough	1
-province	4	2010	Most of them	9
-province	4	2010	None	4
-province	4	2010	Some of them	25
-province	6	2010	All of them	5
+province	1	2010	All of them	18
+province	1	2010	Don't know/ Haven't heard enough	9
+province	1	2010	Most of them	31
+province	1	2010	None	16
+province	1	2010	Some of them	46
+province	2	2010	All of them	44
+province	2	2010	Don't know/ Haven't heard enough	2
+province	2	2010	Most of them	41
+province	2	2010	None	7
+province	2	2010	Some of them	98
+province	3	2010	All of them	4
+province	3	2010	Don't know/ Haven't heard enough	9
+province	3	2010	Most of them	31
+province	3	2010	None	15
+province	3	2010	Some of them	77
+province	4	2010	All of them	3
+province	4	2010	Don't know/ Haven't heard enough	3
+province	4	2010	Most of them	18
+province	4	2010	None	12
+province	4	2010	Some of them	51
+province	5	2010	All of them	22
+province	5	2010	Don't know/ Haven't heard enough	17
+province	5	2010	Most of them	51
+province	5	2010	None	12
+province	5	2010	Some of them	122
+province	6	2010	All of them	7
 province	6	2010	Don't know/ Haven't heard enough	3
-province	6	2010	Most of them	13
-province	6	2010	None	7
-province	6	2010	Some of them	20
-province	8	2010	All of them	1
-province	8	2010	Most of them	5
-province	8	2010	None	1
-province	8	2010	Some of them	17
-province	7	2010	All of them	9
-province	7	2010	Don't know/ Haven't heard enough	5
-province	7	2010	Most of them	12
-province	7	2010	None	5
-province	7	2010	Some of them	17
-province	9	2010	All of them	8
-province	9	2010	Don't know/ Haven't heard enough	1
-province	9	2010	Most of them	17
-province	9	2010	None	10
-province	9	2010	Some of them	44
+province	6	2010	Most of them	20
+province	6	2010	None	8
+province	6	2010	Some of them	26
+province	8	2010	All of them	2
+province	8	2010	Don't know/ Haven't heard enough	6
+province	8	2010	Most of them	7
+province	8	2010	None	3
+province	8	2010	Some of them	46
+province	7	2010	All of them	13
+province	7	2010	Don't know/ Haven't heard enough	16
+province	7	2010	Most of them	18
+province	7	2010	None	21
+province	7	2010	Some of them	28
+province	9	2010	All of them	14
+province	9	2010	Don't know/ Haven't heard enough	3
+province	9	2010	Most of them	34
+province	9	2010	None	16
+province	9	2010	Some of them	69
 province	10	2010	All of them	6
-province	10	2010	Don't know/ Haven't heard enough	5
-province	10	2010	Most of them	13
-province	10	2010	None	9
-province	10	2010	Some of them	23
+province	10	2010	Don't know/ Haven't heard enough	6
+province	10	2010	Most of them	19
+province	10	2010	None	16
+province	10	2010	Some of them	33
 country	ZM	2010	None	126
 country	ZM	2010	All of them	133
 country	ZM	2010	Most of them	270

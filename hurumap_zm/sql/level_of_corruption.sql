@@ -37,58 +37,64 @@ CREATE TABLE public.level_of_corruption (
 --
 
 COPY public.level_of_corruption (geo_level, geo_code, geo_version, level_of_corruption, total) FROM stdin;
-province	1	2010	Decreased a lot	51
-province	1	2010	Decreased somewhat	162
-province	1	2010	Don't know	37
-province	1	2010	Increased a lot	341
-province	1	2010	Increased somewhat	105
-province	1	2010	Stayed the same	135
-province	2	2010	Decreased a lot	4
-province	2	2010	Decreased somewhat	4
-province	2	2010	Don't know	1
-province	2	2010	Increased a lot	15
-province	2	2010	Increased somewhat	3
-province	2	2010	Stayed the same	5
-province	3	2010	Decreased a lot	2
-province	3	2010	Decreased somewhat	3
-province	3	2010	Don't know	6
-province	3	2010	Increased a lot	18
-province	3	2010	Increased somewhat	3
-province	3	2010	Stayed the same	8
-province	4	2010	Decreased a lot	1
-province	4	2010	Decreased somewhat	19
-province	4	2010	Don't know	1
-province	4	2010	Increased a lot	7
-province	4	2010	Increased somewhat	7
-province	4	2010	Stayed the same	5
-province	6	2010	Decreased a lot	1
-province	6	2010	Decreased somewhat	7
-province	6	2010	Don't know	3
-province	6	2010	Increased a lot	25
-province	6	2010	Increased somewhat	3
-province	6	2010	Stayed the same	9
+province	1	2010	Decreased a lot	8
+province	1	2010	Decreased somewhat	28
+province	1	2010	Don't know	3
+province	1	2010	Increased a lot	41
+province	1	2010	Increased somewhat	16
+province	1	2010	Stayed the same	24
+province	2	2010	Decreased a lot	19
+province	2	2010	Decreased somewhat	31
+province	2	2010	Don't know	3
+province	2	2010	Increased a lot	83
+province	2	2010	Increased somewhat	24
+province	2	2010	Stayed the same	32
+province	3	2010	Decreased a lot	4
+province	3	2010	Decreased somewhat	16
+province	3	2010	Don't know	18
+province	3	2010	Increased a lot	69
+province	3	2010	Increased somewhat	8
+province	3	2010	Stayed the same	21
+province	4	2010	Decreased a lot	3
+province	4	2010	Decreased somewhat	38
+province	4	2010	Don't know	4
+province	4	2010	Increased a lot	11
+province	4	2010	Increased somewhat	19
+province	4	2010	Stayed the same	12
+province	5	2010	Decreased a lot	11
+province	5	2010	Decreased somewhat	48
+province	5	2010	Don't know	9
+province	5	2010	Increased a lot	86
+province	5	2010	Increased somewhat	30
+province	5	2010	Stayed the same	40
+province	6	2010	Decreased a lot	2
+province	6	2010	Decreased somewhat	12
+province	6	2010	Don't know	4
+province	6	2010	Increased a lot	28
+province	6	2010	Increased somewhat	5
+province	6	2010	Stayed the same	13
 province	8	2010	Decreased a lot	1
-province	8	2010	Decreased somewhat	6
-province	8	2010	Increased a lot	12
-province	8	2010	Increased somewhat	1
-province	8	2010	Stayed the same	4
-province	7	2010	Decreased a lot	7
-province	7	2010	Decreased somewhat	10
-province	7	2010	Don't know	3
-province	7	2010	Increased a lot	12
-province	7	2010	Increased somewhat	3
-province	7	2010	Stayed the same	13
-province	9	2010	Decreased a lot	1
-province	9	2010	Decreased somewhat	10
+province	8	2010	Decreased somewhat	11
+province	8	2010	Increased a lot	30
+province	8	2010	Increased somewhat	9
+province	8	2010	Stayed the same	13
+province	7	2010	Decreased a lot	17
+province	7	2010	Decreased somewhat	19
+province	7	2010	Don't know	9
+province	7	2010	Increased a lot	29
+province	7	2010	Increased somewhat	6
+province	7	2010	Stayed the same	16
+province	9	2010	Decreased a lot	3
+province	9	2010	Decreased somewhat	15
 province	9	2010	Don't know	3
-province	9	2010	Increased a lot	45
-province	9	2010	Increased somewhat	10
-province	9	2010	Stayed the same	10
-province	10	2010	Decreased somewhat	8
-province	10	2010	Don't know	2
-province	10	2010	Increased a lot	32
-province	10	2010	Increased somewhat	6
-province	10	2010	Stayed the same	8
+province	9	2010	Increased a lot	89
+province	9	2010	Increased somewhat	12
+province	9	2010	Stayed the same	13
+province	10	2010	Decreased somewhat	11
+province	10	2010	Don't know	3
+province	10	2010	Increased a lot	41
+province	10	2010	Increased somewhat	12
+province	10	2010	Stayed the same	13
 country	ZM	2010	Increased somewhat	141
 country	ZM	2010	Decreased a lot	68
 country	ZM	2010	Increased a lot	507

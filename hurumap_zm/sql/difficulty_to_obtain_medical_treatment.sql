@@ -37,50 +37,56 @@ CREATE TABLE public.difficulty_to_obtain_medical_treatment (
 --
 
 COPY public.difficulty_to_obtain_medical_treatment (geo_level, geo_code, geo_version, difficulty_to_obtain_medical_treatment, total) FROM stdin;
-province	1	2010	Difficult	143
-province	1	2010	Easy	195
-province	1	2010	No contact	246
-province	1	2010	Very Difficult	86
-province	1	2010	Very Easy	161
-province	2	2010	Difficult	4
-province	2	2010	Easy	14
-province	2	2010	No contact	3
-province	2	2010	Very Difficult	4
-province	2	2010	Very Easy	7
-province	3	2010	Difficult	9
-province	3	2010	Easy	3
-province	3	2010	No contact	13
-province	3	2010	Very Difficult	2
-province	3	2010	Very Easy	13
-province	4	2010	Difficult	6
-province	4	2010	Easy	11
-province	4	2010	No contact	14
-province	4	2010	Very Difficult	3
-province	4	2010	Very Easy	6
-province	6	2010	Difficult	21
-province	6	2010	Easy	6
-province	6	2010	No contact	13
+province	1	2010	Difficult	32
+province	1	2010	Easy	24
+province	1	2010	No contact	31
+province	1	2010	Very Difficult	13
+province	1	2010	Very Easy	20
+province	2	2010	Difficult	25
+province	2	2010	Easy	60
+province	2	2010	No contact	46
+province	2	2010	Very Difficult	16
+province	2	2010	Very Easy	45
+province	3	2010	Difficult	22
+province	3	2010	Easy	15
+province	3	2010	No contact	36
+province	3	2010	Very Difficult	14
+province	3	2010	Very Easy	49
+province	4	2010	Difficult	11
+province	4	2010	Easy	31
+province	4	2010	No contact	24
+province	4	2010	Very Difficult	4
+province	4	2010	Very Easy	17
+province	5	2010	Difficult	45
+province	5	2010	Easy	34
+province	5	2010	No contact	86
+province	5	2010	Very Difficult	33
+province	5	2010	Very Easy	26
+province	6	2010	Difficult	24
+province	6	2010	Easy	7
+province	6	2010	No contact	20
 province	6	2010	Very Difficult	1
-province	6	2010	Very Easy	7
-province	8	2010	Difficult	4
-province	8	2010	Easy	8
-province	8	2010	No contact	8
-province	8	2010	Very Easy	4
-province	7	2010	Difficult	5
-province	7	2010	Easy	16
-province	7	2010	No contact	17
-province	7	2010	Very Difficult	1
-province	7	2010	Very Easy	9
-province	9	2010	Difficult	14
-province	9	2010	Easy	35
-province	9	2010	No contact	15
-province	9	2010	Very Difficult	11
+province	6	2010	Very Easy	12
+province	8	2010	Difficult	5
+province	8	2010	Easy	20
+province	8	2010	No contact	25
+province	8	2010	Very Difficult	2
+province	8	2010	Very Easy	12
+province	7	2010	Difficult	13
+province	7	2010	Easy	30
+province	7	2010	No contact	27
+province	7	2010	Very Difficult	3
+province	7	2010	Very Easy	23
+province	9	2010	Difficult	26
+province	9	2010	Easy	57
+province	9	2010	No contact	28
+province	9	2010	Very Difficult	20
 province	9	2010	Very Easy	5
-province	10	2010	Difficult	9
-province	10	2010	Easy	13
-province	10	2010	No contact	14
-province	10	2010	Very Difficult	9
-province	10	2010	Very Easy	11
+province	10	2010	Difficult	12
+province	10	2010	Easy	23
+province	10	2010	No contact	20
+province	10	2010	Very Difficult	11
+province	10	2010	Very Easy	14
 country	ZM	2010	Very Easy	223
 country	ZM	2010	No contact	343
 country	ZM	2010	Very Difficult	117

@@ -37,72 +37,86 @@ CREATE TABLE public.education_of_respondent (
 --
 
 COPY public.education_of_respondent (geo_level, geo_code, geo_version, education_of_respondent, total) FROM stdin;
-province	1	2010	Informal schooling only	4
-province	1	2010	No formal schooling	62
-province	1	2010	Post-graduate	2
-province	1	2010	Post-secondary qualifications, other than university	77
-province	1	2010	Primary school completed	136
-province	1	2010	Secondary school / high school completed	158
-province	1	2010	Some primary schooling	145
-province	1	2010	Some secondary school / high school	218
-province	1	2010	Some university	13
-province	1	2010	University completed	14
-province	2	2010	No formal schooling	1
-province	2	2010	Post-secondary qualifications, other than university	3
-province	2	2010	Primary school completed	6
-province	2	2010	Secondary school / high school completed	6
-province	2	2010	Some primary schooling	3
-province	2	2010	Some secondary school / high school	12
-province	2	2010	Some university	1
-province	3	2010	No formal schooling	8
-province	3	2010	Post-secondary qualifications, other than university	2
-province	3	2010	Primary school completed	5
-province	3	2010	Secondary school / high school completed	4
-province	3	2010	Some primary schooling	13
-province	3	2010	Some secondary school / high school	6
-province	3	2010	University completed	2
-province	4	2010	No formal schooling	3
-province	4	2010	Post-secondary qualifications, other than university	5
-province	4	2010	Primary school completed	1
-province	4	2010	Secondary school / high school completed	5
-province	4	2010	Some primary schooling	7
-province	4	2010	Some secondary school / high school	18
+province	1	2010	Informal schooling only	1
+province	1	2010	No formal schooling	5
+province	1	2010	Post-secondary qualifications, other than university	11
+province	1	2010	Primary school completed	22
+province	1	2010	Secondary school / high school completed	30
+province	1	2010	Some primary schooling	20
+province	1	2010	Some secondary school / high school	29
+province	1	2010	University completed	2
+province	2	2010	No formal schooling	10
+province	2	2010	Post-secondary qualifications, other than university	19
+province	2	2010	Primary school completed	35
+province	2	2010	Secondary school / high school completed	40
+province	2	2010	Some primary schooling	20
+province	2	2010	Some secondary school / high school	58
+province	2	2010	Some university	7
+province	2	2010	University completed	3
+province	3	2010	Informal schooling only	2
+province	3	2010	No formal schooling	23
+province	3	2010	Post-graduate	1
+province	3	2010	Post-secondary qualifications, other than university	4
+province	3	2010	Primary school completed	16
+province	3	2010	Secondary school / high school completed	11
+province	3	2010	Some primary schooling	51
+province	3	2010	Some secondary school / high school	23
+province	3	2010	Some university	1
+province	3	2010	University completed	4
+province	4	2010	No formal schooling	6
+province	4	2010	Post-secondary qualifications, other than university	8
+province	4	2010	Primary school completed	8
+province	4	2010	Secondary school / high school completed	15
+province	4	2010	Some primary schooling	14
+province	4	2010	Some secondary school / high school	35
+province	5	2010	Informal schooling only	1
+province	5	2010	No formal schooling	7
+province	5	2010	Post-graduate	1
+province	5	2010	Post-secondary qualifications, other than university	29
+province	5	2010	Primary school completed	38
+province	5	2010	Secondary school / high school completed	54
+province	5	2010	Some primary schooling	22
+province	5	2010	Some secondary school / high school	61
+province	5	2010	Some university	6
+province	5	2010	University completed	4
 province	6	2010	Informal schooling only	1
 province	6	2010	No formal schooling	6
-province	6	2010	Post-secondary qualifications, other than university	3
-province	6	2010	Primary school completed	12
-province	6	2010	Secondary school / high school completed	7
-province	6	2010	Some primary schooling	9
-province	6	2010	Some secondary school / high school	9
+province	6	2010	Post-secondary qualifications, other than university	5
+province	6	2010	Primary school completed	13
+province	6	2010	Secondary school / high school completed	14
+province	6	2010	Some primary schooling	10
+province	6	2010	Some secondary school / high school	14
 province	6	2010	Some university	1
-province	8	2010	No formal schooling	3
-province	8	2010	Post-secondary qualifications, other than university	2
-province	8	2010	Primary school completed	4
-province	8	2010	Secondary school / high school completed	4
-province	8	2010	Some primary schooling	6
-province	8	2010	Some secondary school / high school	5
+province	8	2010	No formal schooling	12
+province	8	2010	Post-secondary qualifications, other than university	7
+province	8	2010	Primary school completed	10
+province	8	2010	Secondary school / high school completed	8
+province	8	2010	Some primary schooling	16
+province	8	2010	Some secondary school / high school	11
 province	7	2010	Informal schooling only	2
-province	7	2010	No formal schooling	5
-province	7	2010	Post-secondary qualifications, other than university	5
-province	7	2010	Primary school completed	10
-province	7	2010	Secondary school / high school completed	2
-province	7	2010	Some primary schooling	13
-province	7	2010	Some secondary school / high school	10
+province	7	2010	No formal schooling	14
+province	7	2010	Post-secondary qualifications, other than university	6
+province	7	2010	Primary school completed	18
+province	7	2010	Secondary school / high school completed	3
+province	7	2010	Some primary schooling	29
+province	7	2010	Some secondary school / high school	23
 province	7	2010	Some university	1
-province	9	2010	No formal schooling	2
-province	9	2010	Post-secondary qualifications, other than university	14
-province	9	2010	Primary school completed	23
-province	9	2010	Secondary school / high school completed	9
-province	9	2010	Some primary schooling	9
-province	9	2010	Some secondary school / high school	21
+province	9	2010	No formal schooling	3
+province	9	2010	Post-secondary qualifications, other than university	16
+province	9	2010	Primary school completed	36
+province	9	2010	Secondary school / high school completed	17
+province	9	2010	Some primary schooling	20
+province	9	2010	Some secondary school / high school	40
 province	9	2010	Some university	1
+province	9	2010	University completed	1
 province	10	2010	Informal schooling only	2
-province	10	2010	No formal schooling	1
-province	10	2010	Post-secondary qualifications, other than university	12
-province	10	2010	Primary school completed	9
-province	10	2010	Secondary school / high school completed	9
-province	10	2010	Some primary schooling	10
-province	10	2010	Some secondary school / high school	13
+province	10	2010	No formal schooling	5
+province	10	2010	Post-secondary qualifications, other than university	18
+province	10	2010	Primary school completed	10
+province	10	2010	Secondary school / high school completed	12
+province	10	2010	Some primary schooling	13
+province	10	2010	Some secondary school / high school	18
+province	10	2010	University completed	2
 country	ZM	2010	Some secondary school / high school	312
 country	ZM	2010	Some primary schooling	215
 country	ZM	2010	No formal schooling	91

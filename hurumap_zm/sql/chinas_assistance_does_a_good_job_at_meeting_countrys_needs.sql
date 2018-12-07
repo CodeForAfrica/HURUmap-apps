@@ -37,58 +37,66 @@ CREATE TABLE public.chinas_assistance_does_a_good_job_at_meeting_countrys_needs 
 --
 
 COPY public.chinas_assistance_does_a_good_job_at_meeting_countrys_needs (geo_level, geo_code, geo_version, chinas_assistance_does_a_good_job_at_meeting_countrys_needs, total) FROM stdin;
-province	1	2010	China doesn't give development assistance to the country	5
-province	1	2010	Don't know / Haven't heard enough	83
-province	1	2010	Neither good nor bad job	48
-province	1	2010	Somewhat bad job	43
-province	1	2010	Somewhat good job	269
-province	1	2010	Very bad job	60
-province	1	2010	Very good job	323
-province	2	2010	China doesn't give development assistance to the country	1
-province	2	2010	Neither good nor bad job	5
-province	2	2010	Somewhat bad job	1
-province	2	2010	Somewhat good job	11
-province	2	2010	Very bad job	6
-province	2	2010	Very good job	8
-province	3	2010	Don't know / Haven't heard enough	12
-province	3	2010	Neither good nor bad job	2
-province	3	2010	Somewhat bad job	1
-province	3	2010	Somewhat good job	10
-province	3	2010	Very bad job	1
-province	3	2010	Very good job	14
-province	4	2010	Don't know / Haven't heard enough	6
-province	4	2010	Neither good nor bad job	3
-province	4	2010	Somewhat bad job	1
-province	4	2010	Somewhat good job	12
-province	4	2010	Very bad job	1
-province	4	2010	Very good job	16
-province	6	2010	Don't know / Haven't heard enough	9
+province	1	2010	Don't know / Haven't heard enough	23
+province	1	2010	Neither good nor bad job	6
+province	1	2010	Somewhat bad job	6
+province	1	2010	Somewhat good job	29
+province	1	2010	Very bad job	8
+province	1	2010	Very good job	48
+province	2	2010	China doesn't give development assistance to the country	3
+province	2	2010	Neither good nor bad job	13
+province	2	2010	Somewhat bad job	12
+province	2	2010	Somewhat good job	73
+province	2	2010	Very bad job	26
+province	2	2010	Very good job	65
+province	3	2010	Don't know / Haven't heard enough	32
+province	3	2010	Neither good nor bad job	8
+province	3	2010	Somewhat bad job	3
+province	3	2010	Somewhat good job	28
+province	3	2010	Very bad job	3
+province	3	2010	Very good job	62
+province	4	2010	Don't know / Haven't heard enough	12
+province	4	2010	Neither good nor bad job	6
+province	4	2010	Somewhat bad job	2
+province	4	2010	Somewhat good job	28
+province	4	2010	Very bad job	3
+province	4	2010	Very good job	35
+province	5	2010	China doesn't give development assistance to the country	3
+province	5	2010	Don't know / Haven't heard enough	9
+province	5	2010	Neither good nor bad job	14
+province	5	2010	Somewhat bad job	15
+province	5	2010	Somewhat good job	82
+province	5	2010	Very bad job	14
+province	5	2010	Very good job	87
+province	6	2010	Don't know / Haven't heard enough	12
 province	6	2010	Neither good nor bad job	7
-province	6	2010	Somewhat bad job	2
-province	6	2010	Somewhat good job	11
-province	6	2010	Very good job	19
-province	8	2010	Don't know / Haven't heard enough	3
+province	6	2010	Somewhat bad job	3
+province	6	2010	Somewhat good job	17
+province	6	2010	Very good job	25
+province	8	2010	Don't know / Haven't heard enough	8
+province	8	2010	Neither good nor bad job	1
 province	8	2010	Somewhat bad job	1
-province	8	2010	Somewhat good job	6
-province	8	2010	Very good job	14
-province	7	2010	Don't know / Haven't heard enough	5
-province	7	2010	Neither good nor bad job	8
-province	7	2010	Somewhat bad job	5
-province	7	2010	Somewhat good job	15
-province	7	2010	Very bad job	3
-province	7	2010	Very good job	12
-province	9	2010	Don't know / Haven't heard enough	2
-province	9	2010	Neither good nor bad job	16
-province	9	2010	Somewhat bad job	7
-province	9	2010	Somewhat good job	22
-province	9	2010	Very bad job	9
-province	9	2010	Very good job	24
+province	8	2010	Somewhat good job	19
+province	8	2010	Very bad job	1
+province	8	2010	Very good job	34
+province	7	2010	Don't know / Haven't heard enough	19
+province	7	2010	Neither good nor bad job	12
+province	7	2010	Somewhat bad job	10
+province	7	2010	Somewhat good job	26
+province	7	2010	Very bad job	6
+province	7	2010	Very good job	23
+province	9	2010	Don't know / Haven't heard enough	5
+province	9	2010	Neither good nor bad job	17
+province	9	2010	Somewhat bad job	8
+province	9	2010	Somewhat good job	43
+province	9	2010	Very bad job	19
+province	9	2010	Very good job	44
 province	10	2010	Don't know / Haven't heard enough	1
-province	10	2010	Neither good nor bad job	16
-province	10	2010	Somewhat bad job	1
-province	10	2010	Somewhat good job	7
+province	10	2010	Neither good nor bad job	21
+province	10	2010	Somewhat bad job	2
+province	10	2010	Somewhat good job	18
 province	10	2010	Very bad job	1
-province	10	2010	Very good job	30
+province	10	2010	Very good job	37
 country	ZM	2010	Very bad job	81
 country	ZM	2010	Don't know / Haven't heard enough	121
 country	ZM	2010	Somewhat bad job	62

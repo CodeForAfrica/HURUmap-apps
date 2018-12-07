@@ -37,32 +37,37 @@ CREATE TABLE public.pay_bribe_for_household_services (
 --
 
 COPY public.pay_bribe_for_household_services (geo_level, geo_code, geo_version, pay_bribe_for_household_services, total) FROM stdin;
-province	1	2010	A Few times	6
-province	1	2010	Don't know	3
-province	1	2010	Never	148
-province	1	2010	No contact	665
-province	1	2010	Once or Twice	6
-province	2	2010	Never	8
-province	2	2010	No contact	23
-province	2	2010	Once or Twice	1
-province	3	2010	A Few times	1
-province	3	2010	Never	8
-province	3	2010	No contact	30
-province	4	2010	Never	2
-province	4	2010	No contact	37
+province	1	2010	A Few times	1
+province	1	2010	Don't know	1
+province	1	2010	Never	14
+province	1	2010	No contact	104
+province	2	2010	A Few times	1
+province	2	2010	Never	36
+province	2	2010	No contact	153
+province	2	2010	Once or Twice	2
+province	3	2010	A Few times	2
+province	3	2010	Never	35
+province	3	2010	No contact	96
+province	4	2010	Never	12
+province	4	2010	No contact	74
+province	5	2010	A Few times	3
+province	5	2010	Don't know	2
+province	5	2010	Never	55
+province	5	2010	No contact	158
+province	5	2010	Once or Twice	5
 province	6	2010	Never	2
-province	6	2010	No contact	46
-province	8	2010	Never	1
-province	8	2010	No contact	23
-province	7	2010	Never	1
-province	7	2010	No contact	47
+province	6	2010	No contact	62
+province	8	2010	Never	5
+province	8	2010	No contact	59
+province	7	2010	Never	2
+province	7	2010	No contact	94
 province	9	2010	Never	8
-province	9	2010	No contact	70
+province	9	2010	No contact	126
 province	9	2010	Often	1
 province	9	2010	Once or Twice	1
 province	10	2010	A Few times	1
-province	10	2010	Never	6
-province	10	2010	No contact	48
+province	10	2010	Never	15
+province	10	2010	No contact	63
 country	ZM	2010	Often	1
 country	ZM	2010	Never	184
 country	ZM	2010	A Few times	8

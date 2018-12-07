@@ -37,51 +37,59 @@ CREATE TABLE public.freeness_and_fairness_of_the_last_national_election (
 --
 
 COPY public.freeness_and_fairness_of_the_last_national_election (geo_level, geo_code, geo_version, freeness_and_fairness_of_the_last_national_election, total) FROM stdin;
-province	1	2010	Completely free and fair	474
+province	1	2010	Completely free and fair	70
 province	1	2010	Do not understand the question	2
-province	1	2010	Don't know	59
-province	1	2010	Free and fair, but with minor problems	165
-province	1	2010	Free and fair, with major problems	83
-province	1	2010	Not free and fair	47
-province	2	2010	Completely free and fair	20
+province	1	2010	Don't know	10
+province	1	2010	Free and fair, but with minor problems	17
+province	1	2010	Free and fair, with major problems	11
+province	1	2010	Not free and fair	9
+province	2	2010	Completely free and fair	105
 province	2	2010	Do not understand the question	1
-province	2	2010	Don't know	1
-province	2	2010	Free and fair, but with minor problems	5
-province	2	2010	Free and fair, with major problems	5
-province	3	2010	Completely free and fair	22
+province	2	2010	Don't know	12
+province	2	2010	Free and fair, but with minor problems	39
+province	2	2010	Free and fair, with major problems	28
+province	2	2010	Not free and fair	7
+province	3	2010	Completely free and fair	74
 province	3	2010	Do not understand the question	1
-province	3	2010	Don't know	5
-province	3	2010	Free and fair, but with minor problems	4
-province	3	2010	Free and fair, with major problems	3
-province	3	2010	Not free and fair	5
-province	4	2010	Completely free and fair	28
+province	3	2010	Don't know	12
+province	3	2010	Free and fair, but with minor problems	22
+province	3	2010	Free and fair, with major problems	13
+province	3	2010	Not free and fair	14
+province	4	2010	Completely free and fair	65
 province	4	2010	Don't know	1
-province	4	2010	Free and fair, but with minor problems	7
-province	4	2010	Free and fair, with major problems	3
+province	4	2010	Free and fair, but with minor problems	15
+province	4	2010	Free and fair, with major problems	5
 province	4	2010	Not free and fair	1
-province	6	2010	Completely free and fair	26
-province	6	2010	Don't know	6
-province	6	2010	Free and fair, but with minor problems	11
-province	6	2010	Free and fair, with major problems	4
+province	5	2010	Completely free and fair	119
+province	5	2010	Don't know	17
+province	5	2010	Free and fair, but with minor problems	57
+province	5	2010	Free and fair, with major problems	17
+province	5	2010	Not free and fair	14
+province	6	2010	Completely free and fair	34
+province	6	2010	Don't know	10
+province	6	2010	Free and fair, but with minor problems	14
+province	6	2010	Free and fair, with major problems	5
 province	6	2010	Not free and fair	1
-province	8	2010	Completely free and fair	15
-province	8	2010	Free and fair, but with minor problems	7
-province	8	2010	Free and fair, with major problems	2
-province	7	2010	Completely free and fair	26
-province	7	2010	Don't know	3
-province	7	2010	Free and fair, but with minor problems	12
-province	7	2010	Free and fair, with major problems	6
-province	7	2010	Not free and fair	1
-province	9	2010	Completely free and fair	39
-province	9	2010	Don't know	3
-province	9	2010	Free and fair, but with minor problems	24
-province	9	2010	Free and fair, with major problems	9
-province	9	2010	Not free and fair	5
-province	10	2010	Completely free and fair	33
-province	10	2010	Don't know	1
-province	10	2010	Free and fair, but with minor problems	14
-province	10	2010	Free and fair, with major problems	6
-province	10	2010	Not free and fair	2
+province	8	2010	Completely free and fair	36
+province	8	2010	Don't know	3
+province	8	2010	Free and fair, but with minor problems	18
+province	8	2010	Free and fair, with major problems	3
+province	8	2010	Not free and fair	4
+province	7	2010	Completely free and fair	63
+province	7	2010	Don't know	7
+province	7	2010	Free and fair, but with minor problems	15
+province	7	2010	Free and fair, with major problems	9
+province	7	2010	Not free and fair	2
+province	9	2010	Completely free and fair	72
+province	9	2010	Don't know	5
+province	9	2010	Free and fair, but with minor problems	32
+province	9	2010	Free and fair, with major problems	20
+province	9	2010	Not free and fair	7
+province	10	2010	Completely free and fair	45
+province	10	2010	Don't know	2
+province	10	2010	Free and fair, but with minor problems	20
+province	10	2010	Free and fair, with major problems	10
+province	10	2010	Not free and fair	3
 country	ZM	2010	Free and fair, with major problems	121
 country	ZM	2010	Free and fair, but with minor problems	249
 country	ZM	2010	Don't know	79

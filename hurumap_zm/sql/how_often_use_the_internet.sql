@@ -37,49 +37,61 @@ CREATE TABLE public.how_often_use_the_internet (
 --
 
 COPY public.how_often_use_the_internet (geo_level, geo_code, geo_version, how_often_use_the_internet, total) FROM stdin;
-province	1	2010	A few times a month	27
-province	1	2010	A few times a week	55
-province	1	2010	Don't know	23
-province	1	2010	Everyday	97
-province	1	2010	Less than once a month	11
-province	1	2010	Never	617
-province	2	2010	A few times a month	2
-province	2	2010	Don't know	2
-province	2	2010	Everyday	9
-province	2	2010	Never	19
-province	3	2010	A few times a month	1
-province	3	2010	A few times a week	4
-province	3	2010	Never	35
-province	4	2010	A few times a month	2
-province	4	2010	A few times a week	2
+province	1	2010	A few times a month	3
+province	1	2010	A few times a week	7
+province	1	2010	Don't know	12
+province	1	2010	Everyday	10
+province	1	2010	Less than once a month	2
+province	1	2010	Never	86
+province	2	2010	A few times a month	4
+province	2	2010	A few times a week	13
+province	2	2010	Don't know	8
+province	2	2010	Everyday	35
+province	2	2010	Never	132
+province	3	2010	A few times a month	3
+province	3	2010	A few times a week	6
+province	3	2010	Don't know	1
+province	3	2010	Everyday	6
+province	3	2010	Never	120
+province	4	2010	A few times a month	6
+province	4	2010	A few times a week	4
 province	4	2010	Everyday	3
-province	4	2010	Less than once a month	2
-province	4	2010	Never	30
-province	6	2010	A few times a month	2
-province	6	2010	A few times a week	2
+province	4	2010	Less than once a month	3
+province	4	2010	Never	70
+province	5	2010	A few times a month	10
+province	5	2010	A few times a week	22
+province	5	2010	Don't know	3
+province	5	2010	Everyday	45
+province	5	2010	Less than once a month	6
+province	5	2010	Never	137
+province	6	2010	A few times a month	3
+province	6	2010	A few times a week	3
 province	6	2010	Don't know	1
-province	6	2010	Everyday	1
-province	6	2010	Never	42
+province	6	2010	Everyday	2
+province	6	2010	Never	55
+province	8	2010	A few times a month	1
 province	8	2010	A few times a week	2
-province	8	2010	Everyday	3
+province	8	2010	Don't know	1
+province	8	2010	Everyday	7
 province	8	2010	Less than once a month	1
-province	8	2010	Never	18
-province	7	2010	A few times a month	1
-province	7	2010	A few times a week	1
+province	8	2010	Never	52
+province	7	2010	A few times a month	2
+province	7	2010	A few times a week	3
 province	7	2010	Don't know	5
-province	7	2010	Everyday	3
-province	7	2010	Never	38
+province	7	2010	Everyday	4
+province	7	2010	Never	82
 province	9	2010	A few times a month	3
-province	9	2010	A few times a week	5
+province	9	2010	A few times a week	9
 province	9	2010	Don't know	2
-province	9	2010	Everyday	6
-province	9	2010	Never	64
-province	10	2010	A few times a month	3
-province	10	2010	A few times a week	3
+province	9	2010	Everyday	9
+province	9	2010	Less than once a month	1
+province	9	2010	Never	112
+province	10	2010	A few times a month	6
+province	10	2010	A few times a week	5
 province	10	2010	Don't know	1
-province	10	2010	Everyday	3
-province	10	2010	Less than once a month	3
-province	10	2010	Never	43
+province	10	2010	Everyday	4
+province	10	2010	Less than once a month	4
+province	10	2010	Never	60
 country	ZM	2010	A few times a month	41
 country	ZM	2010	Less than once a month	17
 country	ZM	2010	Never	906

@@ -37,63 +37,71 @@ CREATE TABLE public.people_can_fight_corruption (
 --
 
 COPY public.people_can_fight_corruption (geo_level, geo_code, geo_version, people_can_fight_corruption, total) FROM stdin;
-province	1	2010	Agree	234
-province	1	2010	Disagree	125
-province	1	2010	Don�t Know	36
-province	1	2010	Neither Agree Nor Disagree	42
-province	1	2010	Strongly Agree	210
-province	1	2010	Strongly Disagree	184
-province	2	2010	Agree	5
-province	2	2010	Disagree	2
-province	2	2010	Don�t Know	1
-province	2	2010	Neither Agree Nor Disagree	2
-province	2	2010	Strongly Agree	5
-province	2	2010	Strongly Disagree	17
-province	3	2010	Agree	7
-province	3	2010	Disagree	6
-province	3	2010	Don�t Know	7
-province	3	2010	Neither Agree Nor Disagree	2
-province	3	2010	Strongly Agree	5
-province	3	2010	Strongly Disagree	13
-province	4	2010	Agree	16
-province	4	2010	Disagree	6
-province	4	2010	Don�t Know	1
-province	4	2010	Neither Agree Nor Disagree	3
-province	4	2010	Strongly Agree	11
-province	4	2010	Strongly Disagree	3
-province	6	2010	Agree	16
-province	6	2010	Disagree	5
-province	6	2010	Don�t Know	3
-province	6	2010	Neither Agree Nor Disagree	1
-province	6	2010	Strongly Agree	15
+province	1	2010	Agree	32
+province	1	2010	Disagree	12
+province	1	2010	Don't Know	5
+province	1	2010	Neither Agree Nor Disagree	9
+province	1	2010	Strongly Agree	47
+province	1	2010	Strongly Disagree	15
+province	2	2010	Agree	46
+province	2	2010	Disagree	32
+province	2	2010	Don't Know	3
+province	2	2010	Neither Agree Nor Disagree	9
+province	2	2010	Strongly Agree	36
+province	2	2010	Strongly Disagree	66
+province	3	2010	Agree	23
+province	3	2010	Disagree	17
+province	3	2010	Don't Know	19
+province	3	2010	Neither Agree Nor Disagree	5
+province	3	2010	Strongly Agree	24
+province	3	2010	Strongly Disagree	48
+province	4	2010	Agree	38
+province	4	2010	Disagree	12
+province	4	2010	Don't Know	1
+province	4	2010	Neither Agree Nor Disagree	7
+province	4	2010	Strongly Agree	24
+province	4	2010	Strongly Disagree	5
+province	5	2010	Agree	71
+province	5	2010	Disagree	27
+province	5	2010	Don't Know	7
+province	5	2010	Neither Agree Nor Disagree	14
+province	5	2010	Strongly Agree	59
+province	5	2010	Strongly Disagree	46
+province	6	2010	Agree	21
+province	6	2010	Disagree	8
+province	6	2010	Don't Know	5
+province	6	2010	Neither Agree Nor Disagree	3
+province	6	2010	Strongly Agree	19
 province	6	2010	Strongly Disagree	8
-province	8	2010	Agree	14
-province	8	2010	Disagree	6
-province	8	2010	Strongly Agree	3
-province	8	2010	Strongly Disagree	1
-province	7	2010	Agree	12
-province	7	2010	Disagree	6
-province	7	2010	Don�t Know	3
+province	8	2010	Agree	33
+province	8	2010	Disagree	11
+province	8	2010	Don't Know	3
+province	8	2010	Strongly Agree	9
+province	8	2010	Strongly Disagree	8
+province	7	2010	Agree	22
+province	7	2010	Disagree	14
+province	7	2010	Don't Know	7
 province	7	2010	Neither Agree Nor Disagree	4
-province	7	2010	Strongly Agree	14
-province	7	2010	Strongly Disagree	9
-province	9	2010	Agree	24
-province	9	2010	Disagree	19
-province	9	2010	Neither Agree Nor Disagree	3
-province	9	2010	Strongly Agree	11
-province	9	2010	Strongly Disagree	23
-province	10	2010	Agree	3
-province	10	2010	Disagree	2
-province	10	2010	Don�t Know	2
-province	10	2010	Neither Agree Nor Disagree	4
-province	10	2010	Strongly Agree	12
-province	10	2010	Strongly Disagree	33
+province	7	2010	Strongly Agree	31
+province	7	2010	Strongly Disagree	18
+province	9	2010	Agree	37
+province	9	2010	Disagree	39
+province	9	2010	Don't Know	1
+province	9	2010	Neither Agree Nor Disagree	4
+province	9	2010	Strongly Agree	18
+province	9	2010	Strongly Disagree	37
+province	10	2010	Agree	8
+province	10	2010	Disagree	5
+province	10	2010	Don't Know	2
+province	10	2010	Neither Agree Nor Disagree	6
+province	10	2010	Strongly Agree	19
+province	10	2010	Strongly Disagree	40
 country	ZM	2010	Neither Agree Nor Disagree	61
 country	ZM	2010	Disagree	177
 country	ZM	2010	Strongly Agree	286
 country	ZM	2010	Agree	331
 country	ZM	2010	Strongly Disagree	291
-country	ZM	2010	Don�t Know	53
+country	ZM	2010	Don't Know	53
 \.
 
 

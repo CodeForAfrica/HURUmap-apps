@@ -37,25 +37,28 @@ CREATE TABLE public.own_television (
 --
 
 COPY public.own_television (geo_level, geo_code, geo_version, own_television, total) FROM stdin;
-province	1	2010	Don't know	2
-province	1	2010	No, don't own	432
-province	1	2010	Yes, do own	396
-province	2	2010	No, don't own	8
-province	2	2010	Yes, do own	24
-province	3	2010	No, don't own	23
-province	3	2010	Yes, do own	17
-province	4	2010	No, don't own	27
-province	4	2010	Yes, do own	12
-province	6	2010	No, don't own	34
-province	6	2010	Yes, do own	14
-province	8	2010	No, don't own	12
-province	8	2010	Yes, do own	12
-province	7	2010	No, don't own	29
-province	7	2010	Yes, do own	19
-province	9	2010	No, don't own	48
-province	9	2010	Yes, do own	32
-province	10	2010	No, don't own	34
-province	10	2010	Yes, do own	22
+province	1	2010	No, don't own	68
+province	1	2010	Yes, do own	52
+province	2	2010	No, don't own	67
+province	2	2010	Yes, do own	125
+province	3	2010	Don't know	1
+province	3	2010	No, don't own	88
+province	3	2010	Yes, do own	47
+province	4	2010	No, don't own	63
+province	4	2010	Yes, do own	23
+province	5	2010	Don't know	1
+province	5	2010	No, don't own	74
+province	5	2010	Yes, do own	148
+province	6	2010	No, don't own	44
+province	6	2010	Yes, do own	20
+province	8	2010	No, don't own	42
+province	8	2010	Yes, do own	22
+province	7	2010	No, don't own	69
+province	7	2010	Yes, do own	27
+province	9	2010	No, don't own	88
+province	9	2010	Yes, do own	48
+province	10	2010	No, don't own	44
+province	10	2010	Yes, do own	36
 country	ZM	2010	Yes, do own	548
 country	ZM	2010	No, don't own	647
 country	ZM	2010	Don't know	2

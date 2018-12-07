@@ -37,57 +37,65 @@ CREATE TABLE public.chinas_influence_positive_or_negative (
 --
 
 COPY public.chinas_influence_positive_or_negative (geo_level, geo_code, geo_version, chinas_influence_positive_or_negative, total) FROM stdin;
-province	1	2010	Don't know / Haven't heard enough	75
-province	1	2010	Neither positive nor negative	57
-province	1	2010	Somewhat negative	38
-province	1	2010	Somewhat positive	198
-province	1	2010	Very negative	46
-province	1	2010	Very positive	417
-province	2	2010	Don't know / Haven't heard enough	5
-province	2	2010	Neither positive nor negative	2
-province	2	2010	Somewhat positive	11
-province	2	2010	Very negative	5
-province	2	2010	Very positive	9
-province	3	2010	Don't know / Haven't heard enough	10
-province	3	2010	Neither positive nor negative	3
-province	3	2010	Somewhat negative	1
-province	3	2010	Somewhat positive	5
-province	3	2010	Very negative	1
-province	3	2010	Very positive	20
-province	4	2010	Don't know / Haven't heard enough	7
-province	4	2010	Neither positive nor negative	1
-province	4	2010	Somewhat negative	4
-province	4	2010	Somewhat positive	8
-province	4	2010	Very negative	2
-province	4	2010	Very positive	17
+province	1	2010	Don't know / Haven't heard enough	6
+province	1	2010	Neither positive nor negative	11
+province	1	2010	Somewhat negative	4
+province	1	2010	Somewhat positive	33
+province	1	2010	Very negative	7
+province	1	2010	Very positive	59
+province	2	2010	Don't know / Haven't heard enough	7
+province	2	2010	Neither positive nor negative	8
+province	2	2010	Somewhat negative	9
+province	2	2010	Somewhat positive	60
+province	2	2010	Very negative	15
+province	2	2010	Very positive	93
+province	3	2010	Don't know / Haven't heard enough	30
+province	3	2010	Neither positive nor negative	9
+province	3	2010	Somewhat negative	4
+province	3	2010	Somewhat positive	14
+province	3	2010	Very negative	4
+province	3	2010	Very positive	75
+province	4	2010	Don't know / Haven't heard enough	12
+province	4	2010	Neither positive nor negative	8
+province	4	2010	Somewhat negative	6
+province	4	2010	Somewhat positive	21
+province	4	2010	Very negative	3
+province	4	2010	Very positive	36
+province	5	2010	Don't know / Haven't heard enough	20
+province	5	2010	Neither positive nor negative	12
+province	5	2010	Somewhat negative	14
+province	5	2010	Somewhat positive	58
+province	5	2010	Very negative	9
+province	5	2010	Very positive	111
 province	6	2010	Don't know / Haven't heard enough	8
-province	6	2010	Neither positive nor negative	5
+province	6	2010	Neither positive nor negative	6
 province	6	2010	Somewhat negative	1
-province	6	2010	Somewhat positive	9
+province	6	2010	Somewhat positive	12
 province	6	2010	Very negative	1
-province	6	2010	Very positive	24
-province	8	2010	Don't know / Haven't heard enough	1
-province	8	2010	Somewhat negative	1
-province	8	2010	Somewhat positive	4
-province	8	2010	Very positive	18
-province	7	2010	Don't know / Haven't heard enough	3
-province	7	2010	Neither positive nor negative	4
-province	7	2010	Somewhat negative	3
-province	7	2010	Somewhat positive	16
-province	7	2010	Very negative	5
-province	7	2010	Very positive	17
-province	9	2010	Don't know / Haven't heard enough	4
-province	9	2010	Neither positive nor negative	6
-province	9	2010	Somewhat negative	5
-province	9	2010	Somewhat positive	17
-province	9	2010	Very negative	11
-province	9	2010	Very positive	37
+province	6	2010	Very positive	36
+province	8	2010	Don't know / Haven't heard enough	7
+province	8	2010	Neither positive nor negative	3
+province	8	2010	Somewhat negative	3
+province	8	2010	Somewhat positive	13
+province	8	2010	Very positive	38
+province	7	2010	Don't know / Haven't heard enough	15
+province	7	2010	Neither positive nor negative	6
+province	7	2010	Somewhat negative	6
+province	7	2010	Somewhat positive	23
+province	7	2010	Very negative	9
+province	7	2010	Very positive	37
+province	9	2010	Don't know / Haven't heard enough	8
+province	9	2010	Neither positive nor negative	12
+province	9	2010	Somewhat negative	6
+province	9	2010	Somewhat positive	29
+province	9	2010	Very negative	23
+province	9	2010	Very positive	58
 province	10	2010	Don't know / Haven't heard enough	2
-province	10	2010	Neither positive nor negative	5
+province	10	2010	Neither positive nor negative	8
 province	10	2010	Somewhat negative	2
-province	10	2010	Somewhat positive	9
+province	10	2010	Somewhat positive	14
 province	10	2010	Very negative	1
-province	10	2010	Very positive	37
+province	10	2010	Very positive	53
 country	ZM	2010	Don't know / Haven't heard enough	115
 country	ZM	2010	Somewhat positive	277
 country	ZM	2010	Somewhat negative	55

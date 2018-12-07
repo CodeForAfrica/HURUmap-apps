@@ -37,25 +37,27 @@ CREATE TABLE public.own_radio (
 --
 
 COPY public.own_radio (geo_level, geo_code, geo_version, own_radio, total) FROM stdin;
-province	1	2010	Don't know	3
-province	1	2010	No, don't own	236
-province	1	2010	Yes, do own	591
-province	2	2010	No, don't own	4
-province	2	2010	Yes, do own	28
-province	3	2010	No, don't own	14
-province	3	2010	Yes, do own	26
-province	4	2010	No, don't own	19
-province	4	2010	Yes, do own	20
-province	6	2010	No, don't own	8
-province	6	2010	Yes, do own	40
-province	8	2010	No, don't own	6
-province	8	2010	Yes, do own	18
-province	7	2010	No, don't own	15
-province	7	2010	Yes, do own	33
-province	9	2010	No, don't own	16
-province	9	2010	Yes, do own	63
-province	10	2010	No, don't own	14
-province	10	2010	Yes, do own	42
+province	1	2010	No, don't own	20
+province	1	2010	Yes, do own	100
+province	2	2010	No, don't own	49
+province	2	2010	Yes, do own	143
+province	3	2010	No, don't own	47
+province	3	2010	Yes, do own	89
+province	4	2010	No, don't own	38
+province	4	2010	Yes, do own	48
+province	5	2010	Don't know	3
+province	5	2010	No, don't own	52
+province	5	2010	Yes, do own	168
+province	6	2010	No, don't own	10
+province	6	2010	Yes, do own	54
+province	8	2010	No, don't own	20
+province	8	2010	Yes, do own	44
+province	7	2010	No, don't own	42
+province	7	2010	Yes, do own	54
+province	9	2010	No, don't own	36
+province	9	2010	Yes, do own	99
+province	10	2010	No, don't own	18
+province	10	2010	Yes, do own	62
 country	ZM	2010	Yes, do own	861
 country	ZM	2010	No, don't own	332
 country	ZM	2010	Don't know	3

@@ -37,67 +37,80 @@ CREATE TABLE public.positive_image_of_china (
 --
 
 COPY public.positive_image_of_china (geo_level, geo_code, geo_version, positive_image_of_china, total) FROM stdin;
-province	1	2010	An appreciation of the Chinese people, culture and language	5
-province	1	2010	China's business investment	108
-province	1	2010	China's investment in infrastructure in the country	480
-province	1	2010	China's support for the country in international affairs	50
-province	1	2010	Don't know / Haven't heard enough	65
-province	1	2010	Non-interference in the internal affairs of African countries	27
-province	1	2010	None of these	9
-province	1	2010	Some other factor	3
-province	1	2010	The quality or cost of Chinese products	84
-province	2	2010	China's business investment	3
-province	2	2010	China's investment in infrastructure in the country	22
-province	2	2010	China's support for the country in international affairs	1
-province	2	2010	Don't know / Haven't heard enough	1
-province	2	2010	Non-interference in the internal affairs of African countries	2
-province	2	2010	None of these	1
-province	2	2010	The quality or cost of Chinese products	2
-province	3	2010	China's business investment	2
-province	3	2010	China's investment in infrastructure in the country	30
-province	3	2010	Don't know / Haven't heard enough	5
+province	1	2010	An appreciation of the Chinese people, culture and language	2
+province	1	2010	China's business investment	22
+province	1	2010	China's investment in infrastructure in the country	62
+province	1	2010	China's support for the country in international affairs	4
+province	1	2010	Don't know / Haven't heard enough	7
+province	1	2010	Non-interference in the internal affairs of African countries	4
+province	1	2010	The quality or cost of Chinese products	19
+province	2	2010	China's business investment	25
+province	2	2010	China's investment in infrastructure in the country	120
+province	2	2010	China's support for the country in international affairs	13
+province	2	2010	Don't know / Haven't heard enough	4
+province	2	2010	Non-interference in the internal affairs of African countries	7
+province	2	2010	None of these	4
+province	2	2010	Some other factor	1
+province	2	2010	The quality or cost of Chinese products	18
+province	3	2010	China's business investment	12
+province	3	2010	China's investment in infrastructure in the country	100
+province	3	2010	China's support for the country in international affairs	2
+province	3	2010	Don't know / Haven't heard enough	16
 province	3	2010	Non-interference in the internal affairs of African countries	1
-province	3	2010	None of these	1
+province	3	2010	None of these	2
 province	3	2010	Some other factor	1
-province	4	2010	China's business investment	5
-province	4	2010	China's investment in infrastructure in the country	23
-province	4	2010	China's support for the country in international affairs	2
-province	4	2010	Don't know / Haven't heard enough	4
-province	4	2010	Non-interference in the internal affairs of African countries	1
+province	3	2010	The quality or cost of Chinese products	2
+province	4	2010	China's business investment	8
+province	4	2010	China's investment in infrastructure in the country	52
+province	4	2010	China's support for the country in international affairs	4
+province	4	2010	Don't know / Haven't heard enough	10
+province	4	2010	Non-interference in the internal affairs of African countries	4
 province	4	2010	Some other factor	1
-province	4	2010	The quality or cost of Chinese products	3
-province	6	2010	China's business investment	10
-province	6	2010	China's investment in infrastructure in the country	29
+province	4	2010	The quality or cost of Chinese products	7
+province	5	2010	An appreciation of the Chinese people, culture and language	3
+province	5	2010	China's business investment	32
+province	5	2010	China's investment in infrastructure in the country	114
+province	5	2010	China's support for the country in international affairs	22
+province	5	2010	Don't know / Haven't heard enough	18
+province	5	2010	Non-interference in the internal affairs of African countries	8
+province	5	2010	None of these	2
+province	5	2010	Some other factor	2
+province	5	2010	The quality or cost of Chinese products	23
+province	6	2010	China's business investment	12
+province	6	2010	China's investment in infrastructure in the country	41
 province	6	2010	Don't know / Haven't heard enough	2
-province	6	2010	Non-interference in the internal affairs of African countries	2
+province	6	2010	Non-interference in the internal affairs of African countries	3
 province	6	2010	None of these	2
 province	6	2010	Some other factor	1
-province	6	2010	The quality or cost of Chinese products	2
-province	8	2010	China's business investment	3
-province	8	2010	China's investment in infrastructure in the country	18
-province	8	2010	China's support for the country in international affairs	1
-province	8	2010	Don't know / Haven't heard enough	1
-province	8	2010	The quality or cost of Chinese products	1
+province	6	2010	The quality or cost of Chinese products	3
+province	8	2010	China's business investment	4
+province	8	2010	China's investment in infrastructure in the country	42
+province	8	2010	China's support for the country in international affairs	2
+province	8	2010	Don't know / Haven't heard enough	7
+province	8	2010	Non-interference in the internal affairs of African countries	2
+province	8	2010	The quality or cost of Chinese products	7
 province	7	2010	An appreciation of the Chinese people, culture and language	1
-province	7	2010	China's business investment	7
-province	7	2010	China's investment in infrastructure in the country	26
-province	7	2010	China's support for the country in international affairs	4
-province	7	2010	Don't know / Haven't heard enough	3
-province	7	2010	Non-interference in the internal affairs of African countries	1
-province	7	2010	None of these	1
-province	7	2010	The quality or cost of Chinese products	5
-province	9	2010	China's business investment	13
-province	9	2010	China's investment in infrastructure in the country	53
-province	9	2010	China's support for the country in international affairs	1
-province	9	2010	Don't know / Haven't heard enough	3
-province	9	2010	Non-interference in the internal affairs of African countries	3
+province	7	2010	China's business investment	11
+province	7	2010	China's investment in infrastructure in the country	52
+province	7	2010	China's support for the country in international affairs	7
+province	7	2010	Don't know / Haven't heard enough	14
+province	7	2010	Non-interference in the internal affairs of African countries	2
+province	7	2010	None of these	3
+province	7	2010	The quality or cost of Chinese products	6
+province	9	2010	China's business investment	19
+province	9	2010	China's investment in infrastructure in the country	89
+province	9	2010	China's support for the country in international affairs	4
+province	9	2010	Don't know / Haven't heard enough	6
+province	9	2010	Non-interference in the internal affairs of African countries	5
+province	9	2010	None of these	1
 province	9	2010	Some other factor	1
-province	9	2010	The quality or cost of Chinese products	6
-province	10	2010	China's business investment	11
-province	10	2010	China's investment in infrastructure in the country	35
-province	10	2010	China's support for the country in international affairs	2
+province	9	2010	The quality or cost of Chinese products	11
+province	10	2010	China's business investment	17
+province	10	2010	China's investment in infrastructure in the country	44
+province	10	2010	China's support for the country in international affairs	3
 province	10	2010	Don't know / Haven't heard enough	1
-province	10	2010	The quality or cost of Chinese products	7
+province	10	2010	Non-interference in the internal affairs of African countries	1
+province	10	2010	The quality or cost of Chinese products	14
 country	ZM	2010	Don't know / Haven't heard enough	85
 country	ZM	2010	Non-interference in the internal affairs of African countries	37
 country	ZM	2010	The quality or cost of Chinese products	110

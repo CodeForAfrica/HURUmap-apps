@@ -37,78 +37,98 @@ CREATE TABLE public.most_effective_way_to_combat_corruption (
 --
 
 COPY public.most_effective_way_to_combat_corruption (geo_level, geo_code, geo_version, most_effective_way_to_combat_corruption, total) FROM stdin;
-province	1	2010	Don't know	48
-province	1	2010	Join or support an organization that is fighting corruption	36
-province	1	2010	Nothing / Ordinary people cannot do anything	139
-province	1	2010	Other	8
-province	1	2010	Participate in protest marches	4
-province	1	2010	Refuse to pay bribes	220
-province	1	2010	Report corruption when you see or experience it	265
-province	1	2010	Sign a petition	6
-province	1	2010	Speak out about the problem	31
-province	1	2010	Talk to friends and relatives about the problem	20
-province	1	2010	Vote for clean candidates	53
-province	2	2010	Join or support an organization that is fighting corruption	3
-province	2	2010	Nothing / Ordinary people cannot do anything	14
-province	2	2010	Refuse to pay bribes	3
-province	2	2010	Report corruption when you see or experience it	6
-province	2	2010	Speak out about the problem	1
+province	1	2010	Don't know	5
+province	1	2010	Join or support an organization that is fighting corruption	5
+province	1	2010	Nothing / Ordinary people cannot do anything	20
+province	1	2010	Other	2
+province	1	2010	Participate in protest marches	2
+province	1	2010	Refuse to pay bribes	36
+province	1	2010	Report corruption when you see or experience it	36
+province	1	2010	Sign a petition	2
+province	1	2010	Speak out about the problem	3
+province	1	2010	Talk to friends and relatives about the problem	3
+province	1	2010	Vote for clean candidates	6
+province	2	2010	Don't know	3
+province	2	2010	Join or support an organization that is fighting corruption	12
+province	2	2010	Nothing / Ordinary people cannot do anything	49
+province	2	2010	Other	1
+province	2	2010	Refuse to pay bribes	52
+province	2	2010	Report corruption when you see or experience it	40
+province	2	2010	Sign a petition	1
+province	2	2010	Speak out about the problem	10
 province	2	2010	Talk to friends and relatives about the problem	2
-province	2	2010	Vote for clean candidates	3
-province	3	2010	Don't know	7
-province	3	2010	Join or support an organization that is fighting corruption	3
-province	3	2010	Nothing / Ordinary people cannot do anything	16
-province	3	2010	Refuse to pay bribes	3
-province	3	2010	Report corruption when you see or experience it	9
-province	3	2010	Talk to friends and relatives about the problem	1
-province	3	2010	Vote for clean candidates	1
-province	4	2010	Don't know	3
-province	4	2010	Join or support an organization that is fighting corruption	2
-province	4	2010	Nothing / Ordinary people cannot do anything	3
+province	2	2010	Vote for clean candidates	21
+province	3	2010	Don't know	20
+province	3	2010	Join or support an organization that is fighting corruption	8
+province	3	2010	Nothing / Ordinary people cannot do anything	50
+province	3	2010	Refuse to pay bribes	9
+province	3	2010	Report corruption when you see or experience it	35
+province	3	2010	Sign a petition	1
+province	3	2010	Speak out about the problem	2
+province	3	2010	Talk to friends and relatives about the problem	5
+province	3	2010	Vote for clean candidates	6
+province	4	2010	Don't know	6
+province	4	2010	Join or support an organization that is fighting corruption	6
+province	4	2010	Nothing / Ordinary people cannot do anything	4
 province	4	2010	Other	2
-province	4	2010	Refuse to pay bribes	6
-province	4	2010	Report corruption when you see or experience it	19
-province	4	2010	Speak out about the problem	1
+province	4	2010	Refuse to pay bribes	16
+province	4	2010	Report corruption when you see or experience it	43
+province	4	2010	Speak out about the problem	3
 province	4	2010	Talk to friends and relatives about the problem	2
-province	4	2010	Vote for clean candidates	2
-province	6	2010	Don't know	5
-province	6	2010	Join or support an organization that is fighting corruption	2
-province	6	2010	Nothing / Ordinary people cannot do anything	7
+province	4	2010	Vote for clean candidates	5
+province	5	2010	Don't know	10
+province	5	2010	Join or support an organization that is fighting corruption	10
+province	5	2010	Nothing / Ordinary people cannot do anything	26
+province	5	2010	Other	3
+province	5	2010	Participate in protest marches	2
+province	5	2010	Refuse to pay bribes	68
+province	5	2010	Report corruption when you see or experience it	76
+province	5	2010	Sign a petition	1
+province	5	2010	Speak out about the problem	9
+province	5	2010	Talk to friends and relatives about the problem	7
+province	5	2010	Vote for clean candidates	12
+province	6	2010	Don't know	6
+province	6	2010	Join or support an organization that is fighting corruption	3
+province	6	2010	Nothing / Ordinary people cannot do anything	10
 province	6	2010	Participate in protest marches	1
-province	6	2010	Refuse to pay bribes	11
-province	6	2010	Report corruption when you see or experience it	14
-province	6	2010	Speak out about the problem	3
+province	6	2010	Refuse to pay bribes	15
+province	6	2010	Report corruption when you see or experience it	20
+province	6	2010	Speak out about the problem	4
 province	6	2010	Vote for clean candidates	5
-province	8	2010	Join or support an organization that is fighting corruption	1
-province	8	2010	Nothing / Ordinary people cannot do anything	4
-province	8	2010	Refuse to pay bribes	13
-province	8	2010	Report corruption when you see or experience it	4
+province	8	2010	Don't know	2
+province	8	2010	Join or support an organization that is fighting corruption	2
+province	8	2010	Nothing / Ordinary people cannot do anything	7
+province	8	2010	Refuse to pay bribes	38
+province	8	2010	Report corruption when you see or experience it	12
 province	8	2010	Speak out about the problem	1
+province	8	2010	Talk to friends and relatives about the problem	1
 province	8	2010	Vote for clean candidates	1
-province	7	2010	Don't know	3
-province	7	2010	Join or support an organization that is fighting corruption	2
-province	7	2010	Nothing / Ordinary people cannot do anything	7
-province	7	2010	Other	1
-province	7	2010	Refuse to pay bribes	10
-province	7	2010	Report corruption when you see or experience it	13
-province	7	2010	Speak out about the problem	3
-province	7	2010	Talk to friends and relatives about the problem	4
-province	7	2010	Vote for clean candidates	5
-province	9	2010	Don't know	3
+province	7	2010	Don't know	11
+province	7	2010	Join or support an organization that is fighting corruption	3
+province	7	2010	Nothing / Ordinary people cannot do anything	12
+province	7	2010	Other	2
+province	7	2010	Refuse to pay bribes	19
+province	7	2010	Report corruption when you see or experience it	28
+province	7	2010	Speak out about the problem	6
+province	7	2010	Talk to friends and relatives about the problem	7
+province	7	2010	Vote for clean candidates	8
+province	9	2010	Don't know	4
 province	9	2010	Join or support an organization that is fighting corruption	1
-province	9	2010	Nothing / Ordinary people cannot do anything	12
-province	9	2010	Refuse to pay bribes	14
-province	9	2010	Report corruption when you see or experience it	42
-province	9	2010	Speak out about the problem	2
-province	9	2010	Vote for clean candidates	6
-province	10	2010	Don't know	4
-province	10	2010	Nothing / Ordinary people cannot do anything	16
-province	10	2010	Other	1
-province	10	2010	Refuse to pay bribes	10
-province	10	2010	Report corruption when you see or experience it	13
-province	10	2010	Speak out about the problem	3
+province	9	2010	Nothing / Ordinary people cannot do anything	20
+province	9	2010	Refuse to pay bribes	22
+province	9	2010	Report corruption when you see or experience it	73
+province	9	2010	Sign a petition	1
+province	9	2010	Speak out about the problem	3
+province	9	2010	Talk to friends and relatives about the problem	2
+province	9	2010	Vote for clean candidates	10
+province	10	2010	Don't know	6
+province	10	2010	Nothing / Ordinary people cannot do anything	20
+province	10	2010	Other	2
+province	10	2010	Refuse to pay bribes	15
+province	10	2010	Report corruption when you see or experience it	22
+province	10	2010	Speak out about the problem	4
 province	10	2010	Talk to friends and relatives about the problem	2
-province	10	2010	Vote for clean candidates	7
+province	10	2010	Vote for clean candidates	9
 country	ZM	2010	Join or support an organization that is fighting corruption	50
 country	ZM	2010	Talk to friends and relatives about the problem	31
 country	ZM	2010	Participate in protest marches	5

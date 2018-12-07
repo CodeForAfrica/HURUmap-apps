@@ -37,40 +37,46 @@ CREATE TABLE public.pay_bribe_for_treatment_at_public_clinic_or_hospital (
 --
 
 COPY public.pay_bribe_for_treatment_at_public_clinic_or_hospital (geo_level, geo_code, geo_version, pay_bribe_for_treatment_at_public_clinic_or_hospital, total) FROM stdin;
-province	1	2010	A Few times	14
-province	1	2010	Never	530
-province	1	2010	No contact	246
-province	1	2010	Often	2
-province	1	2010	Once or Twice	17
-province	2	2010	A Few times	1
-province	2	2010	Never	27
-province	2	2010	No contact	3
-province	2	2010	Once or Twice	1
-province	3	2010	Never	26
-province	3	2010	No contact	13
-province	4	2010	Never	25
-province	4	2010	No contact	14
-province	6	2010	Never	30
-province	6	2010	No contact	13
-province	6	2010	Once or Twice	2
-province	8	2010	Never	16
-province	8	2010	No contact	8
-province	7	2010	Never	20
-province	7	2010	No contact	17
+province	1	2010	A Few times	2
+province	1	2010	Never	80
+province	1	2010	No contact	31
+province	1	2010	Once or Twice	2
+province	2	2010	A Few times	4
+province	2	2010	Never	134
+province	2	2010	No contact	46
+province	2	2010	Often	1
+province	2	2010	Once or Twice	5
+province	3	2010	Never	94
+province	3	2010	No contact	36
+province	3	2010	Once or Twice	2
+province	4	2010	Never	62
+province	4	2010	No contact	24
+province	5	2010	A Few times	9
+province	5	2010	Never	116
+province	5	2010	No contact	86
+province	5	2010	Often	1
+province	5	2010	Once or Twice	8
+province	6	2010	Never	38
+province	6	2010	No contact	20
+province	6	2010	Once or Twice	3
+province	8	2010	Never	39
+province	8	2010	No contact	25
+province	7	2010	Never	51
+province	7	2010	No contact	27
 province	9	2010	A Few times	1
-province	9	2010	Never	62
-province	9	2010	No contact	15
+province	9	2010	Never	105
+province	9	2010	No contact	28
 province	9	2010	Often	1
 province	9	2010	Once or Twice	1
 province	10	2010	A Few times	1
-province	10	2010	Never	40
-province	10	2010	No contact	14
+province	10	2010	Never	57
+province	10	2010	No contact	20
 province	10	2010	Once or Twice	1
-country	ZM	2010	Often	3
-country	ZM	2010	Never	776
-country	ZM	2010	A Few times	17
 country	ZM	2010	Once or Twice	22
+country	ZM	2010	Never	776
 country	ZM	2010	No contact	343
+country	ZM	2010	A Few times	17
+country	ZM	2010	Often	3
 \.
 
 

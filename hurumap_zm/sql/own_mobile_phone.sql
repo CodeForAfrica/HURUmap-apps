@@ -37,25 +37,28 @@ CREATE TABLE public.own_mobile_phone (
 --
 
 COPY public.own_mobile_phone (geo_level, geo_code, geo_version, own_mobile_phone, total) FROM stdin;
-province	1	2010	Don't know	3
-province	1	2010	No, don't own	217
-province	1	2010	Yes, do own	609
-province	2	2010	No, don't own	8
-province	2	2010	Yes, do own	24
-province	3	2010	No, don't own	17
-province	3	2010	Yes, do own	23
-province	4	2010	No, don't own	14
-province	4	2010	Yes, do own	25
-province	6	2010	No, don't own	12
-province	6	2010	Yes, do own	36
-province	8	2010	No, don't own	9
-province	8	2010	Yes, do own	15
-province	7	2010	No, don't own	18
-province	7	2010	Yes, do own	30
-province	9	2010	No, don't own	18
-province	9	2010	Yes, do own	62
-province	10	2010	No, don't own	8
-province	10	2010	Yes, do own	48
+province	1	2010	No, don't own	31
+province	1	2010	Yes, do own	88
+province	2	2010	No, don't own	32
+province	2	2010	Yes, do own	160
+province	3	2010	Don't know	1
+province	3	2010	No, don't own	59
+province	3	2010	Yes, do own	76
+province	4	2010	No, don't own	33
+province	4	2010	Yes, do own	53
+province	5	2010	Don't know	2
+province	5	2010	No, don't own	32
+province	5	2010	Yes, do own	189
+province	6	2010	No, don't own	15
+province	6	2010	Yes, do own	49
+province	8	2010	No, don't own	27
+province	8	2010	Yes, do own	37
+province	7	2010	No, don't own	47
+province	7	2010	Yes, do own	49
+province	9	2010	No, don't own	32
+province	9	2010	Yes, do own	104
+province	10	2010	No, don't own	13
+province	10	2010	Yes, do own	67
 country	ZM	2010	Yes, do own	872
 country	ZM	2010	No, don't own	321
 country	ZM	2010	Don't know	3

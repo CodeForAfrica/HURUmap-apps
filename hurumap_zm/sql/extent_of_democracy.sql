@@ -37,49 +37,62 @@ CREATE TABLE public.extent_of_democracy (
 --
 
 COPY public.extent_of_democracy (geo_level, geo_code, geo_version, extent_of_democracy, total) FROM stdin;
-province	1	2010	A democracy, but with minor problems	299
-province	1	2010	A democracy, with major problems	186
-province	1	2010	A full democracy	246
-province	1	2010	Do not understand question / democracy	29
-province	1	2010	Don't know	50
-province	1	2010	Not a democracy	21
-province	2	2010	A democracy, but with minor problems	13
-province	2	2010	A democracy, with major problems	12
-province	2	2010	A full democracy	6
-province	2	2010	Not a democracy	1
-province	3	2010	A democracy, but with minor problems	5
-province	3	2010	A democracy, with major problems	7
-province	3	2010	A full democracy	15
-province	3	2010	Don't know	12
+province	1	2010	A democracy, but with minor problems	43
+province	1	2010	A democracy, with major problems	36
+province	1	2010	A full democracy	29
+province	1	2010	Do not understand question / democracy	8
+province	1	2010	Not a democracy	4
+province	2	2010	A democracy, but with minor problems	84
+province	2	2010	A democracy, with major problems	58
+province	2	2010	A full democracy	43
+province	2	2010	Do not understand question / democracy	1
+province	2	2010	Don't know	2
+province	2	2010	Not a democracy	4
+province	3	2010	A democracy, but with minor problems	25
+province	3	2010	A democracy, with major problems	21
+province	3	2010	A full democracy	49
+province	3	2010	Do not understand question / democracy	3
+province	3	2010	Don't know	37
 province	3	2010	Not a democracy	1
-province	4	2010	A democracy, but with minor problems	18
-province	4	2010	A democracy, with major problems	4
-province	4	2010	A full democracy	16
-province	4	2010	Don't know	2
-province	6	2010	A democracy, but with minor problems	16
-province	6	2010	A democracy, with major problems	5
-province	6	2010	A full democracy	18
-province	6	2010	Do not understand question / democracy	4
-province	6	2010	Don't know	4
+province	4	2010	A democracy, but with minor problems	35
+province	4	2010	A democracy, with major problems	12
+province	4	2010	A full democracy	37
+province	4	2010	Don't know	3
+province	5	2010	A democracy, but with minor problems	90
+province	5	2010	A democracy, with major problems	39
+province	5	2010	A full democracy	65
+province	5	2010	Do not understand question / democracy	12
+province	5	2010	Don't know	11
+province	5	2010	Not a democracy	7
+province	6	2010	A democracy, but with minor problems	21
+province	6	2010	A democracy, with major problems	7
+province	6	2010	A full democracy	25
+province	6	2010	Do not understand question / democracy	5
+province	6	2010	Don't know	5
 province	6	2010	Not a democracy	1
-province	8	2010	A democracy, but with minor problems	10
-province	8	2010	A democracy, with major problems	2
-province	8	2010	A full democracy	10
-province	8	2010	Don't know	2
-province	7	2010	A democracy, but with minor problems	10
-province	7	2010	A democracy, with major problems	14
-province	7	2010	A full democracy	20
-province	7	2010	Don't know	1
-province	7	2010	Not a democracy	3
-province	9	2010	A democracy, but with minor problems	29
-province	9	2010	A democracy, with major problems	29
-province	9	2010	A full democracy	20
-province	9	2010	Not a democracy	2
-province	10	2010	A democracy, but with minor problems	14
-province	10	2010	A democracy, with major problems	27
-province	10	2010	A full democracy	11
+province	8	2010	A democracy, but with minor problems	23
+province	8	2010	A democracy, with major problems	12
+province	8	2010	A full democracy	25
+province	8	2010	Don't know	3
+province	8	2010	Not a democracy	1
+province	7	2010	A democracy, but with minor problems	20
+province	7	2010	A democracy, with major problems	22
+province	7	2010	A full democracy	41
+province	7	2010	Do not understand question / democracy	2
+province	7	2010	Don't know	7
+province	7	2010	Not a democracy	4
+province	9	2010	A democracy, but with minor problems	52
+province	9	2010	A democracy, with major problems	46
+province	9	2010	A full democracy	30
+province	9	2010	Do not understand question / democracy	1
+province	9	2010	Don't know	3
+province	9	2010	Not a democracy	4
+province	10	2010	A democracy, but with minor problems	21
+province	10	2010	A democracy, with major problems	33
+province	10	2010	A full democracy	18
+province	10	2010	Do not understand question / democracy	1
 province	10	2010	Don't know	2
-province	10	2010	Not a democracy	2
+province	10	2010	Not a democracy	5
 country	ZM	2010	A democracy, but with minor problems	414
 country	ZM	2010	Not a democracy	31
 country	ZM	2010	Do not understand question / democracy	33

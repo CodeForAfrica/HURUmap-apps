@@ -37,67 +37,85 @@ CREATE TABLE public.voting_in_the_most_recent_national_election (
 --
 
 COPY public.voting_in_the_most_recent_national_election (geo_level, geo_code, geo_version, voting_in_the_most_recent_national_election, total) FROM stdin;
-province	1	2010	Did not vote for some other reason	65
-province	1	2010	Don't Know / Can't remember	5
-province	1	2010	You could not find the polling station	8
-province	1	2010	You decided not to vote	68
-province	1	2010	You did not have time to vote	24
-province	1	2010	You did not vote because your name not in the register	10
-province	1	2010	You voted in the elections	493
-province	1	2010	You were not registered to vote	71
-province	1	2010	You were prevented from voting	6
-province	1	2010	You were too young to vote	81
-province	2	2010	Did not vote for some other reason	2
-province	2	2010	Don't Know / Can't remember	1
-province	2	2010	You decided not to vote	3
-province	2	2010	You did not have time to vote	2
-province	2	2010	You voted in the elections	18
-province	2	2010	You were not registered to vote	2
-province	2	2010	You were too young to vote	4
-province	3	2010	Did not vote for some other reason	6
+province	1	2010	Did not vote for some other reason	3
+province	1	2010	You could not find the polling station	6
+province	1	2010	You decided not to vote	18
+province	1	2010	You did not have time to vote	4
+province	1	2010	You did not vote because your name not in the register	2
+province	1	2010	You voted in the elections	67
+province	1	2010	You were not registered to vote	12
+province	1	2010	You were prevented from voting	2
+province	1	2010	You were too young to vote	6
+province	2	2010	Did not vote for some other reason	16
+province	2	2010	Don't Know / Can't remember	2
+province	2	2010	You decided not to vote	20
+province	2	2010	You did not have time to vote	6
+province	2	2010	You did not vote because your name not in the register	2
+province	2	2010	You voted in the elections	105
+province	2	2010	You were not registered to vote	12
+province	2	2010	You were too young to vote	29
+province	3	2010	Did not vote for some other reason	15
 province	3	2010	You could not find the polling station	1
-province	3	2010	You decided not to vote	2
+province	3	2010	You decided not to vote	4
 province	3	2010	You did not have time to vote	2
-province	3	2010	You voted in the elections	21
-province	3	2010	You were not registered to vote	6
-province	3	2010	You were too young to vote	2
-province	4	2010	Did not vote for some other reason	2
+province	3	2010	You did not vote because your name not in the register	2
+province	3	2010	You voted in the elections	95
+province	3	2010	You were not registered to vote	11
+province	3	2010	You were too young to vote	6
+province	4	2010	Did not vote for some other reason	6
 province	4	2010	You could not find the polling station	1
-province	4	2010	You voted in the elections	16
-province	4	2010	You were not registered to vote	11
-province	4	2010	You were too young to vote	10
-province	6	2010	Did not vote for some other reason	2
+province	4	2010	You decided not to vote	2
+province	4	2010	You voted in the elections	49
+province	4	2010	You were not registered to vote	15
+province	4	2010	You were too young to vote	14
+province	5	2010	Did not vote for some other reason	16
+province	5	2010	Don't Know / Can't remember	3
+province	5	2010	You could not find the polling station	1
+province	5	2010	You decided not to vote	14
+province	5	2010	You did not have time to vote	11
+province	5	2010	You did not vote because your name not in the register	3
+province	5	2010	You voted in the elections	110
+province	5	2010	You were not registered to vote	32
+province	5	2010	You were prevented from voting	2
+province	5	2010	You were too young to vote	32
+province	6	2010	Did not vote for some other reason	3
 province	6	2010	You could not find the polling station	2
-province	6	2010	You decided not to vote	4
+province	6	2010	You decided not to vote	7
+province	6	2010	You did not have time to vote	1
 province	6	2010	You did not vote because your name not in the register	1
-province	6	2010	You voted in the elections	29
+province	6	2010	You voted in the elections	39
 province	6	2010	You were not registered to vote	4
-province	6	2010	You were too young to vote	6
-province	8	2010	Did not vote for some other reason	3
+province	6	2010	You were too young to vote	7
+province	8	2010	Did not vote for some other reason	9
 province	8	2010	You could not find the polling station	1
 province	8	2010	You decided not to vote	2
-province	8	2010	You voted in the elections	17
-province	8	2010	You were too young to vote	1
-province	7	2010	Did not vote for some other reason	3
-province	7	2010	You decided not to vote	2
+province	8	2010	You did not have time to vote	1
+province	8	2010	You did not vote because your name not in the register	1
+province	8	2010	You voted in the elections	47
+province	8	2010	You were too young to vote	3
+province	7	2010	Did not vote for some other reason	8
+province	7	2010	You decided not to vote	6
 province	7	2010	You did not have time to vote	2
-province	7	2010	You voted in the elections	31
+province	7	2010	You voted in the elections	66
 province	7	2010	You were not registered to vote	5
-province	7	2010	You were too young to vote	5
-province	9	2010	Did not vote for some other reason	2
-province	9	2010	You decided not to vote	8
-province	9	2010	You did not have time to vote	1
+province	7	2010	You were prevented from voting	2
+province	7	2010	You were too young to vote	7
+province	9	2010	Did not vote for some other reason	5
+province	9	2010	Don't Know / Can't remember	1
+province	9	2010	You could not find the polling station	1
+province	9	2010	You decided not to vote	14
+province	9	2010	You did not have time to vote	4
 province	9	2010	You did not vote because your name not in the register	1
-province	9	2010	You voted in the elections	53
-province	9	2010	You were not registered to vote	11
-province	9	2010	You were too young to vote	4
-province	10	2010	Did not vote for some other reason	1
+province	9	2010	You voted in the elections	84
+province	9	2010	You were not registered to vote	18
+province	9	2010	You were too young to vote	8
+province	10	2010	Did not vote for some other reason	5
 province	10	2010	You could not find the polling station	1
-province	10	2010	You decided not to vote	1
+province	10	2010	You decided not to vote	3
 province	10	2010	You did not have time to vote	4
-province	10	2010	You voted in the elections	45
-province	10	2010	You were not registered to vote	3
-province	10	2010	You were too young to vote	1
+province	10	2010	You voted in the elections	61
+province	10	2010	You were not registered to vote	4
+province	10	2010	You were too young to vote	2
 country	ZM	2010	You decided not to vote	90
 country	ZM	2010	You could not find the polling station	14
 country	ZM	2010	You did not have time to vote	35

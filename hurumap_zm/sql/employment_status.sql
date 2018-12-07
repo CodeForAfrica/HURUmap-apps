@@ -37,48 +37,54 @@ CREATE TABLE public.employment_status (
 --
 
 COPY public.employment_status (geo_level, geo_code, geo_version, employment_status, total) FROM stdin;
-province	1	2010	Don't know	8
-province	1	2010	No (looking)	244
-province	1	2010	No (not looking)	331
-province	1	2010	Yes, full time	155
-province	1	2010	Yes, part time	92
-province	2	2010	No (looking)	12
-province	2	2010	No (not looking)	13
-province	2	2010	Yes, full time	5
-province	2	2010	Yes, part time	2
-province	3	2010	No (looking)	9
-province	3	2010	No (not looking)	22
-province	3	2010	Yes, full time	9
-province	4	2010	No (looking)	10
-province	4	2010	No (not looking)	21
-province	4	2010	Yes, full time	6
-province	4	2010	Yes, part time	2
-province	6	2010	No (looking)	9
-province	6	2010	No (not looking)	25
-province	6	2010	Yes, full time	7
-province	6	2010	Yes, part time	7
-province	8	2010	No (looking)	4
-province	8	2010	No (not looking)	11
-province	8	2010	Yes, full time	5
-province	8	2010	Yes, part time	4
-province	7	2010	No (looking)	14
-province	7	2010	No (not looking)	26
-province	7	2010	Yes, full time	5
-province	7	2010	Yes, part time	3
-province	9	2010	Don't know	1
-province	9	2010	No (looking)	27
-province	9	2010	No (not looking)	33
-province	9	2010	Yes, full time	10
-province	9	2010	Yes, part time	9
-province	10	2010	No (looking)	17
-province	10	2010	No (not looking)	19
-province	10	2010	Yes, full time	16
-province	10	2010	Yes, part time	4
+province	1	2010	No (looking)	39
+province	1	2010	No (not looking)	51
+province	1	2010	Yes, full time	13
+province	1	2010	Yes, part time	17
+province	2	2010	Don't know	1
+province	2	2010	No (looking)	80
+province	2	2010	No (not looking)	62
+province	2	2010	Yes, full time	33
+province	2	2010	Yes, part time	16
+province	3	2010	No (looking)	25
+province	3	2010	No (not looking)	71
+province	3	2010	Yes, full time	35
+province	3	2010	Yes, part time	5
+province	4	2010	No (looking)	19
+province	4	2010	No (not looking)	44
+province	4	2010	Yes, full time	18
+province	4	2010	Yes, part time	5
+province	5	2010	Don't know	5
+province	5	2010	No (looking)	60
+province	5	2010	No (not looking)	71
+province	5	2010	Yes, full time	49
+province	5	2010	Yes, part time	38
+province	6	2010	No (looking)	14
+province	6	2010	No (not looking)	31
+province	6	2010	Yes, full time	10
+province	6	2010	Yes, part time	9
+province	8	2010	No (looking)	14
+province	8	2010	No (not looking)	32
+province	8	2010	Yes, full time	11
+province	8	2010	Yes, part time	7
+province	7	2010	No (looking)	31
+province	7	2010	No (not looking)	53
+province	7	2010	Yes, full time	7
+province	7	2010	Yes, part time	5
+province	9	2010	Don't know	3
+province	9	2010	No (looking)	42
+province	9	2010	No (not looking)	61
+province	9	2010	Yes, full time	15
+province	9	2010	Yes, part time	15
+province	10	2010	No (looking)	22
+province	10	2010	No (not looking)	25
+province	10	2010	Yes, full time	27
+province	10	2010	Yes, part time	6
 country	ZM	2010	No (looking)	346
-country	ZM	2010	No (not looking)	501
 country	ZM	2010	Yes, full time	218
-country	ZM	2010	Yes, part time	123
+country	ZM	2010	No (not looking)	501
 country	ZM	2010	Don't know	9
+country	ZM	2010	Yes, part time	123
 \.
 
 

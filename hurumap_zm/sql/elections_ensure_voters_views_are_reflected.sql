@@ -37,56 +37,61 @@ CREATE TABLE public.elections_ensure_voters_views_are_reflected (
 --
 
 COPY public.elections_ensure_voters_views_are_reflected (geo_level, geo_code, geo_version, elections_ensure_voters_views_are_reflected, total) FROM stdin;
-province	1	2010	Don't know	91
-province	1	2010	Not at all well	97
-province	1	2010	Not very well	262
-province	1	2010	Very well	147
-province	1	2010	Well	234
-province	2	2010	Don't know	5
-province	2	2010	Not at all well	9
-province	2	2010	Not very well	10
-province	2	2010	Very well	2
-province	2	2010	Well	6
-province	3	2010	Don't know	9
-province	3	2010	Not at all well	2
-province	3	2010	Not very well	7
-province	3	2010	Very well	9
-province	3	2010	Well	13
-province	4	2010	Don't know	1
-province	4	2010	Not at all well	5
-province	4	2010	Not very well	12
-province	4	2010	Very well	10
-province	4	2010	Well	12
-province	6	2010	Don't know	10
-province	6	2010	Not at all well	1
-province	6	2010	Not very well	6
-province	6	2010	Very well	19
-province	6	2010	Well	11
-province	8	2010	Don't know	2
-province	8	2010	Not at all well	1
-province	8	2010	Not very well	4
-province	8	2010	Very well	4
-province	8	2010	Well	13
-province	7	2010	Don't know	2
-province	7	2010	Not at all well	2
-province	7	2010	Not very well	11
-province	7	2010	Very well	18
-province	7	2010	Well	15
-province	9	2010	Don't know	2
-province	9	2010	Not at all well	9
-province	9	2010	Not very well	16
-province	9	2010	Very well	14
-province	9	2010	Well	39
-province	10	2010	Don't know	2
-province	10	2010	Not at all well	5
-province	10	2010	Not very well	28
-province	10	2010	Very well	13
-province	10	2010	Well	8
-country	ZM	2010	Well	351
-country	ZM	2010	Very well	236
-country	ZM	2010	Not at all well	131
-country	ZM	2010	Don't know	124
+province	1	2010	Don't know	11
+province	1	2010	Not at all well	24
+province	1	2010	Not very well	43
+province	1	2010	Very well	27
+province	1	2010	Well	15
+province	2	2010	Don't know	19
+province	2	2010	Not at all well	42
+province	2	2010	Not very well	69
+province	2	2010	Very well	16
+province	2	2010	Well	46
+province	3	2010	Don't know	34
+province	3	2010	Not at all well	8
+province	3	2010	Not very well	30
+province	3	2010	Very well	17
+province	3	2010	Well	47
+province	4	2010	Don't know	3
+province	4	2010	Not at all well	9
+province	4	2010	Not very well	26
+province	4	2010	Very well	24
+province	4	2010	Well	25
+province	5	2010	Don't know	26
+province	5	2010	Not at all well	19
+province	5	2010	Not very well	80
+province	5	2010	Very well	37
+province	5	2010	Well	62
+province	6	2010	Don't know	12
+province	6	2010	Not at all well	3
+province	6	2010	Not very well	11
+province	6	2010	Very well	25
+province	6	2010	Well	12
+province	8	2010	Don't know	4
+province	8	2010	Not at all well	3
+province	8	2010	Not very well	9
+province	8	2010	Very well	9
+province	8	2010	Well	39
+province	7	2010	Don't know	6
+province	7	2010	Not at all well	4
+province	7	2010	Not very well	18
+province	7	2010	Very well	44
+province	7	2010	Well	24
+province	9	2010	Don't know	3
+province	9	2010	Not at all well	13
+province	9	2010	Not very well	29
+province	9	2010	Very well	19
+province	9	2010	Well	72
+province	10	2010	Don't know	6
+province	10	2010	Not at all well	6
+province	10	2010	Not very well	41
+province	10	2010	Very well	18
+province	10	2010	Well	9
 country	ZM	2010	Not very well	356
+country	ZM	2010	Well	351
+country	ZM	2010	Don't know	124
+country	ZM	2010	Not at all well	131
+country	ZM	2010	Very well	236
 \.
 
 
