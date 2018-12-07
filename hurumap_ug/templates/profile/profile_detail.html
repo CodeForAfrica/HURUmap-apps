@@ -23,10 +23,11 @@
           <li><a href="#elections2016"><i class="fa fa-check"></i>
             <span>Elections</span></a>
           </li>
-          <ul>
-            <li><a href="#afrobarometer"><i class="fa fa-signal"></i>
-              <span>Afrobarometer</span></a></li>
-          </ul>
+          {% if not afrobarometer.is_missing %}
+          <li><a href="#afrobarometer"><i class="fa fa-signal"></i>
+            <span>Afrobarometer</span></a>
+          </li>
+          {% endif %}
         </ul>
       </div>
     </nav>
