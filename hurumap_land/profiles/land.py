@@ -69,7 +69,6 @@ def get_land_profile(geo, profile_name, request):
                                 raise ValueError(msg)
         data['districtdistribution'] = districtdistribution(geo, session)
         data['land_audit_2013'] = get_land_audit_2013_profile(geo, session)
-        print data
         return data
 
     finally:
@@ -168,6 +167,7 @@ def get_redistributionandrestitution_profile(geo, session):
     femalepartybenefited_tot = disabledpeoplepartybenefited_tot = youthpartybenefited_tot = 0
     hectarestransferredperprovincebyyear_tot = hectaresacquiredrestitution_tot = 0
     householdsrestitution_tot = disabilitiesrestitution_tot = 0
+    redistributedland_avg_cost = redistributedland_tot_cost = redistributedland_hect_tot = 0
 
     redistributionrestitution = {'is_missing': True}
 
@@ -318,32 +318,40 @@ def get_redistributionandrestitution_profile(geo, session):
         pass
 
     try:
-        redistributedlandinhectarestable = get_datatable('redistributedlandinhectares')
-        redistributedlandinhectares, tot  = redistributedlandinhectarestable.get_stat_data(
-                            geo, percent=False)
-        redistributedlandinhectares['redistributedlandinhectares']['name'] = "Total land redistributed in hectares for the year 2017/2018"
+        redistributedlandinhectares, redistributedland_hect_tot  = get_stat_data(
+            ['redistributedland'], geo, session, percent=False,
+            only={'redistributedland': ['number of hectares']})
+        print redistributedlandinhectares
     except LocationNotFound:
         pass
 
     try:
-        redistributedlandcostinrandstable = get_datatable('redistributedlandcostinrands')
-        redistributedlandcostinrands, tot_cost  = redistributedlandcostinrandstable.get_stat_data(geo, percent=False)
-        redistributedlandcostinrands['redistributedlandcostinrands']['name'] = "Cost in Rands (ZAR) of Redistributed Land for the year 2017/2018"
+        redistributedlandcostinrands, redistributedland_tot_cost  = get_stat_data(
+            ['redistributedland'], geo, session, percent=False,
+            only={'redistributedland': ['cost in rands']})
     except LocationNotFound:
         pass
 
     try:
-        redistributedlandaveragecostperhectarestable = get_datatable('redistributedlandaveragecostperhectares')
-        redistributedlandaveragecostperhectares, tot_avg_cost  = redistributedlandaveragecostperhectarestable.get_stat_data(geo, percent=False)
-        redistributedlandaveragecostperhectares['redistributedlandaveragecostperhectares']['name'] = "Average Cost in Rands (ZAR) per Hectares for Redistributed Land in 2017/2018"
+        redistributedlandaveragecostperhectares, redistributedland_avg_cost  = get_stat_data(
+            ['redistributedland'], geo, session, percent=False,
+            only={'redistributedland': ['average cost per hectares']})
     except LocationNotFound:
         pass
 
     redistributionrestitution['redistributedlandusebreakdown']= redistributedlandusebreakdown
-    redistributionrestitution['redistributedlandinhectares_stat']= redistributedlandinhectares['redistributedlandinhectares']
-    redistributionrestitution['redistributedlandcostinrands_stat']= redistributedlandcostinrands['redistributedlandcostinrands']
-    redistributionrestitution['redistributedlandaveragecostperhectares_stat']= \
-                    redistributedlandaveragecostperhectares['redistributedlandaveragecostperhectares']
+    redistributionrestitution['redistributedlandinhectares_stat'] = \
+                {   "name": "Total land redistributed in hectares for the year 2017/2018",
+                     "values": {"this": redistributedland_hect_tot}
+                }
+    redistributionrestitution['redistributedlandcostinrands_stat'] = \
+                {   "name": "Cost in Rands (ZAR) of Redistributed Land for the year 2017/2018",
+                     "values": {"this": redistributedland_tot_cost}
+                }
+    redistributionrestitution['redistributedlandaveragecostperhectares_stat'] = \
+                {   "name": "Average Cost in Rands (ZAR) per Hectares for Redistributed Land in 2017/2018",
+                    "values": {"this": redistributedland_avg_cost}
+                }
     redistributionrestitution['redistributeprogrammeprojectsbyyear']= redistributeprogrammeprojectsbyyear
     redistributionrestitution['redistributeprogrammehouseholdsbyyear']= redistributeprogrammehouseholdsbyyear
     redistributionrestitution['redistributeprogrammebeneficiariesbyyear']= redistributeprogrammebeneficiariesbyyear
