@@ -2,17 +2,16 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 10.0
--- Dumped by pg_dump version 10.0
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-
-SET search_path = public, pg_catalog;
 
 ALTER TABLE IF EXISTS ONLY public.agegroup_gender DROP CONSTRAINT IF EXISTS pk_agegroup_gender;
 DROP TABLE IF EXISTS public.agegroup_gender;
@@ -24,7 +23,7 @@ SET default_with_oids = false;
 -- Name: agegroup_gender; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE agegroup_gender (
+CREATE TABLE public.agegroup_gender (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     gender character varying(128) NOT NULL,
@@ -38,7 +37,7 @@ CREATE TABLE agegroup_gender (
 -- Data for Name: agegroup_gender; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY agegroup_gender (geo_level, geo_code, gender, "age group", total, geo_version) FROM stdin;
+COPY public.agegroup_gender (geo_level, geo_code, gender, "age group", total, geo_version) FROM stdin;
 country	ZM	male	0-14 Years	2954372	2010
 province	1	male	0-14 Years	303521	2010
 province	2	male	0-14 Years	398080	2010
@@ -109,10 +108,10 @@ province	10	female	35 and above	100829	2010
 
 
 --
--- Name: agegroup_gender agegroup_gender_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_zm
+-- Name: agegroup_gender pk_agegroup_gender; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY agegroup_gender
+ALTER TABLE ONLY public.agegroup_gender
     ADD CONSTRAINT pk_agegroup_gender PRIMARY KEY (geo_level, geo_code, gender, "age group");
 
 

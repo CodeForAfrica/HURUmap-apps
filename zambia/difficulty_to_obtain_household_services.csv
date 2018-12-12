@@ -1,0 +1,50 @@
+geography,difficulty_to_obtain_household_services,total
+Central,Don't Know,1
+Central,Easy,3
+Central,No contact,104
+Central,Very Difficult,8
+Central,Very Easy,4
+Copperbelt,Difficult,8
+Copperbelt,Easy,20
+Copperbelt,No contact,153
+Copperbelt,Very Difficult,7
+Copperbelt,Very Easy,4
+Eastern,Difficult,21
+Eastern,Easy,9
+Eastern,No contact,96
+Eastern,Very Difficult,4
+Eastern,Very Easy,6
+Luapula,Difficult,5
+Luapula,Easy,5
+Luapula,No contact,74
+Luapula,Very Difficult,2
+Luapula,Very Easy,1
+Lusaka,Difficult,18
+Lusaka,Don't Know,2
+Lusaka,Easy,27
+Lusaka,No contact,158
+Lusaka,Very Difficult,15
+Lusaka,Very Easy,4
+Muchinga,No contact,62
+Muchinga,Very Difficult,1
+Muchinga,Very Easy,1
+North-Western,Difficult,2
+North-Western,Easy,2
+North-Western,No contact,59
+North-Western,Very Easy,1
+Northern,No contact,94
+Northern,Very Difficult,2
+Southern,Difficult,4
+Southern,Easy,4
+Southern,No contact,126
+Southern,Very Difficult,2
+Western,Difficult,6
+Western,Easy,3
+Western,No contact,63
+Western,Very Difficult,7
+Zambia,Very Easy,21
+Zambia,No contact,989
+Zambia,Easy,73
+Zambia,Very Difficult,48
+Zambia,Don't Know,3
+Zambia,Difficult,64
