@@ -14,6 +14,7 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET row_security = off;
 
+ALTER TABLE IF EXISTS ONLY public.restitutionoutcomestatistic DROP CONSTRAINT IF EXISTS pk_restitutionoutcomestatistic;
 DROP TABLE IF EXISTS public.restitutionoutcomestatistic;
 SET default_tablespace = '';
 
@@ -31,9 +32,6 @@ CREATE TABLE public.restitutionoutcomestatistic (
     year character varying(128) NOT NULL,
     total numeric
 );
-
-
-ALTER TABLE IF EXISTS public.restitutionoutcomestatistic OWNER TO our_land;
 
 --
 -- Data for Name: restitutionoutcomestatistic; Type: TABLE DATA; Schema: public;
@@ -532,6 +530,9 @@ province	WC	2016	claims settled	2016/2017	356
 country	ZA	2016	claims settled	2016/2017	804
 \.
 
+
+ALTER TABLE ONLY public.restitutionoutcomestatistic
+    ADD CONSTRAINT pk_restitutionoutcomestatistic PRIMARY KEY (geo_level, geo_code, geo_version, restitutionoutcomestatistic, year);
 
 --
 -- PostgreSQL database dump complete

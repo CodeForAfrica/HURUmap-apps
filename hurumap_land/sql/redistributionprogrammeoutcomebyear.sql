@@ -316,7 +316,7 @@ country	ZA	2016	2017/2018	benefited households	478
 \.
 
 ALTER TABLE IF EXISTS ONLY public.redistributionprogrammeoutcomebyyear
-    ADD CONSTRAINT pk_redistributionprogrammeoutcomebyyear PRIMARY KEY (geo_level, geo_code, geo_version, "outcome of redistribution programme");
+    ADD CONSTRAINT pk_redistributionprogrammeoutcomebyyear PRIMARY KEY (geo_level, geo_code, geo_version, year, "outcome of redistribution programme");
 
 -- Completed on 2018-09-13 12:54:41 EAT
 

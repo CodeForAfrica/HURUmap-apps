@@ -75,7 +75,7 @@ country	ZA	2016	average cost per hectares	5563.86
 --
 
 ALTER TABLE ONLY public.redistributedlandinhectares
-    ADD CONSTRAINT pk_redistributedlandinhectares PRIMARY KEY (geo_level, geo_code, geo_version, redistributedlandinhectares);
+    ADD CONSTRAINT pk_redistributedlandinhectares PRIMARY KEY (geo_level, geo_code, geo_version, redistributedland);
 
 
 --
