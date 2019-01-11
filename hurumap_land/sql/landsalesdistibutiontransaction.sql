@@ -15,6 +15,7 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET row_security = off;
 
+ALTER TABLE IF EXISTS ONLY public.hectarestransferredperprovincebyyear DROP CONSTRAINT IF EXISTS pk_hectarestransferredperprovincebyyear;
 DROP TABLE IF EXISTS public.hectarestransferredperprovincebyyear;
 SET default_tablespace = '';
 
@@ -131,6 +132,14 @@ province	NW	2016	2017/2018	15017.2
 province	WC	2016	2017/2018	859.9
 country	ZA	2016	2017/2018	92032.4
 \.
+
+--
+-- Name: landownership pk_hectarestransferredperprovincebyyear; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.hectarestransferredperprovincebyyear
+    ADD CONSTRAINT pk_hectarestransferredperprovincebyyear PRIMARY KEY (geo_level, geo_code, geo_version, year);
+
 
 
 --
