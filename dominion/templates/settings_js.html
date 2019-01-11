@@ -1,0 +1,8 @@
+{% extends 'settings_js.html' %}{% load jsonify %}
+
+{% block settings_javascript %}
+{{ block.super }}
+WAZIMAP_COUNTRY_CODE = '{{ HURUMAP.country_code }}';
+GOOGLE_GEOCODE_API_KEY = '{{ HURUMAP.google_geocode_api_key }}';
+var MAPIT = {{ HURUMAP.mapit|jsonify|safe }};
+{% endblock settings_javascript %}
