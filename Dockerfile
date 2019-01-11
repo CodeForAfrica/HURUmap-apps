@@ -11,6 +11,10 @@ ENV APP_SRVHOME=/src
 # Directory in container for project source files
 ENV APP_SRVPROJ=/src/hurumap-apps
 
+# Install Python dependencies
+COPY ./requirements.txt /
+RUN pip install -q -r /requirements.txt
+
 # Add application source code to SRCDIR
 ADD $APP_SRC $APP_SRVPROJ
 
