@@ -15,6 +15,7 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET row_security = off;
 
+ALTER TABLE IF EXISTS ONLY public.hectarestransferredperprovincebyyear DROP CONSTRAINT IF EXISTS pk_hectarestransferredperprovincebyyear;
 DROP TABLE IF EXISTS public.hectarestransferredperprovincebyyear;
 SET default_tablespace = '';
 
@@ -29,7 +30,7 @@ CREATE TABLE public.hectarestransferredperprovincebyyear (
     geo_code character varying(10) NOT NULL,
     geo_version character varying(100) DEFAULT ''::character varying NOT NULL,
     year character varying(128) NOT NULL,
-    hectarestransferredperprovincebyyear numeric
+    total numeric
 );
 
 
@@ -39,7 +40,7 @@ CREATE TABLE public.hectarestransferredperprovincebyyear (
 -- Data for Name: hectarestransferredperprovincebyyear; Type: TABLE DATA; Schema: public
 --
 
-COPY public.hectarestransferredperprovincebyyear (geo_level, geo_code, geo_version, year, hectarestransferredperprovincebyyear) FROM stdin;
+COPY public.hectarestransferredperprovincebyyear (geo_level, geo_code, geo_version, year, total) FROM stdin;
 province	EC	2016	2009/2010	39677.9
 province	FS	2016	2009/2010	30211.5
 province	GT	2016	2009/2010	1745
@@ -131,6 +132,14 @@ province	NW	2016	2017/2018	15017.2
 province	WC	2016	2017/2018	859.9
 country	ZA	2016	2017/2018	92032.4
 \.
+
+--
+-- Name: landownership pk_hectarestransferredperprovincebyyear; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.hectarestransferredperprovincebyyear
+    ADD CONSTRAINT pk_hectarestransferredperprovincebyyear PRIMARY KEY (geo_level, geo_code, geo_version, year);
+
 
 
 --
