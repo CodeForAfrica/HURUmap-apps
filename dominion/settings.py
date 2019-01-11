@@ -9,11 +9,12 @@ from hurumap.settings import *  # noqa
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-INSTALLED_APPS = ['dominion'] + INSTALLED_APPS
+INSTALLED_APPS = ['corsheaders','rest_framework','dominion'] + INSTALLED_APPS
 
 ROOT_URLCONF = 'dominion.urls'
 
 MIDDLEWARE_CLASSES = (
+        'corsheaders.middleware.CorsMiddleware',
         'whitenoise.middleware.WhiteNoiseMiddleware',
     ) + MIDDLEWARE_CLASSES
 
@@ -192,6 +193,14 @@ HURUMAP['showcase_stories'] = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+CORS_ORIGIN_ALLOW_ALL = False
+
+#whitelist localhost:3000 to serve rest frontend
+CORS_ORIGIN_WHITELIST = (
+        'localhost:3000/'
+    )
 
 LOGGING['loggers']['dominion'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
 
