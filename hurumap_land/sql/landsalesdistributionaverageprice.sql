@@ -13,6 +13,7 @@ SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
+ALTER TABLE IF EXISTS ONLY public.landsalesdistributionaverageprice DROP CONSTRAINT IF EXISTS pk_landsalesdistributionaverageprice;
 DROP TABLE IF EXISTS public.landsalesdistributionaverageprice;
 SET default_tablespace = '';
 
@@ -198,6 +199,12 @@ province	WC	2016	800,001-1M	871205
 province	WC	2016	Above 1M	2014205
 \.
 
+--
+-- Name: landownership pk_landsalesdistributionaverageprice; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.landsalesdistributionaverageprice
+    ADD CONSTRAINT pk_landsalesdistributionaverageprice PRIMARY KEY (geo_level, geo_code, geo_version, class);
 
 --
 -- PostgreSQL database dump complete
