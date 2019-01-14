@@ -72,10 +72,6 @@ def get_land_profile(geo, profile_name, request):
                                 raise ValueError(msg)
         data['districtdistribution'] = districtdistribution(geo, session)
         data['land_audit_2013'] = get_land_audit_2013_profile(geo, session)
-        data['primary_release_year'] = current_context().get('year')
-        print '\n\n\n\n\n\n'
-        print data
-        print '\n\n\n\n\n\n'
         return data
 
     finally:
@@ -182,6 +178,9 @@ def get_redistributionandrestitution_profile(geo, session):
         femalepartybenefited_tot = disabledpeoplepartybenefited_tot = youthpartybenefited_tot = 0
         hectarestransferredperprovincebyyear_tot = hectaresacquiredrestitution_tot = 0
         householdsrestitution_tot = disabilitiesrestitution_tot = 0
+        redistributedland_avg_cost = redistributedland_tot_cost = redistributedland_hect_tot = 0
+        redistributeprogrammehouseholdsbyyear_tot = redistributeprogrammeprojectsbyyear_tot = 0
+        redistributeprogrammebeneficiariesbyyear_tot = 0
 
         redistributionrestitution = {'is_missing': True}
 
@@ -191,32 +190,32 @@ def get_redistributionandrestitution_profile(geo, session):
         except Exception:
             pass
 
-        try:
-            redistributeprogrammeprojectsbyyear, _ = get_stat_data(
-                ['year'], geo, session,
-                table_fields=['year', 'outcome of redistribution programme'],
-                only={'outcome of redistribution programme': ['projects transferred']},
-                percent=False)
-        except Exception:
-            pass
+    try:
+        redistributeprogrammeprojectsbyyear, redistributeprogrammeprojectsbyyear_tot = get_stat_data(
+            ['year'], geo, session,
+            table_fields=['year', 'outcome of redistribution programme'],
+            only={'outcome of redistribution programme': ['projects transferred']},
+            percent=False)
+    except Exception:
+        pass
 
-        try:
-            redistributeprogrammehouseholdsbyyear, _ = get_stat_data(
-                ['year'], geo, session,
-                table_fields=['year', 'outcome of redistribution programme'],
-                only={'outcome of redistribution programme': ['benefited households']},
-                percent=False)
-        except Exception:
-            pass
+    try:
+        redistributeprogrammehouseholdsbyyear, redistributeprogrammehouseholdsbyyear_tot = get_stat_data(
+            ['year'], geo, session,
+            table_fields=['year', 'outcome of redistribution programme'],
+            only={'outcome of redistribution programme': ['benefited households']},
+            percent=False)
+    except Exception:
+        pass
 
-        try:
-            redistributeprogrammebeneficiariesbyyear, _ = get_stat_data(
-                ['year'], geo, session,
-                table_fields=['year', 'outcome of redistribution programme'],
-                only={'outcome of redistribution programme': ['benefited beneficiaries']},
-                percent=False)
-        except Exception:
-            pass
+    try:
+        redistributeprogrammebeneficiariesbyyear, redistributeprogrammebeneficiariesbyyear_tot = get_stat_data(
+            ['year'], geo, session,
+            table_fields=['year', 'outcome of redistribution programme'],
+            only={'outcome of redistribution programme': ['benefited beneficiaries']},
+            percent=False)
+    except Exception:
+        pass
 
         try:
             femalepartybenefited, femalepartybenefited_tot = get_stat_data(
@@ -331,82 +330,126 @@ def get_redistributionandrestitution_profile(geo, session):
         except Exception:
             pass
 
-        try:
-            redistributedlandinhectarestable = get_datatable('redistributedlandinhectares')
-            redistributedlandinhectares, tot  = redistributedlandinhectarestable.get_stat_data(
-                                geo, percent=False)
-            redistributedlandinhectares['redistributedlandinhectares']['name'] = "Total land redistributed in hectares for the year 2017/2018"
-        except Exception:
-            pass
+    try:
+        redistributedlandinhectares, redistributedland_hect_tot  = get_stat_data(
+            ['redistributedland'], geo, session, percent=False,
+            only={'redistributedland': ['number of hectares']})
+    except Exception:
+        pass
 
-        try:
-            redistributedlandcostinrandstable = get_datatable('redistributedlandcostinrands')
-            redistributedlandcostinrands, tot_cost  = redistributedlandcostinrandstable.get_stat_data(geo, percent=False)
-            redistributedlandcostinrands['redistributedlandcostinrands']['name'] = "Cost in Rands (ZAR) of Redistributed Land for the year 2017/2018"
-        except Exception:
-            pass
+    try:
+        redistributedlandcostinrands, redistributedland_tot_cost  = get_stat_data(
+            ['redistributedland'], geo, session, percent=False,
+            only={'redistributedland': ['cost in rands']})
+    except Exception:
+        pass
 
-        try:
-            redistributedlandaveragecostperhectarestable = get_datatable('redistributedlandaveragecostperhectares')
-            redistributedlandaveragecostperhectares, tot_avg_cost  = redistributedlandaveragecostperhectarestable.get_stat_data(geo, percent=False)
-            redistributedlandaveragecostperhectares['redistributedlandaveragecostperhectares']['name'] = "Average Cost in Rands (ZAR) per Hectares for Redistributed Land in 2017/2018"
-        except Exception:
-            pass
+    try:
+        redistributedlandaveragecostperhectares, redistributedland_avg_cost  = get_stat_data(
+            ['redistributedland'], geo, session, percent=False,
+            only={'redistributedland': ['average cost per hectares']})
+    except Exception:
+        pass
 
-        redistributionrestitution['redistributedlandusebreakdown']= redistributedlandusebreakdown
-        redistributionrestitution['redistributedlandinhectares_stat']= redistributedlandinhectares['redistributedlandinhectares']
-        redistributionrestitution['redistributedlandcostinrands_stat']= redistributedlandcostinrands['redistributedlandcostinrands']
-        redistributionrestitution['redistributedlandaveragecostperhectares_stat']= \
-                        redistributedlandaveragecostperhectares['redistributedlandaveragecostperhectares']
-        redistributionrestitution['redistributeprogrammeprojectsbyyear']= redistributeprogrammeprojectsbyyear
-        redistributionrestitution['redistributeprogrammehouseholdsbyyear']= redistributeprogrammehouseholdsbyyear
-        redistributionrestitution['redistributeprogrammebeneficiariesbyyear']= redistributeprogrammebeneficiariesbyyear
+    redistributionrestitution['redistributedlandusebreakdown']= redistributedlandusebreakdown
+    redistributionrestitution['hectarestransferredperprovincebyyear_stat'] = \
+                {   "name": "Total land in hectares (ha) redistributed from the year 2009 to 2018",
+                     "values": {"this": hectarestransferredperprovincebyyear_tot}
+                }
+    redistributionrestitution['redistributedlandhectares_stat'] = \
+                {   "name": "Redistributed land in hectares for the year 2017/2018",
+                     "values": {"this": redistributedland_hect_tot}
+                }
+    redistributionrestitution['redistributedlandcostinrands_stat'] = \
+                {   "name": "Cost in Rands (ZAR) of Redistributed Land for the year 2017/2018",
+                     "values": {"this": redistributedland_tot_cost}
+                }
+    redistributionrestitution['redistributedlandaveragecostperhectares_stat'] = \
+                {   "name": "Average Cost in Rands (ZAR) per Hectares for Redistributed Land in 2017/2018",
+                    "values": {"this": redistributedland_avg_cost}
+                }
+    redistributionrestitution['redistributeprogrammeprojectsbyyear']= redistributeprogrammeprojectsbyyear
+    redistributionrestitution['redistributeprogrammeprojectsbyyear_stat'] = \
+                {   "name": "Total projects benefitted through Redistribution Programme from 2009/2010 to 2017/2018",
+                    "values": {"this": redistributeprogrammeprojectsbyyear_tot}
+                }
 
-        redistributionrestitution['femalepartybenefited'] = femalepartybenefited
-        redistributionrestitution['youthpartybenefited'] = youthpartybenefited
-        redistributionrestitution['disabledpeoplepartybenefited'] = disabledpeoplepartybenefited
-        redistributionrestitution['hectarestransferredperprovincebyyear'] = hectarestransferredperprovincebyyear
-        redistributionrestitution['hectaresacquiredrestitution'] = hectaresacquiredrestitution
-        redistributionrestitution['claimssettledrestitution'] = claimssettledrestitution
-        redistributionrestitution['householdsrestitution'] = householdsrestitution
-        redistributionrestitution['femaleheadedhouseholdsrestitution'] = femaleheadedhouseholdsrestitution
-        redistributionrestitution['disabilitiesrestitution'] = disabilitiesrestitution
-        redistributionrestitution['projectsrestitution'] = projectsrestitution
-        redistributionrestitution['beneficiariesrestitution'] = beneficiariesrestitution
-        redistributionrestitution['landcostrestitution'] = landcostrestitution
-        redistributionrestitution['financialcompensationrestitution'] = financialcompensationrestitution
-        redistributionrestitution['femalepartybenefited_tot'] = femalepartybenefited_tot
-        redistributionrestitution['youthpartybenefited_tot'] = youthpartybenefited_tot
-        redistributionrestitution['disabledpeoplepartybenefited_tot'] = disabledpeoplepartybenefited_tot
-        redistributionrestitution['hectarestransferredperprovincebyyear_tot'] = hectarestransferredperprovincebyyear_tot
-        redistributionrestitution['hectaresacquiredrestitution_tot'] = hectaresacquiredrestitution_tot
-        redistributionrestitution['claimssettledrestitution_tot'] = claimssettledrestitution_tot
-        redistributionrestitution['landcostrestitution'] = landcostrestitution
-        redistributionrestitution['householdsrestitution_stat'] = \
-                      { "name": "Total households benefited in restitution programme from 2009 to 2018",
-                        "values": {"this": householdsrestitution_tot}
-                      }
-        redistributionrestitution['femaleheadedhouseholdsrestitution_stat'] = \
-                    { "name": "Female headed households benefited in restitution programme from 2009 to 2018",
-                       "values": {"this": femaleheadedhouseholdsrestitution_tot}
-                    }
-        redistributionrestitution['disabilitiesrestitution_stat'] = \
-                    { "name": "Number of people with disabilities benefited in restitution programme from 2009 to 2018",
-                      "values": {"this": disabilitiesrestitution_tot}
-                    }
-        redistributionrestitution['projectsrestitution_stat'] = \
-                    { "name": "Number of projects in the restitution programme from 2009 to 2018",
-                      "values": {"this": projectsrestitution_tot}
-                    }
-        redistributionrestitution['beneficiariesrestitution_stat'] = \
-                    {   "name": "Number of beneficiaries in the restitution programme from 2009 to 2018",
-                         "values": {"this": beneficiariesrestitution_tot}
-                    }
+    redistributionrestitution['redistributeprogrammehouseholdsbyyear']= redistributeprogrammehouseholdsbyyear
+    redistributionrestitution['redistributeprogrammehouseholdsbyyear_stat'] = \
+                {   "name": "Total households benefitted though Redistribution Programme from 2009/2010 to 2017/2018",
+                    "values": {"this": redistributeprogrammehouseholdsbyyear_tot}
+                }
 
-        #if total hectares of redistruted land is missing
-        # and total hectares acquired under restitution is missing, then there's no data
-        redistributionrestitution['is_missing'] = hectarestransferredperprovincebyyear.get('is_missing') \
-                                and hectaresacquiredrestitution.get('is_missing')
+    redistributionrestitution['redistributeprogrammebeneficiariesbyyear']= redistributeprogrammebeneficiariesbyyear
+    redistributionrestitution['redistributeprogrammebeneficiariesbyyear_stat'] = \
+                {   "name": "Total number of beneficiaries of Redistribution Programme from the 2009/2010 to 2017/2018",
+                    "values": {"this": redistributeprogrammebeneficiariesbyyear_tot}
+                }
+
+
+    redistributionrestitution['femalepartybenefited'] = femalepartybenefited
+    redistributionrestitution['femalepartybenefited_stat'] = \
+                  { "name": "Number of female benefited through Redistribution programme from 2009/2010 to 2017/2018",
+                    "values": {"this": femalepartybenefited_tot}
+                  }
+
+    redistributionrestitution['youthpartybenefited'] = youthpartybenefited
+    redistributionrestitution['youthpartybenefited_stat'] = \
+                  { "name": "Number of youth benefited through Redistribution programme from 2009/2010 to 2017/2018",
+                    "values": {"this": youthpartybenefited_tot}
+                  }
+    redistributionrestitution['disabledpeoplepartybenefited'] = disabledpeoplepartybenefited
+    redistributionrestitution['disabledpeoplepartybenefited_stat'] = \
+                  { "name": "People with disabilities benefited in Redistribution programme from 2009/2010 to 2017/2018",
+                    "values": {"this": disabledpeoplepartybenefited_tot}
+                  }
+
+    redistributionrestitution['hectarestransferredperprovincebyyear'] = hectarestransferredperprovincebyyear
+
+    redistributionrestitution['hectaresacquiredrestitution'] = hectaresacquiredrestitution
+    redistributionrestitution['claimssettledrestitution'] = claimssettledrestitution
+    redistributionrestitution['householdsrestitution'] = householdsrestitution
+    redistributionrestitution['femaleheadedhouseholdsrestitution'] = femaleheadedhouseholdsrestitution
+    redistributionrestitution['disabilitiesrestitution'] = disabilitiesrestitution
+    redistributionrestitution['projectsrestitution'] = projectsrestitution
+    redistributionrestitution['beneficiariesrestitution'] = beneficiariesrestitution
+    redistributionrestitution['landcostrestitution'] = landcostrestitution
+    redistributionrestitution['financialcompensationrestitution'] = financialcompensationrestitution
+    redistributionrestitution['hectarestransferredperprovincebyyear_tot'] = hectarestransferredperprovincebyyear_tot
+    redistributionrestitution['hectaresacquiredrestitution_tot'] = hectaresacquiredrestitution_tot
+    redistributionrestitution['claimssettledrestitution_tot'] = claimssettledrestitution_tot
+    redistributionrestitution['landcostrestitution'] = landcostrestitution
+
+    redistributionrestitution['hectaresacquiredrestitution_stat'] = \
+                  { "name": "Total hectares acquired in Restitution programme from 2009/2010 to 2017/2018",
+                    "values": {"this": hectaresacquiredrestitution_tot}
+                  }
+    redistributionrestitution['householdsrestitution_stat'] = \
+                  { "name": "Total households benefited in Restitution programme from 2009/2010 to 2017/2018",
+                    "values": {"this": householdsrestitution_tot}
+                  }
+    redistributionrestitution['femaleheadedhouseholdsrestitution_stat'] = \
+                { "name": "Female headed households benefited in restitution programme from 2009/2010 to 2017/2018",
+                   "values": {"this": femaleheadedhouseholdsrestitution_tot}
+                }
+    redistributionrestitution['disabilitiesrestitution_stat'] = \
+                { "name": "Number of people with disabilities benefited in Restitution programme from 2009/2010 to 2017/2018",
+                  "values": {"this": disabilitiesrestitution_tot}
+                }
+    redistributionrestitution['projectsrestitution_stat'] = \
+                { "name": "Number of projects in the restitution programme from 2009/2010 to 2017/2018",
+                  "values": {"this": projectsrestitution_tot}
+                }
+    redistributionrestitution['beneficiariesrestitution_stat'] = \
+                {   "name": "Number of beneficiaries in the restitution programme from 2009/2010 to 2017/2018",
+                     "values": {"this": beneficiariesrestitution_tot}
+                }
+
+
+    #if total hectares of redistruted land is missing
+    # and total hectares acquired under restitution is missing, then there's no data
+    redistributionrestitution['is_missing'] = hectarestransferredperprovincebyyear.get('is_missing') \
+                            and hectaresacquiredrestitution.get('is_missing')
 
     return redistributionrestitution
 
@@ -748,33 +791,30 @@ def districtdistribution(geo, session):
                 except Exception as e:
                     pass
 
-                try:
-                    towndistrictdistributionhectaresdata[
-                        town_code], _ = get_stat_data(
-                        ['class'], geo, session,
-                        table_name='towndistrictdistributionhectares',
-                        table_fields=['town_name', 'class'],
-                        only={'town_name': [town]},
-                        exclude_zero=True,
-                        percent=False)
-                except Exception as e:
-                    pass
+            try:
+                towndistrictdistributionhectaresdata[town_code], _ = get_stat_data(
+                    ['class'], geo, session,
+                    table_name= 'towndistrictdistributionhectares',
+                    table_fields = ['town_name', 'class'],
+                    only={'town_name': [town]},
+                    exclude_zero=True,
+                    percent=False)
+            except Exception:
+                pass
+
+            try:
+                towndistrictdistributionavgpricedata[town_code], _ = get_stat_data(
+                    ['class'], geo, session,
+                    table_name= 'towndistrictdistributionavgprice',
+                    table_fields = ['town_name', 'class'],
+                    only={'town_name': [town]},
+                    exclude_zero=True,
+                    percent=False)
+            except Exception:
+                pass
 
                 try:
-                    towndistrictdistributionavgpricedata[
-                        town_code], _ = get_stat_data(
-                        ['class'], geo, session,
-                        table_name='towndistrictdistributionavgprice',
-                        table_fields=['town_name', 'class'],
-                        only={'town_name': [town]},
-                        exclude_zero=True,
-                        percent=False)
-                except Exception as e:
-                    pass
-
-                try:
-                    towndistrictdistributionpricetrendsdata[
-                        town_code], _ = get_stat_data(
+                    towndistrictdistributionpricetrendsdata[town_code], _ = get_stat_data(
                         ['class'], geo, session,
                         table_name='towndistrictdistributionpricetrends',
                         table_fields=['town_name', 'class'],
