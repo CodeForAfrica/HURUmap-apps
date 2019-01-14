@@ -2,40 +2,28 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.8
--- Dumped by pg_dump version 9.5.8
+-- Dumped from database version 9.5
+-- Dumped by pg_dump version 9.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-
-SET search_path = public, pg_catalog;
-
-DROP INDEX IF EXISTS public.wazimap_geography_version_01953818_like;
-DROP INDEX IF EXISTS public.wazimap_geography_name_36b79089_like;
-DROP INDEX IF EXISTS public.wazimap_geography_long_name_9b8409f5_like;
-DROP INDEX IF EXISTS public.wazimap_geography_b068931c;
-DROP INDEX IF EXISTS public.wazimap_geography_2fc6351a;
-DROP INDEX IF EXISTS public.wazimap_geography_2af72f10;
-ALTER TABLE IF EXISTS ONLY public.wazimap_geography DROP CONSTRAINT IF EXISTS wazimap_geography_pkey;
-ALTER TABLE IF EXISTS ONLY public.wazimap_geography DROP CONSTRAINT IF EXISTS wazimap_geography_geo_level_bbe3c9fc_uniq;
-ALTER TABLE IF EXISTS public.wazimap_geography ALTER COLUMN id DROP DEFAULT;
-DROP SEQUENCE IF EXISTS public.wazimap_geography_id_seq;
-DROP TABLE IF EXISTS public.wazimap_geography;
-SET search_path = public, pg_catalog;
+SET row_security = off;
 
 SET default_tablespace = '';
 
 SET default_with_oids = false;
 
 --
--- Name: wazimap_geography; Type: TABLE; Schema: public; Owner: -
+-- Name: wazimap_geography; Type: TABLE; Schema: public; Owner: hurumap_tz
 --
 
-CREATE TABLE wazimap_geography (
+CREATE TABLE public.wazimap_geography (
     id integer NOT NULL,
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
@@ -48,11 +36,13 @@ CREATE TABLE wazimap_geography (
 );
 
 
+ALTER TABLE public.wazimap_geography OWNER TO hurumap_tz;
+
 --
--- Name: wazimap_geography_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: wazimap_geography_id_seq; Type: SEQUENCE; Schema: public; Owner: hurumap_tz
 --
 
-CREATE SEQUENCE wazimap_geography_id_seq
+CREATE SEQUENCE public.wazimap_geography_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -60,25 +50,27 @@ CREATE SEQUENCE wazimap_geography_id_seq
     CACHE 1;
 
 
---
--- Name: wazimap_geography_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE wazimap_geography_id_seq OWNED BY wazimap_geography.id;
-
+ALTER TABLE public.wazimap_geography_id_seq OWNER TO hurumap_tz;
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: wazimap_geography_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hurumap_tz
 --
 
-ALTER TABLE ONLY wazimap_geography ALTER COLUMN id SET DEFAULT nextval('wazimap_geography_id_seq'::regclass);
+ALTER SEQUENCE public.wazimap_geography_id_seq OWNED BY public.wazimap_geography.id;
 
 
 --
--- Data for Name: wazimap_geography; Type: TABLE DATA; Schema: public; Owner: -
+-- Name: wazimap_geography id; Type: DEFAULT; Schema: public; Owner: hurumap_tz
 --
 
-COPY wazimap_geography (id, geo_level, geo_code, name, square_kms, parent_level, parent_code, long_name, version) FROM stdin;
+ALTER TABLE ONLY public.wazimap_geography ALTER COLUMN id SET DEFAULT nextval('public.wazimap_geography_id_seq'::regclass);
+
+
+--
+-- Data for Name: wazimap_geography; Type: TABLE DATA; Schema: public; Owner: hurumap_tz
+--
+
+COPY public.wazimap_geography (id, geo_level, geo_code, name, square_kms, parent_level, parent_code, long_name, version) FROM stdin;
 1	region	1	Arusha	34516	country	TZ	Arusha	2009
 2	region	2	Dar es salaam	1393	country	TZ	Dar es salaam	2009
 3	region	3	Dodoma	41311	country	TZ	Dodoma	2009
@@ -3928,70 +3920,71 @@ COPY wazimap_geography (id, geo_level, geo_code, name, square_kms, parent_level,
 
 
 --
--- Name: wazimap_geography_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+-- Name: wazimap_geography_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hurumap_tz
 --
 
-SELECT pg_catalog.setval('wazimap_geography_id_seq', 1, false);
+SELECT pg_catalog.setval('public.wazimap_geography_id_seq', 1, false);
 
 
 --
--- Name: wazimap_geography_geo_level_bbe3c9fc_uniq; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: wazimap_geography wazimap_geography_geo_level_bbe3c9fc_uniq; Type: CONSTRAINT; Schema: public; Owner: hurumap_tz
 --
 
-ALTER TABLE ONLY wazimap_geography
+ALTER TABLE ONLY public.wazimap_geography
     ADD CONSTRAINT wazimap_geography_geo_level_bbe3c9fc_uniq UNIQUE (geo_level, geo_code, version);
 
 
 --
--- Name: wazimap_geography_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: wazimap_geography wazimap_geography_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_tz
 --
 
-ALTER TABLE ONLY wazimap_geography
+ALTER TABLE ONLY public.wazimap_geography
     ADD CONSTRAINT wazimap_geography_pkey PRIMARY KEY (id);
 
 
 --
--- Name: wazimap_geography_2af72f10; Type: INDEX; Schema: public; Owner: -
+-- Name: wazimap_geography_2af72f10; Type: INDEX; Schema: public; Owner: hurumap_tz
 --
 
-CREATE INDEX wazimap_geography_2af72f10 ON wazimap_geography USING btree (version);
-
-
---
--- Name: wazimap_geography_2fc6351a; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX wazimap_geography_2fc6351a ON wazimap_geography USING btree (long_name);
+CREATE INDEX wazimap_geography_2af72f10 ON public.wazimap_geography USING btree (version);
 
 
 --
--- Name: wazimap_geography_b068931c; Type: INDEX; Schema: public; Owner: -
+-- Name: wazimap_geography_2fc6351a; Type: INDEX; Schema: public; Owner: hurumap_tz
 --
 
-CREATE INDEX wazimap_geography_b068931c ON wazimap_geography USING btree (name);
-
-
---
--- Name: wazimap_geography_long_name_9b8409f5_like; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX wazimap_geography_long_name_9b8409f5_like ON wazimap_geography USING btree (long_name varchar_pattern_ops);
+CREATE INDEX wazimap_geography_2fc6351a ON public.wazimap_geography USING btree (long_name);
 
 
 --
--- Name: wazimap_geography_name_36b79089_like; Type: INDEX; Schema: public; Owner: -
+-- Name: wazimap_geography_b068931c; Type: INDEX; Schema: public; Owner: hurumap_tz
 --
 
-CREATE INDEX wazimap_geography_name_36b79089_like ON wazimap_geography USING btree (name varchar_pattern_ops);
+CREATE INDEX wazimap_geography_b068931c ON public.wazimap_geography USING btree (name);
 
 
 --
--- Name: wazimap_geography_version_01953818_like; Type: INDEX; Schema: public; Owner: -
+-- Name: wazimap_geography_long_name_9b8409f5_like; Type: INDEX; Schema: public; Owner: hurumap_tz
 --
 
-CREATE INDEX wazimap_geography_version_01953818_like ON wazimap_geography USING btree (version varchar_pattern_ops);
+CREATE INDEX wazimap_geography_long_name_9b8409f5_like ON public.wazimap_geography USING btree (long_name varchar_pattern_ops);
+
+
+--
+-- Name: wazimap_geography_name_36b79089_like; Type: INDEX; Schema: public; Owner: hurumap_tz
+--
+
+CREATE INDEX wazimap_geography_name_36b79089_like ON public.wazimap_geography USING btree (name varchar_pattern_ops);
+
+
+--
+-- Name: wazimap_geography_version_01953818_like; Type: INDEX; Schema: public; Owner: hurumap_tz
+--
+
+CREATE INDEX wazimap_geography_version_01953818_like ON public.wazimap_geography USING btree (version varchar_pattern_ops);
 
 
 --
 -- PostgreSQL database dump complete
 --
+
