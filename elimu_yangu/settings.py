@@ -34,7 +34,7 @@ MIDDLEWARE_CLASSES = ( 'django.contrib.sessions.middleware.SessionMiddleware','d
 
 DATABASE_URL = os.environ.get(
     'DATABASE_URL',
-    'postgresql://hurumap:elimu_yangu@localhost/elimu_yangu')
+    'postgresql://hurumap:hurumap@localhost/elimu_yangu')
 DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 

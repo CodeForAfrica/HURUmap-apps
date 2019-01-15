@@ -5,7 +5,7 @@ INSTALLED_APPS = ['pesayetu'] + INSTALLED_APPS
 
 
 DATABASE_URL = os.environ.get('DATABASE_URL',
-                              'postgresql://pesayetu:pesayetu@localhost/pesayetu')
+                              'postgresql://hurumap:hurumap@localhost/pesayetu')
 DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 

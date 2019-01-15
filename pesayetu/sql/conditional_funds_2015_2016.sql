@@ -23,7 +23,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: conditional_fund; Type: TABLE; Schema: public; Owner: pesayetu
+-- Name: conditional_fund; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE conditional_fund (
@@ -38,7 +38,7 @@ CREATE TABLE conditional_fund (
 ALTER TABLE conditional_fund OWNER TO pesayetu;
 
 --
--- Data for Name: conditional_fund; Type: TABLE DATA; Schema: public; Owner: pesayetu
+-- Data for Name: conditional_fund; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY conditional_fund (geo_level, geo_code, geo_version, conditional_fund, total) FROM stdin;
@@ -187,7 +187,7 @@ county	24	2009	Other Conditional Allocations	0
 
 
 --
--- Name: conditional_fund pk_conditional_fund; Type: CONSTRAINT; Schema: public; Owner: pesayetu
+-- Name: conditional_fund pk_conditional_fund; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY conditional_fund

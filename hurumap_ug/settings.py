@@ -4,7 +4,7 @@ from collections import OrderedDict
 from hurumap.settings import *  # noqa
 
 DATABASE_URL = os.environ.get('DATABASE_URL',
-                              'postgresql://hurumap_ug:hurumap@localhost/hurumap_ug')
+                              'postgresql://hurumap:hurumap@localhost/hurumap_ug')
 DJANGO_SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY',
                                    'this is some not so secret key but..')
 DEBUG = os.environ.get('DJANGO_DEBUG', True)

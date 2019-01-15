@@ -13,7 +13,7 @@ MIDDLEWARE_CLASSES = (
     ) + MIDDLEWARE_CLASSES
 
 DATABASE_URL = os.environ.get('DATABASE_URL',
-                              'postgresql://hurumap_zm:hurumap_zm@localhost/hurumap_zm')
+                              'postgresql://hurumap:hurumap@localhost/hurumap_zm')
 DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
