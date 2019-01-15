@@ -122,13 +122,13 @@ def get_afrobarometer_profile(geo, session):
         own_motor_vehicle = LOCATIONNOTFOUND
         own_television = LOCATIONNOTFOUND
         own_mobile_phone = LOCATIONNOTFOUND
-        last_national_election_work_for_a_candidate_or_party = LOCATIONNOTFOUND
-        last_national_election_attend_a_campaign_rally = LOCATIONNOTFOUND
+        election_work_for_a_candidate_or_party = LOCATIONNOTFOUND
+        election_attend_a_campaign_rally = LOCATIONNOTFOUND
         last_national_election_attend_a_campaign_meeting = LOCATIONNOTFOUND
         courts_make_binding_decisions = LOCATIONNOTFOUND
         vote_for_which_party = LOCATIONNOTFOUND
         level_of_corruption = LOCATIONNOTFOUND
-        chinas_assistance_does_a_good_job_at_meeting_countrys_needs = LOCATIONNOTFOUND
+        chinas_assistance_meets_countrys_needs = LOCATIONNOTFOUND
         employment_status = LOCATIONNOTFOUND
         main_reason_for_not_reporting_corruption = LOCATIONNOTFOUND
         education_of_respondent = LOCATIONNOTFOUND
@@ -144,11 +144,11 @@ def get_afrobarometer_profile(geo, session):
         employer_of_respondent = LOCATIONNOTFOUND
         how_often_use_a_mobile_phone = LOCATIONNOTFOUND
         how_often_use_the_internet = LOCATIONNOTFOUND
-        freeness_and_fairness_of_the_last_national_election = LOCATIONNOTFOUND
+        freeness_and_fairness_of_last_national_election = LOCATIONNOTFOUND
         extent_of_democracy = LOCATIONNOTFOUND
         elections_ensure_voters_views_are_reflected = LOCATIONNOTFOUND
         corruption_judges_and_magistrates = LOCATIONNOTFOUND
-        elections_enable_voters_to_remove_leaders_from_office = LOCATIONNOTFOUND
+        election_enable_voters_remove_leaders_from_office = LOCATIONNOTFOUND
         corruption_tax_officials = LOCATIONNOTFOUND
         corruption_police = LOCATIONNOTFOUND
         corruption_local_government_councilors = LOCATIONNOTFOUND
@@ -163,7 +163,7 @@ def get_afrobarometer_profile(geo, session):
         difficulty_to_obtain_medical_treatment = LOCATIONNOTFOUND
         pay_bribe_for_school_services = LOCATIONNOTFOUND
         difficulty_to_obtain_identity_document = LOCATIONNOTFOUND
-        pay_bribe_for_treatment_at_public_clinic_or_hospital = LOCATIONNOTFOUND
+        bribe_for_treatment_at_public_health = LOCATIONNOTFOUND
         difficulty_to_obtain_household_services = LOCATIONNOTFOUND
         pay_bribe_for_document_or_permit = LOCATIONNOTFOUND
         pay_bribe_for_household_services = LOCATIONNOTFOUND
@@ -193,17 +193,17 @@ def get_afrobarometer_profile(geo, session):
             pass
 
         try:
-            last_national_election_work_for_a_candidate_or_party, _ = get_stat_data(
-                'last_national_election_work_for_a_candidate_or_party', geo,
+            election_work_for_a_candidate_or_party, _ = get_stat_data(
+                'election_work_for_a_candidate_or_party', geo,
                 session, table_fields=[
-                    'last_national_election_work_for_a_candidate_or_party'])
+                    'election_work_for_a_candidate_or_party'])
         except LocationNotFound:
             pass
 
         try:
-            last_national_election_attend_a_campaign_rally, _ = get_stat_data(
-                'last_national_election_attend_a_campaign_rally', geo, session,
-                table_fields=['last_national_election_attend_a_campaign_rally'])
+            election_attend_a_campaign_rally, _ = get_stat_data(
+                'election_attend_a_campaign_rally', geo, session,
+                table_fields=['election_attend_a_campaign_rally'])
         except LocationNotFound:
             pass
 
@@ -236,10 +236,10 @@ def get_afrobarometer_profile(geo, session):
             pass
 
         try:
-            chinas_assistance_does_a_good_job_at_meeting_countrys_needs, _ = get_stat_data(
-                'chinas_assistance_does_a_good_job_at_meeting_countrys_needs', geo,
+            chinas_assistance_meets_countrys_needs, _ = get_stat_data(
+                'chinas_assistance_meets_countrys_needs', geo,
                 session, table_fields=[
-                    'chinas_assistance_does_a_good_job_at_meeting_countrys_needs'])
+                    'chinas_assistance_meets_countrys_needs'])
         except LocationNotFound:
             pass
 
@@ -348,10 +348,10 @@ def get_afrobarometer_profile(geo, session):
             pass
 
         try:
-            freeness_and_fairness_of_the_last_national_election, _ = get_stat_data(
-                'freeness_and_fairness_of_the_last_national_election', geo, session,
+            freeness_and_fairness_of_last_national_election, _ = get_stat_data(
+                'freeness_and_fairness_of_last_national_election', geo, session,
                 table_fields=[
-                    'freeness_and_fairness_of_the_last_national_election'])
+                    'freeness_and_fairness_of_last_national_election'])
         except LocationNotFound:
             pass
 
@@ -377,10 +377,10 @@ def get_afrobarometer_profile(geo, session):
             pass
 
         try:
-            elections_enable_voters_to_remove_leaders_from_office, _ = get_stat_data(
-                'elections_enable_voters_to_remove_leaders_from_office', geo,
+            election_enable_voters_remove_leaders_from_office, _ = get_stat_data(
+                'election_enable_voters_remove_leaders_from_office', geo,
                 session, table_fields=[
-                    'elections_enable_voters_to_remove_leaders_from_office'])
+                    'election_enable_voters_remove_leaders_from_office'])
         except LocationNotFound:
             pass
 
@@ -482,10 +482,10 @@ def get_afrobarometer_profile(geo, session):
             pass
 
         try:
-            pay_bribe_for_treatment_at_public_clinic_or_hospital, _ = get_stat_data(
-                'pay_bribe_for_treatment_at_public_clinic_or_hospital', geo,
+            bribe_for_treatment_at_public_health, _ = get_stat_data(
+                'bribe_for_treatment_at_public_health', geo,
                 session, table_fields=[
-                    'pay_bribe_for_treatment_at_public_clinic_or_hospital'])
+                    'bribe_for_treatment_at_public_health'])
         except LocationNotFound:
             pass
 
@@ -513,13 +513,13 @@ def get_afrobarometer_profile(geo, session):
         is_missing = own_radio.get('is_missing') and own_motor_vehicle.get(
             'is_missing') and own_television.get(
             'is_missing') and own_mobile_phone.get(
-            'is_missing') and last_national_election_work_for_a_candidate_or_party.get(
-            'is_missing') and last_national_election_attend_a_campaign_rally.get(
+            'is_missing') and election_work_for_a_candidate_or_party.get(
+            'is_missing') and election_attend_a_campaign_rally.get(
             'is_missing') and last_national_election_attend_a_campaign_meeting.get(
             'is_missing') and  courts_make_binding_decisions.get(
             'is_missing') and vote_for_which_party.get(
             'is_missing') and level_of_corruption.get(
-            'is_missing') and chinas_assistance_does_a_good_job_at_meeting_countrys_needs.get(
+            'is_missing') and chinas_assistance_meets_countrys_needs.get(
             'is_missing') and employment_status.get(
             'is_missing') and main_reason_for_not_reporting_corruption.get(
             'is_missing') and education_of_respondent.get(
@@ -535,11 +535,11 @@ def get_afrobarometer_profile(geo, session):
             'is_missing') and employer_of_respondent.get(
             'is_missing') and how_often_use_a_mobile_phone.get(
             'is_missing') and how_often_use_the_internet.get(
-            'is_missing') and freeness_and_fairness_of_the_last_national_election.get(
+            'is_missing') and freeness_and_fairness_of_last_national_election.get(
             'is_missing') and extent_of_democracy.get(
             'is_missing') and elections_ensure_voters_views_are_reflected.get(
             'is_missing') and corruption_judges_and_magistrates.get(
-            'is_missing') and elections_enable_voters_to_remove_leaders_from_office.get(
+            'is_missing') and election_enable_voters_remove_leaders_from_office.get(
             'is_missing') and corruption_tax_officials.get(
             'is_missing') and corruption_police.get(
             'is_missing') and corruption_local_government_councilors.get(
@@ -554,7 +554,7 @@ def get_afrobarometer_profile(geo, session):
             'is_missing') and difficulty_to_obtain_medical_treatment.get(
             'is_missing') and pay_bribe_for_school_services.get(
             'is_missing') and difficulty_to_obtain_identity_document.get(
-            'is_missing') and pay_bribe_for_treatment_at_public_clinic_or_hospital.get(
+            'is_missing') and bribe_for_treatment_at_public_health.get(
             'is_missing') and difficulty_to_obtain_household_services.get(
             'is_missing') and pay_bribe_for_document_or_permit.get(
             'is_missing') and pay_bribe_for_household_services.get('is_missing')
@@ -626,18 +626,18 @@ def get_afrobarometer_profile(geo, session):
                                                         pay_bribe_for_household_services)
             pay_bribe_for_school_services = sort_keys(pay_bribes_key_order,
                                                     pay_bribe_for_school_services)
-            pay_bribe_for_treatment_at_public_clinic_or_hospital = sort_keys(
+            bribe_for_treatment_at_public_health = sort_keys(
                 pay_bribes_key_order,
-                pay_bribe_for_treatment_at_public_clinic_or_hospital)
+                bribe_for_treatment_at_public_health)
 
-            freeness_and_fairness_of_the_last_national_election = sort_keys(
+            freeness_and_fairness_of_last_national_election = sort_keys(
                 free_and_fair_key_order,
-                freeness_and_fairness_of_the_last_national_election)
+                freeness_and_fairness_of_last_national_election)
             elections_ensure_voters_views_are_reflected = sort_keys(elections_key_order,
                                                                     elections_ensure_voters_views_are_reflected)
-            elections_enable_voters_to_remove_leaders_from_office = sort_keys(
+            election_enable_voters_remove_leaders_from_office = sort_keys(
                 elections_key_order,
-                elections_enable_voters_to_remove_leaders_from_office)
+                election_enable_voters_remove_leaders_from_office)
             chinas_influence_positive_or_negative = sort_keys(
                 chinas_influence_key_order, chinas_influence_positive_or_negative)
             chinas_influence_on_economy = sort_keys(
@@ -675,13 +675,13 @@ def get_afrobarometer_profile(geo, session):
         'own_motor_vehicle': own_motor_vehicle,
         'own_television': own_television,
         'own_mobile_phone': own_mobile_phone,
-        'last_national_election_work_for_a_candidate_or_party': last_national_election_work_for_a_candidate_or_party,
-        'last_national_election_attend_a_campaign_rally': last_national_election_attend_a_campaign_rally,
+        'election_work_for_a_candidate_or_party': election_work_for_a_candidate_or_party,
+        'election_attend_a_campaign_rally': election_attend_a_campaign_rally,
         'last_national_election_attend_a_campaign_meeting': last_national_election_attend_a_campaign_meeting,
         'courts_make_binding_decisions': courts_make_binding_decisions,
         'vote_for_which_party': vote_for_which_party,
         'level_of_corruption': level_of_corruption,
-        'chinas_assistance_does_a_good_job_at_meeting_countrys_needs': chinas_assistance_does_a_good_job_at_meeting_countrys_needs,
+        'chinas_assistance_meets_countrys_needs': chinas_assistance_meets_countrys_needs,
         'employment_status': employment_status,
         'main_reason_for_not_reporting_corruption': main_reason_for_not_reporting_corruption,
         'education_of_respondent': education_of_respondent,
@@ -697,11 +697,11 @@ def get_afrobarometer_profile(geo, session):
         'employer_of_respondent': employer_of_respondent,
         'how_often_use_a_mobile_phone': how_often_use_a_mobile_phone,
         'how_often_use_the_internet': how_often_use_the_internet,
-        'freeness_and_fairness_of_the_last_national_election': freeness_and_fairness_of_the_last_national_election,
+        'freeness_and_fairness_of_last_national_election': freeness_and_fairness_of_last_national_election,
         'extent_of_democracy': extent_of_democracy,
         'elections_ensure_voters_views_are_reflected': elections_ensure_voters_views_are_reflected,
         'corruption_judges_and_magistrates': corruption_judges_and_magistrates,
-        'elections_enable_voters_to_remove_leaders_from_office': elections_enable_voters_to_remove_leaders_from_office,
+        'election_enable_voters_remove_leaders_from_office': election_enable_voters_remove_leaders_from_office,
         'corruption_tax_officials': corruption_tax_officials,
         'corruption_police': corruption_police,
         'corruption_local_government_councilors': corruption_local_government_councilors,
@@ -716,7 +716,7 @@ def get_afrobarometer_profile(geo, session):
         'difficulty_to_obtain_medical_treatment': difficulty_to_obtain_medical_treatment,
         'pay_bribe_for_school_services': pay_bribe_for_school_services,
         'difficulty_to_obtain_identity_document': difficulty_to_obtain_identity_document,
-        'pay_bribe_for_treatment_at_public_clinic_or_hospital': pay_bribe_for_treatment_at_public_clinic_or_hospital,
+        'bribe_for_treatment_at_public_health': bribe_for_treatment_at_public_health,
         'difficulty_to_obtain_household_services': difficulty_to_obtain_household_services,
         'pay_bribe_for_document_or_permit': pay_bribe_for_document_or_permit,
         'pay_bribe_for_household_services': pay_bribe_for_household_services,

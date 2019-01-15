@@ -72,6 +72,9 @@ def get_land_profile(geo, profile_name, request):
                                 raise ValueError(msg)
         data['districtdistribution'] = districtdistribution(geo, session)
         data['land_audit_2013'] = get_land_audit_2013_profile(geo, session)
+        print '\n\n\n\n\n\n\n\n'
+        print data
+        print '\n\n\n\n\n\n\n\n'
         return data
 
     finally:
