@@ -1,25 +1,34 @@
 import React, { Component } from 'react';
 
-import logo from './logo.svg';
 import './assets/css/App.css';
+import GeoJsonMap from './component/GeoJsonMap';
+import MapService from './services/MapService';
+
+const mapService = new MapService();
 
 class App extends Component {
+
+  constructor() {
+    super();
+    this.state = {
+      mapJsonData: {}
+    }
+  }
+  componentDidMount() {
+    mapService.getAreaGeoJson().then(value => {
+      this.setState({
+        mapJsonData: value
+      }, () => {
+        console.log(this.state);
+      })
+    });
+  }
   render() {
+    console.log(this.state.mapJsonData)
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+          <GeoJsonMap mapGeoJson={this.state.mapJsonData} />
         </header>
       </div>
     );
