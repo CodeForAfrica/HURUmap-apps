@@ -306,9 +306,8 @@ class GeographyCompareView(TemplateView):
 def get_overall_topschools(year, geo_level, geo_code, session):
     schools = {}
     # Choosing sorting option
-    print '\n\n\n\n\n'
-    print Base.metadata.tables
-    print '\n\n\n\n\n'
+
+    Base.metadata.reflect()
     rank_column = Base.metadata.tables['secondary_school'].c.national_rank_all
     # Fetching schools
     top_schools_40_more = session.query(Base.metadata.tables['secondary_school'])\
