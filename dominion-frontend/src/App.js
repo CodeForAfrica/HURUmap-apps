@@ -10,9 +10,6 @@ class App extends Component {
 
   constructor() {
     super();
-    this.state = {
-      mapJsonData: {}
-    }
   }
   componentDidMount() {
     mapService.getAreaGeoJson().then(value => {
@@ -24,11 +21,10 @@ class App extends Component {
     });
   }
   render() {
-    console.log(this.state.mapJsonData)
     return (
       <div className="App">
         <header className="App-header">
-          <GeoJsonMap mapGeoJson={this.state.mapJsonData} />
+          <GeoJsonMap />
         </header>
       </div>
     );

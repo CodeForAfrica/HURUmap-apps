@@ -1,5 +1,6 @@
 import React from 'react'
 import { Map as LeafletMap, GeoJSON } from 'react-leaflet';
+import worldGeoJSON from 'geojson-world-map';
 
 function GeoJsonMap({ mapGeoJson }) {
   console.log(mapGeoJson.type);
@@ -18,7 +19,7 @@ function GeoJsonMap({ mapGeoJson }) {
         easeLinearity={0.35}
       >
         <GeoJSON
-          data={mapGeoJson}
+          data={worldGeoJSON}
           style={() => ({
             color: '#777',
             weight: 2,
