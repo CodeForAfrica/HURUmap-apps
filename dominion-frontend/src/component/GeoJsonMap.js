@@ -3,8 +3,6 @@ import { Map as LeafletMap, GeoJSON } from 'react-leaflet';
 import worldGeoJSON from 'geojson-world-map';
 
 function GeoJsonMap({ mapGeoJson }) {
-  console.log(mapGeoJson.type);
-  if (mapGeoJson.type) {
     return (
       <LeafletMap
         center={[50, 10]}
@@ -29,24 +27,6 @@ function GeoJsonMap({ mapGeoJson }) {
         />
       </LeafletMap>
     );
-  } else {
-    return (
-      <LeafletMap
-      center={[50, 10]}
-      zoom={6}
-      maxZoom={10}
-      attributionControl={true}
-      zoomControl={true}
-      doubleClickZoom={true}
-      scrollWheelZoom={true}
-      dragging={true}
-      animate={true}
-      easeLinearity={0.35}
-    >
-    </LeafletMap>
-    )
-  }
-
 }
 
 export default GeoJsonMap

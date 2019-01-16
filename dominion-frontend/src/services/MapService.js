@@ -2,7 +2,6 @@ import axios from 'axios';
 const config = require('../config');
 
 export default class MapService {
-    constructor() {}
 
     getAreaGeoJson(){
         var mapit_level = config.level_codes['province'];

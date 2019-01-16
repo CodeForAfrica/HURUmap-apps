@@ -10,6 +10,9 @@ class App extends Component {
 
   constructor() {
     super();
+    this.state = {
+      mapJsonData: {}
+    }
   }
   componentDidMount() {
     mapService.getAreaGeoJson().then(value => {
