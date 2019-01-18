@@ -10,7 +10,7 @@ Once your back-end is running either local or on a server, run the following com
 `Note: You will need to update the config dev.js file with the right url for your api/back-end project`
 
 ```
-cd dominion-frontend
+cd frontend
 gatsby develop --port 3000
 ```
 ## API documentation
