@@ -14,31 +14,31 @@ SET client_min_messages = warning;
 
 SET search_path = public, pg_catalog;
 
-ALTER TABLE IF EXISTS ONLY public.agegroup_gender DROP CONSTRAINT IF EXISTS pk_agegroup_gender;
-DROP TABLE IF EXISTS public.agegroup_gender;
+ALTER TABLE IF EXISTS ONLY public.gender_age_group DROP CONSTRAINT IF EXISTS pk_gender_age_group;
+DROP TABLE IF EXISTS public.gender_age_group;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
 
 --
--- Name: agegroup_gender; Type: TABLE; Schema: public; Owner: -
+-- Name: gender_age_group; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE agegroup_gender (
+CREATE TABLE public.gender_age_group (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     gender character varying(128) NOT NULL,
-    "age group" character varying(128) NOT NULL,
+    age_group character varying(128) NOT NULL,
     total integer NOT NULL,
     geo_version character varying(100)
 );
 
 
 --
--- Data for Name: agegroup_gender; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: gender_age_group; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY agegroup_gender (geo_level, geo_code, gender, "age group", total, geo_version) FROM stdin;
+COPY public.gender_age_group (geo_level, geo_code, gender, age_group, total, geo_version) FROM stdin;
 country	ET	male	0-14 Years	2954372	2010
 province	1	male	0-14 Years	303521	2010
 province	2	male	0-14 Years	398080	2010
@@ -115,11 +115,11 @@ province	11	female	35 and above	136944	2010
 
 
 --
--- Name: agegroup_gender agegroup_gender_pkey; Type: CONSTRAINT; Schema: public; Owner: hurumap_et
+-- Name: gender_age_group pk_gender_age_group; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY agegroup_gender
-    ADD CONSTRAINT pk_agegroup_gender PRIMARY KEY (geo_level, geo_code, gender, "age group");
+ALTER TABLE ONLY public.gender_age_group
+    ADD CONSTRAINT pk_gender_age_group PRIMARY KEY (geo_level, geo_code, gender, age_group);
 
 
 --
