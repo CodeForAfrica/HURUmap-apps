@@ -18,6 +18,10 @@ import hurumap_tz.tables  # noqa
 
 SECTIONS = settings.HURUMAP.get('topics', {})
 
+LOCATIONNOTFOUND = {'is_missing': True, 'name': 'No Data Found',
+                    'numerators': {'this': 0},
+                    'values': {'this': 0}}
+
 EMPLOYMENT_RECODES = OrderedDict([
     ('seeking work / no work available', 'Seeking work'),
     ('employed', 'Employed'),
@@ -213,6 +217,8 @@ def get_education_profile(geo, session):
         for data in school_attendance_dist['Never attended'].itervalues():
             if 'numerators' in data:
                 total_never += data['numerators']['this']
+
+
 
     return {
         'education_reached_distribution': edu_dist_data,
@@ -669,69 +675,69 @@ def get_pepfar_profile(geo, session):
 
         }
 
-    def get_causes_of_death_profile(geo, session):
-        if geo.geo_level != 'region' and geo.geo_level != 'country': return {}
+def get_causes_of_death_profile(geo, session):
+    if geo.geo_level != 'region' and geo.geo_level != 'country': return {}
 
-        causes_of_death_under_five_data, _ = get_stat_data(
-            'causes of death under five', geo=geo, session=session,
-            order_by='-total')
-        causes_of_death_over_five_data, _ = get_stat_data(
-            'causes of death over five', geo=geo, session=session,
-            order_by='-total')
-        inpatient_diagnosis_over_five_data, _ = get_stat_data(
-            'inpatient diagnosis over five', geo=geo, session=session,
-            order_by='-total')
-        outpatient_diagnosis_over_five_data, _ = get_stat_data(
-            'outpatient diagnosis over five', geo=geo, session=session,
-            order_by='-total')
-        inpatient_diagnosis_under_five_data, _ = get_stat_data(
-            'inpatient diagnosis under five', geo=geo, session=session,
-            order_by='-total')
-        outpatient_diagnosis_under_five_data, _ = get_stat_data(
-            'outpatient diagnosis under five', geo=geo, session=session,
-            order_by='-total')
-        return {
-            'causes_of_death_under_five_data': causes_of_death_under_five_data,
-            'causes_of_death_over_five_data': causes_of_death_over_five_data,
-            'inpatient_diagnosis_under_five_data': inpatient_diagnosis_under_five_data,
-            'inpatient_diagnosis_over_five_data': inpatient_diagnosis_over_five_data,
-            'outpatient_diagnosis_over_five_data': outpatient_diagnosis_over_five_data,
-            'outpatient_diagnosis_under_five_data': outpatient_diagnosis_under_five_data,
-            'source_link': 'http://www.opendata.go.tz/dataset/number-and-causes-of-death-occured-by-region',
-            'source_link_2': 'http://www.opendata.go.tz/dataset/idadi-ya-magonjwa-kutoka-idara-ya-wagonjwa-waliolazwa-kwa-mikoa',
-            'source_link_3': 'http://www.opendata.go.tz/dataset/idadi-ya-magonjwa-kutoka-idara-ya-wagonjwa-wa-nje-kwa-mikoa',
-            'source_name': 'opendata.go.tz',
-        }
+    causes_of_death_under_five_data, _ = get_stat_data(
+        'causes of death under five', geo=geo, session=session,
+        order_by='-total')
+    causes_of_death_over_five_data, _ = get_stat_data(
+        'causes of death over five', geo=geo, session=session,
+        order_by='-total')
+    inpatient_diagnosis_over_five_data, _ = get_stat_data(
+        'inpatient diagnosis over five', geo=geo, session=session,
+        order_by='-total')
+    outpatient_diagnosis_over_five_data, _ = get_stat_data(
+        'outpatient diagnosis over five', geo=geo, session=session,
+        order_by='-total')
+    inpatient_diagnosis_under_five_data, _ = get_stat_data(
+        'inpatient diagnosis under five', geo=geo, session=session,
+        order_by='-total')
+    outpatient_diagnosis_under_five_data, _ = get_stat_data(
+        'outpatient diagnosis under five', geo=geo, session=session,
+        order_by='-total')
+    return {
+        'causes_of_death_under_five_data': causes_of_death_under_five_data,
+        'causes_of_death_over_five_data': causes_of_death_over_five_data,
+        'inpatient_diagnosis_under_five_data': inpatient_diagnosis_under_five_data,
+        'inpatient_diagnosis_over_five_data': inpatient_diagnosis_over_five_data,
+        'outpatient_diagnosis_over_five_data': outpatient_diagnosis_over_five_data,
+        'outpatient_diagnosis_under_five_data': outpatient_diagnosis_under_five_data,
+        'source_link': 'http://www.opendata.go.tz/dataset/number-and-causes-of-death-occured-by-region',
+        'source_link_2': 'http://www.opendata.go.tz/dataset/idadi-ya-magonjwa-kutoka-idara-ya-wagonjwa-waliolazwa-kwa-mikoa',
+        'source_link_3': 'http://www.opendata.go.tz/dataset/idadi-ya-magonjwa-kutoka-idara-ya-wagonjwa-wa-nje-kwa-mikoa',
+        'source_name': 'opendata.go.tz',
+    }
 
-    def get_family_planning_clients_profile(geo, session):
-        # missing data for some regions
+def get_family_planning_clients_profile(geo, session):
+    # missing data for some regions
+    return {}
+    if geo.geo_level != 'region' and geo.geo_level != 'country':
         return {}
-        if geo.geo_level != 'region' and geo.geo_level != 'country':
-            return {}
 
-        family_planning_clients_data, _ = get_stat_data(
-            'family planning clients', geo=geo, session=session,
-            order_by='-total')
-        total = family_planning_clients_data['Total']['numerators']['this']
-        rate = family_planning_clients_data['New client rate']['numerators'][
-            'this']
+    family_planning_clients_data, _ = get_stat_data(
+        'family planning clients', geo=geo, session=session,
+        order_by='-total')
+    total = family_planning_clients_data['Total']['numerators']['this']
+    rate = family_planning_clients_data['New client rate']['numerators'][
+        'this']
 
-        # age in 10 year groups
-        def age_recode(f, x):
-            age = int(x.replace('+', ''))
-            if age > 49:
-                return '80+'
-            if age < 15:
-                return 'under 15'
-            return "15-49"
+    # age in 10 year groups
+    def age_recode(f, x):
+        age = int(x.replace('+', ''))
+        if age > 49:
+            return '80+'
+        if age < 15:
+            return 'under 15'
+        return "15-49"
 
-        age_dist_data, _ = get_stat_data(
-            'age in completed years', geo=geo, session=session,
-            table_fields=['age in completed years', 'sex', 'rural or urban'],
-            recode=age_recode, exclude=['male'])
-        all_women_aged_15_49 = age_dist_data['15-49']['numerators']['this']
+    age_dist_data, _ = get_stat_data(
+        'age in completed years', geo=geo, session=session,
+        table_fields=['age in completed years', 'sex', 'rural or urban'],
+        recode=age_recode, exclude=['male'])
+    all_women_aged_15_49 = age_dist_data['15-49']['numerators']['this']
 
-        percentage_of_population = round((total / all_women_aged_15_49) * 100)
+    percentage_of_population = round((total / all_women_aged_15_49) * 100)
 
     return {
         'total': {
