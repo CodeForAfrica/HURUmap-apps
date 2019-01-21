@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet";
 
 const CONTENT = {
   darkgrey: {
-    hex: "#2a2929",
+    hex: "#1e2021",
     version: "alQvz5NJeR"
   }
 };
