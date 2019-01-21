@@ -1,7 +1,7 @@
 import React from "react";
 
 import Footer from "../component/Footer/Index";
-import DocumentHead from "../component/DocumentHead/Index";
+import DocumentHead from "../component/DocumentHead";
 
 function Home({ url }) {
   return (

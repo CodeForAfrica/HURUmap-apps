@@ -6,7 +6,8 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 
 import { URLS } from "../src/component/DocumentHead/PageHeads";
 import Home from "./pages/home";
-import NotFound from "../src/component/NotFound";
+import Country from "./pages/country";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -14,8 +15,8 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route exact path={URLS.HOME} component={Home} />
-          <Route
-            render={props => <NotFound {...props} url={URLS.NOT_FOUND} />}
+          <Route path={URLS.COUNTRY} component={Country} />
+          <Route path={URLS.NOT_FOUND} component={NotFound} />
           />
         </Switch>
       </BrowserRouter>
