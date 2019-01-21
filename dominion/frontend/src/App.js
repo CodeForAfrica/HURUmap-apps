@@ -1,13 +1,15 @@
 import React, { Component } from "react";
+import Home from "./pages/Home";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <p>home page</p>
-        </header>
-      </div>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/" component={Home} />
+        </Switch>
+      </BrowserRouter>
     );
   }
 }
