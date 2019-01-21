@@ -10,7 +10,11 @@ import icfj from "../../assets/images/logos/icfj.png";
 import twaweza from "../../assets/images/logos/twaweza.png";
 
 const styles = theme => ({
-  root: { flexGrow: 1, backgroundColor: "#282826", padding: "3rem" },
+  root: {
+    flexGrow: 1,
+    backgroundColor: "#282826",
+    padding: "3rem"
+  },
   img: {
     maxWidth: "100%",
     height: "auto"
