@@ -40,8 +40,9 @@ FieldTable(['sectional title ownership in hectares per gender'],
 dataset='Land Audit Report', universe='Sectional Title', year='2017')
 FieldTable(['number of sectional title owners by gender'],
 dataset='Land Audit Report', universe='Sectional Title', year='2017')
-FieldTable(['sectional title ownership in hectares per nationality'],
-dataset='Land Audit Report', universe='Sectional Title', year='2017')
+FieldTable(['sectional title ownership in ha per nationality'],
+dataset='Land Audit Report', universe='Sectional Title', year='2017',
+           id='sectionaltitleownershipinhapernation')
 FieldTable(['number of sectional title owners by nationality'],
 dataset='Land Audit Report', universe='Sectional Title', year='2017')
 
