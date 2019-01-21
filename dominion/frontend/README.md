@@ -2,10 +2,6 @@
 
 Dominion gives journalist and civic activists useful facts and data about land ownership in Africa. Accessible at https://dominion.investigate.africa
 
-## Style Guidelines
-
-This project will be primarily using [airbnb react](https://github.com/airbnb/javascript/tree/master/react) and [material-ui](https://material-ui.com/) as our main style guides when implementing components.This is to create code consistency and readability.
-
 ## 🚀 Quick start: Dominion React Front End
 
 Before we get started, we need to have our back-end application running/already deployed. So on a terminal, run the back-end project [dominion](https://github.com/CodeForAfrica/HURUmap-apps/tree/feature/dominion-setup/dominion) as a [HURUmap-apps](https://github.com/CodeForAfrica/HURUmap-apps/blob/master/README.md).
