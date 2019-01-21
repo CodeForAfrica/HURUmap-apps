@@ -1,15 +1,22 @@
 import React, { Component } from "react";
-import Home from "./pages/Home";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+
+//import { createMuiTheme } from "@material-ui/core/styles";
+import CssBaseline from "@material-ui/core/CssBaseline";
+
+import Home from "./pages/home";
+import { Typography } from "@material-ui/core";
 
 class App extends Component {
   render() {
     return (
-      <BrowserRouter>
-        <Switch>
-          <Route path="/" component={Home} />
-        </Switch>
-      </BrowserRouter>
+      <CssBaseline>
+        <BrowserRouter>
+          <Switch>
+            <Route path="/" component={Home} />
+          </Switch>
+        </BrowserRouter>
+      </CssBaseline>
     );
   }
 }
