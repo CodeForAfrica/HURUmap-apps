@@ -929,20 +929,6 @@ def get_afrobarometer_profile(geo, session):
         except Exception:
             pass
 
-        # try:
-        #     women_have_equal_right_to_land, _ = get_stat_data(
-        #         'women_have_equal_right_to_land', geo, session,
-        #         table_fields=['women_have_equal_right_to_land'])
-        # except Exception:
-        #     pass
-        #
-        # try:
-        #     women_men_equal_chance_own_land, _ = get_stat_data(
-        #         'women_men_equal_chance_own_land', geo, session,
-        #         table_fields=['women_men_equal_chance_own_land'])
-        # except Exception:
-        #     pass
-
         is_missing = access_to_information.get('is_missing') and \
                      allow_farmers_retain_land_ownership.get('is_missing') and \
                      maintain_willing_buyer_willing_seller_policy.get('is_missing') \
@@ -951,7 +937,7 @@ def get_afrobarometer_profile(geo, session):
                      women_have_equal_right_to_land.get('is_missing') and \
                      women_men_equal_chance_own_land.get('is_missing')
 
-    return {
+    final_data = {
         'is_missing': is_missing,
         'access_to_information': access_to_information,
         'allow_farmers_retain_land_ownership': allow_farmers_retain_land_ownership,
@@ -961,3 +947,5 @@ def get_afrobarometer_profile(geo, session):
         'women_have_equal_right_to_land': women_have_equal_right_to_land,
         'women_men_equal_chance_own_land': women_men_equal_chance_own_land,
     }
+
+    return final_data
