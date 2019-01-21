@@ -13,30 +13,30 @@ SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-ALTER TABLE IF EXISTS ONLY public.sectionaltitleownershipinhapernation DROP CONSTRAINT IF EXISTS pk_sectionaltitleownershipinhapernation;
-DROP TABLE IF EXISTS public.sectionaltitleownershipinhapernation;
+ALTER TABLE IF EXISTS ONLY public.sectionaltitleownershipinhectaresnationality DROP CONSTRAINT IF EXISTS pk_sectionaltitleownershipinhectaresnationality;
+DROP TABLE IF EXISTS public.sectionaltitleownershipinhectaresnationality;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
 
 --
--- Name: sectionaltitleownershipinhapernation; Type: TABLE; Schema: public; Owner: -
+-- Name: sectionaltitleownershipinhectaresnationality; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.sectionaltitleownershipinhapernation (
+CREATE TABLE public.sectionaltitleownershipinhectaresnationality (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     geo_version character varying(100) DEFAULT ''::character varying NOT NULL,
-    "sectional title ownership in ha per nationality" character varying(128) NOT NULL,
+    "sectional title ownership in hectares nationality" character varying(128) NOT NULL,
     total integer
 );
 
 
 --
--- Data for Name: sectionaltitleownershipinhapernation; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: sectionaltitleownershipinhectaresnationality; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.sectionaltitleownershipinhapernation (geo_level, geo_code, geo_version, "sectional title ownership in ha per nationality", total) FROM stdin;
+COPY public.sectionaltitleownershipinhectaresnationality (geo_level, geo_code, geo_version, "sectional title ownership in hectares nationality", total) FROM stdin;
 province	EC	2016	South African	534
 province	FS	2016	South African	1216
 province	GT	2016	South African	3878
@@ -81,11 +81,11 @@ country	ZA	2016	Other	229
 
 
 --
--- Name: sectionaltitleownershipinhapernation pk_sectionaltitleownershipinhapernation; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: sectionaltitleownershipinhectaresnationality pk_sectionaltitleownershipinhectaresnationality; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.sectionaltitleownershipinhapernation
-    ADD CONSTRAINT pk_sectionaltitleownershipinhapernation PRIMARY KEY (geo_level, geo_code, geo_version, "sectional title ownership in ha per nationality");
+ALTER TABLE ONLY public.sectionaltitleownershipinhectaresnationality
+    ADD CONSTRAINT pk_sectionaltitleownershipinhectaresnationality PRIMARY KEY (geo_level, geo_code, geo_version, "sectional title ownership in hectares nationality");
 
 
 --

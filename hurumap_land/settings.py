@@ -162,7 +162,7 @@ HURUMAP['topics']['sectionaltitleland'] = {
         'Number of sectional title owners by race',
         'sectional title ownership in hectares per gender',
         'Number of sectional title owners by gender',
-        'sectional title ownership in hectares per nationality',
+        'sectional title ownership in hectares nationality',
         'Number of sectional title owners by nationality',
     ]
 }
