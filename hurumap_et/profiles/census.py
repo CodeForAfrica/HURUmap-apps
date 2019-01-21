@@ -93,7 +93,8 @@ def get_profile(geo, profile_name, request):
 
 
 def get_demographics_profile(geo, session):
-    with dataset_context(year='2010'):
+    year = current_context().get('year')
+    with dataset_context(year=year):
         # gender
         gender_dist_data, total_pop = get_stat_data(
             'gender', geo, session,
