@@ -1,13 +1,14 @@
 import React from "react";
 import { Grid, Typography } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
+import SocialMedia from "./SocialMedia";
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
     backgroundColor: "grey",
     padding: "3rem",
-    height: "350px"
+    height: "300px"
   }
 });
 
@@ -20,27 +21,46 @@ function Footer({ classes }) {
       direction="row"
       alignItems="center"
     >
-      <Grid item xs={8}>
+      <Grid item xs={7}>
         <Typography variant="body1">
-          Lorem ipsum dolor sit amet, mel tollit partem ullamcorper ei, ut quo
-          delectus efficiantur, putent debitis inciderint ei his. Omnis assum
-          eirmod his no. Malis adipisci platonem ad eos, cu eam volutpat
-          constituto dissentiet, mel ad vidit mundi. Id eros recteque disputando
-          his, mei an eleifend incorrupte. Sit albucius vivendum cu, in eos elit
-          possim expetenda. Vel no libris corpora ponderum.
+          HURUmap's underlying data is quality-checked from reputable official
+          sources including the government census, PEPFAR and UWEZO,
+          <p>
+            This project is built onsoftware originally created by the Knight
+            Lab in the USA for the censusReporter.org project which has been
+            repurposed by OpenUp and Media Monitoring Africa for Wazimap in
+            South Africa for Wazimap in SouthAfrica and by Code for Africa FOR
+            hurumaap in Kenya ,Tanzania, Uganda and Zambia
+          </p>
         </Typography>
       </Grid>
       <Grid
         item
-        xs={4}
+        xs={5}
         container
-        spacing={40}
         direction="row"
-        justify="flex-end"
-        alignItems="center"
+        justify="flex-start"
+        alignItems="flex-start"
       >
-        <Grid>this is an example</Grid>
-        <Grid>this is an example</Grid>
+        <Grid style={{ padding: "1rem" }}>
+          Other openAfrica Projects{" "}
+          <ul>
+            <li>Tax Clock</li>
+            <li>sourceAFRICA</li>
+          </ul>
+          <p>
+            Join our community
+            <ul>
+              <li>Hacks/Hackers</li>
+            </ul>
+          </p>
+        </Grid>
+        <Grid style={{ padding: "1rem" }}>
+          <Typography>A project by Code for Africa</Typography>
+          <Grid style={{ paddingTop: "4rem" }}>
+            <SocialMedia />
+          </Grid>
+        </Grid>
       </Grid>
     </Grid>
   );
