@@ -302,9 +302,18 @@
         <h1>Health workers distribution</h1>
       </header>
       <div class="section-container">
-      <section class="clearfix stat-row">
-          {{ health_workers_distribution }}
-      </section>
+        <section class="clearfix stat-row">
+          <p class="source">Source:
+            <a href="{{ health_workers_distribution.source_link }}">{{ health_workers_distribution.source_name }}</a>
+          </p>
+          <br clear="all">
+          <div class="column-third">
+            {% include 'profile/_blocks/_stat_list.html' with stat=health_workers_distribution.hrh_patient_ratio stat_type='number' %}
+          </div>
+          <div class="column-full">
+            <div id="chart-histogram-health_workers_distribution-health_worker_data" data-stat-type="scaled-percentage" data-chart-title="Number of health workers by profession(2014)"></div>
+          </div>
+        </section>
         <section class="clearfix stat-row">
           <p class="source">Source:
             <a href="{{ health_workers_distribution.source_link }}">{{ health_workers_distribution.source_name }}</a>
@@ -489,7 +498,7 @@
     </article>
   {% endif %} <!-- end if -->
 
-  {% if water_sources.is_missing %}
+  {% if not water_sources.is_missing %}
     <article id="water_sources" class="clearfix">
       <header class="section-contents">
         <h1>Water Points Statuses</h1>
