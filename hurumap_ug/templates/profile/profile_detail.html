@@ -24,9 +24,9 @@
             <span>Elections</span></a>
           </li>
           {% if not afrobarometer.is_missing %}
-          <li><a href="#afrobarometer"><i class="fa fa-signal"></i>
-            <span>Afrobarometer</span></a>
-          </li>
+            <li><a href="#afrobarometer"><i class="fa fa-signal"></i>
+              <span>Afrobarometer</span></a>
+            </li>
           {% endif %}
         </ul>
       </div>
@@ -34,21 +34,6 @@
   </div>
 {% endblock %}
 
-{% block profile_header_tail %}
-<div class="column-full">
-    <strong>{{ primary_releases.active.name }} {{ primary_releases.active.year }}</strong>
-    {% if primary_releases.other %}
-    <div class="tool-group toggle-sub-group release-list">
-        <a>Change release<i class="fa fa-chevron-circle-down"></i></a>
-        <ul class="sub-group" style="display: none;">
-        {% for release in primary_releases.other %}
-            <li><a href="{{ request.path }}?release={{release.year}}">{{ release.name }} {{ release.year }}</a></li>
-        {% endfor %}
-        </ul>
-    </div>
-    {% endif %}
-</div>
-{% endblock %}
 
 {% block profile_detail %}
   <article id="demographics"
@@ -96,33 +81,41 @@
           {% include 'profile/_blocks/_stat_list.html' with stat=households.total_households stat_type='number' %}
         </div>
       </section>
-      <section class="clearfix stat-row">
-        <h2><a class="permalink" href="#households-water"
-               id="households-water">Percentage by Permanency <i
-            class="fa fa-link"></i></a></h2>
-        <div class="column-three-quarters"
-             id="chart-histogram-households-percentage_by_permanency"
-             data-stat-type="scaled-percentage"
-             data-chart-title="Households Percentage by permanency"></div>
-      </section>
-      <section class="clearfix stat-row">
-        <h2><a class="permalink" href="#households-lighting"
-               id="households-lighting">Main source of lighting <i
-            class="fa fa-link"></i></a></h2>
-        <div class="column-three-quarters"
-             id="chart-histogram-households-light_source_distribution"
-             data-stat-type="scaled-percentage"
-             data-chart-title="Light source distribution"></div>
-      </section>
-      <section class="clearfix stat-row">
-        <h2><a class="permalink" href="#households-lighting"
-               id="households-lighting">Main source of energy <i
-            class="fa fa-link"></i></a></h2>
-        <div class="column-three-quarters"
-             id="chart-histogram-households-energy_source_distribution"
-             data-stat-type="scaled-percentage"
-             data-chart-title="Energy source distribution"></div>
-      </section>
+      {% if not households.percentage_by_permanency.is_missing %}
+        <section class="clearfix stat-row">
+          <h2><a class="permalink" href="#households-water"
+                 id="households-water">Percentage by Permanency <i
+              class="fa fa-link"></i></a></h2>
+          <div class="column-three-quarters"
+               id="chart-histogram-households-percentage_by_permanency"
+               data-stat-type="scaled-percentage"
+               data-chart-title="Households Percentage by permanency"></div>
+        </section>
+      {% endif %} <!-- end if -->
+
+      {% if not households.light_source_distribution.is_missing %}
+        <section class="clearfix stat-row">
+          <h2><a class="permalink" href="#households-lighting"
+                 id="households-lighting">Main source of lighting <i
+              class="fa fa-link"></i></a></h2>
+          <div class="column-three-quarters"
+               id="chart-histogram-households-light_source_distribution"
+               data-stat-type="scaled-percentage"
+               data-chart-title="Light source distribution"></div>
+        </section>
+      {% endif %} <!-- end if -->
+
+      {% if not households.energy_source_distribution.is_missing %}
+        <section class="clearfix stat-row">
+          <h2><a class="permalink" href="#households-lighting"
+                 id="households-lighting">Main source of energy <i
+              class="fa fa-link"></i></a></h2>
+          <div class="column-three-quarters"
+               id="chart-histogram-households-energy_source_distribution"
+               data-stat-type="scaled-percentage"
+               data-chart-title="Energy source distribution"></div>
+        </section>
+      {% endif %} <!-- end if -->
 
     </div>
   </article>

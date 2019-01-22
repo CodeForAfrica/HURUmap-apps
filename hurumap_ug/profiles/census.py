@@ -6,7 +6,6 @@ from wazimap.data.utils import (calculate_median,
                                 get_session, get_stat_data, group_remainder,
                                 merge_dicts, get_datatable, current_context,
                                 dataset_context)
-from wazimap.geo import geo_data, LocationNotFound
 
 __author__ = 'kenneth'
 
@@ -252,25 +251,25 @@ def get_afrobarometer_profile(geo, session):
         try:
             own_radio, _ = get_stat_data('own_radio', geo, session,
                                         table_fields=['own_radio'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
             own_motor_vehicle, _ = get_stat_data('own_motor_vehicle', geo, session,
                                                 table_fields=['own_motor_vehicle'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
             own_television, _ = get_stat_data('own_television', geo, session,
                                             table_fields=['own_television'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
             own_mobile_phone, _ = get_stat_data('own_mobile_phone', geo, session,
                                                 table_fields=['own_mobile_phone'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
@@ -278,42 +277,42 @@ def get_afrobarometer_profile(geo, session):
                 'election_work_for_a_candidate_or_party', geo,
                 session, table_fields=[
                     'election_work_for_a_candidate_or_party'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
             election_attend_a_campaign_rally, _ = get_stat_data(
                 'election_attend_a_campaign_rally', geo, session,
                 table_fields=['election_attend_a_campaign_rally'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
             last_national_election_attend_a_campaign_meeting, _ = get_stat_data(
                 'last_national_election_attend_a_campaign_meeting', geo, session,
                 table_fields=['last_national_election_attend_a_campaign_meeting'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
             courts_make_binding_decisions, _ = get_stat_data(
                 'courts_make_binding_decisions', geo, session,
                 table_fields=['courts_make_binding_decisions'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
             vote_for_which_party, _ = get_stat_data('vote_for_which_party', geo,
                                                     session, table_fields=[
                     'vote_for_which_party'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
             level_of_corruption, _ = get_stat_data('level_of_corruption', geo,
                                                 session, table_fields=[
                     'level_of_corruption'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
@@ -321,111 +320,111 @@ def get_afrobarometer_profile(geo, session):
                 'chinas_assistance_meets_countrys_needs', geo,
                 session, table_fields=[
                     'chinas_assistance_meets_countrys_needs'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
             employment_status, _ = get_stat_data('employment_status', geo, session,
                                                 table_fields=['employment_status'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
             main_reason_for_not_reporting_corruption, _ = get_stat_data(
                 'main_reason_for_not_reporting_corruption', geo, session,
                 table_fields=['main_reason_for_not_reporting_corruption'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
             education_of_respondent, _ = get_stat_data('education_of_respondent',
                                                     geo, session, table_fields=[
                     'education_of_respondent'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
             people_must_pay_taxes, _ = get_stat_data('people_must_pay_taxes', geo,
                                                     session, table_fields=[
                     'people_must_pay_taxes'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
             negative_image_of_china, _ = get_stat_data('negative_image_of_china',
                                                     geo, session, table_fields=[
                     'negative_image_of_china'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
             most_effective_way_to_combat_corruption, _ = get_stat_data(
                 'most_effective_way_to_combat_corruption', geo, session,
                 table_fields=['most_effective_way_to_combat_corruption'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
             people_can_fight_corruption, _ = get_stat_data(
                 'people_can_fight_corruption', geo, session,
                 table_fields=['people_can_fight_corruption'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
             people_must_obey_the_law, _ = get_stat_data('people_must_obey_the_law',
                                                         geo, session, table_fields=[
                     'people_must_obey_the_law'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
             chinas_influence_on_economy, _ = get_stat_data(
                 'chinas_influence_on_economy', geo, session,
                 table_fields=['chinas_influence_on_economy'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
             chinas_influence_positive_or_negative, _ = get_stat_data(
                 'chinas_influence_positive_or_negative', geo, session,
                 table_fields=['chinas_influence_positive_or_negative'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
             positive_image_of_china, _ = get_stat_data('positive_image_of_china',
                                                     geo, session, table_fields=[
                     'positive_image_of_china'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
             occupation_of_respondent, _ = get_stat_data('occupation_of_respondent',
                                                         geo, session, table_fields=[
                     'occupation_of_respondent'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
             employer_of_respondent, _ = get_stat_data('employer_of_respondent', geo,
                                                     session, table_fields=[
                     'employer_of_respondent'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
             how_often_use_a_mobile_phone, _ = get_stat_data(
                 'how_often_use_a_mobile_phone', geo, session,
                 table_fields=['how_often_use_a_mobile_phone'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
             how_often_use_the_internet, _ = get_stat_data(
                 'how_often_use_the_internet', geo, session,
                 table_fields=['how_often_use_the_internet'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
@@ -433,28 +432,28 @@ def get_afrobarometer_profile(geo, session):
                 'freeness_and_fairness_of_last_national_election', geo, session,
                 table_fields=[
                     'freeness_and_fairness_of_last_national_election'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
             extent_of_democracy, _ = get_stat_data('extent_of_democracy', geo,
                                                 session, table_fields=[
                     'extent_of_democracy'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
             elections_ensure_voters_views_are_reflected, _ = get_stat_data(
                 'elections_ensure_voters_views_are_reflected', geo, session,
                 table_fields=['elections_ensure_voters_views_are_reflected'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
             corruption_judges_and_magistrates, _ = get_stat_data(
                 'corruption_judges_and_magistrates', geo, session,
                 table_fields=['corruption_judges_and_magistrates'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
@@ -462,111 +461,111 @@ def get_afrobarometer_profile(geo, session):
                 'election_enable_voters_remove_leaders_from_office', geo,
                 session, table_fields=[
                     'election_enable_voters_remove_leaders_from_office'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
             corruption_tax_officials, _ = get_stat_data('corruption_tax_officials',
                                                         geo, session, table_fields=[
                     'corruption_tax_officials'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
             corruption_police, _ = get_stat_data('corruption_police', geo, session,
                                                 table_fields=['corruption_police'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
             corruption_local_government_councilors, _ = get_stat_data(
                 'corruption_local_government_councilors', geo, session,
                 table_fields=['corruption_local_government_councilors'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
             corruption_government_officials, _ = get_stat_data(
                 'corruption_government_officials', geo, session,
                 table_fields=['corruption_government_officials'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
             corruption_members_of_parliament, _ = get_stat_data(
                 'corruption_members_of_parliament', geo, session,
                 table_fields=['corruption_members_of_parliament'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
             corruption_office_of_the_presidency, _ = get_stat_data(
                 'corruption_office_of_the_presidency', geo, session,
                 table_fields=['corruption_office_of_the_presidency'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
             satisfaction_with_democracy, _ = get_stat_data(
                 'satisfaction_with_democracy', geo, session,
                 table_fields=['satisfaction_with_democracy'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
             corruption_business_executives, _ = get_stat_data(
                 'corruption_business_executives', geo, session,
                 table_fields=['corruption_business_executives'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
             corruption_religious_leaders, _ = get_stat_data(
                 'corruption_religious_leaders', geo, session,
                 table_fields=['corruption_religious_leaders'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
             corruption_traditional_leaders, _ = get_stat_data(
                 'corruption_traditional_leaders', geo, session,
                 table_fields=['corruption_traditional_leaders'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
             difficulty_to_obtain_public_school_services, _ = get_stat_data(
                 'difficulty_to_obtain_public_school_services', geo, session,
                 table_fields=['difficulty_to_obtain_public_school_services'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
             voting_in_the_most_recent_national_election, _ = get_stat_data(
                 'voting_in_the_most_recent_national_election', geo, session,
                 table_fields=['voting_in_the_most_recent_national_election'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
             difficulty_to_obtain_medical_treatment, _ = get_stat_data(
                 'difficulty_to_obtain_medical_treatment', geo, session,
                 table_fields=['difficulty_to_obtain_medical_treatment'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
             pay_bribe_for_school_services, _ = get_stat_data(
                 'pay_bribe_for_school_services', geo, session,
                 table_fields=['pay_bribe_for_school_services'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
             difficulty_to_obtain_identity_document, _ = get_stat_data(
                 'difficulty_to_obtain_identity_document', geo, session,
                 table_fields=['difficulty_to_obtain_identity_document'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
@@ -574,28 +573,28 @@ def get_afrobarometer_profile(geo, session):
                 'bribe_for_treatment_at_public_health', geo,
                 session, table_fields=[
                     'bribe_for_treatment_at_public_health'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
             difficulty_to_obtain_household_services, _ = get_stat_data(
                 'difficulty_to_obtain_household_services', geo, session,
                 table_fields=['difficulty_to_obtain_household_services'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
             pay_bribe_for_document_or_permit, _ = get_stat_data(
                 'pay_bribe_for_document_or_permit', geo, session,
                 table_fields=['pay_bribe_for_document_or_permit'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         try:
             pay_bribe_for_household_services, _ = get_stat_data(
                 'pay_bribe_for_household_services', geo, session,
                 table_fields=['pay_bribe_for_household_services'])
-        except LocationNotFound:
+        except Exception:
             pass
 
         is_missing = own_radio.get('is_missing') and own_motor_vehicle.get(
