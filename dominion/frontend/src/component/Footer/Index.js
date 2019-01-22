@@ -108,7 +108,7 @@ function Footer({ classes }) {
               </li>
             </ul>
           </Typography>
-          <Typography variant="body2" className={classes.join}>
+          <Typography variant="body2" className={classes.joinText}>
             Join Our Community
             <ul className={classes.list}>
               <li>
