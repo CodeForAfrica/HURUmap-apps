@@ -5,18 +5,39 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Grid } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 
-const styles = theme => ({});
+const styles = theme => ({
+  fa: {
+    transition: "all .5s ease-in-out",
+    color: "#fff",
+    " &:hover": {
+      transform: "scale(1.3)",
+      color: "#fff"
+    }
+  },
+  links: { color: "#fff" }
+});
 
-function SocialMedia() {
+function SocialMedia({ classes }) {
   return (
-    <Grid direction="row" justify="center" alignItems="center">
+    <Grid
+      container
+      spacing={8}
+      direction="row"
+      justify="center"
+      alignItems="center"
+    >
       <Grid item>
         <a
           href="https://twitter.com/sensorsAFRICA/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <FontAwesomeIcon icon={["fab", "twitter"]} size="2x" fixedWidth />
+          <FontAwesomeIcon
+            className={classes.fa}
+            icon={["fab", "twitter"]}
+            size="fa-lg"
+            fixedWidth
+          />
         </a>
       </Grid>
       <Grid item>
@@ -25,7 +46,26 @@ function SocialMedia() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <FontAwesomeIcon icon={["fab", "facebook-f"]} size="2x" fixedWidth />
+          <FontAwesomeIcon
+            className={classes.fa}
+            icon={["fab", "instagram"]}
+            size="fa-lg"
+            fixedWidth
+          />
+        </a>
+      </Grid>
+      <Grid item>
+        <a
+          href="https://www.facebook.com/sensorsAFRICA/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <FontAwesomeIcon
+            className={classes.fa}
+            icon={["fab", "facebook-f"]}
+            size="fa-lg"
+            fixedWidth
+          />
         </a>
       </Grid>
     </Grid>

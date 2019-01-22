@@ -1,8 +1,8 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
-//Assets
 
+//Assets
 import bmf from "../../assets/images/logos/bmgf.png";
 import codeforafrica from "../../assets/images/logos/codeforafrica.png";
 import datazetu from "../../assets/images/logos/datazetu.png";
@@ -32,7 +32,7 @@ function Partners({ classes }) {
         alignItems="center"
         className={classes.root}
       >
-        <Grid item xs={2} style={{ padding: "2rem" }}>
+        <Grid item xs={2} style={{ padding: "3rem" }}>
           <img
             src={codeforafrica}
             alt="Code for Africa"

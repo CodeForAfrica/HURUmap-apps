@@ -14,7 +14,10 @@ const styles = theme => ({
     [theme.breakpoints.up("md")]: {
       height: "50vh"
     }
-  }
+  },
+  typographyTitle: { color: "#f1f1ed", fontWeight: "bold", opacity: "0.6" },
+  typographyBody: { color: "#f1f1ed", opacity: "0.6", paddingTop: "3rem" },
+  listTypography: { color: "#f1f1ed", opacity: "0.6" }
 });
 
 function Footer({ classes }) {
@@ -27,16 +30,16 @@ function Footer({ classes }) {
       alignItems="center"
     >
       <Grid item xs={7}>
-        <Typography variant="body1">
+        <Typography variant="body2" className={classes.typographyTitle}>
           HURUmap's underlying data is quality-checked from reputable official
-          sources including the government census, PEPFAR and UWEZO,
-          <p>
-            This project is built onsoftware originally created by the Knight
-            Lab in the USA for the censusReporter.org project which has been
-            repurposed by OpenUp and Media Monitoring Africa for Wazimap in
-            South Africa for Wazimap in SouthAfrica and by Code for Africa FOR
-            hurumaap in Kenya ,Tanzania, Uganda and Zambia
-          </p>
+          sources including the government census, PEPFAR and UWEZO,{" "}
+        </Typography>
+        <Typography variant="body2" className={classes.typographyBody}>
+          This project is built on software originally created by the Knight Lab
+          in the USA for the censusReporter.org project which has been
+          repurposed by OpenUp and Media Monitoring Africa for Wazimap in South
+          Africa for Wazimap in SouthAfrica and by Code for Africa FOR hurumaap
+          in Kenya ,Tanzania, Uganda and Zambia
         </Typography>
       </Grid>
       <Grid
@@ -44,25 +47,29 @@ function Footer({ classes }) {
         xs={5}
         container
         direction="row"
-        justify="flex-start"
+        justify="flex-end"
         alignItems="flex-start"
       >
         <Grid style={{ padding: "1rem" }}>
-          Other openAfrica Projects{" "}
-          <ul>
-            <li>Tax Clock</li>
-            <li>sourceAFRICA</li>
-          </ul>
-          <p>
-            Join our community
+          <Typography variant="body2" className={classes.listTypography}>
+            Other openAfrica Projects
             <ul>
-              <li>Hacks/Hackers</li>
+              <li>Tax Clock</li>
+              <li>sourceAFRICA</li>
             </ul>
-          </p>
+          </Typography>
+          <Typography variant="body2" className={classes.listTypography}>
+            Join Our Community
+            <ul>
+              <li>Hacks/Hackers Africa</li>
+            </ul>
+          </Typography>
         </Grid>
         <Grid style={{ padding: "1rem" }}>
-          <Typography>A project by Code for Africa</Typography>
-          <Grid style={{ paddingTop: "4rem" }}>
+          <Typography variant="body2" className={classes.listTypography}>
+            A project by Code for Africa
+          </Typography>
+          <Grid style={{ paddingTop: "7rem" }}>
             <SocialMedia />
           </Grid>
         </Grid>
