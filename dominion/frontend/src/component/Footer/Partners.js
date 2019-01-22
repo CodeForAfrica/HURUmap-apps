@@ -12,7 +12,7 @@ import twaweza from "../../assets/images/logos/twaweza.png";
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    backgroundColor: "#282826",
+    backgroundColor: "#2c2c2a",
     padding: "3rem"
   },
   img: {
@@ -26,8 +26,6 @@ function Partners({ classes }) {
     <Grid>
       <Grid
         container
-        item
-        xs={12}
         spacing={24}
         direction="row"
         justify="center"

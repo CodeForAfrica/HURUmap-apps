@@ -2,13 +2,18 @@ import React from "react";
 import { Grid, Typography } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import SocialMedia from "./SocialMedia";
+import background from "../../assets/images/bg/background.png";
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    backgroundColor: "grey",
     padding: "3rem",
-    height: "300px"
+    backgroundImage: `url(${background})`,
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    [theme.breakpoints.up("md")]: {
+      height: "50vh"
+    }
   }
 });
 
