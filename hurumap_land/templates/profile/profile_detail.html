@@ -40,8 +40,6 @@
   </div>
 {% endblock %}
 
-{% block profile_header_tail %}
-{% endblock %}
 
 {% block profile_detail %}
   {% if not districtdistribution.is_missing %}
@@ -390,11 +388,11 @@
                  data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
           </div>
         </section>
-        {% if not land_audit_2013.is_missing %}
-          {% if not land_audit_2013.land_distribution_gender.is_missing and not land_audit_2013.land_ownership %}
+        {% if not land_audit.is_missing %}
+          {% if not land_audit.land_distribution_gender.is_missing and not land_audit.land_ownership %}
             <section class="clearfix stat-row">
               <div class="column-half">
-                <div id="chart-pie-land_audit_2013-land_distribution_gender"
+                <div id="chart-pie-land_audit-land_distribution_gender"
                      data-stat-type="percentage"
                      data-chart-title="Private Land Distribution by Gender"
                      data-initial-sort="-value"
@@ -402,7 +400,7 @@
                      data-source-link="http://www.ruraldevelopment.gov.za/phocadownload/Cadastral-Survey-management/Booklet/land%20audit%20booklet.pdf"></div>
               </div>
               <div class="column-half">
-                <div id="chart-pie-land_audit_2013-land_ownership"
+                <div id="chart-pie-land_audit-land_ownership"
                      data-stat-type="percentage"
                      data-chart-title="Private Land Vs. State Land"
                      data-initial-sort="-value"
@@ -412,10 +410,10 @@
             </section>
           {% endif %} <!-- end if -->
 
-          {% if not land_audit_2013.land_user_dist.is_missing and not land_audit_2013.land_use_dist %}
+          {% if not land_audit.land_user_dist.is_missing and not land_audit.land_use_dist %}
             <section class="clearfix stat-row">
               <div class="column-half">
-                <div id="chart-pie-land_audit_2013-land_user_dist"
+                <div id="chart-pie-land_audit-land_user_dist"
                      data-stat-type="percentage"
                      data-chart-title="Land Users"
                      data-initial-sort="-value"
@@ -423,7 +421,7 @@
                      data-source-link="http://www.ruraldevelopment.gov.za/phocadownload/Cadastral-Survey-management/Booklet/land%20audit%20booklet.pdf"></div>
               </div>
               <div class="column-half">
-                <div id="chart-pie-land_audit_2013-land_use_dist"
+                <div id="chart-pie-land_audit-land_use_dist"
                      data-stat-type="percentage"
                      data-chart-title="Land Use"
                      data-initial-sort="-value"

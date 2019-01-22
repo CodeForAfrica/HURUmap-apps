@@ -83,36 +83,36 @@ universe='Agricultural Land Sales', year='2016', value_type='Float', has_total=F
 FieldTable(['class_distribution_hectares'], id='landsalesdistributionhectares', dataset='Land Sales',
  universe='Agricultural Land Sales', year='2016', has_total=False)
 
-FieldTable(['land_breakdown', 'month'], id='landsalessummaryhectarestcolour', dataset='Land Sales',
+FieldTable(['land_breakdown_hc', 'month_hc'], id='landsalessummaryhectarestcolour', dataset='Land Sales',
   universe='Agricultural Land Sales', year='2016')
 
-FieldTable(['land_breakdown', 'month'], id='landsalessummarycosttcolour', dataset='Land Sales',
+FieldTable(['land_breakdown_cc', 'month_cc'], id='landsalessummarycosttcolour', dataset='Land Sales',
   universe='Agricultural Land Sales', year='2016')
 
-FieldTable(['land_breakdown', 'month'], id='landsalessummarypricetcolour', dataset='Land Sales',
+FieldTable(['land_breakdown_pc', 'month_pc'], id='landsalessummarypricetcolour', dataset='Land Sales',
    universe='Agricultural Land Sales', year='2016')
 
-FieldTable(['land_breakdown', 'month'], id='landsalessummarytransactionscolour', dataset='Land Sales',
+FieldTable(['land_breakdown_tc', 'month_tc'], id='landsalessummarytransactionscolour', dataset='Land Sales',
    universe='Agricultural Land Sales', year='2016')
 
-FieldTable(['town_name','class'], id='towndistrictdistributiontransactions', dataset='Land Sales',
+FieldTable(['town_name_dt','class_dt'], id='towndistrictdistributiontransactions', dataset='Land Sales',
  universe='Agricultural Land Sales', year='2016', value_type='Float', has_total=False)
 
-FieldTable(['town_name', 'class'], id='towndistrictdistributionpricetrends', dataset='Land Sales',
+FieldTable(['town_name_pt', 'class_pt'], id='towndistrictdistributionpricetrends', dataset='Land Sales',
 universe='Agricultural Land Sales', year='2016', value_type='Float', has_total=False)
 
-FieldTable(['town_name','class'], id='towndistrictdistributionhectares', dataset='Land Sales',
+FieldTable(['town_name_dh','class_dh'], id='towndistrictdistributionhectares', dataset='Land Sales',
 universe='Agricultural Land Sales', year='2016', value_type='Float', has_total=False)
 
-FieldTable(['town_name', 'class'], id='towndistrictdistributionavgprice', dataset='Land Sales',
+FieldTable(['town_name_ap', 'class_ap'], id='towndistrictdistributionavgprice', dataset='Land Sales',
 universe='Agricultural Land Sales', year='2016', value_type='Float', has_total=False)
 
 FieldTable(['population group'], id='populationgroup_2016', year='2016', dataset='Census')
 
-FieldTable(['land_ownership_by_gender'], id='privatelanddistributionbygender', dataset='Land Audit Report 2013', year=2013)
-FieldTable(['land_use'], id='landuse', dataset='Land Audit Report 2013', year=2013)
-FieldTable(['land_user'], id='landuser', dataset='Land Audit Report 2013', year=2013)
-FieldTable(['private_vs_state_ownership'], id='landownership', dataset='Land Audit Report 2013', year=2013)
+FieldTable(['land_ownership_by_gender'], id='privatelanddistributionbygender', dataset='Land Audit Report', year=2013)
+FieldTable(['land_use'], id='landuse', dataset='Land Audit Report', year=2013)
+FieldTable(['land_user'], id='landuser', dataset='Land Audit Report', year=2013)
+FieldTable(['private_vs_state_ownership'], id='landownership', dataset='Land Audit Report', year=2013)
 
 FieldTable(['access_to_information'], universe='Land in South Africa',
            year='2017', dataset='Afrobarometer Survey')
