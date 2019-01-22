@@ -458,14 +458,12 @@ def get_landsales_profile(geo, session):
         landsales = {'is_missing': True }
         landsalestransaction = landsaleshectares = LOCATIONNOTFOUND
         landsalesaverageprice = landsalespricetrends = LOCATIONNOTFOUND
-        landsaleslowestprice = landsaleshighestprice = LOCATIONNOTFOUND
-        landsalesaveragetrends = landsalesaveragepricejuly = LOCATIONNOTFOUND
 
         landsalestransaction_tot = landsaleshectares_tot = 0
 
         try:
             landsalestransaction,landsalestransaction_tot = get_stat_data(
-                ['class'], geo, session,
+                ['class_distribution_transaction'], geo, session,
                 table_name= 'landsalesdistributiontransaction',
                 key_order=LAND_CLASS,
                 percent=False)
@@ -474,7 +472,7 @@ def get_landsales_profile(geo, session):
 
         try:
             landsaleshectares,landsaleshectares_tot = get_stat_data(
-                ['class'], geo, session,
+                ['class_distribution_hectares'], geo, session,
                 table_name= 'landsalesdistributionhectares',
                 key_order=LAND_CLASS,
                 percent=False)
@@ -483,7 +481,7 @@ def get_landsales_profile(geo, session):
 
         try:
             landsalesaverageprice,_ = get_stat_data(
-                ['class'], geo, session,
+                ['class_distribution_average_price'], geo, session,
                 table_name= 'landsalesdistributionaverageprice',
                 key_order=LAND_CLASS,
                 percent=False)
@@ -491,7 +489,7 @@ def get_landsales_profile(geo, session):
             pass
         try:
             landsalespricetrends,_ = get_stat_data(
-                ['class'], geo, session,
+                ['class_price_trends'], geo, session,
                 table_name= 'landsalesdistributionpricetrends',
                 key_order=LAND_CLASS,
                 percent=False)
@@ -500,36 +498,13 @@ def get_landsales_profile(geo, session):
 
         try:
             landsalesaveragetrends,_ = get_stat_data(
-                ['class'], geo, session, exclude_zero=True,
+                ['class_average_trends'], geo, session, exclude_zero=True,
                 table_name= 'landsalesdistributionaveragetrends',
                 key_order=LAND_CLASS,
                 percent=False)
         except Exception as e:
             pass
 
-        # try:
-        #     landsalesaveragepricejuly,landsalesaveragepricejuly_tot = get_stat_data(
-        #         ['class'], geo, session, exclude_zero=True,
-        #         table_name= 'landsalesdistributionaveragepricejuly',
-        #         percent=False)
-        # except Exception as e:
-        #     pass
-        #
-        # try:
-        #     landsaleslowestprice,landsaleslowestprice_tot = get_stat_data(
-        #         ['class'], geo, session, exclude_zero=True,
-        #         table_name= 'landsalesdistributionlowestprice',
-        #         percent=False)
-        # except Exception as e:
-        #     pass
-        #
-        try:
-            landsaleshighestprice,landsaleshighestprice_tot = get_stat_data(
-                ['class'], geo, session, exclude_zero=True,
-                table_name= 'landsalesdistributionhighestprice',
-                percent=False)
-        except Exception as e:
-            pass
 
         landsales['landsalestransaction'] = landsalestransaction
         landsales['landsaleshectares'] = landsaleshectares

@@ -65,22 +65,22 @@ dataset='Land Redistribution and Restitution Statistic')
 FieldTable(['redistributedland'],id='redistributedlandinhectares', universe='Land Redistribution',
 value_type='Float', dataset='Land Redistribution and Restitution Statistic',year='2016')
 
-FieldTable(['class'], id='landsalesdistributiontransaction', dataset='Land Sales',
+FieldTable(['class_distribution_transaction'], id='landsalesdistributiontransaction', dataset='Land Sales',
  universe='Agricultural Land Sales', year='2016', value_type='Float')
 
-FieldTable(['class'], id='landsalesdistributionlowestprice', dataset='Land Sales',
+FieldTable(['class_distribution_lowest_price'], id='landsalesdistributionlowestprice', dataset='Land Sales',
  universe='Agricultural Land Sales', year='2016', value_type='Float', has_total=False)
-FieldTable(['class'], id='landsalesdistributionhighestprice', dataset='Land Sales',
+FieldTable(['class_distribution_highest_price'], id='landsalesdistributionhighestprice', dataset='Land Sales',
  universe='Agricultural Land Sales', year='2016', value_type='Float', has_total=False)
-FieldTable(['class'], id='landsalesdistributionaverageprice', dataset='Land Sales',
+FieldTable(['class_distribution_average_price'], id='landsalesdistributionaverageprice', dataset='Land Sales',
  universe='Agricultural Land Sales', year='2016', value_type='Float', has_total=False)
-FieldTable(['class'], id='landsalesdistributionpricetrends', dataset='Land Sales',
+FieldTable(['class_price_trends'], id='landsalesdistributionpricetrends', dataset='Land Sales',
 universe='Agricultural Land Sales', year='2016', value_type='Float', has_total=False)
-FieldTable(['class'], id='landsalesdistributionaveragetrends', dataset='Land Sales',
+FieldTable(['class_average_trends'], id='landsalesdistributionaveragetrends', dataset='Land Sales',
  universe='Agricultural Land Sales', year='2016', value_type='Float', has_total=False)
-FieldTable(['class'], id='landsalesdistributionaveragepricejuly', dataset='Land Sales',
+FieldTable(['class_average_price_july'], id='landsalesdistributionaveragepricejuly', dataset='Land Sales',
 universe='Agricultural Land Sales', year='2016', value_type='Float', has_total=False)
-FieldTable(['class'], id='landsalesdistributionhectares', dataset='Land Sales',
+FieldTable(['class_distribution_hectares'], id='landsalesdistributionhectares', dataset='Land Sales',
  universe='Agricultural Land Sales', year='2016', has_total=False)
 
 FieldTable(['land_breakdown', 'month'], id='landsalessummaryhectarestcolour', dataset='Land Sales',

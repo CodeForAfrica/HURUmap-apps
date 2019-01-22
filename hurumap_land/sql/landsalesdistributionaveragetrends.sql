@@ -26,7 +26,7 @@ CREATE TABLE public.landsalesdistributionaveragetrends (
     geo_level character varying(50) NOT NULL,
     geo_code character varying(10) NOT NULL,
     geo_version character varying(100) DEFAULT ''::character varying NOT NULL,
-    class character varying(128) NOT NULL,
+    class_average_trends character varying(128) NOT NULL,
     total numeric
 );
 
@@ -35,7 +35,7 @@ CREATE TABLE public.landsalesdistributionaveragetrends (
 -- Data for Name: landsalesdistributionaveragetrends; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.landsalesdistributionaveragetrends (geo_level, geo_code, geo_version, class, total) FROM stdin;
+COPY public.landsalesdistributionaveragetrends (geo_level, geo_code, geo_version, class_average_trends, total) FROM stdin;
 country	ZA	2016	Under 1.5K	-3
 country	ZA	2016	1,501-3K	0
 country	ZA	2016	3,001-5K	0.2
