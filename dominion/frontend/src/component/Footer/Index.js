@@ -17,7 +17,8 @@ const styles = theme => ({
   },
   typographyTitle: { color: "#f1f1ed", fontWeight: "bold", opacity: "0.6" },
   typographyBody: { color: "#f1f1ed", opacity: "0.6", paddingTop: "3rem" },
-  listTypography: { color: "#f1f1ed", opacity: "0.6" }
+  listTypography: { color: "#f1f1ed", opacity: "0.6" },
+  links: { color: "#f1f1ed" }
 });
 
 function Footer({ classes }) {
@@ -32,14 +33,38 @@ function Footer({ classes }) {
       <Grid item xs={7}>
         <Typography variant="body2" className={classes.typographyTitle}>
           HURUmap's underlying data is quality-checked from reputable official
-          sources including the government census, PEPFAR and UWEZO,{" "}
+          sources including the government census,{" "}
+          <a
+            href="https://www.pepfar.gov/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={classes.links}
+          >
+            PEPFAR{" "}
+          </a>{" "}
+          and{" "}
+          <a
+            href="http://www.uwezo.net/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={classes.links}
+          >
+            UWEZO
+          </a>
         </Typography>
         <Typography variant="body2" className={classes.typographyBody}>
           This project is built on software originally created by the Knight Lab
-          in the USA for the censusReporter.org project which has been
-          repurposed by OpenUp and Media Monitoring Africa for Wazimap in South
-          Africa for Wazimap in SouthAfrica and by Code for Africa FOR hurumaap
-          in Kenya ,Tanzania, Uganda and Zambia
+          in the USA for the{" "}
+          <a href="https://censusreporter.org/" className={classes.links}>
+            censusReporter.org
+          </a>{" "}
+          project which has been repurposed by{" "}
+          <a href="https://openup.org.za/" className={classes.links}>
+            OpenUp
+          </a>{" "}
+          and Media Monitoring Africa for Wazimap in South Africa for Wazimap in
+          SouthAfrica and by Code for Africa FOR hurumaap in Kenya ,Tanzania,
+          Uganda and Zambia
         </Typography>
       </Grid>
       <Grid
