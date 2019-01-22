@@ -1,7 +1,11 @@
 import React from "react";
+import PropTypes from "prop-types";
+
 import { Grid, Typography } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
+
 import SocialMedia from "./SocialMedia";
+
 import background from "../../assets/images/bg/background.png";
 
 const styles = theme => ({
@@ -15,12 +19,12 @@ const styles = theme => ({
       height: "50vh"
     }
   },
-  typographyTitle: { color: "#f1f1ed", fontWeight: "bold", opacity: "0.6" },
-  typographyBody: { color: "#f1f1ed", opacity: "0.6", paddingTop: "3rem" },
-  listTypography: { color: "#f1f1ed", opacity: "0.6" },
+  title: { color: "#f1f1ed", fontWeight: "bold", opacity: "0.6" },
+  body: { color: "#f1f1ed", opacity: "0.6", paddingTop: "3rem" },
+  listText: { color: "#f1f1ed", opacity: "0.6" },
   links: { color: "#f1f1ed" },
   list: { listStyleType: "none", padding: 0, marginTop: "0" },
-  join: { paddingTop: "1rem", color: "#f1f1ed", opacity: "0.6" },
+  joinText: { paddingTop: "1rem", color: "#f1f1ed", opacity: "0.6" },
   bigText: {
     paddingTop: "2rem",
     [theme.breakpoints.up("lg")]: {
@@ -39,7 +43,7 @@ function Footer({ classes }) {
       alignItems="center"
     >
       <Grid item xs={12} sm={7} justify="flex-end" alignItem="center">
-        <Typography variant="body2" className={classes.typographyTitle}>
+        <Typography variant="body2" className={classes.title}>
           HURUmap's underlying data is quality-checked from reputable official
           sources including the government census,{" "}
           <a
@@ -60,7 +64,7 @@ function Footer({ classes }) {
             UWEZO.
           </a>
         </Typography>
-        <Typography variant="body2" className={classes.typographyBody}>
+        <Typography variant="body2" className={classes.body}>
           This project is built on software originally created by the Knight Lab
           in the USA for the{" "}
           <a href="https://censusreporter.org/" className={classes.links}>
@@ -86,7 +90,7 @@ function Footer({ classes }) {
         alignItems="flex-start"
       >
         <Grid item>
-          <Typography variant="body2" className={classes.listTypography}>
+          <Typography variant="body2" className={classes.listText}>
             Other openAfrica Projects
             <ul className={classes.list}>
               <li>
@@ -119,7 +123,7 @@ function Footer({ classes }) {
           </Typography>
         </Grid>
         <Grid item>
-          <Typography variant="body2" className={classes.listTypography}>
+          <Typography variant="body2" className={classes.listText}>
             A project by:
             <ul className={classes.list}>
               <li>
@@ -152,5 +156,8 @@ function Footer({ classes }) {
     </Grid>
   );
 }
+Footer.propTypes = {
+  classes: PropTypes.object.isRequired
+};
 
 export default withStyles(styles)(Footer);

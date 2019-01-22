@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -72,4 +73,10 @@ function SocialMedia({ classes }) {
   );
 }
 
+SocialMedia.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+SocialMedia.defaultProps = {
+  color: "#fff"
+};
 export default withStyles(styles)(SocialMedia);
