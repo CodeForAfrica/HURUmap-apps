@@ -7,7 +7,7 @@ import background from "../../assets/images/bg/background.png";
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    padding: "3rem",
+    padding: "2rem",
     backgroundImage: `url(${background})`,
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
@@ -18,7 +18,15 @@ const styles = theme => ({
   typographyTitle: { color: "#f1f1ed", fontWeight: "bold", opacity: "0.6" },
   typographyBody: { color: "#f1f1ed", opacity: "0.6", paddingTop: "3rem" },
   listTypography: { color: "#f1f1ed", opacity: "0.6" },
-  links: { color: "#f1f1ed" }
+  links: { color: "#f1f1ed" },
+  list: { listStyleType: "none", padding: 0, marginTop: "0" },
+  join: { paddingTop: "1rem", color: "#f1f1ed", opacity: "0.6" },
+  bigText: {
+    paddingTop: "2rem",
+    [theme.breakpoints.up("lg")]: {
+      paddingTop: 0
+    }
+  }
 });
 
 function Footer({ classes }) {
@@ -30,7 +38,7 @@ function Footer({ classes }) {
       direction="row"
       alignItems="center"
     >
-      <Grid item xs={7}>
+      <Grid item xs={12} sm={7} justify="flex-end" alignItem="center">
         <Typography variant="body2" className={classes.typographyTitle}>
           HURUmap's underlying data is quality-checked from reputable official
           sources including the government census,{" "}
@@ -41,7 +49,7 @@ function Footer({ classes }) {
             className={classes.links}
           >
             PEPFAR{" "}
-          </a>{" "}
+          </a>
           and{" "}
           <a
             href="http://www.uwezo.net/"
@@ -49,7 +57,7 @@ function Footer({ classes }) {
             rel="noopener noreferrer"
             className={classes.links}
           >
-            UWEZO
+            UWEZO.
           </a>
         </Typography>
         <Typography variant="body2" className={classes.typographyBody}>
@@ -63,38 +71,80 @@ function Footer({ classes }) {
             OpenUp
           </a>{" "}
           and Media Monitoring Africa for Wazimap in South Africa for Wazimap in
-          SouthAfrica and by Code for Africa FOR hurumaap in Kenya ,Tanzania,
-          Uganda and Zambia
+          SouthAfrica and by Code for Africa for HURUmap in Kenya, Tanzania,
+          Uganda and Zambia.
         </Typography>
       </Grid>
       <Grid
         item
-        xs={5}
+        xs={12}
+        sm={5}
+        spacing={24}
         container
         direction="row"
-        justify="flex-end"
+        justify="center"
         alignItems="flex-start"
       >
-        <Grid style={{ padding: "1rem" }}>
+        <Grid item>
           <Typography variant="body2" className={classes.listTypography}>
             Other openAfrica Projects
-            <ul>
-              <li>Tax Clock</li>
-              <li>sourceAFRICA</li>
+            <ul className={classes.list}>
+              <li>
+                <a
+                  href="https://taxclock.codeforkenya.org/"
+                  className={classes.links}
+                >
+                  Tax Clock
+                </a>
+              </li>
+              <li>
+                <a href="https://sourceafrica.net/" className={classes.links}>
+                  sourceAFRICA
+                </a>
+              </li>
             </ul>
           </Typography>
-          <Typography variant="body2" className={classes.listTypography}>
+          <Typography variant="body2" className={classes.join}>
             Join Our Community
-            <ul>
-              <li>Hacks/Hackers Africa</li>
+            <ul className={classes.list}>
+              <li>
+                <a
+                  href="https://www.facebook.com/HacksHackersAfrica"
+                  className={classes.links}
+                >
+                  Hacks/Hackers Africa
+                </a>
+              </li>
             </ul>
           </Typography>
         </Grid>
-        <Grid style={{ padding: "1rem" }}>
+        <Grid item>
           <Typography variant="body2" className={classes.listTypography}>
-            A project by Code for Africa
+            A project by:
+            <ul className={classes.list}>
+              <li>
+                <a
+                  href="https://codeforafrica.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={classes.links}
+                >
+                  Code for Africa
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.icfj.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={classes.links}
+                >
+                  ICFJ
+                </a>
+              </li>
+            </ul>
           </Typography>
-          <Grid style={{ paddingTop: "7rem" }}>
+          <Grid style={{ marginTop: "3.5rem" }}>
             <SocialMedia />
           </Grid>
         </Grid>

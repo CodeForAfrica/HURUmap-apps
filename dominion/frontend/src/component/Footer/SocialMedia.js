@@ -23,18 +23,18 @@ function SocialMedia({ classes }) {
       container
       spacing={8}
       direction="row"
-      justify="center"
+      justify="flex-start"
       alignItems="center"
     >
       <Grid item>
         <a
-          href="https://twitter.com/sensorsAFRICA/"
+          href="https://www.facebook.com/sensorsAFRICA/"
           target="_blank"
           rel="noopener noreferrer"
         >
           <FontAwesomeIcon
             className={classes.fa}
-            icon={["fab", "twitter"]}
+            icon={["fab", "facebook-f"]}
             size="fa-lg"
             fixedWidth
           />
@@ -56,13 +56,13 @@ function SocialMedia({ classes }) {
       </Grid>
       <Grid item>
         <a
-          href="https://www.facebook.com/sensorsAFRICA/"
+          href="https://twitter.com/sensorsAFRICA/"
           target="_blank"
           rel="noopener noreferrer"
         >
           <FontAwesomeIcon
             className={classes.fa}
-            icon={["fab", "facebook-f"]}
+            icon={["fab", "github"]}
             size="fa-lg"
             fixedWidth
           />
