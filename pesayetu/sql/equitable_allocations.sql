@@ -36,8 +36,6 @@ CREATE TABLE financial_year (
 );
 
 
-ALTER TABLE financial_year OWNER TO pesayetu;
-
 --
 -- Data for Name: financial_year; Type: TABLE DATA; Schema: public; Owner: -
 --

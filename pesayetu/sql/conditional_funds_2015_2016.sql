@@ -34,9 +34,6 @@ CREATE TABLE conditional_fund (
     total double precision
 );
 
-
-ALTER TABLE conditional_fund OWNER TO pesayetu;
-
 --
 -- Data for Name: conditional_fund; Type: TABLE DATA; Schema: public; Owner: -
 --

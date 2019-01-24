@@ -33,9 +33,6 @@ CREATE TABLE primaryschoolteachers (
     total integer
 );
 
-
-ALTER TABLE primaryschoolteachers OWNER TO hurumap_tz;
-
 --
 -- Data for Name: primaryschoolteachers; Type: TABLE DATA; Schema: public; Owner: -
 --

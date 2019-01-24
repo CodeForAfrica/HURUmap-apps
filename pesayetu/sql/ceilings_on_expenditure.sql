@@ -36,9 +36,6 @@ CREATE TABLE expenditure_year (
     total double precision
 );
 
-
-ALTER TABLE expenditure_year OWNER TO pesayetu;
-
 --
 -- Data for Name: expenditure_year; Type: TABLE DATA; Schema: public; Owner: -
 --

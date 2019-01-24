@@ -54,7 +54,7 @@ HURUMAP['levels'] = {
     }
 }
 
-HURUMAP['comparative_levels'] = ["ward", "district", "region", "country"]
+HURUMAP['comparative_levels'] = ["region", "country"]
 HURUMAP['geometry_data'] = {
     '2009': {
         'country': 'geo/country.topojson',

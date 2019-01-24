@@ -1328,7 +1328,7 @@ def get_traffic_and_crimes_profile(geo, session):
 
 
 def get_primary_school_teachers_profile(geo, session):
-    ps_teachers = 0
+    ps_teachers = LOCATIONNOTFOUND
     n_teachers = 0
 
     with dataset_context(year='2015'):
@@ -1341,9 +1341,9 @@ def get_primary_school_teachers_profile(geo, session):
         except Exception:
             pass
 
-    # is_missing = ps_teachers.get('is_missing') and n_teachers.get('is_missing')
+    is_missing = ps_teachers.get('is_missing')
     return {
-        # 'is_missing': is_missing,
+        'is_missing': is_missing,
         'number_of_teachers': {
             'name': 'Number of primary school teachers (2016)',
             'numerators': {'this': n_teachers},
@@ -1437,8 +1437,6 @@ def get_airport_types_profile(geo, session):
     airports_dist = LOCATIONNOTFOUND
     n_airports = 0
     with dataset_context(year='2015'):
-        if geo.geo_level == 'ward':
-            return {}
         try:
 
             airports_dist, n_airports = get_stat_data('airport types', \
@@ -1448,7 +1446,7 @@ def get_airport_types_profile(geo, session):
         except Exception as e:
             pass
 
-    return {
+    data = {
         'is_missing': airports_dist.get('is_missing'),
         'number_of_airports': {
             'name': 'Number of airports (2017)',
@@ -1459,3 +1457,4 @@ def get_airport_types_profile(geo, session):
         'source_link': 'http://www.taa.go.tz',
         'airports': airports_dist
     }
+    return data
