@@ -20,6 +20,7 @@ class HomepageView(TemplateView):
             'root_geo': geo_data.root_geography(),
         }
 
+
 class AboutView(TemplateView):
     template_name = 'about.html'
 # handling schools page

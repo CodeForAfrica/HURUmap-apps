@@ -823,9 +823,6 @@ def districtdistribution(geo, session):
                         exclude_zero=True,
                         percent=False)
                 except Exception as e:
-                    print '\n\n\n\n\n\n\n\n\n\n\n\n'
-                    print e.message
-                    print '\n\n\n\n\n\n\n\n\n\n\n\n'
                     pass
 
             try:
@@ -838,9 +835,6 @@ def districtdistribution(geo, session):
                     exclude_zero=True,
                     percent=False)
             except Exception:
-                print '\n\n\n\n\n\n\n\n\n\n\n\n'
-                print e.message
-                print '\n\n\n\n\n\n\n\n\n\n\n\n'
                 pass
 
             try:
@@ -853,9 +847,6 @@ def districtdistribution(geo, session):
                     exclude_zero=True,
                     percent=False)
             except Exception:
-                print '\n\n\n\n\n\n\n\n\n\n\n\n'
-                print e.message
-                print '\n\n\n\n\n\n\n\n\n\n\n\n'
                 pass
 
                 try:
@@ -868,14 +859,8 @@ def districtdistribution(geo, session):
                         exclude_zero=True,
                         percent=False)
                 except Exception as e:
-                    print '\n\n\n\n\n\n\n\n\n\n\n\n'
-                    print e.message
-                    print '\n\n\n\n\n\n\n\n\n\n\n\n'
                     pass
         except Exception as e:
-            print '\n\n\n\n\n\n\n\n\n\n\n\n'
-            print e.message
-            print '\n\n\n\n\n\n\n\n\n\n\n\n'
             pass
 
     dist[

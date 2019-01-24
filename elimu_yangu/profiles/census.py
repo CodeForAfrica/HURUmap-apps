@@ -64,10 +64,6 @@ def get_schools_profile(geo, session, year):
                                                         session=session, only={
                     'year_of_result': [year]})
         except Exception as e:
-            print "\n\n\n\n"
-            print "error school dist"
-            print e.message
-            print "\n\n\n\n"
             pass
 
         try:
@@ -181,9 +177,6 @@ def get_schools_profile(geo, session, year):
                 if 'numerators' in data:
                     total_private += data['numerators']['this']
         except Exception as e:
-            print "\n\n\n\n"
-            print e.message
-            print "\n\n\n\n"
             pass
 
     return {

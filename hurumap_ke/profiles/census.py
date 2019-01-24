@@ -411,9 +411,6 @@ def get_contraceptive_use_profile(geo, session):
             contraceptive_use_dist_data, _ = get_stat_data(
                 'contraceptive_use', geo, session,
                 key_order=['Modern', 'Traditional', 'Not using'])
-            print('\n\n\n\n\n\n\n\n\n')
-            print {'kotido': contraceptive_use_dist_data}
-            print('\n\n\n\n\n\n\n\n\n')
 
             modern = contraceptive_use_dist_data['Modern']['numerators']['this']
             traditional = \
@@ -954,7 +951,7 @@ def get_nutrition_profile(geo, session):
 
 def get_protests_profile(geo, session):
     number_of_protests_dist = LOCATIONNOTFOUND
-    number_of_protests = 0
+    number_of_protests = None
     with dataset_context(year='2014'):
         try:
             number_of_protests_dist, _ = get_stat_data(

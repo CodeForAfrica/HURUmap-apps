@@ -154,7 +154,6 @@ def get_conditional_allocation_2015_2016(geo, session):
                 'values': fund['values']
             }
 
-        print final_data
         return final_data
     except Exception:
         conditional, _ = LOCATIONNOTFOUND, 0

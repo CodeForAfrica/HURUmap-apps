@@ -364,9 +364,10 @@
                class="clearfix {% if 'fertility' not in selected_sections %}hide{% endif %}">
         <header class="section-contents">
           <h1>Fertility</h1>
+
+
         </header>
         <div class="section-container">
-
           <section class="clearfix stat-row">
             <div class="column-third">
               {% include 'profile/_blocks/_stat_list.html' with stat=fertility.fertility_rate stat_type='number' %}
@@ -476,7 +477,7 @@
       </article>
     {% endif %} <!-- end if type_treatment -->
 
-    {% if not health_ratios.is_missing %}
+    {% if healthratios.doctorratio and  healthratios.nurseratio%}
       <article id="health_ratios"
                class="clearfix {% if 'health_ratios' not in selected_sections %}hide{% endif %}">
         <header class="section-contents">
@@ -503,7 +504,7 @@
 
   </div> <!-- end of health -->
 
-  {% if not protests.is_missing %}
+  {% if not protests.number_of_protests %}
     <article id="protests"
              class="clearfix {% if 'protests' not in selected_sections %}hide{% endif %}">
       <header class="section-contents">
