@@ -33,10 +33,10 @@ cat $HURUMAP_APP/sql/*.sql | docker-compose exec -T db psql $HURUMAP_APP
 cat $HURUMAP_APP/sql/*.sql | docker-compose exec -T -e PGPASSWORD=<pass> db psql -h <db.host.com> -U <user> $HURUMAP_APP
 ```
 
-#### Working with large `.sql` files
+#### `elimu_yangu` `.sql` files
 
-Install [Git Large File Storage](https://git-lfs.github.com) and follow the instructions [here](https://git-lfs.github.com)
-
+`olevel_student_performance.sql` has been split into 2 files by year because as a single 
+file, it surpasses the maximum file size allowed by Github
 
 ### Import Data into HURUmap
 
