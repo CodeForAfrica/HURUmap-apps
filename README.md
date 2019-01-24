@@ -33,6 +33,11 @@ cat $HURUMAP_APP/sql/*.sql | docker-compose exec -T db psql $HURUMAP_APP
 cat $HURUMAP_APP/sql/*.sql | docker-compose exec -T -e PGPASSWORD=<pass> db psql -h <db.host.com> -U <user> $HURUMAP_APP
 ```
 
+#### Working with large `.sql` files
+
+Install [Git Large File Storage](https://git-lfs.github.com) and follow the instructions [here](https://git-lfs.github.com)
+
+
 ### Import Data into HURUmap
 
 TODO: Needs to use docker-compose, test, and QA
