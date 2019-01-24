@@ -28,7 +28,7 @@ This project will be primarily using [airbnb react styleguide](https://github.co
 
 ## API documentation
 
-This react project uses a South Afican mapit instance to get map data/geoJSON file
+This react project uses a South African mapit instance to get map data/geoJSON file
 
 And uses dominion HURUmap-apps for data. Below are the api root
 
@@ -37,5 +37,3 @@ And uses dominion HURUmap-apps for data. Below are the api root
 /api/1.0/table$
 /api/1.0/geo/<geo_id>/patents
 ```
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
