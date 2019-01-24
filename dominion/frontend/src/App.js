@@ -7,7 +7,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { URLS } from '../src/component/DocumentHead/PageHeads';
 import Home from './pages/home';
 import Country from './pages/country';
-import NotFound from './pages/NotFound';
+import NotFound from './pages/notFound';
 
 function App() {
   return (
