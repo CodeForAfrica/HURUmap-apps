@@ -2,10 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.12
--- Dumped by pg_dump version 9.5.12
-
--- Started on 2018-03-14 11:18:55 EAT
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -15,14 +13,13 @@ SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-ALTER TABLE IF EXISTS ONLY public.alevel_overall_performance DROP CONSTRAINT IF EXISTS pk_alevel_overall_performance;
+ALTER TABLE IF EXISTS ONLY public.alevel_overall_performance DROP CONSTRAINT IF EXISTS alevel_overall_performance_pkey;
 DROP TABLE IF EXISTS public.alevel_overall_performance;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
 
 --
--- TOC entry 193 (class 1259 OID 17240)
 -- Name: alevel_overall_performance; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -43,8 +40,6 @@ CREATE TABLE public.alevel_overall_performance (
 
 
 --
--- TOC entry 2176 (class 0 OID 17240)
--- Dependencies: 193
 -- Data for Name: alevel_overall_performance; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -3458,15 +3453,12 @@ COPY public.alevel_overall_performance (id, year, schoolcode, schoolname, gender
 
 
 --
--- TOC entry 2061 (class 2606 OID 17253)
--- Name: pk_alevel_overall_performance; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: alevel_overall_performance alevel_overall_performance_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.alevel_overall_performance
-    ADD CONSTRAINT pk_overall_performance PRIMARY KEY (id);
+    ADD CONSTRAINT alevel_overall_performance_pkey PRIMARY KEY (id);
 
-
--- Completed on 2018-03-14 11:18:56 EAT
 
 --
 -- PostgreSQL database dump complete

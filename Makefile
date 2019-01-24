@@ -25,6 +25,9 @@ makemigrations:
 createdb:
 	$(COMPOSE) exec db createdb ${HURUMAP_APP}
 
+dropdb:
+	$(COMPOSE) exec db dropdb ${HURUMAP_APP}
+
 loaddata:
 	$(COMPOSE) exec -T web ./contrib/loaddata.sh  # Load the DB with data
 
