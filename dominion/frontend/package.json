@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "author": "Code for Africa <support@codeforafrica.com>",
   "private": true,
-  "homepage": "http://dominion.investigate.africa",
+  "main": "index.js",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.6.3",
     "@fortawesome/fontawesome-svg-core": "^1.2.12",

@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { withRouter } from "react-router-dom";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 
-import { Grid, Typography } from "@material-ui/core";
-import { withStyles } from "@material-ui/core/styles";
+import { Grid, Typography } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 
-import DocumentHead from "../component/DocumentHead";
+import DocumentHead from '../component/DocumentHead';
 
 class NotFound extends Component {
   render() {
@@ -24,10 +24,6 @@ class NotFound extends Component {
 
 NotFound.propTypes = {
   url: PropTypes.string
-};
-
-NotFound.defaultProps = {
-  url: null
 };
 
 export default withRouter(withStyles(NotFound));
