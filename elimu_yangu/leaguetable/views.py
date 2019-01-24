@@ -213,8 +213,6 @@ class EmbedGeographyDetailView(BaseGeographyDetailView):
         return ['leaguetable/profile/profile_detail_%s.html' % self.profile_name, 'leaguetable/embed_map.html']
 
 
-
-
 class GeographyDetailView(BaseGeographyDetailView):
     adjust_slugs = True
     default_geo_version = None
