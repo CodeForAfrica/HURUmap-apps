@@ -1,18 +1,15 @@
-import React from "react";
-import { Grid, Typography } from "@material-ui/core";
-import Partners from "./Partners";
+import React from 'react';
+import { Grid, Typography } from '@material-ui/core';
 
 function Footer() {
   return (
     <Grid
       container
-      item
-      xs={12}
       direction="column"
       justify="center"
       alignItems="center"
+      style={{ paddingTop: '1rem' }}
     >
-      <Partners />
       <Typography variant="title">Footer Section</Typography>
     </Grid>
   );

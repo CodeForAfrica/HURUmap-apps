@@ -1,13 +1,13 @@
-import React from "react";
-import Helmet from "react-helmet";
-import PropTypes from "prop-types";
+import React from 'react';
+import Helmet from 'react-helmet';
+import PropTypes from 'prop-types';
 
-import PageHeads from "./PageHeads";
-import Favicon from "../Favicon";
+import PageHeads from './PageHeads';
+import Favicon from '../Favicon';
 
 function DocumentHead({ url }) {
   const matchUrl = obj => obj.url === url;
-  const matchDefault = obj => obj.url === "/";
+  const matchDefault = obj => obj.url === '/';
   const head =
     (url && PageHeads.find(matchUrl)) || PageHeads.find(matchDefault);
   return (
