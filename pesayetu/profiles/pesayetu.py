@@ -1,5 +1,7 @@
-from wazimap.data.utils import (LocationNotFound, get_session, get_stat_data,
-                                merge_dicts)
+from wazimap.data.utils import (calculate_median,
+                                get_session, get_stat_data, group_remainder,
+                                merge_dicts, get_datatable, current_context,
+                                dataset_context)
 from django.conf import settings
 import logging
 
@@ -28,11 +30,13 @@ def get_profile(geo, profile_name, request):
 
 
 def get_equitable_allocation_data(geo, session):
+
     try:
-        budget_allocation, _ = get_stat_data('financial_year', geo, session,
-                                             table_fields=[
-                                                 'financial_year'],
-                                             percent=False)
+        with dataset_context(year='2016'):
+            budget_allocation, _ = get_stat_data('financial_year', geo, session,
+                                                 table_fields=[
+                                                     'financial_year'],
+                                                 percent=False)
 
         yr2013_2014 = 0
         for data, value in budget_allocation.get('FY 2013/2014',
@@ -84,16 +88,17 @@ def get_equitable_allocation_data(geo, session):
 
         return final_data
 
-    except LocationNotFound:
+    except Exception:
         budget_allocation, _ = LOCATIONNOTFOUND, 0
 
 
 def get_county_expenditure_ceilings(geo, session):
     try:
-        ceilings, _ = get_stat_data(['expenditure', 'year'],
-                                    geo, session, table_fields=['expenditure',
-                                                                'year'],
-                                    percent=False)
+        with dataset_context(year='2016'):
+            ceilings, _ = get_stat_data(['expenditure', 'year'],
+                                        geo, session, table_fields=['expenditure',
+                                                                    'year'],
+                                        percent=False)
 
         final_data = {}
         county_assembly = ceilings['County Assembly']
@@ -127,15 +132,16 @@ def get_county_expenditure_ceilings(geo, session):
         }
         return final_data
 
-    except LocationNotFound:
+    except Exception:
         ceilings, _ = LOCATIONNOTFOUND, 0
 
 
 def get_conditional_allocation_2015_2016(geo, session):
     try:
-        conditional, _ = get_stat_data(['conditional_fund'], geo, session,
-                                       table_fields=['conditional_fund'],
-                                       percent=False)
+        with dataset_context(year='2016'):
+            conditional, _ = get_stat_data(['conditional_fund'], geo, session,
+                                           table_fields=['conditional_fund'],
+                                           percent=False)
         final_data = {}
         data = ['DANIDA Grant', 'Other Conditional Allocations',
                 'World Bank Loan']
@@ -148,7 +154,6 @@ def get_conditional_allocation_2015_2016(geo, session):
                 'values': fund['values']
             }
 
-        print final_data
         return final_data
-    except LocationNotFound:
+    except Exception:
         conditional, _ = LOCATIONNOTFOUND, 0

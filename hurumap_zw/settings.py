@@ -4,7 +4,7 @@ from collections import OrderedDict
 from hurumap.settings import *  # noqa
 
 DATABASE_URL = os.environ.get('DATABASE_URL',
-                              'postgresql://hurumap_zw:hurumap_zw@localhost/hurumap_zw')
+                              'postgresql://hurumap:hurumap@localhost/hurumap_zw')
 DJANGO_SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY',
                                    'this is some not so secret key but..')
 DEBUG = os.environ.get('DJANGO_DEBUG', True)
@@ -55,8 +55,6 @@ HURUMAP['geometry_data'] = {
     '2009': {
         'country': 'geo/country.topojson',
         'province': 'geo/province.topojson',
-        'district': 'geo/district.topojson',
-        'ward': 'geo/ward.topojson'
     }
 }
 HURUMAP['twitter'] = '@Code4Africa'
@@ -64,6 +62,15 @@ HURUMAP['twitter'] = '@Code4Africa'
 HURUMAP['topics'] = OrderedDict()
 HURUMAP['map_zoom'] = 6
 HURUMAP['map_centre'] = [-19.0154, 29.1549]
+
+HURUMAP['primary_release_year'] = {
+    'province': 2017,
+}
+HURUMAP['latest_release_year'] = '2017'
+HURUMAP['primary_dataset_name'] = 'Census'
+HURUMAP['available_release_years'] = {
+    'province': [2017]
+}
 
 
 LOGGING['loggers']['hurumap_zw'] = {'level': 'DEBUG' if DEBUG else 'INFO'}

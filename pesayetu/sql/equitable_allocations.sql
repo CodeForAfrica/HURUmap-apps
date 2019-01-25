@@ -24,7 +24,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: financial_year; Type: TABLE; Schema: public; Owner: pesayetu
+-- Name: financial_year; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE financial_year (
@@ -36,10 +36,8 @@ CREATE TABLE financial_year (
 );
 
 
-ALTER TABLE financial_year OWNER TO pesayetu;
-
 --
--- Data for Name: financial_year; Type: TABLE DATA; Schema: public; Owner: pesayetu
+-- Data for Name: financial_year; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY financial_year (geo_level, geo_code, geo_version, financial_year, total) FROM stdin;
@@ -239,7 +237,7 @@ county	24	2009	FY 2013/2014	3154744440
 
 
 --
--- Name: financial_year pk_financial_year; Type: CONSTRAINT; Schema: public; Owner: pesayetu
+-- Name: financial_year pk_financial_year; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY financial_year

@@ -114,13 +114,18 @@ HURUMAP['topics']['development'] = {
     ]
 }
 
+HURUMAP['primary_release_year'] = {
+    'region': 2014,
+}
+HURUMAP['latest_release_year'] = '2014'
+HURUMAP['primary_dataset_name'] = 'Census'
+HURUMAP['available_release_years'] = {
+    'region': [2014]
+}
+
 LOGGING['loggers']['hurumap_ug'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
 
 # Making sure they are the same
 WAZIMAP = HURUMAP
 
-'''
-MDXvR2QUoMLlFMSYN9mqVa
-qjBtVtjcCbDrmmU1VCBDztZtA
-'''
 

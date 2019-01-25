@@ -2,10 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.12
--- Dumped by pg_dump version 9.5.12
-
--- Started on 2018-04-05 15:22:52 EAT
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -15,14 +13,13 @@ SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-ALTER TABLE IF EXISTS ONLY public.alevel_subject_performance DROP CONSTRAINT IF EXISTS pk_alevel_subject_performance;
+ALTER TABLE IF EXISTS ONLY public.alevel_subject_performance DROP CONSTRAINT IF EXISTS alevel_subject_performance_pkey;
 DROP TABLE IF EXISTS public.alevel_subject_performance;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
 
 --
--- TOC entry 215 (class 1259 OID 18322)
 -- Name: alevel_subject_performance; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -45,8 +42,6 @@ CREATE TABLE public.alevel_subject_performance (
 
 
 --
--- TOC entry 2229 (class 0 OID 18322)
--- Dependencies: 215
 -- Data for Name: alevel_subject_performance; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -7595,15 +7590,12 @@ COPY public.alevel_subject_performance (id, year, schoolcode, schoolname, region
 
 
 --
--- TOC entry 2114 (class 2606 OID 18342)
--- Name: pk_alevel_subject_performance; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: alevel_subject_performance alevel_subject_performance_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.alevel_subject_performance
-    ADD CONSTRAINT pk_alevel_subject_performance PRIMARY KEY (id);
+    ADD CONSTRAINT alevel_subject_performance_pkey PRIMARY KEY (id);
 
-
--- Completed on 2018-04-05 15:22:53 EAT
 
 --
 -- PostgreSQL database dump complete

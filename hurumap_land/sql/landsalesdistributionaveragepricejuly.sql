@@ -26,7 +26,7 @@ CREATE TABLE public.landsalesdistributionaveragepricejuly (
     geo_level character varying(50) NOT NULL,
     geo_code character varying(10) NOT NULL,
     geo_version character varying(100) DEFAULT ''::character varying NOT NULL,
-    class character varying(128) NOT NULL,
+    class_average_price_july character varying(128) NOT NULL,
     total numeric
 );
 
@@ -35,7 +35,7 @@ CREATE TABLE public.landsalesdistributionaveragepricejuly (
 -- Data for Name: landsalesdistributionaveragepricejuly; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.landsalesdistributionaveragepricejuly (geo_level, geo_code, geo_version, class, total) FROM stdin;
+COPY public.landsalesdistributionaveragepricejuly (geo_level, geo_code, geo_version, class_average_price_july, total) FROM stdin;
 country	ZA	2016	Under 1.5K	458
 country	ZA	2016	1,501-3K	2465
 country	ZA	2016	3,001-5K	4018

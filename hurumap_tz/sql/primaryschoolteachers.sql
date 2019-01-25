@@ -22,7 +22,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: primaryschoolteachers; Type: TABLE; Schema: public; Owner: hurumap_tz
+-- Name: primaryschoolteachers; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE primaryschoolteachers (
@@ -33,11 +33,8 @@ CREATE TABLE primaryschoolteachers (
     total integer
 );
 
-
-ALTER TABLE primaryschoolteachers OWNER TO hurumap_tz;
-
 --
--- Data for Name: primaryschoolteachers; Type: TABLE DATA; Schema: public; Owner: hurumap_tz
+-- Data for Name: primaryschoolteachers; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY primaryschoolteachers (geo_level, geo_code, geo_version, "primary school teachers", total) FROM stdin;
@@ -399,7 +396,7 @@ district	158	2009	Male	1255
 
 
 --
--- Name: pk_primaryschoolteachers; Type: CONSTRAINT; Schema: public; Owner: hurumap_tz
+-- Name: pk_primaryschoolteachers; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY primaryschoolteachers

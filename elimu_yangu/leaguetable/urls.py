@@ -22,7 +22,7 @@ urlpatterns = [
         regex   = r'^profiles/(?P<geography_id>\w+-\w+)(-(?P<slug>[\w-]+))?/$',
         view    = cache_page(STANDARD_CACHE_TIME)(GeographyDetailView.as_view()),
         kwargs  = {},
-        name    = 'geography_detail',
+        name    = 'league_table_geography_detail',
     ),
 
     # url for specific school page

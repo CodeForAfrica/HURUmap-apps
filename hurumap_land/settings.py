@@ -91,14 +91,17 @@ HURUMAP['levels'] = {
 #     # use the 2011 release for wards, use the latest (2016) for everything else
 #     'ward': 2016,
 # }
-HURUMAP['primary_dataset_name'] = 'Land Reports'
-HURUMAP['latest_release_year'] = '2016'
-# HURUMAP['available_release_years'] = {
-#     # Release years with data for geo_levels.
-#     # Only specify geo_levels with limited releases.
-#     # Other geo_levels have data for all releases.
-#     'ward': [2011]
-# }
+HURUMAP['primary_release_year'] = {
+    'province': 2017,
+}
+HURUMAP['latest_release_year'] = '2017'
+HURUMAP['primary_dataset_name'] = 'Land Audit Report'
+HURUMAP['available_release_years'] = {
+    # Release years with data for geo_levels.
+    # Only specify geo_levels with limited releases.
+    # Other geo_levels have data for all releases.
+    'province': [2013, 2017]
+}
 # If not set, the centre is determined from the geometry.
 HURUMAP['map_centre']= None
 HURUMAP['map_zoom']= None
@@ -159,7 +162,7 @@ HURUMAP['topics']['sectionaltitleland'] = {
         'Number of sectional title owners by race',
         'sectional title ownership in hectares per gender',
         'Number of sectional title owners by gender',
-        'sectional title ownership in hectares per nationality',
+        'sectional title ownership in hectares nationality',
         'Number of sectional title owners by nationality',
     ]
 }
@@ -192,6 +195,7 @@ HURUMAP['showcase_stories'] = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 LOGGING['loggers']['hurumap_land'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
 
