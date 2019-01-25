@@ -25,6 +25,9 @@ CREATE EXTENSION IF NOT EXISTS hstore SCHEMA public;
 -- Name: university_finder; Type: TABLE; Schema: public; Owner: elimu_yangu
 --
 
+ALTER TABLE IF EXISTS ONLY public.university_finder DROP CONSTRAINT IF EXISTS pk_university_finder;
+DROP TABLE IF EXISTS public.university_finder;
+
 CREATE TABLE public.university_finder (
     id integer NOT NULL,
     university_name character varying,

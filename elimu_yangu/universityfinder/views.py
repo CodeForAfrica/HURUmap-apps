@@ -54,7 +54,9 @@ def index(request):
             form = InputForm(label_suffix="  ")
             return render(request, 'index.html', {'form': form})
     except Exception as e:
-        print e
+        print "\n\n\n\n\n\n\n\n"
+        print e.message
+        print "\n\n\n\n\n\n\n\n"
         raise Http404("Oops, something went wrong!")
 
 def find_uni_courses(subjects, majors):
