@@ -5,9 +5,9 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 import { URLS } from '../src/component/DocumentHead/PageHeads';
-import Home from './pages/home';
-import Country from './pages/country';
-import NotFound from './pages/notFound';
+import Home from './pages/Home';
+import Country from './pages/Country';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
