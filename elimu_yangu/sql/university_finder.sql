@@ -19,6 +19,8 @@ SET default_tablespace = '';
 
 SET default_with_oids = false;
 
+CREATE EXTENSION IF NOT EXISTS hstore SCHEMA public;
+
 --
 -- Name: university_finder; Type: TABLE; Schema: public; Owner: elimu_yangu
 --
@@ -36,10 +38,8 @@ CREATE TABLE public.university_finder (
 );
 
 
-ALTER TABLE public.university_finder OWNER TO elimu_yangu;
-
 --
--- Name: university_finder_id_seq; Type: SEQUENCE; Schema: public; Owner: elimu_yangu
+-- Name: university_finder_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.university_finder_id_seq
@@ -50,10 +50,8 @@ CREATE SEQUENCE public.university_finder_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.university_finder_id_seq OWNER TO elimu_yangu;
-
 --
--- Name: university_finder_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: elimu_yangu
+-- Name: university_finder_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.university_finder_id_seq OWNED BY public.university_finder.id;
