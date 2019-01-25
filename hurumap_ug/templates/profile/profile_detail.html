@@ -36,89 +36,101 @@
 
 
 {% block profile_detail %}
-  <article id="demographics"
-           class="clearfix {% if 'demographics' not in selected_sections %}hide{% endif %}">
-    <header class="section-contents">
-      <h1>Demographics</h1>
-    </header>
-    <div class="section-container">
+  {% if not demographics.is_missing %}
+    <article id="demographics"
+             class="clearfix">
+      <header class="section-contents">
+        <h1>Demographics</h1>
+      </header>
+      <div class="section-container">
 
-      <section class="clearfix stat-row">
-        <h2 class="header-for-columns">
-          <a class="permalink"
-             href="#pop_count"
-             id="pop_count">Population <i
-              class="fa fa-link"></i></a></h2>
-        <div class="column-quarter">
-          {% include 'profile/_blocks/_stat_list.html' with stat=demographics.total_population stat_type='number' %}
-        </div>
-        <div class="column-quarter"
-             id="chart-pie-demographics-sex_ratio"
-             data-stat-type="percentage" data-chart-title="Sex"></div>
-        <div class="column-quarter">
-          {% include 'profile/_blocks/_stat_list.html' with stat=demographics.urbanised stat_type='percentage' %}
-        </div>
-        <div class="column-quarter"
-             id="chart-grouped_column-demographics-urban_distribution"
-             data-stat-type="scaled-percentage"
-             data-chart-title="Urban vs rural by sex"></div>
-      </section>
-
-    </div>
-  </article>
-
-  <article id="households"
-           class="clearfix {% if 'households' not in selected_sections %}hide{% endif %}">
-    <header class="section-contents">
-      <h1>Households</h1>
-    </header>
-    <div class="section-container">
-
-      <section class="clearfix stat-row">
-        <h2><a class="permalink" href="#households">Households <i
-            class="fa fa-link"></i></a></h2>
-        <div class="column-third">
-          {% include 'profile/_blocks/_stat_list.html' with stat=households.total_households stat_type='number' %}
-        </div>
-      </section>
-      {% if not households.percentage_by_permanency.is_missing %}
         <section class="clearfix stat-row">
-          <h2><a class="permalink" href="#households-water"
-                 id="households-water">Percentage by Permanency <i
-              class="fa fa-link"></i></a></h2>
-          <div class="column-three-quarters"
-               id="chart-histogram-households-percentage_by_permanency"
-               data-stat-type="scaled-percentage"
-               data-chart-title="Households Percentage by permanency"></div>
-        </section>
-      {% endif %} <!-- end if -->
+          <h2 class="header-for-columns">
+            <a class="permalink"
+               href="#pop_count"
+               id="pop_count">Population <i
+                class="fa fa-link"></i></a></h2>
+          <div class="column-quarter">
+            {% include 'profile/_blocks/_stat_list.html' with stat=demographics.total_population stat_type='number' %}
+          </div>
+          {% if not demographics.sex_ratio.is_missing %}
+            <div class="column-quarter"
+                 id="chart-pie-demographics-sex_ratio"
+                 data-stat-type="percentage" data-chart-title="Sex"></div>
+          {% endif %} <!-- end if -->
+          {% if not demographics.urbanised %}
+            <div class="column-quarter">
+              {% include 'profile/_blocks/_stat_list.html' with stat=demographics.urbanised stat_type='percentage' %}
+            </div>
+          {% endif %} <!-- end if -->
 
-      {% if not households.light_source_distribution.is_missing %}
+          {% if not demographics.urban_distribution.is_missing %}
+            <div class="column-quarter"
+                 id="chart-grouped_column-demographics-urban_distribution"
+                 data-stat-type="scaled-percentage"
+                 data-chart-title="Urban vs rural by sex"></div>
+          {% endif %} <!-- end if -->
+        </section>
+
+      </div>
+    </article>
+  {% endif %} <!-- end if -->
+
+  {% if not households.is_missing %}
+    <article id="households"
+             class="clearfix {% if 'households' not in selected_sections %}hide{% endif %}">
+      <header class="section-contents">
+        <h1>Households</h1>
+      </header>
+      <div class="section-container">
+
         <section class="clearfix stat-row">
-          <h2><a class="permalink" href="#households-lighting"
-                 id="households-lighting">Main source of lighting <i
+          <h2><a class="permalink" href="#households">Households <i
               class="fa fa-link"></i></a></h2>
-          <div class="column-three-quarters"
-               id="chart-histogram-households-light_source_distribution"
-               data-stat-type="scaled-percentage"
-               data-chart-title="Light source distribution"></div>
+          <div class="column-third">
+            {% include 'profile/_blocks/_stat_list.html' with stat=households.total_households stat_type='number' %}
+          </div>
         </section>
-      {% endif %} <!-- end if -->
+        {% if not households.percentage_by_permanency.is_missing %}
+          <section class="clearfix stat-row">
+            <h2><a class="permalink" href="#households-water"
+                   id="households-water">Percentage by Permanency <i
+                class="fa fa-link"></i></a></h2>
+            <div class="column-three-quarters"
+                 id="chart-histogram-households-percentage_by_permanency"
+                 data-stat-type="scaled-percentage"
+                 data-chart-title="Households Percentage by permanency"></div>
+          </section>
+        {% endif %} <!-- end if -->
 
-      {% if not households.energy_source_distribution.is_missing %}
-        <section class="clearfix stat-row">
-          <h2><a class="permalink" href="#households-lighting"
-                 id="households-lighting">Main source of energy <i
-              class="fa fa-link"></i></a></h2>
-          <div class="column-three-quarters"
-               id="chart-histogram-households-energy_source_distribution"
-               data-stat-type="scaled-percentage"
-               data-chart-title="Energy source distribution"></div>
-        </section>
-      {% endif %} <!-- end if -->
+        {% if not households.light_source_distribution.is_missing %}
+          <section class="clearfix stat-row">
+            <h2><a class="permalink" href="#households-lighting"
+                   id="households-lighting">Main source of lighting <i
+                class="fa fa-link"></i></a></h2>
+            <div class="column-three-quarters"
+                 id="chart-histogram-households-light_source_distribution"
+                 data-stat-type="scaled-percentage"
+                 data-chart-title="Light source distribution"></div>
+          </section>
+        {% endif %} <!-- end if -->
 
-    </div>
-  </article>
+        {% if not households.energy_source_distribution.is_missing %}
+          <section class="clearfix stat-row">
+            <h2><a class="permalink" href="#households-lighting"
+                   id="households-lighting">Main source of energy <i
+                class="fa fa-link"></i></a></h2>
+            <div class="column-three-quarters"
+                 id="chart-histogram-households-energy_source_distribution"
+                 data-stat-type="scaled-percentage"
+                 data-chart-title="Energy source distribution"></div>
+          </section>
+        {% endif %} <!-- end if -->
+
+      </div>
+    </article>
+  {% endif %} <!-- end if -->
+
 
   <article id="disability"
            class="clearfix {% if 'households' not in selected_sections %}hide{% endif %}">
@@ -132,17 +144,23 @@
         <div class="column-quarter">
           {% include 'profile/_blocks/_stat_list.html' with stat=disability.total_ stat_type='number' %}
         </div>
-        <div class="column-quarter"
-             id="chart-pie-disability-disabled_or_not_distribution"
-             data-stat-type="percentage"
-             data-chart-title="With or Without Disability"></div>
+        {% if not disability.disabled_or_not_distribution.is_missing %}
+          <div class="column-quarter"
+               id="chart-pie-disability-disabled_or_not_distribution"
+               data-stat-type="percentage"
+               data-chart-title="With or Without Disability"></div>
+        {% endif %} <!-- end if -->
+
         <div class="column-quarter">
           {% include 'profile/_blocks/_stat_list.html' with stat=disability.total_disabled stat_type='percentage' %}
         </div>
-        <div class="column-quarter"
-             id="chart-pie-disability-disability"
-             data-stat-type="percentage"
-             data-chart-title="Type of disability"></div>
+        {% if not disability.disability.is_missing %}
+          <div class="column-quarter"
+               id="chart-pie-disability-disability"
+               data-stat-type="percentage"
+               data-chart-title="Type of disability"></div>
+        {% endif %} <!-- end if -->
+
       </section>
 
     </div>
@@ -170,13 +188,15 @@
         </div>
 
       </section>
+      {% if not elections2016.candidate_distribution.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-three-quarters"
+               id="chart-histogram-elections2016-candidate_distribution"
+               data-stat-type="scaled-percentage"
+               data-chart-title="Votes Distribution"></div>
+        </section>
+      {% endif %} <!-- end if -->
 
-      <section class="clearfix stat-row">
-        <div class="column-three-quarters"
-             id="chart-histogram-elections2016-candidate_distribution"
-             data-stat-type="scaled-percentage"
-             data-chart-title="Votes Distribution"></div>
-      </section>
     </div>
   </article>
 

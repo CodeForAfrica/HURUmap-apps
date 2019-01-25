@@ -7,7 +7,6 @@
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
@@ -27,6 +26,7 @@ CREATE EXTENSION IF NOT EXISTS hstore SCHEMA public;
 
 ALTER TABLE IF EXISTS ONLY public.university_finder DROP CONSTRAINT IF EXISTS pk_university_finder;
 DROP TABLE IF EXISTS public.university_finder;
+DROP SEQUENCE IF EXISTS public.university_finder_id_seq;
 
 CREATE TABLE public.university_finder (
     id integer NOT NULL,

@@ -48,7 +48,10 @@ def get_demographics_profile(geo, session, year):
         except Exception:
             urban_dist_data = LOCATIONNOTFOUND
 
+        is_missing = sex_dist_data.get('is_missing') and urban_dist_data.get('is_missing')
+
         final_data = {
+            'is_missing': is_missing,
             'sex_ratio': sex_dist_data,
             'urban_distribution': urban_dist_data,
             'urbanised': {
@@ -90,7 +93,10 @@ def get_households_profile(geo, session, year):
             light_source = LOCATIONNOTFOUND
             energy_source, _ = LOCATIONNOTFOUND, 0
 
+        is_missing = permanency.get('is_missing') and light_source.get('is_missing') and energy_source.get('is_missing')
+
         final_data = {
+            'is_missing': is_missing,
             'percentage_by_permanency': permanency,
             'light_source_distribution': light_source,
             'energy_source_distribution': energy_source,
@@ -123,7 +129,10 @@ def get_elections2016_profile(geo, session):
             if data == 'numerators':
                 total_museveni += value['this']
 
+    is_missing = candidate.get('is_missing')
+
     final_data = {
+        'is_missing': is_missing,
         'candidate_distribution': candidate,
         'museveni_votes': {
             'name': 'Museveni Votes',
@@ -169,7 +178,10 @@ def get_disabilities_profile(geo, session, year):
             if data == 'numerators':
                 total_disabled += value['this']
 
+        is_missing = disability.get('is_missing') and disabled_or_not.get('is_missing')
+
         final_data = {
+            'is_missing': is_missing,
             'disabled_or_not_distribution': disabled_or_not,
             'disability': disability,
             'total_disabled': {
