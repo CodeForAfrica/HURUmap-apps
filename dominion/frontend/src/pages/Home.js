@@ -16,6 +16,6 @@ function Home({ url }) {
 }
 
 Home.propTypes = {
-  url: PropTypes.string
+  url: PropTypes.string.isRequired
 };
 export default Home;

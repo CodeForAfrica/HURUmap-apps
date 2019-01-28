@@ -1,7 +1,9 @@
 {
+  "root": true,
   "extends": ["airbnb", "plugin:prettier/recommended", "prettier/react"],
   "env": {
-    "browser": true
+    "browser": true,
+    "jest": true
   },
   "rules": {
     "react/forbid-prop-types": false,
@@ -11,6 +13,5 @@
         "extensions": [".js", ".jsx"]
       }
     ]
-    "jsx-a11y/click-events-have-key-events": "off"
   }
 }

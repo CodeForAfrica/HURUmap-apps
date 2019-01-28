@@ -10,7 +10,7 @@ function Footer() {
       alignItems="center"
       style={{ paddingTop: '1rem' }}
     >
-      <Typography variant="title">Footer Section</Typography>
+      <Typography variant="h6">Footer Section</Typography>
     </Grid>
   );
 }

@@ -1,29 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router';
 
-import { Grid, Typography } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { Typography } from '@material-ui/core';
 
 import DocumentHead from '../component/DocumentHead';
 
-class NotFound extends Component {
-  render() {
-    const { url } = this.props;
-
-    return (
-      <Grid>
-        <DocumentHead url={url} />
-        <Typography variant="h1">
-          404 OOPS! WE CAN&apos;T SEEM TO FIND THE PAGE YOU ARE LOOKING FOR.
-        </Typography>
-      </Grid>
-    );
-  }
+function NotFound({ url }) {
+  return (
+    <React.Fragment>
+      <DocumentHead url={url} />
+      <Typography variant="h1">
+        404 OOPS! WE CAN&apos;T SEEM TO FIND THE PAGE YOU ARE LOOKING FOR.
+      </Typography>
+    </React.Fragment>
+  );
 }
 
 NotFound.propTypes = {
-  url: PropTypes.string
+  url: PropTypes.string.isRequired
 };
 
-export default withRouter(withStyles(NotFound));
+export default withRouter(NotFound);
