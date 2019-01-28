@@ -5,7 +5,7 @@ INSTALLED_APPS = ['pesayetu'] + INSTALLED_APPS
 
 
 DATABASE_URL = os.environ.get('DATABASE_URL',
-                              'postgresql://pesayetu:pesayetu@localhost/pesayetu')
+                              'postgresql://hurumap:hurumap@localhost/pesayetu')
 DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
@@ -52,6 +52,14 @@ PESAYETU['geometry_data'] = {
         'country': 'geo/country.topojson',
         'county': 'geo/county.topojson'
     }
+}
+PESAYETU['primary_release_year'] = {
+    'county': 2016,
+}
+PESAYETU['latest_release_year'] = '2016'
+PESAYETU['primary_dataset_name'] = 'Budget'
+PESAYETU['available_release_years'] = {
+    'county': [2016]
 }
 FORMAT_MODULE_PATH = 'pesayetu.formats'
 

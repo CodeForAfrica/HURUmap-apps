@@ -24,7 +24,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: expenditure_year; Type: TABLE; Schema: public; Owner: pesayetu
+-- Name: expenditure_year; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE expenditure_year (
@@ -36,11 +36,8 @@ CREATE TABLE expenditure_year (
     total double precision
 );
 
-
-ALTER TABLE expenditure_year OWNER TO pesayetu;
-
 --
--- Data for Name: expenditure_year; Type: TABLE DATA; Schema: public; Owner: pesayetu
+-- Data for Name: expenditure_year; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY expenditure_year (geo_level, geo_code, geo_version, expenditure, year, total) FROM stdin;
@@ -236,7 +233,7 @@ county	24	2009	County Executive	FY 2015/2016	422188775
 
 
 --
--- Name: expenditure_year pk_expenditure_year; Type: CONSTRAINT; Schema: public; Owner: pesayetu
+-- Name: expenditure_year pk_expenditure_year; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY expenditure_year
