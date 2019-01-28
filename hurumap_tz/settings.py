@@ -34,7 +34,9 @@ HURUMAP['default_profile'] = hurumap_profile
 HURUMAP['profile_builder'] = 'hurumap_tz.profiles.{}.get_profile'.format(hurumap_profile)
 HURUMAP['default_geo_version'] = os.environ.get('DEFAULT_GEO_VERSION', '2009')
 HURUMAP['legacy_embed_geo_version'] = '2009'
-
+# this is provided by mapit
+HURUMAP['geodata'] = 'hurumap_tz.geo.GeoData'
+HURUMAP['geometry_data'] = {}
 HURUMAP['levels'] = {
     'country': {
         'plural': 'countries',
@@ -55,14 +57,6 @@ HURUMAP['levels'] = {
 }
 
 HURUMAP['comparative_levels'] = ["ward", "district", "region", "country"]
-HURUMAP['geometry_data'] = {
-    '2009': {
-        'country': 'geo/country.topojson',
-        'region': 'geo/region.topojson',
-        'district': 'geo/district.topojson',
-        'ward': 'geo/ward.topojson'
-        }
-}
 
 HURUMAP['ga_tracking_id'] = 'UA-91133100-4'
 
@@ -73,7 +67,7 @@ HURUMAP['map_zoom'] = 6
 
 HURUMAP['mapit'] = {
     'generations': {
-        '2011': '1',
+        '2009': '1',
         None: '1',
     }
 }

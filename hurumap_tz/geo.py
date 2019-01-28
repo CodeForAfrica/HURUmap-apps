@@ -9,12 +9,14 @@ import requests
 log = logging.getLogger(__name__)
 
 SETTINGS = settings.HURUMAP.setdefault('mapit', {})
+print SETTINGS
 SETTINGS.setdefault('url', 'https://mapit.hurumap.org')
 SETTINGS.setdefault('generations', {
-    '2011': '1',
+    '2009': '1',
     None: '1',  # TODO: this should be based on the default_geo_version wazimap setting
 })
 SETTINGS.setdefault('code_type', 'TZA')
+SETTINGS.setdefault('country_code', 'TZ')
 SETTINGS.setdefault('level_codes', {
     'ward': 'WRD',
     'district': 'DIS',
@@ -69,13 +71,14 @@ class GeoData(BaseGeoData):
         """
         Returns a list of geographies containing this point.
         """
+        mapit_codetype =  SETTINGS['code_type']
         resp = requests.get(SETTINGS['url'] + '/point/4326/%s,%s?generation=%s' % (longitude, latitude, SETTINGS['generations'][version]), verify=False)
         resp.raise_for_status()
 
         geos = []
         for feature in resp.json().itervalues():
             try:
-                geo = self.get_geography(feature['codes']['MDB'],
+                geo = self.get_geography(feature['codes'][mapit_codetype],
                                          feature['type_name'].lower(),
                                          version=version)
 
