@@ -1,0 +1,38 @@
+{% load sass_tags static %}
+<div id="partners" class="section-container clearfix">
+    <div class="showcase-partners wrapper text-center {{ extra_css_class }}">
+      <p class="section-title-icon">
+        <span class="img-bg rounded bg-color-gradient text-white">
+          <img src="{% static 'img/icons/blurbs/group.svg' %}"/>
+          PARTNERS
+        </span>
+      </p>
+      <h1 class="section-title text-primary" style="margin-bottom: 15px;">Partners</h1>
+      <p class="text-primary" style="margin-bottom: 30px;">
+        {{ HURUMAP.name }} is made possible through support from the following partners
+      </p>
+      <div class="logos">
+        <a href="https://city-press.news24.com/News/land-cleveage-and-conflict-20180621" target="_blank" rel="noopener noreferrer">
+          <img src="{{ STATIC_URL }}img/logos/ourland-green.png" alt="Our Land / Ons Grond"/>
+        </a>
+        <a href="https://codeforafrica.org/" target="_blank" rel="noopener noreferrer">
+          <img src="{{ STATIC_URL }}img/logos/cfafrica-green.png" alt="Code for Africa"/>
+        </a>
+        <a href="https://pulitzercenter.org/" target="_blank" rel="noopener noreferrer">
+          <img src="{{ STATIC_URL }}img/logos/pulitzer-center-green.png" alt="Pulitzer Center"/>
+        </a>
+
+        <br/><br/>
+        <a href="https://www.netwerk24.com/landbou/" target="_blank" rel="noopener noreferrer">
+          <img src="{{ STATIC_URL }}img/logos/landbou-green.png" alt="Landbou" style="max-height: 50px;"/>
+        </a>
+        <a href="https://www.netwerk24.com/za/rapport/" target="_blank" rel="noopener noreferrer">
+          <img src="{{ STATIC_URL }}img/logos/rapport-green.png" alt="Rapport" style="max-height: 50px;"/>
+        </a>
+        <a href="https://city-press.news24.com/" target="_blank" rel="noopener noreferrer">
+          <img src="{{ STATIC_URL }}img/logos/citypress-green.png" alt="City Press"/>
+        </a>
+        
+      </div>
+  </div>
+</div>
