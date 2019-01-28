@@ -21,8 +21,14 @@ def index(request):
     # user_language = translation.get_language()
     # print LANGUAGE_CODE
     # translation.activate(user_language)
+    print "\n\n\n\n\n\n\n\n"
+    print request.method
+    print "\n\n\n\n\n\n\n\n"
     try:
         if request.method == 'POST':
+            print "\n\n\n\n\n\n\n\n"
+            print request.body
+            print "\n\n\n\n\n\n\n\n"
             dataRequest = json.loads(request.body)
             subjects = dataRequest['subjectGrade']
             majors = dataRequest["preferedCourse"]
@@ -54,7 +60,9 @@ def index(request):
             form = InputForm(label_suffix="  ")
             return render(request, 'index.html', {'form': form})
     except Exception as e:
-        print e
+        print "\n\n\n\n\n\n\n\n"
+        print e.message
+        print "\n\n\n\n\n\n\n\n"
         raise Http404("Oops, something went wrong!")
 
 def find_uni_courses(subjects, majors):

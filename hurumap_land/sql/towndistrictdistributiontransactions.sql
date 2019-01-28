@@ -26,8 +26,8 @@ CREATE TABLE public.towndistrictdistributiontransactions (
     geo_level character varying(50) NOT NULL,
     geo_code character varying(10) NOT NULL,
     geo_version character varying(128) DEFAULT ''::character varying NOT NULL,
-    town_name character varying(128) NOT NULL,
-    class character varying(128) NOT NULL,
+    town_name_dt character varying(128) NOT NULL,
+    class_dt character varying(128) NOT NULL,
     total integer
 );
 
@@ -36,7 +36,7 @@ CREATE TABLE public.towndistrictdistributiontransactions (
 -- Data for Name: towndistrictdistributiontransactions; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.towndistrictdistributiontransactions (geo_level, geo_code, geo_version, town_name, class, total) FROM stdin;
+COPY public.towndistrictdistributiontransactions (geo_level, geo_code, geo_version, town_name_dt, class_dt, total) FROM stdin;
 district	DC10	2016	Aberdeen	Under 1.5K	\N
 district	DC10	2016	Aberdeen	1,501-3K	1
 district	DC10	2016	Aberdeen	3,001-5K	\N

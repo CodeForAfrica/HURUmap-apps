@@ -13,30 +13,30 @@ SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-ALTER TABLE IF EXISTS ONLY public.freeness_and_fairness_of_the_last_national_election DROP CONSTRAINT IF EXISTS pk_freeness_and_fairness_of_the_last_national_election;
-DROP TABLE IF EXISTS public.freeness_and_fairness_of_the_last_national_election;
+ALTER TABLE IF EXISTS ONLY public.freeness_and_fairness_of_last_national_election DROP CONSTRAINT IF EXISTS pk_freeness_and_fairness_of_last_national_election;
+DROP TABLE IF EXISTS public.freeness_and_fairness_of_last_national_election;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
 
 --
--- Name: freeness_and_fairness_of_the_last_national_election; Type: TABLE; Schema: public; Owner: -
+-- Name: freeness_and_fairness_of_last_national_election; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.freeness_and_fairness_of_the_last_national_election (
+CREATE TABLE public.freeness_and_fairness_of_last_national_election (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     geo_version character varying(100) DEFAULT ''::character varying NOT NULL,
-    freeness_and_fairness_of_the_last_national_election character varying(128) NOT NULL,
+    freeness_and_fairness_of_last_national_election character varying(128) NOT NULL,
     total integer
 );
 
 
 --
--- Data for Name: freeness_and_fairness_of_the_last_national_election; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: freeness_and_fairness_of_last_national_election; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.freeness_and_fairness_of_the_last_national_election (geo_level, geo_code, geo_version, freeness_and_fairness_of_the_last_national_election, total) FROM stdin;
+COPY public.freeness_and_fairness_of_last_national_election (geo_level, geo_code, geo_version, freeness_and_fairness_of_last_national_election, total) FROM stdin;
 region	114	2014	Completely free and fair	216
 region	114	2014	Do not understand the question	3
 region	114	2014	Don't know	127
@@ -70,11 +70,11 @@ country	UG	2014	Completely free and fair	1125
 
 
 --
--- Name: freeness_and_fairness_of_the_last_national_election pk_freeness_and_fairness_of_the_last_national_election; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: freeness_and_fairness_of_last_national_election pk_freeness_and_fairness_of_last_national_election; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.freeness_and_fairness_of_the_last_national_election
-    ADD CONSTRAINT pk_freeness_and_fairness_of_the_last_national_election PRIMARY KEY (geo_level, geo_code, geo_version, freeness_and_fairness_of_the_last_national_election);
+ALTER TABLE ONLY public.freeness_and_fairness_of_last_national_election
+    ADD CONSTRAINT pk_freeness_and_fairness_of_last_national_election PRIMARY KEY (geo_level, geo_code, geo_version, freeness_and_fairness_of_last_national_election);
 
 
 --

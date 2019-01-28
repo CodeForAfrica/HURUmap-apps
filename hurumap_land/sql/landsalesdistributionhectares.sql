@@ -26,7 +26,7 @@ CREATE TABLE public.landsalesdistributionhectares (
     geo_level character varying(50) NOT NULL,
     geo_code character varying(10) NOT NULL,
     geo_version character varying(100) DEFAULT ''::character varying NOT NULL,
-    class character varying(128) NOT NULL,
+    class_distribution_hectares character varying(128) NOT NULL,
     total integer
 );
 
@@ -35,7 +35,7 @@ CREATE TABLE public.landsalesdistributionhectares (
 -- Data for Name: landsalesdistributionhectares; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.landsalesdistributionhectares (geo_level, geo_code, geo_version, class, total) FROM stdin;
+COPY public.landsalesdistributionhectares (geo_level, geo_code, geo_version, class_distribution_hectares, total) FROM stdin;
 country	ZA	2016	Under 1.5K	438972
 country	ZA	2016	1,501-3K	454975
 country	ZA	2016	3,001-5K	255796

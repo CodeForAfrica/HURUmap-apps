@@ -21,12 +21,12 @@ FieldTable(['own_television'], year=2016, dataset='Afrobarometer Survey',
            id='own_television')
 FieldTable(['own_mobile_phone'], year=2016, dataset='Afrobarometer Survey',
            id='own_mobile_phone')
-FieldTable(['last_national_election_work_for_a_candidate_or_party'], year=2016,
+FieldTable(['election_work_for_a_candidate_or_party'], year=2016,
            dataset='Afrobarometer Survey',
-           id='last_national_election_work_for_a_candidate_or_party')
-FieldTable(['last_national_election_attend_a_campaign_rally'], year=2016,
+           id='election_work_for_a_candidate_or_party')
+FieldTable(['election_attend_a_campaign_rally'], year=2016,
            dataset='Afrobarometer Survey',
-           id='last_national_election_attend_a_campaign_rally')
+           id='election_attend_a_campaign_rally')
 FieldTable(['last_national_election_attend_a_campaign_meeting'], year=2016,
            dataset='Afrobarometer Survey',
            id='last_national_election_attend_a_campaign_meeting')
@@ -36,9 +36,9 @@ FieldTable(['vote_for_which_party'], year=2016, dataset='Afrobarometer Survey',
            id='vote_for_which_party')
 FieldTable(['level_of_corruption'], year=2016, dataset='Afrobarometer Survey',
            id='level_of_corruption')
-FieldTable(['chinas_assistance_does_a_good_job_at_meeting_countrys_needs'],
+FieldTable(['chinas_assistance_meets_countrys_needs'],
            year=2016, dataset='Afrobarometer Survey',
-           id='chinas_assistance_does_a_good_job_at_meeting_countrys_needs')
+           id='chinas_assistance_meets_countrys_needs')
 FieldTable(['employment_status'], year=2016, dataset='Afrobarometer Survey',
            id='employment_status')
 FieldTable(['main_reason_for_not_reporting_corruption'], year=2016,
@@ -72,9 +72,9 @@ FieldTable(['how_often_use_a_mobile_phone'], year=2016,
            dataset='Afrobarometer Survey', id='how_often_use_a_mobile_phone')
 FieldTable(['how_often_use_the_internet'], year=2016,
            dataset='Afrobarometer Survey', id='how_often_use_the_internet')
-FieldTable(['freeness_and_fairness_of_the_last_national_election'], year=2016,
+FieldTable(['freeness_and_fairness_of_last_national_election'], year=2016,
            dataset='Afrobarometer Survey',
-           id='freeness_and_fairness_of_the_last_national_election')
+           id='freeness_and_fairness_of_last_national_election')
 FieldTable(['extent_of_democracy'], year=2016, dataset='Afrobarometer Survey',
            id='extent_of_democracy')
 FieldTable(['elections_ensure_voters_views_are_reflected'], year=2016,
@@ -83,9 +83,9 @@ FieldTable(['elections_ensure_voters_views_are_reflected'], year=2016,
 FieldTable(['corruption_judges_and_magistrates'], year=2016,
            dataset='Afrobarometer Survey',
            id='corruption_judges_and_magistrates')
-FieldTable(['elections_enable_voters_to_remove_leaders_from_office'], year=2016,
+FieldTable(['election_enable_voters_remove_leaders_from_office'], year=2016,
            dataset='Afrobarometer Survey',
-           id='elections_enable_voters_to_remove_leaders_from_office')
+           id='election_enable_voters_remove_leaders_from_office')
 FieldTable(['corruption_tax_officials'], year=2016,
            dataset='Afrobarometer Survey', id='corruption_tax_officials')
 FieldTable(['corruption_police'], year=2016, dataset='Afrobarometer Survey',
@@ -123,9 +123,9 @@ FieldTable(['pay_bribe_for_school_services'], year=2016,
 FieldTable(['difficulty_to_obtain_identity_document'], year=2016,
            dataset='Afrobarometer Survey',
            id='difficulty_to_obtain_identity_document')
-FieldTable(['pay_bribe_for_treatment_at_public_clinic_or_hospital'], year=2016,
+FieldTable(['bribe_for_treatment_at_public_health'], year=2016,
            dataset='Afrobarometer Survey',
-           id='pay_bribe_for_treatment_at_public_clinic_or_hospital')
+           id='bribe_for_treatment_at_public_health')
 FieldTable(['difficulty_to_obtain_household_services'], year=2016,
            dataset='Afrobarometer Survey',
            id='difficulty_to_obtain_household_services')
