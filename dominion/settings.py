@@ -88,18 +88,17 @@ HURUMAP['levels'] = {
     }
 }
 
-# HURUMAP['primary_release_year'] = {
-#     # use the 2011 release for wards, use the latest (2016) for everything else
-#     'ward': 2016,
-# }
-HURUMAP['primary_dataset_name'] = 'Land Reports'
+HURUMAP['primary_release_year'] = {
+    # use the 2011 release for wards, use the latest (2016) for everything else
+}
+HURUMAP['primary_dataset_name'] = 'Census'
 HURUMAP['latest_release_year'] = '2016'
-# HURUMAP['available_release_years'] = {
-#     # Release years with data for geo_levels.
-#     # Only specify geo_levels with limited releases.
-#     # Other geo_levels have data for all releases.
-#     'ward': [2011]
-# }
+HURUMAP['available_release_years'] = {
+    # Release years with data for geo_levels.
+    # Only specify geo_levels with limited releases.
+    # Other geo_levels have data for all releases.
+    #'ward': [2011]
+}
 # If not set, the centre is determined from the geometry.
 HURUMAP['map_centre']= None
 HURUMAP['map_zoom']= None
