@@ -7,7 +7,7 @@ function Country({ url }) {
   return (
     <React.Fragment>
       <DocumentHead url={url} />
-      <Typography variant="title">Country Page</Typography>
+      <Typography variant="h6">Country Page</Typography>
     </React.Fragment>
   );
 }

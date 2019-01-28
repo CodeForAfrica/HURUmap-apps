@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router';
 
 import { Typography } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
 
 import DocumentHead from '../component/DocumentHead';
 
@@ -22,4 +21,4 @@ NotFound.propTypes = {
   url: PropTypes.string.isRequired
 };
 
-export default withRouter(withStyles(NotFound));
+export default withRouter(NotFound);
