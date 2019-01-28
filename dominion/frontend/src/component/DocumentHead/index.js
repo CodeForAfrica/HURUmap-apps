@@ -19,7 +19,7 @@ function DocumentHead({ url }) {
     </React.Fragment>
   );
 }
-DocumentHead.PropTypes = {
+DocumentHead.propTypes = {
   url: PropTypes.string
 };
 DocumentHead.defaultProps = {

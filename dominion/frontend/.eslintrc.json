@@ -2,7 +2,8 @@
   "root": true,
   "extends": ["airbnb", "plugin:prettier/recommended", "prettier/react"],
   "env": {
-    "browser": true
+    "browser": true,
+    "jest": true
   },
   "rules": {
     "react/forbid-prop-types": false,
