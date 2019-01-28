@@ -229,7 +229,7 @@ static/*
 
 # gatsby files
 **/**/.cache/
-**/**/public
+
 
 # Mac files
 **/**/.DS_Store
