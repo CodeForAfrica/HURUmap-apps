@@ -5,7 +5,7 @@ import { withRouter } from "react-router-dom";
 import { Grid, Typography } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 
-import DocumentHead from "../component/DocumentHead";
+import DocumentHead from "../component/DocumentHead/Index";
 
 class NotFound extends Component {
   render() {

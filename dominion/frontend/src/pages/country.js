@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid, Typography } from "@material-ui/core";
-import DocumentHead from "../component/DocumentHead";
+import DocumentHead from "../component/DocumentHead/Index";
 
 function Country({ url }) {
   return (
