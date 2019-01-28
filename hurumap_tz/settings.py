@@ -12,7 +12,7 @@ MIDDLEWARE_CLASSES = (
 
 DATABASE_URL = os.environ.get(
     'DATABASE_URL',
-    'postgresql://hurumap:hurumap@localhost/hurumap_tz')
+    'postgresql://hurumap_tz:hurumap_tz@localhost/hurumap_tz')
 DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
@@ -54,7 +54,7 @@ HURUMAP['levels'] = {
     }
 }
 
-HURUMAP['comparative_levels'] = ["region", "country"]
+HURUMAP['comparative_levels'] = ["ward", "district", "region", "country"]
 HURUMAP['geometry_data'] = {
     '2009': {
         'country': 'geo/country.topojson',
@@ -70,6 +70,13 @@ HURUMAP['twitter'] = '@Code4Africa'
 
 HURUMAP['map_centre'] = [-6.1523563, 35.6754813]
 HURUMAP['map_zoom'] = 6
+
+HURUMAP['mapit'] = {
+    'generations': {
+        '2011': '1',
+        None: '1',
+    }
+}
 
 HURUMAP['topics'] = OrderedDict()
 
@@ -152,15 +159,6 @@ HURUMAP['showcase_stories'] = [
         'img': STATIC_URL + 'img/showcase/cti.jpg'
      }
 ]
-
-HURUMAP['primary_release_year'] = {
-    'region': 2012,
-}
-HURUMAP['latest_release_year'] = '2012'
-HURUMAP['primary_dataset_name'] = 'Census'
-HURUMAP['available_release_years'] = {
-    'region': [2012]
-}
 
 LOGGING['loggers']['hurumap_tz'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
 
