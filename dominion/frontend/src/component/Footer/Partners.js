@@ -33,23 +33,23 @@ function Partners({ classes }) {
       alignItems="center"
       className={classes.root}
     >
-      <Grid item xs={2} style={{ padding: '3rem' }}>
+      <Grid item lg={2} md={6} sm={6} xs={6} style={{ padding: '2rem' }}>
         <img
           src={codeforafrica}
           alt="Code for Africa"
           className={classes.img}
         />
       </Grid>
-      <Grid item xs={2}>
+      <Grid item lg={2} md={6} sm={6} xs={6}>
         <img src={datazetu} alt="Data Zetu" className={classes.img} />
       </Grid>
-      <Grid item xs={2}>
+      <Grid item lg={2} md={6} sm={6} xs={6}>
         <img src={twaweza} alt="Twaweza" className={classes.img} />
       </Grid>
-      <Grid item xs={2}>
+      <Grid item lg={2} md={6} sm={6} xs={6}>
         <img src={bmf} alt="Bill and Melinda Gates" className={classes.img} />
       </Grid>
-      <Grid item xs={2}>
+      <Grid item lg={2} md={6} sm={6} xs={6}>
         <img src={icfj} alt="Icfj" className={classes.img} />
       </Grid>
     </Grid>
