@@ -22,8 +22,18 @@ const THEME = createMuiTheme({
     fontSize: 16,
     h2: { textTransform: 'uppercase', fontWeight: 500 },
     h3: { color: '#2b3129', textTransform: 'capitalize' },
-    h4: { color: '#2b3129' },
+    h4: { color: '#ffffff' },
     useNextVariants: true
+  },
+  fontSmallDefault: {
+    fontSize: 14
+  },
+  MuiButton: {
+    root: {
+      border: '2px solid #ffff',
+      borderRadius: 0,
+      color: '#fff'
+    }
   }
 });
 
