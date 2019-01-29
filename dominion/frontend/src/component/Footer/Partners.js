@@ -20,7 +20,8 @@ const styles = theme => ({
   img: {
     maxWidth: '100%',
     height: 'auto'
-  }
+  },
+  imageGrid: { padding: theme.spacing.unit * 2 }
 });
 
 function Partners({ classes }) {
@@ -40,16 +41,16 @@ function Partners({ classes }) {
           className={classes.img}
         />
       </Grid>
-      <Grid item lg={2} md={6} sm={6} xs={6}>
+      <Grid item lg={2} md={4} sm={6} xs={6} className={classes.imageGrid}>
         <img src={datazetu} alt="Data Zetu" className={classes.img} />
       </Grid>
-      <Grid item lg={2} md={6} sm={6} xs={6}>
+      <Grid item lg={2} md={4} sm={6} xs={6} className={classes.imageGrid}>
         <img src={twaweza} alt="Twaweza" className={classes.img} />
       </Grid>
-      <Grid item lg={2} md={6} sm={6} xs={6}>
+      <Grid item lg={2} md={4} sm={6} xs={6} className={classes.imageGrid}>
         <img src={bmf} alt="Bill and Melinda Gates" className={classes.img} />
       </Grid>
-      <Grid item lg={2} md={6} sm={6} xs={6}>
+      <Grid item lg={2} md={4} sm={6} xs={6} className={classes.imageGrid}>
         <img src={icfj} alt="Icfj" className={classes.img} />
       </Grid>
     </Grid>
