@@ -33,9 +33,6 @@ CREATE TABLE watersources (
     total integer
 );
 
-
-ALTER TABLE watersources OWNER TO hurumap_tz;
-
 --
 -- Data for Name: watersources; Type: TABLE DATA; Schema: public; Owner: hurumap_tz
 --

@@ -1,21 +1,21 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { Grid } from "@material-ui/core";
-import { withStyles } from "@material-ui/core/styles";
+import { Grid } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 
-const styles = theme => ({
+const styles = () => ({
   fa: {
-    transition: "all .5s ease-in-out",
-    color: "#fff",
-    " &:hover": {
-      transform: "scale(1.3)",
-      color: "#fff"
+    transition: 'all .5s ease-in-out',
+    color: '#fff',
+    ' &:hover': {
+      transform: 'scale(1.3)',
+      color: '#fff'
     }
   },
-  links: { color: "#fff" }
+  links: { color: '#fff' }
 });
 
 function SocialMedia({ classes }) {
@@ -35,7 +35,7 @@ function SocialMedia({ classes }) {
         >
           <FontAwesomeIcon
             className={classes.fa}
-            icon={["fab", "facebook-f"]}
+            icon={['fab', 'facebook-f']}
             size="fa-lg"
             fixedWidth
           />
@@ -49,7 +49,7 @@ function SocialMedia({ classes }) {
         >
           <FontAwesomeIcon
             className={classes.fa}
-            icon={["fab", "instagram"]}
+            icon={['fab', 'instagram']}
             size="fa-lg"
             fixedWidth
           />
@@ -63,7 +63,7 @@ function SocialMedia({ classes }) {
         >
           <FontAwesomeIcon
             className={classes.fa}
-            icon={["fab", "github"]}
+            icon={['fab', 'github']}
             size="fa-lg"
             fixedWidth
           />
@@ -75,8 +75,5 @@ function SocialMedia({ classes }) {
 
 SocialMedia.propTypes = {
   classes: PropTypes.object.isRequired
-};
-SocialMedia.defaultProps = {
-  color: "#fff"
 };
 export default withStyles(styles)(SocialMedia);

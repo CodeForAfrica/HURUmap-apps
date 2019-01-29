@@ -26,8 +26,8 @@ CREATE TABLE public.landsalessummarycosttcolour (
     geo_level character varying(50) NOT NULL,
     geo_code character varying(10) NOT NULL,
     geo_version character varying(100) DEFAULT ''::character varying NOT NULL,
-    land_breakdown character varying(128) NOT NULL,
-    month character varying(100) NOT NULL,
+    land_breakdown_cc character varying(128) NOT NULL,
+    month_cc character varying(100) NOT NULL,
     total integer
 );
 
@@ -36,7 +36,7 @@ CREATE TABLE public.landsalessummarycosttcolour (
 -- Data for Name: landsalessummarycosttcolour; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.landsalessummarycosttcolour (geo_level, geo_code, geo_version, land_breakdown, month, total) FROM stdin;
+COPY public.landsalessummarycosttcolour (geo_level, geo_code, geo_version, land_breakdown_cc, month_cc, total) FROM stdin;
 country	ZA	2016	Government Agriculture	Aug	56
 country	ZA	2016	Government Agriculture	Sep	79
 country	ZA	2016	Government Agriculture	Oct	27

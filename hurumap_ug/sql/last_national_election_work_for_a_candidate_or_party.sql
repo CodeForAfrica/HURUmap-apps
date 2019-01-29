@@ -13,30 +13,30 @@ SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-ALTER TABLE IF EXISTS ONLY public.last_national_election_work_for_a_candidate_or_party DROP CONSTRAINT IF EXISTS pk_last_national_election_work_for_a_candidate_or_party;
-DROP TABLE IF EXISTS public.last_national_election_work_for_a_candidate_or_party;
+ALTER TABLE IF EXISTS ONLY public.election_work_for_a_candidate_or_party DROP CONSTRAINT IF EXISTS pk_election_work_for_a_candidate_or_party;
+DROP TABLE IF EXISTS public.election_work_for_a_candidate_or_party;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
 
 --
--- Name: last_national_election_work_for_a_candidate_or_party; Type: TABLE; Schema: public; Owner: -
+-- Name: election_work_for_a_candidate_or_party; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.last_national_election_work_for_a_candidate_or_party (
+CREATE TABLE public.election_work_for_a_candidate_or_party (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     geo_version character varying(100) DEFAULT ''::character varying NOT NULL,
-    last_national_election_work_for_a_candidate_or_party character varying(128) NOT NULL,
+    election_work_for_a_candidate_or_party character varying(128) NOT NULL,
     total integer
 );
 
 
 --
--- Data for Name: last_national_election_work_for_a_candidate_or_party; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: election_work_for_a_candidate_or_party; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.last_national_election_work_for_a_candidate_or_party (geo_level, geo_code, geo_version, last_national_election_work_for_a_candidate_or_party, total) FROM stdin;
+COPY public.election_work_for_a_candidate_or_party (geo_level, geo_code, geo_version, election_work_for_a_candidate_or_party, total) FROM stdin;
 region	114	2014	Don't know	1
 region	114	2014	No	526
 region	114	2014	Yes	137
@@ -56,11 +56,11 @@ country	UG	2014	Don't know	8
 
 
 --
--- Name: last_national_election_work_for_a_candidate_or_party pk_last_national_election_work_for_a_candidate_or_party; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: election_work_for_a_candidate_or_party pk_election_work_for_a_candidate_or_party; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.last_national_election_work_for_a_candidate_or_party
-    ADD CONSTRAINT pk_last_national_election_work_for_a_candidate_or_party PRIMARY KEY (geo_level, geo_code, geo_version, last_national_election_work_for_a_candidate_or_party);
+ALTER TABLE ONLY public.election_work_for_a_candidate_or_party
+    ADD CONSTRAINT pk_election_work_for_a_candidate_or_party PRIMARY KEY (geo_level, geo_code, geo_version, election_work_for_a_candidate_or_party);
 
 
 --

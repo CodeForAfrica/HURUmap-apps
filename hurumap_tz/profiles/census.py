@@ -2,10 +2,14 @@ from collections import OrderedDict
 import logging
 
 from wazimap.geo import geo_data
-from wazimap.data.tables import get_model_from_fields
-from wazimap.data.utils import get_session, calculate_median, merge_dicts, get_stat_data, get_objects_by_geo, group_remainder
+from wazimap.data.tables import get_datatable
+from wazimap.data.utils import (calculate_median,
+                                get_session, get_stat_data, group_remainder,
+                                merge_dicts, get_datatable, current_context,
+                                dataset_context)
+from wazimap.geo import geo_data
 from django.conf import settings
-
+from collections import OrderedDict
 
 log = logging.getLogger(__name__)
 
@@ -13,6 +17,10 @@ log = logging.getLogger(__name__)
 import hurumap_tz.tables  # noqa
 
 SECTIONS = settings.HURUMAP.get('topics', {})
+
+LOCATIONNOTFOUND = {'is_missing': True, 'name': 'No Data Found',
+                    'numerators': {'this': 0},
+                    'values': {'this': 0}, 'metadata': {}}
 
 EMPLOYMENT_RECODES = OrderedDict([
     ('seeking work / no work available', 'Seeking work'),
@@ -56,18 +64,20 @@ def get_profile(geo, profile_name, request):
                 # get profiles for comparative geometries
                 for comp_geo in comparative_geos:
                     try:
-                        merge_dicts(data[section], func(comp_geo, session), comp_geo.geo_level)
+                        merge_dicts(data[section], func(comp_geo, session),
+                                    comp_geo.geo_level)
                     except KeyError as e:
                         msg = "Error merging data into %s for section '%s' from %s: KeyError: %s" % (
                             geo.geoid, section, comp_geo.geoid, e)
                         log.fatal(msg, exc_info=e)
-                        raise ValueError(msg)
-
+                        # raise ValueError(msg)
+                        pass
 
         # tweaks to make the data nicer
         # show X largest groups on their own and group the rest as 'Other'
         if 'households' in sections:
-            group_remainder(data['households']['roofing_material_distribution'], 5)
+            group_remainder(data['households']['roofing_material_distribution'],
+                            5)
             group_remainder(data['households']['wall_material_distribution'], 5)
 
         return data
@@ -77,80 +87,102 @@ def get_profile(geo, profile_name, request):
 
 
 def get_demographics_profile(geo, session):
-    sex_dist_data = None
-    age_dist_data = None
-    age_cats = None
-    median = None
-
-    if geo.geo_level != "ward":
-        # sex
-        sex_dist_data, total_pop = get_stat_data(
-            'sex',geo=geo, session=session,
-            table_fields=['age in completed years', 'sex', 'rural or urban'])
-    else:
-        # sex
-        sex_dist_data, total_pop = get_stat_data(
-            'sex',geo=geo, session=session,
-            table_fields=['sex', 'rural or urban'])
-
-    if geo.geo_level != "ward":
-        # urban/rural by sex
-        urban_dist_data, _ = get_stat_data(
-            ['rural or urban', 'sex'],geo=geo, session=session,
-            table_fields=['age in completed years', 'sex', 'rural or urban'])
+    year = current_context().get('year')
+    with dataset_context(year='2012'):
+        sex_dist_data = LOCATIONNOTFOUND
+        age_dist_data = LOCATIONNOTFOUND
+        age_cats = LOCATIONNOTFOUND
+        urban_dist_data = LOCATIONNOTFOUND
         total_urbanised = 0
-        for data in urban_dist_data['Urban'].itervalues():
-            if 'numerators' in data:
-                total_urbanised += data['numerators']['this']
-    else:
-        # urban/rural by sex
-        urban_dist_data, _ = get_stat_data(
-            ['rural or urban', 'sex'],geo=geo, session=session,
-            table_fields=['sex', 'rural or urban'])
-        total_urbanised = 0
-        for data in urban_dist_data['Urban'].itervalues():
-            if 'numerators' in data:
-                total_urbanised += data['numerators']['this']
+        total_pop = 0
+        median = None
 
-    if geo.geo_level != "ward":
-        # median age
-        db_model_age = get_model_from_fields(['age in completed years', 'sex', 'rural or urban'], geo.geo_level)
-
-        objects = get_objects_by_geo(db_model_age,geo, session, ['age in completed years'])
-        objects = sorted((o for o in objects if getattr(o, 'age in completed years') != 'unspecified'),
-                         key=lambda x: int(getattr(x, 'age in completed years').replace('+', '')))
-        median = calculate_median(objects, 'age in completed years')
-
-        # age in 10 year groups
-        def age_recode(f, x):
-            age = int(x.replace('+', ''))
-            if age >= 80:
-                return '80+'
-            bucket = 10 * (age / 10)
-            return '%d-%d' % (bucket, bucket + 9)
-
-        age_dist_data, _ = get_stat_data(
-            'age in completed years',geo=geo, session=session,
-            table_fields=['age in completed years', 'sex', 'rural or urban'],
-            recode=age_recode, exclude=['unspecified'])
-
-        # age category
-        def age_cat_recode(f, x):
-            age = int(x.replace('+', ''))
-            if age < 18:
-                return 'Under 18'
-            elif age >= 65:
-                return '65 and over'
+        try:
+            if geo.geo_level != "ward":
+                # sex
+                sex_dist_data, total_pop = get_stat_data(
+                    'sex', geo=geo, session=session,
+                    table_fields=['age in completed years', 'sex',
+                                  'rural or urban'])
             else:
-                return '18 to 64'
+                # sex
+                sex_dist_data, total_pop = get_stat_data(
+                    'sex', geo=geo, session=session,
+                    table_fields=['sex', 'rural or urban'])
 
-        age_cats, _ = get_stat_data(
-            'age in completed years',geo=geo, session=session,
-            table_fields=['age in completed years', 'sex', 'rural or urban'],
-            recode=age_cat_recode,
-            exclude=['unspecified'])
+            if geo.geo_level != "ward":
+                # urban/rural by sex
+                urban_dist_data, _ = get_stat_data(
+                    ['rural or urban', 'sex'], geo=geo, session=session,
+                    table_fields=['age in completed years', 'sex',
+                                  'rural or urban'])
+                total_urbanised = 0
+                for data in urban_dist_data['Urban'].itervalues():
+                    if 'numerators' in data:
+                        total_urbanised += data['numerators']['this']
+            else:
+                # urban/rural by sex
+                urban_dist_data, _ = get_stat_data(
+                    ['rural or urban', 'sex'], geo=geo, session=session,
+                    table_fields=['sex', 'rural or urban'])
+                total_urbanised = 0
+                for data in urban_dist_data['Urban'].itervalues():
+                    if 'numerators' in data:
+                        total_urbanised += data['numerators']['this']
+
+            if geo.geo_level != "ward":
+                # median age
+                db_model_age = get_datatable(
+                    'ageincompletedyears_ruralorurban_sex')
+                objects = db_model_age.get_rows_for_geo(geo, session)
+                objects = sorted((o for o in objects if getattr(o,
+                                                                'age in completed years') != 'unspecified'),
+                                 key=lambda x: int(
+                                     getattr(x,
+                                             'age in completed years').replace(
+                                         '+', '')))
+                median = calculate_median(objects, 'age in completed years')
+
+                # age in 10 year groups
+                def age_recode(f, x):
+                    age = int(x.replace('+', ''))
+                    if age >= 80:
+                        return '80+'
+                    bucket = 10 * (age / 10)
+                    return '%d-%d' % (bucket, bucket + 9)
+
+                age_dist_data, _ = get_stat_data(
+                    'age in completed years', geo=geo, session=session,
+                    table_fields=['age in completed years', 'sex',
+                                  'rural or urban'],
+                    recode=age_recode, exclude=['unspecified'])
+
+                # age category
+                def age_cat_recode(f, x):
+                    age = int(x.replace('+', ''))
+                    if age < 18:
+                        return 'Under 18'
+                    elif age >= 65:
+                        return '65 and over'
+                    else:
+                        return '18 to 64'
+
+                age_cats, _ = get_stat_data(
+                    'age in completed years', geo=geo, session=session,
+                    table_fields=['age in completed years', 'sex',
+                                  'rural or urban'],
+                    recode=age_cat_recode,
+                    exclude=['unspecified'])
+        except Exception:
+            pass
+
+    is_missing = sex_dist_data.get('is_missing') and \
+                 age_dist_data.get('is_missing') and \
+                 age_cats.get('is_missing') and \
+                 urban_dist_data.get('is_missing')
 
     final_data = {
+        'is_missing': is_missing,
         'sex_ratio': sex_dist_data,
         'urban_distribution': urban_dist_data,
         'urbanised': {
@@ -173,30 +205,46 @@ def get_demographics_profile(geo, session):
 
 
 def get_education_profile(geo, session):
-    if geo.geo_level == "ward": return {}
-    # highest level reached
-    edu_dist_data, total_pop = get_stat_data(
-        'highest education level reached',geo=geo, session=session,
-        key_order=['None', 'Pre-primary', 'Primary', 'Secondary', 'Tertiary',
-                   'University', 'Youth polytechnic', 'Basic literacy', 'Madrassa'])
-
+    edu_dist_data = LOCATIONNOTFOUND
+    school_attendance_dist = LOCATIONNOTFOUND
     secondary_or_higher = 0
-    for key, data in edu_dist_data.iteritems():
-        if key in ['Secondary', 'Tertiary', 'University', 'Youth polytechnic']:
-            secondary_or_higher += data['numerators']['this']
+    total_pop = 0
+    total_never = 0
 
-    # school attendance by sex
-    school_attendance_dist, _ = get_stat_data(
-        ['school attendance', 'sex'],geo=geo, session=session,
-        key_order={'school attendance': ['Never attended', 'At school', 'Left school', 'Unspecified'],
-                   'sex': ['Female', 'Male']})
+    with dataset_context(year='2015'):
+        try:
+            # highest level reached
+            edu_dist_data, total_pop = get_stat_data(
+                'highest education level reached', geo=geo, session=session,
+                key_order=['None', 'Pre-primary', 'Primary', 'Secondary',
+                           'Tertiary',
+                           'University', 'Youth polytechnic', 'Basic literacy',
+                           'Madrassa'])
 
-    total_never = 0.0
-    for data in school_attendance_dist['Never attended'].itervalues():
-        if 'numerators' in data:
-            total_never += data['numerators']['this']
+            for key, data in edu_dist_data.iteritems():
+                if key in ['Secondary', 'Tertiary', 'University',
+                           'Youth polytechnic']:
+                    secondary_or_higher += data['numerators']['this']
+
+            # school attendance by sex
+            school_attendance_dist, _ = get_stat_data(
+                ['school attendance', 'sex'], geo=geo, session=session,
+                key_order={'school attendance': ['Never attended', 'At school',
+                                                 'Left school', 'Unspecified'],
+                           'sex': ['Female', 'Male']})
+
+            total_never = 0.0
+            for data in school_attendance_dist['Never attended'].itervalues():
+                if 'numerators' in data:
+                    total_never += data['numerators']['this']
+        except Exception:
+            pass
+
+    is_missing = edu_dist_data.get('is_missing') and school_attendance_dist.get(
+        'is_missing')
 
     return {
+        'is_missing': is_missing,
         'education_reached_distribution': edu_dist_data,
         'education_reached_secondary_or_higher': {
             'name': 'Reached Secondary school or higher',
@@ -213,20 +261,29 @@ def get_education_profile(geo, session):
 
 
 def get_employment_profile(geo, session):
-    if geo.geo_level == "ward": return {}
-    # employment status
-    employment_activity_dist, total_workers = get_stat_data(
-        ['employment activity status', 'sex'],geo=geo, session=session,
-        recode={'employment activity status': dict(EMPLOYMENT_RECODES)},
-        key_order={'employment activity status': EMPLOYMENT_RECODES.values(),
-                   'sex': ['Female', 'Male']})
-
+    employment_activity_dist = LOCATIONNOTFOUND
     total_employed = 0.0
-    for data in employment_activity_dist['Employed'].itervalues():
-        if 'numerators' in data:
-            total_employed += data['numerators']['this']
+    total_workers = 0
+
+    year = current_context().get('year')
+    with dataset_context(year=year):
+        try:
+            # employment status
+            employment_activity_dist, total_workers = get_stat_data(
+                ['employment activity status', 'sex'], geo=geo, session=session,
+                recode={'employment activity status': dict(EMPLOYMENT_RECODES)},
+                key_order={
+                    'employment activity status': EMPLOYMENT_RECODES.values(),
+                    'sex': ['Female', 'Male']})
+
+            for data in employment_activity_dist['Employed'].itervalues():
+                if 'numerators' in data:
+                    total_employed += data['numerators']['this']
+        except Exception:
+            pass
 
     return {
+        'is_missing': employment_activity_dist.get('is_missing'),
         'activity_status_distribution': employment_activity_dist,
         'employed': {
             'name': 'Employment',
@@ -237,44 +294,79 @@ def get_employment_profile(geo, session):
 
 
 def get_households_profile(geo, session):
-    if geo.geo_level == "ward": return {}
-    # main source of water
-    water_source_dist, total_households = get_stat_data(
-        'main source of water',geo=geo, session=session,
-        recode=dict(WATER_SOURCE_RECODES),
-        key_order=WATER_SOURCE_RECODES.values())
-    total_piped = water_source_dist['Piped']['numerators']['this']
+    water_source_dist = LOCATIONNOTFOUND
+    household_heads_dist = LOCATIONNOTFOUND
+    waste_disposal_dist = LOCATIONNOTFOUND
+    lighting_dist = LOCATIONNOTFOUND
+    roofing_dist = LOCATIONNOTFOUND
+    wall_dist = LOCATIONNOTFOUND
+    floor_dist = LOCATIONNOTFOUND
+    total_households = 0
+    total_piped = 0
+    total_sewer_or_septic = 0
+    total_electricity = 0
 
-    # main mode of waste disposal
-    waste_disposal_dist, _ = get_stat_data(
-        'main mode of human waste disposal',geo=geo, session=session,
-        key_order=['Main sewer', 'Septic tank', 'Cess pool', 'Bucket', 'Bush', 'Other'])
+    year = current_context().get('year')
+    with dataset_context(year=year):
+        try:
+            # main source of water
+            water_source_dist, total_households = get_stat_data(
+                'main source of water', geo=geo, session=session,
+                recode=dict(WATER_SOURCE_RECODES),
+                key_order=WATER_SOURCE_RECODES.values())
+            total_piped = water_source_dist['Piped']['numerators']['this']
 
-    total_sewer_or_septic = 0.0
-    for key in ['Main sewer', 'Septic tank']:
-        if key in waste_disposal_dist:
-            total_sewer_or_septic += waste_disposal_dist[key]['numerators']['this']
+            # main mode of waste disposal
+            waste_disposal_dist, _ = get_stat_data(
+                'main mode of human waste disposal', geo=geo, session=session,
+                key_order=['Main sewer', 'Septic tank', 'Cess pool', 'Bucket',
+                           'Bush', 'Other'])
 
-    # lighting
-    lighting_dist, _ = get_stat_data('main type of lighting fuel',geo=geo, session=session,
-                                     key_order=['Electricity', 'Solar', 'Gas lamps', 'Pressure lamps', 'Tin lamps',
-                                                'Lanterns', 'Wood', 'Other'])
-    total_electricity = lighting_dist['Electricity']['numerators']['this']
+            total_sewer_or_septic = 0.0
+            for key in ['Main sewer', 'Septic tank']:
+                if key in waste_disposal_dist:
+                    total_sewer_or_septic += \
+                        waste_disposal_dist[key]['numerators'][
+                            'this']
 
-    # construction materials
-    roofing_dist, _ = get_stat_data(
-        'main type of roofing material',geo=geo, session=session,
-        order_by='-total')
+            # lighting
+            lighting_dist, _ = get_stat_data('main type of lighting fuel',
+                                             geo=geo,
+                                             session=session,
+                                             key_order=['Electricity', 'Solar',
+                                                        'Gas lamps',
+                                                        'Pressure lamps',
+                                                        'Tin lamps',
+                                                        'Lanterns', 'Wood',
+                                                        'Other'])
+            total_electricity = lighting_dist['Electricity']['numerators'][
+                'this']
 
-    wall_dist, _ = get_stat_data(
-        'main type of wall material',geo=geo, session=session,
-        order_by='-total')
+            # construction materials
+            roofing_dist, _ = get_stat_data(
+                'main type of roofing material', geo=geo, session=session,
+                order_by='-total')
 
-    floor_dist, _ = get_stat_data(
-        'main type of floor material',geo=geo, session=session,
-        order_by='-total')
+            wall_dist, _ = get_stat_data(
+                'main type of wall material', geo=geo, session=session,
+                order_by='-total')
+
+            floor_dist, _ = get_stat_data(
+                'main type of floor material', geo=geo, session=session,
+                order_by='-total')
+        except Exception:
+            pass
+
+    is_missing = floor_dist.get('is_missing') and \
+                 wall_dist.get('is_missing') and \
+                 roofing_dist.get('is_missing') and \
+                 lighting_dist.get('is_missing') and \
+                 waste_disposal_dist.get('is_missing') and \
+                 water_source_dist.get('is_missing') and \
+                 household_heads_dist.get('is_missing')
 
     return {
+        'is_missing': is_missing,
         'total_households': {
             'name': 'Households',
             'values': {'this': total_households},
@@ -289,13 +381,16 @@ def get_households_profile(geo, session):
         'sewer_or_septic': {
             'name': 'Have a sewer or septic tank',
             'numerators': {'this': total_sewer_or_septic},
-            'values': {'this': round(total_sewer_or_septic / total_households * 100, 2)},
+            'values': {
+                'this': round(total_sewer_or_septic / total_households * 100,
+                              2)},
         },
         'lighting_distribution': lighting_dist,
         'lighting_electricity': {
             'name': 'Use electricity for lighting',
             'numerators': {'this': total_electricity},
-            'values': {'this': round(total_electricity / total_households * 100, 2)},
+            'values': {
+                'this': round(total_electricity / total_households * 100, 2)},
         },
         'roofing_material_distribution': roofing_dist,
         'floor_material_distribution': floor_dist,
@@ -304,59 +399,73 @@ def get_households_profile(geo, session):
 
 
 def get_literacy_and_numeracy_tests_profile(geo, session):
-    if geo.geo_level == "ward": return {}
-    # literacy tests stats
-    literacy_data, _ = get_stat_data(
-        'literacy test', geo, session)
+    english_test_dist = LOCATIONNOTFOUND
+    swahili_test_dist = LOCATIONNOTFOUND
+    numeracy_test_dist = LOCATIONNOTFOUND
+    literacy_data = LOCATIONNOTFOUND
+    all_subjects = 0
+    with dataset_context(year='2015'):
+        try:
+            # literacy tests stats
+            literacy_data, _ = get_stat_data(
+                'literacy test', geo, session)
 
-    all_subjects = literacy_data['All subjects']['numerators']['this']
+            all_subjects = literacy_data['All subjects']['numerators']['this']
 
-    english_test_dist = literacy_data['English']['numerators']['this']
-    english_test_dist = {
-        'Passed': {
-            'name': 'Competent in English',
-            'numerators': {'this': english_test_dist},
-            'values': {'this': round(english_test_dist, 2)},
-        },
-        'Failed': {
-            'name': 'Not competent',
-            'numerators': {'this': 100 - english_test_dist},
-            'values': {'this': 100 - round(english_test_dist, 2)},
-        },
-        'metadata': literacy_data['metadata']
-    }
+            english_test_dist = literacy_data['English']['numerators']['this']
+            english_test_dist = {
+                'Passed': {
+                    'name': 'Competent in English',
+                    'numerators': {'this': english_test_dist},
+                    'values': {'this': round(english_test_dist, 2)},
+                },
+                'Failed': {
+                    'name': 'Not competent',
+                    'numerators': {'this': 100 - english_test_dist},
+                    'values': {'this': 100 - round(english_test_dist, 2)},
+                },
+                'metadata': literacy_data['metadata']
+            }
 
-    swahili_test_dist = literacy_data['Swahili']['numerators']['this']
-    swahili_test_dist = {
-        'Passed': {
-            'name': 'Competent in Swahili',
-            'numerators': {'this': swahili_test_dist},
-            'values': {'this': round(swahili_test_dist, 2)},
-        },
-        'Failed': {
-            'name': 'Not competent',
-            'numerators': {'this': 100 - swahili_test_dist},
-            'values': {'this': 100 - round(swahili_test_dist, 2)},
-        },
-        'metadata': literacy_data['metadata']
-    }
+            swahili_test_dist = literacy_data['Swahili']['numerators']['this']
+            swahili_test_dist = {
+                'Passed': {
+                    'name': 'Competent in Swahili',
+                    'numerators': {'this': swahili_test_dist},
+                    'values': {'this': round(swahili_test_dist, 2)},
+                },
+                'Failed': {
+                    'name': 'Not competent',
+                    'numerators': {'this': 100 - swahili_test_dist},
+                    'values': {'this': 100 - round(swahili_test_dist, 2)},
+                },
+                'metadata': literacy_data['metadata']
+            }
 
-    numeracy_test_dist = literacy_data['Math']['numerators']['this']
-    numeracy_test_dist = {
-        'Passed': {
-            'name': 'Competent in Math',
-            'numerators': {'this': numeracy_test_dist},
-            'values': {'this': round(numeracy_test_dist, 2)},
-        },
-        'Failed': {
-            'name': 'Not competent',
-            'numerators': {'this': 100 - numeracy_test_dist},
-            'values': {'this': 100 - round(numeracy_test_dist, 2)},
-        },
-        'metadata': literacy_data['metadata']
-    }
+            numeracy_test_dist = literacy_data['Math']['numerators']['this']
+            numeracy_test_dist = {
+                'Passed': {
+                    'name': 'Competent in Math',
+                    'numerators': {'this': numeracy_test_dist},
+                    'values': {'this': round(numeracy_test_dist, 2)},
+                },
+                'Failed': {
+                    'name': 'Not competent',
+                    'numerators': {'this': 100 - numeracy_test_dist},
+                    'values': {'this': 100 - round(numeracy_test_dist, 2)},
+                },
+                'metadata': literacy_data['metadata']
+            }
 
+        except Exception:
+            pass
+
+    is_missing = literacy_data.get('is_missing') and \
+                 english_test_dist.get('is_missing') and \
+                 swahili_test_dist.get('is_missing') and \
+                 swahili_test_dist.get('is_missing')
     return {
+        'is_missing': is_missing,
         'literacy_data': literacy_data,
         'metadata': literacy_data['metadata'],
         'english_test_dist': english_test_dist,
@@ -376,42 +485,53 @@ def get_literacy_and_numeracy_tests_profile(geo, session):
 
 
 def get_school_attendance_profile(geo, session):
-    if geo.geo_level == "ward": return {}
-    # attendance stats
-    attendance_data, _ = get_stat_data(
-        'school attendance', geo, session)
+    attendance_data = LOCATIONNOTFOUND
+    dropped_out_dist = None
+    out_of_school_dist = None
 
-    dropped_out_dist = \
-        attendance_data['Pupils in school']['numerators']['this']
-    dropped_out_dist = {
-        'Pupils in school': {
-            'name': 'Pupils in school',
-            'numerators': {'this': dropped_out_dist},
-            'values': {'this': round(dropped_out_dist, 2)},
-        },
-        'Dropped out': {
-            'name': 'Dropped out',
-            'numerators': {'this': 100 - dropped_out_dist},
-            'values': {'this': 100 - round(dropped_out_dist, 2)},
-        },
-        'metadata': attendance_data['metadata']
-    }
+    with dataset_context(year='2015'):
 
-    out_of_school_dist = attendance_data['Drop outs']['numerators']['this']
-    out_of_school_dist = {
-        'Out of school': {
-            'name': 'Dropped out',
-            'numerators': {'this': out_of_school_dist},
-            'values': {'this': round(out_of_school_dist, 2)},
-        },
-        'In school': {
-            'name': 'In school',
-            'numerators': {'this': 100 - out_of_school_dist},
-            'values': {'this': 100 - round(out_of_school_dist, 2)},
-        },
-        'metadata': attendance_data['metadata']
-    }
+        try:
+            # attendance stats
+            attendance_data, _ = get_stat_data(
+                'school attendance', geo, session)
+
+            dropped_out_dist = \
+                attendance_data['Pupils in school']['numerators']['this']
+            dropped_out_dist = {
+                'Pupils in school': {
+                    'name': 'Pupils in school',
+                    'numerators': {'this': dropped_out_dist},
+                    'values': {'this': round(dropped_out_dist, 2)},
+                },
+                'Dropped out': {
+                    'name': 'Dropped out',
+                    'numerators': {'this': 100 - dropped_out_dist},
+                    'values': {'this': 100 - round(dropped_out_dist, 2)},
+                },
+                'metadata': attendance_data['metadata']
+            }
+
+            out_of_school_dist = attendance_data['Drop outs']['numerators'][
+                'this']
+            out_of_school_dist = {
+                'Out of school': {
+                    'name': 'Dropped out',
+                    'numerators': {'this': out_of_school_dist},
+                    'values': {'this': round(out_of_school_dist, 2)},
+                },
+                'In school': {
+                    'name': 'In school',
+                    'numerators': {'this': 100 - out_of_school_dist},
+                    'values': {'this': 100 - round(out_of_school_dist, 2)},
+                },
+                'metadata': attendance_data['metadata']
+            }
+        except Exception:
+            pass
+
     return {
+        'is_missing': attendance_data.get('is_missing'),
         'attendance_data': attendance_data,
         'dropped_out_dist': dropped_out_dist,
         'out_of_school_dist': out_of_school_dist,
@@ -421,26 +541,49 @@ def get_school_attendance_profile(geo, session):
 
 
 def get_pupil_teacher_ratios_profile(geo, session):
-    if geo.geo_level == "ward": return {}
-    # pupil teacher ratios
-    ratio_data, _ = get_stat_data(
-        'pupil teacher ratios', geo, session)
+    ratio_data = LOCATIONNOTFOUND
+    pupil_attendance_rate_dist = LOCATIONNOTFOUND
+    teachers_absent_dist = LOCATIONNOTFOUND
+    pupil_teacher_ratio = LOCATIONNOTFOUND
 
-    pupil_teacher_ratio = ratio_data['Pupil teacher ratio']['numerators']['this']
-    pupils_per_textbook = ratio_data['Pupils per textbook']['numerators']['this']
+    with dataset_context(year='2015'):
+        try:
+            # pupil teacher ratios
+            ratio_data, _ = get_stat_data(
+                'pupil teacher ratios', geo, session)
 
-    pupil_attendance_rate_dist = \
-        ratio_data['Government school attendance rate']['numerators']['this']
-    pupil_attendance_rate_dist = get_dictionary("Attending school", "Absent", pupil_attendance_rate_dist, ratio_data)
+            pupil_teacher_ratio = \
+                ratio_data['Pupil teacher ratio']['numerators'][
+                    'this']
+            pupils_per_textbook = \
+                ratio_data['Pupils per textbook']['numerators'][
+                    'this']
 
-    teachers_absent_dist = ratio_data['Teachers absent']['numerators']['this']
-    teachers_absent_dist = get_dictionary("Teachers absent", "Teachers present", teachers_absent_dist, ratio_data)
+            pupil_attendance_rate_dist = \
+                ratio_data['Government school attendance rate']['numerators'][
+                    'this']
+            pupil_attendance_rate_dist = get_dictionary("Attending school",
+                                                        "Absent",
+                                                        pupil_attendance_rate_dist,
+                                                        ratio_data)
+
+            teachers_absent_dist = ratio_data['Teachers absent']['numerators'][
+                'this']
+            teachers_absent_dist = get_dictionary("Teachers absent",
+                                                  "Teachers present",
+                                                  teachers_absent_dist,
+                                                  ratio_data)
+
+        except Exception:
+            pass
 
     return {
+        'is_missing': ratio_data.get('is_missing'),
         'pupil_attendance_rate_dist': pupil_attendance_rate_dist,
         'teachers_absent_dist': teachers_absent_dist,
         'pupil_teacher_ratio': {
-            'name': 'For every one teacher there are ' + str(pupil_teacher_ratio) + " pupils",
+            'name': 'For every one teacher there are ' + str(
+                pupil_teacher_ratio) + " pupils",
             'numerators': {'this': pupil_teacher_ratio},
             'values': {'this': pupil_teacher_ratio}
         },
@@ -453,20 +596,34 @@ def get_pupil_teacher_ratios_profile(geo, session):
 
 
 def get_school_amenities_profile(geo, session):
-    if geo.geo_level == "ward": return {}
-    # school amenities
-    data, _ = get_stat_data('school amenity', geo, session)
+    data = LOCATIONNOTFOUND
+    library_data = LOCATIONNOTFOUND
+    drinking_water_data = LOCATIONNOTFOUND
+    feeding_program_data = LOCATIONNOTFOUND
+    with dataset_context(year='2015'):
+        try:
+            # school amenities
+            data, _ = get_stat_data('school amenity', geo, session)
 
-    library_data = data['Library']['numerators']['this']
-    library_data = get_dictionary("Have a library", "Don't", library_data, data)
+            library_data = data['Library']['numerators']['this']
+            library_data = get_dictionary("Have a library", "Don't",
+                                          library_data,
+                                          data)
 
-    drinking_water_data = data['Drinking water']['numerators']['this']
-    drinking_water_data = get_dictionary("Have clean drinking water", "Don't", drinking_water_data, data)
+            drinking_water_data = data['Drinking water']['numerators']['this']
+            drinking_water_data = get_dictionary("Have clean drinking water",
+                                                 "Don't", drinking_water_data,
+                                                 data)
 
-    feeding_program_data = data['Feeding program']['numerators']['this']
-    feeding_program_data = get_dictionary("Have a feeding program", "Don't", feeding_program_data, data)
+            feeding_program_data = data['Feeding program']['numerators']['this']
+            feeding_program_data = get_dictionary("Have a feeding program",
+                                                  "Don't",
+                                                  feeding_program_data, data)
+        except Exception:
+            pass
 
     return {
+        'is_missing': data.get('is_missing'),
         'library_data': library_data,
         'drinking_water_data': drinking_water_data,
         'feeding_program_data': feeding_program_data,
@@ -476,54 +633,85 @@ def get_school_amenities_profile(geo, session):
 
 # PEPFAR DATA
 def get_pepfar_profile(geo, session):
-    if geo.geo_level == "ward": return {}
-    # PEPFAR stats
-    pepfar_data, _ = get_stat_data("pepfar", geo, session)
-    HTC_TST = pepfar_data['HTC_TST']['numerators']['this']
-    HTC_TST_POS = pepfar_data['HTC_TST_POS']['numerators']['this']
-    PMTCT_STAT = pepfar_data['PMTCT_STAT']['numerators']['this']
-    PMTCT_STAT_POS = pepfar_data['PMTCT_STAT_POS']['numerators']['this']
-    PMTCT_ARV = pepfar_data['PMTCT_ARV']['numerators']['this']
-    PMTCT_EID = pepfar_data['PMTCT_EID']['numerators']['this']
-    PMTCT_EID_POS = pepfar_data['PMTCT_EID_POS']['numerators']['this']
-    PMTCT_CTX = pepfar_data['PMTCT_CTX']['numerators']['this']
-    CARE_NEW = pepfar_data['CARE_NEW']['numerators']['this']
-    TX_NEW = pepfar_data['TX_NEW']['numerators']['this']
-    CARE_CURR = pepfar_data['CARE_CURR']['numerators']['this']
-    TB_SCREEN = pepfar_data['TB_SCREEN']['numerators']['this']
-    TX_CURR = pepfar_data['TX_CURR']['numerators']['this']
-    TB_ART = pepfar_data['TB_ART']['numerators']['this']
-    TX_RET_NUM = pepfar_data['TX_RET_NUM']['numerators']['this']
-    TX_RET_DEN = pepfar_data['TX_RET_DEN']['numerators']['this']
-    VMMC_CIRC = pepfar_data['VMMC_CIRC']['numerators']['this']
-    OVC_SERV = pepfar_data['OVC_SERV']['numerators']['this']
-    PP_PREV = pepfar_data['PP_PREV']['numerators']['this']
-    KP_PREV = pepfar_data['KP_PREV']['numerators']['this']
-    try:
-        HTP = round((HTC_TST_POS / HTC_TST) * 100)
-        HTPP = round((((HTC_TST - HTC_TST_POS) * 1.0) / HTC_TST) * 100)
-    except:
-        HTP = 0
-        HTPP = 0
-    try:
-        PSP = round(((PMTCT_STAT_POS * 1.0) / PMTCT_STAT) * 100)
-        PSPP = round((((PMTCT_STAT - PMTCT_STAT_POS) * 1.0) / PMTCT_STAT) * 100)
-    except:
-        PSP = 0
-        PSPP = 0
-    try:
-        PA = round((PMTCT_ARV / PMTCT_STAT_POS) * 100)
-        PAP = round((((PMTCT_STAT_POS - PMTCT_ARV) * 1.0) / PMTCT_STAT_POS) * 100)
-    except:
-        PA = 0
-        PAP = 0
-    try:
-        PEP = round((PMTCT_EID_POS / PMTCT_EID) * 100)
-        PEPP = round((((PMTCT_EID - PMTCT_EID_POS) * 1.0) / PMTCT_EID) * 100)
-    except:
-        PEP = 0
-        PEPP = 0
+    pepfar_data = LOCATIONNOTFOUND
+    HTC_TST = 0
+    HTC_TST_POS = 0
+    HTP = 0
+    HTPP = 0
+    PMTCT_STAT = 0
+    PMTCT_EID = 0
+    PMTCT_CTX = 0
+    CARE_NEW = 0
+    TX_NEW = 0
+    CARE_CURR = 0
+    PMTCT_STAT_POS = 0
+    PSP = 0
+    PSPP = 0
+    PMTCT_ARV = 0
+    PA = 0
+    PAP = 0
+    PEP = 0
+    PEPP = 0
+    PMTCT_EID_POS = 0
+
+    with dataset_context(year='2015'):
+        try:
+            # PEPFAR stats
+            pepfar_data, _ = get_stat_data("pepfar", geo, session)
+            HTC_TST = pepfar_data['HTC_TST']['numerators']['this']
+            HTC_TST_POS = pepfar_data['HTC_TST_POS']['numerators']['this']
+            PMTCT_STAT = pepfar_data['PMTCT_STAT']['numerators']['this']
+            PMTCT_STAT_POS = pepfar_data['PMTCT_STAT_POS']['numerators']['this']
+            PMTCT_ARV = pepfar_data['PMTCT_ARV']['numerators']['this']
+            PMTCT_EID = pepfar_data['PMTCT_EID']['numerators']['this']
+            PMTCT_EID_POS = pepfar_data['PMTCT_EID_POS']['numerators']['this']
+            PMTCT_CTX = pepfar_data['PMTCT_CTX']['numerators']['this']
+            CARE_NEW = pepfar_data['CARE_NEW']['numerators']['this']
+            TX_NEW = pepfar_data['TX_NEW']['numerators']['this']
+            CARE_CURR = pepfar_data['CARE_CURR']['numerators']['this']
+            TB_SCREEN = pepfar_data['TB_SCREEN']['numerators']['this']
+            TX_CURR = pepfar_data['TX_CURR']['numerators']['this']
+            TB_ART = pepfar_data['TB_ART']['numerators']['this']
+            TX_RET_NUM = pepfar_data['TX_RET_NUM']['numerators']['this']
+            TX_RET_DEN = pepfar_data['TX_RET_DEN']['numerators']['this']
+            VMMC_CIRC = pepfar_data['VMMC_CIRC']['numerators']['this']
+            OVC_SERV = pepfar_data['OVC_SERV']['numerators']['this']
+            PP_PREV = pepfar_data['PP_PREV']['numerators']['this']
+            KP_PREV = pepfar_data['KP_PREV']['numerators']['this']
+            try:
+                HTP = round((HTC_TST_POS / HTC_TST) * 100)
+                HTPP = round((((HTC_TST - HTC_TST_POS) * 1.0) / HTC_TST) * 100)
+            except:
+                HTP = 0
+                HTPP = 0
+            try:
+                PSP = round(((PMTCT_STAT_POS * 1.0) / PMTCT_STAT) * 100)
+                PSPP = round(
+                    (((PMTCT_STAT - PMTCT_STAT_POS) * 1.0) / PMTCT_STAT) * 100)
+            except:
+                PSP = 0
+                PSPP = 0
+            try:
+                PA = round((PMTCT_ARV / PMTCT_STAT_POS) * 100)
+                PAP = round(
+                    (((
+                              PMTCT_STAT_POS - PMTCT_ARV) * 1.0) / PMTCT_STAT_POS) * 100)
+            except:
+                PA = 0
+                PAP = 0
+            try:
+                PEP = round((PMTCT_EID_POS / PMTCT_EID) * 100)
+                PEPP = round(
+                    (((PMTCT_EID - PMTCT_EID_POS) * 1.0) / PMTCT_EID) * 100)
+            except:
+                PEP = 0
+                PEPP = 0
+
+        except Exception:
+            pass
+
     return {
+        'is_missing': pepfar_data.get('is_missing'),
         'HTC_TST': {
             'name': 'Number of individuals who received HIV Testing and Counseling (HTC) services for HIV and their\
                         test results',
@@ -617,21 +805,44 @@ def get_pepfar_profile(geo, session):
 
 
 def get_causes_of_death_profile(geo, session):
-    if geo.geo_level != 'region' and geo.geo_level != 'country': return {}
+    causes_of_death_under_five_data = LOCATIONNOTFOUND
+    causes_of_death_over_five_data = LOCATIONNOTFOUND
+    inpatient_diagnosis_under_five_data = LOCATIONNOTFOUND
+    inpatient_diagnosis_over_five_data = LOCATIONNOTFOUND
+    outpatient_diagnosis_over_five_data = LOCATIONNOTFOUND
+    outpatient_diagnosis_under_five_data = LOCATIONNOTFOUND
 
-    causes_of_death_under_five_data, _ = get_stat_data(
-        'causes of death under five',geo=geo, session=session, order_by='-total')
-    causes_of_death_over_five_data, _ = get_stat_data(
-        'causes of death over five',geo=geo, session=session, order_by='-total')
-    inpatient_diagnosis_over_five_data, _ = get_stat_data(
-        'inpatient diagnosis over five',geo=geo, session=session, order_by='-total')
-    outpatient_diagnosis_over_five_data, _ = get_stat_data(
-        'outpatient diagnosis over five',geo=geo, session=session, order_by='-total')
-    inpatient_diagnosis_under_five_data, _ = get_stat_data(
-        'inpatient diagnosis under five',geo=geo, session=session, order_by='-total')
-    outpatient_diagnosis_under_five_data, _ = get_stat_data(
-        'outpatient diagnosis under five',geo=geo, session=session, order_by='-total')
+    with dataset_context(year='2015'):
+        try:
+            causes_of_death_under_five_data, _ = get_stat_data(
+                'causes of death under five', geo=geo, session=session,
+                order_by='-total')
+            causes_of_death_over_five_data, _ = get_stat_data(
+                'causes of death over five', geo=geo, session=session,
+                order_by='-total')
+            inpatient_diagnosis_over_five_data, _ = get_stat_data(
+                'inpatient diagnosis over five', geo=geo, session=session,
+                order_by='-total')
+            outpatient_diagnosis_over_five_data, _ = get_stat_data(
+                'outpatient diagnosis over five', geo=geo, session=session,
+                order_by='-total')
+            inpatient_diagnosis_under_five_data, _ = get_stat_data(
+                'inpatient diagnosis under five', geo=geo, session=session,
+                order_by='-total')
+            outpatient_diagnosis_under_five_data, _ = get_stat_data(
+                'outpatient diagnosis under five', geo=geo, session=session,
+                order_by='-total')
+        except Exception:
+            pass
+
+    is_missing = causes_of_death_over_five_data.get('is_missing') and \
+                 causes_of_death_under_five_data.get('is_missing') and \
+                 inpatient_diagnosis_under_five_data.get('is_missing') and \
+                 inpatient_diagnosis_over_five_data.get('is_missing') and \
+                 outpatient_diagnosis_under_five_data.get('is_missing') and \
+                 outpatient_diagnosis_over_five_data.get('is_missing')
     return {
+        'is_missing': is_missing,
         'causes_of_death_under_five_data': causes_of_death_under_five_data,
         'causes_of_death_over_five_data': causes_of_death_over_five_data,
         'inpatient_diagnosis_under_five_data': inpatient_diagnosis_under_five_data,
@@ -646,34 +857,48 @@ def get_causes_of_death_profile(geo, session):
 
 
 def get_family_planning_clients_profile(geo, session):
-    #missing data for some regions
-    return {}
-    if geo.geo_level != 'region' and geo.geo_level != 'country':
-        return {}
+    family_planning_clients_data = LOCATIONNOTFOUND
+    total = 0
+    rate = 0
+    age_dist_data = LOCATIONNOTFOUND
+    all_women_aged_15_49 = 0
+    percentage_of_population = 0.0
 
-    family_planning_clients_data, _ = get_stat_data(
-        'family planning clients',geo=geo, session=session, order_by='-total')
-    total = family_planning_clients_data['Total']['numerators']['this']
-    rate = family_planning_clients_data['New client rate']['numerators']['this']
+    with dataset_context(year='2015'):
+        # missing data for some regions
+        try:
+            family_planning_clients_data, _ = get_stat_data(
+                'family planning clients', geo=geo, session=session,
+                order_by='-total')
+            total = family_planning_clients_data['Total']['numerators']['this']
+            rate = \
+                family_planning_clients_data['New client rate']['numerators'][
+                    'this']
 
-    # age in 10 year groups
-    def age_recode(f, x):
-        age = int(x.replace('+', ''))
-        if age > 49:
-            return '80+'
-        if age < 15:
-            return 'under 15'
-        return "15-49"
+            # age in 10 year groups
+            def age_recode(f, x):
+                age = int(x.replace('+', ''))
+                if age > 49:
+                    return '80+'
+                if age < 15:
+                    return 'under 15'
+                return "15-49"
 
-    age_dist_data, _ = get_stat_data(
-        'age in completed years',geo=geo, session=session,
-        table_fields=['age in completed years', 'sex', 'rural or urban'],
-        recode=age_recode, exclude=['male'])
-    all_women_aged_15_49 = age_dist_data['15-49']['numerators']['this']
+            age_dist_data, _ = get_stat_data(
+                'age in completed years', geo=geo, session=session,
+                table_fields=['age in completed years', 'sex',
+                              'rural or urban'],
+                recode=age_recode, exclude=['male'])
+            all_women_aged_15_49 = age_dist_data['15-49']['numerators']['this']
 
-    percentage_of_population = round((total / all_women_aged_15_49) * 100)
+            percentage_of_population = round(
+                (total / all_women_aged_15_49) * 100)
+        except Exception:
+            pass
 
+    is_missing = family_planning_clients_data.get('is_missing')
     return {
+        'is_missing': is_missing,
         'total': {
             'name': 'Total number of women aged 15-49 using family planning methods (2013)',
             'numerators': {'this': total},
@@ -695,15 +920,25 @@ def get_family_planning_clients_profile(geo, session):
 
 
 def get_place_of_delivery_profile(geo, session):
-    if geo.geo_level != 'region' and geo.geo_level != 'country': return {}
+    delivery_data = LOCATIONNOTFOUND
+    anc_projection = 0
+    facility_birth_rate = 0
+    with dataset_context(year='2015'):
+        try:
+            delivery_data, _ = get_stat_data(
+                'place of delivery', geo=geo, session=session,
+                order_by='-total')
+            anc_projection = delivery_data['ANC projection']['numerators'][
+                'this']
+            facility_birth_rate = \
+                delivery_data['Facility birth rate']['numerators']['this']
+            del delivery_data['ANC projection']
+            del delivery_data['Facility birth rate']
+        except Exception:
+            pass
 
-    delivery_data, _ = get_stat_data(
-        'place of delivery',geo=geo, session=session, order_by='-total')
-    anc_projection = delivery_data['ANC projection']['numerators']['this']
-    facility_birth_rate = delivery_data['Facility birth rate']['numerators']['this']
-    del delivery_data['ANC projection']
-    del delivery_data['Facility birth rate']
     return {
+        'is_missing': delivery_data.get('is_missing'),
         'anc_projection': {
             'name': 'Antenatal care projection (2014)',
             'numerators': {'this': anc_projection},
@@ -721,18 +956,27 @@ def get_place_of_delivery_profile(geo, session):
 
 
 def get_health_workers_distribution_profile(geo, session):
-    if geo.geo_level != 'region' and geo.geo_level != 'country': return {}
+    hw_data = LOCATIONNOTFOUND
+    total = 0
+    hrh_patient_ratio = 0.0
 
-    hw_data, total = get_stat_data(
-        'health workers',geo=geo, session=session, order_by='-total')
+    with dataset_context(year='2015'):
+        try:
+            hw_data, total = get_stat_data(
+                'health workers', geo=geo, session=session, order_by='-total')
 
-    hrh_patient_ratio = hw_data['HRH patient ratio']['numerators']['this']
-    del hw_data['HRH patient ratio']
-    del hw_data['MO and AMO per 10000']
-    del hw_data['Nurses and midwives per 10000']
-    del hw_data['Pharmacists per 10000']
-    del hw_data['Clinicians per 10000']
+            hrh_patient_ratio = hw_data['HRH patient ratio']['numerators'][
+                'this']
+            del hw_data['HRH patient ratio']
+            del hw_data['MO and AMO per 10000']
+            del hw_data['Nurses and midwives per 10000']
+            del hw_data['Pharmacists per 10000']
+            del hw_data['Clinicians per 10000']
+        except Exception:
+            pass
+
     return {
+        'is_missing': hw_data.get('is_missing'),
         'total': {
             'name': 'Total health worker population (2014)',
             'numerators': {'this': total},
@@ -750,16 +994,29 @@ def get_health_workers_distribution_profile(geo, session):
 
 
 def get_health_centers_distribution_profile(geo, session):
-    if geo.geo_level == 'ward': return {}
+    hc_data = LOCATIONNOTFOUND
+    ho_data = LOCATIONNOTFOUND
+    hiv_centers_data = LOCATIONNOTFOUND
+    hiv_c = 0
+    total = 0
 
-    hc_data, total = get_stat_data(
-        'health centers',geo=geo, session=session, order_by='-total')
-    ho_data, _ = get_stat_data(
-        'health center ownership', geo, session)
-    hiv_centers_data, hiv_c = get_stat_data(
-        'hiv centers', geo, session)
+    with dataset_context(year='2015'):
+        try:
+            hc_data, total = get_stat_data(
+                'health centers', geo=geo, session=session, order_by='-total')
+            ho_data, _ = get_stat_data(
+                'health center ownership', geo, session)
+            hiv_centers_data, hiv_c = get_stat_data(
+                'hiv centers', geo, session)
+        except Exception:
+            pass
+
+    is_missing = hc_data.get('is_missing') and \
+                 ho_data.get('is_missing') and \
+                 hiv_centers_data.get('is_missing')
 
     return {
+        'is_missing': is_missing,
         'total': {
             'name': 'Total health centers in operation (2014)',
             'numerators': {'this': total},
@@ -778,13 +1035,23 @@ def get_health_centers_distribution_profile(geo, session):
 
 
 def get_tetanus_vaccine_profile(geo, session):
-    if geo.geo_level != 'region' and geo.geo_level != 'country': return {}
+    tetanus_vaccine_data = LOCATIONNOTFOUND
+    number_vaccinated = 0
+    coverage = 0
 
-    tetanus_vaccine_data, _ = get_stat_data(
-        'tetanus vaccine',geo=geo, session=session, order_by='-total')
-    number_vaccinated = tetanus_vaccine_data['Vaccinated']['numerators']['this']
-    coverage = tetanus_vaccine_data['Coverage']['numerators']['this']
+    with dataset_context(year='2015'):
+        try:
+            tetanus_vaccine_data, _ = get_stat_data(
+                'tetanus vaccine', geo=geo, session=session, order_by='-total')
+            number_vaccinated = \
+                tetanus_vaccine_data['Vaccinated']['numerators'][
+                    'this']
+            coverage = tetanus_vaccine_data['Coverage']['numerators']['this']
+        except Exception:
+            pass
+
     return {
+        'is_missing': tetanus_vaccine_data.get('is_missing'),
         'number_vaccinated': {
             'name': 'Number of pregnant women received two or more Tetanus Toxoid vaccine (TT2+) (2014)',
             'numerators': {'this': number_vaccinated},
@@ -821,7 +1088,8 @@ def sum_up(arr, name):
     s = 0
     for x in arr:
         s += x['values']['this']
-    return OrderedDict([('name', name), ('numerators', {'this': None}), ('values', {'this': s})])
+    return OrderedDict([('name', name), ('numerators', {'this': None}),
+                        ('values', {'this': s})])
 
 
 def divide_by_one_thousand(dist):
@@ -834,97 +1102,160 @@ def replace_name(dist, new_name):
 
 
 def get_traffic_and_crimes_profile(geo, session):
-
-    if geo.geo_level == 'ward' or geo.geo_level == 'district':
-        return {}
-
-    traffic_and_crimes, _total_tc = get_stat_data('traffic and crimes',geo=geo, session=session,  order_by='-total')
-
-    #total accidents
+    total_pop = 0
+    traffic_and_crimes = LOCATIONNOTFOUND
+    _total_tc = 0
     total_accidents = 0
-    total_accidents += int(traffic_and_crimes['Fatal Accidents']['numerators']['this'])
-    total_accidents += int(traffic_and_crimes['Injury Accidents']['numerators']['this'])
-    total_accidents += int(traffic_and_crimes['Normal Accidents']['numerators']['this'])
+    deaths_per_pop = 0
+    male_injuries = 0
+    female_injuries = 0
+    male_deaths = 0
+    total_deaths = 0
+    offences_against_person_dist = LOCATIONNOTFOUND
+    cattle_theft_dist = LOCATIONNOTFOUND
+    robbery_fatalities_dist = LOCATIONNOTFOUND
+    superstitious_beliefs_dist = LOCATIONNOTFOUND
+    total_cattletheft_robbery = 0
+    public_fighting_dist = LOCATIONNOTFOUND
+    _total_pf = 0
+    female_deaths = 0
 
-    #injuries
-    male_injuries = int(traffic_and_crimes['Male Injured Persons']['numerators']['this'])
-    female_injuries = int(traffic_and_crimes['Female Injured Persons']['numerators']['this'])
-    total_injuries = male_injuries + female_injuries
+    with dataset_context(year='2012'):
+        try:
+            _, total_pop = get_stat_data(
+                'sex', geo=geo, session=session,
+                table_fields=['age in completed years', 'sex',
+                              'rural or urban'])
+        except Exception:
+            pass
 
-    # deaths
-    male_deaths = int(traffic_and_crimes['Male Dead Persons']['numerators']['this'])
-    female_deaths = int(traffic_and_crimes['Female Dead Persons']['numerators']['this'])
-    total_deaths  = male_deaths + female_deaths
+    with dataset_context(year='2015'):
+        try:
 
-    _, total_pop = get_stat_data(
-        'sex',geo=geo, session=session,
-        table_fields=['age in completed years', 'sex', 'rural or urban'])
+            traffic_and_crimes, _total_tc = get_stat_data('traffic and crimes',
+                                                          geo=geo,
+                                                          session=session,
+                                                          order_by='-total')
 
-    deaths_per_pop = round((total_deaths * 1e5)/total_pop)
+            # total accidents
 
-    #offences against person 2015
-    person_offences = ['Murder', 'Rape', 'Child Desertion', 'Unnatural Offence', 'Child Stealing', 'Defilement']
-    offences_against_person_dist, _ = get_stat_data('traffic and crimes', only=person_offences,\
-      geo=geo, session=session, order_by='-total')
+            total_accidents += int(
+                traffic_and_crimes['Fatal Accidents']['numerators']['this'])
+            total_accidents += int(
+                traffic_and_crimes['Injury Accidents']['numerators']['this'])
+            total_accidents += int(
+                traffic_and_crimes['Normal Accidents']['numerators']['this'])
 
-    #cattle theft
-    cattle_theft_only = ["Cattle Thieves", "Murdered Cattle Owners"]
+            # injuries
+            male_injuries = int(
+                traffic_and_crimes['Male Injured Persons']['numerators'][
+                    'this'])
+            female_injuries = int(
+                traffic_and_crimes['Female Injured Persons']['numerators'][
+                    'this'])
+            total_injuries = male_injuries + female_injuries
 
-    def recoder(f, x):
-        if x in  ('Murdered Cattle Owners', 'Robbery Victims'):
-            return 'Owners'
-        if x in ('Cattle Thieves', 'Robbery Thieves'):
-            return 'Thieves'
-        if x  == "Superstitious Beliefs Albino":
-            return "Albino"
-        if x == "Superstitious Beliefs Others":
-            return  "Other"
-        if x == "Superstitious Beliefs Old Age":
-            return "Old Age"
-        if x == "Superstitious Beliefs Theft":
-            return "Theft"
-        if x == "Public Fighting Pombe shops":
-            return "Pombe shops"
-        if x == "Public Fighting Jelousy":
-            return "Jelousy"
-        if x == "Public Fighting Domestic":
-            return "Domestic"
-        if x == "Public Fighting Grudge":
-            return "Grudge"
-        if x == "Public Fighting Accident":
-            return  "Accident"
-        return x
+            # deaths
+            male_deaths = int(
+                traffic_and_crimes['Male Dead Persons']['numerators']['this'])
+            female_deaths = int(
+                traffic_and_crimes['Female Dead Persons']['numerators']['this'])
+            total_deaths = male_deaths + female_deaths
 
-    cattle_theft_dist, _total_ct = get_stat_data("traffic and crimes", only=cattle_theft_only,\
-     geo=geo, session=session, order_by='-total',\
-     recode=recoder)
+            deaths_per_pop = round((total_deaths * 1e5) / total_pop)
 
-    robbery_only = ['Robbery Victims', 'Robbery Thieves']
-    robbery_fatalities_dist, _total_rf = get_stat_data('traffic and crimes', only=robbery_only,\
-     geo=geo, session=session, order_by='-total',
-      recode=recoder)
+            # offences against person 2015
+            person_offences = ['Murder', 'Rape', 'Child Desertion',
+                               'Unnatural Offence', 'Child Stealing',
+                               'Defilement']
+            offences_against_person_dist, _ = get_stat_data(
+                'traffic and crimes',
+                only=person_offences, \
+                geo=geo,
+                session=session,
+                order_by='-total')
 
-    superstitious_only = ["Superstitious Beliefs Albino", "Superstitious Beliefs Theft",\
-    "Superstitious Beliefs Others", "Superstitious Beliefs Old Age"]
-    superstitious_beliefs_dist, _ = get_stat_data('traffic and crimes', only=superstitious_only,\
-     geo=geo, session=session, order_by='-total',
-      recode=recoder)
+            # cattle theft
+            cattle_theft_only = ["Cattle Thieves", "Murdered Cattle Owners"]
 
-    total_cattletheft_robbery = _total_rf + _total_ct
+            def recoder(f, x):
+                if x in ('Murdered Cattle Owners', 'Robbery Victims'):
+                    return 'Owners'
+                if x in ('Cattle Thieves', 'Robbery Thieves'):
+                    return 'Thieves'
+                if x == "Superstitious Beliefs Albino":
+                    return "Albino"
+                if x == "Superstitious Beliefs Others":
+                    return "Other"
+                if x == "Superstitious Beliefs Old Age":
+                    return "Old Age"
+                if x == "Superstitious Beliefs Theft":
+                    return "Theft"
+                if x == "Public Fighting Pombe shops":
+                    return "Pombe shops"
+                if x == "Public Fighting Jelousy":
+                    return "Jelousy"
+                if x == "Public Fighting Domestic":
+                    return "Domestic"
+                if x == "Public Fighting Grudge":
+                    return "Grudge"
+                if x == "Public Fighting Accident":
+                    return "Accident"
+                return x
 
-    public_fighting_only = ["Public Fighting Pombe shops", "Public Fighting Jelousy",\
-        "Public Fighting Domestic", "Public Fighting Grudge", "Public Fighting Accident"]
-    public_fighting_dist, _total_pf = get_stat_data('traffic and crimes', only=public_fighting_only,\
-     geo=geo, session=session, order_by='-total',
-      recode=recoder)
+            cattle_theft_dist, _total_ct = get_stat_data("traffic and crimes",
+                                                         only=cattle_theft_only, \
+                                                         geo=geo,
+                                                         session=session,
+                                                         order_by='-total', \
+                                                         recode=recoder)
+
+            robbery_only = ['Robbery Victims', 'Robbery Thieves']
+            robbery_fatalities_dist, _total_rf = get_stat_data(
+                'traffic and crimes',
+                only=robbery_only, \
+                geo=geo,
+                session=session,
+                order_by='-total',
+                recode=recoder)
+
+            superstitious_only = ["Superstitious Beliefs Albino",
+                                  "Superstitious Beliefs Theft", \
+                                  "Superstitious Beliefs Others",
+                                  "Superstitious Beliefs Old Age"]
+            superstitious_beliefs_dist, _ = get_stat_data('traffic and crimes',
+                                                          only=superstitious_only, \
+                                                          geo=geo,
+                                                          session=session,
+                                                          order_by='-total',
+                                                          recode=recoder)
+
+            total_cattletheft_robbery = _total_rf + _total_ct
+
+            public_fighting_only = ["Public Fighting Pombe shops",
+                                    "Public Fighting Jelousy", \
+                                    "Public Fighting Domestic",
+                                    "Public Fighting Grudge",
+                                    "Public Fighting Accident"]
+            public_fighting_dist, _total_pf = get_stat_data(
+                'traffic and crimes',
+                only=public_fighting_only, \
+                geo=geo,
+                session=session,
+                order_by='-total',
+                recode=recoder)
+
+        except Exception:
+            pass
 
     return {
+        'is_missing': traffic_and_crimes.get('is_missing'),
         'traffic_and_crimes_overall': traffic_and_crimes,
-        'injuries_by_gender':   {
+        'injuries_by_gender': {
             'male': {
                 'name': 'Male',
                 'numerators': {'this': male_injuries},
-                'values': {'this':male_injuries}
+                'values': {'this': male_injuries}
             },
             'female': {
                 'name': 'Female',
@@ -933,7 +1264,7 @@ def get_traffic_and_crimes_profile(geo, session):
             },
             'metadata': traffic_and_crimes['metadata']
         },
-        'fatalities_by_gender':   {
+        'fatalities_by_gender': {
             'male': {
                 'name': 'Men',
                 'numerators': {'this': male_deaths},
@@ -969,15 +1300,15 @@ def get_traffic_and_crimes_profile(geo, session):
                 'metadata': {
                     'name': 'Cattle Theft'
                 },
-                'Thieves':  cattle_theft_dist['Thieves'],
-                'Owners':  cattle_theft_dist['Owners']
+                'Thieves': cattle_theft_dist.get('Thieves'),
+                'Owners': cattle_theft_dist.get('Owners')
             },
             'Robbery': {
                 'metadata': {
                     'name': 'Robbery'
                 },
-                'Thieves': robbery_fatalities_dist['Thieves'],
-                'Owners': robbery_fatalities_dist['Owners']
+                'Thieves': robbery_fatalities_dist.get('Thieves'),
+                'Owners': robbery_fatalities_dist.get('Owners')
             },
             'metadata': traffic_and_crimes['metadata']
         },
@@ -985,7 +1316,7 @@ def get_traffic_and_crimes_profile(geo, session):
         'cattle_and_robbery': {
             'name': 'People killed in cattle theft and robbery crimes(2015)',
             'numerators': {'this': total_cattletheft_robbery},
-            'values': {'this': total_cattletheft_robbery }
+            'values': {'this': total_cattletheft_robbery}
         },
         'public_fighting': public_fighting_dist,
         'public_fighting_stat': {
@@ -997,19 +1328,22 @@ def get_traffic_and_crimes_profile(geo, session):
 
 
 def get_primary_school_teachers_profile(geo, session):
+    ps_teachers = LOCATIONNOTFOUND
+    n_teachers = 0
 
-    if geo.geo_level == 'ward':
-        return {}
-    try:
+    with dataset_context(year='2015'):
+        try:
 
-        ps_teachers, n_teachers = get_stat_data('primary school teachers',\
-            geo=geo, session=session, order_by='-total')
+            ps_teachers, n_teachers = get_stat_data('primary school teachers', \
+                                                    geo=geo, session=session,
+                                                    order_by='-total')
 
-    except Exception as e:
-        ps_teachers = None
-        n_teachers = None
+        except Exception:
+            pass
 
+    is_missing = ps_teachers.get('is_missing')
     return {
+        'is_missing': is_missing,
         'number_of_teachers': {
             'name': 'Number of primary school teachers (2016)',
             'numerators': {'this': n_teachers},
@@ -1022,35 +1356,44 @@ def get_primary_school_teachers_profile(geo, session):
 
 
 def get_water_sources_profile(geo, session):
+    water_source_dist = LOCATIONNOTFOUND
+    total_pop = 0
+    n_sources = 0
+    n_people_per_point = 0
+    with dataset_context(year='2015'):
 
-    if geo.geo_level == 'ward' or geo.geo_level == 'district':
-        return {}
+        try:
+            _, total_pop = get_stat_data(
+                'sex', geo=geo, session=session,
+                table_fields=['age in completed years', 'sex',
+                              'rural or urban'])
 
-    try:
-        _, total_pop = get_stat_data(
-            'sex',geo=geo, session=session,
-            table_fields=['age in completed years', 'sex', 'rural or urban'])
-
-        WATER_POINT_STATUS_RECODES = OrderedDict([
+            WATER_POINT_STATUS_RECODES = OrderedDict([
                 ('functional', 'Functional'),
                 ('nonfunctional', 'Non Functional'),
                 ('needsrepair', 'Functional Needs Repair')
             ])
 
-        water_source_dist, n_sources  = get_stat_data('water sources', geo=geo,\
-         session=session, recode=WATER_POINT_STATUS_RECODES)
+            water_source_dist, n_sources = get_stat_data('water sources',
+                                                         geo=geo, \
+                                                         session=session,
+                                                         recode=WATER_POINT_STATUS_RECODES)
 
-    except Exception as e:
-        #Location not found in dataset
-        return {}
-    #Functional  + Needs repair
-    all_functional  = water_source_dist['Functional']['numerators']['this'] + \
-            water_source_dist['Functional Needs Repair']['numerators']['this']
+            # Functional  + Needs repair
+            all_functional = water_source_dist['Functional']['numerators'][
+                                 'this'] + \
+                             water_source_dist['Functional Needs Repair'][
+                                 'numerators']['this']
 
-    #Number of people per water point
-    n_people_per_point = round(total_pop/all_functional)
+            # Number of people per water point
+            n_people_per_point = round(total_pop / all_functional)
+
+        except Exception as e:
+            # Location not found in dataset
+            pass
 
     return {
+        'is_missing': water_source_dist.get('is_missing'),
         'water_sources_dist': water_source_dist,
         'number_of_water_sources': {
             'name': 'Total number of water points',
@@ -1069,18 +1412,19 @@ def get_water_sources_profile(geo, session):
 
 
 def get_primary_school_desks_profile(geo, session):
+    school_desks_dist = LOCATIONNOTFOUND
+    n_desks = 0
+    with dataset_context(year='2015'):
 
-    if geo.geo_level == 'ward':
-        return {}
-
-    try:
-        school_desks_dist, n_desks = get_stat_data('primary school desks', geo=geo,\
-            session=session)
-    except Exception as e:
-        n_desks = None
-        school_desks_dist = None
+        try:
+            school_desks_dist, n_desks = get_stat_data('primary school desks',
+                                                       geo=geo, \
+                                                       session=session)
+        except Exception as e:
+            pass
 
     return {
+        'is_missing': school_desks_dist.get('is_missing'),
         'number_of_desks': {
             'name': 'Number of Desks(2014)',
             'numerators': {'this': n_desks},
@@ -1088,20 +1432,22 @@ def get_primary_school_desks_profile(geo, session):
         },
     }
 
+
 def get_airport_types_profile(geo, session):
+    airports_dist = LOCATIONNOTFOUND
+    n_airports = 0
+    with dataset_context(year='2015'):
+        try:
 
-    if geo.geo_level == 'ward':
-        return {}
-    try:
+            airports_dist, n_airports = get_stat_data('airport types', \
+                                                      geo=geo, session=session,
+                                                      order_by='-total')
 
-        airports_dist, n_airports = get_stat_data('airport types',\
-            geo=geo, session=session, order_by='-total')
+        except Exception as e:
+            pass
 
-    except Exception as e:
-        airports_dist = None
-        n_airports = None
-
-    return {
+    data = {
+        'is_missing': airports_dist.get('is_missing'),
         'number_of_airports': {
             'name': 'Number of airports (2017)',
             'numerators': {'this': n_airports},
@@ -1111,3 +1457,4 @@ def get_airport_types_profile(geo, session):
         'source_link': 'http://www.taa.go.tz',
         'airports': airports_dist
     }
+    return data

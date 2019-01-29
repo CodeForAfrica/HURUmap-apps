@@ -2,13 +2,17 @@ import logging
 import json
 
 from wazimap.geo import geo_data
-from wazimap.data.tables import get_model_from_fields, get_model_for_db_table
+from wazimap.data.tables import get_datatable
+from wazimap.data.utils import (calculate_median,
+                                get_session, get_stat_data, group_remainder,
+                                merge_dicts, get_datatable, current_context,
+                                dataset_context)
+from wazimap.geo import geo_data
 from django.conf import settings
-from wazimap.data.utils import (LocationNotFound, calculate_median, get_session, get_stat_data,
-                                merge_dicts, get_objects_by_geo, group_remainder)
-
-from sqlalchemy import Column, ForeignKey, Integer, String, Table, func, or_, and_, desc, asc, cast
+from collections import OrderedDict
 from wazimap.data.base import Base
+from sqlalchemy import Column, ForeignKey, Integer, String, Table, func, or_, \
+    and_, desc, asc, cast
 
 __author__ = 'timothy'
 
@@ -22,6 +26,7 @@ SECTIONS = settings.HURUMAP.get('topics', {})
 LOCATIONNOTFOUND = {'name': 'No Data Found', 'numerators': {'this': 0},
                     'values': {'this': 0}}
 
+
 def get_profile(geo, profile_name, request, year):
     session = get_session()
     data = {}
@@ -31,79 +36,148 @@ def get_profile(geo, profile_name, request, year):
     finally:
         session.close()
 
+
 def get_schools_profile(geo, session, year):
-    # ownership status
-    schools_dist, total_schools = get_stat_data(['ownership'], geo=geo, session=session, only={'year_of_result': [year]})
-    #school_dist_data, _ = get_stat_data('age in completed years',geo=geo, session=session, only={'year_of_result': [year]})
+    schools_dist = LOCATIONNOTFOUND
+    region_dist = LOCATIONNOTFOUND
+    category_dist = LOCATIONNOTFOUND
+    top_schools_40_more = []
+    top_schools_40_less = []
+    lowest_schools_40_less = []
+    lowest_schools_40_more = []
+    gpa_dist_data = []
+    gender_dist = []
+    total_schools = 0
+    median = 0
+
+    reg = 'region'
     if geo.geo_level == "country":
         reg = 'region'
     elif geo.geo_level == "region":
         reg = 'district'
     elif geo.geo_level == "district":
         reg = 'ward'
-    region_dist, total_schools = get_stat_data([reg], geo=geo, session=session, only={'year_of_result': [year]})
 
-    category_dist, _ = get_stat_data(['more_than_40'], geo=geo, session=session, only={'year_of_result': [year]})
+    with dataset_context(year='2017'):
+        try:
+            schools_dist, total_schools = get_stat_data(['ownership'], geo=geo, table_name='secondary_school',
+                                                        session=session, only={
+                    'year_of_result': [year]})
+        except Exception as e:
+            pass
 
-    gender_dist, _ = get_stat_data(['gender'], geo=geo, session=session, only={'year_of_result': [year]})
-    # Choosing sorting option
-    #Sorting will only be done using national_rank all, as regional and district ranks are unknown for some result esp historical
-    rank_column = Base.metadata.tables['secondary_school'].c.national_rank_all
-    # Getting top for schools with more than 40 students
-    top_schools_40_more = session.query(Base.metadata.tables['secondary_school'])\
-                    .filter(Base.metadata.tables['secondary_school'].c.geo_level == geo.geo_level)\
-                    .filter(Base.metadata.tables['secondary_school'].c.geo_code == geo.geo_code)\
-                    .filter(Base.metadata.tables['secondary_school'].c.year_of_result == year)\
-                    .filter(Base.metadata.tables['secondary_school'].c.more_than_40.like("yes%"))\
-                    .order_by(asc(cast(rank_column, Integer)))\
-                    .all()
-    # Getting top for schools with less than 40 students
-    top_schools_40_less = session.query(Base.metadata.tables['secondary_school'])\
-                    .filter(Base.metadata.tables['secondary_school'].c.geo_level == geo.geo_level)\
-                    .filter(Base.metadata.tables['secondary_school'].c.geo_code == geo.geo_code)\
-                    .filter(Base.metadata.tables['secondary_school'].c.year_of_result == year)\
-                    .filter(Base.metadata.tables['secondary_school'].c.more_than_40.like("no%"))\
-                    .order_by(asc(cast(rank_column, Integer)))\
-                    .all()
+        try:
+            region_dist, total_schools = get_stat_data([reg], geo=geo,
+                                                       session=session, only={
+                    'year_of_result': [year]})
+        except Exception as e:
+            pass
 
-    # Getting lowest schools with more than 40 students
-    lowest_schools_40_more = session.query(Base.metadata.tables['secondary_school'])\
-                    .filter(Base.metadata.tables['secondary_school'].c.geo_level == geo.geo_level)\
-                    .filter(Base.metadata.tables['secondary_school'].c.geo_code == geo.geo_code)\
-                    .filter(Base.metadata.tables['secondary_school'].c.year_of_result == year)\
-                    .filter(Base.metadata.tables['secondary_school'].c.more_than_40.like("yes%"))\
-                    .order_by(desc(cast(rank_column, Integer)))\
-                    .all()
-    # Getting lowest for schools with less than 40 students
-    lowest_schools_40_less = session.query(Base.metadata.tables['secondary_school'])\
-                    .filter(Base.metadata.tables['secondary_school'].c.geo_level == geo.geo_level)\
-                    .filter(Base.metadata.tables['secondary_school'].c.geo_code == geo.geo_code)\
-                    .filter(Base.metadata.tables['secondary_school'].c.year_of_result == year)\
-                    .filter(Base.metadata.tables['secondary_school'].c.more_than_40.like("no%"))\
-                    .order_by(desc(cast(rank_column, Integer)))\
-                    .all()
-    # median gpa
-    db_model_age = get_model_from_fields(['code', 'name', 'avg_gpa'], geo.geo_level)
-    objects = get_objects_by_geo(db_model_age, geo, session, ['avg_gpa'])
-    median = calculate_median(objects, 'avg_gpa')
+        try:
+            category_dist, _ = get_stat_data(['more_than_40'], geo=geo,
+                                             session=session,
+                                             only={'year_of_result': [year]})
+        except Exception as e:
+            pass
 
-    # gpa in 1 point groups
-    def gpa_recode(f, x):
-        gpa = x
-        if gpa >= 4:
-            return '4+'
-        bucket = 1 * (gpa / 1)
-        return '%d-%d' % (bucket, bucket + 2)
+        try:
+            gender_dist, _ = get_stat_data(['gender'], geo=geo, session=session,
+                                           only={'year_of_result': [year]})
+        except Exception:
+            pass
 
-    gpa_dist_data, total_schools = get_stat_data(
-        'avg_gpa', geo, session,
-        table_fields=['code', 'name', 'avg_gpa'],
-        recode=gpa_recode, exclude=['unspecified'], only={'year_of_result': [year]})
 
-    total_private = 0.0
-    for data in schools_dist.get('Non-Government', {}).itervalues():
-        if 'numerators' in data:
-            total_private += data['numerators']['this']
+
+
+
+        try:
+            # ownership status
+            # school_dist_data, _ = get_stat_data('age in completed years',geo=geo, session=session, only={'year_of_result': [year]})
+            # Choosing sorting option
+            # Sorting will only be done using national_rank all, as regional and district ranks are unknown for some result esp historical
+            Base.metadata.reflect()
+            rank_column = Base.metadata.tables[
+                'secondary_school'].c.national_rank_all
+            # Getting top for schools with more than 40 students
+            top_schools_40_more = session.query(
+                Base.metadata.tables['secondary_school']) \
+                .filter(Base.metadata.tables[
+                            'secondary_school'].c.geo_level == geo.geo_level) \
+                .filter(
+                Base.metadata.tables['secondary_school'].c.geo_code == geo.geo_code) \
+                .filter(
+                Base.metadata.tables['secondary_school'].c.year_of_result == year) \
+                .filter(
+                Base.metadata.tables['secondary_school'].c.more_than_40.like(
+                    "yes%")) \
+                .order_by(asc(cast(rank_column, Integer))) \
+                .all()
+            # Getting top for schools with less than 40 students
+            top_schools_40_less = session.query(
+                Base.metadata.tables['secondary_school']) \
+                .filter(Base.metadata.tables[
+                            'secondary_school'].c.geo_level == geo.geo_level) \
+                .filter(
+                Base.metadata.tables['secondary_school'].c.geo_code == geo.geo_code) \
+                .filter(
+                Base.metadata.tables['secondary_school'].c.year_of_result == year) \
+                .filter(
+                Base.metadata.tables['secondary_school'].c.more_than_40.like("no%")) \
+                .order_by(asc(cast(rank_column, Integer))) \
+                .all()
+
+            # Getting lowest schools with more than 40 students
+            lowest_schools_40_more = session.query(
+                Base.metadata.tables['secondary_school']) \
+                .filter(Base.metadata.tables[
+                            'secondary_school'].c.geo_level == geo.geo_level) \
+                .filter(
+                Base.metadata.tables['secondary_school'].c.geo_code == geo.geo_code) \
+                .filter(
+                Base.metadata.tables['secondary_school'].c.year_of_result == year) \
+                .filter(
+                Base.metadata.tables['secondary_school'].c.more_than_40.like(
+                    "yes%")) \
+                .order_by(desc(cast(rank_column, Integer))) \
+                .all()
+            # Getting lowest for schools with less than 40 students
+            lowest_schools_40_less = session.query(
+                Base.metadata.tables['secondary_school']) \
+                .filter(Base.metadata.tables[
+                            'secondary_school'].c.geo_level == geo.geo_level) \
+                .filter(
+                Base.metadata.tables['secondary_school'].c.geo_code == geo.geo_code) \
+                .filter(
+                Base.metadata.tables['secondary_school'].c.year_of_result == year) \
+                .filter(
+                Base.metadata.tables['secondary_school'].c.more_than_40.like("no%")) \
+                .order_by(desc(cast(rank_column, Integer))) \
+                .all()
+            # median gpa
+            db_model_age = get_datatable('code_name_avg_gpa')
+            objects = db_model_age.get_rows_for_geo(geo, session)
+            median = calculate_median(objects, 'avg_gpa')
+
+            # gpa in 1 point groups
+            def gpa_recode(f, x):
+                gpa = x
+                if gpa >= 4:
+                    return '4+'
+                bucket = 1 * (gpa / 1)
+                return '%d-%d' % (bucket, bucket + 2)
+
+            gpa_dist_data, total_schools = get_stat_data(
+                'avg_gpa', geo, session,
+                table_fields=['code', 'name', 'avg_gpa'],
+                recode=gpa_recode, exclude=['unspecified'],
+                only={'year_of_result': [year]})
+
+            total_private = 0.0
+            for data in schools_dist.get('Non-Government', {}).itervalues():
+                if 'numerators' in data:
+                    total_private += data['numerators']['this']
+        except Exception as e:
+            pass
 
     return {
         'schools_distribution': schools_dist,
