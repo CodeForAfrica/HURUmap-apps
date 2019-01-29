@@ -59,18 +59,18 @@ function MapItGeometryLoader() {
         });
     };
 
-    this.decorateFeature = function(feature) {
-        feature.properties.level = feature.properties.type_name.toLowerCase();
-        feature.properties.code = feature.properties.codes.MDB;
-        feature.properties.geoid = feature.properties.level + '-' + feature.properties.code;
+    this.decorateFeature = function(feature, level, country) {
+        feature.properties.level = level;
+        feature.properties.country_code = country;
     };
 
     this.loadGeometryForLevel = function(level, geo_version, success) {
         var generation = MAPIT.generations[geo_version];
-        var simplify = MAPIT.level_simplify[MAPIT.level_codes[level]];
+        var level = MAPIT.level_codes[level];
+        var simplify = MAPIT.level_simplify[level];
         var mapit_codetype = this.mapit_codetype;
 
-        var url_ = '/areas/' + MAPIT.level_codes[level];
+        var url_ = '/areas/' + level;
         url_ = url_ + '?generation=' + generation + '&country=' + MAPIT.country_code;
 
         d3.json(this.mapit_url + url_, function(error, data) {
@@ -80,6 +80,9 @@ function MapItGeometryLoader() {
 
           d3.json(self.mapit_url + url, function(error, geojson) {
               var features = _.values(geojson.features);
+              _.each(features, function(feature) {
+                self.decorateFeature(feature, level, MAPIT.country_code);
+              });
               success({features: features});
           });
 

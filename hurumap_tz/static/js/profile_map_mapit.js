@@ -4,6 +4,7 @@ var BaseProfileMaps = ProfileMaps;
 ProfileMaps = function() {
     var self = this;
     this.mapit_url = GeometryLoader.mapit_url;
+    this.mapit_codetype = GeometryLoader.mapit_codetype;
 
     _.extend(this, new BaseProfileMaps());
 
@@ -43,6 +44,37 @@ ProfileMaps = function() {
 
     // Add map shapes for a level, limited to within the parent level (eg.
     // wards within a municipality).
+    this.drawFeatures = function(features) {
+        // draw all others
+        console.log("I am here");
+        return L.geoJson(features, {
+            style: this.layerStyle,
+            onEachFeature: function(feature, layer) {
+                layer.bindLabel(feature.properties.name, {direction: 'auto'});
+
+                layer.on('mouseover', function() {
+                    layer.setStyle(self.hoverStyle);
+                });
+                layer.on('mouseout', function() {
+                    layer.setStyle(self.layerStyle);
+                });
+                layer.on('click', function() {
+                  var uri = '/areas/'+ feature.properties.name+'?type=';
+                  uri = uri + feature.properties.level + '&country='+ feature.properties.country_code;
+                  console.log(uri);
+                  d3.json(this.mapit_url + uri,  function(error, data) {
+                    if (error) return console.warn(error);
+                    var featureInfo = Object.values(data);
+                    console.log(data);
+                    var geoid = featureInfo['codes'][this.mapit_codetype];
+                    console.log(feature.properties.name);
+                    window.location = '/profiles/' + geoid + '-' + feature.properties.name.toLowerCase().replace, (' ', '-')+ '/';
+
+                  });
+                });
+            },
+        }).addTo(this.map);
+    };
     this.drawSurroundingFeatures = function(level, parent_level, parent_code, parent_version) {
         var code,
             parent,
