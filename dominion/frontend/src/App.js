@@ -9,8 +9,20 @@ import Home from './pages/Home';
 import Country from './pages/Country';
 import NotFound from './pages/NotFound';
 
+const FONT_FAMILY = '"Roboto", "sans-serif"';
+
 const THEME = createMuiTheme({
+  palette: {
+    primary: { main: '#ffffff', light: '#f1f1ed', dark: '#1b1b1a' },
+    secondary: { main: '#000000', light: '#2c2c2a', dark: '#2b3129' },
+    highlight: { main: '#e7e452' }
+  },
   typography: {
+    fontFamily: FONT_FAMILY,
+    fontSize: 16,
+    h2: { textTransform: 'uppercase', fontWeight: 500 },
+    h3: { color: '#2b3129', textTransform: 'capitalize' },
+    h4: { color: '#2b3129' },
     useNextVariants: true
   }
 });
