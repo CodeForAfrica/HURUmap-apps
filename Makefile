@@ -16,11 +16,17 @@ compilescss:
 dumpdata:
 	$(COMPOSE) exec web python manage.py dumpdata wazimap hurumap ${HURUMAP_APP} -o ${HURUMAP_APP}/fixtures/${HURUMAP_APP}.json
 
+migrate:
+	$(COMPOSE) exec web python manage.py migrate
+
 makemigrations:
 	$(COMPOSE) exec web python manage.py makemigrations
 
 createdb:
 	$(COMPOSE) exec db createdb ${HURUMAP_APP}
+
+dropdb:
+	$(COMPOSE) exec db dropdb ${HURUMAP_APP}
 
 loaddata:
 	$(COMPOSE) exec -T web ./contrib/loaddata.sh  # Load the DB with data

@@ -34,7 +34,7 @@ MIDDLEWARE_CLASSES = ( 'django.contrib.sessions.middleware.SessionMiddleware','d
 
 DATABASE_URL = os.environ.get(
     'DATABASE_URL',
-    'postgresql://elimu_yangu:elimu_yangu@localhost/elimu_yangu')
+    'postgresql://hurumap:hurumap@localhost/elimu_yangu')
 DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
@@ -141,6 +141,15 @@ HURUMAP['topics']['development'] = {
     'profiles': [
         'traffic and crimes'
     ]
+}
+
+HURUMAP['primary_release_year'] = {
+    'region': 2017,
+}
+HURUMAP['latest_release_year'] = '2017'
+HURUMAP['primary_dataset_name'] = "School's League"
+HURUMAP['available_release_years'] = {
+    'region': [2017]
 }
 
 LOGGING['loggers']['elimu_yangu'] = {'level': 'DEBUG' if DEBUG else 'INFO'}

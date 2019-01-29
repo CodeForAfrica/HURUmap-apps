@@ -2,10 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.12
--- Dumped by pg_dump version 9.5.12
-
--- Started on 2018-03-14 11:24:17 EAT
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -14,16 +12,14 @@ SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
 
-ALTER TABLE IF EXISTS ONLY public.olevel_overall_performance DROP CONSTRAINT IF EXISTS pk_olevel_overall_performance;
+ALTER TABLE IF EXISTS ONLY public.olevel_overall_performance DROP CONSTRAINT IF EXISTS id;
 DROP TABLE IF EXISTS public.olevel_overall_performance;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
 
 --
--- TOC entry 190 (class 1259 OID 17202)
 -- Name: olevel_overall_performance; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -44,8 +40,6 @@ CREATE TABLE public.olevel_overall_performance (
 
 
 --
--- TOC entry 2176 (class 0 OID 17202)
--- Dependencies: 190
 -- Data for Name: olevel_overall_performance; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -8190,6 +8184,7 @@ COPY public.olevel_overall_performance (id, year, schoolcode, schoolname, gender
 8138	2017	S3103	DR. MEZGER	M	45	2	13	23	6	1	0
 8139	2017	S3103	DR. MEZGER	T	82	2	18	32	29	1	0
 8140	2017	S3104	ENGARENAROK TETRAT LUTHERAN	F	40	0	1	9	27	3	0
+8236	2017	S3137	LUPETA	F	59	0	1	5	29	22	2
 8141	2017	S3104	ENGARENAROK TETRAT LUTHERAN	M	15	0	4	3	5	3	0
 8142	2017	S3104	ENGARENAROK TETRAT LUTHERAN	T	55	0	5	12	32	6	0
 8143	2017	S3105	HOGORO	F	30	0	0	0	13	17	0
@@ -8285,7 +8280,6 @@ COPY public.olevel_overall_performance (id, year, schoolcode, schoolname, gender
 8233	2017	S3136	SINDE	F	115	0	3	11	64	37	0
 8234	2017	S3136	SINDE	M	97	0	7	14	50	26	0
 8235	2017	S3136	SINDE	T	212	0	10	25	114	63	0
-8236	2017	S3137	LUPETA	F	59	0	1	5	29	22	2
 8237	2017	S3137	LUPETA	M	59	0	3	15	28	13	0
 8238	2017	S3137	LUPETA	T	118	0	4	20	57	35	2
 8239	2017	S3138	MWAKIBETE	F	124	0	11	41	66	5	1
@@ -28593,15 +28587,12 @@ COPY public.olevel_overall_performance (id, year, schoolcode, schoolname, gender
 
 
 --
--- TOC entry 2061 (class 2606 OID 17239)
--- Name: pk_olevel_overall_performance; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: olevel_overall_performance id; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.olevel_overall_performance
-    ADD CONSTRAINT pk_olevel_overall_performance PRIMARY KEY (id);
+    ADD CONSTRAINT id PRIMARY KEY (id);
 
-
--- Completed on 2018-03-14 11:24:17 EAT
 
 --
 -- PostgreSQL database dump complete

@@ -1,8 +1,0 @@
-git+https://github.com/CodeForAfrica/HURUmap.git@0.0.7#egg=hurumap
-
-# Workaround for dependency links
-# Comment out when changes / updates / PR accepted
-git+https://github.com/CodeForAfricaLabs/wazimap.git@master#egg=wazimap
-
-djangorestframework
-django-cors-headers

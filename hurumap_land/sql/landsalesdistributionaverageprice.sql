@@ -27,7 +27,7 @@ CREATE TABLE public.landsalesdistributionaverageprice (
     geo_level character varying(50) NOT NULL,
     geo_code character varying(10) NOT NULL,
     geo_version character varying(100) DEFAULT ''::character varying NOT NULL,
-    class character varying(128) NOT NULL,
+    class_distribution_average_price character varying(128) NOT NULL,
     total numeric
 );
 
@@ -36,7 +36,7 @@ CREATE TABLE public.landsalesdistributionaverageprice (
 -- Data for Name: landsalesdistributionaverageprice; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.landsalesdistributionaverageprice (geo_level, geo_code, geo_version, class, total) FROM stdin;
+COPY public.landsalesdistributionaverageprice (geo_level, geo_code, geo_version, class_distribution_average_price, total) FROM stdin;
 country	ZA	2016	Under 1.5K	706
 country	ZA	2016	1,501-3K	2238
 country	ZA	2016	3,001-5K	3989
@@ -204,7 +204,7 @@ province	WC	2016	Above 1M	2014205
 --
 
 ALTER TABLE ONLY public.landsalesdistributionaverageprice
-    ADD CONSTRAINT pk_landsalesdistributionaverageprice PRIMARY KEY (geo_level, geo_code, geo_version, class);
+    ADD CONSTRAINT pk_landsalesdistributionaverageprice PRIMARY KEY (geo_level, geo_code, geo_version, class_distribution_average_price);
 
 --
 -- PostgreSQL database dump complete

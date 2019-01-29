@@ -3,8 +3,7 @@ import logging
 
 from wazimap.geo import geo_data
 from wazimap.data.tables import get_datatable
-from wazimap.data.utils import get_session, calculate_median, \
-merge_dicts, get_stat_data, get_objects_by_geo, group_remainder, LocationNotFound
+from wazimap.data.utils import get_session, merge_dicts, get_stat_data, dataset_context
 from django.conf import settings
 from collections import OrderedDict
 from wazimap.data.base import Base
@@ -59,13 +58,14 @@ def get_land_profile(geo, profile_name, request):
 
 
 def get_demographics_profile(geo, session):
-    pop_dist_data = LOCATIONNOTFOUND
-    total_pop = 0
-    try:
-        pop_dist_data, total_pop = get_stat_data(
-            ['population group'], geo, session)
-    except LocationNotFound:
-        pass
+    with dataset_context(year='2016'):
+        pop_dist_data = LOCATIONNOTFOUND
+        total_pop = 0
+        try:
+            pop_dist_data, total_pop = get_stat_data(
+                ['population group'], geo, session)
+        except Exception:
+            pass
 
     return {
         'total_population': {

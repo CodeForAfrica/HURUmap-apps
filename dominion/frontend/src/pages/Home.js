@@ -1,7 +1,9 @@
-import React from "react";
-import Partners from "../component/Footer/Partners";
-import Footer from "../component/Footer/Index";
-import DocumentHead from "../component/DocumentHead/Index";
+import React from 'react';
+import PropTypes from 'prop-types';
+
+import DocumentHead from '../component/DocumentHead';
+import Partners from '../component/Footer/Partners';
+import Footer from '../component/Footer';
 
 function Home({ url }) {
   return (
@@ -13,4 +15,7 @@ function Home({ url }) {
   );
 }
 
+Home.propTypes = {
+  url: PropTypes.string.isRequired
+};
 export default Home;

@@ -13,30 +13,30 @@ SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-ALTER TABLE IF EXISTS ONLY public.chinas_assistance_does_a_good_job_at_meeting_countrys_needs DROP CONSTRAINT IF EXISTS pk_chinas_assistance_does_a_good_job_at_meeting_countrys_needs;
-DROP TABLE IF EXISTS public.chinas_assistance_does_a_good_job_at_meeting_countrys_needs;
+ALTER TABLE IF EXISTS ONLY public.chinas_assistance_meets_countrys_needs DROP CONSTRAINT IF EXISTS pk_chinas_assistance_meets_countrys_needs;
+DROP TABLE IF EXISTS public.chinas_assistance_meets_countrys_needs;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
 
 --
--- Name: chinas_assistance_does_a_good_job_at_meeting_countrys_needs; Type: TABLE; Schema: public; Owner: -
+-- Name: chinas_assistance_meets_countrys_needs; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.chinas_assistance_does_a_good_job_at_meeting_countrys_needs (
+CREATE TABLE public.chinas_assistance_meets_countrys_needs (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     geo_version character varying(100) DEFAULT ''::character varying NOT NULL,
-    chinas_assistance_does_a_good_job_at_meeting_countrys_needs character varying(128) NOT NULL,
+    chinas_assistance_meets_countrys_needs character varying(128) NOT NULL,
     total integer
 );
 
 
 --
--- Data for Name: chinas_assistance_does_a_good_job_at_meeting_countrys_needs; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: chinas_assistance_meets_countrys_needs; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.chinas_assistance_does_a_good_job_at_meeting_countrys_needs (geo_level, geo_code, geo_version, chinas_assistance_does_a_good_job_at_meeting_countrys_needs, total) FROM stdin;
+COPY public.chinas_assistance_meets_countrys_needs (geo_level, geo_code, geo_version, chinas_assistance_meets_countrys_needs, total) FROM stdin;
 province	1	2010	Don't know / Haven't heard enough	23
 province	1	2010	Neither good nor bad job	6
 province	1	2010	Somewhat bad job	6
@@ -108,11 +108,11 @@ country	ZM	2010	China doesn't give development assistance to the country	6
 
 
 --
--- Name: chinas_assistance_does_a_good_job_at_meeting_countrys_needs pk_chinas_assistance_does_a_good_job_at_meeting_countrys_needs; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: chinas_assistance_meets_countrys_needs pk_chinas_assistance_meets_countrys_needs; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.chinas_assistance_does_a_good_job_at_meeting_countrys_needs
-    ADD CONSTRAINT pk_chinas_assistance_does_a_good_job_at_meeting_countrys_needs PRIMARY KEY (geo_level, geo_code, geo_version, chinas_assistance_does_a_good_job_at_meeting_countrys_needs);
+ALTER TABLE ONLY public.chinas_assistance_meets_countrys_needs
+    ADD CONSTRAINT pk_chinas_assistance_meets_countrys_needs PRIMARY KEY (geo_level, geo_code, geo_version, chinas_assistance_meets_countrys_needs);
 
 
 --

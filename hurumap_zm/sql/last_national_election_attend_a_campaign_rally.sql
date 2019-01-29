@@ -13,30 +13,30 @@ SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-ALTER TABLE IF EXISTS ONLY public.last_national_election_attend_a_campaign_rally DROP CONSTRAINT IF EXISTS pk_last_national_election_attend_a_campaign_rally;
-DROP TABLE IF EXISTS public.last_national_election_attend_a_campaign_rally;
+ALTER TABLE IF EXISTS ONLY public.election_attend_a_campaign_rally DROP CONSTRAINT IF EXISTS pk_election_attend_a_campaign_rally;
+DROP TABLE IF EXISTS public.election_attend_a_campaign_rally;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
 
 --
--- Name: last_national_election_attend_a_campaign_rally; Type: TABLE; Schema: public; Owner: -
+-- Name: election_attend_a_campaign_rally; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.last_national_election_attend_a_campaign_rally (
+CREATE TABLE public.election_attend_a_campaign_rally (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     geo_version character varying(100) DEFAULT ''::character varying NOT NULL,
-    last_national_election_attend_a_campaign_rally character varying(128) NOT NULL,
+    election_attend_a_campaign_rally character varying(128) NOT NULL,
     total integer
 );
 
 
 --
--- Data for Name: last_national_election_attend_a_campaign_rally; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: election_attend_a_campaign_rally; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.last_national_election_attend_a_campaign_rally (geo_level, geo_code, geo_version, last_national_election_attend_a_campaign_rally, total) FROM stdin;
+COPY public.election_attend_a_campaign_rally (geo_level, geo_code, geo_version, election_attend_a_campaign_rally, total) FROM stdin;
 province	1	2010	No	77
 province	1	2010	Yes	42
 province	2	2010	No	119
@@ -66,11 +66,11 @@ country	ZM	2010	Don't know	2
 
 
 --
--- Name: last_national_election_attend_a_campaign_rally pk_last_national_election_attend_a_campaign_rally; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: election_attend_a_campaign_rally pk_election_attend_a_campaign_rally; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.last_national_election_attend_a_campaign_rally
-    ADD CONSTRAINT pk_last_national_election_attend_a_campaign_rally PRIMARY KEY (geo_level, geo_code, geo_version, last_national_election_attend_a_campaign_rally);
+ALTER TABLE ONLY public.election_attend_a_campaign_rally
+    ADD CONSTRAINT pk_election_attend_a_campaign_rally PRIMARY KEY (geo_level, geo_code, geo_version, election_attend_a_campaign_rally);
 
 
 --
