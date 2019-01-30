@@ -1,0 +1,17 @@
+{% extends 'homepage.html' %}
+
+{% block body_id %}page{% endblock %}
+
+{% block content_container %}
+    <div class="content container-narrowest clearfix">
+        <h1>About {{ HURUMAP.name }}</h1>
+        <p><em>What’s the data behind the story?</em></p>
+
+        <p>{{ HURUMAP.name }} {{ HURUMAP.description }}</p>
+
+        <p>{{ HURUMAP.name }} provides useful facts and
+        data about land ownership in South Africa. Compare places using tables and maps,
+         download data, and embed charts on your site</p>
+        {% include 'blocks/about/manifesto.html' %}
+    </div>
+{% endblock %}

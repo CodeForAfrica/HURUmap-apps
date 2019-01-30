@@ -1,0 +1,61 @@
+{% extends 'profile/profile_detail.html' %} {% load humanize lookup staticfiles hashtospace %}
+
+{% block header_menu %}
+  <li><a href="/about">About</a></li>
+  <li><a href="/#showcase">Showcase</a></li>
+  <li class="social-icons">
+    <a href="https://twitter.com/{{ HURUMAP.twitter }}"><i
+        class="fa fa-twitter fa-lg fa-fw"></i></a>
+    <a href="https://facebook.com/{{ HURUMAP.facebook }}"><i
+        class="fa fa-facebook fa-lg fa-fw"></i></a>
+  </li>
+{% endblock header_menu %}
+
+{% block secondary_nav %}
+  <div class="floating-nav-wrapper" id="sticky-nav">
+    <nav class="floating-nav affix-top" data-spy="affix" data-offset-top="197">
+      <div class="wrapper clearfix">
+        <div class="geography-ico">
+              <span><img
+                  src="{% static 'img/icons/favicon.ico' %}">{{ geography.this.name }}
+              </span>
+        </div>
+        <ul>
+          <li><a href="#agricultural-land-sales"><i class="fa fa-money"></i>
+            <span>Agricultural Land Sales</span></a></li>
+          <li>
+            <a href="#agricultural-land-sales-colour"><i class="fa fa-user"></i>
+              <span>Land Traded for Transactions of Colour</span></a></li>
+          <li><a href="#redistribution-restitution"><i class="fa fa-check"></i>
+            <span> Land Redistribution and Restitution</span></a></li>
+          <li><a href="#farm-land"><i class="fa fa-leaf"></i>
+            <span>Farm Land</span></a></li>
+          <li><a href="#erven-land"><i class="fa fa-building"></i>
+            <span>Erven & Urban Land</span></a></li>
+          <li><a href="#sectional-title-land"><i class="fa fa-bolt"></i>
+            <span>Sectional Title Land</span></a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+{% endblock %}
+
+{% block profile_detail %}
+
+  {% include 'settings_js.html' %}
+  {% block body_javascript %}
+    {{ block.super }}
+
+    {% block profile_javascript_libs %}
+      <script src="{% static 'js/vendor/leaflet-0.6.4.js' %}"></script>
+      <script src="{% static 'js/vendor/topojson.v1.min.js' %}"></script>
+      <script src="{% static 'js/vendor/leaflet.label.js' %}"></script>
+      <script src="{% static 'js/charts.js' %}"></script>
+      <script src="{% static 'js/head2head.js' %}"></script>
+      <script src="{% static 'js/maps_static.js' %}"></script>
+      <script src="{% static 'js/profile_map.js' %}"></script>
+      <script src="{% static 'js/maps_mapit.js' %}"></script>
+      <script src="{% static 'js/profile_map_mapit.js' %}"></script>
+    {% endblock %}
+  {% endblock %}
+{% endblock %}

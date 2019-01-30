@@ -1,0 +1,36 @@
+{% load staticfiles %}
+
+<div class="column-two-thirds" style="padding: 60px 0 55px;">
+  <p class="smaller"><strong>{{ HURUMAP.name }}</strong> {{ HURUMAP.description }}
+  </p>
+  <p class="smaller" style="margin-bottom: 0;">
+    This project is built on software originally created by
+    the Knight Lab in the U.S.A. for their CensusReporter.org project,
+    which has been repurposed by  <a href="https://openup.org.za/" target="_blank" rel="noopener noreferrer">OpenUp</a> and Media Monitoring Africa for
+    <a href="http://wazimap.readthedocs.org/" target="_blank" rel="noopener noreferrer">Wazimap</a> in South Africa and by Code for Africa for HURUmap in Kenya, Tanzania, Uganda and Zambia.
+  </p>
+</div>
+<div class="column-third text-center" style="display: flex;">
+  <div class="column-half" style="padding: 60px 0 55px;">
+    <p class="font-raleway font-weight-bold">A Project By:</p>
+    {% block footer_branding %}
+    <a href="https://codeforafrica.org/" target="_blank" rel="noopener noreferrer">
+      <img src="{% static 'img/logos/cfafrica-white.png' %}" alt="Code for Africa" style="margin-top: 0;">
+    </a>
+    {% endblock %}
+    <hr style="margin: 15px auto; width: 40%; border-top: 0.5px solid rgba(238, 238, 238, 0.5);"/>
+    <p style="margin-bottom:0;"><small><a href="https://codeforafrica.org/" target="_blank" rel="noopener noreferrer">CfA</a> is an initiative of <a href="https://icfj.org" target="_blank" rel="noopener noreferrer">ICFJ</a>.</small></p>
+  </div>
+
+  <div class="column-half" style="background-color: #269c94; display: flex; flex-direction: column-reverse; padding: 60px 0 55px;">
+    <div style="margin:auto;">
+      <h3 class="font-raleway font-weight-bold">Partner<br/>Network</h3>
+      <a href="https://icfj.org/" target="_blank" rel="noopener noreferrer">
+        <img src="{% static 'img/logos/icfj-white.png' %}" alt="ICFJ" style="margin-top: 0;">
+      </a>
+      <p><a href="http://icfj.org/" target="_blank" rel="noopener noreferrer">www.icfj.org</a></p>
+    </div>
+  </div>
+  
+  
+</div>
