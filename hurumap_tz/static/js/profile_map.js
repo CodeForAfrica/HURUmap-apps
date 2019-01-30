@@ -115,11 +115,16 @@ var ProfileMaps = function() {
     };
 
     this.drawFocusFeature = function(feature) {
+        console.log(feature);
         var layer = L.geoJson([feature], {
             style: self.featureGeoStyle,
+            zoom: 6,
+            center: [-6.1523563, 35.6754813],
         });
         this.map.addLayer(layer);
-        var objBounds = layer.getBounds();
+        var objBounds = this.map.getBounds();
+
+        console.log(objBounds);
 
         if (browserWidth > 768) {
             var z;
@@ -158,17 +163,14 @@ var ProfileMaps = function() {
                 });
                 layer.on('click', function() {
                   var uri = '/areas/'+ feature.properties.name+'?type=';
-                  uri = uri + feature.properties.level + '&country='+ feature.properties.country_code;
+                  uri = uri + feature.properties.level.toUpperCase() + '&country='+ feature.properties.country_code;
                   d3.json(url + uri,  function(error, data) {
                     if (error) return console.warn(error);
                     var featureInfo = Object.values(data);
-                    console.log(featureInfo[0]);
-                    console.log(mapit_codetype);
-                    var geoid = featureInfo[0]['codes'][mapit_codetype];
-                    console.log(feature.properties.name);
-                    console.log(feature.properties.name);
-                    console.log(geoid);
-                    window.location = '/profiles/' + geoid + '/';
+
+                    var geo_code = featureInfo[0]['codes'][mapit_codetype];
+                    var geo_level = featureInfo[0]['type'];
+                    window.location = '/profiles/' + geo_level.toLowerCase() + '-' + geo_code + '/';
                   });
 
                 });

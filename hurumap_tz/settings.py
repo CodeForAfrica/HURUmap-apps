@@ -30,6 +30,8 @@ hurumap_profile = os.environ.get('HURUMAP_PROFILE', 'census')
 
 HURUMAP['default_profile'] = hurumap_profile
 
+HURUMAP['primary_dataset_name'] = 'Census'
+HURUMAP['latest_release_year'] = '2016'
 
 HURUMAP['profile_builder'] = 'hurumap_tz.profiles.{}.get_profile'.format(hurumap_profile)
 HURUMAP['default_geo_version'] = os.environ.get('DEFAULT_GEO_VERSION', '2009')
