@@ -1,6 +1,8 @@
 import React from 'react';
+
 import { Grid, Toolbar, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+
 import SearchOutlined from '@material-ui/icons/SearchOutlined';
 import KeyboardArrowDownOutlined from '@material-ui/icons/KeyboardArrowDownOutlined';
 
@@ -24,7 +26,7 @@ const styles = theme => ({
     }
   },
   links: { color: theme.palette.primary.main, textDecoration: 'none' },
-  icon: { color: 'white' }
+  icon: { color: 'white', fontSize: 30 }
 });
 function HeaderNav({ classes }) {
   return (
@@ -79,14 +81,17 @@ function HeaderNav({ classes }) {
           alignItems="center"
         >
           <Grid item>
-            <div item direction>
+            <Grid
+              container
+              direction="row"
+              justify="space-between"
+              alignItems="center"
+            >
               <Typography variant="body2" className={classes.text}>
                 Countries
               </Typography>
-              <span>
-                <KeyboardArrowDownOutlined className={classes.icon} />
-              </span>
-            </div>
+              <KeyboardArrowDownOutlined className={classes.icon} />
+            </Grid>
           </Grid>
           <Grid item className={classes.text}>
             <SearchOutlined />
