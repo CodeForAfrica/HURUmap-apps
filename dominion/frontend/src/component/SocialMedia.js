@@ -74,6 +74,6 @@ function SocialMedia({ classes }) {
 }
 
 SocialMedia.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.shape().isRequired
 };
 export default withStyles(styles)(SocialMedia);

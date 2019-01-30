@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Footer from '../component/Footer/Index';
-import DocumentHead from '../component/DocumentHead/Index';
+import Footer from '../component/Footer';
+import DocumentHead from '../component/DocumentHead';
 
 function Home({ url }) {
   return (

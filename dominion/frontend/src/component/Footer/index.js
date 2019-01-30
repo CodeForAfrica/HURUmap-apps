@@ -68,8 +68,8 @@ function Footer({ classes }) {
       >
         <Grid item xs={12} sm={7} justify="flex-end" alignItem="center">
           <Typography variant="body2" className={classes.title}>
-            HURUmap's underlying data is quality-checked from reputable official
-            sources including the government census,{' '}
+            HURUmap&apos;s underlying data is quality-checked from reputable
+            official sources including the government census,{' '}
             <a
               href="https://www.pepfar.gov/"
               target="_blank"
@@ -182,7 +182,7 @@ function Footer({ classes }) {
   );
 }
 Footer.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.shape().isRequired
 };
 
 export default withStyles(styles)(Footer);
