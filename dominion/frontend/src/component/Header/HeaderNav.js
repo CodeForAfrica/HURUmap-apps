@@ -8,15 +8,24 @@ import KeyboardArrowDownOutlined from '@material-ui/icons/KeyboardArrowDownOutli
 
 import logo from '../../assets/images/logos/dominion-logo.png';
 
-//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 const styles = theme => ({
   root: {
     flexGrow: 1
   },
-  appbar: { backgroundColor: 'transparent', border: 0 },
-  img: { maxWidth: '100%', height: 'auto' },
-  text: { color: theme.palette.primary.main },
+  toolbar: {
+    margin: '4rem'
+  },
+  appbar: {
+    backgroundColor: 'transparent',
+    border: 0
+  },
+  img: {
+    maxWidth: '100%',
+    height: 'auto'
+  },
+  text: {
+    color: theme.palette.primary.main
+  },
   fa: {
     transition: 'all .5s ease-in-out',
     color: '#fff',
@@ -25,16 +34,23 @@ const styles = theme => ({
       color: theme.palette.primary.main
     }
   },
-  links: { color: theme.palette.primary.main, textDecoration: 'none' },
-  icon: { color: 'white', fontSize: 30 }
+  links: {
+    color: theme.palette.primary.main,
+    textDecoration: 'none'
+  },
+  icon: {
+    color: 'white',
+    fontSize: 30
+  }
 });
 function HeaderNav({ classes }) {
   return (
     <nav postion="static" className={classes.appbar}>
-      <Toolbar style={{ margin: '3rem' }}>
+      <Toolbar className={classes.toolbar}>
         <Grid item xs={4} className={classes.text}>
           <img src={logo} alt="Dominion Logo" className={classes.img} />
         </Grid>
+
         <Grid
           container
           className={classes.text}
@@ -44,28 +60,31 @@ function HeaderNav({ classes }) {
         >
           <Grid item>
             <a href="/" className={classes.links}>
-              <Typography variant="body2" className={classes.text}>
+              <Typography variant="body1" className={classes.text}>
                 About
               </Typography>
             </a>
           </Grid>
+
           <Grid item>
             <a href="/" className={classes.links}>
-              <Typography variant="body2" className={classes.text}>
+              <Typography variant="body1" className={classes.text}>
                 Showcase
               </Typography>
             </a>
           </Grid>
+
           <Grid item>
             <a href="/" className={classes.links}>
-              <Typography variant="body2" className={classes.text}>
+              <Typography variant="body1" className={classes.text}>
                 Resources
               </Typography>
             </a>
           </Grid>
+
           <Grid item>
             <a href="/" className={classes.links}>
-              <Typography variant="body2" className={classes.text}>
+              <Typography variant="body1" className={classes.text}>
                 {' '}
                 Contact
               </Typography>
@@ -87,7 +106,7 @@ function HeaderNav({ classes }) {
               justify="space-between"
               alignItems="center"
             >
-              <Typography variant="body2" className={classes.text}>
+              <Typography variant="body1" className={classes.text}>
                 Countries
               </Typography>
               <KeyboardArrowDownOutlined className={classes.icon} />
