@@ -1,6 +1,8 @@
 import React from 'react';
-import { Grid, Toolbar } from '@material-ui/core';
+import { Grid, Toolbar, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import SearchOutlined from '@material-ui/icons/SearchOutlined';
+import KeyboardArrowDownOutlined from '@material-ui/icons/KeyboardArrowDownOutlined';
 
 import logo from '../../assets/images/logos/dominion-logo.png';
 
@@ -21,7 +23,8 @@ const styles = theme => ({
       color: theme.palette.primary.main
     }
   },
-  links: { color: theme.palette.primary.main, textDecoration: 'none' }
+  links: { color: theme.palette.primary.main, textDecoration: 'none' },
+  icon: { color: 'white' }
 });
 function HeaderNav({ classes }) {
   return (
@@ -39,22 +42,31 @@ function HeaderNav({ classes }) {
         >
           <Grid item>
             <a href="/" className={classes.links}>
-              About
+              <Typography variant="body2" className={classes.text}>
+                About
+              </Typography>
             </a>
           </Grid>
           <Grid item>
             <a href="/" className={classes.links}>
-              Showcase
+              <Typography variant="body2" className={classes.text}>
+                Showcase
+              </Typography>
             </a>
           </Grid>
           <Grid item>
             <a href="/" className={classes.links}>
-              Resources
+              <Typography variant="body2" className={classes.text}>
+                Resources
+              </Typography>
             </a>
           </Grid>
           <Grid item>
             <a href="/" className={classes.links}>
-              Contact
+              <Typography variant="body2" className={classes.text}>
+                {' '}
+                Contact
+              </Typography>
             </a>
           </Grid>
         </Grid>
@@ -66,11 +78,18 @@ function HeaderNav({ classes }) {
           justify="space-evenly"
           alignItems="center"
         >
-          <Grid item className={classes.text}>
-            Countries
+          <Grid item>
+            <div item direction>
+              <Typography variant="body2" className={classes.text}>
+                Countries
+              </Typography>
+              <span>
+                <KeyboardArrowDownOutlined className={classes.icon} />
+              </span>
+            </div>
           </Grid>
           <Grid item className={classes.text}>
-            search icon
+            <SearchOutlined />
           </Grid>
         </Grid>
       </Toolbar>
