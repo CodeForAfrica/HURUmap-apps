@@ -18,9 +18,9 @@ SETTINGS.setdefault('generations', {
 SETTINGS.setdefault('code_type', 'PHC')
 SETTINGS.setdefault('country_code', 'TZ')
 SETTINGS.setdefault('level_simplify', {
-    'district': 0.01,
-    'region': 0.005,
-    'ward': 0.0001,
+    'district': 0,
+    'region': 0,
+    'ward': 0,
 })
 
 

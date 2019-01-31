@@ -15,21 +15,27 @@ ProfileMaps = function() {
         var geo_code = geo.this.geo_code;
         var geo_version = geo.this.version;
 
-        // draw this geometry
-        GeometryLoader.loadGeometryForGeo(geo_level, geo_code, geo_version, function(feature) {
-            self.drawFocusFeature(feature);
-        });
+        if (geo_level == 'country') {
+            this.map.setView({lat: -6.1523563, lng: 35.6754813}, 6);
+        } else {
+            // draw this geometry
+            this.map.setView({lat: -6.1523563, lng: 35.6754813}, 6);
+            GeometryLoader.loadGeometryForGeo(geo_level, geo_code, geo_version, function(feature) {
+                self.drawFocusFeature(feature);
+            });
+        }
 
         // peers
         var parents = _.keys(geo.parents);
+        console.log(parents);
         if (parents.length > 0) {
           self.drawSurroundingFeatures(geo_level, parents[0], null, geo_version);
         }
 
         // every ancestor up to just before the root geo
-        for (var i = 0; i < parents.length-1; i++) {
-          self.drawSurroundingFeatures(parents[i], parents[i+1], null, geo_version);
-        }
+        // for (var i = 0; i < parents.length-1; i++) {
+        //   self.drawSurroundingFeatures(parents[i], parents[i+1], null, geo_version);
+        // }
 
         // children
         if (geo.this.child_level) {
@@ -55,9 +61,9 @@ ProfileMaps = function() {
         } else if (this.geo.parents[level]) {
             code = this.geo.parents[level].geo_code;
         }
-
+        console.log(code);
         GeometryLoader.loadGeometrySet(parent_level, level, parent_version, function(geojson) {
-            // don't include this smaller geo, we already have a shape for that
+            // don't include this smaller geo, we already have a shape for thatrint
             geojson.features = _.filter(geojson.features, function(f) {
                 return f.properties.code != code;
             });

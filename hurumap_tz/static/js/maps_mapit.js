@@ -91,26 +91,26 @@ function MapItGeometryLoader() {
 
     this.loadGeometryForGeo = function(geo_level, geo_code, geo_version, success) {
         var mapit_type = geo_level.toUpperCase();
-        var mapit_simplify = MAPIT.level_simplify[mapit_type];
+        var mapit_simplify = MAPIT.level_simplify[geo_level];
         var generation = MAPIT.generations[geo_version];
         var mapit_codetype = this.mapit_codetype;
         var country_code = this.mapit_countrycode;
 
         var url_ ="/code/" + mapit_codetype + "/" + geo_code;
-        url_ = url_ + "?generation=" + generation + "&type=" +mapit_type+ "&country=" + country_code;
+        url_ = url_ + "?generation=" + generation + "&type=" + mapit_type+ "&country=" + country_code;
 
         d3.json(this.mapit_url + url_, function(error, data) {
           if (error) return console.warn(error);
           var area = data;
-          var url = '/area/' + area.id + '.geojson';
+          var url = '/area/' + area.id + '.geojson?simplify_tolerance='+ mapit_simplify;;
 
           d3.json(self.mapit_url + url, function(error, feature) {
               if (error) return console.warn(error);
               let geojson = {}
+              geojson.type = "Feature";
+              geojson.geometry = feature;
               geojson.properties = {}
               geojson.properties.name = area.name;
-              geojson.geometry = feature;
-              geojson.type = "Feature";
               self.decorateFeature(geojson, geo_level, MAPIT.country_code);
               console.log(geojson);
               success({feature: geojson});

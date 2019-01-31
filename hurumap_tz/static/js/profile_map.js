@@ -115,11 +115,8 @@ var ProfileMaps = function() {
     };
 
     this.drawFocusFeature = function(feature) {
-        console.log(feature);
         var layer = L.geoJson([feature], {
             style: self.featureGeoStyle,
-            zoom: 6,
-            center: [-6.1523563, 35.6754813],
         });
         this.map.addLayer(layer);
         var objBounds = this.map.getBounds();

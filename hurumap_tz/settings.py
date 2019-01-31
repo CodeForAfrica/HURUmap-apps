@@ -4,10 +4,11 @@ from collections import OrderedDict
 from hurumap.settings import *  # noqa
 
 # insert our overrides before both census and HURUmap
-INSTALLED_APPS = ['hurumap_tz'] + INSTALLED_APPS
+INSTALLED_APPS = ['hurumap_tz', 'corsheaders'] + INSTALLED_APPS
 
 MIDDLEWARE_CLASSES = (
         'whitenoise.middleware.WhiteNoiseMiddleware',
+        'corsheaders.middleware.CorsMiddleware',
     ) + MIDDLEWARE_CLASSES
 
 DATABASE_URL = os.environ.get(
@@ -73,6 +74,15 @@ HURUMAP['mapit'] = {
         None: '1',
     }
 }
+
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = (
+    'mapit.hurumap.org',
+)
+CORS_ORIGIN_REGEX_WHITELIST = (
+    'mapit.hurumap.org',
+)
+
 
 HURUMAP['topics'] = OrderedDict()
 
