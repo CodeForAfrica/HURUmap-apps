@@ -1,6 +1,12 @@
 import React from 'react';
 
-import { Grid, Toolbar, Typography } from '@material-ui/core';
+import {
+  Grid,
+  Toolbar,
+  Typography,
+  MenuList,
+  MenuItem
+} from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import SearchOutlined from '@material-ui/icons/SearchOutlined';
@@ -51,69 +57,75 @@ function HeaderNav({ classes }) {
           <img src={logo} alt="Dominion Logo" className={classes.img} />
         </Grid>
 
-        <Grid
-          container
-          className={classes.text}
-          direction="row"
-          justify="space-evenly"
-          alignItems="center"
-        >
-          <Grid item>
-            <a href="/" className={classes.links}>
-              <Typography variant="body1" className={classes.text}>
-                About
-              </Typography>
-            </a>
-          </Grid>
+        <Grid container direction="row" justify="center" alignItems="center">
+          <MenuList
+            item
+            className={classes.text}
+            direction="row"
+            justify="space-evenly"
+            alignItems="center"
+            style={{ display: 'flex' }}
+          >
+            <MenuItem item>
+              <a href="/" className={classes.links}>
+                <Typography variant="body1" className={classes.text}>
+                  About
+                </Typography>
+              </a>
+            </MenuItem>
 
-          <Grid item>
-            <a href="/" className={classes.links}>
-              <Typography variant="body1" className={classes.text}>
-                Showcase
-              </Typography>
-            </a>
-          </Grid>
+            <MenuItem item>
+              <a href="/" className={classes.links}>
+                <Typography variant="body1" className={classes.text}>
+                  Showcase
+                </Typography>
+              </a>
+            </MenuItem>
 
-          <Grid item>
-            <a href="/" className={classes.links}>
-              <Typography variant="body1" className={classes.text}>
-                Resources
-              </Typography>
-            </a>
-          </Grid>
+            <MenuItem item>
+              <a href="/" className={classes.links}>
+                <Typography variant="body1" className={classes.text}>
+                  Resources
+                </Typography>
+              </a>
+            </MenuItem>
 
-          <Grid item>
-            <a href="/" className={classes.links}>
-              <Typography variant="body1" className={classes.text}>
-                {' '}
-                Contact
-              </Typography>
-            </a>
-          </Grid>
-        </Grid>
-        <Grid
-          item
-          container
-          direction="row"
-          spacing={40}
-          justify="space-evenly"
-          alignItems="center"
-        >
-          <Grid item>
-            <Grid
-              container
-              direction="row"
-              justify="space-between"
-              alignItems="center"
-            >
-              <Typography variant="body1" className={classes.text}>
-                Countries
-              </Typography>
-              <KeyboardArrowDownOutlined className={classes.icon} />
+            <MenuItem item>
+              <a href="/" className={classes.links}>
+                <Typography variant="body1" className={classes.text}>
+                  {' '}
+                  Contact
+                </Typography>
+              </a>
+            </MenuItem>
+          </MenuList>
+
+          <Grid
+            container
+            xs={12}
+            lg={6}
+            direction="row"
+            spacing={40}
+            justify="space-evenly"
+            alignItems="center"
+          >
+            <Grid item>
+              <Grid
+                container
+                direction="row"
+                justify="space-between"
+                alignItems="center"
+              >
+                <Typography variant="body1" className={classes.text}>
+                  Countries
+                </Typography>
+                <KeyboardArrowDownOutlined className={classes.icon} />
+              </Grid>
             </Grid>
-          </Grid>
-          <Grid item className={classes.text}>
-            <SearchOutlined />
+
+            <Grid item className={classes.text}>
+              <SearchOutlined />
+            </Grid>
           </Grid>
         </Grid>
       </Toolbar>
