@@ -36,14 +36,12 @@ var ProfileMaps = function() {
     this.drawMapForHomepage = function(geo_level, geo_version, centre, zoom) {
         // draw a homepage map, but only for big displays
         if (browserWidth < 768 || $('#slippy-map').length === 0) return;
-
+        
         this.createMap();
         this.addImagery();
-
         if (centre) {
             self.map.setView(centre, zoom);
         }
-
         GeometryLoader.loadGeometryForLevel(geo_level, geo_version, function(features) {
             var layer = self.drawFeatures(features);
             if (!centre) {
@@ -87,29 +85,28 @@ var ProfileMaps = function() {
         var geo_version = this.geo.this.version;
         var osm_area_id = this.geo.this.osm_area_id;
         var child_level = this.geo.this.child_level;
+        var geo_name = this.geo.this.name;
 
         // load all map shapes for this level
         GeometryLoader.loadGeometryForLevel(geo_level, geo_version, function(features) {
             // split into this geo, and everything else
             var groups = _.partition(features.features, function(f) {
-                return f.properties.code == geo_code;
+                return f.properties.name == geo_name;
             });
             var this_geo = groups[0] ? groups[0][0] : null;
             features = groups[1];
-
             // draw the current geo
             if (this_geo) {
                 self.drawFocusFeature(this_geo);
             }
-
             // draw the others at this level
             self.drawFeatures(features);
         });
 
         // load shapes at the child level, if any
         if (child_level) {
-            GeometryLoader.loadGeometryForLevel(child_level, geo_version, function(features) {
-                self.drawFeatures(features);
+            GeometryLoader.loadGeometryForChildLevel(child_level, geo_level, geo_code, geo_version, function(features) {
+                self.drawFeatures(features.features);
             });
         }
     };
@@ -119,9 +116,7 @@ var ProfileMaps = function() {
             style: self.featureGeoStyle,
         });
         this.map.addLayer(layer);
-        var objBounds = this.map.getBounds();
-
-        console.log(objBounds);
+        var objBounds = layer.getBounds();
 
         if (browserWidth > 768) {
             var z;
@@ -134,7 +129,6 @@ var ProfileMaps = function() {
                     break;
                 }
             }
-
             this.map.setView(layer.getBounds().getCenter(), z);
             this.map.panBy([-270, 0], {animate: false});
         } else {
@@ -159,7 +153,7 @@ var ProfileMaps = function() {
                     layer.setStyle(self.layerStyle);
                 });
                 layer.on('click', function() {
-                  var uri = '/areas/'+ feature.properties.name+'?type=';
+                  var uri = '/areas/'+ feature.properties.name+'?generation=1' + '&type=';
                   uri = uri + feature.properties.level.toUpperCase() + '&country='+ feature.properties.country_code;
                   d3.json(url + uri,  function(error, data) {
                     if (error) return console.warn(error);

@@ -21,10 +21,26 @@ function MapItGeometryLoader() {
             // eg. province-WC
             var parts = geoid.split('-'),
                 level = parts[0],
-                code = geoid,
-                url = '/code/' + self.mapit_codetype + '/' + code;
+                code = parts[1],
+                url_ = '/code/' + self.mapit_codetype + '/' + code;
 
+            var simplify = MAPIT.level_simplify[level];
+            var mapit_codetype = this.mapit_codetype;
+            var mapit_type = level.toUpperCase();
+            var country_code = this.mapit_countrycode;
 
+            url_ = url_ + "?generation=" + generation + "&type=" + mapit_type+ "&country=" + country_code;
+            d3.json(this.mapit_url + url_, function(error, data) {
+              if (error) return console.warn(error);
+              var area = data;
+              var url = '/area/' + area.id + '.geojson?type=' + mapit_type + "&country=" + country_code+ '&simplify_tolerance='+ simplify;
+              d3.json(self.mapit_url + url, function(error, feature) {
+                  if (error) return console.warn(error);
+                  feature.properties = {}
+                  feature.properties['area_id'] = area.id;
+                  success({feature: feature});
+              });
+            });
 
             url = url + '.geojson?generation=' + generation;
             var simplify = MAPIT.level_simplify[MAPIT.level_codes[level]];
@@ -71,9 +87,8 @@ function MapItGeometryLoader() {
 
         var url_ = '/areas/' + level.toUpperCase();
         url_ = url_ + '?generation=' + generation + '&country=' + MAPIT.country_code;
-        console.log(url_);
+
         d3.json(this.mapit_url + url_, function(error, data) {
-          console.log(data);
           var areas = Object.keys(data);
           areas = areas.join();
           var url = '/areas/' + areas + '.geojson';
@@ -88,10 +103,42 @@ function MapItGeometryLoader() {
 
         });
     };
+    this.loadGeometryForChildLevel = function(childlevel, level, geo_code, geo_version, success) {
+        var generation = MAPIT.generations[geo_version];
+        var simplify = MAPIT.level_simplify[childlevel];
+        var mapit_codetype = this.mapit_codetype;
+        var mapit_type = level.toUpperCase();
+        var country_code = this.mapit_countrycode;
+
+        var url_ ="/code/" + mapit_codetype + "/" + geo_code;
+        url_ = url_ + "?generation=" + generation + "&type=" + mapit_type+ "&country=" + country_code;
+
+        d3.json(this.mapit_url + url_, function(error, data) {
+          if (error) return console.warn(error);
+          let area = data;
+          let url = '/area/' + area.id + '/children';
+
+          d3.json(self.mapit_url + url, function(error, json) {
+            let children_Ids = Object.keys(json);
+            children_Ids = children_Ids.join();
+            let children_url = '/areas/' + children_Ids + '.geojson';
+
+            d3.json(self.mapit_url + children_url, function(error, geojson) {
+                let features = _.values(geojson.features);
+                _.each(features, function(feature) {
+                  self.decorateFeature(feature, childlevel, MAPIT.country_code);
+                });
+                success({features: features});
+            });
+
+          });
+
+        });
+    };
 
     this.loadGeometryForGeo = function(geo_level, geo_code, geo_version, success) {
         var mapit_type = geo_level.toUpperCase();
-        var mapit_simplify = MAPIT.level_simplify[geo_level];
+        var simplify = MAPIT.level_simplify[geo_level];
         var generation = MAPIT.generations[geo_version];
         var mapit_codetype = this.mapit_codetype;
         var country_code = this.mapit_countrycode;
@@ -102,18 +149,12 @@ function MapItGeometryLoader() {
         d3.json(this.mapit_url + url_, function(error, data) {
           if (error) return console.warn(error);
           var area = data;
-          var url = '/area/' + area.id + '.geojson?simplify_tolerance='+ mapit_simplify;;
-
+          var url = '/area/' + area.id + '.geojson?type=' + mapit_type + "&country=" + country_code+ '&simplify_tolerance='+ simplify;
           d3.json(self.mapit_url + url, function(error, feature) {
               if (error) return console.warn(error);
-              let geojson = {}
-              geojson.type = "Feature";
-              geojson.geometry = feature;
-              geojson.properties = {}
-              geojson.properties.name = area.name;
-              self.decorateFeature(geojson, geo_level, MAPIT.country_code);
-              console.log(geojson);
-              success({feature: geojson});
+              feature.properties = {}
+              feature.properties['area_id'] = area.id;
+              success({feature: feature});
           });
         });
     };
