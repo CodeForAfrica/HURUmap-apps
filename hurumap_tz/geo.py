@@ -33,7 +33,7 @@ class GeoData(BaseGeoData):
 
         mapit_level = geo.geo_level
         mapit_codetype =  SETTINGS['code_type']
-        url = SETTINGS['url'] + '/code/%s/%s' % (mapit_codetype, geo.geo_code)
+        url = SETTINGS['url'] + '/code/%s/%s' % (mapit_codetype, geo.geoid)
 
         code_resp = requests.get(url, verify=False)
         if code_resp.status_code == 404:
