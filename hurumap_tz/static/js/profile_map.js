@@ -36,7 +36,7 @@ var ProfileMaps = function() {
     this.drawMapForHomepage = function(geo_level, geo_version, centre, zoom) {
         // draw a homepage map, but only for big displays
         if (browserWidth < 768 || $('#slippy-map').length === 0) return;
-        
+
         this.createMap();
         this.addImagery();
         if (centre) {
@@ -159,9 +159,9 @@ var ProfileMaps = function() {
                     if (error) return console.warn(error);
                     var featureInfo = Object.values(data);
 
-                    var geo_code = featureInfo[0]['codes'][mapit_codetype];
-                    var geo_level = featureInfo[0]['type'];
-                    window.location = '/profiles/' + geo_level.toLowerCase() + '-' + geo_code + '/';
+                    var geo_id = featureInfo[0]['codes'][mapit_codetype];
+                    //var geo_level = featureInfo[0]['type'];
+                    window.location = '/profiles/' + geo_id + '/';
                   });
 
                 });

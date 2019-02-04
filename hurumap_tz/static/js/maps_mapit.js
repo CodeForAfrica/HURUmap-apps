@@ -21,7 +21,7 @@ function MapItGeometryLoader() {
              // eg. province-WC
              var parts = geoid.split('-'),
                  level = parts[0],
-                 code = parts[1],
+                 code = geoid,
                  url_ = '/code/' + self.mapit_codetype + '/' + code;
 
              var simplify = MAPIT.level_simplify[level];
@@ -100,7 +100,7 @@ function MapItGeometryLoader() {
         var mapit_type = level.toUpperCase();
         var country_code = this.mapit_countrycode;
 
-        var url_ ="/code/" + mapit_codetype + "/" + geo_code;
+        var url_ ="/code/" + mapit_codetype + "/" + level + "-"+ geo_code;
         url_ = url_ + "?generation=" + generation + "&type=" + mapit_type+ "&country=" + country_code;
 
         d3.json(this.mapit_url + url_, function(error, data) {
@@ -133,7 +133,7 @@ function MapItGeometryLoader() {
         var mapit_codetype = this.mapit_codetype;
         var country_code = this.mapit_countrycode;
 
-        var url_ ="/code/" + mapit_codetype + "/" + geo_code;
+        var url_ ="/code/" + mapit_codetype + "/" + geo_level + "-" + geo_code;
         url_ = url_ + "?generation=" + generation + "&type=" + mapit_type+ "&country=" + country_code;
 
         d3.json(this.mapit_url + url_, function(error, data) {
