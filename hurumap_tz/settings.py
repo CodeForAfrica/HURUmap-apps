@@ -4,23 +4,22 @@ from collections import OrderedDict
 from hurumap.settings import *  # noqa
 
 # insert our overrides before both census and HURUmap
-INSTALLED_APPS = ['hurumap_tz', 'corsheaders'] + INSTALLED_APPS
+INSTALLED_APPS = ['hurumap_tz'] + INSTALLED_APPS
 
 MIDDLEWARE_CLASSES = (
         'whitenoise.middleware.WhiteNoiseMiddleware',
-        'corsheaders.middleware.CorsMiddleware',
     ) + MIDDLEWARE_CLASSES
 
 DATABASE_URL = os.environ.get(
     'DATABASE_URL',
-    'postgresql://hurumap_tz:hurumap_tz@localhost/hurumap_tz')
+    'postgresql://hurumap:hurumap@localhost/hurumap_tz')
 DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
 
 # Localise this instance of HURUmap
 HURUMAP['name'] = 'HURUmap Tanzania'
-HURUMAP['url'] = 'https://tanzania.hurumap.org'
+HURUMAP['url'] = 'https://tz.hurumap.org'
 HURUMAP['country_code'] = 'TZ'
 HURUMAP['country_name'] = 'Tanzania'
 HURUMAP['country_profile'] = 'country-TZ-Tanzania'
@@ -31,15 +30,11 @@ hurumap_profile = os.environ.get('HURUMAP_PROFILE', 'census')
 
 HURUMAP['default_profile'] = hurumap_profile
 
-HURUMAP['primary_dataset_name'] = 'Census'
-HURUMAP['latest_release_year'] = '2016'
 
 HURUMAP['profile_builder'] = 'hurumap_tz.profiles.{}.get_profile'.format(hurumap_profile)
 HURUMAP['default_geo_version'] = os.environ.get('DEFAULT_GEO_VERSION', '2009')
 HURUMAP['legacy_embed_geo_version'] = '2009'
-# this is provided by mapit
-HURUMAP['geodata'] = 'hurumap_tz.geo.GeoData'
-HURUMAP['geometry_data'] = {}
+
 HURUMAP['levels'] = {
     'country': {
         'plural': 'countries',
@@ -59,7 +54,17 @@ HURUMAP['levels'] = {
     }
 }
 
-HURUMAP['comparative_levels'] = ["ward", "district", "region", "country"]
+HURUMAP['comparative_levels'] = ["region", "country"]
+# this is provided by mapit
+HURUMAP['geodata'] = 'hurumap_tz.geo.GeoData'
+HURUMAP['geometry_data'] = {}
+HURUMAP['mapit'] = {
+    'generations': {
+        '2009': '1',
+        '2012': '1',
+        None: '1',
+    }
+}
 
 HURUMAP['ga_tracking_id'] = 'UA-91133100-4'
 
@@ -67,22 +72,6 @@ HURUMAP['twitter'] = '@Code4Africa'
 
 HURUMAP['map_centre'] = [-6.1523563, 35.6754813]
 HURUMAP['map_zoom'] = 6
-
-HURUMAP['mapit'] = {
-    'generations': {
-        '2009': '1',
-        None: '1',
-    }
-}
-
-CORS_ORIGIN_ALLOW_ALL = False
-CORS_ORIGIN_WHITELIST = (
-    'mapit.hurumap.org',
-)
-CORS_ORIGIN_REGEX_WHITELIST = (
-    'mapit.hurumap.org',
-)
-
 
 HURUMAP['topics'] = OrderedDict()
 
@@ -165,6 +154,15 @@ HURUMAP['showcase_stories'] = [
         'img': STATIC_URL + 'img/showcase/cti.jpg'
      }
 ]
+
+HURUMAP['primary_release_year'] = {
+    'region': 2012,
+}
+HURUMAP['latest_release_year'] = '2012'
+HURUMAP['primary_dataset_name'] = 'Census'
+HURUMAP['available_release_years'] = {
+    'region': [2012]
+}
 
 LOGGING['loggers']['hurumap_tz'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
 
