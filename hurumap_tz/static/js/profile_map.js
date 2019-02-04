@@ -2,6 +2,7 @@ var ProfileMaps = function() {
     var self = this;
     this.mapit_url = GeometryLoader.mapit_url;
     this.mapit_codetype = GeometryLoader.mapit_codetype;
+    this.mapit_country = GeometryLoader.mapit_country;
 
     this.featureGeoStyle = {
         "fillColor": "#66c2a5",
@@ -88,6 +89,11 @@ var ProfileMaps = function() {
         var geo_name = this.geo.this.name;
 
         // load all map shapes for this level
+        //demarcation boundaries
+        if (geo_level == 'country') {
+            this.map.setView( this.mapit_country.centre, this.mapit_country.zoom);
+        }
+
         GeometryLoader.loadGeometryForLevel(geo_level, geo_version, function(features) {
             // split into this geo, and everything else
             var groups = _.partition(features.features, function(f) {
@@ -160,6 +166,7 @@ var ProfileMaps = function() {
                     var featureInfo = Object.values(data);
 
                     var geo_id = featureInfo[0]['codes'][mapit_codetype];
+                    console.log(geo_id);
                     //var geo_level = featureInfo[0]['type'];
                     window.location = '/profiles/' + geo_id + '/';
                   });

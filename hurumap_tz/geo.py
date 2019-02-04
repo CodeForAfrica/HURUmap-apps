@@ -17,6 +17,10 @@ SETTINGS.setdefault('generations', {
 })
 SETTINGS.setdefault('code_type', 'PHC')
 SETTINGS.setdefault('country_code', 'TZ')
+SETTINGS.setdefault('map_country', {
+    'centre': [-6.1523563, 35.6754813],
+    'zoom': 6
+})
 SETTINGS.setdefault('level_simplify', {
     'district': 0.005,
     'region': 0.001,

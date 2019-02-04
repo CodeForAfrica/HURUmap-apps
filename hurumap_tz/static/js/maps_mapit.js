@@ -7,6 +7,7 @@ function MapItGeometryLoader() {
     self.mapit_url = MAPIT.url;
     self.mapit_codetype = MAPIT.code_type;
     self.mapit_countrycode = MAPIT.country_code;
+    self.mapit_country = MAPIT.map_country;
     /**
      * Fetches geometry data for a comparison view and calls the +success+
      * callback with an object mapping each geo-id to a GeoJSON object.
@@ -139,7 +140,7 @@ function MapItGeometryLoader() {
         d3.json(this.mapit_url + url_, function(error, data) {
           if (error) return console.warn(error);
           var area = data;
-          var url = '/area/' + area.id + '.geojson?type=' + mapit_type + "&country=" + country_code+ '&simplify_tolerance='+ simplify;
+          var url = '/area/' + area.id + '.geojson?type=' + mapit_type + "&country=" + country_code;
           d3.json(self.mapit_url + url, function(error, feature) {
               if (error) return console.warn(error);
               feature.properties = {}
