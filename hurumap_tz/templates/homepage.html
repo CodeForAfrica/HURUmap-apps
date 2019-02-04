@@ -3,15 +3,4 @@
 {% block homepage_javascripb_libs %}
   {{ block.super }}
   <script src="{% static 'js/maps_mapit.js' %}"></script>
-
-
-  <!-- Background Image Interactivity -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      $('.img-bg').on('click', function () {
-        $('.img-bg').not(this).removeClass('active');
-        $(this).toggleClass('active');
-      });
-    });
-  </script>
 {% endblock %}
