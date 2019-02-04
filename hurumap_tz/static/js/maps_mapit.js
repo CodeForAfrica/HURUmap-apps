@@ -11,69 +11,59 @@ function MapItGeometryLoader() {
      * Fetches geometry data for a comparison view and calls the +success+
      * callback with an object mapping each geo-id to a GeoJSON object.
      */
-    this.loadGeometryForComparison = function(comparison, success) {
-        // load all country, province, municipality and ward geo data
-        var counter = comparison.geoIDs.length;
-        var featureMap = {};
-        var generation = MAPIT.generations[comparison.geoVersion];
+     this.loadGeometryForComparison = function(comparison, success) {
+         // load all country, province, municipality and ward geo data
+         var counter = comparison.geoIDs.length;
+         var featureMap = {};
+         var generation = MAPIT.generations[comparison.geoVersion];
 
-        _.each(comparison.geoIDs, function(geoid) {
-            // eg. province-WC
-            var parts = geoid.split('-'),
-                level = parts[0],
-                code = parts[1],
-                url_ = '/code/' + self.mapit_codetype + '/' + code;
+         _.each(comparison.geoIDs, function(geoid) {
+             // eg. province-WC
+             var parts = geoid.split('-'),
+                 level = parts[0],
+                 code = parts[1],
+                 url_ = '/code/' + self.mapit_codetype + '/' + code;
 
-            var simplify = MAPIT.level_simplify[level];
-            var mapit_codetype = this.mapit_codetype;
-            var mapit_type = level.toUpperCase();
-            var country_code = this.mapit_countrycode;
+             var simplify = MAPIT.level_simplify[level];
+             var mapit_codetype = this.mapit_codetype;
+             var mapit_type = level.toUpperCase();
+             var country_code = this.mapit_countrycode;
 
-            url_ = url_ + "?generation=" + generation + "&type=" + mapit_type+ "&country=" + country_code;
-            d3.json(this.mapit_url + url_, function(error, data) {
-              if (error) return console.warn(error);
-              var area = data;
-              var url = '/area/' + area.id + '.geojson?type=' + mapit_type + "&country=" + country_code+ '&simplify_tolerance='+ simplify;
-              d3.json(self.mapit_url + url, function(error, feature) {
-                  if (error) return console.warn(error);
-                  feature.properties = {}
-                  feature.properties['area_id'] = area.id;
-                  success({feature: feature});
-              });
-            });
+             url_ = url_ + "?generation=" + generation + "&type=" + mapit_type+ "&country=" + country_code;
+             d3.json(this.mapit_url + url_, function(error, data) {
+               if (error) return console.warn(error);
+               var area = data;
+               var url = '/area/' + area.id + '.geojson?type=' + mapit_type + "&country=" + country_code+ '&simplify_tolerance='+ simplify;
+               d3.json(self.mapit_url + url, function(error, geojson) {
+                   --counter;
+                   if (error) return console.warn(error);
+                   var features = geojson.features;
+                   feature.properties = {}
+                   feature.properties['area_id'] = area.id;
+                   _.each(features, function(feature) {
+                     self.decorateFeature(feature, level, MAPIT.country_code);
+                   });
 
-            url = url + '.geojson?generation=' + generation;
-            var simplify = MAPIT.level_simplify[MAPIT.level_codes[level]];
-            if (simplify) {
-                url = url + '&simplify_tolerance=' + simplify;
-            }
+                   // index by geoid
+                   _.each(features, function(feature) {
+                       featureMap[feature.properties.geoid] = feature;
+                   });
 
-            d3.json(self.mapit_url + url, function(error, geojson) {
-                --counter;
-                if (error) return console.warn(error);
-                var features = geojson.features;
-                _.each(features, self.decorateFeature);
+                   if (counter === 0) {
+                       // collect those we're interested in
+                       var usefulFeatures = {};
 
-                // index by geoid
-                _.each(features, function(feature) {
-                    featureMap[feature.properties.geoid] = feature;
-                });
-
-                if (counter === 0) {
-                    // collect those we're interested in
-                    var usefulFeatures = {};
-
-                    _.each(comparison.dataGeoIDs, function(geoid) {
-                        var feature = featureMap[geoid];
-                        feature.properties.name = comparison.data.geography[geoid].name;
-                        usefulFeatures[geoid] = feature;
-                    });
-
-                    success(usefulFeatures);
-                }
-            });
-        });
-    };
+                       _.each(comparison.dataGeoIDs, function(geoid) {
+                           var feature = featureMap[geoid];
+                           feature.properties.name = comparison.data.geography[geoid].name;
+                           usefulFeatures[geoid] = feature;
+                       });
+                       success(usefulFeatures);
+                   }
+               });
+             });
+         });
+     };
 
     this.decorateFeature = function(feature, level, country) {
         feature.properties.level = level;
