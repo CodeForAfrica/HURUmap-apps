@@ -56,15 +56,29 @@ HURUMAP['levels'] = {
 
 HURUMAP['comparative_levels'] = ["region", "country"]
 # this is provided by mapit
-HURUMAP['geodata'] = 'hurumap_tz.geo.GeoData'
-HURUMAP['geometry_data'] = {}
 HURUMAP['mapit'] = {
+    'url': 'https://mapit.hurumap.org',
+    'country_code': 'TZ',
     'generations': {
         '2009': '1',
         '2012': '1',
-        None: '1',
+        None: '1',  #  this should be based on the default_geo_version wazimap setting
+    },
+    'code_type': 'TZA',
+    'level_simplify': {
+        'district': 0.005,
+        'region': 0.001,
+        'ward': 0.0001,
+    },
+    'map_country': {
+        'centre': [-6.1523563, 35.6754813],
+        'zoom': 6
     }
+
 }
+HURUMAP['geodata'] = 'hurumap_tz.geo.GeoData'
+HURUMAP['geometry_data'] = {}
+
 
 HURUMAP['ga_tracking_id'] = 'UA-91133100-4'
 

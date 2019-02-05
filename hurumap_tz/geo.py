@@ -4,29 +4,13 @@ from shapely.geometry import asShape
 from wazimap.geo import GeoData as BaseGeoData, LocationNotFound
 from django.conf import settings
 
+import settings
+
 import requests
 
 log = logging.getLogger(__name__)
 
-SETTINGS = settings.HURUMAP.setdefault('mapit', {})
-print SETTINGS
-SETTINGS.setdefault('url', 'https://mapit.hurumap.org')
-SETTINGS.setdefault('generations', {
-    '2009': '1',
-    None: '1',  # TODO: this should be based on the default_geo_version wazimap setting
-})
-SETTINGS.setdefault('code_type', 'PHC')
-SETTINGS.setdefault('country_code', 'TZ')
-SETTINGS.setdefault('map_country', {
-    'centre': [-6.1523563, 35.6754813],
-    'zoom': 6
-})
-SETTINGS.setdefault('level_simplify', {
-    'district': 0.005,
-    'region': 0.001,
-    'ward': 0.0001,
-})
-
+MAPIT_SETTINGS = settings.HURUMAP['mapit'];
 
 class GeoData(BaseGeoData):
     def get_geometry(self, geo):
@@ -36,8 +20,8 @@ class GeoData(BaseGeoData):
         """
 
         mapit_level = geo.geo_level
-        mapit_codetype =  SETTINGS['code_type']
-        url = SETTINGS['url'] + '/code/%s/%s' % (mapit_codetype, geo.geoid)
+        mapit_codetype =  MAPIT_SETTINGS['code_type']
+        url = MAPIT_SETTINGS['url'] + '/code/%s/%s' % (mapit_codetype, geo.geoid)
 
         code_resp = requests.get(url, verify=False)
         if code_resp.status_code == 404:
@@ -47,8 +31,8 @@ class GeoData(BaseGeoData):
         code_resp = code_resp.json()
         area_id = code_resp['id']
 
-        url_ = SETTINGS['url'] + '/area/%s.geojson?' + '&generation=%s' % ( area_id, SETTINGS['generations'][geo.version])
-        simplify = SETTINGS['level_simplify'].get(mapit_level)
+        url_ = MAPIT_SETTINGS['url'] + '/area/%s.geojson?' + '&generation=%s' % ( area_id, MAPIT_SETTINGS['generations'][geo.version])
+        simplify = MAPIT_SETTINGS['level_simplify'].get(mapit_level)
         if simplify:
             url_ = url_ + '&simplification_level=%s' % simplify
 
@@ -69,8 +53,8 @@ class GeoData(BaseGeoData):
         """
         Returns a list of geographies containing this point.
         """
-        mapit_codetype =  SETTINGS['code_type']
-        resp = requests.get(SETTINGS['url'] + '/point/4326/%s,%s?generation=%s' % (longitude, latitude, SETTINGS['generations'][version]), verify=False)
+        mapit_codetype =  MAPIT_SETTINGS['code_type']
+        resp = requests.get(MAPIT_SETTINGS['url'] + '/point/4326/%s,%s?generation=%s' % (longitude, latitude, MAPIT_SETTINGS['generations'][version]), verify=False)
         resp.raise_for_status()
 
         geos = []

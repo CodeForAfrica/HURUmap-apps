@@ -166,7 +166,6 @@ var ProfileMaps = function() {
                     var featureInfo = Object.values(data);
 
                     var geo_id = featureInfo[0]['codes'][mapit_codetype];
-                    console.log(geo_id);
                     //var geo_level = featureInfo[0]['type'];
                     window.location = '/profiles/' + geo_id + '/';
                   });
