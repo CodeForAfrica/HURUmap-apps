@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Select from 'react-select';
+import KeyboardArrowDown from '@material-ui/icons/KeyboardArrowDown';
 
 import {
   Grid,
@@ -56,8 +57,14 @@ const styles = theme => ({
     justify: 'center',
     border: '0px solid transparent !important',
     background: 'transparent',
-    width: '250px'
-  }
+    width: '250px',
+    [theme.breakpoints.up('md')]: {
+      display: 'flex',
+      flexDirection: 'column',
+      height: 'auto'
+    }
+  },
+  keyboardarrowdown: { paddingLeft: '10rem', cursor: 'pointer' }
 });
 
 function NoOptionsMessage({ children, innerProps, selectProps }) {
@@ -79,7 +86,6 @@ function inputComponent({ inputRef, ...props }) {
 function Control({ children, innerProps, innerRef, selectProps }) {
   return (
     <TextField
-      style={{ borderBottomColor: 'red!important' }}
       InputProps={{
         inputComponent,
         inputProps: {
@@ -137,7 +143,12 @@ function SingleValue({ children, innerProps, selectProps }) {
 }
 
 function ValueContainer({ children, selectProps }) {
-  return <div className={selectProps.classes.valueContainer}>{children}</div>;
+  return (
+    <div className={selectProps.classes.valueContainer}>
+      {children}
+      <KeyboardArrowDown className={selectProps.classes.keyboardarrowdown} />
+    </div>
+  );
 }
 
 function Menu({ children, innerProps, selectProps }) {

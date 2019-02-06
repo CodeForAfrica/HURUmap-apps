@@ -40,6 +40,17 @@
   }
 }
 
+.menu-nav {
+  display: flex;
+  width: '100%';
+}
+
+.menu-nav-search {
+  width: 100%;
+  color: white;
+}
+
+/*Toggle bar css*/
 @media screen and (max-width: 768px) {
   .top-menu.toggled {
     max-height: 100vh;
@@ -52,31 +63,32 @@
     display: flex;
     margin: 0;
   }
-}
 
-.menu-nav {
-  display: flex;
-  width: '100%';
-}
-.menu-nav-search {
-  width: 100%;
-  color: white;
-}
+  .toggle-toolbar-menu {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    height: auto;
+    display: flex;
+    flex-direction: column-reverse;
+  }
 
-@media screen and (max-width: 768px) {
+  .toggle-toolbar-country-search-menu {
+    flex-direction: column-reverse;
+    align-content: space-between;
+    padding-bottom: 4rem;
+  }
+
   .menu-nav {
     position: absolute;
-    top: 20rem;
     width: 100%;
     display: flex;
     flex-direction: column;
   }
-  .menu-nav-search {
-    position: absolute;
-    top: 2rem;
+  .toggle-menu-nav-search {
+    padding-top: 4rem;
   }
-  .menu-nav-country-menu {
-    position: absolute;
-    top: 4rem;
-  }
+
+  /*.toggle-menu-nav-country-menu {
+    padding-bottom: 4rem;
+  }*/
 }

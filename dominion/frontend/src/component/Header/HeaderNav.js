@@ -76,7 +76,7 @@ class HeaderNav extends Component {
     const topMenuClass = `top-menu ${menu}`;
     return (
       <nav position="static" className={topMenuClass}>
-        <Toolbar>
+        <Toolbar className="toggle-toolbar-menu">
           <Grid item xs={3} className="top-menu-lead">
             <img src={logo} alt="Dominion Logo" className={classes.img} />
           </Grid>
@@ -122,11 +122,16 @@ class HeaderNav extends Component {
             xs={12}
             container
             direction="row"
-            justify="flex-end"
-            alignItems="center"
+            justify="space-between"
+            className="toggle-toolbar-country-search-menu"
           >
-            <DropdownSelect className="menu-nav-country-menu " />
-            <Search className="menu-nav-search" />
+            <DropdownSelect
+              item
+              xs={12}
+              sm={6}
+              className="toggle-menu-nav-country-menu "
+            />
+            <Search item xs={12} sm={6} className="toggle-menu-nav-search" />
           </Grid>
 
           <Grid>
