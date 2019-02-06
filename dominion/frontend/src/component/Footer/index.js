@@ -182,7 +182,7 @@ function Footer({ classes }) {
   );
 }
 Footer.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.shape().isRequired
 };
 
 export default withStyles(styles)(Footer);
