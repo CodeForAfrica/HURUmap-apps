@@ -4,7 +4,7 @@ import { withRouter } from 'react-router';
 
 import { Typography } from '@material-ui/core';
 
-import DocumentHead from '../component/DocumentHead/Index';
+import DocumentHead from '../component/DocumentHead/index';
 
 function NotFound({ url }) {
   return (

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
-//Assets
+// Assets
 import bmf from '../../assets/images/logos/bmgf.png';
 import codeforafrica from '../../assets/images/logos/codeforafrica.png';
 import datazetu from '../../assets/images/logos/datazetu.png';
@@ -58,7 +58,7 @@ function Partners({ classes }) {
 }
 
 Partners.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.isRequired
 };
 
 export default withStyles(styles)(Partners);

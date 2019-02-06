@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import MenuOutlined from '@material-ui/icons/MenuOutlined';
-import SearchOutlined from '@material-ui/icons/SearchOutlined';
-import KeyboardArrowDownOutlined from '@material-ui/icons/KeyboardArrowDownOutlined';
+import '../../assets/App.css';
 
-import logo from '../../assets/images/logos/dominion-logo.png';
+import MenuOutlined from '@material-ui/icons/MenuOutlined';
 
 import {
   Grid,
@@ -15,8 +13,9 @@ import {
   Toolbar
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-
-import '../../assets/App.css';
+import Search from './Search';
+import logo from '../../assets/images/logos/dominion-logo.png';
+import DropdownSelect from './DropdownSelect';
 
 const styles = theme => ({
   root: {
@@ -25,6 +24,9 @@ const styles = theme => ({
   img: {
     maxWidth: '100%',
     height: 'auto'
+  },
+  menulist: {
+    display: 'flex'
   },
   text: {
     color: theme.palette.primary.main
@@ -44,12 +46,6 @@ const styles = theme => ({
   icon: {
     color: 'white',
     fontSize: 30
-  },
-  togglebreakpoint: {
-    color: 'white',
-    [theme.breakpoints.up('xs')]: {
-      color: 'red'
-    }
   }
 });
 
@@ -57,47 +53,36 @@ class HeaderNav extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      menu_class: ''
+      menu: ''
     };
   }
 
   setToggleTopMenuClass = () => {
-    if (this.state.menu_class === '') {
+    const { menu } = this.state;
+    if (menu === '') {
       this.setState({
-        menu_class: 'toggled'
+        menu: 'toggled'
       });
     } else {
       this.setState({
-        menu_class: ''
+        menu: ''
       });
     }
   };
 
   render = () => {
     const { classes } = this.props;
-    const top_menu_class = `top-menu ${this.state.menu_class}`;
+    const { menu } = this.state;
+    const topMenuClass = `top-menu ${menu}`;
     return (
-      <nav position="static" className={top_menu_class}>
+      <nav position="static" className={topMenuClass}>
         <Toolbar>
-          <Grid item xs={4} className="top-menu-lead">
+          <Grid item xs={3} className="top-menu-lead">
             <img src={logo} alt="Dominion Logo" className={classes.img} />
           </Grid>
 
-          <Grid
-            container
-            direction="row"
-            justify="center"
-            alignItems="center"
-            className="menu-nav"
-          >
-            <MenuList
-              item
-              className={classes.text}
-              direction="row"
-              justify="space-evenly"
-              alignItems="center"
-              style={{ display: 'flex' }}
-            >
+          <Grid container direction="row" justify="center" alignItems="center">
+            <MenuList xs={4} className="menu-nav ">
               <MenuItem item>
                 <a href="/" className={classes.links}>
                   <Typography variant="body1" className={classes.text}>
@@ -131,34 +116,17 @@ class HeaderNav extends Component {
                 </a>
               </MenuItem>
             </MenuList>
+          </Grid>
 
-            <Grid
-              container
-              xs={12}
-              lg={6}
-              direction="row"
-              spacing={40}
-              justify="space-evenly"
-              alignItems="center"
-            >
-              <Grid item>
-                <Grid
-                  container
-                  direction="row"
-                  justify="space-between"
-                  alignItems="center"
-                >
-                  <Typography variant="body1" className={classes.text}>
-                    Countries
-                  </Typography>
-                  <KeyboardArrowDownOutlined className={classes.icon} />
-                </Grid>
-              </Grid>
-
-              <Grid item className={classes.text}>
-                <SearchOutlined />
-              </Grid>
-            </Grid>
+          <Grid
+            xs={12}
+            container
+            direction="row"
+            justify="flex-end"
+            alignItems="center"
+          >
+            <DropdownSelect className="menu-nav-country-menu " />
+            <Search className="menu-nav-search" />
           </Grid>
 
           <Grid>
@@ -176,7 +144,7 @@ class HeaderNav extends Component {
 }
 
 HeaderNav.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.isRequired
 };
 
 export default withStyles(styles)(HeaderNav);
