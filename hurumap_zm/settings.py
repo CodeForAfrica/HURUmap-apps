@@ -40,12 +40,38 @@ HURUMAP['levels'] = {
     }
 }
 HURUMAP['comparative_levels'] = ['country', 'province']
-HURUMAP['geometry_data'] = {
-    '2010': {
-        'country': 'geo/country.topojson',
-        'province': 'geo/province.topojson',
+
+use_mapit = os.get('USE_MAPIT', False)
+HURUMAP['use_mapit'] = use_mapit
+if use_mapit:
+  # use mapit settings
+  HURUMAP['geometry_data'] = {}
+  HURUMAP['mapit'] = {
+    'url': 'https://mapit.hurumap.org',
+    'country_code': 'ZM',
+    'generations': {
+        '2010': '1',
+        None: '1',  #  this should be based on the default_geo_version wazimap setting
+        },
+    'code_type': 'ZMB',
+    'level_simplify': {
+        'country': 0,
+        'province': 0
+        },
+    'map_country': {
+        'centre': [-13.1339, 27.8493],
+        'zoom': 6
+        }
     }
-}
+else:
+  # use normal geojson
+  HURUMAP['mapit'] = {}
+  HURUMAP['geometry_data'] = {
+      '2010': {
+          'country': 'geo/country.topojson',
+          'province': 'geo/province.topojson',
+      }
+  }
 
 HURUMAP['map_centre'] = [-13.1339, 27.8493]
 HURUMAP['map_zoom'] = 6

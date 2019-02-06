@@ -58,14 +58,41 @@ HURUMAP['levels'] = {
     }
 }
 
-HURUMAP['geometry_data'] = {
-    '2014': {
-        'country': 'geo/country.topojson',
-        'region': 'geo/region.topojson',
-        'district': 'geo/district.topojson',
-        'subcounty': 'geo/subcounty.topojson',
+use_mapit = os.get('USE_MAPIT', False)
+HURUMAP['use_mapit'] = use_mapit
+if use_mapit:
+  # use mapit settings
+  HURUMAP['geometry_data'] = {}
+  HURUMAP['mapit'] = {
+    'url': 'https://mapit.hurumap.org',
+    'country_code': 'UG',
+    'generations': {
+        '2014': '1',
+        None: '1',  #  this should be based on the default_geo_version wazimap setting
+    },
+    'code_type': 'UGA',
+    'level_simplify': {
+        'country': 0,
+        'region': 0,
+        'district': 0,
+        'subcounty': 0
+    },
+    'map_country': {
+        'centre': [0.3051933453207569, 37.908818734483155],
+        'zoom': 6
     }
 }
+else:
+  # use normal geojson
+  HURUMAP['mapit'] = {}
+  HURUMAP['geometry_data'] = {
+      '2014': {
+          'country': 'geo/country.topojson',
+          'region': 'geo/region.topojson',
+          'district': 'geo/district.topojson',
+          'subcounty': 'geo/subcounty.topojson',
+      }
+  }
 
 HURUMAP['twitter'] = '@Code4Africa'
 
@@ -127,5 +154,3 @@ LOGGING['loggers']['hurumap_ug'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
 
 # Making sure they are the same
 WAZIMAP = HURUMAP
-
-

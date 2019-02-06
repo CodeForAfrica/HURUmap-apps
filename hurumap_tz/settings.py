@@ -55,14 +55,43 @@ HURUMAP['levels'] = {
 }
 
 HURUMAP['comparative_levels'] = ["region", "country"]
-HURUMAP['geometry_data'] = {
-    '2009': {
-        'country': 'geo/country.topojson',
-        'region': 'geo/region.topojson',
-        'district': 'geo/district.topojson',
-        'ward': 'geo/ward.topojson'
-        }
+
+use_mapit = os.get('USE_MAPIT', False)
+HURUMAP['use_mapit'] = use_mapit
+if use_mapit:
+  # use mapit settings
+  HURUMAP['geometry_data'] = {}
+  HURUMAP['mapit'] = {
+    'url': 'https://mapit.hurumap.org',
+    'country_code': 'TZ',
+    'generations': {
+        '2009': '1',
+        '2012': '1',
+        None: '1',  #  this should be based on the default_geo_version wazimap setting
+    },
+    'code_type': 'TZA',
+    'level_simplify': {
+        'country': 0,
+        'region': 0,
+        'district': 0,
+        'ward': 0
+    },
+    'map_country': {
+        'centre': [-6.1523563, 35.6754813],
+        'zoom': 6
+    }
 }
+else:
+  # use normal geojson
+  HURUMAP['mapit'] = {}
+  HURUMAP['geometry_data'] = {
+      '2009': {
+          'country': 'geo/country.topojson',
+          'region': 'geo/region.topojson',
+          'district': 'geo/district.topojson',
+          'ward': 'geo/ward.topojson'
+          }
+  }
 
 HURUMAP['ga_tracking_id'] = 'UA-91133100-4'
 
