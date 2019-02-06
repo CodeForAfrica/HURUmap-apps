@@ -59,7 +59,7 @@ HURUMAP['levels'] = {
 }
 
 use_mapit = os.environ.get('USE_MAPIT', False)
-HURUMAP['use_mapit'] = use_mapit
+HURUMAP['USE_MAPIT'] = use_mapit
 if use_mapit:
   # use mapit settings
   HURUMAP['geometry_data'] = {}
@@ -74,7 +74,7 @@ if use_mapit:
     'level_simplify': {
         'country': 0,
         'region': 0,
-        'district': 0,
+        'district': 0.01,
         'subcounty': 0
     },
     'map_country': {
