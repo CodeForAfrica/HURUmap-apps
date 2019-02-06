@@ -41,7 +41,7 @@ HURUMAP['levels'] = {
 }
 HURUMAP['comparative_levels'] = ['country', 'province']
 
-use_mapit = os.get('USE_MAPIT', False)
+use_mapit = os.environ.get('USE_MAPIT', False)
 HURUMAP['use_mapit'] = use_mapit
 if use_mapit:
   # use mapit settings
