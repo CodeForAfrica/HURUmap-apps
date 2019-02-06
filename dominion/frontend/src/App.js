@@ -21,8 +21,8 @@ const THEME = createMuiTheme({
   typography: {
     fontFamily: FONT_FAMILY,
     fontSize: 16,
-    h2: { textTransform: 'uppercase', fontWeight: 500 }, //Hero section  heading
-    h3: { color: '#2b3129', textTransform: 'capitalize' }, //Section heading
+    h2: { textTransform: 'uppercase', fontWeight: 500 }, // Hero section  heading
+    h3: { color: '#2b3129', textTransform: 'capitalize' }, // Section heading
     useNextVariants: true
   },
   fontSmallDefault: {

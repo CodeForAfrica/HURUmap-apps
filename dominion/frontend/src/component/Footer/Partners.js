@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
-//Assets
+// Assets
 import bmf from '../../assets/images/logos/bmgf.png';
 import codeforafrica from '../../assets/images/logos/codeforafrica.png';
 import datazetu from '../../assets/images/logos/datazetu.png';
@@ -41,16 +41,16 @@ function Partners({ classes }) {
           className={classes.img}
         />
       </Grid>
-      <Grid item lg={2} md={4} sm={6} xs={6} className={classes.imageGrid}>
+      <Grid item lg={2} md={4} sm={4} xs={10} className={classes.imageGrid}>
         <img src={datazetu} alt="Data Zetu" className={classes.img} />
       </Grid>
-      <Grid item lg={2} md={4} sm={6} xs={6} className={classes.imageGrid}>
+      <Grid item lg={2} md={4} sm={4} xs={8} className={classes.imageGrid}>
         <img src={twaweza} alt="Twaweza" className={classes.img} />
       </Grid>
-      <Grid item lg={2} md={4} sm={6} xs={6} className={classes.imageGrid}>
+      <Grid item lg={2} md={4} sm={4} xs={8} className={classes.imageGrid}>
         <img src={bmf} alt="Bill and Melinda Gates" className={classes.img} />
       </Grid>
-      <Grid item lg={2} md={4} sm={6} xs={6} className={classes.imageGrid}>
+      <Grid item lg={2} md={4} sm={4} xs={8} className={classes.imageGrid}>
         <img src={icfj} alt="Icfj" className={classes.img} />
       </Grid>
     </Grid>
