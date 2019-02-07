@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Grid, InputBase, IconButton } from '@material-ui/core';
+import { InputBase, IconButton } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 
 const styles = theme => ({
-  search: {
+  root: {
     flexGrow: 1,
     position: 'relative',
     border: 0,
@@ -48,12 +48,12 @@ const styles = theme => ({
 
 function Search({ classes }) {
   return (
-    <Grid className={classes.search}>
+    <div className={classes.root}>
       <InputBase className={classes.input} />
       <IconButton className={classes.iconButton} aria-label="Search">
         <SearchIcon color="primary" className={classes.searchIcon} />
       </IconButton>
-    </Grid>
+    </div>
   );
 }
 
