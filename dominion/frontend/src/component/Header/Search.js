@@ -25,6 +25,7 @@ const styles = theme => ({
     }
   },
   searchIcon: {
+    color: '#fff',
     [theme.breakpoints.up('md')]: {
       float: 'left'
     }
@@ -51,7 +52,7 @@ function Search({ classes }) {
     <div className={classes.root}>
       <InputBase className={classes.input} />
       <IconButton className={classes.iconButton} aria-label="Search">
-        <SearchIcon color="primary" className={classes.searchIcon} />
+        <SearchIcon className={classes.searchIcon} />
       </IconButton>
     </div>
   );

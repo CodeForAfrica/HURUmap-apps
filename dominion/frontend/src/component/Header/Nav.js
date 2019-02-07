@@ -2,13 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import MenuOutlined from '@material-ui/icons/MenuOutlined';
-import {
-  Grid,
-  Typography,
-  MenuList,
-  MenuItem,
-  Toolbar
-} from '@material-ui/core';
+import { Grid, Link, MenuList, MenuItem, Toolbar } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import Search from './Search';
@@ -39,8 +33,8 @@ const styles = theme => ({
       color: theme.palette.primary.main
     }
   },
-  links: {
-    color: theme.palette.primary.main,
+  link: {
+    color: '#fff',
     textDecoration: 'none'
   },
   icon: {
@@ -77,36 +71,28 @@ class HeaderNav extends Component {
           <Grid container direction="row" justify="center" alignItems="center">
             <MenuList xs={4} className="menu-nav ">
               <MenuItem item>
-                <a href="/" className={classes.links}>
-                  <Typography variant="body1" className={classes.text}>
-                    About
-                  </Typography>
-                </a>
+                <Link to="/" className={classes.link} variant="body1">
+                  About
+                </Link>
               </MenuItem>
 
               <MenuItem item>
-                <a href="/" className={classes.links}>
-                  <Typography variant="body1" className={classes.text}>
-                    Showcase
-                  </Typography>
-                </a>
+                <Link to="/" className={classes.link} variant="body1">
+                  Showcase
+                </Link>
               </MenuItem>
 
               <MenuItem item>
-                <a href="/" className={classes.links}>
-                  <Typography variant="body1" className={classes.text}>
-                    Resources
-                  </Typography>
-                </a>
+                <Link to="/" className={classes.link} variant="body1">
+                  Resources
+                </Link>
               </MenuItem>
 
               <MenuItem item>
-                <a href="/" className={classes.links}>
-                  <Typography variant="body1" className={classes.text}>
-                    {' '}
-                    Contact
-                  </Typography>
-                </a>
+                <Link to="/" className={classes.link} variant="body1">
+                  {' '}
+                  Contact
+                </Link>
               </MenuItem>
             </MenuList>
           </Grid>
