@@ -1,4 +1,4 @@
-FROM hurumap_web
+FROM codeforafrica/hurumap:0.1.1
 
 # Set env variables used in this Dockerfile
 # HURUmap App and Django settings
