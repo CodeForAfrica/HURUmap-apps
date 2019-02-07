@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Grid, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
+import A from '../A';
 import SocialMedia from '../SocialMedia';
 import background from '../../assets/images/bg/background.png';
 
@@ -59,38 +60,28 @@ function About({ classes }) {
       justify="space-between"
       alignItems="flex-start"
     >
-      <Grid item xs={12} sm={7} justify="flex-end" alignItem="center">
+      <Grid item xs={12} sm={7}>
         <Typography variant="body2" className={classes.title}>
           HURUmap&apos;s underlying data is quality-checked from reputable
           official sources including the government census,{' '}
-          <a
-            href="https://www.pepfar.gov/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={classes.links}
-          >
+          <A href="https://www.pepfar.gov/" className={classes.links}>
             PEPFAR{' '}
-          </a>
+          </A>
           and{' '}
-          <a
-            href="http://www.uwezo.net/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={classes.links}
-          >
+          <A href="http://www.uwezo.net/" className={classes.links}>
             UWEZO.
-          </a>
+          </A>
         </Typography>
         <Typography variant="body2" className={classes.body}>
           This project is built on software originally created by the Knight Lab
           in the USA for the{' '}
-          <a href="https://censusreporter.org/" className={classes.links}>
+          <A href="https://censusreporter.org/" className={classes.links}>
             censusReporter.org
-          </a>{' '}
+          </A>{' '}
           project which has been repurposed by{' '}
-          <a href="https://openup.org.za/" className={classes.links}>
+          <A href="https://openup.org.za/" className={classes.links}>
             OpenUp
-          </a>{' '}
+          </A>{' '}
           and Media Monitoring Africa for Wazimap in South Africa for Wazimap in
           SouthAfrica and by Code for Africa for HURUmap in Kenya, Tanzania,
           Uganda and Zambia.
@@ -107,61 +98,63 @@ function About({ classes }) {
         alignItems="flex-start"
       >
         <Grid item>
-          <Typography variant="body2" className={classes.listText}>
+          <Typography
+            variant="body2"
+            className={classes.listText}
+            component="div"
+          >
             Other openAfrica Projects
             <ul className={classes.list}>
               <li>
-                <a
+                <A
                   href="https://taxclock.codeforkenya.org/"
                   className={classes.links}
                 >
                   Tax Clock
-                </a>
+                </A>
               </li>
               <li>
-                <a href="https://sourceafrica.net/" className={classes.links}>
+                <A href="https://sourceafrica.net/" className={classes.links}>
                   sourceAFRICA
-                </a>
+                </A>
               </li>
             </ul>
           </Typography>
-          <Typography variant="body2" className={classes.joinText}>
+          <Typography
+            variant="body2"
+            className={classes.joinText}
+            component="div"
+          >
             Join Our Community
             <ul className={classes.list}>
               <li>
-                <a
+                <A
                   href="https://www.facebook.com/HacksHackersAfrica"
                   className={classes.links}
                 >
                   Hacks/Hackers Africa
-                </a>
+                </A>
               </li>
             </ul>
           </Typography>
         </Grid>
         <Grid item>
-          <Typography variant="body2" className={classes.listText}>
+          <Typography
+            variant="body2"
+            className={classes.listText}
+            component="div"
+          >
             A project by:
             <ul className={classes.list}>
               <li>
-                <a
-                  href="https://codeforafrica.org/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={classes.links}
-                >
+                <A href="https://codeforafrica.org/" className={classes.links}>
                   Code for Africa
-                </a>
+                </A>
               </li>
               <li>
-                <a
-                  href="https://www.icfj.org/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={classes.links}
-                >
+                <A href="https://www.icfj.org/" className={classes.links}>
                   ICFJ
-                </a>
+                </A>
               </li>
             </ul>
           </Typography>
