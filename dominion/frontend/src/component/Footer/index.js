@@ -15,10 +15,7 @@ const styles = theme => ({
     padding: theme.spacing.unit * 3,
     backgroundImage: `url(${background})`,
     backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    [theme.breakpoints.up('md')]: {
-      height: '50vh'
-    }
+    backgroundSize: 'cover'
   },
   title: {
     color: theme.palette.primary.light,
