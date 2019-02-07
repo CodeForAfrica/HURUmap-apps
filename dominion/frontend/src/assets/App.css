@@ -1,11 +1,9 @@
+/*Create responsive nav toggle bar in css to handle custom breakpoint */
+
 .top-menu {
   padding: 20px 50px 20px 50px;
   height: 100vh;
   overflow: auto;
-}
-
-.top-menu-lead {
-  display: inline-block;
 }
 
 @media screen and (max-width: 768px) {
@@ -87,8 +85,4 @@
   .toggle-menu-nav-search {
     padding-top: 4rem;
   }
-
-  /*.toggle-menu-nav-country-menu {
-    padding-bottom: 4rem;
-  }*/
 }
