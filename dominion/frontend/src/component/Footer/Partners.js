@@ -27,12 +27,13 @@ function Partners({ classes }) {
   return (
     <Grid
       container
+      spacing={24}
       direction="row"
       justify="center"
       alignItems="center"
       className={classes.root}
     >
-      <Grid item lg={2} md={4} sm={6} xs={6} style={{ padding: '2rem' }}>
+      <Grid item lg={2} md={6} sm={6} xs={6} style={{ padding: '2rem' }}>
         <img src={cfa} alt="Code for Africa" className={classes.img} />
       </Grid>
       <Grid item lg={2} md={4} sm={4} xs={10} className={classes.imageGrid}>
