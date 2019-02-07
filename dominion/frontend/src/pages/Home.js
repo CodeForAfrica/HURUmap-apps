@@ -1,16 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import DocumentHead from '../component/DocumentHead';
 import Header from '../component/Header/Header';
-import Footer from '../component/Footer/index';
-import DocumentHead from '../component/DocumentHead/index';
+import Showcase from '../component/Showcase';
 
+import Footer from '../component/Footer/index';
 
 function Home({ url }) {
   return (
     <React.Fragment>
       <DocumentHead url={url} />
       <Header />
+      <Showcase />
       <Footer />
     </React.Fragment>
   );

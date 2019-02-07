@@ -32,13 +32,8 @@ function Partners({ classes }) {
       alignItems="center"
       className={classes.root}
     >
-
       <Grid item xs={8} sm={6} md={6} lg={2} style={{ padding: '2rem' }}>
-        <img
-          src={codeforafrica}
-          alt="Code for Africa"
-          className={classes.img}
-        />
+        <img src={cfa} alt="Code for Africa" className={classes.img} />
       </Grid>
       <Grid item xs={8} sm={4} md={4} lg={2} className={classes.imageGrid}>
         <img src={datazetu} alt="Data Zetu" className={classes.img} />
@@ -50,7 +45,6 @@ function Partners({ classes }) {
         <img src={bmf} alt="Bill and Melinda Gates" className={classes.img} />
       </Grid>
       <Grid item xs={8} sm={4} md={4} lg={2} className={classes.imageGrid}>
-
         <img src={icfj} alt="Icfj" className={classes.img} />
       </Grid>
     </Grid>
