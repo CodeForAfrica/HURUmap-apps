@@ -7,15 +7,12 @@ import HeaderNav from './HeaderNav';
 
 import background from '../../assets/images/bg/background.png';
 
-const styles = theme => ({
+const styles = () => ({
   root: {
     flexGrow: 1,
     backgroundImage: `url(${background})`,
     backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    [theme.breakpoints.up('md')]: {
-      height: '100vh'
-    }
+    backgroundSize: 'cover'
   }
 });
 function Header({ classes }) {
