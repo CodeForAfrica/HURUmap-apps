@@ -36,7 +36,7 @@ function SocialMedia({ classes }) {
           <FontAwesomeIcon
             className={classes.fa}
             icon={['fab', 'facebook-f']}
-            size="fa-lg"
+            size="lg"
             fixedWidth
           />
         </a>
@@ -50,7 +50,7 @@ function SocialMedia({ classes }) {
           <FontAwesomeIcon
             className={classes.fa}
             icon={['fab', 'instagram']}
-            size="fa-lg"
+            size="lg"
             fixedWidth
           />
         </a>
@@ -64,7 +64,7 @@ function SocialMedia({ classes }) {
           <FontAwesomeIcon
             className={classes.fa}
             icon={['fab', 'github']}
-            size="fa-lg"
+            size="lg"
             fixedWidth
           />
         </a>

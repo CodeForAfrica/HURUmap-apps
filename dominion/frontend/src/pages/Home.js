@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import About from '../component/About';
 import DocumentHead from '../component/DocumentHead';
 import Header from '../component/Header';
 import Showcase from '../component/Showcase';
@@ -13,6 +14,7 @@ function Home({ url }) {
       <DocumentHead url={url} />
       <Header />
       <Showcase />
+      <About />
       <Footer />
     </React.Fragment>
   );
