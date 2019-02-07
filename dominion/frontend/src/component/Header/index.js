@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
-import HeaderNav from './HeaderNav';
+import Nav from './Nav';
 
 import background from '../../assets/images/bg/background.png';
 
@@ -18,8 +18,8 @@ const styles = () => ({
 });
 function Header({ classes }) {
   return (
-    <Grid container xs={12} className={classes.root}>
-      <HeaderNav />
+    <Grid container item xs={12} className={classes.root}>
+      <Nav />
     </Grid>
   );
 }

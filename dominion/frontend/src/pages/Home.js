@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import DocumentHead from '../component/DocumentHead';
-import Header from '../component/Header/Header';
+import Header from '../component/Header';
 import Showcase from '../component/Showcase';
 
 import Footer from '../component/Footer/index';
