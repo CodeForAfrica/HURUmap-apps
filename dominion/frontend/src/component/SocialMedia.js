@@ -6,16 +6,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
-const styles = theme => ({
+const styles = () => ({
   fa: {
     transition: 'all .5s ease-in-out',
     color: '#fff',
     ' &:hover': {
       transform: 'scale(1.3)',
-      color: theme.palette.primary.main
+      color: '#fff'
     }
   },
-  links: { color: theme.palette.primary.main }
+  links: { color: '#fff' }
 });
 
 function SocialMedia({ classes }) {
@@ -74,6 +74,6 @@ function SocialMedia({ classes }) {
 }
 
 SocialMedia.propTypes = {
-  classes: PropTypes.isRequired
+  classes: PropTypes.shape().isRequired
 };
 export default withStyles(styles)(SocialMedia);

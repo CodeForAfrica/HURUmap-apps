@@ -10,7 +10,8 @@ import Home from './pages/Home';
 import Country from './pages/Country';
 import NotFound from './pages/NotFound';
 
-const FONT_FAMILY = '"Roboto", "sans-serif"';
+const FONT_FAMILY_HEADING = '"Roboto Slab", "serif"';
+const FONT_FAMILY_TEXT = '"Roboto", "sans-serif"';
 
 const THEME = createMuiTheme({
   palette: {
@@ -19,20 +20,55 @@ const THEME = createMuiTheme({
     highlight: { main: '#e7e452' }
   },
   typography: {
-    fontFamily: FONT_FAMILY,
-    fontSize: 16,
-    h2: { textTransform: 'uppercase', fontWeight: 500 }, // Hero section  heading
-    h3: { color: '#2b3129', textTransform: 'capitalize' }, // Section heading
+    fontFamily: FONT_FAMILY_TEXT,
+    fontSize: 12,
+    h2: {
+      color: '#293229',
+      fontFamily: FONT_FAMILY_HEADING,
+      textTransform: 'capitalize',
+      fontWeight: 400
+    }, // Hero section  heading
+    h3: {
+      color: '#2b3129',
+      fontFamily: FONT_FAMILY_HEADING,
+      textTransform: 'capitalize'
+    }, // Section heading
+    h4: {
+      color: '#2b3129',
+      fontFamily: FONT_FAMILY_HEADING,
+      textTransform: 'capitalize'
+    },
+    h5: {
+      color: '#2b3129',
+      fontFamily: FONT_FAMILY_HEADING,
+      textTransform: 'capitalize'
+    },
+    h6: {
+      color: '#2b3129',
+      fontFamily: FONT_FAMILY_HEADING,
+      textTransform: 'capitalize'
+    },
+    body2: {
+      color: 'rgba(34, 40, 34, 0.8)'
+    },
+    fontSmallDefault: {
+      fontSize: 14
+    },
     useNextVariants: true
   },
-  fontSmallDefault: {
-    fontSize: 14
-  },
-  MuiButton: {
-    root: {
-      border: '2px solid #ffff',
-      borderRadius: 0,
-      color: '#fff'
+  overrides: {
+    MuiButton: {
+      root: {
+        border: '2px solid #ffff',
+        borderRadius: 0,
+        color: '#fff'
+      }
+    },
+    MuiCard: {
+      root: {
+        borderRadius: 0,
+        boxShadow: 'none'
+      }
     }
   }
 });

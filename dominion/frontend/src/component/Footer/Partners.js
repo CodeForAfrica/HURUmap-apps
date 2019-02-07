@@ -4,9 +4,8 @@ import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
-// Assets
 import bmf from '../../assets/images/logos/bmgf.png';
-import codeforafrica from '../../assets/images/logos/codeforafrica.png';
+import cfa from '../../assets/images/logos/codeforafrica.png';
 import datazetu from '../../assets/images/logos/datazetu.png';
 import icfj from '../../assets/images/logos/icfj.png';
 import twaweza from '../../assets/images/logos/twaweza.png';
@@ -28,12 +27,12 @@ function Partners({ classes }) {
   return (
     <Grid
       container
-      spacing={24}
       direction="row"
       justify="center"
       alignItems="center"
       className={classes.root}
     >
+
       <Grid item xs={8} sm={6} md={6} lg={2} style={{ padding: '2rem' }}>
         <img
           src={codeforafrica}
@@ -51,6 +50,7 @@ function Partners({ classes }) {
         <img src={bmf} alt="Bill and Melinda Gates" className={classes.img} />
       </Grid>
       <Grid item xs={8} sm={4} md={4} lg={2} className={classes.imageGrid}>
+
         <img src={icfj} alt="Icfj" className={classes.img} />
       </Grid>
     </Grid>
@@ -58,7 +58,7 @@ function Partners({ classes }) {
 }
 
 Partners.propTypes = {
-  classes: PropTypes.isRequired
+  classes: PropTypes.shape().isRequired
 };
 
 export default withStyles(styles)(Partners);
