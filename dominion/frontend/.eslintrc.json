@@ -6,10 +6,7 @@
     "browser": true,
     "jest": true
   },
-  "rules": {
-    /*"react/prop-types": 0,
-    "react/forbid-prop-types": 0,
-    "import/no-named-as-default": 0,*/
+  
     "react/jsx-filename-extension": [
       1,
       {
@@ -17,11 +14,4 @@
       }
     ]
   }
-  /*"settings": {
-    "import/resolver": {
-      "node": {
-        "extensions": [".js", ".jsx"]
-      }
-    }
-  }*/
 }
