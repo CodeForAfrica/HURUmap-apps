@@ -124,7 +124,7 @@
     <script src="{% static 'js/vendor/leaflet.label.js' %}"></script>
     <script src="{% static 'js/maps_static.js' %}"></script>
     <script src="{% static 'js/profile_map.js' %}"></script>
-    {% if HURUMAP.USE_MAPIT %}
+    {% if HURUMAP.USE_MAPIT == "True" %}
       <script src="{% static 'js/map_mapit.js' %}"></script>
       <script src="{% static 'js/profile_map_mapit.js' %}"></script>
     {% endif %}
