@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import '../../assets/App.css';
-
 import MenuOutlined from '@material-ui/icons/MenuOutlined';
-
 import {
   Grid,
   Typography,
@@ -13,9 +10,12 @@ import {
   Toolbar
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+
 import Search from './Search';
 import logo from '../../assets/images/logos/dominion-logo.png';
 import DropdownSelect from './DropdownSelect';
+
+import '../../assets/App.css';
 
 const styles = theme => ({
   root: {
@@ -52,28 +52,21 @@ const styles = theme => ({
 class HeaderNav extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      menu: ''
-    };
+
+    this.state = { isMenuOpen: false };
+    this.setToggleTopMenuClass = this.setToggleTopMenuClass.bind(this);
   }
 
-  setToggleTopMenuClass = () => {
-    const { menu } = this.state;
-    if (menu === '') {
-      this.setState({
-        menu: 'toggled'
-      });
-    } else {
-      this.setState({
-        menu: ''
-      });
-    }
-  };
+  setToggleTopMenuClass() {
+    const { isMenuOpen } = this.state;
+    this.setState({ isMenuOpen: !isMenuOpen });
+  }
 
-  render = () => {
+  render() {
     const { classes } = this.props;
-    const { menu } = this.state;
-    const topMenuClass = `top-menu ${menu}`;
+    const { isMenuOpen } = this.state;
+    const toggleClass = isMenuOpen ? 'toggled' : '';
+    const topMenuClass = `top-menu ${toggleClass}`;
     return (
       <nav position="static" className={topMenuClass}>
         <Toolbar className="toggle-toolbar-menu">
@@ -145,7 +138,7 @@ class HeaderNav extends Component {
         </Toolbar>
       </nav>
     );
-  };
+  }
 }
 
 HeaderNav.propTypes = {

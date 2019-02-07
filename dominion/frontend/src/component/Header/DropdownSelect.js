@@ -79,15 +79,29 @@ function NoOptionsMessage({ children, innerProps, selectProps }) {
   );
 }
 
-function inputComponent({ inputRef, ...props }) {
+NoOptionsMessage.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired,
+  innerProps: PropTypes.shape().isRequired,
+  selectProps: PropTypes.shape().isRequired
+};
+
+function InputComponent({ inputRef, ...props }) {
   return <div ref={inputRef} {...props} />;
 }
+
+InputComponent.propTypes = {
+  inputRef: PropTypes.shape().isRequired,
+  props: PropTypes.shape().isRequired
+};
 
 function Control({ children, innerProps, innerRef, selectProps }) {
   return (
     <TextField
       InputProps={{
-        inputComponent,
+        inputComponent: InputComponent,
         inputProps: {
           className: selectProps.classes.input,
           inputRef: innerRef,
@@ -99,6 +113,16 @@ function Control({ children, innerProps, innerRef, selectProps }) {
     />
   );
 }
+
+Control.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired,
+  innerProps: PropTypes.shape().isRequired,
+  innerRef: PropTypes.shape().isRequired,
+  selectProps: PropTypes.shape().isRequired
+};
 
 function Option({ children, innerProps, innerRef, isFocused }) {
   return (
@@ -122,6 +146,17 @@ function Option({ children, innerProps, innerRef, isFocused }) {
   );
 }
 
+Option.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired,
+  innerProps: PropTypes.shape().isRequired,
+  innerRef: PropTypes.shape().isRequired,
+  selectProps: PropTypes.shape().isRequired,
+  isFocused: PropTypes.bool.isRequired
+};
+
 function Placeholder({ children, innerProps, selectProps }) {
   return (
     <Typography
@@ -134,6 +169,15 @@ function Placeholder({ children, innerProps, selectProps }) {
   );
 }
 
+Placeholder.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired,
+  innerProps: PropTypes.shape().isRequired,
+  selectProps: PropTypes.shape().isRequired
+};
+
 function SingleValue({ children, innerProps, selectProps }) {
   return (
     <Typography className={selectProps.classes.singleValue} {...innerProps}>
@@ -141,6 +185,15 @@ function SingleValue({ children, innerProps, selectProps }) {
     </Typography>
   );
 }
+
+SingleValue.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired,
+  innerProps: PropTypes.shape().isRequired,
+  selectProps: PropTypes.shape().isRequired
+};
 
 function ValueContainer({ children, selectProps }) {
   return (
@@ -151,6 +204,14 @@ function ValueContainer({ children, selectProps }) {
   );
 }
 
+ValueContainer.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired,
+  selectProps: PropTypes.shape().isRequired
+};
+
 function Menu({ children, innerProps, selectProps }) {
   return (
     <Paper className={selectProps.classes.paper} {...innerProps}>
@@ -158,6 +219,15 @@ function Menu({ children, innerProps, selectProps }) {
     </Paper>
   );
 }
+
+Menu.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired,
+  innerProps: PropTypes.shape().isRequired,
+  selectProps: PropTypes.shape().isRequired
+};
 
 const components = {
   Control,
