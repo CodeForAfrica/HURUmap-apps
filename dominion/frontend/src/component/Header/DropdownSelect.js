@@ -216,6 +216,7 @@ class DropdownSelect extends React.Component {
 
 DropdownSelect.propTypes = {
   classes: PropTypes.isRequired,
+
   handleSearch: PropTypes.func,
   options: PropTypes.instanceOf(Array),
   placeholder: PropTypes.string

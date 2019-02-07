@@ -34,23 +34,23 @@ function Partners({ classes }) {
       alignItems="center"
       className={classes.root}
     >
-      <Grid item lg={2} md={6} sm={6} xs={6} style={{ padding: '2rem' }}>
+      <Grid item xs={8} sm={6} md={6} lg={2} style={{ padding: '2rem' }}>
         <img
           src={codeforafrica}
           alt="Code for Africa"
           className={classes.img}
         />
       </Grid>
-      <Grid item lg={2} md={4} sm={6} xs={6} className={classes.imageGrid}>
+      <Grid item xs={8} sm={4} md={4} lg={2} className={classes.imageGrid}>
         <img src={datazetu} alt="Data Zetu" className={classes.img} />
       </Grid>
-      <Grid item lg={2} md={4} sm={6} xs={6} className={classes.imageGrid}>
+      <Grid item xs={8} sm={4} md={4} lg={2} className={classes.imageGrid}>
         <img src={twaweza} alt="Twaweza" className={classes.img} />
       </Grid>
-      <Grid item lg={2} md={4} sm={6} xs={6} className={classes.imageGrid}>
+      <Grid item xs={8} sm={4} md={4} lg={2} className={classes.imageGrid}>
         <img src={bmf} alt="Bill and Melinda Gates" className={classes.img} />
       </Grid>
-      <Grid item lg={2} md={4} sm={6} xs={6} className={classes.imageGrid}>
+      <Grid item xs={8} sm={4} md={4} lg={2} className={classes.imageGrid}>
         <img src={icfj} alt="Icfj" className={classes.img} />
       </Grid>
     </Grid>
