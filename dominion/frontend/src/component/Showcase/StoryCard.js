@@ -38,7 +38,8 @@ const styles = theme => ({
   },
   overline: {
     color: '#fff',
-    fontSize: '14px',
+    fontSize: theme.typography.fontSmallDefault.fontSize,
+    fontWeight: 400,
     paddingTop: '1rem'
   },
   bodyArea: {
@@ -46,11 +47,12 @@ const styles = theme => ({
   },
   bodyTitle: {
     color: '#fff',
-    fontWeight: 400
+    fontWeight: 500
   },
   bodyText: {
     color: '#fff',
-    fontWeight: 400
+    fontWeight: 500,
+    marginTop: '1rem'
   }
 });
 
@@ -70,7 +72,7 @@ function StoryCard({ story, classes }) {
         >
           <CardMedia className={classes.media} image={image} title=" Story" />
           <CardContent style={{ flexGrow: 1, marginTop: '-100%' }}>
-            <Typography variant="h5" className={classes.overline}>
+            <Typography variant="h6" className={classes.overline}>
               {date}
             </Typography>
             <div className={classes.bodyArea}>

@@ -33,13 +33,28 @@ const THEME = createMuiTheme({
       fontFamily: FONT_FAMILY_HEADING,
       textTransform: 'capitalize'
     }, // Section heading
+    h4: {
+      color: '#2b3129',
+      fontFamily: FONT_FAMILY_HEADING,
+      textTransform: 'capitalize'
+    },
+    h5: {
+      color: '#2b3129',
+      fontFamily: FONT_FAMILY_HEADING,
+      textTransform: 'capitalize'
+    },
+    h6: {
+      color: '#2b3129',
+      fontFamily: FONT_FAMILY_HEADING,
+      textTransform: 'capitalize'
+    },
     body2: {
-      color: '#a3a7a3'
+      color: 'rgba(34, 40, 34, 0.8)'
+    },
+    fontSmallDefault: {
+      fontSize: 14
     },
     useNextVariants: true
-  },
-  fontSmallDefault: {
-    fontSize: 14
   },
   overrides: {
     MuiButton: {
