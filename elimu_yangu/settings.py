@@ -1,6 +1,7 @@
 import os
 from django.utils.translation import ugettext_lazy as _
 from collections import OrderedDict
+from distutils.util import strtobool
 
 from hurumap.settings import *  # noqa
 
@@ -79,7 +80,7 @@ HURUMAP['levels'] = {
 HURUMAP['comparative_levels'] = ["district", "region", "country"]
 
 use_mapit = os.environ.get('USE_MAPIT', False)
-HURUMAP['USE_MAPIT'] = use_mapit
+HURUMAP['USE_MAPIT'] = strtobool(use_mapit)
 if HURUMAP['USE_MAPIT'] == "True":
   # use mapit settings
   HURUMAP['geometry_data'] = {}

@@ -1,5 +1,6 @@
 import os
 from collections import OrderedDict
+from distutils.util import strtobool
 
 import dj_database_url
 
@@ -42,7 +43,7 @@ HURUMAP['levels'] = {
 HURUMAP['comparative_levels'] = ['country', 'province']
 
 use_mapit = os.environ.get('USE_MAPIT', False)
-HURUMAP['USE_MAPIT'] = use_mapit
+HURUMAP['USE_MAPIT'] = strtobool(use_mapit)
 if HURUMAP['USE_MAPIT'] == "True":
   # use mapit settings
   HURUMAP['geometry_data'] = {}
