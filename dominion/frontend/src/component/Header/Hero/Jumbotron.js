@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -16,6 +18,10 @@ const styles = theme => ({
     [theme.breakpoints.up('lg')]: {
       height: '60vh',
       margin: '2rem'
+    },
+    [theme.breakpoints.down('md')]: {
+      backgroundPosition: 'right',
+      backgroundSize: 'auto'
     }
   }
 });
@@ -27,5 +33,9 @@ function Jumbotron({ classes }) {
     </Grid>
   );
 }
+
+Jumbotron.propTypes = {
+  classes: PropTypes.isRequired
+};
 
 export default withStyles(styles)(Jumbotron);

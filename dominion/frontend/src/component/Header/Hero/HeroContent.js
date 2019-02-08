@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { Grid, Typography, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -6,9 +8,19 @@ import map from '../../../assets/images/bg/map.png';
 
 const styles = theme => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    [theme.breakpoints.up('xl')]: {
+      paddingTop: '3rem',
+      paddingLeft: '5rem',
+      paddingRight: '5rem'
+    }
   },
-  text: { color: 'white' },
+  text: {
+    color: 'white',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '3rem'
+    }
+  },
   body2: {
     color: 'white',
     textAlign: 'left',
@@ -16,8 +28,16 @@ const styles = theme => ({
     paddingTop: '2rem'
   },
 
-  titleTextGrid: { color: 'white' },
+  titleTextGrid: {
+    color: 'white',
+    [theme.breakpoints.down('sm')]: {
+      position: 'absolute',
+      top: '4rem',
+      margin: '2rem'
+    }
+  },
   button: {
+    textTransform: 'none',
     fontWeight: 800,
     fontSize: theme.typography.subtitle1.fontSize,
     color: 'white',
@@ -35,6 +55,13 @@ const styles = theme => ({
     color: 'white',
     writingMode: 'vertical-lr',
     textOrientation: ' sideways-right'
+  },
+  mapSection: {
+    color: 'white',
+    paddingLeft: '5rem',
+    [theme.breakpoints.down('sm')]: {
+      visibility: 'hidden'
+    }
   }
 });
 
@@ -60,7 +87,7 @@ function HeroContent({ classes }) {
         <Grid style={{ paddingTop: '2rem' }}>
           <a href="/example" className={classes.buttonLink}>
             <Button variant="outlined" color="white" className={classes.button}>
-              Select Country
+              Select a Country
             </Button>
           </a>
         </Grid>
@@ -75,7 +102,7 @@ function HeroContent({ classes }) {
         direction="row"
         justify="space-around"
         alignItems="center"
-        style={{ color: 'white', paddingLeft: '5rem' }}
+        className={classes.mapSection}
       >
         <img src={map} alt="Country Map" />
         <Grid>
@@ -87,5 +114,9 @@ function HeroContent({ classes }) {
     </Grid>
   );
 }
+
+HeroContent.propTypes = {
+  classes: PropTypes.isRequired
+};
 
 export default withStyles(styles)(HeroContent);
