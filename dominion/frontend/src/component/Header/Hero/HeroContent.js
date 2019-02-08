@@ -15,6 +15,7 @@ const styles = theme => ({
     width: '70%',
     paddingTop: '2rem'
   },
+
   titleTextGrid: { color: 'white' },
   button: {
     fontWeight: 800,
@@ -29,6 +30,11 @@ const styles = theme => ({
   },
   buttonLink: {
     textDecoration: 'none'
+  },
+  verticalAlignText: {
+    color: 'white',
+    writingMode: 'vertical-lr',
+    textOrientation: ' sideways-right'
   }
 });
 
@@ -42,7 +48,7 @@ function HeroContent({ classes }) {
       alignItems="center"
       className={classes.root}
     >
-      <Grid item xs={8} className={classes.titleTextGrid}>
+      <Grid item xs={8} md={8} lg={8} xl={6} className={classes.titleTextGrid}>
         <Typography variant="h1" className={classes.text}>
           Discover the stories behind the data
         </Typography>
@@ -61,6 +67,9 @@ function HeroContent({ classes }) {
       </Grid>
       <Grid
         xs={4}
+        md={4}
+        lg={4}
+        xl={5}
         item
         container
         direction="row"
@@ -69,16 +78,9 @@ function HeroContent({ classes }) {
         style={{ color: 'white', paddingLeft: '5rem' }}
       >
         <img src={map} alt="Country Map" />
-        <Grid
-          style={{
-            writingMode: 'vertical-lr',
-            textOrientation: ' sideways-right',
-            color: 'white'
-          }}
-        >
-          <Typography variant="body2" style={{ color: 'white' }}>
+        <Grid>
+          <Typography variant="body2" className={classes.verticalAlignText}>
             South Africa
-            <hr size="30" /> 02
           </Typography>
         </Grid>
       </Grid>
