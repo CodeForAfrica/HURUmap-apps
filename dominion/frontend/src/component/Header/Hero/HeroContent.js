@@ -4,14 +4,32 @@ import { withStyles } from '@material-ui/core/styles';
 
 import map from '../../../assets/images/bg/map.png';
 
-const styles = () => ({
+const styles = theme => ({
   root: {
-    flexGrow: 1,
-    position: 'absolute',
-    zIndex: '100'
+    flexGrow: 1
   },
   text: { color: 'white' },
-  body2: { color: 'white', textAlign: 'left', width: '70%', paddingTop: '2rem' }
+  body2: {
+    color: 'white',
+    textAlign: 'left',
+    width: '70%',
+    paddingTop: '2rem'
+  },
+  titleTextGrid: { color: 'white' },
+  button: {
+    fontWeight: 800,
+    fontSize: theme.typography.subtitle1.fontSize,
+    color: 'white',
+    border: '2px solid white',
+    [theme.breakpoints.up('lg')]: {
+      height: '3.5rem',
+      paddingLeft: '2rem',
+      paddingRight: '2rem'
+    }
+  },
+  buttonLink: {
+    textDecoration: 'none'
+  }
 });
 
 function HeroContent({ classes }) {
@@ -22,8 +40,9 @@ function HeroContent({ classes }) {
       spacing={40}
       justify="space-between"
       alignItems="center"
+      className={classes.root}
     >
-      <Grid item xs={8} style={{ color: 'white' }}>
+      <Grid item xs={8} className={classes.titleTextGrid}>
         <Typography variant="h1" className={classes.text}>
           Discover the stories behind the data
         </Typography>
@@ -32,16 +51,17 @@ function HeroContent({ classes }) {
           Dominion makes data available to help add context and authority to
           public discourse and policy-making on vital issues of land ownership.
         </Typography>
-        <Grid style={{ paddingTop: '4rem' }}>
-          <Button color="primary" variant="outlined">
-            {' '}
-            Select Country
-          </Button>
+        <Grid style={{ paddingTop: '2rem' }}>
+          <a href="/example" className={classes.buttonLink}>
+            <Button variant="outlined" color="white" className={classes.button}>
+              Select Country
+            </Button>
+          </a>
         </Grid>
       </Grid>
       <Grid
-        item
         xs={4}
+        item
         container
         direction="row"
         justify="space-around"
@@ -53,8 +73,7 @@ function HeroContent({ classes }) {
           style={{
             writingMode: 'vertical-lr',
             textOrientation: ' sideways-right',
-            color: 'white',
-            height: '100px'
+            color: 'white'
           }}
         >
           <Typography variant="body2" style={{ color: 'white' }}>
