@@ -6,10 +6,10 @@ import { Grid, Link, MenuList, MenuItem, Toolbar } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import Search from './Search';
-import logo from '../../assets/images/logos/dominion-logo.png';
+import logo from '../../../assets/images/logos/dominion-logo.png';
 import DropdownSelect from './DropdownSelect';
 
-import '../../assets/App.css';
+import '../../../assets/App.css';
 
 const styles = theme => ({
   root: {
