@@ -5,7 +5,7 @@ import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import herobg from '../../../assets/images/bg/herobg.png';
-import HeroContent from './HeroContent';
+import Content from './Content';
 
 const styles = theme => ({
   root: {
@@ -26,16 +26,16 @@ const styles = theme => ({
   }
 });
 
-function Jumbotron({ classes }) {
+function Hero({ classes }) {
   return (
     <Grid className={classes.root}>
-      <HeroContent />
+      <Content />
     </Grid>
   );
 }
 
-Jumbotron.propTypes = {
+Hero.propTypes = {
   classes: PropTypes.isRequired
 };
 
-export default withStyles(styles)(Jumbotron);
+export default withStyles(styles)(Hero);
