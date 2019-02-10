@@ -66,7 +66,7 @@ function Video({ classes }) {
           </Typography>
 
           <Grid item className={classes.buttonGrid}>
-            <a href="/example">
+            <a href="/#">
               <Button
                 variant="outline"
                 color="primary"
