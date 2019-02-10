@@ -17,16 +17,16 @@ const styles = theme => ({
     height: '400px'
   },
   caption: {
-    color: theme.palette.primary.main,
+    color: '#fff',
     textAlign: 'center'
   },
-  suheading: { color: theme.palette.primary.main },
+  suheading: { color: '#fff' },
   buttonGrid: { paddingTop: '1rem', textAlign: 'center' },
   button: {
     textTransform: 'none',
     fontWeight: 800,
     fontSize: theme.typography.subtitle1.fontSize,
-    color: theme.palette.primary.main,
+    color: '#fff',
     border: '2px solid white',
     [theme.breakpoints.up('lg')]: {
       height: '6.5rem',
@@ -41,10 +41,16 @@ const styles = theme => ({
 
 function Video({ classes }) {
   return (
-    <Grid container xs={12} className={classes.root}>
+    <Grid
+      container
+      className={classes.root}
+      justify="center"
+      alignItems="center"
+    >
       <Grid
-        container
+        item
         xs={12}
+        container
         direction="column"
         justify="center"
         alignItems="center"
@@ -52,7 +58,7 @@ function Video({ classes }) {
         <Typography variant="h3" className={classes.suheading}>
           Using Dominion
         </Typography>
-        <Grid item xs={8} sm={4} xl={4} style={{ paddingTop: '1rem' }}>
+        <Grid item xs={8} sm={4} style={{ paddingTop: '1rem' }}>
           <Typography variant="caption" className={classes.caption}>
             Lorem ipsum dolor sit amet, nec partem definitionem at, vix eu alii
             timeam, vel falli appetere ut. Lorem ipsum dolor sit amet, nec
@@ -78,7 +84,7 @@ function Video({ classes }) {
 }
 
 Video.propTypes = {
-  classes: PropTypes.isRequired
+  classes: PropTypes.shape().isRequired
 };
 
 export default withStyles(styles)(Video);
