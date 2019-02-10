@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Grid, Typography, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
-import Menu from '@material-ui/icons/Menu';
+import Check from '@material-ui/icons/Check';
 
 const styles = theme => ({
   root: {
@@ -18,6 +18,7 @@ const styles = theme => ({
     fontWeight: 'bold',
     paddingTop: '1rem'
   },
+  button: { border: '1px solid black' },
   subtitleGrid: { paddingTop: '1rem', paddingBottom: '1rem' },
   contentText: { paddingTop: '1rem' },
   link: { textDecoration: 'none' },
@@ -39,8 +40,8 @@ function DataSets({ classes }) {
       className={classes.root}
     >
       <Grid item>
-        <Button variant="outlined" color="black">
-          <Menu size="large" />
+        <Button variant="outlined">
+          <Check size="small" style={{ color: 'black' }} />
         </Button>
         <div className={classes.subtitleGrid}>
           <Typography variant="body2" clasName={classes.title}>

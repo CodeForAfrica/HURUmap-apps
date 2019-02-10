@@ -25,7 +25,7 @@ const styles = theme => ({
     opacity: '0.6',
     paddingTop: '1rem'
   },
-  button: {},
+  button: { border: '1px solid black' },
   subtitleGrid: { paddingTop: '1rem', paddingBottom: '1rem' },
   contentText: { paddingTop: '1rem' },
   link: { textDecoration: 'none' },
@@ -46,8 +46,8 @@ function DocumentContents({ classes }) {
       alignItems="flex-start"
       className={classes.mainGrid}
     >
-      <Button variant="outlined" color="black">
-        <Menu size="large" />
+      <Button variant="outlined">
+        <Menu size="large" style={{ color: 'black' }} />
       </Button>
       <div className={classes.subtitleGrid}>
         <Typography variant="body2" clasName={classes.title}>
