@@ -14,9 +14,6 @@ const styles = theme => ({
     flexGrow: 1,
     padding: '2rem',
     height: 'auto'
-    /* backgroundImage: `url(${background})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover' */
   },
   img: {
     width: '100%',

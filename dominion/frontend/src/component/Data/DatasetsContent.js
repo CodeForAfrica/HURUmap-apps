@@ -18,7 +18,12 @@ const styles = theme => ({
     fontWeight: 'bold',
     paddingTop: '1rem'
   },
-  button: { border: '1px solid black' },
+  button: {
+    border: '1px solid black',
+    '&:hover': {
+      backgroundColor: 'white'
+    }
+  },
   subtitleGrid: { paddingTop: '1rem', paddingBottom: '1rem' },
   contentText: { paddingTop: '1rem' },
   link: { textDecoration: 'none' },
@@ -40,7 +45,7 @@ function DataSets({ classes }) {
       className={classes.root}
     >
       <Grid item>
-        <Button variant="outlined">
+        <Button variant="outlined" className={classes.button}>
           <Check size="small" style={{ color: 'black' }} />
         </Button>
         <div className={classes.subtitleGrid}>

@@ -25,7 +25,12 @@ const styles = theme => ({
     opacity: '0.6',
     paddingTop: '1rem'
   },
-  button: { border: '1px solid black' },
+  button: {
+    border: '1px solid black',
+    '&:hover': {
+      backgroundColor: 'white'
+    }
+  },
   subtitleGrid: { paddingTop: '1rem', paddingBottom: '1rem' },
   contentText: { paddingTop: '1rem' },
   link: { textDecoration: 'none' },
@@ -46,7 +51,7 @@ function DocumentContents({ classes }) {
       alignItems="flex-start"
       className={classes.mainGrid}
     >
-      <Button variant="outlined">
+      <Button variant="outlined" className={classes.button}>
         <Menu size="large" style={{ color: 'black' }} />
       </Button>
       <div className={classes.subtitleGrid}>
