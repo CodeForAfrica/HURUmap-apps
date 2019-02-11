@@ -1,37 +1,55 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Grid } from '@material-ui/core';
+import { Grid, Hidden } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import land from '../../assets/images/About/land.png';
 
-// import background from '../../assets/images/bg/background.png';
 import DocumentsContents from './DocumentsContents';
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    padding: '2rem',
-    height: 'auto'
-  },
-  img: {
     width: '100%',
     [theme.breakpoints.up('md')]: {
-      width: '20.875rem',
-      height: 'auto',
-
-      // TODO(kilemens): There is a gap between the two components. This is a temporary fix.
-      marginBottom: theme.spacing.unit * -0.5
+      width: '42.75rem'
     },
     [theme.breakpoints.up('lg')]: {
-      width: '25.5rem'
+      width: '53rem'
+    }
+  },
+  map: {
+    width: 0,
+    [theme.breakpoints.up('md')]: {
+      width: '26.5rem',
+      paddingLeft: '3rem',
+      paddingRight: '2rem'
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: '35rem',
+      paddingLeft: '3rem',
+      paddingRight: '2rem'
     }
   },
   highlight: {
+    marginLeft: 'auto',
+    marginRight: 0,
     width: '15rem',
     height: '2rem',
     background: '#e7e452'
+  },
+  img: {
+    width: '100%',
+    height: '25rem',
+    backgroundImage: `url(${land})`,
+    backgroundRepeat: 'no-repeat'
+  },
+  contents: {
+    width: '100%',
+    [theme.breakpoints.up('md')]: {
+      width: 'auto'
+    }
   }
 });
 
@@ -39,28 +57,23 @@ function Documents({ classes }) {
   return (
     <Grid
       container
-      xs={12}
-      sm={8}
-      md={8}
-      lg={8}
-      xl={8}
       className={classes.root}
+      justify="flex-start"
+      alignItems="center"
     >
-      <Grid
-        container
-        spacing={24}
-        direction="row"
-        justify="center"
-        alignItems="center"
-      >
-        <Grid>
-          <Grid item xs={12}>
-            <div className={classes.highlight} />
-          </Grid>
-          <Grid item xs={12}>
-            <img src={land} alt="land" className={classes.img} />
-          </Grid>
+      <Hidden smDown>
+        <Grid item>
+          <div className={classes.map}>
+            <Grid item xs={12}>
+              <div className={classes.highlight} />
+            </Grid>
+            <Grid item xs={12}>
+              <div className={classes.img} />
+            </Grid>
+          </div>
         </Grid>
+      </Hidden>
+      <Grid item className={classes.contents}>
         <DocumentsContents />
       </Grid>
     </Grid>
@@ -68,7 +81,7 @@ function Documents({ classes }) {
 }
 
 Documents.propTypes = {
-  classes: PropTypes.isRequired
+  classes: PropTypes.shape().isRequired
 };
 
 export default withStyles(styles)(Documents);

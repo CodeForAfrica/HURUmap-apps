@@ -6,11 +6,16 @@ import { withStyles } from '@material-ui/core/styles';
 import Documents from './Documents';
 import DatasetsContent from './DatasetsContent';
 
-const styles = () => ({
+const styles = theme => ({
   root: {
     flexGrow: 1,
-    padding: '2rem',
-    height: 'auto'
+    padding: '2rem'
+  },
+  data: {
+    width: '100%',
+    [theme.breakpoints.up('md')]: {
+      width: 'auto'
+    }
   }
 });
 
@@ -19,14 +24,13 @@ function Data({ classes }) {
     <Grid
       container
       className={classes.root}
-      direction="row"
-      justify="flex-start"
+      justify="center"
       alignItems="center"
     >
-      <Grid item>
+      <Grid item className={classes.data}>
         <Documents />
       </Grid>
-      <Grid item>
+      <Grid item className={classes.data}>
         <DatasetsContent />
       </Grid>
     </Grid>
