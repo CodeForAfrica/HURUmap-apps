@@ -21,8 +21,8 @@ DATABASES['default']['ATOMIC_REQUESTS'] = True
 INSTALLED_APPS = ['hurumap_ug'] + INSTALLED_APPS
 
 MIDDLEWARE_CLASSES = (
-        'whitenoise.middleware.WhiteNoiseMiddleware',
-    ) + MIDDLEWARE_CLASSES
+                         'whitenoise.middleware.WhiteNoiseMiddleware',
+                     ) + MIDDLEWARE_CLASSES
 
 # Localise this instance of HURUmap
 HURUMAP['name'] = 'HURUmap Uganda'
@@ -59,17 +59,17 @@ HURUMAP['levels'] = {
     }
 }
 
-use_mapit = os.environ.get('USE_MAPIT', False)
-HURUMAP['USE_MAPIT'] = strtobool(use_mapit)
-if HURUMAP['USE_MAPIT'] == "True":
-  # use mapit settings
-  HURUMAP['geometry_data'] = {}
-  HURUMAP['mapit'] = {
+HURUMAP['USE_MAPIT'] = True
+
+# use mapit settings
+HURUMAP['geometry_data'] = {}
+HURUMAP['mapit'] = {
     'url': 'https://mapit.hurumap.org',
     'country_code': 'UG',
     'generations': {
         '2014': '1',
-        None: '1',  #  this should be based on the default_geo_version wazimap setting
+        None: '1',
+        # this should be based on the default_geo_version wazimap setting
     },
     'code_type': 'UGA',
     'level_simplify': {
@@ -83,17 +83,6 @@ if HURUMAP['USE_MAPIT'] == "True":
         'zoom': 6
     }
 }
-else:
-  # use normal geojson
-  HURUMAP['mapit'] = {}
-  HURUMAP['geometry_data'] = {
-      '2014': {
-          'country': 'geo/country.topojson',
-          'region': 'geo/region.topojson',
-          'district': 'geo/district.topojson',
-          'subcounty': 'geo/subcounty.topojson',
-      }
-  }
 
 HURUMAP['twitter'] = '@Code4Africa'
 
