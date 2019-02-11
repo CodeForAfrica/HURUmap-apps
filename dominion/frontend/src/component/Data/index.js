@@ -16,15 +16,17 @@ const styles = () => ({
 
 function Data({ classes }) {
   return (
-    <Grid className={classes.root}>
-      <Grid
-        container
-        spacing={40}
-        direction="row"
-        justify="flex-start"
-        alignItems="center"
-      >
+    <Grid
+      container
+      className={classes.root}
+      direction="row"
+      justify="flex-start"
+      alignItems="center"
+    >
+      <Grid item>
         <Documents />
+      </Grid>
+      <Grid item>
         <DatasetsContent />
       </Grid>
     </Grid>
