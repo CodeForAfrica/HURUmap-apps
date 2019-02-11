@@ -53,40 +53,29 @@ HURUMAP['levels'] = {
 }
 HURUMAP['comparative_levels'] = ['country', 'province']
 
-use_mapit = os.environ.get('USE_MAPIT', False)
-HURUMAP['USE_MAPIT'] = strtobool(use_mapit)
-
-if HURUMAP['USE_MAPIT'] == "True":
-  # use mapit settings
-  HURUMAP['geometry_data'] = {}
-  HURUMAP['mapit'] = {
+HURUMAP['USE_MAPIT'] = True
+# use mapit settings
+HURUMAP['geometry_data'] = {}
+HURUMAP['mapit'] = {
     'url': 'https://mapit.hurumap.org',
     'country_code': 'ZW',
     'generations': {
         '2009': '1',
         '2017': '1',
-        None: '1',  #  this should be based on the default_geo_version wazimap setting
-        },
+        None: '1',
+        # this should be based on the default_geo_version wazimap setting
+    },
     'code_type': 'ZWE',
     'level_simplify': {
         'country': 0,
         'province': 0,
-        'district':0
-        },
+        'district': 0
+    },
     'map_country': {
         'centre': [-19.0154, 29.1549],
         'zoom': 6
-        }
     }
-else:
-  # use normal geojson
-  HURUMAP['mapit'] = {}
-  HURUMAP['geometry_data'] = {
-      '2009': {
-          'country': 'geo/country.topojson',
-          'province': 'geo/province.topojson',
-      }
-  }
+}
 
 HURUMAP['twitter'] = '@Code4Africa'
 
@@ -102,7 +91,6 @@ HURUMAP['primary_dataset_name'] = 'Census'
 HURUMAP['available_release_years'] = {
     'province': [2017]
 }
-
 
 LOGGING['loggers']['hurumap_zw'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
 
