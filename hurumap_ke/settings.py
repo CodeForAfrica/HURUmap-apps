@@ -1,5 +1,6 @@
 import os
 from collections import OrderedDict
+from distutils.util import strtobool
 
 from hurumap.settings import *  # noqa
 
@@ -45,12 +46,39 @@ HURUMAP['levels'] = {
     }
 }
 HURUMAP['comparative_levels'] = ['country']
-HURUMAP['geometry_data'] = {
+
+use_mapit = os.environ.get('USE_MAPIT', False)
+HURUMAP['USE_MAPIT'] = strtobool(use_mapit)
+if HURUMAP['USE_MAPIT'] == "True":
+  # use mapit settings
+  HURUMAP['geometry_data'] = {}
+  HURUMAP['mapit'] = {
+      'url': 'https://mapit.hurumap.org',
+      'country_code': 'KE',
+      'generations': {
+          '2009': '1',
+          None: '1',  #  this should be based on the default_geo_version wazimap setting
+      },
+      'code_type': 'KEN',
+      'level_simplify': {
+          'country': 0,
+          'county': 0
+      },
+      'map_country': {
+          'centre': [0.3051933453207569, 37.908818734483155],
+          'zoom': 6
+      }
+  }
+else:
+  # use normal geojson
+  HURUMAP['mapit'] = {}
+  HURUMAP['geometry_data'] = {
     '2009': {
         'country': 'geo/country.topojson',
         'county': 'geo/county.topojson'
+        }
     }
-}
+
 
 HURUMAP['ga_tracking_id'] = 'UA-44795600-8'
 

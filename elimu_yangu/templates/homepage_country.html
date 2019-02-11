@@ -124,6 +124,10 @@
     <script src="{% static 'js/vendor/leaflet.label.js' %}"></script>
     <script src="{% static 'js/maps_static.js' %}"></script>
     <script src="{% static 'js/profile_map.js' %}"></script>
+    {% if HURUMAP.USE_MAPIT %}
+      <script src="{% static 'js/map_mapit.js' %}"></script>
+      <script src="{% static 'js/profile_map_mapit.js' %}"></script>
+    {% endif %}
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="{% static 'js/vendor/jquery.min.js'  %}"></script>
     <script src="{% static 'js/vendor/popper.min.js'  %}"></script>
