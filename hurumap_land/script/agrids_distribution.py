@@ -1,9 +1,16 @@
+#!/usr/bin/env python
 import sys
 import errno
 import json
 import os
 from lxml import html
 import requests
+
+with open('towndistrictcodemapping.json') as json_data:
+    code = json.load(json_data,)
+
+with open('towndistrictlevelmapping.json') as json_data:
+    level = json.load(json_data,)
 
 initUrl = 'http://land.agrids.co.za/Statistics/Distribution'
 
@@ -14,90 +21,104 @@ try:
     #tree contains the whole html
     tree = html.fromstring(initPage.content)
 
+    #open file and write header
+    csv = open("agrid_distribution.csv", "w")
+    columnHeader = "geo_level, geo_code, geo_version, class, statistic, total\n"
+    csv.write(columnHeader)
 
+    #initialize params
+    geo_code = ''
+    geo_level = ''
     geo_version = '2016'
 
     #provinces
     provinceIds = tree.xpath("//select[@id='Province']/option/@value")
     provinceNames = tree.xpath("//select[@id='Province']/option/text()")
 
-    #provinceIds = provinceIds[1:]
-    #provinceNames = provinceNames[1:]
+    #province geo_code map
+    provinceCode = {'': 'ZA', 'EasternCape':'EC', 'FreeState':'FS', 'Gauteng':'GT',
+     'KwaZuluNatal':'KZN', 'Limpopo':'LIM', 'Mpumalanga':'MP',
+      'NorthernCape':'NC', 'NorthWest':'NW', 'WesternCape':'WC'}
+    provinceLevel = { '': 'country', 'EasternCape':'province',
+     'FreeState':'province', 'Gauteng':'province', 'KwaZuluNatal':'province',
+     'Limpopo':'province', 'Mpumalanga':'province', 'NorthernCape':'province',
+     'NorthWest':'province', 'WesternCape':'province'}
 
-    columnHeader = "geo_level, geo_code, geo_version, class, statistic, total\n"
-    csv.write(columnHeader)
-
-    geo_code = ''
-    geo_level = ''
-	
-	
-
-	
     for provId in provinceIds:
     	provPage = requests.get(url + '?Province='+ provId+ '&Calculate=Calculate', allow_redirects = False)
     	provTree = html.fromstring(provPage.content)
 
-	if provId == '':
-		geo_code = 'ZA'
-		geo_level = 'country'
-		provtable = provTree.xpath('//table')
-		#table  header
-                provth = provTree.xpath('//table//tr/th')
+        geo_code = provinceCode[provId]
+        geo_level = provinceLevel[provId]
 
-		provthlen = len(provth)
+        provtable = provTree.xpath('//table')
+        #table  header
+        provth = provTree.xpath('//table//tr/th')
 
-		columnHeader = ""
-		for j in range(1, provthlen):
-			columnHeader = geo_level + "," + geo_code + "," + geo_version + ","
-			columnHeader = columnHeader + provth[0].text_content().encode('utf-8').strip() + ","+ provth[j].text_content().encode('utf-8').strip()  +"\n"
+        provthlen = len(provth)
 
-    	#get districts
-    	districtIds = provTree.xpath("//select[@id='DistrictId']/option/@value")
-    	districtNames = provTree.xpath("//select[@id='DistrictId']/option/text()")
+        #loop through columns
+        for j in range(1, provthlen):
+            statistic = provth[j].text_content().encode('utf-8').strip()
 
-    	districtIds = districtIds[1:]
-    	districtNames = districtNames[1:]
+            provRow = provTree.xpath('//table//tr')
+            provRowLen = len(provRow)
+            #loop through row: start at row number 2 as row number one is heading
+            for i in range (2, provRowLen+1):
+                #in each row get the cells
+                row = geo_level + "," + geo_code + "," + geo_version + ","
+                provRowTD = provTree.xpath('//table//tr[%d]/td' %  i)
+                row += str(provRowTD[0].text_content().encode('utf-8').strip()) + "," + statistic
+                row += "," + str(provRowTD[j].text_content().encode('utf-8').strip()) + "\n"
+                csv.write(row)
+                row = ""
 
-    	z = 0
-    	for distId in districtIds:
-        	distPage = requests.get(url + '?Province='+ provId+ '&DistrictId='+distId+'&Calculate=Calculate', allow_redirects = False)
-        	distTree = html.fromstring(distPage.content)
 
-        	districtName = districtNames[z].replace(' ', '').replace('/', '')
-        	#save table on provinces table
-        	disttable = distTree.xpath('//table')
+        if provId == '':
+            #get all districts
+            districtIds = provTree.xpath("//select[@id='DistrictId']/option/@value")
+    	    districtNames = provTree.xpath("//select[@id='DistrictId']/option/text()")
 
-        	disttableLen = len(disttable)
-        	if disttableLen >= 1:
-            		for j in range (1, disttableLen+1):
-                	
+            #skip the first drop down value
+    	    districtIds = districtIds[1:]
+            districtNames = districtNames[1:]
+            z = 0
+            for distId in districtIds:
+            	distPage = requests.get(initUrl + '?Province='+ provId+ '&DistrictId='+distId+'&Calculate=Calculate', allow_redirects = False)
+            	distTree = html.fromstring(distPage.content)
 
-                tableTitle = distTree.xpath('//h2')
-                print tableTitle[j -1].text_content()
-                csv.write(tableTitle[j -1].text_content() + "\n")
+            	districtName = districtNames[z].replace(' ', '').replace('/', '')
+                z = z + 1
+                print districtName
+                geo_code = code[districtName]
+                geo_level = level[districtName]
+                print geo_code
+                print geo_level
+            	#save table on provinces table
+            	disttable = distTree.xpath('//table')
                 #disttable table  header
-                distTreeTH = distTree.xpath('//table[%d]//tr/th' % j)
-                columnHeader = ""
-                for distTH in distTreeTH:
-                    columnHeader = columnHeader + distTH.text_content() + ", "
-                columnHeader = (columnHeader[:-2]).encode('utf-8').strip() + "\n"
-                csv.write(columnHeader)
+                distTreeTH = distTree.xpath('//table//tr/th')
 
-                #disttable table row
-                distTreeTR = distTree.xpath('//table[%d]//tr' % j)
-                distTreeTRLen = len(distTreeTR)
-                for i in range (2, distTreeTRLen+1):
-                    distTreeTD = distTree.xpath('//table[%d]//tr[%d]/td' % (j, i))
-                    row = ""
-                    for distTD in distTreeTD:
-                        row = row + distTD.text_content() + ", "
-                    row = (row[:-2]).encode('utf-8').strip() + "\n"
-                    csv.write(row)
+                distTreeTHLen = len(distTreeTH)
 
-                print "Finished ", distCsvFileName
-        print "Finished ", distId
-        z = z + 1
-	'''
+                for x in range(1, distTreeTHLen):
+                    dis_statistic = distTreeTH[x].text_content().encode('utf-8').strip()
+
+                    distRow = distTree.xpath('//table//tr')
+                    distRowLen = len(distRow)
+
+                    #loop through row: start at row number 2 as row number one is heading
+                    for y in range (2, distRowLen+1):
+                        #in each row get the cells
+                        disrow = geo_level + "," + geo_code + "," + geo_version + ","
+                        distRowTD = distTree.xpath('//table//tr[%d]/td' %  y)
+                        disrow += str(distRowTD[0].text_content().encode('utf-8').strip()) + "," + dis_statistic
+                        disrow += "," + str(distRowTD[x].text_content().encode('utf-8').strip()) + "\n"
+                        csv.write(disrow)
+                        disrow = ""
+
+                print "Finished ", distId
+            print "Finished ", provId
 
 except:
 	print "Unexpected error:", sys.exc_info()
