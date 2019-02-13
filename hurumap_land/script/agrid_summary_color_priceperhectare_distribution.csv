@@ -1,521 +1,481 @@
 geo_level, geo_code, geo_version, month, statistic, total
-country,ZA,2016,- Government Agriculture,Dec2017,41 083
-country,ZA,2016,- Government Urban,Dec2017,882 000
-country,ZA,2016,- Private,Dec2017,21 572
-country,ZA,2016,- Other,Dec2017,3 043
-country,ZA,2016,- Government Agriculture,Jan2018,6 630
-country,ZA,2016,- Government Urban,Jan2018,42 591
-country,ZA,2016,- Private,Jan2018,22 375
-country,ZA,2016,- Other,Jan2018,65 141
-country,ZA,2016,- Government Agriculture,Feb2018,9 421
-country,ZA,2016,- Government Urban,Feb2018,292 891
-country,ZA,2016,- Private,Feb2018,7 661
-country,ZA,2016,- Other,Feb2018,30 505
-country,ZA,2016,- Government Agriculture,Mar2018,8 716
-country,ZA,2016,- Government Urban,Mar2018,843 939
-country,ZA,2016,- Private,Mar2018,14 469
-country,ZA,2016,- Other,Mar2018,14 745
-country,ZA,2016,- Government Agriculture,Apr2018,124 238
-country,ZA,2016,- Government Urban,Apr2018,
-country,ZA,2016,- Private,Apr2018,15 489
-country,ZA,2016,- Other,Apr2018,7 154
-country,ZA,2016,- Government Agriculture,May2018,4 793
-country,ZA,2016,- Government Urban,May2018,120 000
-country,ZA,2016,- Private,May2018,16 144
-country,ZA,2016,- Other,May2018,10 431
-country,ZA,2016,- Government Agriculture,Jun2018,26 668
-country,ZA,2016,- Government Urban,Jun2018,
-country,ZA,2016,- Private,Jun2018,10 296
-country,ZA,2016,- Other,Jun2018,133 178
-country,ZA,2016,- Government Agriculture,Jul2018,8 370
-country,ZA,2016,- Government Urban,Jul2018,49 656
-country,ZA,2016,- Private,Jul2018,13 168
-country,ZA,2016,- Other,Jul2018,16 901
-country,ZA,2016,- Government Agriculture,Aug2018,5 147
-country,ZA,2016,- Government Urban,Aug2018,192 727
-country,ZA,2016,- Private,Aug2018,13 683
-country,ZA,2016,- Other,Aug2018,21 837
-country,ZA,2016,- Government Agriculture,Sep2018,18 391
-country,ZA,2016,- Government Urban,Sep2018,
-country,ZA,2016,- Private,Sep2018,22 339
-country,ZA,2016,- Other,Sep2018,5 172
-country,ZA,2016,- Government Agriculture,Oct2018,4 836
-country,ZA,2016,- Government Urban,Oct2018,302 828
-country,ZA,2016,- Private,Oct2018,12 381
-country,ZA,2016,- Other,Oct2018,15 206
-country,ZA,2016,- Government Agriculture,Nov2018,1 427
-country,ZA,2016,- Government Urban,Nov2018,
-country,ZA,2016,- Private,Nov2018,15 333
-country,ZA,2016,- Other,Nov2018,71 340
-country,ZA,2016,- Government Agriculture,Total,10 516
-country,ZA,2016,- Government Urban,Total,184 623
-country,ZA,2016,- Private,Total,14 487
-country,ZA,2016,- Other,Total,19 873
-province,EC,2016,- Government Agriculture,Dec2017,9 417
-province,EC,2016,- Government Urban,Dec2017,
-province,EC,2016,- Private,Dec2017,7 198
-province,EC,2016,- Other,Dec2017,
-province,EC,2016,- Government Agriculture,Jan2018,
-province,EC,2016,- Government Urban,Jan2018,
-province,EC,2016,- Private,Jan2018,26 923
-province,EC,2016,- Other,Jan2018,
-province,EC,2016,- Government Agriculture,Feb2018,
-province,EC,2016,- Government Urban,Feb2018,382 514
-province,EC,2016,- Private,Feb2018,53 659
-province,EC,2016,- Other,Feb2018,342 777
-province,EC,2016,- Government Agriculture,Mar2018,
-province,EC,2016,- Government Urban,Mar2018,
-province,EC,2016,- Private,Mar2018,3 587
-province,EC,2016,- Other,Mar2018,19 970
-province,EC,2016,- Government Agriculture,Apr2018,
-province,EC,2016,- Government Urban,Apr2018,
-province,EC,2016,- Private,Apr2018,4 564
-province,EC,2016,- Other,Apr2018,
-province,EC,2016,- Government Agriculture,May2018,
-province,EC,2016,- Government Urban,May2018,
-province,EC,2016,- Private,May2018,9 092
-province,EC,2016,- Other,May2018,
-province,EC,2016,- Government Agriculture,Jun2018,
-province,EC,2016,- Government Urban,Jun2018,
-province,EC,2016,- Private,Jun2018,39 552
-province,EC,2016,- Other,Jun2018,
-province,EC,2016,- Government Agriculture,Jul2018,
-province,EC,2016,- Government Urban,Jul2018,
-province,EC,2016,- Private,Jul2018,4 224
-province,EC,2016,- Other,Jul2018,
-province,EC,2016,- Government Agriculture,Aug2018,
-province,EC,2016,- Government Urban,Aug2018,
-province,EC,2016,- Private,Aug2018,14 237
-province,EC,2016,- Other,Aug2018,7 464
-province,EC,2016,- Government Agriculture,Sep2018,
-province,EC,2016,- Government Urban,Sep2018,
-province,EC,2016,- Private,Sep2018,6 725
-province,EC,2016,- Other,Sep2018,
-province,EC,2016,- Government Agriculture,Oct2018,7 636
-province,EC,2016,- Government Urban,Oct2018,
-province,EC,2016,- Private,Oct2018,5 975
-province,EC,2016,- Other,Oct2018,
-province,EC,2016,- Government Agriculture,Nov2018,
-province,EC,2016,- Government Urban,Nov2018,
-province,EC,2016,- Private,Nov2018,7 183
-province,EC,2016,- Other,Nov2018,10 252
-province,EC,2016,- Government Agriculture,Total,8 147
-province,EC,2016,- Government Urban,Total,382 514
-province,EC,2016,- Private,Total,6 096
-province,EC,2016,- Other,Total,18 557
-province,FS,2016,- Government Agriculture,Dec2017,
-province,FS,2016,- Government Urban,Dec2017,
-province,FS,2016,- Private,Dec2017,14 368
-province,FS,2016,- Other,Dec2017,7 405
-province,FS,2016,- Government Agriculture,Jan2018,6 630
-province,FS,2016,- Government Urban,Jan2018,
-province,FS,2016,- Private,Jan2018,375 000
-province,FS,2016,- Other,Jan2018,
-province,FS,2016,- Government Agriculture,Feb2018,
-province,FS,2016,- Government Urban,Feb2018,
-province,FS,2016,- Private,Feb2018,9 686
-province,FS,2016,- Other,Feb2018,
-province,FS,2016,- Government Agriculture,Mar2018,5 756
-province,FS,2016,- Government Urban,Mar2018,
-province,FS,2016,- Private,Mar2018,9 298
-province,FS,2016,- Other,Mar2018,7 236
-province,FS,2016,- Government Agriculture,Apr2018,
-province,FS,2016,- Government Urban,Apr2018,
-province,FS,2016,- Private,Apr2018,8 425
-province,FS,2016,- Other,Apr2018,31 903
-province,FS,2016,- Government Agriculture,May2018,
-province,FS,2016,- Government Urban,May2018,
-province,FS,2016,- Private,May2018,13 157
-province,FS,2016,- Other,May2018,3 987
-province,FS,2016,- Government Agriculture,Jun2018,
-province,FS,2016,- Government Urban,Jun2018,
-province,FS,2016,- Private,Jun2018,10 681
-province,FS,2016,- Other,Jun2018,159 744
-province,FS,2016,- Government Agriculture,Jul2018,2 843
-province,FS,2016,- Government Urban,Jul2018,
-province,FS,2016,- Private,Jul2018,23 257
-province,FS,2016,- Other,Jul2018,
-province,FS,2016,- Government Agriculture,Aug2018,
-province,FS,2016,- Government Urban,Aug2018,
-province,FS,2016,- Private,Aug2018,8 178
-province,FS,2016,- Other,Aug2018,17 227
-province,FS,2016,- Government Agriculture,Sep2018,
-province,FS,2016,- Government Urban,Sep2018,
-province,FS,2016,- Private,Sep2018,7 997
-province,FS,2016,- Other,Sep2018,3 786
-province,FS,2016,- Government Agriculture,Oct2018,10 359
-province,FS,2016,- Government Urban,Oct2018,
-province,FS,2016,- Private,Oct2018,8 058
-province,FS,2016,- Other,Oct2018,3 216
-province,FS,2016,- Government Agriculture,Nov2018,
-province,FS,2016,- Government Urban,Nov2018,
-province,FS,2016,- Private,Nov2018,2 446
-province,FS,2016,- Other,Nov2018,20 136
-province,FS,2016,- Government Agriculture,Total,6 750
-province,FS,2016,- Government Urban,Total,
-province,FS,2016,- Private,Total,10 567
-province,FS,2016,- Other,Total,9 214
-province,GT,2016,- Government Agriculture,Dec2017,68 910
-province,GT,2016,- Government Urban,Dec2017,
-province,GT,2016,- Private,Dec2017,47 957
-province,GT,2016,- Other,Dec2017,
-province,GT,2016,- Government Agriculture,Jan2018,
-province,GT,2016,- Government Urban,Jan2018,42 591
-province,GT,2016,- Private,Jan2018,56 923
-province,GT,2016,- Other,Jan2018,54 839
-province,GT,2016,- Government Agriculture,Feb2018,15 132
-province,GT,2016,- Government Urban,Feb2018,
-province,GT,2016,- Private,Feb2018,20 980
-province,GT,2016,- Other,Feb2018,
-province,GT,2016,- Government Agriculture,Mar2018,
-province,GT,2016,- Government Urban,Mar2018,
-province,GT,2016,- Private,Mar2018,58 884
-province,GT,2016,- Other,Mar2018,2 933 824
-province,GT,2016,- Government Agriculture,Apr2018,
-province,GT,2016,- Government Urban,Apr2018,
-province,GT,2016,- Private,Apr2018,37 223
-province,GT,2016,- Other,Apr2018,
-province,GT,2016,- Government Agriculture,May2018,
-province,GT,2016,- Government Urban,May2018,
-province,GT,2016,- Private,May2018,25 517
-province,GT,2016,- Other,May2018,10 007
-province,GT,2016,- Government Agriculture,Jun2018,
-province,GT,2016,- Government Urban,Jun2018,
-province,GT,2016,- Private,Jun2018,58 134
-province,GT,2016,- Other,Jun2018,84 969
-province,GT,2016,- Government Agriculture,Jul2018,
-province,GT,2016,- Government Urban,Jul2018,113 095
-province,GT,2016,- Private,Jul2018,100 763
-province,GT,2016,- Other,Jul2018,
-province,GT,2016,- Government Agriculture,Aug2018,65 000
-province,GT,2016,- Government Urban,Aug2018,
-province,GT,2016,- Private,Aug2018,17 066
-province,GT,2016,- Other,Aug2018,2 174
-province,GT,2016,- Government Agriculture,Sep2018,
-province,GT,2016,- Government Urban,Sep2018,
-province,GT,2016,- Private,Sep2018,323 788
-province,GT,2016,- Other,Sep2018,27 364
-province,GT,2016,- Government Agriculture,Oct2018,16 351
-province,GT,2016,- Government Urban,Oct2018,569 767
-province,GT,2016,- Private,Oct2018,42 764
-province,GT,2016,- Other,Oct2018,395 432
-province,GT,2016,- Government Agriculture,Nov2018,
-province,GT,2016,- Government Urban,Nov2018,
-province,GT,2016,- Private,Nov2018,19 658
-province,GT,2016,- Other,Nov2018,34 030
-province,GT,2016,- Government Agriculture,Total,31 767
-province,GT,2016,- Government Urban,Total,168 094
-province,GT,2016,- Private,Total,41 947
-province,GT,2016,- Other,Total,78 024
-province,KZN,2016,- Government Agriculture,Dec2017,15 779
-province,KZN,2016,- Government Urban,Dec2017,882 000
-province,KZN,2016,- Private,Dec2017,106 011
-province,KZN,2016,- Other,Dec2017,
-province,KZN,2016,- Government Agriculture,Jan2018,
-province,KZN,2016,- Government Urban,Jan2018,
-province,KZN,2016,- Private,Jan2018,38 535
-province,KZN,2016,- Other,Jan2018,
-province,KZN,2016,- Government Agriculture,Feb2018,10 157
-province,KZN,2016,- Government Urban,Feb2018,
-province,KZN,2016,- Private,Feb2018,39 550
-province,KZN,2016,- Other,Feb2018,49 032
-province,KZN,2016,- Government Agriculture,Mar2018,15 064
-province,KZN,2016,- Government Urban,Mar2018,
-province,KZN,2016,- Private,Mar2018,9 543
-province,KZN,2016,- Other,Mar2018,65 712
-province,KZN,2016,- Government Agriculture,Apr2018,
-province,KZN,2016,- Government Urban,Apr2018,
-province,KZN,2016,- Private,Apr2018,28 975
-province,KZN,2016,- Other,Apr2018,120 000
-province,KZN,2016,- Government Agriculture,May2018,
-province,KZN,2016,- Government Urban,May2018,
-province,KZN,2016,- Private,May2018,28 440
-province,KZN,2016,- Other,May2018,145 000
-province,KZN,2016,- Government Agriculture,Jun2018,
-province,KZN,2016,- Government Urban,Jun2018,
-province,KZN,2016,- Private,Jun2018,41 677
-province,KZN,2016,- Other,Jun2018,
-province,KZN,2016,- Government Agriculture,Jul2018,
-province,KZN,2016,- Government Urban,Jul2018,
-province,KZN,2016,- Private,Jul2018,64 056
-province,KZN,2016,- Other,Jul2018,
-province,KZN,2016,- Government Agriculture,Aug2018,
-province,KZN,2016,- Government Urban,Aug2018,
-province,KZN,2016,- Private,Aug2018,43 197
-province,KZN,2016,- Other,Aug2018,237 656
-province,KZN,2016,- Government Agriculture,Sep2018,
-province,KZN,2016,- Government Urban,Sep2018,
-province,KZN,2016,- Private,Sep2018,25 550
-province,KZN,2016,- Other,Sep2018,89 549
-province,KZN,2016,- Government Agriculture,Oct2018,
-province,KZN,2016,- Government Urban,Oct2018,34 783
-province,KZN,2016,- Private,Oct2018,17 597
-province,KZN,2016,- Other,Oct2018,58 882
-province,KZN,2016,- Government Agriculture,Nov2018,
-province,KZN,2016,- Government Urban,Nov2018,
-province,KZN,2016,- Private,Nov2018,22 192
-province,KZN,2016,- Other,Nov2018,112 500
-province,KZN,2016,- Government Agriculture,Total,13 731
-province,KZN,2016,- Government Urban,Total,418 048
-province,KZN,2016,- Private,Total,28 175
-province,KZN,2016,- Other,Total,119 916
-province,LIM,2016,- Government Agriculture,Dec2017,
-province,LIM,2016,- Government Urban,Dec2017,
-province,LIM,2016,- Private,Dec2017,10 723
-province,LIM,2016,- Other,Dec2017,34 091
-province,LIM,2016,- Government Agriculture,Jan2018,
-province,LIM,2016,- Government Urban,Jan2018,
-province,LIM,2016,- Private,Jan2018,16 652
-province,LIM,2016,- Other,Jan2018,61 111
-province,LIM,2016,- Government Agriculture,Feb2018,
-province,LIM,2016,- Government Urban,Feb2018,18
-province,LIM,2016,- Private,Feb2018,8 790
-province,LIM,2016,- Other,Feb2018,10 436
-province,LIM,2016,- Government Agriculture,Mar2018,
-province,LIM,2016,- Government Urban,Mar2018,285 000
-province,LIM,2016,- Private,Mar2018,19 334
-province,LIM,2016,- Other,Mar2018,10 078
-province,LIM,2016,- Government Agriculture,Apr2018,
-province,LIM,2016,- Government Urban,Apr2018,
-province,LIM,2016,- Private,Apr2018,51 809
-province,LIM,2016,- Other,Apr2018,346 154
-province,LIM,2016,- Government Agriculture,May2018,
-province,LIM,2016,- Government Urban,May2018,
-province,LIM,2016,- Private,May2018,9 135
-province,LIM,2016,- Other,May2018,
-province,LIM,2016,- Government Agriculture,Jun2018,
-province,LIM,2016,- Government Urban,Jun2018,
-province,LIM,2016,- Private,Jun2018,21 752
-province,LIM,2016,- Other,Jun2018,151 456
-province,LIM,2016,- Government Agriculture,Jul2018,
-province,LIM,2016,- Government Urban,Jul2018,7 018
-province,LIM,2016,- Private,Jul2018,10 002
-province,LIM,2016,- Other,Jul2018,
-province,LIM,2016,- Government Agriculture,Aug2018,
-province,LIM,2016,- Government Urban,Aug2018,
-province,LIM,2016,- Private,Aug2018,10 349
-province,LIM,2016,- Other,Aug2018,
-province,LIM,2016,- Government Agriculture,Sep2018,
-province,LIM,2016,- Government Urban,Sep2018,
-province,LIM,2016,- Private,Sep2018,5 211
-province,LIM,2016,- Other,Sep2018,
-province,LIM,2016,- Government Agriculture,Oct2018,
-province,LIM,2016,- Government Urban,Oct2018,
-province,LIM,2016,- Private,Oct2018,5 745
-province,LIM,2016,- Other,Oct2018,10 958
-province,LIM,2016,- Government Agriculture,Nov2018,
-province,LIM,2016,- Government Urban,Nov2018,
-province,LIM,2016,- Private,Nov2018,14 031
-province,LIM,2016,- Other,Nov2018,250 294
-province,LIM,2016,- Government Agriculture,Total,
-province,LIM,2016,- Government Urban,Total,18 131
-province,LIM,2016,- Private,Total,10 437
-province,LIM,2016,- Other,Total,115 675
-province,MP,2016,- Government Agriculture,Dec2017,8 821
-province,MP,2016,- Government Urban,Dec2017,
-province,MP,2016,- Private,Dec2017,52 191
-province,MP,2016,- Other,Dec2017,245 000
-province,MP,2016,- Government Agriculture,Jan2018,
-province,MP,2016,- Government Urban,Jan2018,
-province,MP,2016,- Private,Jan2018,16 135
-province,MP,2016,- Other,Jan2018,67 207
-province,MP,2016,- Government Agriculture,Feb2018,7 431
-province,MP,2016,- Government Urban,Feb2018,
-province,MP,2016,- Private,Feb2018,11 756
-province,MP,2016,- Other,Feb2018,30 725
-province,MP,2016,- Government Agriculture,Mar2018,
-province,MP,2016,- Government Urban,Mar2018,
-province,MP,2016,- Private,Mar2018,79 885
-province,MP,2016,- Other,Mar2018,38 785
-province,MP,2016,- Government Agriculture,Apr2018,
-province,MP,2016,- Government Urban,Apr2018,
-province,MP,2016,- Private,Apr2018,15 235
-province,MP,2016,- Other,Apr2018,46 371
-province,MP,2016,- Government Agriculture,May2018,
-province,MP,2016,- Government Urban,May2018,
-province,MP,2016,- Private,May2018,30 040
-province,MP,2016,- Other,May2018,149 194
-province,MP,2016,- Government Agriculture,Jun2018,
-province,MP,2016,- Government Urban,Jun2018,
-province,MP,2016,- Private,Jun2018,15 472
-province,MP,2016,- Other,Jun2018,
-province,MP,2016,- Government Agriculture,Jul2018,10 577
-province,MP,2016,- Government Urban,Jul2018,121 951
-province,MP,2016,- Private,Jul2018,33 342
-province,MP,2016,- Other,Jul2018,16 438
-province,MP,2016,- Government Agriculture,Aug2018,
-province,MP,2016,- Government Urban,Aug2018,
-province,MP,2016,- Private,Aug2018,21 349
-province,MP,2016,- Other,Aug2018,57 407
-province,MP,2016,- Government Agriculture,Sep2018,14 928
-province,MP,2016,- Government Urban,Sep2018,
-province,MP,2016,- Private,Sep2018,33 655
-province,MP,2016,- Other,Sep2018,46 280
-province,MP,2016,- Government Agriculture,Oct2018,4 877
-province,MP,2016,- Government Urban,Oct2018,
-province,MP,2016,- Private,Oct2018,32 449
-province,MP,2016,- Other,Oct2018,62 796
-province,MP,2016,- Government Agriculture,Nov2018,
-province,MP,2016,- Government Urban,Nov2018,
-province,MP,2016,- Private,Nov2018,30 258
-province,MP,2016,- Other,Nov2018,48 357
-province,MP,2016,- Government Agriculture,Total,7 930
-province,MP,2016,- Government Urban,Total,121 951
-province,MP,2016,- Private,Total,27 829
-province,MP,2016,- Other,Total,41 524
-province,NC,2016,- Government Agriculture,Dec2017,
-province,NC,2016,- Government Urban,Dec2017,
-province,NC,2016,- Private,Dec2017,18 421
-province,NC,2016,- Other,Dec2017,2 402
-province,NC,2016,- Government Agriculture,Jan2018,
-province,NC,2016,- Government Urban,Jan2018,
-province,NC,2016,- Private,Jan2018,3 991
-province,NC,2016,- Other,Jan2018,
-province,NC,2016,- Government Agriculture,Feb2018,
-province,NC,2016,- Government Urban,Feb2018,
-province,NC,2016,- Private,Feb2018,1 337
-province,NC,2016,- Other,Feb2018,7 373
-province,NC,2016,- Government Agriculture,Mar2018,
-province,NC,2016,- Government Urban,Mar2018,1 086 957
-province,NC,2016,- Private,Mar2018,7 998
-province,NC,2016,- Other,Mar2018,2 291
-province,NC,2016,- Government Agriculture,Apr2018,
-province,NC,2016,- Government Urban,Apr2018,
-province,NC,2016,- Private,Apr2018,1 206
-province,NC,2016,- Other,Apr2018,2 466
-province,NC,2016,- Government Agriculture,May2018,
-province,NC,2016,- Government Urban,May2018,
-province,NC,2016,- Private,May2018,
-province,NC,2016,- Other,May2018,
-province,NC,2016,- Government Agriculture,Jun2018,
-province,NC,2016,- Government Urban,Jun2018,
-province,NC,2016,- Private,Jun2018,2 039
-province,NC,2016,- Other,Jun2018,
-province,NC,2016,- Government Agriculture,Jul2018,
-province,NC,2016,- Government Urban,Jul2018,
-province,NC,2016,- Private,Jul2018,
-province,NC,2016,- Other,Jul2018,
-province,NC,2016,- Government Agriculture,Aug2018,
-province,NC,2016,- Government Urban,Aug2018,
-province,NC,2016,- Private,Aug2018,3 401
-province,NC,2016,- Other,Aug2018,7 470
-province,NC,2016,- Government Agriculture,Sep2018,
-province,NC,2016,- Government Urban,Sep2018,
-province,NC,2016,- Private,Sep2018,276 471
-province,NC,2016,- Other,Sep2018,
-province,NC,2016,- Government Agriculture,Oct2018,2 675
-province,NC,2016,- Government Urban,Oct2018,
-province,NC,2016,- Private,Oct2018,
-province,NC,2016,- Other,Oct2018,
-province,NC,2016,- Government Agriculture,Nov2018,
-province,NC,2016,- Government Urban,Nov2018,
-province,NC,2016,- Private,Nov2018,300 000
-province,NC,2016,- Other,Nov2018,
-province,NC,2016,- Government Agriculture,Total,2 675
-province,NC,2016,- Government Urban,Total,1 086 957
-province,NC,2016,- Private,Total,3 103
-province,NC,2016,- Other,Total,2 840
-province,NW,2016,- Government Agriculture,Dec2017,435 185
-province,NW,2016,- Government Urban,Dec2017,
-province,NW,2016,- Private,Dec2017,14 656
-province,NW,2016,- Other,Dec2017,
-province,NW,2016,- Government Agriculture,Jan2018,
-province,NW,2016,- Government Urban,Jan2018,
-province,NW,2016,- Private,Jan2018,25 318
-province,NW,2016,- Other,Jan2018,
-province,NW,2016,- Government Agriculture,Feb2018,
-province,NW,2016,- Government Urban,Feb2018,
-province,NW,2016,- Private,Feb2018,14 648
-province,NW,2016,- Other,Feb2018,
-province,NW,2016,- Government Agriculture,Mar2018,6 844
-province,NW,2016,- Government Urban,Mar2018,
-province,NW,2016,- Private,Mar2018,17 382
-province,NW,2016,- Other,Mar2018,
-province,NW,2016,- Government Agriculture,Apr2018,
-province,NW,2016,- Government Urban,Apr2018,
-province,NW,2016,- Private,Apr2018,19 894
-province,NW,2016,- Other,Apr2018,28 885
-province,NW,2016,- Government Agriculture,May2018,4 533
-province,NW,2016,- Government Urban,May2018,120 000
-province,NW,2016,- Private,May2018,32 490
-province,NW,2016,- Other,May2018,6 309
-province,NW,2016,- Government Agriculture,Jun2018,26 668
-province,NW,2016,- Government Urban,Jun2018,
-province,NW,2016,- Private,Jun2018,15 883
-province,NW,2016,- Other,Jun2018,1 730
-province,NW,2016,- Government Agriculture,Jul2018,23 558
-province,NW,2016,- Government Urban,Jul2018,
-province,NW,2016,- Private,Jul2018,13 077
-province,NW,2016,- Other,Jul2018,27 625
-province,NW,2016,- Government Agriculture,Aug2018,4 130
-province,NW,2016,- Government Urban,Aug2018,192 727
-province,NW,2016,- Private,Aug2018,21 187
-province,NW,2016,- Other,Aug2018,250 062
-province,NW,2016,- Government Agriculture,Sep2018,19 740
-province,NW,2016,- Government Urban,Sep2018,
-province,NW,2016,- Private,Sep2018,13 530
-province,NW,2016,- Other,Sep2018,
-province,NW,2016,- Government Agriculture,Oct2018,7 086
-province,NW,2016,- Government Urban,Oct2018,113 064
-province,NW,2016,- Private,Oct2018,7 291
-province,NW,2016,- Other,Oct2018,34 242
-province,NW,2016,- Government Agriculture,Nov2018,
-province,NW,2016,- Government Urban,Nov2018,
-province,NW,2016,- Private,Nov2018,15 721
-province,NW,2016,- Other,Nov2018,450 450
-province,NW,2016,- Government Agriculture,Total,10 820
-province,NW,2016,- Government Urban,Total,183 277
-province,NW,2016,- Private,Total,17 374
-province,NW,2016,- Other,Total,48 051
-province,WC,2016,- Government Agriculture,Dec2017,
-province,WC,2016,- Government Urban,Dec2017,
-province,WC,2016,- Private,Dec2017,13 316
-province,WC,2016,- Other,Dec2017,400
-province,WC,2016,- Government Agriculture,Jan2018,
-province,WC,2016,- Government Urban,Jan2018,
-province,WC,2016,- Private,Jan2018,45 463
-province,WC,2016,- Other,Jan2018,
-province,WC,2016,- Government Agriculture,Feb2018,
-province,WC,2016,- Government Urban,Feb2018,
-province,WC,2016,- Private,Feb2018,21 374
-province,WC,2016,- Other,Feb2018,60 800
-province,WC,2016,- Government Agriculture,Mar2018,
-province,WC,2016,- Government Urban,Mar2018,
-province,WC,2016,- Private,Mar2018,64 363
-province,WC,2016,- Other,Mar2018,5 328
-province,WC,2016,- Government Agriculture,Apr2018,124 238
-province,WC,2016,- Government Urban,Apr2018,
-province,WC,2016,- Private,Apr2018,4 956
-province,WC,2016,- Other,Apr2018,
-province,WC,2016,- Government Agriculture,May2018,5 734
-province,WC,2016,- Government Urban,May2018,
-province,WC,2016,- Private,May2018,38 040
-province,WC,2016,- Other,May2018,
-province,WC,2016,- Government Agriculture,Jun2018,
-province,WC,2016,- Government Urban,Jun2018,
-province,WC,2016,- Private,Jun2018,40 970
-province,WC,2016,- Other,Jun2018,
-province,WC,2016,- Government Agriculture,Jul2018,
-province,WC,2016,- Government Urban,Jul2018,
-province,WC,2016,- Private,Jul2018,
-province,WC,2016,- Other,Jul2018,
-province,WC,2016,- Government Agriculture,Aug2018,
-province,WC,2016,- Government Urban,Aug2018,
-province,WC,2016,- Private,Aug2018,9 872
-province,WC,2016,- Other,Aug2018,75 000
-province,WC,2016,- Government Agriculture,Sep2018,91 667
-province,WC,2016,- Government Urban,Sep2018,
-province,WC,2016,- Private,Sep2018,30 845
-province,WC,2016,- Other,Sep2018,46 512
-province,WC,2016,- Government Agriculture,Oct2018,
-province,WC,2016,- Government Urban,Oct2018,
-province,WC,2016,- Private,Oct2018,7 198
-province,WC,2016,- Other,Oct2018,55 104
-province,WC,2016,- Government Agriculture,Nov2018,1 427
-province,WC,2016,- Government Urban,Nov2018,
-province,WC,2016,- Private,Nov2018,
-province,WC,2016,- Other,Nov2018,200 000
-province,WC,2016,- Government Agriculture,Total,26 838
-province,WC,2016,- Government Urban,Total,
-province,WC,2016,- Private,Total,15 466
-province,WC,2016,- Other,Total,8 313
+country,ZA,2016,Government Agriculture,Dec2017,41083
+country,ZA,2016,Government Urban,Dec2017,882000
+country,ZA,2016,Private,Dec2017,21572
+country,ZA,2016,Other,Dec2017,3043
+country,ZA,2016,Government Agriculture,Jan2018,6630
+country,ZA,2016,Government Urban,Jan2018,42591
+country,ZA,2016,Private,Jan2018,22375
+country,ZA,2016,Other,Jan2018,65141
+country,ZA,2016,Government Agriculture,Feb2018,9421
+country,ZA,2016,Government Urban,Feb2018,292891
+country,ZA,2016,Private,Feb2018,7661
+country,ZA,2016,Other,Feb2018,30505
+country,ZA,2016,Government Agriculture,Mar2018,8716
+country,ZA,2016,Government Urban,Mar2018,843939
+country,ZA,2016,Private,Mar2018,14469
+country,ZA,2016,Other,Mar2018,14745
+country,ZA,2016,Government Agriculture,Apr2018,124238
+country,ZA,2016,Government Urban,Apr2018,
+country,ZA,2016,Private,Apr2018,15489
+country,ZA,2016,Other,Apr2018,7154
+country,ZA,2016,Government Agriculture,May2018,4793
+country,ZA,2016,Government Urban,May2018,120000
+country,ZA,2016,Private,May2018,16144
+country,ZA,2016,Other,May2018,10431
+country,ZA,2016,Government Agriculture,Jun2018,26668
+country,ZA,2016,Government Urban,Jun2018,
+country,ZA,2016,Private,Jun2018,10296
+country,ZA,2016,Other,Jun2018,133178
+country,ZA,2016,Government Agriculture,Jul2018,8370
+country,ZA,2016,Government Urban,Jul2018,49656
+country,ZA,2016,Private,Jul2018,13168
+country,ZA,2016,Other,Jul2018,16901
+country,ZA,2016,Government Agriculture,Aug2018,5147
+country,ZA,2016,Government Urban,Aug2018,192727
+country,ZA,2016,Private,Aug2018,13683
+country,ZA,2016,Other,Aug2018,21837
+country,ZA,2016,Government Agriculture,Sep2018,18391
+country,ZA,2016,Government Urban,Sep2018,
+country,ZA,2016,Private,Sep2018,22339
+country,ZA,2016,Other,Sep2018,5172
+country,ZA,2016,Government Agriculture,Oct2018,4836
+country,ZA,2016,Government Urban,Oct2018,302828
+country,ZA,2016,Private,Oct2018,12381
+country,ZA,2016,Other,Oct2018,15206
+country,ZA,2016,Government Agriculture,Nov2018,1427
+country,ZA,2016,Government Urban,Nov2018,
+country,ZA,2016,Private,Nov2018,15333
+country,ZA,2016,Other,Nov2018,71340
+province,EC,2016,Government Agriculture,Dec2017,9417
+province,EC,2016,Government Urban,Dec2017,
+province,EC,2016,Private,Dec2017,7198
+province,EC,2016,Other,Dec2017,
+province,EC,2016,Government Agriculture,Jan2018,
+province,EC,2016,Government Urban,Jan2018,
+province,EC,2016,Private,Jan2018,26923
+province,EC,2016,Other,Jan2018,
+province,EC,2016,Government Agriculture,Feb2018,
+province,EC,2016,Government Urban,Feb2018,382514
+province,EC,2016,Private,Feb2018,53659
+province,EC,2016,Other,Feb2018,342777
+province,EC,2016,Government Agriculture,Mar2018,
+province,EC,2016,Government Urban,Mar2018,
+province,EC,2016,Private,Mar2018,3587
+province,EC,2016,Other,Mar2018,19970
+province,EC,2016,Government Agriculture,Apr2018,
+province,EC,2016,Government Urban,Apr2018,
+province,EC,2016,Private,Apr2018,4564
+province,EC,2016,Other,Apr2018,
+province,EC,2016,Government Agriculture,May2018,
+province,EC,2016,Government Urban,May2018,
+province,EC,2016,Private,May2018,9092
+province,EC,2016,Other,May2018,
+province,EC,2016,Government Agriculture,Jun2018,
+province,EC,2016,Government Urban,Jun2018,
+province,EC,2016,Private,Jun2018,39552
+province,EC,2016,Other,Jun2018,
+province,EC,2016,Government Agriculture,Jul2018,
+province,EC,2016,Government Urban,Jul2018,
+province,EC,2016,Private,Jul2018,4224
+province,EC,2016,Other,Jul2018,
+province,EC,2016,Government Agriculture,Aug2018,
+province,EC,2016,Government Urban,Aug2018,
+province,EC,2016,Private,Aug2018,14237
+province,EC,2016,Other,Aug2018,7464
+province,EC,2016,Government Agriculture,Sep2018,
+province,EC,2016,Government Urban,Sep2018,
+province,EC,2016,Private,Sep2018,6725
+province,EC,2016,Other,Sep2018,
+province,EC,2016,Government Agriculture,Oct2018,7636
+province,EC,2016,Government Urban,Oct2018,
+province,EC,2016,Private,Oct2018,5975
+province,EC,2016,Other,Oct2018,
+province,EC,2016,Government Agriculture,Nov2018,
+province,EC,2016,Government Urban,Nov2018,
+province,EC,2016,Private,Nov2018,7183
+province,EC,2016,Other,Nov2018,10252
+province,FS,2016,Government Agriculture,Dec2017,
+province,FS,2016,Government Urban,Dec2017,
+province,FS,2016,Private,Dec2017,14368
+province,FS,2016,Other,Dec2017,7405
+province,FS,2016,Government Agriculture,Jan2018,6630
+province,FS,2016,Government Urban,Jan2018,
+province,FS,2016,Private,Jan2018,375000
+province,FS,2016,Other,Jan2018,
+province,FS,2016,Government Agriculture,Feb2018,
+province,FS,2016,Government Urban,Feb2018,
+province,FS,2016,Private,Feb2018,9686
+province,FS,2016,Other,Feb2018,
+province,FS,2016,Government Agriculture,Mar2018,5756
+province,FS,2016,Government Urban,Mar2018,
+province,FS,2016,Private,Mar2018,9298
+province,FS,2016,Other,Mar2018,7236
+province,FS,2016,Government Agriculture,Apr2018,
+province,FS,2016,Government Urban,Apr2018,
+province,FS,2016,Private,Apr2018,8425
+province,FS,2016,Other,Apr2018,31903
+province,FS,2016,Government Agriculture,May2018,
+province,FS,2016,Government Urban,May2018,
+province,FS,2016,Private,May2018,13157
+province,FS,2016,Other,May2018,3987
+province,FS,2016,Government Agriculture,Jun2018,
+province,FS,2016,Government Urban,Jun2018,
+province,FS,2016,Private,Jun2018,10681
+province,FS,2016,Other,Jun2018,159744
+province,FS,2016,Government Agriculture,Jul2018,2843
+province,FS,2016,Government Urban,Jul2018,
+province,FS,2016,Private,Jul2018,23257
+province,FS,2016,Other,Jul2018,
+province,FS,2016,Government Agriculture,Aug2018,
+province,FS,2016,Government Urban,Aug2018,
+province,FS,2016,Private,Aug2018,8178
+province,FS,2016,Other,Aug2018,17227
+province,FS,2016,Government Agriculture,Sep2018,
+province,FS,2016,Government Urban,Sep2018,
+province,FS,2016,Private,Sep2018,7997
+province,FS,2016,Other,Sep2018,3786
+province,FS,2016,Government Agriculture,Oct2018,10359
+province,FS,2016,Government Urban,Oct2018,
+province,FS,2016,Private,Oct2018,8058
+province,FS,2016,Other,Oct2018,3216
+province,FS,2016,Government Agriculture,Nov2018,
+province,FS,2016,Government Urban,Nov2018,
+province,FS,2016,Private,Nov2018,2446
+province,FS,2016,Other,Nov2018,20136
+province,GT,2016,Government Agriculture,Dec2017,68910
+province,GT,2016,Government Urban,Dec2017,
+province,GT,2016,Private,Dec2017,47957
+province,GT,2016,Other,Dec2017,
+province,GT,2016,Government Agriculture,Jan2018,
+province,GT,2016,Government Urban,Jan2018,42591
+province,GT,2016,Private,Jan2018,56923
+province,GT,2016,Other,Jan2018,54839
+province,GT,2016,Government Agriculture,Feb2018,15132
+province,GT,2016,Government Urban,Feb2018,
+province,GT,2016,Private,Feb2018,20980
+province,GT,2016,Other,Feb2018,
+province,GT,2016,Government Agriculture,Mar2018,
+province,GT,2016,Government Urban,Mar2018,
+province,GT,2016,Private,Mar2018,58884
+province,GT,2016,Other,Mar2018,2933824
+province,GT,2016,Government Agriculture,Apr2018,
+province,GT,2016,Government Urban,Apr2018,
+province,GT,2016,Private,Apr2018,37223
+province,GT,2016,Other,Apr2018,
+province,GT,2016,Government Agriculture,May2018,
+province,GT,2016,Government Urban,May2018,
+province,GT,2016,Private,May2018,25517
+province,GT,2016,Other,May2018,10007
+province,GT,2016,Government Agriculture,Jun2018,
+province,GT,2016,Government Urban,Jun2018,
+province,GT,2016,Private,Jun2018,58134
+province,GT,2016,Other,Jun2018,84969
+province,GT,2016,Government Agriculture,Jul2018,
+province,GT,2016,Government Urban,Jul2018,113095
+province,GT,2016,Private,Jul2018,100763
+province,GT,2016,Other,Jul2018,
+province,GT,2016,Government Agriculture,Aug2018,65000
+province,GT,2016,Government Urban,Aug2018,
+province,GT,2016,Private,Aug2018,17066
+province,GT,2016,Other,Aug2018,2174
+province,GT,2016,Government Agriculture,Sep2018,
+province,GT,2016,Government Urban,Sep2018,
+province,GT,2016,Private,Sep2018,323788
+province,GT,2016,Other,Sep2018,27364
+province,GT,2016,Government Agriculture,Oct2018,16351
+province,GT,2016,Government Urban,Oct2018,569767
+province,GT,2016,Private,Oct2018,42764
+province,GT,2016,Other,Oct2018,395432
+province,GT,2016,Government Agriculture,Nov2018,
+province,GT,2016,Government Urban,Nov2018,
+province,GT,2016,Private,Nov2018,19658
+province,GT,2016,Other,Nov2018,34030
+province,KZN,2016,Government Agriculture,Dec2017,15779
+province,KZN,2016,Government Urban,Dec2017,882000
+province,KZN,2016,Private,Dec2017,106011
+province,KZN,2016,Other,Dec2017,
+province,KZN,2016,Government Agriculture,Jan2018,
+province,KZN,2016,Government Urban,Jan2018,
+province,KZN,2016,Private,Jan2018,38535
+province,KZN,2016,Other,Jan2018,
+province,KZN,2016,Government Agriculture,Feb2018,10157
+province,KZN,2016,Government Urban,Feb2018,
+province,KZN,2016,Private,Feb2018,39550
+province,KZN,2016,Other,Feb2018,49032
+province,KZN,2016,Government Agriculture,Mar2018,15064
+province,KZN,2016,Government Urban,Mar2018,
+province,KZN,2016,Private,Mar2018,9543
+province,KZN,2016,Other,Mar2018,65712
+province,KZN,2016,Government Agriculture,Apr2018,
+province,KZN,2016,Government Urban,Apr2018,
+province,KZN,2016,Private,Apr2018,28975
+province,KZN,2016,Other,Apr2018,120000
+province,KZN,2016,Government Agriculture,May2018,
+province,KZN,2016,Government Urban,May2018,
+province,KZN,2016,Private,May2018,28440
+province,KZN,2016,Other,May2018,145000
+province,KZN,2016,Government Agriculture,Jun2018,
+province,KZN,2016,Government Urban,Jun2018,
+province,KZN,2016,Private,Jun2018,41677
+province,KZN,2016,Other,Jun2018,
+province,KZN,2016,Government Agriculture,Jul2018,
+province,KZN,2016,Government Urban,Jul2018,
+province,KZN,2016,Private,Jul2018,64056
+province,KZN,2016,Other,Jul2018,
+province,KZN,2016,Government Agriculture,Aug2018,
+province,KZN,2016,Government Urban,Aug2018,
+province,KZN,2016,Private,Aug2018,43197
+province,KZN,2016,Other,Aug2018,237656
+province,KZN,2016,Government Agriculture,Sep2018,
+province,KZN,2016,Government Urban,Sep2018,
+province,KZN,2016,Private,Sep2018,25550
+province,KZN,2016,Other,Sep2018,89549
+province,KZN,2016,Government Agriculture,Oct2018,
+province,KZN,2016,Government Urban,Oct2018,34783
+province,KZN,2016,Private,Oct2018,17597
+province,KZN,2016,Other,Oct2018,58882
+province,KZN,2016,Government Agriculture,Nov2018,
+province,KZN,2016,Government Urban,Nov2018,
+province,KZN,2016,Private,Nov2018,22192
+province,KZN,2016,Other,Nov2018,112500
+province,LIM,2016,Government Agriculture,Dec2017,
+province,LIM,2016,Government Urban,Dec2017,
+province,LIM,2016,Private,Dec2017,10723
+province,LIM,2016,Other,Dec2017,34091
+province,LIM,2016,Government Agriculture,Jan2018,
+province,LIM,2016,Government Urban,Jan2018,
+province,LIM,2016,Private,Jan2018,16652
+province,LIM,2016,Other,Jan2018,61111
+province,LIM,2016,Government Agriculture,Feb2018,
+province,LIM,2016,Government Urban,Feb2018,18
+province,LIM,2016,Private,Feb2018,8790
+province,LIM,2016,Other,Feb2018,10436
+province,LIM,2016,Government Agriculture,Mar2018,
+province,LIM,2016,Government Urban,Mar2018,285000
+province,LIM,2016,Private,Mar2018,19334
+province,LIM,2016,Other,Mar2018,10078
+province,LIM,2016,Government Agriculture,Apr2018,
+province,LIM,2016,Government Urban,Apr2018,
+province,LIM,2016,Private,Apr2018,51809
+province,LIM,2016,Other,Apr2018,346154
+province,LIM,2016,Government Agriculture,May2018,
+province,LIM,2016,Government Urban,May2018,
+province,LIM,2016,Private,May2018,9135
+province,LIM,2016,Other,May2018,
+province,LIM,2016,Government Agriculture,Jun2018,
+province,LIM,2016,Government Urban,Jun2018,
+province,LIM,2016,Private,Jun2018,21752
+province,LIM,2016,Other,Jun2018,151456
+province,LIM,2016,Government Agriculture,Jul2018,
+province,LIM,2016,Government Urban,Jul2018,7018
+province,LIM,2016,Private,Jul2018,10002
+province,LIM,2016,Other,Jul2018,
+province,LIM,2016,Government Agriculture,Aug2018,
+province,LIM,2016,Government Urban,Aug2018,
+province,LIM,2016,Private,Aug2018,10349
+province,LIM,2016,Other,Aug2018,
+province,LIM,2016,Government Agriculture,Sep2018,
+province,LIM,2016,Government Urban,Sep2018,
+province,LIM,2016,Private,Sep2018,5211
+province,LIM,2016,Other,Sep2018,
+province,LIM,2016,Government Agriculture,Oct2018,
+province,LIM,2016,Government Urban,Oct2018,
+province,LIM,2016,Private,Oct2018,5745
+province,LIM,2016,Other,Oct2018,10958
+province,LIM,2016,Government Agriculture,Nov2018,
+province,LIM,2016,Government Urban,Nov2018,
+province,LIM,2016,Private,Nov2018,14031
+province,LIM,2016,Other,Nov2018,250294
+province,MP,2016,Government Agriculture,Dec2017,8821
+province,MP,2016,Government Urban,Dec2017,
+province,MP,2016,Private,Dec2017,52191
+province,MP,2016,Other,Dec2017,245000
+province,MP,2016,Government Agriculture,Jan2018,
+province,MP,2016,Government Urban,Jan2018,
+province,MP,2016,Private,Jan2018,16135
+province,MP,2016,Other,Jan2018,67207
+province,MP,2016,Government Agriculture,Feb2018,7431
+province,MP,2016,Government Urban,Feb2018,
+province,MP,2016,Private,Feb2018,11756
+province,MP,2016,Other,Feb2018,30725
+province,MP,2016,Government Agriculture,Mar2018,
+province,MP,2016,Government Urban,Mar2018,
+province,MP,2016,Private,Mar2018,79885
+province,MP,2016,Other,Mar2018,38785
+province,MP,2016,Government Agriculture,Apr2018,
+province,MP,2016,Government Urban,Apr2018,
+province,MP,2016,Private,Apr2018,15235
+province,MP,2016,Other,Apr2018,46371
+province,MP,2016,Government Agriculture,May2018,
+province,MP,2016,Government Urban,May2018,
+province,MP,2016,Private,May2018,30040
+province,MP,2016,Other,May2018,149194
+province,MP,2016,Government Agriculture,Jun2018,
+province,MP,2016,Government Urban,Jun2018,
+province,MP,2016,Private,Jun2018,15472
+province,MP,2016,Other,Jun2018,
+province,MP,2016,Government Agriculture,Jul2018,10577
+province,MP,2016,Government Urban,Jul2018,121951
+province,MP,2016,Private,Jul2018,33342
+province,MP,2016,Other,Jul2018,16438
+province,MP,2016,Government Agriculture,Aug2018,
+province,MP,2016,Government Urban,Aug2018,
+province,MP,2016,Private,Aug2018,21349
+province,MP,2016,Other,Aug2018,57407
+province,MP,2016,Government Agriculture,Sep2018,14928
+province,MP,2016,Government Urban,Sep2018,
+province,MP,2016,Private,Sep2018,33655
+province,MP,2016,Other,Sep2018,46280
+province,MP,2016,Government Agriculture,Oct2018,4877
+province,MP,2016,Government Urban,Oct2018,
+province,MP,2016,Private,Oct2018,32449
+province,MP,2016,Other,Oct2018,62796
+province,MP,2016,Government Agriculture,Nov2018,
+province,MP,2016,Government Urban,Nov2018,
+province,MP,2016,Private,Nov2018,30258
+province,MP,2016,Other,Nov2018,48357
+province,NC,2016,Government Agriculture,Dec2017,
+province,NC,2016,Government Urban,Dec2017,
+province,NC,2016,Private,Dec2017,18421
+province,NC,2016,Other,Dec2017,2402
+province,NC,2016,Government Agriculture,Jan2018,
+province,NC,2016,Government Urban,Jan2018,
+province,NC,2016,Private,Jan2018,3991
+province,NC,2016,Other,Jan2018,
+province,NC,2016,Government Agriculture,Feb2018,
+province,NC,2016,Government Urban,Feb2018,
+province,NC,2016,Private,Feb2018,1337
+province,NC,2016,Other,Feb2018,7373
+province,NC,2016,Government Agriculture,Mar2018,
+province,NC,2016,Government Urban,Mar2018,1086957
+province,NC,2016,Private,Mar2018,7998
+province,NC,2016,Other,Mar2018,2291
+province,NC,2016,Government Agriculture,Apr2018,
+province,NC,2016,Government Urban,Apr2018,
+province,NC,2016,Private,Apr2018,1206
+province,NC,2016,Other,Apr2018,2466
+province,NC,2016,Government Agriculture,May2018,
+province,NC,2016,Government Urban,May2018,
+province,NC,2016,Private,May2018,
+province,NC,2016,Other,May2018,
+province,NC,2016,Government Agriculture,Jun2018,
+province,NC,2016,Government Urban,Jun2018,
+province,NC,2016,Private,Jun2018,2039
+province,NC,2016,Other,Jun2018,
+province,NC,2016,Government Agriculture,Jul2018,
+province,NC,2016,Government Urban,Jul2018,
+province,NC,2016,Private,Jul2018,
+province,NC,2016,Other,Jul2018,
+province,NC,2016,Government Agriculture,Aug2018,
+province,NC,2016,Government Urban,Aug2018,
+province,NC,2016,Private,Aug2018,3401
+province,NC,2016,Other,Aug2018,7470
+province,NC,2016,Government Agriculture,Sep2018,
+province,NC,2016,Government Urban,Sep2018,
+province,NC,2016,Private,Sep2018,276471
+province,NC,2016,Other,Sep2018,
+province,NC,2016,Government Agriculture,Oct2018,2675
+province,NC,2016,Government Urban,Oct2018,
+province,NC,2016,Private,Oct2018,
+province,NC,2016,Other,Oct2018,
+province,NC,2016,Government Agriculture,Nov2018,
+province,NC,2016,Government Urban,Nov2018,
+province,NC,2016,Private,Nov2018,300000
+province,NC,2016,Other,Nov2018,
+province,NW,2016,Government Agriculture,Dec2017,435185
+province,NW,2016,Government Urban,Dec2017,
+province,NW,2016,Private,Dec2017,14656
+province,NW,2016,Other,Dec2017,
+province,NW,2016,Government Agriculture,Jan2018,
+province,NW,2016,Government Urban,Jan2018,
+province,NW,2016,Private,Jan2018,25318
+province,NW,2016,Other,Jan2018,
+province,NW,2016,Government Agriculture,Feb2018,
+province,NW,2016,Government Urban,Feb2018,
+province,NW,2016,Private,Feb2018,14648
+province,NW,2016,Other,Feb2018,
+province,NW,2016,Government Agriculture,Mar2018,6844
+province,NW,2016,Government Urban,Mar2018,
+province,NW,2016,Private,Mar2018,17382
+province,NW,2016,Other,Mar2018,
+province,NW,2016,Government Agriculture,Apr2018,
+province,NW,2016,Government Urban,Apr2018,
+province,NW,2016,Private,Apr2018,19894
+province,NW,2016,Other,Apr2018,28885
+province,NW,2016,Government Agriculture,May2018,4533
+province,NW,2016,Government Urban,May2018,120000
+province,NW,2016,Private,May2018,32490
+province,NW,2016,Other,May2018,6309
+province,NW,2016,Government Agriculture,Jun2018,26668
+province,NW,2016,Government Urban,Jun2018,
+province,NW,2016,Private,Jun2018,15883
+province,NW,2016,Other,Jun2018,1730
+province,NW,2016,Government Agriculture,Jul2018,23558
+province,NW,2016,Government Urban,Jul2018,
+province,NW,2016,Private,Jul2018,13077
+province,NW,2016,Other,Jul2018,27625
+province,NW,2016,Government Agriculture,Aug2018,4130
+province,NW,2016,Government Urban,Aug2018,192727
+province,NW,2016,Private,Aug2018,21187
+province,NW,2016,Other,Aug2018,250062
+province,NW,2016,Government Agriculture,Sep2018,19740
+province,NW,2016,Government Urban,Sep2018,
+province,NW,2016,Private,Sep2018,13530
+province,NW,2016,Other,Sep2018,
+province,NW,2016,Government Agriculture,Oct2018,7086
+province,NW,2016,Government Urban,Oct2018,113064
+province,NW,2016,Private,Oct2018,7291
+province,NW,2016,Other,Oct2018,34242
+province,NW,2016,Government Agriculture,Nov2018,
+province,NW,2016,Government Urban,Nov2018,
+province,NW,2016,Private,Nov2018,15721
+province,NW,2016,Other,Nov2018,450450
+province,WC,2016,Government Agriculture,Dec2017,
+province,WC,2016,Government Urban,Dec2017,
+province,WC,2016,Private,Dec2017,13316
+province,WC,2016,Other,Dec2017,400
+province,WC,2016,Government Agriculture,Jan2018,
+province,WC,2016,Government Urban,Jan2018,
+province,WC,2016,Private,Jan2018,45463
+province,WC,2016,Other,Jan2018,
+province,WC,2016,Government Agriculture,Feb2018,
+province,WC,2016,Government Urban,Feb2018,
+province,WC,2016,Private,Feb2018,21374
+province,WC,2016,Other,Feb2018,60800
+province,WC,2016,Government Agriculture,Mar2018,
+province,WC,2016,Government Urban,Mar2018,
+province,WC,2016,Private,Mar2018,64363
+province,WC,2016,Other,Mar2018,5328
+province,WC,2016,Government Agriculture,Apr2018,124238
+province,WC,2016,Government Urban,Apr2018,
+province,WC,2016,Private,Apr2018,4956
+province,WC,2016,Other,Apr2018,
+province,WC,2016,Government Agriculture,May2018,5734
+province,WC,2016,Government Urban,May2018,
+province,WC,2016,Private,May2018,38040
+province,WC,2016,Other,May2018,
+province,WC,2016,Government Agriculture,Jun2018,
+province,WC,2016,Government Urban,Jun2018,
+province,WC,2016,Private,Jun2018,40970
+province,WC,2016,Other,Jun2018,
+province,WC,2016,Government Agriculture,Jul2018,
+province,WC,2016,Government Urban,Jul2018,
+province,WC,2016,Private,Jul2018,
+province,WC,2016,Other,Jul2018,
+province,WC,2016,Government Agriculture,Aug2018,
+province,WC,2016,Government Urban,Aug2018,
+province,WC,2016,Private,Aug2018,9872
+province,WC,2016,Other,Aug2018,75000
+province,WC,2016,Government Agriculture,Sep2018,91667
+province,WC,2016,Government Urban,Sep2018,
+province,WC,2016,Private,Sep2018,30845
+province,WC,2016,Other,Sep2018,46512
+province,WC,2016,Government Agriculture,Oct2018,
+province,WC,2016,Government Urban,Oct2018,
+province,WC,2016,Private,Oct2018,7198
+province,WC,2016,Other,Oct2018,55104
+province,WC,2016,Government Agriculture,Nov2018,1427
+province,WC,2016,Government Urban,Nov2018,
+province,WC,2016,Private,Nov2018,
+province,WC,2016,Other,Nov2018,200000

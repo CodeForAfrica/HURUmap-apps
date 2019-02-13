@@ -90,4 +90,4 @@ except:
 
 sys.exit()
 
- #\copy town_district_land_traded_statistic_2018 from '/home/khadija/Documents/dev/HURUmap-apps/hurumap_land/script/district_agrids_statistic.csv' with delimiter as ',' null as '' header csv;
+ #\copy land_traded_colour_t_breakdown_2018 from '/home/khadija/Desktop/dev/HURUmap-apps/hurumap_land/script/agrid_summary_color_cost_distribution.csv' with delimiter as ',' null as '' header csv;
