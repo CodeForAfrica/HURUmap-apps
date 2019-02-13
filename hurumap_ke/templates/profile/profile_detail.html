@@ -477,7 +477,7 @@
       </article>
     {% endif %} <!-- end if type_treatment -->
 
-    {% if healthratios.doctorratio and  healthratios.nurseratio%}
+    {% if healthratios.doctorratio and  healthratios.nurseratio %}
       <article id="health_ratios"
                class="clearfix {% if 'health_ratios' not in selected_sections %}hide{% endif %}">
         <header class="section-contents">
@@ -734,5 +734,211 @@
       </article>
     </div>
   {% endif %}
+  {% if not afrobarometer.is_missing %}
+    <article>
+      <header class="section-contents"><h1>Afrobarometer Round 7</h1></header>
+      <div class="section-container">
+        <section class="clearfix stat-row">
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-own_radio" data-stat-type="percentage" data-chart-title="Q91a.Own radio" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-own_motor_vehicle" data-stat-type="percentage" data-chart-title="Q91c.Own motor vehicle" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+        </section>
+        <section class="clearfix stat-row">
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-own_television" data-stat-type="percentage" data-chart-title="Q91b.Own television" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-own_mobile_phone" data-stat-type="percentage" data-chart-title="Q91d.Own mobile phone" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+        </section>
+        <section class="clearfix stat-row">
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-election_work_for_candidate_or_party" data-stat-type="percentage" data-chart-title="Q23d.election work for candidate or party" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-election_attend_campaign_rally" data-stat-type="percentage" data-chart-title="Q23a.election attend campaign rally" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+        </section>
+        <section class="clearfix stat-row">
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-election_attend_campaign_meeting" data-stat-type="percentage" data-chart-title="Q23b.election attend campaign meeting" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-courts_make_binding_decisions" data-stat-type="percentage" data-chart-title="Q42a.Courts make binding decisions" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+        </section>
+        <section class="clearfix stat-row">
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-vote_for_which_party" data-stat-type="percentage" data-chart-title="Q99.Vote for which party" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-level_of_corruption" data-stat-type="percentage" data-chart-title="Q54.Level of corruption" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+        </section>
+        <section class="clearfix stat-row">
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-chinas_assistance_meets_country_needs" data-stat-type="percentage" data-chart-title="Q81e.China's assistance meets country needs" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-employment_status" data-stat-type="percentage" data-chart-title="Q95.Employment status" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+        </section>
+        <section class="clearfix stat-row">
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-main_reason_for_not_reporting_corruption" data-stat-type="percentage" data-chart-title="Q58.Main reason for not reporting corruption" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-education_of_respondent" data-stat-type="percentage" data-chart-title="Q97.Education of respondent" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+        </section>
+        <section class="clearfix stat-row">
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-people_must_pay_taxes" data-stat-type="percentage" data-chart-title="Q42c.People must pay taxes" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-negative_image_of_china" data-stat-type="percentage" data-chart-title="Q81d.Negative image of China" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+        </section>
+        <section class="clearfix stat-row">
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-most_effective_way_to_combat_corruption" data-stat-type="percentage" data-chart-title="Q71b.Most effective way to combat corruption" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-people_can_fight_corruption" data-stat-type="percentage" data-chart-title="Q71a.People can fight corruption" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+        </section>
+        <section class="clearfix stat-row">
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-people_must_obey_the_law" data-stat-type="percentage" data-chart-title="Q42b.People must obey the law" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-chinas_influence_on_economy" data-stat-type="percentage" data-chart-title="Q81a.China's influence on economy" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+        </section>
+        <section class="clearfix stat-row">
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-chinas_influence_positive_or_negative" data-stat-type="percentage" data-chart-title="Q81b.China's influence: positive or negative" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-positive_image_of_china" data-stat-type="percentage" data-chart-title="Q81c.Positive image of China" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+        </section>
+        <section class="clearfix stat-row">
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-occupation_of_respondent" data-stat-type="percentage" data-chart-title="Q96a.Occupation of respondent" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-employer_of_respondent" data-stat-type="percentage" data-chart-title="Q96b.Employer of respondent" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+        </section>
+        <section class="clearfix stat-row">
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-how_often_use_a_mobile_phone" data-stat-type="percentage" data-chart-title="Q92a.How often use a mobile phone" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-how_often_use_the_internet" data-stat-type="percentage" data-chart-title="Q92b.How often use the internet" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+        </section>
+        <section class="clearfix stat-row">
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-freeness_and_fairness_last_elections" data-stat-type="percentage" data-chart-title="Q22.Freeness and fairness last elections" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-extent_of_democracy" data-stat-type="percentage" data-chart-title="Q40.Extent of democracy" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+        </section>
+        <section class="clearfix stat-row">
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-elections_ensure_voters_views_are_reflected" data-stat-type="percentage" data-chart-title="Q47a.Elections ensure voters' views are reflected" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-corruption_judges_and_magistrates" data-stat-type="percentage" data-chart-title="Q53g.Corruption: judges and magistrates" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+        </section>
+        <section class="clearfix stat-row">
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-elections_to_remove_leaders_from_office" data-stat-type="percentage" data-chart-title="Q47b.Elections enable voters to remove leaders from office" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-corruption_tax_officials" data-stat-type="percentage" data-chart-title="Q53f.Corruption: tax officials" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+        </section>
+        <section class="clearfix stat-row">
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-corruption_police" data-stat-type="percentage" data-chart-title="Q53e.Corruption: police" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-corruption_local_gov_councilors" data-stat-type="percentage" data-chart-title="Q53d.Corruption: local gov councilors" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+        </section>
+        <section class="clearfix stat-row">
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-corruption_gov_officials" data-stat-type="percentage" data-chart-title="Q53c.Corruption: gov officials" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-corruption_mps" data-stat-type="percentage" data-chart-title="Q53b.Corruption: MPs" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+        </section>
+        <section class="clearfix stat-row">
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-corruption_president_office" data-stat-type="percentage" data-chart-title="Q53a.Corruption: President Office" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-satisfaction_with_democracy" data-stat-type="percentage" data-chart-title="Q41.Satisfaction with democracy" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+        </section>
+        <section class="clearfix stat-row">
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-corruption_business_executives" data-stat-type="percentage" data-chart-title="Q53j.Corruption: business executives" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-corruption_religious_leaders" data-stat-type="percentage" data-chart-title="Q53i.Corruption: religious leaders" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+        </section>
+        <section class="clearfix stat-row">
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-corruption_traditional_leaders" data-stat-type="percentage" data-chart-title="Q53h.Corruption: traditional leaders" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-difficulty_to_obtain_public_school_services" data-stat-type="percentage" data-chart-title="Q55a.Difficulty to obtain public school services" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+        </section>
+        <section class="clearfix stat-row">
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-voting_recent_national_election" data-stat-type="percentage" data-chart-title="Q21.Voting recent national election" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-difficulty_to_obtain_medical_treatment" data-stat-type="percentage" data-chart-title="Q55c.Difficulty to obtain medical treatment" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+        </section>
+        <section class="clearfix stat-row">
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-pay_bribe_for_school_services" data-stat-type="percentage" data-chart-title="Q55b.Pay bribe for school services" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-difficulty_to_obtain_identity_document" data-stat-type="percentage" data-chart-title="Q55e.Difficulty to obtain identity document" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+        </section>
+        <section class="clearfix stat-row">
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-pay_bribe_treatment_public_health" data-stat-type="percentage" data-chart-title="Q55d.Pay bribe treatment public health" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-difficulty_to_obtain_household_services" data-stat-type="percentage" data-chart-title="Q55g.Difficulty to obtain household services" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+        </section>
+        <section class="clearfix stat-row">
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-pay_bribe_for_document_or_permit" data-stat-type="percentage" data-chart-title="Q55f.Pay bribe for document or permit" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+          <div class="column-half">
+            <div id="chart-pie-afrobarometer-pay_bribe_for_household_services" data-stat-type="percentage" data-chart-title="Q55h.Pay bribe for household services" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+          </div>
+        </section>
+      </div>
+    </article>{% endif %}
 
 {% endblock profile_detail %}
