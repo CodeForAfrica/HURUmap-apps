@@ -23,7 +23,7 @@ try:
 
     #open file and write header
     csv = open("agrid_distribution.csv", "w")
-    columnHeader = "geo_level, geo_code, geo_version, class, statistic, total\n"
+    columnHeader = "geo_level, geo_code, geo_version, class, name, statistic, total\n"
     csv.write(columnHeader)
 
     #initialize params
@@ -43,11 +43,13 @@ try:
      'FreeState':'province', 'Gauteng':'province', 'KwaZuluNatal':'province',
      'Limpopo':'province', 'Mpumalanga':'province', 'NorthernCape':'province',
      'NorthWest':'province', 'WesternCape':'province'}
-
+    m = 0
     for provId in provinceIds:
     	provPage = requests.get(url + '?Province='+ provId+ '&Calculate=Calculate', allow_redirects = False)
     	provTree = html.fromstring(provPage.content)
 
+        name = provinceNames[m]
+        m = m + 1
         geo_code = provinceCode[provId]
         geo_level = provinceLevel[provId]
 
@@ -68,8 +70,8 @@ try:
                 #in each row get the cells
                 row = geo_level + "," + geo_code + "," + geo_version + ","
                 provRowTD = provTree.xpath('//table//tr[%d]/td' %  i)
-                row += str(provRowTD[0].text_content().encode('utf-8').strip()) + "," + statistic
-                row += "," + str(provRowTD[j].text_content().encode('utf-8').strip()) + "\n"
+                row += provRowTD[0].text_content().encode('utf-8').strip() + ","+ name + "," + statistic
+                row += "," + provRowTD[j].text_content().encode('utf-8').strip() + "\n"
                 csv.write(row)
                 row = ""
 
@@ -88,12 +90,11 @@ try:
             	distTree = html.fromstring(distPage.content)
 
             	districtName = districtNames[z].replace(' ', '').replace('/', '')
+                disName = districtNames[z]
                 z = z + 1
-                print districtName
+
                 geo_code = code[districtName]
                 geo_level = level[districtName]
-                print geo_code
-                print geo_level
             	#save table on provinces table
             	disttable = distTree.xpath('//table')
                 #disttable table  header
@@ -102,7 +103,7 @@ try:
                 distTreeTHLen = len(distTreeTH)
 
                 for x in range(1, distTreeTHLen):
-                    dis_statistic = distTreeTH[x].text_content().encode('utf-8').strip()
+                    dis_statistic = distTreeTH[x].text_content().strip()
 
                     distRow = distTree.xpath('//table//tr')
                     distRowLen = len(distRow)
@@ -112,12 +113,16 @@ try:
                         #in each row get the cells
                         disrow = geo_level + "," + geo_code + "," + geo_version + ","
                         distRowTD = distTree.xpath('//table//tr[%d]/td' %  y)
-                        disrow += str(distRowTD[0].text_content().encode('utf-8').strip()) + "," + dis_statistic
-                        disrow += "," + str(distRowTD[x].text_content().encode('utf-8').strip()) + "\n"
+
+                        thisclass =  distRowTD[0].text_content().replace(' ', '')
+                        disrow = disrow + thisclass + "," + disName
+                        disrow += "," + dis_statistic
+                        disrow += "," + distRowTD[x].text_content().strip() + "\n"
+                        disrow = disrow.encode(encoding='UTF-8',errors='strict')
                         csv.write(disrow)
                         disrow = ""
 
-                print "Finished ", distId
+                print "Finished ", disName
             print "Finished ", provId
 
 except:
