@@ -2,22 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.5
--- Dumped by pg_dump version 10.0
+-- Dumped from database version 10.6
+-- Dumped by pg_dump version 10.6
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-SET search_path = public, pg_catalog;
-
 ALTER TABLE IF EXISTS ONLY public.maternalcareindicators DROP CONSTRAINT IF EXISTS pk_maternalcareindicators;
 DROP TABLE IF EXISTS public.maternalcareindicators;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -26,7 +23,7 @@ SET default_with_oids = false;
 -- Name: maternalcareindicators; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE maternalcareindicators (
+CREATE TABLE public.maternalcareindicators (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     "maternal care indicators" character varying(128) NOT NULL,
@@ -39,7 +36,7 @@ CREATE TABLE maternalcareindicators (
 -- Data for Name: maternalcareindicators; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY maternalcareindicators (geo_level, geo_code, "maternal care indicators", total, geo_version) FROM stdin;
+COPY public.maternalcareindicators (geo_level, geo_code, "maternal care indicators", total, geo_version) FROM stdin;
 county	1	percentage with antenatal care from a skilled provider	99.2000000000000028	2009
 county	1	percentage with 4+ ANC visits	65	2009
 county	1	percentage delivered by a skilled provider	82.7999999999999972	2009
@@ -239,7 +236,7 @@ country	KE	percentage delivered in a health facility	61.2000000000000028	2009
 -- Name: maternalcareindicators pk_maternalcareindicators; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY maternalcareindicators
+ALTER TABLE ONLY public.maternalcareindicators
     ADD CONSTRAINT pk_maternalcareindicators PRIMARY KEY (geo_level, geo_code, geo_version, "maternal care indicators");
 
 

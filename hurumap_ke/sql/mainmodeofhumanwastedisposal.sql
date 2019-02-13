@@ -2,22 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.5
--- Dumped by pg_dump version 10.0
+-- Dumped from database version 10.6
+-- Dumped by pg_dump version 10.6
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-SET search_path = public, pg_catalog;
-
 ALTER TABLE IF EXISTS ONLY public.mainmodeofhumanwastedisposal DROP CONSTRAINT IF EXISTS pk_mainmodeofhumanwastedisposal;
 DROP TABLE IF EXISTS public.mainmodeofhumanwastedisposal;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -26,7 +23,7 @@ SET default_with_oids = false;
 -- Name: mainmodeofhumanwastedisposal; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE mainmodeofhumanwastedisposal (
+CREATE TABLE public.mainmodeofhumanwastedisposal (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     "main mode of human waste disposal" character varying(128) NOT NULL,
@@ -39,7 +36,7 @@ CREATE TABLE mainmodeofhumanwastedisposal (
 -- Data for Name: mainmodeofhumanwastedisposal; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY mainmodeofhumanwastedisposal (geo_level, geo_code, "main mode of human waste disposal", total, geo_version) FROM stdin;
+COPY public.mainmodeofhumanwastedisposal (geo_level, geo_code, "main mode of human waste disposal", total, geo_version) FROM stdin;
 country	KE	bucket	22828	2009
 country	KE	bush	1196509	2009
 country	KE	cess pool	29881	2009
@@ -335,7 +332,7 @@ county	47	septic tank	95410	2009
 -- Name: mainmodeofhumanwastedisposal pk_mainmodeofhumanwastedisposal; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY mainmodeofhumanwastedisposal
+ALTER TABLE ONLY public.mainmodeofhumanwastedisposal
     ADD CONSTRAINT pk_mainmodeofhumanwastedisposal PRIMARY KEY (geo_level, geo_code, geo_version, "main mode of human waste disposal");
 
 
