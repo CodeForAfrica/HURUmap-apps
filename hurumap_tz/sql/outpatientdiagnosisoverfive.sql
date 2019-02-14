@@ -2,22 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.8
--- Dumped by pg_dump version 9.5.8
+-- Dumped from database version 10.6
+-- Dumped by pg_dump version 10.6
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-SET search_path = public, pg_catalog;
-
 ALTER TABLE IF EXISTS ONLY public.outpatientdiagnosisoverfive DROP CONSTRAINT IF EXISTS pk_outpatientdiagnosisoverfive;
 DROP TABLE IF EXISTS public.outpatientdiagnosisoverfive;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -26,7 +23,7 @@ SET default_with_oids = false;
 -- Name: outpatientdiagnosisoverfive; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE outpatientdiagnosisoverfive (
+CREATE TABLE public.outpatientdiagnosisoverfive (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(255) NOT NULL,
     "outpatient diagnosis over five" character varying(128) NOT NULL,
@@ -39,7 +36,7 @@ CREATE TABLE outpatientdiagnosisoverfive (
 -- Data for Name: outpatientdiagnosisoverfive; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY outpatientdiagnosisoverfive (geo_level, geo_code, "outpatient diagnosis over five", total, geo_version) FROM stdin;
+COPY public.outpatientdiagnosisoverfive (geo_level, geo_code, "outpatient diagnosis over five", total, geo_version) FROM stdin;
 region	1	diarrhoea	28274	2009
 region	1	hypertension	31121	2009
 region	1	intestinal worms	23005	2009
@@ -323,10 +320,10 @@ country	TZ	UTI	1255553	2009
 
 
 --
--- Name: pk_outpatientdiagnosisoverfive; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: outpatientdiagnosisoverfive pk_outpatientdiagnosisoverfive; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY outpatientdiagnosisoverfive
+ALTER TABLE ONLY public.outpatientdiagnosisoverfive
     ADD CONSTRAINT pk_outpatientdiagnosisoverfive PRIMARY KEY (geo_level, geo_code, geo_version, "outpatient diagnosis over five");
 
 

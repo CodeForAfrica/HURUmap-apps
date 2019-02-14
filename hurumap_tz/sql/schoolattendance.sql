@@ -2,22 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.8
--- Dumped by pg_dump version 9.5.8
+-- Dumped from database version 10.6
+-- Dumped by pg_dump version 10.6
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-SET search_path = public, pg_catalog;
-
 ALTER TABLE IF EXISTS ONLY public.schoolattendance DROP CONSTRAINT IF EXISTS pk_schoolattendance;
 DROP TABLE IF EXISTS public.schoolattendance;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -26,7 +23,7 @@ SET default_with_oids = false;
 -- Name: schoolattendance; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE schoolattendance (
+CREATE TABLE public.schoolattendance (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(255) NOT NULL,
     "school attendance" character varying(128) NOT NULL,
@@ -39,7 +36,7 @@ CREATE TABLE schoolattendance (
 -- Data for Name: schoolattendance; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY schoolattendance (geo_level, geo_code, "school attendance", total, geo_version) FROM stdin;
+COPY public.schoolattendance (geo_level, geo_code, "school attendance", total, geo_version) FROM stdin;
 district	22	pupils in school	78.7999999999999972	2009
 district	23	pupils in school	82	2009
 district	24	pupils in school	68.2999999999999972	2009
@@ -444,10 +441,10 @@ district	168	drop outs	0	2009
 
 
 --
--- Name: pk_schoolattendance; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: schoolattendance pk_schoolattendance; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY schoolattendance
+ALTER TABLE ONLY public.schoolattendance
     ADD CONSTRAINT pk_schoolattendance PRIMARY KEY (geo_level, geo_code, geo_version, "school attendance");
 
 

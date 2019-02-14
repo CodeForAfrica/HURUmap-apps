@@ -2,22 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.8
--- Dumped by pg_dump version 9.5.8
+-- Dumped from database version 10.6
+-- Dumped by pg_dump version 10.6
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-SET search_path = public, pg_catalog;
-
 ALTER TABLE IF EXISTS ONLY public.ruralorurban_sex DROP CONSTRAINT IF EXISTS pk_ruralorurban_sex;
 DROP TABLE IF EXISTS public.ruralorurban_sex;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -26,7 +23,7 @@ SET default_with_oids = false;
 -- Name: ruralorurban_sex; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE ruralorurban_sex (
+CREATE TABLE public.ruralorurban_sex (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     "rural or urban" character varying(128) NOT NULL,
@@ -40,7 +37,7 @@ CREATE TABLE ruralorurban_sex (
 -- Data for Name: ruralorurban_sex; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY ruralorurban_sex (geo_level, geo_code, "rural or urban", sex, total, geo_version) FROM stdin;
+COPY public.ruralorurban_sex (geo_level, geo_code, "rural or urban", sex, total, geo_version) FROM stdin;
 ward	1	rural	male	4433	2009
 ward	1	urban	male	0	2009
 ward	1	rural	female	0	2009
@@ -14617,10 +14614,10 @@ ward	3643	urban	female	0	2009
 
 
 --
--- Name: pk_ruralorurban_sex; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: ruralorurban_sex pk_ruralorurban_sex; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY ruralorurban_sex
+ALTER TABLE ONLY public.ruralorurban_sex
     ADD CONSTRAINT pk_ruralorurban_sex PRIMARY KEY (geo_level, geo_code, geo_version, "rural or urban", sex);
 
 

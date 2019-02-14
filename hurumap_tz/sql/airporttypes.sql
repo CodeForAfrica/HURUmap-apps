@@ -2,10 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.12
--- Dumped by pg_dump version 9.5.12
-
--- Started on 2018-04-12 15:38:55 EAT
+-- Dumped from database version 10.6
+-- Dumped by pg_dump version 10.6
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -14,7 +12,6 @@ SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
 
 ALTER TABLE IF EXISTS ONLY public.airporttypes DROP CONSTRAINT IF EXISTS pk_airporttypes;
 DROP TABLE IF EXISTS public.airporttypes;
@@ -23,8 +20,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- TOC entry 221 (class 1259 OID 29052)
--- Name: airporttypes; Type: TABLE; Schema: public; Owner: hurumap_tz
+-- Name: airporttypes; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.airporttypes (
@@ -37,9 +33,7 @@ CREATE TABLE public.airporttypes (
 
 
 --
--- TOC entry 2265 (class 0 OID 29052)
--- Dependencies: 221
--- Data for Name: airporttypes; Type: TABLE DATA; Schema: public; Owner: hurumap_tz
+-- Data for Name: airporttypes; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.airporttypes (geo_level, geo_code, geo_version, "airport types", total) FROM stdin;
@@ -153,15 +147,12 @@ district	25	2009	domestic entry point	1
 
 
 --
--- TOC entry 2150 (class 2606 OID 29057)
--- Name: pk_airporttypes; Type: CONSTRAINT; Schema: public; Owner: hurumap_tz
+-- Name: airporttypes pk_airporttypes; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.airporttypes
     ADD CONSTRAINT pk_airporttypes PRIMARY KEY (geo_level, geo_code, geo_version, "airport types");
 
-
--- Completed on 2018-04-12 15:38:55 EAT
 
 --
 -- PostgreSQL database dump complete

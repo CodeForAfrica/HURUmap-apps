@@ -2,22 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.8
--- Dumped by pg_dump version 9.5.8
+-- Dumped from database version 10.6
+-- Dumped by pg_dump version 10.6
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-SET search_path = public, pg_catalog;
-
 ALTER TABLE IF EXISTS ONLY public.pepfar DROP CONSTRAINT IF EXISTS pk_pepfar;
 DROP TABLE IF EXISTS public.pepfar;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -26,7 +23,7 @@ SET default_with_oids = false;
 -- Name: pepfar; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE pepfar (
+CREATE TABLE public.pepfar (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     pepfar character varying(128) NOT NULL,
@@ -39,7 +36,7 @@ CREATE TABLE pepfar (
 -- Data for Name: pepfar; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY pepfar (geo_level, geo_code, pepfar, total, geo_version) FROM stdin;
+COPY public.pepfar (geo_level, geo_code, pepfar, total, geo_version) FROM stdin;
 region	9	PMTCT_STAT	30339	2009
 district	22	HTC_TST	24672	2009
 district	23	HTC_TST	25091	2009
@@ -4024,10 +4021,10 @@ district	168	KP_PREV	0	2009
 
 
 --
--- Name: pk_pepfar; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: pepfar pk_pepfar; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY pepfar
+ALTER TABLE ONLY public.pepfar
     ADD CONSTRAINT pk_pepfar PRIMARY KEY (geo_level, geo_code, geo_version, pepfar);
 
 
