@@ -41,6 +41,9 @@ LOCATIONNOTFOUND = {'is_missing': True,
 MONTH = ['Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan',
          'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul']
 
+MONTH_LATEST = ['Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May',
+                'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov']
+
 LAND_CLASS = [u'Under 1.5K', u'1,501-3K', u'3,001-5K', u'5,001-10K'
     , u'10,001-20K', u'20,001-30K', u'30,001-40K', u'40,001-50K',
               u'50,001-100K',
@@ -866,14 +869,10 @@ def get_landsalescolour_profile(geo, session):
 def get_landsalescolour_latest_profile(geo, session):
     with dataset_context(year='2018'):
         landsalescolourhectares_latest = landsalescolourhectarespermonth_latest = LOCATIONNOTFOUND
-        #landsalescolourhectarespermonthperga = landsalescolourhectarespermonthpergu = LOCATIONNOTFOUND
-        #landsalescolourhectarespermonthperot = landsalescolourhectarespermonthperpr = LOCATIONNOTFOUND
-        #landsalescolourcostpermonth_latest = landsalescolourtattransactionpermonth = LOCATIONNOTFOUND
-        #landsalescolourpricehecpermonth_latest = LOCATIONNOTFOUND
-        landsalescolourtransaction_latest = LOCATIONNOTFOUND
-        #landsalescolourtattransaction = landsalescolourtransactionpermonth_latest = LOCATIONNOTFOUND
-        #landsalescolourtransactionpermonthperga = landsalescolourtransactionpermonthpergu = LOCATIONNOTFOUND
-        #landsalescolourtransactionpermonthperot = landsalescolourtransactionpermonthperpr = LOCATIONNOTFOUND
+        landsalescolourcostpermonth_latest = landsalescolourcostpermonthbreakdown_latest = LOCATIONNOTFOUND
+        landsalescolourtransaction_latest = landsalescolourtransactionpermonthbreakdown_latest = LOCATIONNOTFOUND
+        landsalesallvscolourtransaction_latest = landsalescolourhectarespermonthbreakdown_latest = LOCATIONNOTFOUND
+        landsalescolourtransactionpermonth_latest = LOCATIONNOTFOUND
 
         landsalescolourhectares_latest_tot = 0
         landsalescolourtransaction_latest_tot = 0
@@ -901,170 +900,109 @@ def get_landsalescolour_latest_profile(geo, session):
         except Exception as e:
             pass
 
-        # try:
-        #     landsalescolourtattransaction, _ = get_stat_data(
-        #         ['land_breakdown_tc'], geo, session,
-        #         table_name='landsalessummarytransactionscolour',
-        #         only={'land_breakdown_tc': ['all', 'colour']}
-        #     )
-        # except Exception as e:
-        #     pass
-        #
-        # try:
-        #     landsalescolourtattransactionpermonth, _ = get_stat_data(
-        #         ['month', 'land_breakdown_tc'], geo, session,
-        #         table_name='landsalessummarytransactionscolour',
-        #         only={'land_breakdown_tc': ['all', 'colour']},
-        #         key_order={'month_tc': MONTH,
-        #                    'land_breakdown_tc': ['All', 'Colour']}
-        #     )
-        # except Exception as e:
-        #     pass
-        #
-        # try:
-        #     landsalescolourhectarespermonth, _ = get_stat_data(
-        #         ['month_tc'], geo, session,
-        #         table_name='landsalessummaryhectarestcolour',
-        #         key_order=('Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', \
-        #                    'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul')
-        #     )
-        # except Exception as e:
-        #     pass
-        #
-        # try:
-        #     landsalescolourtransactionpermonth, _ = get_stat_data(
-        #         ['month_tc'], geo, session,
-        #         table_name='landsalessummarytransactionscolour',
-        #         key_order=('Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', \
-        #                    'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul')
-        #     )
-        # except Exception as e:
-        #     pass
-        #
-        # try:
-        #     landsalescolourcostpermonth, landsalescolourcost_tot = get_stat_data(
-        #         ['month_cc'], geo, session,
-        #         table_name='landsalessummarycosttcolour',
-        #         key_order=('Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', \
-        #                    'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul')
-        #     )
-        # except Exception as e:
-        #     pass
-        #
-        # try:
-        #     landsalescolourpricehecpermonth, _ = get_stat_data(
-        #         ['month_pc'], geo, session,
-        #         table_name='landsalessummarypricetcolour',
-        #         key_order=('Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', \
-        #                    'Mar', 'Apr', 'May', 'Jun', 'Jul')
-        #     )
-        # except Exception as e:
-        #     pass
-        #
-        # try:
-        #     landsalescolourhectarespermonthperga, _ = get_stat_data(
-        #         ['month_hc'], geo, session,
-        #         table_name='landsalessummaryhectarestcolour',
-        #         only={'land_breakdown_hc': ['Government Agriculture']},
-        #         key_order={'month_hc': MONTH}
-        #     )
-        # except Exception as e:
-        #     pass
-        #
-        # try:
-        #     landsalescolourtransactionpermonthperga, _ = get_stat_data(
-        #         ['month_tc'], geo, session,
-        #         table_name='landsalessummarytransactionscolour',
-        #         only={'land_breakdown_tc': ['Government Agriculture']},
-        #         key_order={'month_tc': MONTH}
-        #     )
-        # except Exception as e:
-        #     pass
-        #
-        # try:
-        #     landsalescolourhectarespermonthpergu, _ = get_stat_data(
-        #         ['month_hc'], geo, session,
-        #         table_name='landsalessummaryhectarestcolour',
-        #         only={'land_breakdown_hc': ['Government Urban']},
-        #         key_order={'month_hc': MONTH}
-        #     )
-        # except Exception as e:
-        #     pass
-        #
-        # try:
-        #     landsalescolourtransactionpermonthpergu, _ = get_stat_data(
-        #         ['month_tc'], geo, session,
-        #         table_name='landsalessummarytransactionscolour',
-        #         only={'land_breakdown_tc': ['Government Urban']},
-        #         key_order={'month_tc': MONTH}
-        #     )
-        # except Exception as e:
-        #     pass
-        #
-        # try:
-        #     landsalescolourhectarespermonthperpr, _ = get_stat_data(
-        #         ['month_hc'], geo, session,
-        #         table_name='landsalessummaryhectarestcolour',
-        #         only={'land_breakdown_hc': ['Private']},
-        #         key_order={'month_hc': MONTH}
-        #     )
-        # except Exception as e:
-        #     pass
-        # try:
-        #     landsalescolourtransactionpermonthperpr, _ = get_stat_data(
-        #         ['month_tc'], geo, session,
-        #         table_name='landsalessummarytransactionscolour',
-        #         only={'land_breakdown_tc': ['Private']},
-        #         key_order={'month_tc': MONTH}
-        #     )
-        # except Exception as e:
-        #     pass
-        #
-        # try:
-        #     landsalescolourhectarespermonthperot, _ = get_stat_data(
-        #         ['month_hc'], geo, session,
-        #         table_name='landsalessummaryhectarestcolour',
-        #         only={'land_breakdown_hc': ['Other']},
-        #         key_order={'month_hc': MONTH}
-        #     )
-        # except Exception as e:
-        #     pass
-        #
-        # try:
-        #     landsalescolourtransactionpermonthperot, _ = get_stat_data(
-        #         ['month_tc'], geo, session,
-        #         table_name='landsalessummarytransactionscolour',
-        #         only={'land_breakdown_tc': ['Other']},
-        #         key_order={'month_tc': MONTH}
-        #     )
-        # except Exception as e:
-        #     pass
+        try:
+            landsalesallvscolourtransaction_latest, _ = get_stat_data(
+                ['transaction_group'], geo, session,
+                table_name='land_traded_all_vs_colour_2018',
+                percent=False
+            )
+        except Exception as e:
+            pass
+
+        try:
+            landsalescolourtransactionpermonth_latest, _ = get_stat_data(
+                ['month', 'transaction_group'], geo, session,
+                table_name='land_traded_all_vs_colour_2018',
+                only={'transaction_group': ['all', 'colour']},
+                key_order={'month': MONTH_LATEST,
+                           'transaction_group': ['All', 'Colour']},
+                percent=False
+            )
+        except Exception as e:
+            pass
+
+        try:
+            landsalescolourhectarespermonth_latest, _ = get_stat_data(
+                ['month_cc'], geo, session,
+                table_name='land_traded_colour_hectares_breakdown_2018',
+                key_order=( 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May',\
+                 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov'),
+                 percent=False
+            )
+        except Exception as e:
+            pass
+
+        try:
+            landsalescolourhectarespermonthbreakdown_latest, _ = get_stat_data(
+                ['breakdown_cc','month_cc'], geo, session,
+                table_name='land_traded_colour_hectares_breakdown_2018',
+                key_order={'month': MONTH_LATEST,
+                        'breakdown_cc': ['Government Agriculture', 'Private',
+                                            'Government Urban',
+                                            'Other']},
+                percent=False,
+                exclude_zero=True
+            )
+        except Exception as e:
+            pass
+
+        try:
+            landsalescolourtransactionpermonthbreakdown_latest, _ = get_stat_data(
+                ['breakdown_cc','month_cc'], geo, session,
+                table_name='land_traded_colour_transactions_2018',
+                key_order={'month': MONTH_LATEST,
+                        'breakdown_cc': ['Government Agriculture', 'Private',
+                                            'Government Urban',
+                                            'Other']},
+                percent=False,
+                exclude_zero=True
+            )
+        except Exception as e:
+            pass
+
+        try:
+            landsalescolourcostpermonth_latest, landsalescolourcost_latest_tot = get_stat_data(
+                ['month_cc'], geo, session,
+                table_name='land_traded_colour_cost_breakdown_2018',
+                key_order=( 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May',\
+                 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov'),
+                 percent=False
+            )
+        except Exception as e:
+            pass
+
+        try:
+            landsalescolourcostpermonthbreakdown_latest, _ = get_stat_data(
+                ['breakdown_cc','month_cc'], geo, session,
+                table_name='land_traded_colour_cost_breakdown_2018',
+                key_order={'month': MONTH_LATEST,
+                        'breakdown_cc': ['Government Agriculture', 'Private',
+                                            'Government Urban',
+                                            'Other']},
+                percent=False,
+                exclude_zero=True
+            )
+        except Exception as e:
+            pass
 
     return {
         'landsalescolourhectares': landsalescolourhectares_latest,
         'landsalescolourtransaction': landsalescolourtransaction_latest,
-        # 'landsalescolourtattransaction': landsalescolourtattransaction,
-        # 'landsalescolourtattransactionpermonth': landsalescolourtattransactionpermonth,
-        # 'landsalescolourpricehecpermonth': landsalescolourpricehecpermonth,
-        # 'landsalescolourcostpermonth': landsalescolourcostpermonth,
-        # 'landsalescolourtransactionpermonth': landsalescolourtransactionpermonth,
-        # 'landsalescolourhectarespermonth': landsalescolourhectarespermonth,
-        # 'landsalescolourhectarespermonthperpr': landsalescolourhectarespermonthperpr,
-        # 'landsalescolourhectarespermonthperga': landsalescolourhectarespermonthperga,
-        # 'landsalescolourhectarespermonthpergu': landsalescolourhectarespermonthpergu,
-        # 'landsalescolourhectarespermonthperot': landsalescolourhectarespermonthperot,
-        # 'landsalescolourtransactionpermonthperpr': landsalescolourtransactionpermonthperpr,
-        # 'landsalescolourtransactionpermonthperga': landsalescolourtransactionpermonthperga,
-        # 'landsalescolourtransactionpermonthpergu': landsalescolourtransactionpermonthpergu,
-        # 'landsalescolourtransactionpermonthperot': landsalescolourtransactionpermonthperot,
+        'landsalesallvscolourtransaction': landsalesallvscolourtransaction_latest,
+        'landsalescolourtattransactionpermonth': landsalescolourtransactionpermonth_latest,
+        'landsalescolourhectarespermonthbreakdown': landsalescolourhectarespermonthbreakdown_latest,
+        'landsalescolourtransactionpermonthbreakdown': landsalescolourtransactionpermonthbreakdown_latest,
+        'landsalescolourcostpermonthbreakdown': landsalescolourcostpermonthbreakdown_latest,
+        'landsalescolourcostpermonth': landsalescolourcostpermonth_latest,
+        'landsalescolourhectarespermonth': landsalescolourhectarespermonth_latest,
         'landsalescolourhectares_stat': {
             "name": "Total hectares (ha) traded from Dec 2017/Nov 2018 for transaction of colour",
             "values": {"this": landsalescolourhectares_latest_tot},
         },
-        # 'landsalescolourcost_stat': {
-        #     "name": "Total Cost in R (million) traded from Aug 2017/July 2018 for transaction of colour",
-        #     "values": {"this": landsalescolourcost_tot},
-        # },
+        'landsalescolourcost_stat': {
+            "name": "Total Cost in R (million) traded from Dec 2017/Nov 2018 for transaction of colour",
+            "values": {"this": landsalescolourcost_latest_tot},
+        },
         'landsalescolourtransaction_stat': {
             "name": "Total transactions traded from Dec 2017/Nov 2018 for transaction of colour",
             "values": {"this": landsalescolourtransaction_latest_tot},
