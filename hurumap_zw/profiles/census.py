@@ -2,6 +2,9 @@ from wazimap.data.utils import (calculate_median,
                                 get_session, get_stat_data, group_remainder,
                                 merge_dicts, get_datatable, current_context,
                                 dataset_context)
+from wazimap.geo import LocationNotFound
+
+from utils import *
 
 LOCATIONNOTFOUND = {'is_missing': True, 'name': 'No Data Found',
                     'numerators': {'this': 0},
@@ -522,6 +525,27 @@ def get_afrobarometer_profile(geo, session):
             'is_missing') and difficulty_to_obtain_household_services.get(
             'is_missing') and pay_bribe_for_document_or_permit.get(
             'is_missing') and pay_bribe_for_household_services.get('is_missing')
+
+    if not is_missing:
+        difficulty_to_obtain_household_services = sort_keys(difficulty_key_order, difficulty_to_obtain_household_services)
+        difficulty_to_obtain_identity_document = sort_keys(difficulty_key_order, difficulty_to_obtain_identity_document)
+        difficulty_to_obtain_medical_treatment = sort_keys(difficulty_key_order, difficulty_to_obtain_medical_treatment)
+        difficulty_to_obtain_public_school_services = sort_keys(difficulty_key_order, difficulty_to_obtain_public_school_services)
+        election_attend_campaign_meeting = sort_keys(elections_key_order, election_attend_campaign_meeting)
+        election_attend_campaign_rally = sort_keys(elections_key_order, election_attend_campaign_rally)
+        election_work_for_candidate_or_party = sort_keys(elections_key_order, election_work_for_candidate_or_party)
+        elections_to_remove_leaders_from_office = sort_keys(elections_key_order, elections_to_remove_leaders_from_office)
+        freeness_and_fairness_last_elections = sort_keys(free_and_fair_key_order, freeness_and_fairness_last_elections)
+        chinas_influence_positive_or_negative = sort_keys(chinas_influence_key_order, chinas_influence_positive_or_negative)
+        chinas_influence_on_economy = sort_keys(china_influence_on_economy_key_order, chinas_influence_on_economy)
+        pay_bribe_for_document_or_permit = sort_keys(pay_bribes_key_order, pay_bribe_for_document_or_permit)
+        pay_bribe_for_household_services = sort_keys(pay_bribes_key_order, pay_bribe_for_household_services)
+        pay_bribe_for_school_services = sort_keys(pay_bribes_key_order, pay_bribe_for_school_services)
+        pay_bribe_treatment_public_health = sort_keys(pay_bribes_key_order, pay_bribe_treatment_public_health)
+        how_often_use_a_mobile_phone = sort_keys(mobile_phone_usage_key_order, how_often_use_a_mobile_phone)
+        how_often_use_the_internet = sort_keys(internet_usage_key_order, how_often_use_the_internet)
+        education_of_respondent = sort_keys(education_of_respondent_key_order, education_of_respondent)
+        employment_status = sort_keys(employment_status_key_order, employment_status)
 
     final_data = {
         'is_missing': is_missing,
