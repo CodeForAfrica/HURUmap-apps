@@ -1251,6 +1251,96 @@ def districtdistribution(geo, session):
     dist['is_missing'] = all_town.get('is_missing')
     return dist
 
+def districtdistribution_latest(geo, session):
+    with dataset_context(year='2016'):
+        towndistrictdistributiontransactions = all_town = LOCATIONNOTFOUND
+        towndistrictdistributionhectares = towndistrictdistributionavgprice = LOCATIONNOTFOUND
+        towndistrictdistributionpricetrends = LOCATIONNOTFOUND
+        towndistrictdistributiontransactionsdata = towndistrictdistributionhectaresdata = LOCATIONNOTFOUND
+        towndistrictdistributionpricetrendsdata = towndistrictdistributionavgpricedata = LOCATIONNOTFOUND
+        towndistrictdistributionhectares_tot = towndistrictdistributiontransactions_tot = 0
+        dist = {}
+        towns = []
+
+        try:
+            all_town, _ = get_stat_data(
+                ['town_name_dt'], geo, session,
+                table_name='towndistrictdistributiontransactions',
+                exclude_zero=True,
+                percent=False)
+
+            for keys, townname in all_town.iteritems():
+                if keys != 'metadata':
+                    towns.append(keys)
+            towndistrictdistributiontransactionsdata = towndistrictdistributionhectaresdata = {}
+            towndistrictdistributionpricetrendsdata = towndistrictdistributionavgpricedata = {}
+
+            for town in towns:
+                town_code = town.replace(' ', '_').replace('-', '_').replace(
+                    '/',
+                    '_').replace(
+                    '(', '').replace(')', '').lower()
+                try:
+                    towndistrictdistributiontransactionsdata[
+                        town_code], _ = get_stat_data(
+                        ['class_dt'], geo, session,
+                        table_name='towndistrictdistributiontransactions',
+                        table_fields=['town_name_dt', 'class_dt'],
+                        only={'town_name': [town]},
+                        exclude_zero=True,
+                        percent=False)
+                except Exception as e:
+                    pass
+
+            try:
+                towndistrictdistributionhectaresdata[
+                    town_code], _ = get_stat_data(
+                    ['class_dh'], geo, session,
+                    table_name='towndistrictdistributionhectares',
+                    table_fields=['town_name_dh', 'class_dh'],
+                    only={'town_name_dh': [town]},
+                    exclude_zero=True,
+                    percent=False)
+            except Exception:
+                pass
+
+            try:
+                towndistrictdistributionavgpricedata[
+                    town_code], _ = get_stat_data(
+                    ['class_ap'], geo, session,
+                    table_name='towndistrictdistributionavgprice',
+                    table_fields=['town_name_ap', 'class_ap'],
+                    only={'town_name_ap': [town]},
+                    exclude_zero=True,
+                    percent=False)
+            except Exception:
+                pass
+
+                try:
+                    towndistrictdistributionpricetrendsdata[
+                        town_code], _ = get_stat_data(
+                        ['class_pt'], geo, session,
+                        table_name='towndistrictdistributionpricetrends',
+                        table_fields=['town_name_pt', 'class_pt'],
+                        only={'town_name_pt': [town]},
+                        exclude_zero=True,
+                        percent=False)
+                except Exception as e:
+                    pass
+        except Exception as e:
+            pass
+
+    dist[
+        'towndistrictdistributiontransactionsdata'] = towndistrictdistributiontransactionsdata
+    dist[
+        'towndistrictdistributionhectaresdata'] = towndistrictdistributionhectaresdata
+    dist[
+        'towndistrictdistributionavgpricedata'] = towndistrictdistributionavgpricedata
+    dist[
+        'towndistrictdistributionpricetrendsdata'] = towndistrictdistributionpricetrendsdata
+    dist['is_missing'] = all_town.get('is_missing')
+    return dist
+
 
 def get_land_audit_profile(geo, session):
     year = current_context().get('year')
