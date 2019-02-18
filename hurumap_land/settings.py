@@ -89,15 +89,15 @@ HURUMAP['levels'] = {
 #     'ward': 2016,
 # }
 HURUMAP['primary_release_year'] = {
-    'province': 2018,
+    'province': 2017,
 }
-HURUMAP['latest_release_year'] = '2016'
-HURUMAP['primary_dataset_name'] = 'Land Sales'
+HURUMAP['latest_release_year'] = '2017'
+HURUMAP['primary_dataset_name'] = 'Land Audit Report'
 HURUMAP['available_release_years'] = {
     # Release years with data for geo_levels.
     # Only specify geo_levels with limited releases.
     # Other geo_levels have data for all releases.
-     'province': [2016, 2018]
+    'province': [2013, 2017]
 }
 # If not set, the centre is determined from the geometry.
 HURUMAP['map_centre']= None

@@ -29,7 +29,7 @@ CREATE TABLE public.land_traded_per_class_statistic_2018 (
     geo_level character varying(50) NOT NULL,
     geo_code character varying(10) NOT NULL,
     geo_version character varying(128) DEFAULT ''::character varying NOT NULL,
-    class character varying(128) NOT NULL,
+    class_distribution character varying(128) NOT NULL,
     name character varying(128) NOT NULL,
     statistic character varying(128) NOT NULL,
     total numeric
@@ -40,7 +40,7 @@ CREATE TABLE public.land_traded_per_class_statistic_2018 (
 -- Data for Name: land_traded_per_class_statistic_2018; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.land_traded_per_class_statistic_2018 (geo_level, geo_code, geo_version, class, name, statistic, total) FROM stdin;
+COPY public.land_traded_per_class_statistic_2018 (geo_level, geo_code, geo_version, class_distribution, name, statistic, total) FROM stdin;
 country	ZA	2016	Under 1.5K	South Africa	Number of transactions in 12 months	171
 country	ZA	2016	1,501-3K	South Africa	Number of transactions in 12 months	220
 country	ZA	2016	3,001-5K	South Africa	Number of transactions in 12 months	281
