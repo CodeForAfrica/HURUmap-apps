@@ -48,6 +48,14 @@ education_of_respondent_key_order = ["No formal schooling",
 employment_status_key_order = ["No (not looking)", "No (looking)",
                                "Yes, part time", "Yes, full time", "metadata"]
 
+can_people_fight_corruption_key_order = ["Don't know","Strongly Disagree", "Neither Agree Nor Diagree", "Agree", "Strongly Agree", "metadata"]
+
+courts_make_binding_decisions_key_order = can_people_fight_corruption_key_order
+
+people_must_obey_the_law_key_order = ["Disagree", "Neither Agree Nor Disagree", "Agree", "Strongly Agree", "metadata"]
+
+pay_taxes_key_order = people_must_obey_the_law_key_order
+
 
 def sort_keys(key_order, d):
     try:

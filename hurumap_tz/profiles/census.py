@@ -1930,6 +1930,10 @@ def get_afrobarometer_profile(geo, session):
         how_often_use_the_internet = sort_keys(internet_usage_key_order, how_often_use_the_internet)
         education_of_respondent = sort_keys(education_of_respondent_key_order, education_of_respondent)
         employment_status = sort_keys(employment_status_key_order, employment_status)
+        people_can_fight_corruption = sort_keys(can_people_fight_corruption_key_order, people_can_fight_corruption)
+        courts_make_binding_decisions = sort_keys(courts_make_binding_decisions_key_order, courts_make_binding_decisions)
+        people_must_pay_taxes = sort_keys(pay_taxes_key_order, people_must_pay_taxes)
+        people_must_obey_the_law = sort_keys(people_must_obey_the_law_key_order, people_must_obey_the_law)
 
 
     final_data = {

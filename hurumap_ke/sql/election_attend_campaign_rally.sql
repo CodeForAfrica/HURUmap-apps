@@ -119,7 +119,7 @@ county	4	2009	No	6
 county	4	2009	Yes	2
 county	13	2009	No	12
 county	13	2009	Yes	12
-county	26	2009	Don�t know	1
+county	26	2009	Don't know	1
 county	26	2009	No	31
 county	26	2009	Yes	16
 county	23	2009	No	23

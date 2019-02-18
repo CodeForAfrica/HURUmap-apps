@@ -1,5 +1,47 @@
 {% extends 'profile/profile_detail.html' %}
 
+{% block secondary_nav %}
+  <div class="floating-nav-wrapper" id="sticky-nav">
+    <nav class="floating-nav affix-top" data-spy="affix" data-offset-top="197">
+      <div class="wrapper clearfix">
+        <div class="geography-ico">
+                    <span><img
+                        src="{% static 'img/icons/favicon.ico' %}">{{ geography.this.name }}
+                    </span>
+        </div>
+        <ul>
+          <li><a href="#elections"><i class="fa fa-check"></i>
+            <span>Elections</span></a></li>
+          <li><a href="#demographics"><i class="fa fa-user"></i>
+            <span>Demographics</span></a></li>
+          <li><a href="#households"><i class="fa fa-home"></i>
+            <span>Households</span></a></li>
+          <li><a href="#employment"><i
+              class="fa fa-briefcase"></i>
+            <span>Employment</span></a></li>
+          <li><a href="#crime_report"><i class="fa fa-shield"></i>
+            <span>Crime Reports</span></a></li>
+          <li><a href="#education"><i
+              class="fa fa-graduation-cap"></i>
+            <span>Education</span></a>
+          </li>
+          <li><a href="#health"><i class="fa fa-medkit"></i>
+            <span>Health</span></a></li>
+          <li><a href="#nutrition"><i class="fa fa-cutlery"></i>
+            <span>Nutrition</span></a></li>
+          {% if not afrobarometer.is_missing %}
+            <li><a href="#afrobarometer"><i class="fa fa-signal"></i>
+              <span>Afrobarometer</span></a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+{% endblock %}
+
+
 {% block profile_detail %}
   {% if not demographics.is_missing %}
     <article id="demographics" class="clearfix">
@@ -505,7 +547,7 @@
   {% endif %} <!-- end if -->
 
   {% if not afrobarometer.is_missing %}
-    <article>
+    <article id="afrobarometer">
       <header class="section-contents"><h1>Afrobarometer Round 7</h1></header>
       <div class="section-container">
         <section class="clearfix stat-row">
@@ -658,7 +700,7 @@
         </section>
         <section class="stat-row clearfix">
           <div class="column-half">
-            <div id="chart-pie-afrobarometer-satisfaction_with_democracy" data-stat-type="percentage" data-chart-title="Q41.Satisfaction with democracy" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
+            <div id="chart-pie-afrobarometer-satisfaction_with_democracy" data-stat-type="percentage" data-chart-title="Satisfaction with democracy" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>
           </div>
           <div class="column-half">
             <div id="chart-pie-afrobarometer-extent_of_democracy" data-stat-type="percentage" data-chart-title="Extent of democracy" data-source-link="http://afrobarometer.org/data/merged-round-6-data-36-countries-2016" data-source-title="Afrobarometer Round 6: Survey, 2017"></div>

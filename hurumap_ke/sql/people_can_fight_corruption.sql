@@ -48,7 +48,7 @@ county	36	2009	Strongly Agree	19
 county	36	2009	Strongly Disagree	11
 county	39	2009	Agree	14
 county	39	2009	Disagree	17
-county	39	2009	Don�t Know	2
+county	39	2009	Don't Know	2
 county	39	2009	Neither Agree Nor Disagree	7
 county	39	2009	Strongly Agree	26
 county	39	2009	Strongly Disagree	14
@@ -63,13 +63,13 @@ county	28	2009	Strongly Agree	3
 county	28	2009	Strongly Disagree	8
 county	14	2009	Agree	10
 county	14	2009	Disagree	3
-county	14	2009	Don�t Know	3
+county	14	2009	Don't Know	3
 county	14	2009	Neither Agree Nor Disagree	6
 county	14	2009	Strongly Agree	10
 county	14	2009	Strongly Disagree	8
 county	7	2009	Agree	10
 county	7	2009	Disagree	4
-county	7	2009	Don�t Know	3
+county	7	2009	Don't Know	3
 county	7	2009	Strongly Agree	6
 county	7	2009	Strongly Disagree	9
 county	43	2009	Agree	12
@@ -77,7 +77,7 @@ county	43	2009	Disagree	6
 county	43	2009	Neither Agree Nor Disagree	1
 county	43	2009	Strongly Agree	15
 county	43	2009	Strongly Disagree	22
-county	11	2009	Don�t Know	1
+county	11	2009	Don't Know	1
 county	11	2009	Neither Agree Nor Disagree	2
 county	11	2009	Strongly Agree	2
 county	11	2009	Strongly Disagree	3
@@ -103,7 +103,7 @@ county	22	2009	Strongly Agree	59
 county	22	2009	Strongly Disagree	13
 county	3	2009	Agree	19
 county	3	2009	Disagree	1
-county	3	2009	Don�t Know	3
+county	3	2009	Don't Know	3
 county	3	2009	Strongly Agree	16
 county	3	2009	Strongly Disagree	25
 county	20	2009	Agree	7
@@ -113,7 +113,7 @@ county	20	2009	Strongly Agree	24
 county	20	2009	Strongly Disagree	3
 county	45	2009	Agree	18
 county	45	2009	Disagree	6
-county	45	2009	Don�t Know	1
+county	45	2009	Don't Know	1
 county	45	2009	Strongly Agree	23
 county	45	2009	Strongly Disagree	24
 county	42	2009	Agree	13
@@ -132,7 +132,7 @@ county	2	2009	Strongly Agree	17
 county	2	2009	Strongly Disagree	10
 county	31	2009	Agree	10
 county	31	2009	Disagree	2
-county	31	2009	Don�t Know	2
+county	31	2009	Don't Know	2
 county	31	2009	Neither Agree Nor Disagree	1
 county	31	2009	Strongly Agree	5
 county	31	2009	Strongly Disagree	4
@@ -146,37 +146,37 @@ county	16	2009	Strongly Agree	23
 county	16	2009	Strongly Disagree	12
 county	17	2009	Agree	14
 county	17	2009	Disagree	1
-county	17	2009	Don�t Know	1
+county	17	2009	Don't Know	1
 county	17	2009	Neither Agree Nor Disagree	2
 county	17	2009	Strongly Agree	32
 county	17	2009	Strongly Disagree	6
 county	9	2009	Agree	12
 county	9	2009	Disagree	16
-county	9	2009	Don�t Know	1
+county	9	2009	Don't Know	1
 county	9	2009	Neither Agree Nor Disagree	1
 county	9	2009	Strongly Agree	4
 county	9	2009	Strongly Disagree	14
 county	10	2009	Agree	3
-county	10	2009	Don�t Know	1
+county	10	2009	Don't Know	1
 county	10	2009	Neither Agree Nor Disagree	4
 county	10	2009	Strongly Agree	2
 county	10	2009	Strongly Disagree	6
 county	12	2009	Agree	14
 county	12	2009	Disagree	6
-county	12	2009	Don�t Know	3
+county	12	2009	Don't Know	3
 county	12	2009	Missing	1
 county	12	2009	Neither Agree Nor Disagree	21
 county	12	2009	Strongly Agree	24
 county	12	2009	Strongly Disagree	16
 county	44	2009	Agree	9
 county	44	2009	Disagree	2
-county	44	2009	Don�t Know	1
+county	44	2009	Don't Know	1
 county	44	2009	Neither Agree Nor Disagree	1
 county	44	2009	Strongly Agree	24
 county	44	2009	Strongly Disagree	11
 county	1	2009	Agree	19
 county	1	2009	Disagree	2
-county	1	2009	Don�t Know	2
+county	1	2009	Don't Know	2
 county	1	2009	Neither Agree Nor Disagree	2
 county	1	2009	Strongly Agree	25
 county	1	2009	Strongly Disagree	22
@@ -186,14 +186,14 @@ county	21	2009	Strongly Agree	42
 county	21	2009	Strongly Disagree	8
 county	47	2009	Agree	69
 county	47	2009	Disagree	40
-county	47	2009	Don�t Know	4
+county	47	2009	Don't Know	4
 county	47	2009	Missing	1
 county	47	2009	Neither Agree Nor Disagree	10
 county	47	2009	Strongly Agree	76
 county	47	2009	Strongly Disagree	48
 county	32	2009	Agree	34
 county	32	2009	Disagree	17
-county	32	2009	Don�t Know	2
+county	32	2009	Don't Know	2
 county	32	2009	Neither Agree Nor Disagree	2
 county	32	2009	Strongly Agree	36
 county	32	2009	Strongly Disagree	13
@@ -204,7 +204,7 @@ county	29	2009	Strongly Agree	6
 county	29	2009	Strongly Disagree	22
 county	33	2009	Agree	14
 county	33	2009	Disagree	7
-county	33	2009	Don�t Know	1
+county	33	2009	Don't Know	1
 county	33	2009	Neither Agree Nor Disagree	2
 county	33	2009	Strongly Agree	15
 county	33	2009	Strongly Disagree	9
@@ -231,48 +231,48 @@ county	41	2009	Neither Agree Nor Disagree	5
 county	41	2009	Strongly Agree	11
 county	41	2009	Strongly Disagree	10
 county	6	2009	Agree	5
-county	6	2009	Don�t Know	1
+county	6	2009	Don't Know	1
 county	6	2009	Strongly Agree	9
 county	6	2009	Strongly Disagree	1
 county	4	2009	Disagree	3
-county	4	2009	Don�t Know	3
+county	4	2009	Don't Know	3
 county	4	2009	Strongly Disagree	2
 county	13	2009	Agree	3
-county	13	2009	Don�t Know	2
+county	13	2009	Don't Know	2
 county	13	2009	Neither Agree Nor Disagree	5
 county	13	2009	Strongly Agree	5
 county	13	2009	Strongly Disagree	9
 county	26	2009	Agree	10
 county	26	2009	Disagree	8
-county	26	2009	Don�t Know	2
+county	26	2009	Don't Know	2
 county	26	2009	Neither Agree Nor Disagree	3
 county	26	2009	Strongly Agree	11
 county	26	2009	Strongly Disagree	14
 county	23	2009	Agree	18
 county	23	2009	Disagree	7
-county	23	2009	Don�t Know	4
+county	23	2009	Don't Know	4
 county	23	2009	Neither Agree Nor Disagree	3
 county	23	2009	Strongly Agree	2
 county	23	2009	Strongly Disagree	14
 county	27	2009	Agree	20
-county	27	2009	Don�t Know	3
+county	27	2009	Don't Know	3
 county	27	2009	Neither Agree Nor Disagree	4
 county	27	2009	Strongly Agree	9
 county	27	2009	Strongly Disagree	20
 county	38	2009	Agree	5
 county	38	2009	Disagree	6
-county	38	2009	Don�t Know	1
+county	38	2009	Don't Know	1
 county	38	2009	Neither Agree Nor Disagree	2
 county	38	2009	Strongly Agree	10
 county	38	2009	Strongly Disagree	8
 county	8	2009	Agree	11
 county	8	2009	Disagree	8
-county	8	2009	Don�t Know	2
+county	8	2009	Don't Know	2
 county	8	2009	Strongly Agree	1
 county	8	2009	Strongly Disagree	10
 county	24	2009	Agree	6
 county	24	2009	Disagree	5
-county	24	2009	Don�t Know	1
+county	24	2009	Don't Know	1
 county	24	2009	Neither Agree Nor Disagree	1
 county	24	2009	Strongly Agree	2
 county	24	2009	Strongly Disagree	9

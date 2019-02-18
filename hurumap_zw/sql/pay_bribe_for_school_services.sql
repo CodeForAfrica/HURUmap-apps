@@ -59,7 +59,7 @@ province	13	2009	A Few times	1
 province	13	2009	Never	96
 province	13	2009	No contact	148
 province	13	2009	Once or Twice	3
-province	14	2009	Don�t know	1
+province	14	2009	Don't know	1
 province	14	2009	Never	131
 province	14	2009	No contact	129
 province	14	2009	Once or Twice	6
@@ -81,7 +81,7 @@ country	ZW	2009	Never	928
 country	ZW	2009	A Few times	12
 country	ZW	2009	Once or Twice	52
 country	ZW	2009	No contact	1381
-country	ZW	2009	Don�t know	1
+country	ZW	2009	Don't know	1
 \.
 
 

@@ -39,19 +39,19 @@ CREATE TABLE public.people_must_obey_the_law (
 COPY public.people_must_obey_the_law (geo_level, geo_code, geo_version, people_must_obey_the_law, total) FROM stdin;
 province	10	2009	Agree	72
 province	10	2009	Disagree	8
-province	10	2009	Don�t Know	3
+province	10	2009	Don't Know	3
 province	10	2009	Neither Agree Nor Disagree	11
 province	10	2009	Strongly Agree	48
 province	10	2009	Strongly Disagree	10
 province	19	2009	Agree	247
 province	19	2009	Disagree	36
-province	19	2009	Don�t Know	1
+province	19	2009	Don't Know	1
 province	19	2009	Neither Agree Nor Disagree	10
 province	19	2009	Strongly Agree	106
 province	19	2009	Strongly Disagree	48
 province	11	2009	Agree	138
 province	11	2009	Disagree	5
-province	11	2009	Don�t Know	11
+province	11	2009	Don't Know	11
 province	11	2009	Neither Agree Nor Disagree	6
 province	11	2009	Strongly Agree	140
 province	11	2009	Strongly Disagree	4
@@ -61,36 +61,36 @@ province	12	2009	Neither Agree Nor Disagree	12
 province	12	2009	Strongly Agree	119
 province	13	2009	Agree	106
 province	13	2009	Disagree	9
-province	13	2009	Don�t Know	5
+province	13	2009	Don't Know	5
 province	13	2009	Neither Agree Nor Disagree	28
 province	13	2009	Strongly Agree	96
 province	13	2009	Strongly Disagree	4
 province	14	2009	Agree	111
 province	14	2009	Disagree	12
-province	14	2009	Don�t Know	1
+province	14	2009	Don't Know	1
 province	14	2009	Neither Agree Nor Disagree	4
 province	14	2009	Strongly Agree	141
 province	14	2009	Strongly Disagree	3
 province	18	2009	Agree	104
 province	18	2009	Disagree	20
-province	18	2009	Don�t Know	1
+province	18	2009	Don't Know	1
 province	18	2009	Neither Agree Nor Disagree	44
 province	18	2009	Strongly Agree	70
 province	18	2009	Strongly Disagree	9
 province	15	2009	Agree	62
 province	15	2009	Disagree	4
-province	15	2009	Don�t Know	2
+province	15	2009	Don't Know	2
 province	15	2009	Neither Agree Nor Disagree	12
 province	15	2009	Strongly Agree	48
 province	16	2009	Agree	47
 province	16	2009	Disagree	2
-province	16	2009	Don�t Know	3
+province	16	2009	Don't Know	3
 province	16	2009	Neither Agree Nor Disagree	7
 province	16	2009	Strongly Agree	42
 province	16	2009	Strongly Disagree	3
 province	17	2009	Agree	143
 province	17	2009	Disagree	9
-province	17	2009	Don�t Know	4
+province	17	2009	Don't Know	4
 province	17	2009	Neither Agree Nor Disagree	22
 province	17	2009	Strongly Agree	105
 province	17	2009	Strongly Disagree	5
@@ -99,7 +99,7 @@ country	ZW	2009	Disagree	117
 country	ZW	2009	Strongly Agree	915
 country	ZW	2009	Agree	1095
 country	ZW	2009	Strongly Disagree	86
-country	ZW	2009	Don�t Know	31
+country	ZW	2009	Don't Know	31
 \.
 
 

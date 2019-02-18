@@ -160,7 +160,7 @@ county	6	2009	No contact	15
 county	4	2009	Never	1
 county	4	2009	No contact	7
 county	13	2009	A Few times	2
-county	13	2009	Don�t know	1
+county	13	2009	Don't know	1
 county	13	2009	Missing	1
 county	13	2009	Never	2
 county	13	2009	No contact	15
@@ -177,7 +177,7 @@ county	27	2009	Once or Twice	4
 county	38	2009	No contact	32
 county	8	2009	Never	6
 county	8	2009	No contact	26
-county	24	2009	Don�t know	1
+county	24	2009	Don't know	1
 county	24	2009	Never	2
 county	24	2009	No contact	18
 county	24	2009	Once or Twice	3

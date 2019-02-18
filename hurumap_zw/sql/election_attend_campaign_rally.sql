@@ -49,7 +49,7 @@ province	13	2009	No	100
 province	13	2009	Yes	148
 province	14	2009	No	159
 province	14	2009	Yes	113
-province	18	2009	Don�t know	1
+province	18	2009	Don't know	1
 province	18	2009	No	113
 province	18	2009	Yes	134
 province	15	2009	No	78
@@ -60,7 +60,7 @@ province	17	2009	No	118
 province	17	2009	Yes	170
 country	ZW	2009	Yes	1192
 country	ZW	2009	No	1207
-country	ZW	2009	Don�t know	1
+country	ZW	2009	Don't know	1
 \.
 
 

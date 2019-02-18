@@ -85,7 +85,7 @@ county	9	2009	No	44
 county	9	2009	Yes	4
 county	10	2009	No	14
 county	10	2009	Yes	2
-county	12	2009	Don�t know	1
+county	12	2009	Don't know	1
 county	12	2009	No	77
 county	12	2009	Yes	7
 county	44	2009	No	42
@@ -114,10 +114,10 @@ county	41	2009	Yes	3
 county	6	2009	No	14
 county	6	2009	Yes	2
 county	4	2009	No	8
-county	13	2009	Don�t know	3
+county	13	2009	Don't know	3
 county	13	2009	No	17
 county	13	2009	Yes	4
-county	26	2009	Don�t know	1
+county	26	2009	Don't know	1
 county	26	2009	No	42
 county	26	2009	Yes	5
 county	23	2009	No	46

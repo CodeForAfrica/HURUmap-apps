@@ -158,7 +158,7 @@ county	21	2009	Never	43
 county	21	2009	No contact	16
 county	21	2009	Once or Twice	1
 county	47	2009	A Few times	5
-county	47	2009	Don�t know	1
+county	47	2009	Don't know	1
 county	47	2009	Missing	4
 county	47	2009	Never	136
 county	47	2009	No contact	90
