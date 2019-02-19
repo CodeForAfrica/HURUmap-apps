@@ -32,8 +32,7 @@ INSTALLED_APPS = ['elimu_yangu', 'elimu_yangu.careerguide',
 
 ROOT_URLCONF = 'elimu_yangu.urls'
 
-MIDDLEWARE_CLASSES = ('django.contrib.sessions.middleware.SessionMiddleware',
-                      'django.middleware.locale.LocaleMiddleware',
+MIDDLEWARE_CLASSES = ('django.middleware.locale.LocaleMiddleware',
                       'django.middleware.common.CommonMiddleware',) + MIDDLEWARE_CLASSES
 
 DATABASE_URL = os.environ.get(
