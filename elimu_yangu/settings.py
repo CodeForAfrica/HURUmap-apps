@@ -32,8 +32,9 @@ INSTALLED_APPS = ['elimu_yangu', 'elimu_yangu.careerguide',
 
 ROOT_URLCONF = 'elimu_yangu.urls'
 
-MIDDLEWARE_CLASSES = ('django.middleware.locale.LocaleMiddleware',
-                      'django.middleware.common.CommonMiddleware',) + MIDDLEWARE_CLASSES
+MIDDLEWARE_CLASSES = ('whitenoise.middleware.WhiteNoiseMiddleware') + MIDDLEWARE_CLASSES
+# Static Files Handler
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DATABASE_URL = os.environ.get(
     'DATABASE_URL',
@@ -176,6 +177,9 @@ HURUMAP['available_release_years'] = {
 }
 
 LOGGING['loggers']['elimu_yangu'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Making sure they are the same
 WAZIMAP = HURUMAP
