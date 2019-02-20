@@ -81,7 +81,7 @@
         $('#locate-me').html('Locating... <i class="fa fa-location-arrow fa-pulse"></i>');
 
         navigator.geolocation.getCurrentPosition(function(position) {
-            var url = 'https://maps.googleapis.com/maps/api/geocode/json?sensor=false&language=en&latlng=' + position.coords.latitude + ',' + position.coords.longitude + '&key=AIzaSyDbs8VaY2_tyvDAoOQN1keRefIaEzH1w8k';
+            var url = 'https://maps.googleapis.com/maps/api/geocode/json?sensor=false&language=en&latlng=' + position.coords.latitude + ',' + position.coords.longitude + '&key={{ HURUMAP.google_geocode_api_key }}';
             $.ajax({
                 url: url
             }).done(function (response) {
