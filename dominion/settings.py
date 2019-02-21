@@ -69,22 +69,16 @@ HURUMAP['legacy_embed_geo_version'] = '2016'
 HURUMAP['geodata'] = 'dominion.geo.GeoData'
 HURUMAP['geometry_data'] = {}
 HURUMAP['levels'] = {
+    'continent': {
+        'plural': 'continents',
+        'children': ['country', 'level1'],
+    },
     'country': {
         'plural': 'countries',
-        'children': ['province', 'district', 'municipality'],
+        'children': ['level1']
     },
-    'province': {
-        'children': ['district', 'municipality', 'ward'],
-    },
-    'district': {
-        'children': ['municipality', 'ward'],
-    },
-    'municipality': {
-        'plural': 'municipalities',
-        'children': ['ward'],
-    },
-    'ward': {
-        'children': [],
+    'level1': {
+
     }
 }
 
