@@ -13,12 +13,7 @@ INSTALLED_APPS = ['dominion'] + INSTALLED_APPS
 
 ROOT_URLCONF = 'dominion.urls'
 
-MIDDLEWARE_CLASSES = (
-        'corsheaders.middleware.CorsMiddleware',
-        'whitenoise.middleware.WhiteNoiseMiddleware',
-    ) + MIDDLEWARE_CLASSES
-
-
+MIDDLEWARE_CLASSES = ('whitenoise.middleware.WhiteNoiseMiddleware') + MIDDLEWARE_CLASSES
 # Static Files Handler
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
@@ -65,9 +60,6 @@ HURUMAP['profile_builder'] = 'dominion.profiles.land.get_land_profile'
 HURUMAP['default_geo_version'] = os.environ.get('DEFAULT_GEO_VERSION', '2016')
 HURUMAP['legacy_embed_geo_version'] = '2016'
 
-# this is provided by mapit
-HURUMAP['geodata'] = 'dominion.geo.GeoData'
-HURUMAP['geometry_data'] = {}
 HURUMAP['levels'] = {
     'continent': {
         'plural': 'continents',
@@ -82,6 +74,29 @@ HURUMAP['levels'] = {
     }
 }
 
+HURUMAP['USE_MAPIT'] = True
+# this is provided by mapit
+HURUMAP['geometry_data'] = {}
+HURUMAP['mapit'] = {
+    'url': 'https://mapit.hurumap.org',
+    'country_code': '',
+    'generations': {
+        '2009': '1',
+        '2016': '1',
+        None: '1',
+        # this should be based on the default_geo_version wazimap setting
+    },
+    'code_type': 'AFR',
+    'level_simplify': {
+        'continent': 0,
+        'country': 0,
+        'level1': 0
+    },
+    'map_country': {
+        'centre': [-13.1339, 27.8493],
+        'zoom': 3
+    }
+}
 HURUMAP['primary_release_year'] = {
     # use the 2011 release for wards, use the latest (2016) for everything else
 }
