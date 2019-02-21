@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import os
 from collections import OrderedDict
+from distutils.util import strtobool
 
 import dj_database_url
 
@@ -13,7 +14,9 @@ INSTALLED_APPS = ['dominion'] + INSTALLED_APPS
 
 ROOT_URLCONF = 'dominion.urls'
 
-MIDDLEWARE_CLASSES = ('whitenoise.middleware.WhiteNoiseMiddleware') + MIDDLEWARE_CLASSES
+MIDDLEWARE_CLASSES = (
+                         'whitenoise.middleware.WhiteNoiseMiddleware',
+                     ) + MIDDLEWARE_CLASSES
 # Static Files Handler
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
@@ -112,13 +115,6 @@ HURUMAP['available_release_years'] = {
 HURUMAP['map_centre']= None
 HURUMAP['map_zoom']= None
 
-HURUMAP['mapit'] = {
-    'generations': {
-        '2011': '1',
-        '2016': '2',
-        None: '2',
-    }
-}
 # -------------------------------------------------------------------------------
 #topics
 
