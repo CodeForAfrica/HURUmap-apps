@@ -37,42 +37,42 @@ CREATE TABLE public.populationgroup_2016 (
 --
 
 COPY public.populationgroup_2016 (geo_level, geo_code, geo_version, "population group", total) FROM stdin;
-province	WC	2016	Black African	2242042
-province	WC	2016	Coloured	2984398
-province	WC	2016	Indian or Asian	48720
-province	WC	2016	White	1004571
-province	EC	2016	Black African	6043913
-province	EC	2016	Coloured	603685
-province	EC	2016	Indian or Asian	29204
-province	EC	2016	White	320174
-province	NC	2016	Black African	574246
-province	NC	2016	Coloured	521261
-province	NC	2016	Indian or Asian	6486
-province	NC	2016	White	91787
-province	FS	2016	Black African	2514990
-province	FS	2016	Coloured	72095
-province	FS	2016	Indian or Asian	7296
-province	FS	2016	White	240333
-province	KZN	2016	Black African	9625934
-province	KZN	2016	Coloured	134089
-province	KZN	2016	Indian or Asian	873161
-province	KZN	2016	White	432056
-province	NW	2016	Black African	3432379
-province	NW	2016	Coloured	61010
-province	NW	2016	Indian or Asian	16686
-province	NW	2016	White	238360
-province	GT	2016	Black African	10770177
-province	GT	2016	Coloured	443289
-province	GT	2016	Indian or Asian	357409
-province	GT	2016	White	1828849
-province	MP	2016	Black African	4057760
-province	MP	2016	Coloured	32859
-province	MP	2016	Indian or Asian	19786
-province	MP	2016	White	225558
-province	LIM	2016	Black African	5630163
-province	LIM	2016	Coloured	16839
-province	LIM	2016	Indian or Asian	17085
-province	LIM	2016	White	135003
+province	ZA_1_008	2016	Black African	2242042
+province	ZA_1_008	2016	Coloured	2984398
+province	ZA_1_008	2016	Indian or Asian	48720
+province	ZA_1_008	2016	White	1004571
+province	ZA_1_003	2016	Black African	6043913
+province	ZA_1_003	2016	Coloured	603685
+province	ZA_1_003	2016	Indian or Asian	29204
+province	ZA_1_003	2016	White	320174
+province	ZA_1_006	2016	Black African	574246
+province	ZA_1_006	2016	Coloured	521261
+province	ZA_1_006	2016	Indian or Asian	6486
+province	ZA_1_006	2016	White	91787
+province	ZA_1_002	2016	Black African	2514990
+province	ZA_1_002	2016	Coloured	72095
+province	ZA_1_002	2016	Indian or Asian	7296
+province	ZA_1_002	2016	White	240333
+province	ZA_1_001	2016	Black African	9625934
+province	ZA_1_001	2016	Coloured	134089
+province	ZA_1_001	2016	Indian or Asian	873161
+province	ZA_1_001	2016	White	432056
+province	ZA_1_007	2016	Black African	3432379
+province	ZA_1_007	2016	Coloured	61010
+province	ZA_1_007	2016	Indian or Asian	16686
+province	ZA_1_007	2016	White	238360
+province	ZA_1_009	2016	Black African	10770177
+province	ZA_1_009	2016	Coloured	443289
+province	ZA_1_009	2016	Indian or Asian	357409
+province	ZA_1_009	2016	White	1828849
+province	ZA_1_004	2016	Black African	4057760
+province	ZA_1_004	2016	Coloured	32859
+province	ZA_1_004	2016	Indian or Asian	19786
+province	ZA_1_004	2016	White	225558
+province	ZA_1_005	2016	Black African	5630163
+province	ZA_1_005	2016	Coloured	16839
+province	ZA_1_005	2016	Indian or Asian	17085
+province	ZA_1_005	2016	White	135003
 municipality	CPT	2016	Black African	1704232
 municipality	CPT	2016	Coloured	1597841
 municipality	CPT	2016	Indian or Asian	43593
@@ -1119,4 +1119,3 @@ ALTER TABLE ONLY public.populationgroup_2016
 --
 -- PostgreSQL database dump complete
 --
-
