@@ -1,26 +1,31 @@
-var path = require("path")
-var webpack = require('webpack')
-var BundleTracker = require('webpack-bundle-tracker')
+const path = require("path")
+const webpack = require('webpack')
+//const BundleTracker = require('webpack-bundle-tracker')
+//const HWP = require('html-webpack-plugin');
 
 module.exports = {
-  context: __dirname,
-
-  entry: './dominion_ui/src/index', // entry point of our app. assets/js/index.js should require other js modules and dependencies it needs
+  entry: path.join(__dirname, '/dominion_ui/src/index'), // entry point of our app. assets/js/index.js should require other js modules and dependencies it needs
 
   output: {
-      path: path.resolve('./dominion_ui/static/bundles/'),
-      filename: "[name]-[hash].js",
+      path: path.resolve('./dominion/static/bundles/'),
+      filename: "main.js",
   },
 
   watch: true,
 
   plugins: [
-    new BundleTracker({filename: './webpack-stats.json'}),
+  //  new BundleTracker({filename: './webpack-stats.json'}),
+  //  new HWP({template: path.join(__dirname,'/dominion/templates/homepage.html')})
   ],
 
   module: {
     rules: [
-      { test: /\.jsx?$/, exclude: /node_modules/, use: { loader: 'babel-loader'} }, // to transform JSX into JS
+      { test: /\.jsx?$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader'
+          }
+        }, // to transform JSX into JS
     ],
   },
 

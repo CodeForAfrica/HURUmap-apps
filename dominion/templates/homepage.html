@@ -52,7 +52,7 @@ download data, and embed charts on your site.{% endblock %}
       </ul>
     </div>
   </div>
-
+  <div id="root"></div>
   <div class="showcase how-it-works bg-white text-center">
     {% block how_it_works %}
       <div class="wrapper clearfix how-it-works">
@@ -86,3 +86,9 @@ download data, and embed charts on your site.{% endblock %}
   {% include 'blocks/partners.html' %}
 
 {% endblock content_container %}
+
+{% block homepage_javascripb_libs %}
+  {{ block.super }}
+  <script src="{% static 'bundles/main.js' %}"></script>
+
+{% endblock %}
