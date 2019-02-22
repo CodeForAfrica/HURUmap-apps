@@ -80,15 +80,11 @@ HURUMAP['levels'] = {
     },
     'district': {
         'plural': 'districts',
-        'children': ['ward'],
-    },
-    'ward': {
-        'plural': 'wards',
-        'children': [],
+        'children':[],
     }
 }
 
-HURUMAP['comparative_levels'] = ["ward","district", "region", "country"]
+HURUMAP['comparative_levels'] = ["district", "region", "country"]
 
 HURUMAP['USE_MAPIT'] = True
 
