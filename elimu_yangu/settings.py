@@ -17,6 +17,8 @@ LANGUAGES = (
 
 USE_I18N = True
 
+TEMPLATE_CONTEXT_PROCESSORS = ('django.template.context_processors.i18n',) + TEMPLATE_CONTEXT_PROCESSORS
+
 # Tell Django where the project's translation files should be.
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),
@@ -32,7 +34,10 @@ INSTALLED_APPS = ['elimu_yangu', 'elimu_yangu.careerguide',
 
 ROOT_URLCONF = 'elimu_yangu.urls'
 
-MIDDLEWARE_CLASSES = ('whitenoise.middleware.WhiteNoiseMiddleware') + MIDDLEWARE_CLASSES
+MIDDLEWARE_CLASSES = ('whitenoise.middleware.WhiteNoiseMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    'django.middleware.common.CommonMiddleware',) + MIDDLEWARE_CLASSES
 # Static Files Handler
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
