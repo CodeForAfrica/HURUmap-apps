@@ -5,7 +5,7 @@
 {% block head_css_extra %}
 <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
-<link rel="stylesheet" href="{% static 'libs/bootstrap/dist/css/bootstrap.css' %}" />
+<link rel="stylesheet" href="{% static 'lib/bootstrap/dist/css/bootstrap.css' %}" />
 <link rel="stylesheet" href="{% static 'css/vendor/leaflet-0.6.4.css' %}" />
 <link href="{% static 'css/vendor/leaflet.label.css' %}" rel="stylesheet" />
 <link rel="stylesheet" href="{% static 'css/site.css' %}" />
@@ -14,12 +14,12 @@
 <link rel="stylesheet" href="{% static 'css/step.css' %}" />
 <link rel="stylesheet" href="{% static 'css/arrow.css' %}" />
     <!-- OWL CAROSEL CSS -->
-<!-- <link rel="stylesheet" href="{% static 'libs/owlcarousel/css/owl.carousel.css' %}">
-<link rel="stylesheet" href="{% static 'libs/owlcarousel/css/owl.theme.css' %}"> -->
+<!-- <link rel="stylesheet" href="{% static 'lib/owlcarousel/css/owl.carousel.css' %}">
+<link rel="stylesheet" href="{% static 'lib/owlcarousel/css/owl.theme.css' %}"> -->
    <!-- Jquery nice select -->
-<link rel="stylesheet" href="{% static 'libs/jquery.nice-select/css/nice-select.css' %}">
+<link rel="stylesheet" href="{% static 'lib/jquery.nice-select/css/nice-select.css' %}">
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/lib/jquery/3.2.1/jquery.min.js"></script>
 {% endblock %}
 
 {% block header %}
@@ -113,10 +113,10 @@
     {{ block.super }}
 
     {% block homepage_javascripb_libs %}
-    <script src="{% static 'libs/jquery/dist/jquery.js' %}"></script>
-    <script src="{% static 'libs/bootstrap/dist/js/bootstrap.js' %}"></script>
-    <script src="{% static 'libs/owlcarousel/js/owl.carousel.min.js' %}"></script>
-    <script src="{% static 'libs/jquery.nice-select/js/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'lib/jquery/dist/jquery.js' %}"></script>
+    <script src="{% static 'lib/bootstrap/dist/js/bootstrap.js' %}"></script>
+    <script src="{% static 'lib/owlcarousel/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'lib/jquery.nice-select/js/jquery.nice-select.min.js' %}"></script>
     <script src="{% static 'js/site.js' %}"></script>
 
     <script src="{% static 'js/vendor/leaflet-0.6.4.js' %}"></script>
