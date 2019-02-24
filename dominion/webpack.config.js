@@ -7,7 +7,7 @@ module.exports = {
   entry: path.join(__dirname, '/dominion_ui/src/index'), // entry point of our app. assets/js/index.js should require other js modules and dependencies it needs
 
   output: {
-      path: path.resolve('./dominion/static/bundles/'),
+      path: path.resolve('./static/bundles/'),
       filename: "main.js",
   },
 
