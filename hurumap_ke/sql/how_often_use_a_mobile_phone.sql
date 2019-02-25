@@ -206,6 +206,11 @@ county	8	2009	Never	7
 county	24	2009	A few times a week	3
 county	24	2009	Everyday	18
 county	24	2009	Never	3
+country	KE	2009	A few times a week	186
+country	KE	2009	Never	180
+country	KE	2009	A few times a month	56
+country	KE	2009	Less than once a month	18
+country	KE	2009	Everyday	1957
 \.
 
 

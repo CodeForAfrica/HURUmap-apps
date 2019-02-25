@@ -378,6 +378,20 @@ county	24	2009	Nothing / Ordinary people cannot do anything	6
 county	24	2009	Refuse to pay bribes	12
 county	24	2009	Report corruption when you see or experience it	4
 county	24	2009	Vote for clean candidates	1
+country	KE	2009	Join or support an organization that is fighting corruption	51
+country	KE	2009	Talk to friends and relatives about the problem	39
+country	KE	2009	Missing	4
+country	KE	2009	Participate in protest marches	25
+country	KE	2009	Vote for clean candidates	133
+country	KE	2009	Nothing / Ordinary people cannot do anything	590
+country	KE	2009	Sign a petition	17
+country	KE	2009	Other	16
+country	KE	2009	Punish the responsible person	1
+country	KE	2009	Report corruption when you see or experience it	472
+country	KE	2009	Refuse to pay bribes	889
+country	KE	2009	Educate people	2
+country	KE	2009	Don't know	88
+country	KE	2009	Speak out about the problem	70
 \.
 
 

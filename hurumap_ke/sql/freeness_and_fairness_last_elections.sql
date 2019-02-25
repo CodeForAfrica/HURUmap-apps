@@ -256,6 +256,13 @@ county	8	2009	Not free and fair	1
 county	24	2009	Completely free and fair	19
 county	24	2009	Free and fair, but with minor problems	4
 county	24	2009	Not free and fair	1
+country	KE	2009	Free and fair, with major problems	383
+country	KE	2009	Free and fair, but with minor problems	640
+country	KE	2009	Missing	1
+country	KE	2009	Don't know	109
+country	KE	2009	Do not understand the question	8
+country	KE	2009	Not free and fair	433
+country	KE	2009	Completely free and fair	823
 \.
 
 

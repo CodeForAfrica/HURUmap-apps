@@ -471,6 +471,20 @@ county	24	2009	People don't know how to report it	1
 county	24	2009	People don't know where to report it	1
 county	24	2009	The officials where they would report to are also corrupt	1
 county	24	2009	They would implicate themselves as bribe-givers	2
+country	KE	2009	People are afraid of the consequences	662
+country	KE	2009	It's government's money, so it's not our problem	4
+country	KE	2009	They would implicate themselves as bribe-givers	157
+country	KE	2009	Corruption is too difficult to prove	51
+country	KE	2009	The officials where they would report to are also corrupt	191
+country	KE	2009	Most people do report incidents of corruption	41
+country	KE	2009	Nothing will be done / It wouldn't make a difference	599
+country	KE	2009	People don't know where to report it	132
+country	KE	2009	It's too expensive to report	71
+country	KE	2009	People don't have enough time to report it	49
+country	KE	2009	Corruption is normal / Everyone does it	223
+country	KE	2009	Other	22
+country	KE	2009	Don't know	99
+country	KE	2009	People don't know how to report it	96
 \.
 
 

@@ -228,6 +228,13 @@ county	8	2009	No contact	5
 county	8	2009	Often	1
 county	24	2009	A Few times	1
 county	24	2009	Never	23
+country	KE	2009	Often	19
+country	KE	2009	Missing	46
+country	KE	2009	Never	1533
+country	KE	2009	A Few times	53
+country	KE	2009	Once or Twice	130
+country	KE	2009	No contact	615
+country	KE	2009	Don't know	1
 \.
 
 

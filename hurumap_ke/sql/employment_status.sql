@@ -225,6 +225,12 @@ county	24	2009	No (looking)	6
 county	24	2009	No (not looking)	8
 county	24	2009	Yes, full time	5
 county	24	2009	Yes, part time	5
+country	KE	2009	No (looking)	506
+country	KE	2009	Missing	2
+country	KE	2009	No (not looking)	430
+country	KE	2009	Yes, full time	978
+country	KE	2009	Yes, part time	480
+country	KE	2009	Don't know	1
 \.
 
 

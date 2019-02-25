@@ -246,6 +246,12 @@ county	24	2009	Don't know	2
 county	24	2009	Not very well	9
 county	24	2009	Very well	3
 county	24	2009	Well	10
+country	KE	2009	Missing	3
+country	KE	2009	Well	721
+country	KE	2009	Very well	475
+country	KE	2009	Not at all well	259
+country	KE	2009	Don't know	91
+country	KE	2009	Not very well	848
 \.
 
 

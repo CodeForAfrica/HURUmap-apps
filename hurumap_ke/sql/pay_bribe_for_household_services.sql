@@ -181,6 +181,13 @@ county	24	2009	Don't know	1
 county	24	2009	Never	2
 county	24	2009	No contact	18
 county	24	2009	Once or Twice	3
+country	KE	2009	Often	5
+country	KE	2009	Missing	9
+country	KE	2009	Never	379
+country	KE	2009	A Few times	19
+country	KE	2009	Once or Twice	72
+country	KE	2009	No contact	1911
+country	KE	2009	Don't know	2
 \.
 
 

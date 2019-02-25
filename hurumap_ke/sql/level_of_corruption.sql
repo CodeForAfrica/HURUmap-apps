@@ -277,6 +277,13 @@ county	24	2009	Don't know	3
 county	24	2009	Increased a lot	3
 county	24	2009	Increased somewhat	11
 county	24	2009	Stayed the same	2
+country	KE	2009	Missing	2
+country	KE	2009	Increased somewhat	563
+country	KE	2009	Decreased a lot	58
+country	KE	2009	Increased a lot	978
+country	KE	2009	Stayed the same	339
+country	KE	2009	Decreased somewhat	372
+country	KE	2009	Don't know	85
 \.
 
 

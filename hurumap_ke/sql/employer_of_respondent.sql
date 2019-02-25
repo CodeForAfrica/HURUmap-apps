@@ -286,6 +286,13 @@ county	8	2009	Works for  self	19
 county	24	2009	Missing	2
 county	24	2009	Not applicable	2
 county	24	2009	Works for  self	20
+country	KE	2009	Missing	188
+country	KE	2009	Government	130
+country	KE	2009	Private sector	414
+country	KE	2009	Works for  self	1248
+country	KE	2009	Non Governmental Organizations/ civil society sector	51
+country	KE	2009	Not applicable	364
+country	KE	2009	Don't know	2
 \.
 
 
