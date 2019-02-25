@@ -1,5 +1,5 @@
 {% extends '_base.html' %}
-{% load sass_tags %}
+{% load sass_tags static %}
 
 {% block head_css %}
 {{ block.super }}
@@ -47,4 +47,8 @@
       });
     });
   </script>
+
+  <script src="{% static asset_manifest.runtime %}"></script>
+  <script src="{% static asset_manifest.vendor %}"></script>
+  <script src="{% static asset_manifest.main %}"></script>
 {% endblock %}
