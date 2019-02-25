@@ -5,4 +5,4 @@ from django.apps import AppConfig
 
 
 class DominionUiConfig(AppConfig):
-    name = 'dominion_ui'
+    name = 'frontend'
