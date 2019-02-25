@@ -1,4 +1,3 @@
-import os
 from django.utils.translation import ugettext_lazy as _
 from collections import OrderedDict
 from distutils.util import strtobool
@@ -17,7 +16,9 @@ LANGUAGES = (
 
 USE_I18N = True
 
-TEMPLATE_CONTEXT_PROCESSORS = ('django.template.context_processors.i18n',) + TEMPLATE_CONTEXT_PROCESSORS
+TEMPLATES[0]['OPTIONS']['context_processors'] = TEMPLATES[0]['OPTIONS'][
+                                                 'context_processors'] + [
+                                                 'django.template.context_processors.i18n']
 
 # Tell Django where the project's translation files should be.
 LOCALE_PATHS = (
