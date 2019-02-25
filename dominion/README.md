@@ -10,6 +10,6 @@ On your project root directly, run these commands to build dominion ui:
 
 ```
 cd dominion
-npm install
-npm run build
+yarn
+yarn build
 ```
