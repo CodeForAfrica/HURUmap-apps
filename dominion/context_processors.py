@@ -1,13 +1,16 @@
 import json
+import os
+
+from django.conf import settings
 
 def asset_manifest(request):
+    manifest_filepath = os.path.join(settings.BASE_DIR, 'dominion/dominion_ui/build/asset-manifest.json')
     asset_manifest = {};
     try:
-        with open('./dominion/dominion_ui/build/asset-manifest.json') as f:
+        with open(manifest_filepath) as f:
             asset_manifest_contents = json.load(f)
-            asset_manifest_content = dict(asset_manifest_contents)
-            for key, value in asset_manifest_contents.iteritems():
-                # Strip starting `static/` from values
+            for key, value in asset_manifest_contents.viewitems():
+                # Strip starting `/static/` from values
                 if key == 'main.js':
                     asset_manifest['main'] = value[8:]
                 elif key == 'runtime~main.js':

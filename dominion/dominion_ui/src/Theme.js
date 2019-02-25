@@ -1,13 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-
-import CssBaseline from '@material-ui/core/CssBaseline';
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
 
 const FONT_FAMILY_HEADING = '"Roboto Slab", "serif"';
 const FONT_FAMILY_TEXT = '"Roboto", "sans-serif"';
 
-const THEME = createMuiTheme({
+const Theme = createMuiTheme({
   palette: {
     primary: { main: '#2b3129', light: '#f1f1ed' },
     secondary: { main: '#000000', dark: '#2c2c2a', grey: '#2b3129' },
@@ -66,19 +62,5 @@ const THEME = createMuiTheme({
     }
   }
 });
-
-function Theme({ children }) {
-  return (
-    <MuiThemeProvider theme={THEME}>
-      <CssBaseline>{children}</CssBaseline>
-    </MuiThemeProvider>
-  );
-}
-Theme.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
-  ]).isRequired
-};
 
 export default Theme;
