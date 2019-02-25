@@ -2,18 +2,16 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.10
--- Dumped by pg_dump version 9.5.10
+-- Dumped from database version 10.6
+-- Dumped by pg_dump version 10.6
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
-
-SET search_path = public, pg_catalog;
 
 ALTER TABLE IF EXISTS ONLY public.hivcenters DROP CONSTRAINT IF EXISTS pk_hivcenters;
 DROP TABLE IF EXISTS public.hivcenters;
@@ -22,10 +20,10 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: hivcenters; Type: TABLE; Schema: public; Owner: hurumap_tz
+-- Name: hivcenters; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE hivcenters (
+CREATE TABLE public.hivcenters (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(255) NOT NULL,
     "hiv centers" character varying(128) NOT NULL,
@@ -35,10 +33,10 @@ CREATE TABLE hivcenters (
 
 
 --
--- Data for Name: hivcenters; Type: TABLE DATA; Schema: public; Owner: hurumap_tz
+-- Data for Name: hivcenters; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY hivcenters (geo_level, geo_code, "hiv centers", total, geo_version) FROM stdin;
+COPY public.hivcenters (geo_level, geo_code, "hiv centers", total, geo_version) FROM stdin;
 district	13	hiv centers	2	2009
 district	1	hiv centers	9	2009
 district	2	hiv centers	8	2009
@@ -243,10 +241,10 @@ country	TZ	hiv centers	2672	2009
 
 
 --
--- Name: pk_hivcenters; Type: CONSTRAINT; Schema: public; Owner: hurumap_tz
+-- Name: hivcenters pk_hivcenters; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY hivcenters
+ALTER TABLE ONLY public.hivcenters
     ADD CONSTRAINT pk_hivcenters PRIMARY KEY (geo_level, geo_code, geo_version, "hiv centers");
 
 

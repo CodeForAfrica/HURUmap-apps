@@ -7,6 +7,8 @@ from wazimap.data.utils import (calculate_median,
                                 merge_dicts, get_datatable, current_context,
                                 dataset_context)
 
+from utils import *
+
 __author__ = 'kenneth'
 
 log = logging.getLogger(__name__)
@@ -660,44 +662,6 @@ def get_afrobarometer_profile(geo, session):
             'is_missing') and pay_bribe_for_household_services.get('is_missing')
 
         if not is_missing:
-            free_and_fair_key_order = ["Don't know", "Not free and fair",
-                                    "Free and fair, with major problems",
-                                    "Free and fair, but with minor problems",
-                                    "Completely free and fair",
-                                    "Do not understand the question",
-                                    "metadata"]
-
-            elections_key_order = ["Don't know", "Not at all well", "Not very well",
-                                "Well", "Very well", "metadata"]
-
-            chinas_influence_key_order = ["Don't know / Haven't heard enough",
-                                        "Very negative", "Somewhat negative",
-                                        "Neither positive nor negative",
-                                        "Somewhat positive", "Very positive",
-                                        "metadata"]
-
-            china_influence_on_economy_key_order = ["Don't know / Haven't heard enough",
-                                                    "None", "Some", "A little", "A lot",
-                                                    "metadata"]
-
-            mobile_phone_usage_key_order = ["Don't know", "Never",
-                                            "A few times a month", "A few times a week",
-                                            "Less than once a month", "Everyday",
-                                            "metadata"]
-
-            internet_usage_key_order = mobile_phone_usage_key_order
-            corruption_amongst_key_order = ["Don't know/ Haven't heard enough", "None",
-                                            "Some of them", "Most of them",
-                                            "All of them", "metadata"]
-            corruption_level_key_order = ["Don't know", "Decreased a lot",
-                                        "Decreased somewhat", "Stayed the same",
-                                        "Increased somewhat", "Increased a lot",
-                                        "metadata"]
-            pay_bribes_key_order = ["Don't know", "No contact", "Never",
-                                    "Once or Twice", "A Few times", "Often", "metadata"]
-            difficulty_key_order = ["Don't Know", "No contact", "Very Easy", "Easy",
-                                    "Difficult", "Very Difficult", "metadata"]
-
             corruption_business_executives = sort_keys(corruption_amongst_key_order,
                                                     corruption_business_executives)
             corruption_government_officials = sort_keys(
@@ -825,10 +789,6 @@ def get_afrobarometer_profile(geo, session):
     }
 
     return final_data
-
-
-def sort_keys(key_order, d):
-    return OrderedDict(sorted(d.items(), key=lambda i: key_order.index(i[0])))
 
 
 def get_profile(geo, profile_name, request):

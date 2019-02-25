@@ -2,22 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.8
--- Dumped by pg_dump version 9.5.8
+-- Dumped from database version 10.6
+-- Dumped by pg_dump version 10.6
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-SET search_path = public, pg_catalog;
-
 ALTER TABLE IF EXISTS ONLY public.inpatientdiagnosisunderfive DROP CONSTRAINT IF EXISTS pk_inpatientdiagnosisunderfive;
 DROP TABLE IF EXISTS public.inpatientdiagnosisunderfive;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -26,7 +23,7 @@ SET default_with_oids = false;
 -- Name: inpatientdiagnosisunderfive; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE inpatientdiagnosisunderfive (
+CREATE TABLE public.inpatientdiagnosisunderfive (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(255) NOT NULL,
     "inpatient diagnosis under five" character varying(128) NOT NULL,
@@ -39,7 +36,7 @@ CREATE TABLE inpatientdiagnosisunderfive (
 -- Data for Name: inpatientdiagnosisunderfive; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY inpatientdiagnosisunderfive (geo_level, geo_code, "inpatient diagnosis under five", total, geo_version) FROM stdin;
+COPY public.inpatientdiagnosisunderfive (geo_level, geo_code, "inpatient diagnosis under five", total, geo_version) FROM stdin;
 region	1	diarrhoea	1771	2009
 region	1	burn	442	2009
 region	1	kwashiokor	76	2009
@@ -323,10 +320,10 @@ country	TZ	pneumonia	99936	2009
 
 
 --
--- Name: pk_inpatientdiagnosisunderfive; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: inpatientdiagnosisunderfive pk_inpatientdiagnosisunderfive; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY inpatientdiagnosisunderfive
+ALTER TABLE ONLY public.inpatientdiagnosisunderfive
     ADD CONSTRAINT pk_inpatientdiagnosisunderfive PRIMARY KEY (geo_level, geo_code, geo_version, "inpatient diagnosis under five");
 
 

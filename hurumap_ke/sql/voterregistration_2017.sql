@@ -2,22 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.5
--- Dumped by pg_dump version 10.0
+-- Dumped from database version 10.6
+-- Dumped by pg_dump version 10.6
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-SET search_path = public, pg_catalog;
-
 ALTER TABLE IF EXISTS ONLY public.voterregistration_2017 DROP CONSTRAINT IF EXISTS pk_voterregistration_2017;
 DROP TABLE IF EXISTS public.voterregistration_2017;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -26,7 +23,7 @@ SET default_with_oids = false;
 -- Name: voterregistration_2017; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE voterregistration_2017 (
+CREATE TABLE public.voterregistration_2017 (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     voterregistration_2017 character varying(128) NOT NULL,
@@ -39,7 +36,7 @@ CREATE TABLE voterregistration_2017 (
 -- Data for Name: voterregistration_2017; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY voterregistration_2017 (geo_level, geo_code, voterregistration_2017, total, geo_version) FROM stdin;
+COPY public.voterregistration_2017 (geo_level, geo_code, voterregistration_2017, total, geo_version) FROM stdin;
 county	1	Actual Dead with IDs	3473	2009
 county	1	additional voters registered	163211	2009
 county	1	bvr kits	96	2009
@@ -767,7 +764,7 @@ country	KE	wards	15936252	2009
 -- Name: voterregistration_2017 pk_voterregistration_2017; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY voterregistration_2017
+ALTER TABLE ONLY public.voterregistration_2017
     ADD CONSTRAINT pk_voterregistration_2017 PRIMARY KEY (geo_level, geo_code, geo_version, voterregistration_2017);
 
 
