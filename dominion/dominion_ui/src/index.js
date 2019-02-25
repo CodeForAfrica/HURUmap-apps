@@ -5,8 +5,8 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 
 import withRoot from './withRoot';
-import Footer from './component/Footer';
-import Showcase from './component/Showcase';
+import Footer from './components/Footer';
+import Showcase from './components/Showcase';
 
 library.add(fab);
 
