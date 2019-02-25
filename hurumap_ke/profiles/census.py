@@ -8,6 +8,7 @@ from wazimap.data.utils import (calculate_median,
                                 merge_dicts, get_datatable, current_context,
                                 dataset_context)
 from wazimap.geo import geo_data, LocationNotFound
+from wazimap.models.data import DataNotFound
 
 from utils import *
 
@@ -1612,6 +1613,8 @@ def get_afrobarometer_profile(geo, session):
                                                         geo, session, table_fields=[
                     'occupation_of_respondent'])
         except LocationNotFound:
+            pass
+        except DataNotFound:
             pass
 
         try:

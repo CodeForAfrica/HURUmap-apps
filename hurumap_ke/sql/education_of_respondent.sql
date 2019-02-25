@@ -371,6 +371,17 @@ county	24	2009	Primary school completed	7
 county	24	2009	Secondary school / high school completed	2
 county	24	2009	Some primary schooling	10
 county	24	2009	Some secondary school / high school	2
+country	KE	2009	Some secondary school / high school	307
+country	KE	2009	Some primary schooling	430
+country	KE	2009	No formal schooling	157
+country	KE	2009	University completed	73
+country	KE	2009	Informal schooling only	43
+country	KE	2009	Don't know	1
+country	KE	2009	Some university	38
+country	KE	2009	Post-secondary qualifications, other than university	324
+country	KE	2009	Post-graduate	19
+country	KE	2009	Primary school completed	439
+country	KE	2009	Secondary school / high school completed	566
 \.
 
 

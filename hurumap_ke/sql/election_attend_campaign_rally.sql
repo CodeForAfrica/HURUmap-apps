@@ -132,6 +132,9 @@ county	8	2009	No	20
 county	8	2009	Yes	12
 county	24	2009	No	8
 county	24	2009	Yes	16
+country	KE	2009	Yes	1208
+country	KE	2009	No	1188
+country	KE	2009	Don't know	1
 \.
 
 

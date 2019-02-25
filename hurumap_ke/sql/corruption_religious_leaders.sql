@@ -237,6 +237,12 @@ county	24	2009	All of them	1
 county	24	2009	Don't know/ Haven't heard enough	2
 county	24	2009	None	15
 county	24	2009	Some of them	6
+country	KE	2009	None	673
+country	KE	2009	Missing	3
+country	KE	2009	Don't know/ Haven't heard enough	105
+country	KE	2009	Some of them	1301
+country	KE	2009	All of them	74
+country	KE	2009	Most of them	241
 \.
 
 

@@ -256,6 +256,11 @@ county	24	2009	Difficult	6
 county	24	2009	Easy	15
 county	24	2009	Very Difficult	1
 county	24	2009	Very Easy	2
+country	KE	2009	Very Easy	320
+country	KE	2009	No contact	615
+country	KE	2009	Very Difficult	220
+country	KE	2009	Easy	701
+country	KE	2009	Difficult	541
 \.
 
 

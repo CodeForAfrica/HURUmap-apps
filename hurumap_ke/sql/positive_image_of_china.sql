@@ -298,6 +298,15 @@ county	24	2009	China's business investment	9
 county	24	2009	China's investment in infrastructure in the country	5
 county	24	2009	Don't know / Haven't heard enough	4
 county	24	2009	The quality or cost of Chinese products	5
+country	KE	2009	Don't know / Haven't heard enough	268
+country	KE	2009	Non-interference in the internal affairs of African countries	82
+country	KE	2009	The quality or cost of Chinese products	294
+country	KE	2009	An appreciation of the Chinese people, culture and language	12
+country	KE	2009	Some other factor	16
+country	KE	2009	China's support for the country in international affairs	31
+country	KE	2009	China's investment in infrastructure in the country	1344
+country	KE	2009	China's business investment	326
+country	KE	2009	None of these	24
 \.
 
 

@@ -289,6 +289,13 @@ county	24	2009	A democracy, with major problems	1
 county	24	2009	A full democracy	4
 county	24	2009	Do not understand question / democracy	4
 county	24	2009	Don't know	9
+country	KE	2009	A democracy, but with minor problems	844
+country	KE	2009	Missing	1
+country	KE	2009	Not a democracy	119
+country	KE	2009	Do not understand question / democracy	179
+country	KE	2009	A democracy, with major problems	627
+country	KE	2009	Don't know	337
+country	KE	2009	A full democracy	290
 \.
 
 

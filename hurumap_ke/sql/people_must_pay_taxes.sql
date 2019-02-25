@@ -266,6 +266,13 @@ county	24	2009	Agree	10
 county	24	2009	Don't Know	4
 county	24	2009	Neither Agree Nor Disagree	7
 county	24	2009	Strongly Agree	3
+country	KE	2009	Neither Agree Nor Disagree	216
+country	KE	2009	Missing	2
+country	KE	2009	Disagree	195
+country	KE	2009	Strongly Agree	781
+country	KE	2009	Strongly Disagree	121
+country	KE	2009	Agree	971
+country	KE	2009	Don't Know	111
 \.
 
 

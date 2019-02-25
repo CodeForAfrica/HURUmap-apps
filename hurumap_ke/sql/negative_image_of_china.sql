@@ -350,6 +350,15 @@ county	24	2009	Land grabbing by Chinese individuals or businesses	1
 county	24	2009	Taking jobs or business from the locals	2
 county	24	2009	The behavior of Chinese citizens in the country	1
 county	24	2009	The quality of Chinese products	14
+country	KE	2009	Some other factor	29
+country	KE	2009	The quality of Chinese products	1079
+country	KE	2009	The behavior of Chinese citizens in the country	181
+country	KE	2009	Taking jobs or business from the locals	241
+country	KE	2009	Don't know / Haven't heard enough	449
+country	KE	2009	None of these	53
+country	KE	2009	China's extraction of resources from Africa	191
+country	KE	2009	Land grabbing by Chinese individuals or businesses	100
+country	KE	2009	China's willingness to cooperate with undemocratic rulers	74
 \.
 
 

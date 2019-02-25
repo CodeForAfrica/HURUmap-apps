@@ -298,6 +298,13 @@ county	24	2009	Neither good nor bad job	3
 county	24	2009	Somewhat good job	8
 county	24	2009	Very bad job	2
 county	24	2009	Very good job	8
+country	KE	2009	Very bad job	95
+country	KE	2009	Don't know / Haven't heard enough	258
+country	KE	2009	Somewhat bad job	230
+country	KE	2009	Very good job	525
+country	KE	2009	Somewhat good job	1089
+country	KE	2009	Neither good nor bad job	184
+country	KE	2009	China doesn't give development assistance to the country	16
 \.
 
 

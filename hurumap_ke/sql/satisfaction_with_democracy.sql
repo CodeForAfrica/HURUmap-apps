@@ -264,6 +264,13 @@ county	24	2009	Do not know	12
 county	24	2009	Fairly satisfied	6
 county	24	2009	Not at all satisfied	2
 county	24	2009	Very satisfied	4
+country	KE	2009	The country is not a democracy	19
+country	KE	2009	Missing	1
+country	KE	2009	Not very satisfied	586
+country	KE	2009	Do not know	483
+country	KE	2009	Fairly satisfied	830
+country	KE	2009	Not at all satisfied	191
+country	KE	2009	Very satisfied	287
 \.
 
 

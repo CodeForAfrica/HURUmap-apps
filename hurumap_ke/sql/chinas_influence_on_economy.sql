@@ -239,6 +239,11 @@ county	24	2009	A lot	8
 county	24	2009	Don't know / Haven't heard enough	3
 county	24	2009	None	1
 county	24	2009	Some	6
+country	KE	2009	A lot	941
+country	KE	2009	Don't know / Haven't heard enough	235
+country	KE	2009	Some	838
+country	KE	2009	None	80
+country	KE	2009	A little	303
 \.
 
 

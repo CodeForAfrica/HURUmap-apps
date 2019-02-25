@@ -133,6 +133,10 @@ county	8	2009	No, don't own	21
 county	8	2009	Yes, do own	11
 county	24	2009	No, don't own	1
 county	24	2009	Yes, do own	23
+country	KE	2009	Yes, do own	1937
+country	KE	2009	No, don't own	457
+country	KE	2009	Don't know	1
+country	KE	2009	Missing	2
 \.
 
 

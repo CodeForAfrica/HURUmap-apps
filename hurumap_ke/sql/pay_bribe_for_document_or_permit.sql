@@ -225,6 +225,12 @@ county	8	2009	Once or Twice	9
 county	24	2009	Never	15
 county	24	2009	No contact	4
 county	24	2009	Once or Twice	5
+country	KE	2009	Often	17
+country	KE	2009	Missing	15
+country	KE	2009	Never	754
+country	KE	2009	A Few times	68
+country	KE	2009	Once or Twice	406
+country	KE	2009	No contact	1137
 \.
 
 

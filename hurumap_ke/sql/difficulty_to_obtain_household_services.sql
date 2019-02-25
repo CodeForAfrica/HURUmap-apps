@@ -203,6 +203,12 @@ county	24	2009	Difficult	3
 county	24	2009	Don't Know	1
 county	24	2009	Easy	2
 county	24	2009	No contact	18
+country	KE	2009	Very Easy	55
+country	KE	2009	No contact	1911
+country	KE	2009	Easy	170
+country	KE	2009	Very Difficult	79
+country	KE	2009	Don't Know	2
+country	KE	2009	Difficult	180
 \.
 
 

@@ -258,6 +258,16 @@ county	8	2009	You were not registered to vote	9
 county	8	2009	You were prevented from voting	1
 county	24	2009	You decided not to vote	1
 county	24	2009	You voted in the elections	23
+country	KE	2009	You decided not to vote	57
+country	KE	2009	You could not find the polling station	6
+country	KE	2009	You did not have time to vote	31
+country	KE	2009	You voted in the elections	1930
+country	KE	2009	Don't Know / Can't remember	3
+country	KE	2009	Did not vote for some other reason	93
+country	KE	2009	You did not vote because your name not in the register	13
+country	KE	2009	You were prevented from voting	8
+country	KE	2009	You were not registered to vote	198
+country	KE	2009	You were too young to vote	58
 \.
 
 

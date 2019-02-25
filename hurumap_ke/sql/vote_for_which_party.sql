@@ -323,6 +323,20 @@ county	8	2009	Would not vote	8
 county	24	2009	Orange Democratic Movement (ODM)	2
 county	24	2009	The National Alliance (TNA)	3
 county	24	2009	United Republican Party (URP)	19
+country	KE	2009	Restore and Build Kenya (RBK)	6
+country	KE	2009	NARCK Kenya	13
+country	KE	2009	The National Alliance (TNA)	876
+country	KE	2009	Refused to answer	268
+country	KE	2009	Ford Kenya	10
+country	KE	2009	United Republican Party (URP)	187
+country	KE	2009	United Democratic Front (UDF)	22
+country	KE	2009	Don't know	164
+country	KE	2009	SAFINA	2
+country	KE	2009	Other	16
+country	KE	2009	Would not vote	123
+country	KE	2009	Wiper Democratic Movement (WDM-K)	66
+country	KE	2009	Kenya Social Congress (KSC)	5
+country	KE	2009	Orange Democratic Movement (ODM)	639
 \.
 
 

@@ -514,6 +514,21 @@ county	24	2009	Never had a job	2
 county	24	2009	Security services	2
 county	24	2009	Trader / hawker / vendor	5
 county	24	2009	Unskilled manual worker	2
+country	KE	2009	Agriculture / farming / fishing / forestry	523
+country	KE	2009	Student	162
+country	KE	2009	Unskilled manual worker	278
+country	KE	2009	Artisan or skilled manual worker	189
+country	KE	2009	Trader / hawker / vendor	328
+country	KE	2009	Clerical or secretarial	48
+country	KE	2009	Never had a job	202
+country	KE	2009	Housewife / homemaker	165
+country	KE	2009	Other	40
+country	KE	2009	Supervisor / Foreman / Senior Manager	32
+country	KE	2009	Mid-level professional	151
+country	KE	2009	Upper-level professional	47
+country	KE	2009	Security services	39
+country	KE	2009	Don't know	2
+country	KE	2009	Retail / Shop	191
 \.
 
 

@@ -272,6 +272,12 @@ county	24	2009	Don't know / Haven't heard enough	3
 county	24	2009	Neither positive nor negative	2
 county	24	2009	Somewhat positive	10
 county	24	2009	Very positive	9
+country	KE	2009	Don't know / Haven't heard enough	246
+country	KE	2009	Somewhat positive	1068
+country	KE	2009	Somewhat negative	148
+country	KE	2009	Neither positive nor negative	148
+country	KE	2009	Very negative	61
+country	KE	2009	Very positive	726
 \.
 
 

@@ -240,6 +240,13 @@ county	8	2009	Everyday	3
 county	8	2009	Never	27
 county	24	2009	Everyday	3
 county	24	2009	Never	21
+country	KE	2009	A few times a month	104
+country	KE	2009	Less than once a month	63
+country	KE	2009	Missing	3
+country	KE	2009	Never	1548
+country	KE	2009	Don't know	26
+country	KE	2009	A few times a week	285
+country	KE	2009	Everyday	368
 \.
 
 
