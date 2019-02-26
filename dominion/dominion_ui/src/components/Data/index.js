@@ -6,14 +6,23 @@ import { withStyles } from '@material-ui/core/styles';
 import Documents from './Documents';
 import DatasetsContent from './DatasetsContent';
 
+import databg from '../../assets/images/bg/databg.png';
+
 const styles = theme => ({
   root: {
     flexGrow: 1,
     padding: '2rem',
     backgroundColor: '#fff',
-    backgroundImage: '',
-    backgroundSize: '80%',
-    backgroundRepeat: 'no-repeat'
+    [theme.breakpoints.down('lg')]: {
+      backgroundImage: `url(${databg})`,
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: '69%'
+    },
+    [theme.breakpoints.down('sm')]: {
+      backgroundImage: `url(${databg})`,
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: '80%'
+    }
   },
   data: {
     width: '100%',
