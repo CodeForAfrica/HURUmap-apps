@@ -31,6 +31,6 @@ services:
       - PGUSER=hurumap
       - PGPASSWORD=hurumap
       - USE_MAPIT=True
-      - PYTHONDONTWRITEBYTECODE="True"
-      - USE_MAPIT=false
+      - PYTHONUNBUFFERED=True
+      - PYTHONDONTWRITEBYTECODE=True
       # - DJANGO_DEBUG=False  # For testing deploys

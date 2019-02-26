@@ -1,48 +1,4 @@
 {% load sass_tags static %}
-<div class="section-container text-center">
-  <div id="showcase-stories" class="showcase-stories wrapper {{ extra_css_class }}">
-    <p class="section-title-icon">
-      <span class="img-bg rounded bg-color-gradient text-white">
-        <img src="{% static 'img/icons/blurbs/script.svg' %}"/>
-        STORIES
-      </span>
-    </p>
 
-    <h1 class="section-title text-primary" style="margin-bottom: 15px;">Story Showcase</h1>
-
-    <a href="{{ HURUMAP.showcase_stories.0.link }}"
-        target="_blank" rel="noopener">
-      <div class="showcase-story" style="background-image: url('{{ HURUMAP.showcase_stories.0.img }}'); min-height: 300px;">
-        <h2 class="text-uppercase bg-color-solid-green" style="max-width: 450px;">
-          <span>{{ HURUMAP.showcase_stories.0.title }}</span>
-        </h2>
-        <button class="bg-color-gradient text-white">Read More</button>
-      </div>
-    </a>
-    
-    <hr>
-    <div class="column-half">
-      <a href="{{ HURUMAP.showcase_stories.1.link }}" target="_blank" rel="noopener">
-        <div class="showcase-story img-story grayscale"
-            style="background-image: url('{{ HURUMAP.showcase_stories.1.img }}');">
-          <h2 class="text-uppercase bg-color-solid-green">
-            <span>{{ HURUMAP.showcase_stories.1.title }}</span>
-          </h2>
-          <button class="bg-color-gradient text-white">Read More</button>
-        </div>
-      </a>
-    </div>
-    <div class="column-half-end">
-      <a href="{{ HURUMAP.showcase_stories.2.link }}" target="_blank" rel="noopener">
-        <div class="showcase-story img-story grayscale"
-            style="background-image: url('{{ HURUMAP.showcase_stories.2.img }}');">
-          <h2 class="text-uppercase bg-color-solid-green">
-            <span>{{ HURUMAP.showcase_stories.2.title }}</span>
-          </h2>
-          <button class="bg-color-gradient text-white">Read More</button>
-        </div>
-      </a>
-    </div>
-    <div class="clearfix"></div>
-  </div>
+<div id="dominionShowcase">
 </div>
