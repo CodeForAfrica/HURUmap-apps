@@ -10,37 +10,8 @@ download data, and embed charts on your site.{% endblock %}
 
 {% block content_container %}
   <div id="dominionHomeHero"></div>
-  <div class="showcase how-it-works bg-white text-center">
-    {% block how_it_works %}
-      <div class="wrapper clearfix how-it-works">
-        <h1>How It Works</h1>
-        <br/>
-        <div class="column-third">
-          <p><img src="{% static 'img/icons/blurbs/checklist.svg' %}"/></p>
-          <h2>Find Facts</h2>
-          <p>Land ownership data is broken down by province and category: agricultural land, erven and urban land and sectional title land. </p>
-        </div>
-        <div class="column-third">
-          <p><img src="{% static 'img/icons/blurbs/analysis.svg' %}"/></p>
-          <h2>Visualize</h2>
-          <p>Our library of charts gives you insight into land data from provinces you research. Look for them on profile pages. You can embed the charts on your own site. </p>
-        </div>
-        <div class="column-third-end">
-          <p><img src="{% static 'img/icons/blurbs/visualization.svg' %}"/></p>
-          <h2>Get Context</h2>
-          <p>Pre-computed land statistics are presented alongside each data point so you can see how each place fits into a large context.</p>
-        </div>
-      </div>
-      <div class="clearfix"></div>
-      <div class="wrapper" style="margin: 30px auto;">
-        <a href="/about" class="btn btn-lg bg-bottle-green">Learn more</a>
-      </div>
-    {% endblock %}
-  </div>
 
   {% include 'blocks/showcase.html' %}
-
-  {% include 'blocks/partners.html' %}
 
 {% endblock content_container %}
 

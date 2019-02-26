@@ -5,18 +5,19 @@ import { Grid, Typography, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import herobg from '../../assets/images/bg/hero_bg.png';
+import arrow from '../../assets/images/icons/combined-shape.svg';
 import map from '../../assets/images/bg/hero_map.png';
 import background from '../../assets/images/bg/background.png';
 
 const styles = theme => ({
-  maxroot: {
+  root: {
     flexGrow: 1,
     padding: theme.spacing.unit * 4,
     backgroundImage: `url(${background})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover'
   },
-  root: {
+  heroContentGrid: {
     flexGrow: 1,
     backgroundImage: `url(${herobg})`,
     backgroundRepeat: 'no-repeat',
@@ -25,8 +26,7 @@ const styles = theme => ({
     height: '100vh',
     [theme.breakpoints.up('lg')]: {
       height: '60vh',
-      paddingLeft: theme.spacing.unit * 8,
-      paddingRight: theme.spacing.unit * 8
+      paddingLeft: theme.spacing.unit * 14.5
     },
     [theme.breakpoints.down('md')]: {
       backgroundPosition: 'right',
@@ -35,7 +35,7 @@ const styles = theme => ({
   },
   titleTextGrid: {
     color: 'white',
-    marginTop: theme.spacing.unit * 5.5,
+    marginTop: theme.spacing.unit * 6.5,
     [theme.breakpoints.up('lg')]: {
       paddingLeft: theme.spacing.unit * 9
     },
@@ -47,7 +47,7 @@ const styles = theme => ({
   },
   text: {
     color: 'white',
-    width: '70%',
+    width: '90%',
     [theme.breakpoints.down('sm')]: {
       fontSize: '3rem'
     }
@@ -55,7 +55,7 @@ const styles = theme => ({
   body2: {
     color: 'white',
     textAlign: 'left',
-    width: '70%',
+    width: '50%',
     paddingTop: '2rem'
   },
   button: {
@@ -65,10 +65,13 @@ const styles = theme => ({
     color: 'white',
     border: '2px solid white',
     [theme.breakpoints.up('lg')]: {
-      height: '3.5rem',
-      paddingLeft: '2rem',
-      paddingRight: '2rem'
+      height: '4rem',
+      paddingLeft: '4rem',
+      paddingRight: '4rem'
     }
+  },
+  buttonArrow: {
+    marginLeft: -theme.spacing.unit * 4
   },
   buttonLink: {
     textDecoration: 'none'
@@ -89,13 +92,13 @@ const styles = theme => ({
 
 function Hero({ classes }) {
   return (
-    <Grid container item xs={12} className={classes.maxroot}>
+    <Grid container item xs={12} className={classes.root}>
       <Grid
         container
         direction="row"
         spacing={40}
         justify="space-between"
-        className={classes.root}
+        className={classes.heroContentGrid}
       >
         <Grid
           item
@@ -123,6 +126,11 @@ function Hero({ classes }) {
               >
                 Select a Country
               </Button>
+              <img
+                src={arrow}
+                alt="Select Country"
+                className={classes.buttonArrow}
+              />
             </a>
           </Grid>
         </Grid>
@@ -139,11 +147,17 @@ function Hero({ classes }) {
           className={classes.mapSection}
         >
           <img src={map} alt="Country Map" />
-          <Grid>
-            <Typography variant="body2" className={classes.verticalAlignText}>
-              South Africa
-            </Typography>
-          </Grid>
+          <Typography
+            variant="fontSmallDefault"
+            className={classes.verticalAlignText}
+          >
+            South Africa &nbsp;&nbsp;
+            <div
+              style={{ display: 'inline-block', borderLeft: '1px solid #fff' }}
+            >
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{' '}
+            </div>
+          </Typography>
         </Grid>
       </Grid>
     </Grid>
