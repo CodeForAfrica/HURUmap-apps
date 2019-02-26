@@ -2,22 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.5
--- Dumped by pg_dump version 10.0
+-- Dumped from database version 10.6
+-- Dumped by pg_dump version 10.6
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-SET search_path = public, pg_catalog;
-
 ALTER TABLE IF EXISTS ONLY public.maintypeoflightingfuel DROP CONSTRAINT IF EXISTS pk_maintypeoflightingfuel;
 DROP TABLE IF EXISTS public.maintypeoflightingfuel;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -26,7 +23,7 @@ SET default_with_oids = false;
 -- Name: maintypeoflightingfuel; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE maintypeoflightingfuel (
+CREATE TABLE public.maintypeoflightingfuel (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     "main type of lighting fuel" character varying(128) NOT NULL,
@@ -39,7 +36,7 @@ CREATE TABLE maintypeoflightingfuel (
 -- Data for Name: maintypeoflightingfuel; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY maintypeoflightingfuel (geo_level, geo_code, "main type of lighting fuel", total, geo_version) FROM stdin;
+COPY public.maintypeoflightingfuel (geo_level, geo_code, "main type of lighting fuel", total, geo_version) FROM stdin;
 county	3	electricity	33423	2009
 county	3	gas lamps	911	2009
 county	3	lanterns	33735	2009
@@ -431,7 +428,7 @@ country	KE	wood	142273	2009
 -- Name: maintypeoflightingfuel pk_maintypeoflightingfuel; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY maintypeoflightingfuel
+ALTER TABLE ONLY public.maintypeoflightingfuel
     ADD CONSTRAINT pk_maintypeoflightingfuel PRIMARY KEY (geo_level, geo_code, geo_version, "main type of lighting fuel");
 
 

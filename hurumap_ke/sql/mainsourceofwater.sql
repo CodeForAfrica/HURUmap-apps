@@ -2,22 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.5
--- Dumped by pg_dump version 10.0
+-- Dumped from database version 10.6
+-- Dumped by pg_dump version 10.6
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-SET search_path = public, pg_catalog;
-
 ALTER TABLE IF EXISTS ONLY public.mainsourceofwater DROP CONSTRAINT IF EXISTS pk_mainsourceofwater;
 DROP TABLE IF EXISTS public.mainsourceofwater;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -26,7 +23,7 @@ SET default_with_oids = false;
 -- Name: mainsourceofwater; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE mainsourceofwater (
+CREATE TABLE public.mainsourceofwater (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     "main source of water" character varying(128) NOT NULL,
@@ -39,7 +36,7 @@ CREATE TABLE mainsourceofwater (
 -- Data for Name: mainsourceofwater; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY mainsourceofwater (geo_level, geo_code, "main source of water", total, geo_version) FROM stdin;
+COPY public.mainsourceofwater (geo_level, geo_code, "main source of water", total, geo_version) FROM stdin;
 county	22	jabia/rain/harvested	4620	2009
 county	22	lake	3873	2009
 county	22	other	164	2009
@@ -479,7 +476,7 @@ country	KE	water vendor	573088	2009
 -- Name: mainsourceofwater pk_mainsourceofwater; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY mainsourceofwater
+ALTER TABLE ONLY public.mainsourceofwater
     ADD CONSTRAINT pk_mainsourceofwater PRIMARY KEY (geo_level, geo_code, geo_version, "main source of water");
 
 

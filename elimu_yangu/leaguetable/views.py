@@ -10,7 +10,10 @@ from django.core.serializers.json import DjangoJSONEncoder
 from django.views.generic import View, TemplateView
 from django.conf import settings
 
+from census.views import render_json_to_response
+
 from wazimap.geo import geo_data
+from wazimap.models import Geography
 from wazimap.profiles import enhance_api_data
 from wazimap.data.base import Base
 from wazimap.data.utils import (get_session)
@@ -300,6 +303,35 @@ class GeographyCompareView(TemplateView):
             raise Http404
 
         return page_context
+
+class PlaceSearchJson(View):
+    def get(self, request, *args, **kwargs):
+        geo_levels = request.GET.get('geolevels', None)
+        geo_version = request.GET.get('geo_version', None)
+        if geo_levels:
+            geo_levels = [lev.strip() for lev in geo_levels.split(',')]
+            geo_levels = [lev for lev in geo_levels if lev]
+
+        if 'q' in request.GET:
+            search_term = request.GET['q']
+            places = geo_data.get_locations(search_term, geo_levels, geo_version)
+            return render_json_to_response(
+                {'results': [p.as_dict() for p in places]}
+            )
+
+        elif 'coords' in request.GET and ',' in request.GET['coords']:
+            lat, lon = self.request.GET['coords'].split(',', 1)
+            try:
+                lat = float(lat)
+                lon = float(lon)
+            except ValueError as e:
+                return HttpResponseBadRequest('bad parameter: %s' % e.message)
+
+            places = geo_data.get_locations_from_coords(latitude=lat, longitude=lon, levels=geo_levels, version=geo_version)
+            return render_json_to_response({'results': [p.as_dict() for p in places]})
+
+        else:
+            return HttpResponseBadRequest('"q" or "coords" parameter is required')
 
 def get_overall_topschools(year, geo_level, geo_code, session):
     schools = {}

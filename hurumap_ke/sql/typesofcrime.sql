@@ -2,22 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.5
--- Dumped by pg_dump version 10.0
+-- Dumped from database version 10.6
+-- Dumped by pg_dump version 10.6
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-SET search_path = public, pg_catalog;
-
 ALTER TABLE IF EXISTS ONLY public.typesofcrime DROP CONSTRAINT IF EXISTS pk_typesofcrime;
 DROP TABLE IF EXISTS public.typesofcrime;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -26,7 +23,7 @@ SET default_with_oids = false;
 -- Name: typesofcrime; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE typesofcrime (
+CREATE TABLE public.typesofcrime (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     typesofcrime character varying(128) NOT NULL,
@@ -39,7 +36,7 @@ CREATE TABLE typesofcrime (
 -- Data for Name: typesofcrime; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY typesofcrime (geo_level, geo_code, typesofcrime, total, geo_version) FROM stdin;
+COPY public.typesofcrime (geo_level, geo_code, typesofcrime, total, geo_version) FROM stdin;
 county	29	corruption	0	2009
 county	7	robbery	24	2009
 county	22	homicide	135	2009
@@ -156,6 +153,7 @@ county	37	offences involving tourist	0	2009
 county	37	other penal code offences	198	2009
 county	21	homicide	112	2009
 county	21	offences against morality	150	2009
+county	43	theft by servant	30	2009
 county	21	theft of vehicle and other parts	593	2009
 county	21	robbery	63	2009
 county	21	breakings	170	2009
@@ -273,7 +271,6 @@ county	43	robbery	46	2009
 county	43	breakings	132	2009
 county	43	theft of stock	44	2009
 county	43	stealing	169	2009
-county	43	theft by servant	30	2009
 county	43	dangerous drugs	102	2009
 county	43	traffic offences	0	2009
 county	43	criminal damage	105	2009
@@ -815,7 +812,7 @@ country	KE	other penal code offences	6010	2009
 -- Name: typesofcrime pk_typesofcrime; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY typesofcrime
+ALTER TABLE ONLY public.typesofcrime
     ADD CONSTRAINT pk_typesofcrime PRIMARY KEY (geo_level, geo_code, geo_version, typesofcrime);
 
 

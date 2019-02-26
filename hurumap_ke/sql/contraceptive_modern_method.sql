@@ -2,22 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.5
--- Dumped by pg_dump version 10.0
+-- Dumped from database version 10.6
+-- Dumped by pg_dump version 10.6
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-SET search_path = public, pg_catalog;
-
 ALTER TABLE IF EXISTS ONLY public.contraceptive_modern_method DROP CONSTRAINT IF EXISTS pk_contraceptive_modern_method;
 DROP TABLE IF EXISTS public.contraceptive_modern_method;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -26,7 +23,7 @@ SET default_with_oids = false;
 -- Name: contraceptive_modern_method; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE contraceptive_modern_method (
+CREATE TABLE public.contraceptive_modern_method (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     contraceptive_modern_method character varying(128) NOT NULL,
@@ -39,7 +36,7 @@ CREATE TABLE contraceptive_modern_method (
 -- Data for Name: contraceptive_modern_method; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY contraceptive_modern_method (geo_level, geo_code, contraceptive_modern_method, total, geo_version) FROM stdin;
+COPY public.contraceptive_modern_method (geo_level, geo_code, contraceptive_modern_method, total, geo_version) FROM stdin;
 county	1	female sterilisation	0.200000000000000011	2009
 county	1	male sterilisation	0	2009
 county	1	IUD	3.20000000000000018	2009
@@ -527,7 +524,7 @@ country	KE	other	0	2009
 -- Name: contraceptive_modern_method pk_contraceptive_modern_method; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY contraceptive_modern_method
+ALTER TABLE ONLY public.contraceptive_modern_method
     ADD CONSTRAINT pk_contraceptive_modern_method PRIMARY KEY (geo_level, geo_code, geo_version, contraceptive_modern_method);
 
 

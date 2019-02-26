@@ -2,22 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.8
--- Dumped by pg_dump version 9.5.8
+-- Dumped from database version 10.6
+-- Dumped by pg_dump version 10.6
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-SET search_path = public, pg_catalog;
-
 ALTER TABLE IF EXISTS ONLY public.literacytest DROP CONSTRAINT IF EXISTS pk_literacytest;
 DROP TABLE IF EXISTS public.literacytest;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -26,7 +23,7 @@ SET default_with_oids = false;
 -- Name: literacytest; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE literacytest (
+CREATE TABLE public.literacytest (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     "literacy test" character varying(128) NOT NULL,
@@ -39,7 +36,7 @@ CREATE TABLE literacytest (
 -- Data for Name: literacytest; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY literacytest (geo_level, geo_code, "literacy test", total, geo_version) FROM stdin;
+COPY public.literacytest (geo_level, geo_code, "literacy test", total, geo_version) FROM stdin;
 district	22	math	31.3000000000000007	2009
 district	23	math	34.1000000000000014	2009
 district	24	math	55	2009
@@ -844,10 +841,10 @@ district	168	all subjects	0	2009
 
 
 --
--- Name: pk_literacytest; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: literacytest pk_literacytest; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY literacytest
+ALTER TABLE ONLY public.literacytest
     ADD CONSTRAINT pk_literacytest PRIMARY KEY (geo_level, geo_code, geo_version, "literacy test");
 
 

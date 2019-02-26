@@ -2,18 +2,16 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.10
--- Dumped by pg_dump version 9.5.10
+-- Dumped from database version 10.6
+-- Dumped by pg_dump version 10.6
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
-
-SET search_path = public, pg_catalog;
 
 ALTER TABLE IF EXISTS ONLY public.watersources DROP CONSTRAINT IF EXISTS pk_watersources;
 DROP TABLE IF EXISTS public.watersources;
@@ -22,10 +20,10 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: watersources; Type: TABLE; Schema: public; Owner: hurumap_tz
+-- Name: watersources; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE watersources (
+CREATE TABLE public.watersources (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     geo_version character varying(100) DEFAULT ''::character varying NOT NULL,
@@ -33,11 +31,12 @@ CREATE TABLE watersources (
     total integer
 );
 
+
 --
--- Data for Name: watersources; Type: TABLE DATA; Schema: public; Owner: hurumap_tz
+-- Data for Name: watersources; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY watersources (geo_level, geo_code, geo_version, "water sources", total) FROM stdin;
+COPY public.watersources (geo_level, geo_code, geo_version, "water sources", total) FROM stdin;
 region	1	2009	functional	3363
 region	10	2009	functional	2064
 region	11	2009	functional	3859
@@ -117,10 +116,10 @@ country	TZ	2009	needsrepair	5706
 
 
 --
--- Name: pk_watersources; Type: CONSTRAINT; Schema: public; Owner: hurumap_tz
+-- Name: watersources pk_watersources; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY watersources
+ALTER TABLE ONLY public.watersources
     ADD CONSTRAINT pk_watersources PRIMARY KEY (geo_level, geo_code, geo_version, "water sources");
 
 

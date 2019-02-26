@@ -30,6 +30,7 @@ services:
       - PGDATABASE=${HURUMAP_APP:-hurumap_land}
       - PGUSER=hurumap
       - PGPASSWORD=hurumap
+      - USE_MAPIT=True
       - PYTHONUNBUFFERED=True
       - PYTHONDONTWRITEBYTECODE=True
       # - DJANGO_DEBUG=False  # For testing deploys

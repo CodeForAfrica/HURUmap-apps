@@ -2,18 +2,16 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.10
--- Dumped by pg_dump version 9.5.10
+-- Dumped from database version 10.6
+-- Dumped by pg_dump version 10.6
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
-
-SET search_path = public, pg_catalog;
 
 ALTER TABLE IF EXISTS ONLY public.primaryschoolteachers DROP CONSTRAINT IF EXISTS pk_primaryschoolteachers;
 DROP TABLE IF EXISTS public.primaryschoolteachers;
@@ -25,7 +23,7 @@ SET default_with_oids = false;
 -- Name: primaryschoolteachers; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE primaryschoolteachers (
+CREATE TABLE public.primaryschoolteachers (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     geo_version character varying(100) DEFAULT ''::character varying NOT NULL,
@@ -33,11 +31,12 @@ CREATE TABLE primaryschoolteachers (
     total integer
 );
 
+
 --
 -- Data for Name: primaryschoolteachers; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY primaryschoolteachers (geo_level, geo_code, geo_version, "primary school teachers", total) FROM stdin;
+COPY public.primaryschoolteachers (geo_level, geo_code, geo_version, "primary school teachers", total) FROM stdin;
 region	1	2009	Female	6357
 region	1	2009	Male	3314
 region	10	2009	Female	2953
@@ -396,10 +395,10 @@ district	158	2009	Male	1255
 
 
 --
--- Name: pk_primaryschoolteachers; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: primaryschoolteachers pk_primaryschoolteachers; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY primaryschoolteachers
+ALTER TABLE ONLY public.primaryschoolteachers
     ADD CONSTRAINT pk_primaryschoolteachers PRIMARY KEY (geo_level, geo_code, geo_version, "primary school teachers");
 
 

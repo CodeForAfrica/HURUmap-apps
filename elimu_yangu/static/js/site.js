@@ -394,11 +394,11 @@
                     if (data.length == 0) {
                       resultHtml = "Your grade may not be sufficient for university courses"
                     }
-                    $('#resultCourses').append(resultHtml);
+                    $('#resultCourses').html(resultHtml);
                  },
                  error: function () {
                      var resultHtml = "<tr><td>Opps! something went wrong. Please try again later</td></tr>"
-                     $('#resultCourses').append(resultHtml);
+                     $('#resultCourses').html(resultHtml);
                  }
              });
          }

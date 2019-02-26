@@ -1,4 +1,4 @@
-var textmatchAPI = '/place-search/json/',
+var textmatchAPI = '/leaguetable/place-search/json/',
     geocodingAPI = 'https://maps.googleapis.com/maps/api/geocode/json?address=%QUERY&components=country:' + WAZIMAP_COUNTRY_CODE + '&region=' + WAZIMAP_COUNTRY_CODE + '&key=' + GOOGLE_GEOCODE_API_KEY,
     resultTemplate = Handlebars.compile('<p class="result-name"><span class="result-type">{{geo_level}}</span>{{full_name}}</p>'),
     geoSelect = $('#geography-select, #geography-select-home');

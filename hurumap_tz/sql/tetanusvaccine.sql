@@ -2,22 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.8
--- Dumped by pg_dump version 9.5.8
+-- Dumped from database version 10.6
+-- Dumped by pg_dump version 10.6
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-SET search_path = public, pg_catalog;
-
 ALTER TABLE IF EXISTS ONLY public.tetanusvaccine DROP CONSTRAINT IF EXISTS pk_tetanusvaccine;
 DROP TABLE IF EXISTS public.tetanusvaccine;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -26,7 +23,7 @@ SET default_with_oids = false;
 -- Name: tetanusvaccine; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE tetanusvaccine (
+CREATE TABLE public.tetanusvaccine (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(255) NOT NULL,
     "tetanus vaccine" character varying(128) NOT NULL,
@@ -39,7 +36,7 @@ CREATE TABLE tetanusvaccine (
 -- Data for Name: tetanusvaccine; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY tetanusvaccine (geo_level, geo_code, "tetanus vaccine", total, geo_version) FROM stdin;
+COPY public.tetanusvaccine (geo_level, geo_code, "tetanus vaccine", total, geo_version) FROM stdin;
 region	1	vaccinated	52138	2009
 region	1	coverage	83	2009
 region	3	vaccinated	126966	2009
@@ -106,10 +103,10 @@ country	TZ	coverage	72	2009
 
 
 --
--- Name: pk_tetanusvaccine; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: tetanusvaccine pk_tetanusvaccine; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY tetanusvaccine
+ALTER TABLE ONLY public.tetanusvaccine
     ADD CONSTRAINT pk_tetanusvaccine PRIMARY KEY (geo_level, geo_code, geo_version, "tetanus vaccine");
 
 

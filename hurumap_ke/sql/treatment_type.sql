@@ -2,22 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.5
--- Dumped by pg_dump version 10.0
+-- Dumped from database version 10.6
+-- Dumped by pg_dump version 10.6
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-SET search_path = public, pg_catalog;
-
 ALTER TABLE IF EXISTS ONLY public.treatment_type DROP CONSTRAINT IF EXISTS pk_treatment_type;
 DROP TABLE IF EXISTS public.treatment_type;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -26,7 +23,7 @@ SET default_with_oids = false;
 -- Name: treatment_type; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE treatment_type (
+CREATE TABLE public.treatment_type (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     type character varying(128) NOT NULL,
@@ -40,7 +37,7 @@ CREATE TABLE treatment_type (
 -- Data for Name: treatment_type; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY treatment_type (geo_level, geo_code, type, treatment, total, geo_version) FROM stdin;
+COPY public.treatment_type (geo_level, geo_code, type, treatment, total, geo_version) FROM stdin;
 county	1	ARI	sought treatment from health facility or provider	0	2009
 county	1	fever	sought treatment from health facility or provider	75.0999999999999943	2009
 county	1	diarrhoea	sought treatment from health facility or provider	63.2999999999999972	2009
@@ -384,7 +381,7 @@ country	KE	diarrhoea	ORS and zinc	7.5	2009
 -- Name: treatment_type pk_treatment_type; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY treatment_type
+ALTER TABLE ONLY public.treatment_type
     ADD CONSTRAINT pk_treatment_type PRIMARY KEY (geo_level, geo_code, geo_version, type, treatment);
 
 

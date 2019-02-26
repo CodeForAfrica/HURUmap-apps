@@ -2,22 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.8
--- Dumped by pg_dump version 9.5.8
+-- Dumped from database version 10.6
+-- Dumped by pg_dump version 10.6
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-SET search_path = public, pg_catalog;
-
 ALTER TABLE IF EXISTS ONLY public.familyplanningclients DROP CONSTRAINT IF EXISTS pk_familyplanningclients;
 DROP TABLE IF EXISTS public.familyplanningclients;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -26,7 +23,7 @@ SET default_with_oids = false;
 -- Name: familyplanningclients; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE familyplanningclients (
+CREATE TABLE public.familyplanningclients (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(255) NOT NULL,
     "family planning clients" character varying(128) NOT NULL,
@@ -39,7 +36,7 @@ CREATE TABLE familyplanningclients (
 -- Data for Name: familyplanningclients; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY familyplanningclients (geo_level, geo_code, "family planning clients", total, geo_version) FROM stdin;
+COPY public.familyplanningclients (geo_level, geo_code, "family planning clients", total, geo_version) FROM stdin;
 region	1	total	181397	2009
 region	1	new client rate	31.5	2009
 region	3	total	394359	2009
@@ -106,10 +103,10 @@ country	TZ	new client rate	40.5	2009
 
 
 --
--- Name: pk_familyplanningclients; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: familyplanningclients pk_familyplanningclients; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY familyplanningclients
+ALTER TABLE ONLY public.familyplanningclients
     ADD CONSTRAINT pk_familyplanningclients PRIMARY KEY (geo_level, geo_code, geo_version, "family planning clients");
 
 

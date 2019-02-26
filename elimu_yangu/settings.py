@@ -1,4 +1,3 @@
-import os
 from django.utils.translation import ugettext_lazy as _
 from collections import OrderedDict
 from distutils.util import strtobool
@@ -17,6 +16,10 @@ LANGUAGES = (
 
 USE_I18N = True
 
+TEMPLATES[0]['OPTIONS']['context_processors'] = TEMPLATES[0]['OPTIONS'][
+                                                 'context_processors'] + [
+                                                 'django.template.context_processors.i18n']
+
 # Tell Django where the project's translation files should be.
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),
@@ -32,9 +35,12 @@ INSTALLED_APPS = ['elimu_yangu', 'elimu_yangu.careerguide',
 
 ROOT_URLCONF = 'elimu_yangu.urls'
 
-MIDDLEWARE_CLASSES = ('django.contrib.sessions.middleware.SessionMiddleware',
-                      'django.middleware.locale.LocaleMiddleware',
-                      'django.middleware.common.CommonMiddleware',) + MIDDLEWARE_CLASSES
+MIDDLEWARE_CLASSES = ('whitenoise.middleware.WhiteNoiseMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    'django.middleware.common.CommonMiddleware',) + MIDDLEWARE_CLASSES
+# Static Files Handler
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DATABASE_URL = os.environ.get(
     'DATABASE_URL',
@@ -75,7 +81,7 @@ HURUMAP['levels'] = {
     },
     'district': {
         'plural': 'districts',
-        'children': [],
+        'children':[],
     }
 }
 
@@ -173,6 +179,9 @@ HURUMAP['available_release_years'] = {
 }
 
 LOGGING['loggers']['elimu_yangu'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Making sure they are the same
 WAZIMAP = HURUMAP

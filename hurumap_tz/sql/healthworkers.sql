@@ -2,22 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.8
--- Dumped by pg_dump version 9.5.8
+-- Dumped from database version 10.6
+-- Dumped by pg_dump version 10.6
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-SET search_path = public, pg_catalog;
-
 ALTER TABLE IF EXISTS ONLY public.healthworkers DROP CONSTRAINT IF EXISTS pk_healthworkers;
 DROP TABLE IF EXISTS public.healthworkers;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -26,7 +23,7 @@ SET default_with_oids = false;
 -- Name: healthworkers; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE healthworkers (
+CREATE TABLE public.healthworkers (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(255) NOT NULL,
     "health workers" character varying(128) NOT NULL,
@@ -39,7 +36,7 @@ CREATE TABLE healthworkers (
 -- Data for Name: healthworkers; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY healthworkers (geo_level, geo_code, "health workers", total, geo_version) FROM stdin;
+COPY public.healthworkers (geo_level, geo_code, "health workers", total, geo_version) FROM stdin;
 region	1	assistant medical oficer	67	2009
 region	1	assistant nursing officer	258	2009
 region	1	clinical assistant	35	2009
@@ -478,10 +475,10 @@ country	TZ	HRH patient ratio	5.87000000000000011	2009
 
 
 --
--- Name: pk_healthworkers; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: healthworkers pk_healthworkers; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY healthworkers
+ALTER TABLE ONLY public.healthworkers
     ADD CONSTRAINT pk_healthworkers PRIMARY KEY (geo_level, geo_code, geo_version, "health workers");
 
 

@@ -2,22 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.5
--- Dumped by pg_dump version 10.0
+-- Dumped from database version 10.6
+-- Dumped by pg_dump version 10.6
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-SET search_path = public, pg_catalog;
-
 ALTER TABLE IF EXISTS ONLY public.vaccinations DROP CONSTRAINT IF EXISTS pk_vaccinations;
 DROP TABLE IF EXISTS public.vaccinations;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -26,7 +23,7 @@ SET default_with_oids = false;
 -- Name: vaccinations; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE vaccinations (
+CREATE TABLE public.vaccinations (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     vaccinations character varying(128) NOT NULL,
@@ -39,7 +36,7 @@ CREATE TABLE vaccinations (
 -- Data for Name: vaccinations; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY vaccinations (geo_level, geo_code, vaccinations, total, geo_version) FROM stdin;
+COPY public.vaccinations (geo_level, geo_code, vaccinations, total, geo_version) FROM stdin;
 county	1	BCG	100	2009
 county	9	BCG	71.7999999999999972	2009
 county	1	Pentavalent 1	100	2009
@@ -815,7 +812,7 @@ country	KE	percentage with vaccination card	74.7000000000000028	2009
 -- Name: vaccinations pk_vaccinations; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY vaccinations
+ALTER TABLE ONLY public.vaccinations
     ADD CONSTRAINT pk_vaccinations PRIMARY KEY (geo_level, geo_code, geo_version, vaccinations);
 
 
