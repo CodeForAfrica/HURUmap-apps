@@ -13,6 +13,9 @@ const styles = theme => ({
     flexGrow: 1,
     padding: '2rem',
     backgroundColor: '#fff',
+    backgroundImage: `url(${databg})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: '69%',
     [theme.breakpoints.down('lg')]: {
       backgroundImage: `url(${databg})`,
       backgroundRepeat: 'no-repeat',
@@ -21,7 +24,12 @@ const styles = theme => ({
     [theme.breakpoints.down('sm')]: {
       backgroundImage: `url(${databg})`,
       backgroundRepeat: 'no-repeat',
-      backgroundSize: '80%'
+      backgroundSize: '50%'
+    },
+    [theme.breakpoints.down('xs')]: {
+      backgroundImage: `url(${databg})`,
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'cover'
     }
   },
   data: {
