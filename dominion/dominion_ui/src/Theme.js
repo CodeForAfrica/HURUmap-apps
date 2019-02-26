@@ -1,7 +1,7 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
-const FONT_FAMILY_HEADING = '"Lora"';
-const FONT_FAMILY_TEXT = '"Lora"';
+const FONT_FAMILY_HEADING = '"Lora", "serif"';
+const FONT_FAMILY_TEXT = '"Montserrat", "sans-serif"';
 
 const Theme = createMuiTheme({
   palette: {
