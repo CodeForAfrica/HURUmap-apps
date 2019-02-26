@@ -9,6 +9,7 @@ import AboutDominion from './components/About';
 import Data from './components/Data';
 import Footer from './components/Footer';
 import Showcase from './components/Showcase';
+import Video from './components/Video';
 
 library.add(fab);
 
@@ -20,6 +21,7 @@ const renderApp = (Component, id) => {
   }
 };
 
+renderApp(Video, 'dominionVideo');
 renderApp(Showcase, 'dominionShowcase');
 renderApp(Data, 'dominionData');
 renderApp(AboutDominion, 'dominionAbout');

@@ -9,14 +9,19 @@ import PlayArrow from '@material-ui/icons/PlayArrow';
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    height: 120
-
-    // aspect-ratio box
-    // paddingBottom: '56.2%'
+    height: 120,
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    width: '100vw',
+    [theme.breakpoints.up('md')]: {
+      width: '11.927rem'
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: '15rem'
+    }
   },
   caption: {
     color: '#fff',
-    textAlign: 'center'
+    textAlign: 'left'
   },
   suheading: { color: '#fff' },
   buttonGrid: { paddingTop: '1rem', textAlign: 'center' },
@@ -27,7 +32,6 @@ const styles = theme => ({
     color: '#fff',
     border: '2px solid white',
     [theme.breakpoints.up('lg')]: {
-      // height: '6.5rem',
       paddingLeft: '2rem',
       paddingRight: '2rem'
     }
@@ -39,12 +43,7 @@ const styles = theme => ({
 
 function Thumbnail({ classes, onClick, videoId, videoTitle }) {
   return (
-    <Grid
-      container
-      className={classes.root}
-      direction="column"
-      justify="center"
-      alignItems="center"
+    <div
       style={{
         height: 100,
         backgroundImage: `url(https://img.youtube.com/vi/${videoId}/default.jpg)`,
@@ -52,23 +51,31 @@ function Thumbnail({ classes, onClick, videoId, videoTitle }) {
         backgroundSize: 'cover'
       }}
     >
-      <Grid item>
-        <Button
-          variant="outline"
-          color="primary"
-          size="large"
-          className={classes.button}
-          onClick={() => onClick(videoId)}
-        >
-          <PlayArrow />
-        </Button>
+      <Grid
+        container
+        className={classes.root}
+        direction="column"
+        justify="center"
+        alignItems="center"
+      >
+        <Grid item>
+          <Button
+            variant="outline"
+            color="primary"
+            size="large"
+            className={classes.button}
+            onClick={() => onClick(videoId)}
+          >
+            <PlayArrow />
+          </Button>
+        </Grid>
+        <Grid item>
+          <Typography variant="caption" className={classes.caption}>
+            {videoTitle}
+          </Typography>
+        </Grid>
       </Grid>
-      <Grid item>
-        <Typography variant="caption" className={classes.caption}>
-          {videoTitle}
-        </Typography>
-      </Grid>
-    </Grid>
+    </div>
   );
 }
 

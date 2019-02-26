@@ -5,7 +5,7 @@ import { Button, Grid, Modal, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import PlayArrow from '@material-ui/icons/PlayArrow';
 
-import background from '../../assets/images/bg/background.png';
+import background from '../../assets/images/hero-image-1.png';
 import IFrame from '../IFrame';
 import Sources from './Sources';
 import Thumbnail from './Thumbnail';
@@ -22,7 +22,7 @@ const styles = theme => ({
     color: '#fff',
     textAlign: 'center'
   },
-  suheading: { color: '#fff' },
+  subheading: { color: '#fff' },
   buttonGrid: { paddingTop: '1rem', textAlign: 'center' },
   button: {
     textTransform: 'none',
@@ -42,6 +42,29 @@ const styles = theme => ({
   iframe: {
     // height: 720,
     // width: 1080
+    marginTop: '3rem'
+  },
+  videoPlayer: {
+    width: '100vw',
+    marginBottom: '2rem',
+    [theme.breakpoints.up('md')]: {
+      marginBottom: 0,
+      width: '47rem', // 59.635 * 0.8
+      marginRight: '0.708rem'
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: '63.0rem', // 79.5 * 0.8
+      marginRight: '1.5rem'
+    }
+  },
+  videoPlaylist: {
+    width: '100vw',
+    [theme.breakpoints.up('md')]: {
+      width: '11.927rem'
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: '15rem'
+    }
   },
   thumbnail: {
     height: 200
@@ -85,7 +108,7 @@ class Video extends React.Component {
           justify="center"
           alignItems="center"
         >
-          <Typography variant="h3" className={classes.suheading}>
+          <Typography variant="h3" className={classes.subheading}>
             Using Dominion
           </Typography>
           <Grid item xs={8} sm={4} style={{ paddingTop: '1rem' }}>
@@ -110,8 +133,8 @@ class Video extends React.Component {
           </Grid>
         </Grid>
         <Modal
-          aria-labelledby="simple-modal-title"
-          aria-describedby="simple-modal-description"
+          aria-labelledby="dominion-videos"
+          aria-describedby="dominion-videos-list"
           open={open}
           onClose={this.toogleState}
         >
@@ -119,25 +142,36 @@ class Video extends React.Component {
             container
             className={classes.iframe}
             justify="center"
-            alignItems="center"
+            alignItems="flex-start"
           >
-            <Grid item xs={12} md={8}>
-              <IFrame
-                title="Dominion"
-                src={`https://www.youtube-nocookie.com/embed/${videoId}`}
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-              />
+            <Grid item>
+              <div className={classes.videoPlayer}>
+                <IFrame
+                  title="Dominion"
+                  src={`https://www.youtube-nocookie.com/embed/${videoId}`}
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                />
+              </div>
             </Grid>
-            <Grid item xs={12} md={4} container direction="column">
-              {Sources.map(source => (
-                <Grid item>
-                  <Thumbnail
-                    videoId={source.id}
-                    videoTitle={source.title}
-                    className={classes.thumbnail}
-                  />
+            <Grid item>
+              <div className={classes.videoPlaylist}>
+                <Grid
+                  container
+                  direction="column"
+                  justify="center"
+                  alignItems="flex-start"
+                >
+                  {Sources.map(source => (
+                    <Grid item>
+                      <Thumbnail
+                        videoId={source.id}
+                        videoTitle={source.title}
+                        className={classes.thumbnail}
+                      />
+                    </Grid>
+                  ))}
                 </Grid>
-              ))}
+              </div>
             </Grid>
           </Grid>
         </Modal>
