@@ -118,7 +118,7 @@ function Hero({ classes }) {
             ownership.
           </Typography>
           <Grid style={{ paddingTop: '2rem' }}>
-            <a href="/example" className={classes.buttonLink}>
+            <a href="/#" className={classes.buttonLink}>
               <Button
                 variant="outlined"
                 color="white"
