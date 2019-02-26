@@ -37,7 +37,7 @@ const styles = theme => ({
   }
 });
 
-function About({ classes }) {
+function AboutDominion({ classes }) {
   return (
     <Grid
       container
@@ -59,8 +59,8 @@ function About({ classes }) {
   );
 }
 
-About.propTypes = {
+AboutDominion.propTypes = {
   classes: PropTypes.shape().isRequired
 };
 
-export default withStyles(styles)(About);
+export default withStyles(styles)(AboutDominion);

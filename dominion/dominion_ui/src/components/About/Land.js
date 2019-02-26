@@ -32,7 +32,7 @@ const styles = theme => ({
   },
   highlight: {
     width: '8rem',
-    height: '1.5rem',
+    height: '1.3rem',
     background: '#e7e452'
   }
 });

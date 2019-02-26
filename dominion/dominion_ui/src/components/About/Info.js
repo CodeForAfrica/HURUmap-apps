@@ -21,14 +21,19 @@ const styles = theme => ({
     }
   },
   body: {
-    marginTop: '1rem'
+    marginTop: '1rem',
+    lineHeight: '1.5rem'
+  },
+  subtitle: {
+    fontFamily: theme.typography.fontFamily,
+    fontWeight: 'bold'
   }
 });
 
 function Info({ classes }) {
   return (
     <div className={classes.root}>
-      <Typography variant="subtitle2" className={classes.subtitle}>
+      <Typography variant="subtitle1" className={classes.subtitle}>
         Dominion is built on the HURUmap platform.{' '}
         <A href="https://hurumap.org" variant="subtitle2">
           HURUmap
