@@ -10,7 +10,10 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
     padding: '2rem',
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
+    backgroundImage: '',
+    backgroundSize: '80%',
+    backgroundRepeat: 'no-repeat'
   },
   data: {
     width: '100%',

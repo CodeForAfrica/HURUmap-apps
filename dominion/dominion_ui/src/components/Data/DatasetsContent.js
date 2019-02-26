@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import Check from '@material-ui/icons/Check';
 import { withStyles } from '@material-ui/core/styles';
+
+import plugicon from '../../assets/images/icons/group-6.png';
 
 import Content from './Content';
 
@@ -27,7 +27,7 @@ function DataSetsContent({ classes }) {
             data on the African continent.
       "
       >
-        <Check size="small" style={{ color: 'black' }} />
+        <img src={plugicon} alt="Plug Icon" />
       </Content>
     </div>
   );

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Grid, Typography, Button } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import A from '../A';
@@ -67,9 +67,7 @@ function Content({
       alignItems="center"
     >
       <Grid item xs={12}>
-        <Button variant="outlined" className={classes.button}>
-          {children}
-        </Button>
+        {children}
       </Grid>
 
       <Grid item xs={12}>
