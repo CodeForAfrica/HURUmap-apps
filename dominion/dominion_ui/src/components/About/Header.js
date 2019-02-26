@@ -17,7 +17,7 @@ const styles = theme => ({
     }
   },
   heading: {
-    width: '10rem'
+    width: '16rem'
   }
 });
 

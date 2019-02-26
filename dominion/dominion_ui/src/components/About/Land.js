@@ -14,6 +14,9 @@ const styles = theme => ({
       width: '19.875rem'
     },
     [theme.breakpoints.up('lg')]: {
+      width: '40.5rem'
+    },
+    [theme.breakpoints.up('xl')]: {
       width: '26.5rem'
     }
   },
@@ -32,7 +35,7 @@ const styles = theme => ({
   },
   highlight: {
     width: '8rem',
-    height: '1.5rem',
+    height: '1.3rem',
     background: '#e7e452'
   }
 });
