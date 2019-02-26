@@ -6,25 +6,21 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 
 import withRoot from './withRoot';
 import AboutDominion from './components/About';
-import Showcase from './components/Showcase';
+import Data from './components/Data';
 import Footer from './components/Footer';
+import Showcase from './components/Showcase';
 
 library.add(fab);
 
-const aboutDominion = document.getElementById('dominionAbout');
-if (aboutDominion) {
-  const AboutDominionApp = withRoot(AboutDominion);
-  ReactDOM.render(<AboutDominionApp />, aboutDominion);
-}
+const renderApp = (Component, id) => {
+  const el = document.getElementById(id);
+  if (el) {
+    const App = withRoot(Component);
+    ReactDOM.render(<App />, el);
+  }
+};
 
-const showcase = document.getElementById('dominionShowcase');
-if (showcase) {
-  const ShowcaseApp = withRoot(Showcase);
-  ReactDOM.render(<ShowcaseApp />, showcase);
-}
-
-const footer = document.getElementById('dominionFooter');
-if (footer) {
-  const FooterApp = withRoot(Footer);
-  ReactDOM.render(<FooterApp />, footer);
-}
+renderApp(Showcase, 'dominionShowcase');
+renderApp(Data, 'dominionData');
+renderApp(AboutDominion, 'dominionAbout');
+renderApp(Footer, 'dominionFooter');

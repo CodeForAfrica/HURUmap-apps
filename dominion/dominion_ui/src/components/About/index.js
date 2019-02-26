@@ -11,7 +11,8 @@ import Land from './Land';
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    padding: '2rem'
+    padding: '2rem',
+    backgroundColor: '#fff'
   },
   header: {
     order: 2,

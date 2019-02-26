@@ -74,8 +74,8 @@ download data, and embed charts on your site.{% endblock %}
       </ul>
     </div>
   </div>
-  
-  <div class="showcase how-it-works bg-white text-center">
+
+  <div id="dominionShowcase">
     {% block how_it_works %}
       <div class="wrapper clearfix how-it-works">
         <h1>How It Works</h1>
@@ -102,6 +102,9 @@ download data, and embed charts on your site.{% endblock %}
       </div>
     {% endblock %}
   </div>
+
+  <div id="dominionData"></div>
+  <div id="dominionAbout"></div>
 
   {% include 'blocks/showcase.html' %}
 
