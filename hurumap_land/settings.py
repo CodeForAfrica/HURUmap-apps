@@ -73,16 +73,13 @@ HURUMAP['levels'] = {
         'children': ['province', 'district', 'municipality'],
     },
     'province': {
-        'children': ['district', 'municipality', 'ward'],
+        'children': ['district', 'municipality'],
     },
     'district': {
-        'children': ['municipality', 'ward'],
+        'children': ['municipality'],
     },
     'municipality': {
         'plural': 'municipalities',
-        'children': ['ward'],
-    },
-    'ward': {
         'children': [],
     }
 }
