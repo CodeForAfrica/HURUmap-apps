@@ -2,22 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.8
--- Dumped by pg_dump version 9.5.8
+-- Dumped from database version 10.6
+-- Dumped by pg_dump version 10.6
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-SET search_path = public, pg_catalog;
-
 ALTER TABLE IF EXISTS ONLY public.ageincompletedyears_ruralorurban_sex DROP CONSTRAINT IF EXISTS pk_ageincompletedyears_ruralorurban_sex;
 DROP TABLE IF EXISTS public.ageincompletedyears_ruralorurban_sex;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -26,7 +23,7 @@ SET default_with_oids = false;
 -- Name: ageincompletedyears_ruralorurban_sex; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE ageincompletedyears_ruralorurban_sex (
+CREATE TABLE public.ageincompletedyears_ruralorurban_sex (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     "rural or urban" character varying(128) NOT NULL,
@@ -41,7 +38,7 @@ CREATE TABLE ageincompletedyears_ruralorurban_sex (
 -- Data for Name: ageincompletedyears_ruralorurban_sex; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY ageincompletedyears_ruralorurban_sex (geo_level, geo_code, "rural or urban", sex, "age in completed years", total, geo_version) FROM stdin;
+COPY public.ageincompletedyears_ruralorurban_sex (geo_level, geo_code, "rural or urban", sex, "age in completed years", total, geo_version) FROM stdin;
 country	TZ	rural	female	0	552577	2009
 country	TZ	rural	male	0	549214	2009
 country	TZ	urban	female	0	198986	2009
@@ -59822,6 +59819,7 @@ district	167	urban	female	14	442	2009
 district	167	urban	male	14	341	2009
 district	167	rural	female	15	821	2009
 district	167	rural	male	15	950	2009
+district	167	urban	male	43	71	2009
 district	167	urban	female	15	372	2009
 district	167	urban	male	15	340	2009
 district	167	rural	female	16	850	2009
@@ -59935,7 +59933,6 @@ district	167	urban	male	42	105	2009
 district	167	rural	female	43	166	2009
 district	167	rural	male	43	132	2009
 district	167	urban	female	43	73	2009
-district	167	urban	male	43	71	2009
 district	167	rural	female	44	111	2009
 district	167	rural	male	44	108	2009
 district	167	urban	female	44	73	2009
@@ -61660,6 +61657,7 @@ district	128	rural	female	41	456	2009
 district	128	rural	female	42	1143	2009
 district	128	rural	female	43	566	2009
 district	128	rural	female	44	668	2009
+district	131	rural	male	29	1046	2009
 district	128	rural	female	45	1157	2009
 district	128	rural	female	46	593	2009
 district	128	rural	female	47	382	2009
@@ -61887,7 +61885,6 @@ district	131	rural	male	25	1765	2009
 district	131	rural	male	26	1488	2009
 district	131	rural	male	27	1201	2009
 district	131	rural	male	28	1729	2009
-district	131	rural	male	29	1046	2009
 district	131	rural	male	30	2065	2009
 district	131	rural	male	31	834	2009
 district	131	rural	male	32	1560	2009
@@ -62001,6 +61998,7 @@ district	131	rural	female	58	697	2009
 district	131	rural	female	59	300	2009
 district	131	rural	female	60	1060	2009
 district	131	rural	female	61	234	2009
+district	133	rural	male	9	3426	2009
 district	131	rural	female	62	437	2009
 district	131	rural	female	63	309	2009
 district	131	rural	female	64	346	2009
@@ -62110,7 +62108,6 @@ district	133	rural	male	5	4454	2009
 district	133	rural	male	6	4538	2009
 district	133	rural	male	7	4032	2009
 district	133	rural	male	8	3881	2009
-district	133	rural	male	9	3426	2009
 district	133	rural	male	10	3986	2009
 district	133	rural	male	11	2769	2009
 district	133	rural	male	12	4069	2009
@@ -62342,6 +62339,7 @@ district	133	urban	female	75	8	2009
 district	133	urban	female	76	4	2009
 district	133	urban	female	77	0	2009
 district	133	urban	female	78	6	2009
+district	169	urban	male	16	1542	2009
 district	133	urban	female	79	1	2009
 district	133	urban	female	80	50	2009
 district	130	urban	male	0	41	2009
@@ -62684,7 +62682,6 @@ district	169	urban	male	12	2037	2009
 district	169	urban	male	13	1448	2009
 district	169	urban	male	14	1481	2009
 district	169	urban	male	15	1379	2009
-district	169	urban	male	16	1542	2009
 district	169	urban	male	17	1537	2009
 district	169	urban	male	18	1767	2009
 district	169	urban	male	19	1325	2009
@@ -62834,10 +62831,10 @@ district	169	urban	female	80	725	2009
 
 
 --
--- Name: pk_ageincompletedyears_ruralorurban_sex; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: ageincompletedyears_ruralorurban_sex pk_ageincompletedyears_ruralorurban_sex; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY ageincompletedyears_ruralorurban_sex
+ALTER TABLE ONLY public.ageincompletedyears_ruralorurban_sex
     ADD CONSTRAINT pk_ageincompletedyears_ruralorurban_sex PRIMARY KEY (geo_level, geo_code, geo_version, "rural or urban", sex, "age in completed years");
 
 

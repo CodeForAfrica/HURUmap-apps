@@ -1,6 +1,7 @@
 from django.conf.urls import url
 from wazimap.urls import *
-from elimu_yangu.leaguetable.views import index, schools, embed, EmbedGeographyDetailView, GeographyDetailView, GeographyCompareView, SchoolPageView
+from hurumap.urls import urlpatterns as hurumap_urlpatterns
+from elimu_yangu.leaguetable.views import index, schools, embed, EmbedGeographyDetailView, PlaceSearchJson, GeographyDetailView, GeographyCompareView, SchoolPageView
 
 urlpatterns = [
     # url for all schools page
@@ -54,5 +55,12 @@ urlpatterns = [
         view    = cache_page(STANDARD_CACHE_TIME)(GeographyCompareView.as_view()),
         kwargs  = {},
         name    = 'geography_compare',
+    ),
+
+    url(
+        regex   = r'^place-search/json/$',
+        view    = PlaceSearchJson.as_view(),
+        kwargs  = {},
+        name    = 'league_table_place_search_json',
     ),
 ]

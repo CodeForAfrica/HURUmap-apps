@@ -2,22 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.5
--- Dumped by pg_dump version 10.0
+-- Dumped from database version 10.6
+-- Dumped by pg_dump version 10.6
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-SET search_path = public, pg_catalog;
-
 ALTER TABLE IF EXISTS ONLY public.contraceptive_use DROP CONSTRAINT IF EXISTS pk_contraceptive_use;
 DROP TABLE IF EXISTS public.contraceptive_use;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -26,7 +23,7 @@ SET default_with_oids = false;
 -- Name: contraceptive_use; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE contraceptive_use (
+CREATE TABLE public.contraceptive_use (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     contraceptive_use character varying(128) NOT NULL,
@@ -39,7 +36,7 @@ CREATE TABLE contraceptive_use (
 -- Data for Name: contraceptive_use; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY contraceptive_use (geo_level, geo_code, contraceptive_use, total, geo_version) FROM stdin;
+COPY public.contraceptive_use (geo_level, geo_code, contraceptive_use, total, geo_version) FROM stdin;
 county	1	modern	43.6000000000000014	2009
 county	1	traditional	11.4000000000000004	2009
 county	2	modern	38.2000000000000028	2009
@@ -191,7 +188,7 @@ country	KE	not using	42	2009
 -- Name: contraceptive_use pk_contraceptive_use; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY contraceptive_use
+ALTER TABLE ONLY public.contraceptive_use
     ADD CONSTRAINT pk_contraceptive_use PRIMARY KEY (geo_level, geo_code, geo_version, contraceptive_use);
 
 

@@ -1,5 +1,6 @@
 import os
 from collections import OrderedDict
+from distutils.util import strtobool
 
 from hurumap.settings import *  # noqa
 
@@ -7,21 +8,19 @@ from hurumap.settings import *  # noqa
 INSTALLED_APPS = ['hurumap_ke'] + INSTALLED_APPS
 
 MIDDLEWARE_CLASSES = (
-        'whitenoise.middleware.WhiteNoiseMiddleware',
-    ) + MIDDLEWARE_CLASSES
+                         'whitenoise.middleware.WhiteNoiseMiddleware',
+                     ) + MIDDLEWARE_CLASSES
 
 DATABASE_URL = os.environ.get('DATABASE_URL',
                               'postgresql://hurumap:hurumap@localhost/hurumap_ke')
 DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
-
 # Localise this instance of HURUmap
 HURUMAP['name'] = 'HURUmap Kenya'
-HURUMAP['url'] = os.environ.get('HURUMAP_URL','https://kenya.hurumap.org')
+HURUMAP['url'] = os.environ.get('HURUMAP_URL', 'https://kenya.hurumap.org')
 HURUMAP['country_code'] = 'KE'
 HURUMAP['country_name'] = 'Kenya'
-
 
 # Define the profile to load
 
@@ -45,10 +44,27 @@ HURUMAP['levels'] = {
     }
 }
 HURUMAP['comparative_levels'] = ['country']
-HURUMAP['geometry_data'] = {
-    '2009': {
-        'country': 'geo/country.topojson',
-        'county': 'geo/county.topojson'
+
+HURUMAP['USE_MAPIT'] = True
+
+# use mapit settings
+HURUMAP['geometry_data'] = {}
+HURUMAP['mapit'] = {
+    'url': 'https://mapit.hurumap.org',
+    'country_code': 'KE',
+    'generations': {
+        '2009': '1',
+        None: '1',
+        # this should be based on the default_geo_version wazimap setting
+    },
+    'code_type': 'KEN',
+    'level_simplify': {
+        'country': 0,
+        'county': 0
+    },
+    'map_country': {
+        'centre': [0.3051933453207569, 37.908818734483155],
+        'zoom': 6
     }
 }
 

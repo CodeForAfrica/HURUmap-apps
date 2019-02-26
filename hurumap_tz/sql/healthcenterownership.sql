@@ -2,22 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.8
--- Dumped by pg_dump version 9.5.8
+-- Dumped from database version 10.6
+-- Dumped by pg_dump version 10.6
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-SET search_path = public, pg_catalog;
-
 ALTER TABLE IF EXISTS ONLY public.healthcenterownership DROP CONSTRAINT IF EXISTS pk_healthcenterownership;
 DROP TABLE IF EXISTS public.healthcenterownership;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -26,7 +23,7 @@ SET default_with_oids = false;
 -- Name: healthcenterownership; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE healthcenterownership (
+CREATE TABLE public.healthcenterownership (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(255) NOT NULL,
     "health center ownership" character varying(128) NOT NULL,
@@ -39,7 +36,7 @@ CREATE TABLE healthcenterownership (
 -- Data for Name: healthcenterownership; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY healthcenterownership (geo_level, geo_code, "health center ownership", total, geo_version) FROM stdin;
+COPY public.healthcenterownership (geo_level, geo_code, "health center ownership", total, geo_version) FROM stdin;
 region	1	faith based org	62	2009
 region	1	parastatal	4	2009
 region	1	private	84	2009
@@ -844,10 +841,10 @@ district	169	public	12	2009
 
 
 --
--- Name: pk_healthcenterownership; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: healthcenterownership pk_healthcenterownership; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY healthcenterownership
+ALTER TABLE ONLY public.healthcenterownership
     ADD CONSTRAINT pk_healthcenterownership PRIMARY KEY (geo_level, geo_code, geo_version, "health center ownership");
 
 

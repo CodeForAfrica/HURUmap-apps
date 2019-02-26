@@ -2,22 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.5
--- Dumped by pg_dump version 10.0
+-- Dumped from database version 10.6
+-- Dumped by pg_dump version 10.6
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-SET search_path = public, pg_catalog;
-
 ALTER TABLE IF EXISTS ONLY public.heightforage DROP CONSTRAINT IF EXISTS pk_heightforage;
 DROP TABLE IF EXISTS public.heightforage;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -26,7 +23,7 @@ SET default_with_oids = false;
 -- Name: heightforage; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE heightforage (
+CREATE TABLE public.heightforage (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     "height for age" character varying(128) NOT NULL,
@@ -39,7 +36,7 @@ CREATE TABLE heightforage (
 -- Data for Name: heightforage; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY heightforage (geo_level, geo_code, "height for age", total, geo_version) FROM stdin;
+COPY public.heightforage (geo_level, geo_code, "height for age", total, geo_version) FROM stdin;
 county	1	below -3	7.09999999999999964	2009
 county	1	below -2	21.1000000000000014	2009
 county	1	mean Z-score	-1	2009
@@ -191,7 +188,7 @@ country	KE	mean Z-score	-1.10000000000000009	2009
 -- Name: heightforage pk_heightforage; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY heightforage
+ALTER TABLE ONLY public.heightforage
     ADD CONSTRAINT pk_heightforage PRIMARY KEY (geo_level, geo_code, geo_version, "height for age");
 
 

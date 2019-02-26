@@ -2,22 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.8
--- Dumped by pg_dump version 9.5.8
+-- Dumped from database version 10.6
+-- Dumped by pg_dump version 10.6
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-SET search_path = public, pg_catalog;
-
 ALTER TABLE IF EXISTS ONLY public.trafficandcrimes DROP CONSTRAINT IF EXISTS pk_trafficandcrimes;
 DROP TABLE IF EXISTS public.trafficandcrimes;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -26,7 +23,7 @@ SET default_with_oids = false;
 -- Name: trafficandcrimes; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE trafficandcrimes (
+CREATE TABLE public.trafficandcrimes (
     geo_level character varying(50) NOT NULL,
     geo_code character varying(50) NOT NULL,
     "traffic and crimes" character varying(100) NOT NULL,
@@ -39,7 +36,7 @@ CREATE TABLE trafficandcrimes (
 -- Data for Name: trafficandcrimes; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY trafficandcrimes (geo_level, geo_code, "traffic and crimes", total, geo_version) FROM stdin;
+COPY public.trafficandcrimes (geo_level, geo_code, "traffic and crimes", total, geo_version) FROM stdin;
 country	TZ	Female Dead Persons	729	2009
 region	1	Female Dead Persons	5	2009
 region	2	Female Dead Persons	53	2009
@@ -1067,10 +1064,10 @@ country	TZ	Murdered Other Reasons	876	2009
 
 
 --
--- Name: pk_trafficandcrimes; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: trafficandcrimes pk_trafficandcrimes; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY trafficandcrimes
+ALTER TABLE ONLY public.trafficandcrimes
     ADD CONSTRAINT pk_trafficandcrimes PRIMARY KEY (geo_level, geo_code, geo_version, "traffic and crimes");
 
 

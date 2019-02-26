@@ -1,5 +1,6 @@
 import os
 from collections import OrderedDict
+from distutils.util import strtobool
 
 import dj_database_url
 
@@ -9,8 +10,8 @@ from hurumap.settings import *  # noqa
 INSTALLED_APPS = ['hurumap_zm'] + INSTALLED_APPS
 
 MIDDLEWARE_CLASSES = (
-        'whitenoise.middleware.WhiteNoiseMiddleware',
-    ) + MIDDLEWARE_CLASSES
+                         'whitenoise.middleware.WhiteNoiseMiddleware',
+                     ) + MIDDLEWARE_CLASSES
 
 DATABASE_URL = os.environ.get('DATABASE_URL',
                               'postgresql://hurumap:hurumap@localhost/hurumap_zm')
@@ -40,10 +41,26 @@ HURUMAP['levels'] = {
     }
 }
 HURUMAP['comparative_levels'] = ['country', 'province']
-HURUMAP['geometry_data'] = {
-    '2010': {
-        'country': 'geo/country.topojson',
-        'province': 'geo/province.topojson',
+
+HURUMAP['USE_MAPIT'] = True
+# use mapit settings
+HURUMAP['geometry_data'] = {}
+HURUMAP['mapit'] = {
+    'url': 'https://mapit.hurumap.org',
+    'country_code': 'ZM',
+    'generations': {
+        '2010': '1',
+        None: '1',
+        # this should be based on the default_geo_version wazimap setting
+    },
+    'code_type': 'ZMB',
+    'level_simplify': {
+        'country': 0,
+        'province': 0
+    },
+    'map_country': {
+        'centre': [-13.1339, 27.8493],
+        'zoom': 6
     }
 }
 

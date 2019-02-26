@@ -3,12 +3,10 @@ from hurumap.settings import *  # noqa
 # insert our overrides before both census and hurumap
 INSTALLED_APPS = ['pesayetu'] + INSTALLED_APPS
 
-
 DATABASE_URL = os.environ.get('DATABASE_URL',
                               'postgresql://hurumap:hurumap@localhost/pesayetu')
 DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
 DATABASES['default']['ATOMIC_REQUESTS'] = True
-
 
 PESAYETU = WAZIMAP
 
@@ -25,7 +23,6 @@ PESAYETU['description'] = 'is a tool the gives Kenyan Citizens access to ' \
 PESAYETU['title_tagline'] = 'Making Budget Data Easy to Use'
 
 pesayetu_profile = os.environ.get('PESAYETU_PROFILE', 'pesayetu')
-
 
 PESAYETU['default_profile'] = pesayetu_profile
 
@@ -47,12 +44,28 @@ PESAYETU['levels'] = {
     }
 }
 PESAYETU['comparative_levels'] = ['country']
-PESAYETU['geometry_data'] = {
-    '2009': {
-        'country': 'geo/country.topojson',
-        'county': 'geo/county.topojson'
+
+HURUMAP['USE_MAPIT'] = True
+HURUMAP['geometry_data'] = {}
+HURUMAP['mapit'] = {
+    'url': 'https://mapit.hurumap.org',
+    'country_code': 'KE',
+    'generations': {
+        '2009': '1',
+        None: '1',
+        # this should be based on the default_geo_version wazimap setting
+    },
+    'code_type': 'KEN',
+    'level_simplify': {
+        'country': 0,
+        'county': 0
+    },
+    'map_country': {
+        'centre': [0.3051933453207569, 37.908818734483155],
+        'zoom': 6
     }
 }
+
 PESAYETU['primary_release_year'] = {
     'county': 2016,
 }

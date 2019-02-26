@@ -2,22 +2,19 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.5
--- Dumped by pg_dump version 10.0
+-- Dumped from database version 10.6
+-- Dumped by pg_dump version 10.6
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-SET search_path = public, pg_catalog;
-
 ALTER TABLE IF EXISTS ONLY public.weightforage DROP CONSTRAINT IF EXISTS pk_weightforage;
 DROP TABLE IF EXISTS public.weightforage;
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -26,7 +23,7 @@ SET default_with_oids = false;
 -- Name: weightforage; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE weightforage (
+CREATE TABLE public.weightforage (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     "weight for age" character varying(128) NOT NULL,
@@ -39,7 +36,7 @@ CREATE TABLE weightforage (
 -- Data for Name: weightforage; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY weightforage (geo_level, geo_code, "weight for age", total, geo_version) FROM stdin;
+COPY public.weightforage (geo_level, geo_code, "weight for age", total, geo_version) FROM stdin;
 county	1	below -3	1.5	
 county	1	below -2	9.59999999999999964	
 county	1	above +2	1.89999999999999991	
@@ -239,7 +236,7 @@ country	KE	mean Z-score	-0.599999999999999978
 -- Name: weightforage pk_weightforage; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY weightforage
+ALTER TABLE ONLY public.weightforage
     ADD CONSTRAINT pk_weightforage PRIMARY KEY (geo_level, geo_code, geo_version, "weight for age");
 
 

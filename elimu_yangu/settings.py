@@ -1,6 +1,6 @@
-import os
 from django.utils.translation import ugettext_lazy as _
 from collections import OrderedDict
+from distutils.util import strtobool
 
 from hurumap.settings import *  # noqa
 
@@ -10,11 +10,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LANGUAGE_CODE = 'en'
 ugettext = lambda s: s
 LANGUAGES = (
-('sw', _('Swahili')),
-('en', _('English')),
+    ('sw', _('Swahili')),
+    ('en', _('English')),
 )
 
 USE_I18N = True
+
+TEMPLATES[0]['OPTIONS']['context_processors'] = TEMPLATES[0]['OPTIONS'][
+                                                 'context_processors'] + [
+                                                 'django.template.context_processors.i18n']
 
 # Tell Django where the project's translation files should be.
 LOCALE_PATHS = (
@@ -25,19 +29,24 @@ LOCALE_PATHS = (
 )
 
 # insert our overrides before both census and HURUmap
-INSTALLED_APPS = ['elimu_yangu', 'elimu_yangu.careerguide', 'elimu_yangu.leaguetable', 'elimu_yangu.universityfinder' ] + INSTALLED_APPS
+INSTALLED_APPS = ['elimu_yangu', 'elimu_yangu.careerguide',
+                  'elimu_yangu.leaguetable',
+                  'elimu_yangu.universityfinder'] + INSTALLED_APPS
 
 ROOT_URLCONF = 'elimu_yangu.urls'
 
-MIDDLEWARE_CLASSES = ( 'django.contrib.sessions.middleware.SessionMiddleware','django.middleware.locale.LocaleMiddleware', 'django.middleware.common.CommonMiddleware',) + MIDDLEWARE_CLASSES
-
+MIDDLEWARE_CLASSES = ('whitenoise.middleware.WhiteNoiseMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    'django.middleware.common.CommonMiddleware',) + MIDDLEWARE_CLASSES
+# Static Files Handler
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DATABASE_URL = os.environ.get(
     'DATABASE_URL',
     'postgresql://hurumap:hurumap@localhost/elimu_yangu')
 DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
 DATABASES['default']['ATOMIC_REQUESTS'] = True
-
 
 # Localise this instance of HURUmap
 HURUMAP['name'] = 'Elimu Yangu'
@@ -48,16 +57,16 @@ HURUMAP['url'] = 'https://elimuyangu.codefortanzania.org'
 HURUMAP['country_code'] = 'TZ'
 HURUMAP['country_name'] = 'Tanzania'
 HURUMAP['country_profile'] = 'country-TZ-Tanzania'
-#HURUMAP['profile_builder'] = 'elimu_yangu.profiles.get_census_profile'
+# HURUMAP['profile_builder'] = 'elimu_yangu.profiles.get_census_profile'
 
- # Define the profile to load
+# Define the profile to load
 
 hurumap_profile = os.environ.get('HURUMAP_PROFILE', 'census')
 
 HURUMAP['default_profile'] = hurumap_profile
 
-
-HURUMAP['profile_builder'] = 'elimu_yangu.profiles.{}.get_profile'.format(hurumap_profile)
+HURUMAP['profile_builder'] = 'elimu_yangu.profiles.{}.get_profile'.format(
+    hurumap_profile)
 HURUMAP['default_geo_version'] = os.environ.get('DEFAULT_GEO_VERSION', '2009')
 HURUMAP['legacy_embed_geo_version'] = '2009'
 
@@ -72,17 +81,34 @@ HURUMAP['levels'] = {
     },
     'district': {
         'plural': 'districts',
-        'children': [],
+        'children':[],
     }
 }
 
 HURUMAP['comparative_levels'] = ["district", "region", "country"]
-HURUMAP['geometry_data'] = {
-    '2009': {
-                'country': 'geo/country.topojson',
-                'region': 'geo/region.topojson',
-                'district': 'geo/district.topojson'
-            }
+
+HURUMAP['USE_MAPIT'] = True
+
+HURUMAP['mapit'] = {
+    'url': 'https://mapit.hurumap.org',
+    'country_code': 'TZ',
+    'generations': {
+        '2009': '1',
+        '2012': '1',
+        None: '1',
+        # this should be based on the default_geo_version wazimap setting
+    },
+    'code_type': 'TZA',
+    'level_simplify': {
+        'country': 0,
+        'region': 0,
+        'district': 0,
+        'ward': 0
+    },
+    'map_country': {
+        'centre': [-6.1523563, 35.6754813],
+        'zoom': 6
+    }
 }
 
 HURUMAP['ga_tracking_id'] = 'UA-91133100-8'
@@ -153,6 +179,9 @@ HURUMAP['available_release_years'] = {
 }
 
 LOGGING['loggers']['elimu_yangu'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Making sure they are the same
 WAZIMAP = HURUMAP

@@ -1,5 +1,6 @@
 # pull in the default HURUmap settings
 from collections import OrderedDict
+from distutils.util import strtobool
 
 from hurumap.settings import *  # noqa
 
@@ -20,8 +21,8 @@ DATABASES['default']['ATOMIC_REQUESTS'] = True
 INSTALLED_APPS = ['hurumap_ug'] + INSTALLED_APPS
 
 MIDDLEWARE_CLASSES = (
-        'whitenoise.middleware.WhiteNoiseMiddleware',
-    ) + MIDDLEWARE_CLASSES
+                         'whitenoise.middleware.WhiteNoiseMiddleware',
+                     ) + MIDDLEWARE_CLASSES
 
 # Localise this instance of HURUmap
 HURUMAP['name'] = 'HURUmap Uganda'
@@ -58,12 +59,28 @@ HURUMAP['levels'] = {
     }
 }
 
-HURUMAP['geometry_data'] = {
-    '2014': {
-        'country': 'geo/country.topojson',
-        'region': 'geo/region.topojson',
-        'district': 'geo/district.topojson',
-        'subcounty': 'geo/subcounty.topojson',
+HURUMAP['USE_MAPIT'] = True
+
+# use mapit settings
+HURUMAP['geometry_data'] = {}
+HURUMAP['mapit'] = {
+    'url': 'https://mapit.hurumap.org',
+    'country_code': 'UG',
+    'generations': {
+        '2014': '1',
+        None: '1',
+        # this should be based on the default_geo_version wazimap setting
+    },
+    'code_type': 'UGA',
+    'level_simplify': {
+        'country': 0,
+        'region': 0,
+        'district': 0.01,
+        'subcounty': 0
+    },
+    'map_country': {
+        'centre': [0.3051933453207569, 37.908818734483155],
+        'zoom': 6
     }
 }
 
@@ -127,5 +144,3 @@ LOGGING['loggers']['hurumap_ug'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
 
 # Making sure they are the same
 WAZIMAP = HURUMAP
-
-
