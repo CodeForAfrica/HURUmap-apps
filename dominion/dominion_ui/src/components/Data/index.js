@@ -9,7 +9,8 @@ import DatasetsContent from './DatasetsContent';
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    padding: '2rem'
+    padding: '2rem',
+    backgroundColor: '#fff'
   },
   data: {
     width: '100%',
