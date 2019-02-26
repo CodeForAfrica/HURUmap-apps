@@ -40,9 +40,7 @@ const styles = theme => ({
     textDecoration: 'none'
   },
   iframe: {
-    // height: 720,
-    // width: 1080
-    marginTop: '3rem'
+    marginTop: '6rem'
   },
   videoPlayer: {
     width: '100vw',
