@@ -7,24 +7,15 @@ import { withStyles } from '@material-ui/core/styles';
 import herobg from '../../assets/images/bg/hero_bg.png';
 import arrow from '../../assets/images/icons/combined-shape.svg';
 import map from '../../assets/images/bg/hero_map.png';
-import background from '../../assets/images/bg/background.png';
-import Search from '../Search';
 
 const styles = theme => ({
-  root: {
-    flexGrow: 1,
-    padding: theme.spacing.unit * 4,
-    backgroundImage: `url(${background})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover'
-  },
   heroContentGrid: {
     flexGrow: 1,
     backgroundImage: `url(${herobg})`,
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     backgroundSize: 'auto',
-    display: 'none',
+    // display: 'none',
     height: '100vh',
     [theme.breakpoints.up('lg')]: {
       height: '60vh',
@@ -94,74 +85,59 @@ const styles = theme => ({
 
 function Hero({ classes }) {
   return (
-    <Grid container item xs={12} className={classes.root}>
-      <Search />
+    <Grid
+      container
+      direction="row"
+      spacing={40}
+      justify="space-between"
+      className={classes.heroContentGrid}
+    >
+      <Grid item xs={8} md={8} lg={8} xl={6} className={classes.titleTextGrid}>
+        <Typography variant="h1" className={classes.text}>
+          Discover the stories behind the data.
+        </Typography>
+
+        <Typography item xs={4} variant="body1" className={classes.body2}>
+          Dominion makes data available to help add context and authority to
+          public discourse and policy-making on vital issues of land ownership.
+        </Typography>
+        <Grid style={{ paddingTop: '2rem' }}>
+          <a href="/#" className={classes.buttonLink}>
+            <Button variant="outlined" color="white" className={classes.button}>
+              Select a Country
+            </Button>
+            <img
+              src={arrow}
+              alt="Select Country"
+              className={classes.buttonArrow}
+            />
+          </a>
+        </Grid>
+      </Grid>
       <Grid
+        xs={4}
+        md={4}
+        lg={4}
+        xl={5}
+        item
         container
         direction="row"
-        spacing={40}
-        justify="space-between"
-        className={classes.heroContentGrid}
+        justify="space-around"
+        alignItems="center"
+        className={classes.mapSection}
       >
-        <Grid
-          item
-          xs={8}
-          md={8}
-          lg={8}
-          xl={6}
-          className={classes.titleTextGrid}
+        <img src={map} alt="Country Map" />
+        <Typography
+          variant="fontSmallDefault"
+          className={classes.verticalAlignText}
         >
-          <Typography variant="h1" className={classes.text}>
-            Discover the stories behind the data.
-          </Typography>
-
-          <Typography item xs={4} variant="body1" className={classes.body2}>
-            Dominion makes data available to help add context and authority to
-            public discourse and policy-making on vital issues of land
-            ownership.
-          </Typography>
-          <Grid style={{ paddingTop: '2rem' }}>
-            <a href="/#" className={classes.buttonLink}>
-              <Button
-                variant="outlined"
-                color="white"
-                className={classes.button}
-              >
-                Select a Country
-              </Button>
-              <img
-                src={arrow}
-                alt="Select Country"
-                className={classes.buttonArrow}
-              />
-            </a>
-          </Grid>
-        </Grid>
-        <Grid
-          xs={4}
-          md={4}
-          lg={4}
-          xl={5}
-          item
-          container
-          direction="row"
-          justify="space-around"
-          alignItems="center"
-          className={classes.mapSection}
-        >
-          <img src={map} alt="Country Map" />
-          <Typography
-            variant="fontSmallDefault"
-            className={classes.verticalAlignText}
+          South Africa &nbsp;&nbsp;
+          <div
+            style={{ display: 'inline-block', borderLeft: '1px solid #fff' }}
           >
-            South Africa &nbsp;&nbsp;
-            <div
-              style={{ display: 'inline-block', borderLeft: '1px solid #fff' }}
-            >
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{' '}
-            </div>
-          </Typography>
-        </Grid>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{' '}
+          </div>
+        </Typography>
       </Grid>
     </Grid>
   );
