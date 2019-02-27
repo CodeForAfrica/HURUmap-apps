@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 
 import { Grid, InputBase, IconButton } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-import SearchIcon from '@material-ui/icons/Search';
+
+import search from '../../assets/images/icons/location.svg';
 
 const styles = theme => ({
   root: {
@@ -34,6 +35,9 @@ const styles = theme => ({
     color: 'white',
     display: 'none',
     width: '100%',
+    fontFamily: theme.typography.fontFamily,
+    fontWeight: '600',
+    fontSize: '14px',
     '&::placeholder': {
       visibility: 'hidden'
     },
@@ -48,7 +52,7 @@ function Search({ classes }) {
     <Grid container wrap="nowrap" className={classes.root}>
       <InputBase placeholder="Search" className={classes.input} />
       <IconButton className={classes.iconButton} aria-label="Search">
-        <SearchIcon className={classes.searchIcon} />
+        <img src={search} alt="Search" className={classes.searchIcon} />
       </IconButton>
     </Grid>
   );

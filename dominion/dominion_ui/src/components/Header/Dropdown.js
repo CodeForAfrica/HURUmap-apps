@@ -23,6 +23,9 @@ const styles = theme => ({
     }
   },
   p: {
+    fontFamily: theme.typography.fontFamily,
+    fontWeight: '600',
+    fontSize: '14px',
     [theme.breakpoints.down('xs')]: {
       width: '100%',
       textAlign: 'left'

@@ -55,15 +55,13 @@ const styles = theme => ({
     color: 'white',
     display: 'none',
     width: '100%',
+    justifyContent: 'flex-end',
     [theme.breakpoints.down('xs')]: {
       display: 'inline-block'
     }
   },
   topMenuLead: {
-    width: 'auto',
-    [theme.breakpoints.down('xs')]: {
-      width: '100%'
-    }
+    width: 'auto'
   },
   menuList: {
     display: 'flex',
@@ -85,7 +83,8 @@ const styles = theme => ({
   link: {
     color: '#fff',
     textDecoration: 'none',
-    fontFamily: theme.typography.fontFamily
+    fontFamily: theme.typography.fontFamily,
+    fontWeight: '600'
   }
 });
 
@@ -128,6 +127,7 @@ class Header extends Component {
             >
               <img src={logo} alt="Dominion Logo" className={classes.img} />
               <IconButton
+                disableRipple
                 aria-label="Menu"
                 className={classes.topMenuIcon}
                 onClick={this.setToggleTopMenuClass}
