@@ -15,21 +15,18 @@ const styles = theme => ({
     backgroundColor: '#fff',
     backgroundImage: `url(${databg})`,
     backgroundRepeat: 'no-repeat',
-    backgroundSize: '69%',
-    [theme.breakpoints.down('lg')]: {
-      backgroundImage: `url(${databg})`,
-      backgroundRepeat: 'no-repeat',
-      backgroundSize: '69%'
+    backgroundSize: '60%',
+    [theme.breakpoints.up('sm')]: {
+      backgroundSize: '30% 60%'
     },
-    [theme.breakpoints.down('sm')]: {
-      backgroundImage: `url(${databg})`,
-      backgroundRepeat: 'no-repeat',
-      backgroundSize: '50%'
+    [theme.breakpoints.up('md')]: {
+      backgroundSize: '65% 100%'
     },
-    [theme.breakpoints.down('xs')]: {
-      backgroundImage: `url(${databg})`,
-      backgroundRepeat: 'no-repeat',
-      backgroundSize: 'cover'
+    [theme.breakpoints.up('lg')]: {
+      backgroundSize: '63% 100%'
+    },
+    [theme.breakpoints.up('xl')]: {
+      backgroundSize: '62% 100%'
     }
   },
   data: {
