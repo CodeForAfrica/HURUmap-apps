@@ -20,7 +20,7 @@ const styles = theme => ({
     backgroundSize: 'cover'
   },
   rootToggle: {
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       position: 'absolute',
       width: '100%',
       zIndex: 1,
@@ -29,7 +29,7 @@ const styles = theme => ({
   },
   topMenu: {
     padding: '20px 50px 20px 50px',
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       padding: '30px'
     }
   },
@@ -38,7 +38,7 @@ const styles = theme => ({
   },
   topMenuNav: {
     flexWrap: 'nowrap',
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       flexDirection: 'column',
       position: 'absolute',
       top: '100px',
@@ -47,32 +47,33 @@ const styles = theme => ({
     }
   },
   topMenuNavToggle: {
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       display: 'inline-flex'
     }
   },
   topMenuIcon: {
     color: 'white',
     display: 'none',
-    width: '100%',
-    justifyContent: 'flex-end',
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       display: 'inline-block'
     }
   },
+  topMenuIconImg: {
+    marginRight: '-10px'
+  },
   topMenuLead: {
-    width: 'auto'
+    width: '100%'
   },
   menuList: {
     display: 'flex',
     width: '100%',
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       flexDirection: 'column',
       paddingTop: '10px'
     }
   },
   menuListItem: {
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       paddingLeft: 0,
       paddingRight: 0
     }
@@ -106,7 +107,7 @@ class Header extends Component {
     const { isMenuOpen } = this.state;
     return (
       <Grid
-        xs={12}
+        sm={12}
         className={`${classes.root} ${isMenuOpen ? classes.rootToggle : ''}`}
       >
         <nav className={classes.topMenu}>
@@ -122,6 +123,7 @@ class Header extends Component {
               container
               direction="row"
               wrap="nowrap"
+              justify="space-between"
               alignItems="center"
               className={classes.topMenuLead}
             >
@@ -132,7 +134,11 @@ class Header extends Component {
                 className={classes.topMenuIcon}
                 onClick={this.setToggleTopMenuClass}
               >
-                <img src={isMenuOpen ? back : menu} alt="Dominion Logo" />
+                <img
+                  src={isMenuOpen ? back : menu}
+                  alt="Dominion Logo"
+                  className={classes.topMenuIconImg}
+                />
               </IconButton>
             </Grid>
 
@@ -146,9 +152,9 @@ class Header extends Component {
                 isMenuOpen ? classes.topMenuNavToggle : ''
               }`}
             >
-              <Search item xs={12} />
-              <Dropdown item xs={12} />
-              <MenuList xs={4} className={classes.menuList}>
+              <Search item sm={12} />
+              <Dropdown item sm={12} />
+              <MenuList sm={4} className={classes.menuList}>
                 {['About', 'Showcase', 'Resources', 'Contact'].map(
                   menuTitle => (
                     <MenuItem item className={classes.menuListItem}>

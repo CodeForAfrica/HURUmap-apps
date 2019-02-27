@@ -11,7 +11,7 @@ const styles = theme => ({
     border: 0,
     borderBottom: 0,
     width: 'auto',
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       borderBottom: '2px solid white',
       padding: '10px',
       width: '100%'
@@ -23,7 +23,7 @@ const styles = theme => ({
     [theme.breakpoints.down('sm')]: {
       marginLeft: '50px'
     },
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       marginLeft: 0
     }
   },
@@ -41,7 +41,7 @@ const styles = theme => ({
     '&::placeholder': {
       visibility: 'hidden'
     },
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       display: 'inline-block'
     }
   }

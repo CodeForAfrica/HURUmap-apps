@@ -9,7 +9,7 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = theme => ({
   root: {
     width: '150px',
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       width: '100%',
       paddingTop: '52px'
     }
@@ -18,7 +18,7 @@ const styles = theme => ({
     padding: 0,
     border: 0,
     textTransform: 'none',
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       width: '100%'
     }
   },
@@ -26,7 +26,7 @@ const styles = theme => ({
     fontFamily: theme.typography.fontFamily,
     fontWeight: '600',
     fontSize: '14px',
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       width: '100%',
       textAlign: 'left'
     }
@@ -36,7 +36,7 @@ const styles = theme => ({
     cursor: 'pointer'
   },
   dropdownList: {
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       display: 'none'
     }
   },
@@ -44,7 +44,7 @@ const styles = theme => ({
     display: 'none'
   },
   dropdownListItem: {
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       paddingLeft: 0,
       paddingRight: 0
     }
@@ -56,7 +56,7 @@ const styles = theme => ({
   }
 });
 
-const DEFAULT_OPTIONS = ['Kenya', 'Nigeria', 'Tanzania'];
+const DEFAULT_OPTIONS = ['Kenya', 'South Africa'];
 
 class Dropdown extends Component {
   constructor(props) {
