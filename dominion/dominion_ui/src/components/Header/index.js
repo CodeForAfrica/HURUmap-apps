@@ -19,15 +19,15 @@ const styles = theme => ({
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover'
   },
+  rootToggle: {
+    [theme.breakpoints.down('xs')]: {
+      height: '100%'
+    }
+  },
   topMenu: {
     padding: '20px 50px 20px 50px',
     [theme.breakpoints.down('xs')]: {
       padding: '30px'
-    }
-  },
-  topMenuToggle: {
-    [theme.breakpoints.down('xs')]: {
-      height: '450px'
     }
   },
   topMenuContent: {
@@ -102,12 +102,11 @@ class Header extends Component {
     const { classes } = this.props;
     const { isMenuOpen } = this.state;
     return (
-      <Grid xs={12} className={classes.root}>
-        <nav
-          className={`${classes.topMenu} ${
-            isMenuOpen ? classes.topMenuToggle : ''
-          }`}
-        >
+      <Grid
+        xs={12}
+        className={`${classes.root} ${isMenuOpen ? classes.rootToggle : ''}`}
+      >
+        <nav className={classes.topMenu}>
           <Grid
             container
             direction="row"
