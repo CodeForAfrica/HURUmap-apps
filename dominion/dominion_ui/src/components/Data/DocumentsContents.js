@@ -1,7 +1,5 @@
 import React from 'react';
-
-import Menu from '@material-ui/icons/Menu';
-
+import menuicon from '../../assets/images/icons/group-7.png';
 import Content from './Content';
 
 function DocumentsContent() {
@@ -15,7 +13,7 @@ function DocumentsContent() {
             documents.
       "
     >
-      <Menu size="large" style={{ color: 'black' }} />
+      <img src={menuicon} alt="Menu Icon" />
     </Content>
   );
 }
