@@ -9,8 +9,8 @@ import background from '../../assets/images/bg/background.png';
 import logo from '../../assets/images/logos/dominion-logo.png';
 import Dropdown from './Dropdown';
 
-import menu from '../../assets/menu.svg';
-import back from '../../assets/back.svg';
+import menu from '../../assets/images/icons/menu.svg';
+import back from '../../assets/images/icons/back.svg';
 
 const styles = theme => ({
   root: {
@@ -21,6 +21,9 @@ const styles = theme => ({
   },
   rootToggle: {
     [theme.breakpoints.down('xs')]: {
+      position: 'absolute',
+      width: '100%',
+      zIndex: 1,
       height: '100%'
     }
   },
@@ -81,7 +84,8 @@ const styles = theme => ({
   },
   link: {
     color: '#fff',
-    textDecoration: 'none'
+    textDecoration: 'none',
+    fontFamily: theme.typography.fontFamily
   }
 });
 
