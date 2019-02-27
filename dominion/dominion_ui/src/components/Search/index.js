@@ -46,7 +46,8 @@ const styles = theme => ({
     marginRight: theme.spacing.unit,
     color: 'white',
     width: '100%',
-    borderBottom: '2px solid #fff'
+    borderBottom: '2px solid #fff',
+    padding: '15px 0 4px'
   },
   icon: {
     color: '#fff'
