@@ -12,6 +12,7 @@ const styles = theme => ({
     width: 'auto',
     [theme.breakpoints.down('xs')]: {
       borderBottom: '2px solid white',
+      padding: '10px',
       width: '100%'
     }
   },

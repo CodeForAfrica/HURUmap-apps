@@ -11,7 +11,8 @@ const styles = theme => ({
   root: {
     width: '150px',
     [theme.breakpoints.down('xs')]: {
-      width: '100%'
+      width: '100%',
+      paddingTop: '52px'
     }
   },
   input: {
@@ -21,9 +22,12 @@ const styles = theme => ({
   valueContainer: {
     flexGrow: 1,
     display: 'flex',
-    flexWrap: 'wrap',
+    flexWrap: 'nowrap',
     alignItems: 'center',
-    backgroundColor: 'none'
+    backgroundColor: 'none',
+    [theme.breakpoints.down('xs')]: {
+      width: '100%'
+    }
   },
   chip: {
     margin: `${theme.spacing.unit / 2}px ${theme.spacing.unit / 4}px`
@@ -38,7 +42,10 @@ const styles = theme => ({
   },
   placeholder: {
     fontSize: 14,
-    color: 'white'
+    color: 'white',
+    [theme.breakpoints.down('xs')]: {
+      width: '100%'
+    }
   },
   paper: {
     position: 'absolute',

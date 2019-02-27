@@ -1,20 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import {
-  Grid,
-  Link,
-  MenuList,
-  MenuItem,
-  SvgIcon,
-  IconButton
-} from '@material-ui/core';
+import { Grid, Link, MenuList, MenuItem, IconButton } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import Search from './Search';
 import background from '../../assets/images/bg/background.png';
 import logo from '../../assets/images/logos/dominion-logo.png';
 import Dropdown from './Dropdown';
+
+import menu from '../../assets/menu.svg';
+import back from '../../assets/back.svg';
 
 const styles = theme => ({
   root: {
@@ -26,7 +22,7 @@ const styles = theme => ({
   topMenu: {
     padding: '20px 50px 20px 50px',
     [theme.breakpoints.down('xs')]: {
-      padding: '20px'
+      padding: '30px'
     }
   },
   topMenuToggle: {
@@ -66,32 +62,22 @@ const styles = theme => ({
       width: '100%'
     }
   },
-  menuNav: {
+  menuList: {
     display: 'flex',
     width: '100%',
     [theme.breakpoints.down('xs')]: {
-      flexDirection: 'column'
+      flexDirection: 'column',
+      paddingTop: '10px'
     }
   },
-  menuNavSearch: {
-    color: 'white'
+  menuListItem: {
+    [theme.breakpoints.down('xs')]: {
+      paddingLeft: 0,
+      paddingRight: 0
+    }
   },
   img: {
     height: '45px'
-  },
-  menulist: {
-    display: 'flex'
-  },
-  text: {
-    color: theme.palette.primary.main
-  },
-  fa: {
-    transition: 'all .5s ease-in-out',
-    color: '#fff',
-    ' &:hover': {
-      transform: 'scale(1.3)',
-      color: theme.palette.primary.main
-    }
   },
   link: {
     color: '#fff',
@@ -143,32 +129,7 @@ class Header extends Component {
                 className={classes.topMenuIcon}
                 onClick={this.setToggleTopMenuClass}
               >
-                <SvgIcon>
-                  <svg
-                    width="28"
-                    height="28"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g>
-                      <rect
-                        id="svg_1"
-                        height="3"
-                        width="100%"
-                        strokeWidth="0"
-                        fill="#fff"
-                      />
-                      <rect
-                        id="svg_2"
-                        height="3"
-                        width="50%"
-                        y="9"
-                        x="50%"
-                        strokeWidth="0"
-                        fill="#fff"
-                      />
-                    </g>
-                  </svg>
-                </SvgIcon>
+                <img src={isMenuOpen ? back : menu} alt="Dominion Logo" />
               </IconButton>
             </Grid>
 
@@ -184,31 +145,16 @@ class Header extends Component {
             >
               <Search item xs={12} />
               <Dropdown item xs={12} />
-              <MenuList xs={4} className={classes.menuNav}>
-                <MenuItem item>
-                  <Link to="/" className={classes.link} variant="body1">
-                    About
-                  </Link>
-                </MenuItem>
-
-                <MenuItem item>
-                  <Link to="/" className={classes.link} variant="body1">
-                    Showcase
-                  </Link>
-                </MenuItem>
-
-                <MenuItem item>
-                  <Link to="/" className={classes.link} variant="body1">
-                    Resources
-                  </Link>
-                </MenuItem>
-
-                <MenuItem item>
-                  <Link to="/" className={classes.link} variant="body1">
-                    {' '}
-                    Contact
-                  </Link>
-                </MenuItem>
+              <MenuList xs={4} className={classes.menuList}>
+                {['About', 'Showcase', 'Resources', 'Contact'].map(
+                  menuTitle => (
+                    <MenuItem item className={classes.menuListItem}>
+                      <Link to="/" className={classes.link} variant="body1">
+                        {menuTitle}
+                      </Link>
+                    </MenuItem>
+                  )
+                )}
               </MenuList>
             </Grid>
           </Grid>
