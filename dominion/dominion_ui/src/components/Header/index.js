@@ -21,15 +21,17 @@ const styles = theme => ({
     flexGrow: 1,
     backgroundImage: `url(${background})`,
     backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    [theme.breakpoints.down('xs')]: {
-      height: '500px'
-    }
+    backgroundSize: 'cover'
   },
   topMenu: {
     padding: '20px 50px 20px 50px',
     [theme.breakpoints.down('xs')]: {
       padding: '20px'
+    }
+  },
+  topMenuToggle: {
+    [theme.breakpoints.down('xs')]: {
+      height: '450px'
     }
   },
   topMenuContent: {
@@ -38,10 +40,16 @@ const styles = theme => ({
   topMenuNav: {
     flexWrap: 'nowrap',
     [theme.breakpoints.down('xs')]: {
+      flexDirection: 'column',
       position: 'absolute',
       top: '100px',
       left: 0,
-      flexDirection: 'column'
+      display: 'none'
+    }
+  },
+  topMenuNavToggle: {
+    [theme.breakpoints.down('xs')]: {
+      display: 'inline-flex'
     }
   },
   topMenuIcon: {
@@ -106,10 +114,14 @@ class Header extends Component {
 
   render() {
     const { classes } = this.props;
-    // const { isMenuOpen } = this.state;
+    const { isMenuOpen } = this.state;
     return (
       <Grid xs={12} className={classes.root}>
-        <nav className={classes.topMenu}>
+        <nav
+          className={`${classes.topMenu} ${
+            isMenuOpen ? classes.topMenuToggle : ''
+          }`}
+        >
           <Grid
             container
             direction="row"
@@ -126,7 +138,11 @@ class Header extends Component {
               className={classes.topMenuLead}
             >
               <img src={logo} alt="Dominion Logo" className={classes.img} />
-              <IconButton aria-label="Menu" className={classes.topMenuIcon}>
+              <IconButton
+                aria-label="Menu"
+                className={classes.topMenuIcon}
+                onClick={this.setToggleTopMenuClass}
+              >
                 <SvgIcon>
                   <svg
                     width="28"
@@ -162,7 +178,9 @@ class Header extends Component {
               justify="flex-start"
               wrap="nowrap"
               alignItems="center"
-              className={classes.topMenuNav}
+              className={`${classes.topMenuNav} ${
+                isMenuOpen ? classes.topMenuNavToggle : ''
+              }`}
             >
               <Search item xs={12} />
               <Dropdown item xs={12} />
