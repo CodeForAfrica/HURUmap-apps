@@ -8,6 +8,7 @@ import herobg from '../../assets/images/bg/hero_bg.png';
 import arrow from '../../assets/images/icons/combined-shape.svg';
 import map from '../../assets/images/bg/hero_map.png';
 import background from '../../assets/images/bg/background.png';
+import Search from '../Search';
 
 const styles = theme => ({
   root: {
@@ -23,6 +24,7 @@ const styles = theme => ({
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     backgroundSize: 'auto',
+    display: 'none',
     height: '100vh',
     [theme.breakpoints.up('lg')]: {
       height: '60vh',
@@ -93,6 +95,7 @@ const styles = theme => ({
 function Hero({ classes }) {
   return (
     <Grid container item xs={12} className={classes.root}>
+      <Search />
       <Grid
         container
         direction="row"

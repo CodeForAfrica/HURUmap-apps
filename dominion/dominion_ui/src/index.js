@@ -11,6 +11,7 @@ import Footer from './components/Footer';
 import Showcase from './components/Showcase';
 import HomeHero from './components/Hero/HomeHero';
 import Video from './components/Video';
+import Search from './components/Search';
 
 library.add(fab);
 
@@ -28,3 +29,4 @@ renderApp(Showcase, 'dominionShowcase');
 renderApp(Data, 'dominionData');
 renderApp(AboutDominion, 'dominionAbout');
 renderApp(Footer, 'dominionFooter');
+renderApp(Search, 'dominionSearch');
