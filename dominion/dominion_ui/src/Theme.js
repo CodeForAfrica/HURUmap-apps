@@ -1,7 +1,7 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
-const FONT_FAMILY_HEADING = '"Roboto Slab", "serif"';
-const FONT_FAMILY_TEXT = '"Roboto", "sans-serif"';
+const FONT_FAMILY_HEADING = '"Lora", "serif"';
+const FONT_FAMILY_TEXT = '"Montserrat", "sans-serif"';
 
 const Theme = createMuiTheme({
   palette: {
@@ -42,10 +42,12 @@ const Theme = createMuiTheme({
       color: '#fff'
     },
     body2: {
-      color: 'rgba(34, 40, 34, 0.8)'
+      color: 'rgba(34, 40, 34, 0.8)',
+      fontFamily: FONT_FAMILY_TEXT
     },
     fontSmallDefault: {
-      fontSize: 14
+      fontSize: 13,
+      fontFamily: FONT_FAMILY_TEXT
     },
     useNextVariants: true
   },

@@ -5,20 +5,29 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 
 import withRoot from './withRoot';
+
 import Header from './components/Header';
+import AboutDominion from './components/About';
+import Data from './components/Data';
 import Footer from './components/Footer';
 import Showcase from './components/Showcase';
+import HomeHero from './components/Hero/HomeHero';
+import Video from './components/Video';
 
 library.add(fab);
 
-const render = (Component, elementId) => {
-  const element = document.getElementById(elementId);
-  if (element) {
+const renderApp = (Component, id) => {
+  const el = document.getElementById(id);
+  if (el) {
     const App = withRoot(Component);
-    ReactDOM.render(<App />, element);
+    ReactDOM.render(<App />, el);
   }
 };
 
-render(Header, 'dominionHeader');
-render(Footer, 'dominionFooter');
-render(Showcase, 'dominionShowcase');
+renderApp(Header, 'dominionHeader');
+renderApp(HomeHero, 'dominionHomeHero');
+renderApp(Video, 'dominionVideo');
+renderApp(Showcase, 'dominionShowcase');
+renderApp(Data, 'dominionData');
+renderApp(AboutDominion, 'dominionAbout');
+renderApp(Footer, 'dominionFooter');
