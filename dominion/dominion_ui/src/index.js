@@ -5,18 +5,20 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 
 import withRoot from './withRoot';
+import Header from './components/Header';
 import Footer from './components/Footer';
 import Showcase from './components/Showcase';
 
 library.add(fab);
 
-const showcase = document.getElementById('dominionShowcase');
-if (showcase) {
-  const ShowcaseApp = withRoot(Showcase);
-  ReactDOM.render(<ShowcaseApp />, showcase);
-}
-const footer = document.getElementById('dominionFooter');
-if (footer) {
-  const FooterApp = withRoot(Footer);
-  ReactDOM.render(<FooterApp />, footer);
-}
+const render = (Component, elementId) => {
+  const element = document.getElementById(elementId);
+  if (element) {
+    const App = withRoot(Component);
+    ReactDOM.render(<App />, element);
+  }
+};
+
+render(Header, 'dominionHeader');
+render(Footer, 'dominionFooter');
+render(Showcase, 'dominionShowcase');
