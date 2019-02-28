@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { withStyles } from '@material-ui/core/styles';
@@ -50,24 +50,62 @@ const styles = theme => ({
   }
 });
 
-function SearchOverlay({ classes, onClose }) {
-  return (
-    <Grid container direction="column" wrap="nowrap" className={classes.root}>
-      <Grid container sm={12} wrap="nowrap">
-        <Input className={classes.searchField} />
-        <IconButton
-          className={classes.iconButton}
-          aria-label="Search"
-          onClick={onClose}
-        >
-          <img src={back} alt="Search" className={classes.searchIcon} />
-        </IconButton>
+const exampleData = [
+  { denomination: 'District', name: 'Mortruisberg' },
+  { denomination: 'Ward', name: 'Moertuin' },
+  { denomination: 'Ward', name: 'Mortruisberg' },
+  { denomination: 'Region', name: 'Mozem' },
+  { denomination: 'Region', name: 'Mortruisberg' },
+  { denomination: 'District', name: 'Moertuin' },
+  { denomination: 'District', name: 'Mortruisberg' },
+  { denomination: 'Ward', name: 'Moertuin' },
+  { denomination: 'Ward', name: 'Mortruisberg' },
+  { denomination: 'Region', name: 'Mozem' },
+  { denomination: 'Region', name: 'Mortruisberg' },
+  { denomination: 'District', name: 'Moertuin' }
+];
+
+class SearchOverlay extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      results: []
+    };
+
+    this.handleSearch = this.handleSearch.bind(this);
+  }
+
+  handleSearch(event) {
+    if (event.target.value !== '') {
+      const results = exampleData.filter(d => d.name.match(event.target.value));
+      this.setState({ results });
+    } else {
+      this.setState({ results: [] });
+    }
+  }
+
+  render() {
+    const { classes, onClose } = this.props;
+    const { results } = this.state;
+    return (
+      <Grid container direction="column" wrap="nowrap" className={classes.root}>
+        <Grid container sm={12} wrap="nowrap">
+          <Input className={classes.searchField} onChange={this.handleSearch} />
+          <IconButton
+            className={classes.iconButton}
+            aria-label="Search"
+            onClick={onClose}
+          >
+            <img src={back} alt="Search" className={classes.searchIcon} />
+          </IconButton>
+        </Grid>
+        <Grid container sm={12} className={classes.resultsContainer}>
+          <Results results={results} />
+        </Grid>
       </Grid>
-      <Grid container sm={12} className={classes.resultsContainer}>
-        <Results />
-      </Grid>
-    </Grid>
-  );
+    );
+  }
 }
 
 SearchOverlay.propTypes = {

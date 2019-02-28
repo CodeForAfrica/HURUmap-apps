@@ -4,6 +4,8 @@ import { Grid, List, ListItem } from '@material-ui/core';
 
 import { withStyles } from '@material-ui/core/styles';
 
+import weakKey from 'weak-key';
+
 const styles = theme => ({
   root: {
     flexGrow: 1,
@@ -42,47 +44,21 @@ const styles = theme => ({
   }
 });
 
-function Results({ classes }) {
+const maxResults = 6;
+
+function Results({ classes, results }) {
   return (
     <div className={classes.root}>
       <Grid container direction="row" justify="flex-end">
         <List className={classes.list}>
-          <ListItem className={classes.listItem} button>
-            <Grid container direction="row" alignItems="baseline">
-              <p className={classes.denomination}>District</p>
-              <p className={classes.name}>Mortruisberg</p>
-            </Grid>
-          </ListItem>
-          <ListItem className={classes.listItem} button>
-            <Grid container direction="row" alignItems="baseline">
-              <p className={classes.denomination}>Ward</p>
-              <p className={classes.name}>Mortruisberg</p>
-            </Grid>
-          </ListItem>
-          <ListItem className={classes.listItem} button>
-            <Grid container direction="row" alignItems="baseline">
-              <p className={classes.denomination}>Ward</p>
-              <p className={classes.name}>Mortruisberg</p>
-            </Grid>
-          </ListItem>
-          <ListItem className={classes.listItem} button>
-            <Grid container direction="row" alignItems="baseline">
-              <p className={classes.denomination}>Region</p>
-              <p className={classes.name}>Mozem</p>
-            </Grid>
-          </ListItem>
-          <ListItem className={classes.listItem} button>
-            <Grid container direction="row" alignItems="baseline">
-              <p className={classes.denomination}>Region</p>
-              <p className={classes.name}>Mortruisberg</p>
-            </Grid>
-          </ListItem>
-          <ListItem className={classes.listItem} button>
-            <Grid container direction="row" alignItems="baseline">
-              <p className={classes.denomination}>District</p>
-              <p className={classes.name}>Moertuin</p>
-            </Grid>
-          </ListItem>
+          {results.slice(0, maxResults).map(result => (
+            <ListItem key={weakKey(result)} className={classes.listItem} button>
+              <Grid container direction="row" alignItems="baseline">
+                <p className={classes.denomination}>{result.denomination}</p>
+                <p className={classes.name}>{result.name}</p>
+              </Grid>
+            </ListItem>
+          ))}
         </List>
       </Grid>
     </div>
@@ -90,7 +66,8 @@ function Results({ classes }) {
 }
 
 Results.propTypes = {
-  classes: PropTypes.shape().isRequired
+  classes: PropTypes.shape().isRequired,
+  results: PropTypes.isRequired
 };
 
 export default withStyles(styles)(Results);

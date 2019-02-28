@@ -9091,6 +9091,12 @@ wbuf@^1.1.0, wbuf@^1.7.3:
   dependencies:
     minimalistic-assert "^1.0.0"
 
+weak-key@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/weak-key/-/weak-key-1.0.1.tgz#a8f8faa4ba211ceb1e34dbd198da942245213f2b"
+  dependencies:
+    core-js "^2.4.0"
+
 webidl-conversions@^4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/webidl-conversions/-/webidl-conversions-4.0.2.tgz#a855980b1f0b6b359ba1d5d9fb39ae941faa63ad"
