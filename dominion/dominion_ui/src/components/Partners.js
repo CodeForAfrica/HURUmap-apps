@@ -15,19 +15,26 @@ const styles = theme => ({
     flexGrow: 1,
     backgroundColor: theme.palette.secondary.light
   },
+
+  // 6 rem image + 4 rem padding = 10rem = 160px
   img: {
     height: '100%',
     maxHeight: '6rem',
-    maxWidth: '49vw',
+    maxWidth: '30vw',
     [theme.breakpoints.up('md')]: {
       width: 'auto',
       maxWidth: '10rem'
     }
   },
   imgCfa: {
-    maxHeight: '4rem'
+    maxHeight: '6rem'
   },
-  imageGrid: { padding: '1rem' }
+  imageGrid: {
+    padding: '1rem',
+    [theme.breakpoints.up('md')]: {
+      padding: '2rem 1rem'
+    }
+  }
 });
 
 function Partners({ classes }) {
