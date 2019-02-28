@@ -43,7 +43,7 @@ class Search extends Component {
     const { classes, activator, content } = this.props;
     const { isOpen } = this.state;
     return (
-      <div>
+      <React.Fragment>
         {<activator.type {...activator.props} onClick={this.handleToggle} />}
         <Modal
           disableAutoFocus
@@ -59,7 +59,7 @@ class Search extends Component {
             onClose={this.handleToggle}
           />
         </Modal>
-      </div>
+      </React.Fragment>
     );
   }
 }
