@@ -1,10 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Grid, InputBase, IconButton } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
+import withWidth, { isWidthDown } from '@material-ui/core/withWidth';
+
 import search from '../../assets/images/icons/location.svg';
+
+import SearchBar from '../Search/SearchBar';
+import SearchOverlay from '../Search';
+import Modal from '../Modal';
 
 const styles = theme => ({
   root: {
@@ -13,7 +19,6 @@ const styles = theme => ({
     width: 'auto',
     [theme.breakpoints.down('sm')]: {
       borderBottom: '2px solid white',
-      padding: '10px',
       width: '100%'
     }
   },
@@ -47,24 +52,26 @@ const styles = theme => ({
   }
 });
 
-function Search({ classes, onClick }) {
+function Search({ classes, width }) {
   return (
     <Grid container wrap="nowrap" className={classes.root}>
-      <InputBase placeholder="Search" className={classes.input} />
-      <IconButton
-        className={classes.iconButton}
-        aria-label="Search"
-        onClick={onClick}
-      >
-        <img src={search} alt="Search" className={classes.searchIcon} />
-      </IconButton>
+      {isWidthDown('sm', width) ? (
+        <SearchBar />
+      ) : (
+        <Modal
+          activatorLabel="Search"
+          activatorIconOpen={search}
+          activatorIconClose={search}
+          content={<SearchOverlay />}
+        />
+      )}
     </Grid>
   );
 }
 
 Search.propTypes = {
   classes: PropTypes.isRequired,
-  onClick: PropTypes.isRequired
+  width: PropTypes.isRequired
 };
 
-export default withStyles(styles)(Search);
+export default withWidth()(withStyles(styles)(Search));

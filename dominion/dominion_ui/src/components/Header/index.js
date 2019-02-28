@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Grid, Link, MenuList, MenuItem, IconButton } from '@material-ui/core';
+import { Grid, Link, MenuList, MenuItem } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
+import withWidth, { isWidthDown } from '@material-ui/core/withWidth';
 import Search from './Search';
 import background from '../../assets/images/bg/background.png';
 import logo from '../../assets/images/logos/dominion-logo.png';
 import Dropdown from './Dropdown';
 
-import SearchOverlay from '../Search';
 import Modal from '../Modal';
 
 import menu from '../../assets/images/icons/menu.svg';
@@ -21,14 +21,6 @@ const styles = theme => ({
     backgroundImage: `url(${background})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover'
-  },
-  rootToggle: {
-    [theme.breakpoints.down('sm')]: {
-      position: 'absolute',
-      width: '100%',
-      zIndex: 1,
-      height: '100%'
-    }
   },
   topMenu: {
     padding: '20px 50px 20px 50px',
@@ -47,11 +39,6 @@ const styles = theme => ({
       top: '100px',
       left: 0,
       display: 'none'
-    }
-  },
-  topMenuNavToggle: {
-    [theme.breakpoints.down('sm')]: {
-      display: 'inline-flex'
     }
   },
   topMenuIcon: {
@@ -96,23 +83,32 @@ class Header extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { isMenuOpen: false };
-    this.setToggleTopMenuClass = this.setToggleTopMenuClass.bind(this);
+    this.renderMenu = this.renderMenu.bind(this);
   }
 
-  setToggleTopMenuClass() {
-    const { isMenuOpen } = this.state;
-    this.setState({ isMenuOpen: !isMenuOpen });
+  renderMenu() {
+    const { classes } = this.props;
+    return (
+      <React.Fragment>
+        <Search sm={12} />
+        <Dropdown sm={12} />
+        <MenuList sm={4} className={classes.menuList}>
+          {['About', 'Showcase', 'Resources', 'Contact'].map(menuTitle => (
+            <MenuItem item className={classes.menuListItem}>
+              <Link to="/" className={classes.link} variant="body1">
+                {menuTitle}
+              </Link>
+            </MenuItem>
+          ))}
+        </MenuList>
+      </React.Fragment>
+    );
   }
 
   render() {
-    const { classes } = this.props;
-    const { isMenuOpen } = this.state;
+    const { classes, width } = this.props;
     return (
-      <Grid
-        sm={12}
-        className={`${classes.root} ${isMenuOpen ? classes.rootToggle : ''}`}
-      >
+      <Grid sm={12} className={classes.root}>
         <nav className={classes.topMenu}>
           <Grid
             container
@@ -131,46 +127,30 @@ class Header extends Component {
               className={classes.topMenuLead}
             >
               <img src={logo} alt="Dominion Logo" className={classes.img} />
-              <IconButton
-                disableRipple
-                aria-label="Menu"
-                className={classes.topMenuIcon}
-                onClick={this.setToggleTopMenuClass}
-              >
-                <img
-                  src={isMenuOpen ? back : menu}
-                  alt="Dominion Logo"
-                  className={classes.topMenuIconImg}
-                />
-              </IconButton>
-            </Grid>
 
-            <Grid
-              container
-              direction="row-reverse"
-              justify="flex-start"
-              wrap="nowrap"
-              alignItems="center"
-              className={`${classes.topMenuNav} ${
-                isMenuOpen ? classes.topMenuNavToggle : ''
-              }`}
-            >
-              <Modal
-                activator={<Search sm={12} />}
-                content={<SearchOverlay />}
-              />
-              <Dropdown sm={12} />
-              <MenuList sm={4} className={classes.menuList}>
-                {['About', 'Showcase', 'Resources', 'Contact'].map(
-                  menuTitle => (
-                    <MenuItem item className={classes.menuListItem}>
-                      <Link to="/" className={classes.link} variant="body1">
-                        {menuTitle}
-                      </Link>
-                    </MenuItem>
-                  )
-                )}
-              </MenuList>
+              {isWidthDown('sm', width) ? (
+                <Modal
+                  activatorLabel="Menu"
+                  activatorIconOpen={menu}
+                  activatorIconClose={back}
+                  content={
+                    <div className={classes.topMenuNav}>
+                      {this.renderMenu()}
+                    </div>
+                  }
+                />
+              ) : (
+                <Grid
+                  container
+                  direction="row-reverse"
+                  justify="flex-start"
+                  wrap="nowrap"
+                  alignItems="center"
+                  className={classes.topMenuNav}
+                >
+                  {this.renderMenu()}
+                </Grid>
+              )}
             </Grid>
           </Grid>
         </nav>
@@ -180,7 +160,8 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-  classes: PropTypes.isRequired
+  classes: PropTypes.isRequired,
+  width: PropTypes.isRequired
 };
 
-export default withStyles(styles)(Header);
+export default withWidth()(withStyles(styles)(Header));

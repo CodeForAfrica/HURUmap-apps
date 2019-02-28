@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { withStyles } from '@material-ui/core/styles';
 
-import Modal from '@material-ui/core/Modal';
+import { Modal, IconButton } from '@material-ui/core';
 
 import background from '../assets/images/bg/background.png';
 
@@ -21,6 +21,9 @@ const styles = theme => ({
     outline: 'none',
     height: 'auto',
     width: '100vw'
+  },
+  icon: {
+    padding: 0
   }
 });
 
@@ -40,11 +43,27 @@ class Search extends Component {
   }
 
   render() {
-    const { classes, activator, content } = this.props;
+    const {
+      classes,
+      activatorLabel,
+      activatorIconOpen,
+      activatorIconClose,
+      content
+    } = this.props;
     const { isOpen } = this.state;
     return (
       <React.Fragment>
-        {<activator.type {...activator.props} onClick={this.handleToggle} />}
+        <IconButton
+          disableRipple
+          aria-label={activatorLabel}
+          className={classes.icon}
+          onClick={this.handleToggle}
+        >
+          <img
+            src={isOpen ? activatorIconClose : activatorIconOpen}
+            alt={activatorLabel}
+          />
+        </IconButton>
         <Modal
           disableAutoFocus
           hideBackdrop
@@ -56,7 +75,8 @@ class Search extends Component {
           <content.type
             {...content.props}
             className={classes.modal}
-            onClose={this.handleToggle}
+            isOpen={isOpen}
+            onToggle={this.handleToggle}
           />
         </Modal>
       </React.Fragment>
@@ -66,7 +86,9 @@ class Search extends Component {
 
 Search.propTypes = {
   classes: PropTypes.shape().isRequired,
-  activator: PropTypes.element.isRequired,
+  activatorLabel: PropTypes.isRequired,
+  activatorIconOpen: PropTypes.isRequired,
+  activatorIconClose: PropTypes.isRequired,
   content: PropTypes.element.isRequired
 };
 

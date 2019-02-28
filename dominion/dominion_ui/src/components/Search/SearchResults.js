@@ -46,7 +46,7 @@ const styles = theme => ({
 
 const maxResults = 6;
 
-function Results({ classes, results }) {
+function SearchResults({ classes, results }) {
   return (
     <div className={classes.root}>
       <Grid container direction="row" justify="flex-end">
@@ -65,9 +65,9 @@ function Results({ classes, results }) {
   );
 }
 
-Results.propTypes = {
+SearchResults.propTypes = {
   classes: PropTypes.shape().isRequired,
   results: PropTypes.isRequired
 };
 
-export default withStyles(styles)(Results);
+export default withStyles(styles)(SearchResults);

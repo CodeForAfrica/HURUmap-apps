@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { withStyles } from '@material-ui/core/styles';
-import Input from '@material-ui/core/Input';
-import { Grid, IconButton } from '@material-ui/core';
-import back from '../../assets/images/icons/back.svg';
+import { Grid } from '@material-ui/core';
 import background from '../../assets/images/bg/background.png';
-import Results from './Results';
+import SearchResults from './SearchResults';
+
+import SearchBar from './SearchBar';
 
 const styles = theme => ({
   root: {
@@ -27,20 +27,22 @@ const styles = theme => ({
     }
   },
   formContainer: {
-    flexGrow: 1,
-    padding: theme.spacing.unit * 14,
-    width: '80%'
+    [theme.breakpoints.down('sm')]: {
+      borderBottom: '2px solid white'
+    }
   },
   searchField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
     color: 'white',
     width: '100%',
-    borderBottom: '2px solid #fff',
     padding: '15px 0 4px',
     fontFamily: theme.typography.fontFamily,
     fontSize: '18px',
-    fontWeight: '600'
+    fontWeight: '600',
+    [theme.breakpoints.up('md')]: {
+      borderBottom: '2px solid white'
+    }
   },
   icon: {
     color: '#fff'
@@ -86,22 +88,15 @@ class SearchOverlay extends Component {
   }
 
   render() {
-    const { classes, onClose } = this.props;
+    const { classes, onToggle } = this.props;
     const { results } = this.state;
     return (
       <Grid container direction="column" wrap="nowrap" className={classes.root}>
-        <Grid container sm={12} wrap="nowrap">
-          <Input className={classes.searchField} onChange={this.handleSearch} />
-          <IconButton
-            className={classes.iconButton}
-            aria-label="Search"
-            onClick={onClose}
-          >
-            <img src={back} alt="Search" className={classes.searchIcon} />
-          </IconButton>
+        <Grid container sm={12} wrap="nowrap" className={classes.formContainer}>
+          <SearchBar onToggle={onToggle} onSearch={this.handleSearch} />
         </Grid>
         <Grid container sm={12} className={classes.resultsContainer}>
-          <Results results={results} />
+          <SearchResults results={results} />
         </Grid>
       </Grid>
     );
@@ -110,7 +105,7 @@ class SearchOverlay extends Component {
 
 SearchOverlay.propTypes = {
   classes: PropTypes.shape().isRequired,
-  onClose: PropTypes.func.isRequired
+  onToggle: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(SearchOverlay);
