@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import os
 from collections import OrderedDict
+from distutils.util import strtobool
 
 import dj_database_url
 
@@ -73,27 +74,38 @@ HURUMAP['profile_builder'] = 'dominion.profiles.land.get_land_profile'
 HURUMAP['default_geo_version'] = os.environ.get('DEFAULT_GEO_VERSION', '2016')
 HURUMAP['legacy_embed_geo_version'] = '2016'
 
-# this is provided by mapit
-HURUMAP['geodata'] = 'dominion.geo.GeoData'
-HURUMAP['geometry_data'] = {}
+
 HURUMAP['levels'] = {
+    'continent': {
+        'plural': 'continents',
+        'children': ['country', 'level1'],
+    },
     'country': {
         'plural': 'countries',
-        'children': ['province', 'district', 'municipality'],
+        'children': ['level1']
     },
-    'province': {
-        'children': ['district', 'municipality', 'ward'],
-    },
-    'district': {
-        'children': ['municipality', 'ward'],
-    },
-    'municipality': {
-        'plural': 'municipalities',
-        'children': ['ward'],
-    },
-    'ward': {
-        'children': [],
+    'level1': {
+
     }
+}
+HURUMAP['USE_MAPIT'] = True
+# this is provided by mapit
+HURUMAP['geometry_data'] = {}
+HURUMAP['mapit'] = {
+    'url': 'https://mapit.hurumap.org',
+    'country_code': '',
+    'generations': {
+        '2009': '1',
+        '2016': '1',
+        None: '1',
+        # this should be based on the default_geo_version wazimap setting
+    },
+    'code_type': 'AFR',
+    'level_simplify': {
+        'continent': 0,
+        'country': 0,
+        'level1': 0
+    },
 }
 
 HURUMAP['primary_release_year'] = {
@@ -111,13 +123,6 @@ HURUMAP['available_release_years'] = {
 HURUMAP['map_centre']= None
 HURUMAP['map_zoom']= None
 
-HURUMAP['mapit'] = {
-    'generations': {
-        '2011': '1',
-        '2016': '2',
-        None: '2',
-    }
-}
 # -------------------------------------------------------------------------------
 #topics
 
