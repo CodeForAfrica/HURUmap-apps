@@ -18,13 +18,20 @@ const styles = theme => ({
   },
   listItem: {
     lineHeight: 1.3,
-    padding: theme.spacing.unit * 3
-  },
-  listItemLink: {
-    color: 'white',
+    padding: theme.spacing.unit * 3,
     fontSize: 50,
     letterSpacing: 1.4,
     textDecoration: 'none',
+    '&:hover': {
+      color: '#e7e452'
+    }
+  },
+  listItemLink: {
+    color: 'white',
+    textDecoration: 'none',
+    span: {
+      display: 'block'
+    },
     '&:hover': {
       color: '#e7e452'
     }
@@ -33,8 +40,9 @@ const styles = theme => ({
 
 const countries = [
   { geoid: 'country-KE', name: 'Kenya' },
-  { geoid: 'country-NG', name: 'Nigeria' },
-  { geoid: 'country-TZ', name: 'Tanzania' }
+  { geoid: 'country-ZA', name: 'South Africa' },
+  { geoid: 'country-TZ', name: 'Tanzania' },
+  { geoid: 'country-NG', name: 'Nigeria' }
 ];
 
 function PortalChooser(props) {
@@ -47,17 +55,13 @@ function PortalChooser(props) {
         <MenuList>
           {countries.map((country, index) => (
             <MenuItem button className={classes.listItem}>
+              <span>
+                <NumberFormat value={index + 1} displayType="text" prefix="0" />
+              </span>
               <a
                 className={classes.listItemLink}
                 href={`/profiles/${country.geoid}`}
               >
-                <span style={{ display: 'none' }}>
-                  <NumberFormat
-                    value={index + 1}
-                    displayType="text"
-                    prefix="0"
-                  />
-                </span>
                 &nbsp;&nbsp;&nbsp; {country.name}
               </a>
             </MenuItem>
