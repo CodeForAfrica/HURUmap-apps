@@ -5,6 +5,8 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 
 import withRoot from './withRoot';
+
+import Header from './components/Header';
 import AboutDominion from './components/About';
 import Data from './components/Data';
 import Footer from './components/Footer';
@@ -22,6 +24,7 @@ const renderApp = (Component, id) => {
   }
 };
 
+renderApp(Header, 'dominionHeader');
 renderApp(HomeHero, 'dominionHomeHero');
 renderApp(Video, 'dominionVideo');
 renderApp(Showcase, 'dominionShowcase');
