@@ -314,3 +314,22 @@ span.img-bg {
     max-height: 80px;
   }
 }
+
+
+
+/* LAYOUT */
+#page-header .wrapper {
+    padding: 0;
+}
+.wrapper {
+    margin: 0;
+}
+
+/* MEDIA QUERIES */
+@media only screen and (min-width: 1140px) {
+    .wrapper {
+        width: auto;
+        margin: 0;
+    }
+}
+
