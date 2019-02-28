@@ -28,7 +28,10 @@ const styles = theme => ({
     marginTop: '0'
   },
   joinText: {
-    paddingTop: '1.5rem'
+    paddingTop: '4rem',
+    [theme.breakpoints.up('lg')]: {
+      paddingTop: '1.5rem'
+    }
   }
 });
 
