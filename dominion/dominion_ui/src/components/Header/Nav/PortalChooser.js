@@ -20,30 +20,16 @@ const styles = theme => ({
     lineHeight: 1.3,
     padding: theme.spacing.unit * 3
   },
-  listText: {
+  listItemLink: {
     color: 'white',
     fontSize: 50,
     letterSpacing: 1.4,
-    textDecoration: 'none'
+    textDecoration: 'none',
+    '&:hover': {
+      color: '#e7e452'
+    }
   }
 });
-
-// //list item link
-// function ListItemLink(props) {
-//   const { primary, to } = props;
-//   return (
-//     <li>
-//       <ListItem button component={Link} to={`/profiles/${to}` }>
-//         {primary}
-//       </ListItem>
-//     </li>
-//   );
-// }
-//
-// ListItemLink.propTypes = {
-//   primary: PropTypes.node.isRequired,
-//   to: PropTypes.string.isRequired,
-// };
 
 const countries = [
   { geoid: 'country-KE', name: 'Kenya' },
@@ -62,10 +48,16 @@ function PortalChooser(props) {
           {countries.map((country, index) => (
             <MenuItem button className={classes.listItem}>
               <a
+                className={classes.listItemLink}
                 href={`/profiles/${country.geoid}`}
-                className={classes.listText}
               >
-                <NumberFormat value={index + 1} displayType="text" prefix="0" />
+                <span style={{ display: 'none' }}>
+                  <NumberFormat
+                    value={index + 1}
+                    displayType="text"
+                    prefix="0"
+                  />
+                </span>
                 &nbsp;&nbsp;&nbsp; {country.name}
               </a>
             </MenuItem>
