@@ -13,7 +13,10 @@ const styles = theme => ({
     fontFamily: theme.typography.fontFamily
   },
   list: {
-    width: '70%'
+    width: '500px',
+    [theme.breakpoints.up('lg')]: {
+      width: '500px'
+    }
   },
   listItem: {
     '&:hover': {

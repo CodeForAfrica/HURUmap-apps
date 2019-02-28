@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Close from '@material-ui/icons/Close';
-
 import { withStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
-import { Grid } from '@material-ui/core';
+import { Grid, IconButton } from '@material-ui/core';
+import back from '../../assets/images/icons/back.svg';
 import background from '../../assets/images/bg/background.png';
 import Results from './Results';
 
@@ -15,29 +14,17 @@ const styles = theme => ({
     padding: theme.spacing.unit * 4,
     backgroundImage: `url(${background})`,
     backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover'
-  },
-  searchContent: {
-    zIndex: 1300,
-    flexGrow: 1,
-    height: '100vh',
-    '&:focus': {
-      outline: 0
-    },
+    backgroundSize: 'cover',
     [theme.breakpoints.up('lg')]: {
-      height: '60vh'
+      paddingTop: '100px',
+      paddingLeft: '200px',
+      paddingRight: '200px'
     },
-    [theme.breakpoints.up('lg')]: {
-      height: '60vh',
-      paddingLeft: theme.spacing.unit * 14.5
-    },
-    [theme.breakpoints.down('md')]: {
-      backgroundPosition: 'right',
-      backgroundSize: 'auto'
-    },
-    paddingLeft: theme.spacing.unit * 34,
-    paddingRight: theme.spacing.unit * 14,
-    paddingTop: theme.spacing.unit * 14
+    [theme.breakpoints.up('md')]: {
+      paddingTop: '50px',
+      paddingLeft: '185px',
+      paddingRight: '185px'
+    }
   },
   formContainer: {
     flexGrow: 1,
@@ -57,34 +44,26 @@ const styles = theme => ({
   },
   icon: {
     color: '#fff'
+  },
+  resultsContainer: {
+    padding: '47px'
   }
 });
 
 function SearchOverlay({ classes, onClose }) {
   return (
-    <Grid
-      container
-      direction="row"
-      spacing={40}
-      justify="space-between"
-      className={`${classes.root} ${classes.searchContent}`}
-    >
-      <Grid item xs={1} />
-      <Grid item xs={10}>
-        <form noValidate autoComplete="off">
-          <Input className={classes.searchField} />{' '}
-        </form>
-      </Grid>
-      <Grid item xs={1}>
-        <Close
+    <Grid container direction="column" wrap="nowrap" className={classes.root}>
+      <Grid container sm={12} wrap="nowrap">
+        <Input className={classes.searchField} />
+        <IconButton
+          className={classes.iconButton}
+          aria-label="Search"
           onClick={onClose}
-          size="small"
-          style={{
-            color: 'white'
-          }}
-        />
+        >
+          <img src={back} alt="Search" className={classes.searchIcon} />
+        </IconButton>
       </Grid>
-      <Grid item xs={12}>
+      <Grid container sm={12} className={classes.resultsContainer}>
         <Results />
       </Grid>
     </Grid>
