@@ -10,7 +10,7 @@ import map from '../../assets/images/bg/hero_map.png';
 import background from '../../assets/images/bg/background.png';
 import smallscreenbackground from '../../assets/images/bg/smallscreen_background.png';
 
-import PortalChooser from '../Header/Nav/PortalChooser';
+import PortalChooser from '../Modal/PortalChooser';
 
 const styles = theme => ({
   root: {
