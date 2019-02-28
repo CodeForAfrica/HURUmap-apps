@@ -15,18 +15,17 @@ const styles = theme => ({
       paddingRight: '2rem'
     },
     [theme.breakpoints.up('lg')]: {
-      width: '34.5rem',
-      paddingLeft: '3rem',
-      paddingRight: '4rem'
+      width: '24.4375rem', // 391px / 16
+      padding: 0
     }
-  },
-  body: {
-    marginTop: '1rem',
-    lineHeight: '1.5rem'
   },
   subtitle: {
     fontFamily: theme.typography.fontFamily,
     fontWeight: 'bold'
+  },
+  body: {
+    marginTop: '1rem',
+    lineHeight: '1.5rem'
   }
 });
 

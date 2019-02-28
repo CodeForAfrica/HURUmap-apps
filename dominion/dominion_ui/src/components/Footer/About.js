@@ -10,7 +10,7 @@ const styles = theme => ({
   root: {
     width: '100%',
     [theme.breakpoints.up('lg')]: {
-      width: '40.35rem' // 644px /16
+      width: '40.35rem' // 644px / 16
     }
   },
   title: {

@@ -16,6 +16,11 @@ const styles = theme => ({
     }
   },
   listText: {
+    // match parent width
+    width: '7.125rem',
+    [theme.breakpoints.up('lg')]: {
+      width: '12.5625rem' // 201px
+    },
     color: theme.palette.primary.light,
     opacity: '0.6'
   },
@@ -37,7 +42,7 @@ function Community({ classes }) {
   return (
     <div classes={classes.root}>
       <Typography variant="body2" className={classes.listText} component="div">
-        Other openAfrica Projects
+        Other openAFRICA Projects
         <ul className={classes.list}>
           <li>
             <A

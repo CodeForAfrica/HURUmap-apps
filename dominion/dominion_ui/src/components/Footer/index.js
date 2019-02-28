@@ -25,7 +25,12 @@ const styles = theme => ({
       paddingBottom: '3.375rem'
     }
   },
-  about: {},
+  about: {
+    paddingRight: '1.375rem',
+    [theme.breakpoints.up('md')]: {
+      padding: 0
+    }
+  },
   organisation: {
     width: '100%',
     marginTop: '1.625rem', // 26px / 16
