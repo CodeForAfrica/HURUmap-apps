@@ -47,11 +47,15 @@ const styles = theme => ({
   }
 });
 
-function Search({ classes }) {
+function Search({ classes, onClick }) {
   return (
     <Grid container wrap="nowrap" className={classes.root}>
       <InputBase placeholder="Search" className={classes.input} />
-      <IconButton className={classes.iconButton} aria-label="Search">
+      <IconButton
+        className={classes.iconButton}
+        aria-label="Search"
+        onClick={onClick}
+      >
         <img src={search} alt="Search" className={classes.searchIcon} />
       </IconButton>
     </Grid>
@@ -59,7 +63,8 @@ function Search({ classes }) {
 }
 
 Search.propTypes = {
-  classes: PropTypes.isRequired
+  classes: PropTypes.isRequired,
+  onClick: PropTypes.isRequired
 };
 
 export default withStyles(styles)(Search);

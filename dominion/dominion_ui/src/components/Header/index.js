@@ -9,6 +9,9 @@ import background from '../../assets/images/bg/background.png';
 import logo from '../../assets/images/logos/dominion-logo.png';
 import Dropdown from './Dropdown';
 
+import SearchOverlay from '../Search';
+import Modal from '../Modal';
+
 import menu from '../../assets/images/icons/menu.svg';
 import back from '../../assets/images/icons/back.svg';
 
@@ -152,8 +155,11 @@ class Header extends Component {
                 isMenuOpen ? classes.topMenuNavToggle : ''
               }`}
             >
-              <Search item sm={12} />
-              <Dropdown item sm={12} />
+              <Modal
+                activator={<Search sm={12} />}
+                content={<SearchOverlay />}
+              />
+              <Dropdown sm={12} />
               <MenuList sm={4} className={classes.menuList}>
                 {['About', 'Showcase', 'Resources', 'Contact'].map(
                   menuTitle => (

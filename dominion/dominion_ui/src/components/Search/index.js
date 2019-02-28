@@ -7,7 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 import { Grid } from '@material-ui/core';
 import background from '../../assets/images/bg/background.png';
-import Results from './results';
+import Results from './Results';
 
 const styles = theme => ({
   root: {
@@ -21,6 +21,9 @@ const styles = theme => ({
     zIndex: 1300,
     flexGrow: 1,
     height: '100vh',
+    '&:focus': {
+      outline: 0
+    },
     [theme.breakpoints.up('lg')]: {
       height: '60vh'
     },
@@ -57,7 +60,7 @@ const styles = theme => ({
   }
 });
 
-function Search({ classes }) {
+function SearchOverlay({ classes, onClose }) {
   return (
     <Grid
       container
@@ -74,6 +77,7 @@ function Search({ classes }) {
       </Grid>
       <Grid item xs={1}>
         <Close
+          onClick={onClose}
           size="small"
           style={{
             color: 'white'
@@ -87,8 +91,9 @@ function Search({ classes }) {
   );
 }
 
-Search.propTypes = {
-  classes: PropTypes.shape().isRequired
+SearchOverlay.propTypes = {
+  classes: PropTypes.shape().isRequired,
+  onClose: PropTypes.func.isRequired
 };
 
-export default withStyles(styles)(Search);
+export default withStyles(styles)(SearchOverlay);
