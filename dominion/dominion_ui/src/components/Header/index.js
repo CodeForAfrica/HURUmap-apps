@@ -90,17 +90,18 @@ class Header extends Component {
     const { classes } = this.props;
     return (
       <React.Fragment>
-        <Search sm={12} />
-        <Dropdown sm={12} />
-        <MenuList sm={4} className={classes.menuList}>
-          {['About', 'Showcase', 'Resources', 'Contact'].map(menuTitle => (
-            <MenuItem item className={classes.menuListItem}>
-              <Link to="/" className={classes.link} variant="body1">
-                {menuTitle}
-              </Link>
-            </MenuItem>
-          ))}
-        </MenuList>
+        <Search sm={12}>
+          <Dropdown sm={12} />
+          <MenuList sm={4} className={classes.menuList}>
+            {['About', 'Showcase', 'Resources', 'Contact'].map(menuTitle => (
+              <MenuItem item className={classes.menuListItem}>
+                <Link to="/" className={classes.link} variant="body1">
+                  {menuTitle}
+                </Link>
+              </MenuItem>
+            ))}
+          </MenuList>
+        </Search>
       </React.Fragment>
     );
   }
@@ -133,12 +134,9 @@ class Header extends Component {
                   activatorLabel="Menu"
                   activatorIconOpen={menu}
                   activatorIconClose={back}
-                  content={
-                    <div className={classes.topMenuNav}>
-                      {this.renderMenu()}
-                    </div>
-                  }
-                />
+                >
+                  {this.renderMenu()}
+                </Modal>
               ) : (
                 <Grid
                   container

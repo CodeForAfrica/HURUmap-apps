@@ -48,9 +48,10 @@ class Search extends Component {
       activatorLabel,
       activatorIconOpen,
       activatorIconClose,
-      content
+      children
     } = this.props;
     const { isOpen } = this.state;
+
     return (
       <React.Fragment>
         <IconButton
@@ -72,12 +73,7 @@ class Search extends Component {
           onClose={this.handleToggle}
           className={classes.root}
         >
-          <content.type
-            {...content.props}
-            className={classes.modal}
-            isOpen={isOpen}
-            onToggle={this.handleToggle}
-          />
+          <div className={classes.modal}>{children}</div>
         </Modal>
       </React.Fragment>
     );
@@ -89,7 +85,7 @@ Search.propTypes = {
   activatorLabel: PropTypes.isRequired,
   activatorIconOpen: PropTypes.isRequired,
   activatorIconClose: PropTypes.isRequired,
-  content: PropTypes.element.isRequired
+  children: PropTypes.isRequired
 };
 
 export default withStyles(styles)(Search);
