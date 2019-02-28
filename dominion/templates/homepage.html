@@ -4,19 +4,9 @@
 data about land ownership in South Africa. Compare places using tables and maps,
 download data, and embed charts on your site.{% endblock %}
 
-{% block header_menu %}
-<li><a href="/about">About</a></li>
-<li><a href="/#showcase">Showcase</a></li>
-<li class="social-icons">
-  <a href="https://twitter.com/{{ HURUMAP.twitter }}"><i
-    class="fa fa-twitter fa-lg fa-fw"></i></a>
-  <a href="https://facebook.com/{{ HURUMAP.facebook }}"><i
-    class="fa fa-facebook fa-lg fa-fw"></i></a>
-</li>
-{% endblock header_menu %}
-
-<!-- Empty header content to override top discover banner -->
-{% block header_content %}{% endblock header_content %}
+{% block header %}
+    {% include 'blocks/header.html' %}
+{% endblock header %}
 
 {% block content_container %}
   <div id="dominionHomeHero"></div>
