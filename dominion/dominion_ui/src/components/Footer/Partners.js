@@ -32,7 +32,7 @@ function Partners({ classes }) {
       alignItems="center"
       className={classes.root}
     >
-      <Grid item xs={8} sm={6} md={6} lg={2} style={{ padding: '2rem' }}>
+      <Grid item xs={8} sm={6} md={4} lg={2} style={{ padding: '2rem' }}>
         <img src={cfa} alt="Code for Africa" className={classes.img} />
       </Grid>
       <Grid item xs={8} sm={4} md={4} lg={2} className={classes.imageGrid}>
