@@ -71,7 +71,7 @@ hurumap_profile = os.environ.get('HURUMAP_PROFILE', 'land')
 
 HURUMAP['default_profile'] = hurumap_profile
 HURUMAP['profile_builder'] = 'dominion.profiles.land.get_land_profile'
-HURUMAP['default_geo_version'] = os.environ.get('DEFAULT_GEO_VERSION', '2016')
+HURUMAP['default_geo_version'] = os.environ.get('DEFAULT_GEO_VERSION', '2009')
 HURUMAP['legacy_embed_geo_version'] = '2016'
 
 
