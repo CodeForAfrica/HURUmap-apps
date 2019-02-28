@@ -315,9 +315,15 @@ span.img-bg {
   }
 }
 
+/* LAYOUT */
 
+#page-footer {
+    background: none;
+    border: none;
+}
 
 /* LAYOUT */
+#page-header,
 #page-header .wrapper {
     padding: 0;
 }
