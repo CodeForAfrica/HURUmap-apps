@@ -10,15 +10,13 @@ import background from '../assets/images/bg/background.png';
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    padding: theme.spacing.unit * 4,
+    padding: 0,
     backgroundImage: `url(${background})`,
     backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover'
+    backgroundSize: 'cover',
+    top: '100px'
   },
   modal: {
-    position: 'absolute',
-    top: 100,
-    left: 0,
     padding: theme.spacing.unit * 4,
     outline: 'none',
     height: 'auto',
@@ -49,6 +47,7 @@ class Search extends Component {
         {<activator.type {...activator.props} onClick={this.handleToggle} />}
         <Modal
           disableAutoFocus
+          hideBackdrop
           aria-labelledby="search-modal"
           open={isOpen}
           onClose={this.handleToggle}

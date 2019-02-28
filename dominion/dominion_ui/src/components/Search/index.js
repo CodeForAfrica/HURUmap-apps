@@ -67,7 +67,7 @@ function SearchOverlay({ classes, onClose }) {
       direction="row"
       spacing={40}
       justify="space-between"
-      className={classes.searchContent}
+      className={`${classes.root} ${classes.searchContent}`}
     >
       <Grid item xs={1} />
       <Grid item xs={10}>
