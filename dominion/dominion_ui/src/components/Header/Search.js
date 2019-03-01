@@ -13,6 +13,8 @@ import SearchBar from '../Search/SearchBar';
 import SearchResults from '../Search/SearchResults';
 import Modal from '../Modal';
 
+import createAPI from '../../api';
+
 const styles = theme => ({
   root: {
     flexGrow: 1,
@@ -43,35 +45,32 @@ const styles = theme => ({
   }
 });
 
-const exampleData = [
-  { denomination: 'District', name: 'Mortruisberg' },
-  { denomination: 'Ward', name: 'Moertuin' },
-  { denomination: 'Ward', name: 'Mortruisberg' },
-  { denomination: 'Region', name: 'Mozem' },
-  { denomination: 'Region', name: 'Mortruisberg' },
-  { denomination: 'District', name: 'Moertuin' },
-  { denomination: 'District', name: 'Mortruisberg' },
-  { denomination: 'Ward', name: 'Moertuin' },
-  { denomination: 'Ward', name: 'Mortruisberg' },
-  { denomination: 'Region', name: 'Mozem' },
-  { denomination: 'Region', name: 'Mortruisberg' },
-  { denomination: 'District', name: 'Moertuin' }
-];
-
 class Search extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      geography: [],
       results: []
     };
 
     this.handleSearch = this.handleSearch.bind(this);
   }
 
-  handleSearch(event) {
-    if (event.target.value !== '') {
-      const results = exampleData.filter(d => d.name.match(event.target.value));
+  async componentDidMount() {
+    const api = createAPI();
+    // South Africa id: 5656
+    const geography = await api.getGeography(5656);
+
+    this.setState({
+      geography
+    });
+  }
+
+  handleSearch(value) {
+    const { geography } = this.state;
+    if (value !== '') {
+      const results = geography.filter(g => g.name.match(value));
       this.setState({ results });
     } else {
       this.setState({ results: [] });
@@ -82,7 +81,7 @@ class Search extends Component {
     const { classes, width, children } = this.props;
     const { results, closeModal } = this.state;
 
-    const SearchBarElement = onToggle => (
+    const SearchBarElement = ({ onToggle }) => (
       <Grid container sm={12} wrap="nowrap" className={classes.searchBar}>
         <SearchBar onSearch={this.handleSearch} onToggle={onToggle} />
       </Grid>
@@ -94,7 +93,7 @@ class Search extends Component {
     );
     const SearchModalContent = ({ toggleModal }) => (
       <Grid container direction="column" wrap="nowrap" className={classes.root}>
-        {SearchBarElement(toggleModal)}
+        <SearchBarElement onToggle={toggleModal} />
         {ResultsElement}
       </Grid>
     );
@@ -102,7 +101,7 @@ class Search extends Component {
       <React.Fragment>
         {isWidthDown('sm', width) ? (
           <React.Fragment>
-            {SearchBarElement()}
+            <SearchBarElement />
             {results.length > 0 ? ResultsElement : children}
           </React.Fragment>
         ) : (

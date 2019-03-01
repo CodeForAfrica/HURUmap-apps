@@ -28,7 +28,7 @@ const styles = theme => ({
   selected: {
     color: '#e7e452'
   },
-  denomination: {
+  level: {
     margin: 0,
     fontSize: '14px',
     fontWeight: '600',
@@ -54,7 +54,9 @@ function SearchResults({ classes, results }) {
           {results.slice(0, maxResults).map(result => (
             <ListItem key={weakKey(result)} className={classes.listItem} button>
               <Grid container direction="row" alignItems="baseline">
-                <p className={classes.denomination}>{result.denomination}</p>
+                <p className={classes.level}>
+                  {result.type[0] + result.type.slice(1).toLowerCase()}
+                </p>
                 <p className={classes.name}>{result.name}</p>
               </Grid>
             </ListItem>

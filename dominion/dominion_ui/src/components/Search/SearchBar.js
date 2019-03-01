@@ -38,7 +38,14 @@ const styles = theme => ({
 function SearchBar({ classes, onToggle, width, onSearch }) {
   return (
     <React.Fragment>
-      <InputBase className={classes.searchField} onChange={onSearch} />
+      <InputBase
+        autoFocus
+        className={classes.searchField}
+        onChange={event => {
+          const { value } = event.target;
+          onSearch(value);
+        }}
+      />
       <IconButton
         className={classes.iconButton}
         aria-label="Search"

@@ -9,7 +9,7 @@ import requests
 log = logging.getLogger(__name__)
 
 SETTINGS = settings.HURUMAP.setdefault('mapit', {})
-SETTINGS.setdefault('url', 'https://mapit.code4sa.org')
+SETTINGS.setdefault('url', 'https://mapit.hurumap.org')
 SETTINGS.setdefault('generations', {
     '2011': '1',
     '2016': '2',
