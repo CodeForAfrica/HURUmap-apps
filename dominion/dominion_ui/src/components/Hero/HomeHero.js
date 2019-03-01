@@ -27,7 +27,7 @@ const styles = theme => ({
     backgroundSize: 'auto',
     height: '100vh',
     [theme.breakpoints.down('lg')]: {
-      height: '60vh',
+      height: '80vh',
       paddingLeft: theme.spacing.unit * 14.5
     },
     [theme.breakpoints.down('md')]: {
@@ -54,8 +54,11 @@ const styles = theme => ({
   },
   text: {
     color: 'white',
-    paddingTop: theme.spacing.unit * 10,
+    paddingTop: theme.spacing.unit * 8,
     width: '90%',
+    [theme.breakpoints.up('lg')]: {
+      paddingTop: theme.spacing.unit * 5
+    },
     [theme.breakpoints.down('sm')]: {
       fontSize: '3rem',
       paddingTop: 0,
@@ -202,6 +205,8 @@ class Hero extends React.Component {
           </Grid>
         </Grid>
         <Modal
+          disableAutoFocus
+          hideBackdrop
           open={choooserOpen}
           onClose={this.handleToggle}
           className={classes.modalContent}

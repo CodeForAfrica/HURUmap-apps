@@ -72,6 +72,8 @@ class Dropdown extends Component {
           />
         </Button>
         <Modal
+          disableAutoFocus
+          hideBackdrop
           open={isDropdownOpen}
           onClose={this.handleToggle}
           className={classes.modalContent}
