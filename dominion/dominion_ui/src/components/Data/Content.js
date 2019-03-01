@@ -15,7 +15,7 @@ const styles = theme => ({
       width: '16.25rem'
     },
     [theme.breakpoints.up('lg')]: {
-      width: '18rem'
+      width: '15rem' // 240px / 16
     }
   },
   title: {

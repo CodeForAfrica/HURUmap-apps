@@ -10,20 +10,22 @@ import databg from '../../assets/images/bg/databg.png';
 
 const styles = theme => ({
   root: {
+    backgroundColor: '#fff',
+    padding: '2rem 0'
+  },
+  dataWrapper: {
     flexGrow: 1,
-    padding: '2rem',
+    paddingLeft: '1.875rem', // 30px / 16
     backgroundColor: '#fff',
     backgroundImage: `url(${databg})`,
     backgroundRepeat: 'no-repeat',
-    backgroundSize: '60%',
-    [theme.breakpoints.up('sm')]: {
-      backgroundSize: '30% 60%'
-    },
+    backgroundSize: '13.5rem 75%',
     [theme.breakpoints.up('md')]: {
+      paddingLeft: '0',
       backgroundSize: '65% 100%'
     },
     [theme.breakpoints.up('lg')]: {
-      backgroundSize: '63% 100%'
+      backgroundSize: '66% 100%'
     },
     [theme.breakpoints.up('xl')]: {
       backgroundSize: '62% 100%'
@@ -31,6 +33,7 @@ const styles = theme => ({
   },
   data: {
     width: '100%',
+    marginTop: '3.6875rem', // 59px / 16,
     [theme.breakpoints.up('md')]: {
       width: 'auto'
     }
@@ -39,19 +42,21 @@ const styles = theme => ({
 
 function Data({ classes }) {
   return (
-    <Grid
-      container
-      className={classes.root}
-      justify="center"
-      alignItems="center"
-    >
-      <Grid item className={classes.data}>
-        <Documents />
+    <div className={classes.root}>
+      <Grid
+        container
+        className={classes.dataWrapper}
+        justify="center"
+        alignItems="center"
+      >
+        <Grid item className={classes.data}>
+          <Documents />
+        </Grid>
+        <Grid item className={classes.data}>
+          <DatasetsContent />
+        </Grid>
       </Grid>
-      <Grid item className={classes.data}>
-        <DatasetsContent />
-      </Grid>
-    </Grid>
+    </div>
   );
 }
 
