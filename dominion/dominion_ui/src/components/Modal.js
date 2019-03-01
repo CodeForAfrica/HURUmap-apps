@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { withStyles } from '@material-ui/core/styles';
 
-import { Modal, IconButton } from '@material-ui/core';
+import { Modal as MaterialModal, IconButton } from '@material-ui/core';
 
 import background from '../assets/images/bg/background.png';
 
@@ -27,7 +27,7 @@ const styles = theme => ({
   }
 });
 
-class Search extends Component {
+class Modal extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -65,7 +65,7 @@ class Search extends Component {
             alt={activatorLabel}
           />
         </IconButton>
-        <Modal
+        <MaterialModal
           disableAutoFocus
           hideBackdrop
           aria-labelledby="search-modal"
@@ -73,14 +73,16 @@ class Search extends Component {
           onClose={this.handleToggle}
           className={classes.root}
         >
-          <div className={classes.modal}>{children}</div>
-        </Modal>
+          <div className={classes.modal}>
+            {React.cloneElement(children, { toggleModal: this.handleToggle })}
+          </div>
+        </MaterialModal>
       </React.Fragment>
     );
   }
 }
 
-Search.propTypes = {
+Modal.propTypes = {
   classes: PropTypes.shape().isRequired,
   activatorLabel: PropTypes.isRequired,
   activatorIconOpen: PropTypes.isRequired,
@@ -88,4 +90,4 @@ Search.propTypes = {
   children: PropTypes.isRequired
 };
 
-export default withStyles(styles)(Search);
+export default withStyles(styles)(Modal);

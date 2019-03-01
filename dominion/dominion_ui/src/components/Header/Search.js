@@ -88,22 +88,28 @@ class Search extends Component {
     const { classes, width, children } = this.props;
     const { results, closeModal } = this.state;
 
-    const searchBarElement = (
+    const SearchBarElement = onToggle => (
       <Grid container sm={12} wrap="nowrap" className={classes.searchBar}>
-        <SearchBar onSearch={this.handleSearch} onToggle={this.handleToggle} />
+        <SearchBar onSearch={this.handleSearch} onToggle={onToggle} />
       </Grid>
     );
-    const resultsElement = (
+    const ResultsElement = (
       <Grid container sm={12} className={classes.resultsContainer}>
         <SearchResults results={results} />
+      </Grid>
+    );
+    const SearchModalContent = ({ toggleModal }) => (
+      <Grid container direction="column" wrap="nowrap" className={classes.root}>
+        {SearchBarElement(toggleModal)}
+        {ResultsElement}
       </Grid>
     );
     return (
       <React.Fragment>
         {isWidthDown('sm', width) ? (
           <React.Fragment>
-            {searchBarElement}
-            {results.length > 0 ? resultsElement : children}
+            {SearchBarElement()}
+            {results.length > 0 ? ResultsElement : children}
           </React.Fragment>
         ) : (
           <React.Fragment>
@@ -113,15 +119,7 @@ class Search extends Component {
               activatorIconClose={search}
               close={closeModal}
             >
-              <Grid
-                container
-                direction="column"
-                wrap="nowrap"
-                className={classes.root}
-              >
-                {searchBarElement}
-                {resultsElement}
-              </Grid>
+              <SearchModalContent />
             </Modal>
             {children}
           </React.Fragment>
