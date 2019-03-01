@@ -27,7 +27,9 @@ h1, h2, h3 {
 // Re-usable classes
 
 // Colors
-
+body {
+  padding-top: 0 !important;
+}
 .text-white {
   color: #fff;
 }
@@ -301,7 +303,7 @@ span.img-bg {
       border: 0px;
       font-family: $font-raleway;
     }
-  
+
   }
 }
 
