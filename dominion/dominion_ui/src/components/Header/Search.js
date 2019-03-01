@@ -63,12 +63,10 @@ class Search extends Component {
     super(props);
 
     this.state = {
-      closeModal: false,
       results: []
     };
 
     this.handleSearch = this.handleSearch.bind(this);
-    this.handleToggle = this.handleToggle.bind(this);
   }
 
   handleSearch(event) {
@@ -78,10 +76,6 @@ class Search extends Component {
     } else {
       this.setState({ results: [] });
     }
-  }
-
-  handleToggle() {
-    this.setState({ closeModal: true });
   }
 
   render() {
