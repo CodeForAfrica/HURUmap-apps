@@ -21,7 +21,7 @@ const styles = theme => ({
     fontFamily: theme.typography.fontFamily,
     fontSize: '18px',
     fontWeight: '600',
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       borderBottom: '2px solid white'
     }
   },
