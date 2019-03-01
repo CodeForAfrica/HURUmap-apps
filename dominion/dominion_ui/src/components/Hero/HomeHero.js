@@ -26,7 +26,7 @@ const styles = theme => ({
     backgroundPosition: 'center',
     backgroundSize: 'auto',
     height: '100vh',
-    [theme.breakpoints.up('lg')]: {
+    [theme.breakpoints.down('lg')]: {
       height: '60vh',
       paddingLeft: theme.spacing.unit * 14.5
     },
@@ -129,6 +129,7 @@ class Hero extends React.Component {
   render() {
     const { classes } = this.props;
     const { choooserOpen } = this.state;
+
     return (
       <Grid container item xs={12} className={classes.root}>
         <Grid
@@ -204,6 +205,7 @@ class Hero extends React.Component {
           open={choooserOpen}
           onClose={this.handleToggle}
           className={classes.modalContent}
+          aria-labelledby="portal-chooser"
         >
           <PortalChooser close={this.handleToggle} />
         </Modal>

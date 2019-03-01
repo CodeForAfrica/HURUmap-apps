@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 
 import KeyboardArrowDown from '@material-ui/icons/KeyboardArrowDown';
 
-import { Grid, Button, MenuList, MenuItem, Link } from '@material-ui/core';
+import { Grid, Button, Modal } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import PortalChooser from '../Modal/PortalChooser';
 
 const styles = theme => ({
   root: {
@@ -35,85 +36,56 @@ const styles = theme => ({
     paddingLeft: '10px',
     cursor: 'pointer'
   },
-  dropdownList: {
-    [theme.breakpoints.up('md')]: {
-      display: 'none'
-    }
-  },
-  dropdownListClosed: {
-    display: 'none'
-  },
-  dropdownListItem: {
-    [theme.breakpoints.down('sm')]: {
-      paddingLeft: 0,
-      paddingRight: 0
-    }
-  },
-  link: {
-    fontSize: '30px',
-    color: '#fff',
-    textDecoration: 'none'
+  modalContent: {
+    margin: 'auto',
+    top: theme.spacing.unit * 10,
+    height: 'auto'
   }
 });
-
-const DEFAULT_OPTIONS = ['Kenya', 'South Africa'];
 
 class Dropdown extends Component {
   constructor(props) {
     super(props);
 
     this.state = { isDropdownOpen: false };
-    this.setToggleDropdownClass = this.setToggleDropdownClass.bind(this);
+    this.handleToggle = this.handleToggle.bind(this);
   }
 
-  setToggleDropdownClass() {
-    const { isDropdownOpen } = this.state;
-    this.setState({ isDropdownOpen: !isDropdownOpen });
+  handleToggle() {
+    this.setState(prevState => ({ isDropdownOpen: !prevState.isDropdownOpen }));
   }
 
   render() {
-    const { classes, options } = this.props;
+    const { classes } = this.props;
     const { isDropdownOpen } = this.state;
     return (
       <Grid container className={classes.root}>
         <Button
           disableRipple
           className={classes.button}
-          onClick={this.setToggleDropdownClass}
+          onClick={this.handleToggle}
         >
-          <p className={classes.p}>Countries</p>
+          <span className={classes.p}>Countries</span>
           <KeyboardArrowDown
             fontSize="large"
             className={classes.KeyboardArrowDown}
           />
         </Button>
-
-        <MenuList
-          xs={12}
-          className={`${classes.dropdownList} ${
-            isDropdownOpen ? '' : classes.dropdownListClosed
-          }`}
+        <Modal
+          open={isDropdownOpen}
+          onClose={this.handleToggle}
+          className={classes.modalContent}
+          aria-labelledby="portal-chooser-nav"
         >
-          {options.map(optionTitle => (
-            <MenuItem item className={classes.dropdownListItem}>
-              <Link to="/" className={classes.link} variant="body1">
-                {optionTitle}
-              </Link>
-            </MenuItem>
-          ))}
-        </MenuList>
+          <PortalChooser close={this.handleToggle} />
+        </Modal>
       </Grid>
     );
   }
 }
 
 Dropdown.propTypes = {
-  classes: PropTypes.isRequired,
-  options: PropTypes.instanceOf(Array)
-};
-
-Dropdown.defaultProps = {
-  options: DEFAULT_OPTIONS
+  classes: PropTypes.isRequired
 };
 
 export default withStyles(styles)(Dropdown);

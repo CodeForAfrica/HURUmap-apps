@@ -7,6 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 import background from '../../assets/images/bg/background.png';
 import geolocate from '../../assets/images/icons/shape.svg';
 import cross from '../../assets/images/icons/close.svg';
+import GetLocation from './GetLocation';
 
 const styles = theme => ({
   grid: {
@@ -33,7 +34,9 @@ const styles = theme => ({
     color: 'white',
     fontSize: 13,
     fontWeight: 'bold',
-    display: 'block'
+    '&:hover': {
+      color: '#e7e452'
+    }
   },
   locateImage: {
     marginLeft: theme.spacing.unit * 10
@@ -127,7 +130,7 @@ function PortalChooser({ classes, close }) {
       >
         <Grid>
           <Typography variant="body2" className={classes.locationText}>
-            Use your current location
+            <GetLocation />
             <img
               src={geolocate}
               alt="Use your location"
