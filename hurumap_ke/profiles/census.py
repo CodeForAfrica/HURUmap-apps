@@ -117,6 +117,7 @@ def get_demographics_profile(geo, session):
     religion_dist_data = LOCATIONNOTFOUND
     urban_dist_data = LOCATIONNOTFOUND
     age_dist_data = LOCATIONNOTFOUND
+    age_cats=0
     total_urbanised = 0
     total_pop = 0
     median = 0
