@@ -1,9 +1,10 @@
+from __future__ import absolute_import
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.http import HttpResponse, HttpResponseRedirect
 from django.conf import settings
 import os, json
-import career
+from . import career
 from django.core import serializers
 from django.core.serializers.json import DjangoJSONEncoder
 from elimu_yangu.careerguide.forms import InputForm
