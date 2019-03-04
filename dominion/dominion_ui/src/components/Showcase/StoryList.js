@@ -26,9 +26,6 @@ const styles = theme => ({
     width: '100vw',
     height: '100%',
     [theme.breakpoints.up('md')]: {
-      width: '59.625rem'
-    },
-    [theme.breakpoints.up('lg')]: {
       width: '80rem'
     }
   },
@@ -46,9 +43,6 @@ const styles = theme => ({
     alignItems: 'strech',
     width: '100vw',
     [theme.breakpoints.up('md')]: {
-      width: '14.90625rem'
-    },
-    [theme.breakpoints.up('lg')]: {
       width: '20rem'
     }
   }

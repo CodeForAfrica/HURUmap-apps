@@ -23,9 +23,6 @@ const styles = theme => ({
       backgroundColor: '#fff'
     },
     [theme.breakpoints.up('md')]: {
-      width: '14.90625rem'
-    },
-    [theme.breakpoints.up('lg')]: {
       width: '20rem'
     }
   },
