@@ -21,10 +21,6 @@ const styles = theme => ({
     backgroundRepeat: 'no-repeat',
     backgroundSize: '13.5rem 75%',
     [theme.breakpoints.up('md')]: {
-      paddingLeft: '0',
-      backgroundSize: '68% 100%'
-    },
-    [theme.breakpoints.up('lg')]: {
       backgroundSize: '66% 100%'
     },
     [theme.breakpoints.up('xl')]: {
