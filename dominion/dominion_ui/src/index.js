@@ -10,8 +10,9 @@ import Header from './components/Header';
 import AboutDominion from './components/About';
 import Data from './components/Data';
 import Footer from './components/Footer';
-import Showcase from './components/Showcase';
 import HomeHero from './components/Hero/HomeHero';
+import Partners from './components/Partners';
+import Showcase from './components/Showcase';
 import Video from './components/Video';
 
 library.add(fab);
@@ -30,4 +31,5 @@ renderApp(Video, 'dominionVideo');
 renderApp(Showcase, 'dominionShowcase');
 renderApp(Data, 'dominionData');
 renderApp(AboutDominion, 'dominionAbout');
+renderApp(Partners, 'dominionPartners');
 renderApp(Footer, 'dominionFooter');

@@ -13,11 +13,11 @@ const styles = theme => ({
       width: '17.875rem'
     },
     [theme.breakpoints.up('lg')]: {
-      width: '18.5rem'
+      width: '19.25rem' // 308px /16
     }
   },
   heading: {
-    width: '16rem'
+    width: '16rem' // Force the heading to break
   }
 });
 

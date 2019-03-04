@@ -5,10 +5,10 @@ import { Button, Grid, Modal, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import PlayArrow from '@material-ui/icons/PlayArrow';
 
+import Player from './Player';
+
 import background from '../../assets/images/hero-image-1.png';
-import IFrame from '../IFrame';
 import Sources from './Sources';
-import Thumbnail from './Thumbnail';
 
 const styles = theme => ({
   root: {
@@ -16,7 +16,7 @@ const styles = theme => ({
     backgroundImage: `url(${background})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
-    height: '400px'
+    height: '25rem' // 400px / 16
   },
   caption: {
     color: '#fff',
@@ -31,7 +31,7 @@ const styles = theme => ({
     color: '#fff',
     border: '2px solid white',
     [theme.breakpoints.up('lg')]: {
-      height: '6.5rem',
+      height: '6.25rem', // 100px / 16
       paddingLeft: '2rem',
       paddingRight: '2rem'
     }
@@ -39,33 +39,8 @@ const styles = theme => ({
   buttonLink: {
     textDecoration: 'none'
   },
-  iframe: {
-    marginTop: '6rem'
-  },
-  videoPlayer: {
-    width: '100vw',
-    marginBottom: '2rem',
-    [theme.breakpoints.up('md')]: {
-      marginBottom: 0,
-      width: '47rem', // 59.635 * 0.8
-      marginRight: '0.708rem'
-    },
-    [theme.breakpoints.up('lg')]: {
-      width: '63.0rem', // 79.5 * 0.8
-      marginRight: '1.5rem'
-    }
-  },
-  videoPlaylist: {
-    width: '100vw',
-    [theme.breakpoints.up('md')]: {
-      width: '11.927rem'
-    },
-    [theme.breakpoints.up('lg')]: {
-      width: '15rem'
-    }
-  },
-  thumbnail: {
-    height: 200
+  modal: {
+    backgroundColor: 'rgba(0, 0, 0, 0.8)'
   }
 });
 
@@ -135,43 +110,9 @@ class Video extends React.Component {
           aria-describedby="dominion-videos-list"
           open={open}
           onClose={this.toogleState}
+          className={classes.modal}
         >
-          <Grid
-            container
-            className={classes.iframe}
-            justify="center"
-            alignItems="flex-start"
-          >
-            <Grid item>
-              <div className={classes.videoPlayer}>
-                <IFrame
-                  title="Dominion"
-                  src={`https://www.youtube-nocookie.com/embed/${videoId}`}
-                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                />
-              </div>
-            </Grid>
-            <Grid item>
-              <div className={classes.videoPlaylist}>
-                <Grid
-                  container
-                  direction="column"
-                  justify="center"
-                  alignItems="flex-start"
-                >
-                  {Sources.map(source => (
-                    <Grid item>
-                      <Thumbnail
-                        videoId={source.id}
-                        videoTitle={source.title}
-                        className={classes.thumbnail}
-                      />
-                    </Grid>
-                  ))}
-                </Grid>
-              </div>
-            </Grid>
-          </Grid>
+          <Player videoId={videoId} />
         </Modal>
       </Grid>
     );
