@@ -10,7 +10,7 @@ import Header from './components/Header';
 import AboutDominion from './components/About';
 import Data from './components/Data';
 import Footer from './components/Footer';
-import HomeHero from './components/Hero/HomeHero';
+import HomeHero from './components/HomeHero';
 import Partners from './components/Partners';
 import Showcase from './components/Showcase';
 import Video from './components/Video';
