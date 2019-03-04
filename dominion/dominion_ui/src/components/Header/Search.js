@@ -50,6 +50,7 @@ class Search extends Component {
     super(props);
 
     this.state = {
+      searchTerm: '',
       geography: [],
       results: []
     };
@@ -67,23 +68,29 @@ class Search extends Component {
     });
   }
 
-  handleSearch(value) {
+  handleSearch(searchTerm) {
     const { geography } = this.state;
-    if (value !== '') {
-      const results = geography.filter(g => g.name.match(value));
-      this.setState({ results });
+    if (searchTerm !== '') {
+      const results = geography.filter(g =>
+        g.name.match(new RegExp(searchTerm, 'i'))
+      );
+      this.setState({ results, searchTerm });
     } else {
-      this.setState({ results: [] });
+      this.setState({ results: [], searchTerm });
     }
   }
 
   render() {
     const { classes, width, children } = this.props;
-    const { results, closeModal } = this.state;
+    const { results, closeModal, searchTerm } = this.state;
 
     const SearchBarElement = ({ onToggle }) => (
       <Grid container sm={12} wrap="nowrap" className={classes.searchBar}>
-        <SearchBar onSearch={this.handleSearch} onToggle={onToggle} />
+        <SearchBar
+          searchTerm={searchTerm}
+          onSearch={this.handleSearch}
+          onToggle={onToggle}
+        />
       </Grid>
     );
     const ResultsElement = (

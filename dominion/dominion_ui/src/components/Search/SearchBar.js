@@ -35,11 +35,12 @@ const styles = theme => ({
   }
 });
 
-function SearchBar({ classes, onToggle, width, onSearch }) {
+function SearchBar({ classes, searchTerm, onToggle, width, onSearch }) {
   return (
     <React.Fragment>
       <InputBase
         autoFocus
+        value={searchTerm}
         className={classes.searchField}
         onChange={event => {
           const { value } = event.target;
@@ -65,7 +66,8 @@ SearchBar.propTypes = {
   classes: PropTypes.shape().isRequired,
   onToggle: PropTypes.func.isRequired,
   onSearch: PropTypes.func.isRequired,
-  width: PropTypes.isRequired
+  width: PropTypes.isRequired,
+  searchTerm: PropTypes.isRequired
 };
 
 export default withStyles(styles)(withWidth()(SearchBar));
