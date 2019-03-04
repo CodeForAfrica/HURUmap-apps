@@ -15,7 +15,7 @@ const styles = theme => ({
       width: '59.625rem'
     },
     [theme.breakpoints.up('lg')]: {
-      width: '79.5rem'
+      width: '80rem'
     }
   },
   gridListRoot: {
@@ -29,7 +29,7 @@ const styles = theme => ({
       width: '59.625rem'
     },
     [theme.breakpoints.up('lg')]: {
-      width: '79.5rem'
+      width: '80rem'
     }
   },
   gridList: {
@@ -38,7 +38,8 @@ const styles = theme => ({
     // TODO(nyokabi): Material-ui documentation for Grid list componenet
     //                Promote the list into his own layer on Chrome. This cost
     //                memory but helps keeping high FPS.
-    transform: 'translateZ(0)'
+    transform: 'translateZ(0)',
+    paddingBottom: '3.0625rem' // 49px / 16
   },
   gridListTile: {
     display: 'flex',
@@ -48,7 +49,7 @@ const styles = theme => ({
       width: '14.90625rem'
     },
     [theme.breakpoints.up('lg')]: {
-      width: '19.875rem'
+      width: '20rem'
     }
   }
 });
