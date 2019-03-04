@@ -33,4 +33,4 @@ services:
       - USE_MAPIT=True
       - PYTHONUNBUFFERED=True
       - PYTHONDONTWRITEBYTECODE=True
-      # - DJANGO_DEBUG=False  # For testing deploys
+      - DJANGO_DEBUG=${DJANGO_DEBUG:-True} # For testing deploys
