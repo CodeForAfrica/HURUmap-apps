@@ -11,14 +11,14 @@ import A from '../A';
 const styles = theme => ({
   root: {
     width: '7.125rem', // 114px / 16
-    [theme.breakpoints.up('lg')]: {
+    [theme.breakpoints.up('md')]: {
       width: '12.5625rem' // 201px
     }
   },
   listText: {
     // match parent width
     width: '7.125rem',
-    [theme.breakpoints.up('lg')]: {
+    [theme.breakpoints.up('md')]: {
       width: '12.5625rem' // 201px
     },
     color: theme.palette.primary.light,

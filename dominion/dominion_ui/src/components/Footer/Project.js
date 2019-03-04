@@ -11,7 +11,7 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
     width: '9.75rem', // 156px / 16
-    [theme.breakpoints.up('lg')]: {
+    [theme.breakpoints.up('md')]: {
       width: '12.5625rem' // 201px / 16
     }
   },
