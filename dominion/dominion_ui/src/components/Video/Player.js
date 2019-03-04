@@ -42,45 +42,66 @@ const styles = theme => ({
   }
 });
 
-function Player({ classes, videoId }) {
-  return (
-    <Grid
-      container
-      className={classes.iframe}
-      justify="center"
-      alignItems="flex-start"
-    >
-      <Grid item>
-        <div className={classes.videoPlayer}>
-          <IFrame
-            title="Dominion"
-            src={`https://www.youtube-nocookie.com/embed/${videoId}`}
-            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          />
-        </div>
+class Player extends React.Component {
+  constructor(props) {
+    super(props);
+
+    const { videoId } = props;
+    this.state = { videoId };
+    this.handleThumbnailClick = this.handleThumbnailClick.bind(this);
+  }
+
+  handleThumbnailClick(videoId) {
+    if (videoId) {
+      this.setState({ videoId });
+    }
+  }
+
+  render() {
+    const { classes } = this.props;
+    const { videoId } = this.state;
+
+    return (
+      <Grid
+        container
+        className={classes.iframe}
+        justify="center"
+        alignItems="flex-start"
+      >
+        <Grid item>
+          <div className={classes.videoPlayer}>
+            <IFrame
+              title="Dominion"
+              src={`https://www.youtube-nocookie.com/embed/${videoId}`}
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            />
+          </div>
+        </Grid>
+        <Grid item>
+          <div className={classes.videoPlaylist}>
+            <Grid
+              container
+              direction="column"
+              justify="center"
+              alignItems="flex-start"
+            >
+              {Sources.map(source => (
+                <Grid item>
+                  <Thumbnail
+                    videoId={source.id}
+                    videoTitle={source.title}
+                    className={classes.thumbnail}
+                    onClick={this.handleThumbnailClick}
+                    isSelected={source.id === videoId}
+                  />
+                </Grid>
+              ))}
+            </Grid>
+          </div>
+        </Grid>
       </Grid>
-      <Grid item>
-        <div className={classes.videoPlaylist}>
-          <Grid
-            container
-            direction="column"
-            justify="center"
-            alignItems="flex-start"
-          >
-            {Sources.map(source => (
-              <Grid item>
-                <Thumbnail
-                  videoId={source.id}
-                  videoTitle={source.title}
-                  className={classes.thumbnail}
-                />
-              </Grid>
-            ))}
-          </Grid>
-        </div>
-      </Grid>
-    </Grid>
-  );
+    );
+  }
 }
 
 Player.propTypes = {

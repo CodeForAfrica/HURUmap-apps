@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import { Button, Grid, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
@@ -19,29 +20,30 @@ const styles = theme => ({
       width: '15rem'
     }
   },
-  caption: {
-    color: '#fff',
-    textAlign: 'left'
+  rootSelected: {
+    backgroundColor: 'rgba(0, 0, 0, 0.2)'
   },
-  suheading: { color: '#fff' },
-  buttonGrid: { paddingTop: '1rem', textAlign: 'center' },
   button: {
     textTransform: 'none',
     fontWeight: 800,
     fontSize: theme.typography.subtitle1.fontSize,
     color: '#fff',
-    border: '2px solid white',
-    [theme.breakpoints.up('lg')]: {
-      paddingLeft: '2rem',
-      paddingRight: '2rem'
-    }
+    border: 'none',
+    marginLeft: '0.5rem',
+    padding: 0,
+    minWidth: 0
   },
-  buttonLink: {
-    textDecoration: 'none'
+  caption: {
+    color: '#fff',
+    textAlign: 'left',
+    marginLeft: '1rem'
   }
 });
 
-function Thumbnail({ classes, onClick, videoId, videoTitle }) {
+function Thumbnail({ classes, isSelected, onClick, videoId, videoTitle }) {
+  const { root, rootSelected } = classes;
+  const rootClassName = classNames(root, { [rootSelected]: isSelected });
+
   return (
     <div
       style={{
@@ -53,16 +55,15 @@ function Thumbnail({ classes, onClick, videoId, videoTitle }) {
     >
       <Grid
         container
-        className={classes.root}
+        className={rootClassName}
         direction="column"
         justify="center"
-        alignItems="center"
+        alignItems="flex-start"
       >
+        {' '}
         <Grid item>
           <Button
-            variant="outline"
             color="primary"
-            size="large"
             className={classes.button}
             onClick={() => onClick(videoId)}
           >
@@ -81,9 +82,14 @@ function Thumbnail({ classes, onClick, videoId, videoTitle }) {
 
 Thumbnail.propTypes = {
   classes: PropTypes.shape().isRequired,
+  isSelected: PropTypes.bool,
   onClick: PropTypes.func.isRequired,
   videoId: PropTypes.string.isRequired,
   videoTitle: PropTypes.string.isRequired
+};
+
+Thumbnail.defaultProps = {
+  isSelected: false
 };
 
 export default withStyles(styles)(Thumbnail);
