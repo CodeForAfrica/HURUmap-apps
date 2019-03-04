@@ -9,6 +9,9 @@ import A from '../A';
 const styles = theme => ({
   root: {
     width: '100%',
+    [theme.breakpoints.up('md')]: {
+      width: '30.2625rem' // .75 of lg
+    },
     [theme.breakpoints.up('lg')]: {
       width: '40.35rem' // 644px / 16
     }
@@ -39,12 +42,6 @@ const styles = theme => ({
     paddingTop: theme.spacing.unit * 3,
     color: theme.palette.primary.light,
     opacity: '0.6'
-  },
-  bigText: {
-    paddingTop: theme.spacing.unit * 3,
-    [theme.breakpoints.up('lg')]: {
-      paddingTop: 0
-    }
   }
 });
 

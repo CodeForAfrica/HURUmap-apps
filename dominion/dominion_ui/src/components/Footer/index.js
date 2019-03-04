@@ -34,7 +34,7 @@ const styles = theme => ({
   organisation: {
     width: '100%',
     marginTop: '1.625rem', // 26px / 16
-    [theme.breakpoints.up('lg')]: {
+    [theme.breakpoints.up('md')]: {
       width: 'auto',
       marginTop: 0,
       marginLeft: '7rem'
@@ -52,7 +52,7 @@ function Footer({ classes }) {
       container
       className={classes.root}
       justify="center"
-      alignItems="center"
+      alignItems="flex-start"
     >
       <Grid item className={classes.about}>
         <About />

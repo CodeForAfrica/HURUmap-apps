@@ -22,7 +22,7 @@ const styles = theme => ({
     backgroundSize: '13.5rem 75%',
     [theme.breakpoints.up('md')]: {
       paddingLeft: '0',
-      backgroundSize: '65% 100%'
+      backgroundSize: '70% 100%'
     },
     [theme.breakpoints.up('lg')]: {
       backgroundSize: '66% 100%'

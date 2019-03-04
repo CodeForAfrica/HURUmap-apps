@@ -22,14 +22,10 @@ const styles = theme => ({
   map: {
     width: 0,
     [theme.breakpoints.up('md')]: {
-      width: '26.5rem'
-      // paddingLeft: '3rem',
-      // paddingRight: '2rem'
+      width: '23.4375rem' // .75 of lg
     },
     [theme.breakpoints.up('lg')]: {
       width: '31.25rem' // 500px / 16
-      // paddingLeft: '3rem',
-      // paddingRight: '2rem'
     }
   },
   highlight: {
@@ -37,6 +33,9 @@ const styles = theme => ({
     marginRight: 0,
     height: '2.5rem',
     background: '#e7e452',
+    [theme.breakpoints.up('md')]: {
+      width: '15.9375rem' // .75 of lg
+    },
     [theme.breakpoints.up('lg')]: {
       width: '21.25rem' // 340px / 16
     }
@@ -48,7 +47,7 @@ const styles = theme => ({
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     [theme.breakpoints.up('md')]: {
-      width: '18.875rem'
+      width: '23.4375rem' // .75 of lg
     },
     [theme.breakpoints.up('lg')]: {
       width: '31.25rem' // 500px / 16
@@ -59,6 +58,9 @@ const styles = theme => ({
     [theme.breakpoints.up('md')]: {
       width: 'auto',
       marginTop: '3.5rem', // highlight.height + 1rem
+      marginLeft: '2.765625rem' // .75 of lg
+    },
+    [theme.breakpoints.up('lg')]: {
       marginLeft: '3.6875rem' // 59px / 16
     }
   }

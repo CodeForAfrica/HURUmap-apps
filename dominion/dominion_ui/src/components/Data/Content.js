@@ -12,7 +12,7 @@ const styles = theme => ({
     textAlign: 'left',
     width: '100%',
     [theme.breakpoints.up('md')]: {
-      width: '16.25rem'
+      width: '11.25rem' // .75 of lg
     },
     [theme.breakpoints.up('lg')]: {
       width: '15rem' // 240px / 16

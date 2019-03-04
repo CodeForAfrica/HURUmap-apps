@@ -12,7 +12,7 @@ const styles = theme => ({
     flexGrow: 1,
     width: '9.75rem', // 156px / 16
     [theme.breakpoints.up('lg')]: {
-      width: '12.5625rem' // 201px
+      width: '12.5625rem' // 201px / 16
     }
   },
   listText: {
