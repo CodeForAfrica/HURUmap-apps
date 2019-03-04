@@ -1,23 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Grid, Typography, Button, Modal } from '@material-ui/core';
+import { Grid, Typography, Modal } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
+import Hero, {
+  HeroTitle,
+  HeroDescription,
+  HeroTitleGrid,
+  HeroButton
+} from './Hero';
+
 import herobg from '../../assets/images/bg/hero_bg.png';
-import arrow from '../../assets/images/icons/combined-shape.svg';
 import map from '../../assets/images/bg/hero_map.png';
-import background from '../../assets/images/bg/background.png';
 import smallscreenbackground from '../../assets/images/bg/smallscreen_background.png';
 
 import PortalChooser from '../Modal/PortalChooser';
 
 const styles = theme => ({
   root: {
-    flexGrow: 1,
-    backgroundImage: `url(${background})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover'
+    flexGrow: 1
   },
   heroContentGrid: {
     flexGrow: 1,
@@ -25,77 +27,13 @@ const styles = theme => ({
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     backgroundSize: 'auto',
-    height: '100vh',
-    [theme.breakpoints.down('lg')]: {
-      height: '80vh',
-      paddingLeft: theme.spacing.unit * 14.5
-    },
     [theme.breakpoints.down('md')]: {
       backgroundPosition: 'right',
       backgroundSize: 'auto'
     },
     [theme.breakpoints.down('sm')]: {
       backgroundImage: `url(${smallscreenbackground})`,
-      backgroundPosition: 'right top',
-      height: 500,
-      margin: 0
-    }
-  },
-  titleTextGrid: {
-    color: 'white',
-    [theme.breakpoints.up('lg')]: {
-      paddingLeft: theme.spacing.unit * 9
-    },
-    [theme.breakpoints.down('sm')]: {
-      position: 'absolute',
-      margin: '2rem',
-      marginTop: 0
-    }
-  },
-  text: {
-    color: 'white',
-    paddingTop: theme.spacing.unit * 8,
-    width: '90%',
-    [theme.breakpoints.up('lg')]: {
-      paddingTop: theme.spacing.unit * 5
-    },
-    [theme.breakpoints.down('sm')]: {
-      fontSize: '3rem',
-      paddingTop: 0,
-      width: '60%'
-    }
-  },
-  body2: {
-    color: 'white',
-    textAlign: 'left',
-    width: '50%',
-    paddingTop: '2rem',
-    [theme.breakpoints.down('sm')]: {
-      width: '100%'
-    }
-  },
-  button: {
-    textTransform: 'none',
-    fontWeight: 800,
-    fontSize: theme.typography.subtitle1.fontSize,
-    color: 'white',
-    border: '2px solid white',
-    [theme.breakpoints.up('lg')]: {
-      height: '4rem',
-      paddingLeft: '4rem',
-      paddingRight: '4rem'
-    },
-    [theme.breakpoints.down('sm')]: {
-      height: '4rem',
-      width: '100%',
-      paddingLeft: '4rem',
-      paddingRight: '4rem'
-    }
-  },
-  buttonArrow: {
-    marginLeft: -theme.spacing.unit * 4,
-    [theme.breakpoints.down('sm')]: {
-      display: 'none'
+      backgroundPosition: 'right top'
     }
   },
   verticalAlignText: {
@@ -117,7 +55,7 @@ const styles = theme => ({
   }
 });
 
-class Hero extends React.Component {
+class HomeHero extends React.Component {
   constructor(props) {
     super(props);
 
@@ -134,47 +72,25 @@ class Hero extends React.Component {
     const { choooserOpen } = this.state;
 
     return (
-      <Grid container item xs={12} className={classes.root}>
+      <Hero>
         <Grid
           container
           direction="row"
-          spacing={40}
           justify="space-between"
           className={classes.heroContentGrid}
         >
-          <Grid
-            item
-            sm={12}
-            md={8}
-            lg={8}
-            xl={6}
-            className={classes.titleTextGrid}
-          >
-            <Typography variant="h1" className={classes.text}>
-              Discover the stories behind the data.
-            </Typography>
+          <HeroTitleGrid>
+            <HeroTitle>Discover the stories behind the data.</HeroTitle>
 
-            <Typography variant="body1" className={classes.body2}>
+            <HeroDescription>
               Dominion makes data available to help add context and authority to
               public discourse and policy-making on vital issues of land
               ownership.
-            </Typography>
-            <Grid item sm={12} style={{ paddingTop: '2rem' }}>
-              <Button
-                variant="outlined"
-                onClick={this.handleToggle}
-                color="white"
-                className={classes.button}
-              >
-                Select a Country
-              </Button>
-              <img
-                src={arrow}
-                alt="Select Country"
-                className={classes.buttonArrow}
-              />
-            </Grid>
-          </Grid>
+            </HeroDescription>
+            <HeroButton onClick={this.handleToggle}>
+              Select a Country
+            </HeroButton>
+          </HeroTitleGrid>
           <Grid
             sm={12}
             md={4}
@@ -203,24 +119,24 @@ class Hero extends React.Component {
               </div>
             </Typography>
           </Grid>
+          <Modal
+            disableAutoFocus
+            hideBackdrop
+            open={choooserOpen}
+            onClose={this.handleToggle}
+            className={classes.modalContent}
+            aria-labelledby="portal-chooser"
+          >
+            <PortalChooser close={this.handleToggle} />
+          </Modal>
         </Grid>
-        <Modal
-          disableAutoFocus
-          hideBackdrop
-          open={choooserOpen}
-          onClose={this.handleToggle}
-          className={classes.modalContent}
-          aria-labelledby="portal-chooser"
-        >
-          <PortalChooser close={this.handleToggle} />
-        </Modal>
-      </Grid>
+      </Hero>
     );
   }
 }
 
-Hero.propTypes = {
+HomeHero.propTypes = {
   classes: PropTypes.isRequired
 };
 
-export default withStyles(styles)(Hero);
+export default withStyles(styles)(HomeHero);
