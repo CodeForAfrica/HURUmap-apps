@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import KeyboardArrowDown from '@material-ui/icons/KeyboardArrowDown';
+import KeyboardArrowUp from '@material-ui/icons/KeyboardArrowUp';
 
 import { Grid, Button, Modal } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
@@ -66,10 +67,17 @@ class Dropdown extends Component {
           onClick={this.handleToggle}
         >
           <span className={classes.p}>Countries</span>
-          <KeyboardArrowDown
-            fontSize="large"
-            className={classes.KeyboardArrowDown}
-          />
+          {isDropdownOpen ? (
+            <KeyboardArrowUp
+              fontSize="large"
+              className={classes.KeyboardArrowDown}
+            />
+          ) : (
+            <KeyboardArrowDown
+              fontSize="large"
+              className={classes.KeyboardArrowDown}
+            />
+          )}
         </Button>
         <Modal
           disableAutoFocus
