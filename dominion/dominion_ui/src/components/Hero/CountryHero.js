@@ -56,7 +56,7 @@ class CountryHero extends React.Component {
     return (
       <Hero>
         <HeroTitleGrid>
-          <HeroTitle>South Africa</HeroTitle>
+          <HeroTitle>{selectedCountry.name}</HeroTitle>
           <HeroDescription>
             Dominion makes data available to help add context and authority to
             public discourse and policy-making on vital issues of land
