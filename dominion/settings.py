@@ -121,7 +121,7 @@ HURUMAP['available_release_years'] = {
 }
 # If not set, the centre is determined from the geometry.
 HURUMAP['map_centre']= None
-HURUMAP['map_zoom']= None
+HURUMAP['map_zoom']= 5
 
 # -------------------------------------------------------------------------------
 #topics

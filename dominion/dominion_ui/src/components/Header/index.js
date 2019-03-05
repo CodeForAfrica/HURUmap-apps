@@ -28,7 +28,10 @@ const styles = theme => ({
     }
   },
   topMenu: {
-    padding: '20px 50px 20px 50px',
+    padding: '20px 150px',
+    [theme.breakpoints.down('md')]: {
+      padding: '20px 50px'
+    },
     [theme.breakpoints.down('sm')]: {
       padding: '30px'
     }

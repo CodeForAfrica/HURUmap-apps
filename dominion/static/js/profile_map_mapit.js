@@ -5,7 +5,7 @@ var ProfileMaps = function() {
     this.mapit_country = GeometryLoader.mapit_country;
 
     this.featureGeoStyle = {
-        "fillColor": "#66c2a5",
+        "fillColor": "#ccc",
         "color": "#777",
         "weight": 2,
         "opacity": 0.3,
@@ -23,7 +23,7 @@ var ProfileMaps = function() {
     };
 
     this.hoverStyle = {
-        "fillColor": "#66c2a5",
+        "fillColor": "#ccc",
         "fillOpacity": 0.7,
     };
 
@@ -75,7 +75,7 @@ var ProfileMaps = function() {
 
     this.addImagery = function() {
         // add imagery
-        L.tileLayer('//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        L.tileLayer('//{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png', {
           attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
           subdomains: 'abc',
           maxZoom: 17
@@ -148,7 +148,7 @@ var ProfileMaps = function() {
         return L.geoJson(features, {
             style: this.layerStyle,
             onEachFeature: function(feature, layer) {
-                layer.bindLabel(feature.properties.name, {direction: 'auto'});
+                layer.bindLabel(feature.properties.name, {direction: 'auto', className: 'map-tooltip'});
 
                 layer.on('mouseover', function() {
                     layer.setStyle(self.hoverStyle);

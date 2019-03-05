@@ -29,10 +29,6 @@ const styles = theme => ({
     backgroundSize: 'auto',
     width: '100%',
     height: '100%',
-    [theme.breakpoints.down('md')]: {
-      backgroundPosition: 'right',
-      backgroundSize: 'auto'
-    },
     [theme.breakpoints.down('sm')]: {
       backgroundImage: `url(${smallscreenbackground})`,
       backgroundPosition: 'right top'
@@ -41,7 +37,8 @@ const styles = theme => ({
   verticalAlignText: {
     color: 'white',
     writingMode: 'vertical-lr',
-    textOrientation: ' sideways-right'
+    textOrientation: ' sideways-right',
+    marginLeft: '10px'
   },
   mapSection: {
     color: 'white',
@@ -102,7 +99,7 @@ class HomeHero extends React.Component {
             item
             container
             direction="row"
-            justify="space-around"
+            justify="flex-end"
             alignItems="center"
             className={classes.mapSection}
           >

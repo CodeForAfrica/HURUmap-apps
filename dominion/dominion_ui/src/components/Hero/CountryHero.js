@@ -21,9 +21,9 @@ const styles = {
     width: '829px !important',
     maxHeight: '460px !important',
     maxWidth: '829px !important',
-    right: '50px !important',
     left: 'unset !important',
-    top: 'unset !important'
+    top: 'unset !important',
+    right: '150px'
   }
 };
 

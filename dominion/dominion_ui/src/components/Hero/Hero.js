@@ -12,7 +12,14 @@ const styles = theme => ({
     flexGrow: 1,
     backgroundImage: `url(${background})`,
     backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover'
+    backgroundSize: 'cover',
+    padding: '0 150px',
+    [theme.breakpoints.down('md')]: {
+      padding: '0 50px'
+    },
+    [theme.breakpoints.down('sm')]: {
+      padding: '0'
+    }
   },
   heroContentGrid: {
     flexGrow: 1,
@@ -28,9 +35,6 @@ const styles = theme => ({
   titleTextGrid: {
     zIndex: '100',
     color: 'white',
-    [theme.breakpoints.up('lg')]: {
-      paddingLeft: theme.spacing.unit * 9
-    },
     [theme.breakpoints.down('sm')]: {
       position: 'absolute',
       margin: '2rem',
@@ -39,14 +43,9 @@ const styles = theme => ({
   },
   text: {
     color: 'white',
-    paddingTop: theme.spacing.unit * 8,
     width: '90%',
-    [theme.breakpoints.up('lg')]: {
-      paddingTop: theme.spacing.unit * 5
-    },
     [theme.breakpoints.down('sm')]: {
       fontSize: '3rem',
-      paddingTop: 0,
       width: '60%'
     }
   },

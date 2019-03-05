@@ -28,10 +28,16 @@
 
           <script>
             var maps = new ProfileMaps();
-            var centre = {% if HURUMAP.map_centre %}{{ HURUMAP.map_centre }}{% else %}null{% endif %};
             var zoom = {% if HURUMAP.map_zoom %}{{ HURUMAP.map_zoom }}{% else %}null{% endif %};
 
-            maps.drawMapForHomepage('{{ geo_data.first_child_level }}', '{{ HURUMAP.default_geo_version }}', centre, zoom);
+            var centre = {
+                'country-KE': [-0.0236, 37.9062],
+                'country-ZA': [-30.5595, 22.9375],
+                'country-TZ': [-6.3690, 34.8888],
+                'country-NG': [9.0820, 8.6753],
+            }
+
+            maps.drawMapForHomepage('{{ geo_data.first_child_level }}', '{{ HURUMAP.default_geo_version }}', centre['{{ geography.this.full_geoid }}'], zoom);
         </script>
     {% endblock %}
   {% endblock %}
