@@ -5,34 +5,29 @@ import { Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import withWidth from '@material-ui/core/withWidth';
 
-const styles = theme => ({
+const styles = {
   root: {
-    width: '100%',
-    minWidth: '100%',
-    [theme.breakpoints.up('md')]: {
-      width: '17.875rem'
-    },
-    [theme.breakpoints.up('lg')]: {
-      width: '18.5rem'
-    }
+    flexGrow: 1,
+    padding: '16px 0'
   },
   heading: {
-    width: '16rem'
+    fontSize: '2.5rem'
   }
-});
+};
 
-function Header({ classes }) {
+function Header({ classes, children }) {
   return (
     <div className={classes.root}>
       <Typography variant="h2" className={classes.heading}>
-        About Dominion
+        {children}
       </Typography>
     </div>
   );
 }
 
 Header.propTypes = {
-  classes: PropTypes.shape().isRequired
+  classes: PropTypes.shape().isRequired,
+  children: PropTypes.isRequired
 };
 
 export default withWidth()(withStyles(styles)(Header));

@@ -13,9 +13,6 @@ const styles = theme => ({
     [theme.breakpoints.up('md')]: {
       width: '19.875rem'
     },
-    [theme.breakpoints.up('lg')]: {
-      width: '40.5rem'
-    },
     [theme.breakpoints.up('xl')]: {
       width: '26.5rem'
     }

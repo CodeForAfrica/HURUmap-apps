@@ -7,7 +7,8 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 import withRoot from './withRoot';
 
 import Header from './components/Header';
-import AboutDominion from './components/About';
+import AboutDominion from './components/About/AboutDominion';
+import AboutCountry from './components/About/AboutCountry';
 import Data from './components/Data';
 import Footer from './components/Footer';
 import Showcase from './components/Showcase';
@@ -15,19 +16,32 @@ import HomeHero from './components/Hero/HomeHero';
 import CountryHero from './components/Hero/CountryHero';
 import Video from './components/Video';
 
+import AppContextProvider from './AppContext';
+
 library.add(fab);
 
 const renderApp = (Component, id) => {
   const el = document.getElementById(id);
   if (el) {
     const App = withRoot(Component);
-    ReactDOM.render(<App />, el);
+
+    const appProviderProps = {
+      selectedCountry: window.COUNTRY
+    };
+
+    ReactDOM.render(
+      <AppContextProvider {...appProviderProps}>
+        <App />
+      </AppContextProvider>,
+      el
+    );
   }
 };
 
 renderApp(Header, 'dominionHeader');
 renderApp(HomeHero, 'dominionHomeHero');
 renderApp(CountryHero, 'dominionCountryHero');
+renderApp(AboutCountry, 'dominionCountryAbout');
 renderApp(Video, 'dominionVideo');
 renderApp(Showcase, 'dominionShowcase');
 renderApp(Data, 'dominionData');

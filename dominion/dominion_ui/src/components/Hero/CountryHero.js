@@ -41,13 +41,14 @@ class CountryHero extends React.Component {
 
     this.state = {
       selectedCountry: {
-        name: ''
+        name: 'Country Name',
+        full_geoid: ''
       }
     };
   }
 
   componentDidMount() {
-    this.setState({ selectedCountry: window.COUNTRY });
+    // this.setState({ selectedCountry: window.COUNTRY });
   }
 
   render() {
