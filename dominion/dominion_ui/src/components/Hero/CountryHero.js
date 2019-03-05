@@ -16,21 +16,21 @@ const styles = theme => ({
     flexGrow: 1
   },
   map: {
+    position: 'relative !important',
     backgroundColor: 'grey',
-    height: '460px !important',
-    width: '829px !important',
-    maxHeight: '460px !important',
-    maxWidth: '829px !important',
+    height: '250px !important',
     left: 'unset !important',
     top: 'unset !important',
-    [theme.breakpoints.up('sm')]: {
-      position: 'absolute',
-      right: '150px'
+    [theme.breakpoints.up('md')]: {
+      position: 'absolute !important',
+      right: '50px',
+      width: '70% !important',
+      height: '460px !important',
+      maxHeight: '460px !important',
+      maxWidth: '829px !important'
     },
-    [theme.breakpoints.down('sm')]: {
-      position: 'relative !important',
-      width: '100% !important',
-      height: '250px !important'
+    [theme.breakpoints.up('lg')]: {
+      right: '150px'
     }
   }
 });
@@ -41,13 +41,15 @@ class CountryHero extends React.Component {
 
     this.state = {
       selectedCountry: {
-        name: ''
+        name: 'South Africa'
       }
     };
   }
 
   componentDidMount() {
-    this.setState({ selectedCountry: window.COUNTRY });
+    if (window.COUNTRY) {
+      this.setState({ selectedCountry: window.COUNTRY });
+    }
   }
 
   render() {
