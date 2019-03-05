@@ -36,8 +36,23 @@ const styles = theme => ({
 });
 
 class CountryHero extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      selectedCountry: {
+        name: ''
+      }
+    };
+  }
+
+  componentDidMount() {
+    this.setState({ selectedCountry: window.COUNTRY });
+  }
+
   render() {
     const { classes } = this.props;
+    const { selectedCountry } = this.state;
     return (
       <Hero>
         <HeroTitleGrid>
@@ -48,6 +63,12 @@ class CountryHero extends React.Component {
             ownership.
           </HeroDescription>
           <HeroButton onClick={this.handleToggle}>Find a place</HeroButton>
+          <p style={{ marginTop: '40px' }}>
+            or view{' '}
+            <a href={`#${selectedCountry.full_geoid}`}>
+              {selectedCountry.name}
+            </a>
+          </p>
         </HeroTitleGrid>
         <Grid id="slippy-map" className={classes.map} />
       </Hero>

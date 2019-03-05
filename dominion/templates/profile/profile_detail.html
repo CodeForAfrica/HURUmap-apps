@@ -1,4 +1,4 @@
-{% extends 'profile/profile_detail.html' %} {% load humanize lookup staticfiles hashtospace %}
+{% extends 'profile/profile_detail.html' %} {% load humanize lookup staticfiles hashtospace %} {% load jsonify %}
 
 {% block header %}
     {% include 'blocks/header.html' %}
@@ -30,6 +30,7 @@
             var maps = new ProfileMaps();
             var zoom = {% if HURUMAP.map_zoom %}{{ HURUMAP.map_zoom }}{% else %}null{% endif %};
 
+            var COUNTRY = {{ geography.this|jsonify|safe }};
             var centre = {
                 'country-KE': [-0.0236, 37.9062],
                 'country-ZA': [-30.5595, 22.9375],
