@@ -54,7 +54,6 @@ class GetLocation extends React.Component {
           const addressObj = addresses.filter(
             address => address.long_name === countryObj.name
           );
-          console.log(addressObj);
           return addressObj.length > 0;
         });
         if (countryfound) {

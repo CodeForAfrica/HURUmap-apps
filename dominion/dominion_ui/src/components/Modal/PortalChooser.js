@@ -106,14 +106,7 @@ const styles = theme => ({
   }
 });
 
-const countries = [
-  { geoid: 'country-KE', name: 'Kenya' },
-  { geoid: 'country-ZA', name: 'South Africa' },
-  { geoid: 'country-TZ', name: 'Tanzania' },
-  { geoid: 'country-NG', name: 'Nigeria' }
-];
-
-function PortalChooser({ classes, close }) {
+function PortalChooser({ classes, close, countries }) {
   return (
     <Grid container direction="row" className={classes.grid}>
       <Grid
@@ -183,6 +176,7 @@ function PortalChooser({ classes, close }) {
 
 PortalChooser.propTypes = {
   classes: PropTypes.shape().isRequired,
+  countries: PropTypes.shape().isRequired,
   close: PropTypes.func.isRequired
 };
 
