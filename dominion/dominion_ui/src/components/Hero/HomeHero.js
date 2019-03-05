@@ -27,6 +27,8 @@ const styles = theme => ({
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     backgroundSize: 'auto',
+    width: '100%',
+    height: '100%',
     [theme.breakpoints.down('md')]: {
       backgroundPosition: 'right',
       backgroundSize: 'auto'
@@ -77,6 +79,7 @@ class HomeHero extends React.Component {
           container
           direction="row"
           justify="space-between"
+          alignItems="center"
           className={classes.heroContentGrid}
         >
           <HeroTitleGrid>

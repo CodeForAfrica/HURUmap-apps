@@ -26,6 +26,7 @@ const styles = theme => ({
     }
   },
   titleTextGrid: {
+    zIndex: '100',
     color: 'white',
     [theme.breakpoints.up('lg')]: {
       paddingLeft: theme.spacing.unit * 9
@@ -156,7 +157,7 @@ const HeroButton = withStyles(styles)(HeroButtonComponent);
 function HeroComponent({ classes, children }) {
   return (
     <Grid container item xs={12} className={classes.root}>
-      <Grid container className={classes.heroContentGrid}>
+      <Grid container alignItems="center" className={classes.heroContentGrid}>
         {children}
       </Grid>
     </Grid>

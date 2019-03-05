@@ -4,6 +4,10 @@
     {% include 'blocks/header.html' %}
 {% endblock header %}
 
+{% block content_container %}
+  <div id="dominionCountryHero"></div>
+{% endblock content_container %}
+
 {% block profile_detail %}
 
   {% include 'settings_js.html' %}
@@ -20,6 +24,15 @@
       <script src="{% static 'js/profile_map.js' %}"></script>
       <script src="{% static 'js/maps_mapit.js' %}"></script>
       <script src="{% static 'js/profile_map_mapit.js' %}"></script>
+      <script src="{% static 'js/map_mapit.js' %}"></script>
+
+          <script>
+            var maps = new ProfileMaps();
+            var centre = {% if HURUMAP.map_centre %}{{ HURUMAP.map_centre }}{% else %}null{% endif %};
+            var zoom = {% if HURUMAP.map_zoom %}{{ HURUMAP.map_zoom }}{% else %}null{% endif %};
+
+            maps.drawMapForHomepage('{{ geo_data.first_child_level }}', '{{ HURUMAP.default_geo_version }}', centre, zoom);
+        </script>
     {% endblock %}
   {% endblock %}
 {% endblock %}
