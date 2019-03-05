@@ -1,13 +1,12 @@
 {
-  "main.js": "/static/js/main.a44f4e5d.chunk.js",
-  "main.js.map": "/static/js/main.a44f4e5d.chunk.js.map",
-  "static/js/1.10a3ce3d.chunk.js": "/static/js/1.10a3ce3d.chunk.js",
-  "static/js/1.10a3ce3d.chunk.js.map": "/static/js/1.10a3ce3d.chunk.js.map",
+  "main.js": "/static/js/main.f7e2fb7d.chunk.js",
+  "main.js.map": "/static/js/main.f7e2fb7d.chunk.js.map",
+  "static/js/1.694dc785.chunk.js": "/static/js/1.694dc785.chunk.js",
+  "static/js/1.694dc785.chunk.js.map": "/static/js/1.694dc785.chunk.js.map",
   "runtime~main.js": "/static/js/runtime~main.229c360f.js",
   "runtime~main.js.map": "/static/js/runtime~main.229c360f.js.map",
   "static/media/codeforafrica.png": "/static/media/codeforafrica.bda4db84.png",
   "static/media/background.png": "/static/media/background.9283b78c.png",
-  "static/media/hero_map.png": "/static/media/hero_map.3dc6948e.png",
   "static/media/location.svg": "/static/media/location.d4ddacef.svg",
   "static/media/dominion-logo.png": "/static/media/dominion-logo.f1b8c0d0.png",
   "static/media/shape.svg": "/static/media/shape.ca30e81a.svg",
@@ -19,6 +18,7 @@
   "static/media/databg.png": "/static/media/databg.345f88e8.png",
   "static/media/hero_bg.png": "/static/media/hero_bg.61556081.png",
   "static/media/smallscreen_background.png": "/static/media/smallscreen_background.fe708168.png",
+  "static/media/hero_map.png": "/static/media/hero_map.3dc6948e.png",
   "static/media/combined-shape.svg": "/static/media/combined-shape.a2c0a988.svg",
   "static/media/bmgf.png": "/static/media/bmgf.c68bf410.png",
   "static/media/image_4.png": "/static/media/image_4.330cc9dd.png",
@@ -29,6 +29,6 @@
   "static/media/image_3.png": "/static/media/image_3.91f51595.png",
   "static/media/hero-image-1.png": "/static/media/hero-image-1.6696e147.png",
   "index.html": "/index.html",
-  "precache-manifest.14e81067fe8ec33a6084562bd45a4eae.js": "/precache-manifest.14e81067fe8ec33a6084562bd45a4eae.js",
+  "precache-manifest.7cb085916ac307a672559a38c98eef47.js": "/precache-manifest.7cb085916ac307a672559a38c98eef47.js",
   "service-worker.js": "/service-worker.js"
 }
