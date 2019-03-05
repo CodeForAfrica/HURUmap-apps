@@ -25,6 +25,7 @@ const styles = theme => ({
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     backgroundSize: 'auto',
+    // display: 'none',
     height: '100vh',
     [theme.breakpoints.down('lg')]: {
       height: '80vh',
@@ -37,7 +38,7 @@ const styles = theme => ({
     [theme.breakpoints.down('sm')]: {
       backgroundImage: `url(${smallscreenbackground})`,
       backgroundPosition: 'right top',
-      height: 500,
+      padding: 0,
       margin: 0
     }
   },
