@@ -11,7 +11,7 @@ import AboutDominion from './components/About';
 import Data from './components/Data';
 import Footer from './components/Footer';
 import Showcase from './components/Showcase';
-import HomeHero from './components/Hero';
+import HomeHero from './components/Hero/HomeHero';
 import Video from './components/Video';
 
 library.add(fab);
