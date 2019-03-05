@@ -4,8 +4,6 @@ import { Grid, List, ListItem } from '@material-ui/core';
 
 import { withStyles } from '@material-ui/core/styles';
 
-import weakKey from 'weak-key';
-
 const styles = theme => ({
   root: {
     flexGrow: 1,
@@ -52,7 +50,7 @@ function SearchResults({ classes, results }) {
       <Grid container direction="row" justify="flex-end">
         <List className={classes.list}>
           {results.slice(0, maxResults).map(result => (
-            <ListItem key={weakKey(result)} className={classes.listItem} button>
+            <ListItem key={result.id} className={classes.listItem} button>
               <Grid container direction="row" alignItems="baseline">
                 <p className={classes.level}>
                   {result.type[0] + result.type.slice(1).toLowerCase()}

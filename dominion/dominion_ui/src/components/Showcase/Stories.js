@@ -1,9 +1,12 @@
-import background from '../../assets/images/Showcase/background.png';
+import background1 from '../../assets/images/image.png';
+import background2 from '../../assets/images/image_2.png';
+import background3 from '../../assets/images/image_3.png';
+import background4 from '../../assets/images/image_4.png';
 
 const data = [
   {
     index: 0,
-    image: background,
+    image: background1,
     date: '12 Nov 2019',
     title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
     body:
@@ -12,7 +15,7 @@ const data = [
   },
   {
     index: 1,
-    image: background,
+    image: background2,
     date: '12 Nov 2019',
     title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
     body:
@@ -21,7 +24,7 @@ const data = [
   },
   {
     index: 2,
-    image: background,
+    image: background3,
     date: '12 Nov 2019',
     title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
     body: '',
@@ -29,7 +32,7 @@ const data = [
   },
   {
     index: 3,
-    image: background,
+    image: background4,
     date: '12 Nov 2019',
     title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
     body: '',
@@ -37,7 +40,7 @@ const data = [
   },
   {
     index: 4,
-    image: background,
+    image: background4,
     date: '12 Nov 2019',
     title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
     body:
@@ -46,7 +49,7 @@ const data = [
   },
   {
     index: 5,
-    image: background,
+    image: background4,
     date: '12 Nov 2019',
     title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
     body:
