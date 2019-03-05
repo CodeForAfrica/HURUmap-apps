@@ -14,16 +14,16 @@ const styles = theme => ({
     flexGrow: 1,
     width: '100vw',
     color: 'white',
-    height: 600,
+    height: 700,
     backgroundImage: `url(${background})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     [theme.breakpoints.down('sm')]: {
-      height: 450
+      height: 500
     }
   },
   countryList: {
-    marginTop: theme.spacing.unit * 10,
+    marginTop: theme.spacing.unit * 20,
     marginLeft: theme.spacing.unit * 4,
     [theme.breakpoints.down('sm')]: {
       marginTop: -theme.spacing.unit * 2,

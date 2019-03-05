@@ -8,6 +8,7 @@ import herobg from '../../assets/images/bg/hero_bg.png';
 import background from '../../assets/images/bg/background.png';
 import smallscreenbackground from '../../assets/images/bg/smallscreen_background.png';
 import HeroMap from './HeroMap';
+import HeroDetail from './HeroDetail';
 
 const styles = theme => ({
   root: {
@@ -35,8 +36,9 @@ const styles = theme => ({
     }
   },
   heroMapGrid: {
-    marginLeft: '40rem'
-  }
+    marginLeft: '-35rem'
+  },
+  heroContentDetail: {}
 });
 
 function HomeHero({ classes }) {
@@ -48,14 +50,14 @@ function HomeHero({ classes }) {
         justify="center"
         className={classes.heroContentGrid}
       >
-        <Grid item xs={12} sm={8} md={8} lg={8} xl={8}>
-          <HeroMap />
+        <Grid item justify="center" xs={12} sm={12} md={12} lg={8} xl={8}>
+          <HeroDetail />
         </Grid>
         <Grid
           item
           xs={12}
-          sm={4}
-          md={4}
+          sm={12}
+          md={12}
           lg={4}
           xl={4}
           className={classes.heroMapGrid}

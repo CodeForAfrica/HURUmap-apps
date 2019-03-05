@@ -9,7 +9,7 @@
 __pycache__/
 local_settings.py
 db.sqlite3
-#media
+media
 
 # If your build process includes running collectstatic, then you probably don't need or want to include staticfiles/
 # in your Git repository. Update and uncomment the following line accordingly.
@@ -25,7 +25,7 @@ db.sqlite3
 
 # Distribution / packaging
 .Python
-#build/
+build/
 develop-eggs/
 dist/
 downloads/

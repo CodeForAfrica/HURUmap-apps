@@ -15,6 +15,7 @@ const styles = theme => ({
   mapSection: {
     color: 'white',
     textAlign: 'right',
+    width: '100%',
     padding: theme.spacing.unit * 5,
     [theme.breakpoints.down('md')]: {
       display: 'none'
