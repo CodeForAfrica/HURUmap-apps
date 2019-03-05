@@ -13,8 +13,8 @@ const styles = theme => ({
     fontFamily: theme.typography.fontFamily
   },
   list: {
-    width: '500px',
-    [theme.breakpoints.up('lg')]: {
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
       width: '500px'
     }
   },
@@ -37,8 +37,11 @@ const styles = theme => ({
   },
   name: {
     margin: 0,
-    fontSize: '35px',
-    fontWeight: '600'
+    fontWeight: '600',
+    fontSize: '30px',
+    [theme.breakpoints.up('sm')]: {
+      fontSize: '35px'
+    }
   }
 });
 
@@ -50,7 +53,12 @@ function SearchResults({ classes, results }) {
       <Grid container direction="row" justify="flex-end">
         <List className={classes.list}>
           {results.slice(0, maxResults).map(result => (
-            <ListItem key={result.id} className={classes.listItem} button>
+            <ListItem
+              key={result.id}
+              className={classes.listItem}
+              disableGutters
+              button
+            >
               <Grid container direction="row" alignItems="baseline">
                 <p className={classes.level}>
                   {result.type[0] + result.type.slice(1).toLowerCase()}
