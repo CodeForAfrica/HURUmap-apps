@@ -5,4 +5,18 @@
 WAZIMAP_COUNTRY_CODE = '{{ HURUMAP.country_code }}';
 GOOGLE_GEOCODE_API_KEY = '{{ HURUMAP.google_geocode_api_key }}';
 var MAPIT = {{ HURUMAP.mapit|jsonify|safe }};
+var MAP_ZOOM = {% if HURUMAP.map_zoom %}{{ HURUMAP.map_zoom }}{% else %}null{% endif %};
+
+var centres = {
+    'country-KE': [-0.0236, 37.9062],
+    'country-ZA': [-30.5595, 22.9375],
+    'country-TZ': [-6.3690, 34.8888],
+    'country-NG': [9.0820, 8.6753],
+}
+
+MAPIT["map_country"] = {
+    'centre': centres['{{ geography.this.full_geoid }}'],
+    'zoom': MAP_ZOOM
+}
+
 {% endblock settings_javascript %}

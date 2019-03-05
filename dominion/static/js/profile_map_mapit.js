@@ -90,7 +90,8 @@ var ProfileMaps = function() {
         var geo_name = this.geo.this.name;
 
         // if we are in a root geo, only setView
-        if (Object.getOwnPropertyNames(this.geo.parents).length==0) {
+        // TODO: 
+        if (Object.getOwnPropertyNames(this.geo.parents).length === 1) {
             this.map.setView( this.mapit_country.centre, this.mapit_country.zoom);
         } else {
             // draw the current geo
