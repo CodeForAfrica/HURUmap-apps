@@ -23,12 +23,13 @@ const styles = theme => ({
   },
   heroContentGrid: {
     flexGrow: 1,
-    height: '100vh',
-    [theme.breakpoints.down('lg')]: {
+    [theme.breakpoints.up('lg')]: {
+      height: '100vh'
+    },
+    [theme.breakpoints.up('md')]: {
       height: '80vh'
     },
     [theme.breakpoints.down('sm')]: {
-      height: 500,
       margin: 0
     }
   },
@@ -36,7 +37,6 @@ const styles = theme => ({
     zIndex: '100',
     color: 'white',
     [theme.breakpoints.down('sm')]: {
-      position: 'absolute',
       margin: '2rem',
       marginTop: 0
     }

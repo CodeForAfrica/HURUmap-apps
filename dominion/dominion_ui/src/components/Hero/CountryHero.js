@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { PropTypes } from 'prop-types';
+import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import Hero, {
@@ -10,12 +11,11 @@ import Hero, {
   HeroButton
 } from './Hero';
 
-const styles = {
+const styles = theme => ({
   root: {
     flexGrow: 1
   },
   map: {
-    position: 'absolute',
     backgroundColor: 'grey',
     height: '460px !important',
     width: '829px !important',
@@ -23,9 +23,17 @@ const styles = {
     maxWidth: '829px !important',
     left: 'unset !important',
     top: 'unset !important',
-    right: '150px'
+    [theme.breakpoints.up('sm')]: {
+      position: 'absolute',
+      right: '150px'
+    },
+    [theme.breakpoints.down('sm')]: {
+      position: 'relative !important',
+      width: '100% !important',
+      height: '250px !important'
+    }
   }
-};
+});
 
 class CountryHero extends React.Component {
   render() {
@@ -41,7 +49,7 @@ class CountryHero extends React.Component {
           </HeroDescription>
           <HeroButton onClick={this.handleToggle}>Find a place</HeroButton>
         </HeroTitleGrid>
-        <div id="slippy-map" className={classes.map} />
+        <Grid id="slippy-map" className={classes.map} />
       </Hero>
     );
   }
