@@ -1,65 +1,138 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Grid, InputBase, IconButton } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
+import withWidth, { isWidthDown } from '@material-ui/core/withWidth';
+
+import background from '../../assets/images/bg/background.png';
 import search from '../../assets/images/icons/location.svg';
+
+import SearchBar from '../Search/SearchBar';
+import SearchResults from '../Search/SearchResults';
+import Modal from '../Modal';
+
+import createAPI from '../../api';
 
 const styles = theme => ({
   root: {
-    border: 0,
-    borderBottom: 0,
-    width: 'auto',
-    [theme.breakpoints.down('sm')]: {
-      borderBottom: '2px solid white',
-      padding: '10px',
-      width: '100%'
+    flexGrow: 1,
+    padding: theme.spacing.unit * 4,
+    backgroundImage: `url(${background})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    [theme.breakpoints.up('lg')]: {
+      paddingTop: '100px',
+      paddingLeft: '200px',
+      paddingRight: '200px'
+    },
+    [theme.breakpoints.up('md')]: {
+      paddingTop: '50px',
+      paddingLeft: '185px',
+      paddingRight: '185px'
     }
   },
-  iconButton: {
-    padding: 0,
-    marginLeft: '127px',
+  searchBar: {
     [theme.breakpoints.down('sm')]: {
-      marginLeft: '50px'
-    },
-    [theme.breakpoints.down('sm')]: {
-      marginLeft: 0
+      borderBottom: '2px solid white'
     }
   },
-  searchIcon: {
-    color: '#fff'
-  },
-  input: {
-    flex: 1,
-    color: 'white',
-    display: 'none',
-    width: '100%',
-    fontFamily: theme.typography.fontFamily,
-    fontWeight: '600',
-    fontSize: '14px',
-    '&::placeholder': {
-      visibility: 'hidden'
-    },
-    [theme.breakpoints.down('sm')]: {
-      display: 'inline-block'
+  resultsContainer: {
+    [theme.breakpoints.up('sm')]: {
+      padding: '47px'
     }
   }
 });
 
-function Search({ classes }) {
-  return (
-    <Grid container wrap="nowrap" className={classes.root}>
-      <InputBase placeholder="Search" className={classes.input} />
-      <IconButton className={classes.iconButton} aria-label="Search">
-        <img src={search} alt="Search" className={classes.searchIcon} />
-      </IconButton>
-    </Grid>
-  );
+class Search extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      searchTerm: '',
+      geography: [],
+      results: []
+    };
+
+    this.handleSearch = this.handleSearch.bind(this);
+  }
+
+  async componentDidMount() {
+    const api = createAPI();
+    // South Africa id: 5656
+    const geography = await api.getGeography(5656);
+
+    this.setState({
+      geography
+    });
+  }
+
+  handleSearch(searchTerm) {
+    const { geography } = this.state;
+    if (searchTerm !== '') {
+      const results = geography.filter(g =>
+        g.name.match(new RegExp(searchTerm, 'i'))
+      );
+      this.setState({ results, searchTerm });
+    } else {
+      this.setState({ results: [], searchTerm });
+    }
+  }
+
+  render() {
+    const { classes, width, children } = this.props;
+    const { results, closeModal, searchTerm } = this.state;
+
+    const SearchBarElement = ({ onToggle }) => (
+      <Grid container sm={12} wrap="nowrap" className={classes.searchBar}>
+        <SearchBar
+          searchTerm={searchTerm}
+          onSearch={this.handleSearch}
+          onToggle={onToggle}
+        />
+      </Grid>
+    );
+    const ResultsElement = (
+      <Grid container sm={12} className={classes.resultsContainer}>
+        <SearchResults results={results} />
+      </Grid>
+    );
+    const SearchModalContent = ({ toggleModal }) => (
+      <Grid container direction="column" wrap="nowrap" className={classes.root}>
+        <SearchBarElement onToggle={toggleModal} />
+        {ResultsElement}
+      </Grid>
+    );
+    return (
+      <React.Fragment>
+        {isWidthDown('sm', width) ? (
+          <React.Fragment>
+            <SearchBarElement />
+            {results.length > 0 ? ResultsElement : children}
+          </React.Fragment>
+        ) : (
+          <React.Fragment>
+            <Modal
+              activatorLabel="Search"
+              activatorIconOpen={search}
+              activatorIconClose={search}
+              close={closeModal}
+            >
+              <SearchModalContent />
+            </Modal>
+            {children}
+          </React.Fragment>
+        )}
+      </React.Fragment>
+    );
+  }
 }
 
 Search.propTypes = {
-  classes: PropTypes.isRequired
+  width: PropTypes.isRequired,
+  classes: PropTypes.isRequired,
+  children: PropTypes.isRequired
 };
 
-export default withStyles(styles)(Search);
+export default withWidth()(withStyles(styles)(Search));
