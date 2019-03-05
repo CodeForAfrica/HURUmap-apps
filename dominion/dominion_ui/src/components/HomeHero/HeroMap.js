@@ -14,14 +14,22 @@ const styles = theme => ({
   },
   mapSection: {
     color: 'white',
+    textAlign: 'right',
     padding: theme.spacing.unit * 5,
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       display: 'none'
     }
   },
   mapImage: {
     display: 'block',
     paddingRight: theme.spacing.unit * 4
+  },
+  lineSeparator: {
+    display: 'inline-block',
+    borderLeft: '1px solid #fff',
+    marginTop: theme.spacing.unit,
+    marginBottom: theme.spacing.unit * 8,
+    height: '4rem'
   }
 });
 
@@ -34,14 +42,8 @@ function HeroMap({ classes }) {
       >
         <img src={map} alt="Country Map" className={classes.mapImage} />
         South Africa &nbsp;&nbsp;
-        <div
-          style={{
-            display: 'inline-block',
-            borderLeft: '1px solid #fff'
-          }}
-        >
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{' '}
-        </div>
+        <div className={classes.lineSeparator} />
+        02
       </Typography>
     </div>
   );

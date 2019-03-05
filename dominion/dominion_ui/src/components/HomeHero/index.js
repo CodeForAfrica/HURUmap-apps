@@ -24,8 +24,8 @@ const styles = theme => ({
     backgroundSize: 'auto',
     height: '100vh',
     [theme.breakpoints.down('lg')]: {
-      height: '80vh',
-      paddingLeft: theme.spacing.unit * 14.5
+      height: '80vh'
+      //  paddingLeft: theme.spacing.unit * 14.5
     },
     [theme.breakpoints.down('sm')]: {
       backgroundImage: `url(${smallscreenbackground})`,
@@ -33,22 +33,33 @@ const styles = theme => ({
       height: 500,
       margin: 0
     }
+  },
+  heroMapGrid: {
+    marginLeft: '40rem'
   }
 });
 
 function HomeHero({ classes }) {
   return (
-    <Grid container item xs={12} className={classes.root}>
+    <Grid container className={classes.root}>
       <Grid
         container
-        direction="row"
+        direction="column"
         justify="center"
         className={classes.heroContentGrid}
       >
-        <Grid item sm={12} md={8} lg={8} xl={8}>
+        <Grid item xs={12} sm={8} md={8} lg={8} xl={8}>
           <HeroMap />
         </Grid>
-        <Grid item sm={12} md={4} lg={4} xl={4} alignItems="center">
+        <Grid
+          item
+          xs={12}
+          sm={4}
+          md={4}
+          lg={4}
+          xl={4}
+          className={classes.heroMapGrid}
+        >
           <HeroMap />
         </Grid>
       </Grid>
