@@ -36,25 +36,9 @@ const styles = theme => ({
 });
 
 class CountryHero extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      selectedCountry: {
-        name: 'South Africa'
-      }
-    };
-  }
-
-  componentDidMount() {
-    if (window.COUNTRY) {
-      this.setState({ selectedCountry: window.COUNTRY });
-    }
-  }
-
   render() {
     const { classes } = this.props;
-    const { selectedCountry } = this.state;
+    const selectedCountry = window.SELECTED_COUNTRY;
     return (
       <Hero>
         <HeroTitleGrid>
@@ -67,7 +51,11 @@ class CountryHero extends React.Component {
           <HeroButton onClick={this.handleToggle}>Find a place</HeroButton>
           <p style={{ marginTop: '40px' }}>
             or view{' '}
-            <a href={`#${selectedCountry.full_geoid}`}>
+            <a
+              href={`/profile/${selectedCountry.full_geoid}-${
+                selectedCountry.slug
+              }`}
+            >
               {selectedCountry.name}
             </a>
           </p>

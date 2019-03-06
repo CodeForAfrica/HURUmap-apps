@@ -71,10 +71,16 @@ HURUMAP['countries'] = {
     'kenya': {
         'code': 'KE',
         'name': 'Kenya',
+        'centre': [-0.0236, 37.9062],
+        'zoom': 6,
+        'slug': 'kenya'
     },
     'south-africa': {
         'code': 'ZA',
         'name': 'South Africa',
+        'centre': [-30.5595, 22.9375],
+        'zoom': 5,
+        'slug': 'south-africa'
     },
 }
 

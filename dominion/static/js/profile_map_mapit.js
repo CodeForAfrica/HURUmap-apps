@@ -52,6 +52,20 @@ var ProfileMaps = function() {
         });
     };
 
+
+    this.drawMapForCountryPage = function(geo, centre, zoom) {
+        if ($('#slippy-map').length === 0) return;
+
+        this.createMap();
+        this.addImagery();
+        if (centre) {
+            self.map.setView(centre, zoom);
+        }
+        GeometryLoader.loadGeometryForChildLevel(geo.child_level, geo.geo_level, geo.geo_code, geo.version, function(features) {
+            self.drawFeatures(features.features);
+        });
+    };
+
     this.createMap = function() {
         var allowMapDrag = (browserWidth > 480) ? true : false;
 
@@ -89,9 +103,7 @@ var ProfileMaps = function() {
         var child_level = this.geo.this.child_level;
         var geo_name = this.geo.this.name;
 
-        // if we are in a root geo, only setView
-        // TODO: 
-        if (Object.getOwnPropertyNames(this.geo.parents).length === 1) {
+        if (Object.getOwnPropertyNames(this.geo.parents).length === 0) {
             this.map.setView( this.mapit_country.centre, this.mapit_country.zoom);
         } else {
             // draw the current geo

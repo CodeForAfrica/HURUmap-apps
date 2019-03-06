@@ -106,14 +106,8 @@ const styles = theme => ({
   }
 });
 
-const countries = [
-  { geoid: 'country-KE', name: 'Kenya' },
-  { geoid: 'country-ZA', name: 'South Africa' },
-  { geoid: 'country-TZ', name: 'Tanzania' },
-  { geoid: 'country-NG', name: 'Nigeria' }
-];
-
 function PortalChooser({ classes, close }) {
+  const supportedCountries = window.SUPPORTED_COUNTRIES;
   return (
     <Grid container direction="row" className={classes.grid}>
       <Grid
@@ -162,15 +156,12 @@ function PortalChooser({ classes, close }) {
         xl={7}
       >
         <MenuList className={classes.countryList}>
-          {countries.map((country, index) => (
+          {supportedCountries.map((country, index) => (
             <MenuItem button className={classes.listItem}>
               <span className={classes.listIndex}>
                 <NumberFormat value={index + 1} displayType="text" prefix="0" />
               </span>
-              <a
-                className={classes.listItemLink}
-                href={`/profiles/${country.geoid}`}
-              >
+              <a className={classes.listItemLink} href={`/${country.slug}`}>
                 &nbsp;&nbsp;&nbsp; {country.name}
               </a>
             </MenuItem>

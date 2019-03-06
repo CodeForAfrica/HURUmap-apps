@@ -1,4 +1,4 @@
-{% extends 'homepage.html' %}{% load sass_tags humanize partition static %}
+{% extends 'homepage.html' %}{% load sass_tags humanize partition static %} {% load jsonify %}
 
 {% block head_title %}
 {{ HURUMAP.name }}: Who owns land in {{country.name}}
@@ -10,7 +10,7 @@ Compare places using tables and maps, download data, and embed charts on your si
 {% endblock %}
 
 {% block header %}
-    {% include 'blocks/country_header.html' %}
+    {% include 'blocks/header.html' %}
 {% endblock header %}
 {% block content_container %}
   <div id="dominionCountryHero"></div>
@@ -21,3 +21,16 @@ Compare places using tables and maps, download data, and embed charts on your si
   {% include 'blocks/country_partners.html' %}
   {% include 'blocks/partners.html' %}
 {% endblock content_container %}
+
+{% block body_javascript_extra %}
+    {{ block.super }}
+    <script>
+        var SELECTED_COUNTRY = {{ country|jsonify|safe }};
+
+        $(function() {
+            var maps = new ProfileMaps();
+            var zoom = {{country.zoom}};
+            maps.drawMapForCountryPage({{ geography|jsonify|safe }}, {{country.centre}}, zoom);
+        })
+    </script>
+{% endblock %}
