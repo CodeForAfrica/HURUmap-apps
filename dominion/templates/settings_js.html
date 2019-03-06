@@ -2,5 +2,5 @@
 
 {% block settings_javascript %}
   {{ block.super }}
-  var dominion_countries = {{ HURUMAP.dominion_countries|jsonify|safe }};
+  var dominion_countries = {{ HURUMAP.countries|jsonify|safe }};
 {% endblock settings_javascript %}
