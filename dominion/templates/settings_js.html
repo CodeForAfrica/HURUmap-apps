@@ -1,1 +1,6 @@
 {% extends 'settings_js.html' %}{% load jsonify %}
+
+{% block settings_javascript %}
+  {{ block.super }}
+  var dominion_countries = {{ HURUMAP.dominion_countries|jsonify|safe }};
+{% endblock settings_javascript %}
