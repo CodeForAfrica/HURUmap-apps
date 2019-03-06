@@ -73,7 +73,8 @@ const styles = theme => ({
     }
   },
   img: {
-    height: '45px'
+    height: '45px',
+    maxWidth: 'unset'
   },
   link: {
     color: '#fff',
@@ -85,7 +86,7 @@ const styles = theme => ({
     position: 'absolute',
     color: 'white',
     top: '28px',
-    right: '33px',
+    left: '51px',
     margin: 0,
     fontFamily: theme.typography.fontFamily,
     fontWeight: 500,
@@ -122,7 +123,7 @@ class Header extends Component {
 
   render() {
     const { classes, width } = this.props;
-    const selectedCountry = window.SELECTED_COUNTRY || { name: 'country name' };
+    const selectedCountry = window.SELECTED_COUNTRY;
     return (
       <Grid sm={12} className={classes.root}>
         <nav className={classes.topMenu}>
