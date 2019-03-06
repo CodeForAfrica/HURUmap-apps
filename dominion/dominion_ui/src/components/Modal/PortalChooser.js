@@ -14,20 +14,19 @@ const styles = theme => ({
     flexGrow: 1,
     width: '100vw',
     color: 'white',
-    height: 600,
+    height: 700,
     backgroundImage: `url(${background})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     [theme.breakpoints.down('sm')]: {
-      height: 450
+      height: 500
     }
   },
   countryList: {
-    marginTop: theme.spacing.unit * 10,
+    marginTop: theme.spacing.unit * 20,
     marginLeft: theme.spacing.unit * 4,
     [theme.breakpoints.down('sm')]: {
-      marginTop: -theme.spacing.unit * 2,
-      marginLeft: 0
+      marginTop: -theme.spacing.unit * 2
     }
   },
   locationText: {
@@ -42,6 +41,7 @@ const styles = theme => ({
     marginLeft: theme.spacing.unit * 10
   },
   listIndex: {
+    paddingRight: theme.spacing.unit * 8,
     [theme.breakpoints.down('sm')]: {
       display: 'none'
     }
@@ -81,6 +81,7 @@ const styles = theme => ({
     lineHeight: 1.3,
     padding: theme.spacing.unit * 3,
     fontSize: 50,
+    fontFamily: theme.typography.fontHeading,
     letterSpacing: 1.4,
     textDecoration: 'none',
     visibility: 'hidden',
@@ -106,14 +107,7 @@ const styles = theme => ({
   }
 });
 
-const countries = [
-  { geoid: 'country-KE', name: 'Kenya' },
-  { geoid: 'country-ZA', name: 'South Africa' },
-  { geoid: 'country-TZ', name: 'Tanzania' },
-  { geoid: 'country-NG', name: 'Nigeria' }
-];
-
-function PortalChooser({ classes, close }) {
+function PortalChooser({ classes, close, countries }) {
   return (
     <Grid container direction="row" className={classes.grid}>
       <Grid
@@ -130,7 +124,7 @@ function PortalChooser({ classes, close }) {
       >
         <Grid>
           <Typography variant="body2" className={classes.locationText}>
-            <GetLocation />
+            <GetLocation countries={countries} />
             <img
               src={geolocate}
               alt="Use your location"
@@ -162,16 +156,13 @@ function PortalChooser({ classes, close }) {
         xl={7}
       >
         <MenuList className={classes.countryList}>
-          {countries.map((country, index) => (
+          {Object.keys(countries).map((country, index) => (
             <MenuItem button className={classes.listItem}>
               <span className={classes.listIndex}>
                 <NumberFormat value={index + 1} displayType="text" prefix="0" />
               </span>
-              <a
-                className={classes.listItemLink}
-                href={`/profiles/${country.geoid}`}
-              >
-                &nbsp;&nbsp;&nbsp; {country.name}
+              <a className={classes.listItemLink} href={`/${country}`}>
+                {countries[country].name}
               </a>
             </MenuItem>
           ))}
@@ -183,6 +174,7 @@ function PortalChooser({ classes, close }) {
 
 PortalChooser.propTypes = {
   classes: PropTypes.shape().isRequired,
+  countries: PropTypes.shape().isRequired,
   close: PropTypes.func.isRequired
 };
 

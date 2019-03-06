@@ -14,6 +14,9 @@ import Modal from '../Modal';
 
 import menu from '../../assets/images/icons/menu.svg';
 import back from '../../assets/images/icons/back.svg';
+import HomeHero from '../HomeHero';
+
+const countries = window.dominion_countries;
 
 const styles = theme => ({
   root: {
@@ -23,9 +26,9 @@ const styles = theme => ({
     backgroundSize: 'cover'
   },
   topMenu: {
-    padding: '20px 50px 20px 50px',
-    [theme.breakpoints.down('sm')]: {
-      padding: '30px'
+    padding: '1.875rem',
+    [theme.breakpoints.up('lg')]: {
+      padding: '1.25rem 14.5rem'
     }
   },
   topMenuContent: {
@@ -33,6 +36,11 @@ const styles = theme => ({
   },
   topMenuNav: {
     flexWrap: 'nowrap',
+    padding: 0,
+    [theme.breakpoints.up('lg')]: {
+      paddingRight: '7rem',
+      paddingLeft: '7rem'
+    },
     [theme.breakpoints.down('sm')]: {
       flexDirection: 'column',
       position: 'absolute',
@@ -57,6 +65,7 @@ const styles = theme => ({
   menuList: {
     display: 'flex',
     width: '100%',
+    letterSpacing: '0.175rem',
     [theme.breakpoints.down('sm')]: {
       flexDirection: 'column',
       paddingTop: '10px'
@@ -75,7 +84,11 @@ const styles = theme => ({
     color: '#fff',
     textDecoration: 'none',
     fontFamily: theme.typography.fontFamily,
-    fontWeight: '600'
+    fontWeight: '600',
+    '&:hover': {
+      color: '#e7e452',
+      textDecoration: 'none'
+    }
   }
 });
 
@@ -83,15 +96,28 @@ class Header extends Component {
   constructor(props) {
     super(props);
 
+    this.state = { isDropdownOpen: false };
     this.renderMenu = this.renderMenu.bind(this);
+    this.handleToggle = this.handleToggle.bind(this);
+  }
+
+  handleToggle() {
+    this.setState(prevState => ({ isDropdownOpen: !prevState.isDropdownOpen }));
   }
 
   renderMenu() {
     const { classes } = this.props;
+    const { isDropdownOpen } = this.state;
+
     return (
       <React.Fragment>
         <Search sm={12}>
-          <Dropdown sm={12} />
+          <Dropdown
+            sm={12}
+            handleToggle={this.handleToggle}
+            isDropdownOpen={isDropdownOpen}
+            countries={countries}
+          />
           <MenuList sm={4} className={classes.menuList}>
             {['About', 'Showcase', 'Resources', 'Contact'].map(menuTitle => (
               <MenuItem item className={classes.menuListItem}>
@@ -108,6 +134,8 @@ class Header extends Component {
 
   render() {
     const { classes, width } = this.props;
+    const { isDropdownOpen } = this.state;
+
     return (
       <Grid sm={12} className={classes.root}>
         <nav className={classes.topMenu}>
@@ -152,6 +180,11 @@ class Header extends Component {
             </Grid>
           </Grid>
         </nav>
+        <HomeHero
+          handleToggle={this.handleToggle}
+          isDropdownOpen={isDropdownOpen}
+          countries={countries}
+        />
       </Grid>
     );
   }
