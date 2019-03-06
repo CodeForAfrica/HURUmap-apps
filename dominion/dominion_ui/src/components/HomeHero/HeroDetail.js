@@ -95,6 +95,7 @@ class HeroDetail extends React.Component {
   render() {
     const { classes } = this.props;
     const { choooserOpen } = this.state;
+    const { countries } = window.dominion_countries;
 
     return (
       <div className={classes.heroDetailSection}>
@@ -130,7 +131,7 @@ class HeroDetail extends React.Component {
           className={classes.modalContent}
           aria-labelledby="portal-chooser"
         >
-          <PortalChooser close={this.handleToggle} />
+          <PortalChooser close={this.handleToggle} countries={countries} />
         </Modal>
       </div>
     );

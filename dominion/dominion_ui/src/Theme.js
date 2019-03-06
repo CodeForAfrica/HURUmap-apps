@@ -11,6 +11,7 @@ const Theme = createMuiTheme({
   },
   typography: {
     fontFamily: FONT_FAMILY_TEXT,
+    fontHeading: FONT_FAMILY_HEADING,
     fontSize: 12,
     h1: {
       color: '#293229',

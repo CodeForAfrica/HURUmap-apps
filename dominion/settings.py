@@ -110,10 +110,10 @@ HURUMAP['mapit'] = {
 }
 
 HURUMAP['dominion_countries'] = [
-  { geoid: 'country-KE', name: 'Kenya' },
-  { geoid: 'country-ZA', name: 'South Africa' },
-  { geoid: 'country-TZ', name: 'Tanzania' },
-  { geoid: 'country-NG', name: 'Nigeria' }
+  { 'geoid': 'country-KE', 'name': 'Kenya' },
+  { 'geoid': 'country-ZA', 'name': 'South Africa' },
+  { 'geoid': 'country-TZ', 'name': 'Tanzania' },
+  { 'geoid': 'country-NG', 'name': 'Nigeria' }
 ];
 
 HURUMAP['primary_release_year'] = {

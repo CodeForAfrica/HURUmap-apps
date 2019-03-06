@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 
 import KeyboardArrowDown from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUp from '@material-ui/icons/KeyboardArrowUp';
-import withWidth, { isWidthUp } from '@material-ui/core/withWidth';
+import withWidth, { isWidthDown } from '@material-ui/core/withWidth';
 
-import { Grid, Button, Modal } from '@material-ui/core';
+import { Grid, MenuList, MenuItem, Modal, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import PortalChooser from '../Modal/PortalChooser';
+
+const countries = window.dominion_countries;
 
 const styles = theme => ({
   root: {
@@ -26,12 +28,16 @@ const styles = theme => ({
     }
   },
   p: {
+    color: '#fff',
+    textDecoration: 'none',
     fontFamily: theme.typography.fontFamily,
     fontWeight: '600',
-    fontSize: '14px',
+    letterSpacing: '0.1755rem',
+    fontSize: '0.85rem',
     [theme.breakpoints.down('sm')]: {
       width: '100%',
-      textAlign: 'left'
+      textAlign: 'left',
+      lineHeight: '7em'
     }
   },
   KeyboardArrowDown: {
@@ -44,8 +50,6 @@ const styles = theme => ({
     height: 'auto'
   },
   menuList: {
-    display: 'flex',
-    width: '100%',
     [theme.breakpoints.down('sm')]: {
       flexDirection: 'column',
       paddingTop: '10px'
@@ -60,17 +64,13 @@ const styles = theme => ({
   link: {
     color: '#fff',
     textDecoration: 'none',
-    fontFamily: theme.typography.fontFamily,
-    fontWeight: '600'
+    fontFamily: theme.typography.fontHeading,
+    fontSize: theme.spacing.unit * 3.7,
+    '&:hover': {
+      color: '#e7e452'
+    }
   }
 });
-
-const countries = [
-  { geoid: 'country-KE', name: 'Kenya' },
-  { geoid: 'country-ZA', name: 'South Africa' },
-  { geoid: 'country-TZ', name: 'Tanzania' },
-  { geoid: 'country-NG', name: 'Nigeria' }
-];
 
 class Dropdown extends Component {
   constructor(props) {
@@ -84,23 +84,25 @@ class Dropdown extends Component {
     this.setState(prevState => ({ isDropdownOpen: !prevState.isDropdownOpen }));
   }
 
-  // const countryElement = (
-  //   <Grid container sm={12} wrap="nowrap">
-  //     <MenuList sm={4} className={classes.menuList}>
-  //       {countries.map(country => (
-  //         <MenuItem item className={classes.menuListItem}>
-  //           <Link to=`/profiles/${country.geoid}` className={classes.link} variant="body1">
-  //             {country.name}
-  //           </Link>
-  //         </MenuItem>
-  //       ))}
-  //     </MenuList>
-  //   </Grid>
-  // );
+  renderCountryMenu() {
+    const { classes } = this.props;
+    return (
+      <React.Fragment>
+        {countries.map(country => (
+          <MenuItem item className={classes.menuListItem}>
+            <a href={`/profiles/${country.geoid}`} className={classes.link}>
+              {country.name}
+            </a>
+          </MenuItem>
+        ))}
+      </React.Fragment>
+    );
+  }
 
   render() {
     const { classes, width } = this.props;
     const { isDropdownOpen } = this.state;
+
     return (
       <Grid container className={classes.root}>
         <Button
@@ -121,17 +123,22 @@ class Dropdown extends Component {
             />
           )}
         </Button>
-        <Modal
-          disableAutoFocus
-          hideBackdrop
-          open={isDropdownOpen && isWidthUp('sm', width)}
-          countries={countries}
-          onClose={this.handleToggle}
-          className={classes.modalContent}
-          aria-labelledby="portal-chooser-nav"
-        >
-          <PortalChooser close={this.handleToggle} />
-        </Modal>
+        {isWidthDown('sm', width) && isDropdownOpen ? (
+          <MenuList sm={4} className={classes.menuList}>
+            {this.renderCountryMenu()}
+          </MenuList>
+        ) : (
+          <Modal
+            disableAutoFocus
+            hideBackdrop
+            open={isDropdownOpen}
+            onClose={this.handleToggle}
+            className={classes.modalContent}
+            aria-labelledby="portal-chooser-nav"
+          >
+            <PortalChooser countries={countries} close={this.handleToggle} />
+          </Modal>
+        )}
       </Grid>
     );
   }

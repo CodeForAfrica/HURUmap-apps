@@ -57,6 +57,7 @@ const styles = theme => ({
   menuList: {
     display: 'flex',
     width: '100%',
+    letterSpacing: '0.175rem',
     [theme.breakpoints.down('sm')]: {
       flexDirection: 'column',
       paddingTop: '10px'
