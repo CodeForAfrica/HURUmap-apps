@@ -38,7 +38,7 @@ const styles = theme => ({
 class CountryHero extends React.Component {
   render() {
     const { classes } = this.props;
-    const selectedCountry = window.SELECTED_COUNTRY;
+    const selectedCountry = window.SELECTED_COUNTRY || {};
     return (
       <Hero>
         <HeroTitleGrid>

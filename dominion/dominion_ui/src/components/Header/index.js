@@ -8,6 +8,7 @@ import withWidth, { isWidthDown } from '@material-ui/core/withWidth';
 import Search from './Search';
 import background from '../../assets/images/bg/background.png';
 import logo from '../../assets/images/logos/dominion-logo.png';
+import logoWithCountrySpace from '../../assets/images/logos/dominion-logo-country.png';
 import Dropdown from './Dropdown';
 
 import Modal from '../Modal';
@@ -79,6 +80,16 @@ const styles = theme => ({
     textDecoration: 'none',
     fontFamily: theme.typography.fontFamily,
     fontWeight: '600'
+  },
+  logoCountryName: {
+    position: 'absolute',
+    color: 'white',
+    top: '28px',
+    right: '33px',
+    margin: 0,
+    fontFamily: theme.typography.fontFamily,
+    fontWeight: 500,
+    fontSize: 'x-small'
   }
 });
 
@@ -111,6 +122,7 @@ class Header extends Component {
 
   render() {
     const { classes, width } = this.props;
+    const selectedCountry = window.SELECTED_COUNTRY || { name: 'country name' };
     return (
       <Grid sm={12} className={classes.root}>
         <nav className={classes.topMenu}>
@@ -130,7 +142,18 @@ class Header extends Component {
               alignItems="center"
               className={classes.topMenuLead}
             >
-              <img src={logo} alt="Dominion Logo" className={classes.img} />
+              <div style={{ position: 'relative' }}>
+                <img
+                  src={selectedCountry ? logoWithCountrySpace : logo}
+                  alt="Dominion Logo"
+                  className={classes.img}
+                />
+                {selectedCountry ? (
+                  <p className={classes.logoCountryName}>
+                    {selectedCountry.name.toUpperCase()}
+                  </p>
+                ) : null}
+              </div>
 
               {isWidthDown('sm', width) ? (
                 <Modal
