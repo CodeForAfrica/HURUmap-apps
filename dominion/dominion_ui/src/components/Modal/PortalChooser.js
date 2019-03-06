@@ -124,7 +124,7 @@ function PortalChooser({ classes, close, countries }) {
       >
         <Grid>
           <Typography variant="body2" className={classes.locationText}>
-            <GetLocation />
+            <GetLocation countries={countries} />
             <img
               src={geolocate}
               alt="Use your location"

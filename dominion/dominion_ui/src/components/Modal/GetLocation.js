@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import _ from 'lodash';
+
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = {
@@ -13,24 +15,6 @@ const styles = {
     }
   }
 };
-const countries = [
-  {
-    name: 'Kenya',
-    url: '/profiles/country-KE'
-  },
-  {
-    name: 'South Africa',
-    url: '/profiles/country-ZA'
-  },
-  {
-    name: 'Tanzania',
-    url: '/profiles/country-TZ'
-  },
-  {
-    name: 'Nigeria',
-    url: '/profiles/country-NG'
-  }
-];
 
 class GetLocation extends React.Component {
   constructor(props) {
@@ -43,6 +27,8 @@ class GetLocation extends React.Component {
   findLocation() {
     this.setState(() => ({ buttonText: 'Locating   .....' }));
 
+    const { countries } = this.props;
+
     const locateMe = json => {
       // If not really there
       if (json.results.length === 0) {
@@ -50,17 +36,18 @@ class GetLocation extends React.Component {
       } else {
         // Find country
         const addresses = json.results[0].address_components;
-        const countryfound = countries.find(countryObj => {
+        const countryfound = Object.values(countries).find(countryObj => {
           const addressObj = addresses.filter(
             address => address.long_name === countryObj.name
           );
           return addressObj.length > 0;
         });
         if (countryfound) {
-          window.location = countryfound.url;
+          const url = _.findIndex(countries, countryfound);
+          window.location = url;
         } else {
           this.setState(() => ({
-            buttonText: 'Oops.. Could not locate you.  .....'
+            buttonText: 'Oops.. Dominion has no instance for your country'
           }));
         }
       }
@@ -100,7 +87,8 @@ class GetLocation extends React.Component {
 }
 
 GetLocation.propTypes = {
-  classes: PropTypes.shape().isRequired
+  classes: PropTypes.shape().isRequired,
+  countries: PropTypes.isRequired
 };
 
 export default withStyles(styles)(GetLocation);
