@@ -5,4 +5,5 @@
 WAZIMAP_COUNTRY_CODE = '{{ HURUMAP.country_code }}';
 GOOGLE_GEOCODE_API_KEY = '{{ HURUMAP.google_geocode_api_key }}';
 var MAPIT = {{ HURUMAP.mapit|jsonify|safe }};
+var SUPPORTED_COUNTRIES = Object.values({{ HURUMAP.countries|jsonify|safe }});
 {% endblock settings_javascript %}
