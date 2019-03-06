@@ -47,6 +47,17 @@ const styles = theme => ({
 
 const maxResults = 6;
 
+function slugify(text) {
+  return text
+    .toString()
+    .toLowerCase()
+    .replace(/\s+/g, '-')
+    .replace(/[^\w-]+/g, '')
+    .replace(/--+/g, '-')
+    .replace(/^-+/, '')
+    .replace(/-+$/, '');
+}
+
 function SearchResults({ classes, results }) {
   return (
     <div className={classes.root}>
@@ -54,14 +65,21 @@ function SearchResults({ classes, results }) {
         <List className={classes.list}>
           {results.slice(0, maxResults).map(result => (
             <ListItem
+              button
+              disableGutters
               key={result.id}
               className={classes.listItem}
-              disableGutters
-              button
+              component="a"
+              href={
+                result.type.toLowerCase() === 'country'
+                  ? `/${slugify(result.name)}`
+                  : '/'
+              }
             >
               <Grid container direction="row" alignItems="baseline">
                 <p className={classes.level}>
-                  {result.type[0] + result.type.slice(1).toLowerCase()}
+                  {result.type[0].toUpperCase() +
+                    result.type.slice(1).toLowerCase()}
                 </p>
                 <p className={classes.name}>{result.name}</p>
               </Grid>
