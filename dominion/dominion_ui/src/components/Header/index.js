@@ -38,8 +38,8 @@ const styles = theme => ({
     flexWrap: 'nowrap',
     padding: 0,
     [theme.breakpoints.up('lg')]: {
-      paddingRight: '6rem',
-      paddingLeft: '8rem'
+      paddingRight: '7rem',
+      paddingLeft: '7rem'
     },
     [theme.breakpoints.down('sm')]: {
       flexDirection: 'column',
