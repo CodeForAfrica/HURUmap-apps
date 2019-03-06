@@ -42,6 +42,7 @@ const styles = theme => ({
   },
   body2: {
     color: 'white',
+    opacity: '0.5',
     textAlign: 'left',
     width: '50%',
     paddingTop: '2rem',
@@ -80,66 +81,48 @@ const styles = theme => ({
   }
 });
 
-class HeroDetail extends React.Component {
-  constructor(props) {
-    super(props);
+function HeroDetail({ classes, isDropdownOpen, handleToggle, countries }) {
+  return (
+    <div className={classes.heroDetailSection}>
+      <Typography variant="h1" className={classes.text}>
+        Discover the stories behind the data.
+      </Typography>
 
-    this.state = { choooserOpen: false };
-    this.handleToggle = this.handleToggle.bind(this);
-  }
-
-  handleToggle() {
-    this.setState(prevState => ({ choooserOpen: !prevState.choooserOpen }));
-  }
-
-  render() {
-    const { classes } = this.props;
-    const { choooserOpen } = this.state;
-    const { countries } = window.dominion_countries;
-
-    return (
-      <div className={classes.heroDetailSection}>
-        <Typography variant="h1" className={classes.text}>
-          Discover the stories behind the data.
-        </Typography>
-
-        <Typography variant="body1" className={classes.body2}>
-          Dominion makes data available to help add context and authority to
-          public discourse and policy-making on vital issues of land ownership.
-        </Typography>
-        <Grid item sm={12} style={{ paddingTop: '2rem' }}>
-          <Button
-            variant="outlined"
-            onClick={this.handleToggle}
-            color="white"
-            className={classes.button}
-          >
-            Select a Country
-          </Button>
-          <img
-            src={arrow}
-            alt="Select Country"
-            className={classes.buttonArrow}
-          />
-        </Grid>
-        <Modal
-          disableAutoFocus
-          hideBackdrop
-          disablePortal
-          open={choooserOpen}
-          onClose={this.handleToggle}
-          className={classes.modalContent}
-          aria-labelledby="portal-chooser"
+      <Typography variant="body1" className={classes.body2}>
+        Dominion makes data available to help add context and authority to
+        public discourse and policy-making on vital issues of land ownership.
+      </Typography>
+      <Grid item sm={12} style={{ paddingTop: '2rem' }}>
+        <Button
+          variant="outlined"
+          onClick={handleToggle}
+          color="white"
+          className={classes.button}
         >
-          <PortalChooser close={this.handleToggle} countries={countries} />
-        </Modal>
-      </div>
-    );
-  }
+          Select a Country
+        </Button>
+        <img src={arrow} alt="Select Country" className={classes.buttonArrow} />
+      </Grid>
+      <Modal
+        disableAutoFocus
+        hideBackdrop
+        disablePortal
+        open={isDropdownOpen}
+        onClose={handleToggle}
+        className={classes.modalContent}
+        aria-labelledby="portal-chooser"
+      >
+        <PortalChooser close={handleToggle} countries={countries} />
+      </Modal>
+    </div>
+  );
 }
 
 HeroDetail.propTypes = {
-  classes: PropTypes.isRequired
+  classes: PropTypes.isRequired,
+  handleToggle: PropTypes.func.isRequired,
+  countries: PropTypes.isRequired,
+  isDropdownOpen: PropTypes.bool.isRequired
 };
 
 export default withStyles(styles)(HeroDetail);

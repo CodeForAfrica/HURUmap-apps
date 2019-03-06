@@ -5,72 +5,66 @@ import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import herobg from '../../assets/images/bg/hero_bg.png';
-import background from '../../assets/images/bg/background.png';
 import smallscreenbackground from '../../assets/images/bg/smallscreen_background.png';
 import HeroMap from './HeroMap';
 import HeroDetail from './HeroDetail';
 
 const styles = theme => ({
-  root: {
-    flexGrow: 1,
-    backgroundImage: `url(${background})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover'
-  },
   heroContentGrid: {
     flexGrow: 1,
-    backgroundImage: `url(${herobg})`,
+    backgroundImage: `url(${smallscreenbackground})`,
     backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
-    backgroundSize: 'auto',
-    height: '100vh',
-    [theme.breakpoints.down('lg')]: {
-      height: '80vh'
+    backgroundPosition: 'right top',
+    height: 500,
+    margin: 0,
+    [theme.breakpoints.up('lg')]: {
+      height: '70vh',
+      backgroundImage: `url(${herobg})`,
+      backgroundPosition: 'center',
+      backgroundSize: 'auto',
+      paddingTop: theme.spacing.unit * 10
       //  paddingLeft: theme.spacing.unit * 14.5
-    },
-    [theme.breakpoints.down('sm')]: {
-      backgroundImage: `url(${smallscreenbackground})`,
-      backgroundPosition: 'right top',
-      height: 500,
-      margin: 0
     }
   },
   heroMapGrid: {
-    marginLeft: '-35rem'
+    marginTop: theme.spacing.unit * 4,
+    marginLeft: -theme.spacing.unit * 4
   },
-  heroContentDetail: {}
+  heroContentDetail: {
+    marginTop: -theme.spacing.unit * 5
+  }
 });
 
-function HomeHero({ classes }) {
+function HomeHero({ classes, isDropdownOpen, handleToggle, countries }) {
   return (
-    <Grid container className={classes.root}>
+    <Grid container direction="row" className={classes.heroContentGrid}>
+      <Grid item xs={12} sm={12} md={12} lg={8} xl={8}>
+        <HeroDetail
+          isDropdownOpen={isDropdownOpen}
+          handleToggle={handleToggle}
+          countries={countries}
+        />
+      </Grid>
       <Grid
-        container
-        direction="column"
-        justify="center"
-        className={classes.heroContentGrid}
+        item
+        xs={12}
+        sm={12}
+        md={12}
+        lg={4}
+        xl={4}
+        className={classes.heroMapGrid}
       >
-        <Grid item justify="center" xs={12} sm={12} md={12} lg={8} xl={8}>
-          <HeroDetail />
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          sm={12}
-          md={12}
-          lg={4}
-          xl={4}
-          className={classes.heroMapGrid}
-        >
-          <HeroMap />
-        </Grid>
+        <HeroMap />
       </Grid>
     </Grid>
   );
 }
 
 HomeHero.propTypes = {
-  classes: PropTypes.shape().isRequired
+  classes: PropTypes.shape().isRequired,
+  handleToggle: PropTypes.func.isRequired,
+  countries: PropTypes.isRequired,
+  isDropdownOpen: PropTypes.bool.isRequired
 };
 
 export default withStyles(styles)(HomeHero);

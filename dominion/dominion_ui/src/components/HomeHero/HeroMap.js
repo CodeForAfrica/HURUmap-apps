@@ -16,14 +16,14 @@ const styles = theme => ({
     color: 'white',
     textAlign: 'right',
     width: '100%',
-    padding: theme.spacing.unit * 5,
+    padding: theme.spacing.unit * 8,
     [theme.breakpoints.down('md')]: {
       display: 'none'
     }
   },
   mapImage: {
     display: 'block',
-    paddingRight: theme.spacing.unit * 4
+    paddingRight: theme.spacing.unit * 8
   },
   lineSeparator: {
     display: 'inline-block',

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import KeyboardArrowDown from '@material-ui/icons/KeyboardArrowDown';
@@ -9,14 +9,14 @@ import { Grid, MenuList, MenuItem, Modal, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import PortalChooser from '../Modal/PortalChooser';
 
-const countries = window.dominion_countries;
-
 const styles = theme => ({
   root: {
-    width: '150px',
-    [theme.breakpoints.down('sm')]: {
-      width: '100%',
-      paddingTop: '52px'
+    width: '100%',
+    paddingTop: '52px',
+    [theme.breakpoints.up('sm')]: {
+      width: theme.spacing.unit * 20,
+      marginRight: theme.spacing.unit * 12,
+      paddingTop: 0
     }
   },
   button: {
@@ -67,86 +67,73 @@ const styles = theme => ({
     fontFamily: theme.typography.fontHeading,
     fontSize: theme.spacing.unit * 3.7,
     '&:hover': {
-      color: '#e7e452'
+      color: '#e7e452',
+      textDecoration: 'none'
     }
   }
 });
 
-class Dropdown extends Component {
-  constructor(props) {
-    super(props);
+function CountryMenu({ classes, countries }) {
+  return (
+    <React.Fragment>
+      {Object.keys(countries).map(country => (
+        <MenuItem item className={classes.menuListItem}>
+          <a href={`/${country}`} className={classes.link}>
+            {countries[country].name}
+          </a>
+        </MenuItem>
+      ))}
+    </React.Fragment>
+  );
+}
+CountryMenu.propTypes = {
+  classes: PropTypes.isRequired,
+  countries: PropTypes.isRequired
+};
 
-    this.state = { isDropdownOpen: false };
-    this.handleToggle = this.handleToggle.bind(this);
-  }
-
-  handleToggle() {
-    this.setState(prevState => ({ isDropdownOpen: !prevState.isDropdownOpen }));
-  }
-
-  renderCountryMenu() {
-    const { classes } = this.props;
-    return (
-      <React.Fragment>
-        {countries.map(country => (
-          <MenuItem item className={classes.menuListItem}>
-            <a href={`/profiles/${country.geoid}`} className={classes.link}>
-              {country.name}
-            </a>
-          </MenuItem>
-        ))}
-      </React.Fragment>
-    );
-  }
-
-  render() {
-    const { classes, width } = this.props;
-    const { isDropdownOpen } = this.state;
-
-    return (
-      <Grid container className={classes.root}>
-        <Button
-          disableRipple
-          className={classes.button}
-          onClick={this.handleToggle}
-        >
-          <span className={classes.p}>Countries</span>
-          {isDropdownOpen ? (
-            <KeyboardArrowUp
-              fontSize="large"
-              className={classes.KeyboardArrowDown}
-            />
-          ) : (
-            <KeyboardArrowDown
-              fontSize="large"
-              className={classes.KeyboardArrowDown}
-            />
-          )}
-        </Button>
-        {isWidthDown('sm', width) && isDropdownOpen ? (
-          <MenuList sm={4} className={classes.menuList}>
-            {this.renderCountryMenu()}
-          </MenuList>
+function Dropdown({ classes, width, isDropdownOpen, handleToggle, countries }) {
+  return (
+    <Grid container className={classes.root}>
+      <Button disableRipple className={classes.button} onClick={handleToggle}>
+        <span className={classes.p}>Countries</span>
+        {isDropdownOpen ? (
+          <KeyboardArrowUp
+            fontSize="large"
+            className={classes.KeyboardArrowDown}
+          />
         ) : (
-          <Modal
-            disableAutoFocus
-            hideBackdrop
-            open={isDropdownOpen}
-            onClose={this.handleToggle}
-            className={classes.modalContent}
-            aria-labelledby="portal-chooser-nav"
-          >
-            <PortalChooser countries={countries} close={this.handleToggle} />
-          </Modal>
+          <KeyboardArrowDown
+            fontSize="large"
+            className={classes.KeyboardArrowDown}
+          />
         )}
-      </Grid>
-    );
-  }
+      </Button>
+      {isWidthDown('sm', width) && isDropdownOpen ? (
+        <MenuList sm={4} className={classes.menuList}>
+          <CountryMenu countries={countries} classes={classes} />
+        </MenuList>
+      ) : (
+        <Modal
+          disableAutoFocus
+          hideBackdrop
+          open={isDropdownOpen}
+          onClose={handleToggle}
+          className={classes.modalContent}
+          aria-labelledby="portal-chooser-nav"
+        >
+          <PortalChooser countries={countries} close={handleToggle} />
+        </Modal>
+      )}
+    </Grid>
+  );
 }
 
 Dropdown.propTypes = {
   classes: PropTypes.isRequired,
-  width: PropTypes.isRequired
+  width: PropTypes.isRequired,
+  handleToggle: PropTypes.func.isRequired,
+  countries: PropTypes.shape().isRequired,
+  isDropdownOpen: PropTypes.bool.isRequired
 };
 
 export default withWidth()(withStyles(styles)(Dropdown));

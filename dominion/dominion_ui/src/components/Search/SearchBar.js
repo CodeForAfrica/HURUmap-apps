@@ -26,7 +26,8 @@ const styles = theme => ({
     }
   },
   iconButton: {
-    padding: 0
+    padding: 0,
+    width: '15%'
   },
   resultsContainer: {
     [theme.breakpoints.up('sm')]: {
@@ -70,4 +71,4 @@ SearchBar.propTypes = {
   searchTerm: PropTypes.isRequired
 };
 
-export default withStyles(styles)(withWidth()(SearchBar));
+export default withWidth()(withStyles(styles)(SearchBar));

@@ -26,8 +26,7 @@ const styles = theme => ({
     marginTop: theme.spacing.unit * 20,
     marginLeft: theme.spacing.unit * 4,
     [theme.breakpoints.down('sm')]: {
-      marginTop: -theme.spacing.unit * 2,
-      marginLeft: 0
+      marginTop: -theme.spacing.unit * 2
     }
   },
   locationText: {
@@ -42,6 +41,7 @@ const styles = theme => ({
     marginLeft: theme.spacing.unit * 10
   },
   listIndex: {
+    paddingRight: theme.spacing.unit * 8,
     [theme.breakpoints.down('sm')]: {
       display: 'none'
     }
@@ -81,6 +81,7 @@ const styles = theme => ({
     lineHeight: 1.3,
     padding: theme.spacing.unit * 3,
     fontSize: 50,
+    fontFamily: theme.typography.fontHeading,
     letterSpacing: 1.4,
     textDecoration: 'none',
     visibility: 'hidden',
@@ -155,16 +156,13 @@ function PortalChooser({ classes, close, countries }) {
         xl={7}
       >
         <MenuList className={classes.countryList}>
-          {countries.map((country, index) => (
+          {Object.keys(countries).map((country, index) => (
             <MenuItem button className={classes.listItem}>
               <span className={classes.listIndex}>
                 <NumberFormat value={index + 1} displayType="text" prefix="0" />
               </span>
-              <a
-                className={classes.listItemLink}
-                href={`/profiles/${country.geoid}`}
-              >
-                &nbsp;&nbsp;&nbsp; {country.name}
+              <a className={classes.listItemLink} href={`/${country}`}>
+                {countries[country].name}
               </a>
             </MenuItem>
           ))}
