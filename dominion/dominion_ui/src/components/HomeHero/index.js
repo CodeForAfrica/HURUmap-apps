@@ -17,18 +17,24 @@ const styles = theme => ({
     backgroundPosition: 'right top',
     height: 500,
     margin: 0,
-    [theme.breakpoints.up('lg')]: {
-      height: '70vh',
+    [theme.breakpoints.up('md')]: {
       backgroundImage: `url(${herobg})`,
       backgroundPosition: 'center',
       backgroundSize: 'auto',
+      height: '70vh'
+    },
+    [theme.breakpoints.up('lg')]: {
       paddingTop: theme.spacing.unit * 10
       //  paddingLeft: theme.spacing.unit * 14.5
     }
   },
   heroMapGrid: {
-    marginTop: theme.spacing.unit * 4,
-    marginLeft: -theme.spacing.unit * 4
+    marginTop: theme.spacing.unit * 8,
+    marginLeft: 0,
+    [theme.breakpoints.up('md')]: {
+      marginTop: theme.spacing.unit * 4,
+      marginLeft: -theme.spacing.unit * 4
+    }
   },
   heroContentDetail: {
     marginTop: -theme.spacing.unit * 5
@@ -38,7 +44,7 @@ const styles = theme => ({
 function HomeHero({ classes, isDropdownOpen, handleToggle, countries }) {
   return (
     <Grid container direction="row" className={classes.heroContentGrid}>
-      <Grid item xs={12} sm={12} md={12} lg={8} xl={8}>
+      <Grid item xs={12} sm={12} md={8} lg={8} xl={8}>
         <HeroDetail
           isDropdownOpen={isDropdownOpen}
           handleToggle={handleToggle}
@@ -49,7 +55,7 @@ function HomeHero({ classes, isDropdownOpen, handleToggle, countries }) {
         item
         xs={12}
         sm={12}
-        md={12}
+        md={4}
         lg={4}
         xl={4}
         className={classes.heroMapGrid}

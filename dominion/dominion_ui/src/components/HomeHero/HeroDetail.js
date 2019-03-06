@@ -11,43 +11,43 @@ const styles = theme => ({
   heroDetailSection: {
     color: 'white',
     width: '90%',
-    padding: theme.spacing.unit * 3,
+    position: 'relative',
+    margin: '2rem',
+    [theme.breakpoints.up('sm')]: {
+      padding: theme.spacing.unit * 3
+    },
+    [theme.breakpoints.up('md')]: {
+      margin: '2rem',
+      padding: theme.spacing.unit * 4,
+      marginTop: 0
+    },
     [theme.breakpoints.up('lg')]: {
+      padding: 0,
       paddingLeft: theme.spacing.unit * 25
-    },
-    [theme.breakpoints.down('md')]: {
-      margin: '2rem',
-      padding: theme.spacing.unit * 10,
-      marginTop: 0
-    },
-    [theme.breakpoints.down('sm')]: {
-      position: 'absolute',
-      margin: '2rem',
-      padding: theme.spacing.unit,
-      marginTop: 0
     }
   },
   text: {
     color: 'white',
-    paddingTop: theme.spacing.unit * 6,
-    width: '90%',
-    [theme.breakpoints.up('lg')]: {
-      paddingTop: theme.spacing.unit * 4
-    },
-    [theme.breakpoints.down('sm')]: {
-      fontSize: '3rem',
-      paddingTop: 0,
+    paddingTop: theme.spacing.unit,
+    fontSize: '3rem',
+    width: '80%',
+    [theme.breakpoints.up('md')]: {
+      fontSize: '5rem',
       width: '60%'
+    },
+    [theme.breakpoints.up('lg')]: {
+      paddingTop: theme.spacing.unit * 4,
+      width: '80%'
     }
   },
   body2: {
     color: 'white',
     opacity: '0.5',
     textAlign: 'left',
-    width: '50%',
+    width: '80%',
     paddingTop: '2rem',
-    [theme.breakpoints.down('md')]: {
-      width: '100%'
+    [theme.breakpoints.up('md')]: {
+      width: '50%'
     }
   },
   button: {
@@ -55,23 +55,25 @@ const styles = theme => ({
     fontWeight: 800,
     fontSize: theme.typography.subtitle1.fontSize,
     color: 'white',
+    height: '4rem',
     border: '2px solid white',
-    [theme.breakpoints.up('lg')]: {
-      height: '4rem',
-      paddingLeft: '4rem',
-      paddingRight: '4rem'
+    width: '80%',
+    paddingLeft: '4rem',
+    paddingRight: '4rem',
+    [theme.breakpoints.up('md')]: {
+      width: '50%',
+      paddingLeft: '1rem',
+      paddingRight: '1rem'
     },
-    [theme.breakpoints.down('md')]: {
-      height: '4rem',
-      width: '80%',
-      paddingLeft: '4rem',
-      paddingRight: '4rem'
+    [theme.breakpoints.up('lg')]: {
+      width: '30%'
     }
   },
   buttonArrow: {
     marginLeft: -theme.spacing.unit * 4,
-    [theme.breakpoints.down('md')]: {
-      display: 'none'
+    display: 'none',
+    [theme.breakpoints.up('md')]: {
+      display: 'inline-block'
     }
   },
   modalContent: {

@@ -17,8 +17,9 @@ const styles = theme => ({
     textAlign: 'right',
     width: '100%',
     padding: theme.spacing.unit * 8,
-    [theme.breakpoints.down('md')]: {
-      display: 'none'
+    display: 'none',
+    [theme.breakpoints.up('md')]: {
+      display: 'block'
     }
   },
   mapImage: {
