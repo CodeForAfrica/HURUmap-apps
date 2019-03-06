@@ -14,10 +14,7 @@ const styles = theme => ({
       width: '19.875rem'
     },
     [theme.breakpoints.up('lg')]: {
-      width: '40.5rem'
-    },
-    [theme.breakpoints.up('xl')]: {
-      width: '26.5rem'
+      width: '26.25rem'
     }
   },
   img: {
@@ -30,12 +27,12 @@ const styles = theme => ({
       marginBottom: theme.spacing.unit * -0.5
     },
     [theme.breakpoints.up('lg')]: {
-      width: '25.5rem'
+      width: '26.25rem'
     }
   },
   highlight: {
-    width: '8rem',
-    height: '1.3rem',
+    width: '6.875rem', // 110px / 16
+    height: '1.25rem', // 20px
     background: '#e7e452'
   }
 });

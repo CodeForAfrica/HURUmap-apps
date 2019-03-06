@@ -1,0 +1,23 @@
+{% extends 'homepage.html' %}{% load sass_tags humanize partition static %}
+
+{% block head_title %}
+{{ HURUMAP.name }}: Who owns land in {{country.name}}
+{% endblock %}
+
+{% block head_meta_description %}
+{{ HURUMAP.name }} provides useful facts and data about land ownership in {{country.name}}.
+Compare places using tables and maps, download data, and embed charts on your site.
+{% endblock %}
+
+{% block header %}
+    {% include 'blocks/country_header.html' %}
+{% endblock header %}
+{% block content_container %}
+  <div id="dominionCountryHero"></div>
+  <div id="dominionCountryAbout"></div>
+  <div id="dominionHowItWorks"></div>
+  <div id="dominionVideo"></div>
+  {% include 'blocks/showcase.html' %}
+  {% include 'blocks/country_partners.html' %}
+  {% include 'blocks/partners.html' %}
+{% endblock content_container %}

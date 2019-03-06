@@ -11,13 +11,13 @@ import Land from './Land';
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    padding: '2rem',
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
+    padding: '5.25rem 0'
   },
   header: {
     order: 2,
     width: '100%',
-    margin: '2rem 0',
+    margin: '1.875rem 1.875rem 1.875rem 1.375rem', // 30px / 16
     [theme.breakpoints.up('md')]: {
       order: 1,
       width: 'auto',
@@ -26,14 +26,22 @@ const styles = theme => ({
   },
   info: {
     order: 3,
+    width: '100%',
+    margin: '0 1.875rem 0 1.375rem',
     [theme.breakpoints.up('md')]: {
-      order: 2
+      order: 2,
+      width: 'auto',
+      margin: 0
     }
   },
   land: {
     order: 1,
     [theme.breakpoints.up('md')]: {
-      order: 3
+      order: 3,
+      width: 'auto'
+    },
+    [theme.breakpoints.up('lg')]: {
+      marginLeft: '5.875rem' // 94px / 16
     }
   }
 });

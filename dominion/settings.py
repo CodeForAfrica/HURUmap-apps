@@ -65,6 +65,19 @@ HURUMAP['ga_tracking_id'] = 'UA-44795600-21'
 
 HURUMAP['country_code'] = 'ZA'
 HURUMAP['country_name'] = 'South Africa'
+
+# Multi-country support (complements `country_code/name` settings)
+HURUMAP['countries'] = {
+    'kenya': {
+        'code': 'KE',
+        'name': 'Kenya',
+    },
+    'south-africa': {
+        'code': 'ZA',
+        'name': 'South Africa',
+    },
+}
+
 HURUMAP['comparative_levels'] = ['district', 'province', 'country']
 
 hurumap_profile = os.environ.get('HURUMAP_PROFILE', 'land')
