@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Grid, Typography } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import Hero, {
@@ -12,15 +12,12 @@ import Hero, {
 } from './Hero';
 
 import herobg from '../../assets/images/bg/hero_bg.png';
-import map from '../../assets/images/bg/hero_map.png';
 import smallscreenbackground from '../../assets/images/bg/smallscreen_background.png';
 
 import PortalChooser from '../Modal/PortalChooser';
+import HomeHeroMap from './HomeHeroMap';
 
 const styles = theme => ({
-  root: {
-    flexGrow: 1
-  },
   heroContentGrid: {
     flexGrow: 1,
     backgroundImage: `url(${herobg})`,
@@ -33,24 +30,6 @@ const styles = theme => ({
       backgroundImage: `url(${smallscreenbackground})`,
       backgroundPosition: 'right top'
     }
-  },
-  verticalAlignText: {
-    color: 'white',
-    writingMode: 'vertical-lr',
-    textOrientation: ' sideways-right',
-    marginLeft: '10px'
-  },
-  mapSection: {
-    color: 'white',
-    //    paddingLeft: '5rem',
-    [theme.breakpoints.down('sm')]: {
-      display: 'none'
-    }
-  },
-  modalContent: {
-    margin: 'auto',
-    top: theme.spacing.unit * 10,
-    height: 'auto'
   }
 });
 
@@ -79,34 +58,7 @@ function HomeHero({ classes }) {
             )}
           />
         </HeroTitleGrid>
-        <Grid
-          sm={12}
-          md={4}
-          lg={4}
-          xl={5}
-          item
-          container
-          direction="row"
-          justify="flex-end"
-          alignItems="center"
-          className={classes.mapSection}
-        >
-          <img src={map} alt="Country Map" />
-          <Typography
-            variant="fontSmallDefault"
-            className={classes.verticalAlignText}
-          >
-            South Africa &nbsp;&nbsp;
-            <div
-              style={{
-                display: 'inline-block',
-                borderLeft: '1px solid #fff'
-              }}
-            >
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{' '}
-            </div>
-          </Typography>
-        </Grid>
+        <HomeHeroMap />
       </Grid>
     </Hero>
   );

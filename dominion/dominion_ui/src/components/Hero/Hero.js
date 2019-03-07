@@ -19,14 +19,11 @@ const styles = theme => ({
   },
   heroContentGrid: {
     flexGrow: 1,
-    [theme.breakpoints.up('lg')]: {
-      height: '100vh'
-    },
-    [theme.breakpoints.up('md')]: {
-      height: '80vh'
-    },
     [theme.breakpoints.down('sm')]: {
       margin: 0
+    },
+    [theme.breakpoints.up('md')]: {
+      height: '70vh'
     }
   },
   titleTextGrid: {
