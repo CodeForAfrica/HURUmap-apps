@@ -16,7 +16,7 @@ const styles = theme => ({
     paddingTop: '52px',
     [theme.breakpoints.up('sm')]: {
       width: theme.spacing.unit * 20,
-      marginRight: theme.spacing.unit * 12,
+      marginRight: theme.spacing.unit * 10,
       paddingTop: 0
     }
   },

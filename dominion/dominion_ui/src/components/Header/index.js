@@ -22,12 +22,12 @@ const styles = theme => ({
     flexGrow: 1
   },
   topMenu: {
-    padding: '1.25rem 9.375rem',
-    [theme.breakpoints.down('md')]: {
+    padding: '1.875rem',
+    [theme.breakpoints.up('md')]: {
       padding: '1.875rem 3.125rem'
     },
-    [theme.breakpoints.down('sm')]: {
-      padding: '1.875rem'
+    [theme.breakpoints.up('lg')]: {
+      padding: '3.125rem 9.375rem'
     }
   },
   topMenuContent: {
@@ -110,9 +110,9 @@ class Header extends Component {
 
     return (
       <React.Fragment>
-        <Search sm={12}>
-          <Dropdown sm={12} countries={countries} />
-          <MenuList sm={4} className={classes.menuList}>
+        <Search>
+          <Dropdown countries={countries} />
+          <MenuList className={classes.menuList}>
             {['About', 'Showcase', 'Resources', 'Contact'].map(menuTitle => (
               <MenuItem item className={classes.menuListItem}>
                 <Link to="/" className={classes.link} variant="body1">
@@ -150,7 +150,7 @@ class Header extends Component {
               alignItems="center"
               className={classes.topMenuLead}
             >
-              <div style={{ position: 'relative' }}>
+              <div style={{ position: 'relative', marginRight: '50px' }}>
                 <img
                   src={selectedCountry ? logoWithCountrySpace : logo}
                   alt="Dominion Logo"

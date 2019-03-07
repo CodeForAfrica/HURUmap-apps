@@ -18,19 +18,16 @@ import createAPI from '../../api';
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    padding: theme.spacing.unit * 4,
     backgroundImage: `url(${background})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
-    [theme.breakpoints.up('lg')]: {
-      paddingTop: '100px',
-      paddingLeft: '200px',
-      paddingRight: '200px'
-    },
     [theme.breakpoints.up('md')]: {
       paddingTop: '50px',
-      paddingLeft: '185px',
-      paddingRight: '185px'
+      paddingLeft: '100px',
+      paddingRight: '100px'
+    },
+    [theme.breakpoints.up('lg')]: {
+      paddingTop: '100px'
     }
   },
   searchBar: {

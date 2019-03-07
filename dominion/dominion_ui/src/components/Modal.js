@@ -7,7 +7,7 @@ import { Modal as MaterialModal, IconButton } from '@material-ui/core';
 
 import background from '../assets/images/bg/background.png';
 
-const styles = {
+const styles = theme => ({
   root: {
     flexGrow: 1,
     padding: 0,
@@ -20,12 +20,18 @@ const styles = {
     outline: 'none',
     height: 'auto',
     width: '100vw',
-    padding: '0 1.875rem'
+    padding: '0 1.875rem',
+    [theme.breakpoints.up('md')]: {
+      padding: '0 3.125rem'
+    },
+    [theme.breakpoints.up('lg')]: {
+      padding: '0 9.375rem'
+    }
   },
   icon: {
     padding: 0
   }
-};
+});
 
 class Modal extends Component {
   constructor(props) {
