@@ -84,17 +84,17 @@ const styles = theme => ({
     '&:hover': {
       color: '#e7e452',
       textDecoration: 'none'
-    },
-    logoCountryName: {
-      position: 'absolute',
-      color: 'white',
-      top: '1.75rem',
-      left: '3.1875rem',
-      margin: 0,
-      fontFamily: theme.typography.fontFamily,
-      fontWeight: 500,
-      fontSize: 'x-small'
     }
+  },
+  logoCountryName: {
+    position: 'absolute',
+    color: 'white',
+    top: '1.75rem',
+    left: '3.625rem',
+    margin: 0,
+    fontFamily: theme.typography.fontFamily,
+    fontWeight: 500,
+    fontSize: 'x-small'
   }
 });
 
