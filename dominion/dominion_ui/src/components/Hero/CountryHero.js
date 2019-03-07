@@ -30,7 +30,7 @@ const styles = theme => ({
       maxWidth: '829px !important'
     },
     [theme.breakpoints.up('lg')]: {
-      right: '150px'
+      right: '9.375rem'
     }
   }
 });
@@ -38,7 +38,7 @@ const styles = theme => ({
 class CountryHero extends React.Component {
   render() {
     const { classes } = this.props;
-    const selectedCountry = window.SELECTED_COUNTRY || {};
+    const selectedCountry = window.selected_country || {};
     return (
       <Hero>
         <HeroTitleGrid>

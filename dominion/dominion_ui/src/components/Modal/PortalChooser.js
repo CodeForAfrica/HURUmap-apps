@@ -4,30 +4,27 @@ import NumberFormat from 'react-number-format';
 
 import { Grid, Typography, MenuList, MenuItem } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-import background from '../../assets/images/bg/background.png';
 import geolocate from '../../assets/images/icons/shape.svg';
 import cross from '../../assets/images/icons/close.svg';
 import GetLocation from './GetLocation';
+
+import Modal from '../Modal';
 
 const styles = theme => ({
   grid: {
     flexGrow: 1,
     width: '100vw',
     color: 'white',
-    height: 600,
-    backgroundImage: `url(${background})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
+    height: 700,
     [theme.breakpoints.down('sm')]: {
-      height: 450
+      height: 500
     }
   },
   countryList: {
-    marginTop: theme.spacing.unit * 10,
+    marginTop: theme.spacing.unit * 20,
     marginLeft: theme.spacing.unit * 4,
     [theme.breakpoints.down('sm')]: {
-      marginTop: -theme.spacing.unit * 2,
-      marginLeft: 0
+      marginTop: -theme.spacing.unit * 2
     }
   },
   locationText: {
@@ -42,6 +39,7 @@ const styles = theme => ({
     marginLeft: theme.spacing.unit * 10
   },
   listIndex: {
+    paddingRight: theme.spacing.unit * 8,
     [theme.breakpoints.down('sm')]: {
       display: 'none'
     }
@@ -81,6 +79,7 @@ const styles = theme => ({
     lineHeight: 1.3,
     padding: theme.spacing.unit * 3,
     fontSize: 50,
+    fontFamily: theme.typography.fontHeading,
     letterSpacing: 1.4,
     textDecoration: 'none',
     visibility: 'hidden',
@@ -106,8 +105,8 @@ const styles = theme => ({
   }
 });
 
-function PortalChooser({ classes, close }) {
-  const supportedCountries = window.SUPPORTED_COUNTRIES;
+function ContentElement({ classes, toggleModal }) {
+  const countries = Object.values(window.dominion_countries);
   return (
     <Grid container direction="row" className={classes.grid}>
       <Grid
@@ -124,7 +123,7 @@ function PortalChooser({ classes, close }) {
       >
         <Grid>
           <Typography variant="body2" className={classes.locationText}>
-            <GetLocation />
+            <GetLocation countries={countries} />
             <img
               src={geolocate}
               alt="Use your location"
@@ -138,8 +137,8 @@ function PortalChooser({ classes, close }) {
           <div
             role="button"
             tabIndex="0"
-            onClick={close}
-            onKeyPress={close}
+            onClick={toggleModal}
+            onKeyPress={toggleModal}
             className={classes.closeText}
           >
             <span className={classes.closeSpan}>Close</span>
@@ -156,13 +155,13 @@ function PortalChooser({ classes, close }) {
         xl={7}
       >
         <MenuList className={classes.countryList}>
-          {supportedCountries.map((country, index) => (
+          {Object.keys(countries).map((country, index) => (
             <MenuItem button className={classes.listItem}>
               <span className={classes.listIndex}>
                 <NumberFormat value={index + 1} displayType="text" prefix="0" />
               </span>
-              <a className={classes.listItemLink} href={`/${country.slug}`}>
-                &nbsp;&nbsp;&nbsp; {country.name}
+              <a className={classes.listItemLink} href={`/${country}`}>
+                {countries[country].name}
               </a>
             </MenuItem>
           ))}
@@ -172,9 +171,23 @@ function PortalChooser({ classes, close }) {
   );
 }
 
-PortalChooser.propTypes = {
+ContentElement.propTypes = {
   classes: PropTypes.shape().isRequired,
-  close: PropTypes.func.isRequired
+  toggleModal: PropTypes.isRequired
 };
 
-export default withStyles(styles)(PortalChooser);
+const Content = withStyles(styles)(ContentElement);
+
+function PortalChooser({ activator }) {
+  return (
+    <Modal activator={activator}>
+      <Content />
+    </Modal>
+  );
+}
+
+PortalChooser.propTypes = {
+  activator: PropTypes.isRequired
+};
+
+export default PortalChooser;

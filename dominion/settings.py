@@ -62,6 +62,7 @@ HURUMAP['email'] = 'info@codeforafrica.org'
 HURUMAP['github_url'] = 'https://github.com/CodeForAfrica/HURUmap-apps'
 
 HURUMAP['ga_tracking_id'] = 'UA-44795600-21'
+HURUMAP['google_geocode_api_key'] = os.environ.get('GOOGLE_GEOCODE_API_KEY')
 
 HURUMAP['country_code'] = 'ZA'
 HURUMAP['country_name'] = 'South Africa'
@@ -72,15 +73,13 @@ HURUMAP['countries'] = {
         'code': 'KE',
         'name': 'Kenya',
         'centre': [-0.0236, 37.9062],
-        'zoom': 6,
-        'slug': 'kenya'
+        'zoom': 6
     },
     'south-africa': {
         'code': 'ZA',
         'name': 'South Africa',
         'centre': [-30.5595, 22.9375],
-        'zoom': 5,
-        'slug': 'south-africa'
+        'zoom': 5
     },
 }
 

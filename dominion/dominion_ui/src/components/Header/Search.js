@@ -60,8 +60,15 @@ class Search extends Component {
 
   async componentDidMount() {
     const api = createAPI();
-    // South Africa id: 5656
-    const geography = await api.getGeography(5656);
+    let geography = [];
+    if (window.selected_country) {
+      geography = await api.getGeography(5656);
+    } else {
+      geography = Object.values(window.dominion_countries).map(country => ({
+        name: country.name,
+        type: 'country'
+      }));
+    }
 
     this.setState({
       geography

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Grid, Typography, Modal } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import Hero, {
@@ -54,85 +54,62 @@ const styles = theme => ({
   }
 });
 
-class HomeHero extends React.Component {
-  constructor(props) {
-    super(props);
+function HomeHero({ classes }) {
+  return (
+    <Hero>
+      <Grid
+        container
+        direction="row"
+        justify="space-between"
+        alignItems="center"
+        className={classes.heroContentGrid}
+      >
+        <HeroTitleGrid>
+          <HeroTitle>Discover the stories behind the data.</HeroTitle>
 
-    this.state = { choooserOpen: false };
-    this.handleToggle = this.handleToggle.bind(this);
-  }
+          <HeroDescription>
+            Dominion makes data available to help add context and authority to
+            public discourse and policy-making on vital issues of land
+            ownership.
+          </HeroDescription>
 
-  handleToggle() {
-    this.setState(prevState => ({ choooserOpen: !prevState.choooserOpen }));
-  }
-
-  render() {
-    const { classes } = this.props;
-    const { choooserOpen } = this.state;
-
-    return (
-      <Hero>
+          <PortalChooser
+            activator={({ handleToggle }) => (
+              <HeroButton onClick={handleToggle}>Select a Country</HeroButton>
+            )}
+          />
+        </HeroTitleGrid>
         <Grid
+          sm={12}
+          md={4}
+          lg={4}
+          xl={5}
+          item
           container
           direction="row"
-          justify="space-between"
+          justify="flex-end"
           alignItems="center"
-          className={classes.heroContentGrid}
+          className={classes.mapSection}
         >
-          <HeroTitleGrid>
-            <HeroTitle>Discover the stories behind the data.</HeroTitle>
-
-            <HeroDescription>
-              Dominion makes data available to help add context and authority to
-              public discourse and policy-making on vital issues of land
-              ownership.
-            </HeroDescription>
-            <HeroButton onClick={this.handleToggle}>
-              Select a Country
-            </HeroButton>
-          </HeroTitleGrid>
-          <Grid
-            sm={12}
-            md={4}
-            lg={4}
-            xl={5}
-            item
-            container
-            direction="row"
-            justify="flex-end"
-            alignItems="center"
-            className={classes.mapSection}
+          <img src={map} alt="Country Map" />
+          <Typography
+            variant="fontSmallDefault"
+            className={classes.verticalAlignText}
           >
-            <img src={map} alt="Country Map" />
-            <Typography
-              variant="fontSmallDefault"
-              className={classes.verticalAlignText}
+            South Africa &nbsp;&nbsp;
+            <div
+              style={{
+                display: 'inline-block',
+                borderLeft: '1px solid #fff'
+              }}
             >
-              South Africa &nbsp;&nbsp;
-              <div
-                style={{
-                  display: 'inline-block',
-                  borderLeft: '1px solid #fff'
-                }}
-              >
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{' '}
-              </div>
-            </Typography>
-          </Grid>
-          <Modal
-            disableAutoFocus
-            hideBackdrop
-            open={choooserOpen}
-            onClose={this.handleToggle}
-            className={classes.modalContent}
-            aria-labelledby="portal-chooser"
-          >
-            <PortalChooser close={this.handleToggle} />
-          </Modal>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{' '}
+            </div>
+          </Typography>
         </Grid>
-      </Hero>
-    );
-  }
+      </Grid>
+    </Hero>
+  );
 }
 
 HomeHero.propTypes = {

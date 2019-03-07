@@ -7,7 +7,7 @@ import { Modal as MaterialModal, IconButton } from '@material-ui/core';
 
 import background from '../assets/images/bg/background.png';
 
-const styles = theme => ({
+const styles = {
   root: {
     flexGrow: 1,
     padding: 0,
@@ -17,15 +17,15 @@ const styles = theme => ({
     top: '100px'
   },
   modal: {
-    padding: theme.spacing.unit * 4,
     outline: 'none',
     height: 'auto',
-    width: '100vw'
+    width: '100vw',
+    padding: '0 1.875rem'
   },
   icon: {
     padding: 0
   }
-});
+};
 
 class Modal extends Component {
   constructor(props) {
@@ -45,6 +45,7 @@ class Modal extends Component {
   render() {
     const {
       classes,
+      activator,
       activatorLabel,
       activatorIconOpen,
       activatorIconClose,
@@ -54,17 +55,22 @@ class Modal extends Component {
 
     return (
       <React.Fragment>
-        <IconButton
-          disableRipple
-          aria-label={activatorLabel}
-          className={classes.icon}
-          onClick={this.handleToggle}
-        >
-          <img
-            src={isOpen ? activatorIconClose : activatorIconOpen}
-            alt={activatorLabel}
-          />
-        </IconButton>
+        {activator ? (
+          activator({ handleToggle: this.handleToggle, isModalOpen: isOpen })
+        ) : (
+          <IconButton
+            disableRipple
+            aria-label={activatorLabel}
+            className={classes.icon}
+            onClick={this.handleToggle}
+          >
+            <img
+              src={isOpen ? activatorIconClose : activatorIconOpen}
+              alt={activatorLabel}
+            />
+          </IconButton>
+        )}
+
         <MaterialModal
           disableAutoFocus
           hideBackdrop
@@ -74,7 +80,10 @@ class Modal extends Component {
           className={classes.root}
         >
           <div className={classes.modal}>
-            {React.cloneElement(children, { toggleModal: this.handleToggle })}
+            {React.cloneElement(children, {
+              toggleModal: this.handleToggle,
+              isModalOpen: isOpen
+            })}
           </div>
         </MaterialModal>
       </React.Fragment>
@@ -84,10 +93,15 @@ class Modal extends Component {
 
 Modal.propTypes = {
   classes: PropTypes.shape().isRequired,
+  activator: PropTypes.func,
   activatorLabel: PropTypes.isRequired,
   activatorIconOpen: PropTypes.isRequired,
   activatorIconClose: PropTypes.isRequired,
   children: PropTypes.isRequired
+};
+
+Modal.defaultProps = {
+  activator: null
 };
 
 export default withStyles(styles)(Modal);

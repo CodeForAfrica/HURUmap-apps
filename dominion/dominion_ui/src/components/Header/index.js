@@ -6,7 +6,6 @@ import { withStyles } from '@material-ui/core/styles';
 
 import withWidth, { isWidthDown } from '@material-ui/core/withWidth';
 import Search from './Search';
-import background from '../../assets/images/bg/background.png';
 import logo from '../../assets/images/logos/dominion-logo.png';
 import logoWithCountrySpace from '../../assets/images/logos/dominion-logo-country.png';
 import Dropdown from './Dropdown';
@@ -16,20 +15,19 @@ import Modal from '../Modal';
 import menu from '../../assets/images/icons/menu.svg';
 import back from '../../assets/images/icons/back.svg';
 
+const countries = window.dominion_countries;
+
 const styles = theme => ({
   root: {
-    flexGrow: 1,
-    backgroundImage: `url(${background})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover'
+    flexGrow: 1
   },
   topMenu: {
-    padding: '20px 150px',
+    padding: '1.25rem 9.375rem',
     [theme.breakpoints.down('md')]: {
-      padding: '20px 50px'
+      padding: '1.875rem 3.125rem'
     },
     [theme.breakpoints.down('sm')]: {
-      padding: '30px'
+      padding: '1.875rem'
     }
   },
   topMenuContent: {
@@ -37,10 +35,11 @@ const styles = theme => ({
   },
   topMenuNav: {
     flexWrap: 'nowrap',
+    padding: 0,
     [theme.breakpoints.down('sm')]: {
       flexDirection: 'column',
       position: 'absolute',
-      top: '100px',
+      top: '6.25rem',
       left: 0,
       display: 'none'
     }
@@ -53,17 +52,18 @@ const styles = theme => ({
     }
   },
   topMenuIconImg: {
-    marginRight: '-10px'
+    marginRight: '-0.625rem'
   },
   topMenuLead: {
     width: '100%'
   },
   menuList: {
-    display: 'flex',
     width: '100%',
+    display: 'flex',
+    letterSpacing: '0.175rem',
     [theme.breakpoints.down('sm')]: {
       flexDirection: 'column',
-      paddingTop: '10px'
+      paddingTop: '0.625rem'
     }
   },
   menuListItem: {
@@ -80,17 +80,21 @@ const styles = theme => ({
     color: '#fff',
     textDecoration: 'none',
     fontFamily: theme.typography.fontFamily,
-    fontWeight: '600'
-  },
-  logoCountryName: {
-    position: 'absolute',
-    color: 'white',
-    top: '28px',
-    left: '51px',
-    margin: 0,
-    fontFamily: theme.typography.fontFamily,
-    fontWeight: 500,
-    fontSize: 'x-small'
+    fontWeight: '600',
+    '&:hover': {
+      color: '#e7e452',
+      textDecoration: 'none'
+    },
+    logoCountryName: {
+      position: 'absolute',
+      color: 'white',
+      top: '1.75rem',
+      left: '3.1875rem',
+      margin: 0,
+      fontFamily: theme.typography.fontFamily,
+      fontWeight: 500,
+      fontSize: 'x-small'
+    }
   }
 });
 
@@ -103,10 +107,11 @@ class Header extends Component {
 
   renderMenu() {
     const { classes } = this.props;
+
     return (
       <React.Fragment>
         <Search sm={12}>
-          <Dropdown sm={12} />
+          <Dropdown sm={12} countries={countries} />
           <MenuList sm={4} className={classes.menuList}>
             {['About', 'Showcase', 'Resources', 'Contact'].map(menuTitle => (
               <MenuItem item className={classes.menuListItem}>
@@ -123,7 +128,9 @@ class Header extends Component {
 
   render() {
     const { classes, width } = this.props;
-    const selectedCountry = window.SELECTED_COUNTRY;
+
+    const selectedCountry = window.selected_country;
+
     return (
       <Grid sm={12} className={classes.root}>
         <nav className={classes.topMenu}>

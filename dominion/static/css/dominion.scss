@@ -353,3 +353,13 @@ span.img-bg {
         margin: 0;
     }
 }
+
+//wazimap conflicts with search
+input[type="text"] {
+  border: 0;
+  background: none;
+}
+
+::selection {
+  background: none;
+}
