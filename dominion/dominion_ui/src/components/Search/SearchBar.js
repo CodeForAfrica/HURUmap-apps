@@ -26,8 +26,7 @@ const styles = theme => ({
     }
   },
   iconButton: {
-    padding: 0,
-    width: '15%'
+    padding: 0
   },
   resultsContainer: {
     [theme.breakpoints.up('sm')]: {
