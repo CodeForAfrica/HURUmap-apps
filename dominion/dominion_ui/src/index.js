@@ -16,8 +16,6 @@ import Partners from './components/Partners';
 import Showcase from './components/Showcase';
 import Video from './components/Video';
 
-import './index.css';
-
 library.add(fab);
 
 const renderApp = (Component, id) => {

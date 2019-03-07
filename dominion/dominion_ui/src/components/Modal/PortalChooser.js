@@ -119,7 +119,7 @@ const styles = theme => ({
 });
 
 function ContentElement({ classes, toggleModal }) {
-  const countries = Object.values(window.dominion_countries);
+  const countries = window.dominion_countries;
   return (
     <Grid
       container
