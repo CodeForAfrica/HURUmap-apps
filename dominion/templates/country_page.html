@@ -21,3 +21,16 @@ Compare places using tables and maps, download data, and embed charts on your si
   {% include 'blocks/country_partners.html' %}
   {% include 'blocks/partners.html' %}
 {% endblock content_container %}
+
+{% block body_javascript_extra %}
+    {{ block.super }}
+    <script>
+        var selected_country = {{ country|jsonify|safe }};
+        var geo = {{ geography | jsonify| safe }};
+        $(function() {
+            var maps = new ProfileMaps();
+            var zoom = {{country.zoom}};
+            maps.drawMapForCountryPage(geo, {{country.centre}}, zoom);
+        })
+    </script>
+{% endblock %}

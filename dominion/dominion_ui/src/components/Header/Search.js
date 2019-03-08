@@ -58,26 +58,26 @@ class Search extends Component {
     this.handleSearch = this.handleSearch.bind(this);
   }
 
-  async componentDidMount() {
-    const api = createAPI();
+  componentDidMount() {
     let geography = [];
-    if (window.SELECTED_COUNTRY) {
-      geography = await api.getGeography(5656);
-    } else {
-      geography = window.SUPPORTED_COUNTRIES.map(country => ({
-        name: country.name,
-        type: 'country'
-      }));
-    }
+    geography = window.SUPPORTED_COUNTRIES.map(country => ({
+      name: country.name,
+      type: 'country'
+    }));
 
     this.setState({
       geography
     });
   }
 
-  handleSearch(searchTerm) {
-    const { geography } = this.state;
+  async handleSearch(searchTerm) {
+    const api = createAPI();
+    let { geography } = this.state;
     if (searchTerm !== '') {
+      if (window.SELECTED_COUNTRY) {
+        const thisCountry = window.SELECTED_COUNTRY;
+        geography = await api.getGeography(thisCountry.code, searchTerm);
+      }
       const results = geography.filter(g =>
         g.name.match(new RegExp(searchTerm, 'i'))
       );
