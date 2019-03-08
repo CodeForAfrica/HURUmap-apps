@@ -20,7 +20,7 @@ class GetLocation extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { buttonText: 'Use you Location' };
+    this.state = { buttonText: 'Use your Location' };
     this.findLocation = this.findLocation.bind(this);
   }
 

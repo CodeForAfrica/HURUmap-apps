@@ -6,12 +6,10 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 
 import withRoot from './withRoot';
 
-import Header from './components/Header';
+import { HomePageHeader, CountryPageHeader } from './components/Header';
 import AboutDominion from './components/About';
 import Data from './components/Data';
 import Footer from './components/Footer';
-import HomeHero from './components/Hero/HomeHero';
-import CountryHero from './components/Hero/CountryHero';
 import Partners from './components/Partners';
 import Showcase from './components/Showcase';
 import Video from './components/Video';
@@ -26,9 +24,9 @@ const renderApp = (Component, id) => {
   }
 };
 
-renderApp(Header, 'dominionHeader');
-renderApp(HomeHero, 'dominionHomeHero');
-renderApp(CountryHero, 'dominionCountryHero');
+renderApp(HomePageHeader, 'dominionHomePageHeader');
+renderApp(CountryPageHeader, 'dominionCountryPageHeader');
+
 renderApp(Video, 'dominionVideo');
 renderApp(Showcase, 'dominionShowcase');
 renderApp(Data, 'dominionData');

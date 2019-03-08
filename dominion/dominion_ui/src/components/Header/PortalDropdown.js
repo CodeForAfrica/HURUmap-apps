@@ -3,12 +3,9 @@ import PropTypes from 'prop-types';
 
 import KeyboardArrowDown from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUp from '@material-ui/icons/KeyboardArrowUp';
-import withWidth, { isWidthDown } from '@material-ui/core/withWidth';
 
 import { Grid, MenuList, MenuItem, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-
-import PortalChooser from '../Modal/PortalChooser';
 
 const styles = theme => ({
   root: {
@@ -21,7 +18,6 @@ const styles = theme => ({
     }
   },
   button: {
-    padding: 0,
     border: 0,
     textTransform: 'none',
     [theme.breakpoints.down('sm')]: {
@@ -74,23 +70,32 @@ const styles = theme => ({
   }
 });
 
-function CountryMenu({ classes }) {
-  const countries = window.dominion_countries;
+function CountriesButtonComponent({ classes, onClick, isOpen }) {
   return (
-    <React.Fragment>
-      {Object.keys(countries).map(country => (
-        <MenuItem item className={classes.menuListItem}>
-          <a href={`/${country}`} className={classes.link}>
-            {countries[country].name}
-          </a>
-        </MenuItem>
-      ))}
-    </React.Fragment>
+    <Button disableRipple className={classes.button} onClick={onClick}>
+      <span className={classes.p}>Countries</span>
+      {isOpen ? (
+        <KeyboardArrowUp
+          fontSize="large"
+          className={classes.KeyboardArrowDown}
+        />
+      ) : (
+        <KeyboardArrowDown
+          fontSize="large"
+          className={classes.KeyboardArrowDown}
+        />
+      )}
+    </Button>
   );
 }
-CountryMenu.propTypes = {
-  classes: PropTypes.isRequired
+
+CountriesButtonComponent.propTypes = {
+  classes: PropTypes.isRequired,
+  onClick: PropTypes.isRequired,
+  isOpen: PropTypes.isRequired
 };
+
+export const CountriesButton = withStyles(styles)(CountriesButtonComponent);
 
 class Dropdown extends React.Component {
   constructor(props) {
@@ -105,51 +110,34 @@ class Dropdown extends React.Component {
   }
 
   render() {
-    const { classes, width } = this.props;
+    const { classes } = this.props;
     const { isDropdownOpen } = this.state;
+    const countries = window.dominion_countries;
 
-    const DropdownButton = ({ toggleDropdown, toggleModal, isModalOpen }) => (
-      <Button
-        disableRipple
-        className={classes.button}
-        onClick={toggleDropdown || toggleModal}
-      >
-        <span className={classes.p}>Countries</span>
-        {isDropdownOpen || isModalOpen ? (
-          <KeyboardArrowUp
-            fontSize="large"
-            className={classes.KeyboardArrowDown}
-          />
-        ) : (
-          <KeyboardArrowDown
-            fontSize="large"
-            className={classes.KeyboardArrowDown}
-          />
-        )}
-      </Button>
-    );
     return (
       <Grid container className={classes.root}>
-        {isWidthDown('sm', width) ? (
-          <React.Fragment>
-            <DropdownButton toggleDropdown={this.toggleDropdown} />
-            {isDropdownOpen ? (
-              <MenuList sm={4} className={classes.menuList}>
-                <CountryMenu classes={classes} />
-              </MenuList>
-            ) : null}
-          </React.Fragment>
-        ) : (
-          <PortalChooser activator={DropdownButton} />
-        )}
+        <CountriesButton
+          onClick={this.toggleDropdown}
+          isOpen={isDropdownOpen}
+        />
+        {isDropdownOpen ? (
+          <MenuList className={classes.menuList}>
+            {Object.keys(countries).map(country => (
+              <MenuItem item className={classes.menuListItem}>
+                <a href={`/${country}`} className={classes.link}>
+                  {countries[country].name}
+                </a>
+              </MenuItem>
+            ))}
+          </MenuList>
+        ) : null}
       </Grid>
     );
   }
 }
 
 Dropdown.propTypes = {
-  classes: PropTypes.isRequired,
-  width: PropTypes.isRequired
+  classes: PropTypes.isRequired
 };
 
-export default withWidth()(withStyles(styles)(Dropdown));
+export default withStyles(styles)(Dropdown);

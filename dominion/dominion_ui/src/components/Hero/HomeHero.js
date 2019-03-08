@@ -14,7 +14,6 @@ import Hero, {
 import herobg from '../../assets/images/bg/hero_bg.png';
 import smallscreenbackground from '../../assets/images/bg/smallscreen_background.png';
 
-import PortalChooser from '../Modal/PortalChooser';
 import HomeHeroMap from './HomeHeroMap';
 
 const styles = theme => ({
@@ -33,7 +32,7 @@ const styles = theme => ({
   }
 });
 
-function HomeHero({ classes }) {
+function HomeHero({ classes, toggleModal }) {
   return (
     <Hero>
       <Grid
@@ -52,11 +51,9 @@ function HomeHero({ classes }) {
             ownership.
           </HeroDescription>
 
-          <PortalChooser
-            activator={({ toggleModal }) => (
-              <HeroButton onClick={toggleModal}>Select a Country</HeroButton>
-            )}
-          />
+          <HeroButton onClick={toggleModal('portal')}>
+            Select a Country
+          </HeroButton>
         </HeroTitleGrid>
         <HomeHeroMap />
       </Grid>
@@ -65,7 +62,8 @@ function HomeHero({ classes }) {
 }
 
 HomeHero.propTypes = {
-  classes: PropTypes.isRequired
+  classes: PropTypes.isRequired,
+  toggleModal: PropTypes.isRequired
 };
 
 export default withStyles(styles)(HomeHero);

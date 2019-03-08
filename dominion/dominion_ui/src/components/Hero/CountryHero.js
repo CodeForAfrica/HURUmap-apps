@@ -11,8 +11,6 @@ import Hero, {
   HeroButton
 } from './Hero';
 
-import SearchModal from '../Modal/Search';
-
 const styles = theme => ({
   root: {
     flexGrow: 1
@@ -37,7 +35,7 @@ const styles = theme => ({
   }
 });
 
-function CountryHero({ classes }) {
+function CountryHero({ classes, toggleModal }) {
   const selectedCountry = window.selected_country || {};
   return (
     <Hero>
@@ -47,11 +45,8 @@ function CountryHero({ classes }) {
           Dominion makes data available to help add context and authority to
           public discourse and policy-making on vital issues of land ownership.
         </HeroDescription>
-        <SearchModal
-          activator={({ toggleModal }) => (
-            <HeroButton onClick={toggleModal}>Find a place</HeroButton>
-          )}
-        />
+
+        <HeroButton onClick={toggleModal('search')}>Find a place</HeroButton>
 
         <p style={{ marginTop: '40px' }}>
           or view{' '}
@@ -70,7 +65,8 @@ function CountryHero({ classes }) {
 }
 
 CountryHero.propTypes = {
-  classes: PropTypes.isRequired
+  classes: PropTypes.isRequired,
+  toggleModal: PropTypes.isRequired
 };
 
 export default withStyles(styles)(CountryHero);
