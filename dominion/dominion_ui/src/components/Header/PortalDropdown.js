@@ -41,11 +41,6 @@ const styles = theme => ({
     paddingLeft: '10px',
     cursor: 'pointer'
   },
-  modalContent: {
-    margin: 'auto',
-    top: theme.spacing.unit * 10,
-    height: 'auto'
-  },
   menuList: {
     [theme.breakpoints.down('sm')]: {
       flexDirection: 'column',
