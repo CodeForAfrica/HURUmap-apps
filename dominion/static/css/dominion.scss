@@ -357,6 +357,10 @@ span.img-bg {
 }
 
 //wazimap conflicts with search
+input:focus {
+    box-shadow: unset;
+}
+
 input[type="text"] {
   border: 0;
   background: none;
@@ -364,4 +368,14 @@ input[type="text"] {
 
 ::selection {
   background: none;
+}
+
+// Map zoom
+.leaflet-control-zoom {
+    margin-bottom: 50px !important;
+}
+
+// Map attribution
+.leaflet-container a {
+    color: grey !important; 
 }

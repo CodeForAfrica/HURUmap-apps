@@ -14,7 +14,7 @@ import geolocate from '../../assets/images/icons/shape.svg';
 import cross from '../../assets/images/icons/close.svg';
 import GetLocation from './GetLocation';
 
-import Modal from '../Modal';
+import Modal from './index';
 
 const styles = theme => ({
   grid: {

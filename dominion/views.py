@@ -14,6 +14,7 @@ class CountryPageView(TemplateView):
         country_slug = self.kwargs['country']
 
         country = COUNTRIES[country_slug]
+        country['slug'] = country_slug
 
         geo = geo_data.get_geography(country['code'], 'country', self.default_geo_version)
         context['country'] = country

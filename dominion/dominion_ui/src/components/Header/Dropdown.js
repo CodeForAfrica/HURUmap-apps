@@ -97,10 +97,10 @@ class Dropdown extends React.Component {
     super(props);
 
     this.state = { isDropdownOpen: false };
-    this.handleDropdownToggle = this.handleDropdownToggle.bind(this);
+    this.toggleDropdown = this.toggleDropdown.bind(this);
   }
 
-  handleDropdownToggle() {
+  toggleDropdown() {
     this.setState(prevState => ({ isDropdownOpen: !prevState.isDropdownOpen }));
   }
 
@@ -108,8 +108,8 @@ class Dropdown extends React.Component {
     const { classes, width, countries } = this.props;
     const { isDropdownOpen } = this.state;
 
-    const DropdownButton = ({ handleToggle, isModalOpen }) => (
-      <Button disableRipple className={classes.button} onClick={handleToggle}>
+    const DropdownButton = ({ onClick, isModalOpen }) => (
+      <Button disableRipple className={classes.button} onClick={onClick}>
         <span className={classes.p}>Countries</span>
         {isDropdownOpen || isModalOpen ? (
           <KeyboardArrowUp
@@ -129,7 +129,7 @@ class Dropdown extends React.Component {
         {isWidthDown('sm', width) ? (
           <React.Fragment>
             <DropdownButton
-              handleToggle={this.handleDropdownToggle}
+              onClick={this.toggleDropdown}
               isModalOpen={isDropdownOpen}
             />
             {isDropdownOpen ? (

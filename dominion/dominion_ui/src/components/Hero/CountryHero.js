@@ -11,6 +11,8 @@ import Hero, {
   HeroButton
 } from './Hero';
 
+import SearchModal from '../Modal/Search';
+
 const styles = theme => ({
   root: {
     flexGrow: 1
@@ -35,35 +37,36 @@ const styles = theme => ({
   }
 });
 
-class CountryHero extends React.Component {
-  render() {
-    const { classes } = this.props;
-    const selectedCountry = window.selected_country || {};
-    return (
-      <Hero>
-        <HeroTitleGrid>
-          <HeroTitle>{selectedCountry.name}</HeroTitle>
-          <HeroDescription>
-            Dominion makes data available to help add context and authority to
-            public discourse and policy-making on vital issues of land
-            ownership.
-          </HeroDescription>
-          <HeroButton onClick={this.handleToggle}>Find a place</HeroButton>
-          <p style={{ marginTop: '40px' }}>
-            or view{' '}
-            <a
-              href={`/profile/${selectedCountry.full_geoid}-${
-                selectedCountry.slug
-              }`}
-            >
-              {selectedCountry.name}
-            </a>
-          </p>
-        </HeroTitleGrid>
-        <Grid id="slippy-map" className={classes.map} />
-      </Hero>
-    );
-  }
+function CountryHero({ classes }) {
+  const selectedCountry = window.selected_country || {};
+  return (
+    <Hero>
+      <HeroTitleGrid>
+        <HeroTitle>{selectedCountry.name}</HeroTitle>
+        <HeroDescription>
+          Dominion makes data available to help add context and authority to
+          public discourse and policy-making on vital issues of land ownership.
+        </HeroDescription>
+        <SearchModal
+          activator={({ toggleModal }) => (
+            <HeroButton onClick={toggleModal}>Find a place</HeroButton>
+          )}
+        />
+
+        <p style={{ marginTop: '40px' }}>
+          or view{' '}
+          <a
+            href={`/profiles/country-${selectedCountry.code}-${
+              selectedCountry.slug
+            }`}
+          >
+            {selectedCountry.name}
+          </a>
+        </p>
+      </HeroTitleGrid>
+      <Grid id="slippy-map" className={classes.map} />
+    </Hero>
+  );
 }
 
 CountryHero.propTypes = {

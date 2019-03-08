@@ -53,8 +53,8 @@ function HomeHero({ classes }) {
           </HeroDescription>
 
           <PortalChooser
-            activator={({ handleToggle }) => (
-              <HeroButton onClick={handleToggle}>Select a Country</HeroButton>
+            activator={({ toggleModal }) => (
+              <HeroButton onClick={toggleModal}>Select a Country</HeroButton>
             )}
           />
         </HeroTitleGrid>
