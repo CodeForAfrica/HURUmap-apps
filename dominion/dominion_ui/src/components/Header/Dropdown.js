@@ -74,7 +74,8 @@ const styles = theme => ({
   }
 });
 
-function CountryMenu({ classes, countries }) {
+function CountryMenu({ classes }) {
+  const countries = window.dominion_countries;
   return (
     <React.Fragment>
       {Object.keys(countries).map(country => (
@@ -88,8 +89,7 @@ function CountryMenu({ classes, countries }) {
   );
 }
 CountryMenu.propTypes = {
-  classes: PropTypes.isRequired,
-  countries: PropTypes.isRequired
+  classes: PropTypes.isRequired
 };
 
 class Dropdown extends React.Component {
@@ -105,11 +105,15 @@ class Dropdown extends React.Component {
   }
 
   render() {
-    const { classes, width, countries } = this.props;
+    const { classes, width } = this.props;
     const { isDropdownOpen } = this.state;
 
-    const DropdownButton = ({ onClick, isModalOpen }) => (
-      <Button disableRipple className={classes.button} onClick={onClick}>
+    const DropdownButton = ({ toggleDropdown, toggleModal, isModalOpen }) => (
+      <Button
+        disableRipple
+        className={classes.button}
+        onClick={toggleDropdown || toggleModal}
+      >
         <span className={classes.p}>Countries</span>
         {isDropdownOpen || isModalOpen ? (
           <KeyboardArrowUp
@@ -128,13 +132,10 @@ class Dropdown extends React.Component {
       <Grid container className={classes.root}>
         {isWidthDown('sm', width) ? (
           <React.Fragment>
-            <DropdownButton
-              onClick={this.toggleDropdown}
-              isModalOpen={isDropdownOpen}
-            />
+            <DropdownButton toggleDropdown={this.toggleDropdown} />
             {isDropdownOpen ? (
               <MenuList sm={4} className={classes.menuList}>
-                <CountryMenu countries={countries} classes={classes} />
+                <CountryMenu classes={classes} />
               </MenuList>
             ) : null}
           </React.Fragment>
@@ -148,8 +149,7 @@ class Dropdown extends React.Component {
 
 Dropdown.propTypes = {
   classes: PropTypes.isRequired,
-  width: PropTypes.isRequired,
-  countries: PropTypes.shape().isRequired
+  width: PropTypes.isRequired
 };
 
 export default withWidth()(withStyles(styles)(Dropdown));

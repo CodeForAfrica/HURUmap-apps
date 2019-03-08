@@ -15,8 +15,6 @@ import Modal from '../Modal';
 import menu from '../../assets/images/icons/menu.svg';
 import back from '../../assets/images/icons/back.svg';
 
-const countries = window.dominion_countries;
-
 const styles = theme => ({
   root: {
     flexGrow: 1
@@ -111,7 +109,7 @@ class Header extends Component {
     return (
       <React.Fragment>
         <Search>
-          <Dropdown countries={countries} />
+          <Dropdown />
           <MenuList className={classes.menuList}>
             {['About', 'Showcase', 'Resources', 'Contact'].map(menuTitle => (
               <MenuItem item className={classes.menuListItem}>

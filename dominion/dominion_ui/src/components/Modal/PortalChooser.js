@@ -45,6 +45,7 @@ const styles = theme => ({
   },
   listIndex: {
     marginRight: '50px',
+    width: '80px',
     [theme.breakpoints.down('sm')]: {
       display: 'none'
     }
