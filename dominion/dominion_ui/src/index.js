@@ -11,7 +11,7 @@ import AboutDominion from './components/About';
 import Data from './components/Data';
 import Footer from './components/Footer';
 import Partners from './components/Partners';
-import ProfileNavigation from './components/ProfileNavigation';
+import ProfileTabs from './components/ProfileTabs';
 import Showcase from './components/Showcase';
 import Video from './components/Video';
 
@@ -26,7 +26,7 @@ const renderApp = (Component, id) => {
 };
 
 renderApp(Header, 'dominionHeader');
-renderApp(ProfileNavigation, 'dominionProfileNavigation');
+renderApp(ProfileTabs, 'dominionProfileNavigation');
 renderApp(Video, 'dominionVideo');
 renderApp(Showcase, 'dominionShowcase');
 renderApp(Data, 'dominionData');
