@@ -18,9 +18,14 @@ import menuIcon from '../../assets/images/icons/menu.svg';
 import backIcon from '../../assets/images/icons/back.svg';
 import searchIcon from '../../assets/images/icons/location.svg';
 
+import background from '../../assets/images/bg/background.png';
+
 const styles = theme => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    backgroundImage: `url(${background})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover'
   },
   topMenu: {
     padding: '1.875rem',
