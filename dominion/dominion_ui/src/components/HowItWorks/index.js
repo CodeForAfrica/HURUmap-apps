@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Grid, Typography } from '@material-ui/core';
+import { Grid, Typography, Modal, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import databg from '../../assets/images/bg/databg.png';
 import blackArrow from '../../assets/images/icons/black-combined-shape.svg';
 
-// import Sources from '../Video/Sources';
+import Player from '../Video/Player';
+import Sources from '../Video/Sources';
 import FirstRow from './FirstRow';
 import MiddleRow from './MiddleRow';
 import LastRow from './LastRow';
@@ -61,11 +62,23 @@ const styles = theme => ({
 class HowItWorks extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    const videoId = (Sources[0] && Sources[0].id) || null;
+    this.state = { open: false, videoId };
+    this.toogleState = this.toogleState.bind(this);
+    this.changeVideoId = this.changeVideoId.bind(this);
+  }
+
+  toogleState() {
+    this.setState(state => ({ open: !state.open }));
+  }
+
+  changeVideoId(videoId) {
+    this.setState({ videoId });
   }
 
   render() {
     const { classes } = this.props;
+    const { open, videoId } = this.state;
     return (
       <div className={classes.root}>
         <Grid
@@ -117,8 +130,20 @@ class HowItWorks extends Component {
                 className={classes.videoGrid}
               >
                 <Typography variant="h6">
-                  View videos <img src={blackArrow} alt="Videos" />
+                  View videos{' '}
+                  <Button href="#" onClick={this.toogleState}>
+                    <img src={blackArrow} alt="Videos" />
+                  </Button>
                 </Typography>
+                <Modal
+                  aria-labelledby="dominion-videos"
+                  aria-describedby="dominion-videos-list"
+                  open={open}
+                  onClose={this.toogleState}
+                  className={classes.modal}
+                >
+                  <Player videoId={videoId} />
+                </Modal>
               </Grid>
             </Grid>
           </Grid>
