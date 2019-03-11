@@ -53,6 +53,7 @@ const styles = theme => ({
 const maxResults = 6;
 
 function SearchResults({ classes, results }) {
+  const { codeType } = window.MAPIT.code_type;
   return (
     <Grid container sm={12} className={classes.root}>
       <Grid container direction="row" justify="flex-end">
@@ -67,7 +68,7 @@ function SearchResults({ classes, results }) {
               href={
                 result.type.toLowerCase() === 'country'
                   ? `/${slugify(result.name)}`
-                  : '/'
+                  : `/profiles/${result.codes[codeType]}`
               }
             >
               <Grid container direction="row" alignItems="baseline">
