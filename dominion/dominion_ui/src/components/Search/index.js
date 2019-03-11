@@ -38,8 +38,10 @@ class Search extends React.Component {
 
   componentDidMount() {
     let geography = [];
-    geography = Object.values(window.dominion_countries).map(country => ({
-      name: country.name,
+    const countries = window.dominion_countries;
+    geography = Object.keys(window.dominion_countries).map(slug => ({
+      slug,
+      name: countries[slug].name,
       type: 'country'
     }));
     this.setState({ geography });

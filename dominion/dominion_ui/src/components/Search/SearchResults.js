@@ -4,8 +4,6 @@ import { Grid, List, ListItem } from '@material-ui/core';
 
 import { withStyles } from '@material-ui/core/styles';
 
-import slugify from '../../slugify';
-
 const styles = theme => ({
   root: {
     flexGrow: 1,
@@ -71,7 +69,7 @@ function SearchResults({ classes, results }) {
               component="a"
               href={
                 result.type.toLowerCase() === 'country'
-                  ? `/${slugify(result.name)}`
+                  ? `/${result.slug}`
                   : `/profiles/${result.codes[codeType]}`
               }
             >
