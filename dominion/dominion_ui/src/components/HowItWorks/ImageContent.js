@@ -29,13 +29,15 @@ const styles = theme => ({
   highlight: {
     marginLeft: 'auto',
     marginRight: 0,
+    marginTop: '-4.8rem',
     height: '2.5rem',
     background: '#e7e452',
     [theme.breakpoints.up('md')]: {
       width: '15.9375rem' // .75 of lg
     },
     [theme.breakpoints.up('lg')]: {
-      width: '21.25rem' // 340px / 16
+      width: '21.25rem',
+      marginTop: '-2.8rem' // 340px / 16
     }
   },
   img: {
