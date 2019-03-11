@@ -15,6 +15,14 @@ $brand-color-solid-green: #279c94;
 $brand-color-gray: #b1b1b1;
 $font-raleway: 'Raleway', sans-serif;
 
+a {
+    color: #e7e452;
+}
+
+body {
+    padding-top: 0 !important;
+}
+
 // Heading font
 h1 {
   font-size: 3em;
@@ -27,9 +35,6 @@ h1, h2, h3 {
 // Re-usable classes
 
 // Colors
-body {
-  padding-top: 0 !important;
-}
 .text-white {
   color: #fff;
 }
@@ -321,6 +326,11 @@ span.img-bg {
   }
 }
 
+// Map Tooltip
+.map-tooltip {
+    background-color: $brand-color-gray
+}
+
 /* LAYOUT */
 
 #page-footer {
@@ -346,6 +356,10 @@ span.img-bg {
 }
 
 //wazimap conflicts with search
+input:focus {
+    box-shadow: unset;
+}
+
 input[type="text"] {
   border: 0;
   background: none;
@@ -353,4 +367,14 @@ input[type="text"] {
 
 ::selection {
   background: none;
+}
+
+// Map zoom
+.leaflet-control-zoom {
+    margin-bottom: 50px !important;
+}
+
+// Map attribution
+.leaflet-container a {
+    color: grey !important; 
 }
