@@ -10,7 +10,7 @@ import Land from './Land';
 
 import A from '../A';
 
-import land from '../../assets/images/about/dominion-land.png';
+import land from '../../assets/images/hero-image-3_2.png';
 
 const styles = theme => ({
   root: {

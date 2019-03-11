@@ -7,8 +7,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 import withRoot from './withRoot';
 
 import { HomePageHeader, CountryPageHeader } from './components/Header';
-import AboutDominion from './components/About/AboutDominion';
-import AboutCountry from './components/About/AboutCountry';
+import { AboutCountry, AboutDominion } from './components/About';
 import Data from './components/Data';
 import Footer from './components/Footer';
 import Partners from './components/Partners';

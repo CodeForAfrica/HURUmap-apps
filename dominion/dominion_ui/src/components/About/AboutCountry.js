@@ -8,7 +8,7 @@ import Header from './Header';
 import Info, { InfoSubtitle, InfoBody } from './Info';
 import Land from './Land';
 
-import land from '../../assets/images/about/land.png';
+import land from '../../assets/images/hero-image-3.png';
 
 const styles = theme => ({
   root: {
