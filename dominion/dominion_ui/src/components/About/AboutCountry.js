@@ -16,11 +16,7 @@ const styles = theme => ({
     padding: '2rem',
     backgroundColor: '#fff',
     justifyContent: 'flex-start',
-    height: '56.25rem',
     alignContent: 'space-between',
-    [theme.breakpoints.up('sm')]: {
-      height: 'auto'
-    },
     [theme.breakpoints.up('md')]: {
       justifyContent: 'space-evenly'
     }

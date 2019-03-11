@@ -8,15 +8,13 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
     width: '100%',
-    [theme.breakpoints.up('md')]: {
-      width: '19.875rem'
-    },
+    paddingTop: '10px',
     [theme.breakpoints.up('lg')]: {
       width: '26.25rem'
     }
   },
   img: {
-    width: '100%',
+    width: '90vw',
     [theme.breakpoints.up('md')]: {
       width: '18.875rem',
       height: 'auto',

@@ -7,14 +7,14 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    width: '100%',
+    paddingTop: '10px',
     [theme.breakpoints.up('md')]: {
-      width: '21.875rem',
+      maxWidth: '21.875rem',
       paddingLeft: '1rem',
       paddingRight: '2rem'
     },
     [theme.breakpoints.up('lg')]: {
-      width: '24.4375rem', // 391px / 16
+      maxWidth: '30rem',
       padding: 0
     }
   },

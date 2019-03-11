@@ -7,7 +7,8 @@ import withWidth from '@material-ui/core/withWidth';
 
 const styles = {
   root: {
-    width: 'auto'
+    width: 'auto',
+    paddingTop: '10px'
   }
 };
 
