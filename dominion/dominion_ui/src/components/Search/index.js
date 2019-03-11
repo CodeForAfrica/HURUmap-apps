@@ -7,7 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 import SearchBar from './SearchBar';
 import SearchResults from './SearchResults';
 
-// import createAPI from '../../api';
+import createAPI from '../../api';
 
 const styles = theme => ({
   root: {
@@ -32,47 +32,42 @@ class Search extends React.Component {
       geography: [],
       results: []
     };
-
     this.handleSearch = this.handleSearch.bind(this);
+    this.loadSuggestions = this.loadSuggestions.bind(this);
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     let geography = [];
     geography = Object.values(window.dominion_countries).map(country => ({
       name: country.name,
       type: 'country'
     }));
-    this.setState({
-      geography
-    });
+    this.setState({ geography });
   }
 
-  // async componentDidUpdate(prevProps) {
-  //   let geography;
-  //   let countryCode = '';
-  //   const api = createAPI();
-  //   if (window.selected_country) {
-  //     countryCode = window.selected_country.code;
-  //   }
-  //   const { searchTerm } = this.props;
-  //   if (searchTerm !== prevProps.searchTerm) {
-  //     geography = await api.getGeography(countryCode, searchTerm);
-  //     this.setState(() => {
-  //       geography;
-  //     });
-  //   }
-  // }
+  async componentDidUpdate(prevProps, prevState) {
+    const { searchTerm } = this.state;
+    if (prevState.searchTerm !== searchTerm) {
+      this.loadSuggestions(searchTerm);
+    }
+  }
+
+  async loadSuggestions(searchTerm) {
+    const api = createAPI();
+    let { geography } = this.state;
+    let countryCode;
+    if (window.selected_country && searchTerm !== '') {
+      countryCode = window.selected_country.code;
+      geography = await api.getGeography(countryCode, searchTerm);
+    }
+    const results = geography.filter(g =>
+      g.name.match(new RegExp(`^${searchTerm}`, 'i'))
+    );
+    this.setState({ geography, results });
+  }
 
   handleSearch(searchTerm) {
-    const { geography } = this.state;
-    if (searchTerm !== '') {
-      const results = geography.filter(g =>
-        g.name.match(new RegExp(`^${searchTerm}`, 'i'))
-      );
-      this.setState({ results, searchTerm });
-    } else {
-      this.setState({ results: [], searchTerm });
-    }
+    this.setState({ searchTerm });
   }
 
   render() {
