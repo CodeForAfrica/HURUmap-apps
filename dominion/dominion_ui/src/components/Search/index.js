@@ -12,8 +12,8 @@ import createAPI from '../../api';
 const styles = theme => ({
   root: {
     flexGrow: 1,
+    paddingTop: '50px',
     [theme.breakpoints.up('md')]: {
-      paddingTop: '50px',
       paddingLeft: '100px',
       paddingRight: '100px'
     },

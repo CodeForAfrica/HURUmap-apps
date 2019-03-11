@@ -11,7 +11,7 @@ const styles = theme => ({
   root: {
     width: '100%',
     paddingTop: '52px',
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       width: theme.spacing.unit * 20,
       marginRight: theme.spacing.unit * 10,
       paddingTop: 0
@@ -20,6 +20,8 @@ const styles = theme => ({
   button: {
     border: 0,
     textTransform: 'none',
+    height: '50px',
+    padding: 0,
     [theme.breakpoints.down('sm')]: {
       width: '100%'
     }

@@ -13,19 +13,15 @@ const styles = theme => ({
     padding: 0,
     backgroundImage: `url(${background})`,
     backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    top: '100px'
+    backgroundSize: 'cover'
   },
   modal: {
     outline: 'none',
     height: 'auto',
     width: '100vw',
-    padding: '0 1.875rem',
+    padding: '1.875rem',
     [theme.breakpoints.up('md')]: {
-      padding: '0 3.125rem'
-    },
-    [theme.breakpoints.up('lg')]: {
-      padding: '0 9.375rem'
+      padding: 0
     }
   }
 });
@@ -38,11 +34,7 @@ function Modal({ classes, children, isOpen }) {
       open={isOpen}
       className={classes.root}
     >
-      <div className={classes.modal}>
-        {React.cloneElement(children, {
-          isModalOpen: isOpen
-        })}
-      </div>
+      <div className={classes.modal}>{children}</div>
     </MaterialModal>
   );
 }
