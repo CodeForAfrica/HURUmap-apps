@@ -4,13 +4,18 @@ import { Grid, List, ListItem } from '@material-ui/core';
 
 import { withStyles } from '@material-ui/core/styles';
 
+import slugify from '../../slugify';
+
 const styles = theme => ({
   root: {
     flexGrow: 1,
     fontSize: '14px',
     fontWeight: '500',
     color: 'white',
-    fontFamily: theme.typography.fontFamily
+    fontFamily: theme.typography.fontFamily,
+    [theme.breakpoints.up('sm')]: {
+      padding: '47px 0'
+    }
   },
   list: {
     width: '100%',
@@ -47,20 +52,9 @@ const styles = theme => ({
 
 const maxResults = 6;
 
-function slugify(text) {
-  return text
-    .toString()
-    .toLowerCase()
-    .replace(/\s+/g, '-')
-    .replace(/[^\w-]+/g, '')
-    .replace(/--+/g, '-')
-    .replace(/^-+/, '')
-    .replace(/-+$/, '');
-}
-
 function SearchResults({ classes, results }) {
   return (
-    <div className={classes.root}>
+    <Grid container sm={12} className={classes.root}>
       <Grid container direction="row" justify="flex-end">
         <List className={classes.list}>
           {results.slice(0, maxResults).map(result => (
@@ -87,7 +81,7 @@ function SearchResults({ classes, results }) {
           ))}
         </List>
       </Grid>
-    </div>
+    </Grid>
   );
 }
 

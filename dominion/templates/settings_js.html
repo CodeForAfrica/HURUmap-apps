@@ -3,5 +3,4 @@
 {% block settings_javascript %}
   {{ block.super }}
   var dominion_countries = {{ HURUMAP.countries|jsonify|safe }};
-  var SUPPORTED_COUNTRIES = Object.values({{ HURUMAP.countries|jsonify|safe }});
 {% endblock settings_javascript %}
