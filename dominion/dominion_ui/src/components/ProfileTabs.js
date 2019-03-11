@@ -36,6 +36,10 @@ const PROFILES = [
     href: '#profile-detail'
   },
   {
+    name: 'Elections',
+    href: '#elections'
+  },
+  {
     name: 'Demographics',
     href: '#demographics'
   },

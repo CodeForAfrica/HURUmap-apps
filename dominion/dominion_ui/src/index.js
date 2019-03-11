@@ -26,7 +26,7 @@ const renderApp = (Component, id) => {
 };
 
 renderApp(Header, 'dominionHeader');
-renderApp(ProfileTabs, 'dominionProfileNavigation');
+renderApp(ProfileTabs, 'dominionProfileTabs');
 renderApp(Video, 'dominionVideo');
 renderApp(Showcase, 'dominionShowcase');
 renderApp(Data, 'dominionData');
