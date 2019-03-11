@@ -51,9 +51,9 @@ const styles = theme => ({
 });
 
 const maxResults = 6;
+const codeType = window.MAPIT.code_type;
 
 function SearchResults({ classes, results }) {
-  const { codeType } = window.MAPIT.code_type;
   return (
     <Grid container sm={12} className={classes.root}>
       <Grid container direction="row" justify="flex-end">
