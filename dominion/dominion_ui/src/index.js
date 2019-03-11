@@ -11,6 +11,7 @@ import { AboutCountry, AboutDominion } from './components/About';
 import Data from './components/Data';
 import Footer from './components/Footer';
 import Partners from './components/Partners';
+import ProfileTabs from './components/ProfileTabs';
 import Showcase from './components/Showcase';
 import Video from './components/Video';
 
@@ -28,6 +29,7 @@ const renderApp = (Component, id) => {
 renderApp(HomePageHeader, 'dominionHomePageHeader');
 renderApp(CountryPageHeader, 'dominionCountryPageHeader');
 renderApp(AboutCountry, 'dominionCountryAbout');
+renderApp(ProfileTabs, 'dominionProfileTabs');
 renderApp(Video, 'dominionVideo');
 renderApp(Showcase, 'dominionShowcase');
 renderApp(Data, 'dominionData');
