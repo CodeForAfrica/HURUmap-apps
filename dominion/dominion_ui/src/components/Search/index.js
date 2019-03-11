@@ -45,7 +45,7 @@ class Search extends React.Component {
     this.setState({ geography });
   }
 
-  async componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps, prevState) {
     const { searchTerm } = this.state;
     if (prevState.searchTerm !== searchTerm) {
       this.loadSuggestions(searchTerm);
