@@ -15,16 +15,12 @@ import land from '../../assets/images/hero-image-3_2.png';
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    padding: '2rem',
     backgroundColor: '#fff',
     justifyContent: 'flex-start',
-    height: '56.25rem',
     alignContent: 'space-between',
-    [theme.breakpoints.up('sm')]: {
-      height: 'auto'
-    },
     [theme.breakpoints.up('md')]: {
-      justifyContent: 'space-evenly'
+      justifyContent: 'space-evenly',
+      padding: '50px'
     }
   },
   header: {

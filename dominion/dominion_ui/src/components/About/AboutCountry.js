@@ -13,12 +13,12 @@ import land from '../../assets/images/hero-image-3.png';
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    padding: '2rem',
     backgroundColor: '#fff',
     justifyContent: 'flex-start',
     alignContent: 'space-between',
     [theme.breakpoints.up('md')]: {
-      justifyContent: 'space-evenly'
+      justifyContent: 'space-evenly',
+      padding: '50px'
     }
   }
 });

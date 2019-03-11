@@ -5,12 +5,15 @@ import { Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import withWidth from '@material-ui/core/withWidth';
 
-const styles = {
+const styles = theme => ({
   root: {
     width: 'auto',
-    paddingTop: '10px'
+    padding: '1.25em 1.875em 0',
+    [theme.breakpoints.up('md')]: {
+      padding: 0
+    }
   }
-};
+});
 
 function Header({ classes, children }) {
   return (

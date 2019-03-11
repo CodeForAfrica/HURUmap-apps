@@ -14,7 +14,7 @@ const styles = theme => ({
     }
   },
   img: {
-    width: '90vw',
+    width: '100vw',
     [theme.breakpoints.up('md')]: {
       width: '18.875rem',
       height: 'auto',
