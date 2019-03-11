@@ -5,17 +5,13 @@ import { Grid, Typography, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import arrow from '../../assets/images/icons/combined-shape.svg';
-import background from '../../assets/images/bg/background.png';
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    backgroundImage: `url(${background})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    padding: '0 150px',
+    padding: '0 9.375rem',
     [theme.breakpoints.down('md')]: {
-      padding: '0 50px'
+      padding: '0 3.125rem'
     },
     [theme.breakpoints.down('sm')]: {
       padding: '0'
@@ -23,14 +19,11 @@ const styles = theme => ({
   },
   heroContentGrid: {
     flexGrow: 1,
-    [theme.breakpoints.up('lg')]: {
-      height: '100vh'
-    },
-    [theme.breakpoints.up('md')]: {
-      height: '80vh'
-    },
     [theme.breakpoints.down('sm')]: {
       margin: 0
+    },
+    [theme.breakpoints.up('md')]: {
+      height: '70vh'
     }
   },
   titleTextGrid: {
@@ -54,6 +47,7 @@ const styles = theme => ({
     textAlign: 'left',
     width: '50%',
     paddingTop: '2rem',
+    opacity: '0.5',
     [theme.breakpoints.down('sm')]: {
       width: '100%'
     }
@@ -63,17 +57,13 @@ const styles = theme => ({
     fontWeight: 800,
     fontSize: theme.typography.subtitle1.fontSize,
     color: 'white',
+    height: '4rem',
+    width: '100%',
     border: '2px solid white',
-    [theme.breakpoints.up('lg')]: {
-      height: '4rem',
-      paddingLeft: '4rem',
-      paddingRight: '4rem'
-    },
-    [theme.breakpoints.down('sm')]: {
-      height: '4rem',
-      width: '100%',
-      paddingLeft: '4rem',
-      paddingRight: '4rem'
+    paddingLeft: '4rem',
+    paddingRight: '4rem',
+    [theme.breakpoints.up('sm')]: {
+      width: 'unset'
     }
   },
   buttonArrow: {
@@ -131,7 +121,7 @@ const HeroDescription = withStyles(styles)(HeroDescriptionComponent);
 
 function HeroButtonComponent({ classes, children, onClick }) {
   return (
-    <Grid item sm={12} style={{ paddingTop: '2rem' }}>
+    <Grid container sm={12} alignItems="center" style={{ paddingTop: '2rem' }}>
       <Button
         variant="outlined"
         onClick={onClick}

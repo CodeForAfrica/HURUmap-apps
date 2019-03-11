@@ -2,33 +2,32 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import NumberFormat from 'react-number-format';
 
-import { Grid, Typography, MenuList, MenuItem } from '@material-ui/core';
+import {
+  Grid,
+  Typography,
+  MenuList,
+  MenuItem,
+  Button
+} from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-import background from '../../assets/images/bg/background.png';
 import geolocate from '../../assets/images/icons/shape.svg';
 import cross from '../../assets/images/icons/close.svg';
 import GetLocation from './GetLocation';
 
+import Modal from './index';
+
 const styles = theme => ({
   grid: {
     flexGrow: 1,
-    width: '100vw',
+    width: '100%',
     color: 'white',
-    height: 600,
-    backgroundImage: `url(${background})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    [theme.breakpoints.down('sm')]: {
-      height: 450
+    [theme.breakpoints.up('md')]: {
+      height: 400,
+      alignItems: 'flex-end'
     }
   },
   countryList: {
-    marginTop: theme.spacing.unit * 10,
-    marginLeft: theme.spacing.unit * 4,
-    [theme.breakpoints.down('sm')]: {
-      marginTop: -theme.spacing.unit * 2,
-      marginLeft: 0
-    }
+    height: 300
   },
   locationText: {
     color: 'white',
@@ -36,23 +35,30 @@ const styles = theme => ({
     fontWeight: 'bold',
     '&:hover': {
       color: '#e7e452'
+    },
+    [theme.breakpoints.up('md')]: {
+      paddingRight: '150px'
     }
   },
   locateImage: {
-    marginLeft: theme.spacing.unit * 10
+    float: 'right'
   },
   listIndex: {
+    marginRight: '50px',
+    width: '80px',
     [theme.breakpoints.down('sm')]: {
       display: 'none'
     }
   },
-  closeText: {
+  closeButton: {
     color: 'white',
+    border: 0,
     fontSize: 13,
     fontWeight: 'bold',
-    marginTop: theme.spacing.unit * 10,
-    [theme.breakpoints.down('sm')]: {
-      marginTop: theme.spacing.unit
+    textTransform: 'none',
+    [theme.breakpoints.up('md')]: {
+      paddingLeft: 0,
+      marginTop: theme.spacing.unit * 10
     }
   },
   closeSpan: {
@@ -69,18 +75,26 @@ const styles = theme => ({
   browseText: {
     color: 'white',
     opacity: 0.5,
-    paddingTop: theme.spacing.unit * 3
+    [theme.breakpoints.up('md')]: {
+      width: '100%'
+    }
   },
   locationGrid: {
-    padding: theme.spacing.unit * 5,
-    [theme.breakpoints.down('sm')]: {
-      paddingTop: theme.spacing.unit * 5
+    paddingTop: theme.spacing.unit * 5,
+    [theme.breakpoints.up('md')]: {
+      paddingTop: 0
     }
+  },
+  locationActionsGrid: {
+    paddingTop: theme.spacing.unit * 3
   },
   listItem: {
     lineHeight: 1.3,
-    padding: theme.spacing.unit * 3,
-    fontSize: 50,
+    fontSize: 30,
+    padding: theme.spacing.unit,
+    paddingLeft: 0,
+    paddingRight: 0,
+    fontFamily: theme.typography.fontHeading,
     letterSpacing: 1.4,
     textDecoration: 'none',
     visibility: 'hidden',
@@ -88,9 +102,9 @@ const styles = theme => ({
       visibility: 'visible',
       color: '#e7e452'
     },
-    [theme.breakpoints.down('sm')]: {
-      fontSize: 30,
-      padding: theme.spacing.unit
+    [theme.breakpoints.up('md')]: {
+      fontSize: 50,
+      padding: theme.spacing.unit * 3
     }
   },
   listItemLink: {
@@ -106,31 +120,28 @@ const styles = theme => ({
   }
 });
 
-const countries = [
-  { geoid: 'country-KE', name: 'Kenya' },
-  { geoid: 'country-ZA', name: 'South Africa' },
-  { geoid: 'country-TZ', name: 'Tanzania' },
-  { geoid: 'country-NG', name: 'Nigeria' }
-];
-
-function PortalChooser({ classes, close }) {
+function PortalChooser({ classes, isOpen, handleClose }) {
+  const countries = window.dominion_countries;
   return (
-    <Grid container direction="row" className={classes.grid}>
+    <Modal isOpen={isOpen}>
       <Grid
         container
+        justify="flex-start"
         direction="row"
-        justify="space-around"
-        item
-        sm={12}
-        md={5}
-        lg={5}
-        xl={5}
-        alignItems="center"
-        className={classes.locationGrid}
+        className={classes.grid}
       >
-        <Grid>
+        <Grid
+          xs={12}
+          sm={12}
+          md={5}
+          lg={5}
+          xl={5}
+          direction="column"
+          alignItems="flex-start"
+          className={classes.locationGrid}
+        >
           <Typography variant="body2" className={classes.locationText}>
-            <GetLocation />
+            <GetLocation countries={countries} />
             <img
               src={geolocate}
               alt="Use your location"
@@ -138,52 +149,62 @@ function PortalChooser({ classes, close }) {
             />
             <hr className={classes.locationHr} />
           </Typography>
-          <Typography variant="body2" className={classes.browseText}>
-            or browse the list
-          </Typography>
-          <div
-            role="button"
-            tabIndex="0"
-            onClick={close}
-            onKeyPress={close}
-            className={classes.closeText}
+          <Grid
+            container
+            direction="row"
+            justify="space-between"
+            alignItems="center"
+            className={classes.locationActionsGrid}
           >
-            <span className={classes.closeSpan}>Close</span>
-            <img src={cross} alt="Close Modal" className={classes.closeImage} />
-          </div>
+            <Typography variant="body2" className={classes.browseText}>
+              or browse the list
+            </Typography>
+            <Button onClick={handleClose} className={classes.closeButton}>
+              <span className={classes.closeSpan}>Close</span>
+              <img
+                src={cross}
+                alt="Close Modal"
+                className={classes.closeImage}
+              />
+            </Button>
+          </Grid>
+        </Grid>
+        <Grid
+          justify="flex-start"
+          alignItems="flex-start"
+          xs={12}
+          sm={12}
+          md={7}
+          lg={7}
+          xl={7}
+          className={classes.locationGrid}
+        >
+          <MenuList className={classes.countryList}>
+            {Object.keys(countries).map((country, index) => (
+              <MenuItem button className={classes.listItem}>
+                <span className={classes.listIndex}>
+                  <NumberFormat
+                    value={index + 1}
+                    displayType="text"
+                    prefix="0"
+                  />
+                </span>
+                <a className={classes.listItemLink} href={`/${country}`}>
+                  {countries[country].name}
+                </a>
+              </MenuItem>
+            ))}
+          </MenuList>
         </Grid>
       </Grid>
-      <Grid
-        justify="space-around"
-        aligitem="center"
-        sm={12}
-        md={7}
-        lg={7}
-        xl={7}
-      >
-        <MenuList className={classes.countryList}>
-          {countries.map((country, index) => (
-            <MenuItem button className={classes.listItem}>
-              <span className={classes.listIndex}>
-                <NumberFormat value={index + 1} displayType="text" prefix="0" />
-              </span>
-              <a
-                className={classes.listItemLink}
-                href={`/profiles/${country.geoid}`}
-              >
-                &nbsp;&nbsp;&nbsp; {country.name}
-              </a>
-            </MenuItem>
-          ))}
-        </MenuList>
-      </Grid>
-    </Grid>
+    </Modal>
   );
 }
 
 PortalChooser.propTypes = {
-  classes: PropTypes.shape().isRequired,
-  close: PropTypes.func.isRequired
+  classes: PropTypes.isRequired,
+  isOpen: PropTypes.isRequired,
+  handleClose: PropTypes.isRequired
 };
 
 export default withStyles(styles)(PortalChooser);

@@ -16,69 +16,57 @@ const styles = theme => ({
     flexGrow: 1
   },
   map: {
+    position: 'relative !important',
     backgroundColor: 'grey',
-    height: '460px !important',
-    width: '829px !important',
-    maxHeight: '460px !important',
-    maxWidth: '829px !important',
+    height: '250px !important',
     left: 'unset !important',
     top: 'unset !important',
-    [theme.breakpoints.up('sm')]: {
-      position: 'absolute',
-      right: '150px'
+    [theme.breakpoints.up('md')]: {
+      position: 'absolute !important',
+      right: '50px',
+      width: '70% !important',
+      height: '460px !important',
+      maxHeight: '460px !important',
+      maxWidth: '829px !important'
     },
-    [theme.breakpoints.down('sm')]: {
-      position: 'relative !important',
-      width: '100% !important',
-      height: '250px !important'
+    [theme.breakpoints.up('lg')]: {
+      right: '9.375rem'
     }
   }
 });
 
-class CountryHero extends React.Component {
-  constructor(props) {
-    super(props);
+function CountryHero({ classes, toggleModal }) {
+  const selectedCountry = window.selected_country || {};
+  return (
+    <Hero>
+      <HeroTitleGrid>
+        <HeroTitle>{selectedCountry.name}</HeroTitle>
+        <HeroDescription>
+          Dominion makes data available to help add context and authority to
+          public discourse and policy-making on vital issues of land ownership.
+        </HeroDescription>
 
-    this.state = {
-      selectedCountry: {
-        name: 'Country Name',
-        full_geoid: ''
-      }
-    };
-  }
+        <HeroButton onClick={toggleModal('search')}>Find a place</HeroButton>
 
-  componentDidMount() {
-    // this.setState({ selectedCountry: window.COUNTRY });
-  }
-
-  render() {
-    const { classes } = this.props;
-    const { selectedCountry } = this.state;
-    return (
-      <Hero>
-        <HeroTitleGrid>
-          <HeroTitle>{selectedCountry.name}</HeroTitle>
-          <HeroDescription>
-            Dominion makes data available to help add context and authority to
-            public discourse and policy-making on vital issues of land
-            ownership.
-          </HeroDescription>
-          <HeroButton onClick={this.handleToggle}>Find a place</HeroButton>
-          <p style={{ marginTop: '40px' }}>
-            or view{' '}
-            <a href={`#${selectedCountry.full_geoid}`}>
-              {selectedCountry.name}
-            </a>
-          </p>
-        </HeroTitleGrid>
-        <Grid id="slippy-map" className={classes.map} />
-      </Hero>
-    );
-  }
+        <p style={{ marginTop: '40px' }}>
+          or view{' '}
+          <a
+            href={`/profiles/country-${selectedCountry.code}-${
+              selectedCountry.slug
+            }`}
+          >
+            {selectedCountry.name}
+          </a>
+        </p>
+      </HeroTitleGrid>
+      <Grid id="slippy-map" className={classes.map} />
+    </Hero>
+  );
 }
 
 CountryHero.propTypes = {
-  classes: PropTypes.isRequired
+  classes: PropTypes.isRequired,
+  toggleModal: PropTypes.isRequired
 };
 
 export default withStyles(styles)(CountryHero);

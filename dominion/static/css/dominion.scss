@@ -19,6 +19,10 @@ a {
     color: #e7e452;
 }
 
+body {
+    padding-top: 0 !important;
+}
+
 // Heading font
 h1 {
   font-size: 3em;
@@ -31,9 +35,6 @@ h1, h2, h3 {
 // Re-usable classes
 
 // Colors
-body {
-  padding-top: 0 !important;
-}
 .text-white {
   color: #fff;
 }
@@ -153,6 +154,10 @@ span.img-bg {
 // Pages
 
 // Homepage
+
+#homepage {
+    padding-top: 0;
+}
 
 // Map Explainer; floating box
 .map-explainer-wrapper {
@@ -324,4 +329,52 @@ span.img-bg {
 // Map Tooltip
 .map-tooltip {
     background-color: $brand-color-gray
+}
+
+/* LAYOUT */
+
+#page-footer {
+    background: none;
+    border: none;
+}
+
+/* LAYOUT */
+#page-header,
+#page-header .wrapper {
+    padding: 0;
+}
+.wrapper {
+    margin: 0;
+}
+
+/* MEDIA QUERIES */
+@media only screen and (min-width: 1140px) {
+    .wrapper {
+        width: auto;
+        margin: 0;
+    }
+}
+
+//wazimap conflicts with search
+input:focus {
+    box-shadow: unset;
+}
+
+input[type="text"] {
+  border: 0;
+  background: none;
+}
+
+::selection {
+  background: none;
+}
+
+// Map zoom
+.leaflet-control-zoom {
+    margin-bottom: 50px !important;
+}
+
+// Map attribution
+.leaflet-container a {
+    color: grey !important; 
 }
