@@ -1,5 +1,4 @@
-{% extends 'profile/profile_detail.html' %} {% load humanize lookup staticfiles hashtospace %} {% load jsonify %}
-
+{% extends 'profile/profile_detail.html' %} {% load humanize lookup staticfiles hashtospace %}
 
 {% block header_menu %}
   <li><a href="/about">About</a></li>
@@ -44,3 +43,5 @@
 
 
 {% block profile_detail %}
+    {% include 'settings_js.html' %}
+{% endblock %}
