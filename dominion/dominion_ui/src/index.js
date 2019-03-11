@@ -15,8 +15,6 @@ import Partners from './components/Partners';
 import Showcase from './components/Showcase';
 import Video from './components/Video';
 
-import AppContextProvider from './AppContext';
-
 library.add(fab);
 
 const renderApp = (Component, id) => {
@@ -24,23 +22,13 @@ const renderApp = (Component, id) => {
   if (el) {
     const App = withRoot(Component);
 
-    const appProviderProps = {
-      selectedCountry: window.COUNTRY
-    };
-
-    ReactDOM.render(
-      <AppContextProvider {...appProviderProps}>
-        <App />
-      </AppContextProvider>,
-      el
-    );
+    ReactDOM.render(<App />, el);
   }
 };
 
 renderApp(HomePageHeader, 'dominionHomePageHeader');
 renderApp(CountryPageHeader, 'dominionCountryPageHeader');
 renderApp(AboutCountry, 'dominionCountryAbout');
-
 renderApp(Video, 'dominionVideo');
 renderApp(Showcase, 'dominionShowcase');
 renderApp(Data, 'dominionData');
