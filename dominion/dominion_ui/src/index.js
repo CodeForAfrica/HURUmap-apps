@@ -13,7 +13,7 @@ import Footer from './components/Footer';
 import Partners from './components/Partners';
 import Showcase from './components/Showcase';
 import Video from './components/Video';
-import HowItWork from './components/HowItWorks/index';
+import HowItWorks from './components/HowItWorks/index';
 
 library.add(fab);
 
@@ -27,7 +27,7 @@ const renderApp = (Component, id) => {
 
 renderApp(Header, 'dominionHeader');
 renderApp(Video, 'dominionVideo');
-renderApp(HowItWork, 'dominionHowItWorks');
+renderApp(HowItWorks, 'dominionHowItWorks');
 renderApp(Showcase, 'dominionShowcase');
 renderApp(Data, 'dominionData');
 renderApp(AboutDominion, 'dominionAbout');

@@ -10,8 +10,6 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
     width: '100%',
-    position: 'absolute',
-    top: 0,
     [theme.breakpoints.up('md')]: {
       width: '42.75rem'
     },

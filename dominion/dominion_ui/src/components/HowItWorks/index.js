@@ -49,7 +49,7 @@ const styles = theme => ({
   RowContentGrid: {
     paddingTop: '1.5rem',
     [theme.breakpoints.down('xs')]: {
-      flexDirection: 'column'
+      // flexDirection: 'column'
     }
   },
   videoGrid: {
@@ -96,11 +96,11 @@ class HowItWorks extends Component {
               xs={8}
               container
               direction="column"
-              justify="cflex-start"
+              justify="flex-start"
               alignItems="flex-start"
               className={classes.mainContentGrid}
             >
-              <Grid item lg={3} xl={3} md={3} sm={12} xs={12}>
+              <Grid item xs={12} sm={12} lg={3} xl={3} md={3}>
                 <Typography variant="h2">
                   How <br />
                   it works
@@ -131,7 +131,7 @@ class HowItWorks extends Component {
               >
                 <Typography variant="h6">
                   View videos{' '}
-                  <Button href="#" onClick={this.toogleState}>
+                  <Button href="#" onClick={this.toggleState}>
                     <img src={blackArrow} alt="Videos" />
                   </Button>
                 </Typography>
@@ -139,7 +139,7 @@ class HowItWorks extends Component {
                   aria-labelledby="dominion-videos"
                   aria-describedby="dominion-videos-list"
                   open={open}
-                  onClose={this.toogleState}
+                  onClose={this.toggleState}
                   className={classes.modal}
                 >
                   <Player videoId={videoId} />
