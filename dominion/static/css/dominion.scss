@@ -17,6 +17,9 @@ $font-raleway: 'Raleway', sans-serif;
 
 a {
     color: #e7e452;
+    &:hover {
+      color: inherit;
+    }
 }
 
 body {
