@@ -48,8 +48,13 @@ const styles = theme => ({
   }
 });
 
+function Capitalize(strItem) {
+  return strItem[0].toUpperCase() + strItem.slice(1).toLowerCase();
+}
+
 const maxResults = 6;
 const codeType = window.MAPIT.code_type;
+
 function SearchResults({ classes, results }) {
   return (
     <Grid container sm={12} className={classes.root}>
@@ -69,14 +74,8 @@ function SearchResults({ classes, results }) {
               }
             >
               <Grid container direction="row" alignItems="baseline">
-                <p className={classes.level}>
-                  {result.type[0].toUpperCase() +
-                    result.type.slice(1).toLowerCase()}
-                </p>
-                <p className={classes.name}>
-                  {result.name[0].toUpperCase() +
-                    result.name.slice(1).toLowerCase()}
-                </p>
+                <p className={classes.level}>{Capitalize(result.type)}</p>
+                <p className={classes.name}>{Capitalize(result.name)}</p>
               </Grid>
             </ListItem>
           ))}
