@@ -10,11 +10,22 @@ import Land from './Land';
 
 import A from '../A';
 
+import land from '../../assets/images/about/dominion-land.png';
+
 const styles = theme => ({
   root: {
     flexGrow: 1,
     padding: '2rem',
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
+    justifyContent: 'flex-start',
+    height: '56.25rem',
+    alignContent: 'space-between',
+    [theme.breakpoints.up('sm')]: {
+      height: 'auto'
+    },
+    [theme.breakpoints.up('md')]: {
+      justifyContent: 'space-evenly'
+    }
   },
   header: {
     order: 2,
@@ -77,7 +88,7 @@ function AboutDominion({ classes }) {
         </Info>
       </Grid>
       <Grid item className={classes.land}>
-        <Land />
+        <Land imgSrc={land} />
       </Grid>
     </Grid>
   );
