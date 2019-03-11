@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -43,7 +42,7 @@ class GetLocation extends React.Component {
           return addressObj.length > 0;
         });
         if (countryfound) {
-          const url = _.findIndex(countries, countryfound);
+          const url = countries.findIndex(countryfound);
           window.location = url;
         } else {
           this.setState(() => ({
