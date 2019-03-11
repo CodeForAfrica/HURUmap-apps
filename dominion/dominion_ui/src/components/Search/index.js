@@ -56,18 +56,19 @@ class Search extends React.Component {
     const api = createAPI();
     let { geography } = this.state;
     let countryCode;
+    let results = geography.filter(g =>
+      g.name.match(new RegExp(`^${searchTerm}`, 'i'))
+    );
     if (window.selected_country && searchTerm !== '') {
       countryCode = window.selected_country.code;
       geography = await api.getGeography(countryCode, searchTerm);
+      results = geography;
     }
-    const results = geography.filter(g =>
-      g.name.match(new RegExp(`^${searchTerm}`, 'i'))
-    );
     this.setState({ geography, results });
   }
 
   handleSearch(searchTerm) {
-    this.setState({ searchTerm });
+    this.setState({ results: [], searchTerm });
   }
 
   render() {
