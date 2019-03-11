@@ -29,7 +29,7 @@ Compare places using tables and maps, download data, and embed charts on your si
         $(function() {
             var maps = new ProfileMaps();
             var zoom = {{country.zoom}};
-            maps.drawMapForCountryPage({{ geography|jsonify|safe }}, {{country.centre}}, zoom);
+            maps.drawMapForCountryPage({{ geography.this |jsonify|safe }}, {{country.centre}}, zoom);
         })
     </script>
 {% endblock %}
