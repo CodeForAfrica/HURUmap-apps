@@ -6,11 +6,12 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 
 import withRoot from './withRoot';
 
-import Header from './components/Header';
-import AboutDominion from './components/About';
+import { HomePageHeader, CountryPageHeader } from './components/Header';
+import { AboutCountry, AboutDominion } from './components/About';
 import Data from './components/Data';
 import Footer from './components/Footer';
 import Partners from './components/Partners';
+import ProfileTabs from './components/ProfileTabs';
 import Showcase from './components/Showcase';
 import Video from './components/Video';
 import HowItWorks from './components/HowItWorks/index';
@@ -21,11 +22,15 @@ const renderApp = (Component, id) => {
   const el = document.getElementById(id);
   if (el) {
     const App = withRoot(Component);
+
     ReactDOM.render(<App />, el);
   }
 };
 
-renderApp(Header, 'dominionHeader');
+renderApp(HomePageHeader, 'dominionHomePageHeader');
+renderApp(CountryPageHeader, 'dominionCountryPageHeader');
+renderApp(AboutCountry, 'dominionCountryAbout');
+renderApp(ProfileTabs, 'dominionProfileTabs');
 renderApp(Video, 'dominionVideo');
 renderApp(HowItWorks, 'dominionHowItWorks');
 renderApp(Showcase, 'dominionShowcase');

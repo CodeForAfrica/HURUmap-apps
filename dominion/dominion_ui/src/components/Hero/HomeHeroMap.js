@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Typography } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import map from '../../assets/images/bg/hero_map.png';
@@ -16,10 +16,9 @@ const styles = theme => ({
     color: 'white',
     textAlign: 'right',
     width: '100%',
-    padding: theme.spacing.unit * 8,
     display: 'none',
     [theme.breakpoints.up('md')]: {
-      display: 'block'
+      display: 'inherit'
     }
   },
   mapImage: {
@@ -35,9 +34,21 @@ const styles = theme => ({
   }
 });
 
-function HeroMap({ classes }) {
+function HomeHeroMap({ classes }) {
   return (
-    <div className={classes.mapSection}>
+    <Grid
+      xs={12}
+      sm={12}
+      md={4}
+      lg={4}
+      xl={4}
+      item
+      container
+      direction="row"
+      justify="flex-end"
+      alignItems="center"
+      className={classes.mapSection}
+    >
       <Typography
         variant="fontSmallDefault"
         className={classes.verticalAlignText}
@@ -47,12 +58,12 @@ function HeroMap({ classes }) {
         <div className={classes.lineSeparator} />
         02
       </Typography>
-    </div>
+    </Grid>
   );
 }
 
-HeroMap.propTypes = {
+HomeHeroMap.propTypes = {
   classes: PropTypes.isRequired
 };
 
-export default withStyles(styles)(HeroMap);
+export default withStyles(styles)(HomeHeroMap);
