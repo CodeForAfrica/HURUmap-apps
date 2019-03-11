@@ -18,7 +18,6 @@ const styles = theme => ({
 
   // 6 rem image + 4 rem padding = 10rem = 160px
   img: {
-    height: '100%',
     maxHeight: '6rem',
     maxWidth: '30vw',
     [theme.breakpoints.up('md')]: {
