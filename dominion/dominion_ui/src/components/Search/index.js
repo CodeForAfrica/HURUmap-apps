@@ -54,17 +54,20 @@ class Search extends React.Component {
 
   async loadSuggestions(searchTerm) {
     const api = createAPI();
-    let { geography } = this.state;
+    const { geography } = this.state;
     let countryCode;
-    let results = geography.filter(g =>
-      g.name.match(new RegExp(`^${searchTerm}`, 'i'))
-    );
-    if (window.selected_country && searchTerm !== '') {
-      countryCode = window.selected_country.code;
-      geography = await api.getGeography(countryCode, searchTerm);
-      results = geography;
+    let results = [];
+
+    if (searchTerm !== '') {
+      results = geography.filter(g =>
+        g.name.match(new RegExp(searchTerm, 'i'))
+      );
+      if (window.selected_country) {
+        countryCode = window.selected_country.code;
+        results = await api.getGeography(countryCode, searchTerm);
+      }
     }
-    this.setState({ geography, results });
+    this.setState({ results, geography });
   }
 
   handleSearch(searchTerm) {
