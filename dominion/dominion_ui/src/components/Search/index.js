@@ -7,7 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 import SearchBar from './SearchBar';
 import SearchResults from './SearchResults';
 
-import createAPI from '../../api';
+// import createAPI from '../../api';
 
 const styles = theme => ({
   root: {
@@ -37,27 +37,37 @@ class Search extends React.Component {
   }
 
   async componentDidMount() {
-    const api = createAPI();
     let geography = [];
-    if (window.selected_country) {
-      geography = await api.getGeography(5656);
-    } else {
-      geography = Object.values(window.dominion_countries).map(country => ({
-        name: country.name,
-        type: 'country'
-      }));
-    }
-
+    geography = Object.values(window.dominion_countries).map(country => ({
+      name: country.name,
+      type: 'country'
+    }));
     this.setState({
       geography
     });
   }
 
+  // async componentDidUpdate(prevProps) {
+  //   let geography;
+  //   let countryCode = '';
+  //   const api = createAPI();
+  //   if (window.selected_country) {
+  //     countryCode = window.selected_country.code;
+  //   }
+  //   const { searchTerm } = this.props;
+  //   if (searchTerm !== prevProps.searchTerm) {
+  //     geography = await api.getGeography(countryCode, searchTerm);
+  //     this.setState(() => {
+  //       geography;
+  //     });
+  //   }
+  // }
+
   handleSearch(searchTerm) {
     const { geography } = this.state;
     if (searchTerm !== '') {
       const results = geography.filter(g =>
-        g.name.match(new RegExp(searchTerm, 'i'))
+        g.name.match(new RegExp(`^${searchTerm}`, 'i'))
       );
       this.setState({ results, searchTerm });
     } else {
