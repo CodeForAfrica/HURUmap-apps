@@ -75,7 +75,10 @@ function SearchResults({ classes, results }) {
                   {result.type[0].toUpperCase() +
                     result.type.slice(1).toLowerCase()}
                 </p>
-                <p className={classes.name}>{result.name}</p>
+                <p className={classes.name}>
+                  {result.name[0].toUpperCase() +
+                    result.name.slice(1).toLowerCase()}
+                </p>
               </Grid>
             </ListItem>
           ))}
