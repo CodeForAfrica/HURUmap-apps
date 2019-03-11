@@ -72,10 +72,14 @@ HURUMAP['countries'] = {
     'kenya': {
         'code': 'KE',
         'name': 'Kenya',
+        'centre': [-0.0236, 37.9062],
+        'zoom': 6
     },
     'south-africa': {
         'code': 'ZA',
         'name': 'South Africa',
+        'centre': [-30.5595, 22.9375],
+        'zoom': 5
     },
 }
 
@@ -135,7 +139,7 @@ HURUMAP['available_release_years'] = {
 }
 # If not set, the centre is determined from the geometry.
 HURUMAP['map_centre']= None
-HURUMAP['map_zoom']= None
+HURUMAP['map_zoom']= 5
 
 # -------------------------------------------------------------------------------
 #topics

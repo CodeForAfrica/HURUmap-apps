@@ -5,7 +5,7 @@ var ProfileMaps = function() {
     this.mapit_country = GeometryLoader.mapit_country;
 
     this.featureGeoStyle = {
-        "fillColor": "#66c2a5",
+        "fillColor": "#ccc",
         "color": "#777",
         "weight": 2,
         "opacity": 0.3,
@@ -23,7 +23,7 @@ var ProfileMaps = function() {
     };
 
     this.hoverStyle = {
-        "fillColor": "#66c2a5",
+        "fillColor": "#ccc",
         "fillOpacity": 0.7,
     };
 
@@ -35,8 +35,7 @@ var ProfileMaps = function() {
     };
 
     this.drawMapForHomepage = function(geo_level, geo_version, centre, zoom) {
-        // draw a homepage map, but only for big displays
-        if (browserWidth < 768 || $('#slippy-map').length === 0) return;
+        if ($('#slippy-map').length === 0) return;
 
         this.createMap();
         this.addImagery();
@@ -50,6 +49,20 @@ var ProfileMaps = function() {
             if (!centre) {
                 self.map.fitBounds(layer.getBounds());
             }
+        });
+    };
+
+
+    this.drawMapForCountryPage = function(geo, centre, zoom) {
+        if ($('#slippy-map').length === 0) return;
+
+        this.createMap();
+        this.addImagery();
+        if (centre) {
+            self.map.setView(centre, zoom);
+        }
+        GeometryLoader.loadGeometryForChildLevel(geo.child_level, geo.geo_level, geo.geo_code, geo.version, function(features) {
+            self.drawFeatures(features.features);
         });
     };
 
@@ -68,14 +81,14 @@ var ProfileMaps = function() {
 
         if (allowMapDrag) {
             this.map.addControl(new L.Control.Zoom({
-                position: 'topright'
+                position: 'bottomright',
             }));
         }
     };
 
     this.addImagery = function() {
         // add imagery
-        L.tileLayer('//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        L.tileLayer('//{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png', {
           attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
           subdomains: 'abc',
           maxZoom: 17
@@ -90,8 +103,7 @@ var ProfileMaps = function() {
         var child_level = this.geo.this.child_level;
         var geo_name = this.geo.this.name;
 
-        // if we are in a root geo, only setView
-        if (Object.getOwnPropertyNames(this.geo.parents).length==0) {
+        if (Object.getOwnPropertyNames(this.geo.parents).length === 0) {
             this.map.setView( this.mapit_country.centre, this.mapit_country.zoom);
         } else {
             // draw the current geo
@@ -148,7 +160,7 @@ var ProfileMaps = function() {
         return L.geoJson(features, {
             style: this.layerStyle,
             onEachFeature: function(feature, layer) {
-                layer.bindLabel(feature.properties.name, {direction: 'auto'});
+                layer.bindLabel(feature.properties.name, {direction: 'auto', className: 'map-tooltip'});
 
                 layer.on('mouseover', function() {
                     layer.setStyle(self.hoverStyle);
