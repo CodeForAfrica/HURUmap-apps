@@ -21,7 +21,7 @@ const styles = theme => ({
     backgroundSize: '80% 70%',
     [theme.breakpoints.up('md')]: {
       paddingLeft: 0, // 30px / 16
-      backgroundPosition: '0 2rem', // Match padding
+      backgroundPosition: '0 4.5rem', // Match padding + highlight height
       backgroundSize: '66% 100%'
     },
     [theme.breakpoints.up('xl')]: {
