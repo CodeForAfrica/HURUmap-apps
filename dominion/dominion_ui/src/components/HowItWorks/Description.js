@@ -13,6 +13,9 @@ const styles = () => ({
   root: {
     flexGrow: 1
   },
+  title: {
+    textTransform: 'none'
+  },
   steps: {
     paddingTop: '0.5625rem' // 9px / 16
   },
@@ -46,7 +49,7 @@ class Description extends Component {
 
     return (
       <div>
-        <Typography variant="h2">
+        <Typography variant="h2" className={classes.title}>
           How <br />
           it works
         </Typography>
