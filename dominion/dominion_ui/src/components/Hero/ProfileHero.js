@@ -58,7 +58,12 @@ function ProfileHero({ classes }) {
         <HeroDetail small label="people per square kilometer">
           41.3
         </HeroDetail>
-        <SearchBar primary icon={searchIcon} />
+        <SearchBar
+          autoFocus={false}
+          primary
+          placeholder="compare this with"
+          icon={searchIcon}
+        />
       </HeroTitleGrid>
       <Grid id="slippy-map" className={classes.map} />
     </Hero>

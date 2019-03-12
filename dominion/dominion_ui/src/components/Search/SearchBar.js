@@ -21,11 +21,20 @@ const styles = theme => ({
     color: 'white',
     width: '100%',
     fontFamily: theme.typography.fontFamily,
-    fontSize: '18px',
+    fontSize: '0.813em',
     fontWeight: '600',
     [theme.breakpoints.up('md')]: {
       padding: '15px 0 4px',
       borderBottom: '2px solid white'
+    }
+  },
+  searchFieldInput: {
+    '&::placeholder': {
+      fontFamily: theme.typography.fontFamily,
+      color: 'white',
+      opacity: 1,
+      fontSize: '0.813em',
+      fontWeight: '600'
     }
   },
   rootBorderBottom: {
@@ -47,11 +56,13 @@ const styles = theme => ({
 function SearchBar({
   primary,
   classes,
+  placeholder,
   value,
   width,
   icon,
   handleIconClick,
-  handleValueChange
+  handleValueChange,
+  autoFocus
 }) {
   let searchBarIcon = icon;
   if (!searchBarIcon) {
@@ -65,8 +76,10 @@ function SearchBar({
       className={`${classes.root} ${primary ? classes.rootBorderBottom : null}`}
     >
       <InputBase
-        autoFocus
+        autoFocus={autoFocus}
         value={value}
+        placeholder={placeholder}
+        inputProps={{ className: classes.searchFieldInput }}
         className={`${classes.searchField} ${
           primary ? classes.searchFieldNoBorderBottom : null
         }`}
@@ -99,7 +112,14 @@ SearchBar.propTypes = {
   handleIconClick: PropTypes.func.isRequired,
   width: PropTypes.isRequired,
   value: PropTypes.isRequired,
-  primary: PropTypes.bool.isRequired
+  primary: PropTypes.bool.isRequired,
+  placeholder: PropTypes.string,
+  autoFocus: PropTypes.bool
+};
+
+SearchBar.defaultProps = {
+  autoFocus: true,
+  placeholder: ''
 };
 
 export default withWidth()(withStyles(styles)(SearchBar));
