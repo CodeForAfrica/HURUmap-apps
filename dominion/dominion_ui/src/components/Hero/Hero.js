@@ -34,13 +34,42 @@ const styles = theme => ({
       marginTop: 0
     }
   },
-  text: {
+  title: {
     color: 'white',
     width: '90%',
     [theme.breakpoints.down('sm')]: {
       fontSize: '3rem',
       width: '60%'
     }
+  },
+  titleFontSmall: {
+    fontSize: '3.125em'
+  },
+  titleWordBreak: {
+    width: 'min-content'
+  },
+  detail: {
+    color: 'white',
+    fontFamily: 'Lora',
+    fontSize: '1.875em',
+    fontWeight: 'normal',
+    fontStyle: 'normal',
+    fontStretch: 'normal',
+    lineHeight: 'normal',
+    letterSpacing: '0.056em'
+  },
+  detailFontSmall: {
+    fontSize: '1.25em'
+  },
+  detailLabel: {
+    color: '#8d8d8c',
+    fontFamily: 'Montserrat',
+    fontSize: '0.688em',
+    fontWeight: 500,
+    fontStyle: 'normal',
+    fontStretch: 'normal',
+    lineHeight: 2.09,
+    letterSpacing: 'normal'
   },
   body2: {
     color: 'white',
@@ -74,9 +103,17 @@ const styles = theme => ({
   }
 });
 
-function HeroTitleGridComponent({ classes, children }) {
+function HeroTitleGridComponent({ classes, children, quater }) {
   return (
-    <Grid item sm={12} md={8} lg={8} xl={6} className={classes.titleTextGrid}>
+    <Grid
+      item
+      xs={12}
+      sm={12}
+      md={quater ? 4 : 8}
+      lg={quater ? 4 : 8}
+      xl={quater ? 4 : 6}
+      className={classes.titleTextGrid}
+    >
       {children}
     </Grid>
   );
@@ -84,14 +121,20 @@ function HeroTitleGridComponent({ classes, children }) {
 
 HeroTitleGridComponent.propTypes = {
   classes: PropTypes.isRequired,
-  children: PropTypes.isRequired
+  children: PropTypes.isRequired,
+  quater: PropTypes.bool.isRequired
 };
 
 const HeroTitleGrid = withStyles(styles)(HeroTitleGridComponent);
 
-function HeroTitleComponent({ classes, children }) {
+function HeroTitleComponent({ classes, children, breakWord, small }) {
   return (
-    <Typography variant="h1" className={classes.text}>
+    <Typography
+      variant="h1"
+      className={`${classes.title} ${
+        breakWord ? classes.titleWordBreak : null
+      } ${small ? classes.titleFontSmall : null}`}
+    >
       {children}
     </Typography>
   );
@@ -99,7 +142,9 @@ function HeroTitleComponent({ classes, children }) {
 
 HeroTitleComponent.propTypes = {
   classes: PropTypes.isRequired,
-  children: PropTypes.isRequired
+  children: PropTypes.isRequired,
+  breakWord: PropTypes.bool.isRequired,
+  small: PropTypes.bool.isRequired
 };
 
 const HeroTitle = withStyles(styles)(HeroTitleComponent);
@@ -118,6 +163,35 @@ HeroDescriptionComponent.propTypes = {
 };
 
 const HeroDescription = withStyles(styles)(HeroDescriptionComponent);
+
+function HeroDetailComponent({ classes, children, label, small }) {
+  return (
+    <div style={{ marginTop: '0.313em' }}>
+      <Typography
+        variant="h2"
+        className={`${classes.detail} ${
+          small ? classes.detailFontSmall : null
+        }`}
+      >
+        {children}
+      </Typography>
+      {label ? (
+        <Typography variant="h3" className={classes.detailLabel}>
+          {label}
+        </Typography>
+      ) : null}
+    </div>
+  );
+}
+
+HeroDetailComponent.propTypes = {
+  classes: PropTypes.isRequired,
+  children: PropTypes.isRequired,
+  label: PropTypes.string.isRequired,
+  small: PropTypes.bool.isRequired
+};
+
+const HeroDetail = withStyles(styles)(HeroDetailComponent);
 
 function HeroButtonComponent({ classes, children, onClick }) {
   return (
@@ -162,4 +236,4 @@ const Hero = withStyles(styles)(HeroComponent);
 
 export default Hero;
 
-export { HeroTitle, HeroDescription, HeroButton, HeroTitleGrid };
+export { HeroTitle, HeroDescription, HeroButton, HeroTitleGrid, HeroDetail };

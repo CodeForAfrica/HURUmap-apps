@@ -28,6 +28,12 @@ const styles = theme => ({
       borderBottom: '2px solid white'
     }
   },
+  rootBorderBottom: {
+    borderBottom: '2px solid white !important'
+  },
+  searchFieldNoBorderBottom: {
+    borderBottom: 'none !important'
+  },
   iconButton: {
     padding: 0
   },
@@ -39,33 +45,48 @@ const styles = theme => ({
 });
 
 function SearchBar({
+  primary,
   classes,
   value,
   width,
+  icon,
   handleIconClick,
   handleValueChange
 }) {
+  let searchBarIcon = icon;
+  if (!searchBarIcon) {
+    searchBarIcon = isWidthUp('md', width) ? back : search;
+  }
   return (
-    <Grid container sm={12} wrap="nowrap" className={classes.root}>
+    <Grid
+      container
+      sm={12}
+      wrap="nowrap"
+      className={`${classes.root} ${primary ? classes.rootBorderBottom : null}`}
+    >
       <InputBase
         autoFocus
         value={value}
-        className={classes.searchField}
+        className={`${classes.searchField} ${
+          primary ? classes.searchFieldNoBorderBottom : null
+        }`}
         onChange={event => {
           const { value: searchTerm } = event.target;
-          handleValueChange(searchTerm);
+          if (handleValueChange) {
+            handleValueChange(searchTerm);
+          }
         }}
       />
       <IconButton
+        disableRipple
+        disableTouchRipple
+        focusRipple={false}
+        style={{ backgroundColor: 'transparent' }}
         className={classes.iconButton}
         aria-label="Search"
         onClick={handleIconClick}
       >
-        <img
-          alt="Search"
-          src={isWidthUp('md', width) ? back : search}
-          className={classes.searchIcon}
-        />
+        <img alt="Search" src={searchBarIcon} className={classes.searchIcon} />
       </IconButton>
     </Grid>
   );
@@ -74,9 +95,11 @@ function SearchBar({
 SearchBar.propTypes = {
   classes: PropTypes.shape().isRequired,
   handleValueChange: PropTypes.func.isRequired,
+  icon: PropTypes.string.isRequired,
   handleIconClick: PropTypes.func.isRequired,
   width: PropTypes.isRequired,
-  value: PropTypes.isRequired
+  value: PropTypes.isRequired,
+  primary: PropTypes.bool.isRequired
 };
 
 export default withWidth()(withStyles(styles)(SearchBar));
