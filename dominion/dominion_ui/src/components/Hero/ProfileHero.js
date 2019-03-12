@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import { PropTypes } from 'prop-types';
 import { Grid } from '@material-ui/core';
@@ -32,37 +32,43 @@ const styles = theme => ({
     }
   }
 });
+class ProfileHero extends Component {
+  componentDidMount() {
+    // get level info from mapit
+  }
 
-const { geography } = window.geography;
-const { population } = window.population;
-const { populationDensity } = window.population_density;
-function ProfileHero({ classes }) {
-  return (
-    <Hero>
-      <HeroTitleGrid quater>
-        <HeroTitle breakWord small>
-          {geography.short_name}
-        </HeroTitle>
-        <p style={{ color: '#8d8d8c', fontSize: '0.75em' }}>
-          Province in <a href="/country">South Africa</a>
-        </p>
-        <HeroDetail label="Population">{population}</HeroDetail>
-        <HeroDetail small label="square kilometers">
-          {geography.square_kms}
-        </HeroDetail>
-        <HeroDetail small label="people per square kilometer">
-          {populationDensity}
-        </HeroDetail>
-        <SearchBar
-          autoFocus={false}
-          primary
-          placeholder="compare this with"
-          icon={searchIcon}
-        />
-      </HeroTitleGrid>
-      <Grid id="slippy-map" className={classes.map} />
-    </Hero>
-  );
+  render() {
+    const { geography } = window.geography;
+    const { population } = window.population;
+    const { populationDensity } = window.population_density;
+    const { classes } = this.props;
+    return (
+      <Hero>
+        <HeroTitleGrid quater>
+          <HeroTitle breakWord small>
+            {geography.short_name}
+          </HeroTitle>
+          <p style={{ color: '#8d8d8c', fontSize: '0.75em' }}>
+            Province in <a href="/country">South Africa</a>
+          </p>
+          <HeroDetail label="Population">{population}</HeroDetail>
+          <HeroDetail small label="square kilometers">
+            {geography.square_kms}
+          </HeroDetail>
+          <HeroDetail small label="people per square kilometer">
+            {populationDensity}
+          </HeroDetail>
+          <SearchBar
+            autoFocus={false}
+            primary
+            placeholder="compare this with"
+            icon={searchIcon}
+          />
+        </HeroTitleGrid>
+        <Grid id="slippy-map" className={classes.map} />
+      </Hero>
+    );
+  }
 }
 
 ProfileHero.propTypes = {
