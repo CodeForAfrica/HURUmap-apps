@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Button, Grid, Modal, Typography } from '@material-ui/core';
+import { Button, Grid, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import PlayArrow from '@material-ui/icons/PlayArrow';
 
@@ -9,6 +9,9 @@ import Player from './Player';
 
 import background from '../../assets/images/hero-image-1.png';
 import Sources from './Sources';
+
+import Modal from '../Modal';
+import Navigation from '../Header/Navigation';
 
 const styles = theme => ({
   root: {
@@ -49,13 +52,17 @@ class Video extends React.Component {
     super(props);
 
     const videoId = (Sources[0] && Sources[0].id) || null;
-    this.state = { open: false, videoId };
-    this.toogleState = this.toogleState.bind(this);
+    this.state = { openModal: null, videoId };
+    this.toggleModal = this.toggleModal.bind(this);
     this.changeVideoId = this.changeVideoId.bind(this);
   }
 
-  toogleState() {
-    this.setState(state => ({ open: !state.open }));
+  toggleModal(modalName) {
+    return () => {
+      this.setState(prevState => ({
+        openModal: prevState.openModal === modalName ? null : modalName
+      }));
+    };
   }
 
   changeVideoId(videoId) {
@@ -64,7 +71,7 @@ class Video extends React.Component {
 
   render() {
     const { classes } = this.props;
-    const { open, videoId } = this.state;
+    const { openModal, videoId } = this.state;
 
     return (
       <Grid
@@ -98,20 +105,15 @@ class Video extends React.Component {
                 color="primary"
                 size="large"
                 className={classes.button}
-                onClick={this.toogleState}
+                onClick={this.toggleModal('video')}
               >
                 <PlayArrow />
               </Button>
             </Grid>
           </Grid>
         </Grid>
-        <Modal
-          aria-labelledby="dominion-videos"
-          aria-describedby="dominion-videos-list"
-          open={open}
-          onClose={this.toogleState}
-          className={classes.modal}
-        >
+        <Modal isOpen={openModal}>
+          <Navigation toggleModal={this.toggleModal} openModal={openModal} />
           <Player videoId={videoId} />
         </Modal>
       </Grid>

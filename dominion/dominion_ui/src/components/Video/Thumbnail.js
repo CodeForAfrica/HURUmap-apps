@@ -47,10 +47,11 @@ function Thumbnail({ classes, isSelected, onClick, videoId, videoTitle }) {
   return (
     <div
       style={{
-        height: 100,
-        backgroundImage: `url(https://img.youtube.com/vi/${videoId}/default.jpg)`,
+        backgroundImage: `url(https://img.youtube.com/vi/${videoId}/sddefault.jpg)`,
         backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover'
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        marginBottom: '5px'
       }}
     >
       <Grid
@@ -60,7 +61,6 @@ function Thumbnail({ classes, isSelected, onClick, videoId, videoTitle }) {
         justify="center"
         alignItems="flex-start"
       >
-        {' '}
         <Grid item>
           <Button
             color="primary"

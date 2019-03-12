@@ -10,10 +10,9 @@ import Thumbnail from './Thumbnail';
 
 const styles = theme => ({
   root: {
-    flexGrow: 1
-  },
-  iframe: {
-    marginTop: '6rem'
+    flexGrow: 1,
+    height: 'calc(100vh - 6.25em)',
+    backgroundColor: 'black'
   },
   videoPlayer: {
     width: '100vw',
@@ -30,6 +29,7 @@ const styles = theme => ({
   },
   videoPlaylist: {
     width: '100vw',
+    overflow: 'scroll',
     [theme.breakpoints.up('md')]: {
       width: '11.927rem'
     },
@@ -64,9 +64,9 @@ class Player extends React.Component {
     return (
       <Grid
         container
-        className={classes.iframe}
         justify="center"
-        alignItems="flex-start"
+        alignItems="center"
+        className={classes.root}
       >
         <Grid item>
           <div className={classes.videoPlayer}>
@@ -77,27 +77,27 @@ class Player extends React.Component {
             />
           </div>
         </Grid>
+
         <Grid item>
-          <div className={classes.videoPlaylist}>
-            <Grid
-              container
-              direction="column"
-              justify="center"
-              alignItems="flex-start"
-            >
-              {Sources.map(source => (
-                <Grid item>
-                  <Thumbnail
-                    videoId={source.id}
-                    videoTitle={source.title}
-                    className={classes.thumbnail}
-                    onClick={this.handleThumbnailClick}
-                    isSelected={source.id === videoId}
-                  />
-                </Grid>
-              ))}
-            </Grid>
-          </div>
+          <Grid
+            item
+            direction="column"
+            justify="center"
+            alignItems="flex-start"
+            className={classes.videoPlaylist}
+          >
+            {Sources.map(source => (
+              <Grid item>
+                <Thumbnail
+                  videoId={source.id}
+                  videoTitle={source.title}
+                  className={classes.thumbnail}
+                  onClick={this.handleThumbnailClick}
+                  isSelected={source.id === videoId}
+                />
+              </Grid>
+            ))}
+          </Grid>
         </Grid>
       </Grid>
     );
