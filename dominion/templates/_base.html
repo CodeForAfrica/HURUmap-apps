@@ -11,6 +11,9 @@
 {% endblock %}
 
 {% block body_javascript %}
+  <script src="{% static asset_manifest.runtime %}"></script>
+  <script src="{% static asset_manifest.vendor %}"></script>
+  <script src="{% static asset_manifest.main %}"></script>
   {{ block.super }}
   <!-- IMG to SVG -->
   <script type="text/javascript">
@@ -51,8 +54,4 @@
       });
     });
   </script>
-
-  <script src="{% static asset_manifest.runtime %}"></script>
-  <script src="{% static asset_manifest.vendor %}"></script>
-  <script src="{% static asset_manifest.main %}"></script>
 {% endblock %}
