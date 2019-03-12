@@ -88,14 +88,15 @@ class Navigation extends Component {
     const { classes } = this.props;
     return (
       <MenuList className={classes.menuList}>
-        {['About', 'Showcase', 'Resources', 'Contact'].map(menuTitle => (
+        {[
+          { title: 'About', link: '/about' },
+          { title: 'Showcase', link: '#dominionShowcase' },
+          { title: 'Resources', link: '/resources' },
+          { title: 'Contact', link: '/contact' }
+        ].map(menu => (
           <MenuItem item className={classes.menuListItem}>
-            <Link
-              variant="body1"
-              className={classes.link}
-              to={`/${menuTitle.toLowerCase()}`}
-            >
-              {menuTitle}
+            <Link variant="body1" className={classes.link} href={menu.link}>
+              {menu.title}
             </Link>
           </MenuItem>
         ))}
