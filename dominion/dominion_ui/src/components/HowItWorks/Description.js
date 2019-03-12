@@ -28,11 +28,11 @@ class Description extends Component {
 
     const videoId = (Sources[0] && Sources[0].id) || null;
     this.state = { open: false, videoId };
-    this.toogleState = this.toogleState.bind(this);
+    this.toggleState = this.toggleState.bind(this);
     this.changeVideoId = this.changeVideoId.bind(this);
   }
 
-  toogleState() {
+  toggleState() {
     this.setState(state => ({ open: !state.open }));
   }
 
