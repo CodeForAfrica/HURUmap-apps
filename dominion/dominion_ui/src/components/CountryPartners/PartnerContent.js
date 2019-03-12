@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Grid, Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = () => ({
@@ -15,12 +15,12 @@ const styles = () => ({
 
 function PartnerText({ classes, title, description }) {
   return (
-    <Grid item xs={12} sm={10} md={4} lg={3} xl={3} className={classes.root}>
+    <div className={classes.root}>
       <Typography variant="h4" className={classes.title}>
         {title}
       </Typography>
       <Typography variant="body1">{description}</Typography>
-    </Grid>
+    </div>
   );
 }
 

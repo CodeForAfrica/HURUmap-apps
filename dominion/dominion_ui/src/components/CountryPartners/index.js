@@ -21,7 +21,7 @@ const styles = theme => ({
     maxWidth: '30vw',
     [theme.breakpoints.up('md')]: {
       width: 'auto',
-      maxWidth: '10rem'
+      maxWidth: '15rem'
     }
   },
 
@@ -32,7 +32,7 @@ const styles = theme => ({
     }
   },
   logoGrid: {
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.up('md')]: {
       padding: '2rem'
     }
   }
@@ -41,22 +41,22 @@ const styles = theme => ({
 function CountryPartners({ classes }) {
   return (
     <Grid
-      xs={12}
       container
       direction="row"
       justify="center"
       alignItems="center"
       className={classes.root}
     >
-      <PartnerContent
-        title="Our Partners"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-      />
+      <Grid item xs={12} sm={4}>
+        <PartnerContent
+          title="Our Partners"
+          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        />
+      </Grid>
 
       <Grid
         xs={12}
-        sm={10}
-        md={8}
+        sm={8}
         spacing={24}
         container
         direction="row"
@@ -65,13 +65,13 @@ function CountryPartners({ classes }) {
         className={classes.logoGrid}
       >
         {' '}
-        <Grid item className={classes.imgGrid}>
+        <Grid item className={classes.imageGrid}>
           <img src={cfa} alt="Code for Africa" className={classes.img} />
         </Grid>
-        <Grid item className={classes.imgGrid}>
+        <Grid item className={classes.imageGrid}>
           <img src={datazetu} alt="Data Zetu" className={classes.img} />
         </Grid>
-        <Grid item className={classes.imgGrid}>
+        <Grid item className={classes.imageGrid}>
           <img src={twaweza} alt="Twaweza" className={classes.img} />
         </Grid>
       </Grid>
