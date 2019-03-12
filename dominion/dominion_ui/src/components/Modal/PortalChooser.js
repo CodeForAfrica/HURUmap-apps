@@ -14,8 +14,6 @@ import geolocate from '../../assets/images/icons/shape.svg';
 import cross from '../../assets/images/icons/close.svg';
 import GetLocation from './GetLocation';
 
-import Modal from './index';
-
 const styles = theme => ({
   grid: {
     flexGrow: 1,
@@ -120,90 +118,81 @@ const styles = theme => ({
   }
 });
 
-function PortalChooser({ classes, isOpen, handleClose }) {
+function PortalChooser({ classes, children, handleClose }) {
   const countries = window.dominion_countries;
   return (
-    <Modal isOpen={isOpen}>
+    <Grid
+      container
+      justify="flex-start"
+      direction="row"
+      className={classes.grid}
+    >
+      {children}
       <Grid
-        container
-        justify="flex-start"
-        direction="row"
-        className={classes.grid}
+        xs={12}
+        sm={12}
+        md={5}
+        lg={5}
+        xl={5}
+        direction="column"
+        alignItems="flex-start"
+        className={classes.locationGrid}
       >
+        <Typography variant="body2" className={classes.locationText}>
+          <GetLocation countries={countries} />
+          <img
+            src={geolocate}
+            alt="Use your location"
+            className={classes.locateImage}
+          />
+          <hr className={classes.locationHr} />
+        </Typography>
         <Grid
-          xs={12}
-          sm={12}
-          md={5}
-          lg={5}
-          xl={5}
-          direction="column"
-          alignItems="flex-start"
-          className={classes.locationGrid}
+          container
+          direction="row"
+          justify="space-between"
+          alignItems="center"
+          className={classes.locationActionsGrid}
         >
-          <Typography variant="body2" className={classes.locationText}>
-            <GetLocation countries={countries} />
-            <img
-              src={geolocate}
-              alt="Use your location"
-              className={classes.locateImage}
-            />
-            <hr className={classes.locationHr} />
+          <Typography variant="body2" className={classes.browseText}>
+            or browse the list
           </Typography>
-          <Grid
-            container
-            direction="row"
-            justify="space-between"
-            alignItems="center"
-            className={classes.locationActionsGrid}
-          >
-            <Typography variant="body2" className={classes.browseText}>
-              or browse the list
-            </Typography>
-            <Button onClick={handleClose} className={classes.closeButton}>
-              <span className={classes.closeSpan}>Close</span>
-              <img
-                src={cross}
-                alt="Close Modal"
-                className={classes.closeImage}
-              />
-            </Button>
-          </Grid>
-        </Grid>
-        <Grid
-          justify="flex-start"
-          alignItems="flex-start"
-          xs={12}
-          sm={12}
-          md={7}
-          lg={7}
-          xl={7}
-          className={classes.locationGrid}
-        >
-          <MenuList className={classes.countryList}>
-            {Object.keys(countries).map((country, index) => (
-              <MenuItem button className={classes.listItem}>
-                <span className={classes.listIndex}>
-                  <NumberFormat
-                    value={index + 1}
-                    displayType="text"
-                    prefix="0"
-                  />
-                </span>
-                <a className={classes.listItemLink} href={`/${country}`}>
-                  {countries[country].name}
-                </a>
-              </MenuItem>
-            ))}
-          </MenuList>
+          <Button onClick={handleClose} className={classes.closeButton}>
+            <span className={classes.closeSpan}>Close</span>
+            <img src={cross} alt="Close Modal" className={classes.closeImage} />
+          </Button>
         </Grid>
       </Grid>
-    </Modal>
+      <Grid
+        justify="flex-start"
+        alignItems="flex-start"
+        xs={12}
+        sm={12}
+        md={7}
+        lg={7}
+        xl={7}
+        className={classes.locationGrid}
+      >
+        <MenuList className={classes.countryList}>
+          {Object.keys(countries).map((country, index) => (
+            <MenuItem button className={classes.listItem}>
+              <span className={classes.listIndex}>
+                <NumberFormat value={index + 1} displayType="text" prefix="0" />
+              </span>
+              <a className={classes.listItemLink} href={`/${country}`}>
+                {countries[country].name}
+              </a>
+            </MenuItem>
+          ))}
+        </MenuList>
+      </Grid>
+    </Grid>
   );
 }
 
 PortalChooser.propTypes = {
   classes: PropTypes.isRequired,
-  isOpen: PropTypes.isRequired,
+  children: PropTypes.isRequired,
   handleClose: PropTypes.isRequired
 };
 
