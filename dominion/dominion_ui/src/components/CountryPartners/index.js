@@ -21,7 +21,7 @@ const styles = theme => ({
     maxWidth: '30vw',
     [theme.breakpoints.up('md')]: {
       width: 'auto',
-      maxWidth: '15rem'
+      maxWidth: '10rem'
     }
   },
 
@@ -32,8 +32,9 @@ const styles = theme => ({
     }
   },
   logoGrid: {
+    padding: '2rem',
     [theme.breakpoints.up('md')]: {
-      padding: '2rem'
+      padding: 0
     }
   }
 });
