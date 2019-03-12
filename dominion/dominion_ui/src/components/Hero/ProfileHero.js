@@ -33,30 +33,25 @@ const styles = theme => ({
   }
 });
 
+const { geography } = window.geography;
+const { population } = window.population;
+const { populationDensity } = window.population_density;
 function ProfileHero({ classes }) {
-  const selectedCountry = window.selected_country || {};
   return (
     <Hero>
       <HeroTitleGrid quater>
         <HeroTitle breakWord small>
-          Eastern Cape
+          {geography.short_name}
         </HeroTitle>
         <p style={{ color: '#8d8d8c', fontSize: '0.75em' }}>
-          Province in{' '}
-          <a
-            href={`/profiles/country-${selectedCountry.code}-${
-              selectedCountry.slug
-            }`}
-          >
-            {selectedCountry.name}
-          </a>
+          Province in <a href="/country">South Africa</a>
         </p>
-        <HeroDetail label="Population">6 996 976</HeroDetail>
+        <HeroDetail label="Population">{population}</HeroDetail>
         <HeroDetail small label="square kilometers">
-          169 309.8
+          {geography.square_kms}
         </HeroDetail>
         <HeroDetail small label="people per square kilometer">
-          41.3
+          {populationDensity}
         </HeroDetail>
         <SearchBar
           autoFocus={false}

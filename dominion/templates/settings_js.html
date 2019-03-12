@@ -3,7 +3,19 @@
 {% block settings_javascript %}
   {{ block.super }}
   var dominion_countries = {{ HURUMAP.countries|jsonify|safe }};
+  var geography = {{ geography.this |jsonify|safe }};
+  var all_countries = Object.entries({{ HURUMAP.countries | jsonify| safe }});
+  var selected_country = all_countries.find((item) => item[1].code === geography.geo_code.slice(0,2))[1];
   {% if country %}
-  var selected_country = {{ country|jsonify|safe}}
+    selected_country = {{ country|jsonify|safe}}
+  {% endif %}
+  var population_density = '';
+  var population = '';
+  console.log({{demographics}})
+  {% if demographics %}
+   population = {{ demographics.total_population.values.this}}
+  {%endif%}
+  {% if demographics.population_density.values.this %}
+   population_density = {{ demographics.population_density.values.this|floatformat:"1" }}
   {% endif %}
 {% endblock settings_javascript %}
