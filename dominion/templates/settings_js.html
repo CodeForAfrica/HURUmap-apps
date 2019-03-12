@@ -3,4 +3,7 @@
 {% block settings_javascript %}
   {{ block.super }}
   var dominion_countries = {{ HURUMAP.countries|jsonify|safe }};
+  {% if country %}
+  var selected_country = {{ country|jsonify|safe}}
+  {% endif %}
 {% endblock settings_javascript %}
