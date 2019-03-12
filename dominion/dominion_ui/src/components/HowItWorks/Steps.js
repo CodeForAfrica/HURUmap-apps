@@ -23,10 +23,12 @@ const styles = theme => ({
   },
   visual: {
     width: '100%',
+    padding: '2rem 0',
     [theme.breakpoints.up('md')]: {
       width: '9rem', // .75 of lg
       marginLeft: '2.25rem', // 36px / 16
-      marginRight: '2.3125rem' // 37px / 16
+      marginRight: '2.3125rem', // 37px / 16
+      padding: 0
     },
     [theme.breakpoints.up('lg')]: {
       width: '12rem' // 192px / 16

@@ -17,6 +17,7 @@ const styles = theme => ({
     }
   },
   button: {
+    padding: 0,
     fontWeight: 700
   }
 });

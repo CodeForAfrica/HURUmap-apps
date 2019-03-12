@@ -9,19 +9,23 @@ import Sources from '../Video/Sources';
 import Steps from './Steps';
 import ViewVideos from './ViewVideos';
 
-const styles = () => ({
+const styles = theme => ({
   root: {
     flexGrow: 1
   },
   title: {
+    padding: '1rem 0',
     textTransform: 'none'
   },
   steps: {
     paddingTop: '0.5625rem' // 9px / 16
   },
   viewVideos: {
-    marginTop: '5.875rem',
-    marginBottom: '3.875rem' // 62px / 16
+    marginTop: '1.875rem',
+    marginBottom: '3.875rem', // 62px / 16
+    [theme.breakpoints.up('md')]: {
+      marginTop: '5.875rem'
+    }
   }
 });
 
