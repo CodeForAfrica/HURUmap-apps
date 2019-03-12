@@ -35,14 +35,14 @@ class GetLocation extends React.Component {
       } else {
         // Find country
         const addresses = json.results[0].address_components;
-        const countryfound = Object.values(countries).find(countryObj => {
-          const addressObj = addresses.filter(
-            address => address.long_name === countryObj.name
-          );
-          return addressObj.length > 0;
-        });
-        if (countryfound) {
-          const url = countries.findIndex(countryfound);
+        const addressContains = country =>
+          addresses.find(address => address.long_name === country.name) !==
+          undefined;
+        const foundEntry = Object.entries(countries).find(([, country]) =>
+          addressContains(country)
+        );
+        if (foundEntry) {
+          const [url] = foundEntry;
           window.location = url;
         } else {
           this.setState(() => ({
