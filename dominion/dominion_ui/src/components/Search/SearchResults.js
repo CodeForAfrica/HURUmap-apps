@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, List, ListItem } from '@material-ui/core';
+import { Grid, List, ListItem, Typography } from '@material-ui/core';
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -22,6 +22,7 @@ const styles = theme => ({
     }
   },
   listItem: {
+    color: 'white',
     '&:hover': {
       color: '#e7e452'
     }
@@ -36,21 +37,21 @@ const styles = theme => ({
     opacity: '0.5',
     marginRight: '20px',
     width: '60px',
-    textAlign: 'right'
+    textTransform: 'capitalize',
+    textAlign: 'right',
+    color: 'inherit'
   },
   name: {
     margin: 0,
     fontWeight: '600',
     fontSize: '30px',
+    textTransform: 'capitalize',
+    color: 'inherit',
     [theme.breakpoints.up('sm')]: {
       fontSize: '35px'
     }
   }
 });
-
-function Capitalize(strItem) {
-  return strItem[0].toUpperCase() + strItem.slice(1).toLowerCase();
-}
 
 const maxResults = 6;
 const codeType = window.MAPIT.code_type;
@@ -74,8 +75,20 @@ function SearchResults({ classes, results }) {
               }
             >
               <Grid container direction="row" alignItems="baseline">
-                <p className={classes.level}>{Capitalize(result.type)}</p>
-                <p className={classes.name}>{Capitalize(result.name)}</p>
+                <Typography
+                  className={classes.level}
+                  variant="body2"
+                  component="p"
+                >
+                  {result.type.toLowerCase()}
+                </Typography>
+                <Typography
+                  className={classes.name}
+                  variant="body2"
+                  component="p"
+                >
+                  {result.name.toLowerCase()}
+                </Typography>
               </Grid>
             </ListItem>
           ))}
