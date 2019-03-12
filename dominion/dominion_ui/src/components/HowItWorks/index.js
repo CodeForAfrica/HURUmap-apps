@@ -22,10 +22,10 @@ const styles = theme => ({
     [theme.breakpoints.up('md')]: {
       paddingLeft: 0, // 30px / 16
       backgroundPosition: '0 4.5rem', // Match padding + highlight height
-      backgroundSize: '66% 100%'
+      backgroundSize: '68% 100%'
     },
     [theme.breakpoints.up('xl')]: {
-      backgroundSize: '62% 100%'
+      backgroundSize: '65% 100%'
     }
   },
   description: {
