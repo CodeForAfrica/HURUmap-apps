@@ -17,7 +17,7 @@ const styles = () => ({
     paddingTop: '0.5625rem' // 9px / 16
   },
   viewVideos: {
-    marginTop: '3rem',
+    marginTop: '5.875rem',
     marginBottom: '3.875rem' // 62px / 16
   }
 });
