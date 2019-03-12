@@ -4,9 +4,9 @@ export default function createAPI() {
   const mapitURL = window.MAPIT.url;
 
   return {
-    getGeography: async countryId => {
+    getGeography: async (countryCode, searchTerm) => {
       const response = await axios.get(
-        `${mapitURL}/area/${countryId}/children`
+        `${mapitURL}/areas/${searchTerm}?country=${countryCode}`
       );
       return Object.values(response.data);
     }
