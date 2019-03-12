@@ -1,156 +1,60 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Grid, Typography, Modal, Button } from '@material-ui/core';
+import { Grid, Hidden } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import databg from '../../assets/images/bg/databg.png';
-import blackArrow from '../../assets/images/icons/black-combined-shape.svg';
 
-import Player from '../Video/Player';
-import Sources from '../Video/Sources';
-import FirstRow from './FirstRow';
-import MiddleRow from './MiddleRow';
-import LastRow from './LastRow';
-import ImageContent from './ImageContent';
+import Map from './Map';
+import Description from './Description';
 
 const styles = theme => ({
   root: {
-    backgroundColor: '#fff',
-    padding: '4rem 0'
-  },
-  dataWrapper: {
     flexGrow: 1,
+    padding: '2rem 0',
     paddingLeft: '1.875rem', // 30px / 16
     backgroundColor: '#fff',
     backgroundImage: `url(${databg})`,
     backgroundRepeat: 'no-repeat',
-    backgroundSize: '13.5rem 75%',
+    backgroundPosition: 'top right',
+    backgroundSize: '80% 70%',
     [theme.breakpoints.up('md')]: {
+      paddingLeft: 0, // 30px / 16
+      backgroundPosition: '0 2rem', // Match padding
       backgroundSize: '66% 100%'
     },
     [theme.breakpoints.up('xl')]: {
       backgroundSize: '62% 100%'
     }
   },
-  data: {
-    width: '100%',
-    marginTop: '3.6875rem', // 59px / 16,
+  description: {
     [theme.breakpoints.up('md')]: {
-      width: 'auto'
+      paddingTop: '4.625rem', // 74px / 16
+      paddingLeft: '4.625rem' // 74px / 16
     }
-  },
-  mainContentGrid: {
-    paddingTop: '3rem',
-    [theme.breakpoints.up('md')]: {
-      paddingLeft: '4rem'
-    }
-  },
-  RowContentGrid: {
-    paddingTop: '1.5rem',
-    [theme.breakpoints.down('xs')]: {
-      // flexDirection: 'column'
-    }
-  },
-  videoGrid: {
-    paddingTop: '3rem',
-    paddingBottom: '3rem',
-    paddingRight: '2rem'
   }
 });
 
-class HowItWorks extends Component {
-  constructor(props) {
-    super(props);
-    const videoId = (Sources[0] && Sources[0].id) || null;
-    this.state = { open: false, videoId };
-    this.toogleState = this.toogleState.bind(this);
-    this.changeVideoId = this.changeVideoId.bind(this);
-  }
-
-  toogleState() {
-    this.setState(state => ({ open: !state.open }));
-  }
-
-  changeVideoId(videoId) {
-    this.setState({ videoId });
-  }
-
-  render() {
-    const { classes } = this.props;
-    const { open, videoId } = this.state;
-    return (
-      <div className={classes.root}>
-        <Grid
-          container
-          className={classes.dataWrapper}
-          justify="center"
-          alignItems="center"
-        >
-          <Grid container direction="row" justify="center" alignItems="center">
-            <Grid item xs={4}>
-              <ImageContent />
-            </Grid>
-
-            <Grid
-              xs={8}
-              container
-              direction="column"
-              justify="flex-start"
-              alignItems="flex-start"
-              className={classes.mainContentGrid}
-            >
-              <Grid item xs={12} sm={12} lg={3} xl={3} md={3}>
-                <Typography variant="h2">
-                  How <br />
-                  it works
-                </Typography>
-              </Grid>
-
-              <Grid
-                item
-                xs={12}
-                spacing={24}
-                container
-                direction="row"
-                justify="flex-start"
-                alignItems="center"
-                className={classes.RowContentGrid}
-              >
-                <FirstRow />
-                <MiddleRow />
-                <LastRow />
-              </Grid>
-
-              <Grid
-                container
-                xs={12}
-                justify="flex-end"
-                alignItems="center"
-                className={classes.videoGrid}
-              >
-                <Typography variant="h6">
-                  View videos{' '}
-                  <Button href="#" onClick={this.toggleState}>
-                    <img src={blackArrow} alt="Videos" />
-                  </Button>
-                </Typography>
-                <Modal
-                  aria-labelledby="dominion-videos"
-                  aria-describedby="dominion-videos-list"
-                  open={open}
-                  onClose={this.toggleState}
-                  className={classes.modal}
-                >
-                  <Player videoId={videoId} />
-                </Modal>
-              </Grid>
-            </Grid>
-          </Grid>
+function HowItWorks({ classes }) {
+  return (
+    <Grid
+      container
+      className={classes.root}
+      justify="center"
+      alignItems="flex-start"
+    >
+      <Hidden smDown>
+        <Grid item>
+          <Map />
         </Grid>
-      </div>
-    );
-  }
+      </Hidden>
+
+      <Grid item className={classes.description}>
+        <Description />
+      </Grid>
+    </Grid>
+  );
 }
 
 HowItWorks.propTypes = {
