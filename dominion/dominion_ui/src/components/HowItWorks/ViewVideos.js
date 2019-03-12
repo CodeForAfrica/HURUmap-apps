@@ -19,6 +19,9 @@ const styles = theme => ({
   button: {
     padding: 0,
     fontWeight: 700
+  },
+  arrow: {
+    paddingLeft: '1rem'
   }
 });
 
@@ -27,7 +30,8 @@ function ViewVideos({ classes, onClick }) {
     <div className={classes.root}>
       <Button className={classes.button} onClick={onClick}>
         <Typography variant="h6">
-          View videos <img src={blackArrow} alt="Videos" />
+          View videos
+          <img src={blackArrow} alt="Videos" className={classes.arrow} />
         </Typography>
       </Button>
     </div>
