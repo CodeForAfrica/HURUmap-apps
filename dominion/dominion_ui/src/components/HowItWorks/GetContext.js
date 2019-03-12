@@ -20,7 +20,7 @@ function GetContextContent({ classes }) {
   return (
     <Content
       title="03. Get Context"
-      description=" Pre-computed statistics are presented alongside each data point so you
+      description="Pre-computed statistics are presented alongside each data point so you
       can see how each place fits into a large context."
       classes={{ description: classes.description }}
     />
