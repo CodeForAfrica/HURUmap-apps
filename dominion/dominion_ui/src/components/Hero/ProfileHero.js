@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 
 import { PropTypes } from 'prop-types';
-import { Grid } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import Hero, { HeroTitle, HeroTitleGrid, HeroDetail } from './Hero';
+import createAPI from '../../api';
 
 import SearchBar from '../Search/SearchBar';
 import searchIcon from '../../assets/images/icons/location.svg';
@@ -33,24 +34,52 @@ const styles = theme => ({
   }
 });
 class ProfileHero extends Component {
-  componentDidMount() {
-    // get level info from mapit
+  constructor(props) {
+    super(props);
+    this.state = { level: '', geography: {} };
+  }
+
+  async componentDidMount() {
+    // get level from mapit
+    const { geography } = window.geography;
+    const api = createAPI();
+    const level = await api.getGeoLevel(geography.full_geoid);
+    this.setState({ level, geography });
   }
 
   render() {
-    const { geography } = window.geography;
     const { population } = window.population;
     const { populationDensity } = window.population_density;
+    const { level, geography } = this.state;
     const { classes } = this.props;
+
     return (
       <Hero>
         <HeroTitleGrid quater>
           <HeroTitle breakWord small>
             {geography.short_name}
           </HeroTitle>
-          <p style={{ color: '#8d8d8c', fontSize: '0.75em' }}>
-            Province in <a href="/country">South Africa</a>
-          </p>
+          <Typography
+            variant="body2"
+            style={{
+              color: '#8d8d8c',
+              fontSize: '0.75em',
+              textTransform: 'capitalize'
+            }}
+            component="p"
+          >
+            {level}{' '}
+            {window.captionItems.length ? (
+              <Typography variant="body" style={{ display: 'inline-block' }}>
+                in{' '}
+                {window.captionItems.slice(0, -1).map(item => (
+                  <span>
+                    <a href={`/profiles/${item.geoid}`}>{item.name}</a>{' '}
+                  </span>
+                ))}
+              </Typography>
+            ) : null}
+          </Typography>
           <HeroDetail label="Population">{population}</HeroDetail>
           <HeroDetail small label="square kilometers">
             {geography.square_kms}

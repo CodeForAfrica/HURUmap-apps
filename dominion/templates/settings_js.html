@@ -11,11 +11,17 @@
   {% endif %}
   var population_density = '';
   var population = '';
-  console.log({{demographics}})
   {% if demographics %}
    population = {{ demographics.total_population.values.this}}
   {%endif%}
   {% if demographics.population_density.values.this %}
    population_density = {{ demographics.population_density.values.this|floatformat:"1" }}
+  {% endif %}
+  var captionItems = []
+  {% if geography.parents %}
+     {% for level, g in geography.parents.items %}
+        var geolevel = "{{ g.full_geoid }}-{{ g.short_name|slugify }}";
+        captionItems.push({ geoid: "{{ g.full_geoid }}-{{ g.short_name|slugify }}", name: "{{ g.short_name}}"  });
+      {% endfor %}
   {% endif %}
 {% endblock settings_javascript %}
