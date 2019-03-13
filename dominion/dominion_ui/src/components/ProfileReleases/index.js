@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Grid, Button, Typography } from '@material-ui/core';
+import { Grid, Button, Typography, Menu, MenuItem } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import arrowDownIcon from '../../assets/images/group-3.png';
@@ -72,73 +72,120 @@ const styles = theme => ({
     [theme.breakpoints.up('md')]: {
       marginLeft: '50px'
     }
+  },
+  releasesMenuItem: {
+    width: '9.375rem',
+    maxWidth: '9.375rem'
   }
 });
 
-function ProfileReleasesSection({ classes }) {
-  return (
-    <Grid container direction="row" className={classes.root}>
-      <Grid item className={classes.description}>
-        <Typography className={classes.descriptionTitle}>
-          Community Survery 2016
-        </Typography>
-        <Typography className={classes.descriptionText}>
-          Municipal Elections 2016: Electoral Commission of South Africa (IEC),
-          Municipal election results{' '}
-          <a href="https://wazimap.co.za/profiles/province-EC-eastern-cape">
-            https://wazimap.co.za/profiles/province-EC-eastern-cape
-          </a>
-          <br />
-          National Elections 2014: Electoral Commission of South Africa (IEC),
-          National and provincial election results{' '}
-          <a href="https://wazimap.co.za/profiles/province-EC-eastern-cape">
-            https://wazimap.co.za/profiles/province-EC-eastern-cape
-          </a>
-          <br />
-          Provincial Elections 2014: Electoral Commission of South Africa (IEC),
-          National and provincial election results{' '}
-          <a href="https://wazimap.co.za/profiles/province-EC-eastern-cape">
-            https://wazimap.co.za/profiles/province-EC-eastern-cape
-          </a>
-          <br />
-          Municipal Elections 2011: Electoral Commission of South Africa (IEC),
-          Municipal election results{' '}
-          <a href="https://wazimap.co.za/profiles/province-EC-eastern-cape">
-            https://wazimap.co.za/profiles/province-EC-eastern-cape
-          </a>
-          <br />
-          Community Survey 2016: Statistics South Africa (2016) South African
-          Community Survey 2016. Indicators derived from the full population
-          Community Survey.{' '}
-          <a href="https://wazimap.co.za/profiles/province-EC-eastern-cape">
-            https://wazimap.co.za/profiles/province-EC-eastern-cape
-          </a>
-          <br />
-          Census 2011: Statistics South Africa (2011) South African Population
-          Census 2011. Indicators derived from the full population Census{' '}
-          <a href="https://wazimap.co.za/profiles/province-EC-eastern-cape">
-            https://wazimap.co.za/profiles/province-EC-eastern-cape
-          </a>
-          <br />
-          Police Crime Statistics 2014: South African Police Service{' '}
-          <a href="https://wazimap.co.za/profiles/province-EC-eastern-cape">
-            https://wazimap.co.za/profiles/province-EC-eastern-cape
-          </a>
-        </Typography>
+class ProfileReleasesSection extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      menuOpen: false,
+      menuAnchorElement: null
+    };
+
+    this.toggleReleasesMenu = this.toggleReleasesMenu.bind(this);
+  }
+
+  toggleReleasesMenu(menuAnchorElement) {
+    this.setState(prevState => ({
+      menuOpen: !prevState.menuOpen,
+      menuAnchorElement
+    }));
+  }
+
+  render() {
+    const { classes } = this.props;
+    const { menuOpen, menuAnchorElement } = this.state;
+    const datasetRealeases = window.dataset_releases;
+    return (
+      <Grid container direction="row" className={classes.root}>
+        <Grid item className={classes.description}>
+          <Typography className={classes.descriptionTitle}>
+            Community Survery 2016
+          </Typography>
+          <Typography className={classes.descriptionText}>
+            Municipal Elections 2016: Electoral Commission of South Africa
+            (IEC), Municipal election results{' '}
+            <a href="https://wazimap.co.za/profiles/province-EC-eastern-cape">
+              https://wazimap.co.za/profiles/province-EC-eastern-cape
+            </a>
+            <br />
+            National Elections 2014: Electoral Commission of South Africa (IEC),
+            National and provincial election results{' '}
+            <a href="https://wazimap.co.za/profiles/province-EC-eastern-cape">
+              https://wazimap.co.za/profiles/province-EC-eastern-cape
+            </a>
+            <br />
+            Provincial Elections 2014: Electoral Commission of South Africa
+            (IEC), National and provincial election results{' '}
+            <a href="https://wazimap.co.za/profiles/province-EC-eastern-cape">
+              https://wazimap.co.za/profiles/province-EC-eastern-cape
+            </a>
+            <br />
+            Municipal Elections 2011: Electoral Commission of South Africa
+            (IEC), Municipal election results{' '}
+            <a href="https://wazimap.co.za/profiles/province-EC-eastern-cape">
+              https://wazimap.co.za/profiles/province-EC-eastern-cape
+            </a>
+            <br />
+            Community Survey 2016: Statistics South Africa (2016) South African
+            Community Survey 2016. Indicators derived from the full population
+            Community Survey.{' '}
+            <a href="https://wazimap.co.za/profiles/province-EC-eastern-cape">
+              https://wazimap.co.za/profiles/province-EC-eastern-cape
+            </a>
+            <br />
+            Census 2011: Statistics South Africa (2011) South African Population
+            Census 2011. Indicators derived from the full population Census{' '}
+            <a href="https://wazimap.co.za/profiles/province-EC-eastern-cape">
+              https://wazimap.co.za/profiles/province-EC-eastern-cape
+            </a>
+            <br />
+            Police Crime Statistics 2014: South African Police Service{' '}
+            <a href="https://wazimap.co.za/profiles/province-EC-eastern-cape">
+              https://wazimap.co.za/profiles/province-EC-eastern-cape
+            </a>
+          </Typography>
+        </Grid>
+        <Grid item className={classes.releaseSelector}>
+          <Button
+            disableFocusRipple
+            disableRipple
+            disableTouchRipple
+            className={classes.changeReleaseButton}
+            onClick={event => {
+              this.toggleReleasesMenu(event.target);
+            }}
+          >
+            Change release
+            <img alt="Toggle" src={arrowDownIcon} />
+          </Button>
+          <Menu
+            id="render-props-menu"
+            anchorEl={menuAnchorElement}
+            open={menuOpen}
+            onClose={() => this.toggleReleasesMenu(null)}
+          >
+            {datasetRealeases
+              ? datasetRealeases.map(release => (
+                  <MenuItem
+                    className={classes.releasesMenuItem}
+                    onClick={() => this.toggleReleasesMenu(null)}
+                  >
+                    {release.title}
+                  </MenuItem>
+                ))
+              : null}
+          </Menu>
+        </Grid>
       </Grid>
-      <Grid item className={classes.releaseSelector}>
-        <Button
-          disableFocusRipple
-          disableRipple
-          disableTouchRipple
-          className={classes.changeReleaseButton}
-        >
-          Change release
-          <img alt="Toggle" src={arrowDownIcon} />
-        </Button>
-      </Grid>
-    </Grid>
-  );
+    );
+  }
 }
 
 ProfileReleasesSection.propTypes = {
