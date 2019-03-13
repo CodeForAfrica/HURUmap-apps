@@ -43,6 +43,10 @@ const styles = theme => ({
   searchFieldNoBorderBottom: {
     borderBottom: 'none !important'
   },
+  searchFieldNoMargin: {
+    marginLeft: 0,
+    marginRight: 0
+  },
   iconButton: {
     padding: 0
   },
@@ -62,6 +66,7 @@ function SearchBar({
   icon,
   handleIconClick,
   handleValueChange,
+  isComparisonSearch,
   autoFocus
 }) {
   let searchBarIcon = icon;
@@ -82,7 +87,7 @@ function SearchBar({
         inputProps={{ className: classes.searchFieldInput }}
         className={`${classes.searchField} ${
           primary ? classes.searchFieldNoBorderBottom : null
-        }`}
+        } ${isComparisonSearch ? classes.searchFieldNoMargin : null}`}
         onChange={event => {
           const { value: searchTerm } = event.target;
           if (handleValueChange) {
@@ -114,7 +119,8 @@ SearchBar.propTypes = {
   value: PropTypes.isRequired,
   primary: PropTypes.bool.isRequired,
   placeholder: PropTypes.string,
-  autoFocus: PropTypes.bool
+  autoFocus: PropTypes.bool,
+  isComparisonSearch: PropTypes.bool.isRequired
 };
 
 SearchBar.defaultProps = {

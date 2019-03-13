@@ -9,8 +9,10 @@ import withRoot from './withRoot';
 import {
   HomePageHeader,
   CountryPageHeader,
-  ProfilePageHeader
+  ProfilePageHeader,
+  ComparePageNav
 } from './components/Header';
+import Header from './components/Header/Header';
 import { AboutCountry, AboutDominion } from './components/About';
 import Data from './components/Data';
 import Footer from './components/Footer';
@@ -33,6 +35,8 @@ const renderApp = (Component, id) => {
 renderApp(HomePageHeader, 'dominionHomePageHeader');
 renderApp(CountryPageHeader, 'dominionCountryPageHeader');
 renderApp(ProfilePageHeader, 'dominionProfilePageHeader');
+renderApp(ComparePageNav, 'dominionComparePageNav');
+renderApp(Header, 'dominionComparePageNaav');
 renderApp(AboutCountry, 'dominionCountryAbout');
 renderApp(ProfileTabs, 'dominionProfileTabs');
 renderApp(Video, 'dominionVideo');

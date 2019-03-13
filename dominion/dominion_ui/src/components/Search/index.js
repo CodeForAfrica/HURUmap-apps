@@ -83,7 +83,8 @@ class Search extends React.Component {
       handleIconClick,
       placeholder,
       icon,
-      isCompareSearch
+      thisGeoId,
+      isComparisonSearch
     } = this.props;
     const { results, searchTerm } = this.state;
 
@@ -92,17 +93,22 @@ class Search extends React.Component {
         container
         direction="column"
         wrap="nowrap"
-        className={isCompareSearch ? null : classes.root}
+        className={isComparisonSearch ? null : classes.root}
       >
         <SearchBar
           value={searchTerm}
           handleValueChange={this.handleSearch}
           handleIconClick={handleIconClick}
           placeholder={placeholder}
+          isComparisonSearch={isComparisonSearch}
           icon={icon}
         />
         {results.length ? (
-          <SearchResults results={results} isCompareSearch={isCompareSearch} />
+          <SearchResults
+            results={results}
+            isComparisonSearch={isComparisonSearch}
+            thisGeoId={thisGeoId}
+          />
         ) : (
           children
         )}
@@ -111,13 +117,21 @@ class Search extends React.Component {
   }
 }
 
+Search.defaultProps = {
+  thisGeoId: '',
+  icon: null,
+  placeholder: '',
+  isComparisonSearch: false
+};
+
 Search.propTypes = {
   classes: PropTypes.isRequired,
   children: PropTypes.isRequired,
   handleIconClick: PropTypes.isRequired,
-  placeholder: PropTypes.isRequired,
-  isCompareSearch: PropTypes.bool.isRequired,
-  icon: PropTypes.isRequired
+  placeholder: PropTypes.string,
+  isComparisonSearch: PropTypes.bool,
+  icon: PropTypes.shape(),
+  thisGeoId: PropTypes.string
 };
 
 export default withStyles(styles)(Search);

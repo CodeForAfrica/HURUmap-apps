@@ -36,7 +36,7 @@ const styles = theme => ({
 class ProfileHero extends Component {
   constructor(props) {
     super(props);
-    this.state = { level: '' };
+    this.state = { level: '', geoid: '' };
   }
 
   async componentDidMount() {
@@ -44,13 +44,13 @@ class ProfileHero extends Component {
     const geoid = window.geography.full_geoid;
     const api = createAPI();
     const level = await api.getGeoLevel(geoid);
-    this.setState({ level });
+    this.setState({ level, geoid });
   }
 
   render() {
     const { population } = window.population;
     const { populationDensity } = window.population_density;
-    const { level } = this.state;
+    const { level, geoid } = this.state;
     const { classes } = this.props;
 
     return (
@@ -89,8 +89,9 @@ class ProfileHero extends Component {
           </HeroDetail>
           <Search
             handleIconClick={null}
-            isCompareSearch
+            isComparisonSearch
             placeholder="compare this with"
+            thisGeoId={geoid}
             icon={searchIcon}
           />
         </HeroTitleGrid>

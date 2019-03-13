@@ -29,3 +29,7 @@ export function ProfilePageHeader() {
     </Header>
   );
 }
+
+export function ComparePageNav() {
+  return <Header />;
+}
