@@ -7,7 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Hero, { HeroTitle, HeroTitleGrid, HeroDetail } from './Hero';
 import createAPI from '../../api';
 
-import SearchBar from '../Search/SearchBar';
+import Search from '../Search';
 import searchIcon from '../../assets/images/icons/location.svg';
 
 const styles = theme => ({
@@ -36,28 +36,28 @@ const styles = theme => ({
 class ProfileHero extends Component {
   constructor(props) {
     super(props);
-    this.state = { level: '', geography: {} };
+    this.state = { level: '' };
   }
 
   async componentDidMount() {
     // get level from mapit
-    const { geography } = window.geography;
+    const geoid = window.geography.full_geoid;
     const api = createAPI();
-    const level = await api.getGeoLevel(geography.full_geoid);
-    this.setState({ level, geography });
+    const level = await api.getGeoLevel(geoid);
+    this.setState({ level });
   }
 
   render() {
     const { population } = window.population;
     const { populationDensity } = window.population_density;
-    const { level, geography } = this.state;
+    const { level } = this.state;
     const { classes } = this.props;
 
     return (
       <Hero>
         <HeroTitleGrid quater>
           <HeroTitle breakWord small>
-            {geography.short_name}
+            {window.geography.short_name}
           </HeroTitle>
           <Typography
             variant="body2"
@@ -82,14 +82,14 @@ class ProfileHero extends Component {
           </Typography>
           <HeroDetail label="Population">{population}</HeroDetail>
           <HeroDetail small label="square kilometers">
-            {geography.square_kms}
+            {window.geography.square_kms}
           </HeroDetail>
           <HeroDetail small label="people per square kilometer">
             {populationDensity}
           </HeroDetail>
-          <SearchBar
-            autoFocus={false}
-            primary
+          <Search
+            handleIconClick={null}
+            isCompareSearch
             placeholder="compare this with"
             icon={searchIcon}
           />

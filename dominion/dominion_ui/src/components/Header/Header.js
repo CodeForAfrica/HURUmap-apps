@@ -106,7 +106,12 @@ class Header extends Component {
         <Modal isOpen={openModal === 'search'}>
           <Grid container className={classes.wrapper}>
             <Navigation toggleModal={this.toggleModal} openModal={openModal} />
-            <Search handleIconClick={this.toggleSearchModal} />
+            <Search
+              handleIconClick={this.toggleSearchModal}
+              isCompareSearch={false}
+              icon={null}
+              placeholder=""
+            />
           </Grid>
         </Modal>
         <Modal isOpen={openModal === 'portal'}>
