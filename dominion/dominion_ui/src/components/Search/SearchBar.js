@@ -50,6 +50,9 @@ const styles = theme => ({
   iconButton: {
     padding: 0
   },
+  iconButtonDropdown: {
+    marginLeft: -theme.spacing.unit * 4
+  },
   resultsContainer: {
     [theme.breakpoints.up('sm')]: {
       padding: '47px'
@@ -100,7 +103,9 @@ function SearchBar({
         disableTouchRipple
         focusRipple={false}
         style={{ backgroundColor: 'transparent' }}
-        className={classes.iconButton}
+        className={`${classes.iconButton} ${
+          isComparisonSearch ? classes.iconButtonDropdown : null
+        }`}
         aria-label="Search"
         onClick={handleIconClick}
       >
@@ -120,12 +125,13 @@ SearchBar.propTypes = {
   primary: PropTypes.bool.isRequired,
   placeholder: PropTypes.string,
   autoFocus: PropTypes.bool,
-  isComparisonSearch: PropTypes.bool.isRequired
+  isComparisonSearch: PropTypes.bool
 };
 
 SearchBar.defaultProps = {
   autoFocus: true,
-  placeholder: ''
+  placeholder: '',
+  isComparisonSearch: false
 };
 
 export default withWidth()(withStyles(styles)(SearchBar));

@@ -19,7 +19,9 @@ const styles = theme => ({
     color: 'black',
     backgroundColor: 'white',
     paddingTop: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit
+    paddingBottom: theme.spacing.unit,
+    marginTop: theme.spacing.unit,
+    marginBottom: theme.spacing.unit
   },
   list: {
     width: '100%',
