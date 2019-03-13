@@ -14,6 +14,7 @@ import Partners from './components/Partners';
 import ProfileTabs from './components/ProfileTabs';
 import Showcase from './components/Showcase';
 import Video from './components/Video';
+import CountryPartners from './components/CountryPartners';
 
 library.add(fab);
 
@@ -34,5 +35,6 @@ renderApp(Video, 'dominionVideo');
 renderApp(Showcase, 'dominionShowcase');
 renderApp(Data, 'dominionData');
 renderApp(AboutDominion, 'dominionAbout');
+renderApp(CountryPartners, 'dominionCountryPartners');
 renderApp(Partners, 'dominionPartners');
 renderApp(Footer, 'dominionFooter');
