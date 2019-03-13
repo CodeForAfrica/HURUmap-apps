@@ -6,15 +6,16 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 
 import withRoot from './withRoot';
 
-import { HomePageHeader, CountryPageHeader } from './components/Header';
 import { AboutCountry, AboutDominion } from './components/About';
+import { CountryPageHeader, HomePageHeader } from './components/Header';
+import CountryPartners from './components/CountryPartners';
 import Data from './components/Data';
 import Footer from './components/Footer';
+import HowItWorks from './components/HowItWorks/index';
 import Partners from './components/Partners';
 import ProfileTabs from './components/ProfileTabs';
 import Showcase from './components/Showcase';
 import Video from './components/Video';
-import HowItWorks from './components/HowItWorks/index';
 
 library.add(fab);
 
@@ -36,5 +37,6 @@ renderApp(HowItWorks, 'dominionHowItWorks');
 renderApp(Showcase, 'dominionShowcase');
 renderApp(Data, 'dominionData');
 renderApp(AboutDominion, 'dominionAbout');
+renderApp(CountryPartners, 'dominionCountryPartners');
 renderApp(Partners, 'dominionPartners');
 renderApp(Footer, 'dominionFooter');
