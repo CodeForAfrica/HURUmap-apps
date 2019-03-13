@@ -10,10 +10,14 @@
 {% block profile_detail %}
   <div id="profile-detail">
     <div id="dominionProfileTabs" />
-    <div id="dominionProfileReleasesSection" />
-
     {% block profile_detail_contents %}
     {% endblock %}
-  </div
+  </div>
+  <div id="dominionProfileReleasesSection" />
+{% endblock %}
 
+
+{% block body_javascript_extra %}
+    {{ block.super }}
+    var dataset_releases = [2016];
 {% endblock %}
