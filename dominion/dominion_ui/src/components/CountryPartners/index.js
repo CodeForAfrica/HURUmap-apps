@@ -24,7 +24,6 @@ const styles = theme => ({
       maxWidth: '10rem'
     }
   },
-
   imageGrid: {
     padding: '1rem',
     [theme.breakpoints.up('md')]: {
