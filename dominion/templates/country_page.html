@@ -1,4 +1,4 @@
-{% extends 'homepage.html' %}{% load sass_tags humanize partition static %} {% load jsonify %}
+{% extends '_base.html' %}{% load sass_tags humanize partition static %} {% load jsonify %}
 
 {% block head_title %}
 {{ HURUMAP.name }}: Who owns land in {{country.name}}
@@ -21,7 +21,7 @@ Compare places using tables and maps, download data, and embed charts on your si
   {% include 'blocks/partners.html' %}
 {% endblock content_container %}
 
-{% block homepage_javascripb_libs %}
+{% block body_javascript_extra %}
     {{ block.super }}
     <script>
         var maps = new ProfileMaps();
