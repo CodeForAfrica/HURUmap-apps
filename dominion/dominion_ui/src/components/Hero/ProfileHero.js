@@ -49,9 +49,9 @@ const styles = theme => ({
       color: '#8d8d8c',
       fontSize: '0.95em',
       display: 'block',
-      position: 'relative',
-      bottom: '-40%',
-      left: '52%'
+      position: 'absolute',
+      bottom: '-10%',
+      right: '-5px'
     }
   }
 });
@@ -109,11 +109,13 @@ class ProfileHero extends Component {
             icon={searchIcon}
           />
         </HeroTitleGrid>
-        <Grid id="slippy-map" className={classes.map} />
-        <Typography variant="body2" className={classes.release}>
-          {window.primary_releases} {window.primary_releases_year}
-          <ReleaseDropdown />
-        </Typography>
+        <Grid className={classes.map}>
+          <Grid id="slippy-map" />
+          <Typography variant="body2" className={classes.release}>
+            {window.primary_releases} {window.primary_releases_year}
+            <ReleaseDropdown />
+          </Typography>
+        </Grid>
       </Hero>
     );
   }
