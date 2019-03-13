@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Grid, Typography, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import classNames from 'classnames';
 
 import arrow from '../../assets/images/icons/combined-shape.svg';
 
@@ -63,13 +64,9 @@ const styles = theme => ({
   },
   detailLabel: {
     color: '#8d8d8c',
-    fontFamily: 'Montserrat',
     fontSize: '0.688em',
     fontWeight: 500,
-    fontStyle: 'normal',
-    fontStretch: 'normal',
-    lineHeight: 2.09,
-    letterSpacing: 'normal'
+    lineHeight: 2.09
   },
   body2: {
     color: 'white',
@@ -80,6 +77,9 @@ const styles = theme => ({
     [theme.breakpoints.down('sm')]: {
       width: '100%'
     }
+  },
+  buttonGrid: {
+    paddingTop: '2rem'
   },
   button: {
     textTransform: 'none',
@@ -94,6 +94,10 @@ const styles = theme => ({
     [theme.breakpoints.up('sm')]: {
       width: 'unset'
     }
+  },
+  detailComponent: {
+    paddingTop: theme.spacing.unit,
+    paddingBottom: theme.spacing.unit
   },
   buttonArrow: {
     marginLeft: -theme.spacing.unit * 4,
@@ -131,9 +135,11 @@ function HeroTitleComponent({ classes, children, breakWord, small }) {
   return (
     <Typography
       variant="h1"
-      className={`${classes.title} ${
-        breakWord ? classes.titleWordBreak : null
-      } ${small ? classes.titleFontSmall : null}`}
+      className={classNames(
+        classes.title,
+        { [classes.titleWordBreak]: breakWord },
+        { [classes.titleFontSmall]: small }
+      )}
     >
       {children}
     </Typography>
@@ -166,12 +172,12 @@ const HeroDescription = withStyles(styles)(HeroDescriptionComponent);
 
 function HeroDetailComponent({ classes, children, label, small }) {
   return (
-    <div style={{ marginTop: '0.313em' }}>
+    <Grid className={classes.detailComponent}>
       <Typography
         variant="h2"
-        className={`${classes.detail} ${
-          small ? classes.detailFontSmall : null
-        }`}
+        className={classNames(classes.detail, {
+          [classes.detailFontSmall]: small
+        })}
       >
         {children}
       </Typography>
@@ -180,7 +186,7 @@ function HeroDetailComponent({ classes, children, label, small }) {
           {label}
         </Typography>
       ) : null}
-    </div>
+    </Grid>
   );
 }
 
@@ -195,7 +201,13 @@ const HeroDetail = withStyles(styles)(HeroDetailComponent);
 
 function HeroButtonComponent({ classes, children, onClick }) {
   return (
-    <Grid container sm={12} alignItems="center" style={{ paddingTop: '2rem' }}>
+    <Grid
+      container
+      item
+      sm={12}
+      alignItems="center"
+      className={classes.buttonGrid}
+    >
       <Button
         variant="outlined"
         onClick={onClick}

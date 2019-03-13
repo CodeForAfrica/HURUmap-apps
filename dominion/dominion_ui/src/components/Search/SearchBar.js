@@ -37,6 +37,13 @@ const styles = theme => ({
       fontWeight: '600'
     }
   },
+  compareText: {
+    fontFamily: theme.typography.fontFamily,
+    color: 'white',
+    opacity: 1,
+    fontSize: '1.5em',
+    fontWeight: '600'
+  },
   rootBorderBottom: {
     borderBottom: '2px solid white !important'
   },
@@ -89,6 +96,7 @@ function SearchBar({
         autoFocus={autoFocus}
         value={value}
         placeholder={placeholder}
+        classes={{ placeholder: classes.compareText }}
         inputProps={{ className: classes.searchFieldInput }}
         className={classNames(
           classes.searchField,

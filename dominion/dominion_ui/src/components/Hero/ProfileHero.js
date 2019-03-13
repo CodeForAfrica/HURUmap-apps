@@ -33,6 +33,16 @@ const styles = theme => ({
       right: '9.375rem'
     }
   },
+  caption: {
+    color: '#8d8d8c',
+    fontSize: '0.75em',
+    textTransform: 'capitalize',
+    paddingTop: theme.spacing.unit,
+    paddingBottom: theme.spacing.unit
+  },
+  captionItem: {
+    display: 'inline-block'
+  },
   release: {
     display: 'none',
     [theme.breakpoints.up('sm')]: {
@@ -70,18 +80,10 @@ class ProfileHero extends Component {
           <HeroTitle breakWord small>
             {window.geography.short_name}
           </HeroTitle>
-          <Typography
-            variant="body2"
-            style={{
-              color: '#8d8d8c',
-              fontSize: '0.75em',
-              textTransform: 'capitalize'
-            }}
-            component="p"
-          >
+          <Typography variant="body2" className={classes.caption} component="p">
             {level}{' '}
             {window.captionItems.length ? (
-              <Typography variant="body" style={{ display: 'inline-block' }}>
+              <Typography variant="body" className={classes.captionItem}>
                 in{' '}
                 {window.captionItems.slice(0, -1).map(item => (
                   <span>
