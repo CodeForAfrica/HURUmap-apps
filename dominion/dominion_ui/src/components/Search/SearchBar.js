@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import InputBase from '@material-ui/core/InputBase';
 import { Grid, IconButton } from '@material-ui/core';
@@ -81,16 +81,20 @@ function SearchBar({
       container
       sm={12}
       wrap="nowrap"
-      className={`${classes.root} ${primary ? classes.rootBorderBottom : null}`}
+      className={classNames(classes.root, {
+        [classes.rootBorderBottom]: primary
+      })}
     >
       <InputBase
         autoFocus={autoFocus}
         value={value}
         placeholder={placeholder}
         inputProps={{ className: classes.searchFieldInput }}
-        className={`${classes.searchField} ${
-          primary ? classes.searchFieldNoBorderBottom : null
-        } ${isComparisonSearch ? classes.searchFieldNoMargin : null}`}
+        className={classNames(
+          classes.searchField,
+          { [classes.searchFieldNoBorderBottom]: primary },
+          { [classes.searchFieldNoMargin]: isComparisonSearch }
+        )}
         onChange={event => {
           const { value: searchTerm } = event.target;
           if (handleValueChange) {
@@ -103,9 +107,9 @@ function SearchBar({
         disableTouchRipple
         focusRipple={false}
         style={{ backgroundColor: 'transparent' }}
-        className={`${classes.iconButton} ${
-          isComparisonSearch ? classes.iconButtonDropdown : null
-        }`}
+        className={classNames(classes.iconButton, {
+          [classes.iconButtonDropdown]: isComparisonSearch
+        })}
         aria-label="Search"
         onClick={handleIconClick}
       >
@@ -122,7 +126,7 @@ SearchBar.propTypes = {
   handleIconClick: PropTypes.func.isRequired,
   width: PropTypes.isRequired,
   value: PropTypes.isRequired,
-  primary: PropTypes.bool.isRequired,
+  primary: PropTypes.bool,
   placeholder: PropTypes.string,
   autoFocus: PropTypes.bool,
   isComparisonSearch: PropTypes.bool
@@ -131,7 +135,8 @@ SearchBar.propTypes = {
 SearchBar.defaultProps = {
   autoFocus: true,
   placeholder: '',
-  isComparisonSearch: false
+  isComparisonSearch: false,
+  primary: false
 };
 
 export default withWidth()(withStyles(styles)(SearchBar));

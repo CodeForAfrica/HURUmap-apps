@@ -8,6 +8,7 @@ import Hero, { HeroTitle, HeroTitleGrid, HeroDetail } from './Hero';
 import createAPI from '../../api';
 
 import Search from '../Search';
+import ReleaseDropdown from '../ReleaseDropdown';
 import searchIcon from '../../assets/images/icons/location.svg';
 
 const styles = theme => ({
@@ -30,6 +31,16 @@ const styles = theme => ({
     },
     [theme.breakpoints.up('lg')]: {
       right: '9.375rem'
+    }
+  },
+  release: {
+    display: 'none',
+    [theme.breakpoints.up('sm')]: {
+      color: 'white',
+      display: 'block',
+      position: 'relative',
+      bottom: '-45%',
+      left: '51.5%'
     }
   }
 });
@@ -90,12 +101,15 @@ class ProfileHero extends Component {
           <Search
             handleIconClick={null}
             isComparisonSearch
-            placeholder="compare this with"
+            placeholder="Compare this with"
             thisGeoId={geoid}
             icon={searchIcon}
           />
         </HeroTitleGrid>
         <Grid id="slippy-map" className={classes.map} />
+        <Typography variant="body2" className={classes.release}>
+          Census <ReleaseDropdown />
+        </Typography>
       </Hero>
     );
   }

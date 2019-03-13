@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import { Grid, List, ListItem, Typography } from '@material-ui/core';
 
 import { withStyles } from '@material-ui/core/styles';
@@ -96,9 +97,9 @@ function SearchResults({ classes, results, isComparisonSearch, thisGeoId }) {
     <Grid
       container
       sm={12}
-      className={`${classes.root} ${
-        isComparisonSearch ? classes.rootDropdown : null
-      }`}
+      className={classNames(classes.root, {
+        [classes.rootDropdown]: isComparisonSearch
+      })}
     >
       <Grid container direction="row" justify="flex-end">
         <List className={classes.list}>
@@ -115,18 +116,18 @@ function SearchResults({ classes, results, isComparisonSearch, thisGeoId }) {
             >
               <Grid container direction="row" alignItems="baseline">
                 <Typography
-                  className={`${classes.level} ${
-                    isComparisonSearch ? classes.levelDropdown : null
-                  }`}
+                  className={classNames(classes.level, {
+                    [classes.levelDropdown]: isComparisonSearch
+                  })}
                   variant="body2"
                   component="p"
                 >
                   {result.type.toLowerCase()}
                 </Typography>
                 <Typography
-                  className={`${classes.name} ${
-                    isComparisonSearch ? classes.nameDropdown : null
-                  }`}
+                  className={classNames(classes.name, {
+                    [classes.nameDropdown]: isComparisonSearch
+                  })}
                   variant="body2"
                   component="p"
                 >
