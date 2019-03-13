@@ -51,7 +51,7 @@ function Thumbnail({ classes, isSelected, onClick, videoId, videoTitle }) {
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        marginBottom: '5px'
+        marginBottom: '20px'
       }}
     >
       <Grid

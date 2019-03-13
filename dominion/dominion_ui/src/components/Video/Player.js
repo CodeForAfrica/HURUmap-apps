@@ -99,9 +99,9 @@ class Player extends React.Component {
               ))}
             </Grid>
           </Grid>
-          <Grid constainer item justify="flex-start" alignItems="flex-start">
+          <Grid constainer item justify="flex-end" alignItems="flex-start">
             <IconButton
-              style={{ float: 'right' }}
+              style={{ marginLeft: '3.125em', padding: 0 }}
               aria-label="Search"
               onClick={handleClose}
             >
