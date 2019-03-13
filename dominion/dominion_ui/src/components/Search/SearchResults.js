@@ -21,8 +21,11 @@ const styles = theme => ({
     backgroundColor: 'white',
     paddingTop: theme.spacing.unit,
     paddingBottom: theme.spacing.unit,
-    marginTop: theme.spacing.unit,
-    marginBottom: theme.spacing.unit
+    marginTop: theme.spacing.unit * 9,
+    marginBottom: theme.spacing.unit,
+    position: 'absolute',
+    width: '28.5%',
+    zIndex: '400'
   },
   list: {
     width: '100%',

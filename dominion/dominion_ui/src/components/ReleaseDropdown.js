@@ -20,15 +20,17 @@ const styles = theme => ({
   p: {
     color: '#e7e452',
     fontWeight: '600',
-    fontSize: '0.85rem',
+    fontSize: '0.95rem',
+    paddingLeft: theme.spacing.unit * 2,
     [theme.breakpoints.down('sm')]: {
       width: '100%',
       textAlign: 'left',
       lineHeight: '7em'
     }
   },
-  KeyboardArrowDown: {
-    paddingLeft: '10px',
+  KeyboardArrow: {
+    paddingLeft: '5px',
+    color: '#e7e452',
     cursor: 'pointer'
   }
 });
@@ -58,14 +60,11 @@ class ReleaseDropdown extends Component {
           Change release
         </Typography>
         {isDropdownOpen ? (
-          <KeyboardArrowUp
-            fontSize="large"
-            className={classes.KeyboardArrowDown}
-          />
+          <KeyboardArrowUp fontSize="large" className={classes.KeyboardArrow} />
         ) : (
           <KeyboardArrowDown
             fontSize="large"
-            className={classes.KeyboardArrowDown}
+            className={classes.KeyboardArrow}
           />
         )}
       </Button>

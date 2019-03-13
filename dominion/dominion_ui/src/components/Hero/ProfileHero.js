@@ -46,11 +46,12 @@ const styles = theme => ({
   release: {
     display: 'none',
     [theme.breakpoints.up('sm')]: {
-      color: 'white',
+      color: '#8d8d8c',
+      fontSize: '0.95em',
       display: 'block',
       position: 'relative',
-      bottom: '-45%',
-      left: '51.5%'
+      bottom: '-40%',
+      left: '52%'
     }
   }
 });
@@ -110,7 +111,8 @@ class ProfileHero extends Component {
         </HeroTitleGrid>
         <Grid id="slippy-map" className={classes.map} />
         <Typography variant="body2" className={classes.release}>
-          Census <ReleaseDropdown />
+          {window.primary_releases} {window.primary_releases_year}
+          <ReleaseDropdown />
         </Typography>
       </Hero>
     );

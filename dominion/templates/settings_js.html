@@ -24,4 +24,7 @@
         captionItems.push({ geoid: "{{ g.full_geoid }}-{{ g.short_name|slugify }}", name: "{{ g.short_name}}"  });
       {% endfor %}
   {% endif %}
+  var primary_releases = "{{ primary_releases.active.name }}"
+  var primary_releases_year = "{{ primary_releases.active.year }}"
+  var primary_releases_other = {{ primary_releases.other | jsonify | safe }}
 {% endblock settings_javascript %}
