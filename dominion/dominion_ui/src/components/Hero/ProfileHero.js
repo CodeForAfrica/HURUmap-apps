@@ -48,9 +48,9 @@ const styles = theme => ({
     [theme.breakpoints.up('sm')]: {
       color: '#8d8d8c',
       fontSize: '0.95em',
-      display: 'block',
       position: 'absolute',
       bottom: '-10%',
+      display: 'inline-block',
       right: '-5px'
     }
   }
