@@ -55,6 +55,7 @@ function CountryPartners({ classes }) {
       </Grid>
 
       <Grid
+        item
         xs={12}
         sm={8}
         spacing={24}
