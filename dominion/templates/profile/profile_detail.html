@@ -20,6 +20,7 @@
 {% block body_javascript_extra %}
     {{ block.super }}
     <script>
-        var dataset_releases = [2016];
+        var dataset_releases = profileData["primary_releases"]["other"];
+        dataset_releases.push(profileData["primary_releases"]["active"]);
     </script>
 {% endblock %}

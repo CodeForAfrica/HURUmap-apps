@@ -169,12 +169,13 @@ class ProfileReleasesSection extends React.Component {
             onClose={() => this.toggleReleasesMenu(null)}
           >
             {datasetRealeases
-              ? datasetRealeases.map(year => (
+              ? datasetRealeases.map(release => (
                   <MenuItem
+                    component="a"
+                    href={`?release=${release.year}`}
                     className={classes.releasesMenuItem}
-                    onClick={() => this.toggleReleasesMenu(null)}
                   >
-                    {year.toString()}
+                    {release.citation}
                   </MenuItem>
                 ))
               : null}
