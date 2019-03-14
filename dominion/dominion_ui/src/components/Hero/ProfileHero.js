@@ -48,13 +48,13 @@ const styles = theme => ({
       color: '#8d8d8c',
       fontSize: '0.95em',
       position: 'absolute',
-      bottom: '19%',
+      bottom: '16%',
       display: 'inline-block',
       right: '4%'
     },
     [theme.breakpoints.up('lg')]: {
-      bottom: '15%',
-      right: '6.8%'
+      bottom: '12%',
+      right: '9.375rem'
     }
   }
 });
@@ -114,10 +114,12 @@ class ProfileHero extends Component {
           />
         </HeroTitleGrid>
         <Grid id="slippy-map" className={classes.map} />
-        <Typography variant="body2" className={classes.release}>
-          {window.primary_releases} {window.primary_releases_year}
-          <ReleaseDropdown />
-        </Typography>
+        <Grid>
+          <Typography variant="body2" className={classes.release}>
+            {window.primary_releases} {window.primary_releases_year}
+            <ReleaseDropdown />
+          </Typography>
+        </Grid>
       </Hero>
     );
   }

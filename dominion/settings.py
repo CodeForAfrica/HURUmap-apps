@@ -78,7 +78,7 @@ HURUMAP['countries'] = {
     'south-africa': {
         'code': 'ZA',
         'name': 'South Africa',
-        'centre': [-28.4796, 10.698445],
+        'centre': [-30, 24],
         'zoom': 5
     },
 }
