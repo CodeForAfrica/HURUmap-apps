@@ -13,36 +13,40 @@ import back from '../../assets/images/icons/back.svg';
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    height: 'calc(100vh - 6.25em)',
-    backgroundColor: 'black'
+    backgroundColor: 'black',
+    padding: '-1.875rem 0',
+    [theme.breakpoints.up('md')]: {
+      height: 'calc(100vh - 6.25em)'
+    }
   },
   videoPlayer: {
     width: '100vw',
     marginBottom: '2rem',
     [theme.breakpoints.up('md')]: {
-      marginBottom: 0,
-      width: '47rem', // 59.635 * 0.8
-      marginRight: '0.708rem'
-    },
-    [theme.breakpoints.up('lg')]: {
-      width: '63.0rem', // 79.5 * 0.8
-      marginRight: '1.5rem'
+      width: '60vw'
     }
   },
   videoPlaylist: {
     width: '100vw',
     overflow: 'scroll',
+    height: '85vw',
     [theme.breakpoints.up('md')]: {
-      width: '11.927rem',
-      height: '26.406em'
-    },
-    [theme.breakpoints.up('lg')]: {
-      width: '15rem',
-      height: '35.391em'
+      margin: '0 1.25rem',
+      width: '15.625em',
+      height: '33.7vw'
     }
   },
   thumbnail: {
     height: 200
+  },
+  closeButton: {
+    padding: 0,
+    position: 'absolute',
+    right: '1.25rem',
+    [theme.breakpoints.up('md')]: {
+      position: 'relative',
+      marginLeft: '2.5rem'
+    }
   }
 });
 
@@ -81,7 +85,8 @@ class Player extends React.Component {
           <Grid item>
             <Grid
               item
-              direction="column"
+              container
+              direction="row"
               justify="center"
               alignItems="flex-start"
               className={classes.videoPlaylist}
@@ -101,7 +106,7 @@ class Player extends React.Component {
           </Grid>
           <Grid constainer item justify="flex-end" alignItems="flex-start">
             <IconButton
-              style={{ marginLeft: '3.125em', padding: 0 }}
+              className={classes.closeButton}
               aria-label="Search"
               onClick={handleClose}
             >

@@ -167,11 +167,13 @@ class Navigation extends Component {
         <Topbar />
 
         <Modal isOpen={openModal === 'menu'}>
-          <Topbar />
-          <Search>
-            <Dropdown />
-            {this.renderMenuList()}
-          </Search>
+          <Grid container className={classes.wrapper}>
+            <Topbar />
+            <Search>
+              <Dropdown />
+              {this.renderMenuList()}
+            </Search>
+          </Grid>
         </Modal>
       </React.Fragment>
     );
