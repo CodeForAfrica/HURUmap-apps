@@ -121,6 +121,7 @@ class ProfileReleasesSection extends React.Component {
     const { classes } = this.props;
     const { menuOpen } = this.state;
     const datasetRealeases = window.dataset_releases;
+    const activeDataset = window.active_dataset;
 
     const Atag = ({ link }) => (
       <a className={classes.link} href={link}>
@@ -132,7 +133,7 @@ class ProfileReleasesSection extends React.Component {
       <Grid container direction="row" className={classes.root}>
         <Grid item className={classes.description}>
           <Typography className={classes.descriptionTitle}>
-            Community Survery 2016
+            {activeDataset.citation}
           </Typography>
           <Typography className={classes.descriptionText}>
             Municipal Elections 2016: Electoral Commission of South Africa
