@@ -44,13 +44,17 @@ const styles = theme => ({
   },
   release: {
     display: 'none',
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       color: '#8d8d8c',
       fontSize: '0.95em',
       position: 'absolute',
-      bottom: '10%',
+      bottom: '19%',
       display: 'inline-block',
-      right: '9%'
+      right: '4%'
+    },
+    [theme.breakpoints.up('lg')]: {
+      bottom: '15%',
+      right: '6.8%'
     }
   }
 });
