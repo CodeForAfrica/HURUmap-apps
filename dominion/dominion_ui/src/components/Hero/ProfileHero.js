@@ -86,12 +86,13 @@ class ProfileHero extends Component {
           </HeroTitle>
           <Typography variant="body2" className={classes.caption} component="p">
             {level}{' '}
-            {window.captionItems.length ? (
+            {window.captionItems.length > 1 ? (
               <Typography variant="body" className={classes.captionItem}>
                 in{' '}
                 {window.captionItems.slice(0, -1).map(item => (
                   <span>
-                    <a href={`/profiles/${item.geoid}`}>{item.name}</a>{' '}
+                    <a href={`/profiles/${item.geoid}`}>{item.name}</a>
+                    {', '}
                   </span>
                 ))}
               </Typography>
