@@ -7,6 +7,7 @@ function MapItGeometryLoader() {
     self.mapit_url = MAPIT.url;
     self.mapit_codetype = MAPIT.code_type;
     self.mapit_country = MAPIT.map_country;
+    var dominion_country_codes =  Object.values(dominion_countries).map(item => item.code);
     /**
      * Fetches geometry data for a comparison view and calls the +success+
      * callback with an object mapping each geo-id to a GeoJSON object.
@@ -90,7 +91,15 @@ function MapItGeometryLoader() {
 
           console.log(url_)
           d3.json(self.mapit_url + url_, function(error, data) {
+
             var areas = Object.keys(data);
+            //if area_type is country, then filter to only dominion countries
+            if (area_type == 'COUNTRY') {
+              data = Object.entries(data).filter(([id, areaObj]) =>
+              dominion_country_codes.includes(areaObj.country));
+              areas = data.map(area => area[0])
+            }
+
             areas = areas.join();
             var url = '/areas/' + areas + '.geojson';
 
