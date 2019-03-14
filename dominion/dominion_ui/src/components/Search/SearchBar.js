@@ -32,16 +32,10 @@ const styles = theme => ({
     '&::placeholder': {
       fontFamily: theme.typography.fontFamily,
       color: 'white',
+      fontSize: '1.125em',
       opacity: 1,
-      fontSize: '0.813em',
       fontWeight: '600'
     }
-  },
-  compareText: {
-    fontFamily: theme.typography.fontFamily,
-    color: 'white',
-    fontSize: '1.125em',
-    fontWeight: '600'
   },
   rootBorderBottom: {
     borderBottom: '2px solid white !important'
@@ -95,8 +89,7 @@ function SearchBar({
         autoFocus={autoFocus}
         value={value}
         placeholder={placeholder}
-        classes={{ input: classes.compareText }}
-        InputProps={{ className: classes.searchFieldInput }}
+        classes={{ input: classes.searchFieldInput }}
         className={classNames(
           classes.searchField,
           { [classes.searchFieldNoBorderBottom]: primary },
@@ -140,10 +133,10 @@ SearchBar.propTypes = {
 };
 
 SearchBar.defaultProps = {
-  autoFocus: true,
+  autoFocus: false,
   placeholder: '',
   isComparisonSearch: false,
-  primary: false
+  primary: true
 };
 
 export default withWidth()(withStyles(styles)(SearchBar));
