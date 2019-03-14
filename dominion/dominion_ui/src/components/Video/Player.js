@@ -30,10 +30,18 @@ const styles = theme => ({
     width: '100vw',
     overflow: 'scroll',
     height: '85vw',
+    scrollbarWidth: 'none', // Firefox
+    '-ms-overflow-style': 'none', // IE
     [theme.breakpoints.up('md')]: {
       margin: '0 1.25rem',
-      width: '15.625em',
+      width: '12vw',
       height: '33.7vw'
+    },
+    '&::-webkit-scrollbar': {
+      // Chrome + Safari
+      width: 0,
+      height: 0,
+      background: 'transparent'
     }
   },
   thumbnail: {
@@ -70,8 +78,15 @@ class Player extends React.Component {
     const { videoId } = this.state;
 
     return (
-      <Grid container alignItems="center" className={classes.root}>
-        <Grid container item justify="center">
+      <Grid container className={classes.root}>
+        <Grid
+          item
+          container
+          justify="center"
+          style={{
+            marginTop: '2.5rem'
+          }}
+        >
           <Grid item>
             <div className={classes.videoPlayer}>
               <IFrame

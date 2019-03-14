@@ -20,17 +20,17 @@ const styles = theme => ({
   videoImage: {
     width: '100vw',
     [theme.breakpoints.up('md')]: {
-      width: '250px'
+      width: '12vw'
     }
   },
   overlay: {
     width: '100%',
     height: '100%',
     position: 'absolute',
-    backgroundColor: 'rgba(0, 0, 0, 0.75)'
+    backgroundColor: 'rgba(0, 0, 0, 0.8)'
   },
   overlaySelected: {
-    backgroundColor: 'rgba(0, 0, 0, 0.5)'
+    backgroundColor: 'rgba(0, 0, 0, 0.6)'
   },
   button: {
     width: '100vw',
@@ -48,7 +48,14 @@ const styles = theme => ({
   },
   caption: {
     color: '#fff',
-    textAlign: 'left'
+    textAlign: 'left',
+    fontFamily: 'Lora',
+    fontSize: '14px',
+    fontWeight: 'normal',
+    fontStyle: 'normal',
+    fontStretch: 'normal',
+    lineHeight: 1.14,
+    letterSpacing: '0.4px'
   }
 });
 
@@ -71,7 +78,13 @@ function Thumbnail({ classes, isSelected, onClick, videoId, videoTitle }) {
         justify="center"
         alignItems="flex-start"
       >
-        <Grid item>{isSelected ? <PlayArrowOutlined /> : <PlayArrow />}</Grid>
+        <Grid item>
+          {isSelected ? (
+            <PlayArrowOutlined style={{ marginLeft: '-8px' }} />
+          ) : (
+            <PlayArrow style={{ marginLeft: '-8px' }} />
+          )}
+        </Grid>
         <Grid item>
           <Typography variant="caption" className={classes.caption}>
             {videoTitle}

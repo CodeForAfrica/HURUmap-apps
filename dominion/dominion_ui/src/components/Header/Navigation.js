@@ -28,7 +28,7 @@ const styles = theme => ({
       padding: '1.875rem 3.125rem'
     },
     [theme.breakpoints.up('lg')]: {
-      padding: '3.125rem 9.375rem'
+      padding: '1.875rem 9.375rem'
     },
     position: 'relative',
     width: '100%'
