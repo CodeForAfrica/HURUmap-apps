@@ -61,7 +61,16 @@ const styles = theme => ({
 class ProfileHero extends Component {
   constructor(props) {
     super(props);
-    this.state = { level: '', geoid: '' };
+    this.state = {
+      level: '',
+      geoid: '',
+      population: '',
+      populationDensity: '',
+      primaryReleases: {},
+      squarekms: '',
+      profileName: '',
+      parentLinks: {}
+    };
   }
 
   async componentDidMount() {
@@ -69,33 +78,63 @@ class ProfileHero extends Component {
     const geoid = window.geography.full_geoid;
     const api = createAPI();
     const level = await api.getGeoLevel(geoid);
-    this.setState({ level, geoid });
-  }
-
-  render() {
-    const { level, geoid } = this.state;
-    const { classes } = this.props;
     const { profileDataJson } = window.profileDataJson;
     let population;
     let populationDensity;
-    if (Object.prototype.hasOwnProperty.call(profileDataJson, 'demographics')) {
-      const { demographics } = window.profileDataJson.demographics;
+    let primaryReleases;
+    let squarekms;
+    let profileName;
+    let parentLinks;
+    if (profileDataJson) {
+      primaryReleases = profileDataJson.primary_releases;
+      squarekms = profileDataJson.geography.this.square_kms;
+      profileName = profileDataJson.geography.this.short_name;
+      parentLinks = profileDataJson.geography.parents;
 
       if (
-        Object.prototype.hasOwnProperty.call(demographics, 'total_population')
+        Object.prototype.hasOwnProperty.call(profileDataJson, 'demographics')
       ) {
-        population = demographics.total_population.values.this;
-      }
-      if (
-        Object.prototype.hasOwnProperty.call(demographics, 'population_density')
-      ) {
-        populationDensity = demographics.population_density.values.this;
+        const { demographics } = window.profileDataJson.demographics;
+
+        if (
+          Object.prototype.hasOwnProperty.call(demographics, 'total_population')
+        ) {
+          population = demographics.total_population.values.this;
+        }
+        if (
+          Object.prototype.hasOwnProperty.call(
+            demographics,
+            'population_density'
+          )
+        ) {
+          populationDensity = demographics.population_density.values.this;
+        }
       }
     }
-    const primaryReleases = profileDataJson.primary_releases;
-    const squarekms = profileDataJson.geography.this.square_kms;
-    const profileName = profileDataJson.geography.this.short_name;
-    const parentLinks = profileDataJson.geography.parents;
+    this.setState({
+      level,
+      geoid,
+      population,
+      populationDensity,
+      primaryReleases,
+      squarekms,
+      profileName,
+      parentLinks
+    });
+  }
+
+  render() {
+    const {
+      level,
+      geoid,
+      population,
+      populationDensity,
+      primaryReleases,
+      squarekms,
+      profileName,
+      parentLinks
+    } = this.state;
+    const { classes } = this.props;
 
     return (
       <Hero>
@@ -143,7 +182,8 @@ class ProfileHero extends Component {
           />
         </HeroTitleGrid>
         <Grid id="slippy-map" className={classes.map} />
-        {primaryReleases ? (
+        {primaryReleases &&
+        Object.prototype.hasOwnProperty.call(primaryReleases, 'active') ? (
           <Typography variant="body2" className={classes.release}>
             {primaryReleases.active.citation}
             <ReleaseDropdown />
