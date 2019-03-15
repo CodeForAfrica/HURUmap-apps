@@ -16,7 +16,7 @@ const styles = theme => ({
     textTransform: 'none',
     height: '50px',
     padding: 0,
-    marginRright: -theme.spacing.unit * 0.5,
+    marginRight: -theme.spacing.unit * 0.5,
     [theme.breakpoints.down('sm')]: {
       width: '100%'
     }
