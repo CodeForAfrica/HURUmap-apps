@@ -10,9 +10,17 @@
 {% block profile_detail %}
   <div id="profile-detail">
     <div id="dominionProfileTabs" />
-
     {% block profile_detail_contents %}
     {% endblock %}
-  </div
+  </div>
+  <div id="dominionProfileReleasesSection" />
+{% endblock %}
 
+
+{% block body_javascript_extra %}
+    {{ block.super }}
+    <script>
+        var current_dataset = profileData["primary_releases"]["active"];
+        var dataset_releases = profileData["primary_releases"]["other"].concat(current_dataset);
+    </script>
 {% endblock %}
