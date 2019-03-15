@@ -46,7 +46,7 @@ const styles = theme => ({
     display: 'none',
     [theme.breakpoints.up('md')]: {
       color: '#8d8d8c',
-      fontSize: '0.95em',
+      fontSize: '0.688em',
       position: 'absolute',
       bottom: '18%',
       display: 'inline-block',
@@ -165,7 +165,7 @@ class ProfileHero extends Component {
         Object.prototype.hasOwnProperty.call(primaryReleases, 'active') ? (
           <Typography variant="body2" className={classes.release}>
             {primaryReleases.active.citation}
-            <ReleaseDropdown />
+            <ReleaseDropdown primaryReleases={primaryReleases} fromHero />
           </Typography>
         ) : null}
       </Hero>

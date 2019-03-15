@@ -20,6 +20,7 @@ import Partners from './components/Partners';
 import ProfileTabs from './components/ProfileTabs';
 import Showcase from './components/Showcase';
 import Video from './components/Video';
+import ProfileReleasesSection from './components/ProfileReleases';
 
 library.add(fab);
 
@@ -43,5 +44,6 @@ renderApp(Showcase, 'dominionShowcase');
 renderApp(Data, 'dominionData');
 renderApp(AboutDominion, 'dominionAbout');
 renderApp(CountryPartners, 'dominionCountryPartners');
+renderApp(ProfileReleasesSection, 'dominionProfileReleasesSection');
 renderApp(Partners, 'dominionPartners');
 renderApp(Footer, 'dominionFooter');
