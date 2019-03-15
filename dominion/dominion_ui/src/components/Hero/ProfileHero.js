@@ -48,12 +48,11 @@ const styles = theme => ({
       color: '#8d8d8c',
       fontSize: '0.95em',
       position: 'absolute',
-      bottom: '16%',
+      bottom: '18%',
       display: 'inline-block',
       right: '4%'
     },
     [theme.breakpoints.up('lg')]: {
-      bottom: '13.5%',
       right: '9.375rem'
     }
   }
