@@ -6,7 +6,7 @@ function MapItGeometryLoader() {
     var self = this;
     self.mapit_url = MAPIT.url;
     self.mapit_codetype = MAPIT.code_type;
-    self.mapit_country = MAPIT.map_country;
+    self.dominion_country = selected_country;
     var dominion_country_codes =  Object.values(dominion_countries).map(item => item.code);
     /**
      * Fetches geometry data for a comparison view and calls the +success+
@@ -163,7 +163,7 @@ function MapItGeometryLoader() {
         var simplify = MAPIT.level_simplify[geo_level];
         var generation = MAPIT.generations[geo_version];
         var mapit_codetype = this.mapit_codetype;
-        var country_code = this.mapit_countrycode;
+        var country_code = this.dominion_country.code;
 
         var url_ ="/code/" + mapit_codetype + "/" + geo_level + "-" + geo_code;
         url_ = url_ + "?generation=" + generation;
