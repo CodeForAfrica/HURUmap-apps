@@ -12,6 +12,8 @@ import {
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import { withStyles } from '@material-ui/core/styles';
 
+import A from '../A';
+
 import arrowDownIcon from '../../assets/images/group-3.png';
 import arrowUpIcon from '../../assets/images/group-3-up.png';
 
@@ -123,10 +125,10 @@ class ProfileReleasesSection extends React.Component {
     const datasetRealeases = window.dataset_releases;
     const activeDataset = window.active_dataset;
 
-    const Atag = ({ link }) => (
-      <a className={classes.link} href={link}>
+    const citationLink = link => (
+      <A className={classes.link} href={link}>
         {link}
-      </a>
+      </A>
     );
 
     return (
@@ -138,31 +140,45 @@ class ProfileReleasesSection extends React.Component {
           <Typography className={classes.descriptionText}>
             Municipal Elections 2016: Electoral Commission of South Africa
             (IEC), Municipal election results{' '}
-            <Atag link="https://wazimap.co.za/profiles/province-EC-eastern-cape" />
+            {citationLink(
+              'https://wazimap.co.za/profiles/province-EC-eastern-cape'
+            )}
             <br />
             National Elections 2014: Electoral Commission of South Africa (IEC),
             National and provincial election results{' '}
-            <Atag link="https://wazimap.co.za/profiles/province-EC-eastern-cape" />
+            {citationLink(
+              'https://wazimap.co.za/profiles/province-EC-eastern-cape'
+            )}
             <br />
             Provincial Elections 2014: Electoral Commission of South Africa
             (IEC), National and provincial election results{' '}
-            <Atag link="https://wazimap.co.za/profiles/province-EC-eastern-cape" />
+            {citationLink(
+              'https://wazimap.co.za/profiles/province-EC-eastern-cape'
+            )}
             <br />
             Municipal Elections 2011: Electoral Commission of South Africa
             (IEC), Municipal election results{' '}
-            <Atag link="https://wazimap.co.za/profiles/province-EC-eastern-cape" />
+            {citationLink(
+              'https://wazimap.co.za/profiles/province-EC-eastern-cape'
+            )}
             <br />
             Community Survey 2016: Statistics South Africa (2016) South African
             Community Survey 2016. Indicators derived from the full population
             Community Survey.{' '}
-            <Atag link="https://wazimap.co.za/profiles/province-EC-eastern-cape" />
+            {citationLink(
+              'https://wazimap.co.za/profiles/province-EC-eastern-cape'
+            )}
             <br />
             Census 2011: Statistics South Africa (2011) South African Population
             Census 2011. Indicators derived from the full population Census{' '}
-            <Atag link="https://wazimap.co.za/profiles/province-EC-eastern-cape" />
+            {citationLink(
+              'https://wazimap.co.za/profiles/province-EC-eastern-cape'
+            )}
             <br />
             Police Crime Statistics 2014: South African Police Service{' '}
-            <Atag link="https://wazimap.co.za/profiles/province-EC-eastern-cape" />
+            {citationLink(
+              'https://wazimap.co.za/profiles/province-EC-eastern-cape'
+            )}
           </Typography>
         </Grid>
         <Grid item className={classes.releaseSelector}>
