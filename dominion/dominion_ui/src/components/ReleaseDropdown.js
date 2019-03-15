@@ -77,6 +77,7 @@ class ReleaseDropdown extends Component {
   render() {
     const { classes } = this.props;
     const { isDropdownOpen } = this.state;
+    const { primaryReleases } = window.profileDataJson.primary_releases;
     return (
       <div className={classes.root}>
         <Button
@@ -103,23 +104,16 @@ class ReleaseDropdown extends Component {
           <MenuList className={classes.menuList}>
             <MenuItem item className={classes.menuListItem}>
               <a
-                href={`${window.location.href.replace(/\/$/, '')}?release=${
-                  window.primary_releases_year
-                }`}
+                href={`?release=${primaryReleases.active.year}`}
                 className={classes.link}
               >
-                {window.primary_releases} {'  '} {window.primary_releases_year}
+                {primaryReleases.active.citation}
               </a>
             </MenuItem>
-            {window.primary_releases_other.map(release => (
+            {primaryReleases.other.map(release => (
               <MenuItem item className={classes.menuListItem}>
-                <a
-                  href={`${window.location.href.replace(/\/$/, '')}?release=${
-                    release.year
-                  }`}
-                  className={classes.link}
-                >
-                  {release.name} {'  '} {release.year}
+                <a href={`?release=${release.year}`} className={classes.link}>
+                  {release.citation}
                 </a>
               </MenuItem>
             ))}

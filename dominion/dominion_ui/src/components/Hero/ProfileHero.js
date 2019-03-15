@@ -73,38 +73,67 @@ class ProfileHero extends Component {
   }
 
   render() {
-    const { population } = window.population;
-    const { populationDensity } = window.population_density;
     const { level, geoid } = this.state;
     const { classes } = this.props;
+    const { profileDataJson } = window.profileDataJson;
+    let population;
+    let populationDensity;
+    if (Object.prototype.hasOwnProperty.call(profileDataJson, 'demographics')) {
+      const { demographics } = window.profileDataJson.demographics;
+
+      if (
+        Object.prototype.hasOwnProperty.call(demographics, 'total_population')
+      ) {
+        population = demographics.total_population.values.this;
+      }
+      if (
+        Object.prototype.hasOwnProperty.call(demographics, 'population_density')
+      ) {
+        populationDensity = demographics.population_density.values.this;
+      }
+    }
+    const primaryReleases = profileDataJson.primary_releases;
+    const squarekms = profileDataJson.geography.this.square_kms;
+    const profileName = profileDataJson.geography.this.short_name;
+    const parentLinks = profileDataJson.geography.parents;
 
     return (
       <Hero>
         <HeroTitleGrid quater>
           <HeroTitle breakWord small>
-            {window.geography.short_name}
+            {profileName}
           </HeroTitle>
           <Typography variant="body2" className={classes.caption} component="p">
             {level}{' '}
-            {window.captionItems.length > 1 ? (
+            {parentLinks && Object.keys(parentLinks).length > 1 ? (
               <Typography variant="body" className={classes.captionItem}>
                 in{' '}
-                {window.captionItems.slice(0, -1).map(item => (
-                  <span>
-                    <a href={`/profiles/${item.geoid}`}>{item.name}</a>
-                    {', '}
-                  </span>
-                ))}
+                {Object.keys(parentLinks)
+                  .slice(0, -1)
+                  .map(item => (
+                    <span>
+                      <a href={`/profiles/${parentLinks[item].full_geoid}`}>
+                        {parentLinks[item].name}
+                      </a>
+                      {', '}
+                    </span>
+                  ))}
               </Typography>
             ) : null}
           </Typography>
-          <HeroDetail label="Population">{population}</HeroDetail>
-          <HeroDetail small label="square kilometers">
-            {window.geography.square_kms}
-          </HeroDetail>
-          <HeroDetail small label="people per square kilometer">
-            {populationDensity}
-          </HeroDetail>
+          {population ? (
+            <HeroDetail label="Population">{population}</HeroDetail>
+          ) : null}
+          {squarekms ? (
+            <HeroDetail small label="square kilometers">
+              {squarekms}
+            </HeroDetail>
+          ) : null}
+          {populationDensity ? (
+            <HeroDetail small label="people per square kilometer">
+              {populationDensity}
+            </HeroDetail>
+          ) : null}
           <Search
             handleIconClick={null}
             isComparisonSearch
@@ -114,12 +143,12 @@ class ProfileHero extends Component {
           />
         </HeroTitleGrid>
         <Grid id="slippy-map" className={classes.map} />
-        <Grid>
+        {primaryReleases ? (
           <Typography variant="body2" className={classes.release}>
-            {window.primary_releases} {window.primary_releases_year}
+            {primaryReleases.active.citation}
             <ReleaseDropdown />
           </Typography>
-        </Grid>
+        ) : null}
       </Hero>
     );
   }
