@@ -53,7 +53,7 @@ const styles = theme => ({
       right: '4%'
     },
     [theme.breakpoints.up('lg')]: {
-      bottom: '12%',
+      bottom: '13.5%',
       right: '9.375rem'
     }
   }
@@ -63,13 +63,7 @@ class ProfileHero extends Component {
     super(props);
     this.state = {
       level: '',
-      geoid: '',
-      population: '',
-      populationDensity: '',
-      primaryReleases: {},
-      squarekms: '',
-      profileName: '',
-      parentLinks: {}
+      geoid: ''
     };
   }
 
@@ -78,7 +72,17 @@ class ProfileHero extends Component {
     const geoid = window.geography.full_geoid;
     const api = createAPI();
     const level = await api.getGeoLevel(geoid);
-    const { profileDataJson } = window.profileDataJson;
+
+    this.setState({
+      level,
+      geoid
+    });
+  }
+
+  render() {
+    const { level, geoid } = this.state;
+    const { classes } = this.props;
+    const { profileDataJson } = window;
     let population;
     let populationDensity;
     let primaryReleases;
@@ -94,7 +98,7 @@ class ProfileHero extends Component {
       if (
         Object.prototype.hasOwnProperty.call(profileDataJson, 'demographics')
       ) {
-        const { demographics } = window.profileDataJson.demographics;
+        const { demographics } = profileDataJson;
 
         if (
           Object.prototype.hasOwnProperty.call(demographics, 'total_population')
@@ -111,30 +115,6 @@ class ProfileHero extends Component {
         }
       }
     }
-    this.setState({
-      level,
-      geoid,
-      population,
-      populationDensity,
-      primaryReleases,
-      squarekms,
-      profileName,
-      parentLinks
-    });
-  }
-
-  render() {
-    const {
-      level,
-      geoid,
-      population,
-      populationDensity,
-      primaryReleases,
-      squarekms,
-      profileName,
-      parentLinks
-    } = this.state;
-    const { classes } = this.props;
 
     return (
       <Hero>
