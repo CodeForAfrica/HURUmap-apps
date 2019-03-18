@@ -9,6 +9,7 @@ import Info, { InfoSubtitle, InfoBody } from './Info';
 import Land from './Land';
 
 import land from '../../assets/images/hero-image-3.png';
+import content from './Data';
 
 const styles = theme => ({
   root: {
@@ -40,22 +41,8 @@ function AboutCountry({ classes, selectedCountry }) {
       </Grid>
       <Grid item>
         <Info>
-          <InfoSubtitle>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur.
-          </InfoSubtitle>
-          <InfoBody>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur.
-          </InfoBody>
+          <InfoSubtitle>{content[selectedCountry.slug].intro}</InfoSubtitle>
+          <InfoBody>{content[selectedCountry.slug].other}</InfoBody>
         </Info>
       </Grid>
       <Grid item>
