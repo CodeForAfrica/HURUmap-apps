@@ -2,7 +2,7 @@ var ProfileMaps = function() {
     var self = this;
     this.mapit_url = GeometryLoader.mapit_url;
     this.mapit_codetype = GeometryLoader.mapit_codetype;
-    this.mapit_country = GeometryLoader.mapit_country;
+    this.dominion_country = GeometryLoader.dominion_country;
 
     this.featureGeoStyle = {
         "fillColor": "#ccc",
@@ -104,7 +104,7 @@ var ProfileMaps = function() {
         var geo_name = this.geo.this.name;
 
         if (Object.getOwnPropertyNames(this.geo.parents).length === 0) {
-            this.map.setView( this.mapit_country.centre, this.mapit_country.zoom);
+            this.map.setView( null, null);
         } else {
             // draw the current geo
             GeometryLoader.loadGeometryForGeo(geo_level, geo_code, geo_version, function(feature) {
@@ -132,24 +132,7 @@ var ProfileMaps = function() {
             style: self.featureGeoStyle,
         });
         this.map.addLayer(layer);
-        var objBounds = layer.getBounds();
-
-        if (browserWidth > 768) {
-            var z;
-            for(z = 16; z > 2; z--) {
-                var swPix = this.map.project(objBounds.getSouthWest(), z),
-                    nePix = this.map.project(objBounds.getNorthEast(), z),
-                    pixWidth = Math.abs(nePix.x - swPix.x),
-                    pixHeight = Math.abs(nePix.y - swPix.y);
-                if (pixWidth <  500 && pixHeight < 400) {
-                    break;
-                }
-            }
-            this.map.setView(layer.getBounds().getCenter(), z);
-            this.map.panBy([-270, 0], {animate: false});
-        } else {
-            this.map.fitBounds(layer.getBounds());
-        }
+        this.map.setView(this.dominion_country.centre, this.dominion_country.zoom);
     };
 
     this.drawFeatures = function(features) {

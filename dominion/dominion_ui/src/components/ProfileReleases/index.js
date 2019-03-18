@@ -1,21 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {
-  Grid,
-  Button,
-  Typography,
-  Popper,
-  Paper,
-  MenuItem
-} from '@material-ui/core';
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import { Grid, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import A from '../A';
-
-import arrowDownIcon from '../../assets/images/group-3.png';
-import arrowUpIcon from '../../assets/images/group-3-up.png';
+import ReleaseDropdown from '../ReleaseDropdown';
 
 const styles = theme => ({
   root: {
@@ -94,48 +84,28 @@ const styles = theme => ({
   }
 });
 
-class ProfileReleasesSection extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      menuOpen: false
-    };
-
-    this.toggleReleasesMenu = this.toggleReleasesMenu.bind(this);
-    this.closeReleaseMenu = this.closeReleaseMenu.bind(this);
+function ProfileReleasesSection({ classes }) {
+  const { profileDataJson } = window;
+  let primaryReleases;
+  if (
+    profileDataJson &&
+    Object.prototype.hasOwnProperty.call(profileDataJson, 'primary_releases')
+  ) {
+    primaryReleases = profileDataJson.primary_releases;
   }
+  const citationLink = link => (
+    <A className={classes.link} href={link}>
+      {link}
+    </A>
+  );
 
-  closeReleaseMenu(event) {
-    if (this.changeReleaseButton.contains(event.target)) {
-      return;
-    }
-    this.setState({ menuOpen: false });
-  }
-
-  toggleReleasesMenu() {
-    this.setState(prevState => ({
-      menuOpen: !prevState.menuOpen
-    }));
-  }
-
-  render() {
-    const { classes } = this.props;
-    const { menuOpen } = this.state;
-    const datasetRealeases = window.dataset_releases;
-    const activeDataset = window.active_dataset;
-
-    const citationLink = link => (
-      <A className={classes.link} href={link}>
-        {link}
-      </A>
-    );
-
-    return (
-      <Grid container direction="row" className={classes.root}>
+  return (
+    <Grid container direction="row" className={classes.root}>
+      {primaryReleases &&
+      Object.prototype.hasOwnProperty.call(primaryReleases, 'active') ? (
         <Grid item className={classes.description}>
           <Typography className={classes.descriptionTitle}>
-            {activeDataset.citation}
+            {primaryReleases.active.citation}
           </Typography>
           <Typography className={classes.descriptionText}>
             Municipal Elections 2016: Electoral Commission of South Africa
@@ -181,47 +151,12 @@ class ProfileReleasesSection extends React.Component {
             )}
           </Typography>
         </Grid>
-        <Grid item className={classes.releaseSelector}>
-          <Button
-            buttonRef={c => {
-              this.changeReleaseButton = c;
-            }}
-            disableFocusRipple
-            disableRipple
-            disableTouchRipple
-            className={classes.changeReleaseButton}
-            onClick={() => {
-              this.toggleReleasesMenu();
-            }}
-          >
-            Change release
-            <img alt="Toggle" src={menuOpen ? arrowUpIcon : arrowDownIcon} />
-          </Button>
-          <Popper
-            anchorEl={this.changeReleaseButton}
-            open={menuOpen}
-            onClose={this.closeReleaseMenu}
-          >
-            <Paper>
-              <ClickAwayListener onClickAway={this.closeReleaseMenu}>
-                {datasetRealeases
-                  ? datasetRealeases.map(release => (
-                      <MenuItem
-                        component="a"
-                        href={`?release=${release.year}`}
-                        className={classes.releasesMenuItem}
-                      >
-                        {release.citation}
-                      </MenuItem>
-                    ))
-                  : null}
-              </ClickAwayListener>
-            </Paper>
-          </Popper>
-        </Grid>
+      ) : null}
+      <Grid item className={classes.releaseSelector}>
+        <ReleaseDropdown primaryReleases={primaryReleases} />
       </Grid>
-    );
-  }
+    </Grid>
+  );
 }
 
 ProfileReleasesSection.propTypes = {

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import { Grid, List, ListItem, Typography } from '@material-ui/core';
 
 import { withStyles } from '@material-ui/core/styles';
@@ -15,6 +16,17 @@ const styles = theme => ({
       padding: '47px 0'
     }
   },
+  rootDropdown: {
+    color: 'black',
+    backgroundColor: 'white',
+    paddingTop: theme.spacing.unit,
+    paddingBottom: theme.spacing.unit,
+    marginTop: theme.spacing.unit * 9,
+    marginBottom: theme.spacing.unit,
+    position: 'absolute',
+    width: '28.5%',
+    zIndex: '400'
+  },
   list: {
     width: '100%',
     [theme.breakpoints.up('sm')]: {
@@ -25,6 +37,12 @@ const styles = theme => ({
     color: 'white',
     '&:hover': {
       color: '#e7e452'
+    }
+  },
+  listItemDropdown: {
+    color: 'black',
+    '&:hover': {
+      fontWeight: '600'
     }
   },
   selected: {
@@ -41,6 +59,11 @@ const styles = theme => ({
     textAlign: 'right',
     color: 'inherit'
   },
+  levelDropdown: {
+    fontSize: '10px',
+    fontWeight: '400',
+    width: '30%'
+  },
   name: {
     margin: 0,
     fontWeight: '600',
@@ -50,15 +73,37 @@ const styles = theme => ({
     [theme.breakpoints.up('sm')]: {
       fontSize: '35px'
     }
+  },
+  nameDropdown: {
+    fontSize: '16px',
+    fontWeight: '400'
   }
 });
 
 const maxResults = 6;
 const codeType = window.MAPIT.code_type;
 
-function SearchResults({ classes, results }) {
+function renderHref(result, thisGeoId, isComparisonSearch) {
+  let href;
+  if (isComparisonSearch) {
+    href = `/compare/${thisGeoId}/vs/${result.codes[codeType]}/`;
+  } else if (result.type.toLowerCase() === 'country') {
+    href = `/${result.slug}`;
+  } else {
+    href = `/profiles/${result.codes[codeType]}`;
+  }
+  return href;
+}
+
+function SearchResults({ classes, results, isComparisonSearch, thisGeoId }) {
   return (
-    <Grid container sm={12} className={classes.root}>
+    <Grid
+      container
+      sm={12}
+      className={classNames(classes.root, {
+        [classes.rootDropdown]: isComparisonSearch
+      })}
+    >
       <Grid container direction="row" justify="flex-end">
         <List className={classes.list}>
           {results.slice(0, maxResults).map(result => (
@@ -66,24 +111,26 @@ function SearchResults({ classes, results }) {
               button
               disableGutters
               key={result.id}
-              className={classes.listItem}
-              component="a"
-              href={
-                result.type.toLowerCase() === 'country'
-                  ? `/${result.slug}`
-                  : `/profiles/${result.codes[codeType]}`
+              className={
+                isComparisonSearch ? classes.listItemDropdown : classes.listItem
               }
+              component="a"
+              href={renderHref(result, thisGeoId, isComparisonSearch)}
             >
               <Grid container direction="row" alignItems="baseline">
                 <Typography
-                  className={classes.level}
+                  className={classNames(classes.level, {
+                    [classes.levelDropdown]: isComparisonSearch
+                  })}
                   variant="body2"
                   component="p"
                 >
                   {result.type.toLowerCase()}
                 </Typography>
                 <Typography
-                  className={classes.name}
+                  className={classNames(classes.name, {
+                    [classes.nameDropdown]: isComparisonSearch
+                  })}
                   variant="body2"
                   component="p"
                 >
@@ -100,7 +147,13 @@ function SearchResults({ classes, results }) {
 
 SearchResults.propTypes = {
   classes: PropTypes.shape().isRequired,
-  results: PropTypes.isRequired
+  results: PropTypes.isRequired,
+  thisGeoId: PropTypes.string,
+  isComparisonSearch: PropTypes.isRequired
+};
+
+SearchResults.defaultProps = {
+  thisGeoId: ''
 };
 
 export default withStyles(styles)(SearchResults);

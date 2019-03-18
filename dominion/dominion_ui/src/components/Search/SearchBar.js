@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import InputBase from '@material-ui/core/InputBase';
 import { Grid, IconButton } from '@material-ui/core';
@@ -21,15 +21,37 @@ const styles = theme => ({
     color: 'white',
     width: '100%',
     fontFamily: theme.typography.fontFamily,
-    fontSize: '18px',
+    fontSize: '0.813em',
     fontWeight: '600',
     [theme.breakpoints.up('md')]: {
       padding: '15px 0 4px',
       borderBottom: '2px solid white'
     }
   },
+  searchFieldInput: {
+    '&::placeholder': {
+      fontFamily: theme.typography.fontFamily,
+      color: 'white',
+      fontSize: '1.125em',
+      opacity: 1,
+      fontWeight: '600'
+    }
+  },
+  rootBorderBottom: {
+    borderBottom: '2px solid white !important'
+  },
+  searchFieldNoBorderBottom: {
+    borderBottom: 'none !important'
+  },
+  searchFieldNoMargin: {
+    marginLeft: 0,
+    marginRight: 0
+  },
   iconButton: {
     padding: 0
+  },
+  iconButtonDropdown: {
+    marginLeft: -theme.spacing.unit * 4
   },
   resultsContainer: {
     [theme.breakpoints.up('sm')]: {
@@ -39,33 +61,59 @@ const styles = theme => ({
 });
 
 function SearchBar({
+  primary,
   classes,
+  placeholder,
   value,
   width,
+  icon,
   handleIconClick,
-  handleValueChange
+  handleValueChange,
+  isComparisonSearch,
+  autoFocus
 }) {
+  let searchBarIcon = icon;
+  if (!searchBarIcon) {
+    searchBarIcon = isWidthUp('md', width) ? back : search;
+  }
   return (
-    <Grid container sm={12} wrap="nowrap" className={classes.root}>
+    <Grid
+      container
+      sm={12}
+      wrap="nowrap"
+      className={classNames(classes.root, {
+        [classes.rootBorderBottom]: primary
+      })}
+    >
       <InputBase
-        autoFocus
+        autoFocus={autoFocus}
         value={value}
-        className={classes.searchField}
+        placeholder={placeholder}
+        classes={{ input: classes.searchFieldInput }}
+        className={classNames(
+          classes.searchField,
+          { [classes.searchFieldNoBorderBottom]: primary },
+          { [classes.searchFieldNoMargin]: isComparisonSearch }
+        )}
         onChange={event => {
           const { value: searchTerm } = event.target;
-          handleValueChange(searchTerm);
+          if (handleValueChange) {
+            handleValueChange(searchTerm);
+          }
         }}
       />
       <IconButton
-        className={classes.iconButton}
+        disableRipple
+        disableTouchRipple
+        focusRipple={false}
+        style={{ backgroundColor: 'transparent' }}
+        className={classNames(classes.iconButton, {
+          [classes.iconButtonDropdown]: isComparisonSearch
+        })}
         aria-label="Search"
         onClick={handleIconClick}
       >
-        <img
-          alt="Search"
-          src={isWidthUp('md', width) ? back : search}
-          className={classes.searchIcon}
-        />
+        <img alt="Search" src={searchBarIcon} className={classes.searchIcon} />
       </IconButton>
     </Grid>
   );
@@ -74,9 +122,21 @@ function SearchBar({
 SearchBar.propTypes = {
   classes: PropTypes.shape().isRequired,
   handleValueChange: PropTypes.func.isRequired,
+  icon: PropTypes.string.isRequired,
   handleIconClick: PropTypes.func.isRequired,
   width: PropTypes.isRequired,
-  value: PropTypes.isRequired
+  value: PropTypes.isRequired,
+  primary: PropTypes.bool,
+  placeholder: PropTypes.string,
+  autoFocus: PropTypes.bool,
+  isComparisonSearch: PropTypes.bool
+};
+
+SearchBar.defaultProps = {
+  autoFocus: false,
+  placeholder: '',
+  isComparisonSearch: false,
+  primary: true
 };
 
 export default withWidth()(withStyles(styles)(SearchBar));

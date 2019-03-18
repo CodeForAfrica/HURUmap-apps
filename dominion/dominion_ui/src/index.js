@@ -7,7 +7,11 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 import withRoot from './withRoot';
 
 import { AboutCountry, AboutDominion } from './components/About';
-import { CountryPageHeader, HomePageHeader } from './components/Header';
+import {
+  CountryPageHeader,
+  HomePageHeader,
+  ProfilePageHeader
+} from './components/Header';
 import CountryPartners from './components/CountryPartners';
 import Data from './components/Data';
 import Footer from './components/Footer';
@@ -31,6 +35,7 @@ const renderApp = (Component, id) => {
 
 renderApp(HomePageHeader, 'dominionHomePageHeader');
 renderApp(CountryPageHeader, 'dominionCountryPageHeader');
+renderApp(ProfilePageHeader, 'dominionProfilePageHeader');
 renderApp(AboutCountry, 'dominionCountryAbout');
 renderApp(ProfileTabs, 'dominionProfileTabs');
 renderApp(Video, 'dominionVideo');
