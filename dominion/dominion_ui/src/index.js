@@ -12,7 +12,7 @@ import {
   ProfilePageHeader,
   ComparePageNav
 } from './components/Header';
-// import CompareProfileHero from './components/Hero/CompareProfileHero';
+
 import Header from './components/Header/Header';
 import { AboutCountry, AboutDominion } from './components/About';
 import Data from './components/Data';
@@ -37,7 +37,6 @@ renderApp(HomePageHeader, 'dominionHomePageHeader');
 renderApp(CountryPageHeader, 'dominionCountryPageHeader');
 renderApp(ProfilePageHeader, 'dominionProfilePageHeader');
 renderApp(ComparePageNav, 'dominionComparePageNav');
-// renderApp(CompareProfileHero, 'dominionCompareProfileHero');
 renderApp(Header, 'dominionComparePageNaav');
 renderApp(AboutCountry, 'dominionCountryAbout');
 renderApp(ProfileTabs, 'dominionProfileTabs');
