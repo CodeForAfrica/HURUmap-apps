@@ -35,8 +35,7 @@ const styles = theme => ({
   }
 });
 
-function CountryHero({ classes, toggleModal }) {
-  const selectedCountry = window.selected_country || {};
+function CountryHero({ classes, toggleModal, selectedCountry }) {
   return (
     <Hero>
       <HeroTitleGrid>
@@ -66,6 +65,7 @@ function CountryHero({ classes, toggleModal }) {
 
 CountryHero.propTypes = {
   classes: PropTypes.isRequired,
+  selectedCountry: PropTypes.shape({}).isRequired,
   toggleModal: PropTypes.isRequired
 };
 

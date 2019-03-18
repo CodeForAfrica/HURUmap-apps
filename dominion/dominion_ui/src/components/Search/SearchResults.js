@@ -54,9 +54,8 @@ const styles = theme => ({
 });
 
 const maxResults = 6;
-const codeType = window.MAPIT.code_type;
 
-function SearchResults({ classes, results }) {
+function SearchResults({ classes, codeType, results }) {
   return (
     <Grid container sm={12} className={classes.root}>
       <Grid container direction="row" justify="flex-end">
@@ -100,6 +99,7 @@ function SearchResults({ classes, results }) {
 
 SearchResults.propTypes = {
   classes: PropTypes.shape().isRequired,
+  codeType: PropTypes.string.isRequired,
   results: PropTypes.isRequired
 };
 

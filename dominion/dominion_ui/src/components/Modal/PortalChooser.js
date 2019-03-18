@@ -118,8 +118,13 @@ const styles = theme => ({
   }
 });
 
-function PortalChooser({ classes, children, handleClose }) {
-  const countries = window.dominion_countries;
+function PortalChooser({
+  classes,
+  children,
+  countries,
+  geocodeApiKey,
+  handleClose
+}) {
   return (
     <Grid
       container
@@ -139,7 +144,7 @@ function PortalChooser({ classes, children, handleClose }) {
         className={classes.locationGrid}
       >
         <Typography variant="body2" className={classes.locationText}>
-          <GetLocation countries={countries} />
+          <GetLocation countries={countries} geocodeApiKey={geocodeApiKey} />
           <img
             src={geolocate}
             alt="Use your location"
@@ -193,6 +198,8 @@ function PortalChooser({ classes, children, handleClose }) {
 PortalChooser.propTypes = {
   classes: PropTypes.isRequired,
   children: PropTypes.isRequired,
+  countries: PropTypes.shape({}).isRequired,
+  geocodeApiKey: PropTypes.string.isRequired,
   handleClose: PropTypes.isRequired
 };
 

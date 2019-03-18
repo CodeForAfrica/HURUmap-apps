@@ -5,17 +5,17 @@ import Header from './Header';
 import HomeHero from '../Hero/HomeHero';
 import CountryHero from '../Hero/CountryHero';
 
-export function HomePageHeader() {
+export function HomePageHeader(props) {
   return (
-    <Header>
+    <Header {...props}>
       <HomeHero />
     </Header>
   );
 }
 
-export function CountryPageHeader() {
+export function CountryPageHeader(props) {
   return (
-    <Header>
+    <Header {...props}>
       <CountryHero />
     </Header>
   );

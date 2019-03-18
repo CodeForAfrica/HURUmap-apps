@@ -120,10 +120,8 @@ class ProfileReleasesSection extends React.Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, datasetReleases, selectedDatasetRelease } = this.props;
     const { menuOpen } = this.state;
-    const datasetRealeases = window.dataset_releases;
-    const activeDataset = window.active_dataset;
 
     const citationLink = link => (
       <A className={classes.link} href={link}>
@@ -135,7 +133,7 @@ class ProfileReleasesSection extends React.Component {
       <Grid container direction="row" className={classes.root}>
         <Grid item className={classes.description}>
           <Typography className={classes.descriptionTitle}>
-            {activeDataset.citation}
+            {selectedDatasetRelease.citation}
           </Typography>
           <Typography className={classes.descriptionText}>
             Municipal Elections 2016: Electoral Commission of South Africa
@@ -204,17 +202,15 @@ class ProfileReleasesSection extends React.Component {
           >
             <Paper>
               <ClickAwayListener onClickAway={this.closeReleaseMenu}>
-                {datasetRealeases
-                  ? datasetRealeases.map(release => (
-                      <MenuItem
-                        component="a"
-                        href={`?release=${release.year}`}
-                        className={classes.releasesMenuItem}
-                      >
-                        {release.citation}
-                      </MenuItem>
-                    ))
-                  : null}
+                {datasetReleases.map(release => (
+                  <MenuItem
+                    component="a"
+                    href={`?release=${release.year}`}
+                    className={classes.releasesMenuItem}
+                  >
+                    {release.citation}
+                  </MenuItem>
+                ))}
               </ClickAwayListener>
             </Paper>
           </Popper>
@@ -225,7 +221,9 @@ class ProfileReleasesSection extends React.Component {
 }
 
 ProfileReleasesSection.propTypes = {
-  classes: PropTypes.shape().isRequired
+  classes: PropTypes.shape().isRequired,
+  datasetReleases: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  selectedDatasetRelease: PropTypes.shape({}).isRequired
 };
 
 export default withStyles(styles)(ProfileReleasesSection);

@@ -37,13 +37,10 @@ class Search extends React.Component {
   }
 
   componentDidMount() {
-    let geography = [];
-    const countries = window.dominion_countries;
-    geography = Object.keys(window.dominion_countries).map(slug => ({
-      slug,
-      name: countries[slug].name,
-      type: 'country'
-    }));
+    const { countries } = this.props;
+    const geography = Object.keys(countries).map(slug =>
+      Object.assign({}, countries[slug], { slug, type: 'country' })
+    );
     this.setState({ geography });
   }
 
@@ -56,6 +53,8 @@ class Search extends React.Component {
 
   async loadSuggestions(searchTerm) {
     const api = createAPI();
+    const { codeType } = api;
+    const { selectedCountry } = this.props;
     const { geography } = this.state;
     let countryCode;
     let results = [];
@@ -64,12 +63,12 @@ class Search extends React.Component {
       results = geography.filter(g =>
         g.name.match(new RegExp(searchTerm, 'i'))
       );
-      if (window.selected_country) {
-        countryCode = window.selected_country.code;
+      if (selectedCountry) {
+        countryCode = selectedCountry.code;
         results = await api.getGeography(countryCode, searchTerm);
       }
     }
-    this.setState({ results, geography });
+    this.setState({ codeType, results, geography });
   }
 
   handleSearch(searchTerm) {
@@ -78,7 +77,7 @@ class Search extends React.Component {
 
   render() {
     const { classes, children, handleIconClick } = this.props;
-    const { results, searchTerm } = this.state;
+    const { codeType, results, searchTerm } = this.state;
 
     return (
       <Grid container direction="column" wrap="nowrap" className={classes.root}>
@@ -87,7 +86,11 @@ class Search extends React.Component {
           handleValueChange={this.handleSearch}
           handleIconClick={handleIconClick}
         />
-        {results.length ? <SearchResults results={results} /> : children}
+        {results.length ? (
+          <SearchResults results={results} codeType={codeType} />
+        ) : (
+          children
+        )}
       </Grid>
     );
   }
@@ -96,6 +99,8 @@ class Search extends React.Component {
 Search.propTypes = {
   classes: PropTypes.isRequired,
   children: PropTypes.isRequired,
+  countries: PropTypes.shape({}).isRequired,
+  selectedCountry: PropTypes.shape({}).isRequired,
   handleIconClick: PropTypes.isRequired
 };
 

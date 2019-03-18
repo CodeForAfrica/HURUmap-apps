@@ -70,7 +70,7 @@ class Video extends React.Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, countries, selectedCountry } = this.props;
     const { openModal, videoId } = this.state;
 
     return (
@@ -113,7 +113,12 @@ class Video extends React.Component {
           </Grid>
         </Grid>
         <Modal isOpen={openModal}>
-          <Navigation toggleModal={this.toggleModal} openModal={openModal} />
+          <Navigation
+            toggleModal={this.toggleModal}
+            openModal={openModal}
+            countries={countries}
+            selectedCountry={selectedCountry}
+          />
           <Player videoId={videoId} handleClose={this.toggleModal('video')} />
         </Modal>
       </Grid>
@@ -122,7 +127,9 @@ class Video extends React.Component {
 }
 
 Video.propTypes = {
-  classes: PropTypes.shape().isRequired
+  classes: PropTypes.shape().isRequired,
+  countries: PropTypes.shape({}).isRequired,
+  selectedCountry: PropTypes.shape({}).isRequired
 };
 
 export default withStyles(styles)(Video);

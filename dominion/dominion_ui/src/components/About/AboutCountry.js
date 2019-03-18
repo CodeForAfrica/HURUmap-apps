@@ -23,8 +23,7 @@ const styles = theme => ({
   }
 });
 
-function AboutCountry({ classes }) {
-  const selectedCountry = window.selected_country;
+function AboutCountry({ classes, selectedCountry }) {
   return (
     <Grid
       container
@@ -67,7 +66,8 @@ function AboutCountry({ classes }) {
 }
 
 AboutCountry.propTypes = {
-  classes: PropTypes.shape().isRequired
+  classes: PropTypes.shape().isRequired,
+  selectedCountry: PropTypes.shape({}).isRequired
 };
 
 export default withStyles(styles)(AboutCountry);

@@ -107,9 +107,8 @@ class Dropdown extends React.Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, countries } = this.props;
     const { isDropdownOpen } = this.state;
-    const countries = window.dominion_countries;
 
     return (
       <Grid container className={classes.root}>
@@ -134,7 +133,8 @@ class Dropdown extends React.Component {
 }
 
 Dropdown.propTypes = {
-  classes: PropTypes.isRequired
+  classes: PropTypes.isRequired,
+  countries: PropTypes.shape({}).isRequired
 };
 
 export default withStyles(styles)(Dropdown);

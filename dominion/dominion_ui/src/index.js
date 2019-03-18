@@ -16,16 +16,24 @@ import Partners from './components/Partners';
 import ProfileTabs from './components/ProfileTabs';
 import Showcase from './components/Showcase';
 import Video from './components/Video';
-import ProfileReleasesSection from './components/ProfileReleases';
+import ProfileReleases from './components/ProfileReleases';
 
 library.add(fab);
+
+const PROPS = {
+  countries: window.dominion_countries || [],
+  selectedCountry: window.selected_country || {},
+  geocodeApiKey: window.GOOGLE_GEOCODE_API_KEY,
+  datasetReleases: window.dataset_releases || [],
+  selectedDatasetRelease: window.active_dataset_release || {}
+};
 
 const renderApp = (Component, id) => {
   const el = document.getElementById(id);
   if (el) {
     const App = withRoot(Component);
 
-    ReactDOM.render(<App />, el);
+    ReactDOM.render(<App {...PROPS} />, el);
   }
 };
 
@@ -39,6 +47,6 @@ renderApp(Showcase, 'dominionShowcase');
 renderApp(Data, 'dominionData');
 renderApp(AboutDominion, 'dominionAbout');
 renderApp(CountryPartners, 'dominionCountryPartners');
-renderApp(ProfileReleasesSection, 'dominionProfileReleasesSection');
+renderApp(ProfileReleases, 'dominionProfileReleasesSection');
 renderApp(Partners, 'dominionPartners');
 renderApp(Footer, 'dominionFooter');

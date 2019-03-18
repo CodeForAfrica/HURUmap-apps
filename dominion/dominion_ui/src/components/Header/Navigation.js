@@ -117,8 +117,7 @@ class Navigation extends Component {
   }
 
   renderBrand() {
-    const { classes } = this.props;
-    const selectedCountry = window.selected_country;
+    const { classes, selectedCountry } = this.props;
 
     return (
       <div style={{ position: 'relative', marginRight: '50px' }}>
@@ -221,10 +220,19 @@ class Navigation extends Component {
   }
 
   render() {
-    const { classes, width, openModal, toggleModal } = this.props;
+    const {
+      classes,
+      countries,
+      geocodeApiKey,
+      width,
+      openModal,
+      selectedCountry,
+      toggleModal
+    } = this.props;
     const nav = isWidthDown('sm', width)
       ? this.renderMobileMenu()
       : this.renderDesktopMenu();
+
     return (
       <React.Fragment>
         <Grid container className={classes.wrapper}>
@@ -233,13 +241,21 @@ class Navigation extends Component {
         <Modal isOpen={openModal === 'search'}>
           <Grid container className={classes.wrapper}>
             {nav}
-            <Search handleIconClick={toggleModal('search')} />
+            <Search
+              handleIconClick={toggleModal('search')}
+              countries={countries}
+              selectedCountry={selectedCountry}
+            />
           </Grid>
         </Modal>
         <Modal isOpen={openModal === 'portal'}>
           <Grid container className={classes.wrapper}>
             {nav}
-            <PortalChooser handleClose={toggleModal('portal')} />
+            <PortalChooser
+              geocodeApiKey={geocodeApiKey}
+              handleClose={toggleModal('portal')}
+              countries={countries}
+            />
           </Grid>
         </Modal>
       </React.Fragment>
@@ -249,8 +265,11 @@ class Navigation extends Component {
 
 Navigation.propTypes = {
   classes: PropTypes.isRequired,
+  countries: PropTypes.shape({}).isRequired,
+  geocodeApiKey: PropTypes.string.isRequired,
   width: PropTypes.isRequired,
   openModal: PropTypes.isRequired,
+  selectedCountry: PropTypes.shape({}).isRequired,
   toggleModal: PropTypes.isRequired
 };
 
