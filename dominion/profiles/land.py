@@ -8,6 +8,7 @@ from django.conf import settings
 from collections import OrderedDict
 from wazimap.data.base import Base
 from sqlalchemy import Column, ForeignKey, Integer, String, Table, func, or_, and_, desc, asc, cast
+from dominion.data.utils import get_primary_release_year_per_geography
 
 log = logging.getLogger(__name__)
 # ensure tables are loaded
@@ -24,54 +25,87 @@ LOCATIONNOTFOUND = {'is_missing': True,
                     'values': {'this': 0}
                     }
 
-def get_land_profile(geo, profile_name, request):
+
+def get_profile(geo, profile_name, request):
     session = get_session()
-
+    (country, level) = get_country_and_level(geo)
+    year = request.GET.get('release',get_primary_release_year_per_geography(geo))
+    data = {}
     try:
-        comparative_geos = geo_data.get_comparative_geos(geo)
-        data = {}
-
-        sections = list(PROFILE_SECTIONS)
-
-        for section in sections:
-            function_name = 'get_%s_profile' % section
-            if function_name in globals():
-                func = globals()[function_name]
-                data[section] = func(geo, session)
-
-                # get profiles for comparative geometries
-                if not data[section]['is_missing']:
-                    for comp_geo in comparative_geos:
-                            try:
-                                merge_dicts(
-                                data[section], func(
-                                comp_geo, session), comp_geo.geo_level)
-                            except KeyError as e:
-                                msg = "Error merging data into %s for section '%s' from %s: KeyError: %s" % (
-                                geo.geoid, section, comp_geo.geoid, e)
-                                log.fatal(msg, exc_info=e)
-                                raise ValueError(msg)
+        data['demographics'] = get_demographics(geo, session, country, level, year)
         return data
-
     finally:
         session.close()
 
 
-def get_demographics_profile(geo, session):
-    with dataset_context(year='2016'):
-        pop_dist_data = LOCATIONNOTFOUND
-        total_pop = 0
-        try:
-            pop_dist_data, total_pop = get_stat_data(
-                ['population group'], geo, session)
-        except Exception:
-            pass
+def get_country_and_level(geo):
+    level = geo.geo_level.lower()
+    country = ''
+    if level != 'continent':
+        country = geo.name.lower() \
+            if level == 'country' \
+            else geo.ancestors()[-1].name.lower()
 
+    return (country, level)
+
+
+def get_demographics(geo, session, country, level, year):
+    population_data = get_population(geo, session, country, level, year)
+    demographics_data = dict(list(population_data.items()))
+    demographics_data['is_missing'] = population_data.get('is_missing')
+
+    return demographics_data
+
+
+def get_population(geo, session, country, level, year):
+    group_dist, total_population_group = LOCATIONNOTFOUND, 0
+    residence_dist, total_population_residence = LOCATIONNOTFOUND, 0
+    db_table = db_column_name = 'population_group_' + str(year)
+    try:
+        group_dist, total_population_group = get_stat_data(
+            db_table, geo, session, table_fields=[db_column_name])
+    except Exception:
+        pass
+    except DataNotFound:
+        pass
+    except ValueError:
+        pass
+
+    try:
+        db_table = db_column_name = 'population_residence_' + str(year)
+        residence_dist, total_population_residence = get_stat_data(
+            db_table, geo, session,
+            table_fields=[db_column_name])
+    except Exception:
+        pass
+    except DataNotFound:
+        pass
+    except ValueError:
+        pass
+
+    total_population = 0
+    is_missing = group_dist.get('is_missing') and \
+                 residence_dist.get('is_missing')
+    if not is_missing:
+        total_population = total_population_group if total_population_group > 0 else total_population_residence
+    total_population_dist = _create_single_value_dist(
+        'People', total_population)
+
+    demographics_data = {
+        'is_missing': is_missing,
+        'total_population': total_population_dist
+    }
+
+    if geo.square_kms:
+        demographics_data['population_density'] = {
+            'name': "people per square kilometre",
+            'values': {"this": total_population / geo.square_kms},
+        }
+    return demographics_data
+
+def _create_single_value_dist(name='', value=0):
     return {
-        'total_population': {
-            "name": "People",
-            "values": {"this": total_pop},
-        },
-        'is_missing': pop_dist_data.get('is_missing', False)
-
+        'name': name,
+        'numerators': {'this': value},
+        'values': {'this': value},
     }

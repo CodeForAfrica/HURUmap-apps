@@ -9,10 +9,11 @@
 
 {% block profile_detail %}
   <div id="profile-detail">
+    <div>{{ demographics.total_population.values.this }}</div>
     <div id="dominionProfileTabs" />
 
     {% block profile_detail_contents %}
     {% endblock %}
-  </div
+  </div>
 
 {% endblock %}
