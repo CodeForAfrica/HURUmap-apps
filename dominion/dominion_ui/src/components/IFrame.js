@@ -6,7 +6,6 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = () => ({
   root: {
     height: 0,
-    paddingTop: '2em',
 
     // aspect-ratio box
     paddingBottom: '56.2%',

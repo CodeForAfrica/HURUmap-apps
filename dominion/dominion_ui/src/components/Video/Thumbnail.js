@@ -5,70 +5,85 @@ import classNames from 'classnames';
 import { Button, Grid, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
-import PlayArrow from '@material-ui/icons/PlayArrow';
+import { PlayArrowOutlined, PlayArrow } from '@material-ui/icons';
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    height: 120,
-    backgroundColor: 'rgba(0, 0, 0, 0.6)',
-    width: '100vw',
+    width: '100%',
+    height: '100%',
+    padding: '10px',
     [theme.breakpoints.up('md')]: {
-      width: '11.927rem'
-    },
-    [theme.breakpoints.up('lg')]: {
-      width: '15rem'
+      position: 'absolute'
     }
   },
-  rootSelected: {
-    backgroundColor: 'rgba(0, 0, 0, 0.2)'
+  videoImage: {
+    width: '100vw',
+    [theme.breakpoints.up('md')]: {
+      width: '12vw'
+    }
+  },
+  overlay: {
+    width: '100%',
+    height: '100%',
+    position: 'absolute',
+    backgroundColor: 'rgba(0, 0, 0, 0.8)'
+  },
+  overlaySelected: {
+    backgroundColor: 'rgba(0, 0, 0, 0.6)'
   },
   button: {
+    width: '100vw',
     textTransform: 'none',
     fontWeight: 800,
     fontSize: theme.typography.subtitle1.fontSize,
     color: '#fff',
     border: 'none',
-    marginLeft: '0.5rem',
+    margin: 0,
     padding: 0,
-    minWidth: 0
+    minWidth: 0,
+    [theme.breakpoints.up('md')]: {
+      width: 'auto'
+    }
   },
   caption: {
     color: '#fff',
     textAlign: 'left',
-    marginLeft: '1rem'
+    fontFamily: 'Lora',
+    fontSize: '14px',
+    fontWeight: 'normal',
+    fontStyle: 'normal',
+    fontStretch: 'normal',
+    lineHeight: 1.14,
+    letterSpacing: '0.4px'
   }
 });
 
 function Thumbnail({ classes, isSelected, onClick, videoId, videoTitle }) {
-  const { root, rootSelected } = classes;
-  const rootClassName = classNames(root, { [rootSelected]: isSelected });
+  const { overlay, overlaySelected } = classes;
+  const rootOverlay = classNames(overlay, { [overlaySelected]: isSelected });
 
   return (
-    <div
-      style={{
-        height: 100,
-        backgroundImage: `url(https://img.youtube.com/vi/${videoId}/default.jpg)`,
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover'
-      }}
-    >
+    <Button className={classes.button} onClick={() => onClick(videoId)}>
+      <img
+        className={classes.videoImage}
+        alt={videoId}
+        src={`https://img.youtube.com/vi/${videoId}/default.jpg`}
+      />
+      <div className={rootOverlay} />
       <Grid
         container
-        className={rootClassName}
+        className={classes.root}
         direction="column"
         justify="center"
         alignItems="flex-start"
       >
-        {' '}
         <Grid item>
-          <Button
-            color="primary"
-            className={classes.button}
-            onClick={() => onClick(videoId)}
-          >
-            <PlayArrow />
-          </Button>
+          {isSelected ? (
+            <PlayArrowOutlined style={{ marginLeft: '-8px' }} />
+          ) : (
+            <PlayArrow style={{ marginLeft: '-8px' }} />
+          )}
         </Grid>
         <Grid item>
           <Typography variant="caption" className={classes.caption}>
@@ -76,7 +91,7 @@ function Thumbnail({ classes, isSelected, onClick, videoId, videoTitle }) {
           </Typography>
         </Grid>
       </Grid>
-    </div>
+    </Button>
   );
 }
 

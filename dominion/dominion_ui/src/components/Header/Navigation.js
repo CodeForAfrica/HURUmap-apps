@@ -10,6 +10,7 @@ import logoWithCountrySpace from '../../assets/images/logos/dominion-logo-countr
 import Dropdown, { CountriesButton } from './PortalDropdown';
 
 import Search from '../Search';
+import PortalChooser from '../Modal/PortalChooser';
 
 import menuIcon from '../../assets/images/icons/menu.svg';
 import backIcon from '../../assets/images/icons/back.svg';
@@ -20,6 +21,17 @@ import Modal from '../Modal';
 const styles = theme => ({
   root: {
     flexGrow: 1
+  },
+  wrapper: {
+    padding: '1.875rem',
+    [theme.breakpoints.up('md')]: {
+      padding: '1.875rem 3.125rem'
+    },
+    [theme.breakpoints.up('lg')]: {
+      padding: '1.875rem 9.375rem'
+    },
+    position: 'relative',
+    width: '100%'
   },
   topMenuNav: {
     flexWrap: 'nowrap',
@@ -155,11 +167,13 @@ class Navigation extends Component {
         <Topbar />
 
         <Modal isOpen={openModal === 'menu'}>
-          <Topbar />
-          <Search>
-            <Dropdown />
-            {this.renderMenuList()}
-          </Search>
+          <Grid container className={classes.wrapper}>
+            <Topbar />
+            <Search>
+              <Dropdown />
+              {this.renderMenuList()}
+            </Search>
+          </Grid>
         </Modal>
       </React.Fragment>
     );
@@ -194,10 +208,7 @@ class Navigation extends Component {
               marginLeft: 60
             }}
           >
-            <img
-              alt="Search"
-              src={openModal === 'search' ? backIcon : searchIcon}
-            />
+            <img alt="Search" src={searchIcon} />
           </IconButton>
           <CountriesButton
             onClick={toggleModal('portal')}
@@ -210,10 +221,29 @@ class Navigation extends Component {
   }
 
   render() {
-    const { width } = this.props;
-    return isWidthDown('sm', width)
+    const { classes, width, openModal, toggleModal } = this.props;
+    const nav = isWidthDown('sm', width)
       ? this.renderMobileMenu()
       : this.renderDesktopMenu();
+    return (
+      <React.Fragment>
+        <Grid container className={classes.wrapper}>
+          {nav}
+        </Grid>
+        <Modal isOpen={openModal === 'search'}>
+          <Grid container className={classes.wrapper}>
+            {nav}
+            <Search handleIconClick={toggleModal('search')} />
+          </Grid>
+        </Modal>
+        <Modal isOpen={openModal === 'portal'}>
+          <Grid container className={classes.wrapper}>
+            {nav}
+            <PortalChooser handleClose={toggleModal('portal')} />
+          </Grid>
+        </Modal>
+      </React.Fragment>
+    );
   }
 }
 

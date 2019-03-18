@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Grid, Typography, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import classNames from 'classnames';
 
 import arrow from '../../assets/images/icons/combined-shape.svg';
 
@@ -34,13 +35,38 @@ const styles = theme => ({
       marginTop: 0
     }
   },
-  text: {
+  title: {
     color: 'white',
     width: '90%',
     [theme.breakpoints.down('sm')]: {
       fontSize: '3rem',
       width: '60%'
     }
+  },
+  titleFontSmall: {
+    fontSize: '3.125em'
+  },
+  titleWordBreak: {
+    width: 'min-content'
+  },
+  detail: {
+    color: 'white',
+    fontFamily: 'Lora',
+    fontSize: '1.875em',
+    fontWeight: 'normal',
+    fontStyle: 'normal',
+    fontStretch: 'normal',
+    lineHeight: 'normal',
+    letterSpacing: '0.056em'
+  },
+  detailFontSmall: {
+    fontSize: '1.25em'
+  },
+  detailLabel: {
+    color: '#8d8d8c',
+    fontSize: '0.688em',
+    fontWeight: 500,
+    lineHeight: 2.09
   },
   body2: {
     color: 'white',
@@ -51,6 +77,9 @@ const styles = theme => ({
     [theme.breakpoints.down('sm')]: {
       width: '100%'
     }
+  },
+  buttonGrid: {
+    paddingTop: '2rem'
   },
   button: {
     textTransform: 'none',
@@ -66,6 +95,10 @@ const styles = theme => ({
       width: 'unset'
     }
   },
+  detailComponent: {
+    paddingTop: theme.spacing.unit,
+    paddingBottom: theme.spacing.unit
+  },
   buttonArrow: {
     marginLeft: -theme.spacing.unit * 4,
     [theme.breakpoints.down('sm')]: {
@@ -74,9 +107,17 @@ const styles = theme => ({
   }
 });
 
-function HeroTitleGridComponent({ classes, children }) {
+function HeroTitleGridComponent({ classes, children, quater }) {
   return (
-    <Grid item sm={12} md={8} lg={8} xl={6} className={classes.titleTextGrid}>
+    <Grid
+      item
+      xs={12}
+      sm={12}
+      md={quater ? 4 : 8}
+      lg={quater ? 4 : 8}
+      xl={quater ? 4 : 6}
+      className={classes.titleTextGrid}
+    >
       {children}
     </Grid>
   );
@@ -84,14 +125,22 @@ function HeroTitleGridComponent({ classes, children }) {
 
 HeroTitleGridComponent.propTypes = {
   classes: PropTypes.isRequired,
-  children: PropTypes.isRequired
+  children: PropTypes.isRequired,
+  quater: PropTypes.bool.isRequired
 };
 
 const HeroTitleGrid = withStyles(styles)(HeroTitleGridComponent);
 
-function HeroTitleComponent({ classes, children }) {
+function HeroTitleComponent({ classes, children, breakWord, small }) {
   return (
-    <Typography variant="h1" className={classes.text}>
+    <Typography
+      variant="h1"
+      className={classNames(
+        classes.title,
+        { [classes.titleWordBreak]: breakWord },
+        { [classes.titleFontSmall]: small }
+      )}
+    >
       {children}
     </Typography>
   );
@@ -99,7 +148,9 @@ function HeroTitleComponent({ classes, children }) {
 
 HeroTitleComponent.propTypes = {
   classes: PropTypes.isRequired,
-  children: PropTypes.isRequired
+  children: PropTypes.isRequired,
+  breakWord: PropTypes.bool.isRequired,
+  small: PropTypes.bool.isRequired
 };
 
 const HeroTitle = withStyles(styles)(HeroTitleComponent);
@@ -119,9 +170,44 @@ HeroDescriptionComponent.propTypes = {
 
 const HeroDescription = withStyles(styles)(HeroDescriptionComponent);
 
+function HeroDetailComponent({ classes, children, label, small }) {
+  return (
+    <Grid className={classes.detailComponent}>
+      <Typography
+        variant="h2"
+        className={classNames(classes.detail, {
+          [classes.detailFontSmall]: small
+        })}
+      >
+        {children}
+      </Typography>
+      {label ? (
+        <Typography variant="h3" className={classes.detailLabel}>
+          {label}
+        </Typography>
+      ) : null}
+    </Grid>
+  );
+}
+
+HeroDetailComponent.propTypes = {
+  classes: PropTypes.isRequired,
+  children: PropTypes.isRequired,
+  label: PropTypes.string.isRequired,
+  small: PropTypes.bool.isRequired
+};
+
+const HeroDetail = withStyles(styles)(HeroDetailComponent);
+
 function HeroButtonComponent({ classes, children, onClick }) {
   return (
-    <Grid container sm={12} alignItems="center" style={{ paddingTop: '2rem' }}>
+    <Grid
+      container
+      item
+      sm={12}
+      alignItems="center"
+      className={classes.buttonGrid}
+    >
       <Button
         variant="outlined"
         onClick={onClick}
@@ -162,4 +248,4 @@ const Hero = withStyles(styles)(HeroComponent);
 
 export default Hero;
 
-export { HeroTitle, HeroDescription, HeroButton, HeroTitleGrid };
+export { HeroTitle, HeroDescription, HeroButton, HeroTitleGrid, HeroDetail };

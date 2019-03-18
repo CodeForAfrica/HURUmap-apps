@@ -7,7 +7,7 @@ import { Modal as MaterialModal } from '@material-ui/core';
 
 import background from '../../assets/images/bg/background.png';
 
-const styles = theme => ({
+const styles = {
   root: {
     flexGrow: 1,
     padding: 0,
@@ -18,13 +18,9 @@ const styles = theme => ({
   modal: {
     outline: 'none',
     height: 'auto',
-    width: '100vw',
-    padding: '1.875rem',
-    [theme.breakpoints.up('md')]: {
-      padding: 0
-    }
+    width: '100vw'
   }
-});
+};
 
 function Modal({ classes, children, isOpen }) {
   return (

@@ -1,8 +1,16 @@
-{% extends 'homepage.html' %}{% load sass_tags humanize partition static %} {% load jsonify %}
+{% extends '_base.html' %}{% load sass_tags humanize partition static %} {% load jsonify %}
 
 {% block head_title %}
 {{ HURUMAP.name }}: Who owns land in {{country.name}}
 {% endblock %}
+
+{% block head_css_extra %}
+  <link rel="stylesheet" href="{% static 'css/vendor/leaflet-0.6.4.css' %}" />
+  <!--[if lte IE 8]>
+      <link rel="stylesheet" href="{% static 'css/vendor/leaflet-0.6.4.ie.css' %}" />
+  <![endif]-->
+  <link href="{% static 'css/vendor/leaflet.label.css' %}" rel="stylesheet" />
+  {% endblock %}
 
 {% block head_meta_description %}
 {{ HURUMAP.name }} provides useful facts and data about land ownership in {{country.name}}.
@@ -24,12 +32,9 @@ Compare places using tables and maps, download data, and embed charts on your si
 {% block body_javascript_extra %}
     {{ block.super }}
     <script>
-        var selected_country = {{ country|jsonify|safe }};
-
-        $(function() {
-            var maps = new ProfileMaps();
-            var zoom = {{country.zoom}};
-            maps.drawMapForCountryPage({{ geography.this |jsonify|safe }}, {{country.centre}}, zoom);
-        })
+        var maps = new ProfileMaps();
+        var zoom = {{country.zoom}};
+        maps.drawMapForCountryPage({{ geography.this |jsonify|safe }}, {{country.centre}}, zoom);
     </script>
+
 {% endblock %}
