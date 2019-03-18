@@ -1,4 +1,5 @@
 import React from 'react';
+import { Grid } from '@material-ui/core';
 
 import Header from './Header';
 
@@ -31,5 +32,9 @@ export function ProfilePageHeader() {
 }
 
 export function ComparePageNav() {
-  return <Header />;
+  return (
+    <Header>
+      <Grid style={{ visibility: 'hidden' }} />
+    </Header>
+  );
 }

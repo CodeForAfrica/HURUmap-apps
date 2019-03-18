@@ -10,25 +10,20 @@
     <meta property="og:type" content="article" />
 {% endblock %}
 
-{% block body_class %}profile-head2head-view{% endblock %}
-
 {% block header %}
-<header id="page-header">
-  <div id="dominionComparePageNaav"></div>
-  <div id="page-header-title" class="wrapper clearfix">
-  <div id="dominionComparePageNav"></div></div>
-</header>
-{%endblock%}
+    <div id="dominionComparePageNav"></div>
+{% endblock header %}
 
 {% block content_container %}
-
-<div class="head2head-wrapper">
+<div class="profile-head2head-view" style="padding-top: 0.2rem">
+  <div class="head2head-wrapper">
     <iframe class="frame-left" scrolling="no" src="{% url 'geography_detail' geography_id=geo_id1 %}?h2h=true&release={{geo1_release_year}}"></iframe>
     <iframe class="frame-right" scrolling="no" src="{% url 'geography_detail' geography_id=geo_id2 %}?h2h=true&release={{geo2_release_year}}"></iframe>
-
     <div class="clear"></div>
+  </div>
 </div>
 {% endblock %}
+
 
 {% block body_javascript_extra %}
 <script src="{% static 'js/head2head.js' %}"></script>
