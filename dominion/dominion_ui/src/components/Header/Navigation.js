@@ -121,7 +121,11 @@ class Navigation extends Component {
     const selectedCountry = window.selected_country;
 
     return (
-      <div style={{ position: 'relative', marginRight: '50px' }}>
+      <Link
+        component="a"
+        href={selectedCountry ? `/${selectedCountry.slug}` : '/'}
+        style={{ position: 'relative', marginRight: '50px' }}
+      >
         <img
           alt="Dominion Logo"
           src={selectedCountry ? logoWithCountrySpace : logo}
@@ -132,7 +136,7 @@ class Navigation extends Component {
             {selectedCountry.name.toUpperCase()}
           </p>
         ) : null}
-      </div>
+      </Link>
     );
   }
 
