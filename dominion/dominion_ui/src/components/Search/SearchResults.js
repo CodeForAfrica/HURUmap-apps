@@ -81,9 +81,9 @@ const styles = theme => ({
 });
 
 const maxResults = 6;
-const codeType = window.MAPIT.code_type;
 
 function renderHref(result, thisGeoId, isComparisonSearch) {
+  const codeType = window.MAPIT.code_type;
   let href;
   if (isComparisonSearch) {
     href = `/compare/${thisGeoId}/vs/${result.codes[codeType]}/`;
