@@ -25,7 +25,7 @@ import ProfileReleases from './components/ProfileReleases';
 library.add(fab);
 
 const PROPS = {
-  countries: window.all_countries || {},
+  countries: window.countries || {},
   selectedCountry: window.selected_country || {},
   geocodeApiKey: window.GOOGLE_GEOCODE_API_KEY,
   datasetReleases: (window.profileDataJson &&
