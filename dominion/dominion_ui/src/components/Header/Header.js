@@ -50,21 +50,21 @@ class Header extends Component {
   }
 
   render() {
-    const { classes, children, countries, selectedCountry } = this.props;
+    const { classes, children, dominion, profile } = this.props;
     const { openModal } = this.state;
 
     return (
-      <Grid sm={12} className={classes.root}>
+      <Grid container className={classes.root}>
         <Navigation
           toggleModal={this.toggleModal}
           openModal={openModal}
-          countries={countries}
-          selectedCountry={selectedCountry}
+          dominion={dominion}
+          profile={profile}
         />
 
         {React.cloneElement(children, {
-          countries,
-          selectedCountry,
+          dominion,
+          profile,
           toggleModal: this.toggleModal
         })}
       </Grid>
@@ -73,10 +73,13 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-  classes: PropTypes.isRequired,
-  children: PropTypes.isRequired,
-  countries: PropTypes.shape({}).isRequired,
-  selectedCountry: PropTypes.shape({}).isRequired
+  classes: PropTypes.shape({}).isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired,
+  dominion: PropTypes.shape({}).isRequired,
+  profile: PropTypes.shape({}).isRequired
 };
 
 export default withWidth()(withStyles(styles)(Header));

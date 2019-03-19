@@ -84,20 +84,21 @@ const styles = theme => ({
   }
 });
 
-function ProfileReleasesSection({ classes, datasetReleases }) {
+function ProfileReleasesSection({ classes, profile }) {
   const citationLink = link => (
     <A className={classes.link} href={link}>
       {link}
     </A>
   );
+  const { primary_releases: primaryReleases = {} } = profile;
+  const { active: activeRelease } = primaryReleases;
 
   return (
-    <Grid container direction="row" className={classes.root}>
-      {datasetReleases &&
-      Object.prototype.hasOwnProperty.call(datasetReleases, 'active') ? (
+    <Grid container className={classes.root}>
+      {activeRelease && (
         <Grid item className={classes.description}>
           <Typography className={classes.descriptionTitle}>
-            {datasetReleases.active.citation}
+            {activeRelease.citation}
           </Typography>
           <Typography className={classes.descriptionText}>
             Municipal Elections 2016: Electoral Commission of South Africa
@@ -143,9 +144,9 @@ function ProfileReleasesSection({ classes, datasetReleases }) {
             )}
           </Typography>
         </Grid>
-      ) : null}
+      )}
       <Grid item className={classes.releaseSelector}>
-        <ReleaseDropdown datasetReleases={datasetReleases} />
+        <ReleaseDropdown primaryReleases={primaryReleases} />
       </Grid>
     </Grid>
   );
@@ -153,7 +154,7 @@ function ProfileReleasesSection({ classes, datasetReleases }) {
 
 ProfileReleasesSection.propTypes = {
   classes: PropTypes.shape().isRequired,
-  datasetReleases: PropTypes.shape().isRequired
+  profile: PropTypes.shape({}).isRequired
 };
 
 export default withStyles(styles)(ProfileReleasesSection);

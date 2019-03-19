@@ -107,7 +107,7 @@ class Navigation extends Component {
           { title: 'Resources', link: '/resources' },
           { title: 'Contact', link: '/contact' }
         ].map(menu => (
-          <MenuItem item className={classes.menuListItem}>
+          <MenuItem className={classes.menuListItem}>
             <Link variant="body1" className={classes.link} href={menu.link}>
               {menu.title}
             </Link>
@@ -118,7 +118,10 @@ class Navigation extends Component {
   }
 
   renderBrand() {
-    const { classes, selectedCountry } = this.props;
+    const {
+      classes,
+      dominion: { selectedCountry }
+    } = this.props;
 
     return (
       <div style={{ position: 'relative', marginRight: '50px' }}>
@@ -219,15 +222,8 @@ class Navigation extends Component {
   }
 
   render() {
-    const {
-      classes,
-      countries,
-      geocodeApiKey,
-      width,
-      openModal,
-      selectedCountry,
-      toggleModal
-    } = this.props;
+    const { classes, width, openModal, toggleModal, dominion } = this.props;
+    const { countries } = dominion;
     const nav = isWidthDown('sm', width)
       ? this.renderMobileMenu()
       : this.renderDesktopMenu();
@@ -242,8 +238,7 @@ class Navigation extends Component {
             {nav}
             <Search
               handleIconClick={toggleModal('search')}
-              countries={countries}
-              selectedCountry={selectedCountry}
+              dominion={dominion}
             />
           </Grid>
         </Modal>
@@ -251,7 +246,6 @@ class Navigation extends Component {
           <Grid container className={classes.wrapper}>
             {nav}
             <PortalChooser
-              geocodeApiKey={geocodeApiKey}
               handleClose={toggleModal('portal')}
               countries={countries}
             />
@@ -263,13 +257,11 @@ class Navigation extends Component {
 }
 
 Navigation.propTypes = {
-  classes: PropTypes.isRequired,
-  countries: PropTypes.shape({}).isRequired,
-  geocodeApiKey: PropTypes.string.isRequired,
-  width: PropTypes.isRequired,
-  openModal: PropTypes.isRequired,
-  selectedCountry: PropTypes.shape({}).isRequired,
-  toggleModal: PropTypes.isRequired
+  classes: PropTypes.shape({}).isRequired,
+  width: PropTypes.string.isRequired,
+  openModal: PropTypes.func.isRequired,
+  toggleModal: PropTypes.func.isRequired,
+  dominion: PropTypes.shape({}).isRequired
 };
 
 export default withWidth()(withStyles(styles)(Navigation));

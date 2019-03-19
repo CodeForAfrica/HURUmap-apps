@@ -25,11 +25,24 @@ import ProfileReleases from './components/ProfileReleases';
 library.add(fab);
 
 const PROPS = {
+  dominion: {
+    countries: window.countries || {},
+    selectedCountry: window.selected_country
+  },
   countries: window.countries || {},
   selectedCountry: window.selected_country || {},
-  geocodeApiKey: window.GOOGLE_GEOCODE_API_KEY,
-  datasetReleases: (window.profileDataJson &&
-    window.profileDataJson.primary_releases) || { active: {}, other: [] }
+  profile: window.profileDataJson || {
+    demographics: {},
+    geography: {
+      full_geoid: '',
+      this: {
+        square_kms: '',
+        short_name: '',
+        parents: []
+      }
+    },
+    primary_releases: { active: {}, other: [] }
+  }
 };
 
 const renderApp = (Component, id) => {

@@ -87,9 +87,9 @@ function CountriesButtonComponent({ classes, onClick, isOpen }) {
 }
 
 CountriesButtonComponent.propTypes = {
-  classes: PropTypes.isRequired,
-  onClick: PropTypes.isRequired,
-  isOpen: PropTypes.isRequired
+  classes: PropTypes.shape({}).isRequired,
+  onClick: PropTypes.func.isRequired,
+  isOpen: PropTypes.bool.isRequired
 };
 
 export const CountriesButton = withStyles(styles)(CountriesButtonComponent);

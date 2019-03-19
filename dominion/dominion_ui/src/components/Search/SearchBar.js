@@ -79,7 +79,6 @@ function SearchBar({
   return (
     <Grid
       container
-      sm={12}
       wrap="nowrap"
       className={classNames(classes.root, {
         [classes.rootBorderBottom]: primary
@@ -120,12 +119,12 @@ function SearchBar({
 }
 
 SearchBar.propTypes = {
-  classes: PropTypes.shape().isRequired,
+  classes: PropTypes.shape({}).isRequired,
   handleValueChange: PropTypes.func.isRequired,
   icon: PropTypes.string.isRequired,
   handleIconClick: PropTypes.func.isRequired,
-  width: PropTypes.isRequired,
-  value: PropTypes.isRequired,
+  width: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
   primary: PropTypes.bool,
   placeholder: PropTypes.string,
   autoFocus: PropTypes.bool,

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { PropTypes } from 'prop-types';
-import { Grid, Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import Hero, { HeroTitle, HeroTitleGrid, HeroDetail } from './Hero';
@@ -68,7 +68,10 @@ class ProfileHero extends Component {
 
   async componentDidMount() {
     // get level from mapit
-    const geoid = window.geography.full_geoid;
+    const {
+      profile: { geography = {} }
+    } = this.props;
+    const { full_geoid: geoid } = geography.this || {};
     const api = createAPI();
     const level = await api.getGeoLevel(geoid);
 
@@ -79,41 +82,27 @@ class ProfileHero extends Component {
   }
 
   render() {
-    const { level, geoid } = this.state;
-    const { classes, countries, selectedCountry } = this.props;
-    const { profileDataJson } = window;
+    const { classes, dominion, profile } = this.props;
+    const {
+      demographics = {},
+      primary_releases: primaryReleases = {},
+      geography = { this: {} }
+    } = profile;
     let population;
-    let populationDensity;
-    let primaryReleases;
-    let squarekms;
-    let profileName;
-    let parentLinks;
-    if (profileDataJson) {
-      primaryReleases = profileDataJson.primary_releases;
-      squarekms = profileDataJson.geography.this.square_kms;
-      profileName = profileDataJson.geography.this.short_name;
-      parentLinks = profileDataJson.geography.parents;
-
-      if (
-        Object.prototype.hasOwnProperty.call(profileDataJson, 'demographics')
-      ) {
-        const { demographics } = profileDataJson;
-
-        if (
-          Object.prototype.hasOwnProperty.call(demographics, 'total_population')
-        ) {
-          population = demographics.total_population.values.this;
-        }
-        if (
-          Object.prototype.hasOwnProperty.call(
-            demographics,
-            'population_density'
-          )
-        ) {
-          populationDensity = demographics.population_density.values.this;
-        }
-      }
+    if (demographics.total_population && demographics.total_population.value) {
+      population = demographics.total_population.value.this;
     }
+    let populationDensity;
+    if (
+      demographics.population_density &&
+      demographics.population_density.value
+    ) {
+      populationDensity = demographics.population_density.value.this;
+    }
+    const { active: activeRelease } = primaryReleases;
+    const { parents: parentLinks } = geography;
+    const { square_kms: squarekms, short_name: profileName } = geography.this;
+    const { level, geoid } = this.state;
 
     return (
       <Hero>
@@ -139,22 +128,21 @@ class ProfileHero extends Component {
               </Typography>
             ) : null}
           </Typography>
-          {population ? (
+          {population && (
             <HeroDetail label="Population">{population}</HeroDetail>
-          ) : null}
-          {squarekms ? (
+          )}
+          {squarekms && (
             <HeroDetail small label="square kilometers">
               {squarekms}
             </HeroDetail>
-          ) : null}
-          {populationDensity ? (
+          )}
+          {populationDensity && (
             <HeroDetail small label="people per square kilometer">
               {populationDensity}
             </HeroDetail>
-          ) : null}
+          )}
           <Search
-            countries={countries}
-            selectedCountry={selectedCountry}
+            dominion={dominion}
             handleIconClick={null}
             isComparisonSearch
             placeholder="Compare this with"
@@ -162,23 +150,26 @@ class ProfileHero extends Component {
             icon={searchIcon}
           />
         </HeroTitleGrid>
-        <Grid id="slippy-map" className={classes.map} />
-        {primaryReleases &&
-        Object.prototype.hasOwnProperty.call(primaryReleases, 'active') ? (
-          <Typography variant="body2" className={classes.release}>
-            {primaryReleases.active.citation}
-            <ReleaseDropdown datasetReleases={primaryReleases} fromHero />
+        <div id="slippy-map" className={classes.map} />
+        {activeRelease && (
+          <Typography
+            variant="body2"
+            className={classes.release}
+            component="div"
+          >
+            {activeRelease.citation}
+            <ReleaseDropdown primaryReleases={primaryReleases} fromHero />
           </Typography>
-        ) : null}
+        )}
       </Hero>
     );
   }
 }
 
 ProfileHero.propTypes = {
-  classes: PropTypes.isRequired,
-  countries: PropTypes.shape({}).isRequired,
-  selectedCountry: PropTypes.shape({}).isRequired
+  classes: PropTypes.shape({}).isRequired,
+  dominion: PropTypes.shape({}).isRequired,
+  profile: PropTypes.shape({}).isRequired
 };
 
 export default withStyles(styles)(ProfileHero);

@@ -35,7 +35,8 @@ const styles = theme => ({
   }
 });
 
-function CountryHero({ classes, toggleModal, selectedCountry }) {
+function CountryHero({ classes, toggleModal, dominion }) {
+  const { selectedCountry = {} } = dominion;
   return (
     <Hero>
       <HeroTitleGrid>
@@ -64,9 +65,9 @@ function CountryHero({ classes, toggleModal, selectedCountry }) {
 }
 
 CountryHero.propTypes = {
-  classes: PropTypes.isRequired,
-  selectedCountry: PropTypes.shape({}).isRequired,
-  toggleModal: PropTypes.isRequired
+  classes: PropTypes.shape({}).isRequired,
+  dominion: PropTypes.shape({}).isRequired,
+  toggleModal: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(CountryHero);

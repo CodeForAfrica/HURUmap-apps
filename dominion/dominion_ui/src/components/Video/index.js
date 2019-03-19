@@ -70,7 +70,7 @@ class Video extends React.Component {
   }
 
   render() {
-    const { classes, countries, selectedCountry } = this.props;
+    const { classes, dominion } = this.props;
     const { openModal, videoId } = this.state;
 
     return (
@@ -101,7 +101,7 @@ class Video extends React.Component {
 
             <Grid item className={classes.buttonGrid}>
               <Button
-                variant="outline"
+                variant="outlined"
                 color="primary"
                 size="large"
                 className={classes.button}
@@ -116,8 +116,7 @@ class Video extends React.Component {
           <Navigation
             toggleModal={this.toggleModal}
             openModal={openModal}
-            countries={countries}
-            selectedCountry={selectedCountry}
+            dominion={dominion}
           />
           <Player videoId={videoId} handleClose={this.toggleModal('video')} />
         </Modal>
@@ -128,8 +127,7 @@ class Video extends React.Component {
 
 Video.propTypes = {
   classes: PropTypes.shape().isRequired,
-  countries: PropTypes.shape({}).isRequired,
-  selectedCountry: PropTypes.shape({}).isRequired
+  dominion: PropTypes.shape({}).isRequired
 };
 
 export default withStyles(styles)(Video);

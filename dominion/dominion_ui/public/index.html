@@ -60,24 +60,36 @@
     <script type="text/javascript">
       var MAPIT = { url: "https://mapit.hurumap.org", code_type: "AFR" };
       var countries = {
-          'south-africa': {
-              name: 'South Africa'
-          },
-          'kenya': {
-              name: 'Kenya'
-          }
+        'kenya': {
+            'code': 'KE',
+            'name': 'Kenya',
+            'centre': [0.3051933453207569, 37.908818734483155],
+            'zoom': 6
+        },
+        'south-africa': {
+            'code': 'ZA',
+            'name': 'South Africa',
+            'centre': [-30, 24],
+            'zoom': 5
+        }
       };
-      var selected_country = {
-          'code': 'ZA',
-          'name': 'South Africa',
-          'centre': [-30.5595, 22.9375],
-          'zoom': 5,
-          'slug': 'south-africa'
-      };
+
+      // set selected_country from pathname
+      var slug = window.location.pathname.substring(1);
+      var country = countries[slug];
+      if (country) {
+        var selected_country = Object.assign({}, country, { slug });
+      }
       var profileDataJson = {
         geography: {
-          this: {}
+          full_geoid: '',
+          this: {
+            square_kms: '',
+            short_name: '',
+            parents: []
+          }
         },
+        demographics: {},
         primary_releases: {
           active: {
             "citation": "Census, 2016",

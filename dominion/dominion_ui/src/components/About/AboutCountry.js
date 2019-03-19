@@ -24,7 +24,12 @@ const styles = theme => ({
   }
 });
 
-function AboutCountry({ classes, selectedCountry }) {
+function AboutCountry({ classes, dominion }) {
+  const { selectedCountry = {} } = dominion;
+  const info = content[selectedCountry.slug] || {
+    intro: 'Not found',
+    other: 'Not found'
+  };
   return (
     <Grid
       container
@@ -41,8 +46,8 @@ function AboutCountry({ classes, selectedCountry }) {
       </Grid>
       <Grid item>
         <Info>
-          <InfoSubtitle>{content[selectedCountry.slug].intro}</InfoSubtitle>
-          <InfoBody>{content[selectedCountry.slug].other}</InfoBody>
+          <InfoSubtitle>{info.intro}</InfoSubtitle>
+          <InfoBody>{info.other}</InfoBody>
         </Info>
       </Grid>
       <Grid item>
@@ -53,8 +58,8 @@ function AboutCountry({ classes, selectedCountry }) {
 }
 
 AboutCountry.propTypes = {
-  classes: PropTypes.shape().isRequired,
-  selectedCountry: PropTypes.shape({}).isRequired
+  classes: PropTypes.shape({}).isRequired,
+  dominion: PropTypes.shape({}).isRequired
 };
 
 export default withStyles(styles)(AboutCountry);

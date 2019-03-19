@@ -118,13 +118,7 @@ const styles = theme => ({
   }
 });
 
-function PortalChooser({
-  classes,
-  children,
-  countries,
-  geocodeApiKey,
-  handleClose
-}) {
+function PortalChooser({ classes, children, countries, handleClose }) {
   return (
     <Grid
       container
@@ -144,7 +138,7 @@ function PortalChooser({
         className={classes.locationGrid}
       >
         <Typography variant="body2" className={classes.locationText}>
-          <GetLocation countries={countries} geocodeApiKey={geocodeApiKey} />
+          <GetLocation countries={countries} />
           <img
             src={geolocate}
             alt="Use your location"
@@ -196,11 +190,13 @@ function PortalChooser({
 }
 
 PortalChooser.propTypes = {
-  classes: PropTypes.isRequired,
-  children: PropTypes.isRequired,
+  classes: PropTypes.shape({}).isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired,
   countries: PropTypes.shape({}).isRequired,
-  geocodeApiKey: PropTypes.string.isRequired,
-  handleClose: PropTypes.isRequired
+  handleClose: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(PortalChooser);

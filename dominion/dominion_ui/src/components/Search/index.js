@@ -37,7 +37,9 @@ class Search extends React.Component {
   }
 
   componentDidMount() {
-    const { countries } = this.props;
+    const {
+      dominion: { countries }
+    } = this.props;
     const geography = Object.keys(countries).map(slug =>
       Object.assign({}, countries[slug], { slug, type: 'country' })
     );
@@ -53,10 +55,13 @@ class Search extends React.Component {
 
   async loadSuggestions(searchTerm) {
     const api = createAPI();
-    const { codeType } = api;
-    const { selectedCountry } = this.props;
+    const {
+      mapit: { codeType }
+    } = api;
+    const {
+      dominion: { selectedCountry }
+    } = this.props;
     const { geography } = this.state;
-    let countryCode;
     let results = [];
 
     if (searchTerm !== '') {
@@ -64,7 +69,7 @@ class Search extends React.Component {
         g.name.match(new RegExp(searchTerm, 'i'))
       );
       if (selectedCountry) {
-        countryCode = selectedCountry.code;
+        const { code: countryCode } = selectedCountry;
         results = await api.getGeography(countryCode, searchTerm);
       }
     }
@@ -95,6 +100,7 @@ class Search extends React.Component {
         className={isComparisonSearch ? null : classes.root}
       >
         <SearchBar
+          autoFocus
           value={searchTerm}
           handleValueChange={this.handleSearch}
           handleIconClick={handleIconClick}
@@ -117,23 +123,25 @@ class Search extends React.Component {
   }
 }
 
+Search.propTypes = {
+  classes: PropTypes.shape({}).isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired,
+  dominion: PropTypes.shape({}).isRequired,
+  handleIconClick: PropTypes.func.isRequired,
+  placeholder: PropTypes.string,
+  isComparisonSearch: PropTypes.bool,
+  icon: PropTypes.string,
+  thisGeoId: PropTypes.string
+};
+
 Search.defaultProps = {
   thisGeoId: '',
   icon: null,
   placeholder: '',
   isComparisonSearch: false
-};
-
-Search.propTypes = {
-  classes: PropTypes.isRequired,
-  children: PropTypes.isRequired,
-  countries: PropTypes.shape({}).isRequired,
-  selectedCountry: PropTypes.shape({}).isRequired,
-  handleIconClick: PropTypes.isRequired,
-  placeholder: PropTypes.string,
-  isComparisonSearch: PropTypes.bool,
-  icon: PropTypes.shape(),
-  thisGeoId: PropTypes.string
 };
 
 export default withStyles(styles)(Search);

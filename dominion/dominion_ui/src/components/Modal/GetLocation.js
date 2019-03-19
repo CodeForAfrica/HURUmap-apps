@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import { withStyles } from '@material-ui/core/styles';
 
+import createAPI from '../../api';
+
 const styles = {
   locationText: {
     color: 'white',
@@ -26,7 +28,7 @@ class GetLocation extends React.Component {
   findLocation() {
     this.setState(() => ({ buttonText: 'Locating   .....' }));
 
-    const { countries, geocodeApiKey } = this.props;
+    const { countries } = this.props;
 
     const locateMe = json => {
       // If not really there
@@ -52,14 +54,11 @@ class GetLocation extends React.Component {
       }
     };
 
+    const api = createAPI();
     navigator.geolocation.getCurrentPosition(
       position => {
-        const url = `https://maps.googleapis.com/maps/api/geocode/json?sensor=false&language=en&latlng=${
-          position.coords.latitude
-        },${position.coords.longitude}&key=${geocodeApiKey}`;
-        fetch(url)
-          .then(data => data.json())
-          .then(json => locateMe(json));
+        const location = api.getLocation(position);
+        locateMe(location);
       },
       failure => {
         this.setState(() => ({ buttonText: failure.message }));
@@ -86,9 +85,8 @@ class GetLocation extends React.Component {
 }
 
 GetLocation.propTypes = {
-  classes: PropTypes.shape().isRequired,
-  countries: PropTypes.isRequired,
-  geocodeApiKey: PropTypes.string.isRequired
+  classes: PropTypes.shape({}).isRequired,
+  countries: PropTypes.shape({}).isRequired
 };
 
 export default withStyles(styles)(GetLocation);

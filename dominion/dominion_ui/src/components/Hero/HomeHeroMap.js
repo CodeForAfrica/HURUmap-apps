@@ -49,10 +49,7 @@ function HomeHeroMap({ classes }) {
       alignItems="center"
       className={classes.mapSection}
     >
-      <Typography
-        variant="fontSmallDefault"
-        className={classes.verticalAlignText}
-      >
+      <Typography className={classes.verticalAlignText}>
         <img src={map} alt="Country Map" className={classes.mapImage} />
         South Africa &nbsp;&nbsp;
         <div className={classes.lineSeparator} />
@@ -63,7 +60,7 @@ function HomeHeroMap({ classes }) {
 }
 
 HomeHeroMap.propTypes = {
-  classes: PropTypes.isRequired
+  classes: PropTypes.shape({}).isRequired
 };
 
 export default withStyles(styles)(HomeHeroMap);

@@ -54,7 +54,7 @@ const styles = theme => ({
     fontWeight: '600',
     opacity: '0.5',
     marginRight: '20px',
-    width: '60px',
+    width: '80px',
     textTransform: 'capitalize',
     textAlign: 'right',
     color: 'inherit'
@@ -104,7 +104,6 @@ function SearchResults({
   return (
     <Grid
       container
-      sm={12}
       className={classNames(classes.root, {
         [classes.rootDropdown]: isComparisonSearch
       })}

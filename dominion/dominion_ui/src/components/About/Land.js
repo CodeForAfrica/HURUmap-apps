@@ -55,9 +55,9 @@ function Land({ classes, width, imgSrc }) {
 }
 
 Land.propTypes = {
-  classes: PropTypes.shape().isRequired,
+  classes: PropTypes.shape({}).isRequired,
   width: PropTypes.string.isRequired,
-  imgSrc: PropTypes.isRequired
+  imgSrc: PropTypes.string.isRequired
 };
 
 export default withWidth()(withStyles(styles)(Land));
