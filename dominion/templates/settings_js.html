@@ -12,7 +12,7 @@
     var selected_country = {{ country|jsonify|safe}}
   {% else %}
     var selected_country = Object
-      .entries({{ HURUMAP.countries | jsonify| safe }})
+      .entries(countries)
       .find((item) => item[1].code === geography.geo_code.slice(0,2))[1];
   {% endif %}
 
