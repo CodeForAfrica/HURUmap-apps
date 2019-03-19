@@ -112,7 +112,7 @@ class Video extends React.Component {
             </Grid>
           </Grid>
         </Grid>
-        <Modal isOpen={openModal}>
+        <Modal isOpen={openModal} onEscapeKeyDown={this.toggleModal('video')}>
           <Navigation toggleModal={this.toggleModal} openModal={openModal} />
           <Player videoId={videoId} handleClose={this.toggleModal('video')} />
         </Modal>
