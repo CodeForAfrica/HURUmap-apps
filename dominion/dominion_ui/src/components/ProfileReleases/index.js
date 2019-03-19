@@ -85,7 +85,6 @@ const styles = theme => ({
 });
 
 function ProfileReleasesSection({ classes, datasetReleases }) {
-  console.log(`RELEASES ${JSON.stringify(datasetReleases)}`);
   const citationLink = link => (
     <A className={classes.link} href={link}>
       {link}
