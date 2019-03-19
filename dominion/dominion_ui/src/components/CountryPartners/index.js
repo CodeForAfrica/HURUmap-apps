@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
@@ -16,7 +17,6 @@ const styles = theme => ({
     padding: '2rem'
   },
   img: {
-    height: '100%',
     maxHeight: '6rem',
     maxWidth: '30vw',
     [theme.breakpoints.up('md')]: {
@@ -24,21 +24,26 @@ const styles = theme => ({
       maxWidth: '10rem'
     }
   },
-  imageGrid: {
-    padding: '1rem',
-    [theme.breakpoints.up('md')]: {
-      padding: '2rem 1rem'
-    }
-  },
   logoGrid: {
     padding: '2rem',
     [theme.breakpoints.up('md')]: {
       padding: 0
     }
+  },
+  imgCfa: {
+    maxHeight: '6rem',
+    padding: '1rem'
+  },
+  imageGrid: {
+    padding: '1rem',
+    [theme.breakpoints.up('md')]: {
+      padding: '2rem 1rem'
+    }
   }
 });
 
 function CountryPartners({ classes }) {
+  const cfaClassName = classNames(classes.img, classes.imgCfa);
   return (
     <Grid
       container
@@ -50,7 +55,8 @@ function CountryPartners({ classes }) {
       <Grid item xs={12} sm={4}>
         <PartnerContent
           title="Our Partners"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
+                      ut labore et dolore magna aliqua."
         />
       </Grid>
 
@@ -67,7 +73,7 @@ function CountryPartners({ classes }) {
       >
         {' '}
         <Grid item className={classes.imageGrid}>
-          <img src={cfa} alt="Code for Africa" className={classes.img} />
+          <img src={cfa} alt="Code for Africa" className={cfaClassName} />
         </Grid>
         <Grid item className={classes.imageGrid}>
           <img src={datazetu} alt="Data Zetu" className={classes.img} />
