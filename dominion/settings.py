@@ -128,6 +128,8 @@ HURUMAP['mapit'] = {
 
 HURUMAP['primary_release_year'] = {
     # use the 2011 release for wards, use the latest (2016) for everything else
+    'level1': ['2016'],
+    'country': ['2016']
 }
 HURUMAP['primary_dataset_name'] = 'Census'
 HURUMAP['latest_release_year'] = '2016'

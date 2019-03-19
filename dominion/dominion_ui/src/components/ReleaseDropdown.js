@@ -125,14 +125,20 @@ class ReleaseDropdown extends Component {
         >
           <Paper>
             <ClickAwayListener onClickAway={this.closeReleaseMenu}>
-              <MenuItem
-                component="a"
-                href={`?release=${primaryReleases.active.year}`}
-                className={classes.releasesMenuItem}
-              >
-                {primaryReleases.active.citation}
-              </MenuItem>
-              {primaryReleases.other.length
+              {primaryReleases &&
+              Object.prototype.hasOwnProperty.call(
+                primaryReleases,
+                'active'
+              ) ? (
+                <MenuItem
+                  component="a"
+                  href={`?release=${primaryReleases.active.year}`}
+                  className={classes.releasesMenuItem}
+                >
+                  {primaryReleases.active.citation}
+                </MenuItem>
+              ) : null}
+              {primaryReleases && primaryReleases.other.length
                 ? primaryReleases.other.map(release => (
                     <MenuItem
                       component="a"

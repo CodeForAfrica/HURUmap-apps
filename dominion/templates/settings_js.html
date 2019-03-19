@@ -3,20 +3,25 @@
 {% block settings_javascript %}
   {{ block.super }}
   var dominion_countries = {{ HURUMAP.countries|jsonify|safe }};
-
+  var profileDataJson = {}
   {% if profile_data_json %}
-    var profileDataJson = {{ profile_data_json }};
+     profileDataJson = {{ profile_data_json }};
   {% endif %}
   var geography = {{ geography.this |jsonify|safe }};
   var all_countries = Object.entries({{ HURUMAP.countries | jsonify| safe }});
-  var head2head = "{{ head2head }}";
+  var head2head = {{ head2head |jsonify | safe }};
+  {% if head2head %}
+    console.log( {{ primary_releases | jsonify|safe }} )
+    profileDataJson.primary_releases = {{ primary_releases | jsonify | safe }}
+  {% endif %}
+
   var selected_country;
   if(geography) {
     selected_country = all_countries.find((item) => item[1].code === geography.geo_code.slice(0,2))[1];
   }
-  console.log(profileDataJson)
   {% if country %}
     selected_country = {{ country|jsonify|safe}}
   {% endif %}
+
 
 {% endblock settings_javascript %}

@@ -89,7 +89,7 @@ class ProfileHero extends Component {
     const { level, geoid } = this.state;
     const { classes } = this.props;
     const { profileDataJson } = window;
-    const head2head = window.head2head === 'True';
+    const { head2head } = window;
     let population;
     let populationDensity;
     let primaryReleases;
