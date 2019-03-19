@@ -3,28 +3,15 @@
 {% block settings_javascript %}
   {{ block.super }}
   var dominion_countries = {{ HURUMAP.countries|jsonify|safe }};
+
+  {% if profile_data_json %}
+    var profileDataJson = {{ profile_data_json }};
+  {% endif %}
   var geography = {{ geography.this |jsonify|safe }};
   var all_countries = Object.entries({{ HURUMAP.countries | jsonify| safe }});
   var selected_country = all_countries.find((item) => item[1].code === geography.geo_code.slice(0,2))[1];
   {% if country %}
     selected_country = {{ country|jsonify|safe}}
   {% endif %}
-  var population_density = '';
-  var population = '';
-  {% if demographics %}
-   population = {{ demographics.total_population.values.this}}
-  {%endif%}
-  {% if demographics.population_density.values.this %}
-   population_density = {{ demographics.population_density.values.this|floatformat:"1" }}
-  {% endif %}
-  var captionItems = []
-  {% if geography.parents %}
-     {% for level, g in geography.parents.items %}
-        var geolevel = "{{ g.full_geoid }}-{{ g.short_name|slugify }}";
-        captionItems.push({ geoid: "{{ g.full_geoid }}-{{ g.short_name|slugify }}", name: "{{ g.short_name}}"  });
-      {% endfor %}
-  {% endif %}
-  var primary_releases = "{{ primary_releases.active.name }}"
-  var primary_releases_year = "{{ primary_releases.active.year }}"
-  var primary_releases_other = {{ primary_releases.other | jsonify | safe }}
+
 {% endblock settings_javascript %}
