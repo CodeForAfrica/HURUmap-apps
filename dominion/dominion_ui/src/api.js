@@ -11,6 +11,10 @@ export default function createAPI() {
         `${url}/areas/${searchTerm}?country=${countryCode}`
       );
       return Object.values(response.data);
+    },
+    getGeoLevel: async geoId => {
+      const response = await axios.get(`${url}/code/${codeType}/${geoId}`);
+      return response.data.type.toLowerCase();
     }
   };
 }

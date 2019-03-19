@@ -7,7 +7,11 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 import withRoot from './withRoot';
 
 import { AboutCountry, AboutDominion } from './components/About';
-import { CountryPageHeader, HomePageHeader } from './components/Header';
+import {
+  CountryPageHeader,
+  HomePageHeader,
+  ProfilePageHeader
+} from './components/Header';
 import CountryPartners from './components/CountryPartners';
 import Data from './components/Data';
 import Footer from './components/Footer';
@@ -21,11 +25,11 @@ import ProfileReleases from './components/ProfileReleases';
 library.add(fab);
 
 const PROPS = {
-  countries: window.dominion_countries || [],
+  countries: window.all_countries || {},
   selectedCountry: window.selected_country || {},
   geocodeApiKey: window.GOOGLE_GEOCODE_API_KEY,
-  datasetReleases: window.dataset_releases || [],
-  selectedDatasetRelease: window.active_dataset_release || {}
+  datasetReleases: (window.profileDataJson &&
+    window.profileDataJson.primary_releases) || { active: {}, other: [] }
 };
 
 const renderApp = (Component, id) => {
@@ -39,6 +43,7 @@ const renderApp = (Component, id) => {
 
 renderApp(HomePageHeader, 'dominionHomePageHeader');
 renderApp(CountryPageHeader, 'dominionCountryPageHeader');
+renderApp(ProfilePageHeader, 'dominionProfilePageHeader');
 renderApp(AboutCountry, 'dominionCountryAbout');
 renderApp(ProfileTabs, 'dominionProfileTabs');
 renderApp(Video, 'dominionVideo');

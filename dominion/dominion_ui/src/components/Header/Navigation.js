@@ -91,7 +91,8 @@ const styles = theme => ({
     margin: 0,
     fontFamily: theme.typography.fontFamily,
     fontWeight: 500,
-    fontSize: 'x-small'
+    fontSize: 'x-small',
+    textTransform: 'uppercase'
   }
 });
 
@@ -127,9 +128,7 @@ class Navigation extends Component {
           className={classes.img}
         />
         {selectedCountry ? (
-          <p className={classes.logoCountryName}>
-            {selectedCountry.name.toUpperCase()}
-          </p>
+          <p className={classes.logoCountryName}>{selectedCountry.name}</p>
         ) : null}
       </div>
     );

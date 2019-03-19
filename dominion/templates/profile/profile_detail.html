@@ -13,14 +13,6 @@
     {% block profile_detail_contents %}
     {% endblock %}
   </div>
+
   <div id="dominionProfileReleasesSection" />
-{% endblock %}
-
-
-{% block body_javascript_extra %}
-    {{ block.super }}
-    <script>
-        var active_dataset_release = profileData["primary_releases"]["active"];
-        var dataset_releases = profileData["primary_releases"]["other"].concat(active_dataset_release);
-    </script>
 {% endblock %}

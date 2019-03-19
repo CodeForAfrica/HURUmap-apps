@@ -66,24 +66,31 @@
           'kenya': {
               name: 'Kenya'
           }
-      }
+      };
       var selected_country = {
           'code': 'ZA',
           'name': 'South Africa',
           'centre': [-30.5595, 22.9375],
           'zoom': 5,
           'slug': 'south-africa'
-      }
-      var dataset_releases = [{
-        "citation": "Census, 2016",
-        "name": "Census",
-        "year": "2016"
-      }];
-      var active_dataset_release = {
-        "citation": "Census, 2016",
-        "name": "Census",
-        "year": "2016"
-      }
+      };
+      var profileDataJson = {
+        geography: {
+          this: {}
+        },
+        primary_releases: {
+          active: {
+            "citation": "Census, 2016",
+            "name": "Census",
+            "year": "2016"
+          },
+          other: [{
+            "citation": "Census, 2006",
+            "name": "Census",
+            "year": "2006"
+          }]
+        }
+      };
     </script>
   </head>
 
@@ -92,6 +99,7 @@
 
     <div id="dominionHomePageHeader"></div>
     <div id="dominionCountryPageHeader"></div>
+    <div id="dominionProfilePageHeader"></div>
     <div id="dominionCountryAbout"></div>
     <div id="dominionProfileReleasesSection"></div>
     <div id="dominionProfileTabs"></div>

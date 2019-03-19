@@ -3,4 +3,15 @@
 {% block settings_javascript %}
   {{ block.super }}
   var dominion_countries = {{ HURUMAP.countries|jsonify|safe }};
+
+  {% if profile_data_json %}
+    var profileDataJson = {{ profile_data_json }};
+  {% endif %}
+  var geography = {{ geography.this |jsonify|safe }};
+  var all_countries = Object.entries({{ HURUMAP.countries | jsonify| safe }});
+  var selected_country = all_countries.find((item) => item[1].code === geography.geo_code.slice(0,2))[1];
+  {% if country %}
+    selected_country = {{ country|jsonify|safe}}
+  {% endif %}
+
 {% endblock settings_javascript %}

@@ -7,11 +7,24 @@
 <link
     href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:200,300,400,500,600,700,800,900"
     rel="stylesheet"
-/>
+  />
 {% endblock %}
 
 {% block body_javascript %}
+  <script src="{% static asset_manifest.runtime %}"></script>
+  <script src="{% static asset_manifest.vendor %}"></script>
+  <script src="{% static asset_manifest.main %}"></script>
+
+  {% block homepage_javascripb_libs %}
+    <script src="{% static 'js/vendor/leaflet-0.6.4.js' %}"></script>
+    <script src="{% static 'js/vendor/topojson.v1.min.js' %}"></script>
+    <script src="{% static 'js/vendor/leaflet.label.js' %}"></script>
+    <script src="{% static 'js/map_mapit.js' %}"></script>
+    <script src="{% static 'js/profile_map_mapit.js' %}"></script>
+  {% endblock %}
+
   {{ block.super }}
+
   <!-- IMG to SVG -->
   <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', function () {
@@ -51,8 +64,4 @@
       });
     });
   </script>
-
-  <script src="{% static asset_manifest.runtime %}"></script>
-  <script src="{% static asset_manifest.vendor %}"></script>
-  <script src="{% static asset_manifest.main %}"></script>
 {% endblock %}

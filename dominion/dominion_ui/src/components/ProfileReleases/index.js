@@ -1,21 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {
-  Grid,
-  Button,
-  Typography,
-  Popper,
-  Paper,
-  MenuItem
-} from '@material-ui/core';
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import { Grid, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import A from '../A';
-
-import arrowDownIcon from '../../assets/images/group-3.png';
-import arrowUpIcon from '../../assets/images/group-3-up.png';
+import ReleaseDropdown from '../ReleaseDropdown';
 
 const styles = theme => ({
   root: {
@@ -94,46 +84,21 @@ const styles = theme => ({
   }
 });
 
-class ProfileReleasesSection extends React.Component {
-  constructor(props) {
-    super(props);
+function ProfileReleasesSection({ classes, datasetReleases }) {
+  console.log(`RELEASES ${JSON.stringify(datasetReleases)}`);
+  const citationLink = link => (
+    <A className={classes.link} href={link}>
+      {link}
+    </A>
+  );
 
-    this.state = {
-      menuOpen: false
-    };
-
-    this.toggleReleasesMenu = this.toggleReleasesMenu.bind(this);
-    this.closeReleaseMenu = this.closeReleaseMenu.bind(this);
-  }
-
-  closeReleaseMenu(event) {
-    if (this.changeReleaseButton.contains(event.target)) {
-      return;
-    }
-    this.setState({ menuOpen: false });
-  }
-
-  toggleReleasesMenu() {
-    this.setState(prevState => ({
-      menuOpen: !prevState.menuOpen
-    }));
-  }
-
-  render() {
-    const { classes, datasetReleases, selectedDatasetRelease } = this.props;
-    const { menuOpen } = this.state;
-
-    const citationLink = link => (
-      <A className={classes.link} href={link}>
-        {link}
-      </A>
-    );
-
-    return (
-      <Grid container direction="row" className={classes.root}>
+  return (
+    <Grid container direction="row" className={classes.root}>
+      {datasetReleases &&
+      Object.prototype.hasOwnProperty.call(datasetReleases, 'active') ? (
         <Grid item className={classes.description}>
           <Typography className={classes.descriptionTitle}>
-            {selectedDatasetRelease.citation}
+            {datasetReleases.active.citation}
           </Typography>
           <Typography className={classes.descriptionText}>
             Municipal Elections 2016: Electoral Commission of South Africa
@@ -179,51 +144,17 @@ class ProfileReleasesSection extends React.Component {
             )}
           </Typography>
         </Grid>
-        <Grid item className={classes.releaseSelector}>
-          <Button
-            buttonRef={c => {
-              this.changeReleaseButton = c;
-            }}
-            disableFocusRipple
-            disableRipple
-            disableTouchRipple
-            className={classes.changeReleaseButton}
-            onClick={() => {
-              this.toggleReleasesMenu();
-            }}
-          >
-            Change release
-            <img alt="Toggle" src={menuOpen ? arrowUpIcon : arrowDownIcon} />
-          </Button>
-          <Popper
-            anchorEl={this.changeReleaseButton}
-            open={menuOpen}
-            onClose={this.closeReleaseMenu}
-          >
-            <Paper>
-              <ClickAwayListener onClickAway={this.closeReleaseMenu}>
-                {datasetReleases.map(release => (
-                  <MenuItem
-                    component="a"
-                    href={`?release=${release.year}`}
-                    className={classes.releasesMenuItem}
-                  >
-                    {release.citation}
-                  </MenuItem>
-                ))}
-              </ClickAwayListener>
-            </Paper>
-          </Popper>
-        </Grid>
+      ) : null}
+      <Grid item className={classes.releaseSelector}>
+        <ReleaseDropdown datasetReleases={datasetReleases} />
       </Grid>
-    );
-  }
+    </Grid>
+  );
 }
 
 ProfileReleasesSection.propTypes = {
   classes: PropTypes.shape().isRequired,
-  datasetReleases: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-  selectedDatasetRelease: PropTypes.shape({}).isRequired
+  datasetReleases: PropTypes.shape().isRequired
 };
 
 export default withStyles(styles)(ProfileReleasesSection);
