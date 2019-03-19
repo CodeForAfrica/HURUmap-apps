@@ -64,6 +64,7 @@ class Description extends Component {
           <Modal
             aria-labelledby="dominion-videos"
             aria-describedby="dominion-videos-list"
+            disableAutoFocus
             open={open}
             onClose={this.toggleState}
             className={classes.modal}
