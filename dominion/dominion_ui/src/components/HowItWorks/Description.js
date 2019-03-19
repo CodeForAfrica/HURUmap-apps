@@ -67,9 +67,8 @@ class Description extends Component {
             disableAutoFocus
             open={open}
             onClose={this.toggleState}
-            className={classes.modal}
           >
-            <Player videoId={videoId} />
+            <Player videoId={videoId} handleClose={this.toggleState} />
           </Modal>
         </div>
       </div>

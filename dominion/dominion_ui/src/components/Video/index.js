@@ -65,6 +65,10 @@ class Video extends React.Component {
     };
   }
 
+  handleStateClose() {
+    this.setState(state => ({ open: !state.open }));
+  }
+
   changeVideoId(videoId) {
     this.setState({ videoId });
   }
