@@ -14,7 +14,14 @@ import twaweza from '../../assets/images/logos/twaweza.png';
 const styles = theme => ({
   root: {
     flexRow: 1,
-    padding: '2rem'
+    padding: '2rem',
+    backgroundColor: '#f1f1ed',
+    [theme.breakpoints.up('md')]: {
+      padding: '4.143rem 3.125rem'
+    },
+    [theme.breakpoints.up('lg')]: {
+      padding: '4.143rem 9.375rem'
+    }
   },
   img: {
     maxHeight: '6rem',
@@ -55,7 +62,7 @@ function CountryPartners({ classes }) {
       <Grid item xs={12} sm={4}>
         <PartnerContent
           title="Our Partners"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
+          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
                       ut labore et dolore magna aliqua."
         />
       </Grid>
