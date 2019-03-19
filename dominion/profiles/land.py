@@ -24,7 +24,28 @@ LOCATIONNOTFOUND = {'is_missing': True,
                     'numerators': {'this': 0},
                     'values': {'this': 0}
                     }
-
+METADATA = {
+    'kenya': {
+        'country': {
+            "total_population": {
+                "source": {
+                    "link": "https://data.worldbank.org/indicator/SP.POP.TOTL?locations=KE",
+                    "title": "WorldBank"
+                }
+            }
+        },
+    },
+    'south africa': {
+        "country": {
+            "total_population": {
+                "source": {
+                    "link": "http://cs2016.statssa.gov.za/wp-content/uploads/2016/07/NT-30-06-2016-RELEASE-for-CS-2016-_Statistical-releas_1-July-2016.pdf",
+                    "title": "Statistics South Africa"
+                }
+            }
+        }
+    }
+}
 
 def get_profile(geo, profile_name, request):
     session = get_session()
@@ -93,7 +114,9 @@ def get_population(geo, session, country, level, year):
 
     demographics_data = {
         'is_missing': is_missing,
-        'total_population': total_population_dist
+        'total_population': _add_metadata_to_dist(total_population_dist,
+                                                  'total_population_dist',
+                                                  country, level),
     }
 
     if geo.square_kms:
@@ -109,3 +132,20 @@ def _create_single_value_dist(name='', value=0):
         'numerators': {'this': value},
         'values': {'this': value},
     }
+def _add_metadata_to_dist(dist, dist_name, country, level):
+    if not dist.get('is_missing'):
+        country_metadata = METADATA.get(country)
+        if country_metadata:
+            level_metadata = country_metadata.get(level)
+            # Revert to 'country' level metadata if level-specific metadata is missing
+            level_metadata = level_metadata \
+                if level_metadata or level == 'country' \
+                else country_metadata.get('country')
+            if level_metadata:
+                metadata = level_metadata.get(dist_name)
+                if metadata:
+                    # Only update relevant keys, don't replace the whole thing
+                    dist['metadata'].update(metadata)
+                    print("\n\n\n\n\n\n\n\n\n")
+                    print(dist)
+    return dist
