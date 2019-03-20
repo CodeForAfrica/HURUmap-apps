@@ -10,7 +10,8 @@ import { AboutCountry, AboutDominion } from './components/About';
 import {
   CountryPageHeader,
   HomePageHeader,
-  ProfilePageHeader
+  ProfilePageHeader,
+  ComparePageNav
 } from './components/Header';
 import CountryPartners from './components/CountryPartners';
 import Data from './components/Data';
@@ -36,6 +37,7 @@ const renderApp = (Component, id) => {
 renderApp(HomePageHeader, 'dominionHomePageHeader');
 renderApp(CountryPageHeader, 'dominionCountryPageHeader');
 renderApp(ProfilePageHeader, 'dominionProfilePageHeader');
+renderApp(ComparePageNav, 'dominionComparePageNav');
 renderApp(AboutCountry, 'dominionCountryAbout');
 renderApp(ProfileTabs, 'dominionProfileTabs');
 renderApp(Video, 'dominionVideo');

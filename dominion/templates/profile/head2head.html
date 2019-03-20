@@ -1,68 +1,36 @@
-{% load sass_tags static %}
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>{{ geo1.name }} vs {{ geo2.name }} - Dominion</title>
-        <meta name="description" content="{% block head_meta_description %}{% endblock %}">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{{ STATIC_URL }}css/vendor/normalize.min.css">
-        <link rel="stylesheet" href="{% sass_src 'css/wazimap.scss' %}">
-        <link rel="stylesheet" href="{% sass_src 'css/dominion.scss' %}">
-        <link
-            href="https://fonts.googleapis.com/css?family=Lato:300,400|Poppins:400,500,600"
-            rel="stylesheet">
-        <link rel="stylesheet" href="{% sass_src 'css/hurumap.scss' %}">
-        <script src="//cdn.jsdelivr.net/g/modernizr@2.7,respond@1.4"></script>
-        <!-- Begin Google Analytics -->
-        <script>
-            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+{% extends '_base.html' %}
+{% load humanize lookup sass_tags static %}
 
-            ga('create', 'UA-48399585-5', 'auto');
-            ga('send', 'pageview');
+{% block head_title %}{{ geo1.name }} vs {{ geo2.name }} - {{ block.super }}{% endblock %}
+{% block head_facebook_tags %}
+    <meta property="og:title" content="{{ WAZIMAP.name }} comparison: {{ geo1.name }} vs {{ geo2.name }}" />
+    <meta property="og:site_name" content="{{ WAZIMAP.name }}" />
+    <meta property="og:url" content="{{ WAZIMAP.url }}{{ request.path }}" />
+    <meta property="og:description" content="Compare demographics between {{ geo1.name }} vs {{ geo2.name }}." />
+    <meta property="og:type" content="article" />
+{% endblock %}
 
-        </script>
-        <!-- End Google Analytics -->
-        <link rel="apple-touch-icon" sizes="180x180"
-              href="{{ STATIC_URL }}img/icons/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32"
-              href="{{ STATIC_URL }}img/icons/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16"
-              href="{{ STATIC_URL }}img/icons/favicon-16x16.png">
-        <link rel="manifest" href="{{ STATIC_URL }}img/icons/manifest.json">
-        <link rel="mask-icon" href="{{ STATIC_URL }}img/icons/safari-pinned-tab.svg"
-              color="#00aba9">
-        <link rel="shortcut icon" href="{{ STATIC_URL }}img/icons/favicon.ico">
-        <meta name="msapplication-config"
-              content="{{ STATIC_URL }}img/icons/browserconfig.xml">
-        <meta name="theme-color" content="#ffffff">
-        <link rel="apple-touch-icon-precomposed" href="{{ STATIC_URL }}img/icons/touch-icon-144x144.png" sizes="144x144" />
-        <meta property="og:title" content="{{ WAZIMAP.name }} comparison: {{ geo1.name }} vs {{ geo2.name }}" />
-        <meta property="og:site_name" content="{{ WAZIMAP.name }}" />
-        <meta property="og:url" content="{{ WAZIMAP.url }}{{ request.path }}" />
-        <meta property="og:description" content="Compare demographics between {{ geo1.name }} vs {{ geo2.name }}." />
-        <meta property="og:type" content="article" />
-        <!-- Page generated: {% now "Y-m-d H:i:s.u" %} -->
-    </head>
-    <body class="profile-head2head-view">
-        <header id="page-header">
-          <div id="page-header-title" class="wrapper clearfix">
-          <div id="dominionComparePageNav"></div></div>
-        </header>
+{% block body_class %}profile-head2head-view{% endblock %}
 
-        <div class="head2head-wrapper">
-            <iframe class="frame-left" scrolling="no" src="{% url 'geography_detail' geography_id=geo_id1 %}?h2h=true&release={{geo1_release_year}}"></iframe>
-            <iframe class="frame-right" scrolling="no" src="{% url 'geography_detail' geography_id=geo_id2 %}?h2h=true&release={{geo2_release_year}}"></iframe>
-        </div>
-        <script src="{% static asset_manifest.runtime %}"></script>
-        <script src="{% static asset_manifest.vendor %}"></script>
-        <script src="{% static asset_manifest.main %}"></script>
-    </body>
-</html>
+{% block header %}
+<header id="page-header">
+    <div id="dominionComparePageNav"></div>
+</header>
+{% endblock header %}
+
+{% block content_container %}
+<div class="head2head-wrapper">
+    <iframe class="frame-left" scrolling="no" src="{% url 'geography_detail' geography_id=geo_id1 %}?h2h=true&release={{geo1_release_year}}"></iframe>
+    <iframe class="frame-right" scrolling="no" src="{% url 'geography_detail' geography_id=geo_id2 %}?h2h=true&release={{geo2_release_year}}"></iframe>
+
+    <div class="clear"></div>
+</div>
+<div id="dominionProfileReleasesSection"></div>
+{% include 'blocks/country_partners.html' %}
+{% include 'blocks/partners.html' %}
+
+{% endblock %}
+
+{% block body_javascript_extra %}
+<script src="{% static 'js/head2head.js' %}"></script>
+{% endblock %}
