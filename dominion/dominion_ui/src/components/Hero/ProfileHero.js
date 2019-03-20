@@ -113,10 +113,13 @@ class ProfileHero extends Component {
     const { active: activeRelease } = primaryReleases;
     const { parents: parentLinks } = geography;
     let { square_kms: squarekms } = geography.this;
-    if (squarekms < 1.0) {
-      squarekms = squarekms.toFixed(3);
-    } else {
-      squarekms = squarekms.toFixed(1);
+    squarekms = parseFloat(squarekms);
+    if (!Number.isNaN(squarekms)) {
+      if (squarekms < 1.0) {
+        squarekms = squarekms.toFixed(3);
+      } else {
+        squarekms = squarekms.toFixed(1);
+      }
     }
     const { short_name: profileName } = geography.this;
     const { level, geoid } = this.state;

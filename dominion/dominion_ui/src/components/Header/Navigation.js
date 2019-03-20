@@ -116,7 +116,7 @@ class Navigation extends Component {
           { title: 'Resources', link: '/resources' },
           { title: 'Contact', link: '/contact' }
         ].map(menu => (
-          <MenuItem className={classes.menuListItem}>
+          <MenuItem key={menu.link} className={classes.menuListItem}>
             <Link variant="body1" className={classes.link} href={menu.link}>
               {menu.title}
             </Link>
