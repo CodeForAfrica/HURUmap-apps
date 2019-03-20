@@ -9,9 +9,10 @@
   {% endif %}
   var geography = {{ geography.this |jsonify|safe }};
   var all_countries = Object.entries({{ HURUMAP.countries | jsonify| safe }});
-  var selected_country = all_countries.find((item) => item[1].code === geography.geo_code.slice(0,2))[1];
+  var selected_country_entry = all_countries.find((item) => item[1].code === geography.geo_code.slice(0,2));
+  var selected_country = selected_country_entry[1];
+  selected_country.slug = selected_country_entry[0];
   {% if country %}
     selected_country = {{ country|jsonify|safe}}
   {% endif %}
-
 {% endblock settings_javascript %}

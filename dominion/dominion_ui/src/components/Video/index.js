@@ -5,13 +5,9 @@ import { Button, Grid, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import PlayArrow from '@material-ui/icons/PlayArrow';
 
-import Player from './Player';
+import PlayerModal from './PlayerModal';
 
 import background from '../../assets/images/hero-image-1.png';
-import Sources from './Sources';
-
-import Modal from '../Modal';
-import Navigation from '../Header/Navigation';
 
 const styles = theme => ({
   root: {
@@ -51,27 +47,19 @@ class Video extends React.Component {
   constructor(props) {
     super(props);
 
-    const videoId = (Sources[0] && Sources[0].id) || null;
-    this.state = { openModal: null, videoId };
+    this.state = { open: false };
     this.toggleModal = this.toggleModal.bind(this);
-    this.changeVideoId = this.changeVideoId.bind(this);
   }
 
-  toggleModal(modalName) {
-    return () => {
-      this.setState(prevState => ({
-        openModal: prevState.openModal === modalName ? null : modalName
-      }));
-    };
-  }
-
-  changeVideoId(videoId) {
-    this.setState({ videoId });
+  toggleModal() {
+    this.setState(prevState => ({
+      open: !prevState.open
+    }));
   }
 
   render() {
     const { classes } = this.props;
-    const { openModal, videoId } = this.state;
+    const { open } = this.state;
 
     return (
       <Grid
@@ -105,17 +93,14 @@ class Video extends React.Component {
                 color="primary"
                 size="large"
                 className={classes.button}
-                onClick={this.toggleModal('video')}
+                onClick={this.toggleModal}
               >
                 <PlayArrow />
               </Button>
             </Grid>
           </Grid>
         </Grid>
-        <Modal isOpen={openModal}>
-          <Navigation toggleModal={this.toggleModal} openModal={openModal} />
-          <Player videoId={videoId} handleClose={this.toggleModal('video')} />
-        </Modal>
+        <PlayerModal open={open} handleClose={this.toggleModal} />
       </Grid>
     );
   }

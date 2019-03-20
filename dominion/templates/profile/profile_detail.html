@@ -9,10 +9,12 @@
 
 {% block profile_detail %}
   <div id="profile-detail">
-    <div id="dominionProfileTabs" />
+    <div id="dominionProfileTabs"></div>
     {% block profile_detail_contents %}
     {% endblock %}
   </div>
 
-  <div id="dominionProfileReleasesSection" />
+  <div id="dominionProfileReleasesSection"></div>
+  {% include 'blocks/country_partners.html' %}
+  {% include 'blocks/partners.html' %}
 {% endblock %}
