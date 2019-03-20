@@ -89,15 +89,17 @@ class ProfileHero extends Component {
       geography = { this: {} }
     } = profile;
     let population;
-    if (demographics.total_population && demographics.total_population.value) {
-      population = demographics.total_population.value.this.toFixed(0);
+    if (demographics.total_population && demographics.total_population.values) {
+      population = demographics.total_population.values.this.toFixed(0);
     }
     let populationDensity;
     if (
       demographics.population_density &&
-      demographics.population_density.value
+      demographics.population_density.values
     ) {
-      populationDensity = demographics.population_density.value.this.toFixed(1);
+      populationDensity = demographics.population_density.values.this.toFixed(
+        1
+      );
     }
     const { active: activeRelease } = primaryReleases;
     const { parents: parentLinks } = geography;
