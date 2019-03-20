@@ -34,7 +34,8 @@ const styles = theme => ({
     }
   },
   h2hMap: {
-    order: 1
+    order: 1,
+    height: '270px !important'
   },
   caption: {
     color: '#8d8d8c',

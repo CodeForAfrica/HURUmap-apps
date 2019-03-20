@@ -335,7 +335,6 @@ span.img-bg {
 }
 
 /* LAYOUT */
-
 #page-footer {
     background: none;
     border: none;
@@ -345,6 +344,7 @@ span.img-bg {
 #page-header,
 #page-header .wrapper {
     padding: 0;
+    background-color: unset;
 }
 .wrapper {
     margin: 0;
