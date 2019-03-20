@@ -137,11 +137,12 @@ HeroTitleGridComponent.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
   ]).isRequired,
-  quater: PropTypes.bool.isRequired,
+  quater: PropTypes.bool,
   head2head: PropTypes.bool
 };
 
 HeroTitleGridComponent.defaultProps = {
+  quater: false,
   head2head: false
 };
 
@@ -165,8 +166,13 @@ function HeroTitleComponent({ classes, children, breakWord, small }) {
 HeroTitleComponent.propTypes = {
   classes: PropTypes.shape({}).isRequired,
   children: PropTypes.string.isRequired,
-  breakWord: PropTypes.bool.isRequired,
-  small: PropTypes.bool.isRequired
+  breakWord: PropTypes.bool,
+  small: PropTypes.bool
+};
+
+HeroTitleComponent.defaultProps = {
+  breakWord: false,
+  small: false
 };
 
 const HeroTitle = withStyles(styles)(HeroTitleComponent);

@@ -281,9 +281,13 @@ class Navigation extends Component {
 Navigation.propTypes = {
   classes: PropTypes.shape({}).isRequired,
   width: PropTypes.string.isRequired,
-  openModal: PropTypes.func.isRequired,
+  openModal: PropTypes.string,
   toggleModal: PropTypes.func.isRequired,
   dominion: PropTypes.shape({}).isRequired
+};
+
+Navigation.defaultProps = {
+  openModal: null
 };
 
 export default withWidth()(withStyles(styles)(Navigation));

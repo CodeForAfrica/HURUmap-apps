@@ -164,7 +164,6 @@ class ProfileHero extends Component {
           {!head2head && (
             <Search
               dominion={dominion}
-              handleIconClick={null}
               isComparisonSearch
               placeholder="Compare this with"
               thisGeoId={geoid}

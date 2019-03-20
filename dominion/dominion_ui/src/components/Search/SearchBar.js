@@ -122,7 +122,7 @@ SearchBar.propTypes = {
   classes: PropTypes.shape({}).isRequired,
   handleValueChange: PropTypes.func.isRequired,
   icon: PropTypes.string.isRequired,
-  handleIconClick: PropTypes.func.isRequired,
+  handleIconClick: PropTypes.func,
   width: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   primary: PropTypes.bool,
@@ -133,6 +133,7 @@ SearchBar.propTypes = {
 
 SearchBar.defaultProps = {
   autoFocus: false,
+  handleIconClick: null,
   placeholder: '',
   isComparisonSearch: false,
   primary: true

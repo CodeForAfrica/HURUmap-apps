@@ -26,6 +26,7 @@ function DataSetsContent({ classes }) {
             openAFRICA aims to be the largest independent repository of open
             data on the African continent.
       "
+        link="#"
       >
         <img src={plugicon} alt="Plug Icon" />
       </Content>

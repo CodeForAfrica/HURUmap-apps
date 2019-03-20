@@ -128,9 +128,9 @@ Search.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
-  ]).isRequired,
+  ]),
   dominion: PropTypes.shape({}).isRequired,
-  handleIconClick: PropTypes.func.isRequired,
+  handleIconClick: PropTypes.func,
   placeholder: PropTypes.string,
   isComparisonSearch: PropTypes.bool,
   icon: PropTypes.string,
@@ -138,10 +138,12 @@ Search.propTypes = {
 };
 
 Search.defaultProps = {
+  children: null,
   thisGeoId: '',
   icon: null,
   placeholder: '',
-  isComparisonSearch: false
+  isComparisonSearch: false,
+  handleIconClick: null
 };
 
 export default withStyles(styles)(Search);

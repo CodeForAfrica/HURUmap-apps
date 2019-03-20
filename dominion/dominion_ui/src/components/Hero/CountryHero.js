@@ -36,7 +36,7 @@ const styles = theme => ({
 });
 
 function CountryHero({ classes, toggleModal, dominion }) {
-  const { selectedCountry = {} } = dominion;
+  const { selectedCountry = { name: '' } } = dominion;
   return (
     <Hero>
       <HeroTitleGrid>
