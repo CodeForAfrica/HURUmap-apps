@@ -5,7 +5,6 @@ import { Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import PlayerModal from '../Video/PlayerModal';
-import Sources from '../Video/Sources';
 import Steps from './Steps';
 import ViewVideos from './ViewVideos';
 
@@ -33,23 +32,17 @@ class Description extends Component {
   constructor(props) {
     super(props);
 
-    const videoId = (Sources[0] && Sources[0].id) || null;
-    this.state = { open: false, videoId };
+    this.state = { open: false };
     this.toggleState = this.toggleState.bind(this);
-    this.changeVideoId = this.changeVideoId.bind(this);
   }
 
   toggleState() {
     this.setState(state => ({ open: !state.open }));
   }
 
-  changeVideoId(videoId) {
-    this.setState({ videoId });
-  }
-
   render() {
     const { classes } = this.props;
-    const { open, videoId } = this.state;
+    const { open } = this.state;
 
     return (
       <div>
@@ -62,11 +55,7 @@ class Description extends Component {
         <div className={classes.viewVideos}>
           <ViewVideos onClick={this.toggleState} />
 
-          <PlayerModal
-            open={open}
-            videoId={videoId}
-            handleClose={this.toggleState}
-          />
+          <PlayerModal open={open} handleClose={this.toggleState} />
         </div>
       </div>
     );

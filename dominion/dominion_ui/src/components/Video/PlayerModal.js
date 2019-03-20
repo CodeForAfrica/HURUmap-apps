@@ -34,13 +34,13 @@ class PlayerModal extends React.Component {
   }
 
   render() {
-    const { open, handleClose, videoId } = this.props;
+    const { open, handleClose } = this.props;
     const { openModal } = this.state;
 
     return (
       <Modal isOpen={open} onEscapeKeyDown={this.toggleModal(null)}>
         <Navigation toggleModal={this.toggleModal} openModal={openModal} />
-        <Player videoId={videoId} handleClose={handleClose} />
+        <Player handleClose={handleClose} />
       </Modal>
     );
   }
@@ -48,8 +48,7 @@ class PlayerModal extends React.Component {
 
 PlayerModal.propTypes = {
   open: PropTypes.bool.isRequired,
-  handleClose: PropTypes.func.isRequired,
-  videoId: PropTypes.string.isRequired
+  handleClose: PropTypes.func.isRequired
 };
 
 export default PlayerModal;

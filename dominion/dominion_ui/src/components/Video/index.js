@@ -8,7 +8,6 @@ import PlayArrow from '@material-ui/icons/PlayArrow';
 import PlayerModal from './PlayerModal';
 
 import background from '../../assets/images/hero-image-1.png';
-import Sources from './Sources';
 
 const styles = theme => ({
   root: {
@@ -48,10 +47,8 @@ class Video extends React.Component {
   constructor(props) {
     super(props);
 
-    const videoId = (Sources[0] && Sources[0].id) || null;
-    this.state = { open: false, videoId };
+    this.state = { open: false };
     this.toggleModal = this.toggleModal.bind(this);
-    this.changeVideoId = this.changeVideoId.bind(this);
   }
 
   toggleModal() {
@@ -60,13 +57,9 @@ class Video extends React.Component {
     }));
   }
 
-  changeVideoId(videoId) {
-    this.setState({ videoId });
-  }
-
   render() {
     const { classes } = this.props;
-    const { open, videoId } = this.state;
+    const { open } = this.state;
 
     return (
       <Grid
@@ -107,11 +100,7 @@ class Video extends React.Component {
             </Grid>
           </Grid>
         </Grid>
-        <PlayerModal
-          open={open}
-          videoId={videoId}
-          handleClose={this.toggleModal}
-        />
+        <PlayerModal open={open} handleClose={this.toggleModal} />
       </Grid>
     );
   }

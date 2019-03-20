@@ -62,7 +62,7 @@ class Player extends React.Component {
   constructor(props) {
     super(props);
 
-    const { videoId } = props;
+    const videoId = (Sources[0] && Sources[0].id) || null;
     this.state = { videoId };
     this.handleThumbnailClick = this.handleThumbnailClick.bind(this);
   }
@@ -136,7 +136,6 @@ class Player extends React.Component {
 
 Player.propTypes = {
   classes: PropTypes.shape().isRequired,
-  videoId: PropTypes.string.isRequired,
   handleClose: PropTypes.func.isRequired
 };
 
