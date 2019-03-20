@@ -37,13 +37,12 @@ class Search extends React.Component {
   }
 
   componentDidMount() {
-    let geography = [];
-    const countries = window.dominion_countries;
-    geography = Object.keys(window.dominion_countries).map(slug => ({
-      slug,
-      name: countries[slug].name,
-      type: 'country'
-    }));
+    const {
+      dominion: { countries }
+    } = this.props;
+    const geography = Object.keys(countries).map(slug =>
+      Object.assign({}, countries[slug], { slug, type: 'country' })
+    );
     this.setState({ geography });
   }
 
@@ -56,20 +55,25 @@ class Search extends React.Component {
 
   async loadSuggestions(searchTerm) {
     const api = createAPI();
+    const {
+      mapit: { codeType }
+    } = api;
+    const {
+      dominion: { selectedCountry }
+    } = this.props;
     const { geography } = this.state;
-    let countryCode;
     let results = [];
 
     if (searchTerm !== '') {
       results = geography.filter(g =>
         g.name.match(new RegExp(searchTerm, 'i'))
       );
-      if (window.selected_country) {
-        countryCode = window.selected_country.code;
+      if (selectedCountry) {
+        const { code: countryCode } = selectedCountry;
         results = await api.getGeography(countryCode, searchTerm);
       }
     }
-    this.setState({ results, geography });
+    this.setState({ codeType, results, geography });
   }
 
   handleSearch(searchTerm) {
@@ -86,7 +90,7 @@ class Search extends React.Component {
       thisGeoId,
       isComparisonSearch
     } = this.props;
-    const { results, searchTerm } = this.state;
+    const { codeType, results, searchTerm } = this.state;
 
     return (
       <Grid
@@ -96,6 +100,7 @@ class Search extends React.Component {
         className={isComparisonSearch ? null : classes.root}
       >
         <SearchBar
+          autoFocus
           value={searchTerm}
           handleValueChange={this.handleSearch}
           handleIconClick={handleIconClick}
@@ -106,6 +111,7 @@ class Search extends React.Component {
         {results.length ? (
           <SearchResults
             results={results}
+            codeType={codeType}
             isComparisonSearch={isComparisonSearch}
             thisGeoId={thisGeoId}
           />
@@ -117,21 +123,27 @@ class Search extends React.Component {
   }
 }
 
+Search.propTypes = {
+  classes: PropTypes.shape({}).isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]),
+  dominion: PropTypes.shape({}).isRequired,
+  handleIconClick: PropTypes.func,
+  placeholder: PropTypes.string,
+  isComparisonSearch: PropTypes.bool,
+  icon: PropTypes.string,
+  thisGeoId: PropTypes.string
+};
+
 Search.defaultProps = {
+  children: null,
   thisGeoId: '',
   icon: null,
   placeholder: '',
-  isComparisonSearch: false
-};
-
-Search.propTypes = {
-  classes: PropTypes.isRequired,
-  children: PropTypes.isRequired,
-  handleIconClick: PropTypes.isRequired,
-  placeholder: PropTypes.string,
-  isComparisonSearch: PropTypes.bool,
-  icon: PropTypes.shape(),
-  thisGeoId: PropTypes.string
+  isComparisonSearch: false,
+  handleIconClick: null
 };
 
 export default withStyles(styles)(Search);

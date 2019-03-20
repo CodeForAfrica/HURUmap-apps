@@ -22,13 +22,13 @@ urlpatterns = [
         name='country_portal'
     ),
     url(
-        regex='^{}/$'.format(PROFILES_GEOGRAPHY_REGEX),
+        regex=r'^{}/$'.format(PROFILES_GEOGRAPHY_REGEX),
         view=cache_page(STANDARD_CACHE_TIME)(GeographyDetailView.as_view()),
         kwargs={},
         name='geography_detail',
     ),
     url(
-        regex='^compare/(?P<geo_id1>\w+-\w+)/vs/(?P<geo_id2>\w+-\w+)/$',
+        regex=r'^compare/(?P<geo_id1>\w+-\w+)/vs/(?P<geo_id2>\w+-\w+)/$',
         view=cache_page(STANDARD_CACHE_TIME)(GeographyCompareView.as_view()),
         name='geography_compare',
     )] + \

@@ -30,7 +30,7 @@ const styles = theme => ({
   }
 });
 
-const PROFILES = [
+const TABS = [
   {
     name: 'All',
     href: '#profile-detail'
@@ -81,10 +81,10 @@ class ProfileTabs extends React.Component {
   constructor(props) {
     super(props);
 
-    const { profiles } = props;
+    const { tabs } = props;
     let value;
-    if (profiles.length) {
-      const [{ href }] = profiles;
+    if (tabs.length) {
+      const [{ href }] = tabs;
       value = href;
     }
     this.state = { value };
@@ -96,7 +96,7 @@ class ProfileTabs extends React.Component {
   }
 
   render() {
-    const { classes, profiles, width } = this.props;
+    const { classes, tabs, width } = this.props;
     const { value } = this.state;
 
     const centered = isWidthUp('md', width); // centered is only for md and up
@@ -113,12 +113,12 @@ class ProfileTabs extends React.Component {
             classes={{ indicator: classes.indicator }}
             onChange={this.handleChange}
           >
-            {profiles.map(profile => (
+            {tabs.map(tab => (
               <LinkTab
-                key={profile.href}
-                value={profile.href}
-                href={profile.href}
-                label={profile.name}
+                key={tab.href}
+                value={tab.href}
+                href={tab.href}
+                label={tab.name}
                 className={classes.tab}
                 classes={{ selected: classes.tabSelected }}
               />
@@ -132,7 +132,7 @@ class ProfileTabs extends React.Component {
 
 ProfileTabs.propTypes = {
   classes: PropTypes.shape().isRequired,
-  profiles: PropTypes.arrayOf(
+  tabs: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
       href: PropTypes.string.isRequired
@@ -142,7 +142,7 @@ ProfileTabs.propTypes = {
 };
 
 ProfileTabs.defaultProps = {
-  profiles: PROFILES
+  tabs: TABS
 };
 
 export default withWidth()(withStyles(styles)(ProfileTabs));

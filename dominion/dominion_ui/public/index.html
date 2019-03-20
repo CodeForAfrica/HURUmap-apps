@@ -58,50 +58,51 @@
 
     <!-- test purposes -->
     <script type="text/javascript">
-        var MAPIT = { url: "https://mapit.hurumap.org", code_type: "AFR" };
-        var dominion_countries = {
-            'south-africa': {
-                name: 'South Africa'
-            },
-            'kenya': {
-                name: 'Kenya'
-            }
-        }
-        var selected_country = {
+      var MAPIT = { url: "https://mapit.hurumap.org", code_type: "AFR" };
+      var countries = {
+        'kenya': {
+            'code': 'KE',
+            'name': 'Kenya',
+            'centre': [0.3051933453207569, 37.908818734483155],
+            'zoom': 6
+        },
+        'south-africa': {
             'code': 'ZA',
             'name': 'South Africa',
-            'centre': [-30.5595, 22.9375],
-            'zoom': 5,
-            'slug': 'south-africa'
+            'centre': [-30, 24],
+            'zoom': 5
         }
+      };
 
-        var profileDataJson = {
-            primary_releases: {
-                'active': {
-                    "citation": "Census, 2016",
-                    "name": "Census",
-                    "year": "2016"
-                },
-                'other': []
-            },
-            geography: {
-                full_geoid: '',
-                this: {
-                    square_kms: 0,
-                    short_name: '',
-                    parents: []
-                }
-            }
-        };
-
-        var geography = {
+      // set selected_country from pathname
+      var slug = window.location.pathname.substring(1);
+      var country = countries[slug];
+      if (country) {
+        var selected_country = Object.assign({}, country, { slug });
+      }
+      var profileDataJson = {
+        geography: {
+          this: {
             full_geoid: '',
-            this: {
-                square_kms: '',
-                short_name: '',
-                parents: []
-            }
-        };
+            square_kms: '',
+            short_name: '',
+            parents: []
+          }
+        },
+        demographics: {},
+        primary_releases: {
+          active: {
+            "citation": "Census, 2016",
+            "name": "Census",
+            "year": "2016"
+          },
+          other: [{
+            "citation": "Census, 2006",
+            "name": "Census",
+            "year": "2006"
+          }]
+        }
+      };
     </script>
   </head>
 

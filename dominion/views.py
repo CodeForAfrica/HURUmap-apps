@@ -4,6 +4,7 @@ from django.core.serializers.json import DjangoJSONEncoder
 from django.http import Http404
 from django.utils.http import urlencode
 from django.utils.safestring import SafeString
+from django.utils.text import slugify
 from django.utils.module_loading import import_string
 from django.views.generic import TemplateView
 from django.shortcuts import redirect
@@ -127,10 +128,12 @@ class GeographyCompareView(TemplateView):
             year = self.request.GET.get(
                 'release', get_primary_release_year_per_geography(self.geo))
             page_context['geo1'] = geo_data.get_geography(code, level)
+            page_context['geo1_slug'] = '-' + slugify(page_context['geo1'])
             page_context['geo1_release_year'] = str(year)
 
             level, code = geo_id2.split('-', 1)
             page_context['geo2'] = geo_data.get_geography(code, level)
+            page_context['geo2_slug'] = '-' + slugify(page_context['geo2'])
             page_context['geo2_release_year'] = str(year)
             # Get Release
             page_context['geography'] = self.geo.as_dict_deep()

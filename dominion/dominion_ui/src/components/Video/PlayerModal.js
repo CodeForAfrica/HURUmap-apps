@@ -34,12 +34,16 @@ class PlayerModal extends React.Component {
   }
 
   render() {
-    const { open, handleClose } = this.props;
+    const { dominion, open, handleClose } = this.props;
     const { openModal } = this.state;
 
     return (
       <Modal isOpen={open} onEscapeKeyDown={this.toggleModal(null)}>
-        <Navigation toggleModal={this.toggleModal} openModal={openModal} />
+        <Navigation
+          dominion={dominion}
+          toggleModal={this.toggleModal}
+          openModal={openModal}
+        />
         <Player handleClose={handleClose} />
       </Modal>
     );
@@ -47,6 +51,7 @@ class PlayerModal extends React.Component {
 }
 
 PlayerModal.propTypes = {
+  dominion: PropTypes.shape({}).isRequired,
   open: PropTypes.bool.isRequired,
   handleClose: PropTypes.func.isRequired
 };

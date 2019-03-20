@@ -2,21 +2,27 @@
 
 {% block settings_javascript %}
   {{ block.super }}
-  var dominion_countries = {{ HURUMAP.countries|jsonify|safe }};
-  var profileDataJson = {}
+  var countries = {{ HURUMAP.countries|jsonify|safe }};
+
   {% if profile_data_json %}
-     profileDataJson = {{ profile_data_json }};
+     var profileDataJson = {{ profile_data_json }};
+  {% else %}
+    // compare page has no profile_data_json: initializing this for compare page
+     var profileDataJson = {};
   {% endif %}
 
-  //compare page has no profile_data_json: initializing this for compare page
-  var geography = {{ geography.this |jsonify|safe }};
-
-  var all_countries = Object.entries({{ HURUMAP.countries | jsonify| safe }});
-  var selected_country_entry = all_countries.find((item) => item[1].code === geography.geo_code.slice(0,2));
-  var selected_country = selected_country_entry[1];
-  selected_country.slug = selected_country_entry[0];
+  // homepage has no geography: initialize geo_code
+  var geography = {{ geography.this |jsonify|safe }} || { geo_code: '' };
   {% if country %}
-    selected_country = {{ country|jsonify|safe}}
+    var selected_country = {{ country|jsonify|safe}}
+  {% else %}
+    var selected_country_entry = Object
+      .entries(countries)
+      .find((item) => item[1].code === geography.geo_code.slice(0,2));
+    if (selected_country_entry) {
+      var selected_country = selected_country_entry[1];
+      selected_country.slug = selected_country_entry[0];
+    }
   {% endif %}
   var head2head = {{ head2head |jsonify | safe }};
   {% if compare_primary_releases %}

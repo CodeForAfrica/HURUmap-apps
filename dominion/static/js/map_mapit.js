@@ -7,7 +7,7 @@ function MapItGeometryLoader() {
     self.mapit_url = MAPIT.url;
     self.mapit_codetype = MAPIT.code_type;
     self.dominion_country = selected_country;
-    var dominion_country_codes =  Object.values(dominion_countries).map(item => item.code);
+    var dominion_country_codes =  Object.values(countries).map(item => item.code);
     /**
      * Fetches geometry data for a comparison view and calls the +success+
      * callback with an object mapping each geo-id to a GeoJSON object.

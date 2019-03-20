@@ -62,8 +62,8 @@ function HomeHero({ classes, toggleModal }) {
 }
 
 HomeHero.propTypes = {
-  classes: PropTypes.isRequired,
-  toggleModal: PropTypes.isRequired
+  classes: PropTypes.shape({}).isRequired,
+  toggleModal: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(HomeHero);

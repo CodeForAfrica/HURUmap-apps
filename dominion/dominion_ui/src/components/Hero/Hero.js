@@ -132,12 +132,17 @@ function HeroTitleGridComponent({ classes, children, quater, head2head }) {
 }
 
 HeroTitleGridComponent.propTypes = {
-  classes: PropTypes.isRequired,
-  children: PropTypes.isRequired,
-  quater: PropTypes.bool.isRequired,
+  classes: PropTypes.shape({}).isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired,
+  quater: PropTypes.bool,
   head2head: PropTypes.bool
 };
+
 HeroTitleGridComponent.defaultProps = {
+  quater: false,
   head2head: false
 };
 
@@ -159,10 +164,15 @@ function HeroTitleComponent({ classes, children, breakWord, small }) {
 }
 
 HeroTitleComponent.propTypes = {
-  classes: PropTypes.isRequired,
-  children: PropTypes.isRequired,
-  breakWord: PropTypes.bool.isRequired,
-  small: PropTypes.bool.isRequired
+  classes: PropTypes.shape({}).isRequired,
+  children: PropTypes.string.isRequired,
+  breakWord: PropTypes.bool,
+  small: PropTypes.bool
+};
+
+HeroTitleComponent.defaultProps = {
+  breakWord: false,
+  small: false
 };
 
 const HeroTitle = withStyles(styles)(HeroTitleComponent);
@@ -176,8 +186,11 @@ function HeroDescriptionComponent({ classes, children }) {
 }
 
 HeroDescriptionComponent.propTypes = {
-  classes: PropTypes.isRequired,
-  children: PropTypes.isRequired
+  classes: PropTypes.shape({}).isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired
 };
 
 const HeroDescription = withStyles(styles)(HeroDescriptionComponent);
@@ -193,18 +206,18 @@ function HeroDetailComponent({ classes, children, label, small }) {
       >
         {children}
       </Typography>
-      {label ? (
+      {label && (
         <Typography variant="h3" className={classes.detailLabel}>
           {label}
         </Typography>
-      ) : null}
+      )}
     </Grid>
   );
 }
 
 HeroDetailComponent.propTypes = {
-  classes: PropTypes.isRequired,
-  children: PropTypes.isRequired,
+  classes: PropTypes.shape({}).isRequired,
+  children: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   small: PropTypes.bool.isRequired
 };
@@ -220,12 +233,7 @@ function HeroButtonComponent({ classes, children, onClick }) {
       alignItems="center"
       className={classes.buttonGrid}
     >
-      <Button
-        variant="outlined"
-        onClick={onClick}
-        color="white"
-        className={classes.button}
-      >
+      <Button variant="outlined" onClick={onClick} className={classes.button}>
         {children}
       </Button>
       <img src={arrow} alt="Select Arrow" className={classes.buttonArrow} />
@@ -234,8 +242,11 @@ function HeroButtonComponent({ classes, children, onClick }) {
 }
 
 HeroButtonComponent.propTypes = {
-  classes: PropTypes.isRequired,
-  children: PropTypes.isRequired,
+  classes: PropTypes.shape({}).isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired,
   onClick: PropTypes.func.isRequired
 };
 
@@ -243,7 +254,7 @@ const HeroButton = withStyles(styles)(HeroButtonComponent);
 
 function HeroComponent({ classes, children }) {
   return (
-    <Grid container item xs={12} className={classes.root}>
+    <Grid container className={classes.root}>
       <Grid container alignItems="center" className={classes.heroContentGrid}>
         {children}
       </Grid>
@@ -252,8 +263,11 @@ function HeroComponent({ classes, children }) {
 }
 
 HeroComponent.propTypes = {
-  classes: PropTypes.isRequired,
-  children: PropTypes.isRequired
+  classes: PropTypes.shape({}).isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired
 };
 
 const Hero = withStyles(styles)(HeroComponent);

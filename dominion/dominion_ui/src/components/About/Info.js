@@ -38,8 +38,11 @@ function InfoSubtitleElement({ classes, children }) {
 }
 
 InfoSubtitleElement.propTypes = {
-  classes: PropTypes.shape().isRequired,
-  children: PropTypes.isRequired
+  classes: PropTypes.shape({}).isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired
 };
 
 export const InfoSubtitle = withStyles(styles)(InfoSubtitleElement);
@@ -53,8 +56,11 @@ function InfoBodyElement({ classes, children }) {
 }
 
 InfoBodyElement.propTypes = {
-  classes: PropTypes.shape().isRequired,
-  children: PropTypes.isRequired
+  classes: PropTypes.shape({}).isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired
 };
 
 export const InfoBody = withStyles(styles)(InfoBodyElement);
@@ -64,8 +70,11 @@ function Info({ classes, children }) {
 }
 
 Info.propTypes = {
-  classes: PropTypes.shape().isRequired,
-  children: PropTypes.isRequired
+  classes: PropTypes.shape({}).isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired
 };
 
 export default withStyles(styles)(Info);
