@@ -91,6 +91,11 @@ class ProfileHero extends Component {
     if (profileDataJson) {
       primaryReleases = profileDataJson.primary_releases;
       squarekms = profileDataJson.geography.this.square_kms;
+      if (squarekms < 1.0) {
+        squarekms = squarekms.toFixed(3);
+      } else {
+        squarekms = squarekms.toFixed(1);
+      }
       profileName = profileDataJson.geography.this.short_name;
       parentLinks = profileDataJson.geography.parents;
 
@@ -102,7 +107,7 @@ class ProfileHero extends Component {
         if (
           Object.prototype.hasOwnProperty.call(demographics, 'total_population')
         ) {
-          population = demographics.total_population.values.this;
+          population = demographics.total_population.values.this.toFixed(0);
         }
         if (
           Object.prototype.hasOwnProperty.call(
@@ -110,7 +115,9 @@ class ProfileHero extends Component {
             'population_density'
           )
         ) {
-          populationDensity = demographics.population_density.values.this;
+          populationDensity = demographics.population_density.values.this.toFixed(
+            1
+          );
         }
       }
     }
