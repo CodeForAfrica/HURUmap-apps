@@ -22,13 +22,13 @@ const styles = {
   }
 };
 
-function Modal({ classes, children, isOpen }) {
+function Modal({ classes, children, isOpen, onEscapeKeyDown }) {
   return (
     <MaterialModal
-      disableAutoFocus
       hideBackdrop
       open={isOpen}
       className={classes.root}
+      onEscapeKeyDown={onEscapeKeyDown}
     >
       <div className={classes.modal}>{children}</div>
     </MaterialModal>
@@ -38,7 +38,8 @@ function Modal({ classes, children, isOpen }) {
 Modal.propTypes = {
   classes: PropTypes.shape().isRequired,
   children: PropTypes.isRequired,
-  isOpen: PropTypes.isRequired
+  isOpen: PropTypes.isRequired,
+  onEscapeKeyDown: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(Modal);

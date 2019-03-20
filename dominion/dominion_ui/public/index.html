@@ -74,16 +74,34 @@
             'zoom': 5,
             'slug': 'south-africa'
         }
-        var dataset_releases = [{
-			"citation": "Census, 2016",
-			"name": "Census",
-			"year": "2016"
-		}];
-        var active_dataset = {
-			"citation": "Census, 2016",
-			"name": "Census",
-			"year": "2016"
-		}
+
+        var profileDataJson = {
+            primary_releases: {
+                'active': {
+                    "citation": "Census, 2016",
+                    "name": "Census",
+                    "year": "2016"
+                },
+                'other': []
+            },
+            geography: {
+                full_geoid: '',
+                this: {
+                    square_kms: '',
+                    short_name: '',
+                    parents: []
+                }
+            }
+        };
+
+        var geography = {
+            full_geoid: '',
+            this: {
+                square_kms: '',
+                short_name: '',
+                parents: []
+            }
+        };
     </script>
   </head>
 

@@ -9,11 +9,14 @@
 
 {% block profile_detail %}
   <div id="profile-detail">
-    <div id="dominionProfileTabs" />
+    <div id="dominionProfileTabs"></div>
     {% block profile_detail_contents %}
     {% endblock %}
   </div>
+
   {% if not head2head %}
-  <div id="dominionProfileReleasesSection" />
-  {% endif %}
+    <div id="dominionProfileReleasesSection" />
+  {% endif %
+  {% include 'blocks/country_partners.html' %}
+  {% include 'blocks/partners.html' %}
 {% endblock %}

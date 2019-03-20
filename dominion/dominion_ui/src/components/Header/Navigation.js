@@ -121,7 +121,11 @@ class Navigation extends Component {
     const selectedCountry = window.selected_country;
 
     return (
-      <div style={{ position: 'relative', marginRight: '50px' }}>
+      <Link
+        component="a"
+        href={selectedCountry ? `/${selectedCountry.slug}` : '/'}
+        style={{ position: 'relative', marginRight: '50px' }}
+      >
         <img
           alt="Dominion Logo"
           src={selectedCountry ? logoWithCountrySpace : logo}
@@ -132,7 +136,7 @@ class Navigation extends Component {
             {selectedCountry.name.toUpperCase()}
           </p>
         ) : null}
-      </div>
+      </Link>
     );
   }
 
@@ -166,7 +170,10 @@ class Navigation extends Component {
       <React.Fragment>
         <Topbar />
 
-        <Modal isOpen={openModal === 'menu'}>
+        <Modal
+          isOpen={openModal === 'menu'}
+          onEscapeKeyDown={toggleModal('menu')}
+        >
           <Grid container className={classes.wrapper}>
             <Topbar />
             <Search>
@@ -230,13 +237,19 @@ class Navigation extends Component {
         <Grid container className={classes.wrapper}>
           {nav}
         </Grid>
-        <Modal isOpen={openModal === 'search'}>
+        <Modal
+          isOpen={openModal === 'search'}
+          onEscapeKeyDown={toggleModal('search')}
+        >
           <Grid container className={classes.wrapper}>
             {nav}
             <Search handleIconClick={toggleModal('search')} />
           </Grid>
         </Modal>
-        <Modal isOpen={openModal === 'portal'}>
+        <Modal
+          isOpen={openModal === 'portal'}
+          onEscapeKeyDown={toggleModal('portal')}
+        >
           <Grid container className={classes.wrapper}>
             {nav}
             <PortalChooser handleClose={toggleModal('portal')} />
