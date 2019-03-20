@@ -6,14 +6,15 @@ import {
   Card,
   CardActionArea,
   CardMedia,
-  CardContent
+  CardContent,
+  Grid
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
   root: {
     width: '100vw',
-    height: '100%',
+    height: '20rem',
     backgroundColor: '#fafafa',
     border: '1px solid #eeeeee',
     opacity: 0.9,
@@ -22,11 +23,11 @@ const styles = theme => ({
       backgroundColor: '#fff'
     },
     [theme.breakpoints.up('md')]: {
-      width: '14.90625rem'
-    },
-    [theme.breakpoints.up('lg')]: {
-      width: '19.875rem'
+      width: '20rem'
     }
+  },
+  contentRoot: {
+    flexGrow: 1
   },
   media: {
     height: 0,
@@ -39,20 +40,18 @@ const styles = theme => ({
   overline: {
     color: '#fff',
     fontSize: theme.typography.fontSmallDefault.fontSize,
-    fontWeight: 400,
-    paddingTop: '1rem'
-  },
-  bodyArea: {
-    paddingTop: '2rem'
+    fontWeight: 400
+    // paddingTop: '1rem'
   },
   bodyTitle: {
     color: '#fff',
-    fontWeight: 500
+    fontWeight: 500,
+    marginTop: '1rem'
   },
   bodyText: {
     color: '#fff',
     fontWeight: 500,
-    marginTop: '1rem'
+    margin: '1rem 0'
   }
 });
 
@@ -72,17 +71,30 @@ function StoryCard({ story, classes }) {
         >
           <CardMedia className={classes.media} image={image} title=" Story" />
           <CardContent style={{ flexGrow: 1, marginTop: '-100%' }}>
-            <Typography variant="h6" className={classes.overline}>
-              {date}
-            </Typography>
-            <div className={classes.bodyArea}>
-              <Typography variant="h5" className={classes.bodyTitle}>
-                {title}
-              </Typography>
-              <Typography variant="subtitle2" className={classes.bodyText}>
-                {body}{' '}
-              </Typography>
-            </div>
+            <Grid
+              container
+              direction="column"
+              className={classes.contentRoot}
+              justify="flex-end"
+              alignItems="flex-start"
+              style={{ height: '100%' }}
+            >
+              <Grid item>
+                <Typography variant="h6" className={classes.overline}>
+                  {date}
+                </Typography>
+              </Grid>
+              <Grid item>
+                <Typography variant="h5" className={classes.bodyTitle}>
+                  {title}
+                </Typography>
+              </Grid>
+              <Grid item>
+                <Typography variant="subtitle2" className={classes.bodyText}>
+                  {body}{' '}
+                </Typography>
+              </Grid>
+            </Grid>
           </CardContent>
         </CardActionArea>
       </a>

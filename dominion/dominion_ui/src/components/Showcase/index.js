@@ -9,10 +9,11 @@ import StoryList from './StoryList';
 
 const styles = theme => ({
   root: {
+    flexGrow: 1,
     backgroundColor: 'white',
-    padding: '2rem',
+    padding: '3.1875rem 1.875rem',
     [theme.breakpoints.up('md')]: {
-      padding: '2rem 0'
+      padding: '3.1875rem 0'
     }
   },
   headline: {
