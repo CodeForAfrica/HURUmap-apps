@@ -7,7 +7,10 @@
   {% if profile_data_json %}
      profileDataJson = {{ profile_data_json }};
   {% endif %}
+
+  //compare page has no profile_data_json: initializing this for compare page
   var geography = {{ geography.this |jsonify|safe }};
+
   var all_countries = Object.entries({{ HURUMAP.countries | jsonify| safe }});
   var selected_country_entry = all_countries.find((item) => item[1].code === geography.geo_code.slice(0,2));
   var selected_country = selected_country_entry[1];
