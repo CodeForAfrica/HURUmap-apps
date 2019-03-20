@@ -4,6 +4,7 @@ import { PropTypes } from 'prop-types';
 import { Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
+import classNames from 'classnames';
 import Hero, { HeroTitle, HeroTitleGrid, HeroDetail } from './Hero';
 import createAPI from '../../api';
 
@@ -32,6 +33,10 @@ const styles = theme => ({
       right: '9.375rem'
     }
   },
+  h2hMap: {
+    order: 1,
+    height: '270px !important'
+  },
   caption: {
     color: '#8d8d8c',
     fontSize: '0.75em',
@@ -48,13 +53,16 @@ const styles = theme => ({
       color: '#8d8d8c',
       fontSize: '0.688em',
       position: 'absolute',
-      bottom: '18%',
+      bottom: '22%',
       display: 'inline-block',
       right: '4%'
     },
     [theme.breakpoints.up('lg')]: {
       right: '9.375rem'
     }
+  },
+  h2hRelease: {
+    display: 'inline-block'
   }
 });
 class ProfileHero extends Component {
@@ -83,6 +91,7 @@ class ProfileHero extends Component {
 
   render() {
     const { classes, dominion, profile } = this.props;
+    const { head2head } = dominion;
     const {
       demographics = {},
       primary_releases: primaryReleases = {},
@@ -114,7 +123,7 @@ class ProfileHero extends Component {
 
     return (
       <Hero>
-        <HeroTitleGrid quater>
+        <HeroTitleGrid quater head2head={head2head}>
           <HeroTitle breakWord small>
             {profileName}
           </HeroTitle>
@@ -149,20 +158,27 @@ class ProfileHero extends Component {
               {populationDensity}
             </HeroDetail>
           )}
-          <Search
-            dominion={dominion}
-            handleIconClick={null}
-            isComparisonSearch
-            placeholder="Compare this with"
-            thisGeoId={geoid}
-            icon={searchIcon}
-          />
+          {!head2head && (
+            <Search
+              dominion={dominion}
+              handleIconClick={null}
+              isComparisonSearch
+              placeholder="Compare this with"
+              thisGeoId={geoid}
+              icon={searchIcon}
+            />
+          )}
         </HeroTitleGrid>
-        <div id="slippy-map" className={classes.map} />
+        <div
+          id="slippy-map"
+          className={classNames(classes.map, { [classes.h2hMap]: head2head })}
+        />
         {activeRelease && (
           <Typography
             variant="body2"
-            className={classes.release}
+            className={classNames(classes.release, {
+              [classes.h2hRelease]: head2head
+            })}
             component="div"
           >
             {activeRelease.citation}
