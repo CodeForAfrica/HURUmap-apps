@@ -48,7 +48,7 @@ const styles = theme => ({
       color: '#8d8d8c',
       fontSize: '0.688em',
       position: 'absolute',
-      bottom: '18%',
+      bottom: '22%',
       display: 'inline-block',
       right: '4%'
     },
