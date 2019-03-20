@@ -39,8 +39,7 @@ class GeographyDetailView(BaseGeographyDetailView):
     adjust_slugs = True
     default_geo_version = None
 
-    def dispatch(self, *args, **kwargs):
-        request = args[0]
+    def dispatch(self, request, *args, **kwargs):
         version = request.GET.get('geo_version', self.default_geo_version)
         self.geo_id = self.kwargs.get('geography_id', None)
 
@@ -60,9 +59,9 @@ class GeographyDetailView(BaseGeographyDetailView):
                 return redirect(url, permanent=True)
 
         # Skip the parent class's logic completely and go back to basics
-        return TemplateView.dispatch(self, *args, **kwargs)
+        return TemplateView.dispatch(self, request, *args, **kwargs)
 
-    def get_context_data(self, *args, **kwargs):
+    def get_context_data(self, **kwargs):
         page_context = {}
 
         # load the profile
