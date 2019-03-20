@@ -13,7 +13,7 @@ SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-ALTER TABLE IF EXISTS ONLY public.ervenlandownershipinhectaresbygender DROP CONSTRAINT IF EXISTS pk_erven_land_ownership_in_hectares_by_gender;
+ALTER TABLE IF EXISTS ONLY public.erven_land_ownership_in_hectares_by_gender DROP CONSTRAINT IF EXISTS pk_erven_land_ownership_in_hectares_by_gender;
 DROP TABLE IF EXISTS public.erven_land_ownership_in_hectares_by_gender;
 SET default_tablespace = '';
 
@@ -27,7 +27,7 @@ CREATE TABLE public.erven_land_ownership_in_hectares_by_gender (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     geo_version character varying(100) DEFAULT ''::character varying NOT NULL,
-    "erven_land_ownership_in_hectares_by_gender" character varying(128) NOT NULL,
+    erven_land_ownership_in_hectares_by_gender character varying(128) NOT NULL,
     total integer
 );
 
@@ -36,7 +36,7 @@ CREATE TABLE public.erven_land_ownership_in_hectares_by_gender (
 -- Data for Name: ervenlandownershipinhectaresbygender; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.erven_land_ownership_in_hectares_by_gender (geo_level, geo_code, geo_version, "erven_land_ownership_in_hectares_by_gender", total) FROM stdin;
+COPY public.erven_land_ownership_in_hectares_by_gender (geo_level, geo_code, geo_version, erven_land_ownership_in_hectares_by_gender, total) FROM stdin;
 level1	ZA_1_003	2016	Female	15553
 level1	ZA_1_002	2016	Female	8452
 level1	ZA_1_009	2016	Female	23801
@@ -95,7 +95,7 @@ level1	ZA_1_005	2016	Other	2058
 --
 
 ALTER TABLE ONLY public.erven_land_ownership_in_hectares_by_gender
-    ADD CONSTRAINT pk_erven_land_ownership_in_hectares_by_gender PRIMARY KEY (geo_level, geo_code, geo_version, "erven_land_ownership_in_hectares_by_gender");
+    ADD CONSTRAINT pk_erven_land_ownership_in_hectares_by_gender PRIMARY KEY (geo_level, geo_code, geo_version, erven_land_ownership_in_hectares_by_gender);
 
 
 --

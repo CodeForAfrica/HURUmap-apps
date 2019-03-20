@@ -17,7 +17,7 @@ import dominion.tables  # noqa
 SECTIONS = settings.HURUMAP.get('topics', {})
 
 PROFILE_SECTIONS = (
-    'demographics',  # population group
+    'ervenland',  # erven land
 )
 LOCATIONNOTFOUND = {'is_missing': True,
                     'name': 'No Data Found',
@@ -51,9 +51,31 @@ def get_profile(geo, profile_name, request):
     session = get_session()
     (country, level) = get_country_and_level(geo)
     year = request.GET.get('release',get_primary_release_year_per_geography(geo))
+    comparative_geos = geo_data.get_comparative_geos(geo)
+    sections = list(PROFILE_SECTIONS)
     data = {}
     try:
+        for section in sections:
+            function_name = 'get_%s_profile' % section
+            if function_name in globals():
+                func = globals()[function_name]
+                data[section] = func(geo, session)
+                # get profiles for comparative geometries
+                if not data[section]['is_missing']:
+                    for comp_geo in comparative_geos:
+                        try:
+                            merge_dicts(
+                                data[section], func(
+                                    comp_geo, session), comp_geo.geo_level)
+                        except KeyError as e:
+                            msg = "Error merging data into %s for section '%s' from %s: KeyError: %s" % (
+                                geo.geoid, section, comp_geo.geoid, e)
+                            log.fatal(msg, exc_info=e)
+                            raise ValueError(msg)
+
         data['demographics'] = get_demographics(geo, session, country, level, year)
+        print("\n\n\n\n\n\n\n")
+        print(data)
         return data
     finally:
         session.close()
@@ -172,17 +194,19 @@ def get_farmland_profile(geo, session):
 
 
 def get_ervenland_profile(geo, session):
-    year = current_context().get('year')
-    with dataset_context(year=year):
+    with dataset_context(year='2017'):
         topic_profiles = SECTIONS['ervenland']['profiles']
         profiles_data = {'is_missing': True}
 
         for profile in topic_profiles:
             try:
                 profile_table = profile_name = profile.lower().replace(' ', '_')
+                print("\n\n\n\n\n\n")
+                print(profile_table)
                 profiles_data[profile_name] = LOCATIONNOTFOUND
                 profiles_data[profile_name], _ = get_stat_data([profile_table],
                                                                geo, session)
+                print(profiles_data)
             except Exception:
                 pass
 
