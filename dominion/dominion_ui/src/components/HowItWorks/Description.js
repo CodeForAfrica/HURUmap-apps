@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Modal, Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
-import Player from '../Video/Player';
+import PlayerModal from '../Video/PlayerModal';
 import Sources from '../Video/Sources';
 import Steps from './Steps';
 import ViewVideos from './ViewVideos';
@@ -61,15 +61,12 @@ class Description extends Component {
         <Steps />
         <div className={classes.viewVideos}>
           <ViewVideos onClick={this.toggleState} />
-          <Modal
-            aria-labelledby="dominion-videos"
-            aria-describedby="dominion-videos-list"
-            disableAutoFocus
+
+          <PlayerModal
             open={open}
-            onClose={this.toggleState}
-          >
-            <Player videoId={videoId} handleClose={this.toggleState} />
-          </Modal>
+            videoId={videoId}
+            handleClose={this.toggleState}
+          />
         </div>
       </div>
     );
