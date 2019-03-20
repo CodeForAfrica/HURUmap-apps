@@ -37,35 +37,35 @@ CREATE TABLE public.redistributedlandusebreakdown (
 --
 
 COPY public.redistributedlandusebreakdown (geo_level, geo_code, geo_version, "redistributed land use breakdown", total) FROM stdin;
-province	EC	2016	projects	4
-province	FS	2016	projects	10
-province	GT	2016	projects	6
-province	KZN	2016	projects	20
-province	LIM	2016	projects	8
-province	MP	2016	projects	9
-province	NC	2016	projects	7
-province	NW	2016	projects	10
-province	WC	2016	projects	1
+level1	ZA_1_003	2016	projects	4
+level1	ZA_1_002	2016	projects	10
+level1	ZA_1_009	2016	projects	6
+level1	ZA_1_001	2016	projects	20
+level1	ZA_1_005	2016	projects	8
+level1	ZA_1_004	2016	projects	9
+level1	ZA_1_006	2016	projects	7
+level1	ZA_1_007	2016	projects	10
+level1	ZA_1_008	2016	projects	1
 country	ZA	2016	projects	75
-province	EC	2016	households	25
-province	FS	2016	households	23
-province	GT	2016	households	2
-province	KZN	2016	households	358
-province	LIM	2016	households	12
-province	MP	2016	households	16
-province	NC	2016	households	10
-province	NW	2016	households	32
-province	WC	2016	households	0
+level1	ZA_1_003	2016	households	25
+level1	ZA_1_002	2016	households	23
+level1	ZA_1_009	2016	households	2
+level1	ZA_1_001	2016	households	358
+level1	ZA_1_005	2016	households	12
+level1	ZA_1_004	2016	households	16
+level1	ZA_1_006	2016	households	10
+level1	ZA_1_007	2016	households	32
+level1	ZA_1_008	2016	households	0
 country	ZA	2016	households	478
-province	EC	2016	beneficiaries	31
-province	FS	2016	beneficiaries	306
-province	GT	2016	beneficiaries	114
-province	KZN	2016	beneficiaries	736
-province	LIM	2016	beneficiaries	16
-province	MP	2016	beneficiaries	85
-province	NC	2016	beneficiaries	12
-province	NW	2016	beneficiaries	39
-province	WC	2016	beneficiaries	9
+level1	ZA_1_003	2016	beneficiaries	31
+level1	ZA_1_002	2016	beneficiaries	306
+level1	ZA_1_009	2016	beneficiaries	114
+level1	ZA_1_001	2016	beneficiaries	736
+level1	ZA_1_005	2016	beneficiaries	16
+level1	ZA_1_004	2016	beneficiaries	85
+level1	ZA_1_006	2016	beneficiaries	12
+level1	ZA_1_007	2016	beneficiaries	39
+level1	ZA_1_008	2016	beneficiaries	9
 country	ZA	2016	beneficiaries	1348
 \.
 

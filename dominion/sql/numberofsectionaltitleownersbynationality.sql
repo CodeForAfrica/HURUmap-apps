@@ -37,36 +37,36 @@ CREATE TABLE public.numberofsectionaltitleownersbynationality (
 --
 
 COPY public.numberofsectionaltitleownersbynationality (geo_level, geo_code, geo_version, "number of sectional title owners by nationality", total) FROM stdin;
-province	EC	2016	South African	24096
-province	FS	2016	South African	23009
-province	GT	2016	South African	299462
-province	KZN	2016	South African	100693
-province	MP	2016	South African	9368
-province	NW	2016	South African	16951
-province	NC	2016	South African	700
-province	WC	2016	South African	85069
+level1	ZA_1_003	2016	South African	24096
+level1	ZA_1_002	2016	South African	23009
+level1	ZA_1_009	2016	South African	299462
+level1	ZA_1_001	2016	South African	100693
+level1	ZA_1_004	2016	South African	9368
+level1	ZA_1_007	2016	South African	16951
+level1	ZA_1_006	2016	South African	700
+level1	ZA_1_008	2016	South African	85069
 country	ZA	2016	South African	567148
-province	EC	2016	Foreign	5352
-province	FS	2016	Foreign	2524
-province	GT	2016	Foreign	47401
-province	KZN	2016	Foreign	49624
-province	MP	2016	Foreign	2058
-province	NW	2016	Foreign	1031
-province	NC	2016	Foreign	111
-province	WC	2016	Foreign	24000
+level1	ZA_1_003	2016	Foreign	5352
+level1	ZA_1_002	2016	Foreign	2524
+level1	ZA_1_009	2016	Foreign	47401
+level1	ZA_1_001	2016	Foreign	49624
+level1	ZA_1_004	2016	Foreign	2058
+level1	ZA_1_007	2016	Foreign	1031
+level1	ZA_1_006	2016	Foreign	111
+level1	ZA_1_008	2016	Foreign	24000
 country	ZA	2016	Foreign	132672
-province	EC	2016	Other	714
-province	FS	2016	Other	311
-province	GT	2016	Other	13939
-province	KZN	2016	Other	3789
-province	MP	2016	Other	292
-province	NW	2016	Other	412
-province	NC	2016	Other	6
-province	WC	2016	Other	7447
+level1	ZA_1_003	2016	Other	714
+level1	ZA_1_002	2016	Other	311
+level1	ZA_1_009	2016	Other	13939
+level1	ZA_1_001	2016	Other	3789
+level1	ZA_1_004	2016	Other	292
+level1	ZA_1_007	2016	Other	412
+level1	ZA_1_006	2016	Other	6
+level1	ZA_1_008	2016	Other	7447
 country	ZA	2016	Other	27146
-province	LIM	2016	South African	7800
-province	LIM	2016	Foreign	571
-province	LIM	2016	Other	236
+level1	ZA_1_005	2016	South African	7800
+level1	ZA_1_005	2016	Foreign	571
+level1	ZA_1_005	2016	Other	236
 \.
 
 

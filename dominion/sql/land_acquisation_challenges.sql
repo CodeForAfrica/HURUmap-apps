@@ -37,96 +37,96 @@ CREATE TABLE public.land_acquisation_challenges (
 --
 
 COPY public.land_acquisation_challenges (geo_level, geo_code, geo_version, land_acquisation_challenges, total) FROM stdin;
-province	EC	2016	There are no challenges	2
-province	EC	2016	Traditional leaders that favour certain groups of people	9
-province	EC	2016	Difficulties in getting title documents	12
-province	EC	2016	Unscrupulous sellers	12
-province	EC	2016	Land is too expensive	23
-province	EC	2016	Land is racialized	15
-province	EC	2016	Land scarcity	22
-province	EC	2016	None of these	2
-province	EC	2016	Refused	1
-province	EC	2016	Don't know/Haven't heard enough	2
-province	FS	2016	There are no challenges	6
-province	FS	2016	Traditional leaders that favour certain groups of people	5
-province	FS	2016	Difficulties in getting title documents	11
-province	FS	2016	Unscrupulous sellers	7
-province	FS	2016	Land is too expensive	31
-province	FS	2016	Land is racialized	20
-province	FS	2016	Land scarcity	16
-province	FS	2016	None of these	0
-province	FS	2016	Refused	0
-province	FS	2016	Don't know/Haven't heard enough	4
-province	GT	2016	There are no challenges	2
-province	GT	2016	Traditional leaders that favour certain groups of people	3
-province	GT	2016	Difficulties in getting title documents	12
-province	GT	2016	Unscrupulous sellers	6
-province	GT	2016	Land is too expensive	37
-province	GT	2016	Land is racialized	16
-province	GT	2016	Land scarcity	17
-province	GT	2016	None of these	1
-province	GT	2016	Refused	0
-province	GT	2016	Don't know/Haven't heard enough	6
-province	KZN	2016	There are no challenges	3
-province	KZN	2016	Traditional leaders that favour certain groups of people	6
-province	KZN	2016	Difficulties in getting title documents	12
-province	KZN	2016	Unscrupulous sellers	9
-province	KZN	2016	Land is too expensive	16
-province	KZN	2016	Land is racialized	15
-province	KZN	2016	Land scarcity	16
-province	KZN	2016	None of these	5
-province	KZN	2016	Refused	1
-province	KZN	2016	Don't know/Haven't heard enough	17
-province	LIM	2016	There are no challenges	5
-province	LIM	2016	Traditional leaders that favour certain groups of people	13
-province	LIM	2016	Difficulties in getting title documents	10
-province	LIM	2016	Unscrupulous sellers	1
-province	LIM	2016	Land is too expensive	36
-province	LIM	2016	Land is racialized	13
-province	LIM	2016	Land scarcity	18
-province	LIM	2016	None of these	1
-province	LIM	2016	Refused	0
-province	LIM	2016	Don't know/Haven't heard enough	3
-province	MP	2016	There are no challenges	21
-province	MP	2016	Traditional leaders that favour certain groups of people	1
-province	MP	2016	Difficulties in getting title documents	8
-province	MP	2016	Unscrupulous sellers	3
-province	MP	2016	Land is too expensive	22
-province	MP	2016	Land is racialized	12
-province	MP	2016	Land scarcity	26
-province	MP	2016	None of these	2
-province	MP	2016	Refused	0
-province	MP	2016	Don't know/Haven't heard enough	4
-province	NW	2016	There are no challenges	1
-province	NW	2016	Traditional leaders that favour certain groups of people	7
-province	NW	2016	Difficulties in getting title documents	8
-province	NW	2016	Unscrupulous sellers	7
-province	NW	2016	Land is too expensive	21
-province	NW	2016	Land is racialized	27
-province	NW	2016	Land scarcity	12
-province	NW	2016	None of these	2
-province	NW	2016	Refused	0
-province	NW	2016	Don't know/Haven't heard enough	15
-province	NC	2016	There are no challenges	10
-province	NC	2016	Traditional leaders that favour certain groups of people	0
-province	NC	2016	Difficulties in getting title documents	17
-province	NC	2016	Unscrupulous sellers	2
-province	NC	2016	Land is too expensive	24
-province	NC	2016	Land is racialized	15
-province	NC	2016	Land scarcity	20
-province	NC	2016	None of these	0
-province	NC	2016	Refused	0
-province	NC	2016	Don't know/Haven't heard enough	12
-province	WC	2016	There are no challenges	0
-province	WC	2016	Traditional leaders that favour certain groups of people	10
-province	WC	2016	Difficulties in getting title documents	4
-province	WC	2016	Unscrupulous sellers	3
-province	WC	2016	Land is too expensive	44
-province	WC	2016	Land is racialized	18
-province	WC	2016	Land scarcity	11
-province	WC	2016	None of these	1
-province	WC	2016	Refused	0
-province	WC	2016	Don't know/Haven't heard enough	9
+level1	ZA_1_003	2016	There are no challenges	2
+level1	ZA_1_003	2016	Traditional leaders that favour certain groups of people	9
+level1	ZA_1_003	2016	Difficulties in getting title documents	12
+level1	ZA_1_003	2016	Unscrupulous sellers	12
+level1	ZA_1_003	2016	Land is too expensive	23
+level1	ZA_1_003	2016	Land is racialized	15
+level1	ZA_1_003	2016	Land scarcity	22
+level1	ZA_1_003	2016	None of these	2
+level1	ZA_1_003	2016	Refused	1
+level1	ZA_1_003	2016	Don't know/Haven't heard enough	2
+level1	ZA_1_002	2016	There are no challenges	6
+level1	ZA_1_002	2016	Traditional leaders that favour certain groups of people	5
+level1	ZA_1_002	2016	Difficulties in getting title documents	11
+level1	ZA_1_002	2016	Unscrupulous sellers	7
+level1	ZA_1_002	2016	Land is too expensive	31
+level1	ZA_1_002	2016	Land is racialized	20
+level1	ZA_1_002	2016	Land scarcity	16
+level1	ZA_1_002	2016	None of these	0
+level1	ZA_1_002	2016	Refused	0
+level1	ZA_1_002	2016	Don't know/Haven't heard enough	4
+level1	ZA_1_009	2016	There are no challenges	2
+level1	ZA_1_009	2016	Traditional leaders that favour certain groups of people	3
+level1	ZA_1_009	2016	Difficulties in getting title documents	12
+level1	ZA_1_009	2016	Unscrupulous sellers	6
+level1	ZA_1_009	2016	Land is too expensive	37
+level1	ZA_1_009	2016	Land is racialized	16
+level1	ZA_1_009	2016	Land scarcity	17
+level1	ZA_1_009	2016	None of these	1
+level1	ZA_1_009	2016	Refused	0
+level1	ZA_1_009	2016	Don't know/Haven't heard enough	6
+level1	ZA_1_001	2016	There are no challenges	3
+level1	ZA_1_001	2016	Traditional leaders that favour certain groups of people	6
+level1	ZA_1_001	2016	Difficulties in getting title documents	12
+level1	ZA_1_001	2016	Unscrupulous sellers	9
+level1	ZA_1_001	2016	Land is too expensive	16
+level1	ZA_1_001	2016	Land is racialized	15
+level1	ZA_1_001	2016	Land scarcity	16
+level1	ZA_1_001	2016	None of these	5
+level1	ZA_1_001	2016	Refused	1
+level1	ZA_1_001	2016	Don't know/Haven't heard enough	17
+level1	ZA_1_005	2016	There are no challenges	5
+level1	ZA_1_005	2016	Traditional leaders that favour certain groups of people	13
+level1	ZA_1_005	2016	Difficulties in getting title documents	10
+level1	ZA_1_005	2016	Unscrupulous sellers	1
+level1	ZA_1_005	2016	Land is too expensive	36
+level1	ZA_1_005	2016	Land is racialized	13
+level1	ZA_1_005	2016	Land scarcity	18
+level1	ZA_1_005	2016	None of these	1
+level1	ZA_1_005	2016	Refused	0
+level1	ZA_1_005	2016	Don't know/Haven't heard enough	3
+level1	ZA_1_004	2016	There are no challenges	21
+level1	ZA_1_004	2016	Traditional leaders that favour certain groups of people	1
+level1	ZA_1_004	2016	Difficulties in getting title documents	8
+level1	ZA_1_004	2016	Unscrupulous sellers	3
+level1	ZA_1_004	2016	Land is too expensive	22
+level1	ZA_1_004	2016	Land is racialized	12
+level1	ZA_1_004	2016	Land scarcity	26
+level1	ZA_1_004	2016	None of these	2
+level1	ZA_1_004	2016	Refused	0
+level1	ZA_1_004	2016	Don't know/Haven't heard enough	4
+level1	ZA_1_007	2016	There are no challenges	1
+level1	ZA_1_007	2016	Traditional leaders that favour certain groups of people	7
+level1	ZA_1_007	2016	Difficulties in getting title documents	8
+level1	ZA_1_007	2016	Unscrupulous sellers	7
+level1	ZA_1_007	2016	Land is too expensive	21
+level1	ZA_1_007	2016	Land is racialized	27
+level1	ZA_1_007	2016	Land scarcity	12
+level1	ZA_1_007	2016	None of these	2
+level1	ZA_1_007	2016	Refused	0
+level1	ZA_1_007	2016	Don't know/Haven't heard enough	15
+level1	ZA_1_006	2016	There are no challenges	10
+level1	ZA_1_006	2016	Traditional leaders that favour certain groups of people	0
+level1	ZA_1_006	2016	Difficulties in getting title documents	17
+level1	ZA_1_006	2016	Unscrupulous sellers	2
+level1	ZA_1_006	2016	Land is too expensive	24
+level1	ZA_1_006	2016	Land is racialized	15
+level1	ZA_1_006	2016	Land scarcity	20
+level1	ZA_1_006	2016	None of these	0
+level1	ZA_1_006	2016	Refused	0
+level1	ZA_1_006	2016	Don't know/Haven't heard enough	12
+level1	ZA_1_008	2016	There are no challenges	0
+level1	ZA_1_008	2016	Traditional leaders that favour certain groups of people	10
+level1	ZA_1_008	2016	Difficulties in getting title documents	4
+level1	ZA_1_008	2016	Unscrupulous sellers	3
+level1	ZA_1_008	2016	Land is too expensive	44
+level1	ZA_1_008	2016	Land is racialized	18
+level1	ZA_1_008	2016	Land scarcity	11
+level1	ZA_1_008	2016	None of these	1
+level1	ZA_1_008	2016	Refused	0
+level1	ZA_1_008	2016	Don't know/Haven't heard enough	9
 country	ZA	2016	Difficulties in getting title documents	94
 country	ZA	2016	Don't know/Haven't heard enough	72
 country	ZA	2016	Land is racialized	151

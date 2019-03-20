@@ -37,69 +37,69 @@ CREATE TABLE public.allow_farmers_retain_land_ownership (
 --
 
 COPY public.allow_farmers_retain_land_ownership (geo_level, geo_code, geo_version, allow_farmers_retain_land_ownership, total) FROM stdin;
-province	EC	2016	Strongly Disagree	21
-province	EC	2016	Disagree	12
-province	EC	2016	Neither Agree Nor Disagree	5
-province	EC	2016	Agree	40
-province	EC	2016	Strongly Agree	18
-province	EC	2016	Refused	1
-province	EC	2016	Don't know	4
-province	FS	2016	Strongly Disagree	9
-province	FS	2016	Disagree	12
-province	FS	2016	Neither Agree Nor Disagree	10
-province	FS	2016	Agree	26
-province	FS	2016	Strongly Agree	33
-province	FS	2016	Refused	0
-province	FS	2016	Don't know	10
-province	GT	2016	Strongly Disagree	7
-province	GT	2016	Disagree	15
-province	GT	2016	Neither Agree Nor Disagree	15
-province	GT	2016	Agree	31
-province	GT	2016	Strongly Agree	19
-province	GT	2016	Refused	0
-province	GT	2016	Don't know	14
-province	KZN	2016	Strongly Disagree	9
-province	KZN	2016	Disagree	11
-province	KZN	2016	Neither Agree Nor Disagree	22
-province	KZN	2016	Agree	35
-province	KZN	2016	Strongly Agree	14
-province	KZN	2016	Refused	1
-province	KZN	2016	Don't know	9
-province	LIM	2016	Strongly Disagree	10
-province	LIM	2016	Disagree	14
-province	LIM	2016	Neither Agree Nor Disagree	2
-province	LIM	2016	Agree	47
-province	LIM	2016	Strongly Agree	24
-province	LIM	2016	Refused	0
-province	LIM	2016	Don't know	3
-province	MP	2016	Strongly Disagree	4
-province	MP	2016	Disagree	20
-province	MP	2016	Neither Agree Nor Disagree	2
-province	MP	2016	Agree	32
-province	MP	2016	Strongly Agree	25
-province	MP	2016	Refused	0
-province	MP	2016	Don't know	17
-province	NW	2016	Strongly Disagree	4
-province	NW	2016	Disagree	19
-province	NW	2016	Neither Agree Nor Disagree	16
-province	NW	2016	Agree	33
-province	NW	2016	Strongly Agree	12
-province	NW	2016	Refused	0
-province	NW	2016	Don't know	16
-province	NC	2016	Strongly Disagree	3
-province	NC	2016	Disagree	18
-province	NC	2016	Neither Agree Nor Disagree	15
-province	NC	2016	Agree	33
-province	NC	2016	Strongly Agree	15
-province	NC	2016	Refused	0
-province	NC	2016	Don't know	18
-province	WC	2016	Strongly Disagree	8
-province	WC	2016	Disagree	17
-province	WC	2016	Neither Agree Nor Disagree	1
-province	WC	2016	Agree	34
-province	WC	2016	Strongly Agree	30
-province	WC	2016	Refused	0
-province	WC	2016	Don't know	10
+level1	ZA_1_003	2016	Strongly Disagree	21
+level1	ZA_1_003	2016	Disagree	12
+level1	ZA_1_003	2016	Neither Agree Nor Disagree	5
+level1	ZA_1_003	2016	Agree	40
+level1	ZA_1_003	2016	Strongly Agree	18
+level1	ZA_1_003	2016	Refused	1
+level1	ZA_1_003	2016	Don't know	4
+level1	ZA_1_002	2016	Strongly Disagree	9
+level1	ZA_1_002	2016	Disagree	12
+level1	ZA_1_002	2016	Neither Agree Nor Disagree	10
+level1	ZA_1_002	2016	Agree	26
+level1	ZA_1_002	2016	Strongly Agree	33
+level1	ZA_1_002	2016	Refused	0
+level1	ZA_1_002	2016	Don't know	10
+level1	ZA_1_009	2016	Strongly Disagree	7
+level1	ZA_1_009	2016	Disagree	15
+level1	ZA_1_009	2016	Neither Agree Nor Disagree	15
+level1	ZA_1_009	2016	Agree	31
+level1	ZA_1_009	2016	Strongly Agree	19
+level1	ZA_1_009	2016	Refused	0
+level1	ZA_1_009	2016	Don't know	14
+level1	ZA_1_001	2016	Strongly Disagree	9
+level1	ZA_1_001	2016	Disagree	11
+level1	ZA_1_001	2016	Neither Agree Nor Disagree	22
+level1	ZA_1_001	2016	Agree	35
+level1	ZA_1_001	2016	Strongly Agree	14
+level1	ZA_1_001	2016	Refused	1
+level1	ZA_1_001	2016	Don't know	9
+level1	ZA_1_005	2016	Strongly Disagree	10
+level1	ZA_1_005	2016	Disagree	14
+level1	ZA_1_005	2016	Neither Agree Nor Disagree	2
+level1	ZA_1_005	2016	Agree	47
+level1	ZA_1_005	2016	Strongly Agree	24
+level1	ZA_1_005	2016	Refused	0
+level1	ZA_1_005	2016	Don't know	3
+level1	ZA_1_004	2016	Strongly Disagree	4
+level1	ZA_1_004	2016	Disagree	20
+level1	ZA_1_004	2016	Neither Agree Nor Disagree	2
+level1	ZA_1_004	2016	Agree	32
+level1	ZA_1_004	2016	Strongly Agree	25
+level1	ZA_1_004	2016	Refused	0
+level1	ZA_1_004	2016	Don't know	17
+level1	ZA_1_007	2016	Strongly Disagree	4
+level1	ZA_1_007	2016	Disagree	19
+level1	ZA_1_007	2016	Neither Agree Nor Disagree	16
+level1	ZA_1_007	2016	Agree	33
+level1	ZA_1_007	2016	Strongly Agree	12
+level1	ZA_1_007	2016	Refused	0
+level1	ZA_1_007	2016	Don't know	16
+level1	ZA_1_006	2016	Strongly Disagree	3
+level1	ZA_1_006	2016	Disagree	18
+level1	ZA_1_006	2016	Neither Agree Nor Disagree	15
+level1	ZA_1_006	2016	Agree	33
+level1	ZA_1_006	2016	Strongly Agree	15
+level1	ZA_1_006	2016	Refused	0
+level1	ZA_1_006	2016	Don't know	18
+level1	ZA_1_008	2016	Strongly Disagree	8
+level1	ZA_1_008	2016	Disagree	17
+level1	ZA_1_008	2016	Neither Agree Nor Disagree	1
+level1	ZA_1_008	2016	Agree	34
+level1	ZA_1_008	2016	Strongly Agree	30
+level1	ZA_1_008	2016	Refused	0
+level1	ZA_1_008	2016	Don't know	10
 country	ZA	2016	Agree	311
 country	ZA	2016	Disagree	136
 country	ZA	2016	Don't know	100

@@ -37,45 +37,45 @@ CREATE TABLE public.sectionaltitleownershipinhectaresnationality (
 --
 
 COPY public.sectionaltitleownershipinhectaresnationality (geo_level, geo_code, geo_version, "sectional title ownership in hectares nationality", total) FROM stdin;
-province	EC	2016	South African	534
-province	FS	2016	South African	1216
-province	GT	2016	South African	3878
-province	KZN	2016	South African	513
-province	LIM	2016	South African	1538
-province	MP	2016	South African	85
-province	NW	2016	South African	1132
-province	NC	2016	South African	5
-province	WC	2016	South African	403
+level1	ZA_1_003	2016	South African	534
+level1	ZA_1_002	2016	South African	1216
+level1	ZA_1_009	2016	South African	3878
+level1	ZA_1_001	2016	South African	513
+level1	ZA_1_005	2016	South African	1538
+level1	ZA_1_004	2016	South African	85
+level1	ZA_1_007	2016	South African	1132
+level1	ZA_1_006	2016	South African	5
+level1	ZA_1_008	2016	South African	403
 country	ZA	2016	South African	9305
-province	EC	2016	Foreign	135
-province	FS	2016	Foreign	17
-province	GT	2016	Foreign	498
-province	KZN	2016	Foreign	386
-province	LIM	2016	Foreign	4
-province	MP	2016	Foreign	6
-province	NW	2016	Foreign	4
-province	NC	2016	Foreign	1
-province	WC	2016	Foreign	87
+level1	ZA_1_003	2016	Foreign	135
+level1	ZA_1_002	2016	Foreign	17
+level1	ZA_1_009	2016	Foreign	498
+level1	ZA_1_001	2016	Foreign	386
+level1	ZA_1_005	2016	Foreign	4
+level1	ZA_1_004	2016	Foreign	6
+level1	ZA_1_007	2016	Foreign	4
+level1	ZA_1_006	2016	Foreign	1
+level1	ZA_1_008	2016	Foreign	87
 country	ZA	2016	Foreign	1138
-province	EC	2016	Co-ownership	29
-province	FS	2016	Co-ownership	18
-province	GT	2016	Co-ownership	372
-province	KZN	2016	Co-ownership	160
-province	LIM	2016	Co-ownership	4
-province	MP	2016	Co-ownership	28
-province	NW	2016	Co-ownership	8
-province	NC	2016	Co-ownership	1
-province	WC	2016	Co-ownership	104
+level1	ZA_1_003	2016	Co-ownership	29
+level1	ZA_1_002	2016	Co-ownership	18
+level1	ZA_1_009	2016	Co-ownership	372
+level1	ZA_1_001	2016	Co-ownership	160
+level1	ZA_1_005	2016	Co-ownership	4
+level1	ZA_1_004	2016	Co-ownership	28
+level1	ZA_1_007	2016	Co-ownership	8
+level1	ZA_1_006	2016	Co-ownership	1
+level1	ZA_1_008	2016	Co-ownership	104
 country	ZA	2016	Co-ownership	724
-province	EC	2016	Other	3
-province	FS	2016	Other	1
-province	GT	2016	Other	175
-province	KZN	2016	Other	15
-province	LIM	2016	Other	1
-province	MP	2016	Other	1
-province	NW	2016	Other	2
-province	NC	2016	Other	0
-province	WC	2016	Other	31
+level1	ZA_1_003	2016	Other	3
+level1	ZA_1_002	2016	Other	1
+level1	ZA_1_009	2016	Other	175
+level1	ZA_1_001	2016	Other	15
+level1	ZA_1_005	2016	Other	1
+level1	ZA_1_004	2016	Other	1
+level1	ZA_1_007	2016	Other	2
+level1	ZA_1_006	2016	Other	0
+level1	ZA_1_008	2016	Other	31
 country	ZA	2016	Other	229
 \.
 

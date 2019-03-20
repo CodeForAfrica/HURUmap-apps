@@ -37,36 +37,36 @@ CREATE TABLE public.numberofsectionaltitleownersbygender (
 --
 
 COPY public.numberofsectionaltitleownersbygender (geo_level, geo_code, geo_version, "number of sectional title owners by gender", total) FROM stdin;
-province	EC	2016	Female	16059
-province	FS	2016	Female	13998
-province	GT	2016	Female	184221
-province	KZN	2016	Female	80483
-province	MP	2016	Female	5603
-province	NW	2016	Female	8945
-province	NC	2016	Female	465
-province	WC	2016	Female	57388
+level1	ZA_1_003	2016	Female	16059
+level1	ZA_1_002	2016	Female	13998
+level1	ZA_1_009	2016	Female	184221
+level1	ZA_1_001	2016	Female	80483
+level1	ZA_1_004	2016	Female	5603
+level1	ZA_1_007	2016	Female	8945
+level1	ZA_1_006	2016	Female	465
+level1	ZA_1_008	2016	Female	57388
 country	ZA	2016	Female	371525
-province	EC	2016	Male	13389
-province	FS	2016	Male	11535
-province	GT	2016	Male	162642
-province	KZN	2016	Male	69834
-province	MP	2016	Male	5823
-province	NW	2016	Male	9037
-province	NC	2016	Male	346
-province	WC	2016	Male	51681
+level1	ZA_1_003	2016	Male	13389
+level1	ZA_1_002	2016	Male	11535
+level1	ZA_1_009	2016	Male	162642
+level1	ZA_1_001	2016	Male	69834
+level1	ZA_1_004	2016	Male	5823
+level1	ZA_1_007	2016	Male	9037
+level1	ZA_1_006	2016	Male	346
+level1	ZA_1_008	2016	Male	51681
 country	ZA	2016	Male	328295
-province	EC	2016	Other	714
-province	FS	2016	Other	311
-province	GT	2016	Other	13939
-province	KZN	2016	Other	3789
-province	MP	2016	Other	292
-province	NW	2016	Other	412
-province	NC	2016	Other	6
-province	WC	2016	Other	7447
+level1	ZA_1_003	2016	Other	714
+level1	ZA_1_002	2016	Other	311
+level1	ZA_1_009	2016	Other	13939
+level1	ZA_1_001	2016	Other	3789
+level1	ZA_1_004	2016	Other	292
+level1	ZA_1_007	2016	Other	412
+level1	ZA_1_006	2016	Other	6
+level1	ZA_1_008	2016	Other	7447
 country	ZA	2016	Other	27146
-province	LIM	2016	Female	4363
-province	LIM	2016	Male	4008
-province	LIM	2016	Other	236
+level1	ZA_1_005	2016	Female	4363
+level1	ZA_1_005	2016	Male	4008
+level1	ZA_1_005	2016	Other	236
 \.
 
 

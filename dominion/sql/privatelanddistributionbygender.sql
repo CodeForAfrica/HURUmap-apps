@@ -37,33 +37,33 @@ CREATE TABLE public.privatelanddistributionbygender (
 --
 
 COPY public.privatelanddistributionbygender (geo_level, geo_code, geo_version, land_ownership_by_gender, total) FROM stdin;
-province	NC	2016	Not Identified	146520
-province	NC	2016	Female	2083258
-province	NC	2016	Male	9080590
-province	FS	2016	Not Identified	139369
-province	FS	2016	Female	777577
-province	FS	2016	Male	3054269
-province	MP	2016	Not Identified	28970
-province	MP	2016	Female	255216
-province	MP	2016	Male	878623
-province	NW	2016	Not Identified	96562
-province	NW	2016	Female	557662
-province	NW	2016	Male	1821884
-province	KZN	2016	Not Identified	111663
-province	KZN	2016	Female	177720
-province	KZN	2016	Male	896201
-province	WC	2016	Not Identified	92210
-province	WC	2016	Female	479140
-province	WC	2016	Male	2465129
-province	EC	2016	Not Identified	144898
-province	EC	2016	Female	448733
-province	EC	2016	Male	3364966
-province	LIM	2016	Not Identified	49711
-province	LIM	2016	Female	304717
-province	LIM	2016	Male	942831
-province	GT	2016	Not Identified	11193
-province	GT	2016	Female	107135
-province	GT	2016	Male	221760
+level1	ZA_1_006	2016	Not Identified	146520
+level1	ZA_1_006	2016	Female	2083258
+level1	ZA_1_006	2016	Male	9080590
+level1	ZA_1_002	2016	Not Identified	139369
+level1	ZA_1_002	2016	Female	777577
+level1	ZA_1_002	2016	Male	3054269
+level1	ZA_1_004	2016	Not Identified	28970
+level1	ZA_1_004	2016	Female	255216
+level1	ZA_1_004	2016	Male	878623
+level1	ZA_1_007	2016	Not Identified	96562
+level1	ZA_1_007	2016	Female	557662
+level1	ZA_1_007	2016	Male	1821884
+level1	ZA_1_001	2016	Not Identified	111663
+level1	ZA_1_001	2016	Female	177720
+level1	ZA_1_001	2016	Male	896201
+level1	ZA_1_008	2016	Not Identified	92210
+level1	ZA_1_008	2016	Female	479140
+level1	ZA_1_008	2016	Male	2465129
+level1	ZA_1_003	2016	Not Identified	144898
+level1	ZA_1_003	2016	Female	448733
+level1	ZA_1_003	2016	Male	3364966
+level1	ZA_1_005	2016	Not Identified	49711
+level1	ZA_1_005	2016	Female	304717
+level1	ZA_1_005	2016	Male	942831
+level1	ZA_1_009	2016	Not Identified	11193
+level1	ZA_1_009	2016	Female	107135
+level1	ZA_1_009	2016	Male	221760
 country	ZA	2016	Not Identified	157713
 country	ZA	2016	Female	2190393
 country	ZA	2016	Male	9302350
