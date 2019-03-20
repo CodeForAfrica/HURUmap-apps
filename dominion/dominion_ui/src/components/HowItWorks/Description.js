@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Modal, Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
-import Player from '../Video/Player';
-import Sources from '../Video/Sources';
+import PlayerModal from '../Video/PlayerModal';
 import Steps from './Steps';
 import ViewVideos from './ViewVideos';
 
@@ -33,23 +32,17 @@ class Description extends Component {
   constructor(props) {
     super(props);
 
-    const videoId = (Sources[0] && Sources[0].id) || null;
-    this.state = { open: false, videoId };
+    this.state = { open: false };
     this.toggleState = this.toggleState.bind(this);
-    this.changeVideoId = this.changeVideoId.bind(this);
   }
 
   toggleState() {
     this.setState(state => ({ open: !state.open }));
   }
 
-  changeVideoId(videoId) {
-    this.setState({ videoId });
-  }
-
   render() {
     const { classes } = this.props;
-    const { open, videoId } = this.state;
+    const { open } = this.state;
 
     return (
       <div>
@@ -61,15 +54,8 @@ class Description extends Component {
         <Steps />
         <div className={classes.viewVideos}>
           <ViewVideos onClick={this.toggleState} />
-          <Modal
-            aria-labelledby="dominion-videos"
-            aria-describedby="dominion-videos-list"
-            disableAutoFocus
-            open={open}
-            onClose={this.toggleState}
-          >
-            <Player videoId={videoId} handleClose={this.toggleState} />
-          </Modal>
+
+          <PlayerModal open={open} handleClose={this.toggleState} />
         </div>
       </div>
     );
