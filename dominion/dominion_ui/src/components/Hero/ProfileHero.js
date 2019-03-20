@@ -90,18 +90,24 @@ class ProfileHero extends Component {
     } = profile;
     let population;
     if (demographics.total_population && demographics.total_population.value) {
-      population = demographics.total_population.value.this;
+      population = demographics.total_population.value.this.toFixed(0);
     }
     let populationDensity;
     if (
       demographics.population_density &&
       demographics.population_density.value
     ) {
-      populationDensity = demographics.population_density.value.this;
+      populationDensity = demographics.population_density.value.this.toFixed(1);
     }
     const { active: activeRelease } = primaryReleases;
     const { parents: parentLinks } = geography;
-    const { square_kms: squarekms, short_name: profileName } = geography.this;
+    let { square_kms: squarekms } = geography.this;
+    if (squarekms < 1.0) {
+      squarekms = squarekms.toFixed(3);
+    } else {
+      squarekms = squarekms.toFixed(1);
+    }
+    const { short_name: profileName } = geography.this;
     const { level, geoid } = this.state;
 
     return (

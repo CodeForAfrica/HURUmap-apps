@@ -11,9 +11,10 @@
   {% if country %}
     var selected_country = {{ country|jsonify|safe}}
   {% else %}
-    var selected_country = Object
+    var selected_country_entry = Object
       .entries(countries)
-      .find((item) => item[1].code === geography.geo_code.slice(0,2))[1];
+      .find((item) => item[1].code === geography.geo_code.slice(0,2));
+    var selected_country = selected_country_entry[1];
+    selected_country.slug = selected_country_entry[0];
   {% endif %}
-
 {% endblock settings_javascript %}

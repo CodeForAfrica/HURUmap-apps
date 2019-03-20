@@ -65,6 +65,10 @@ class Video extends React.Component {
     };
   }
 
+  handleStateClose() {
+    this.setState(state => ({ open: !state.open }));
+  }
+
   changeVideoId(videoId) {
     this.setState({ videoId });
   }
@@ -112,7 +116,7 @@ class Video extends React.Component {
             </Grid>
           </Grid>
         </Grid>
-        <Modal isOpen={openModal}>
+        <Modal isOpen={openModal} onEscapeKeyDown={this.toggleModal('video')}>
           <Navigation
             toggleModal={this.toggleModal}
             openModal={openModal}

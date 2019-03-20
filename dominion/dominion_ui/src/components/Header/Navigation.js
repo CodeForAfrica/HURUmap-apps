@@ -98,12 +98,21 @@ const styles = theme => ({
 
 class Navigation extends Component {
   renderMenuList() {
-    const { classes } = this.props;
+    let showcaseLink = '#dominionShowcase';
+    const {
+      classes,
+      dominion: { selectedCountry }
+    } = this.props;
+    if (selectedCountry) {
+      // In order for showcase link to work in profile pages,
+      // always start with country slug
+      showcaseLink = `/${selectedCountry.slug}${showcaseLink}`;
+    }
     return (
       <MenuList className={classes.menuList}>
         {[
           { title: 'About', link: '/about' },
-          { title: 'Showcase', link: '#dominionShowcase' },
+          { title: 'Showcase', link: `${showcaseLink}` },
           { title: 'Resources', link: '/resources' },
           { title: 'Contact', link: '/contact' }
         ].map(menu => (
@@ -124,7 +133,11 @@ class Navigation extends Component {
     } = this.props;
 
     return (
-      <div style={{ position: 'relative', marginRight: '50px' }}>
+      <Link
+        component="a"
+        href={selectedCountry ? `/${selectedCountry.slug}` : '/'}
+        style={{ position: 'relative', marginRight: '50px' }}
+      >
         <img
           alt="Dominion Logo"
           src={selectedCountry ? logoWithCountrySpace : logo}
@@ -133,7 +146,7 @@ class Navigation extends Component {
         {selectedCountry ? (
           <p className={classes.logoCountryName}>{selectedCountry.name}</p>
         ) : null}
-      </div>
+      </Link>
     );
   }
 
@@ -167,7 +180,10 @@ class Navigation extends Component {
       <React.Fragment>
         <Topbar />
 
-        <Modal isOpen={openModal === 'menu'}>
+        <Modal
+          isOpen={openModal === 'menu'}
+          onEscapeKeyDown={toggleModal('menu')}
+        >
           <Grid container className={classes.wrapper}>
             <Topbar />
             <Search>
@@ -233,7 +249,10 @@ class Navigation extends Component {
         <Grid container className={classes.wrapper}>
           {nav}
         </Grid>
-        <Modal isOpen={openModal === 'search'}>
+        <Modal
+          isOpen={openModal === 'search'}
+          onEscapeKeyDown={toggleModal('search')}
+        >
           <Grid container className={classes.wrapper}>
             {nav}
             <Search
@@ -242,7 +261,10 @@ class Navigation extends Component {
             />
           </Grid>
         </Modal>
-        <Modal isOpen={openModal === 'portal'}>
+        <Modal
+          isOpen={openModal === 'portal'}
+          onEscapeKeyDown={toggleModal('portal')}
+        >
           <Grid container className={classes.wrapper}>
             {nav}
             <PortalChooser
