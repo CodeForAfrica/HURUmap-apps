@@ -49,7 +49,11 @@ function HomeHeroMap({ classes }) {
       alignItems="center"
       className={classes.mapSection}
     >
-      <Typography className={classes.verticalAlignText} component="div">
+      <Typography
+        variant="h6"
+        className={classes.verticalAlignText}
+        component="div"
+      >
         <img src={map} alt="Country Map" className={classes.mapImage} />
         South Africa &nbsp;&nbsp;
         <div className={classes.lineSeparator} />
