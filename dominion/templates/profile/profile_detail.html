@@ -14,7 +14,9 @@
     {% endblock %}
   </div>
 
-  <div id="dominionProfileReleasesSection"></div>
-  {% include 'blocks/country_partners.html' %}
-  {% include 'blocks/partners.html' %}
+  {% if not head2head %}
+    <div id="dominionProfileReleasesSection" />
+    {% include 'blocks/country_partners.html' %}
+    {% include 'blocks/partners.html' %}
+  {% endif %}
 {% endblock %}
