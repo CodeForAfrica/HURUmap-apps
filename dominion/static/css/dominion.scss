@@ -335,7 +335,6 @@ span.img-bg {
 }
 
 /* LAYOUT */
-
 #page-footer {
     background: none;
     border: none;
@@ -345,6 +344,7 @@ span.img-bg {
 #page-header,
 #page-header .wrapper {
     padding: 0;
+    background-color: unset;
 }
 .wrapper {
     margin: 0;
@@ -383,4 +383,17 @@ input[type="text"] {
 }
 #profile .content-container {
   padding: 0;
+}
+html {
+    background-color: unset;
+}
+.head2head-wrapper {
+    background-image: url('/static/img/background.png');
+    background-color: unset;
+    padding: 26px 140px;
+}
+
+.profile-head2head-view .frame-right {
+    border-left: 5px solid;
+    border-color: unset;
 }

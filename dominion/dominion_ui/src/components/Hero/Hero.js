@@ -35,6 +35,12 @@ const styles = theme => ({
       marginTop: 0
     }
   },
+  h2hTitleGrid: {
+    order: 2,
+    paddingTop: theme.spacing.unit,
+    margin: 0,
+    marginTop: '2rem'
+  },
   title: {
     color: 'white',
     width: '90%',
@@ -107,7 +113,7 @@ const styles = theme => ({
   }
 });
 
-function HeroTitleGridComponent({ classes, children, quater }) {
+function HeroTitleGridComponent({ classes, children, quater, head2head }) {
   return (
     <Grid
       item
@@ -116,7 +122,9 @@ function HeroTitleGridComponent({ classes, children, quater }) {
       md={quater ? 4 : 8}
       lg={quater ? 4 : 8}
       xl={quater ? 4 : 6}
-      className={classes.titleTextGrid}
+      className={classNames(classes.titleTextGrid, {
+        [classes.h2hTitleGrid]: head2head
+      })}
     >
       {children}
     </Grid>
@@ -126,7 +134,11 @@ function HeroTitleGridComponent({ classes, children, quater }) {
 HeroTitleGridComponent.propTypes = {
   classes: PropTypes.isRequired,
   children: PropTypes.isRequired,
-  quater: PropTypes.bool.isRequired
+  quater: PropTypes.bool.isRequired,
+  head2head: PropTypes.bool
+};
+HeroTitleGridComponent.defaultProps = {
+  head2head: false
 };
 
 const HeroTitleGrid = withStyles(styles)(HeroTitleGridComponent);
