@@ -204,7 +204,7 @@ def get_ervenland_profile(geo, session):
                 print("\n\n\n\n\n\n")
                 print(profile_table)
                 profiles_data[profile_name] = LOCATIONNOTFOUND
-                profiles_data[profile_name], _ = get_stat_data([profile_table],
+                profiles_data['erven_land_ownership_in_hectares_by_nationality'], _ = get_stat_data('erven_land_ownership_in_hectares_by_nationality',
                                                                geo, session)
                 print(profiles_data)
             except Exception:

@@ -37,46 +37,46 @@ CREATE TABLE public.landownershipinhectaresbynationality (
 --
 
 COPY public.landownershipinhectaresbynationality (geo_level, geo_code, geo_version, "land ownership in hectares by nationality", total) FROM stdin;
-level1	ZA_1_003	2016	South African	4308421
-level1	ZA_1_002	2016	South African	4700599
-level1	ZA_1_009	2016	South African	392636
-level1	ZA_1_001	2016	South African	1140986
-level1	ZA_1_004	2016	South African	1328961
-level1	ZA_1_007	2016	South African	2978894
-level1	ZA_1_006	2016	South African	14126948
-level1	ZA_1_008	2016	South African	3496840
-country	ZA	2016	South African	33996255
-level1	ZA_1_003	2016	Foreign	47444
-level1	ZA_1_002	2016	Foreign	72538
-level1	ZA_1_009	2016	Foreign	45117
-level1	ZA_1_001	2016	Foreign	43666
-level1	ZA_1_004	2016	Foreign	27291
-level1	ZA_1_007	2016	Foreign	56055
-level1	ZA_1_006	2016	Foreign	294779
-level1	ZA_1_008	2016	Foreign	112238
-country	ZA	2016	Foreign	769284
-level1	ZA_1_003	2016	Co-ownership	77355
-level1	ZA_1_002	2016	Co-ownership	58502
-level1	ZA_1_009	2016	Co-ownership	14268
-level1	ZA_1_001	2016	Co-ownership	102666
-level1	ZA_1_004	2016	Co-ownership	35769
-level1	ZA_1_007	2016	Co-ownership	143346
-level1	ZA_1_006	2016	Co-ownership	321317
-level1	ZA_1_008	2016	Co-ownership	112964
-country	ZA	2016	Co-ownership	933728
-level1	ZA_1_003	2016	Other	178308
-level1	ZA_1_002	2016	Other	177626
-level1	ZA_1_009	2016	Other	10648
-level1	ZA_1_001	2016	Other	330176
-level1	ZA_1_004	2016	Other	49131
-level1	ZA_1_007	2016	Other	132914
-level1	ZA_1_006	2016	Other	267958
-level1	ZA_1_008	2016	Other	141951
-country	ZA	2016	Other	1379023
-level1	ZA_1_005	2016	South African	1521969
-level1	ZA_1_005	2016	Foreign	70157
-level1	ZA_1_005	2016	Co-ownership	67541
-level1	ZA_1_005	2016	Other	90310
+level1	ZA_1_003	2009	South African	4308421
+level1	ZA_1_002	2009	South African	4700599
+level1	ZA_1_009	2009	South African	392636
+level1	ZA_1_001	2009	South African	1140986
+level1	ZA_1_004	2009	South African	1328961
+level1	ZA_1_007	2009	South African	2978894
+level1	ZA_1_006	2009	South African	14126948
+level1	ZA_1_008	2009	South African	3496840
+country	ZA	2009	South African	33996255
+level1	ZA_1_003	2009	Foreign	47444
+level1	ZA_1_002	2009	Foreign	72538
+level1	ZA_1_009	2009	Foreign	45117
+level1	ZA_1_001	2009	Foreign	43666
+level1	ZA_1_004	2009	Foreign	27291
+level1	ZA_1_007	2009	Foreign	56055
+level1	ZA_1_006	2009	Foreign	294779
+level1	ZA_1_008	2009	Foreign	112238
+country	ZA	2009	Foreign	769284
+level1	ZA_1_003	2009	Co-ownership	77355
+level1	ZA_1_002	2009	Co-ownership	58502
+level1	ZA_1_009	2009	Co-ownership	14268
+level1	ZA_1_001	2009	Co-ownership	102666
+level1	ZA_1_004	2009	Co-ownership	35769
+level1	ZA_1_007	2009	Co-ownership	143346
+level1	ZA_1_006	2009	Co-ownership	321317
+level1	ZA_1_008	2009	Co-ownership	112964
+country	ZA	2009	Co-ownership	933728
+level1	ZA_1_003	2009	Other	178308
+level1	ZA_1_002	2009	Other	177626
+level1	ZA_1_009	2009	Other	10648
+level1	ZA_1_001	2009	Other	330176
+level1	ZA_1_004	2009	Other	49131
+level1	ZA_1_007	2009	Other	132914
+level1	ZA_1_006	2009	Other	267958
+level1	ZA_1_008	2009	Other	141951
+country	ZA	2009	Other	1379023
+level1	ZA_1_005	2009	South African	1521969
+level1	ZA_1_005	2009	Foreign	70157
+level1	ZA_1_005	2009	Co-ownership	67541
+level1	ZA_1_005	2009	Other	90310
 \.
 
 

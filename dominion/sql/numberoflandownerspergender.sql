@@ -37,36 +37,36 @@ CREATE TABLE public.numberoflandownerspergender (
 --
 
 COPY public.numberoflandownerspergender (geo_level, geo_code, geo_version, "number of land owners per gender", total) FROM stdin;
-level1	ZA_1_003	2016	Male	6145
-level1	ZA_1_002	2016	Male	9182
-level1	ZA_1_009	2016	Male	26690
-level1	ZA_1_001	2016	Male	12674
-level1	ZA_1_004	2016	Male	7139
-level1	ZA_1_007	2016	Male	11154
-level1	ZA_1_006	2016	Male	4536
-level1	ZA_1_008	2016	Male	9395
-country	ZA	2016	Male	95050
-level1	ZA_1_003	2016	Female	3016
-level1	ZA_1_002	2016	Female	5119
-level1	ZA_1_009	2016	Female	19139
-level1	ZA_1_001	2016	Female	8780
-level1	ZA_1_004	2016	Female	4480
-level1	ZA_1_007	2016	Female	6739
-level1	ZA_1_006	2016	Female	2318
-level1	ZA_1_008	2016	Female	5775
-country	ZA	2016	Female	60649
-level1	ZA_1_003	2016	Other	2519
-level1	ZA_1_002	2016	Other	876
-level1	ZA_1_009	2016	Other	1762
-level1	ZA_1_001	2016	Other	8538
-level1	ZA_1_004	2016	Other	1401
-level1	ZA_1_007	2016	Other	6228
-level1	ZA_1_006	2016	Other	333
-level1	ZA_1_008	2016	Other	1681
-country	ZA	2016	Other	25833
-level1	ZA_1_005	2016	Male	8135
-level1	ZA_1_005	2016	Female	5283
-level1	ZA_1_005	2016	Other	2495
+level1	ZA_1_003	2009	Male	6145
+level1	ZA_1_002	2009	Male	9182
+level1	ZA_1_009	2009	Male	26690
+level1	ZA_1_001	2009	Male	12674
+level1	ZA_1_004	2009	Male	7139
+level1	ZA_1_007	2009	Male	11154
+level1	ZA_1_006	2009	Male	4536
+level1	ZA_1_008	2009	Male	9395
+country	ZA	2009	Male	95050
+level1	ZA_1_003	2009	Female	3016
+level1	ZA_1_002	2009	Female	5119
+level1	ZA_1_009	2009	Female	19139
+level1	ZA_1_001	2009	Female	8780
+level1	ZA_1_004	2009	Female	4480
+level1	ZA_1_007	2009	Female	6739
+level1	ZA_1_006	2009	Female	2318
+level1	ZA_1_008	2009	Female	5775
+country	ZA	2009	Female	60649
+level1	ZA_1_003	2009	Other	2519
+level1	ZA_1_002	2009	Other	876
+level1	ZA_1_009	2009	Other	1762
+level1	ZA_1_001	2009	Other	8538
+level1	ZA_1_004	2009	Other	1401
+level1	ZA_1_007	2009	Other	6228
+level1	ZA_1_006	2009	Other	333
+level1	ZA_1_008	2009	Other	1681
+country	ZA	2009	Other	25833
+level1	ZA_1_005	2009	Male	8135
+level1	ZA_1_005	2009	Female	5283
+level1	ZA_1_005	2009	Other	2495
 \.
 
 
