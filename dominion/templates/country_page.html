@@ -1,0 +1,40 @@
+{% extends '_base.html' %}{% load sass_tags humanize partition static %} {% load jsonify %}
+
+{% block head_title %}
+{{ HURUMAP.name }}: Who owns land in {{country.name}}
+{% endblock %}
+
+{% block head_css_extra %}
+  <link rel="stylesheet" href="{% static 'css/vendor/leaflet-0.6.4.css' %}" />
+  <!--[if lte IE 8]>
+      <link rel="stylesheet" href="{% static 'css/vendor/leaflet-0.6.4.ie.css' %}" />
+  <![endif]-->
+  <link href="{% static 'css/vendor/leaflet.label.css' %}" rel="stylesheet" />
+  {% endblock %}
+
+{% block head_meta_description %}
+{{ HURUMAP.name }} provides useful facts and data about land ownership in {{country.name}}.
+Compare places using tables and maps, download data, and embed charts on your site.
+{% endblock %}
+
+{% block header %}
+    {% include 'blocks/countrypage_header.html' %}
+{% endblock header %}
+{% block content_container %}
+  <div id="dominionCountryAbout"></div>
+  <div id="dominionHowItWorks"></div>
+  <div id="dominionVideo"></div>
+  {% include 'blocks/showcase.html' %}
+  {% include 'blocks/country_partners.html' %}
+  {% include 'blocks/partners.html' %}
+{% endblock content_container %}
+
+{% block body_javascript_extra %}
+    {{ block.super }}
+    <script>
+        var maps = new ProfileMaps();
+        var zoom = {{country.zoom}};
+        maps.drawMapForCountryPage({{ geography.this |jsonify|safe }}, {{country.centre}}, zoom);
+    </script>
+
+{% endblock %}

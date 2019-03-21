@@ -12,10 +12,7 @@ const styles = theme => ({
     textAlign: 'left',
     width: '100%',
     [theme.breakpoints.up('md')]: {
-      width: '16.25rem'
-    },
-    [theme.breakpoints.up('lg')]: {
-      width: '18rem'
+      width: '15rem' // 240px / 16
     }
   },
   title: {
@@ -72,7 +69,7 @@ function Content({
 
       <Grid item xs={12}>
         <div className={classes.subtitleGrid}>
-          <Typography variant="body2" clasName={classes.title}>
+          <Typography variant="body2" className={classes.title}>
             {title}
           </Typography>
         </div>
@@ -87,7 +84,7 @@ function Content({
       <Grid item xs={12}>
         <Typography variant="h5">{contentType}</Typography>
         <div className={classes.contentText}>
-          <Typography variant="body2" clasName={classes.title}>
+          <Typography variant="body2" className={classes.title}>
             {description}
           </Typography>
         </div>

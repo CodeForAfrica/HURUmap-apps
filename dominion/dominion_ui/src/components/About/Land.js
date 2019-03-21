@@ -4,24 +4,17 @@ import PropTypes from 'prop-types';
 import { withWidth, Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
-import land from '../../assets/images/About/land.png';
-
 const styles = theme => ({
   root: {
     flexGrow: 1,
     width: '100%',
-    [theme.breakpoints.up('md')]: {
-      width: '19.875rem'
-    },
+    paddingTop: '10px',
     [theme.breakpoints.up('lg')]: {
-      width: '40.5rem'
-    },
-    [theme.breakpoints.up('xl')]: {
-      width: '26.5rem'
+      width: '26.25rem'
     }
   },
   img: {
-    width: '100%',
+    width: '100vw',
     [theme.breakpoints.up('md')]: {
       width: '18.875rem',
       height: 'auto',
@@ -30,17 +23,17 @@ const styles = theme => ({
       marginBottom: theme.spacing.unit * -0.5
     },
     [theme.breakpoints.up('lg')]: {
-      width: '25.5rem'
+      width: '26.25rem'
     }
   },
   highlight: {
-    width: '8rem',
-    height: '1.3rem',
+    width: '6.875rem', // 110px / 16
+    height: '1.25rem', // 20px
     background: '#e7e452'
   }
 });
 
-function Land({ classes, width }) {
+function Land({ classes, width, imgSrc }) {
   const direction =
     width === 'xs' || width === 'sm' ? 'column-reverse' : 'column';
   return (
@@ -52,7 +45,7 @@ function Land({ classes, width }) {
       alignItems="flex-end"
     >
       <Grid item xs={12}>
-        <img src={land} alt="land" className={classes.img} />
+        <img src={imgSrc} alt="land" className={classes.img} />
       </Grid>
       <Grid item xs={12}>
         <div className={classes.highlight} />
@@ -62,8 +55,9 @@ function Land({ classes, width }) {
 }
 
 Land.propTypes = {
-  classes: PropTypes.shape().isRequired,
-  width: PropTypes.string.isRequired
+  classes: PropTypes.shape({}).isRequired,
+  width: PropTypes.string.isRequired,
+  imgSrc: PropTypes.string.isRequired
 };
 
 export default withWidth()(withStyles(styles)(Land));

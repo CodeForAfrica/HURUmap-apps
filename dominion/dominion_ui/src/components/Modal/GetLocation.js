@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import { withStyles } from '@material-ui/core/styles';
+
+import createAPI from '../../api';
 
 const styles = {
   locationText: {
@@ -13,75 +16,54 @@ const styles = {
     }
   }
 };
+
 class GetLocation extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { buttonText: 'Use you Location' };
+    this.state = { buttonText: 'Use your current Location' };
     this.findLocation = this.findLocation.bind(this);
-    this.locateMe = this.locateMe.bind(this);
   }
 
   findLocation() {
-    const { history } = this.props;
     this.setState(() => ({ buttonText: 'Locating   .....' }));
+
+    const { countries } = this.props;
+
+    const locateMe = json => {
+      // If not really there
+      if (json.results.length === 0) {
+        this.setState(() => ({ buttonText: 'Could not locate you   .....' }));
+      } else {
+        // Find country
+        const addresses = json.results[0].address_components;
+        const addressContains = country =>
+          addresses.find(address => address.long_name === country.name) !==
+          undefined;
+        const foundEntry = Object.entries(countries).find(([, country]) =>
+          addressContains(country)
+        );
+        if (foundEntry) {
+          const [url] = foundEntry;
+          window.location = url;
+        } else {
+          this.setState(() => ({
+            buttonText: 'Oops.. Dominion has no instance for your country'
+          }));
+        }
+      }
+    };
+
+    const api = createAPI();
     navigator.geolocation.getCurrentPosition(
       position => {
-        const url = `https://maps.googleapis.com/maps/api/geocode/json?sensor=false&language=en&latlng=${
-          position.coords.latitude
-        },${position.coords.longitude}&key=${window.GOOGLE_GEOCODE_API_KEY}`;
-        fetch(url).then(response => {
-          const found = this.locateMe(response);
-          if (found) {
-            history.push(found.url, '_blank');
-          } else {
-            this.setState(() => ({
-              buttonText: 'Oops.. Could not locate you.  .....'
-            }));
-          }
-        });
+        const location = api.getLocation(position);
+        locateMe(location);
       },
       failure => {
         this.setState(() => ({ buttonText: failure.message }));
       }
     );
-  }
-
-  locateMe(response) {
-    let found = false;
-    const countries = [
-      {
-        name: 'Kenya',
-        url: '/profiles/country-KE'
-      },
-      {
-        name: 'South Africa',
-        url: '/profiles/country-ZA'
-      },
-      {
-        name: 'Tanzania',
-        url: '/profiles/country-TZ'
-      },
-      {
-        name: 'Nigeria',
-        url: '/profiles/country-NG'
-      }
-    ];
-    // If not really there
-    if (typeof response.results[0] === 'undefined') {
-      this.setState(() => ({ buttonText: 'Could not locate you   .....' }));
-      return false;
-    }
-    // Find country
-    const addresses = response.results[0].address_components;
-    addresses.forEach((index, address) => {
-      countries.forEach(country => {
-        if (address.long_name === country.name) {
-          found = country;
-        }
-      });
-    });
-    return found;
   }
 
   render() {
@@ -103,8 +85,8 @@ class GetLocation extends React.Component {
 }
 
 GetLocation.propTypes = {
-  classes: PropTypes.shape().isRequired,
-  history: PropTypes.shape().isRequired
+  classes: PropTypes.shape({}).isRequired,
+  countries: PropTypes.shape({}).isRequired
 };
 
 export default withStyles(styles)(GetLocation);

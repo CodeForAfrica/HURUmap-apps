@@ -1,8 +1,31 @@
 {% extends 'settings_js.html' %}{% load jsonify %}
 
 {% block settings_javascript %}
-{{ block.super }}
-WAZIMAP_COUNTRY_CODE = '{{ HURUMAP.country_code }}';
-GOOGLE_GEOCODE_API_KEY = '{{ HURUMAP.google_geocode_api_key }}';
-var MAPIT = {{ HURUMAP.mapit|jsonify|safe }};
+  {{ block.super }}
+  var countries = {{ HURUMAP.countries|jsonify|safe }};
+
+  {% if profile_data_json %}
+     var profileDataJson = {{ profile_data_json }};
+  {% else %}
+    // compare page has no profile_data_json: initializing this for compare page
+     var profileDataJson = {};
+  {% endif %}
+
+  // homepage has no geography: initialize geo_code
+  var geography = {{ geography.this |jsonify|safe }} || { geo_code: '' };
+  {% if country %}
+    var selected_country = {{ country|jsonify|safe}}
+  {% else %}
+    var selected_country_entry = Object
+      .entries(countries)
+      .find((item) => item[1].code === geography.geo_code.slice(0,2));
+    if (selected_country_entry) {
+      var selected_country = selected_country_entry[1];
+      selected_country.slug = selected_country_entry[0];
+    }
+  {% endif %}
+  var head2head = {{ head2head |jsonify | safe }};
+  {% if compare_primary_releases %}
+    profileDataJson.primary_releases = {{compare_primary_releases | jsonify | safe }}
+  {% endif %}
 {% endblock settings_javascript %}
