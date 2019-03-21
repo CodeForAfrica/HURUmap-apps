@@ -8,15 +8,13 @@
 {% endblock %}
 
 {% block profile_detail %}
+  <div id="dominionProfileTabs"></div>
   <div id="profile-detail">
-    <div id="dominionProfileTabs"></div>
     {% block profile_detail_contents %}
       {% if not landsales.is_missing %}
         <article id="agricultural-land-sales" class="clearfix">
-          <header class="section-contents">
-            <h1>Agricultural Land Sales</h1>
-          </header>
           <div class="section-container">
+            <h1>Agricultural Land Sales</h1>
             <section class="clearfix stat-row">
               <h2 class="header-for-columns"><a class="permalink">Land Sales
                 Distribution from August 2017 to July 2018
@@ -69,10 +67,8 @@
       {% endif %}
       {% if not landsalescolour.is_missing %}
         <article id="agricultural-land-sales-colour" class="clearfix">
-          <header class="section-contents">
-            <h1>Land traded statistic for transactions of colour</h1>
-          </header>
           <div class="section-container">
+            <h1 class="profile-detail-header">Land traded statistic for transactions of colour</h1>
             <section class="clearfix stat-row">
               <div class="column-third">
                 {% include 'profile/_blocks/_stat_list.html' with stat=landsalescolour.landsalescolourhectares_stat stat_type='number' %}
@@ -255,19 +251,13 @@
       {% endif %}
       {% if not farmland.is_missing %}
         <article id="farm-land" class="clearfix">
-          <header class="section-contents">
-            <h1>Individual Land Ownership of farms and agricultural holdings</h1>
-          </header>
           <div class="section-container">
+            <h1 class="profile-detail-header">Individual Land Ownership of farms and agricultural holdings</h1>
             <section class="clearfix stat-row">
-              <aside style="font-size: 14px;margin-left:-16.4em;width:14.4em;">
-                <br/>
-                <br/>
-                <br/>
-                <br/>
+              <div>
                 CBOs:Community-Based Organisations, includes non-governmental
                 organizations, churches, etc.
-              </aside>
+              </div>
               <div class="column-half">
                 <div id="chart-histogram-farmland-private_land_ownership_in_hectares_per_category"
                      data-stat-type="scaled-percentage"
@@ -285,12 +275,11 @@
               </div>
             </section>
             <section class="clearfix stat-row">
-              <aside style="font-size: 14px;margin-left:-16.4em;width:14.4em;">
-                <br/>
+              <div>
                 Co-ownership: Land owned by owners who are classified in different
                 categories e.g. land parcel co-owned by Individual(s) and a Trusts,
                 male and female, etc.
-              </aside>
+              </div>
               <div class="column-half">
                 <div id="chart-pie-farmland-land_ownership_in_hectares_by_race"
                      data-stat-type="percentage"
@@ -391,18 +380,9 @@
       {% endif %}
       {% if not ervenland.is_missing %}
         <article id="erven-land" class="clearfix">
-          <header class="section-contents">
-            <h1>Erven Land</h1>
-          </header>
           <div class="section-container">
+            <h1 class="profile-detail-header">Erven Land</h1>
             <section class="clearfix stat-row">
-              <aside style="font-size: 14px;margin-left:-16.4em;width:14.4em;">
-                <br/>
-                <br/>
-                Erven Land: legal term used in Namibia, South Africa and Swaziland
-                to describe a piece of
-                land registered in a deeds registry as an erf, lot, plot or stand.
-              </aside>
               <div class="column-half">
                 <div id="chart-histogram-ervenland-erven_land_ownership_in_hectares_by_race"
                      data-stat-type="scaled-percentage"
@@ -418,17 +398,14 @@
                      data-source-title="Land Audit Report, 2017"
                      data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
               </div>
+              <div>
+                Erven Land: legal term used in Namibia, South Africa and Swaziland
+                to describe a piece of
+                land registered in a deeds registry as an erf, lot, plot or stand.
+              </div>
             </section>
 
             <section class="clearfix stat-row">
-              <aside style="font-size: 14px;margin-left:-16.4em;width:14.4em;">
-                Erven includes every defined portion,
-                not intended to be a public place, of a piece of land laid out as
-                a
-                township,
-                whether or not it has been formally recognized, approved or
-                proclaimed as such.
-              </aside>
               <div class="column-half">
                 <div id="chart-pie-ervenland-erven_land_ownership_in_hectares_by_gender"
                      data-stat-type="scaled-percentage"
@@ -444,6 +421,14 @@
                      data-initial-sort="-value"
                      data-source-title="Land Audit Report, 2017"
                      data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
+              </div>
+              <div>
+                Erven includes every defined portion,
+                not intended to be a public place, of a piece of land laid out as
+                a
+                township,
+                whether or not it has been formally recognized, approved or
+                proclaimed as such.
               </div>
             </section>
 
@@ -469,24 +454,17 @@
       {% endif %}
       {% if not sectionaltitleland.is_missing %}
         <article id="sectional-title-land" class="clearfix">
-          <header class="section-contents">
-            <h1>Sectional Title Land</h1>
-          </header>
           <div class="section-container">
+            <h1 class="profile-detail-header">Sectional Title Land</h1>
+            <div>
+              <br/>
+              <br/>
+              Sectional Title Land: Separate ownership of units or sections
+              within
+              a complex or
+              development {{ sectionaltitleland.sectional_title_ownership_in_hectares_per_category.is_missing }}
+            </div>
             <section class="clearfix stat-row">
-              <aside style="font-size: 14px;margin-left:-16.4em;width:14.4em;">
-                <br/>
-                <br/>
-                Sectional Title Land: Separate ownership of units or sections
-                within
-                a complex or
-                development {{ sectionaltitleland.sectional_title_ownership_in_hectares_per_category.is_missing }}
-              </aside style="font-size: 14px
-              ;
-                margin-left: -16.4em
-              ;
-                width: 14.4em
-              ;">
               <div class="column-half">
 
                 <div id="chart-histogram-sectionaltitleland-sectional_title_ownership_in_hectares_per_category"
@@ -570,11 +548,8 @@
       {% endif %}
       {% if not redistributionandrestitution.is_missing %}
         <article id="redistribution-restitution" class="clearfix">
-          <header class="section-contents">
-            <h1>Land Redistribution and Restitution</h1>
-          </header>
           <div class="section-container">
-
+            <h1 class="profile-detail-header">Land Redistribution and Restitution</h1>
             <section class="clearfix stat-row">
               <h2 class="header-for-columns"><a class="permalink"> Land
                 Redistribution Programme <i class="fa fa-link"></i></a></h2>
@@ -772,10 +747,8 @@
       {% endif %}
       {% if not afrobarometer.is_missing %}
         <article>
-          <header class="section-contents">
-            <h1>Afrobarometer Round 7</h1>
-          </header>
           <div class="section-container">
+            <h1 class="profile-detail-header">Afrobarometer Round 7</h1>
             <section class="clearfix stat-row">
               <div class="column-half">
                 <div id="chart-pie-afrobarometer-access_to_information"

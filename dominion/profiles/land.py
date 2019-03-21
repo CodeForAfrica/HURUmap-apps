@@ -18,6 +18,12 @@ SECTIONS = settings.HURUMAP.get('topics', {})
 
 PROFILE_SECTIONS = (
     'ervenland',  # erven land
+    'farmland',
+    'sectionaltitleland',  # sectional title land
+    'redistributionandrestitution',  # redistribution and restitution
+    'afrobarometer',
+    'landsales',
+    'landsalescolour',
 )
 LOCATIONNOTFOUND = {'is_missing': True,
                     'name': 'No Data Found',
@@ -171,8 +177,7 @@ def _add_metadata_to_dist(dist, dist_name, country, level):
     return dist
 
 def get_farmland_profile(geo, session):
-    year = current_context().get('year')
-    with dataset_context(year=year):
+    with dataset_context(year='2017'):
         topic_profiles = SECTIONS['farmland']['profiles']
         profiles_data = {'is_missing': True}
 
@@ -201,12 +206,9 @@ def get_ervenland_profile(geo, session):
         for profile in topic_profiles:
             try:
                 profile_table = profile_name = profile.lower().replace(' ', '_')
-                print("\n\n\n\n\n\n")
-                print(profile_table)
                 profiles_data[profile_name] = LOCATIONNOTFOUND
-                profiles_data['erven_land_ownership_in_hectares_by_nationality'], _ = get_stat_data('erven_land_ownership_in_hectares_by_nationality',
+                profiles_data[profile_name], _ = get_stat_data(profile_name,
                                                                geo, session)
-                print(profiles_data)
             except Exception:
                 pass
 
@@ -218,8 +220,7 @@ def get_ervenland_profile(geo, session):
 
 
 def get_sectionaltitleland_profile(geo, session):
-    year = current_context().get('year')
-    with dataset_context(year=year):
+    with dataset_context(year='2017'):
         topic_profiles = SECTIONS['sectionaltitleland']['profiles']
         profiles_data = {'is_missing': True}
 
