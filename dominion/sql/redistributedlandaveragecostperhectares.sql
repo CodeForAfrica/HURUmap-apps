@@ -36,16 +36,16 @@ CREATE TABLE public.redistributedlandaveragecostperhectares (
 --
 
 COPY public.redistributedlandaveragecostperhectares (geo_level, geo_code, geo_version, redistributedlandaveragecostperhectares) FROM stdin;
-level1	ZA_1_003	2016	16006.77
-level1	ZA_1_002	2016	8314.66
-level1	ZA_1_009	2016	18342.58
-level1	ZA_1_001	2016	9767.2
-level1	ZA_1_005	2016	2060.08
-level1	ZA_1_004	2016	9712.52
-level1	ZA_1_006	2016	2343.03
-level1	ZA_1_007	2016	4069.67
-level1	ZA_1_008	2016	17212
-country	ZA	2016	5563.86
+level1	ZA_1_003	2009	16006.77
+level1	ZA_1_002	2009	8314.66
+level1	ZA_1_009	2009	18342.58
+level1	ZA_1_001	2009	9767.2
+level1	ZA_1_005	2009	2060.08
+level1	ZA_1_004	2009	9712.52
+level1	ZA_1_006	2009	2343.03
+level1	ZA_1_007	2009	4069.67
+level1	ZA_1_008	2009	17212
+country	ZA	2009	5563.86
 \.
 
 

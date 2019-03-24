@@ -18,12 +18,31 @@ SECTIONS = settings.HURUMAP.get('topics', {})
 
 PROFILE_SECTIONS = (
     'ervenland',  # erven land
+    'farmland',
+    'sectionaltitleland',  # sectional title land
+    'redistributionandrestitution',  # redistribution and restitution
+    'afrobarometer',
+    'landsales',
+    'landsalescolour',
 )
 LOCATIONNOTFOUND = {'is_missing': True,
                     'name': 'No Data Found',
                     'numerators': {'this': 0},
                     'values': {'this': 0}
                     }
+MONTH = ['Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan',
+         'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul']
+
+MONTH_V2 = ['Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May',
+                'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov']
+
+LAND_CLASS = [u'Under 1.5K', u'1,501-3K', u'3,001-5K', u'5,001-10K'
+    , u'10,001-20K', u'20,001-30K', u'30,001-40K', u'40,001-50K',
+              u'50,001-100K',
+              u'100,001-150K', u'150,001-200K', u'200,001-300K',
+              u'300,001-500K',
+              u'500,001-800K', u'800,001-1M', u'Above 1M']
+
 METADATA = {
     'kenya': {
         'country': {
@@ -74,8 +93,7 @@ def get_profile(geo, profile_name, request):
                             raise ValueError(msg)
 
         data['demographics'] = get_demographics(geo, session, country, level, year)
-        print("\n\n\n\n\n\n\n")
-        print(data)
+        data['land_audit'] = get_land_audit_profile(geo, session)
         return data
     finally:
         session.close()
@@ -171,8 +189,7 @@ def _add_metadata_to_dist(dist, dist_name, country, level):
     return dist
 
 def get_farmland_profile(geo, session):
-    year = current_context().get('year')
-    with dataset_context(year=year):
+    with dataset_context(year='2017'):
         topic_profiles = SECTIONS['farmland']['profiles']
         profiles_data = {'is_missing': True}
 
@@ -201,12 +218,9 @@ def get_ervenland_profile(geo, session):
         for profile in topic_profiles:
             try:
                 profile_table = profile_name = profile.lower().replace(' ', '_')
-                print("\n\n\n\n\n\n")
-                print(profile_table)
                 profiles_data[profile_name] = LOCATIONNOTFOUND
-                profiles_data[profile_name], _ = get_stat_data([profile_table],
+                profiles_data[profile_name], _ = get_stat_data(profile_name,
                                                                geo, session)
-                print(profiles_data)
             except Exception:
                 pass
 
@@ -218,8 +232,7 @@ def get_ervenland_profile(geo, session):
 
 
 def get_sectionaltitleland_profile(geo, session):
-    year = current_context().get('year')
-    with dataset_context(year=year):
+    with dataset_context(year='2017'):
         topic_profiles = SECTIONS['sectionaltitleland']['profiles']
         profiles_data = {'is_missing': True}
 
@@ -648,7 +661,6 @@ def get_landsales_profile(geo, session):
             }
         landsales['is_missing'] = landsalestransaction.get('is_missing') and \
                                   landsaleshectares.get('is_missing')
-
     return landsales
 
 
@@ -1037,8 +1049,7 @@ def get_districtdistribution_profile(geo, session):
 
 
 def get_land_audit_profile(geo, session):
-    year = current_context().get('year')
-    with dataset_context(year=year):
+    with dataset_context(year='2013'):
         land_use_dist = LOCATIONNOTFOUND
         land_user_dist = LOCATIONNOTFOUND
         land_distribution_gender = LOCATIONNOTFOUND

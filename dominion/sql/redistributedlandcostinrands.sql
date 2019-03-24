@@ -36,16 +36,16 @@ CREATE TABLE public.redistributedlandcostinrands (
 --
 
 COPY public.redistributedlandcostinrands (geo_level, geo_code, geo_version, redistributedlandcostinrands) FROM stdin;
-level1	ZA_1_003	2016	21044000
-level1	ZA_1_002	2016	97579394
-level1	ZA_1_009	2016	23040935
-level1	ZA_1_001	2016	134494665
-level1	ZA_1_005	2016	15115000
-level1	ZA_1_004	2016	65116000
-level1	ZA_1_006	2016	79750000
-level1	ZA_1_007	2016	61115000.01
-level1	ZA_1_008	2016	14800000
-country	ZA	2016	512054994
+level1	ZA_1_003	2009	21044000
+level1	ZA_1_002	2009	97579394
+level1	ZA_1_009	2009	23040935
+level1	ZA_1_001	2009	134494665
+level1	ZA_1_005	2009	15115000
+level1	ZA_1_004	2009	65116000
+level1	ZA_1_006	2009	79750000
+level1	ZA_1_007	2009	61115000.01
+level1	ZA_1_008	2009	14800000
+country	ZA	2009	512054994
 \.
 
 

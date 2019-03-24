@@ -142,7 +142,7 @@ HURUMAP['latest_release_year'] = 'latest'
 
 # default census release years
 HURUMAP['available_release_years'] = {
-    'country': [2009, 2016]
+    'country': [2009, 2017, 2018, 2016]
 }
 
 # census release years for each country and it's subnational geographies
@@ -152,8 +152,8 @@ HURUMAP['available_releases_years_per_country'] = {
         'level1': [2009]
     },
     'za': {
-        'country': [2016],
-        'level1': [2016]
+        'country': [2016, 2017, 2018],
+        'level1': [2016, 2017, 2018]
     }
 }
 

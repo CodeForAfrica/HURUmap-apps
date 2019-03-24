@@ -37,36 +37,36 @@ CREATE TABLE public.redistributedlandusebreakdown (
 --
 
 COPY public.redistributedlandusebreakdown (geo_level, geo_code, geo_version, "redistributed land use breakdown", total) FROM stdin;
-level1	ZA_1_003	2016	projects	4
-level1	ZA_1_002	2016	projects	10
-level1	ZA_1_009	2016	projects	6
-level1	ZA_1_001	2016	projects	20
-level1	ZA_1_005	2016	projects	8
-level1	ZA_1_004	2016	projects	9
-level1	ZA_1_006	2016	projects	7
-level1	ZA_1_007	2016	projects	10
-level1	ZA_1_008	2016	projects	1
-country	ZA	2016	projects	75
-level1	ZA_1_003	2016	households	25
-level1	ZA_1_002	2016	households	23
-level1	ZA_1_009	2016	households	2
-level1	ZA_1_001	2016	households	358
-level1	ZA_1_005	2016	households	12
-level1	ZA_1_004	2016	households	16
-level1	ZA_1_006	2016	households	10
-level1	ZA_1_007	2016	households	32
-level1	ZA_1_008	2016	households	0
-country	ZA	2016	households	478
-level1	ZA_1_003	2016	beneficiaries	31
-level1	ZA_1_002	2016	beneficiaries	306
-level1	ZA_1_009	2016	beneficiaries	114
-level1	ZA_1_001	2016	beneficiaries	736
-level1	ZA_1_005	2016	beneficiaries	16
-level1	ZA_1_004	2016	beneficiaries	85
-level1	ZA_1_006	2016	beneficiaries	12
-level1	ZA_1_007	2016	beneficiaries	39
-level1	ZA_1_008	2016	beneficiaries	9
-country	ZA	2016	beneficiaries	1348
+level1	ZA_1_003	2009	projects	4
+level1	ZA_1_002	2009	projects	10
+level1	ZA_1_009	2009	projects	6
+level1	ZA_1_001	2009	projects	20
+level1	ZA_1_005	2009	projects	8
+level1	ZA_1_004	2009	projects	9
+level1	ZA_1_006	2009	projects	7
+level1	ZA_1_007	2009	projects	10
+level1	ZA_1_008	2009	projects	1
+country	ZA	2009	projects	75
+level1	ZA_1_003	2009	households	25
+level1	ZA_1_002	2009	households	23
+level1	ZA_1_009	2009	households	2
+level1	ZA_1_001	2009	households	358
+level1	ZA_1_005	2009	households	12
+level1	ZA_1_004	2009	households	16
+level1	ZA_1_006	2009	households	10
+level1	ZA_1_007	2009	households	32
+level1	ZA_1_008	2009	households	0
+country	ZA	2009	households	478
+level1	ZA_1_003	2009	beneficiaries	31
+level1	ZA_1_002	2009	beneficiaries	306
+level1	ZA_1_009	2009	beneficiaries	114
+level1	ZA_1_001	2009	beneficiaries	736
+level1	ZA_1_005	2009	beneficiaries	16
+level1	ZA_1_004	2009	beneficiaries	85
+level1	ZA_1_006	2009	beneficiaries	12
+level1	ZA_1_007	2009	beneficiaries	39
+level1	ZA_1_008	2009	beneficiaries	9
+country	ZA	2009	beneficiaries	1348
 \.
 
 
