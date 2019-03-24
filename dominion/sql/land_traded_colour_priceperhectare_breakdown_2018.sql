@@ -38,10 +38,10 @@ CREATE TABLE public.land_traded_colour_priceperhectare_breakdown_2018 (
 --
 
 COPY public.land_traded_colour_priceperhectare_breakdown_2018 (geo_level, geo_code, geo_version, breakdown_cc, month_cc, total) FROM stdin;
-country	ZA	2009	Government Agriculture	DZA_1_003	41083
-country	ZA	2009	Government Urban	DZA_1_003	882000
-country	ZA	2009	Private	DZA_1_003	21572
-country	ZA	2009	Other	DZA_1_003	3043
+country	ZA	2009	Government Agriculture	Dec	41083
+country	ZA	2009	Government Urban	Dec	882000
+country	ZA	2009	Private	Dec	21572
+country	ZA	2009	Other	Dec	3043
 country	ZA	2009	Government Agriculture	Jan	6630
 country	ZA	2009	Government Urban	Jan	42591
 country	ZA	2009	Private	Jan	22375
@@ -86,10 +86,10 @@ country	ZA	2009	Government Agriculture	Nov	1427
 country	ZA	2009	Government Urban	Nov	\N
 country	ZA	2009	Private	Nov	15333
 country	ZA	2009	Other	Nov	71340
-level1	ZA_1_003	2009	Government Agriculture	DZA_1_003	9417
-level1	ZA_1_003	2009	Government Urban	DZA_1_003	\N
-level1	ZA_1_003	2009	Private	DZA_1_003	7198
-level1	ZA_1_003	2009	Other	DZA_1_003	\N
+level1	ZA_1_003	2009	Government Agriculture	Dec	9417
+level1	ZA_1_003	2009	Government Urban	Dec	\N
+level1	ZA_1_003	2009	Private	Dec	7198
+level1	ZA_1_003	2009	Other	Dec	\N
 level1	ZA_1_003	2009	Government Agriculture	Jan	\N
 level1	ZA_1_003	2009	Government Urban	Jan	\N
 level1	ZA_1_003	2009	Private	Jan	26923
@@ -134,10 +134,10 @@ level1	ZA_1_003	2009	Government Agriculture	Nov	\N
 level1	ZA_1_003	2009	Government Urban	Nov	\N
 level1	ZA_1_003	2009	Private	Nov	7183
 level1	ZA_1_003	2009	Other	Nov	10252
-level1	ZA_1_002	2009	Government Agriculture	DZA_1_003	\N
-level1	ZA_1_002	2009	Government Urban	DZA_1_003	\N
-level1	ZA_1_002	2009	Private	DZA_1_003	14368
-level1	ZA_1_002	2009	Other	DZA_1_003	7405
+level1	ZA_1_002	2009	Government Agriculture	Dec	\N
+level1	ZA_1_002	2009	Government Urban	Dec	\N
+level1	ZA_1_002	2009	Private	Dec	14368
+level1	ZA_1_002	2009	Other	Dec	7405
 level1	ZA_1_002	2009	Government Agriculture	Jan	6630
 level1	ZA_1_002	2009	Government Urban	Jan	\N
 level1	ZA_1_002	2009	Private	Jan	375000
@@ -182,10 +182,10 @@ level1	ZA_1_002	2009	Government Agriculture	Nov	\N
 level1	ZA_1_002	2009	Government Urban	Nov	\N
 level1	ZA_1_002	2009	Private	Nov	2446
 level1	ZA_1_002	2009	Other	Nov	20136
-level1	ZA_1_009	2009	Government Agriculture	DZA_1_003	68910
-level1	ZA_1_009	2009	Government Urban	DZA_1_003	\N
-level1	ZA_1_009	2009	Private	DZA_1_003	47957
-level1	ZA_1_009	2009	Other	DZA_1_003	\N
+level1	ZA_1_009	2009	Government Agriculture	Dec	68910
+level1	ZA_1_009	2009	Government Urban	Dec	\N
+level1	ZA_1_009	2009	Private	Dec	47957
+level1	ZA_1_009	2009	Other	Dec	\N
 level1	ZA_1_009	2009	Government Agriculture	Jan	\N
 level1	ZA_1_009	2009	Government Urban	Jan	42591
 level1	ZA_1_009	2009	Private	Jan	56923
@@ -230,10 +230,10 @@ level1	ZA_1_009	2009	Government Agriculture	Nov	\N
 level1	ZA_1_009	2009	Government Urban	Nov	\N
 level1	ZA_1_009	2009	Private	Nov	19658
 level1	ZA_1_009	2009	Other	Nov	34030
-level1	ZA_1_001	2009	Government Agriculture	DZA_1_003	15779
-level1	ZA_1_001	2009	Government Urban	DZA_1_003	882000
-level1	ZA_1_001	2009	Private	DZA_1_003	106011
-level1	ZA_1_001	2009	Other	DZA_1_003	\N
+level1	ZA_1_001	2009	Government Agriculture	Dec	15779
+level1	ZA_1_001	2009	Government Urban	Dec	882000
+level1	ZA_1_001	2009	Private	Dec	106011
+level1	ZA_1_001	2009	Other	Dec	\N
 level1	ZA_1_001	2009	Government Agriculture	Jan	\N
 level1	ZA_1_001	2009	Government Urban	Jan	\N
 level1	ZA_1_001	2009	Private	Jan	38535
@@ -278,10 +278,10 @@ level1	ZA_1_001	2009	Government Agriculture	Nov	\N
 level1	ZA_1_001	2009	Government Urban	Nov	\N
 level1	ZA_1_001	2009	Private	Nov	22192
 level1	ZA_1_001	2009	Other	Nov	112500
-level1	ZA_1_005	2009	Government Agriculture	DZA_1_003	\N
-level1	ZA_1_005	2009	Government Urban	DZA_1_003	\N
-level1	ZA_1_005	2009	Private	DZA_1_003	10723
-level1	ZA_1_005	2009	Other	DZA_1_003	34091
+level1	ZA_1_005	2009	Government Agriculture	Dec	\N
+level1	ZA_1_005	2009	Government Urban	Dec	\N
+level1	ZA_1_005	2009	Private	Dec	10723
+level1	ZA_1_005	2009	Other	Dec	34091
 level1	ZA_1_005	2009	Government Agriculture	Jan	\N
 level1	ZA_1_005	2009	Government Urban	Jan	\N
 level1	ZA_1_005	2009	Private	Jan	16652
@@ -326,10 +326,10 @@ level1	ZA_1_005	2009	Government Agriculture	Nov	\N
 level1	ZA_1_005	2009	Government Urban	Nov	\N
 level1	ZA_1_005	2009	Private	Nov	14031
 level1	ZA_1_005	2009	Other	Nov	250294
-level1	ZA_1_004	2009	Government Agriculture	DZA_1_003	8821
-level1	ZA_1_004	2009	Government Urban	DZA_1_003	\N
-level1	ZA_1_004	2009	Private	DZA_1_003	52191
-level1	ZA_1_004	2009	Other	DZA_1_003	245000
+level1	ZA_1_004	2009	Government Agriculture	Dec	8821
+level1	ZA_1_004	2009	Government Urban	Dec	\N
+level1	ZA_1_004	2009	Private	Dec	52191
+level1	ZA_1_004	2009	Other	Dec	245000
 level1	ZA_1_004	2009	Government Agriculture	Jan	\N
 level1	ZA_1_004	2009	Government Urban	Jan	\N
 level1	ZA_1_004	2009	Private	Jan	16135
@@ -374,10 +374,10 @@ level1	ZA_1_004	2009	Government Agriculture	Nov	\N
 level1	ZA_1_004	2009	Government Urban	Nov	\N
 level1	ZA_1_004	2009	Private	Nov	30258
 level1	ZA_1_004	2009	Other	Nov	48357
-level1	ZA_1_006	2009	Government Agriculture	DZA_1_003	\N
-level1	ZA_1_006	2009	Government Urban	DZA_1_003	\N
-level1	ZA_1_006	2009	Private	DZA_1_003	18421
-level1	ZA_1_006	2009	Other	DZA_1_003	2402
+level1	ZA_1_006	2009	Government Agriculture	Dec	\N
+level1	ZA_1_006	2009	Government Urban	Dec	\N
+level1	ZA_1_006	2009	Private	Dec	18421
+level1	ZA_1_006	2009	Other	Dec	2402
 level1	ZA_1_006	2009	Government Agriculture	Jan	\N
 level1	ZA_1_006	2009	Government Urban	Jan	\N
 level1	ZA_1_006	2009	Private	Jan	3991
@@ -422,10 +422,10 @@ level1	ZA_1_006	2009	Government Agriculture	Nov	\N
 level1	ZA_1_006	2009	Government Urban	Nov	\N
 level1	ZA_1_006	2009	Private	Nov	300000
 level1	ZA_1_006	2009	Other	Nov	\N
-level1	ZA_1_007	2009	Government Agriculture	DZA_1_003	435185
-level1	ZA_1_007	2009	Government Urban	DZA_1_003	\N
-level1	ZA_1_007	2009	Private	DZA_1_003	14656
-level1	ZA_1_007	2009	Other	DZA_1_003	\N
+level1	ZA_1_007	2009	Government Agriculture	Dec	435185
+level1	ZA_1_007	2009	Government Urban	Dec	\N
+level1	ZA_1_007	2009	Private	Dec	14656
+level1	ZA_1_007	2009	Other	Dec	\N
 level1	ZA_1_007	2009	Government Agriculture	Jan	\N
 level1	ZA_1_007	2009	Government Urban	Jan	\N
 level1	ZA_1_007	2009	Private	Jan	25318
@@ -470,10 +470,10 @@ level1	ZA_1_007	2009	Government Agriculture	Nov	\N
 level1	ZA_1_007	2009	Government Urban	Nov	\N
 level1	ZA_1_007	2009	Private	Nov	15721
 level1	ZA_1_007	2009	Other	Nov	450450
-level1	ZA_1_008	2009	Government Agriculture	DZA_1_003	\N
-level1	ZA_1_008	2009	Government Urban	DZA_1_003	\N
-level1	ZA_1_008	2009	Private	DZA_1_003	13316
-level1	ZA_1_008	2009	Other	DZA_1_003	400
+level1	ZA_1_008	2009	Government Agriculture	Dec	\N
+level1	ZA_1_008	2009	Government Urban	Dec	\N
+level1	ZA_1_008	2009	Private	Dec	13316
+level1	ZA_1_008	2009	Other	Dec	400
 level1	ZA_1_008	2009	Government Agriculture	Jan	\N
 level1	ZA_1_008	2009	Government Urban	Jan	\N
 level1	ZA_1_008	2009	Private	Jan	45463

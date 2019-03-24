@@ -676,7 +676,7 @@ def get_landsalescolour_profile(geo, session):
         landsalescolourhectarespermonthbreakdownpr = landsalescolourhectarespermonthbreakdownot = LOCATIONNOTFOUND
         landsalescolourtransactionpermonthbreakdownga = landsalescolourtransactionpermonthbreakdowngu = LOCATIONNOTFOUND
         landsalescolourtransactionpermonthbreakdownpr = landsalescolourtransactionpermonthbreakdownot = LOCATIONNOTFOUND
-        landsalescolourtransactionperMONTH_V2 = LOCATIONNOTFOUND
+        landsalescolourtransactionpermonth = LOCATIONNOTFOUND
 
         landsalescolourhectares_tot = 0
         landsalescolourtransaction_tot = 0
@@ -714,7 +714,7 @@ def get_landsalescolour_profile(geo, session):
             pass
 
         try:
-            landsalescolourtransactionperMONTH_V2, _ = get_stat_data(
+            landsalescolourtransactionpermonth, _ = get_stat_data(
                 ['month', 'transaction_group'], geo, session,
                 table_name='land_traded_all_vs_colour_2018',
                 only={'transaction_group': ['all', 'colour']},
@@ -748,11 +748,10 @@ def get_landsalescolour_profile(geo, session):
 
         try:
             landsalescolourhectarespermonthbreakdownga, _ = get_stat_data(
-                ['breakdown_cc','month_cc'], geo, session,
+                ['month_cc'], geo, session,
                 table_name='land_traded_colour_hectares_breakdown_2018',
                 only= {'breakdown_cc': ['Government Agriculture']},
-                key_order={'month_cc': MONTH_V2,
-                        'breakdown_cc': ['Government Agriculture']},
+                key_order={'month_cc': MONTH_V2},
                 percent=False
             )
         except Exception as e:
@@ -760,7 +759,7 @@ def get_landsalescolour_profile(geo, session):
 
         try:
             landsalescolourhectarespermonthbreakdowngu, _ = get_stat_data(
-                ['breakdown_cc','month_cc'], geo, session,
+                ['month_cc'], geo, session,
                 table_name='land_traded_colour_hectares_breakdown_2018',
                 only= {'breakdown_cc': ['Government Urban']},
                 key_order={'month_cc': MONTH_V2},
@@ -771,11 +770,10 @@ def get_landsalescolour_profile(geo, session):
 
         try:
             landsalescolourhectarespermonthbreakdownpr, _ = get_stat_data(
-                ['breakdown_cc','month_cc'], geo, session,
+                ['month_cc'], geo, session,
                 table_name='land_traded_colour_hectares_breakdown_2018',
                 only= {'breakdown_cc': ['Private']},
-                key_order={'month_cc': MONTH_V2,
-                        'breakdown_cc': ['Private']},
+                key_order={'month_cc': MONTH_V2},
                 percent=False
             )
         except Exception as e:
@@ -783,11 +781,10 @@ def get_landsalescolour_profile(geo, session):
 
         try:
             landsalescolourhectarespermonthbreakdownot, _ = get_stat_data(
-                ['breakdown_cc','month_cc'], geo, session,
+                ['month_cc'], geo, session,
                 table_name='land_traded_colour_hectares_breakdown_2018',
                 only= {'breakdown_cc': ['Other']},
-                key_order={'month_cc': MONTH_V2,
-                'breakdown_cc': ['Other']},
+                key_order={'month_cc': MONTH_V2},
                 percent=False
                 )
         except Exception as e:
@@ -811,7 +808,7 @@ def get_landsalescolour_profile(geo, session):
 
         try:
             landsalescolourtransactionpermonthbreakdowngu, _ = get_stat_data(
-                ['breakdown_cc','month_cc'], geo, session,
+                ['month_cc'], geo, session,
                 table_name='land_traded_colour_transactions_2018',
                 only={'breakdown_cc': ['Government Urban']},
                 key_order={'month_cc': MONTH_V2},
@@ -822,7 +819,7 @@ def get_landsalescolour_profile(geo, session):
 
         try:
             landsalescolourtransactionpermonthbreakdownga, _ = get_stat_data(
-                ['breakdown_cc','month_cc'], geo, session,
+                ['month_cc'], geo, session,
                 table_name='land_traded_colour_transactions_2018',
                 only={'breakdown_cc': ['Government Agriculture']},
                 key_order={'month_cc': MONTH_V2},
@@ -833,7 +830,7 @@ def get_landsalescolour_profile(geo, session):
 
         try:
             landsalescolourtransactionpermonthbreakdownot, _ = get_stat_data(
-                ['breakdown_cc','month_cc'], geo, session,
+                ['month_cc'], geo, session,
                 table_name='land_traded_colour_transactions_2018',
                 only={'breakdown_cc': ['Other']},
                 key_order={'month_cc': MONTH_V2},
@@ -879,7 +876,7 @@ def get_landsalescolour_profile(geo, session):
 
         try:
             landsalescolourcostpermonthbreakdownot, _ = get_stat_data(
-                ['breakdown_cc','month_cc'], geo, session,
+                ['month_cc'], geo, session,
                 table_name='land_traded_colour_cost_breakdown_2018',
                 only={'breakdown_cc': ['Other']},
                 key_order={'month_cc': MONTH_V2},
@@ -890,7 +887,7 @@ def get_landsalescolour_profile(geo, session):
 
         try:
             landsalescolourcostpermonthbreakdownpr, _ = get_stat_data(
-                ['breakdown_cc','month_cc'], geo, session,
+                ['month_cc'], geo, session,
                 table_name='land_traded_colour_cost_breakdown_2018',
                 only={'breakdown_cc': ['Private']},
                 key_order={'month_cc': MONTH_V2},
@@ -901,7 +898,7 @@ def get_landsalescolour_profile(geo, session):
 
         try:
             landsalescolourcostpermonthbreakdowngu, _ = get_stat_data(
-                ['breakdown_cc','month_cc'], geo, session,
+                ['month_cc'], geo, session,
                 table_name='land_traded_colour_cost_breakdown_2018',
                 only={'breakdown_cc': ['Government Urban']},
                 key_order={'month_cc': MONTH_V2},
@@ -912,7 +909,7 @@ def get_landsalescolour_profile(geo, session):
 
         try:
             landsalescolourcostpermonthbreakdownga, _ = get_stat_data(
-                ['breakdown_cc','month_cc'], geo, session,
+                ['month_cc'], geo, session,
                 table_name='land_traded_colour_cost_breakdown_2018',
                 only={'breakdown_cc': ['Government Agriculture']},
                 key_order={'month_cc': MONTH_V2},
@@ -924,7 +921,7 @@ def get_landsalescolour_profile(geo, session):
         'landsalescolourhectares': landsalescolourhectares,
         'landsalescolourtransaction': landsalescolourtransaction,
         'landsalesallvscolourtransaction': landsalesallvscolourtransaction,
-        'landsalescolourtattransactionpermonth': landsalescolourtransactionperMONTH_V2,
+        'landsalescolourtattransactionpermonth': landsalescolourtransactionpermonth,
         'landsalescolourhectarespermonthbreakdown': landsalescolourhectarespermonthbreakdown,
         'landsalescolourhectarespermonthbreakdowngu': landsalescolourhectarespermonthbreakdowngu,
         'landsalescolourhectarespermonthbreakdownga': landsalescolourhectarespermonthbreakdownga,

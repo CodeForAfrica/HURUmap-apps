@@ -4,18 +4,15 @@
 
 -- Dumped from database version 10.6 (Ubuntu 10.6-0ubuntu0.18.04.1)
 -- Dumped by pg_dump version 10.6 (Ubuntu 10.6-0ubuntu0.18.04.1)
-
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
-SET standard_conforming_strings = off;
+SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET escape_string_warning = off;
-SET row_security = off;
 
+ALTER TABLE IF EXISTS ONLY public.land_traded_all_vs_colour_2018 DROP CONSTRAINT IF EXISTS pk_land_traded_all_vs_colour_2018;
 DROP TABLE IF EXISTS public.land_traded_all_vs_colour_2018;
 SET default_tablespace = '';
 
@@ -40,8 +37,8 @@ CREATE TABLE public.land_traded_all_vs_colour_2018 (
 --
 
 COPY public.land_traded_all_vs_colour_2018 (geo_level, geo_code, geo_version, transaction_group, month, total) FROM stdin;
-country	ZA	2009	all	DZA_1_003	385
-country	ZA	2009	colour	DZA_1_003	64
+country	ZA	2009	all	Dec	385
+country	ZA	2009	colour	Dec	64
 country	ZA	2009	all	Jan	266
 country	ZA	2009	colour	Jan	47
 country	ZA	2009	all	Feb	370
@@ -64,8 +61,8 @@ country	ZA	2009	all	Oct	460
 country	ZA	2009	colour	Oct	97
 country	ZA	2009	all	Nov	323
 country	ZA	2009	colour	Nov	56
-level1	ZA_1_003	2009	all	DZA_1_003	19
-level1	ZA_1_003	2009	colour	DZA_1_003	5
+level1	ZA_1_003	2009	all	Dec	19
+level1	ZA_1_003	2009	colour	Dec	5
 level1	ZA_1_003	2009	all	Jan	19
 level1	ZA_1_003	2009	colour	Jan	1
 level1	ZA_1_003	2009	all	Feb	24
@@ -88,8 +85,8 @@ level1	ZA_1_003	2009	all	Oct	40
 level1	ZA_1_003	2009	colour	Oct	4
 level1	ZA_1_003	2009	all	Nov	30
 level1	ZA_1_003	2009	colour	Nov	6
-level1	ZA_1_002	2009	all	DZA_1_003	52
-level1	ZA_1_002	2009	colour	DZA_1_003	5
+level1	ZA_1_002	2009	all	Dec	52
+level1	ZA_1_002	2009	colour	Dec	5
 level1	ZA_1_002	2009	all	Jan	44
 level1	ZA_1_002	2009	colour	Jan	3
 level1	ZA_1_002	2009	all	Feb	70
@@ -112,8 +109,8 @@ level1	ZA_1_002	2009	all	Oct	60
 level1	ZA_1_002	2009	colour	Oct	11
 level1	ZA_1_002	2009	all	Nov	50
 level1	ZA_1_002	2009	colour	Nov	4
-level1	ZA_1_009	2009	all	DZA_1_003	36
-level1	ZA_1_009	2009	colour	DZA_1_003	7
+level1	ZA_1_009	2009	all	Dec	36
+level1	ZA_1_009	2009	colour	Dec	7
 level1	ZA_1_009	2009	all	Jan	28
 level1	ZA_1_009	2009	colour	Jan	5
 level1	ZA_1_009	2009	all	Feb	51
@@ -136,8 +133,8 @@ level1	ZA_1_009	2009	all	Oct	67
 level1	ZA_1_009	2009	colour	Oct	21
 level1	ZA_1_009	2009	all	Nov	38
 level1	ZA_1_009	2009	colour	Nov	11
-level1	ZA_1_001	2009	all	DZA_1_003	35
-level1	ZA_1_001	2009	colour	DZA_1_003	10
+level1	ZA_1_001	2009	all	Dec	35
+level1	ZA_1_001	2009	colour	Dec	10
 level1	ZA_1_001	2009	all	Jan	19
 level1	ZA_1_001	2009	colour	Jan	6
 level1	ZA_1_001	2009	all	Feb	12
@@ -160,8 +157,8 @@ level1	ZA_1_001	2009	all	Oct	40
 level1	ZA_1_001	2009	colour	Oct	13
 level1	ZA_1_001	2009	all	Nov	19
 level1	ZA_1_001	2009	colour	Nov	11
-level1	ZA_1_005	2009	all	DZA_1_003	52
-level1	ZA_1_005	2009	colour	DZA_1_003	8
+level1	ZA_1_005	2009	all	Dec	52
+level1	ZA_1_005	2009	colour	Dec	8
 level1	ZA_1_005	2009	all	Jan	28
 level1	ZA_1_005	2009	colour	Jan	7
 level1	ZA_1_005	2009	all	Feb	44
@@ -184,8 +181,8 @@ level1	ZA_1_005	2009	all	Oct	66
 level1	ZA_1_005	2009	colour	Oct	11
 level1	ZA_1_005	2009	all	Nov	39
 level1	ZA_1_005	2009	colour	Nov	9
-level1	ZA_1_004	2009	all	DZA_1_003	36
-level1	ZA_1_004	2009	colour	DZA_1_003	6
+level1	ZA_1_004	2009	all	Dec	36
+level1	ZA_1_004	2009	colour	Dec	6
 level1	ZA_1_004	2009	all	Jan	27
 level1	ZA_1_004	2009	colour	Jan	8
 level1	ZA_1_004	2009	all	Feb	58
@@ -208,8 +205,8 @@ level1	ZA_1_004	2009	all	Oct	50
 level1	ZA_1_004	2009	colour	Oct	18
 level1	ZA_1_004	2009	all	Nov	37
 level1	ZA_1_004	2009	colour	Nov	8
-level1	ZA_1_006	2009	all	DZA_1_003	38
-level1	ZA_1_006	2009	colour	DZA_1_003	3
+level1	ZA_1_006	2009	all	Dec	38
+level1	ZA_1_006	2009	colour	Dec	3
 level1	ZA_1_006	2009	all	Jan	14
 level1	ZA_1_006	2009	colour	Jan	1
 level1	ZA_1_006	2009	all	Feb	24
@@ -232,8 +229,8 @@ level1	ZA_1_006	2009	all	Oct	29
 level1	ZA_1_006	2009	colour	Oct	3
 level1	ZA_1_006	2009	all	Nov	18
 level1	ZA_1_006	2009	colour	Nov	1
-level1	ZA_1_007	2009	all	DZA_1_003	64
-level1	ZA_1_007	2009	colour	DZA_1_003	17
+level1	ZA_1_007	2009	all	Dec	64
+level1	ZA_1_007	2009	colour	Dec	17
 level1	ZA_1_007	2009	all	Jan	49
 level1	ZA_1_007	2009	colour	Jan	13
 level1	ZA_1_007	2009	all	Feb	49
@@ -256,8 +253,8 @@ level1	ZA_1_007	2009	all	Oct	52
 level1	ZA_1_007	2009	colour	Oct	12
 level1	ZA_1_007	2009	all	Nov	37
 level1	ZA_1_007	2009	colour	Nov	4
-level1	ZA_1_008	2009	all	DZA_1_003	53
-level1	ZA_1_008	2009	colour	DZA_1_003	3
+level1	ZA_1_008	2009	all	Dec	53
+level1	ZA_1_008	2009	colour	Dec	3
 level1	ZA_1_008	2009	all	Jan	38
 level1	ZA_1_008	2009	colour	Jan	3
 level1	ZA_1_008	2009	all	Feb	38
@@ -281,6 +278,10 @@ level1	ZA_1_008	2009	colour	Oct	4
 level1	ZA_1_008	2009	all	Nov	55
 level1	ZA_1_008	2009	colour	Nov	2
 \.
+
+ALTER TABLE ONLY public.land_traded_all_vs_colour_2018
+    ADD CONSTRAINT pk_land_traded_all_vs_colour_2018 PRIMARY KEY (geo_level, geo_code, geo_version, transaction_group, month);
+
 
 
 --
