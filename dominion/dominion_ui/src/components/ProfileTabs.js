@@ -12,6 +12,9 @@ const styles = theme => ({
     backgroundColor: '#fff',
     scrollBehavior: 'smooth'
   },
+  appbar: {
+    boxShadow: 'none'
+  },
   indicator: {
     height: '.25rem', // 4px / 16
     backgroundColor: '#7f9442'
@@ -104,7 +107,7 @@ class ProfileTabs extends React.Component {
 
     return (
       <div className={classes.root}>
-        <AppBar color="inherit" position="static">
+        <AppBar color="inherit" position="static" className={classes.appbar}>
           <Tabs
             value={value}
             variant={variant}
