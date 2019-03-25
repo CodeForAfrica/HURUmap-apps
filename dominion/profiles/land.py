@@ -8,7 +8,10 @@ from django.conf import settings
 from collections import OrderedDict
 from wazimap.data.base import Base
 from sqlalchemy import Column, ForeignKey, Integer, String, Table, func, or_, and_, desc, asc, cast
+from wazimap.models.data import DataNotFound
+
 from dominion.data.utils import get_primary_release_year_per_geography
+
 
 log = logging.getLogger(__name__)
 # ensure tables are loaded
@@ -54,6 +57,10 @@ def get_profile(geo, profile_name, request):
     data = {}
     try:
         data['demographics'] = get_demographics(geo, session, country, level, year)
+        data['excisions'] = get_land_excisions(geo, session)
+        print "\n\n\n\n\n\n\n\n"
+        print data['excisions']
+        print "\n\n\n\n\n\n\n\n"
         return data
     finally:
         session.close()
@@ -78,6 +85,17 @@ def get_demographics(geo, session, country, level, year):
     return demographics_data
 
 
+def get_land_excisions(geo, session):
+    excisions_dist = LOCATIONNOTFOUND
+    with dataset_context(year='2016'):
+        try:
+            excisions_dist, _ = get_stat_data(['excisions'], geo, session)
+        except Exception:
+            pass
+
+    return excisions_dist
+
+
 def get_population(geo, session, country, level, year):
     group_dist, total_population_group = LOCATIONNOTFOUND, 0
     residence_dist, total_population_residence = LOCATIONNOTFOUND, 0
@@ -87,10 +105,7 @@ def get_population(geo, session, country, level, year):
             db_table, geo, session, table_fields=[db_column_name])
     except Exception:
         pass
-    except DataNotFound:
-        pass
-    except ValueError:
-        pass
+
 
     try:
         db_table = db_column_name = 'population_residence_' + str(year)
@@ -98,10 +113,6 @@ def get_population(geo, session, country, level, year):
             db_table, geo, session,
             table_fields=[db_column_name])
     except Exception:
-        pass
-    except DataNotFound:
-        pass
-    except ValueError:
         pass
 
     total_population = 0
