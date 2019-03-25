@@ -110,18 +110,23 @@ class GeographyDetailView(BaseGeographyDetailView):
         return ['profile/profile_detail_%s.html' % self.profile_name, 'profile/profile_detail.html']
 
 
-class GeographyCompareView(BaseGeographyDetailView):
+class GeographyCompareView(TemplateView):
     template_name = 'profile/head2head.html'
     default_geo_version = None
 
-    def dispatch(self, request, *args, **kwargs):
-        pass
-        
-    def get_context_data(self, geo_id1, geo_id2):
-        page_context = {
-            'geo_id1': geo_id1,
-            'geo_id2': geo_id2,
-        }
+    def get_context_data(self, **kwargs):
+        page_context = {}
+        version = self.request.GET.get('geo_version', self.default_geo_version)
+        self.geo_id1 = self.kwargs.get('geo_id1', None)
+        self.geo_id2 = self.kwargs.get('geo_id2', None)
+
+        self.geo_level1, self.geo_code1 = self.geo_id1.split('-', 1)
+        self.geo_level2, self.geo_code2 = self.geo_id2.split('-', 1)
+        self.geo1 = geo_data.get_geography(
+            self.geo_code1, self.geo_level1, version)
+        self.geo2 = geo_data.get_geography(
+            self.geo_code2, self.geo_level2, version)
+
         # load the profile
         profile_method = settings.HURUMAP.get('profile_builder', None)
         self.profile_name = settings.HURUMAP.get('default_profile', 'default')
@@ -134,18 +139,6 @@ class GeographyCompareView(BaseGeographyDetailView):
         year = self.request.GET.get('release')
         if settings.HURUMAP['latest_release_year'] == year:
             year = 'latest'
-
-        version = self.request.GET.get('geo_version', self.default_geo_version)
-
-        level, code = geo_id1.split('-', 1)
-        self.geo1 = geo_data.get_geography(code, level, version)
-        page_context['geo1'] = geo_data.get_geography(code, level)
-        page_context['geo1_slug'] = '-' + slugify(page_context['geo1'])
-
-        level, code = geo_id2.split('-', 1)
-        self.geo2 = geo_data.get_geography(code, level, version)
-        page_context['geo2'] = geo_data.get_geography(code, level)
-        page_context['geo2_slug'] = '-' + slugify(page_context['geo2'])
 
         with dataset_context(year=year):
             profile_data1 = profile_method(
@@ -175,9 +168,6 @@ class GeographyCompareView(BaseGeographyDetailView):
         primary_releases = get_page_releases_per_country(
             settings.HURUMAP['primary_dataset_name'], self.geo1, year)
 
-        print("\n\n\n\n\n")
-        print(profile_data_json_one)
-
         page_context.update({
             'profile_data_json_one': profile_data_json_one,
             'profile_data_json_two':profile_data_json_two,
@@ -188,7 +178,3 @@ class GeographyCompareView(BaseGeographyDetailView):
         page_context['head2head'] = True
 
         return page_context
-
-    def get_geography(self, geo_id):
-        # stub this out to prevent the subclass for calling out to CR
-        pass
