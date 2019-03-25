@@ -11,7 +11,7 @@ import {
   CountryPageHeader,
   HomePageHeader,
   ProfilePageHeader,
-  ComparePageNav
+  ComparePageHeader
 } from './components/Header';
 import CountryPartners from './components/CountryPartners';
 import Data from './components/Data';
@@ -44,6 +44,30 @@ const PROPS = {
       }
     },
     primary_releases: { active: {}, other: [] }
+  },
+  profileOne: window.profileDataJsonOne || {
+    demographics: {},
+    geography: {
+      full_geoid: '',
+      this: {
+        square_kms: '',
+        short_name: '',
+        parents: []
+      }
+    },
+    primary_releases: { active: {}, other: [] }
+  },
+  profileTwo: window.profileDataJsonTwo || {
+    demographics: {},
+    geography: {
+      full_geoid: '',
+      this: {
+        square_kms: '',
+        short_name: '',
+        parents: []
+      }
+    },
+    primary_releases: { active: {}, other: [] }
   }
 };
 
@@ -59,7 +83,7 @@ const renderApp = (Component, id) => {
 renderApp(HomePageHeader, 'dominionHomePageHeader');
 renderApp(CountryPageHeader, 'dominionCountryPageHeader');
 renderApp(ProfilePageHeader, 'dominionProfilePageHeader');
-renderApp(ComparePageNav, 'dominionComparePageNav');
+renderApp(ComparePageHeader, 'dominionComparePageHeader');
 renderApp(AboutCountry, 'dominionCountryAbout');
 renderApp(ProfileTabs, 'dominionProfileTabs');
 renderApp(Video, 'dominionVideo');

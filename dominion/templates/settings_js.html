@@ -7,8 +7,10 @@
   {% if profile_data_json %}
      var profileDataJson = {{ profile_data_json }};
   {% else %}
-    // compare page has no profile_data_json: initializing this for compare page
-     var profileDataJson = {};
+    // compare page has multiple profile_data_json: initialize them here
+     var profileDataJson = {}
+     var profileDataJsonOne = {{ profile_data_json_one }};
+     var profileDataJsonTwo = {{ profile_data_json_two }};
   {% endif %}
 
   // homepage has no geography: initialize geo_code

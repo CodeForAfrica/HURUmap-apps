@@ -1,11 +1,11 @@
 import React from 'react';
-import { Grid } from '@material-ui/core';
 
 import Header from './Header';
 
 import HomeHero from '../Hero/HomeHero';
 import CountryHero from '../Hero/CountryHero';
 import ProfileHero from '../Hero/ProfileHero';
+import CompareHero from '../Hero/CompareHero';
 
 export function HomePageHeader(props) {
   return (
@@ -31,10 +31,10 @@ export function ProfilePageHeader(props) {
   );
 }
 
-export function ComparePageNav(props) {
+export function ComparePageHeader(props) {
   return (
     <Header {...props}>
-      <Grid style={{ visibility: 'hidden' }} />
+      <CompareHero />
     </Header>
   );
 }

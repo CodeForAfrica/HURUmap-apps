@@ -119,27 +119,62 @@ class GeographyCompareView(TemplateView):
             'geo_id1': geo_id1,
             'geo_id2': geo_id2,
         }
+        # load the profile
+        profile_method = settings.HURUMAP.get('profile_builder', None)
+        self.profile_name = settings.HURUMAP.get('default_profile', 'default')
 
-        release = self.request.GET.get('release')
+        if not profile_method:
+            raise ValueError(
+                "You must define WAZIMAP.profile_builder in settings.py")
+        profile_method = import_string(profile_method)
+
+        year = self.request.GET.get('release')
+        if settings.HURUMAP['latest_release_year'] == year:
+            year = 'latest'
+
         version = self.request.GET.get('geo_version', self.default_geo_version)
-        try:
-            level, code = geo_id1.split('-', 1)
-            self.geo = geo_data.get_geography(code, level, version)
-            year = self.request.GET.get(
-                'release', get_primary_release_year_per_geography(self.geo))
-            page_context['geo1'] = geo_data.get_geography(code, level)
-            page_context['geo1_slug'] = '-' + slugify(page_context['geo1'])
-            page_context['geo1_release_year'] = str(year)
 
-            level, code = geo_id2.split('-', 1)
-            page_context['geo2'] = geo_data.get_geography(code, level)
-            page_context['geo2_slug'] = '-' + slugify(page_context['geo2'])
-            page_context['geo2_release_year'] = str(year)
-            # Get Release
-            page_context['geography'] = self.geo.as_dict_deep()
-            page_context['compare_primary_releases'] = get_page_releases_per_country(
-                settings.HURUMAP['primary_dataset_name'], self.geo, year)
-        except (ValueError, LocationNotFound):
-            raise Http404
+        level, code = geo_id1.split('-', 1)
+        self.geo1 = geo_data.get_geography(code, level, version)
+        page_context['geo1'] = geo_data.get_geography(code, level)
+        page_context['geo1_slug'] = '-' + slugify(page_context['geo1'])
+
+        level, code = geo_id2.split('-', 1)
+        self.geo2 = geo_data.get_geography(code, level, version)
+        page_context['geo2'] = geo_data.get_geography(code, level)
+        page_context['geo2_slug'] = '-' + slugify(page_context['geo2'])
+
+        with dataset_context(year=year):
+            profile_data1 = profile_method(
+                self.geo1, self.profile_name, self.request)
+            profile_data2 = profile_method(
+                self.geo2, self.profile_name, self.request)
+
+        profile_data1['geography'] = self.geo1.as_dict_deep()
+        profile_data1['geography'] = self.geo2.as_dict_deep()
+        profile_data1['primary_releases'] = get_page_releases_per_country(
+            settings.HURUMAP['primary_dataset_name'], self.geo1, year)
+        profile_data2['primary_releases'] = get_page_releases_per_country(
+            settings.HURUMAP['primary_dataset_name'], self.geo2, year)
+
+        profile_data1 = enhance_api_data(profile_data1)
+        page_context.update(profile_data1)
+
+        profile_data2 = enhance_api_data(profile_data2)
+        page_context.update(profile_data2)
+
+        profile_data_json_one = SafeString(
+            json.dumps(profile_data1, cls=DjangoJSONEncoder))
+
+        profile_data_json_two = SafeString(
+            json.dumps(profile_data2, cls=DjangoJSONEncoder))
+
+        page_context.update({
+            'profile_data_json_one': profile_data_json_one,
+            'profile_data_json_two':profile_data_json_two
+        })
+
+        # is this a head-to-head view?
+        page_context['head2head'] = True
 
         return page_context
