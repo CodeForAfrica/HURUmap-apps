@@ -1,7 +1,7 @@
 {% extends 'profile/profile_detail.html' %} {% load humanize lookup staticfiles hashtospace %}
 
 {% block header %}
-    {% include 'blocks/profilepage_header.html' %}
+  {% include 'blocks/profilepage_header.html' %}
 {% endblock header %}
 
 {% block profile_preamble %}
@@ -11,6 +11,19 @@
   <div id="dominionProfileTabs"></div>
   <div id="profile-detail">
     {% block profile_detail_contents %}
+      {% if not excisions.is_missing %}
+        <article id="excisions" class="clearfix">
+          <div class="section-container">
+            <h1>Land Excisions</h1>
+            <section class="clearfix stat-row">
+              <div class="column-half"
+                   id="chart-pie-excisions-excisions_dist"
+                   data-stat-type="scaled-percentage"
+                   data-chart-title="Legal vs. Illegal Land Excisions"></div>
+            </section>
+          </div>
+        </article>
+      {% endif %}
       {% if not landsales.is_missing %}
         <article id="agricultural-land-sales" class="clearfix">
           <div class="section-container">
@@ -807,7 +820,7 @@
   </div>
 
   {% if not head2head %}
-    <div id="dominionProfileReleasesSection" />
+    <div id="dominionProfileReleasesSection"/>
     {% include 'blocks/country_partners.html' %}
     {% include 'blocks/partners.html' %}
   {% endif %}
