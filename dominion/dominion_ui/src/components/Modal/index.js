@@ -36,9 +36,12 @@ function Modal({ classes, children, isOpen, onEscapeKeyDown }) {
 }
 
 Modal.propTypes = {
-  classes: PropTypes.shape().isRequired,
-  children: PropTypes.isRequired,
-  isOpen: PropTypes.isRequired,
+  classes: PropTypes.shape({}).isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired,
+  isOpen: PropTypes.bool.isRequired,
   onEscapeKeyDown: PropTypes.func.isRequired
 };
 

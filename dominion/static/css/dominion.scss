@@ -6,31 +6,33 @@
  */
 
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,700");
 
 $brand-color-primary: #0e4a48;
 $brand-color-light-green: #b6d9e2;
 $brand-color-solid-light-green: #269c94;
 $brand-color-solid-green: #279c94;
 $brand-color-gray: #b1b1b1;
-$font-raleway: 'Raleway', sans-serif;
+$font-raleway: "Raleway", sans-serif;
 
 a {
-    color: #e7e452;
-    &:hover {
-      color: inherit;
-    }
+  color: #e7e452;
+  &:hover {
+    color: inherit;
+  }
 }
 
 body {
-    padding-top: 0 !important;
+  padding-top: 0 !important;
 }
 
 // Heading font
 h1 {
   font-size: 3em;
 }
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-family: $font-raleway;
   font-weight: 700;
 }
@@ -42,13 +44,16 @@ h1, h2, h3 {
   color: #fff;
 }
 
-.bg-color-white, .bg-white {
+.bg-color-white,
+.bg-white {
   background-color: #fff;
 }
-.bg-color-gradient, .bg-gradient {
+.bg-color-gradient,
+.bg-gradient {
   background-image: linear-gradient(to right, #0e4b49, #16635f, #269a92);
 }
-.bg-color-green, .bg-green {
+.bg-color-green,
+.bg-green {
   background-color: $brand-color-solid-green;
 }
 
@@ -60,7 +65,7 @@ h1, h2, h3 {
   font-weight: 700;
 }
 .text-primary {
-  color: $brand-color-primary
+  color: $brand-color-primary;
 }
 .text-white {
   color: white;
@@ -72,7 +77,12 @@ h1, h2, h3 {
 
 // Colors
 .bg-color-gradient {
-  background-image: linear-gradient(to right, #0e4b49, #16635f, #269a92) !important;
+  background-image: linear-gradient(
+    to right,
+    #0e4b49,
+    #16635f,
+    #269a92
+  ) !important;
 }
 .bg-color-solid-green {
   background-color: $brand-color-solid-green;
@@ -80,7 +90,7 @@ h1, h2, h3 {
 
 // Text
 .text-white {
-    color: white;
+  color: white;
 }
 .text-primary {
   color: #084a49;
@@ -101,11 +111,11 @@ h1, h2, h3 {
 span.img-bg {
   display: inline-block;
   padding: 24px;
-  font-size:12px;
+  font-size: 12px;
 }
 
 .text-uppercase {
-  text-transform: uppercase!important;
+  text-transform: uppercase !important;
 }
 
 // Section containers
@@ -121,7 +131,7 @@ span.img-bg {
   }
 }
 .section-title-icon {
-  font-size:12px;
+  font-size: 12px;
   display: flex;
   justify-content: center;
   span {
@@ -133,7 +143,8 @@ span.img-bg {
     justify-content: flex-end;
     align-items: center;
   }
-  img, svg {
+  img,
+  svg {
     margin-bottom: 5px;
     max-width: 30px;
     max-height: 30px;
@@ -142,7 +153,6 @@ span.img-bg {
     text-decoration: none;
   }
 }
-
 
 // Global Components
 
@@ -159,7 +169,13 @@ span.img-bg {
 // Homepage
 
 #homepage {
-    padding-top: 0;
+  padding-top: 0;
+}
+
+// Profile page
+
+#profile .content-container {
+  padding-top: 0;
 }
 
 // Map Explainer; floating box
@@ -217,7 +233,8 @@ span.img-bg {
 }
 
 // Nav
-.home-nav img, .home-nav svg {
+.home-nav img,
+.home-nav svg {
   max-width: 30px;
   max-height: 30px;
 }
@@ -245,10 +262,20 @@ span.img-bg {
         background-color: $brand-color-solid-green;
         line-height: 2;
         &.active {
-          background-image: linear-gradient(to right, #0e4b49, #16635f, #269a92);
+          background-image: linear-gradient(
+            to right,
+            #0e4b49,
+            #16635f,
+            #269a92
+          );
         }
         &:hover {
-          background-image: linear-gradient(to right, #0e4b49, #16635f, #269a92);
+          background-image: linear-gradient(
+            to right,
+            #0e4b49,
+            #16635f,
+            #269a92
+          );
         }
       }
     }
@@ -260,10 +287,12 @@ span.img-bg {
 
 // How It Works
 .how-it-works {
-  img, svg {
+  img,
+  svg {
     max-width: 50px;
     max-height: 50px;
-    path, rect {
+    path,
+    rect {
       fill: #084a49;
     }
   }
@@ -306,7 +335,7 @@ span.img-bg {
 
     button {
       border-radius: 24px;
-      padding: .6rem 1.25rem;
+      padding: 0.6rem 1.25rem;
       max-width: 140px;
       margin: 0 auto;
       text-overflow: ellipsis;
@@ -315,14 +344,16 @@ span.img-bg {
       border: 0px;
       font-family: $font-raleway;
     }
-
   }
 }
 
 // Partners
 .showcase-partners .logos {
-  a { text-decoration: none; }
-  img, svg {
+  a {
+    text-decoration: none;
+  }
+  img,
+  svg {
     margin: 10px 20px;
     max-width: 320px;
     max-height: 80px;
@@ -331,36 +362,36 @@ span.img-bg {
 
 // Map Tooltip
 .map-tooltip {
-    background-color: $brand-color-gray
+  background-color: $brand-color-gray;
 }
 
 /* LAYOUT */
 #page-footer {
-    background: none;
-    border: none;
+  background: none;
+  border: none;
 }
 
 /* LAYOUT */
 #page-header,
 #page-header .wrapper {
-    padding: 0;
-    background-color: unset;
+  padding: 0;
+  background-color: unset;
 }
 .wrapper {
-    margin: 0;
+  margin: 0;
 }
 
 /* MEDIA QUERIES */
 @media only screen and (min-width: 1140px) {
-    .wrapper {
-        width: auto;
-        margin: 0;
-    }
+  .wrapper {
+    width: auto;
+    margin: 0;
+  }
 }
 
 //wazimap conflicts with search
 input:focus {
-    box-shadow: unset;
+  box-shadow: unset;
 }
 
 input[type="text"] {
@@ -374,32 +405,33 @@ input[type="text"] {
 
 // Map zoom
 .leaflet-control-zoom {
-    margin-bottom: 50px !important;
+  margin-bottom: 50px !important;
 }
 
 // Map attribution
 .leaflet-container a {
-    color: grey !important;
+  color: grey !important;
 }
 #profile .content-container {
   padding: 0;
   background-color: #f1f1ed;
+  color: grey !important;
 }
 html {
-    background-color: unset;
+  background-color: unset;
 }
 .head2head-wrapper {
-    background-image: url('/static/img/background.png');
-    background-color: unset;
-    padding: 26px 140px;
+  background-image: url("/static/img/background.png");
+  background-color: unset;
+  padding: 26px 140px;
 }
 
 .profile-head2head-view .frame-right {
-    border-left: 5px solid;
-    border-color: unset;
+  border-left: 5px solid;
+  border-color: unset;
 }
 #profile-detail {
-  margin:0 120px;
+  margin: 0 120px;
   padding-top: 50px;
 }
 article {
@@ -410,10 +442,10 @@ article .section-container {
   margin-left: 0;
   padding: 3em 2em;
 }
-.profile-detail-header{
+.profile-detail-header {
   color: #2c2c2a;
   font-size: 24px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
 }
 .stat-row {
   border: 0;

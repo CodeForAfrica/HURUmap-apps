@@ -91,22 +91,32 @@ const styles = theme => ({
     margin: 0,
     fontFamily: theme.typography.fontFamily,
     fontWeight: 500,
-    fontSize: 'x-small'
+    fontSize: 'x-small',
+    textTransform: 'uppercase'
   }
 });
 
 class Navigation extends Component {
   renderMenuList() {
-    const { classes } = this.props;
+    let showcaseLink = '#dominionShowcase';
+    const {
+      classes,
+      dominion: { selectedCountry }
+    } = this.props;
+    if (selectedCountry) {
+      // In order for showcase link to work in profile pages,
+      // always start with country slug
+      showcaseLink = `/${selectedCountry.slug}${showcaseLink}`;
+    }
     return (
       <MenuList className={classes.menuList}>
         {[
           { title: 'About', link: '/about' },
-          { title: 'Showcase', link: '#dominionShowcase' },
+          { title: 'Showcase', link: `${showcaseLink}` },
           { title: 'Resources', link: '/resources' },
           { title: 'Contact', link: '/contact' }
         ].map(menu => (
-          <MenuItem item className={classes.menuListItem}>
+          <MenuItem key={menu.link} className={classes.menuListItem}>
             <Link variant="body1" className={classes.link} href={menu.link}>
               {menu.title}
             </Link>
@@ -117,8 +127,10 @@ class Navigation extends Component {
   }
 
   renderBrand() {
-    const { classes } = this.props;
-    const selectedCountry = window.selected_country;
+    const {
+      classes,
+      dominion: { selectedCountry }
+    } = this.props;
 
     return (
       <Link
@@ -132,9 +144,7 @@ class Navigation extends Component {
           className={classes.img}
         />
         {selectedCountry ? (
-          <p className={classes.logoCountryName}>
-            {selectedCountry.name.toUpperCase()}
-          </p>
+          <p className={classes.logoCountryName}>{selectedCountry.name}</p>
         ) : null}
       </Link>
     );
@@ -228,10 +238,12 @@ class Navigation extends Component {
   }
 
   render() {
-    const { classes, width, openModal, toggleModal } = this.props;
+    const { classes, width, openModal, toggleModal, dominion } = this.props;
+    const { countries } = dominion;
     const nav = isWidthDown('sm', width)
       ? this.renderMobileMenu()
       : this.renderDesktopMenu();
+
     return (
       <React.Fragment>
         <Grid container className={classes.wrapper}>
@@ -243,7 +255,10 @@ class Navigation extends Component {
         >
           <Grid container className={classes.wrapper}>
             {nav}
-            <Search handleIconClick={toggleModal('search')} />
+            <Search
+              handleIconClick={toggleModal('search')}
+              dominion={dominion}
+            />
           </Grid>
         </Modal>
         <Modal
@@ -252,7 +267,10 @@ class Navigation extends Component {
         >
           <Grid container className={classes.wrapper}>
             {nav}
-            <PortalChooser handleClose={toggleModal('portal')} />
+            <PortalChooser
+              handleClose={toggleModal('portal')}
+              countries={countries}
+            />
           </Grid>
         </Modal>
       </React.Fragment>
@@ -261,10 +279,15 @@ class Navigation extends Component {
 }
 
 Navigation.propTypes = {
-  classes: PropTypes.isRequired,
-  width: PropTypes.isRequired,
-  openModal: PropTypes.isRequired,
-  toggleModal: PropTypes.isRequired
+  classes: PropTypes.shape({}).isRequired,
+  width: PropTypes.string.isRequired,
+  openModal: PropTypes.string,
+  toggleModal: PropTypes.func.isRequired,
+  dominion: PropTypes.shape({}).isRequired
+};
+
+Navigation.defaultProps = {
+  openModal: null
 };
 
 export default withWidth()(withStyles(styles)(Navigation));

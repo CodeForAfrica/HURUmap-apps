@@ -36,7 +36,7 @@ const styles = theme => ({
   }
 });
 
-function HowItWorks({ classes }) {
+function HowItWorks({ classes, dominion }) {
   return (
     <Grid
       container
@@ -51,14 +51,15 @@ function HowItWorks({ classes }) {
       </Hidden>
 
       <Grid item className={classes.description}>
-        <Description />
+        <Description dominion={dominion} />
       </Grid>
     </Grid>
   );
 }
 
 HowItWorks.propTypes = {
-  classes: PropTypes.shape().isRequired
+  classes: PropTypes.shape().isRequired,
+  dominion: PropTypes.shape({}).isRequired
 };
 
 export default withStyles(styles)(HowItWorks);

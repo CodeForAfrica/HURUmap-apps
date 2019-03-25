@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { PropTypes } from 'prop-types';
-import { Grid, Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import classNames from 'classnames';
@@ -53,7 +53,7 @@ const styles = theme => ({
       color: '#8d8d8c',
       fontSize: '0.688em',
       position: 'absolute',
-      bottom: '18%',
+      bottom: '22%',
       display: 'inline-block',
       right: '4%'
     },
@@ -76,7 +76,10 @@ class ProfileHero extends Component {
 
   async componentDidMount() {
     // get level from mapit
-    const geoid = window.geography.full_geoid;
+    const {
+      profile: { geography = {} }
+    } = this.props;
+    const { full_geoid: geoid } = geography.this || {};
     const api = createAPI();
     const level = await api.getGeoLevel(geoid);
 
@@ -87,49 +90,39 @@ class ProfileHero extends Component {
   }
 
   render() {
-    const { level, geoid } = this.state;
-    const { classes } = this.props;
-    const { profileDataJson } = window;
-    const { head2head } = window;
+    const { classes, dominion, profile } = this.props;
+    const { head2head } = dominion;
+    const {
+      demographics = {},
+      primary_releases: primaryReleases = {},
+      geography = { this: {} }
+    } = profile;
     let population;
+    if (demographics.total_population && demographics.total_population.values) {
+      population = demographics.total_population.values.this.toFixed(0);
+    }
     let populationDensity;
-    let primaryReleases;
-    let squarekms;
-    let profileName;
-    let parentLinks;
-    if (profileDataJson) {
-      primaryReleases = profileDataJson.primary_releases;
-      squarekms = profileDataJson.geography.this.square_kms;
+    if (
+      demographics.population_density &&
+      demographics.population_density.values
+    ) {
+      populationDensity = demographics.population_density.values.this.toFixed(
+        1
+      );
+    }
+    const { active: activeRelease } = primaryReleases;
+    const { parents: parentLinks } = geography;
+    let { square_kms: squarekms } = geography.this;
+    squarekms = parseFloat(squarekms);
+    if (!Number.isNaN(squarekms)) {
       if (squarekms < 1.0) {
         squarekms = squarekms.toFixed(3);
       } else {
         squarekms = squarekms.toFixed(1);
       }
-      profileName = profileDataJson.geography.this.short_name;
-      parentLinks = profileDataJson.geography.parents;
-
-      if (
-        Object.prototype.hasOwnProperty.call(profileDataJson, 'demographics')
-      ) {
-        const { demographics } = profileDataJson;
-
-        if (
-          Object.prototype.hasOwnProperty.call(demographics, 'total_population')
-        ) {
-          population = demographics.total_population.values.this.toFixed(0);
-        }
-        if (
-          Object.prototype.hasOwnProperty.call(
-            demographics,
-            'population_density'
-          )
-        ) {
-          populationDensity = demographics.population_density.values.this.toFixed(
-            1
-          );
-        }
-      }
     }
+    const { short_name: profileName } = geography.this;
+    const { level, geoid } = this.state;
 
     return (
       <Hero>
@@ -155,22 +148,22 @@ class ProfileHero extends Component {
               </Typography>
             ) : null}
           </Typography>
-          {population ? (
+          {population && (
             <HeroDetail label="Population">{population}</HeroDetail>
-          ) : null}
-          {squarekms ? (
+          )}
+          {squarekms && (
             <HeroDetail small label="square kilometers">
               {squarekms}
             </HeroDetail>
-          ) : null}
-          {populationDensity ? (
+          )}
+          {populationDensity && (
             <HeroDetail small label="people per square kilometer">
               {populationDensity}
             </HeroDetail>
-          ) : null}
-          {head2head ? null : (
+          )}
+          {!head2head && (
             <Search
-              handleIconClick={null}
+              dominion={dominion}
               isComparisonSearch
               placeholder="Compare this with"
               thisGeoId={geoid}
@@ -178,29 +171,31 @@ class ProfileHero extends Component {
             />
           )}
         </HeroTitleGrid>
-        <Grid
+        <div
           id="slippy-map"
           className={classNames(classes.map, { [classes.h2hMap]: head2head })}
         />
-        {primaryReleases &&
-        Object.prototype.hasOwnProperty.call(primaryReleases, 'active') ? (
+        {activeRelease && (
           <Typography
             variant="body2"
             className={classNames(classes.release, {
-              [classes.h2h2hRelease]: head2head
+              [classes.h2hRelease]: head2head
             })}
+            component="div"
           >
-            {primaryReleases.active.citation}
+            {activeRelease.citation}
             <ReleaseDropdown primaryReleases={primaryReleases} fromHero />
           </Typography>
-        ) : null}
+        )}
       </Hero>
     );
   }
 }
 
 ProfileHero.propTypes = {
-  classes: PropTypes.isRequired
+  classes: PropTypes.shape({}).isRequired,
+  dominion: PropTypes.shape({}).isRequired,
+  profile: PropTypes.shape({}).isRequired
 };
 
 export default withStyles(styles)(ProfileHero);

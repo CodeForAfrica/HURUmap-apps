@@ -41,7 +41,7 @@ class Description extends Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, dominion } = this.props;
     const { open } = this.state;
 
     return (
@@ -55,7 +55,11 @@ class Description extends Component {
         <div className={classes.viewVideos}>
           <ViewVideos onClick={this.toggleState} />
 
-          <PlayerModal open={open} handleClose={this.toggleState} />
+          <PlayerModal
+            dominion={dominion}
+            open={open}
+            handleClose={this.toggleState}
+          />
         </div>
       </div>
     );
@@ -63,7 +67,8 @@ class Description extends Component {
 }
 
 Description.propTypes = {
-  classes: PropTypes.shape().isRequired
+  classes: PropTypes.shape().isRequired,
+  dominion: PropTypes.shape({}).isRequired
 };
 
 export default withStyles(styles)(Description);

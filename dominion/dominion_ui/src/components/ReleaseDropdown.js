@@ -87,6 +87,7 @@ class ReleaseDropdown extends Component {
   render() {
     const { classes, primaryReleases, fromHero } = this.props;
     const { menuOpen } = this.state;
+
     return (
       <Grid className={classes.root}>
         <Button
@@ -123,8 +124,8 @@ class ReleaseDropdown extends Component {
           open={menuOpen}
           onClose={this.closeReleaseMenu}
         >
-          <Paper>
-            <ClickAwayListener onClickAway={this.closeReleaseMenu}>
+          <ClickAwayListener onClickAway={this.closeReleaseMenu}>
+            <Paper>
               <MenuItem
                 component="a"
                 href={`?release=${primaryReleases.active.year}`}
@@ -135,6 +136,7 @@ class ReleaseDropdown extends Component {
               {primaryReleases.other.length
                 ? primaryReleases.other.map(release => (
                     <MenuItem
+                      key={release.year}
                       component="a"
                       href={`?release=${release.year}`}
                       className={classes.releasesMenuItem}
@@ -143,8 +145,8 @@ class ReleaseDropdown extends Component {
                     </MenuItem>
                   ))
                 : null}
-            </ClickAwayListener>
-          </Paper>
+            </Paper>
+          </ClickAwayListener>
         </Popper>
       </Grid>
     );
@@ -152,9 +154,9 @@ class ReleaseDropdown extends Component {
 }
 
 ReleaseDropdown.propTypes = {
-  classes: PropTypes.isRequired,
-  primaryReleases: PropTypes.isRequired,
-  fromHero: PropTypes.bool
+  classes: PropTypes.shape({}).isRequired,
+  fromHero: PropTypes.bool,
+  primaryReleases: PropTypes.shape({}).isRequired
 };
 
 ReleaseDropdown.defaultProps = {

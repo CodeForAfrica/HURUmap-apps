@@ -58,7 +58,7 @@ class Video extends React.Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, dominion } = this.props;
     const { open } = this.state;
 
     return (
@@ -89,7 +89,7 @@ class Video extends React.Component {
 
             <Grid item className={classes.buttonGrid}>
               <Button
-                variant="outline"
+                variant="outlined"
                 color="primary"
                 size="large"
                 className={classes.button}
@@ -100,14 +100,19 @@ class Video extends React.Component {
             </Grid>
           </Grid>
         </Grid>
-        <PlayerModal open={open} handleClose={this.toggleModal} />
+        <PlayerModal
+          dominion={dominion}
+          open={open}
+          handleClose={this.toggleModal}
+        />
       </Grid>
     );
   }
 }
 
 Video.propTypes = {
-  classes: PropTypes.shape().isRequired
+  classes: PropTypes.shape().isRequired,
+  dominion: PropTypes.shape({}).isRequired
 };
 
 export default withStyles(styles)(Video);

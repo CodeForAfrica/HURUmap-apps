@@ -118,8 +118,7 @@ const styles = theme => ({
   }
 });
 
-function PortalChooser({ classes, children, handleClose }) {
-  const countries = window.dominion_countries;
+function PortalChooser({ classes, children, countries, handleClose }) {
   return (
     <Grid
       container
@@ -191,9 +190,13 @@ function PortalChooser({ classes, children, handleClose }) {
 }
 
 PortalChooser.propTypes = {
-  classes: PropTypes.isRequired,
-  children: PropTypes.isRequired,
-  handleClose: PropTypes.isRequired
+  classes: PropTypes.shape({}).isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired,
+  countries: PropTypes.shape({}).isRequired,
+  handleClose: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(PortalChooser);

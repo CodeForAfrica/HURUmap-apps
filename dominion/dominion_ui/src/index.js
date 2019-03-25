@@ -21,16 +21,38 @@ import Partners from './components/Partners';
 import ProfileTabs from './components/ProfileTabs';
 import Showcase from './components/Showcase';
 import Video from './components/Video';
-import ProfileReleasesSection from './components/ProfileReleases';
+import ProfileReleases from './components/ProfileReleases';
 
 library.add(fab);
+
+const PROPS = {
+  dominion: {
+    countries: window.countries || {},
+    selectedCountry: window.selected_country,
+    head2head: window.head2head
+  },
+  countries: window.countries || {},
+  selectedCountry: window.selected_country || {},
+  profile: window.profileDataJson || {
+    demographics: {},
+    geography: {
+      full_geoid: '',
+      this: {
+        square_kms: '',
+        short_name: '',
+        parents: []
+      }
+    },
+    primary_releases: { active: {}, other: [] }
+  }
+};
 
 const renderApp = (Component, id) => {
   const el = document.getElementById(id);
   if (el) {
     const App = withRoot(Component);
 
-    ReactDOM.render(<App />, el);
+    ReactDOM.render(<App {...PROPS} />, el);
   }
 };
 
@@ -46,6 +68,6 @@ renderApp(Showcase, 'dominionShowcase');
 renderApp(Data, 'dominionData');
 renderApp(AboutDominion, 'dominionAbout');
 renderApp(CountryPartners, 'dominionCountryPartners');
-renderApp(ProfileReleasesSection, 'dominionProfileReleasesSection');
+renderApp(ProfileReleases, 'dominionProfileReleasesSection');
 renderApp(Partners, 'dominionPartners');
 renderApp(Footer, 'dominionFooter');

@@ -50,8 +50,9 @@ function HomeHeroMap({ classes }) {
       className={classes.mapSection}
     >
       <Typography
-        variant="fontSmallDefault"
+        variant="h6"
         className={classes.verticalAlignText}
+        component="div"
       >
         <img src={map} alt="Country Map" className={classes.mapImage} />
         South Africa &nbsp;&nbsp;
@@ -63,7 +64,7 @@ function HomeHeroMap({ classes }) {
 }
 
 HomeHeroMap.propTypes = {
-  classes: PropTypes.isRequired
+  classes: PropTypes.shape({}).isRequired
 };
 
 export default withStyles(styles)(HomeHeroMap);

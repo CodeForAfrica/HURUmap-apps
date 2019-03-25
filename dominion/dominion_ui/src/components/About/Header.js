@@ -24,8 +24,11 @@ function Header({ classes, children }) {
 }
 
 Header.propTypes = {
-  classes: PropTypes.shape().isRequired,
-  children: PropTypes.isRequired
+  classes: PropTypes.shape({}).isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired
 };
 
 export default withWidth()(withStyles(styles)(Header));

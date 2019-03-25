@@ -7,33 +7,33 @@ import HomeHero from '../Hero/HomeHero';
 import CountryHero from '../Hero/CountryHero';
 import ProfileHero from '../Hero/ProfileHero';
 
-export function HomePageHeader() {
+export function HomePageHeader(props) {
   return (
-    <Header>
+    <Header {...props}>
       <HomeHero />
     </Header>
   );
 }
 
-export function CountryPageHeader() {
+export function CountryPageHeader(props) {
   return (
-    <Header>
+    <Header {...props}>
       <CountryHero />
     </Header>
   );
 }
 
-export function ProfilePageHeader() {
+export function ProfilePageHeader(props) {
   return (
-    <Header>
+    <Header {...props}>
       <ProfileHero />
     </Header>
   );
 }
 
-export function ComparePageNav() {
+export function ComparePageNav(props) {
   return (
-    <Header>
+    <Header {...props}>
       <Grid style={{ visibility: 'hidden' }} />
     </Header>
   );

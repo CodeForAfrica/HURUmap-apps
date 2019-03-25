@@ -84,28 +84,21 @@ const styles = theme => ({
   }
 });
 
-function ProfileReleasesSection({ classes }) {
-  const { profileDataJson } = window;
-  let primaryReleases;
-  if (
-    profileDataJson &&
-    Object.prototype.hasOwnProperty.call(profileDataJson, 'primary_releases')
-  ) {
-    primaryReleases = profileDataJson.primary_releases;
-  }
+function ProfileReleasesSection({ classes, profile }) {
   const citationLink = link => (
     <A className={classes.link} href={link}>
       {link}
     </A>
   );
+  const { primary_releases: primaryReleases = {} } = profile;
+  const { active: activeRelease } = primaryReleases;
 
   return (
-    <Grid container direction="row" className={classes.root}>
-      {primaryReleases &&
-      Object.prototype.hasOwnProperty.call(primaryReleases, 'active') ? (
+    <Grid container className={classes.root}>
+      {activeRelease && (
         <Grid item className={classes.description}>
           <Typography className={classes.descriptionTitle}>
-            {primaryReleases.active.citation}
+            {activeRelease.citation}
           </Typography>
           <Typography className={classes.descriptionText}>
             Municipal Elections 2016: Electoral Commission of South Africa
@@ -151,7 +144,7 @@ function ProfileReleasesSection({ classes }) {
             )}
           </Typography>
         </Grid>
-      ) : null}
+      )}
       <Grid item className={classes.releaseSelector}>
         <ReleaseDropdown primaryReleases={primaryReleases} />
       </Grid>
@@ -160,7 +153,8 @@ function ProfileReleasesSection({ classes }) {
 }
 
 ProfileReleasesSection.propTypes = {
-  classes: PropTypes.shape().isRequired
+  classes: PropTypes.shape().isRequired,
+  profile: PropTypes.shape({}).isRequired
 };
 
 export default withStyles(styles)(ProfileReleasesSection);

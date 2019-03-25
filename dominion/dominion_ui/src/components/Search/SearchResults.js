@@ -54,7 +54,7 @@ const styles = theme => ({
     fontWeight: '600',
     opacity: '0.5',
     marginRight: '20px',
-    width: '60px',
+    width: '80px',
     textTransform: 'capitalize',
     textAlign: 'right',
     color: 'inherit'
@@ -82,8 +82,7 @@ const styles = theme => ({
 
 const maxResults = 6;
 
-function renderHref(result, thisGeoId, isComparisonSearch) {
-  const codeType = window.MAPIT.code_type;
+function renderHref(codeType, result, thisGeoId, isComparisonSearch) {
   let href;
   if (isComparisonSearch) {
     href = `/compare/${thisGeoId}/vs/${result.codes[codeType]}/`;
@@ -95,11 +94,16 @@ function renderHref(result, thisGeoId, isComparisonSearch) {
   return href;
 }
 
-function SearchResults({ classes, results, isComparisonSearch, thisGeoId }) {
+function SearchResults({
+  classes,
+  codeType,
+  results,
+  isComparisonSearch,
+  thisGeoId
+}) {
   return (
     <Grid
       container
-      sm={12}
       className={classNames(classes.root, {
         [classes.rootDropdown]: isComparisonSearch
       })}
@@ -115,7 +119,7 @@ function SearchResults({ classes, results, isComparisonSearch, thisGeoId }) {
                 isComparisonSearch ? classes.listItemDropdown : classes.listItem
               }
               component="a"
-              href={renderHref(result, thisGeoId, isComparisonSearch)}
+              href={renderHref(codeType, result, thisGeoId, isComparisonSearch)}
             >
               <Grid container direction="row" alignItems="baseline">
                 <Typography
@@ -147,6 +151,7 @@ function SearchResults({ classes, results, isComparisonSearch, thisGeoId }) {
 
 SearchResults.propTypes = {
   classes: PropTypes.shape().isRequired,
+  codeType: PropTypes.string.isRequired,
   results: PropTypes.isRequired,
   thisGeoId: PropTypes.string,
   isComparisonSearch: PropTypes.isRequired
