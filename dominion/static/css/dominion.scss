@@ -6,14 +6,22 @@
  */
 
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:400,700");
-
 $brand-color-primary: #0e4a48;
 $brand-color-light-green: #b6d9e2;
 $brand-color-solid-light-green: #269c94;
 $brand-color-solid-green: #279c94;
 $brand-color-gray: #b1b1b1;
-$font-raleway: "Raleway", sans-serif;
+$font-sans-serif: "Montserrat", sans-serif;
+$font-raleway: $font-sans-serif;
+
+html,
+body,
+h4,
+h5,
+h6,
+p {
+  font-family: "Montserrat", sans-serif;
+}
 
 a {
   color: #e7e452;
@@ -412,6 +420,11 @@ input[type="text"] {
 .leaflet-container a {
   color: grey !important;
 }
+#profile .content-container {
+  padding: 0;
+  background-color: #f1f1ed;
+  color: grey !important;
+}
 html {
   background-color: unset;
 }
@@ -424,4 +437,24 @@ html {
 .profile-head2head-view .frame-right {
   border-left: 5px solid;
   border-color: unset;
+}
+#profile-detail {
+  margin: 0 120px;
+  padding-top: 50px;
+}
+article {
+  margin-bottom: 3em;
+}
+article .section-container {
+  border: 0;
+  margin-left: 0;
+  padding: 3em 2em;
+}
+.profile-detail-header {
+  color: #2c2c2a;
+  font-size: 24px;
+  font-family: "Montserrat";
+}
+.stat-row {
+  border: 0;
 }
