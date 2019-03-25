@@ -58,9 +58,6 @@ def get_profile(geo, profile_name, request):
     try:
         data['demographics'] = get_demographics(geo, session, country, level, year)
         data['excisions'] = get_land_excisions(geo, session)
-        print "\n\n\n\n\n\n\n\n"
-        print data['excisions']
-        print "\n\n\n\n\n\n\n\n"
         return data
     finally:
         session.close()
@@ -93,7 +90,10 @@ def get_land_excisions(geo, session):
         except Exception:
             pass
 
-    return excisions_dist
+    return {
+        'is_missing': excisions_dist.get('is_missing'),
+        'excisions_dist': excisions_dist
+    }
 
 
 def get_population(geo, session, country, level, year):
