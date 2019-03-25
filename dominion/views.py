@@ -114,6 +114,9 @@ class GeographyCompareView(BaseGeographyDetailView):
     template_name = 'profile/head2head.html'
     default_geo_version = None
 
+    def dispatch(self, request, *args, **kwargs):
+        pass
+        
     def get_context_data(self, geo_id1, geo_id2):
         page_context = {
             'geo_id1': geo_id1,
@@ -185,3 +188,7 @@ class GeographyCompareView(BaseGeographyDetailView):
         page_context['head2head'] = True
 
         return page_context
+
+    def get_geography(self, geo_id):
+        # stub this out to prevent the subclass for calling out to CR
+        pass
