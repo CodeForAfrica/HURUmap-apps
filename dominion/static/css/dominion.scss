@@ -6,14 +6,22 @@
  */
 
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:400,700");
-
 $brand-color-primary: #0e4a48;
 $brand-color-light-green: #b6d9e2;
 $brand-color-solid-light-green: #269c94;
 $brand-color-solid-green: #279c94;
 $brand-color-gray: #b1b1b1;
-$font-raleway: "Raleway", sans-serif;
+$font-sans-serif: "Montserrat", sans-serif;
+$font-raleway: $font-sans-serif;
+
+html,
+body,
+h4,
+h5,
+h6,
+p {
+  font-family: "Montserrat", sans-serif;
+}
 
 a {
   color: #e7e452;
