@@ -9,8 +9,6 @@
   {% else %}
     // compare page has multiple profile_data_json: initialize them here
      var profileDataJson = {}
-     var profileDataJsonOne = {{ profile_data_json_one }};
-     var profileDataJsonTwo = {{ profile_data_json_two }};
   {% endif %}
 
   // homepage has no geography: initialize geo_code
@@ -29,5 +27,7 @@
   var head2head = {{ head2head |jsonify | safe }};
   {% if compare_primary_releases %}
     profileDataJson.primary_releases = {{compare_primary_releases | jsonify | safe }}
+    var profileDataJsonOne = {{ profile_data_json_one }};
+    var profileDataJsonTwo = {{ profile_data_json_two }};
   {% endif %}
 {% endblock settings_javascript %}

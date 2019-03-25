@@ -13,18 +13,16 @@
 {% block body_class %}profile-head2head-view{% endblock %}
 
 {% block header %}
-<header id="page-header">
-    <div id="dominionComparePageNav"></div>
-</header>
+    <div id="dominionComparePageHeader"></div>
 {% endblock header %}
 
 {% block content_container %}
-<div class="head2head-wrapper">
+<!-- <div class="head2head-wrapper">
     <iframe class="frame-left" scrolling="no" src="{% url 'geography_detail' geo_id1 geo1_slug %}?h2h=true&release={{geo1_release_year}}"></iframe>
     <iframe class="frame-right" scrolling="no" src="{% url 'geography_detail' geo_id2 geo2_slug %}?h2h=true&release={{geo2_release_year}}"></iframe>
 
     <div class="clear"></div>
-</div>
+</div> -->
 <div id="dominionProfileReleasesSection"></div>
 {% include 'blocks/country_partners.html' %}
 {% include 'blocks/partners.html' %}

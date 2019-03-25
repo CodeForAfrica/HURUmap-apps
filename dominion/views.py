@@ -110,7 +110,7 @@ class GeographyDetailView(BaseGeographyDetailView):
         return ['profile/profile_detail_%s.html' % self.profile_name, 'profile/profile_detail.html']
 
 
-class GeographyCompareView(TemplateView):
+class GeographyCompareView(BaseGeographyDetailView):
     template_name = 'profile/head2head.html'
     default_geo_version = None
 
@@ -151,7 +151,7 @@ class GeographyCompareView(TemplateView):
                 self.geo2, self.profile_name, self.request)
 
         profile_data1['geography'] = self.geo1.as_dict_deep()
-        profile_data1['geography'] = self.geo2.as_dict_deep()
+        profile_data2['geography'] = self.geo2.as_dict_deep()
         profile_data1['primary_releases'] = get_page_releases_per_country(
             settings.HURUMAP['primary_dataset_name'], self.geo1, year)
         profile_data2['primary_releases'] = get_page_releases_per_country(
@@ -169,9 +169,16 @@ class GeographyCompareView(TemplateView):
         profile_data_json_two = SafeString(
             json.dumps(profile_data2, cls=DjangoJSONEncoder))
 
+        primary_releases = get_page_releases_per_country(
+            settings.HURUMAP['primary_dataset_name'], self.geo1, year)
+
+        print("\n\n\n\n\n")
+        print(profile_data_json_one)
+
         page_context.update({
             'profile_data_json_one': profile_data_json_one,
-            'profile_data_json_two':profile_data_json_two
+            'profile_data_json_two':profile_data_json_two,
+            'compare_primary_releases': primary_releases
         })
 
         # is this a head-to-head view?
