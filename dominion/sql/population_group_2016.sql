@@ -85,7 +85,7 @@ country	ZA	2009	White	4516691
 --
 
 ALTER TABLE ONLY public.population_group_2016
-    ADD CONSTRAINT pk_populationgroup_2016 PRIMARY KEY (geo_level, geo_code, geo_version, "population_group_2016");
+    ADD CONSTRAINT pk_population_group_2016 PRIMARY KEY (geo_level, geo_code, geo_version, "population_group_2016");
 
 
 --
