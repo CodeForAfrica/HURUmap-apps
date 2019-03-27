@@ -107,9 +107,6 @@ def get_profile(geo, profile_name, request):
                             ['wall_material_distribution'], 5)
         data['afrobarometer'] = get_afrobarometer_profile(geo, session)
         data['gender'] = gender_stats_data(geo, session)
-        print("\n\n\n\n\n\n\n\n\n\n\n\n")
-        print(data['gender'])
-        print("\n\n\n\n\n\n\n\n\n\n\n\n")
         return data
 
     finally:
