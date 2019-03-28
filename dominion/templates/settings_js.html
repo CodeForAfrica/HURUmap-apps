@@ -6,11 +6,38 @@
 
   {% if profile_data_json %}
      var profileDataJson = {{ profile_data_json }};
+     var profileTabs = [
+       {
+         name: 'All',
+         href: '#profile-detail'
+       }
+     ];
+     //append tab links for all profile data shown in profile_detail template
+     {% if not landsales.is_missing %}
+        profileTabs.push({ name: 'Agricultural Land Sales' , href: '#agricultural-land-sales'})
+     {% endif %}
+     {% if not landsalescolour.is_missing %}
+        profileTabs.push({ name: 'Land Sales for Transactions of Colour' , href: '#agricultural-land-sales-colour'})
+     {% endif %}
+     {% if not farmland.is_missing %}
+        profileTabs.push({ name: 'Farm Land' , href: '#farm-land'})
+     {% endif %}
+     {% if not sectionaltitleland.is_missing %}
+        profileTabs.push({ name: 'Sectional Title Land' , href: '#sectional-title-land'})
+     {% endif %}
+     {% if not ervenland.is_missing %}
+        profileTabs.push({ name: 'Erven & Urban Land' , href: '#erven-land'})
+     {% endif %}
+     {% if not excisions.is_missing %}
+        profileTabs.push({ name: 'Excisions' , href: '#excisions'})
+     {% endif %}
+     {% if not afrobarometer.is_missing %}
+        profileTabs.push({ name: 'Afrobarometer' , href: '#afrobarometer'})
+     {% endif %}
   {% else %}
     // compare page has no profile_data_json: initializing this for compare page
      var profileDataJson = {};
   {% endif %}
-
   // homepage has no geography: initialize geo_code
   var geography = {{ geography.this |jsonify|safe }} || { geo_code: '' };
   {% if country %}
