@@ -33,49 +33,6 @@ const styles = theme => ({
   }
 });
 
-const TABS = [
-  {
-    name: 'All',
-    href: '#profile-detail'
-  },
-  {
-    name: 'Elections',
-    href: '#elections'
-  },
-  {
-    name: 'Demographics',
-    href: '#demographics'
-  },
-  {
-    name: 'Households',
-    href: '#households'
-  },
-  {
-    name: 'Service Delivery',
-    href: '#service-delivery'
-  },
-  {
-    name: 'Economics',
-    href: '#economics'
-  },
-  {
-    name: 'Education',
-    href: '#education'
-  },
-  {
-    name: 'Children',
-    href: '#children'
-  },
-  {
-    name: 'Child-headed Households',
-    href: '#child-headed-households'
-  },
-  {
-    name: 'Other',
-    href: '#other'
-  }
-];
-
 function LinkTab(props) {
   return <Tab component="a" {...props} />;
 }
@@ -140,12 +97,8 @@ ProfileTabs.propTypes = {
       name: PropTypes.string.isRequired,
       href: PropTypes.string.isRequired
     })
-  ),
+  ).isRequired,
   width: PropTypes.string.isRequired
-};
-
-ProfileTabs.defaultProps = {
-  tabs: TABS
 };
 
 export default withWidth()(withStyles(styles)(ProfileTabs));
