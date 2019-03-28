@@ -171,7 +171,9 @@ class GeographyCompareView(TemplateView):
         page_context.update({
             'profile_data_json_one': profile_data_json_one,
             'profile_data_json_two':profile_data_json_two,
-            'compare_primary_releases': primary_releases
+            'compare_primary_releases': primary_releases,
+            'geo_id1': self.geo_id1,
+            'geo_id2': self.geo_id2,
         })
 
         # is this a head-to-head view?
