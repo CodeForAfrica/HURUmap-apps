@@ -2055,9 +2055,7 @@ def gender_stats_data(geo, session):
             year_wage_public_admin, _ = get_stat_data(
                 ['year_wage_public_admin', 'sex'], geo, session)
         except Exception as e:
-            print("\n\n\n\n\n\n\n\n\n\n\n\n")
-            print(e.message)
-            print("\n\n\n\n\n\n\n\n\n\n\n\n")
+            pass
 
     is_missing = \
         physical_violence_perpetrator_sex.get('is_missing') and \
@@ -2099,4 +2097,3 @@ def gender_stats_data(geo, session):
     }
 
     return final_data
-
