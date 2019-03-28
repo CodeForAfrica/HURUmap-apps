@@ -10,7 +10,18 @@ const styles = theme => ({
     flexGrow: 1,
     width: '100%',
     backgroundColor: '#fff',
-    scrollBehavior: 'smooth'
+    scrollBehavior: 'smooth',
+    paddingLeft: '1.875rem',
+    paddingRight: '1.875rem',
+    position: 'relative',
+    [theme.breakpoints.up('md')]: {
+      paddingLeft: '3.125rem',
+      paddingRight: '3.125rem'
+    },
+    [theme.breakpoints.up('lg')]: {
+      paddingLeft: '9.375rem',
+      paddingRight: '9.375rem'
+    }
   },
   appbar: {
     boxShadow: 'none'
@@ -30,6 +41,10 @@ const styles = theme => ({
   },
   tabSelected: {
     fontWeight: 700
+  },
+  labelContainer: {
+    paddingLeft: theme.spacing.unit * 2,
+    paddingRight: theme.spacing.unit * 2
   }
 });
 
@@ -69,7 +84,6 @@ class ProfileTabs extends React.Component {
             value={value}
             variant={variant}
             scrollButtons="off" // Never show scroll buttons
-            centered={centered}
             classes={{ indicator: classes.indicator }}
             onChange={this.handleChange}
           >
@@ -80,7 +94,10 @@ class ProfileTabs extends React.Component {
                 href={tab.href}
                 label={tab.name}
                 className={classes.tab}
-                classes={{ selected: classes.tabSelected }}
+                classes={{
+                  selected: classes.tabSelected,
+                  labelContainer: classes.labelContainer
+                }}
               />
             ))}
           </Tabs>
