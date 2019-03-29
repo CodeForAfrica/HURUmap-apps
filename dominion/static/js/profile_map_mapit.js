@@ -129,7 +129,8 @@ var ProfileMaps = function() {
             style: self.featureGeoStyle,
         });
         this.map.addLayer(layer);
-        this.map.setView(this.dominion_country.centre, this.dominion_country.zoom);
+        this.map.fitBounds(layer.getBounds());
+      //  this.map.setView(this.dominion_country.centre, this.dominion_country.zoom);
     };
 
     this.drawFeatures = function(features) {
