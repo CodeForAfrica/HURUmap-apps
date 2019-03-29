@@ -13,7 +13,6 @@ const styles = theme => ({
     scrollBehavior: 'smooth',
     paddingLeft: '1.875rem',
     paddingRight: '1.875rem',
-    position: 'relative',
     [theme.breakpoints.up('md')]: {
       paddingLeft: '3.125rem',
       paddingRight: '3.125rem'
