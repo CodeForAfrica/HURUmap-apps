@@ -1,7 +1,4 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-from __future__ import print_function
-
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse, Http404

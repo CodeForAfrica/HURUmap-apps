@@ -2,10 +2,10 @@ var ProfileMaps = function() {
     var self = this;
     this.mapit_url = GeometryLoader.mapit_url;
     this.mapit_codetype = GeometryLoader.mapit_codetype;
-    this.mapit_country = GeometryLoader.mapit_country;
+    this.dominion_country = GeometryLoader.dominion_country;
 
     this.featureGeoStyle = {
-        "fillColor": "#66c2a5",
+        "fillColor": "#ccc",
         "color": "#777",
         "weight": 2,
         "opacity": 0.3,
@@ -23,7 +23,7 @@ var ProfileMaps = function() {
     };
 
     this.hoverStyle = {
-        "fillColor": "#66c2a5",
+        "fillColor": "#ccc",
         "fillOpacity": 0.7,
     };
 
@@ -35,8 +35,7 @@ var ProfileMaps = function() {
     };
 
     this.drawMapForHomepage = function(geo_level, geo_version, centre, zoom) {
-        // draw a homepage map, but only for big displays
-        if (browserWidth < 768 || $('#slippy-map').length === 0) return;
+        if ($('#slippy-map').length === 0) return;
 
         this.createMap();
         this.addImagery();
@@ -44,12 +43,24 @@ var ProfileMaps = function() {
             self.map.setView(centre, zoom);
         }
         GeometryLoader.loadGeometryForLevel(geo_level, 'TZ', geo_version, function(features) {
-            console.log("drawing homepage");
-            console.log(features);
             var layer = self.drawFeatures(features.features);
             if (!centre) {
                 self.map.fitBounds(layer.getBounds());
             }
+        });
+    };
+
+
+    this.drawMapForCountryPage = function(geo, centre, zoom) {
+        if ($('#slippy-map').length === 0) return;
+
+        this.createMap();
+        this.addImagery();
+        if (centre) {
+            self.map.setView(centre, zoom);
+        }
+        GeometryLoader.loadGeometryForChildLevel(geo.child_level, geo.geo_level, geo.geo_code, geo.version, function(features) {
+            self.drawFeatures(features.features);
         });
     };
 
@@ -68,16 +79,15 @@ var ProfileMaps = function() {
 
         if (allowMapDrag) {
             this.map.addControl(new L.Control.Zoom({
-                position: 'topright'
+                position: 'bottomright',
             }));
         }
     };
 
     this.addImagery = function() {
         // add imagery
-        L.tileLayer('//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
-          subdomains: 'abc',
+        L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+          attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
           maxZoom: 17
         }).addTo(this.map);
     };
@@ -90,9 +100,8 @@ var ProfileMaps = function() {
         var child_level = this.geo.this.child_level;
         var geo_name = this.geo.this.name;
 
-        // if we are in a root geo, only setView
-        if (Object.getOwnPropertyNames(this.geo.parents).length==0) {
-            this.map.setView( this.mapit_country.centre, this.mapit_country.zoom);
+        if (Object.getOwnPropertyNames(this.geo.parents).length === 0) {
+            this.map.setView( null, null);
         } else {
             // draw the current geo
             GeometryLoader.loadGeometryForGeo(geo_level, geo_code, geo_version, function(feature) {
@@ -120,24 +129,7 @@ var ProfileMaps = function() {
             style: self.featureGeoStyle,
         });
         this.map.addLayer(layer);
-        var objBounds = layer.getBounds();
-
-        if (browserWidth > 768) {
-            var z;
-            for(z = 16; z > 2; z--) {
-                var swPix = this.map.project(objBounds.getSouthWest(), z),
-                    nePix = this.map.project(objBounds.getNorthEast(), z),
-                    pixWidth = Math.abs(nePix.x - swPix.x),
-                    pixHeight = Math.abs(nePix.y - swPix.y);
-                if (pixWidth <  500 && pixHeight < 400) {
-                    break;
-                }
-            }
-            this.map.setView(layer.getBounds().getCenter(), z);
-            this.map.panBy([-270, 0], {animate: false});
-        } else {
-            this.map.fitBounds(layer.getBounds());
-        }
+        this.map.setView(this.dominion_country.centre, this.dominion_country.zoom);
     };
 
     this.drawFeatures = function(features) {
@@ -148,7 +140,7 @@ var ProfileMaps = function() {
         return L.geoJson(features, {
             style: this.layerStyle,
             onEachFeature: function(feature, layer) {
-                layer.bindLabel(feature.properties.name, {direction: 'auto'});
+                layer.bindLabel(feature.properties.name, {direction: 'auto', className: 'map-tooltip'});
 
                 layer.on('mouseover', function() {
                     layer.setStyle(self.hoverStyle);
@@ -163,13 +155,11 @@ var ProfileMaps = function() {
                   if (feature.properties.country_code)
                     uri = uri +  '&country='+ feature.properties.country_code;
 
-                  console.log(uri);
                   d3.json(url + uri,  function(error, data) {
                     if (error) return console.warn(error);
                     var featureInfo = Object.values(data);
 
                     var geo_id = featureInfo[0]['codes'][mapit_codetype];
-                    console.log(geo_id)
                     //var geo_level = featureInfo[0]['type'];
                     window.location = '/profiles/' + geo_id + '/';
                   });

@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Button, Grid, Modal, Typography } from '@material-ui/core';
+import { Button, Grid, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import PlayArrow from '@material-ui/icons/PlayArrow';
 
-import Player from './Player';
+import PlayerModal from './PlayerModal';
 
 import background from '../../assets/images/hero-image-1.png';
-import Sources from './Sources';
 
 const styles = theme => ({
   root: {
@@ -48,23 +47,19 @@ class Video extends React.Component {
   constructor(props) {
     super(props);
 
-    const videoId = (Sources[0] && Sources[0].id) || null;
-    this.state = { open: false, videoId };
-    this.toogleState = this.toogleState.bind(this);
-    this.changeVideoId = this.changeVideoId.bind(this);
+    this.state = { open: false };
+    this.toggleModal = this.toggleModal.bind(this);
   }
 
-  toogleState() {
-    this.setState(state => ({ open: !state.open }));
-  }
-
-  changeVideoId(videoId) {
-    this.setState({ videoId });
+  toggleModal() {
+    this.setState(prevState => ({
+      open: !prevState.open
+    }));
   }
 
   render() {
-    const { classes } = this.props;
-    const { open, videoId } = this.state;
+    const { classes, dominion } = this.props;
+    const { open } = this.state;
 
     return (
       <Grid
@@ -94,33 +89,30 @@ class Video extends React.Component {
 
             <Grid item className={classes.buttonGrid}>
               <Button
-                variant="outline"
+                variant="outlined"
                 color="primary"
                 size="large"
                 className={classes.button}
-                onClick={this.toogleState}
+                onClick={this.toggleModal}
               >
                 <PlayArrow />
               </Button>
             </Grid>
           </Grid>
         </Grid>
-        <Modal
-          aria-labelledby="dominion-videos"
-          aria-describedby="dominion-videos-list"
+        <PlayerModal
+          dominion={dominion}
           open={open}
-          onClose={this.toogleState}
-          className={classes.modal}
-        >
-          <Player videoId={videoId} />
-        </Modal>
+          handleClose={this.toggleModal}
+        />
       </Grid>
     );
   }
 }
 
 Video.propTypes = {
-  classes: PropTypes.shape().isRequired
+  classes: PropTypes.shape().isRequired,
+  dominion: PropTypes.shape({}).isRequired
 };
 
 export default withStyles(styles)(Video);

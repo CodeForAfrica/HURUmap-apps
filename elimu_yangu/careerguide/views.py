@@ -1,4 +1,3 @@
-from __future__ import absolute_import
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.http import HttpResponse, HttpResponseRedirect

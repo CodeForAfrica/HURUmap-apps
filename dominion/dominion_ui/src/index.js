@@ -6,30 +6,68 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 
 import withRoot from './withRoot';
 
-import Header from './components/Header';
-import AboutDominion from './components/About';
+import { AboutCountry, AboutDominion } from './components/About';
+import {
+  CountryPageHeader,
+  HomePageHeader,
+  ProfilePageHeader,
+  ComparePageNav
+} from './components/Header';
+import CountryPartners from './components/CountryPartners';
 import Data from './components/Data';
 import Footer from './components/Footer';
-import HomeHero from './components/Hero/HomeHero';
+import HowItWorks from './components/HowItWorks/index';
 import Partners from './components/Partners';
+import ProfileTabs from './components/ProfileTabs';
 import Showcase from './components/Showcase';
 import Video from './components/Video';
+import ProfileReleases from './components/ProfileReleases';
 
 library.add(fab);
+
+const PROPS = {
+  dominion: {
+    countries: window.countries || {},
+    selectedCountry: window.selected_country,
+    head2head: window.head2head
+  },
+  countries: window.countries || {},
+  selectedCountry: window.selected_country || {},
+  profile: window.profileDataJson || {
+    demographics: {},
+    geography: {
+      full_geoid: '',
+      this: {
+        square_kms: '',
+        short_name: '',
+        parents: []
+      }
+    },
+    primary_releases: { active: {}, other: [] }
+  }
+};
 
 const renderApp = (Component, id) => {
   const el = document.getElementById(id);
   if (el) {
     const App = withRoot(Component);
-    ReactDOM.render(<App />, el);
+
+    ReactDOM.render(<App {...PROPS} />, el);
   }
 };
 
-renderApp(Header, 'dominionHeader');
-renderApp(HomeHero, 'dominionHomeHero');
+renderApp(HomePageHeader, 'dominionHomePageHeader');
+renderApp(CountryPageHeader, 'dominionCountryPageHeader');
+renderApp(ProfilePageHeader, 'dominionProfilePageHeader');
+renderApp(ComparePageNav, 'dominionComparePageNav');
+renderApp(AboutCountry, 'dominionCountryAbout');
+renderApp(ProfileTabs, 'dominionProfileTabs');
 renderApp(Video, 'dominionVideo');
+renderApp(HowItWorks, 'dominionHowItWorks');
 renderApp(Showcase, 'dominionShowcase');
 renderApp(Data, 'dominionData');
 renderApp(AboutDominion, 'dominionAbout');
+renderApp(CountryPartners, 'dominionCountryPartners');
+renderApp(ProfileReleases, 'dominionProfileReleasesSection');
 renderApp(Partners, 'dominionPartners');
 renderApp(Footer, 'dominionFooter');

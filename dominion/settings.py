@@ -62,17 +62,35 @@ HURUMAP['email'] = 'info@codeforafrica.org'
 HURUMAP['github_url'] = 'https://github.com/CodeForAfrica/HURUmap-apps'
 
 HURUMAP['ga_tracking_id'] = 'UA-44795600-21'
+HURUMAP['google_geocode_api_key'] = os.environ.get('GOOGLE_GEOCODE_API_KEY')
 
 HURUMAP['country_code'] = 'ZA'
 HURUMAP['country_name'] = 'South Africa'
+
+# Multi-country support (complements `country_code/name` settings)
+HURUMAP['countries'] = {
+    'kenya': {
+        'code': 'KE',
+        'name': 'Kenya',
+        'centre': [0.3051933453207569, 37.908818734483155],
+        'zoom': 6
+    },
+    'south-africa': {
+        'code': 'ZA',
+        'name': 'South Africa',
+        'centre': [-30, 24],
+        'zoom': 5
+    },
+}
+
 HURUMAP['comparative_levels'] = ['district', 'province', 'country']
 
 hurumap_profile = os.environ.get('HURUMAP_PROFILE', 'land')
 
 HURUMAP['default_profile'] = hurumap_profile
-HURUMAP['profile_builder'] = 'dominion.profiles.land.get_land_profile'
+HURUMAP['profile_builder'] = 'dominion.profiles.land.get_profile'
 HURUMAP['default_geo_version'] = os.environ.get('DEFAULT_GEO_VERSION', '2009')
-HURUMAP['legacy_embed_geo_version'] = '2016'
+HURUMAP['legacy_embed_geo_version'] = '2009'
 
 
 HURUMAP['levels'] = {
@@ -108,20 +126,42 @@ HURUMAP['mapit'] = {
     },
 }
 
-HURUMAP['primary_release_year'] = {
-    # use the 2011 release for wards, use the latest (2016) for everything else
-}
 HURUMAP['primary_dataset_name'] = 'Census'
-HURUMAP['latest_release_year'] = '2016'
-HURUMAP['available_release_years'] = {
-    # Release years with data for geo_levels.
-    # Only specify geo_levels with limited releases.
-    # Other geo_levels have data for all releases.
-    #'ward': [2011]
+
+HURUMAP['primary_release_year'] = {
+    'ke': {
+        'country': 2009,
+        'level1': 2009
+    },
+    'za': {
+        'country': 2016,
+        'level1': 2016
+    }
 }
+HURUMAP['latest_release_year'] = 'latest'
+
+# default census release years
+HURUMAP['available_release_years'] = {
+    'country': [2009, 2016, 2017, 2018]
+}
+
+# census release years for each country and it's subnational geographies
+HURUMAP['available_releases_years_per_country'] = {
+    'ke': {
+        'country': [2009],
+        'level1': [2009]
+    },
+    'za': {
+        'country': [2016, 2017, 2018],
+        'level1': [2016, 2017, 2018]
+    }
+}
+
+
+
 # If not set, the centre is determined from the geometry.
 HURUMAP['map_centre']= None
-HURUMAP['map_zoom']= None
+HURUMAP['map_zoom']= 5
 
 # -------------------------------------------------------------------------------
 #topics
@@ -172,7 +212,7 @@ HURUMAP['topics']['sectionaltitleland'] = {
         'Number of sectional title owners by race',
         'sectional title ownership in hectares per gender',
         'Number of sectional title owners by gender',
-        'sectional title ownership in hectares per nationality',
+        'sectional title ownership in hectares nationality',
         'Number of sectional title owners by nationality',
     ]
 }
