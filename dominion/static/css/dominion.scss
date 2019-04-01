@@ -20,7 +20,7 @@ h4,
 h5,
 h6,
 p {
-  font-family: "Montserrat", sans-serif;
+  font-family: $font-sans-serif;
 }
 
 a {
@@ -397,6 +397,10 @@ span.img-bg {
   }
 }
 
+.float-right {
+    float: right;
+}
+
 //wazimap conflicts with search
 input:focus {
   box-shadow: unset;
@@ -452,7 +456,7 @@ article .section-container {
 .profile-detail-header {
   color: #2c2c2a;
   font-size: 24px;
-  font-family: "Montserrat";
+  font-family: $font-sans-serif;
 }
 .stat-row {
   border: 0;

@@ -32,16 +32,13 @@
               <h2 class="header-for-columns"><a class="permalink">Land Sales
                 Distribution from August 2017 to July 2018
                 <i class="fa fa-link"></i></a></h2>
-              <div class="column-half">
-                {% include 'profile/_blocks/_stat_list.html' with stat=landsales.landsalestransaction_tot stat_type='number' %}
-              </div>
-              <div class="column-half">
-                {% include 'profile/_blocks/_stat_list.html' with stat=landsales.landsaleshectares_tot stat_type='number' %}
-              </div>
             </section>
             {% if not landsales.landsalestransaction.is_missing %}
               <section class="clearfix stat-row">
-                <div class="column-full">
+                <div class="column-quarter">
+                  {% include 'profile/_blocks/_stat_list.html' with stat=landsales.landsalestransaction_tot stat_type='number' %}
+                </div>
+                <div class="column-three-quarters">
                   <div id="chart-histogram-landsales-landsalestransaction"
                        data-stat-type="number"
                        data-chart-title="Number of transactions from December 2017 to November 2018 by land class in R/ha"
@@ -53,7 +50,10 @@
 
             {% if not landsales.landsaleshectares.is_missing %}
               <section class="clearfix stat-row">
-                <div class="column-full">
+                <div class="column-quarter">
+                  {% include 'profile/_blocks/_stat_list.html' with stat=landsales.landsaleshectares_tot stat_type='number' %}
+                </div>
+                <div class="column-three-quarters">
                   <div id="chart-histogram-landsales-landsaleshectares"
                        data-stat-type="number"
                        data-chart-title="Amount of hectares sold from December 2017 to November 2018 by land class in R/ha"
@@ -66,7 +66,7 @@
 
             {% if not landsales.landsalesaverageprice.is_missing %}
               <section class="clearfix stat-row">
-                <div class="column-full">
+                <div class="column-three-quarters float-right">
                   <div id="chart-histogram-landsales-landsalesaverageprice"
                        data-stat-type="number"
                        data-chart-title=" Average price of hectares sold from December 2017 to November 2018 by Land Class in R/ha"
@@ -78,48 +78,53 @@
           </div>
         </article>
       {% endif %}
+
       {% if not landsalescolour.is_missing %}
         <article id="agricultural-land-sales-colour" class="clearfix">
           <div class="section-container">
             <h1 class="profile-detail-header">Land traded statistic for transactions of colour</h1>
             <section class="clearfix stat-row">
-              <div class="column-third">
+              <div class="column-quarter">
                 {% include 'profile/_blocks/_stat_list.html' with stat=landsalescolour.landsalescolourhectares_stat stat_type='number' %}
               </div>
-              <div class="column-third">
-                {% include 'profile/_blocks/_stat_list.html' with stat=landsalescolour.landsalescolourtransaction_stat stat_type='number' %}
-              </div>
-              <div class="column-third">
-                {% include 'profile/_blocks/_stat_list.html' with stat=landsalescolour.landsalescolourcost_stat stat_type='number' %}
-              </div>
-            </section>
-
-            <section class="clearfix stat-row">
+              {% if not landsalescolour.landsalescolourhectarespermonth.is_missing %}
               <div class="column-half">
-                <div id="chart-column-landsalescolour-landsalesallvscolourtransaction"
+                <div id="chart-column-landsalescolour-landsalescolourhectarespermonth"
                      data-stat-type="number"
-                     data-chart-title="Number of all transactions vs number of transactions of colour for Land traded from Dec 2017 to Nov 2018"
+                     data-chart-title="Total hectares (ha) traded for transactions of colour in each month"
                      data-source-title="AGRIDS, 2019"
-                     data-source-link="http://land.agrids.co.za/"></div>
+                     data-source-link="http://land.agrids.co.za/">
+                </div>
               </div>
-              <div class="column-half">
-                <div id="chart-column-landsalescolour-landsalescolourtransaction"
-                     data-stat-type="number"
-                     data-chart-title="Number of transactions of colour from December 2017 to November 2018"
-                     data-source-title="AGRIDS, 2019"
-                     data-source-link="http://land.agrids.co.za/"></div>
-              </div>
-            </section>
-
-            <section class="clearfix stat-row">
-              <div class="column-half">
+            {% endif %} <!-- end if -->
+              <div class="column-quarter">
                 <div id="chart-pie-landsalescolour-landsalescolourhectares"
                      data-stat-type="percentage"
                      data-chart-title="Percent breakdown of total hectares(ha) traded for transactions of colour from December 2017 to November 2018"
                      data-source-title="AGRIDS, 2019"
                      data-source-link="http://land.agrids.co.za/"></div>
               </div>
-              <div class="column-half">
+            </section>
+
+            <section class="clearfix stat-row">
+              <div class="column-quarter">
+                {% include 'profile/_blocks/_stat_list.html' with stat=landsalescolour.landsalescolourtransaction_stat stat_type='number' %}
+              </div>
+              <div class="column-quarter">
+                <div id="chart-column-landsalescolour-landsalesallvscolourtransaction"
+                     data-stat-type="number"
+                     data-chart-title="Number of all transactions vs number of transactions of colour for Land traded from Dec 2017 to Nov 2018"
+                     data-source-title="AGRIDS, 2019"
+                     data-source-link="http://land.agrids.co.za/"></div>
+              </div>
+              <div class="column-quarter">
+                <div id="chart-column-landsalescolour-landsalescolourtransaction"
+                     data-stat-type="number"
+                     data-chart-title="Number of transactions of colour from December 2017 to November 2018"
+                     data-source-title="AGRIDS, 2019"
+                     data-source-link="http://land.agrids.co.za/"></div>
+              </div>
+              <div class="column-quarter">
                 <div id="chart-pie-landsalescolour-landsalescolourtransaction"
                      data-stat-type="percentage"
                      data-chart-title="Percent breakdown of number of transactions of colour from December 2017 to November 2018"
@@ -129,84 +134,41 @@
             </section>
 
             <section class="clearfix stat-row">
-              <div class="column-full">
+              <div class="column-three-quarters float-right">
                 <div id="chart-grouped_column-landsalescolour-landsalescolourtattransactionpermonth"
                      data-stat-type="number"
-                     data-chart-title="Number of all transaction vs Number of transactions of colour on Land traded per month"
+                     data-chart-title="Number of all transactions vs Number of transactions of colour on Land traded per month"
                      data-source-title="AGRIDS, 2019"
                      data-source-link="http://land.agrids.co.za/"></div>
               </div>
             </section>
 
+            <section class="clearfix stat-row">
+              <div class="column-quarter">
+                {% include 'profile/_blocks/_stat_list.html' with stat=landsalescolour.landsalescolourcost_stat stat_type='number' %}
+              </div>
             {% if not landsalescolour.landsalescolourcostpermonth.is_missing %}
-              <section class="clearfix stat-row">
-                <div class="column-half">
-                  <div id="chart-column-landsalescolour-landsalescolourcostpermonth"
-                       data-stat-type="number"
-                       data-chart-title="Total cost in R million for transaction of colour in each month"
-                       data-source-title="AGRIDS, 2019"
-                       data-source-link="http://land.agrids.co.za/"></div>
+              <div class="column-half">
+                <div id="chart-column-landsalescolour-landsalescolourcostpermonth"
+                     data-stat-type="number"
+                     data-chart-title="Total cost in R million for transactions of colour in each month"
+                     data-source-title="AGRIDS, 2019"
+                     data-source-link="http://land.agrids.co.za/">
                 </div>
-                {% if not landsalescolour.landsalescolourhectarespermonth.is_missing %}
-                    <div class="column-half">
-                      <div id="chart-column-landsalescolour-landsalescolourhectarespermonth"
-                           data-stat-type="number"
-                           data-chart-title="Total hectares (ha) traded for transaction of colour in each month"
-                           data-source-title="AGRIDS, 2019"
-                           data-source-link="http://land.agrids.co.za/"></div>
-                    </div>
-                {% endif %} <!-- end if -->
-              </section>
+              </div>
             {% endif %} <!-- end if -->
+            </section>
 
-            <!-- {% if not landsalescolour.landsalescolourpricehecpermonth.is_missing %}
+            {% if not landsalescolour.landsalescolourhectarespermonthbreakdowngu.is_missing %}
+                <h2>Hectares(ha) traded for transactions of colour in 12 months for Government Agriculture, Government Urban, Private and Others</h2>
               <section class="clearfix stat-row">
                 <div class="column-half">
-                  <div id="chart-column-landsalescolour-landsalescolourpricehecpermonth"
-                       data-stat-type="number"
-                       data-chart-title="Price per hectares (R/ha) for transaction of colour in each month"
-                       data-source-title="AGRIDS, 2018"
-                       data-source-link="http://land.agrids.co.za/"></div>
-                </div>
-              </section>
-            {% endif %} <end if > -->
-            {% if not landsalescolour.landsalescolourtransactionpermonthbreakdown.is_missing %}
-              <section class="clearfix stat-row">
-                <h2>Number of transaction of colour in 12 months for Government Agriculture, Government Urban, Private and Others</h2>
-                <div class="column-half">
-                  <div id="chart-column-landsalescolour-landsalescolourtransactionpermonthbreakdowngu"
-                       data-stat-type="number"
-                       data-chart-title="Government Urban"
-                       data-source-title="AGRIDS, 2018"
-                       data-source-link="http://land.agrids.co.za/"></div>
-                </div>
-                <div class="column-half">
-                  <div id="chart-column-landsalescolour-landsalescolourtransactionpermonthbreakdownpr"
-                       data-stat-type="number"
-                       data-chart-title="Private"
-                       data-source-title="AGRIDS, 2018"
-                       data-source-link="http://land.agrids.co.za/"></div>
-                </div>
-                <div class="column-half">
-                  <div id="chart-column-landsalescolour-landsalescolourtransactionpermonthbreakdownot"
-                       data-stat-type="number"
-                       data-chart-title="Other"
-                       data-source-title="AGRIDS, 2018"
-                       data-source-link="http://land.agrids.co.za/"></div>
-                </div>
-                <div class="column-half">
-                  <div id="chart-column-landsalescolour-landsalescolourtransactionpermonthbreakdownga"
+                  <div id="chart-column-landsalescolour-landsalescolourhectarespermonthbreakdownga"
                        data-stat-type="number"
                        data-chart-title="Government Agriculture"
                        data-source-title="AGRIDS, 2018"
                        data-source-link="http://land.agrids.co.za/"></div>
                 </div>
-              </section>
-            {% endif %}
-
-            {% if not landsalescolour.landsalescolourhectarespermonthbreakdowngu.is_missing %}
-              <section class="clearfix stat-row">
-                <h2>Hectares(ha) traded for transaction of colour in 12 months for Government Agriculture, Government Urban, Private and Others</h2>
                 <div class="column-half">
                   <div id="chart-column-landsalescolour-landsalescolourhectarespermonthbreakdowngu"
                        data-stat-type="number"
@@ -214,6 +176,8 @@
                        data-source-title="AGRIDS, 2018"
                        data-source-link="http://land.agrids.co.za/"></div>
                 </div>
+              </section>
+              <section class="clearfix stat-row">
                 <div class="column-half">
                   <div id="chart-column-landsalescolour-landsalescolourhectarespermonthbreakdownpr"
                        data-stat-type="number"
@@ -228,10 +192,40 @@
                        data-source-title="AGRIDS, 2018"
                        data-source-link="http://land.agrids.co.za/"></div>
                 </div>
+              </section>
+            {% endif %}
+
+
+            {% if not landsalescolour.landsalescolourtransactionpermonthbreakdown.is_missing %}
+                <h2>Number of transactions of colour in 12 months for Government Agriculture, Government Urban, Private and Others</h2>
+              <section class="clearfix stat-row">
                 <div class="column-half">
-                  <div id="chart-column-landsalescolour-landsalescolourhectarespermonthbreakdownga"
+                  <div id="chart-column-landsalescolour-landsalescolourtransactionpermonthbreakdownga"
                        data-stat-type="number"
                        data-chart-title="Government Agriculture"
+                       data-source-title="AGRIDS, 2018"
+                       data-source-link="http://land.agrids.co.za/"></div>
+                </div>
+                <div class="column-half">
+                  <div id="chart-column-landsalescolour-landsalescolourtransactionpermonthbreakdowngu"
+                       data-stat-type="number"
+                       data-chart-title="Government Urban"
+                       data-source-title="AGRIDS, 2018"
+                       data-source-link="http://land.agrids.co.za/"></div>
+                </div>
+              </section>
+              <section class="clearfix stat-row">
+                <div class="column-half">
+                  <div id="chart-column-landsalescolour-landsalescolourtransactionpermonthbreakdownpr"
+                       data-stat-type="number"
+                       data-chart-title="Private"
+                       data-source-title="AGRIDS, 2018"
+                       data-source-link="http://land.agrids.co.za/"></div>
+                </div>
+                <div class="column-half">
+                  <div id="chart-column-landsalescolour-landsalescolourtransactionpermonthbreakdownot"
+                       data-stat-type="number"
+                       data-chart-title="Other"
                        data-source-title="AGRIDS, 2018"
                        data-source-link="http://land.agrids.co.za/"></div>
                 </div>
@@ -239,8 +233,15 @@
             {% endif %}
 
             {% if not landsalescolour.landsalescolourcostpermonthbreakdown.is_missing %}
+                <h2>Total cost in (R million) for transactions of colour in 12 months for Government Agriculture, Government Urban, Private and Others</h2>
               <section class="clearfix stat-row">
-                <h2>Total cost in (R million) for transaction of colour in 12 months for Government Agriculture, Government Urban, Private and Others</h2>
+                <div class="column-half">
+                  <div id="chart-column-landsalescolour-landsalescolourcostpermonthbreakdownga"
+                       data-stat-type="number"
+                       data-chart-title="Government Agriculture"
+                       data-source-title="AGRIDS, 2019"
+                       data-source-link="http://land.agrids.co.za/"></div>
+                </div>
                 <div class="column-half">
                   <div id="chart-column-landsalescolour-landsalescolourcostpermonthbreakdowngu"
                        data-stat-type="number"
@@ -248,6 +249,8 @@
                        data-source-title="AGRIDS, 2019"
                        data-source-link="http://land.agrids.co.za/"></div>
                 </div>
+              </section>
+              <section class="clearfix stat-row">
                 <div class="column-half">
                   <div id="chart-column-landsalescolour-landsalescolourcostpermonthbreakdownpr"
                        data-stat-type="number"
@@ -262,99 +265,85 @@
                        data-source-title="AGRIDS, 2019"
                        data-source-link="http://land.agrids.co.za/"></div>
                 </div>
-                <div class="column-half">
-                  <div id="chart-column-landsalescolour-landsalescolourcostpermonthbreakdownga"
-                       data-stat-type="number"
-                       data-chart-title="Government Agriculture"
-                       data-source-title="AGRIDS, 2019"
-                       data-source-link="http://land.agrids.co.za/"></div>
-                </div>
               </section>
             {% endif %}
           </div>
         </article>
       {% endif %}
+
       {% if not farmland.is_missing %}
         <article id="farm-land" class="clearfix">
           <div class="section-container">
             <h1 class="profile-detail-header">Individual Land Ownership of farms and agricultural holdings</h1>
             <section class="clearfix stat-row">
-              <div class="column-half">
+              <div class="column-quarter">
                 <div id="chart-histogram-farmland-private_land_ownership_in_hectares_per_category"
                      data-stat-type="scaled-percentage"
                      data-chart-title="Private land ownership in hectares by category (%)"
+                     data-qualifier="CBOs: Community-Based Organisations, includes non-governmental organizations, churches, etc."
                      data-source-title="Land Audit Report, 2017"
                      data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
               </div>
-              <div class="column-half">
-                <div id="chart-pie-farmland-number_of_private_land_owners_by_category"
-                     data-stat-type="percentage"
+              <div class="column-quarter">
+                <div id="chart-histogram-farmland-number_of_private_land_owners_by_category"
+                     data-stat-type="scaled-percentage"
                      data-chart-title="Number of Private Land Owners by Category (%)"
                      data-initial-sort="-value"
+                     data-qualifier="CBOs: Community-Based Organisations, includes non-governmental organizations, churches, etc."
                      data-source-title="Land Audit Report, 2017"
                      data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
               </div>
-            </section>
-            <p>
-              CBOs:Community-Based Organisations, includes non-governmental
-              organizations, churches, etc.
-            </p>
-            <section class="clearfix stat-row">
-              <div class="column-half">
-                <div id="chart-pie-farmland-land_ownership_in_hectares_by_race"
-                     data-stat-type="percentage"
+              <div class="column-quarter">
+                <div id="chart-histogram-farmland-land_ownership_in_hectares_by_race"
+                     data-stat-type="scaled-percentage"
                      data-chart-title="Individual land ownership of farms and agricultural holdings in hectares by race (%)"
                      data-initial-sort="-value"
+                     data-qualifier="Co-ownership: Land owned by owners who are classified in different categories e.g. land parcel co-owned by Individual(s) and a Trusts, male and female, etc."
                      data-source-title="Land Audit Report, 2017"
                      data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
               </div>
-              <div class="column-half">
-                <div id="chart-pie-farmland-number_of_land_owners_per_race"
-                     data-stat-type="percentage"
+              <div class="column-quarter">
+                <div id="chart-histogram-farmland-number_of_land_owners_per_race"
+                     data-stat-type="scaled-percentage"
                      data-chart-title="Number of individuals owning farms and agricultural holdings by race (%)"
                      data-initial-sort="-value"
+                     data-qualifier="Co-ownership: Land owned by owners who are classified in different categories e.g. land parcel co-owned by Individual(s) and a Trusts, male and female, etc."
                      data-source-title="Land Audit Report, 2017"
                      data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
               </div>
             </section>
-            <p>
-              Co-ownership: Land owned by owners who are classified in different
-              categories e.g. land parcel co-owned by Individual(s) and a Trusts,
-              male and female, etc.
-            </p>
             <section class="clearfix stat-row">
-              <div class="column-half">
+              <div class="column-quarter">
                 <div id="chart-histogram-farmland-land_ownership_in_hectares_by_gender"
                      data-stat-type="scaled-percentage"
                      data-chart-title="Individual land ownership of farms and agricultural holdings in hectares by gender (%)"
                      data-source-title="Land Audit Report, 2017"
                      data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
               </div>
-              <div class="column-half">
-                <div id="chart-column-farmland-number_of_land_owners_per_gender"
-                     data-stat-type="number"
-                     data-chart-title="Number of individuals owning farms and agricultural holdings by gender"
+              <div class="column-quarter">
+                <div id="chart-histogram-farmland-number_of_land_owners_per_gender"
+                     data-stat-type="scaled-percentage"
+                     data-chart-title="Number of individuals owning farms and agricultural holdings by gender (%)"
                      data-source-title="Land Audit Report, 2017"
                      data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
               </div>
-            </section>
-            <section class="clearfix stat-row">
-              <div class="column-half">
-                <div id="chart-pie-farmland-land_ownership_in_hectares_by_nationality"
+              <div class="column-quarter">
+                <div id="chart-histogram-farmland-land_ownership_in_hectares_by_nationality"
                      data-stat-type="scaled-percentage"
-                     data-chart-title="Individual Land Ownership percent Hectares by Nationality"
+                     data-chart-title="Individual Land Ownership percent Hectares by Nationality (%)"
                      data-initial-sort="-value"
                      data-source-title="Land Audit Report, 2017"
                      data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
               </div>
-              <div class="column-half">
+              <div class="column-quarter">
                 <div id="chart-histogram-farmland-number_of_land_owners_per_nationality"
-                     data-stat-type="number"
-                     data-chart-title="Number of individuals owning farms and agricultural holdings by nationality"
+                     data-stat-type="scaled-percentage"
+                     data-chart-title="Number of individuals owning farms and agricultural holdings by nationality (%)"
                      data-source-title="Land Audit Report, 2017"
                      data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
               </div>
             </section>
+
             {% if not land_audit.is_missing %}
               {% if not land_audit.land_distribution_gender.is_missing and not land_audit.land_ownership %}
                 <section class="clearfix stat-row">
@@ -403,71 +392,60 @@
           </div>
         </article>
       {% endif %}
+
       {% if not ervenland.is_missing %}
         <article id="erven-land" class="clearfix">
           <div class="section-container">
             <h1 class="profile-detail-header">Erven Land</h1>
             <section class="clearfix stat-row">
-              <div class="column-half">
+              <div class="column-quarter">
                 <div id="chart-histogram-ervenland-erven_land_ownership_in_hectares_by_race"
                      data-stat-type="scaled-percentage"
                      data-chart-title="Individual ownership of erven land in hectares by race (%)"
+                     data-qualifier="Erven Land: legal term used in Namibia, South Africa and Swaziland to describe a piece of land registered in a deeds registry as an erf, lot, plot or stand."
                      data-source-title="Land Audit Report, 2017"
                      data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
               </div>
-              <div class="column-half">
-                <div id="chart-pie-ervenland-number_of_erven_land_owners_per_race"
-                     data-stat-type="percentage"
+              <div class="column-quarter">
+                <div id="chart-histogram-ervenland-number_of_erven_land_owners_per_race"
+                     data-stat-type="scaled-percentage"
                      data-chart-title="Number of individuals owning erven land by race (%)"
                      data-initial-sort="-value"
+                     data-qualifier="Erven Land: legal term used in Namibia, South Africa and Swaziland to describe a piece of land registered in a deeds registry as an erf, lot, plot or stand."
                      data-source-title="Land Audit Report, 2017"
                      data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
               </div>
-            </section>
-            <p>
-              Erven Land: legal term used in Namibia, South Africa and Swaziland
-              to describe a piece of
-              land registered in a deeds registry as an erf, lot, plot or stand.
-            </p>
-
-            <section class="clearfix stat-row">
-              <div class="column-half">
-                <div id="chart-pie-ervenland-erven_land_ownership_in_hectares_by_gender"
+              <div class="column-quarter">
+                <div id="chart-histogram-ervenland-erven_land_ownership_in_hectares_by_gender"
                      data-stat-type="scaled-percentage"
                      data-chart-title="Individual ownership of erven land in hectares by gender (%)"
                      data-initial-sort="-value"
+                     data-qualifier="Erven includes every defined portion, not intended to be a public place, of a piece of land laid out as a township, whether or not it has been formally recognized, approved or proclaimed as such."
                      data-source-title="Land Audit Report, 2017"
                      data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
               </div>
-              <div class="column-half">
-                <div id="chart-pie-ervenland-number_of_erven_land_owners_per_gender"
-                     data-stat-type="percentage"
+              <div class="column-quarter">
+                <div id="chart-histogram-ervenland-number_of_erven_land_owners_per_gender"
+                     data-stat-type="scaled-percentage"
                      data-chart-title="Number of individuals owning erven land by gender (%)"
                      data-initial-sort="-value"
+                     data-qualifier="Erven includes every defined portion, not intended to be a public place, of a piece of land laid out as a township, whether or not it has been formally recognized, approved or proclaimed as such."
                      data-source-title="Land Audit Report, 2017"
                      data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
               </div>
             </section>
-            <p>
-              Erven includes every defined portion,
-              not intended to be a public place, of a piece of land laid out as
-              a
-              township,
-              whether or not it has been formally recognized, approved or
-              proclaimed as such.
-            </p>
 
             <section class="clearfix stat-row">
-              <div class="column-half">
+              <div class="column-quarter">
                 <div id="chart-histogram-ervenland-erven_land_ownership_in_hectares_by_nationality"
                      data-stat-type="scaled-percentage"
                      data-chart-title="Individual ownership of erven land in hectares by nationality (%)"
                      data-source-title="Land Audit Report, 2017"
                      data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
               </div>
-              <div class="column-half">
-                <div id="chart-column-ervenland-number_of_erven_land_owners_per_nationality"
-                     data-stat-type="number"
+              <div class="column-quarter">
+                <div id="chart-histogram-ervenland-number_of_erven_land_owners_per_nationality"
+                     data-stat-type="scaled-percentage"
                      data-chart-title=" Number of individuals owning erven land by nationality"
                      data-source-title="Land Audit Report, 2017"
                      data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
@@ -477,6 +455,7 @@
           </div>
         </article>
       {% endif %}
+
       {% if not sectionaltitleland.is_missing %}
         <article id="sectional-title-land" class="clearfix">
           <div class="section-container">
@@ -488,76 +467,65 @@
               development {{ sectionaltitleland.sectional_title_ownership_in_hectares_per_category.is_missing }}
             </p>
             <section class="clearfix stat-row">
-              <div class="column-half">
+              <div class="column-quarter">
 
                 <div id="chart-histogram-sectionaltitleland-sectional_title_ownership_in_hectares_per_category"
                      data-stat-type="scaled-percentage"
                      data-chart-title="Individual ownership of sectional title land in hectares by category (%)"
+                     data-qualifier="Trusts in terms of Trust Property Control Act, No 57 of 1988: http://www.justice.gov.za/legislation/acts/1988-57.pdf"
                      data-source-title="Land Audit Report, 2017"
                      data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
               </div>
-              <div class="column-half">
-                <div id="chart-pie-sectionaltitleland-number_of_sectional_title_owners_by_category"
-                     data-stat-type="percentage"
+              <div class="column-quarter">
+                <div id="chart-histogram-sectionaltitleland-number_of_sectional_title_owners_by_category"
+                     data-stat-type="scaled-percentage"
                      data-chart-title="Number of individuals owning sectional title land by category (%)"
+                     data-qualifier="Trusts in terms of Trust Property Control Act, No 57 of 1988: http://www.justice.gov.za/legislation/acts/1988-57.pdf"
                      data-initial-sort="-value"
                      data-source-title="Land Audit Report, 2017"
                      data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
               </div>
-            </section>
-
-            <section class="clearfix stat-row">
-              <div class="column-half">
-                <div id="chart-pie-sectionaltitleland-sectional_title_ownership_in_hectares_per_race"
+              <div class="column-quarter">
+                <div id="chart-histogram-sectionaltitleland-sectional_title_ownership_in_hectares_per_race"
                      data-stat-type="scaled-percentage"
                      data-chart-title="Individual ownership of sectional title land in hectares by race (%)"
                      data-initial-sort="-value"
                      data-source-title="Land Audit Report, 2017"
                      data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
               </div>
-              <div class="column-half">
-                <div id="chart-pie-sectionaltitleland-number_of_sectional_title_owners_by_race"
-                     data-stat-type="percentage"
+              <div class="column-quarter">
+                <div id="chart-histogram-sectionaltitleland-number_of_sectional_title_owners_by_race"
+                     data-stat-type="scaled-percentage"
                      data-chart-title="Number of individuals owning sectional title land by race (%)"
                      data-initial-sort="-value"
                      data-source-title="Land Audit Report, 2017"
                      data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
               </div>
             </section>
-            <p>
-              Trusts in terms of Trust Property Control Act, No 57 of 1988
-              <a href="http://www.justice.gov.za/legislation/acts/1988-57.pdf">the
-                Trust Act</a>
-              </p>
-
             <section class="clearfix stat-row">
-              <div class="column-half">
+              <div class="column-quarter">
                 <div id="chart-histogram-sectionaltitleland-sectional_title_ownership_in_hectares_per_gender"
                      data-stat-type="scaled-percentage"
                      data-chart-title=" Individual ownership of sectional title land in hectares by gender (%)"
                      data-source-title="Land Audit Report, 2017"
                      data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
               </div>
-              <div class="column-half">
-                <div id="chart-column-sectionaltitleland-number_of_sectional_title_owners_by_gender"
-                     data-stat-type="number"
-                     data-chart-title="Number of individuals owning sectional title land by gender "
+              <div class="column-quarter">
+                <div id="chart-histogram-sectionaltitleland-number_of_sectional_title_owners_by_gender"
+                     data-stat-type="scaled-percentage"
+                     data-chart-title="Number of individuals owning sectional title land by gender (%)"
                      data-source-title="Land Audit Report, 2017"
                      data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
               </div>
-            </section>
-
-
-            <section class="clearfix stat-row">
-              <div class="column-half">
-                <div id="chart-pie-sectionaltitleland-sectional_title_ownership_in_hectares_nationality"
+              <div class="column-quarter">
+                <div id="chart-histogram-sectionaltitleland-sectional_title_ownership_in_hectares_nationality"
                      data-stat-type="scaled-percentage"
                      data-chart-title=" Individual ownership of sectional title land in hectares by nationality (%)"
                      data-initial-sort="-value"
                      data-source-title="Land Audit Report, 2017"
                      data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
               </div>
-              <div class="column-half">
+              <div class="column-quarter">
                 <div id="chart-histogram-sectionaltitleland-number_of_sectional_title_owners_by_nationality"
                      data-stat-type="number"
                      data-chart-title="Number of individuals owning sectional title land by nationality"
@@ -565,10 +533,10 @@
                      data-source-link="http://www.ruraldevelopment.gov.za/publications/land-audit-report/file/6126"></div>
               </div>
             </section>
-
           </div>
         </article>
       {% endif %}
+
       {% if not redistributionandrestitution.is_missing %}
         <article id="redistribution-restitution" class="clearfix">
           <div class="section-container">
@@ -583,11 +551,11 @@
                 to remedy past racial injustice and lay the basis for more equitable
                 development.
               </p>
-              <div class="column-third">
+              <div class="column-quarter">
                 {% include 'profile/_blocks/_stat_list.html' with stat=redistributionandrestitution.hectarestransferredperprovincebyyear_stat stat_type='number' decimals="-2" %}
               </div>
               {% if not redistributionandrestitution.hectarestransferredperprovincebyyear.is_missing %}
-                <div class="column-two-thirds">
+                <div class="column-three-quarters">
                   <div id="chart-histogram-redistributionandrestitution-hectarestransferredperprovincebyyear"
                        data-chart-title="Hectares transferred in the Redistributiton Programme from 2009/2010 to 2017/2018"
                        data-source-link="http://www.ruraldevelopment.gov.za/publications/evaluation-reports/file/6466"
@@ -598,34 +566,31 @@
             <section class="clearfix stat-row">
               <h2 class="header-for-columns"><a class="permalink"> Redistributed
                 Land Cost <i class="fa fa-link"></i></a></h2>
-              <div class="column-third">
+              <div class="column-quarter">
                 {% include 'profile/_blocks/_stat_list.html' with stat=redistributionandrestitution.redistributedlandhectares_stat stat_type='number' decimals="-2" %}
               </div>
-              <div class="column-third">
+              <div class="column-quarter">
                 {% include 'profile/_blocks/_stat_list.html' with stat=redistributionandrestitution.redistributedlandaveragecostperhectares_stat stat_type='number' decimals="-2" %}
               </div>
-              <div class="column-third">
+              <div class="column-quarter">
                 {% include 'profile/_blocks/_stat_list.html' with stat=redistributionandrestitution.redistributedlandcostinrands_stat stat_type='number' decimals="-2" %}
               </div>
-            </section>
-            <section class="clearfix stat-row">
               {% if not redistributionandrestitution.redistributedlandusebreakdown.is_missing %}
-                <div class="column-half">
-                  <div id="chart-pie-redistributionandrestitution-redistributedlandusebreakdown"
-                       data-stat-type="percentage"
+                <div class="column-quarter">
+                  <div id="chart-histogram-redistributionandrestitution-redistributedlandusebreakdown"
+                       data-stat-type="scaled-percentage"
                        data-chart-title="Redistribution Programme Statistic, Percent land use breakdown year 2017/2018"
                        data-source-link="http://www.ruraldevelopment.gov.za/publications/evaluation-reports/file/6466"
                        data-source-title="Annual statistical report for selected service delivery programmes of the Department of Rural Development and Land Reform, 2018"></div>
                 </div>
               {% endif %} <!-- end if -->
-
             </section>
             <section class="clearfix stat-row">
-              <div class="column-third">
+              <div class="column-quarter">
                 {% include 'profile/_blocks/_stat_list.html' with stat=redistributionandrestitution.redistributeprogrammeprojectsbyyear_stat stat_type='number' decimals="-2" %}
               </div>
               {% if not redistributionandrestitution.redistributeprogrammeprojectsbyyear.is_missing %}
-                <div class="column-two-thirds">
+                <div class="column-three-quarters">
                   <div id="chart-column-redistributionandrestitution-redistributeprogrammeprojectsbyyear"
                        data-chart-title="Projects transferred through Redistribution Programme in the Financial Year 2009/2010 to 2017/2018"
                        data-source-link="http://www.ruraldevelopment.gov.za/publications/evaluation-reports/file/6466"
@@ -634,11 +599,11 @@
               {% endif %} <!-- end if -->
             </section>
             <section class="clearfix stat-row">
-              <div class="column-third">
+              <div class="column-quarter">
                 {% include 'profile/_blocks/_stat_list.html' with stat=redistributionandrestitution.redistributeprogrammebeneficiariesbyyear_stat stat_type='number' decimals="-2" %}
               </div>
               {% if not redistributionandrestitution.redistributeprogrammebeneficiariesbyyear.is_missing %}
-                <div class="column-two-thirds">
+                <div class="column-three-quarters">
                   <div id="chart-column-redistributionandrestitution-redistributeprogrammebeneficiariesbyyear"
                        data-chart-title="Beneficiaries of Redistribution Programme in the Financial Year 2009/2010 to 2017/2018"
                        data-source-link="http://www.ruraldevelopment.gov.za/publications/evaluation-reports/file/6466"
@@ -648,10 +613,10 @@
 
             </section>
             <section class="clearfix stat-row">
-              <div class="column-third">
+              <div class="column-quarter">
                 {% include 'profile/_blocks/_stat_list.html' with stat=redistributionandrestitution.redistributeprogrammehouseholdsbyyear_stat stat_type='number' decimals="-2" %}
               </div>
-              <div class="column-two-thirds">
+              <div class="column-three-quarters">
                 <div id="chart-column-redistributionandrestitution-redistributeprogrammehouseholdsbyyear"
                      data-chart-title="Households Benefitted from Redistribution Programme in the Financial Year 2009/2010 to 2017/2018"
                      data-source-link="http://www.ruraldevelopment.gov.za/publications/evaluation-reports/file/6466"
@@ -659,10 +624,10 @@
               </div>
             </section>
             <section class="clearfix stat-row">
-              <div class="column-third">
+              <div class="column-quarter">
                 {% include 'profile/_blocks/_stat_list.html' with stat=redistributionandrestitution.femalepartybenefited_stat stat_type='number' decimals="-2" %}
               </div>
-              <div class="column-two-thirds">
+              <div class="column-three-quarters">
                 <div id="chart-column-redistributionandrestitution-femalepartybenefited"
                      data-chart-title="Number of female benefited from the Redistribution Programme in the Financial Year 2009/2010 to 2017/2018"
                      data-source-link="http://www.ruraldevelopment.gov.za/publications/evaluation-reports/file/6466"
@@ -670,10 +635,10 @@
               </div>
             </section>
             <section class="clearfix stat-row">
-              <div class="column-third">
+              <div class="column-quarter">
                 {% include 'profile/_blocks/_stat_list.html' with stat=redistributionandrestitution.disabledpeoplepartybenefited_stat stat_type='number' decimals="-2" %}
               </div>
-              <div class="column-two-thirds">
+              <div class="column-three-quarters">
                 <div id="chart-column-redistributionandrestitution-disabledpeoplepartybenefited"
                      data-chart-title="Number of disabled people benefited from Redistribution Programme in the Financial Year 2009/2010 to 2017/2018"
                      data-source-link="http://www.ruraldevelopment.gov.za/publications/evaluation-reports/file/6466"
@@ -681,10 +646,10 @@
               </div>
             </section>
             <section class="clearfix stat-row">
-              <div class="column-third">
+              <div class="column-quarter">
                 {% include 'profile/_blocks/_stat_list.html' with stat=redistributionandrestitution.youthpartybenefited_stat stat_type='number' decimals="-2" %}
               </div>
-              <div class="column-two-thirds">
+              <div class="column-three-quarters">
                 <div id="chart-column-redistributionandrestitution-youthpartybenefited"
                      data-chart-title="Number of youth benefited from Redistribution Programme in the Financial Year 2009/2010 to 2017/2018"
                      data-source-link="http://www.ruraldevelopment.gov.za/publications/evaluation-reports/file/6466"
@@ -700,10 +665,10 @@
                 lost their land as a result of racially discriminatory practices
                 such as forced removals.
               </p>
-              <div class="column-third">
+              <div class="column-quarter">
                 {% include 'profile/_blocks/_stat_list.html' with stat=redistributionandrestitution.hectaresacquiredrestitution_stat stat_type='number' decimals="-2" %}
               </div>
-              <div class="column-two-thirds">
+              <div class="column-three-quarters">
                 <div id="chart-histogram-redistributionandrestitution-hectaresacquiredrestitution"
                      data-chart-title="Hectares Acquired in the Restitution Programme in the Financial Year 2009/2010 to 2017/2018"
                      data-source-link="http://www.ruraldevelopment.gov.za/publications/evaluation-reports/file/6466"
@@ -711,10 +676,10 @@
               </div>
             </section>
             <section class="clearfix stat-row">
-              <div class="column-third">
+              <div class="column-quarter">
                 {% include 'profile/_blocks/_stat_list.html' with stat=redistributionandrestitution.householdsrestitution_stat stat_type='number' decimals="-2" %}
               </div>
-              <div class="column-two-thirds">
+              <div class="column-three-quarters">
                 <div id="chart-histogram-redistributionandrestitution-householdsrestitution"
                      data-chart-title="Households benefited in the Restitution Programme from 2009/2010 to 2017/2018"
                      data-source-link="http://www.ruraldevelopment.gov.za/publications/evaluation-reports/file/6466"
@@ -722,10 +687,10 @@
               </div>
             </section>
             <section class="clearfix stat-row">
-              <div class="column-third">
+              <div class="column-quarter">
                 {% include 'profile/_blocks/_stat_list.html' with stat=redistributionandrestitution.beneficiariesrestitution_stat stat_type='number' decimals="-2" %}
               </div>
-              <div class="column-two-thirds">
+              <div class="column-three-quarters">
                 <div id="chart-histogram-redistributionandrestitution-beneficiariesrestitution"
                      data-chart-title="Beneficiaries in the Restitution Programme from 2009/2010 to 2017/2018"
                      data-source-link="http://www.ruraldevelopment.gov.za/publications/evaluation-reports/file/6466"
@@ -733,10 +698,10 @@
               </div>
             </section>
             <section class="clearfix stat-row">
-              <div class="column-third">
+              <div class="column-quarter">
                 {% include 'profile/_blocks/_stat_list.html' with stat=redistributionandrestitution.femaleheadedhouseholdsrestitution_stat stat_type='number' decimals="-2" %}
               </div>
-              <div class="column-two-thirds">
+              <div class="column-three-quarters">
                 <div id="chart-histogram-redistributionandrestitution-femaleheadedhouseholdsrestitution"
                      data-chart-title="Number of female headed households restitution Programme from 2009/2010 to 2017/2018"
                      data-source-link="http://www.ruraldevelopment.gov.za/publications/evaluation-reports/file/6466"
@@ -744,28 +709,20 @@
               </div>
             </section>
             <section class="clearfix stat-row">
-              <div class="column-third">
-                <div id="chart-histogram-redistributionandrestitution-financialcompensationrestitution"
-                     data-chart-title="Financial Compensation in Rands (ZAR), Restitution Programme in 2017/2018"
-                     data-source-link="http://www.ruraldevelopment.gov.za/publications/evaluation-reports/file/6466"
-                     data-source-title="Annual statistical report for selected service delivery programmes of the Department of Rural Development and Land Reform, 2018"></div>
+              <div class="column-quarter">
+                {% include 'profile/_blocks/_stat_list.html' with stat=redistributionandrestitution.financialcompensationrestitution_stat stat_type='number' decimals="-2" %}
               </div>
-              <div class="column-third">
-                <div id="chart-histogram-redistributionandrestitution-disabilitiesrestitution"
-                     data-chart-title="People with disabilities benefited in Restitution Programme in 2017/2018"
-                     data-source-link="http://www.ruraldevelopment.gov.za/publications/evaluation-reports/file/6466"
-                     data-source-title="Annual statistical report for selected service delivery programmes of the Department of Rural Development and Land Reform, 2018"></div>
+              <div class="column-quarter">
+                {% include 'profile/_blocks/_stat_list.html' with stat=redistributionandrestitution.disabilitiesrestitution_stat stat_type='number' decimals="-2" %}
               </div>
-              <div class="column-third">
-                <div id="chart-histogram-redistributionandrestitution-landcostrestitution"
-                     data-chart-title="Land Cost in Restitution Programme in Rands (ZAR) in 2017/2018"
-                     data-source-link="http://www.ruraldevelopment.gov.za/publications/evaluation-reports/file/6466"
-                     data-source-title="Annual statistical report for selected service delivery programmes of the Department of Rural Development and Land Reform, 2018"></div>
+              <div class="column-quarter">
+                {% include 'profile/_blocks/_stat_list.html' with stat=redistributionandrestitution.landcostrestitution_stat stat_type='number' decimals="-2" %}
               </div>
             </section>
           </div>
         </article>
       {% endif %}
+
       {% if not afrobarometer.is_missing %}
         <article>
           <div class="section-container">

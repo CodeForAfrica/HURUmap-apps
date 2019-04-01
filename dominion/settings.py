@@ -254,6 +254,20 @@ CORS_ORIGIN_WHITELIST = (
         'localhost:3000/'
     )
 
+# color scheme
+
+HURUMAP['theme'] = {
+    'charts': {
+        'colorbrewer': {
+            'dominion': [
+                '#7f9442', '#de9f3a'
+            ],
+        },
+        'color_scale': 'dominion',
+        'chart_height': 320
+    }
+}
+
 LOGGING['loggers']['dominion'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
 
 WAZIMAP = HURUMAP
