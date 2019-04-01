@@ -55,7 +55,9 @@ class ProfileTabs extends React.Component {
   constructor(props) {
     super(props);
 
-    const { tabs } = props;
+    const {
+      profile: { tabs }
+    } = props;
     let value;
     if (tabs.length) {
       const [{ href }] = tabs;
@@ -66,11 +68,21 @@ class ProfileTabs extends React.Component {
   }
 
   handleChange(event, value) {
+    const {
+      profile: { switchToTab }
+    } = this.props;
     this.setState({ value });
+    if (switchToTab) {
+      switchToTab(value);
+    }
   }
 
   render() {
-    const { classes, tabs, width } = this.props;
+    const {
+      classes,
+      profile: { tabs },
+      width
+    } = this.props;
     const { value } = this.state;
 
     const centered = isWidthUp('md', width); // centered is only for md and up
@@ -90,7 +102,7 @@ class ProfileTabs extends React.Component {
               <LinkTab
                 key={tab.href}
                 value={tab.href}
-                href={tab.href}
+                href="#dominionProfileTabs" // Always show the tabs on click
                 label={tab.name}
                 className={classes.tab}
                 classes={{
@@ -108,12 +120,14 @@ class ProfileTabs extends React.Component {
 
 ProfileTabs.propTypes = {
   classes: PropTypes.shape().isRequired,
-  tabs: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      href: PropTypes.string.isRequired
-    })
-  ).isRequired,
+  profile: PropTypes.shape({
+    tabs: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        href: PropTypes.string.isRequired
+      })
+    ).isRequired
+  }).isRequired,
   width: PropTypes.string.isRequired
 };
 
