@@ -130,7 +130,6 @@ var ProfileMaps = function() {
         });
         this.map.addLayer(layer);
         this.map.fitBounds(layer.getBounds());
-      //  this.map.setView(this.dominion_country.centre, this.dominion_country.zoom);
     };
 
     this.drawFeatures = function(features) {
