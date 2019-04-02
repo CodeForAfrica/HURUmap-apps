@@ -13,7 +13,8 @@ const styles = theme => ({
     backgroundColor: 'white',
     padding: '3.1875rem 1.875rem',
     [theme.breakpoints.up('md')]: {
-      padding: '3.1875rem 0'
+      padding: '3.1875rem 0',
+      width: '80%'
     }
   },
   headline: {

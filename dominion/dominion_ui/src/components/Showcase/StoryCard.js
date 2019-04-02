@@ -29,11 +29,17 @@ const styles = theme => ({
   contentRoot: {
     flexGrow: 1
   },
+  cardContent: {
+    alignItems: 'flex-end',
+    display: 'flex',
+    flexGrow: 1,
+    marginTop: '-100%'
+  },
   media: {
     height: 0,
     paddingTop: '100%',
     width: '100%',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
     backgroundBlendMode: 'color'
   },
   cardLink: {
@@ -52,7 +58,6 @@ const styles = theme => ({
   },
   bodyText: {
     color: '#fff',
-    fontWeight: 500,
     margin: '1rem 0'
   }
 });
@@ -73,30 +78,23 @@ function StoryCard({ story, classes }) {
           style={{ display: 'flex', flexFlow: 'column', height: '100%' }}
         >
           <CardMedia className={classes.media} image={img} title=" Story" />
-          <CardContent style={{ flexGrow: 1, marginTop: '-100%' }}>
+          <CardContent className={classes.cardContent}>
             <Grid
               container
               direction="column"
               className={classes.contentRoot}
-              justify="flex-end"
               alignItems="flex-start"
               style={{ height: '100%' }}
             >
-              <Grid item>
-                <Typography variant="h6" className={classes.overline}>
-                  {date}
-                </Typography>
-              </Grid>
-              <Grid item>
-                <Typography variant="h5" className={classes.bodyTitle}>
-                  {title}
-                </Typography>
-              </Grid>
-              <Grid item>
-                <Typography variant="subtitle2" className={classes.bodyText}>
-                  {brief}{' '}
-                </Typography>
-              </Grid>
+              <Typography variant="h6" className={classes.overline}>
+                {date}
+              </Typography>
+              <Typography variant="h5" className={classes.bodyTitle}>
+                {title}
+              </Typography>
+              <Typography variant="subtitle2" className={classes.bodyText}>
+                {brief}{' '}
+              </Typography>
             </Grid>
           </CardContent>
         </CardActionArea>

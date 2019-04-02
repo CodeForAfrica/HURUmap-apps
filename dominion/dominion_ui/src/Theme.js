@@ -48,6 +48,11 @@ const Theme = createMuiTheme({
       color: 'rgba(34, 40, 34, 0.8)',
       fontFamily: FONT_FAMILY_TEXT
     },
+    subtitle2: {
+      fontFamily: FONT_FAMILY_TEXT,
+      fontSize: '0.857rem',
+      fontWeight: 500
+    },
     fontSmallDefault: {
       fontSize: 13,
       fontFamily: FONT_FAMILY_TEXT
