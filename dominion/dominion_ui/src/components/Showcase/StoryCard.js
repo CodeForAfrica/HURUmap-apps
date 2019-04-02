@@ -14,7 +14,7 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = theme => ({
   root: {
     width: '100vw',
-    height: '20rem',
+    height: '22.86rem',
     backgroundColor: '#fafafa',
     border: '1px solid #eeeeee',
     opacity: 0.9,
@@ -23,7 +23,7 @@ const styles = theme => ({
       backgroundColor: '#fff'
     },
     [theme.breakpoints.up('md')]: {
-      width: '20rem'
+      paddingRight: '1.429rem'
     }
   },
   contentRoot: {
@@ -36,7 +36,7 @@ const styles = theme => ({
     marginTop: '-100%'
   },
   media: {
-    height: 0,
+    height: '22.86rem',
     paddingTop: '100%',
     width: '100%',
     backgroundColor: 'rgba(0, 0, 0, 0.7)',
@@ -49,7 +49,6 @@ const styles = theme => ({
     color: '#fff',
     fontSize: theme.typography.fontSmallDefault.fontSize,
     fontWeight: 400
-    // paddingTop: '1rem'
   },
   bodyTitle: {
     color: '#fff',
@@ -63,7 +62,6 @@ const styles = theme => ({
 });
 
 function StoryCard({ story, classes }) {
-  console.log(story);
   const { img, date, title, brief, link } = story;
 
   return (

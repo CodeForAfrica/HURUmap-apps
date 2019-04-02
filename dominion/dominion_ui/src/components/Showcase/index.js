@@ -14,7 +14,8 @@ const styles = theme => ({
     padding: '3.1875rem 1.875rem',
     [theme.breakpoints.up('md')]: {
       padding: '3.1875rem 0',
-      width: '80%'
+      width: '80%',
+      float: 'right'
     }
   },
   headline: {
@@ -43,7 +44,6 @@ function Showcase({ classes, showcaseStories }) {
       direction="column"
       className={classes.root}
       justify="center"
-      alignItems="flex-end"
     >
       <Grid
         item
