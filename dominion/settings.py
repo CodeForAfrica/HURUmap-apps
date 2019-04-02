@@ -221,25 +221,32 @@ HURUMAP['topics']['sectionaltitleland'] = {
 
 HURUMAP['showcase_stories'] = [
     {
+        'index': 1,
         'title':  'A farmer\'s 15-year wait for land justice',
         'author': 'Jeanne-Marié Versluis',
         'brief':  'The government offered the farm to Rakgase in 2002 and accepted the offer he made, but nothing has come of the agreement. ',
         'link':   'https://city-press.news24.com/News/a-farmers-15-year-wait-for-land-justice-20180822',
-        'img':    STATIC_URL + 'img/showcase/showcase_1.jpg'
+        'img':    STATIC_URL + 'img/showcase/showcase1.jpg',
+        'date': '22 Aug 2018'
     },
     {
+        'index': 2,
         'title':  'Be prepared: It’s getting hotter and drier',
         'author': 'Mandi Smallhorne',
         'brief':  'What changes can we expect for our country and our lives as climate change takes hold? ',
         'link':   'https://city-press.news24.com/News/be-prepared-its-getting-hotter-and-drier-20180910',
-        'img':    STATIC_URL + 'img/showcase/showcase_2.jpg'
+        'img':    STATIC_URL + 'img/showcase/showcase2.jpg',
+        'date': '10 Sep 2018'
+
     },
     {
+        'index': 3,
         'title':  'What will climate change mean for SA agriculture?',
         'author': 'Mandi Smallhorne',
         'brief':  'What are the small shifts that mean big changes, particularly for agriculture, in a changing climate? ',
         'link':   'https://city-press.news24.com/News/what-will-climate-change-mean-for-sa-agriculture-20180817',
-        'img':    STATIC_URL + 'img/showcase/showcase_3.jpg'
+        'img':    STATIC_URL + 'img/showcase/showcase3.jpg',
+        'date': '17 Aug 2018'
     }
 ]
 
