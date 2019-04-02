@@ -28,4 +28,6 @@
   {% if compare_primary_releases %}
     profileDataJson.primary_releases = {{compare_primary_releases | jsonify | safe }}
   {% endif %}
+
+  var showcaseStories = {{ HURUMAP.showcase_stories|jsonify|safe }};
 {% endblock settings_javascript %}

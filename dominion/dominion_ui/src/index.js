@@ -44,7 +44,8 @@ const PROPS = {
       }
     },
     primary_releases: { active: {}, other: [] }
-  }
+  },
+  showcaseStories: window.showcaseStories || []
 };
 
 const renderApp = (Component, id) => {
