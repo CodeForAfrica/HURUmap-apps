@@ -468,6 +468,25 @@ def get_literacy_and_numeracy_tests_profile(geo, session):
                  english_test_dist.get('is_missing') and \
                  swahili_test_dist.get('is_missing') and \
                  swahili_test_dist.get('is_missing')
+    numeracy_sort = 0
+    english_sort = 0
+    swahili_sort = 0
+
+    try:
+        numeracy_sort = numeracy_test_dist['Passed']['numerators']['this']
+    except KeyError:
+        pass
+
+    try:
+        english_sort = english_test_dist['Passed']['numerators']['this']
+    except KeyError:
+        pass
+
+    try:
+        swahili_sort = swahili_test_dist['Passed']['numerators']['this']
+    except KeyError:
+        pass
+
     return {
         'is_missing': is_missing,
         'literacy_data': literacy_data,
@@ -475,9 +494,9 @@ def get_literacy_and_numeracy_tests_profile(geo, session):
         'english_test_dist': english_test_dist,
         'swahili_test_dist': swahili_test_dist,
         'numeracy_test_dist': numeracy_test_dist,
-        'numeracy_sort': '-value' if numeracy_test_dist <= 50 else 'value',
-        'english_sort': '-value' if english_test_dist <= 50 else 'value',
-        'swahili_sort': '-value' if swahili_test_dist <= 49 else 'value',
+        'numeracy_sort': '-value' if numeracy_sort <= 50 else 'value',
+        'english_sort': '-value' if english_sort <= 50 else 'value',
+        'swahili_sort': '-value' if swahili_sort <= 49 else 'value',
         'all_subjects_dist': {
             'name': 'Competent in all subjects children aged 6-16',
             'numerators': {'this': all_subjects},
@@ -534,13 +553,26 @@ def get_school_attendance_profile(geo, session):
         except Exception:
             pass
 
+        drop_out_sort = 0
+        out_of_school_sort = 0
+
+        try:
+            drop_out_sort = dropped_out_dist['Dropped out']['numerators']['this']
+        except KeyError:
+            pass
+
+        try:
+            out_of_school_sort = dropped_out_dist['Dropped out']['numerators']['this']
+        except KeyError:
+            pass
+
     return {
         'is_missing': attendance_data.get('is_missing'),
         'attendance_data': attendance_data,
         'dropped_out_dist': dropped_out_dist,
         'out_of_school_dist': out_of_school_dist,
-        'drop_out_sort': '-value' if dropped_out_dist <= 50 else 'value',
-        'out_of_school_sort': '-value' if out_of_school_dist <= 50 else 'value'
+        'drop_out_sort': '-value' if drop_out_sort <= 50 else 'value',
+        'out_of_school_sort': '-value' if out_of_school_sort <= 50 else 'value'
     }
 
 
