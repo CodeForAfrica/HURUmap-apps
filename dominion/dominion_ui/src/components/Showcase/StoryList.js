@@ -43,10 +43,10 @@ function StoryList({ classes, storyData, width }) {
   //                  We need to match exact size of StoryCard so we don't end
   //                  up with a lot of spaces around StoryCard.
   let cards = 4;
-  if (isWidthDown('lg', width)) {
+  if (isWidthDown('md', width)) {
     cards = 3;
   }
-  if (isWidthDown('md', width)) {
+  if (isWidthDown('sm', width)) {
     cards = 1;
   }
 
