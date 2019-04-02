@@ -32,7 +32,9 @@ const styles = theme => ({
   media: {
     height: 0,
     paddingTop: '100%',
-    width: '100%'
+    width: '100%',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundBlendMode: 'color'
   },
   cardLink: {
     textDecoration: 'none'
@@ -56,7 +58,8 @@ const styles = theme => ({
 });
 
 function StoryCard({ story, classes }) {
-  const { image, date, title, body, link } = story;
+  console.log(story);
+  const { img, date, title, brief, link } = story;
 
   return (
     <Card className={classes.root}>
@@ -69,7 +72,7 @@ function StoryCard({ story, classes }) {
         <CardActionArea
           style={{ display: 'flex', flexFlow: 'column', height: '100%' }}
         >
-          <CardMedia className={classes.media} image={image} title=" Story" />
+          <CardMedia className={classes.media} image={img} title=" Story" />
           <CardContent style={{ flexGrow: 1, marginTop: '-100%' }}>
             <Grid
               container
@@ -91,7 +94,7 @@ function StoryCard({ story, classes }) {
               </Grid>
               <Grid item>
                 <Typography variant="subtitle2" className={classes.bodyText}>
-                  {body}{' '}
+                  {brief}{' '}
                 </Typography>
               </Grid>
             </Grid>

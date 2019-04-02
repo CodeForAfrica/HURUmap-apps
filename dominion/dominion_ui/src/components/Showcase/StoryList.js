@@ -6,8 +6,6 @@ import { withStyles } from '@material-ui/core/styles';
 
 import StoryCard from './StoryCard';
 
-import storyData from './Stories';
-
 const styles = theme => ({
   root: {
     flexGrow: 1,
@@ -48,9 +46,7 @@ const styles = theme => ({
   }
 });
 
-function StoryList(props) {
-  const { classes } = props;
-
+function StoryList({ classes, storyData }) {
   // TODO(kilemensi): GridListTile computes the size of item and sets it using
   //                  style. This means we can't use classes since element
   //                  style has higher preference. Hence the use of style here.
@@ -86,7 +82,8 @@ function StoryList(props) {
 }
 
 StoryList.propTypes = {
-  classes: PropTypes.shape().isRequired
+  classes: PropTypes.shape().isRequired,
+  storyData: PropTypes.shape().isRequired
 };
 
 export default withStyles(styles)(StoryList);
