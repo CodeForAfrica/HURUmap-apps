@@ -10,7 +10,8 @@ const styles = theme => ({
   verticalAlignText: {
     color: 'white',
     writingMode: 'vertical-lr',
-    textOrientation: 'sideways-right'
+    textOrientation: 'sideways-right',
+    textDecoration: 'none'
   },
   mapSection: {
     color: 'white',
@@ -52,7 +53,8 @@ function HomeHeroMap({ classes }) {
       <Typography
         variant="h6"
         className={classes.verticalAlignText}
-        component="div"
+        component="a"
+        href="/south-africa"
       >
         <img src={map} alt="Country Map" className={classes.mapImage} />
         South Africa &nbsp;&nbsp;
