@@ -9,7 +9,7 @@ def asset_manifest(request):
     try:
         with open(manifest_filepath) as f:
             asset_manifest_contents = json.load(f)
-            for key, value in asset_manifest_contents.viewitems():
+            for key, value in asset_manifest_contents.items():
                 # Strip starting `/static/` from values
                 if key == 'main.js':
                     asset_manifest['main'] = value[8:]
@@ -24,4 +24,3 @@ def asset_manifest(request):
     return {
         'asset_manifest': asset_manifest
     }
-
