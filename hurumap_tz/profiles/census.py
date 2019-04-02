@@ -121,7 +121,7 @@ def get_demographics_profile(geo, session):
                     table_fields=['age in completed years', 'sex',
                                   'rural or urban'])
                 total_urbanised = 0
-                for data in urban_dist_data['Urban'].itervalues():
+                for data in urban_dist_data['Urban'].values():
                     if 'numerators' in data:
                         total_urbanised += data['numerators']['this']
             else:
@@ -130,7 +130,7 @@ def get_demographics_profile(geo, session):
                     ['rural or urban', 'sex'], geo=geo, session=session,
                     table_fields=['sex', 'rural or urban'])
                 total_urbanised = 0
-                for data in urban_dist_data['Urban'].itervalues():
+                for data in urban_dist_data['Urban'].values():
                     if 'numerators' in data:
                         total_urbanised += data['numerators']['this']
 
@@ -225,7 +225,7 @@ def get_education_profile(geo, session):
                            'University', 'Youth polytechnic', 'Basic literacy',
                            'Madrassa'])
 
-            for key, data in edu_dist_data.iteritems():
+            for key, data in edu_dist_data.items():
                 if key in ['Secondary', 'Tertiary', 'University',
                            'Youth polytechnic']:
                     secondary_or_higher += data['numerators']['this']
@@ -238,7 +238,7 @@ def get_education_profile(geo, session):
                            'sex': ['Female', 'Male']})
 
             total_never = 0.0
-            for data in school_attendance_dist['Never attended'].itervalues():
+            for data in school_attendance_dist['Never attended'].values():
                 if 'numerators' in data:
                     total_never += data['numerators']['this']
         except Exception:
@@ -280,7 +280,7 @@ def get_employment_profile(geo, session):
                     'employment activity status': EMPLOYMENT_RECODES.values(),
                     'sex': ['Female', 'Male']})
 
-            for data in employment_activity_dist['Employed'].itervalues():
+            for data in employment_activity_dist['Employed'].values():
                 if 'numerators' in data:
                     total_employed += data['numerators']['this']
         except Exception:
