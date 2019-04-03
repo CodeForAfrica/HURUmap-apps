@@ -2,8 +2,8 @@ FROM codeforafrica/hurumap:0.6.0
 
 # Set env variables used in this Dockerfile
 # HURUmap App and Django settings
-ENV HURUMAP_APP=${HURUMAP_APP:-hurumap_land}
-ENV DJANGO_SETTINGS_MODULE=${HURUMAP_APP:-hurumap_land}.settings
+ENV HURUMAP_APP=${HURUMAP_APP:-dominion}
+ENV DJANGO_SETTINGS_MODULE=${HURUMAP_APP:-dominion}.settings
 # Local directory with project source
 ENV APP_SRC=.
 # Directory in container for all project files

@@ -6,11 +6,49 @@
 
   {% if profile_data_json %}
      var profileDataJson = {{ profile_data_json }};
+     profileDataJson.tabs = [
+       {
+         name: 'All',
+         href: ''
+       }
+     ];
+     //append tab links for all profile data shown in profile_detail template
+     {% if not landsales.is_missing %}
+        profileDataJson.tabs.push({ name: 'Agricultural Land Sales' , href: '#agricultural-land-sales'})
+     {% endif %}
+     {% if not landsalescolour.is_missing %}
+        profileDataJson.tabs.push({ name: 'Land Sales for Transactions of Colour' , href: '#agricultural-land-sales-colour'})
+     {% endif %}
+     {% if not farmland.is_missing %}
+        profileDataJson.tabs.push({ name: 'Farm Land' , href: '#farm-land'})
+     {% endif %}
+     {% if not sectionaltitleland.is_missing %}
+        profileDataJson.tabs.push({ name: 'Sectional Title Land' , href: '#sectional-title-land'})
+     {% endif %}
+     {% if not ervenland.is_missing %}
+        profileDataJson.tabs.push({ name: 'Erven & Urban Land' , href: '#erven-land'})
+     {% endif %}
+     {% if not excisions.is_missing %}
+        profileDataJson.tabs.push({ name: 'Excisions' , href: '#excisions'})
+     {% endif %}
+     {% if not afrobarometer.is_missing %}
+        profileDataJson.tabs.push({ name: 'Afrobarometer' , href: '#afrobarometer'})
+     {% endif %}
+
+     // While viz are created outside React, lets stick to using jQuery
+     // for handling Profile Tabs
+     profileDataJson.switchToTab = function switchToProfileTab(tabId) {
+       if (tabId) {
+         $('#profile-detail article').hide();
+         $(tabId).show();
+       } else {
+         $('#profile-detail article').show();
+       }
+     }
   {% else %}
     // compare page has no profile_data_json: initializing this for compare page
      var profileDataJson = {};
   {% endif %}
-
   // homepage has no geography: initialize geo_code
   var geography = {{ geography.this |jsonify|safe }} || { geo_code: '' };
   {% if country %}
