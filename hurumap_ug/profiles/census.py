@@ -43,7 +43,7 @@ def get_demographics_profile(geo, session, year):
                 ['rural or urban'], geo, session,
                 table_fields=['rural or urban'])
 
-            for data in urban_dist_data['Urban'].itervalues():
+            for data in urban_dist_data['Urban'].values():
                 if 'numerators' in data:
                     total_urbanised += data['numerators']['this']
 
@@ -123,11 +123,11 @@ def get_elections2016_profile(geo, session):
             candidate, total_votes = LOCATIONNOTFOUND, 0
 
         total_besigye = 0
-        for data, value in candidate.get('Kizza besigye', {}).iteritems():
+        for data, value in candidate.get('Kizza besigye', {}).items():
             if data == 'numerators':
                 total_besigye += value['this']
         total_museveni = 0
-        for data, value in candidate.get('Yoweri museveni', {}).iteritems():
+        for data, value in candidate.get('Yoweri museveni', {}).items():
             if data == 'numerators':
                 total_museveni += value['this']
 
@@ -176,7 +176,7 @@ def get_disabilities_profile(geo, session, year):
             disability = LOCATIONNOTFOUND
 
         total_disabled = 0
-        for data, value in disabled_or_not.get('With disability', {}).iteritems():
+        for data, value in disabled_or_not.get('With disability', {}).items():
             if data == 'numerators':
                 total_disabled += value['this']
 

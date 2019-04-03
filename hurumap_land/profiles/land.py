@@ -903,7 +903,7 @@ def get_districtdistribution_profile(geo, session):
                 exclude_zero=True,
                 percent=False)
 
-            for keys, townname in all_town.iteritems():
+            for keys, townname in all_town.items():
                 if keys != 'metadata':
                     towns.append(keys)
             towndistrictdistributiontransactionsdata = {}

@@ -1,6 +1,6 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
-import career
+from . import career
 
 Gender_Options = [('gender',_('select gender')),('F', _('young lady')), ('M', _('young man')),]
 Region_Options = [('region',_('select region')),('ARUSHA','Arusha'),('DAR ES SALAAM', 'Dar es Salaam'),('DODOMA','Dodoma'),
