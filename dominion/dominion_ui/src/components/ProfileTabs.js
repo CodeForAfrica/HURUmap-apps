@@ -10,7 +10,17 @@ const styles = theme => ({
     flexGrow: 1,
     width: '100%',
     backgroundColor: '#fff',
-    scrollBehavior: 'smooth'
+    scrollBehavior: 'smooth',
+    paddingLeft: '1.875rem',
+    paddingRight: '1.875rem',
+    [theme.breakpoints.up('md')]: {
+      paddingLeft: '3.125rem',
+      paddingRight: '3.125rem'
+    },
+    [theme.breakpoints.up('lg')]: {
+      paddingLeft: '9.375rem',
+      paddingRight: '9.375rem'
+    }
   },
   appbar: {
     boxShadow: 'none'
@@ -30,51 +40,12 @@ const styles = theme => ({
   },
   tabSelected: {
     fontWeight: 700
+  },
+  labelContainer: {
+    paddingLeft: theme.spacing.unit * 2,
+    paddingRight: theme.spacing.unit * 2
   }
 });
-
-const TABS = [
-  {
-    name: 'All',
-    href: '#profile-detail'
-  },
-  {
-    name: 'Elections',
-    href: '#elections'
-  },
-  {
-    name: 'Demographics',
-    href: '#demographics'
-  },
-  {
-    name: 'Households',
-    href: '#households'
-  },
-  {
-    name: 'Service Delivery',
-    href: '#service-delivery'
-  },
-  {
-    name: 'Economics',
-    href: '#economics'
-  },
-  {
-    name: 'Education',
-    href: '#education'
-  },
-  {
-    name: 'Children',
-    href: '#children'
-  },
-  {
-    name: 'Child-headed Households',
-    href: '#child-headed-households'
-  },
-  {
-    name: 'Other',
-    href: '#other'
-  }
-];
 
 function LinkTab(props) {
   return <Tab component="a" {...props} />;
@@ -84,7 +55,9 @@ class ProfileTabs extends React.Component {
   constructor(props) {
     super(props);
 
-    const { tabs } = props;
+    const {
+      profile: { tabs }
+    } = props;
     let value;
     if (tabs.length) {
       const [{ href }] = tabs;
@@ -95,11 +68,21 @@ class ProfileTabs extends React.Component {
   }
 
   handleChange(event, value) {
+    const {
+      profile: { switchToTab }
+    } = this.props;
     this.setState({ value });
+    if (switchToTab) {
+      switchToTab(value);
+    }
   }
 
   render() {
-    const { classes, tabs, width } = this.props;
+    const {
+      classes,
+      profile: { tabs },
+      width
+    } = this.props;
     const { value } = this.state;
 
     const centered = isWidthUp('md', width); // centered is only for md and up
@@ -112,7 +95,6 @@ class ProfileTabs extends React.Component {
             value={value}
             variant={variant}
             scrollButtons="off" // Never show scroll buttons
-            centered={centered}
             classes={{ indicator: classes.indicator }}
             onChange={this.handleChange}
           >
@@ -120,10 +102,13 @@ class ProfileTabs extends React.Component {
               <LinkTab
                 key={tab.href}
                 value={tab.href}
-                href={tab.href}
+                href="#dominionProfileTabs" // Always show the tabs on click
                 label={tab.name}
                 className={classes.tab}
-                classes={{ selected: classes.tabSelected }}
+                classes={{
+                  selected: classes.tabSelected,
+                  labelContainer: classes.labelContainer
+                }}
               />
             ))}
           </Tabs>
@@ -135,17 +120,15 @@ class ProfileTabs extends React.Component {
 
 ProfileTabs.propTypes = {
   classes: PropTypes.shape().isRequired,
-  tabs: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      href: PropTypes.string.isRequired
-    })
-  ),
+  profile: PropTypes.shape({
+    tabs: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        href: PropTypes.string.isRequired
+      })
+    ).isRequired
+  }).isRequired,
   width: PropTypes.string.isRequired
-};
-
-ProfileTabs.defaultProps = {
-  tabs: TABS
 };
 
 export default withWidth()(withStyles(styles)(ProfileTabs));
