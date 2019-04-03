@@ -5,7 +5,7 @@ const FONT_FAMILY_TEXT = '"Montserrat", "sans-serif"';
 
 const Theme = createMuiTheme({
   palette: {
-    primary: { main: '#2b3129', light: '#f1f1ed' },
+    primary: { main: '#2b3129', light: '#f1f1ed', dark: '#222822' },
     secondary: { main: '#000000', dark: '#2c2c2a', grey: '#2b3129' },
     highlight: { main: '#e7e452' }
   },

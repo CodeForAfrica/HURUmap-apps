@@ -16,7 +16,7 @@ const styles = theme => ({
     }
   },
   title: {
-    color: theme.palette.primary.light,
+    color: theme.palette.primary.dark,
     fontWeight: 'bold',
     opacity: '0.6',
     [theme.breakpoints.up('md')]: {

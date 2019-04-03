@@ -15,7 +15,7 @@ const styles = theme => ({
     backgroundImage: `url(${background})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
-    height: '25rem' // 400px / 16
+    height: '30rem' // 480px / 16
   },
   caption: {
     color: '#fff',
