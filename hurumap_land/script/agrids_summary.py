@@ -63,7 +63,7 @@ try:
         for j in range(1, provthlen):
             statistic = provth[j].text_content().strip()
 
-            print statistic
+            print(statistic)
 
             provRow = provTree.xpath('//table[3]//tr')
             provRowLen = len(provRow)
@@ -72,20 +72,20 @@ try:
                 #in each row get the cells
                 row = geo_level + "," + geo_code + "," + geo_version + ","
                 provRowTD = provTree.xpath('//table[3]//tr[%d]/td' %  i)
-                print "I am here"
-                print provId
-                print provRowTD[0].text_content()
+                print("I am here")
+                print(provId)
+                print(provRowTD[0].text_content())
                 row += provRowTD[0].text_content().encode('utf-8').strip() + "," + statistic
                 val = provRowTD[j].text_content().encode('utf-8').strip()
                 val = re.sub('\(\d*%\)', '', val)
-                print val
+                print(val)
                 row += "," + val + "\n"
                 csv.write(row)
                 row = ""
 
 except:
-	print "Unexpected error:", sys.exc_info()
-	print "Oops, something went wrong"
+	print("Unexpected error:", sys.exc_info())
+	print("Oops, something went wrong")
 
 
 sys.exit()

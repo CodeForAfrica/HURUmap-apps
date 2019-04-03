@@ -43,6 +43,7 @@ const PROPS = {
         parents: []
       }
     },
+    tabs: {},
     primary_releases: { active: {}, other: [] }
   },
   showcaseStories: window.showcaseStories || []

@@ -284,7 +284,7 @@ def get_redistributionandrestitution_profile(geo, session):
         householdsrestitution_tot = disabilitiesrestitution_tot = 0
         redistributedland_avg_cost = redistributedland_tot_cost = redistributedland_hect_tot = 0
         redistributeprogrammehouseholdsbyyear_tot = redistributeprogrammeprojectsbyyear_tot = 0
-        redistributeprogrammebeneficiariesbyyear_tot = 0
+        redistributeprogrammebeneficiariesbyyear_tot = landcostrestitution_tot = 0
 
         redistributionrestitution = {'is_missing': True}
 
@@ -403,7 +403,7 @@ def get_redistributionandrestitution_profile(geo, session):
             pass
 
         try:
-            landcostrestitution, _ = get_stat_data(
+            landcostrestitution, landcostrestitution_tot = get_stat_data(
                 ['year'], geo, session,
                 table_fields=['year', 'restitutionoutcomestatistic'],
                 only={'restitutionoutcomestatistic': ['landcost']},
@@ -586,6 +586,21 @@ def get_redistributionandrestitution_profile(geo, session):
         {
             "name": "Number of beneficiaries in the restitution programme from 2009/2010 to 2017/2018",
             "values": {"this": beneficiariesrestitution_tot}
+            }
+    redistributionrestitution['financialcompensationrestitution_stat'] = \
+        {
+            "name": "Financial Compensation in Rands (ZAR), Restitution Programme in 2017/2018",
+            "values": {"this": beneficiariesrestitution_tot}
+            }
+    redistributionrestitution['disabilitiesrestitution_stat'] = \
+        {
+            "name": "People with disabilities benefited in Restitution Programme in 2017/2018",
+            "values": {"this": disabilitiesrestitution_tot}
+            }
+    redistributionrestitution['landcostrestitution_stat'] = \
+        {
+            "name": "Land Cost in Restitution Programme in Rands (ZAR) in 2017/2018",
+            "values": {"this": landcostrestitution_tot}
             }
 
     # if total hectares of redistruted land is missing
@@ -986,7 +1001,7 @@ def get_districtdistribution_profile(geo, session):
                 exclude_zero=True,
                 percent=False)
 
-            for keys, townname in all_town.iteritems():
+            for keys, townname in all_town.items():
                 if keys != 'metadata':
                     towns.append(keys)
             towndistrictdistributiontransactionsdata = {}

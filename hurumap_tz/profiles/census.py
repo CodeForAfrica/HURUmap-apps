@@ -121,7 +121,7 @@ def get_demographics_profile(geo, session):
                     table_fields=['age in completed years', 'sex',
                                   'rural or urban'])
                 total_urbanised = 0
-                for data in urban_dist_data['Urban'].itervalues():
+                for data in urban_dist_data['Urban'].values():
                     if 'numerators' in data:
                         total_urbanised += data['numerators']['this']
             else:
@@ -130,7 +130,7 @@ def get_demographics_profile(geo, session):
                     ['rural or urban', 'sex'], geo=geo, session=session,
                     table_fields=['sex', 'rural or urban'])
                 total_urbanised = 0
-                for data in urban_dist_data['Urban'].itervalues():
+                for data in urban_dist_data['Urban'].values():
                     if 'numerators' in data:
                         total_urbanised += data['numerators']['this']
 
@@ -225,7 +225,7 @@ def get_education_profile(geo, session):
                            'University', 'Youth polytechnic', 'Basic literacy',
                            'Madrassa'])
 
-            for key, data in edu_dist_data.iteritems():
+            for key, data in edu_dist_data.items():
                 if key in ['Secondary', 'Tertiary', 'University',
                            'Youth polytechnic']:
                     secondary_or_higher += data['numerators']['this']
@@ -238,7 +238,7 @@ def get_education_profile(geo, session):
                            'sex': ['Female', 'Male']})
 
             total_never = 0.0
-            for data in school_attendance_dist['Never attended'].itervalues():
+            for data in school_attendance_dist['Never attended'].values():
                 if 'numerators' in data:
                     total_never += data['numerators']['this']
         except Exception:
@@ -280,7 +280,7 @@ def get_employment_profile(geo, session):
                     'employment activity status': EMPLOYMENT_RECODES.values(),
                     'sex': ['Female', 'Male']})
 
-            for data in employment_activity_dist['Employed'].itervalues():
+            for data in employment_activity_dist['Employed'].values():
                 if 'numerators' in data:
                     total_employed += data['numerators']['this']
         except Exception:
@@ -468,6 +468,25 @@ def get_literacy_and_numeracy_tests_profile(geo, session):
                  english_test_dist.get('is_missing') and \
                  swahili_test_dist.get('is_missing') and \
                  swahili_test_dist.get('is_missing')
+    numeracy_sort = 0
+    english_sort = 0
+    swahili_sort = 0
+
+    try:
+        numeracy_sort = numeracy_test_dist['Passed']['numerators']['this']
+    except KeyError:
+        pass
+
+    try:
+        english_sort = english_test_dist['Passed']['numerators']['this']
+    except KeyError:
+        pass
+
+    try:
+        swahili_sort = swahili_test_dist['Passed']['numerators']['this']
+    except KeyError:
+        pass
+
     return {
         'is_missing': is_missing,
         'literacy_data': literacy_data,
@@ -475,9 +494,9 @@ def get_literacy_and_numeracy_tests_profile(geo, session):
         'english_test_dist': english_test_dist,
         'swahili_test_dist': swahili_test_dist,
         'numeracy_test_dist': numeracy_test_dist,
-        'numeracy_sort': '-value' if numeracy_test_dist <= 50 else 'value',
-        'english_sort': '-value' if english_test_dist <= 50 else 'value',
-        'swahili_sort': '-value' if swahili_test_dist <= 49 else 'value',
+        'numeracy_sort': '-value' if numeracy_sort <= 50 else 'value',
+        'english_sort': '-value' if english_sort <= 50 else 'value',
+        'swahili_sort': '-value' if swahili_sort <= 49 else 'value',
         'all_subjects_dist': {
             'name': 'Competent in all subjects children aged 6-16',
             'numerators': {'this': all_subjects},
@@ -534,13 +553,26 @@ def get_school_attendance_profile(geo, session):
         except Exception:
             pass
 
+        drop_out_sort = 0
+        out_of_school_sort = 0
+
+        try:
+            drop_out_sort = dropped_out_dist['Dropped out']['numerators']['this']
+        except KeyError:
+            pass
+
+        try:
+            out_of_school_sort = dropped_out_dist['Dropped out']['numerators']['this']
+        except KeyError:
+            pass
+
     return {
         'is_missing': attendance_data.get('is_missing'),
         'attendance_data': attendance_data,
         'dropped_out_dist': dropped_out_dist,
         'out_of_school_dist': out_of_school_dist,
-        'drop_out_sort': '-value' if dropped_out_dist <= 50 else 'value',
-        'out_of_school_sort': '-value' if out_of_school_dist <= 50 else 'value'
+        'drop_out_sort': '-value' if drop_out_sort <= 50 else 'value',
+        'out_of_school_sort': '-value' if out_of_school_sort <= 50 else 'value'
     }
 
 

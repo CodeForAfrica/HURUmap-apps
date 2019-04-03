@@ -122,12 +122,12 @@ try:
                         csv.write(disrow)
                         disrow = ""
 
-                print "Finished ", disName
-            print "Finished ", provId
+                print("Finished ", disName)
+            print("Finished ", provId)
 
 except:
-	print "Unexpected error:", sys.exc_info()
-	print "Oops, something went wrong"
+	print("Unexpected error:", sys.exc_info())
+	print("Oops, something went wrong")
 
 
 sys.exit()
