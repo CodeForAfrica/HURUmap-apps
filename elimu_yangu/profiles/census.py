@@ -173,7 +173,7 @@ def get_schools_profile(geo, session, year):
                 only={'year_of_result': [year]})
 
             total_private = 0.0
-            for data in schools_dist.get('Non-Government', {}).itervalues():
+            for data in schools_dist.get('Non-Government', {}).values():
                 if 'numerators' in data:
                     total_private += data['numerators']['this']
         except Exception as e:

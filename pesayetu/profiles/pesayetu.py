@@ -40,25 +40,25 @@ def get_equitable_allocation_data(geo, session):
 
         yr2013_2014 = 0
         for data, value in budget_allocation.get('FY 2013/2014',
-                                                 {}).iteritems():
+                                                 {}).items():
             if data == 'values':
                 yr2013_2014 += value['this']
 
         yr2014_2015 = 0
         for data, value in budget_allocation.get('FY 2014/2015',
-                                                 {}).iteritems():
+                                                 {}).items():
             if data == 'values':
                 yr2014_2015 += value['this']
 
         yr2015_2016 = 0
         for data, value in budget_allocation.get('FY 2015/2016',
-                                                 {}).iteritems():
+                                                 {}).items():
             if data == 'values':
                 yr2015_2016 += value['this']
 
         yr2016_2017 = 0
         for data, value in budget_allocation.get('FY 2016/2017',
-                                                 {}).iteritems():
+                                                 {}).items():
             if data == 'values':
                 yr2016_2017 += value['this']
 

@@ -23,7 +23,7 @@ try:
 
         tableTitle = tree.xpath('//h2')
 
-        print tableTitle[0].text_content()
+        print(tableTitle[0].text_content())
 
         csv.write(tableTitle[0].text_content() + "\n")
 
@@ -49,8 +49,8 @@ try:
                 csv.write(row)
 
 except:
-	print "Unexpected error:", sys.exc_info()
-	print "Oops, something went wrong"
+	print("Unexpected error:", sys.exc_info())
+	print("Oops, something went wrong")
 
 
 sys.exit()
