@@ -461,3 +461,17 @@ article .section-container {
 .stat-row {
   border: 0;
 }
+.action-links a {
+  color: #e7e452
+}
+.action-links a:hover {
+  color: #000
+}
+
+ul.sub-group a:hover {
+    text-decoration: none;
+    padding: .33em .5em;
+    color: #000;
+    background-color: #fff ;
+    border-color: #fff;
+}
