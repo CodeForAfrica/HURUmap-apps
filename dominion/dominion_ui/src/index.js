@@ -43,9 +43,9 @@ const PROPS = {
         parents: []
       }
     },
+    tabs: {},
     primary_releases: { active: {}, other: [] }
-  },
-  tabs: window.profileTabs || {}
+  }
 };
 
 const renderApp = (Component, id) => {
