@@ -475,3 +475,8 @@ ul.sub-group a:hover {
     background-color: #fff ;
     border-color: #fff;
 }
+
+//override censusrepoter css => 1rem == 16px
+html {
+  font-size: 100% !important
+}
