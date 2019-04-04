@@ -14,7 +14,7 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = theme => ({
   root: {
     width: '100vw',
-    height: '22.86rem',
+    height: '20rem',
     backgroundColor: '#fafafa',
     border: '1px solid #eeeeee',
     opacity: 0.9,
@@ -23,7 +23,7 @@ const styles = theme => ({
       backgroundColor: '#fff'
     },
     [theme.breakpoints.up('md')]: {
-      paddingRight: '1.429rem'
+      paddingRight: '1.25rem'
     }
   },
   contentRoot: {
@@ -36,7 +36,7 @@ const styles = theme => ({
     marginTop: '-100%'
   },
   media: {
-    height: '22.86rem',
+    height: '20rem',
     paddingTop: '100%',
     width: '100%',
     backgroundColor: 'rgba(0, 0, 0, 0.7)',
@@ -62,7 +62,7 @@ const styles = theme => ({
 });
 
 function StoryCard({ story, classes }) {
-  const { img, date, title, brief, link } = story;
+  const { image, date, title, brief, link } = story;
 
   return (
     <Card className={classes.root}>
@@ -75,7 +75,7 @@ function StoryCard({ story, classes }) {
         <CardActionArea
           style={{ display: 'flex', flexFlow: 'column', height: '100%' }}
         >
-          <CardMedia className={classes.media} image={img} title=" Story" />
+          <CardMedia className={classes.media} image={image} title=" Story" />
           <CardContent className={classes.cardContent}>
             <Grid
               container

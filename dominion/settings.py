@@ -226,7 +226,7 @@ HURUMAP['showcase_stories'] = [
         'author': 'Peter Delius',
         'brief':  'There is no sustainable way back to farming for the overwhelming majority of the population, says Peter Delius.',
         'link':   'https://city-press.news24.com/Voices/handing-land-to-black-farmers-more-complicated-than-you-think-20180919',
-        'img':    STATIC_URL + 'img/showcase/showcase6.jpg',
+        'image':    STATIC_URL + 'img/showcase/showcase6.jpg',
         'date': '19 Sep 2018'
     },
     {
@@ -235,7 +235,7 @@ HURUMAP['showcase_stories'] = [
         'author': 'Mandi Smallhorne',
         'brief':  'What changes can we expect for our country and our lives as climate change takes hold? ',
         'link':   'https://city-press.news24.com/News/be-prepared-its-getting-hotter-and-drier-20180910',
-        'img':    STATIC_URL + 'img/showcase/showcase2.jpg',
+        'image':    STATIC_URL + 'img/showcase/showcase2.jpg',
         'date': '10 Sep 2018'
 
     },
@@ -245,7 +245,7 @@ HURUMAP['showcase_stories'] = [
         'author': 'Jeanne-Marié Versluis',
         'brief':  'The government offered the farm to Rakgase in 2002 and accepted the offer he made, but nothing has come of the agreement. ',
         'link':   'https://city-press.news24.com/News/a-farmers-15-year-wait-for-land-justice-20180822',
-        'img':    STATIC_URL + 'img/showcase/showcase1.jpg',
+        'image':    STATIC_URL + 'img/showcase/showcase1.jpg',
         'date': '22 Aug 2018'
     },
     {
@@ -254,7 +254,7 @@ HURUMAP['showcase_stories'] = [
         'author': 'Mandi Smallhorne',
         'brief':  'What are the small shifts that mean big changes, particularly for agriculture, in a changing climate? ',
         'link':   'https://city-press.news24.com/News/what-will-climate-change-mean-for-sa-agriculture-20180817',
-        'img':    STATIC_URL + 'img/showcase/showcase3.jpg',
+        'image':    STATIC_URL + 'img/showcase/showcase3.jpg',
         'date': '17 Aug 2018'
     },
     {
@@ -263,7 +263,7 @@ HURUMAP['showcase_stories'] = [
         'author': 'Andile Nayika',
         'brief':  'DASHED DREAMS Block 40 residents Thobile Tshume and Nomandla Dala aren’t hopeful their situation will change, despite 300 families being promised plots, title deeds and RDP houses in the contested area',
         'link':   'https://city-press.news24.com/News/block-40s-struggle-for-decent-homes-may-finally-be-over-20180806',
-        'img':    STATIC_URL + 'img/showcase/showcase5.jpg',
+        'image':    STATIC_URL + 'img/showcase/showcase5.jpg',
         'date': '06 Aug 2018'
 
     },
@@ -273,7 +273,7 @@ HURUMAP['showcase_stories'] = [
         'author': 'Tebogo Letsie',
         'brief':  'In the Northern Cape, tempers flared and the question of the indigenous people’s rights was raised, but what was clear is that land expropriation without compensation has support from the majority of the communities. ',
         'link':   'https://city-press.news24.com/News/we-want-our-own-land-20180711-2',
-        'img':    STATIC_URL + 'img/showcase/showcase4.jpg',
+        'image':    STATIC_URL + 'img/showcase/showcase4.jpg',
         'date': '11 Jul 2018'
     }
 ]

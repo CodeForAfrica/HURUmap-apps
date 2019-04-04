@@ -10,7 +10,7 @@ import StoryCard from './StoryCard';
 const styles = {
   root: {
     flexGrow: 1,
-    height: '26.43rem',
+    height: '23.125rem',
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
