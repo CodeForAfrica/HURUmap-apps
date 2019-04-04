@@ -16,6 +16,7 @@ const Theme = createMuiTheme({
     h1: {
       color: '#293229',
       fontFamily: FONT_FAMILY_HEADING,
+      fontSize: '4.375rem',
       fontWeight: 400
     },
     h2: {
@@ -50,7 +51,7 @@ const Theme = createMuiTheme({
     },
     subtitle2: {
       fontFamily: FONT_FAMILY_TEXT,
-      fontSize: '0.857rem',
+      fontSize: '0.75rem',
       fontWeight: 500
     },
     fontSmallDefault: {
