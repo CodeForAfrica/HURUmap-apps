@@ -273,7 +273,7 @@ HURUMAP['showcase_stories'] = [
         'author': 'Sizwe sama Yende',
         'brief':  'Pile of rubble is what was left when 28 houses were demolished at Phumlani Village ',
         'link':   'https://city-press.news24.com/News/land-reform-gone-wrong-a-black-day-near-white-river-20180806',
-        'image':    STATIC_URL + 'img/showcase/showcase4.jpg',
+        'image':    STATIC_URL + 'img/showcase/showcase8.jpg',
         'date': '06 Aug 2018'
     },
     {

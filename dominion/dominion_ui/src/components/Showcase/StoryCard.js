@@ -39,7 +39,7 @@ const styles = theme => ({
     height: '20rem',
     paddingTop: '100%',
     width: '100%',
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
     backgroundBlendMode: 'color'
   },
   cardLink: {
