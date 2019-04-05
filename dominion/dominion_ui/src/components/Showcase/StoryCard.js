@@ -27,7 +27,8 @@ const styles = theme => ({
     }
   },
   contentRoot: {
-    flexGrow: 1
+    flexGrow: 1,
+    justifyContent: 'flex-end'
   },
   cardContent: {
     alignItems: 'flex-end',
@@ -82,7 +83,6 @@ function StoryCard({ story, classes }) {
               direction="column"
               className={classes.contentRoot}
               alignItems="flex-start"
-              justifyContent="flex-end"
               style={{ height: '100%' }}
             >
               <Typography variant="h6" className={classes.overline}>
