@@ -22,6 +22,7 @@ const styles = theme => ({
     textTransform: 'none',
     height: '50px',
     padding: 0,
+    minWidth: 'auto',
     [theme.breakpoints.down('sm')]: {
       width: '100%'
     }
