@@ -7,7 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 import StoryCard from './StoryCard';
 
-const styles = {
+const styles = () => ({
   root: {
     flexGrow: 1,
     height: '23.125rem',
@@ -34,7 +34,7 @@ const styles = {
   gridListTileRoot: {
     height: '100% !important'
   }
-};
+});
 
 function StoryList({ classes, storyData, width }) {
   // TODO(kilemensi): GridListTile computes the size of item and sets it using
