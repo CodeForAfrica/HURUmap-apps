@@ -10,8 +10,8 @@ const styles = () => ({
   fa: {
     transition: 'all .5s ease-in-out',
     color: '#fff',
+    fontSize: '0.9375rem', // icons inherit font size of their parent
     ' &:hover': {
-      transform: 'scale(1.3)',
       color: '#fff'
     }
   },
@@ -22,50 +22,47 @@ function SocialMedia({ classes }) {
   return (
     <Grid
       container
-      spacing={8}
+      spacing={16}
       direction="row"
       justify="flex-start"
       alignItems="center"
     >
       <Grid item>
         <a
-          href="https://www.facebook.com/sensorsAFRICA/"
+          href="https://www.facebook.com/hashtag/onsgrond"
           target="_blank"
           rel="noopener noreferrer"
         >
           <FontAwesomeIcon
             className={classes.fa}
             icon={['fab', 'facebook-f']}
-            size="lg"
-            fixedWidth
+            size="sm"
           />
         </a>
       </Grid>
       <Grid item>
         <a
-          href="https://www.facebook.com/sensorsAFRICA/"
+          href="https://www.instagram.com/explore/tags/onsgrond/"
           target="_blank"
           rel="noopener noreferrer"
         >
           <FontAwesomeIcon
             className={classes.fa}
             icon={['fab', 'instagram']}
-            size="lg"
-            fixedWidth
+            size="sm"
           />
         </a>
       </Grid>
       <Grid item>
         <a
-          href="https://twitter.com/sensorsAFRICA/"
+          href="https://twitter.com/hashtag/OnsGrond"
           target="_blank"
           rel="noopener noreferrer"
         >
           <FontAwesomeIcon
             className={classes.fa}
             icon={['fab', 'github']}
-            size="lg"
-            fixedWidth
+            size="sm"
           />
         </a>
       </Grid>
