@@ -269,12 +269,39 @@ HURUMAP['showcase_stories'] = [
     },
     {
         'index': 6,
+        'title':  'Land reform gone wrong: A black day near White River',
+        'author': 'Sizwe sama Yende',
+        'brief':  'Pile of rubble is what was left when 28 houses were demolished at Phumlani Village ',
+        'link':   'https://city-press.news24.com/News/land-reform-gone-wrong-a-black-day-near-white-river-20180806',
+        'image':    STATIC_URL + 'img/showcase/showcase4.jpg',
+        'date': '06 Aug 2018'
+    },
+    {
+        'index': 7,
+        'title':  'Despair after land and a future are stolen',
+        'author': 'Onthatile Kgoadigoadi',
+        'brief':  'Lufhereng residents stand next to their farmland that is situated in Doornkop plot 239 IQ in Soweto. They claim to have lost their land to the Lufhereng Housing Project through nefarious practices.',
+        'link':   'https://city-press.news24.com/News/despair-after-land-and-a-future-are-stolen-20180715-2',
+        'image':    STATIC_URL + 'img/showcase/showcase9.jpg',
+        'date': '15 Jul 2018'
+    },
+    {
+        'index': 8,
         'title':  'We want our own land',
         'author': 'Tebogo Letsie',
         'brief':  'In the Northern Cape, tempers flared and the question of the indigenous people’s rights was raised, but what was clear is that land expropriation without compensation has support from the majority of the communities. ',
         'link':   'https://city-press.news24.com/News/we-want-our-own-land-20180711-2',
         'image':    STATIC_URL + 'img/showcase/showcase4.jpg',
         'date': '11 Jul 2018'
+    },
+    {
+        'index': 9,
+        'title':  'Community vs chief | The story of a struggle for land',
+        'author': 'Poloko Tau',
+        'brief':  'In Matiwaneskop near Ladysmith, KwaZulu-Natal, the community is refusing to be ruled by Inkosi Ntandoyenkosi Shabalala. They say that, when their forefathers bought the land in the 1800s, they had no chief and were just a group of 120 ordinary people.',
+        'link':   'https://city-press.news24.com/News/community-vs-chief-the-story-of-a-struggle-for-land-20180624',
+        'image':    STATIC_URL + 'img/showcase/showcase7.jpg',
+        'date': '24 Jun 2018'
     }
 ]
 
