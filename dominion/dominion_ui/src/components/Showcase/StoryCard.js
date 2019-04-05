@@ -82,6 +82,7 @@ function StoryCard({ story, classes }) {
               direction="column"
               className={classes.contentRoot}
               alignItems="flex-start"
+              justifyContent="flex-end"
               style={{ height: '100%' }}
             >
               <Typography variant="h6" className={classes.overline}>
