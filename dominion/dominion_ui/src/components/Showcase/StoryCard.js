@@ -29,6 +29,12 @@ const styles = theme => ({
     flexGrow: 1,
     justifyContent: 'flex-end'
   },
+  cardContentArea: {
+    display: 'flex',
+    alignItems: 'flex-end',
+    flexFlow: 'column',
+    height: '100%'
+  },
   cardContent: {
     alignItems: 'flex-end',
     display: 'flex',
@@ -76,15 +82,8 @@ function StoryCard({ story, classes }) {
         rel="noopener noreferrer"
         className={classes.cardLink}
       >
-        <CardActionArea
-          style={{
-            display: 'flex',
-            alignItems: 'flex-end',
-            flexFlow: 'column',
-            height: '100%'
-          }}
-        >
-          <CardMedia className={classes.media} image={image} title=" Story" />
+        <CardActionArea className={classes.CardActionArea}>
+          <CardMedia className={classes.media} image={image} title="Story" />
           <CardContent className={classes.cardContent}>
             <Grid
               container
