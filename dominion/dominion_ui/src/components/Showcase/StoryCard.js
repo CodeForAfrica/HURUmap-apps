@@ -23,7 +23,7 @@ const styles = theme => ({
       backgroundColor: '#fff'
     },
     [theme.breakpoints.up('md')]: {
-      paddingRight: '1.25rem'
+      marginRight: '1.25rem'
     }
   },
   contentRoot: {
@@ -38,7 +38,8 @@ const styles = theme => ({
   },
   media: {
     height: '20rem',
-    paddingTop: '100%',
+    // paddingTop: '100%',
+    minHeight: '100%',
     width: '100%',
     backgroundColor: 'rgba(0, 0, 0, 0.6)',
     backgroundBlendMode: 'color'
