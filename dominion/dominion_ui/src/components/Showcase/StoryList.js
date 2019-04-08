@@ -25,14 +25,6 @@ const styles = () => ({
     transform: 'translateZ(0)',
     height: '100%',
     margin: '0 !important'
-  },
-  gridListTile: {
-    display: 'flex',
-    alignItems: 'strech',
-    height: '100%'
-  },
-  gridListTileRoot: {
-    height: '100% !important'
   }
 });
 
@@ -57,15 +49,9 @@ function StoryList({ classes, storyData, width }) {
       alignItems="center"
       className={classes.root}
     >
-      <GridList className={classes.gridList} cols={cards}>
+      <GridList cellHeight={320} className={classes.gridList} cols={cards}>
         {storyData.map(story => (
-          <GridListTile
-            key={story.index}
-            classes={{
-              tile: classes.gridListTile,
-              root: classes.gridListTileRoot
-            }}
-          >
+          <GridListTile key={story.index}>
             <StoryCard story={story} />
           </GridListTile>
         ))}

@@ -13,7 +13,6 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
   root: {
-    width: '100vw',
     height: '20rem',
     backgroundColor: '#fafafa',
     border: '1px solid #eeeeee',
@@ -34,12 +33,15 @@ const styles = theme => ({
     alignItems: 'flex-end',
     display: 'flex',
     flexGrow: 1,
-    marginTop: '-100%'
+    marginTop: '-100%',
+    paddingTop: 0,
+    paddingBottom: theme.spacing.unit * 2,
+    paddingLeft: theme.spacing.unit * 2,
+    paddingRight: theme.spacing.unit * 3
   },
   media: {
-    height: '20rem',
-    // paddingTop: '100%',
-    minHeight: '100%',
+    minHeight: '20rem',
+    height: '100%',
     width: '100%',
     backgroundColor: 'rgba(0, 0, 0, 0.6)',
     backgroundBlendMode: 'color'
@@ -75,12 +77,18 @@ function StoryCard({ story, classes }) {
         className={classes.cardLink}
       >
         <CardActionArea
-          style={{ display: 'flex', flexFlow: 'column', height: '100%' }}
+          style={{
+            display: 'flex',
+            alignItems: 'flex-end',
+            flexFlow: 'column',
+            height: '100%'
+          }}
         >
           <CardMedia className={classes.media} image={image} title=" Story" />
           <CardContent className={classes.cardContent}>
             <Grid
               container
+              item
               direction="column"
               className={classes.contentRoot}
               alignItems="flex-start"
