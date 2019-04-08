@@ -20,13 +20,13 @@ function DataSetsContent({ classes }) {
     <div className={classes.root}>
       <Content
         title="openAFRICA"
-        contentCount="3,152"
+        contentCount="11"
         contentType="Datasets"
         description="
             openAFRICA aims to be the largest independent repository of open
             data on the African continent.
       "
-        link="https://openafrica.net/"
+        link="https://africaopendata.org/group/dominion"
       >
         <img src={plugicon} alt="Plug Icon" />
       </Content>
