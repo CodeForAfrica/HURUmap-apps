@@ -151,7 +151,7 @@ class Navigation extends Component {
   }
 
   renderMobileMenu() {
-    const { classes, toggleModal, openModal } = this.props;
+    const { classes, dominion, toggleModal, openModal } = this.props;
 
     const Topbar = () => (
       <Grid
@@ -186,7 +186,7 @@ class Navigation extends Component {
         >
           <Grid container className={classes.wrapper}>
             <Topbar />
-            <Search>
+            <Search dominion={dominion}>
               <Dropdown />
               {this.renderMenuList()}
             </Search>
