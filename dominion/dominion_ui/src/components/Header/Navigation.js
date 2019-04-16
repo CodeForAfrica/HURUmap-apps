@@ -151,8 +151,8 @@ class Navigation extends Component {
   }
 
   renderMobileMenu() {
-    const { classes, toggleModal, openModal } = this.props;
-
+    const { classes, dominion, toggleModal, openModal } = this.props;
+    const { countries } = dominion;
     const Topbar = () => (
       <Grid
         container
@@ -186,8 +186,8 @@ class Navigation extends Component {
         >
           <Grid container className={classes.wrapper}>
             <Topbar />
-            <Search>
-              <Dropdown />
+            <Search dominion={dominion}>
+              <Dropdown countries={countries} />
               {this.renderMenuList()}
             </Search>
           </Grid>
@@ -197,8 +197,8 @@ class Navigation extends Component {
   }
 
   renderDesktopMenu() {
-    const { classes, toggleModal, openModal } = this.props;
-
+    const { classes, toggleModal, dominion, openModal } = this.props;
+    const { countries } = dominion;
     return (
       <Grid
         container
@@ -228,6 +228,7 @@ class Navigation extends Component {
             <img alt="Search" src={searchIcon} />
           </IconButton>
           <CountriesButton
+            countries={countries}
             onClick={toggleModal('portal')}
             isOpen={openModal === 'portal'}
           />
