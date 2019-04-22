@@ -1,7 +1,7 @@
 {% extends 'profile/profile_detail.html' %} {% load humanize lookup staticfiles hashtospace %}
 
 {% block header %}
-  {% include 'blocks/profilepage_header.html' %}
+  <div id="dominionProfilePageHeader"></div>
 {% endblock header %}
 
 {% block profile_preamble %}
@@ -777,8 +777,8 @@
   </div>
 
   {% if not head2head %}
-    <div id="dominionProfileReleasesSection"/>
-    {% include 'blocks/country_partners.html' %}
-    {% include 'blocks/partners.html' %}
+    <div id="dominionProfileReleasesSection"></div>
+    <div id="dominionCountryPartners"></div>
+    <div id="dominionPartners"></div>
   {% endif %}
 {% endblock %}
