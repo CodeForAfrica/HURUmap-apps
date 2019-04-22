@@ -10,14 +10,15 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
     textAlign: 'left',
-    width: '100%',
+    [theme.breakpoints.up('lg')]: {
+      width: '21.45rem'
+    },
     [theme.breakpoints.up('md')]: {
-      width: '15rem' // 240px / 16
+      width: '15rem'
     }
   },
   title: {
-    color: theme.palette.primary.light,
-    fontWeight: 'bold',
+    color: theme.palette.primary.dark,
     opacity: '0.6',
     [theme.breakpoints.up('md')]: {
       paddingTop: '1rem'
@@ -29,12 +30,20 @@ const styles = theme => ({
       backgroundColor: 'white'
     }
   },
-  subtitleGrid: { paddingTop: '1rem', paddingBottom: '1rem' },
+  subtitleGrid: {
+    paddingTop: '0.5rem',
+    paddingBottom: '0.5rem'
+  },
+  contentCount: {
+    fontSize: '3.125rem',
+    [theme.breakpoints.up('md')]: {
+      fontSize: theme.typography.h1.fontSize
+    }
+  },
   contentText: {
-    width: '14rem',
     paddingTop: '1rem',
     [theme.breakpoints.up('md')]: {
-      paddingBottom: '1rem'
+      height: '4.76rem'
     }
   },
   link: { textDecoration: 'none' },
@@ -42,7 +51,7 @@ const styles = theme => ({
     fontWeight: 'bold',
     paddingTop: '1rem',
     [theme.breakpoints.up('md')]: {
-      paddingTop: '3rem'
+      paddingTop: '2.7rem'
     }
   }
 });
@@ -57,40 +66,35 @@ function Content({
   link
 }) {
   return (
-    <Grid
-      className={classes.root}
-      container
-      justify="flex-start"
-      alignItems="center"
-    >
+    <Grid className={classes.root}>
       <Grid item xs={12}>
         {children}
       </Grid>
 
       <Grid item xs={12}>
         <div className={classes.subtitleGrid}>
-          <Typography variant="body2" className={classes.title}>
+          <Typography variant="subtitle2" className={classes.title}>
             {title}
           </Typography>
         </div>
       </Grid>
 
       <Grid item xs={12}>
-        <Typography variant="h2" style={{ fontWeight: '400' }}>
+        <Typography variant="h1" className={classes.contentCount}>
           {contentCount}
         </Typography>
       </Grid>
 
       <Grid item xs={12}>
-        <Typography variant="h5">{contentType}</Typography>
+        <Typography variant="h4">{contentType}</Typography>
         <div className={classes.contentText}>
-          <Typography variant="body2" className={classes.title}>
+          <Typography variant="subtitle2" className={classes.title}>
             {description}
           </Typography>
         </div>
 
         <A href={link} className={classes.link}>
-          <Typography variant="body1" className={classes.linkText}>
+          <Typography variant="subtitle2" className={classes.linkText}>
             View {contentType}
           </Typography>
         </A>

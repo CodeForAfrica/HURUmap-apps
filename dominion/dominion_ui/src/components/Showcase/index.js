@@ -13,7 +13,9 @@ const styles = theme => ({
     backgroundColor: 'white',
     padding: '3.1875rem 1.875rem',
     [theme.breakpoints.up('md')]: {
-      padding: '3.1875rem 0'
+      padding: '3.1875rem 0',
+      width: '80%',
+      float: 'right'
     }
   },
   headline: {
@@ -35,14 +37,13 @@ const styles = theme => ({
   }
 });
 
-function Showcase({ classes }) {
+function Showcase({ classes, showcaseStories }) {
   return (
     <Grid
       container
       direction="column"
       className={classes.root}
       justify="center"
-      alignItems="flex-end"
     >
       <Grid
         item
@@ -67,14 +68,15 @@ function Showcase({ classes }) {
         </Grid>
       </Grid>
       <Grid item xs={12}>
-        <StoryList />
+        <StoryList storyData={showcaseStories} />
       </Grid>
     </Grid>
   );
 }
 
 Showcase.propTypes = {
-  classes: PropTypes.shape().isRequired
+  classes: PropTypes.shape().isRequired,
+  showcaseStories: PropTypes.shape().isRequired
 };
 
 export default withStyles(styles)(Showcase);

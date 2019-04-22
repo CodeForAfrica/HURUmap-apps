@@ -13,7 +13,6 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
   root: {
-    width: '100vw',
     height: '20rem',
     backgroundColor: '#fafafa',
     border: '1px solid #eeeeee',
@@ -23,16 +22,29 @@ const styles = theme => ({
       backgroundColor: '#fff'
     },
     [theme.breakpoints.up('md')]: {
-      width: '20rem'
+      marginRight: '1.25rem'
     }
   },
   contentRoot: {
-    flexGrow: 1
+    flexGrow: 1,
+    justifyContent: 'flex-end'
+  },
+  cardContent: {
+    alignItems: 'flex-end',
+    display: 'flex',
+    flexGrow: 1,
+    marginTop: '-100%',
+    paddingTop: 0,
+    paddingBottom: theme.spacing.unit * 2,
+    paddingLeft: theme.spacing.unit * 2,
+    paddingRight: theme.spacing.unit * 3
   },
   media: {
-    height: 0,
-    paddingTop: '100%',
-    width: '100%'
+    minHeight: '20rem',
+    height: '100%',
+    width: '100%',
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    backgroundBlendMode: 'color'
   },
   cardLink: {
     textDecoration: 'none'
@@ -41,7 +53,6 @@ const styles = theme => ({
     color: '#fff',
     fontSize: theme.typography.fontSmallDefault.fontSize,
     fontWeight: 400
-    // paddingTop: '1rem'
   },
   bodyTitle: {
     color: '#fff',
@@ -50,13 +61,12 @@ const styles = theme => ({
   },
   bodyText: {
     color: '#fff',
-    fontWeight: 500,
     margin: '1rem 0'
   }
 });
 
 function StoryCard({ story, classes }) {
-  const { image, date, title, body, link } = story;
+  const { image, date, title, brief, link } = story;
 
   return (
     <Card className={classes.root}>
@@ -67,33 +77,32 @@ function StoryCard({ story, classes }) {
         className={classes.cardLink}
       >
         <CardActionArea
-          style={{ display: 'flex', flexFlow: 'column', height: '100%' }}
+          style={{
+            display: 'flex',
+            alignItems: 'flex-end',
+            flexFlow: 'column',
+            height: '100%'
+          }}
         >
-          <CardMedia className={classes.media} image={image} title=" Story" />
-          <CardContent style={{ flexGrow: 1, marginTop: '-100%' }}>
+          <CardMedia className={classes.media} image={image} title="Story" />
+          <CardContent className={classes.cardContent}>
             <Grid
               container
+              item
               direction="column"
               className={classes.contentRoot}
-              justify="flex-end"
               alignItems="flex-start"
               style={{ height: '100%' }}
             >
-              <Grid item>
-                <Typography variant="h6" className={classes.overline}>
-                  {date}
-                </Typography>
-              </Grid>
-              <Grid item>
-                <Typography variant="h5" className={classes.bodyTitle}>
-                  {title}
-                </Typography>
-              </Grid>
-              <Grid item>
-                <Typography variant="subtitle2" className={classes.bodyText}>
-                  {body}{' '}
-                </Typography>
-              </Grid>
+              <Typography variant="h6" className={classes.overline}>
+                {date}
+              </Typography>
+              <Typography variant="h5" className={classes.bodyTitle}>
+                {title}
+              </Typography>
+              <Typography variant="subtitle2" className={classes.bodyText}>
+                {brief}{' '}
+              </Typography>
             </Grid>
           </CardContent>
         </CardActionArea>

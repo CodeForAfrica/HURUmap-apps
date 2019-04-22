@@ -24,4 +24,3 @@ def asset_manifest(request):
     return {
         'asset_manifest': asset_manifest
     }
-

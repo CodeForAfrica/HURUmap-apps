@@ -18,15 +18,15 @@ Compare places using tables and maps, download data, and embed charts on your si
 {% endblock %}
 
 {% block header %}
-    {% include 'blocks/countrypage_header.html' %}
+  <div id="dominionCountryPageHeader"></div>
 {% endblock header %}
 {% block content_container %}
   <div id="dominionCountryAbout"></div>
   <div id="dominionHowItWorks"></div>
   <div id="dominionVideo"></div>
-  {% include 'blocks/showcase.html' %}
-  {% include 'blocks/country_partners.html' %}
-  {% include 'blocks/partners.html' %}
+  <div id="dominionShowcase"></div>
+  <div id="dominionCountryPartners"></div>
+  <div id="dominionPartners"></div>
 {% endblock content_container %}
 
 {% block body_javascript_extra %}

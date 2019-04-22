@@ -221,25 +221,87 @@ HURUMAP['topics']['sectionaltitleland'] = {
 
 HURUMAP['showcase_stories'] = [
     {
-        'title':  'A farmer\'s 15-year wait for land justice',
-        'author': 'Jeanne-Marié Versluis',
-        'brief':  'The government offered the farm to Rakgase in 2002 and accepted the offer he made, but nothing has come of the agreement. ',
-        'link':   'https://city-press.news24.com/News/a-farmers-15-year-wait-for-land-justice-20180822',
-        'img':    STATIC_URL + 'img/showcase/showcase_1.jpg'
+        'index': 1,
+        'title':  'Handing land to black farmers: More complicated than you think',
+        'author': 'Peter Delius',
+        'brief':  'There is no sustainable way back to farming for the overwhelming majority of the population, says Peter Delius.',
+        'link':   'https://city-press.news24.com/Voices/handing-land-to-black-farmers-more-complicated-than-you-think-20180919',
+        'image':    STATIC_URL + 'img/showcase/showcase6.jpg',
+        'date': '19 Sep 2018'
     },
     {
+        'index': 2,
         'title':  'Be prepared: It’s getting hotter and drier',
         'author': 'Mandi Smallhorne',
         'brief':  'What changes can we expect for our country and our lives as climate change takes hold? ',
         'link':   'https://city-press.news24.com/News/be-prepared-its-getting-hotter-and-drier-20180910',
-        'img':    STATIC_URL + 'img/showcase/showcase_2.jpg'
+        'image':    STATIC_URL + 'img/showcase/showcase2.jpg',
+        'date': '10 Sep 2018'
+
     },
     {
+        'index': 3,
+        'title':  'A farmer\'s 15-year wait for land justice',
+        'author': 'Jeanne-Marié Versluis',
+        'brief':  'The government offered the farm to Rakgase in 2002 and accepted the offer he made, but nothing has come of the agreement. ',
+        'link':   'https://city-press.news24.com/News/a-farmers-15-year-wait-for-land-justice-20180822',
+        'image':    STATIC_URL + 'img/showcase/showcase1.jpg',
+        'date': '22 Aug 2018'
+    },
+    {
+        'index': 4,
         'title':  'What will climate change mean for SA agriculture?',
         'author': 'Mandi Smallhorne',
         'brief':  'What are the small shifts that mean big changes, particularly for agriculture, in a changing climate? ',
         'link':   'https://city-press.news24.com/News/what-will-climate-change-mean-for-sa-agriculture-20180817',
-        'img':    STATIC_URL + 'img/showcase/showcase_3.jpg'
+        'image':    STATIC_URL + 'img/showcase/showcase3.jpg',
+        'date': '17 Aug 2018'
+    },
+    {
+        'index': 5,
+        'title':  'Block 40’s struggle for decent homes may finally be over',
+        'author': 'Andile Nayika',
+        'brief':  'DASHED DREAMS Block 40 residents Thobile Tshume and Nomandla Dala aren’t hopeful their situation will change, despite 300 families being promised plots, title deeds and RDP houses in the contested area',
+        'link':   'https://city-press.news24.com/News/block-40s-struggle-for-decent-homes-may-finally-be-over-20180806',
+        'image':    STATIC_URL + 'img/showcase/showcase5.jpg',
+        'date': '06 Aug 2018'
+
+    },
+    {
+        'index': 6,
+        'title':  'Land reform gone wrong: A black day near White River',
+        'author': 'Sizwe sama Yende',
+        'brief':  'Pile of rubble is what was left when 28 houses were demolished at Phumlani Village ',
+        'link':   'https://city-press.news24.com/News/land-reform-gone-wrong-a-black-day-near-white-river-20180806',
+        'image':    STATIC_URL + 'img/showcase/showcase8.jpg',
+        'date': '06 Aug 2018'
+    },
+    {
+        'index': 7,
+        'title':  'Despair after land and a future are stolen',
+        'author': 'Onthatile Kgoadigoadi',
+        'brief':  'Lufhereng residents stand next to their farmland that is situated in Doornkop plot 239 IQ in Soweto. They claim to have lost their land to the Lufhereng Housing Project through nefarious practices.',
+        'link':   'https://city-press.news24.com/News/despair-after-land-and-a-future-are-stolen-20180715-2',
+        'image':    STATIC_URL + 'img/showcase/showcase9.jpg',
+        'date': '15 Jul 2018'
+    },
+    {
+        'index': 8,
+        'title':  'We want our own land',
+        'author': 'Tebogo Letsie',
+        'brief':  'In the Northern Cape, tempers flared and the question of the indigenous people’s rights was raised, but what was clear is that land expropriation without compensation has support from the majority of the communities. ',
+        'link':   'https://city-press.news24.com/News/we-want-our-own-land-20180711-2',
+        'image':    STATIC_URL + 'img/showcase/showcase4.jpg',
+        'date': '11 Jul 2018'
+    },
+    {
+        'index': 9,
+        'title':  'Community vs chief | The story of a struggle for land',
+        'author': 'Poloko Tau',
+        'brief':  'In Matiwaneskop near Ladysmith, KwaZulu-Natal, the community is refusing to be ruled by Inkosi Ntandoyenkosi Shabalala. They say that, when their forefathers bought the land in the 1800s, they had no chief and were just a group of 120 ordinary people.',
+        'link':   'https://city-press.news24.com/News/community-vs-chief-the-story-of-a-struggle-for-land-20180624',
+        'image':    STATIC_URL + 'img/showcase/showcase7.jpg',
+        'date': '24 Jun 2018'
     }
 ]
 

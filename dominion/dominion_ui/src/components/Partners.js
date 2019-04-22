@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -13,20 +12,21 @@ import twaweza from '../assets/images/logos/twaweza.png';
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    backgroundColor: theme.palette.secondary.light
+    backgroundColor: theme.palette.secondary.light,
+    height: '16.9375rem',
+    [theme.breakpoints.up('md')]: {
+      height: '10rem'
+    }
   },
 
   // 6 rem image + 4 rem padding = 10rem = 160px
   img: {
-    maxHeight: '6rem',
+    maxHeight: '3.75rem',
     maxWidth: '30vw',
     [theme.breakpoints.up('md')]: {
       width: 'auto',
       maxWidth: '10rem'
     }
-  },
-  imgCfa: {
-    maxHeight: '6rem'
   },
   imageGrid: {
     padding: '1rem',
@@ -37,7 +37,6 @@ const styles = theme => ({
 });
 
 function Partners({ classes }) {
-  const cfaClassName = classNames(classes.img, classes.imgCfa);
   return (
     <Grid
       container
@@ -46,7 +45,7 @@ function Partners({ classes }) {
       alignItems="center"
     >
       <Grid item className={classes.imageGrid}>
-        <img src={cfa} alt="Code for Africa" className={cfaClassName} />
+        <img src={cfa} alt="Code for Africa" className={classes.img} />
       </Grid>
       <Grid item className={classes.imageGrid}>
         <img src={datazetu} alt="Data Zetu" className={classes.img} />

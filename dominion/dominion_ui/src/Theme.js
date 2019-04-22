@@ -5,7 +5,7 @@ const FONT_FAMILY_TEXT = '"Montserrat", "sans-serif"';
 
 const Theme = createMuiTheme({
   palette: {
-    primary: { main: '#2b3129', light: '#f1f1ed' },
+    primary: { main: '#2b3129', light: '#f1f1ed', dark: '#222822' },
     secondary: { main: '#000000', dark: '#2c2c2a', grey: '#2b3129' },
     highlight: { main: '#e7e452' }
   },
@@ -16,6 +16,7 @@ const Theme = createMuiTheme({
     h1: {
       color: '#293229',
       fontFamily: FONT_FAMILY_HEADING,
+      fontSize: '4.375rem',
       fontWeight: 400
     },
     h2: {
@@ -47,6 +48,11 @@ const Theme = createMuiTheme({
     body2: {
       color: 'rgba(34, 40, 34, 0.8)',
       fontFamily: FONT_FAMILY_TEXT
+    },
+    subtitle2: {
+      fontFamily: FONT_FAMILY_TEXT,
+      fontSize: '0.75rem',
+      fontWeight: 500
     },
     fontSmallDefault: {
       fontSize: 13,

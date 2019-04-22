@@ -171,6 +171,9 @@ span.img-bg {
     max-width: 200px;
   }
 }
+#page-footer ul {
+  padding-left: 0;
+}
 
 // Pages
 
@@ -474,4 +477,9 @@ ul.sub-group a:hover {
     color: #000;
     background-color: #fff ;
     border-color: #fff;
+}
+
+//override censusrepoter css => 1rem == 16px
+html {
+  font-size: 100% !important
 }

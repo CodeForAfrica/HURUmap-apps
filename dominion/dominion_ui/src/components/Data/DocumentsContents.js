@@ -12,7 +12,7 @@ function DocumentsContent() {
             sourceAFRICA is Africa's premier repository for actionable
             documents.
       "
-      link="#"
+      link="https://sourceafrica.net/"
     >
       <img src={menuicon} alt="Menu Icon" />
     </Content>
