@@ -8,8 +8,8 @@ import { withStyles } from '@material-ui/core/styles';
 import PartnerContent from './PartnerContent';
 
 import cfa from '../../assets/images/logos/codeforafrica.png';
-import datazetu from '../../assets/images/logos/datazetu.png';
 import twaweza from '../../assets/images/logos/twaweza.png';
+import A from '../A';
 
 const styles = theme => ({
   root: {
@@ -61,9 +61,8 @@ function CountryPartners({ classes }) {
     >
       <Grid item xs={12} sm={4}>
         <PartnerContent
-          title="Our Partners"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                      ut labore et dolore magna aliqua."
+          title="Partners"
+          description="Dominion is made possible through support from the following partners:"
         />
       </Grid>
 
@@ -80,13 +79,14 @@ function CountryPartners({ classes }) {
       >
         {' '}
         <Grid item className={classes.imageGrid}>
-          <img src={cfa} alt="Code for Africa" className={cfaClassName} />
+          <A href="https://codeforafrica.org/">
+            <img src={cfa} alt="Code for Africa" className={cfaClassName} />
+          </A>
         </Grid>
         <Grid item className={classes.imageGrid}>
-          <img src={datazetu} alt="Data Zetu" className={classes.img} />
-        </Grid>
-        <Grid item className={classes.imageGrid}>
-          <img src={twaweza} alt="Twaweza" className={classes.img} />
+          <A href="https://www.twaweza.org/">
+            <img src={twaweza} alt="Twaweza" className={classes.img} />
+          </A>
         </Grid>
       </Grid>
     </Grid>

@@ -52,8 +52,8 @@ function About({ classes }) {
         HURUmap&apos;s underlying data is quality-checked from reputable
         official sources including the government census,{' '}
         <A href="https://www.pepfar.gov/" className={classes.links}>
-          PEPFAR{' '}
-        </A>
+          PEPFAR
+        </A>{' '}
         and{' '}
         <A href="http://www.uwezo.net/" className={classes.links}>
           UWEZO.
@@ -63,15 +63,26 @@ function About({ classes }) {
         This project is built on software originally created by the Knight Lab
         in the USA for the{' '}
         <A href="https://censusreporter.org/" className={classes.links}>
-          censusReporter.org
+          CensusReporter.org
         </A>{' '}
         project which has been repurposed by{' '}
         <A href="https://openup.org.za/" className={classes.links}>
           OpenUp
         </A>{' '}
         and Media Monitoring Africa for Wazimap in South Africa for Wazimap in
-        SouthAfrica and by Code for Africa for HURUmap in Kenya, Tanzania,
-        Uganda and Zambia.
+        South Africa and by{' '}
+        <A href="https://codeforafrica.org/" className={classes.links}>
+          Code for Africa
+        </A>{' '}
+        for HURUmap in{' '}
+        <A href="https://kenya.hurumap.org/" className={classes.links}>
+          Kenya
+        </A>
+        ,{' '}
+        <A href="https://tanzania.hurumap.org/" className={classes.links}>
+          Tanzania
+        </A>
+        , Uganda and Zambia.
       </Typography>
     </div>
   );

@@ -81,10 +81,7 @@ class Video extends React.Component {
           </Typography>
           <Grid item xs={8} sm={4} style={{ paddingTop: '1rem' }}>
             <Typography variant="caption" className={classes.caption}>
-              Lorem ipsum dolor sit amet, nec partem definitionem at, vix eu
-              alii timeam, vel falli appetere ut. Lorem ipsum dolor sit amet,
-              nec partem definitionem at, vix eu alii timeam, vel falli appetere
-              ut.
+              Watch how you can get the most out of Dominion.
             </Typography>
 
             <Grid item className={classes.buttonGrid}>

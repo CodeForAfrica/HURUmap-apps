@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
-import bmf from '../assets/images/logos/bmgf.png';
+import A from './A';
+
+import bmgf from '../assets/images/logos/bmgf.png';
 import cfa from '../assets/images/logos/codeforafrica.png';
-import datazetu from '../assets/images/logos/datazetu.png';
+import pulitzercenter from '../assets/images/logos/pulitzercenter.png';
 import icfj from '../assets/images/logos/icfj.png';
 import twaweza from '../assets/images/logos/twaweza.png';
 
@@ -45,19 +47,37 @@ function Partners({ classes }) {
       alignItems="center"
     >
       <Grid item className={classes.imageGrid}>
-        <img src={cfa} alt="Code for Africa" className={classes.img} />
+        <A href="https://codeforafrica.org/">
+          <img src={cfa} alt="Code for Africa" className={classes.img} />
+        </A>
       </Grid>
       <Grid item className={classes.imageGrid}>
-        <img src={datazetu} alt="Data Zetu" className={classes.img} />
+        <A href="https://pulitzercenter.org/">
+          <img
+            src={pulitzercenter}
+            alt="Pulitzer Center"
+            className={classes.img}
+          />
+        </A>
       </Grid>
       <Grid item className={classes.imageGrid}>
-        <img src={twaweza} alt="Twaweza" className={classes.img} />
+        <A href="https://www.twaweza.org">
+          <img src={twaweza} alt="Twaweza" className={classes.img} />
+        </A>
       </Grid>
       <Grid item className={classes.imageGrid}>
-        <img src={bmf} alt="Bill and Melinda Gates" className={classes.img} />
+        <A href="https://www.gatesfoundation.org">
+          <img
+            src={bmgf}
+            alt="Bill and Melinda Gates Foundation"
+            className={classes.img}
+          />
+        </A>
       </Grid>
       <Grid item className={classes.imageGrid}>
-        <img src={icfj} alt="Icfj" className={classes.img} />
+        <A href="https://icfj.org/">
+          <img src={icfj} alt="Icfj" className={classes.img} />
+        </A>
       </Grid>
     </Grid>
   );

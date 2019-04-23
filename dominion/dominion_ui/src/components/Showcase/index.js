@@ -62,8 +62,8 @@ function Showcase({ classes, showcaseStories }) {
 
         <Grid item xs={12}>
           <Typography variant="body2" className={classes.headlineDescription}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Explore how land and how it is controlled shapes everything from our
+            food security and geopolitics to national identity.
           </Typography>
         </Grid>
       </Grid>

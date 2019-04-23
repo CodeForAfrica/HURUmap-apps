@@ -61,25 +61,35 @@ function AboutDominion({ classes }) {
       <Grid item className={classes.info}>
         <Info>
           <InfoSubtitle>
-            Dominion is built on the HURUmap platform.{' '}
-            <A href="https://hurumap.org" variant="subtitle2">
-              HURUmap
-            </A>{' '}
-            shows the data behind the stories, and gives infomediaries like
-            journalists, policy makers and civic activists an easy &lsquo;plug &
-            play&rsquo; toolkit for finding and embedding interactive data
-            visualisations into their storytelling.
+            <p>
+              Land and how it is controlled shapes everything from our food
+              security and geopolitics to national identity.
+            </p>
+            <p>
+              The scramble for control of high value land (and its attributes
+              such as water and mineral wealth), in the face of escalating
+              climate change and urbanisation, underpins much of Africa’s
+              fiercest conflicts and mass migrations.
+            </p>
           </InfoSubtitle>
 
           <InfoBody>
-            Dominion is built on the HURUmap platform.{' '}
-            <A href="https://hurumap.org" variant="subtitle2">
-              HURUmap
-            </A>{' '}
-            shows the data behind the stories, and gives infomediaries like
-            journalists, policy makers and civic activists an easy &lsquo;plug &
-            play&rsquo; toolkit for finding and embedding interactive data
-            visualisations into their storytelling.
+            <p>
+              Dominion is CfA’s attempt to inject data-driven evidence and
+              analysis into public discourse policy-setting across the
+              continent.
+            </p>
+            <p>
+              Dominion is designed as an umbrella data visualisation portal,
+              powered by the <A href="https://hurumap.org">HURUmap</A> stack of
+              geo-data software tools, that aggregates land data so that
+              journalists / researchers / policymakers can use it to explore
+              comparisons, spot trends or find other insights.
+            </p>
+            <p>
+              Dominion also aggregates the best journalistic stories and/or
+              campaigns that partners create using our data / infographics.
+            </p>
           </InfoBody>
         </Info>
       </Grid>
