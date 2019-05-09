@@ -21,6 +21,7 @@ const styles = theme => ({
     height: '250px !important',
     left: 'unset !important',
     top: 'unset !important',
+    zIndex: 100,
     [theme.breakpoints.up('md')]: {
       position: 'absolute !important',
       right: '50px',
