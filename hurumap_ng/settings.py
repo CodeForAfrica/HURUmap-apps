@@ -19,8 +19,8 @@ DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
 # Localise this instance of HURUmap
-HURUMAP['name'] = 'HURUmap Zambia'
-HURUMAP['url'] = 'https://zambia.hurumap.org'
+HURUMAP['name'] = 'HURUmap Nigeria'
+HURUMAP['url'] = 'https://nigeria.hurumap.org'
 HURUMAP['twitter'] = '@Code4Africa'
 
 HURUMAP['ga_tracking_id'] = 'UA-44795600-21'
