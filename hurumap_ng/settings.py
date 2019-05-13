@@ -29,8 +29,8 @@ HURUMAP['country_code'] = 'NG'
 HURUMAP['country_name'] = 'Nigeria'
 HURUMAP['country_profile'] = 'country-NG-nigeria'
 HURUMAP['profile_builder'] = 'hurumap_ng.profiles.get_census_profile'
-HURUMAP['default_geo_version'] = os.environ.get('DEFAULT_GEO_VERSION', '2010')
-HURUMAP['legacy_embed_geo_version'] = '2010'
+HURUMAP['default_geo_version'] = os.environ.get('DEFAULT_GEO_VERSION', '2016')
+HURUMAP['legacy_embed_geo_version'] = '2016'
 HURUMAP['levels'] = {
     'country': {
         'plural': 'countries',
@@ -49,11 +49,11 @@ HURUMAP['mapit'] = {
     'url': 'https://mapit.hurumap.org',
     'country_code': 'NG',
     'generations': {
-        '2010': '1',
+        '2016': '1',
         None: '1',
         # this should be based on the default_geo_version wazimap setting
     },
-    'code_type': 'NGA',
+    'code_type': 'HDX',
     'level_simplify': {
         'country': 0,
         'province': 0
