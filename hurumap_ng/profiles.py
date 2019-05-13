@@ -20,8 +20,6 @@ def get_profile(geo, profile_name, request):
     try:
         data['primary_release_year'] = year
         data['debt'] = get_debt(geo, session, year)
-        print(data)
-
         return data
 
     finally:
@@ -42,7 +40,6 @@ def get_debt(geo, session, year):
                                          session=session,
                                          table_dataset='Fiscal Debt')
         except Exception as e:
-            print(f"\n\n\n\n\n{str(e)}\n\n\n\n\n")
             pass
 
     is_missing = debt_data.get('is_missing')
