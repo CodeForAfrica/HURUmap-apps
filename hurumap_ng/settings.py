@@ -28,7 +28,7 @@ HURUMAP['ga_tracking_id'] = 'UA-44795600-21'
 HURUMAP['country_code'] = 'NG'
 HURUMAP['country_name'] = 'Nigeria'
 HURUMAP['country_profile'] = 'country-NG-nigeria'
-HURUMAP['profile_builder'] = 'hurumap_ng.profiles.get_census_profile'
+HURUMAP['profile_builder'] = 'hurumap_ng.profiles.get_profile'
 HURUMAP['default_geo_version'] = os.environ.get('DEFAULT_GEO_VERSION', '2016')
 HURUMAP['legacy_embed_geo_version'] = '2016'
 HURUMAP['levels'] = {
@@ -113,12 +113,12 @@ HURUMAP['topics']['agriculture'] = {
 }
 
 HURUMAP['primary_release_year'] = {
-    'province': 2010,
+    'province': 2018,
 }
-HURUMAP['latest_release_year'] = '2010'
-HURUMAP['primary_dataset_name'] = 'Census'
+HURUMAP['latest_release_year'] = '2018'
+HURUMAP['primary_dataset_name'] = 'Fiscal Debt'
 HURUMAP['available_release_years'] = {
-    'province': [2010]
+    'state': [2018]
 }
 
 LOGGING['loggers']['hurumap_ng'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
