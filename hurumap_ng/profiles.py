@@ -38,7 +38,7 @@ def get_debt(geo, session, year):
         try:
             debt_data, _ = get_stat_data(fields=['year', 'debt_type'], geo=geo,
                                          session=session,
-                                         table_dataset='Fiscal Debt')
+                                         table_dataset='Fiscal Debt', percent=False)
         except Exception:
             pass
 
