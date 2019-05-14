@@ -1,8 +1,8 @@
 from collections import OrderedDict
 
 from django.conf import settings
-from wazimap.data.utils import get_session, get_stat_data, group_remainder, \
-    current_context, dataset_context
+from wazimap.data.utils import (current_context, dataset_context, get_session,
+                                get_stat_data, group_remainder)
 from wazimap.geo import LocationNotFound
 
 LOCATIONNOTFOUND = {'is_missing': True,

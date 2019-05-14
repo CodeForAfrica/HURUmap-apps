@@ -3,7 +3,6 @@ from collections import OrderedDict
 from distutils.util import strtobool
 
 import dj_database_url
-
 from hurumap.settings import *  # noqa
 
 # insert our overrides before both census and hurumap
