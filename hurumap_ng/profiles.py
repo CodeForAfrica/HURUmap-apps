@@ -39,7 +39,7 @@ def get_debt(geo, session, year):
             debt_data, _ = get_stat_data(fields=['year', 'debt_type'], geo=geo,
                                          session=session,
                                          table_dataset='Fiscal Debt')
-        except Exception as e:
+        except Exception:
             pass
 
     is_missing = debt_data.get('is_missing')
