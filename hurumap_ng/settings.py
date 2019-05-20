@@ -3,7 +3,7 @@ from collections import OrderedDict
 from distutils.util import strtobool
 
 import dj_database_url
-from hurumap.settings import *  # noqa
+from hurumap.dashboard.settings import * # noqa
 
 # insert our overrides before both census and hurumap
 INSTALLED_APPS = ['hurumap_ng'] + INSTALLED_APPS
@@ -121,6 +121,9 @@ HURUMAP['available_release_years'] = {
 }
 
 LOGGING['loggers']['hurumap_ng'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
+
+# URLS
+ROOT_URLCONF = 'hurumap_ng.urls'
 
 # Making sure they are the same
 WAZIMAP = HURUMAP
