@@ -20,8 +20,9 @@ DATABASES['default']['ATOMIC_REQUESTS'] = True
 INSTALLED_APPS = ['hurumap_zw'] + INSTALLED_APPS
 
 # Localise this instance of HURUmap
-HURUMAP['name'] = 'HURUmap Zimbabwe'
-HURUMAP['url'] = 'https://zimbabwe.hurumap.org'
+HURUMAP['name'] = os.environ.get('HURUMAP_NAME', 'HURUmap Zimbabwe')
+HURUMAP['url'] = os.environ.get('HURUMAP_URL', 'https://zimbabwe.hurumap.org')
+
 HURUMAP['country_code'] = 'ZW'
 HURUMAP['country_name'] = 'Zimbabwe'
 
