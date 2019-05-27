@@ -1,0 +1,25 @@
+{% extends '_base.html' %}
+{% load sass_tags staticfiles %}
+
+{# HEAD #}
+
+{% block head_css %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% sass_src 'css/ulwazimap.scss' %}">
+{% endblock %}
+
+{% block header_logo %}
+  <img src="{% static 'img/cite-long.png' %}">
+{% endblock %}
+
+{% block favicon %}
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ STATIC_URL }}img/icons/favicon/apple-touch-icon.png?v=wAXNqxv0mP">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ STATIC_URL }}img/icons/favicon/favicon-32x32.png?v=wAXNqxv0mP">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ STATIC_URL }}img/icons/favicon/favicon-16x16.png?v=wAXNqxv0mP">
+  <link rel="manifest" href="{{ STATIC_URL }}img/icons/favicon/site.webmanifest?v=wAXNqxv0mP">
+  <link rel="mask-icon" href="{{ STATIC_URL }}img/icons/favicon/safari-pinned-tab.svg?v=wAXNqxv0mP" color="#487ee4">
+  <link rel="shortcut icon" href="{{ STATIC_URL }}img/icons/favicon/favicon.ico?v=wAXNqxv0mP">
+  <meta name="msapplication-TileColor" content="#00aba9">
+  <meta name="msapplication-config" content="{{ STATIC_URL }}img/icons/favicon/browserconfig.xml?v=wAXNqxv0mP">
+  <meta name="theme-color" content="#ffffff">
+{% endblock %}

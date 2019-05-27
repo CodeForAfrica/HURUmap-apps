@@ -1,0 +1,70 @@
+
+$brand-primary-color: rgb(72, 126, 228);
+
+// From https://www.flaticon.com/free-icon/line-chart_262563
+$brand-secondary-color: #1E0478;
+$brand-purple-light: #9B8CCC;
+$brand-blue-light: #94E7EF;
+$brand-purple-light-alt: #6F7CCD;
+
+html, body {
+ background-color: #ffffff;
+}
+
+a {
+  color: $brand-primary-color;
+}
+
+#page-header, .box-header {
+  background-color: #ffffff;
+}
+
+#page-header-title a, .box-header a {
+  color: #222222;
+}
+
+#page-header #page-header-title .title img {
+  height: 40px; margin: 5px;
+}
+
+.leaflet-label {
+  background-color: $brand-primary-color !important;
+  border-color: $brand-primary-color !important;
+}
+
+#page-header #page-header-title .nav-menu #menu .tool-group {
+  border: 1px solid #222;
+}
+
+.bg-color-primary, .bg-color-secondary, .bg-bottle-green, .btn.bg-ocean-green, #page-footer {
+  background-color: $brand-primary-color;
+}
+.bg-tan {
+  background-color: #eee;
+}
+
+.btn.bg-bottle-green, .btn.bg-ocean-green, .btn.bg-color-primary, .btn.bg-color-secondary {
+  &:hover {
+    background-color: $brand-secondary-color;
+  }
+}
+#page-header #page-header-title .nav-menu ul#site-menu li a:hover {
+  color: $brand-secondary-color;
+}
+
+#page-footer {
+  color: #222222;
+}
+
+#cover-profile article {
+  border-color: $brand-purple-light-alt;
+}
+
+#profile {
+  background-color: #f5f5f5;
+}
+
+.floating-nav {
+  background-color: #eee;
+}
+
