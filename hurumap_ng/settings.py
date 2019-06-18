@@ -66,51 +66,6 @@ HURUMAP['mapit'] = {
 HURUMAP['map_centre'] = [9.0820, 8.6753]
 HURUMAP['map_zoom'] = 6
 
-# TODO: Move these
-
-HURUMAP['topics'] = OrderedDict()
-
-HURUMAP['topics']['census'] = {
-    'topic': 'census',
-    'name': 'census 2010',
-    'icon': '/static/img/census.png',
-    'order': 1,
-    'desc': 'Census data collected in 2010',
-    'profiles': [
-        'Demographics'
-    ]
-}
-HURUMAP['topics']['education'] = {
-    'topic': 'education',
-    'name': 'education',
-    'icon': '/static/img/education.png',
-    'desc': 'Education data from Twaweza',
-    'profiles': [
-
-    ]
-}
-
-HURUMAP['topics']['health'] = {
-    'topic': 'health',
-    'name': 'health',
-    'icon': '/static/img/health.png',
-    'order': 2,
-    'desc': 'Health data collected in 2014 by the Kenya National Bureau of Statistics ',
-    'profiles': [
-
-    ]
-}
-HURUMAP['topics']['agriculture'] = {
-    'topic': 'agriculture',
-    'name': 'agriculture',
-    'icon': '/static/img/development.png',
-    'order': 3,
-    'desc': 'Crop production and Livestock population for the year 2014 provided by the Ministry of Agriculture, Livestock and Fisheries.',
-    'profiles': [
-
-    ],
-}
-
 HURUMAP['primary_release_year'] = {
     'province': 2018,
 }
