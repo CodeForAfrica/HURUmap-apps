@@ -20,7 +20,8 @@ DATABASES['default']['ATOMIC_REQUESTS'] = True
 # Localise this instance of HURUmap
 HURUMAP['name'] = 'HURUmap Nigeria'
 HURUMAP['url'] = 'https://nigeria.hurumap.org'
-HURUMAP['twitter'] = '@Code4Africa'
+HURUMAP['twitter'] = '@nigerianstat'
+HURUMAP['facebook'] = 'nigerianstatistics'
 
 HURUMAP['ga_tracking_id'] = 'UA-44795600-49'
 
