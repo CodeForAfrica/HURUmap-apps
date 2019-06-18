@@ -1,0 +1,32 @@
+{% extends '_base.html' %}
+{% load sass_tags staticfiles %}
+
+{# HEAD #}
+
+          {% block header_menu %}
+            <li><a href="/about">About</a></li>
+            <li>
+              <a href="//medium.com/code-for-africa"
+                 target="_blank" rel="noopener noreferrer">
+                Nigeria Insights
+              </a>
+            </li>
+            <li><a href="/#showcase">Showcase</a></li>
+            <li>
+                <a href="//facebook.com/{{ HURUMAP.facebook }}"
+                   target="_blank" rel="noopener noreferrer">
+                   Community
+                </a>
+            </li>
+            <li><a href="{% url 'help' %}">Help</a></li>
+            <li class="social-icons">
+              <a href="//twitter.com/{{ HURUMAP.twitter }}"
+                 target="_blank" rel="noopener noreferrer">
+                 <i class="fa fa-twitter fa-lg fa-fw"></i>
+              </a>
+              <a href="//facebook.com/{{ HURUMAP.facebook }}"
+                 target="_blank" rel="noopener noreferrer">
+                 <i class="fa fa-facebook fa-lg fa-fw"></i>
+              </a>
+            </li>
+          {% endblock header_menu %}
