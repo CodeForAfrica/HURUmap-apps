@@ -22,7 +22,7 @@ HURUMAP['name'] = 'HURUmap Nigeria'
 HURUMAP['url'] = 'https://nigeria.hurumap.org'
 HURUMAP['twitter'] = '@Code4Africa'
 
-HURUMAP['ga_tracking_id'] = 'UA-44795600-21'
+HURUMAP['ga_tracking_id'] = 'UA-44795600-49'
 
 HURUMAP['country_code'] = 'NG'
 HURUMAP['country_name'] = 'Nigeria'
