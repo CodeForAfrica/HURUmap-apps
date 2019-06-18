@@ -51,7 +51,7 @@ HURUMAP['email'] = 'info@codeforafrica.org'
 
 HURUMAP['github_url'] = 'https://github.com/CodeForAfrica/HURUmap-apps'
 
-HURUMAP['ga_tracking_id'] = 'UA-44795600-21'
+HURUMAP['ga_tracking_id'] = 'UA-44795600-47'
 
 HURUMAP['country_code'] = 'ZA'
 HURUMAP['country_name'] = 'South Africa'
