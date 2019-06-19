@@ -37,46 +37,46 @@ CREATE TABLE public.workers_hostel_subsidy (
 --
 
 COPY public.workers_hostel_subsidy (geo_level, geo_code, geo_version, workers_hostel_subsidy, total) FROM stdin;
-province	WC	2018	Yes	743
-province	WC	2018	No	25696
-province	WC	2018	Do not know	0
-province	WC	2018	Unspecified	0
-country	ZA	2018	Yes	12033
-country	ZA	2018	No	406662
-country	ZA	2018	Do not know	824
-country	ZA	2018	Unspecified	9566
-province	NC	2018	Yes	0
-province	NC	2018	No	29111
-province	NC	2018	Do not know	0
-province	NC	2018	Unspecified	998
-province	NW	2018	Yes	0
-province	NW	2018	No	18801
-province	NW	2018	Do not know	0
-province	NW	2018	Unspecified	0
-province	MP	2018	Yes	8313
-province	MP	2018	No	39632
-province	MP	2018	Do not know	0
-province	MP	2018	Unspecified	6969
-province	LIM	2018	Yes	0
-province	LIM	2018	No	40903
-province	LIM	2018	Do not know	0
-province	LIM	2018	Unspecified	0
-province	KZN	2018	Yes	0
-province	KZN	2018	No	78506
-province	KZN	2018	Do not know	0
-province	KZN	2018	Unspecified	0
-province	GT	2018	Yes	0
-province	GT	2018	No	139424
-province	GT	2018	Do not know	824
-province	GT	2018	Unspecified	1599
-province	FS	2018	Yes	0
-province	FS	2018	No	5195
-province	FS	2018	Do not know	0
-province	FS	2018	Unspecified	0
-province	EC	2018	Yes	2977
-province	EC	2018	No	29395
-province	EC	2018	Do not know	0
-province	EC	2018	Unspecified	0
+province	WC	2016	Yes	743
+province	WC	2016	No	25696
+province	WC	2016	Do not know	0
+province	WC	2016	Unspecified	0
+country	ZA	2016	Yes	12033
+country	ZA	2016	No	406662
+country	ZA	2016	Do not know	824
+country	ZA	2016	Unspecified	9566
+province	NC	2016	Yes	0
+province	NC	2016	No	29111
+province	NC	2016	Do not know	0
+province	NC	2016	Unspecified	998
+province	NW	2016	Yes	0
+province	NW	2016	No	18801
+province	NW	2016	Do not know	0
+province	NW	2016	Unspecified	0
+province	MP	2016	Yes	8313
+province	MP	2016	No	39632
+province	MP	2016	Do not know	0
+province	MP	2016	Unspecified	6969
+province	LIM	2016	Yes	0
+province	LIM	2016	No	40903
+province	LIM	2016	Do not know	0
+province	LIM	2016	Unspecified	0
+province	KZN	2016	Yes	0
+province	KZN	2016	No	78506
+province	KZN	2016	Do not know	0
+province	KZN	2016	Unspecified	0
+province	GT	2016	Yes	0
+province	GT	2016	No	139424
+province	GT	2016	Do not know	824
+province	GT	2016	Unspecified	1599
+province	FS	2016	Yes	0
+province	FS	2016	No	5195
+province	FS	2016	Do not know	0
+province	FS	2016	Unspecified	0
+province	EC	2016	Yes	2977
+province	EC	2016	No	29395
+province	EC	2016	Do not know	0
+province	EC	2016	Unspecified	0
 \.
 
 

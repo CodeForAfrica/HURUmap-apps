@@ -37,26 +37,26 @@ CREATE TABLE public.workers_hostel_gender (
 --
 
 COPY public.workers_hostel_gender (geo_level, geo_code, geo_version, workers_hostel_gender, total) FROM stdin;
-country	ZA	2018	Male	315484
-province	GT	2018	Male	112026
-province	KZN	2018	Male	57772
-province	MP	2018	Male	36287
-province	LIM	2018	Male	31241
-province	NC	2018	Male	21529
-province	NW	2018	Male	18218
-province	WC	2018	Male	17491
-province	EC	2018	Male	17447
-province	FS	2018	Male	3474
-country	ZA	2018	Female	113601
-province	GT	2018	Female	29821
-province	KZN	2018	Female	20734
-province	MP	2018	Female	18627
-province	EC	2018	Female	14925
-province	LIM	2018	Female	9662
-province	WC	2018	Female	8948
-province	NC	2018	Female	8580
-province	FS	2018	Female	1721
-province	NW	2018	Female	583
+country	ZA	2016	Male	315484
+province	GT	2016	Male	112026
+province	KZN	2016	Male	57772
+province	MP	2016	Male	36287
+province	LIM	2016	Male	31241
+province	NC	2016	Male	21529
+province	NW	2016	Male	18218
+province	WC	2016	Male	17491
+province	EC	2016	Male	17447
+province	FS	2016	Male	3474
+country	ZA	2016	Female	113601
+province	GT	2016	Female	29821
+province	KZN	2016	Female	20734
+province	MP	2016	Female	18627
+province	EC	2016	Female	14925
+province	LIM	2016	Female	9662
+province	WC	2016	Female	8948
+province	NC	2016	Female	8580
+province	FS	2016	Female	1721
+province	NW	2016	Female	583
 \.
 
 

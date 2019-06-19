@@ -37,56 +37,56 @@ CREATE TABLE public.workers_hostel_residential_ownership (
 --
 
 COPY public.workers_hostel_residential_ownership (geo_level, geo_code, geo_version, workers_hostel_residential_ownership, total) FROM stdin;
-province	WC	2018	Yes; individually	0
-province	WC	2018	Yes; jointly	2236
-province	WC	2018	No	24202
-province	WC	2018	Do not know	0
-province	WC	2018	Unspecified	0
-province	EC	2018	Yes; individually	654
-province	EC	2018	Yes; jointly	4042
-province	EC	2018	No	27677
-province	EC	2018	Do not know	0
-province	EC	2018	Unspecified	0
-province	NC	2018	Yes; individually	3289
-province	NC	2018	Yes; jointly	943
-province	NC	2018	No	25878
-province	NC	2018	Do not know	0
-province	NC	2018	Unspecified	0
-province	FS	2018	Yes; individually	0
-province	FS	2018	Yes; jointly	0
-province	FS	2018	No	5195
-province	FS	2018	Do not know	0
-province	FS	2018	Unspecified	0
-province	KZN	2018	Yes; individually	6527
-province	KZN	2018	Yes; jointly	544
-province	KZN	2018	No	70393
-province	KZN	2018	Do not know	0
-province	KZN	2018	Unspecified	1041
-province	NW	2018	Yes; individually	749
-province	NW	2018	Yes; jointly	0
-province	NW	2018	No	18052
-province	NW	2018	Do not know	0
-province	NW	2018	Unspecified	0
-province	GT	2018	Yes; individually	17259
-province	GT	2018	Yes; jointly	3113
-province	GT	2018	No	121475
-province	GT	2018	Do not know	0
-province	GT	2018	Unspecified	0
-province	MP	2018	Yes; individually	13958
-province	MP	2018	Yes; jointly	5005
-province	MP	2018	No	35951
-province	MP	2018	Do not know	0
-province	MP	2018	Unspecified	0
-province	LIM	2018	Yes; individually	4667
-province	LIM	2018	Yes; jointly	0
-province	LIM	2018	No	35442
-province	LIM	2018	Do not know	0
-province	LIM	2018	Unspecified	794
-country	ZA	2018	Yes; individually	47102
-country	ZA	2018	Yes; jointly	15883
-country	ZA	2018	No	364265
-country	ZA	2018	Do not know	0
-country	ZA	2018	Unspecified	1835
+province	WC	2016	Yes; individually	0
+province	WC	2016	Yes; jointly	2236
+province	WC	2016	No	24202
+province	WC	2016	Do not know	0
+province	WC	2016	Unspecified	0
+province	EC	2016	Yes; individually	654
+province	EC	2016	Yes; jointly	4042
+province	EC	2016	No	27677
+province	EC	2016	Do not know	0
+province	EC	2016	Unspecified	0
+province	NC	2016	Yes; individually	3289
+province	NC	2016	Yes; jointly	943
+province	NC	2016	No	25878
+province	NC	2016	Do not know	0
+province	NC	2016	Unspecified	0
+province	FS	2016	Yes; individually	0
+province	FS	2016	Yes; jointly	0
+province	FS	2016	No	5195
+province	FS	2016	Do not know	0
+province	FS	2016	Unspecified	0
+province	KZN	2016	Yes; individually	6527
+province	KZN	2016	Yes; jointly	544
+province	KZN	2016	No	70393
+province	KZN	2016	Do not know	0
+province	KZN	2016	Unspecified	1041
+province	NW	2016	Yes; individually	749
+province	NW	2016	Yes; jointly	0
+province	NW	2016	No	18052
+province	NW	2016	Do not know	0
+province	NW	2016	Unspecified	0
+province	GT	2016	Yes; individually	17259
+province	GT	2016	Yes; jointly	3113
+province	GT	2016	No	121475
+province	GT	2016	Do not know	0
+province	GT	2016	Unspecified	0
+province	MP	2016	Yes; individually	13958
+province	MP	2016	Yes; jointly	5005
+province	MP	2016	No	35951
+province	MP	2016	Do not know	0
+province	MP	2016	Unspecified	0
+province	LIM	2016	Yes; individually	4667
+province	LIM	2016	Yes; jointly	0
+province	LIM	2016	No	35442
+province	LIM	2016	Do not know	0
+province	LIM	2016	Unspecified	794
+country	ZA	2016	Yes; individually	47102
+country	ZA	2016	Yes; jointly	15883
+country	ZA	2016	No	364265
+country	ZA	2016	Do not know	0
+country	ZA	2016	Unspecified	1835
 \.
 
 

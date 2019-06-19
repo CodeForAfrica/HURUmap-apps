@@ -37,36 +37,36 @@ CREATE TABLE public.workers_hostel_geography (
 --
 
 COPY public.workers_hostel_geography (geo_level, geo_code, geo_version, workers_hostel_geography, total) FROM stdin;
-province	WC	2018	Urban formal	13039
-province	WC	2018	Traditional	0
-province	WC	2018	Farms	13400
-country	ZA	2018	Urban formal	258389
-country	ZA	2018	Traditional	19813
-country	ZA	2018	Farms	150883
-province	NC	2018	Urban formal	15522
-province	NC	2018	Traditional	0
-province	NC	2018	Farms	14588
-province	NW	2018	Urban formal	13231
-province	NW	2018	Traditional	749
-province	NW	2018	Farms	4820
-province	MP	2018	Urban formal	27149
-province	MP	2018	Traditional	4439
-province	MP	2018	Farms	23325
-province	LIM	2018	Urban formal	2484
-province	LIM	2018	Traditional	2530
-province	LIM	2018	Farms	35889
-province	KZN	2018	Urban formal	24755
-province	KZN	2018	Traditional	5322
-province	KZN	2018	Farms	48429
-province	GT	2018	Urban formal	132407
-province	GT	2018	Traditional	0
-province	GT	2018	Farms	9439
-province	FS	2018	Urban formal	4202
-province	FS	2018	Traditional	0
-province	FS	2018	Farms	994
-province	EC	2018	Urban formal	25600
-province	EC	2018	Traditional	6772
-province	EC	2018	Farms	0
+province	WC	2016	Urban formal	13039
+province	WC	2016	Traditional	0
+province	WC	2016	Farms	13400
+country	ZA	2016	Urban formal	258389
+country	ZA	2016	Traditional	19813
+country	ZA	2016	Farms	150883
+province	NC	2016	Urban formal	15522
+province	NC	2016	Traditional	0
+province	NC	2016	Farms	14588
+province	NW	2016	Urban formal	13231
+province	NW	2016	Traditional	749
+province	NW	2016	Farms	4820
+province	MP	2016	Urban formal	27149
+province	MP	2016	Traditional	4439
+province	MP	2016	Farms	23325
+province	LIM	2016	Urban formal	2484
+province	LIM	2016	Traditional	2530
+province	LIM	2016	Farms	35889
+province	KZN	2016	Urban formal	24755
+province	KZN	2016	Traditional	5322
+province	KZN	2016	Farms	48429
+province	GT	2016	Urban formal	132407
+province	GT	2016	Traditional	0
+province	GT	2016	Farms	9439
+province	FS	2016	Urban formal	4202
+province	FS	2016	Traditional	0
+province	FS	2016	Farms	994
+province	EC	2016	Urban formal	25600
+province	EC	2016	Traditional	6772
+province	EC	2016	Farms	0
 \.
 
 

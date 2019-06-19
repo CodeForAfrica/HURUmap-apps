@@ -37,56 +37,56 @@ CREATE TABLE public.workers_hostel_handwashing_facility (
 --
 
 COPY public.workers_hostel_handwashing_facility (geo_level, geo_code, geo_version, workers_hostel_handwashing_facility, total) FROM stdin;
-province	WC	2018	Yes	21032
-province	WC	2018	No	5406
-province	WC	2018	Do not know	0
-province	WC	2018	Not applicable	0
-province	WC	2018	Unspecified	0
-province	EC	2018	Yes	29497
-province	EC	2018	No	2875
-province	EC	2018	Do not know	0
-province	EC	2018	Not applicable	0
-province	EC	2018	Unspecified	0
-province	NC	2018	Yes	24972
-province	NC	2018	No	4820
-province	NC	2018	Do not know	0
-province	NC	2018	Not applicable	317
-province	NC	2018	Unspecified	0
-province	FS	2018	Yes	2481
-province	FS	2018	No	2715
-province	FS	2018	Do not know	0
-province	FS	2018	Not applicable	0
-province	FS	2018	Unspecified	0
-province	KZN	2018	Yes	45773
-province	KZN	2018	No	25950
-province	KZN	2018	Do not know	0
-province	KZN	2018	Not applicable	0
-province	KZN	2018	Unspecified	6783
-province	NW	2018	Yes	4052
-province	NW	2018	No	14749
-province	NW	2018	Do not know	0
-province	NW	2018	Not applicable	0
-province	NW	2018	Unspecified	0
-province	GT	2018	Yes	109009
-province	GT	2018	No	32838
-province	GT	2018	Do not know	0
-province	GT	2018	Not applicable	0
-province	GT	2018	Unspecified	0
-province	MP	2018	Yes	38225
-province	MP	2018	No	15035
-province	MP	2018	Do not know	0
-province	MP	2018	Not applicable	1653
-province	MP	2018	Unspecified	0
-province	LIM	2018	Yes	12032
-province	LIM	2018	No	24525
-province	LIM	2018	Do not know	0
-province	LIM	2018	Not applicable	4346
-province	LIM	2018	Unspecified	0
-country	ZA	2018	Yes	287073
-country	ZA	2018	No	128913
-country	ZA	2018	Do not know	0
-country	ZA	2018	Not applicable	6316
-country	ZA	2018	Unspecified	6783
+province	WC	2016	Yes	21032
+province	WC	2016	No	5406
+province	WC	2016	Do not know	0
+province	WC	2016	Not applicable	0
+province	WC	2016	Unspecified	0
+province	EC	2016	Yes	29497
+province	EC	2016	No	2875
+province	EC	2016	Do not know	0
+province	EC	2016	Not applicable	0
+province	EC	2016	Unspecified	0
+province	NC	2016	Yes	24972
+province	NC	2016	No	4820
+province	NC	2016	Do not know	0
+province	NC	2016	Not applicable	317
+province	NC	2016	Unspecified	0
+province	FS	2016	Yes	2481
+province	FS	2016	No	2715
+province	FS	2016	Do not know	0
+province	FS	2016	Not applicable	0
+province	FS	2016	Unspecified	0
+province	KZN	2016	Yes	45773
+province	KZN	2016	No	25950
+province	KZN	2016	Do not know	0
+province	KZN	2016	Not applicable	0
+province	KZN	2016	Unspecified	6783
+province	NW	2016	Yes	4052
+province	NW	2016	No	14749
+province	NW	2016	Do not know	0
+province	NW	2016	Not applicable	0
+province	NW	2016	Unspecified	0
+province	GT	2016	Yes	109009
+province	GT	2016	No	32838
+province	GT	2016	Do not know	0
+province	GT	2016	Not applicable	0
+province	GT	2016	Unspecified	0
+province	MP	2016	Yes	38225
+province	MP	2016	No	15035
+province	MP	2016	Do not know	0
+province	MP	2016	Not applicable	1653
+province	MP	2016	Unspecified	0
+province	LIM	2016	Yes	12032
+province	LIM	2016	No	24525
+province	LIM	2016	Do not know	0
+province	LIM	2016	Not applicable	4346
+province	LIM	2016	Unspecified	0
+country	ZA	2016	Yes	287073
+country	ZA	2016	No	128913
+country	ZA	2016	Do not know	0
+country	ZA	2016	Not applicable	6316
+country	ZA	2016	Unspecified	6783
 \.
 
 

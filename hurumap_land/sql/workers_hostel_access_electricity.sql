@@ -37,46 +37,46 @@ CREATE TABLE public.workers_hostel_access_electricity (
 --
 
 COPY public.workers_hostel_access_electricity (geo_level, geo_code, geo_version, workers_hostel_access_electricity, total) FROM stdin;
-province	WC	2018	Yes	26439
-province	WC	2018	No	0
-province	WC	2018	Do not know	0
-province	WC	2018	Unspecified	0
-province	EC	2018	Yes	32372
-province	EC	2018	No	0
-province	EC	2018	Do not know	0
-province	EC	2018	Unspecified	0
-province	NC	2018	Yes	29792
-province	NC	2018	No	317
-province	NC	2018	Do not know	0
-province	NC	2018	Unspecified	0
-province	FS	2018	Yes	5195
-province	FS	2018	No	0
-province	FS	2018	Do not know	0
-province	FS	2018	Unspecified	0
-province	KZN	2018	Yes	49260
-province	KZN	2018	No	29245
-province	KZN	2018	Do not know	0
-province	KZN	2018	Unspecified	0
-province	NW	2018	Yes	18801
-province	NW	2018	No	0
-province	NW	2018	Do not know	0
-province	NW	2018	Unspecified	0
-province	GT	2018	Yes	133445
-province	GT	2018	No	8402
-province	GT	2018	Do not know	0
-province	GT	2018	Unspecified	0
-province	MP	2018	Yes	51053
-province	MP	2018	No	3860
-province	MP	2018	Do not know	0
-province	MP	2018	Unspecified	0
-province	LIM	2018	Yes	33159
-province	LIM	2018	No	6103
-province	LIM	2018	Do not know	1640
-province	LIM	2018	Unspecified	0
-country	ZA	2018	Yes	379517
-country	ZA	2018	No	47928
-country	ZA	2018	Do not know	1640
-country	ZA	2018	Unspecified	0
+province	WC	2016	Yes	26439
+province	WC	2016	No	0
+province	WC	2016	Do not know	0
+province	WC	2016	Unspecified	0
+province	EC	2016	Yes	32372
+province	EC	2016	No	0
+province	EC	2016	Do not know	0
+province	EC	2016	Unspecified	0
+province	NC	2016	Yes	29792
+province	NC	2016	No	317
+province	NC	2016	Do not know	0
+province	NC	2016	Unspecified	0
+province	FS	2016	Yes	5195
+province	FS	2016	No	0
+province	FS	2016	Do not know	0
+province	FS	2016	Unspecified	0
+province	KZN	2016	Yes	49260
+province	KZN	2016	No	29245
+province	KZN	2016	Do not know	0
+province	KZN	2016	Unspecified	0
+province	NW	2016	Yes	18801
+province	NW	2016	No	0
+province	NW	2016	Do not know	0
+province	NW	2016	Unspecified	0
+province	GT	2016	Yes	133445
+province	GT	2016	No	8402
+province	GT	2016	Do not know	0
+province	GT	2016	Unspecified	0
+province	MP	2016	Yes	51053
+province	MP	2016	No	3860
+province	MP	2016	Do not know	0
+province	MP	2016	Unspecified	0
+province	LIM	2016	Yes	33159
+province	LIM	2016	No	6103
+province	LIM	2016	Do not know	1640
+province	LIM	2016	Unspecified	0
+country	ZA	2016	Yes	379517
+country	ZA	2016	No	47928
+country	ZA	2016	Do not know	1640
+country	ZA	2016	Unspecified	0
 \.
 
 
