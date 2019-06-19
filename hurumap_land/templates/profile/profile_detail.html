@@ -96,7 +96,8 @@
       <h1>Worker's Hostel Household</h1>
     </header>
     <div class="section-container">
-      <section class="clearfix stat-row">
+      {% if not workershostel.population_year.is_missing %}
+        <section class="clearfix stat-row">
           <div class="column-full">
             <div id="chart-column-workershostel-population_year"
                  data-stat-type="number"
@@ -105,7 +106,9 @@
                  data-source-link="http://www.statssa.gov.za/publications/P0318/P03182018.pdf"></div>
           </div>
         </section>
-      <section class="clearfix stat-row">
+      {% endif %}
+      {% if not workershostel.age_group.is_missing %}
+        <section class="clearfix stat-row">
           <div class="column-full">
             <div id="chart-histogram-workershostel-age_group"
                  data-stat-type="number"
@@ -114,7 +117,9 @@
                  data-source-link="http://www.statssa.gov.za/publications/P0318/P03182018.pdf"></div>
           </div>
         </section>
-        <section class="clearfix stat-row">
+        {% endif %}
+        {% if not workershostel.population_group.is_missing and not workershostel.gender.is_missing %}
+          <section class="clearfix stat-row">
             <div class="column-half">
               <div id="chart-pie-workershostel-population_group"
                    data-stat-type="number"
@@ -130,7 +135,9 @@
                    data-source-link="http://www.statssa.gov.za/publications/P0318/P03182018.pdf"></div>
             </div>
           </section>
-        <section class="clearfix stat-row">
+        {% endif %}
+        {% if not workershostel.access_electricity.is_missing and not workershostel.handwashing_facility.is_missing %}
+          <section class="clearfix stat-row">
             <div class="column-half">
               <div id="chart-histogram-workershostel-access_electricity"
                    data-stat-type="number"
@@ -146,6 +153,8 @@
                    data-source-link="http://www.statssa.gov.za/publications/P0318/P03182018.pdf"></div>
             </div>
           </section>
+        {% endif %}
+        {% if not workershostel.water_source.is_missing %}
           <section class="clearfix stat-row">
               <div class="column-full">
                 <div id="chart-histogram-workershostel-water_source"
@@ -154,32 +163,77 @@
                      data-source-title="General Household Survey, 2018"
                      data-source-link="http://www.statssa.gov.za/publications/P0318/P03182018.pdf"></div>
               </div>
-            </section>
-            <section class="clearfix stat-row">
-                <div class="column-full">
-                  <div id="chart-histogram-workershostel-ownership"
+          </section>
+        {% endif %}
+        {% if not workershostel.ownership.is_missing %}
+          <section class="clearfix stat-row">
+              <div class="column-full">
+                <div id="chart-histogram-workershostel-ownership"
                        data-stat-type="number"
                        data-chart-title="Ownership of dwelling"
                        data-source-title="General Household Survey, 2018"
                        data-source-link="http://www.statssa.gov.za/publications/P0318/P03182018.pdf"></div>
-                </div>
-              </section>
-              <section class="clearfix stat-row">
-                  <div class="column-third">
-                    <div id="chart-pie-workershostel-residential_ownership"
-                         data-stat-type="number"
-                         data-chart-title="Residential Ownership"
-                         data-source-title="General Household Survey, 2018"
-                         data-source-link="http://www.statssa.gov.za/publications/P0318/P03182018.pdf"></div>
-                  </div>
-                  <div class="column-two-thirds">
-                    <div id="chart-histogram-workershostel-rent"
-                         data-stat-type="number"
-                         data-chart-title="Monthly Rent or Mortgage"
-                         data-source-title="General Household Survey, 2018"
-                         data-source-link="http://www.statssa.gov.za/publications/P0318/P03182018.pdf"></div>
-                  </div>
-                </section>
+            </div>
+          </section>
+        {% endif %}
+        {% if not workershostel.residential_ownership.is_missing and not workershostel.rent.is_missing %}
+          <section class="clearfix stat-row">
+            <div class="column-third">
+              <div id="chart-pie-workershostel-residential_ownership"
+                    data-stat-type="number"
+                    data-chart-title="Residential Ownership"
+                    data-source-title="General Household Survey, 2018"
+                    data-source-link="http://www.statssa.gov.za/publications/P0318/P03182018.pdf"></div>
+            </div>
+            <div class="column-two-thirds">
+              <div id="chart-histogram-workershostel-rent"
+                    data-stat-type="number"
+                    data-chart-title="Monthly Rent or Mortgage"
+                    data-source-title="General Household Survey, 2018"
+                    data-source-link="http://www.statssa.gov.za/publications/P0318/P03182018.pdf"></div>
+            </div>
+          </section>
+        {% endif %}
+        {% if not workershostel.ss_dwelling.is_missing and not workershostel.gender.is_missing %}
+          <section class="clearfix stat-row">
+            <div class="column-half">
+              <div id="chart-pie-workershostel-ss_dwelling"
+                    data-stat-type="number"
+                    data-chart-title="Number of people living in state subsidised dwelling"
+                    data-source-title="General Household Survey, 2018"
+                    data-source-link="http://www.statssa.gov.za/publications/P0318/P03182018.pdf"></div>
+            </div>
+            <div class="column-half">
+              <div id="chart-histogram-workershostel-subsidy"
+                    data-stat-type="number"
+                    data-chart-title="Number of people that received subsidies"
+                    data-source-title="General Household Survey, 2018"
+                    data-source-link="http://www.statssa.gov.za/publications/P0318/P03182018.pdf"></div>
+            </div>
+          </section>
+        {% endif %}
+        {% if not workershostel.toilet_facility.is_missing %}
+          <section class="clearfix stat-row">
+            <div class="column-full">
+              <div id="chart-column-workershostel-toilet_facility"
+                    data-stat-type="number"
+                    data-chart-title="Toilet Facility"
+                    data-source-title="General Household Survey, 2018"
+                    data-source-link="http://www.statssa.gov.za/publications/P0318/P03182018.pdf"></div>
+            </div>
+          </section>
+        {% endif %}
+        {% if not workershostel.living_condition.is_missing %}
+          <section class="clearfix stat-row">
+            <div class="column-two-full">
+              <div id="chart-histogram-workershostel-living_condition"
+                    data-stat-type="number"
+                    data-chart-title="Living Condition"
+                    data-source-title="General Household Survey, 2018"
+                    data-source-link="http://www.statssa.gov.za/publications/P0318/P03182018.pdf"></div>
+            </div>
+          </section>
+        {% endif %}
       </div>
   </article>
   {% endif %}

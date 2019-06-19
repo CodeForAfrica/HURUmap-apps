@@ -20,17 +20,39 @@ import hurumap_land.tables  # noqa
 
 SECTIONS = settings.HURUMAP.get('topics', {})
 
-PROFILE_SECTIONS = (
-    'demographics',  # population group
-    'farmland',  # farm and Agricultural land
-    'ervenland',  # erven land
-    'sectionaltitleland',  # sectional title land
-    'redistributionandrestitution',  # redistribution and restitution
-    'afrobarometer',
-    'landsales',
-    'landsalescolour',
-    'workershostel'
-)
+SUBSECTIONS = {
+    'farmland': [
+            'Private land ownership in hectares per category',
+            'Number of private land owners by category',
+            'land ownership in hectares by race',
+            'Number of land owners per race',
+            'land ownership in hectares by gender',
+            'Number of land owners per gender',
+            'land ownership in hectares by nationality',
+            'Number of land owners per nationality',
+        ],
+    'ervenland': [
+            #'Private land ownership in hectares per category',
+            #'Number of private land owners by category',
+            'erven land ownership in hectares by race',
+            'Number of erven land owners per race',
+            'erven land ownership in hectares by gender',
+            'Number of erven land owners per gender',
+            'erven land ownership in hectares by nationality',
+            'Number of erven land owners per nationality',
+        ],
+    'sectionaltitleland': [
+        'sectional title ownership in hectares per category',
+        'Number of sectional title owners by category',
+        'sectional title ownership in hectares per race',
+        'Number of sectional title owners by race',
+        'sectional title ownership in hectares per gender',
+        'Number of sectional title owners by gender',
+        'sectional title ownership in hectares nationality',
+        'Number of sectional title owners by nationality',
+    ]
+}
+
 LOCATIONNOTFOUND = {'is_missing': True,
                     'name': 'No Data Found',
                     'numerators': {'this': 0},
@@ -58,7 +80,7 @@ def get_land_profile(geo, profile_name, request):
         comparative_geos = geo_data.get_comparative_geos(geo)
         data = {}
 
-        sections = list(PROFILE_SECTIONS)
+        sections = list(SECTIONS)
 
         for section in sections:
             function_name = 'get_%s_profile' % section
@@ -112,7 +134,7 @@ def get_demographics_profile(geo, session):
 def get_farmland_profile(geo, session):
     year = current_context().get('year')
     with dataset_context(year=year):
-        topic_profiles = SECTIONS['farmland']['profiles']
+        topic_profiles = SUBSECTIONS['farmland']
         profiles_data = {'is_missing': True}
 
         for profile in topic_profiles:
@@ -135,7 +157,7 @@ def get_farmland_profile(geo, session):
 def get_ervenland_profile(geo, session):
     year = current_context().get('year')
     with dataset_context(year=year):
-        topic_profiles = SECTIONS['ervenland']['profiles']
+        topic_profiles = SUBSECTIONS['ervenland']
         profiles_data = {'is_missing': True}
 
         for profile in topic_profiles:
@@ -158,7 +180,7 @@ def get_ervenland_profile(geo, session):
 def get_sectionaltitleland_profile(geo, session):
     year = current_context().get('year')
     with dataset_context(year=year):
-        topic_profiles = SECTIONS['sectionaltitleland']['profiles']
+        topic_profiles = SUBSECTIONS['sectionaltitleland']
         profiles_data = {'is_missing': True}
 
         for profile in topic_profiles:
