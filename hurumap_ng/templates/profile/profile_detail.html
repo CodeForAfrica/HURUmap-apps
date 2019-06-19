@@ -1,0 +1,59 @@
+{% extends 'profile/profile_detail.html' %} {% load humanize lookup staticfiles %}
+
+{% block secondary_nav %}
+  <div class="floating-nav-wrapper" id="sticky-nav">
+    <nav class="floating-nav affix-top" data-spy="affix" data-offset-top="197">
+      <div class="wrapper clearfix">
+        <div class="geography-ico">
+          <span><img
+              src="{% static 'img/icons/favicon.ico' %}">{{ geography.this.name }}
+          </span>
+        </div>
+
+        <ul>
+
+          {% if not debt.is_missing %}
+            <li><a href="#debt"><i class="fa fa-money"></i>
+            <span>debt</span></a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+  </div>
+{% endblock %}
+
+{% block profile_header_tail %}
+  <div class="column-full">
+    <strong>{{ primary_releases.active.name }} {{ primary_releases.active.year }}</strong>
+    {% if primary_releases.other %}
+      <div class="tool-group toggle-sub-group release-list">
+        <a>Change release<i class="fa fa-chevron-circle-down"></i></a>
+        <ul class="sub-group" style="display: none;">
+          {% for release in primary_releases.other %}
+            <li>
+              <a href="{{ request.path }}?release={{ release.year }}">{{ release.name }} {{ release.year }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+  </div>
+{% endblock %}
+
+{% block profile_detail %}
+
+  {% if not debt.is_missing %}
+    <article id="debt" class="clearfix">
+      <header class="section-contents"><h1>External and Domestic Debt</h1></header>
+      <div class="section-container">
+        <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-grouped_column-debt-debt_data"
+                   data-chart-title="External and Domestic Debt 2011 - June 2018 in ₦" data-stat-type="number"></div>
+            </div>
+        </section>
+
+      </div>
+    </article>{% endif %}
+{% endblock %}
