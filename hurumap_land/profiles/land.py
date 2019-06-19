@@ -1160,20 +1160,19 @@ def get_workershostel_profile(geo, session):
                                                  geo,
                                                  session, table_fields=['workers_hostel_rent'],
                                                  percent=False)
-        # ss_dwelling, _ = get_stat_data('workers_hostel_ss_dwelling',
-        #                                          geo,
-        #                                          session, table_fields=['workers_hostel_ss_dwelling'],
-        #                                          percent=False)
+        ss_dwelling, _ = get_stat_data('workers_hostel_ss_dwelling',
+                                                 geo,
+                                                 session, table_fields=['workers_hostel_ss_dwelling'],
+                                                 percent=False)
         residential_ownership, _ = get_stat_data('workers_hostel_residential_ownership',
                                                  geo,
                                                  session, table_fields=['workers_hostel_residential_ownership'],
                                                  percent=False)
-        # subsidy, _ = get_stat_data('workers_hostel_subsidy',
-        #                                          geo,
-        #                                          session, table_fields=['workers_hostel_subsidy'],
-        #                                          percent=False)
-        #
-
+        subsidy, _ = get_stat_data('workers_hostel_subsidy',
+                                                 geo,
+                                                 session, table_fields=['workers_hostel_subsidy'],
+                                                 percent=False)
+        
         is_missing = access_electricity.get('is_missing') and \
                     age_group.get('is_missing') and gender.get('is_missing') and \
                     geography.get('is_missing') and handwashing_facility.get('is_missing') and \
