@@ -13,17 +13,17 @@ SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-ALTER TABLE IF EXISTS ONLY public.arrested_suspects DROP CONSTRAINT IF EXISTS arrested_suspects_pkey;
-DROP TABLE IF EXISTS public.arrested_suspects;
+ALTER TABLE IF EXISTS ONLY public.drugs_seized DROP CONSTRAINT IF EXISTS drugs_seized_pkey;
+DROP TABLE IF EXISTS public.drugs_seized;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
 
 --
--- Name: arrested_suspects; Type: TABLE; Schema: public; Owner: -
+-- Name: drugs_seized; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.arrested_suspects (
+CREATE TABLE public.drugs_seized (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     geo_version character varying(128) NOT NULL,
@@ -33,10 +33,10 @@ CREATE TABLE public.arrested_suspects (
 
 
 --
--- Data for Name: arrested_suspects; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: drugs_seized; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.arrested_suspects (geo_level, geo_code, geo_version, year, total) FROM stdin;
+COPY public.drugs_seized (geo_level, geo_code, geo_version, year, total) FROM stdin;
 state	1	2016	2012	230
 state	1	2016	2013	182
 state	1	2016	2014	224
@@ -231,11 +231,11 @@ country	NG	2016	2016	8611
 
 
 --
--- Name: arrested_suspects arrested_suspects_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: drugs_seized drugs_seized_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.arrested_suspects
-    ADD CONSTRAINT arrested_suspects_pkey PRIMARY KEY (geo_level, geo_code, geo_version, year);
+ALTER TABLE ONLY public.drugs_seized
+    ADD CONSTRAINT drugs_seized_pkey PRIMARY KEY (geo_level, geo_code, geo_version, year);
 
 
 --
