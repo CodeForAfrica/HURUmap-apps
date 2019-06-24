@@ -334,6 +334,14 @@ state	37	2016	Q1	Internet Subscriptions	1046954
 state	37	2016	Q2	Internet Subscriptions	1092129
 state	37	2016	Q3	Internet Subscriptions	1091180
 state	37	2016	Q4	Internet Subscriptions	1228000
+country	NG	2016	Q1	Voice Subscriptions	149293865
+country	NG	2016	Q2	Voice Subscriptions	162522770
+country	NG	2016	Q3	Voice Subscriptions	162032479
+country	NG	2016	Q4	Voice Subscriptions	110867414
+country	NG	2016	Q1	Internet Subscriptions	99674169
+country	NG	2016	Q2	Internet Subscriptions	102915993
+country	NG	2016	Q3	Internet Subscriptions	105596535
+country	NG	2016	Q4	Internet Subscriptions	110867414
 \.
 
 

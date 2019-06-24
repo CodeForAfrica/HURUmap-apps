@@ -408,6 +408,16 @@ state	37	2016	EMTS/ 9MOBILE	 Active Internet Subscriptions	85698
 state	37	2016	GLO	 Active Internet Subscriptions	254071
 state	37	2016	MTN	 Active Internet Subscriptions	605039
 state	37	2016	Others	 Active Internet Subscriptions	195
+country	NG	2016	AIRTEL	 Active Voice Subscriptions	44180484
+country	NG	2016	AIRTEL	 Active Internet Subscriptions	28559467
+country	NG	2016	EMTS/ 9MOBILE	 Active Voice Subscriptions	15917015
+country	NG	2016	EMTS/ 9MOBILE	 Active Internet Subscriptions	9919820
+country	NG	2016	GLO	 Active Voice Subscriptions	45255297
+country	NG	2016	GLO	 Active Internet Subscriptions	28054948
+country	NG	2016	MTN	 Active Voice Subscriptions	67133009
+country	NG	2016	MTN	 Active Internet Subscriptions	43899957
+country	NG	2016	Others	 Active Voice Subscriptions	338432
+country	NG	2016	Others	 Active Internet Subscriptions	433222
 \.
 
 
