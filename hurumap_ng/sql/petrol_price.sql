@@ -29,7 +29,7 @@ CREATE TABLE public.petrol_price (
     geo_version character varying(128) NOT NULL,
     month character varying(128) NOT NULL,
     year character varying(128) NOT NULL,
-    total integer
+    total numeric
 );
 
 
