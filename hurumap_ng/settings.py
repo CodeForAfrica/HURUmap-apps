@@ -98,12 +98,12 @@ HURUMAP['showcase_stories'] = [
 # Releases
 
 HURUMAP['primary_release_year'] = {
-    'province': 2018,
 }
 HURUMAP['latest_release_year'] = '2018'
-HURUMAP['primary_dataset_name'] = 'Fiscal Debt'
+HURUMAP['primary_dataset_name'] = 'National Bureau of Statistics'
 HURUMAP['available_release_years'] = {
-    'state': [2018]
+    'county': [2018, 2016],
+    'state': [2018, 2016]
 }
 
 LOGGING['loggers']['hurumap_ng'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
