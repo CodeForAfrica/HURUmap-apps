@@ -20,16 +20,37 @@ import hurumap_land.tables  # noqa
 
 SECTIONS = settings.HURUMAP.get('topics', {})
 
-PROFILE_SECTIONS = (
-    'demographics',  # population group
-    'farmland',  # farm and Agricultural land
-    'ervenland',  # erven land
-    'sectionaltitleland',  # sectional title land
-    'redistributionandrestitution',  # redistribution and restitution
-    'afrobarometer',
-    'landsales',
-    'landsalescolour'
-)
+SUBSECTIONS = {
+    'farmland': [
+        'Private land ownership in hectares per category',
+        'Number of private land owners by category',
+        'land ownership in hectares by race',
+        'Number of land owners per race',
+        'land ownership in hectares by gender',
+        'Number of land owners per gender',
+        'land ownership in hectares by nationality',
+        'Number of land owners per nationality',
+    ],
+    'ervenland': [
+        'erven land ownership in hectares by race',
+        'Number of erven land owners per race',
+        'erven land ownership in hectares by gender',
+        'Number of erven land owners per gender',
+        'erven land ownership in hectares by nationality',
+        'Number of erven land owners per nationality',
+    ],
+    'sectionaltitleland': [
+        'sectional title ownership in hectares per category',
+        'Number of sectional title owners by category',
+        'sectional title ownership in hectares per race',
+        'Number of sectional title owners by race',
+        'sectional title ownership in hectares per gender',
+        'Number of sectional title owners by gender',
+        'sectional title ownership in hectares nationality',
+        'Number of sectional title owners by nationality',
+    ]
+}
+
 LOCATIONNOTFOUND = {'is_missing': True,
                     'name': 'No Data Found',
                     'numerators': {'this': 0},
@@ -40,14 +61,25 @@ MONTH = ['Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan',
          'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul']
 
 MONTH_V2 = ['Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May',
-                'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov']
+            'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov']
 
-LAND_CLASS = [u'Under 1.5K', u'1,501-3K', u'3,001-5K', u'5,001-10K'
-    , u'10,001-20K', u'20,001-30K', u'30,001-40K', u'40,001-50K',
-              u'50,001-100K',
-              u'100,001-150K', u'150,001-200K', u'200,001-300K',
-              u'300,001-500K',
-              u'500,001-800K', u'800,001-1M', u'Above 1M']
+LAND_CLASS = [
+    u'Under 1.5K',
+    u'1,501-3K',
+    u'3,001-5K',
+    u'5,001-10K',
+    u'10,001-20K',
+    u'20,001-30K',
+    u'30,001-40K',
+    u'40,001-50K',
+    u'50,001-100K',
+    u'100,001-150K',
+    u'150,001-200K',
+    u'200,001-300K',
+    u'300,001-500K',
+    u'500,001-800K',
+    u'800,001-1M',
+    u'Above 1M']
 
 
 def get_land_profile(geo, profile_name, request):
@@ -57,7 +89,7 @@ def get_land_profile(geo, profile_name, request):
         comparative_geos = geo_data.get_comparative_geos(geo)
         data = {}
 
-        sections = list(PROFILE_SECTIONS)
+        sections = list(SECTIONS)
 
         for section in sections:
             function_name = 'get_%s_profile' % section
@@ -80,7 +112,8 @@ def get_land_profile(geo, profile_name, request):
 
         data['land_audit'] = get_land_audit_profile(geo, session)
         if geo.geo_level in ['district', 'municipality']:
-            data['districtdistribution'] = get_districtdistribution_profile(geo, session)
+            data['districtdistribution'] = get_districtdistribution_profile(
+                geo, session)
 
         return data
 
@@ -111,7 +144,7 @@ def get_demographics_profile(geo, session):
 def get_farmland_profile(geo, session):
     year = current_context().get('year')
     with dataset_context(year=year):
-        topic_profiles = SECTIONS['farmland']['profiles']
+        topic_profiles = SUBSECTIONS['farmland']
         profiles_data = {'is_missing': True}
 
         for profile in topic_profiles:
@@ -125,8 +158,7 @@ def get_farmland_profile(geo, session):
                 pass
 
             profiles_data['is_missing'] = profiles_data.get('is_missing') and \
-                                          profiles_data[profile_name].get(
-                                              'is_missing', False)
+                profiles_data[profile_name].get('is_missing', False)
 
     return profiles_data
 
@@ -134,7 +166,7 @@ def get_farmland_profile(geo, session):
 def get_ervenland_profile(geo, session):
     year = current_context().get('year')
     with dataset_context(year=year):
-        topic_profiles = SECTIONS['ervenland']['profiles']
+        topic_profiles = SUBSECTIONS['ervenland']
         profiles_data = {'is_missing': True}
 
         for profile in topic_profiles:
@@ -148,8 +180,7 @@ def get_ervenland_profile(geo, session):
                 pass
 
             profiles_data['is_missing'] = profiles_data.get('is_missing') and \
-                                          profiles_data[profile_name].get(
-                                              'is_missing')
+                profiles_data[profile_name].get('is_missing')
 
     return profiles_data
 
@@ -157,7 +188,7 @@ def get_ervenland_profile(geo, session):
 def get_sectionaltitleland_profile(geo, session):
     year = current_context().get('year')
     with dataset_context(year=year):
-        topic_profiles = SECTIONS['sectionaltitleland']['profiles']
+        topic_profiles = SUBSECTIONS['sectionaltitleland']
         profiles_data = {'is_missing': True}
 
         for profile in topic_profiles:
@@ -171,8 +202,7 @@ def get_sectionaltitleland_profile(geo, session):
                 pass
 
             profiles_data['is_missing'] = profiles_data.get('is_missing') and \
-                                          profiles_data[profile_name].get(
-                                              'is_missing')
+                profiles_data[profile_name].get('is_missing')
 
     return profiles_data
 
@@ -380,7 +410,7 @@ def get_redistributionandrestitution_profile(geo, session):
         {
             "name": "Total land in hectares (ha) redistributed from the year 2009 to 2018",
             "values": {"this": hectarestransferredperprovincebyyear_tot}
-            }
+    }
     redistributionrestitution['redistributedlandhectares_stat'] = \
         {"name": "Redistributed land in hectares for the year 2017/2018",
          "values": {"this": redistributedland_hect_tot}
@@ -389,20 +419,20 @@ def get_redistributionandrestitution_profile(geo, session):
         {
             "name": "Cost in Rands (ZAR) of Redistributed Land for the year 2017/2018",
             "values": {"this": redistributedland_tot_cost}
-            }
+    }
     redistributionrestitution[
         'redistributedlandaveragecostperhectares_stat'] = \
         {
             "name": "Average Cost in Rands (ZAR) per Hectares for Redistributed Land in 2017/2018",
             "values": {"this": redistributedland_avg_cost}
-            }
+    }
     redistributionrestitution[
         'redistributeprogrammeprojectsbyyear'] = redistributeprogrammeprojectsbyyear
     redistributionrestitution['redistributeprogrammeprojectsbyyear_stat'] = \
         {
             "name": "Total projects benefitted through Redistribution Programme from 2009/2010 to 2017/2018",
             "values": {"this": redistributeprogrammeprojectsbyyear_tot}
-            }
+    }
 
     redistributionrestitution[
         'redistributeprogrammehouseholdsbyyear'] = redistributeprogrammehouseholdsbyyear
@@ -411,7 +441,7 @@ def get_redistributionandrestitution_profile(geo, session):
         {
             "name": "Total households benefitted though Redistribution Programme from 2009/2010 to 2017/2018",
             "values": {"this": redistributeprogrammehouseholdsbyyear_tot}
-            }
+    }
 
     redistributionrestitution[
         'redistributeprogrammebeneficiariesbyyear'] = redistributeprogrammebeneficiariesbyyear
@@ -420,28 +450,28 @@ def get_redistributionandrestitution_profile(geo, session):
         {
             "name": "Total number of beneficiaries of Redistribution Programme from the 2009/2010 to 2017/2018",
             "values": {"this": redistributeprogrammebeneficiariesbyyear_tot}
-            }
+    }
 
     redistributionrestitution['femalepartybenefited'] = femalepartybenefited
     redistributionrestitution['femalepartybenefited_stat'] = \
         {
             "name": "Number of female benefited through Redistribution programme from 2009/2010 to 2017/2018",
             "values": {"this": femalepartybenefited_tot}
-            }
+    }
 
     redistributionrestitution['youthpartybenefited'] = youthpartybenefited
     redistributionrestitution['youthpartybenefited_stat'] = \
         {
             "name": "Number of youth benefited through Redistribution programme from 2009/2010 to 2017/2018",
             "values": {"this": youthpartybenefited_tot}
-            }
+    }
     redistributionrestitution[
         'disabledpeoplepartybenefited'] = disabledpeoplepartybenefited
     redistributionrestitution['disabledpeoplepartybenefited_stat'] = \
         {
             "name": "People with disabilities benefited in Redistribution programme from 2009/2010 to 2017/2018",
             "values": {"this": disabledpeoplepartybenefited_tot}
-            }
+    }
 
     redistributionrestitution[
         'hectarestransferredperprovincebyyear'] = hectarestransferredperprovincebyyear
@@ -474,45 +504,44 @@ def get_redistributionandrestitution_profile(geo, session):
         {
             "name": "Total hectares acquired in Restitution programme from 2009/2010 to 2017/2018",
             "values": {"this": hectaresacquiredrestitution_tot}
-            }
+    }
     redistributionrestitution['householdsrestitution_stat'] = \
         {
             "name": "Total households benefited in Restitution programme from 2009/2010 to 2017/2018",
             "values": {"this": householdsrestitution_tot}
-            }
+    }
     redistributionrestitution['femaleheadedhouseholdsrestitution_stat'] = \
         {
             "name": "Female headed households benefited in restitution programme from 2009/2010 to 2017/2018",
             "values": {"this": femaleheadedhouseholdsrestitution_tot}
-            }
+    }
     redistributionrestitution['disabilitiesrestitution_stat'] = \
         {
             "name": "Number of people with disabilities benefited in Restitution programme from 2009/2010 to 2017/2018",
             "values": {"this": disabilitiesrestitution_tot}
-            }
+    }
     redistributionrestitution['projectsrestitution_stat'] = \
         {
             "name": "Number of projects in the restitution programme from 2009/2010 to 2017/2018",
             "values": {"this": projectsrestitution_tot}
-            }
+    }
     redistributionrestitution['beneficiariesrestitution_stat'] = \
         {
             "name": "Number of beneficiaries in the restitution programme from 2009/2010 to 2017/2018",
             "values": {"this": beneficiariesrestitution_tot}
-            }
+    }
 
     # if total hectares of redistruted land is missing
     # and total hectares acquired under restitution is missing, then there's no data
-    redistributionrestitution[
-        'is_missing'] = hectarestransferredperprovincebyyear.get(
-        'is_missing') \
-                        and hectaresacquiredrestitution.get('is_missing')
+    redistributionrestitution['is_missing'] = \
+        hectarestransferredperprovincebyyear.get('is_missing') and \
+        hectaresacquiredrestitution.get('is_missing')
 
     return redistributionrestitution
 
 
 def get_landsales_profile(geo, session):
-    #TODO: landsales profile for 2016  data context
+    # TODO: landsales profile for 2016  data context
     with dataset_context(year='2018'):
         landsales = {'is_missing': True}
         landsalestransaction = landsaleshectares = LOCATIONNOTFOUND
@@ -544,7 +573,8 @@ def get_landsales_profile(geo, session):
             landsalesaverageprice, _ = get_stat_data(
                 ['class_distribution'], geo, session,
                 table_name='land_traded_per_class_statistic_2018',
-                only={'statistic': ['Average price per hectare in 12 months(R/ha)']},
+                only={'statistic': [
+                    'Average price per hectare in 12 months(R/ha)']},
                 key_order=LAND_CLASS,
                 percent=False)
         except Exception as e:
@@ -553,7 +583,8 @@ def get_landsales_profile(geo, session):
             landsalespricetrends, _ = get_stat_data(
                 ['class_distribution'], geo, session,
                 table_name='land_traded_per_class_statistic_2018',
-                only={'statistic': ['Price trend per hectare in 12 months(R/ha)']},
+                only={'statistic': [
+                    'Price trend per hectare in 12 months(R/ha)']},
                 key_order=LAND_CLASS,
                 percent=False)
         except Exception as e:
@@ -577,14 +608,14 @@ def get_landsales_profile(geo, session):
             {
                 "name": " Total number of sold hectares from Dec 2017 to Nov 2018",
                 "values": {"this": int(landsaleshectares_tot)},
-            }
+        }
         landsales['landsalestransaction_tot'] = \
             {
                 "name": "Total number of sales transactions from Dec 2017 to Nov 2018",
                 "values": {"this": int(landsalestransaction_tot)},
-            }
+        }
         landsales['is_missing'] = landsalestransaction.get('is_missing') and \
-                                  landsaleshectares.get('is_missing')
+            landsaleshectares.get('is_missing')
 
     return landsales
 
@@ -612,8 +643,8 @@ def get_landsalescolour_profile(geo, session):
                 ['breakdown_cc'], geo, session,
                 table_name='land_traded_colour_hectares_breakdown_2018',
                 only={'breakdown_cc': ['Government Agriculture',
-                                            'Government Urban', 'Private',
-                                            'Other']}
+                                       'Government Urban', 'Private',
+                                       'Other']}
             )
         except Exception as e:
             pass
@@ -623,8 +654,8 @@ def get_landsalescolour_profile(geo, session):
                 ['breakdown_cc'], geo, session,
                 table_name='land_traded_colour_transactions_2018',
                 only={'breakdown_cc': ['Government Agriculture',
-                                            'Government Urban', 'Private',
-                                            'Other']}
+                                       'Government Urban', 'Private',
+                                       'Other']}
             )
         except Exception as e:
             pass
@@ -654,16 +685,16 @@ def get_landsalescolour_profile(geo, session):
             landsalescolourhectaresperMONTH_V2, _ = get_stat_data(
                 ['month_cc'], geo, session,
                 table_name='land_traded_colour_hectares_breakdown_2018',
-                key_order=( 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May',\
-                 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov'),
-                 percent=False
+                key_order=('Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May',
+                           'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov'),
+                percent=False
             )
         except Exception as e:
             pass
 
         try:
             landsalescolourhectarespermonthbreakdown, _ = get_stat_data(
-                ['breakdown_cc','month_cc'], geo, session,
+                ['breakdown_cc', 'month_cc'], geo, session,
                 table_name='land_traded_colour_hectares_breakdown_2018',
                 key_order={'month_cc': MONTH_V2},
                 percent=False
@@ -673,11 +704,11 @@ def get_landsalescolour_profile(geo, session):
 
         try:
             landsalescolourhectarespermonthbreakdownga, _ = get_stat_data(
-                ['breakdown_cc','month_cc'], geo, session,
+                ['breakdown_cc', 'month_cc'], geo, session,
                 table_name='land_traded_colour_hectares_breakdown_2018',
-                only= {'breakdown_cc': ['Government Agriculture']},
+                only={'breakdown_cc': ['Government Agriculture']},
                 key_order={'month_cc': MONTH_V2,
-                        'breakdown_cc': ['Government Agriculture']},
+                           'breakdown_cc': ['Government Agriculture']},
                 percent=False
             )
         except Exception as e:
@@ -685,9 +716,9 @@ def get_landsalescolour_profile(geo, session):
 
         try:
             landsalescolourhectarespermonthbreakdowngu, _ = get_stat_data(
-                ['breakdown_cc','month_cc'], geo, session,
+                ['breakdown_cc', 'month_cc'], geo, session,
                 table_name='land_traded_colour_hectares_breakdown_2018',
-                only= {'breakdown_cc': ['Government Urban']},
+                only={'breakdown_cc': ['Government Urban']},
                 key_order={'month_cc': MONTH_V2},
                 percent=False
             )
@@ -696,11 +727,11 @@ def get_landsalescolour_profile(geo, session):
 
         try:
             landsalescolourhectarespermonthbreakdownpr, _ = get_stat_data(
-                ['breakdown_cc','month_cc'], geo, session,
+                ['breakdown_cc', 'month_cc'], geo, session,
                 table_name='land_traded_colour_hectares_breakdown_2018',
-                only= {'breakdown_cc': ['Private']},
+                only={'breakdown_cc': ['Private']},
                 key_order={'month_cc': MONTH_V2,
-                        'breakdown_cc': ['Private']},
+                           'breakdown_cc': ['Private']},
                 percent=False
             )
         except Exception as e:
@@ -708,25 +739,25 @@ def get_landsalescolour_profile(geo, session):
 
         try:
             landsalescolourhectarespermonthbreakdownot, _ = get_stat_data(
-                ['breakdown_cc','month_cc'], geo, session,
+                ['breakdown_cc', 'month_cc'], geo, session,
                 table_name='land_traded_colour_hectares_breakdown_2018',
-                only= {'breakdown_cc': ['Other']},
+                only={'breakdown_cc': ['Other']},
                 key_order={'month_cc': MONTH_V2,
-                'breakdown_cc': ['Other']},
+                           'breakdown_cc': ['Other']},
                 percent=False
-                )
+            )
         except Exception as e:
             pass
 
         try:
             landsalescolourtransactionpermonthbreakdown, _ = get_stat_data(
-                ['breakdown_cc','month_cc'], geo, session,
+                ['breakdown_cc', 'month_cc'], geo, session,
                 table_name='land_traded_colour_transactions_2018',
                 only={'breakdown_cc': ['Government Agriculture',
-                                            'Government Urban', 'Private',
-                                            'Other']},
+                                       'Government Urban', 'Private',
+                                       'Other']},
                 key_order={'month_cc': MONTH_V2,
-                        'breakdown_cc': ['Government Agriculture', 'Private',
+                           'breakdown_cc': ['Government Agriculture', 'Private',
                                             'Government Urban',
                                             'Other']},
                 percent=False
@@ -736,7 +767,7 @@ def get_landsalescolour_profile(geo, session):
 
         try:
             landsalescolourtransactionpermonthbreakdowngu, _ = get_stat_data(
-                ['breakdown_cc','month_cc'], geo, session,
+                ['breakdown_cc', 'month_cc'], geo, session,
                 table_name='land_traded_colour_transactions_2018',
                 only={'breakdown_cc': ['Government Urban']},
                 key_order={'month_cc': MONTH_V2},
@@ -747,7 +778,7 @@ def get_landsalescolour_profile(geo, session):
 
         try:
             landsalescolourtransactionpermonthbreakdownga, _ = get_stat_data(
-                ['breakdown_cc','month_cc'], geo, session,
+                ['breakdown_cc', 'month_cc'], geo, session,
                 table_name='land_traded_colour_transactions_2018',
                 only={'breakdown_cc': ['Government Agriculture']},
                 key_order={'month_cc': MONTH_V2},
@@ -758,7 +789,7 @@ def get_landsalescolour_profile(geo, session):
 
         try:
             landsalescolourtransactionpermonthbreakdownot, _ = get_stat_data(
-                ['breakdown_cc','month_cc'], geo, session,
+                ['breakdown_cc', 'month_cc'], geo, session,
                 table_name='land_traded_colour_transactions_2018',
                 only={'breakdown_cc': ['Other']},
                 key_order={'month_cc': MONTH_V2},
@@ -769,7 +800,7 @@ def get_landsalescolour_profile(geo, session):
 
         try:
             landsalescolourtransactionpermonthbreakdownpr, _ = get_stat_data(
-                ['breakdown_cc','month_cc'], geo, session,
+                ['breakdown_cc', 'month_cc'], geo, session,
                 table_name='land_traded_colour_transactions_2018',
                 only={'breakdown_cc': ['Private']},
                 key_order={'month_cc': MONTH_V2},
@@ -782,19 +813,19 @@ def get_landsalescolour_profile(geo, session):
             landsalescolourcostperMONTH_V2, landsalescolourcost_tot = get_stat_data(
                 ['month_cc'], geo, session,
                 table_name='land_traded_colour_cost_breakdown_2018',
-                key_order=( 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May',\
-                 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov'),
-                 percent=False
+                key_order=('Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May',
+                           'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov'),
+                percent=False
             )
         except Exception as e:
             pass
 
         try:
             landsalescolourcostpermonthbreakdown, _ = get_stat_data(
-                ['breakdown_cc','month_cc'], geo, session,
+                ['breakdown_cc', 'month_cc'], geo, session,
                 table_name='land_traded_colour_cost_breakdown_2018',
                 key_order={'month_cc': MONTH_V2,
-                        'breakdown_cc': ['Government Agriculture', 'Private',
+                           'breakdown_cc': ['Government Agriculture', 'Private',
                                             'Government Urban',
                                             'Other']},
                 percent=False
@@ -804,7 +835,7 @@ def get_landsalescolour_profile(geo, session):
 
         try:
             landsalescolourcostpermonthbreakdownot, _ = get_stat_data(
-                ['breakdown_cc','month_cc'], geo, session,
+                ['breakdown_cc', 'month_cc'], geo, session,
                 table_name='land_traded_colour_cost_breakdown_2018',
                 only={'breakdown_cc': ['Other']},
                 key_order={'month_cc': MONTH_V2},
@@ -815,7 +846,7 @@ def get_landsalescolour_profile(geo, session):
 
         try:
             landsalescolourcostpermonthbreakdownpr, _ = get_stat_data(
-                ['breakdown_cc','month_cc'], geo, session,
+                ['breakdown_cc', 'month_cc'], geo, session,
                 table_name='land_traded_colour_cost_breakdown_2018',
                 only={'breakdown_cc': ['Private']},
                 key_order={'month_cc': MONTH_V2},
@@ -826,7 +857,7 @@ def get_landsalescolour_profile(geo, session):
 
         try:
             landsalescolourcostpermonthbreakdowngu, _ = get_stat_data(
-                ['breakdown_cc','month_cc'], geo, session,
+                ['breakdown_cc', 'month_cc'], geo, session,
                 table_name='land_traded_colour_cost_breakdown_2018',
                 only={'breakdown_cc': ['Government Urban']},
                 key_order={'month_cc': MONTH_V2},
@@ -837,7 +868,7 @@ def get_landsalescolour_profile(geo, session):
 
         try:
             landsalescolourcostpermonthbreakdownga, _ = get_stat_data(
-                ['breakdown_cc','month_cc'], geo, session,
+                ['breakdown_cc', 'month_cc'], geo, session,
                 table_name='land_traded_colour_cost_breakdown_2018',
                 only={'breakdown_cc': ['Government Agriculture']},
                 key_order={'month_cc': MONTH_V2},
@@ -896,7 +927,7 @@ def get_districtdistribution_profile(geo, session):
         towns = []
 
         try:
-            #Get all towns in the geo
+            # Get all towns in the geo
             all_town, _ = get_stat_data(
                 ['name'], geo, session,
                 table_name='land_traded_per_class_statistic_2018',
@@ -920,7 +951,8 @@ def get_districtdistribution_profile(geo, session):
                         town_code], _ = get_stat_data(
                         ['statistic', 'class_distribution'], geo, session,
                         table_name='land_traded_per_class_statistic_2018',
-                        only={'name': [town], 'statistic': ['Number of transactions in 12 months']},
+                        only={'name': [town], 'statistic': [
+                            'Number of transactions in 12 months']},
                         key_order={'class_distribution': LAND_CLASS},
                         percent=False)
                 except Exception as e:
@@ -931,7 +963,8 @@ def get_districtdistribution_profile(geo, session):
                         town_code], _ = get_stat_data(
                         ['statistic', 'class_distribution'], geo, session,
                         table_name='land_traded_per_class_statistic_2018',
-                        only={'name': [town], 'statistic': ['Total hectare traded in 12 months(ha)']},
+                        only={'name': [town], 'statistic': [
+                            'Total hectare traded in 12 months(ha)']},
                         key_order={'class_distribution': LAND_CLASS},
                         percent=False)
                 except Exception:
@@ -942,7 +975,8 @@ def get_districtdistribution_profile(geo, session):
                         town_code], _ = get_stat_data(
                         ['statistic', 'class_distribution'], geo, session,
                         table_name='land_traded_per_class_statistic_2018',
-                        only={'name': [town], 'statistic': ['Average price per hectare in 12 months(R/ha)']},
+                        only={'name': [town], 'statistic': [
+                            'Average price per hectare in 12 months(R/ha)']},
                         key_order={'class_distribution': LAND_CLASS},
                         percent=False)
                 except Exception:
@@ -953,7 +987,8 @@ def get_districtdistribution_profile(geo, session):
                             town_code], _ = get_stat_data(
                             ['statistic', 'class_distribution'], geo, session,
                             table_name='land_traded_per_class_statistic_2018',
-                            only={'name': [town], 'statistic': ['Price trend per hectare in 12 months(R/ha)']},
+                            only={'name': [town], 'statistic': [
+                                'Price trend per hectare in 12 months(R/ha)']},
                             key_order={'class_distribution': LAND_CLASS},
                             percent=False)
                     except Exception as e:
@@ -1013,9 +1048,9 @@ def get_land_audit_profile(geo, session):
             pass
 
         is_missing = land_user_dist.get('is_missing') and \
-                     land_use_dist.get('is_missing') and \
-                     land_distribution_gender.get('is_missing') and \
-                     land_ownership.get('is_missing')
+            land_use_dist.get('is_missing') and \
+            land_distribution_gender.get('is_missing') and \
+            land_ownership.get('is_missing')
 
     return {
         'is_missing': is_missing,
@@ -1040,7 +1075,7 @@ def get_afrobarometer_profile(geo, session):
             access_to_information, _ = get_stat_data('access_to_information',
                                                      geo,
                                                      session, table_fields=[
-                    'access_to_information'])
+                                                         'access_to_information'])
         except Exception:
             pass
 
@@ -1073,13 +1108,13 @@ def get_afrobarometer_profile(geo, session):
             pass
 
         is_missing = access_to_information.get('is_missing') and \
-                     allow_farmers_retain_land_ownership.get('is_missing') and \
-                     maintain_willing_buyer_willing_seller_policy.get(
-                         'is_missing') \
-                     and land_acquisation_challenges.get('is_missing') and \
-                     land_to_prioritise_for_redistribution.get('is_missing') and \
-                     women_have_equal_right_to_land.get('is_missing') and \
-                     women_men_equal_chance_own_land.get('is_missing')
+            allow_farmers_retain_land_ownership.get('is_missing') and \
+            maintain_willing_buyer_willing_seller_policy.get(
+            'is_missing') \
+            and land_acquisation_challenges.get('is_missing') and \
+            land_to_prioritise_for_redistribution.get('is_missing') and \
+            women_have_equal_right_to_land.get('is_missing') and \
+            women_men_equal_chance_own_land.get('is_missing')
 
     final_data = {
         'is_missing': is_missing,
@@ -1093,3 +1128,124 @@ def get_afrobarometer_profile(geo, session):
     }
 
     return final_data
+
+
+def get_workershostel_profile(geo, session):
+    with dataset_context(year='2018'):
+        access_electricity = age_group = gender = LOCATIONNOTFOUND
+        geography = handwashing_facility = LOCATIONNOTFOUND
+        living_condition = ownership = LOCATIONNOTFOUND
+        residential_ownership = population_group = LOCATIONNOTFOUND
+        population_year = rent = ss_dwelling = subsidy = LOCATIONNOTFOUND
+        toilet_facility = water_source = LOCATIONNOTFOUND
+
+        population = 0
+
+        access_electricity, _ = get_stat_data('workers_hostel_access_electricity',
+                                              geo,
+                                              session, table_fields=[
+                                                  'workers_hostel_access_electricity'],
+                                              percent=False)
+        age_group, _ = get_stat_data('workers_hostel_age_group',
+                                     geo,
+                                     session, table_fields=[
+                                         'workers_hostel_age_group'],
+                                     percent=False)
+        geography, _ = get_stat_data('workers_hostel_geography',
+                                     geo,
+                                     session, table_fields=[
+                                         'workers_hostel_geography'],
+                                     percent=False)
+        water_source, _ = get_stat_data('workers_hostel_water_source',
+                                        geo,
+                                        session, table_fields=[
+                                            'workers_hostel_water_source'],
+                                        percent=False)
+        handwashing_facility, _ = get_stat_data('workers_hostel_handwashing_facility',
+                                                geo,
+                                                session, table_fields=[
+                                                    'workers_hostel_handwashing_facility'],
+                                                percent=False)
+        toilet_facility, _ = get_stat_data('workers_hostel_toilet_facility',
+                                           geo,
+                                           session, table_fields=[
+                                               'workers_hostel_toilet_facility'],
+                                           percent=False)
+
+        gender, _ = get_stat_data('workers_hostel_gender',
+                                  geo,
+                                  session, table_fields=[
+                                      'workers_hostel_gender'],
+                                  percent=False)
+
+        living_condition, _ = get_stat_data('workers_hostel_living_condition',
+                                            geo,
+                                            session, table_fields=[
+                                                'workers_hostel_living_condition'],
+                                            percent=False)
+
+        ownership, _ = get_stat_data('workers_hostel_ownership',
+                                     geo,
+                                     session, table_fields=[
+                                         'workers_hostel_ownership'],
+                                     percent=False)
+
+        population_group, _ = get_stat_data('workers_hostel_population_group',
+                                            geo,
+                                            session, table_fields=[
+                                                'workers_hostel_population_group'],
+                                            percent=False)
+
+        population_year, population = get_stat_data('workers_hostel_population_year',
+                                                    geo,
+                                                    session, table_fields=[
+                                                        'workers_hostel_population_year'],
+                                                    percent=False)
+        rent, _ = get_stat_data('workers_hostel_rent',
+                                geo,
+                                session, table_fields=['workers_hostel_rent'],
+                                percent=False)
+        ss_dwelling, _ = get_stat_data('workers_hostel_ss_dwelling',
+                                       geo,
+                                       session, table_fields=[
+                                           'workers_hostel_ss_dwelling'],
+                                       percent=False)
+        residential_ownership, _ = get_stat_data('workers_hostel_residential_ownership',
+                                                 geo,
+                                                 session, table_fields=[
+                                                     'workers_hostel_residential_ownership'],
+                                                 percent=False)
+        subsidy, _ = get_stat_data('workers_hostel_subsidy',
+                                   geo,
+                                   session, table_fields=[
+                                       'workers_hostel_subsidy'],
+                                   percent=False)
+
+        is_missing = access_electricity.get('is_missing') and \
+            age_group.get('is_missing') and gender.get('is_missing') and \
+            geography.get('is_missing') and handwashing_facility.get('is_missing') and \
+            living_condition.get('is_missing') and ownership.get('is_missing') and \
+            residential_ownership.get('is_missing') and \
+            population_group.get('is_missing') and rent.get('is_missing') and \
+            population_year.get('is_missing') and ss_dwelling.get('is_missing') and \
+            subsidy.get('is_missing') and toilet_facility.get('is_missing') and \
+            water_source.get('is_missing')
+
+        return {
+            'is_missing': is_missing,
+            'access_electricity': access_electricity,
+            'age_group': age_group,
+            'gender': gender,
+            'living_condition': living_condition,
+            'geography': geography,
+            'handwashing_facility': handwashing_facility,
+            'ownership': ownership,
+            'residential_ownership': residential_ownership,
+            'population_year': population_year,
+            'population_group': population_group,
+            'rent': rent,
+            'toilet_facility': toilet_facility,
+            'water_source': water_source,
+            'ss_dwelling': ss_dwelling,
+            'subsidy': subsidy
+        }

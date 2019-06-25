@@ -132,6 +132,61 @@ FieldTable(['land_to_prioritise_for_redistribution'],
            universe='Land in South Africa', year='2017',
            dataset='Afrobarometer Survey')
 
+FieldTable(['workers_hostel_population_group'], id='workers_hostel_population_group',
+           universe='Workers Hostel', year='2018',
+           dataset='Workers Hostel Data')
+
+FieldTable(['workers_hostel_population_year'], id='workers_hostel_population',
+           universe='Workers Hostel', year='2018',
+           dataset='Workers Hostel Data')
+
+FieldTable(['workers_hostel_age_group'], id='workers_hostel_age_group',
+           universe='Workers Hostel', year='2018',
+           dataset='Workers Hostel Data')
+
+FieldTable(['workers_hostel_access_electricity'], id='workers_hostel_access_electricity',
+           universe='Workers Hostel', year='2018',
+           dataset='Workers Hostel Data')
+
+FieldTable(['workers_hostel_gender'], id='workers_hostel_gender',
+           universe='Workers Hostel', year='2018',
+           dataset='Workers Hostel Data')
+
+FieldTable(['workers_hostel_geography'], id='workers_hostel_geography',
+           universe='Workers Hostel', year='2018',
+           dataset='Workers Hostel Data')
+
+FieldTable(['workers_hostel_handwashing_facility'], id='workers_hostel_handwashing_facility',
+           universe='Workers Hostel', year='2018',
+           dataset='Workers Hostel Data')
+
+FieldTable(['workers_hostel_living_condition'], id='workers_hostel_living_condition',
+           universe='Workers Hostel', year='2018',
+           dataset='Workers Hostel Data')
+
+FieldTable(['workers_hostel_ownership'], id='workers_hostel_ownership',
+           universe='Workers Hostel', year='2018',
+           dataset='Workers Hostel Data')
+
+FieldTable(['workers_hostel_rent'], id='workers_hostel_rent',
+           universe='Workers Hostel', year='2018',
+           dataset='Workers Hostel Data')
+
+FieldTable(['workers_hostel_residential_ownership'], id='workers_hostel_residential_ownership',
+           universe='Workers Hostel', year='2018',
+           dataset='Workers Hostel Data')
+
+FieldTable(['workers_hostel_ss_dwelling'], id='workers_hostel_ss_dwelling',
+           universe='Workers Hostel', year='2018',
+           dataset='Workers Hostel Data')
+
+FieldTable(['workers_hostel_toilet_facility'], id='workers_hostel_toilet_facility',
+           universe='Workers Hostel', year='2018',
+           dataset='Workers Hostel Data')
+
+FieldTable(['workers_hostel_water_source'], id='workers_hostel_water_source',
+           universe='Workers Hostel', year='2018',
+           dataset='Workers Hostel Data')
 # FieldTable(['women_have_equal_right_to_land'], universe='Land in South Africa',
 #            year='2017', dataset='Afrobarometer Survey')
 #
