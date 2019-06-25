@@ -9,15 +9,6 @@
               src="{% static 'img/icons/favicon.ico' %}">{{ geography.this.name }}
           </span>
         </div>
-
-        <ul>
-
-          {% if not debt.is_missing %}
-            <li><a href="#debt"><i class="fa fa-money"></i>
-            <span>debt</span></a>
-          </li>
-          {% endif %}
-        </ul>
       </div>
     </nav>
   </div>
@@ -43,10 +34,11 @@
 
 {% block profile_detail %}
 
-{% if not nbs_2016.is_missing and not nbs_2018.is_missing %}
+{% if not nbs_2016.is_missing or not nbs_2018.is_missing %}
   <article id="debt" class="clearfix">
     <header class="section-contents"><h1>National Bureau of Statistics</h1></header>
     <div class="section-container">
+      {% if not nbs_2016.arrested_suspects.is_missing %}
       <section class="clearfix stat-row">
         <div class="column-full">
             <div id="chart-column-nbs_2016-arrested_suspects"
@@ -56,6 +48,8 @@
                  data-source-link="https://nigerianstat.gov.ng/download/614"></div>
           </div>
       </section>
+      {% endif %}
+      {% if not nbs_2016.drugs_seized.is_missing %}
       <section class="clearfix stat-row">
         <div class="column-full">
             <div id="chart-column-nbs_2016-drugs_seized"
@@ -65,6 +59,8 @@
                  data-source-link="https://nigerianstat.gov.ng/download/614"></div>
           </div>
       </section>
+      {% endif %}
+      {% if not nbs_2016.suspects_prosecuted.is_missing %}
       <section class="clearfix stat-row">
         <div class="column-full">
             <div id="chart-column-nbs_2016-suspects_prosecuted"
@@ -74,6 +70,8 @@
                  data-source-link="https://nigerianstat.gov.ng/download/614"></div>
           </div>
       </section>
+      {% endif %}
+      {% if not nbs_2016.conviction_secured.is_missing %}
       <section class="clearfix stat-row">
         <div class="column-full">
             <div id="chart-column-nbs_2016-conviction_secured"
@@ -83,6 +81,8 @@
                  data-source-link="https://nigerianstat.gov.ng/download/614"></div>
           </div>
       </section>
+      {% endif %}
+      {% if not nbs_2016.counselling_concluded.is_missing %}
       <section class="clearfix stat-row">
         <div class="column-full">
             <div id="chart-column-nbs_2016-counselling_concluded"
@@ -92,6 +92,8 @@
                  data-source-link="https://nigerianstat.gov.ng/download/614"></div>
           </div>
       </section>
+      {% endif %}
+      {% if not nbs_2018.mineral_production.is_missing %}
       <section class="clearfix stat-row">
         <div class="column-full">
             <div id="chart-column-nbs_2018-mineral_production"
@@ -101,6 +103,8 @@
                  data-source-link="https://nigerianstat.gov.ng/download/614"></div>
           </div>
       </section>
+      {% endif %}
+      {% if not nbs_2018.mobile_subscription.is_missing %}
       <section class="clearfix stat-row">
         <div class="column-full">
             <div id="chart-grouped_column-nbs_2018-mobile_subscription"
@@ -110,6 +114,16 @@
                  data-source-link="https://nigerianstat.gov.ng/download/614"></div>
           </div>
       </section>
+      {% endif %}
+      {% if not nbs_2018.debt_data.is_missing %}
+      <section class="clearfix stat-row">
+        <div class="column-full">
+          <div id="chart-grouped_column-nbs_2018-debt_data"
+               data-chart-title="External and Domestic Debt 2011 - June 2018 in ₦" data-stat-type="number"></div>
+            </div>
+        </section>
+        {% endif %}
+        {% if not nbs_2018.faac.is_missing %}
       <section class="clearfix stat-row">
         <div class="column-full">
             <div id="chart-column-nbs_2018-faac"
@@ -119,6 +133,8 @@
                  data-source-link="https://nigerianstat.gov.ng/download/614"></div>
           </div>
       </section>
+      {% endif %}
+      {% if not nbs_2018.telecom_subscription.is_missing %}
       <section class="clearfix stat-row">
         <div class="column-full">
             <div id="chart-grouped_column-nbs_2018-telecom_subscription"
@@ -128,6 +144,8 @@
                  data-source-link="https://nigerianstat.gov.ng/download/614"></div>
           </div>
       </section>
+      {% endif %}
+      {% if not nbs_2018.jamb.is_missing %}
       <section class="clearfix stat-row">
         <div class="column-full">
             <div id="chart-grouped_column-nbs_2018-jamb"
@@ -137,6 +155,8 @@
                  data-source-link="https://nigerianstat.gov.ng/download/614"></div>
           </div>
       </section>
+      {% endif %}
+      {% if not nbs_2018.hiv_patients.is_missing %}
       <section class="clearfix stat-row">
         <div class="column-full">
             <div id="chart-grouped_column-nbs_2018-hiv_patients"
@@ -146,21 +166,8 @@
                  data-source-link="https://nigerianstat.gov.ng/download/614"></div>
           </div>
       </section>
+      {% endif %}
     </div>
   </article>
   {% endif %}
-
-  {% if not debt.is_missing %}
-    <article id="debt" class="clearfix">
-      <header class="section-contents"><h1>External and Domestic Debt</h1></header>
-      <div class="section-container">
-        <section class="clearfix stat-row">
-          <div class="column-full">
-              <div id="chart-grouped_column-debt-debt_data"
-                   data-chart-title="External and Domestic Debt 2011 - June 2018 in ₦" data-stat-type="number"></div>
-            </div>
-        </section>
-
-      </div>
-    </article>{% endif %}
 {% endblock %}
