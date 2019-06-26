@@ -54,7 +54,7 @@ const styles = theme => ({
   }
 });
 
-function CountryPartners({ classes }) {
+function CountryPartners({ classes, dominion: { selectedCountry } }) {
   const cfaClassName = classNames(classes.img, classes.imgCfa);
   return (
     <Grid
@@ -93,22 +93,27 @@ function CountryPartners({ classes }) {
             <img src={twaweza} alt="Twaweza" className={classes.img} />
           </A>
         </Grid>
-        <Grid item className={classes.imageGrid}>
-          <A href="http://africauncensored.net/about/">
-            <img
-              src={aul}
-              alt="Africa Uncensored"
-              className={classNames(classes.img, classes.imageGrayScale)}
-            />
-          </A>
-        </Grid>
+        {selectedCountry.slug === 'kenya' && (
+          <Grid item className={classes.imageGrid}>
+            <A href="http://africauncensored.net/about/">
+              <img
+                src={aul}
+                alt="Africa Uncensored"
+                className={classNames(classes.img, classes.imageGrayScale)}
+              />
+            </A>
+          </Grid>
+        )}
       </Grid>
     </Grid>
   );
 }
 
 CountryPartners.propTypes = {
-  classes: PropTypes.shape().isRequired
+  classes: PropTypes.shape().isRequired,
+  dominion: PropTypes.shape({
+    selectedCountry: PropTypes.shape({}).isRequired
+  }).isRequired
 };
 
 export default withStyles(styles)(CountryPartners);

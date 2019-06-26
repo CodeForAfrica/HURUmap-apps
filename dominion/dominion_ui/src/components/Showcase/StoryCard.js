@@ -66,7 +66,7 @@ const styles = theme => ({
 });
 
 function StoryCard({ story, classes }) {
-  const { image, date, title, brief, link } = story;
+  const { media, date, title, brief, link } = story;
 
   return (
     <Card className={classes.root}>
@@ -84,7 +84,7 @@ function StoryCard({ story, classes }) {
             height: '100%'
           }}
         >
-          <CardMedia className={classes.media} image={image} title="Story" />
+          <CardMedia className={classes.media} src={media} title="Story" />
           <CardContent className={classes.cardContent}>
             <Grid
               container
