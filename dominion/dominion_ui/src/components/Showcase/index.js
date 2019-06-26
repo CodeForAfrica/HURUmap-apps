@@ -37,7 +37,13 @@ const styles = theme => ({
   }
 });
 
-function Showcase({ classes, showcaseStories }) {
+function Showcase({ classes, showcaseStories, dominion: { selectedCountry } }) {
+  let stories = showcaseStories;
+  if (selectedCountry) {
+    stories = showcaseStories.filter(
+      story => story.country === selectedCountry.slug
+    );
+  }
   return (
     <Grid
       container
@@ -68,7 +74,7 @@ function Showcase({ classes, showcaseStories }) {
         </Grid>
       </Grid>
       <Grid item xs={12}>
-        <StoryList storyData={showcaseStories} />
+        <StoryList storyData={stories} />
       </Grid>
     </Grid>
   );
@@ -76,6 +82,9 @@ function Showcase({ classes, showcaseStories }) {
 
 Showcase.propTypes = {
   classes: PropTypes.shape().isRequired,
+  dominion: PropTypes.shape({
+    selectedCountry: PropTypes.shape({}).isRequired
+  }).isRequired,
   showcaseStories: PropTypes.shape().isRequired
 };
 

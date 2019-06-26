@@ -227,7 +227,7 @@ HURUMAP['showcase_stories'] = [
         'link':   '',
         'date': '05 Apr 2019',
         'mediaSrc':   'https://www.youtube.com/embed/PDhuK4KrIoU',
-        'media': 'video',
+        'media': 'iframe',
         'country': 'kenya'
     },
     {
@@ -238,7 +238,7 @@ HURUMAP['showcase_stories'] = [
         'link':   'https://city-press.news24.com/Voices/handing-land-to-black-farmers-more-complicated-than-you-think-20180919',
         'mediaSrc':    STATIC_URL + 'img/showcase/showcase6.jpg',
         'date': '19 Sep 2018',
-        'media': 'image',
+        'media': 'img',
         'country': 'south-africa'
     },
     {
@@ -249,7 +249,7 @@ HURUMAP['showcase_stories'] = [
         'link':   'https://city-press.news24.com/News/be-prepared-its-getting-hotter-and-drier-20180910',
         'mediaSrc':    STATIC_URL + 'img/showcase/showcase2.jpg',
         'date': '10 Sep 2018',
-        'media': 'image',
+        'media': 'img',
         'country': 'south-africa'
 
     },
@@ -261,7 +261,7 @@ HURUMAP['showcase_stories'] = [
         'link':   'https://city-press.news24.com/News/a-farmers-15-year-wait-for-land-justice-20180822',
         'mediaSrc':    STATIC_URL + 'img/showcase/showcase1.jpg',
         'date': '22 Aug 2018',
-        'media': 'image',
+        'media': 'img',
         'country': 'south-africa'
     },
     {
@@ -272,7 +272,7 @@ HURUMAP['showcase_stories'] = [
         'link':   'https://city-press.news24.com/News/what-will-climate-change-mean-for-sa-agriculture-20180817',
         'mediaSrc':    STATIC_URL + 'img/showcase/showcase3.jpg',
         'date': '17 Aug 2018',
-        'media': 'image',
+        'media': 'img',
         'country': 'south-africa'
     },
     {
@@ -283,7 +283,7 @@ HURUMAP['showcase_stories'] = [
         'link':   'https://city-press.news24.com/News/block-40s-struggle-for-decent-homes-may-finally-be-over-20180806',
         'mediaSrc':    STATIC_URL + 'img/showcase/showcase5.jpg',
         'date': '06 Aug 2018',
-        'media': 'image',
+        'media': 'img',
         'country': 'south-africa'
 
     },
@@ -295,6 +295,7 @@ HURUMAP['showcase_stories'] = [
         'link':   'https://city-press.news24.com/News/land-reform-gone-wrong-a-black-day-near-white-river-20180806',
         'mediaSrc':    STATIC_URL + 'img/showcase/showcase8.jpg',
         'date': '06 Aug 2018',
+        'media': 'img',
         'country': 'south-africa'
     },
     {
@@ -305,7 +306,7 @@ HURUMAP['showcase_stories'] = [
         'link':   'https://city-press.news24.com/News/despair-after-land-and-a-future-are-stolen-20180715-2',
         'mediaSrc':    STATIC_URL + 'img/showcase/showcase9.jpg',
         'date': '15 Jul 2018',
-        'media': 'image',
+        'media': 'img',
         'country': 'south-africa'
     },
     {
@@ -316,7 +317,7 @@ HURUMAP['showcase_stories'] = [
         'link':   'https://city-press.news24.com/News/we-want-our-own-land-20180711-2',
         'mediaSrc':    STATIC_URL + 'img/showcase/showcase4.jpg',
         'date': '11 Jul 2018',
-        'media': 'image',
+        'media': 'img',
         'country': 'south-africa'
     },
     {
@@ -327,7 +328,7 @@ HURUMAP['showcase_stories'] = [
         'link':   'https://city-press.news24.com/News/community-vs-chief-the-story-of-a-struggle-for-land-20180624',
         'mediaSrc':    STATIC_URL + 'img/showcase/showcase7.jpg',
         'date': '24 Jun 2018',
-        'media': 'image',
+        'media': 'img',
         'country': 'south-africa'
     },
     {
@@ -338,7 +339,7 @@ HURUMAP['showcase_stories'] = [
         'link':   '',
         'date': '23 Jun 2017',
         'mediaSrc':   'https://www.youtube.com/embed/miBC5d7NNzk',
-        'media': 'video',
+        'media': 'iframe',
         'country': 'kenya'
     },
 ]
