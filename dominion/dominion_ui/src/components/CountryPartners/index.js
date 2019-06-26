@@ -9,6 +9,7 @@ import PartnerContent from './PartnerContent';
 
 import cfa from '../../assets/images/logos/codeforafrica.png';
 import twaweza from '../../assets/images/logos/twaweza.png';
+import aul from '../../assets/images/logos/aul.png';
 import A from '../A';
 
 const styles = theme => ({
@@ -46,6 +47,10 @@ const styles = theme => ({
     [theme.breakpoints.up('md')]: {
       padding: '2rem 1rem'
     }
+  },
+  imageGrayScale: {
+    WebkitFilter: 'grayscale(100%)' /* Safari 6.0 - 9.0 */,
+    filter: 'grayscale(100%)'
   }
 });
 
@@ -86,6 +91,15 @@ function CountryPartners({ classes }) {
         <Grid item className={classes.imageGrid}>
           <A href="https://www.twaweza.org/">
             <img src={twaweza} alt="Twaweza" className={classes.img} />
+          </A>
+        </Grid>
+        <Grid item className={classes.imageGrid}>
+          <A href="http://africauncensored.net/about/">
+            <img
+              src={aul}
+              alt="Africa Uncensored"
+              className={classNames(classes.img, classes.imageGrayScale)}
+            />
           </A>
         </Grid>
       </Grid>
