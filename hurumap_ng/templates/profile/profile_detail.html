@@ -15,24 +15,10 @@
 {% endblock %}
 
 {% block profile_header_tail %}
-  <div class="column-full">
-    <strong>{{ primary_releases.active.name }} {{ primary_releases.active.year }}</strong>
-    {% if primary_releases.other %}
-      <div class="tool-group toggle-sub-group release-list">
-        <a>Change release<i class="fa fa-chevron-circle-down"></i></a>
-        <ul class="sub-group" style="display: none;">
-          {% for release in primary_releases.other %}
-            <li>
-              <a href="{{ request.path }}?release={{ release.year }}">{{ release.name }} {{ release.year }}</a>
-            </li>
-          {% endfor %}
-        </ul>
-      </div>
-    {% endif %}
-  </div>
 {% endblock %}
 
 {% block profile_detail %}
+
 
 {% if not nbs_2016.is_missing or not nbs_2018.is_missing %}
   <article id="debt" class="clearfix">
@@ -164,6 +150,105 @@
                  data-stat-type="number"
                  data-source-title="National Bureau of Statistics, 2018"
                  data-source-link="https://nigerianstat.gov.ng/download/614"></div>
+          </div>
+      </section>
+      {% endif %}
+      {% if not nbs_2018.petrol_price.2019.is_missing %}
+      <section class="clearfix stat-row">
+        <div class="column-full">
+            <div id="chart-column-nbs_2018-petrol_price-2019"
+                 data-chart-title="Petrol Price Jan to Dec 2019"
+                 data-stat-type="number"
+                 data-source-title="National Bureau of Statistics, 2019"
+                 data-source-link="https://nigerianstat.gov.ng/download/923"></div>
+          </div>
+      </section>
+      {% endif %}
+      {% if not nbs_2018.diesel_price.2019.is_missing %}
+      <section class="clearfix stat-row">
+        <div class="column-full">
+            <div id="chart-column-nbs_2018-diesel_price-2019"
+                 data-chart-title="Desel Price Jan to Dec 2019"
+                 data-stat-type="number"
+                 data-source-title="National Bureau of Statistics, 2019"
+                 data-source-link="https://nigerianstat.gov.ng/download/921"></div>
+          </div>
+      </section>
+      {% endif %}
+      {% if not nbs_2018.petrol_price.2018.is_missing %}
+      <section class="clearfix stat-row">
+        <div class="column-full">
+            <div id="chart-column-nbs_2018-petrol_price-2018"
+                 data-chart-title="Petrol Price Jan to Dec 2018"
+                 data-stat-type="number"
+                 data-source-title="National Bureau of Statistics, 2019"
+                 data-source-link="https://nigerianstat.gov.ng/download/923"></div>
+          </div>
+      </section>
+      {% endif %}
+      {% if not nbs_2018.diesel_price.2018.is_missing %}
+      <section class="clearfix stat-row">
+        <div class="column-full">
+            <div id="chart-column-nbs_2018-diesel_price-2018"
+                 data-chart-title="Desel Price Jan to Dec 2018"
+                 data-stat-type="number"
+                 data-source-title="National Bureau of Statistics, 2019"
+                 data-source-link="https://nigerianstat.gov.ng/download/921"></div>
+          </div>
+      </section>
+      {% endif %}
+      {% if not nbs_2018.petrol_price.2017.is_missing %}
+      <section class="clearfix stat-row">
+        <div class="column-full">
+            <div id="chart-column-nbs_2018-petrol_price-2017"
+                 data-chart-title="Petrol Price Jan to Dec 2017"
+                 data-stat-type="number"
+                 data-source-title="National Bureau of Statistics, 2019"
+                 data-source-link="https://nigerianstat.gov.ng/download/923"></div>
+          </div>
+      </section>
+      {% endif %}
+      {% if not nbs_2018.diesel_price.2017.is_missing %}
+      <section class="clearfix stat-row">
+        <div class="column-full">
+            <div id="chart-column-nbs_2018-diesel_price-2017"
+                 data-chart-title="Desel Price Jan to Dec 2017"
+                 data-stat-type="number"
+                 data-source-title="National Bureau of Statistics, 2019"
+                 data-source-link="https://nigerianstat.gov.ng/download/921"></div>
+          </div>
+      </section>
+      {% endif %}
+      {% if not nbs_2018.petrol_price.2016.is_missing %}
+      <section class="clearfix stat-row">
+        <div class="column-full">
+            <div id="chart-column-nbs_2018-petrol_price-2016"
+                 data-chart-title="Petrol Price Jan to Dec 2016"
+                 data-stat-type="number"
+                 data-source-title="National Bureau of Statistics, 2019"
+                 data-source-link="https://nigerianstat.gov.ng/download/923"></div>
+          </div>
+      </section>
+      {% endif %}
+      {% if not nbs_2018.diesel_price.2016.is_missing %}
+      <section class="clearfix stat-row">
+        <div class="column-full">
+            <div id="chart-column-nbs_2018-diesel_price-2016"
+                 data-chart-title="Desel Price Jan to Dec 2016"
+                 data-stat-type="number"
+                 data-source-title="National Bureau of Statistics, 2019"
+                 data-source-link="https://nigerianstat.gov.ng/download/921"></div>
+          </div>
+      </section>
+      {% endif %}
+      {% if not nbs_2018.diesel_price.2015.is_missing %}
+      <section class="clearfix stat-row">
+        <div class="column-full">
+            <div id="chart-column-nbs_2018-diesel_price-2015"
+                 data-chart-title="Desel Price Jan to Dec 2015"
+                 data-stat-type="number"
+                 data-source-title="National Bureau of Statistics, 2019"
+                 data-source-link="https://nigerianstat.gov.ng/download/921"></div>
           </div>
       </section>
       {% endif %}

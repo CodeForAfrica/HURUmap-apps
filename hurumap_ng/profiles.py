@@ -11,6 +11,8 @@ LOCATIONNOTFOUND = {'is_missing': True,
                     'values': {'this': 0}
                     }
 
+MONTH_ORDER= ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+
 
 def get_profile(geo, profile_name, request):
     session = get_session()
@@ -79,6 +81,15 @@ def get_nbs_2018(geo, session, year):
     faac = LOCATIONNOTFOUND
     jamb = LOCATIONNOTFOUND
     debt_data = LOCATIONNOTFOUND
+    diesel_price_2016 = LOCATIONNOTFOUND
+    diesel_price_2017 = LOCATIONNOTFOUND
+    diesel_price_2015 = LOCATIONNOTFOUND
+    diesel_price_2018 = LOCATIONNOTFOUND
+    diesel_price_2019 = LOCATIONNOTFOUND
+    petrol_price_2016 = LOCATIONNOTFOUND
+    petrol_price_2017 = LOCATIONNOTFOUND
+    petrol_price_2018 = LOCATIONNOTFOUND
+    petrol_price_2019 = LOCATIONNOTFOUND
 
     with dataset_context(year='2018'):
         try:
@@ -103,10 +114,82 @@ def get_nbs_2018(geo, session, year):
             jamb, _ = get_stat_data(fields=['year', 'gender'], geo=geo,
                                          session=session,
                                          table_name='jamb', percent=False)
+            diesel_price_2018, _ = get_stat_data(['month'], geo=geo,
+                                         session=session,
+                                         only={'year': ['2018']},
+                                         key_order=MONTH_ORDER,
+                                         table_name='diesel_price', percent=False)
+            diesel_price_2017, _ = get_stat_data(fields=['month'], geo=geo,
+                                         session=session,
+                                         only={'year': ['2017']},
+                                         key_order=MONTH_ORDER,
+                                         table_name='diesel_price', percent=False)
+            diesel_price_2016, _ = get_stat_data(fields=['month'], geo=geo,
+                                         session=session,
+                                         only={'year': ['2016']},
+                                         key_order=MONTH_ORDER,
+                                         table_name='diesel_price', percent=False)
+            diesel_price_2015, _ = get_stat_data(fields=['month'], geo=geo,
+                                         session=session,
+                                         only={'year': ['2015']},
+                                         table_name='diesel_price', percent=False)
+            diesel_price_2019, _ = get_stat_data(fields=['month'], geo=geo,
+                                         session=session,
+                                         only={'year': ['2019']},
+                                         exclude_zero=False,
+                                         table_name='diesel_price', percent=False)
+            petrol_price_2016, _ = get_stat_data(fields=['month'], geo=geo,
+                                         session=session,
+                                         only={'year': ['2016']},
+                                         table_name='petrol_price', percent=False)
+            petrol_price_2017, _ = get_stat_data(fields=['month'], geo=geo,
+                                         session=session,
+                                         only={'year': ['2017']},
+                                         table_name='petrol_price', percent=False)
+            petrol_price_2018, _ = get_stat_data(fields=['month'], geo=geo,
+                                         session=session,
+                                         only={'year': ['2018']},
+                                         key_order=MONTH_ORDER,
+                                         table_name='petrol_price', percent=False)
+            petrol_price_2019, _ = get_stat_data(fields=['month',], geo=geo,
+                                         session=session,
+                                         only={'year': ['2019']},
+                                         table_name='petrol_price', percent=False)
         except Exception as e:
             print(str(e))
 
-    is_missing = mobile_subscription.get('is_missing')
+    diesel_price = {
+        'is_missing': diesel_price_2019.get('is_missing') and \
+                        diesel_price_2018.get('is_missing') and \
+                        diesel_price_2017.get('is_missing') and \
+                        diesel_price_2016.get('is_missing') and \
+                        diesel_price_2015.get('is_missing'),
+        '2019': diesel_price_2019,
+        '2018': diesel_price_2018,
+        '2017': diesel_price_2017,
+        '2016': diesel_price_2016,
+        '2015': diesel_price_2015
+    }
+
+    petrol_price = {
+        'is_missing': petrol_price_2018.get('is_missing') and \
+                        petrol_price_2017.get('is_missing') and \
+                        petrol_price_2016.get('is_missing') and \
+                        petrol_price_2016.get('is_missing'),
+        '2019': petrol_price_2019,
+        '2018': petrol_price_2018,
+        '2017': petrol_price_2017,
+        '2016': petrol_price_2016
+    }
+
+    is_missing = mobile_subscription.get('is_missing') and \
+                mineral_production.get('is_missing') and \
+                telecom_subscription.get('is_missing') and \
+                faac.get('is_missing') and jamb.get('is_missing') and \
+                debt_data.get('is_missing') and \
+                hiv_patients.get('is_missing') and \
+                diesel_price.get('is_missing') and petrol_price.get('is_missing')
+
     final_data = {
         'is_missing': is_missing,
         'mobile_subscription': mobile_subscription,
@@ -115,6 +198,9 @@ def get_nbs_2018(geo, session, year):
         'hiv_patients': hiv_patients,
         'debt_data': debt_data,
         'faac': faac,
-        'jamb': jamb
+        'jamb': jamb,
+        'diesel_price': diesel_price,
+        'petrol_price': petrol_price,
+
     }
     return final_data
