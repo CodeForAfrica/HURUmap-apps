@@ -228,7 +228,7 @@ HURUMAP['showcase_stories'] = [
         'date': '05 Apr 2019',
         'mediaSrc':   'https://www.youtube.com/embed/PDhuK4KrIoU',
         'media': 'iframe',
-        'country': 'kenya'
+        'country': 'KE'
     },
     {
         'index': 1,
@@ -239,7 +239,7 @@ HURUMAP['showcase_stories'] = [
         'mediaSrc':    STATIC_URL + 'img/showcase/showcase6.jpg',
         'date': '19 Sep 2018',
         'media': 'img',
-        'country': 'south-africa'
+        'country': 'ZA'
     },
     {
         'index': 2,
@@ -250,7 +250,7 @@ HURUMAP['showcase_stories'] = [
         'mediaSrc':    STATIC_URL + 'img/showcase/showcase2.jpg',
         'date': '10 Sep 2018',
         'media': 'img',
-        'country': 'south-africa'
+        'country': 'ZA'
 
     },
     {
@@ -262,7 +262,7 @@ HURUMAP['showcase_stories'] = [
         'mediaSrc':    STATIC_URL + 'img/showcase/showcase1.jpg',
         'date': '22 Aug 2018',
         'media': 'img',
-        'country': 'south-africa'
+        'country': 'ZA'
     },
     {
         'index': 4,
@@ -273,7 +273,7 @@ HURUMAP['showcase_stories'] = [
         'mediaSrc':    STATIC_URL + 'img/showcase/showcase3.jpg',
         'date': '17 Aug 2018',
         'media': 'img',
-        'country': 'south-africa'
+        'country': 'ZA'
     },
     {
         'index': 5,
@@ -284,7 +284,7 @@ HURUMAP['showcase_stories'] = [
         'mediaSrc':    STATIC_URL + 'img/showcase/showcase5.jpg',
         'date': '06 Aug 2018',
         'media': 'img',
-        'country': 'south-africa'
+        'country': 'ZA'
 
     },
     {
@@ -296,7 +296,7 @@ HURUMAP['showcase_stories'] = [
         'mediaSrc':    STATIC_URL + 'img/showcase/showcase8.jpg',
         'date': '06 Aug 2018',
         'media': 'img',
-        'country': 'south-africa'
+        'country': 'ZA'
     },
     {
         'index': 7,
@@ -307,7 +307,7 @@ HURUMAP['showcase_stories'] = [
         'mediaSrc':    STATIC_URL + 'img/showcase/showcase9.jpg',
         'date': '15 Jul 2018',
         'media': 'img',
-        'country': 'south-africa'
+        'country': 'ZA'
     },
     {
         'index': 8,
@@ -318,7 +318,7 @@ HURUMAP['showcase_stories'] = [
         'mediaSrc':    STATIC_URL + 'img/showcase/showcase4.jpg',
         'date': '11 Jul 2018',
         'media': 'img',
-        'country': 'south-africa'
+        'country': 'ZA'
     },
     {
         'index': 9,
@@ -329,7 +329,7 @@ HURUMAP['showcase_stories'] = [
         'mediaSrc':    STATIC_URL + 'img/showcase/showcase7.jpg',
         'date': '24 Jun 2018',
         'media': 'img',
-        'country': 'south-africa'
+        'country': 'ZA'
     },
     {
         'index': 10,
@@ -340,7 +340,7 @@ HURUMAP['showcase_stories'] = [
         'date': '23 Jun 2017',
         'mediaSrc':   'https://www.youtube.com/embed/miBC5d7NNzk',
         'media': 'iframe',
-        'country': 'kenya'
+        'country': 'KE'
     },
 ]
 

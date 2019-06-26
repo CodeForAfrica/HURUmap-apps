@@ -89,7 +89,7 @@ function CountryPartners({ classes, dominion: { selectedCountry } }) {
             <img src={twaweza} alt="Twaweza" className={classes.img} />
           </A>
         </Grid>
-        {selectedCountry.slug === 'kenya' && (
+        {selectedCountry.code === 'KE' && (
           <Grid item className={classes.imageGrid}>
             <A href="http://africauncensored.net/about/">
               <img src={aul} alt="Africa Uncensored" className={classes.img} />
