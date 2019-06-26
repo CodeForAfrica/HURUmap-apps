@@ -47,10 +47,6 @@ const styles = theme => ({
     [theme.breakpoints.up('md')]: {
       padding: '2rem 1rem'
     }
-  },
-  imageGrayScale: {
-    WebkitFilter: 'grayscale(100%)' /* Safari 6.0 - 9.0 */,
-    filter: 'grayscale(100%)'
   }
 });
 
@@ -96,11 +92,7 @@ function CountryPartners({ classes, dominion: { selectedCountry } }) {
         {selectedCountry.slug === 'kenya' && (
           <Grid item className={classes.imageGrid}>
             <A href="http://africauncensored.net/about/">
-              <img
-                src={aul}
-                alt="Africa Uncensored"
-                className={classNames(classes.img, classes.imageGrayScale)}
-              />
+              <img src={aul} alt="Africa Uncensored" className={classes.img} />
             </A>
           </Grid>
         )}
