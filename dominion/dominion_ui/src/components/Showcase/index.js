@@ -41,7 +41,7 @@ function Showcase({ classes, showcaseStories, dominion: { selectedCountry } }) {
   let stories = showcaseStories;
   if (selectedCountry) {
     stories = showcaseStories.filter(
-      story => story.country === selectedCountry.slug
+      story => story.country === selectedCountry.code
     );
   }
   return (
