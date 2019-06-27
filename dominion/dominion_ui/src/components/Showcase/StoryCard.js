@@ -33,6 +33,7 @@ const styles = theme => ({
     alignItems: 'flex-end',
     display: 'flex',
     flexGrow: 1,
+    position: 'relative',
     marginTop: '-100%',
     paddingTop: 0,
     paddingBottom: theme.spacing.unit * 2,
@@ -42,9 +43,7 @@ const styles = theme => ({
   media: {
     minHeight: '20rem',
     height: '100%',
-    width: '100%',
-    backgroundColor: 'rgba(0, 0, 0, 0.6)',
-    backgroundBlendMode: 'color'
+    width: '100%'
   },
   cardLink: {
     textDecoration: 'none'
@@ -62,11 +61,15 @@ const styles = theme => ({
   bodyText: {
     color: '#fff',
     margin: '1rem 0'
+  },
+  componentStyle: {
+    webkitFilter: 'brightness(40%)' /* Safari 6.0 - 9.0 */,
+    filter: 'brightness(40%)'
   }
 });
 
 function StoryCard({ story, classes }) {
-  const { image, date, title, brief, link } = story;
+  const { mediaSrc, date, title, brief, link, media } = story;
 
   return (
     <Card className={classes.root}>
@@ -84,7 +87,13 @@ function StoryCard({ story, classes }) {
             height: '100%'
           }}
         >
-          <CardMedia className={classes.media} image={image} title="Story" />
+          <CardMedia
+            component={media}
+            className={classes.media}
+            image={mediaSrc}
+            classes={{ media: classes.componentStyle }}
+            title="Story"
+          />
           <CardContent className={classes.cardContent}>
             <Grid
               container
