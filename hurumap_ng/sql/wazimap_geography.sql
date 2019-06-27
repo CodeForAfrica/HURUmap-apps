@@ -113,6 +113,7 @@ COPY public.wazimap_geography (id, geo_level, geo_code, name, square_kms, parent
 35	state	35	Taraba	54473	country	NG	Taraba State	2016
 36	state	36	Yobe	45502	country	NG	Yobe State	2016
 37	state	37	Zamfara	39762	country	NG	Zamfara State	2016
+38	country	NG	Nigeria	923768	\N	\N	Nigeria	2016
 \.
 
 
@@ -184,4 +185,3 @@ CREATE INDEX wazimap_geography_version_01953818_like ON public.wazimap_geography
 --
 -- PostgreSQL database dump complete
 --
-

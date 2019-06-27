@@ -1,0 +1,243 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 10.6
+-- Dumped by pg_dump version 10.6
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+ALTER TABLE IF EXISTS ONLY public.drugs_seized DROP CONSTRAINT IF EXISTS drugs_seized_pkey;
+DROP TABLE IF EXISTS public.drugs_seized;
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: drugs_seized; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.drugs_seized (
+    geo_level character varying(15) NOT NULL,
+    geo_code character varying(10) NOT NULL,
+    geo_version character varying(128) NOT NULL,
+    year character varying(128) NOT NULL,
+    total numeric
+);
+
+
+--
+-- Data for Name: drugs_seized; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.drugs_seized (geo_level, geo_code, geo_version, year, total) FROM stdin;
+state	1	2016	2012	1112.41
+state	1	2016	2013	451.24
+state	1	2016	2014	408.06
+state	1	2016	2015	633.82
+state	1	2016	2016	323.44
+state	2	2016	2012	2529.12
+state	2	2016	2013	1932.50
+state	2	2016	2014	261.05
+state	2	2016	2015	5540.39
+state	2	2016	2016	6059.11
+state	3	2016	2012	372.90
+state	3	2016	2013	402.31
+state	3	2016	2014	148.65
+state	3	2016	2015	1358.45
+state	3	2016	2016	393.53
+state	4	2016	2012	724.09
+state	4	2016	2013	434.20
+state	4	2016	2014	704.69
+state	4	2016	2015	1720.89
+state	4	2016	2016	965.06
+state	5	2016	2012	1092.57
+state	5	2016	2013	6270.70
+state	5	2016	2014	1036.00
+state	5	2016	2015	2014.71
+state	5	2016	2016	3805.79
+state	6	2016	2012	130.80
+state	6	2016	2013	221.97
+state	6	2016	2014	247.50
+state	6	2016	2015	1175.00
+state	6	2016	2016	209.58
+state	7	2016	2012	1945.84
+state	7	2016	2013	1549.10
+state	7	2016	2014	1184.50
+state	7	2016	2015	1393.53
+state	7	2016	2016	902.35
+state	8	2016	2012	37.56
+state	8	2016	2013	6270.70
+state	8	2016	2014	5805.00
+state	8	2016	2015	250.31
+state	8	2016	2016	1010.44
+state	9	2016	2012	287.38
+state	9	2016	2013	272.85
+state	9	2016	2014	246.74
+state	9	2016	2015	416.55
+state	9	2016	2016	399.56
+state	10	2016	2012	23418.48
+state	10	2016	2013	8144.00
+state	10	2016	2014	24052.05
+state	10	2016	2015	12875.39
+state	10	2016	2016	8834.12
+state	11	2016	2012	243.46
+state	11	2016	2013	520.92
+state	11	2016	2014	1053.00
+state	11	2016	2015	122.80
+state	11	2016	2016	184.79
+state	12	2016	2012	81541.71
+state	12	2016	2013	48607.00
+state	12	2016	2014	21179.00
+state	12	2016	2015	322272.04
+state	12	2016	2016	59381.68
+state	13	2016	2012	6685.23
+state	13	2016	2013	8684.90
+state	13	2016	2014	2979.40
+state	13	2016	2015	5244.59
+state	13	2016	2016	736.66
+state	14	2016	2012	1002.26
+state	14	2016	2013	1335.50
+state	14	2016	2014	1089.80
+state	14	2016	2015	539.90
+state	14	2016	2016	4050.46
+state	15	2016	2012	5094.30
+state	15	2016	2013	13622.00
+state	15	2016	2014	6440.20
+state	15	2016	2015	10418.20
+state	15	2016	2016	16689.36
+state	16	2016	2012	239.03
+state	16	2016	2013	164.03
+state	16	2016	2014	429.12
+state	16	2016	2015	174.19
+state	16	2016	2016	549.28
+state	17	2016	2012	526.37
+state	17	2016	2013	1126.10
+state	17	2016	2014	337.24
+state	17	2016	2015	346.30
+state	17	2016	2016	348.33
+state	18	2016	2012	180.75
+state	18	2016	2013	1444.00
+state	18	2016	2014	116.92
+state	18	2016	2015	858.80
+state	18	2016	2016	1325.89
+state	19	2016	2012	1692.81
+state	19	2016	2013	2437.60
+state	19	2016	2014	6375.10
+state	19	2016	2015	12989.96
+state	19	2016	2016	17023.76
+state	20	2016	2012	4107.89
+state	20	2016	2013	4253.90
+state	20	2016	2014	7522.20
+state	20	2016	2015	11265.57
+state	20	2016	2016	39557.41
+state	21	2016	2012	1081.04
+state	21	2016	2013	1511.50
+state	21	2016	2014	782.93
+state	21	2016	2015	4016.29
+state	21	2016	2016	2747.01
+state	22	2016	2012	322.87
+state	22	2016	2013	392.33
+state	22	2016	2014	276.62
+state	22	2016	2015	1706.57
+state	22	2016	2016	5310.49
+state	23	2016	2012	4071.29
+state	23	2016	2013	6499.80
+state	23	2016	2014	6821.40
+state	23	2016	2015	2237.38
+state	23	2016	2016	7549.84
+state	24	2016	2012	763.63
+state	24	2016	2013	1159.60
+state	24	2016	2014	843.06
+state	24	2016	2015	2815.29
+state	24	2016	2016	580.84
+state	25	2016	2012	2451.23
+state	25	2016	2013	9163.90
+state	25	2016	2014	2057.00
+state	25	2016	2015	2882.94
+state	25	2016	2016	16570.43
+state	26	2016	2012	232.36
+state	26	2016	2013	275.06
+state	26	2016	2014	573.35
+state	26	2016	2015	3185.68
+state	26	2016	2016	2465.78
+state	27	2016	2012	517.09
+state	27	2016	2013	2157.50
+state	27	2016	2014	1570.80
+state	27	2016	2015	3722.21
+state	27	2016	2016	3184.69
+state	28	2016	2012	8469.99
+state	28	2016	2013	7457.70
+state	28	2016	2014	2589.50
+state	28	2016	2015	10137.45
+state	28	2016	2016	3294.57
+state	29	2016	2012	61246.35
+state	29	2016	2013	51093.00
+state	29	2016	2014	18908.00
+state	29	2016	2015	384773.45
+state	29	2016	2016	37361.93
+state	30	2016	2012	6421.24
+state	30	2016	2013	3572.70
+state	30	2016	2014	5789.20
+state	30	2016	2015	2167.90
+state	30	2016	2016	1244.24
+state	31	2016	2012	7232.08
+state	31	2016	2013	14770.00
+state	31	2016	2014	10253.00
+state	31	2016	2015	9344.97
+state	31	2016	2016	2868.11
+state	32	2016	2012	1822.03
+state	32	2016	2013	2186.50
+state	32	2016	2014	1209.90
+state	32	2016	2015	2259.65
+state	32	2016	2016	2006.09
+state	33	2016	2012	919.95
+state	33	2016	2013	397.42
+state	33	2016	2014	385.92
+state	33	2016	2015	795.72
+state	33	2016	2016	899.43
+state	34	2016	2012	788.34
+state	34	2016	2013	1146.00
+state	34	2016	2014	1469.70
+state	34	2016	2015	1824.19
+state	34	2016	2016	191.70
+state	35	2016	2012	474.23
+state	35	2016	2013	941.70
+state	35	2016	2014	397.66
+state	35	2016	2015	1069.43
+state	35	2016	2016	1710.30
+state	36	2016	2012	175.77
+state	36	2016	2013	172.55
+state	36	2016	2014	398.68
+state	36	2016	2015	697.09
+state	36	2016	2016	847.40
+state	37	2016	2012	2177.64
+state	37	2016	2013	1431.10
+state	37	2016	2014	512.64
+state	37	2016	2015	271.50
+state	37	2016	2016	439.32
+country	NG	2016	2012	232132.09
+country	NG	2016	2013	212473.88
+country	NG	2016	2014	136455.58
+country	NG	2016	2015	825519.10
+country	NG	2016	2016	252022.77
+\.
+
+
+--
+-- Name: drugs_seized drugs_seized_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.drugs_seized
+    ADD CONSTRAINT drugs_seized_pkey PRIMARY KEY (geo_level, geo_code, geo_version, year);
+
+
+--
+-- PostgreSQL database dump complete
+--
