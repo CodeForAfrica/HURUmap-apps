@@ -484,7 +484,7 @@ tags
 static/*
 */static/css/*.css
 
-#dominion/dominion_ui/build
+!dominion/dominion_ui/build
 
 ### VisualStudioCode ###
 # Ignore the whole folder
