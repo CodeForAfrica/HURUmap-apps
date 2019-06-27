@@ -166,55 +166,16 @@ HURUMAP['map_zoom']= 5
 # -------------------------------------------------------------------------------
 #topics
 
-HURUMAP['topics']['farmland'] = {
-    'topic': 'farmland',
-    'name': 'Farm & Agricultural Land',
-    'icon': '/static/img/education.png',
-    'desc': 'South Africa farm and Agricultural Land',
-    'profiles': [
-        'Private land ownership in hectares per category',
-        'Number of private land owners by category',
-        'land ownership in hectares by race',
-        'Number of land owners per race',
-        'land ownership in hectares by gender',
-        'Number of land owners per gender',
-        'land ownership in hectares by nationality',
-        'Number of land owners per nationality',
-    ]
-}
-
-HURUMAP['topics']['ervenland'] = {
-        'topic': 'ervenland',
-        'name': 'Erven & Urban Land',
-        'icon': '/static/img/education.png',
-        'desc': 'South Africa Erven and Urban Land',
-        'profiles': [
-            #'Private land ownership in hectares per category',
-            #'Number of private land owners by category',
-            'erven land ownership in hectares by race',
-            'Number of erven land owners per race',
-            'erven land ownership in hectares by gender',
-            'Number of erven land owners per gender',
-            'erven land ownership in hectares by nationality',
-            'Number of erven land owners per nationality',
-        ]
-}
-
-HURUMAP['topics']['sectionaltitleland'] = {
-    'topic': 'sectionaltitleland',
-    'name': 'Sectional Title Land',
-    'icon': '/static/img/education.png',
-    'desc': 'South Africa Sectional Title Land',
-    'profiles': [
-        'sectional title ownership in hectares per category',
-        'Number of sectional title owners by category',
-        'sectional title ownership in hectares per race',
-        'Number of sectional title owners by race',
-        'sectional title ownership in hectares per gender',
-        'Number of sectional title owners by gender',
-        'sectional title ownership in hectares nationality',
-        'Number of sectional title owners by nationality',
-    ]
+HURUMAP['topics'] = {
+    'demographics',  # population group
+    'farmland',  # farm and Agricultural land
+    'ervenland',  # erven land
+    'sectionaltitleland',  # sectional title land
+    'redistributionandrestitution',  # redistribution and restitution
+    'afrobarometer',
+    'landsales',
+    'landsalescolour',
+    'workershostel'
 }
 # -------------------------------------------------------------------------------------
 # Showcase Stories
