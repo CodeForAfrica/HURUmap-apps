@@ -19,15 +19,37 @@ import dominion.tables  # noqa
 
 SECTIONS = settings.HURUMAP.get('topics', {})
 
-PROFILE_SECTIONS = (
-    'ervenland',  # erven land
-    'farmland',
-    'sectionaltitleland',  # sectional title land
-    'redistributionandrestitution',  # redistribution and restitution
-    'afrobarometer',
-    'landsales',
-    'landsalescolour',
-)
+SUBSECTIONS = {
+    'farmland': [
+        'Private land ownership in hectares per category',
+        'Number of private land owners by category',
+        'land ownership in hectares by race',
+        'Number of land owners per race',
+        'land ownership in hectares by gender',
+        'Number of land owners per gender',
+        'land ownership in hectares by nationality',
+        'Number of land owners per nationality',
+    ],
+    'ervenland': [
+        'erven land ownership in hectares by race',
+        'Number of erven land owners per race',
+        'erven land ownership in hectares by gender',
+        'Number of erven land owners per gender',
+        'erven land ownership in hectares by nationality',
+        'Number of erven land owners per nationality',
+    ],
+    'sectionaltitleland': [
+        'sectional title ownership in hectares per category',
+        'Number of sectional title owners by category',
+        'sectional title ownership in hectares per race',
+        'Number of sectional title owners by race',
+        'sectional title ownership in hectares per gender',
+        'Number of sectional title owners by gender',
+        'sectional title ownership in hectares nationality',
+        'Number of sectional title owners by nationality',
+    ]
+}
+
 LOCATIONNOTFOUND = {'is_missing': True,
                     'name': 'No Data Found',
                     'numerators': {'this': 0},
@@ -74,7 +96,7 @@ def get_profile(geo, profile_name, request):
     (country, level) = get_country_and_level(geo)
     year = request.GET.get('release',get_primary_release_year_per_geography(geo))
     comparative_geos = geo_data.get_comparative_geos(geo)
-    sections = list(PROFILE_SECTIONS)
+    sections = list(SECTIONS)
     data = {}
     try:
         for section in sections:
@@ -201,7 +223,7 @@ def _add_metadata_to_dist(dist, dist_name, country, level):
 
 def get_farmland_profile(geo, session):
     with dataset_context(year='2017'):
-        topic_profiles = SECTIONS['farmland']['profiles']
+        topic_profiles = SUBSECTIONS['farmland']
         profiles_data = {'is_missing': True}
 
         for profile in topic_profiles:
@@ -223,7 +245,7 @@ def get_farmland_profile(geo, session):
 
 def get_ervenland_profile(geo, session):
     with dataset_context(year='2017'):
-        topic_profiles = SECTIONS['ervenland']['profiles']
+        topic_profiles = SUBSECTIONS['ervenland']
         profiles_data = {'is_missing': True}
 
         for profile in topic_profiles:
@@ -244,7 +266,7 @@ def get_ervenland_profile(geo, session):
 
 def get_sectionaltitleland_profile(geo, session):
     with dataset_context(year='2017'):
-        topic_profiles = SECTIONS['sectionaltitleland']['profiles']
+        topic_profiles = SUBSECTIONS['sectionaltitleland']
         profiles_data = {'is_missing': True}
 
         for profile in topic_profiles:
@@ -1190,3 +1212,123 @@ def get_afrobarometer_profile(geo, session):
     }
 
     return final_data
+
+def get_workershostel_profile(geo, session):
+    with dataset_context(year='2018'):
+        access_electricity = age_group = gender = LOCATIONNOTFOUND
+        geography = handwashing_facility = LOCATIONNOTFOUND
+        living_condition = ownership = LOCATIONNOTFOUND
+        residential_ownership = population_group = LOCATIONNOTFOUND
+        population_year = rent = ss_dwelling = subsidy = LOCATIONNOTFOUND
+        toilet_facility = water_source = LOCATIONNOTFOUND
+
+        population = 0
+
+        access_electricity, _ = get_stat_data('workers_hostel_access_electricity',
+                                              geo,
+                                              session, table_fields=[
+                                                  'workers_hostel_access_electricity'],
+                                              percent=False)
+        age_group, _ = get_stat_data('workers_hostel_age_group',
+                                     geo,
+                                     session, table_fields=[
+                                         'workers_hostel_age_group'],
+                                     percent=False)
+        geography, _ = get_stat_data('workers_hostel_geography',
+                                     geo,
+                                     session, table_fields=[
+                                         'workers_hostel_geography'],
+                                     percent=False)
+        water_source, _ = get_stat_data('workers_hostel_water_source',
+                                        geo,
+                                        session, table_fields=[
+                                            'workers_hostel_water_source'],
+                                        percent=False)
+        handwashing_facility, _ = get_stat_data('workers_hostel_handwashing_facility',
+                                                geo,
+                                                session, table_fields=[
+                                                    'workers_hostel_handwashing_facility'],
+                                                percent=False)
+        toilet_facility, _ = get_stat_data('workers_hostel_toilet_facility',
+                                           geo,
+                                           session, table_fields=[
+                                               'workers_hostel_toilet_facility'],
+                                           percent=False)
+
+        gender, _ = get_stat_data('workers_hostel_gender',
+                                  geo,
+                                  session, table_fields=[
+                                      'workers_hostel_gender'],
+                                  percent=False)
+
+        living_condition, _ = get_stat_data('workers_hostel_living_condition',
+                                            geo,
+                                            session, table_fields=[
+                                                'workers_hostel_living_condition'],
+                                            percent=False)
+
+        ownership, _ = get_stat_data('workers_hostel_ownership',
+                                     geo,
+                                     session, table_fields=[
+                                         'workers_hostel_ownership'],
+                                     percent=False)
+
+        population_group, _ = get_stat_data('workers_hostel_population_group',
+                                            geo,
+                                            session, table_fields=[
+                                                'workers_hostel_population_group'],
+                                            percent=False)
+
+        population_year, population = get_stat_data('workers_hostel_population_year',
+                                                    geo,
+                                                    session, table_fields=[
+                                                        'workers_hostel_population_year'],
+                                                    percent=False)
+        rent, _ = get_stat_data('workers_hostel_rent',
+                                geo,
+                                session, table_fields=['workers_hostel_rent'],
+                                percent=False)
+        ss_dwelling, _ = get_stat_data('workers_hostel_ss_dwelling',
+                                       geo,
+                                       session, table_fields=[
+                                           'workers_hostel_ss_dwelling'],
+                                       percent=False)
+        residential_ownership, _ = get_stat_data('workers_hostel_residential_ownership',
+                                                 geo,
+                                                 session, table_fields=[
+                                                     'workers_hostel_residential_ownership'],
+                                                 percent=False)
+        subsidy, _ = get_stat_data('workers_hostel_subsidy',
+                                   geo,
+                                   session, table_fields=[
+                                       'workers_hostel_subsidy'],
+                                   percent=False)
+
+        is_missing = access_electricity.get('is_missing') and \
+            age_group.get('is_missing') and gender.get('is_missing') and \
+            geography.get('is_missing') and handwashing_facility.get('is_missing') and \
+            living_condition.get('is_missing') and ownership.get('is_missing') and \
+            residential_ownership.get('is_missing') and \
+            population_group.get('is_missing') and rent.get('is_missing') and \
+            population_year.get('is_missing') and ss_dwelling.get('is_missing') and \
+            subsidy.get('is_missing') and toilet_facility.get('is_missing') and \
+            water_source.get('is_missing')
+
+        return {
+            'is_missing': is_missing,
+            'access_electricity': access_electricity,
+            'age_group': age_group,
+            'gender': gender,
+            'living_condition': living_condition,
+            'geography': geography,
+            'handwashing_facility': handwashing_facility,
+            'ownership': ownership,
+            'residential_ownership': residential_ownership,
+            'population_year': population_year,
+            'population_group': population_group,
+            'rent': rent,
+            'toilet_facility': toilet_facility,
+            'water_source': water_source,
+            'ss_dwelling': ss_dwelling,
+            'subsidy': subsidy
+        }

@@ -13,6 +13,9 @@
        }
      ];
      //append tab links for all profile data shown in profile_detail template
+     {% if not workershostel.is_missing %}
+        profileDataJson.tabs.push({ name: 'Worker\'s Hostel Household' , href: '#workershostel'})
+     {% endif %}
      {% if not landsales.is_missing %}
         profileDataJson.tabs.push({ name: 'Agricultural Land Sales' , href: '#agricultural-land-sales'})
      {% endif %}
