@@ -45,11 +45,9 @@ def get_profile(geo, profile_name, request):
     session = get_session()
     try:
         comparative_geos = geo_data.get_comparative_geos(geo)
-        tables_charts = DbTableChart.objects
         data = {}
-        charts_def = [r.as_dict() for r in tables_charts.all()]
-        data['table_charts'] = charts_def
-        data['sample_profile_with_charts'] = get_sample_profile_with_charts(geo, session, charts_def)
+        table_charts = [r.as_dict() for r in DbTableChart.objects.all()]
+        data['sample_profile_with_charts'] = get_sample_profile_with_charts(geo, session, table_charts)
         data['primary_release_year'] = current_context().get('year')
         sections = []
 
@@ -117,7 +115,31 @@ def get_profile(geo, profile_name, request):
         session.close()
 
 def get_sample_profile_with_charts(geo, session, tablecharts):
-    return {}
+    data = {}
+    for tablechart in tablecharts:
+        table_data = LOCATIONNOTFOUND
+        table_total_data = 0
+
+        with dataset_context(year='2009'):
+            try:
+                table_data, table_total_data = get_stat_data(
+                    tablechart['field'] , geo, session,
+                    table_name=tablechart['table_id']
+                )
+            except Exception:
+                pass
+
+            data[tablechart['name']] = {
+                'chart': tablechart['chart_type'],
+                'table_data': table_data,
+                'table_total_data': {
+                    "name": "name for total data of %s" % tablechart['name'],
+                    "values": {
+                        "this": table_total_data
+                        },
+                },
+            }
+    return data
 
 def get_demographics_profile(geo, session):
     sex_dist_data = LOCATIONNOTFOUND
