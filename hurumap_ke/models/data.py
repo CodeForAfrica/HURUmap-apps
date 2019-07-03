@@ -32,4 +32,13 @@ class DbTableChart(models.Model):
                 raise ValidationError("Field not in wazimap table field")
 
     def __str__(self):
-        return 'chart-%s-%s-%s' % (self.chart, self.db_table, ('_'.join(self.fields)))
+        return 'chart-%s-%s-%s' % (self.chart, self.db_table.name, ('_'.join(self.fields)))
+
+    def as_dict(self):
+        return {
+            'name': str(self),
+            'table_fields': str(self.field_table),
+            'field': '_'.join(self.fields),
+            'table_id': self.db_table.name,
+            'chart_type': self.chart,
+        }

@@ -10,7 +10,6 @@ from wazimap.data.utils import (calculate_median,
 from wazimap.geo import geo_data, LocationNotFound
 from wazimap.models.data import DataNotFound
 from hurumap_ke.models import DbTableChart
-from django.forms.models import model_to_dict
 
 from utils import *
 
@@ -48,7 +47,9 @@ def get_profile(geo, profile_name, request):
         comparative_geos = geo_data.get_comparative_geos(geo)
         tables_charts = DbTableChart.objects
         data = {}
-        data['table_charts'] = [model_to_dict(r) for r in tables_charts.all()]
+        charts_def = [r.as_dict() for r in tables_charts.all()]
+        data['table_charts'] = charts_def
+        data['sample_profile_with_charts'] = get_sample_profile_with_charts(geo, session, charts_def)
         data['primary_release_year'] = current_context().get('year')
         sections = []
 
@@ -115,6 +116,8 @@ def get_profile(geo, profile_name, request):
     finally:
         session.close()
 
+def get_sample_profile_with_charts(geo, session, tablecharts):
+    return {}
 
 def get_demographics_profile(geo, session):
     sex_dist_data = LOCATIONNOTFOUND
