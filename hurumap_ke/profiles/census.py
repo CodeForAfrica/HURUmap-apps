@@ -9,6 +9,8 @@ from wazimap.data.utils import (calculate_median,
                                 dataset_context)
 from wazimap.geo import geo_data, LocationNotFound
 from wazimap.models.data import DataNotFound
+from hurumap_ke.models import DbTableChart
+from django.forms.models import model_to_dict
 
 from utils import *
 
@@ -44,7 +46,9 @@ def get_profile(geo, profile_name, request):
     session = get_session()
     try:
         comparative_geos = geo_data.get_comparative_geos(geo)
+        tables_charts = DbTableChart.objects
         data = {}
+        data['table_charts'] = [model_to_dict(r) for r in tables_charts.all()]
         data['primary_release_year'] = current_context().get('year')
         sections = []
 

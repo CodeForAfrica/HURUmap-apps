@@ -20,12 +20,13 @@ class DbTableChart(models.Model):
     def clean(self):
         num_field = len(self.fields)
         if num_field > 1 and self.chart != 'grouped_column':
-            raise ValidationError("Charts do not map to fields provided")
+            raise ValidationError("Only one field parameter is needed for this chart")
         if num_field > 2:
-            raise ValidationError("Charts do not map to fields provided")
-        if num_field < 2 and self.chart == 'grouped_column':
-            raise ValidationError("Charts do not map to fields provided")
+            raise ValidationError("Charts can use one or two field parameters")
+        if num_field != 2 and self.chart == 'grouped_column':
+            raise ValidationError("Grouped Column must have two field variable")
 
+        #check if provided chart field is among the table fields on wazimap
         for field in self.fields:
             if not field in str(self.field_table):
                 raise ValidationError("Field not in wazimap table field")
