@@ -9,6 +9,9 @@ from wazimap.data.utils import (calculate_median,
                                 dataset_context)
 from wazimap.geo import geo_data, LocationNotFound
 from wazimap.models.data import DataNotFound
+from wazimap.data.base import Base
+from sqlalchemy import Column, ForeignKey, Integer, String, Table, func, or_, \
+    and_, desc, asc, cast
 
 from utils import *
 
@@ -42,7 +45,10 @@ WATER_SOURCE_RECODES = OrderedDict([
 
 def get_profile(geo, profile_name, request):
     session = get_session()
+    all_charts = []
     try:
+        Base.metadata.reflect()
+        all_chart = session.query(Base.metadata.tables['DbTableChart']).all()
         comparative_geos = geo_data.get_comparative_geos(geo)
         data = {}
         data['primary_release_year'] = current_context().get('year')
@@ -106,6 +112,7 @@ def get_profile(geo, profile_name, request):
             group_remainder(data['households']
                             ['wall_material_distribution'], 5)
         data['afrobarometer'] = get_afrobarometer_profile(geo, session)
+        data['allCharts'] = all_charts
         return data
 
     finally:

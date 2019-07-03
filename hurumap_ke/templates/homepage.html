@@ -1,1 +1,5 @@
 {% extends 'homepage.html' %}{% load humanize partition staticfiles %}
+{% block content_container %}
+  {{ allCharts}}
+  {{ block.super }}
+{% endblock %}
