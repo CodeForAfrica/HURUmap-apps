@@ -1,12 +1,12 @@
 from django.contrib import admin
 
-from .models import DbTableChart
+from .models import Charts
 
 from django import forms
 
 from django.db.models import F, Func
 
-from wazimap.models import Geography, DBTable, FieldTable, FieldTable
+from wazimap.models import DBTable, FieldTable
 
 import json
 
@@ -32,7 +32,7 @@ class ChartsForm(forms.ModelForm):
                                                      .values_list('table_fields', flat=True))))))
 
     class Meta:
-        model = DbTableChart
+        model = Charts
         fields = ['db_table', 'field_table', 'fields', 'chart']
 
     class Media:
@@ -44,4 +44,4 @@ class ChartsAdmin(admin.ModelAdmin):
     list_display = ('db_table', 'field_table', 'chart', 'fields')
 
 
-admin.site.register(DbTableChart, ChartsAdmin)
+admin.site.register(Charts, ChartsAdmin)

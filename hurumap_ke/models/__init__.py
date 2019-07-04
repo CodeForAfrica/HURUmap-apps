@@ -1,1 +1,1 @@
-from .data import DbTableChart
+from .data import Charts

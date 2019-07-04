@@ -4,7 +4,7 @@ from django.core.exceptions import ValidationError
 
 from wazimap.models import Geography, DBTable, FieldTable, FieldTable
 
-class DbTableChart(models.Model):
+class Charts(models.Model):
     CHART_OPTIONS = (
         ('column', 'Column'),
         ('histogram', 'Histogram'),
