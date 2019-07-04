@@ -639,3 +639,25 @@ patch:
         patched: '2019-07-04T02:16:14.080Z'
     - react-scripts > jest > jest-cli > jest-runner > jest-runtime > jest-config > babel-core > babel-register > babel-core > babel-helpers > babel-template > babel-traverse > babel-types > lodash:
         patched: '2019-07-04T02:16:14.080Z'
+    - snyk > @snyk/dep-graph > lodash:
+        patched: '2019-07-04T06:53:14.776Z'
+    - snyk > lodash:
+        patched: '2019-07-04T06:53:14.776Z'
+    - snyk > snyk-mvn-plugin > lodash:
+        patched: '2019-07-04T06:53:14.776Z'
+    - snyk > snyk-config > lodash:
+        patched: '2019-07-04T06:53:14.776Z'
+    - snyk > inquirer > lodash:
+        patched: '2019-07-04T06:53:14.776Z'
+    - snyk > snyk-nodejs-lockfile-parser > lodash:
+        patched: '2019-07-04T06:53:14.776Z'
+    - snyk > snyk-nuget-plugin > lodash:
+        patched: '2019-07-04T06:53:14.776Z'
+    - snyk > snyk-php-plugin > @snyk/composer-lockfile-parser > lodash:
+        patched: '2019-07-04T06:53:14.776Z'
+    - snyk > snyk-nodejs-lockfile-parser > graphlib > lodash:
+        patched: '2019-07-04T06:53:14.776Z'
+    - snyk > snyk-go-plugin > graphlib > lodash:
+        patched: '2019-07-04T06:53:14.776Z'
+    - snyk > @snyk/dep-graph > graphlib > lodash:
+        patched: '2019-07-04T06:53:14.776Z'
