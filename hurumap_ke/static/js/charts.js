@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
     const select = document.getElementById('chart-table');
     const fields = JSON.parse(select.getAttribute('data-fields'));
-
+    const chartypes= document.getElementById('chart-type').options;
+    let fieldSelected = 0
 
     const inputs = document.querySelectorAll('input[id^=chart-table-field_]');
     [...inputs].forEach(input => {
-        console.log(input)
         input.parentElement.parentElement.style.display = 'none';
     });
 
@@ -23,5 +23,26 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
         }
+        const fieldCheckList = document.getElementById('chart-table-field');
+        fieldCheckList.onchange = (e) => {
+            fieldSelected = document.querySelectorAll('input[id^=chart-table-field_]:checked').length;
+            if(fieldSelected === 1 ) {
+                [...chartypes].forEach(option => {
+                    option.style.display = 'block';
+                });
+                chartypes.options[3].style.display = 'none';
+            }
+            else if(fieldSelected === 2) {
+                [...chartypes].forEach(option => {
+                    option.style.display = 'none';
+                });
+                chartypes.options[3].style.display = 'none';
+            } else {
+                [...chartypes].forEach(option => {
+                    option.style.display = 'block';
+                });
+            }
+        }
+
     };
 });
