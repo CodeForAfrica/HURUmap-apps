@@ -9,7 +9,7 @@ from wazimap.data.utils import (calculate_median,
                                 dataset_context)
 from wazimap.geo import geo_data, LocationNotFound
 from wazimap.models.data import DataNotFound
-from hurumap_ke.models import DbTableChart
+from hurumap_ke.models import Charts
 
 from utils import *
 
@@ -46,7 +46,7 @@ def get_profile(geo, profile_name, request):
     try:
         comparative_geos = geo_data.get_comparative_geos(geo)
         data = {}
-        table_charts = [r.as_dict() for r in DbTableChart.objects.all()]
+        table_charts = [r.as_dict() for r in Charts.objects.all()]
         data['sample_profile_with_charts'] = get_sample_profile_with_charts(geo, session, table_charts)
         data['primary_release_year'] = current_context().get('year')
         sections = []
