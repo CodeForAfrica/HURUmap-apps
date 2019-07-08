@@ -25,20 +25,25 @@ class ChartForm(forms.ModelForm):
         ('pie', 'Pie Chart')
     )
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['db_table'].widget.attrs.update({'data-fields': json.dumps(
+                                list(FieldTable.objects.values('name', 'fields'))
+                            )})
+        self.fields['fields'].choices=tuple(map(lambda x: (x, x), list(set(FieldTable.objects
+                                                     .annotate(table_fields=Func(F('fields'), function='UNNEST'))
+                                                     .values_list('table_fields', flat=True)))))
+
     db_table = CustomChoiceField(
         widget=forms.Select(attrs={
                             'id': 'chart-table',
-                            'data-fields': json.dumps(
-                                list(FieldTable.objects.values('name', 'fields'))
-                            )}
+                            'data-fields': '{}'}
                             ),
         queryset=DBTable.objects.all())
 
     fields = forms.MultipleChoiceField(
-        widget=forms.CheckboxSelectMultiple(attrs={'id': 'chart-table-field'}),
-        choices=tuple(map(lambda x: (x, x), list(set(FieldTable.objects
-                                                     .annotate(table_fields=Func(F('fields'), function='UNNEST'))
-                                                     .values_list('table_fields', flat=True))))))
+        widget=forms.CheckboxSelectMultiple(attrs={'id': 'chart-table-field'}))
+
     chart_type = forms.ChoiceField(
         choices=CHART_TYPES,
         widget=forms.Select(attrs= {'id': 'chart-type'} ))
