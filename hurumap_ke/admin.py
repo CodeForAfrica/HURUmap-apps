@@ -7,6 +7,12 @@ from django.utils.html import format_html
 
 import json
 
+# (
+#         ('column', 'Column'),
+#         ('histogram', 'Histogram'),
+#         ('line', 'Line'),
+#         ('grouped_column', 'Grouped Column'),
+#         ('pie', 'Pie Chart')
 
 class CustomChoiceField(forms.ModelChoiceField):
     def label_from_instance(self, obj):
@@ -14,16 +20,26 @@ class CustomChoiceField(forms.ModelChoiceField):
 
 class ChartChoiceField(forms.ModelChoiceField):
     def label_from_instance(self, obj):
-        return format_html('<i class="fa fa-line-chart" aria-hidden="true"></i>')
+        return format_html('<i class="fa {}" aria-hidden="true"></i> {}', obj.classname, obj.name)
 
 class ChartForm(forms.ModelForm):
-    CHART_TYPES = (
-        ('column', 'Column'),
-        ('histogram', 'Histogram'),
-        ('line', 'Line'),
-        ('grouped_column', 'Grouped Column'),
-        ('pie', 'Pie Chart')
-    )
+    CHART_TYPES = {
+       "column": { "name": "Column",
+          "classname": "fa-line-chart"
+        },
+      "column":  { "name": "Column",
+          "classname": "fa-line-chart"
+        },
+       "column": { "name": "Column",
+          "classname": "fa-line-chart"
+        },
+     "column":   { "name": "Column",
+          "classname": "fa-line-chart"
+        },
+      "column":  { "name": "Column",
+          "classname": "fa-line-chart"
+        },
+    }
 
     db_table = CustomChoiceField(
         widget=forms.Select(attrs={
@@ -39,8 +55,9 @@ class ChartForm(forms.ModelForm):
         choices=tuple(map(lambda x: (x, x), list(set(FieldTable.objects
                                                      .annotate(table_fields=Func(F('fields'), function='UNNEST'))
                                                      .values_list('table_fields', flat=True))))))
-    chart_type = forms.ChoiceField(
-        choices=CHART_TYPES,
+    chart_type = forms.ChartChoiceField(
+        queryset=CHART_TYPES,
+        to_field_name="name",
         widget=forms.Select(attrs= {'id': 'chart-type'} ))
 
     class Meta:
