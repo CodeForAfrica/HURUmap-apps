@@ -4,15 +4,10 @@ from django import forms
 from django.db.models import F, Func
 from wazimap.models import DBTable, FieldTable
 from django.utils.html import format_html
+from django.forms.models import BaseInlineFormSet
 
 import json
 
-# (
-#         ('column', 'Column'),
-#         ('histogram', 'Histogram'),
-#         ('line', 'Line'),
-#         ('grouped_column', 'Grouped Column'),
-#         ('pie', 'Pie Chart')
 
 class CustomChoiceField(forms.ModelChoiceField):
     def label_from_instance(self, obj):
@@ -23,23 +18,14 @@ class ChartChoiceField(forms.ModelChoiceField):
         return format_html('<i class="fa {}" aria-hidden="true"></i> {}', obj.classname, obj.name)
 
 class ChartForm(forms.ModelForm):
-    CHART_TYPES = {
-       "column": { "name": "Column",
-          "classname": "fa-line-chart"
-        },
-      "column":  { "name": "Column",
-          "classname": "fa-line-chart"
-        },
-       "column": { "name": "Column",
-          "classname": "fa-line-chart"
-        },
-     "column":   { "name": "Column",
-          "classname": "fa-line-chart"
-        },
-      "column":  { "name": "Column",
-          "classname": "fa-line-chart"
-        },
-    }
+    CHART_TYPES = (
+        ('', '----------'),
+        ('column', 'Column'),
+        ('histogram', 'Histogram'),
+        ('line', 'Line'),
+        ('grouped_column', 'Grouped Column'),
+        ('pie', 'Pie Chart')
+    )
 
     db_table = CustomChoiceField(
         widget=forms.Select(attrs={
@@ -55,9 +41,8 @@ class ChartForm(forms.ModelForm):
         choices=tuple(map(lambda x: (x, x), list(set(FieldTable.objects
                                                      .annotate(table_fields=Func(F('fields'), function='UNNEST'))
                                                      .values_list('table_fields', flat=True))))))
-    chart_type = forms.ChartChoiceField(
-        queryset=CHART_TYPES,
-        to_field_name="name",
+    chart_type = forms.ChoiceField(
+        choices=CHART_TYPES,
         widget=forms.Select(attrs= {'id': 'chart-type'} ))
 
     class Meta:
@@ -80,8 +65,11 @@ class ChartInline(admin.StackedInline):
     min_num = 1
 
 class ChartSectionAdmin(admin.ModelAdmin):
-    inlines = (ChartInline, )
-
+    inlines = [
+        ChartInline, 
+    ]
+    class Media:
+        js = ('js/charts.js',)
 
 admin.site.register(Chart, ChartAdmin)
 admin.site.register(ChartSection, ChartSectionAdmin)

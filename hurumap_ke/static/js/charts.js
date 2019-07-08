@@ -30,13 +30,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 [...chartypes].forEach(option => {
                     option.style.display = 'block';
                 });
-                chartypes.options[3].style.display = 'none';
+                chartypes[4].style.display = 'none';
             }
             else if(fieldSelected === 2) {
                 [...chartypes].forEach(option => {
                     option.style.display = 'none';
                 });
-                chartypes.options[3].style.display = 'none';
+                chartypes[4].style.display = 'block';
             } else {
                 [...chartypes].forEach(option => {
                     option.style.display = 'block';
