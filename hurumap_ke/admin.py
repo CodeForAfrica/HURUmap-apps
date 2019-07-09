@@ -88,7 +88,5 @@ class ChartSectionAdmin(admin.ModelAdmin):
     inlines = [
         ChartInline, 
     ]
-    class Media:
-        js = ('js/charts.js',)
 
 admin.site.register(ChartSection, ChartSectionAdmin)

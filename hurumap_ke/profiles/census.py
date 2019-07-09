@@ -9,7 +9,7 @@ from wazimap.data.utils import (calculate_median,
                                 dataset_context)
 from wazimap.geo import geo_data, LocationNotFound
 from wazimap.models.data import DataNotFound
-from hurumap_ke.models import Charts
+from hurumap_ke.models import Chart
 
 from utils import *
 
@@ -46,7 +46,7 @@ def get_profile(geo, profile_name, request):
     try:
         comparative_geos = geo_data.get_comparative_geos(geo)
         data = {}
-        table_charts = [r.as_dict() for r in Charts.objects.all()]
+        table_charts = [r.as_dict() for r in Chart.objects.all()]
         data['sample_profile_with_charts'] = get_sample_profile_with_charts(geo, session, table_charts)
         data['primary_release_year'] = current_context().get('year')
         sections = []
@@ -123,7 +123,7 @@ def get_sample_profile_with_charts(geo, session, tablecharts):
         with dataset_context(year='2009'):
             try:
                 table_data, table_total_data = get_stat_data(
-                    tablechart['field'] , geo, session,
+                    tablechart['field'].split('_') , geo, session,
                     table_name=tablechart['table_id']
                 )
             except Exception:
@@ -131,6 +131,9 @@ def get_sample_profile_with_charts(geo, session, tablecharts):
 
             data[tablechart['name']] = {
                 'chart': tablechart['chart_type'],
+                'title': tablechart['title'],
+                'section': tablechart['section'],
+                'fields': tablechart['field'],
                 'table_data': table_data,
                 'table_total_data': {
                     "name": "name for total data of %s" % tablechart['name'],
