@@ -14,6 +14,8 @@ class ChartSection(models.Model):
         return self.name
 
     class Meta:
+        verbose_name = 'Chart Section '
+        verbose_name_plural = 'Chart Sections'
         ordering = ['name']
 
 class Chart(models.Model):
@@ -21,6 +23,7 @@ class Chart(models.Model):
     field_table = models.ForeignKey(FieldTable, on_delete=models.CASCADE)
     chart_type = models.CharField(max_length=32, null=False)
     fields = ArrayField(models.CharField(max_length=150, null=False, unique=True), help_text="Comma-separated fields to be included in chart. Choose one field for one Column, Histogram or Pie. And Choose two fields for grouped column")
+    chart_title = models.CharField(max_length=100, null=True)
     section = models.ForeignKey(ChartSection, related_name='sections', null=True, on_delete=models.CASCADE)
 
     def clean(self):
@@ -43,6 +46,7 @@ class Chart(models.Model):
     def as_dict(self):
         return {
             'name': str(self),
+            'title': self.chart_title,
             'table_fields': str(self.field_table),
             'field': '_'.join(self.fields),
             'table_id': self.db_table.name,

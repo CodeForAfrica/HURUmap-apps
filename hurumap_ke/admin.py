@@ -66,7 +66,7 @@ class ChartForm(forms.ModelForm):
 
     class Meta:
         model = Chart
-        fields = ["db_table", "fields", "chart_type"]
+        fields = ["db_table", "fields", "chart_type", "chart_title"]
 
     class Media:
         js = ("js/charts.js",)
@@ -74,7 +74,7 @@ class ChartForm(forms.ModelForm):
 
 class ChartAdmin(admin.ModelAdmin):
     form = ChartForm
-    list_display = ("db_table", "fields", "chart_type")
+    list_display = ("db_table", "fields", "chart_type", "chart_title")
 
 
 class ChartInline(admin.StackedInline):
@@ -91,5 +91,4 @@ class ChartSectionAdmin(admin.ModelAdmin):
     class Media:
         js = ('js/charts.js',)
 
-admin.site.register(Chart, ChartAdmin)
 admin.site.register(ChartSection, ChartSectionAdmin)
