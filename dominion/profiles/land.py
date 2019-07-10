@@ -92,6 +92,7 @@ def get_table_profile_with_charts(geo, session, tablechart, year):
         'title': tablechart['title'],
         'section': tablechart['section'],
         'fields': tablechart['field'],
+        'stat_type': tablechart['stat_type'],
         'table_data': table_data,
         'table_total_data': {
             "name": "name for total data of %s" % tablechart['name'],
