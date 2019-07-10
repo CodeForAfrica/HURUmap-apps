@@ -54,16 +54,14 @@ class ChartForm(forms.ModelForm):
     db_table = CustomChoiceField(
         widget=forms.Select(attrs={"id": "chart-table", "data-fields": "{}"}),
         queryset=DBTable.objects.all(),
-        label='Table'
     )
 
     fields = forms.MultipleChoiceField(
-        widget=forms.CheckboxSelectMultiple(attrs={"id": "chart-table-field"}),
-        label='Chart Fields'
+        widget=forms.CheckboxSelectMultiple(attrs={"id": "chart-table-field"})
     )
 
     chart_type = forms.ChoiceField(
-        choices=CHART_TYPES, widget=forms.Select(attrs={"id": "chart-type"}, label='Chart Type')
+        choices=CHART_TYPES, widget=forms.Select(attrs={"id": "chart-type"})
     )
 
     class Meta:
