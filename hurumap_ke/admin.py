@@ -66,7 +66,7 @@ class ChartForm(forms.ModelForm):
 
     class Meta:
         model = Chart
-        fields = ["db_table", "fields", "chart_type", "chart_title"]
+        fields = ["db_table", "fields", "chart_type", "chart_title", "chart_source", "chart_source_link"]
 
     class Media:
         js = ("js/charts.js",)
@@ -74,7 +74,7 @@ class ChartForm(forms.ModelForm):
 
 class ChartAdmin(admin.ModelAdmin):
     form = ChartForm
-    list_display = ("db_table", "fields", "chart_type", "chart_title")
+    list_display = ("db_table", "fields", "chart_type", "chart_title", "chart_source", "chart_source_link")
 
 
 class ChartInline(admin.StackedInline):
