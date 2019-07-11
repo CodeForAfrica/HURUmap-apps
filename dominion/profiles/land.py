@@ -9,7 +9,7 @@ from collections import OrderedDict
 from wazimap.data.base import Base
 from sqlalchemy import Column, ForeignKey, Integer, String, Table, func, or_, and_, desc, asc, cast
 from wazimap.models.data import DataNotFound
-from dominion.models import Chart
+from dominion.models import Chart, ChartSection
 
 from dominion.data.utils import get_primary_release_year_per_geography
 
@@ -31,6 +31,7 @@ def get_profile(geo, profile_name, request):
     try:
         comparative_geos = geo_data.get_comparative_geos(geo)
         charts = {}
+        data['sections'] = [s.name for s in ChartSection.objects.all()]
         table_charts = [r.as_dict() for r in Chart.objects.all()]
         (country_code, level) = get_country_and_level(geo)
         available_releases = settings.HURUMAP.get('available_releases_years_per_country', {})
@@ -54,7 +55,7 @@ def get_profile(geo, profile_name, request):
                         log.fatal(msg, exc_info=e)
                         raise ValueError(msg)
 
-                if not charts[tablechart['name']]['table_data']['is_missing']:
+                if not charts[tablechart['name']]['table_data'].get('is_missing'):
                     break
         data['charts'] = charts
         return data
