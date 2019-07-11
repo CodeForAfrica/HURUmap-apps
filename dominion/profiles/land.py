@@ -32,6 +32,7 @@ def get_profile(geo, profile_name, request):
         comparative_geos = geo_data.get_comparative_geos(geo)
         charts = {}
         data['sections'] = [s.name for s in ChartSection.objects.all()]
+        data['total_population'] = 0
         table_charts = [r.as_dict() for r in Chart.objects.all()]
         (country_code, level) = get_country_and_level(geo)
         available_releases = settings.HURUMAP.get('available_releases_years_per_country', {})
@@ -57,6 +58,11 @@ def get_profile(geo, profile_name, request):
 
                 if not charts[tablechart['name']]['table_data'].get('is_missing'):
                     break
+            
+            #get total population
+            if "population" in tablechart['name'] and data["total_population"] == 0:
+                data['total_population'] = charts[tablechart['name']]['table_total_data']['values']['this']
+
         data['charts'] = charts
         return data
 
@@ -81,7 +87,7 @@ def get_table_profile_with_charts(geo, session, tablechart, year):
     with dataset_context(year=year):
         try:
             table_data, table_total_data = get_stat_data(
-                tablechart['field'].split('_') , geo, session,
+                tablechart['field'].split(',') , geo, session,
                 table_name=tablechart['table_id']
             )
         except Exception:

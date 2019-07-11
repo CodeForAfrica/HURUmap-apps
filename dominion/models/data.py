@@ -45,7 +45,7 @@ class Chart(models.Model):
         return {
             'name': str(self),
             'title': self.chart_title,
-            'field': '_'.join(self.fields),
+            'field': ','.join(self.fields),
             'stat_type': self.chart_stat_type,
             'table_id': self.db_table.name,
             'chart_type': self.chart_type,
