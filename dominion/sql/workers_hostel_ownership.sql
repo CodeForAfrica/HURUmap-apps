@@ -37,14 +37,14 @@ CREATE TABLE public.workers_hostel_ownership (
 --
 
 COPY public.workers_hostel_ownership (geo_level, geo_code, geo_version, workers_hostel_ownership, total) FROM stdin;
-province	WC	2009	Rented	10161
-province	WC	2009	Owned; but not yet paid off to bank/financial institution	0
-province	WC	2009	Rented from other (incl municipality and social housing institutions)	0
-province	WC	2009	Owned; but not yet paid off to private lender	0
-province	WC	2009	Owned and fully paid off	6150
-province	WC	2009	Occupied rent-free	10128
-province	WC	2009	Other	0
-province	WC	2009	Do not know	0
+province	ZA_1_008	2009	Rented	10161
+province	ZA_1_008	2009	Owned; but not yet paid off to bank/financial institution	0
+province	ZA_1_008	2009	Rented from other (incl municipality and social housing institutions)	0
+province	ZA_1_008	2009	Owned; but not yet paid off to private lender	0
+province	ZA_1_008	2009	Owned and fully paid off	6150
+province	ZA_1_008	2009	Occupied rent-free	10128
+province	ZA_1_008	2009	Other	0
+province	ZA_1_008	2009	Do not know	0
 country	ZA	2009	Rented	114113
 country	ZA	2009	Owned; but not yet paid off to bank/financial institution	31641
 country	ZA	2009	Rented from other (incl municipality and social housing institutions)	0
@@ -53,70 +53,70 @@ country	ZA	2009	Owned and fully paid off	62502
 country	ZA	2009	Occupied rent-free	204899
 country	ZA	2009	Other	5711
 country	ZA	2009	Do not know	4067
-province	NC	2009	Rented	13422
-province	NC	2009	Owned; but not yet paid off to bank/financial institution	4422
-province	NC	2009	Rented from other (incl municipality and social housing institutions)	0
-province	NC	2009	Owned; but not yet paid off to private lender	0
-province	NC	2009	Owned and fully paid off	3605
-province	NC	2009	Occupied rent-free	8660
-province	NC	2009	Other	0
-province	NC	2009	Do not know	0
-province	NW	2009	Rented	780
-province	NW	2009	Owned; but not yet paid off to bank/financial institution	9507
-province	NW	2009	Rented from other (incl municipality and social housing institutions)	0
-province	NW	2009	Owned; but not yet paid off to private lender	0
-province	NW	2009	Owned and fully paid off	0
-province	NW	2009	Occupied rent-free	8513
-province	NW	2009	Other	0
-province	NW	2009	Do not know	0
-province	MP	2009	Rented	13685
-province	MP	2009	Owned; but not yet paid off to bank/financial institution	3890
-province	MP	2009	Rented from other (incl municipality and social housing institutions)	0
-province	MP	2009	Owned; but not yet paid off to private lender	0
-province	MP	2009	Owned and fully paid off	3712
-province	MP	2009	Occupied rent-free	33127
-province	MP	2009	Other	499
-province	MP	2009	Do not know	0
-province	LIM	2009	Rented	10879
-province	LIM	2009	Owned; but not yet paid off to bank/financial institution	10541
-province	LIM	2009	Rented from other (incl municipality and social housing institutions)	0
-province	LIM	2009	Owned; but not yet paid off to private lender	0
-province	LIM	2009	Owned and fully paid off	1156
-province	LIM	2009	Occupied rent-free	17557
-province	LIM	2009	Other	771
-province	LIM	2009	Do not know	0
-province	KZN	2009	Rented	21379
-province	KZN	2009	Owned; but not yet paid off to bank/financial institution	1568
-province	KZN	2009	Rented from other (incl municipality and social housing institutions)	0
-province	KZN	2009	Owned; but not yet paid off to private lender	0
-province	KZN	2009	Owned and fully paid off	13515
-province	KZN	2009	Occupied rent-free	36720
-province	KZN	2009	Other	1257
-province	KZN	2009	Do not know	4067
-province	GT	2009	Rented	41401
-province	GT	2009	Owned; but not yet paid off to bank/financial institution	1713
-province	GT	2009	Rented from other (incl municipality and social housing institutions)	0
-province	GT	2009	Owned; but not yet paid off to private lender	0
-province	GT	2009	Owned and fully paid off	22079
-province	GT	2009	Occupied rent-free	74777
-province	GT	2009	Other	1877
-province	GT	2009	Do not know	0
-province	FS	2009	Rented	994
-province	FS	2009	Owned; but not yet paid off to bank/financial institution	0
-province	FS	2009	Rented from other (incl municipality and social housing institutions)	0
-province	FS	2009	Owned; but not yet paid off to private lender	0
-province	FS	2009	Owned and fully paid off	4202
-province	FS	2009	Occupied rent-free	0
-province	FS	2009	Other	0
-province	FS	2009	Do not know	0
-province	EC	2009	Rented	1412
-province	EC	2009	Owned; but not yet paid off to bank/financial institution	0
-province	EC	2009	Rented from other (incl municipality and social housing institutions)	0
-province	EC	2009	Owned; but not yet paid off to private lender	6153
-province	EC	2009	Owned and fully paid off	8083
-province	EC	2009	Occupied rent-free	15417
-province	EC	2009	Other	1307
-province	EC	2009	Do not know	0
+province	ZA_1_006	2009	Rented	13422
+province	ZA_1_006	2009	Owned; but not yet paid off to bank/financial institution	4422
+province	ZA_1_006	2009	Rented from other (incl municipality and social housing institutions)	0
+province	ZA_1_006	2009	Owned; but not yet paid off to private lender	0
+province	ZA_1_006	2009	Owned and fully paid off	3605
+province	ZA_1_006	2009	Occupied rent-free	8660
+province	ZA_1_006	2009	Other	0
+province	ZA_1_006	2009	Do not know	0
+province	ZA_1_007	2009	Rented	780
+province	ZA_1_007	2009	Owned; but not yet paid off to bank/financial institution	9507
+province	ZA_1_007	2009	Rented from other (incl municipality and social housing institutions)	0
+province	ZA_1_007	2009	Owned; but not yet paid off to private lender	0
+province	ZA_1_007	2009	Owned and fully paid off	0
+province	ZA_1_007	2009	Occupied rent-free	8513
+province	ZA_1_007	2009	Other	0
+province	ZA_1_007	2009	Do not know	0
+province	ZA_1_004	2009	Rented	13685
+province	ZA_1_004	2009	Owned; but not yet paid off to bank/financial institution	3890
+province	ZA_1_004	2009	Rented from other (incl municipality and social housing institutions)	0
+province	ZA_1_004	2009	Owned; but not yet paid off to private lender	0
+province	ZA_1_004	2009	Owned and fully paid off	3712
+province	ZA_1_004	2009	Occupied rent-free	33127
+province	ZA_1_004	2009	Other	499
+province	ZA_1_004	2009	Do not know	0
+province	ZA_1_005	2009	Rented	10879
+province	ZA_1_005	2009	Owned; but not yet paid off to bank/financial institution	10541
+province	ZA_1_005	2009	Rented from other (incl municipality and social housing institutions)	0
+province	ZA_1_005	2009	Owned; but not yet paid off to private lender	0
+province	ZA_1_005	2009	Owned and fully paid off	1156
+province	ZA_1_005	2009	Occupied rent-free	17557
+province	ZA_1_005	2009	Other	771
+province	ZA_1_005	2009	Do not know	0
+province	ZA_1_001	2009	Rented	21379
+province	ZA_1_001	2009	Owned; but not yet paid off to bank/financial institution	1568
+province	ZA_1_001	2009	Rented from other (incl municipality and social housing institutions)	0
+province	ZA_1_001	2009	Owned; but not yet paid off to private lender	0
+province	ZA_1_001	2009	Owned and fully paid off	13515
+province	ZA_1_001	2009	Occupied rent-free	36720
+province	ZA_1_001	2009	Other	1257
+province	ZA_1_001	2009	Do not know	4067
+province	ZA_1_009	2009	Rented	41401
+province	ZA_1_009	2009	Owned; but not yet paid off to bank/financial institution	1713
+province	ZA_1_009	2009	Rented from other (incl municipality and social housing institutions)	0
+province	ZA_1_009	2009	Owned; but not yet paid off to private lender	0
+province	ZA_1_009	2009	Owned and fully paid off	22079
+province	ZA_1_009	2009	Occupied rent-free	74777
+province	ZA_1_009	2009	Other	1877
+province	ZA_1_009	2009	Do not know	0
+province	ZA_1_002	2009	Rented	994
+province	ZA_1_002	2009	Owned; but not yet paid off to bank/financial institution	0
+province	ZA_1_002	2009	Rented from other (incl municipality and social housing institutions)	0
+province	ZA_1_002	2009	Owned; but not yet paid off to private lender	0
+province	ZA_1_002	2009	Owned and fully paid off	4202
+province	ZA_1_002	2009	Occupied rent-free	0
+province	ZA_1_002	2009	Other	0
+province	ZA_1_002	2009	Do not know	0
+province	ZA_1_003	2009	Rented	1412
+province	ZA_1_003	2009	Owned; but not yet paid off to bank/financial institution	0
+province	ZA_1_003	2009	Rented from other (incl municipality and social housing institutions)	0
+province	ZA_1_003	2009	Owned; but not yet paid off to private lender	6153
+province	ZA_1_003	2009	Owned and fully paid off	8083
+province	ZA_1_003	2009	Occupied rent-free	15417
+province	ZA_1_003	2009	Other	1307
+province	ZA_1_003	2009	Do not know	0
 \.
 
 

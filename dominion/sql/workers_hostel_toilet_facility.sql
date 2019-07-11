@@ -37,114 +37,114 @@ CREATE TABLE public.workers_hostel_toilet_facility (
 --
 
 COPY public.workers_hostel_toilet_facility (geo_level, geo_code, geo_version, workers_hostel_toilet_facility, total) FROM stdin;
-province	WC	2009	Flush toilet connected to a public sewerage system	8589
-province	WC	2009	Flush toilet connected to a septic tank or conservancy tank	13400
-province	WC	2009	Pour flush toilet connected to a septic tank (or septage pit)	0
-province	WC	2009	Chemical toilet	0
-province	WC	2009	Pit latrine/toilet with ventilation pipe	2135
-province	WC	2009	Pit latrine/toilet without ventilation pipe	0
-province	WC	2009	Bucket toilet (collected by municipality)	2315
-province	WC	2009	Bucket toilet (emptied by household)	0
-province	WC	2009	Ecological Sanitation System (e.g. urine diversion)	0
-province	WC	2009	Open defecation (e.g. no facilities; field; bush)	0
-province	WC	2009	Other	0
-province	WC	2009	Unspecified	0
-province	EC	2009	Flush toilet connected to a public sewerage system	19158
-province	EC	2009	Flush toilet connected to a septic tank or conservancy tank	0
-province	EC	2009	Pour flush toilet connected to a septic tank (or septage pit)	0
-province	EC	2009	Chemical toilet	0
-province	EC	2009	Pit latrine/toilet with ventilation pipe	13214
-province	EC	2009	Pit latrine/toilet without ventilation pipe	0
-province	EC	2009	Bucket toilet (collected by municipality)	0
-province	EC	2009	Bucket toilet (emptied by household)	0
-province	EC	2009	Ecological Sanitation System (e.g. urine diversion)	0
-province	EC	2009	Open defecation (e.g. no facilities; field; bush)	0
-province	EC	2009	Other	0
-province	EC	2009	Unspecified	0
-province	NC	2009	Flush toilet connected to a public sewerage system	23286
-province	NC	2009	Flush toilet connected to a septic tank or conservancy tank	2583
-province	NC	2009	Pour flush toilet connected to a septic tank (or septage pit)	465
-province	NC	2009	Chemical toilet	0
-province	NC	2009	Pit latrine/toilet with ventilation pipe	2013
-province	NC	2009	Pit latrine/toilet without ventilation pipe	1445
-province	NC	2009	Bucket toilet (collected by municipality)	0
-province	NC	2009	Bucket toilet (emptied by household)	0
-province	NC	2009	Ecological Sanitation System (e.g. urine diversion)	0
-province	NC	2009	Open defecation (e.g. no facilities; field; bush)	317
-province	NC	2009	Other	0
-province	NC	2009	Unspecified	0
-province	FS	2009	Flush toilet connected to a public sewerage system	5195
-province	FS	2009	Flush toilet connected to a septic tank or conservancy tank	0
-province	FS	2009	Pour flush toilet connected to a septic tank (or septage pit)	0
-province	FS	2009	Chemical toilet	0
-province	FS	2009	Pit latrine/toilet with ventilation pipe	0
-province	FS	2009	Pit latrine/toilet without ventilation pipe	0
-province	FS	2009	Bucket toilet (collected by municipality)	0
-province	FS	2009	Bucket toilet (emptied by household)	0
-province	FS	2009	Ecological Sanitation System (e.g. urine diversion)	0
-province	FS	2009	Open defecation (e.g. no facilities; field; bush)	0
-province	FS	2009	Other	0
-province	FS	2009	Unspecified	0
-province	KZN	2009	Flush toilet connected to a public sewerage system	6510
-province	KZN	2009	Flush toilet connected to a septic tank or conservancy tank	14130
-province	KZN	2009	Pour flush toilet connected to a septic tank (or septage pit)	1380
-province	KZN	2009	Chemical toilet	2522
-province	KZN	2009	Pit latrine/toilet with ventilation pipe	17783
-province	KZN	2009	Pit latrine/toilet without ventilation pipe	34855
-province	KZN	2009	Bucket toilet (collected by municipality)	1326
-province	KZN	2009	Bucket toilet (emptied by household)	0
-province	KZN	2009	Ecological Sanitation System (e.g. urine diversion)	0
-province	KZN	2009	Open defecation (e.g. no facilities; field; bush)	0
-province	KZN	2009	Other	0
-province	KZN	2009	Unspecified	0
-province	NW	2009	Flush toilet connected to a public sewerage system	13231
-province	NW	2009	Flush toilet connected to a septic tank or conservancy tank	0
-province	NW	2009	Pour flush toilet connected to a septic tank (or septage pit)	0
-province	NW	2009	Chemical toilet	0
-province	NW	2009	Pit latrine/toilet with ventilation pipe	4692
-province	NW	2009	Pit latrine/toilet without ventilation pipe	877
-province	NW	2009	Bucket toilet (collected by municipality)	0
-province	NW	2009	Bucket toilet (emptied by household)	0
-province	NW	2009	Ecological Sanitation System (e.g. urine diversion)	0
-province	NW	2009	Open defecation (e.g. no facilities; field; bush)	0
-province	NW	2009	Other	0
-province	NW	2009	Unspecified	0
-province	GT	2009	Flush toilet connected to a public sewerage system	130025
-province	GT	2009	Flush toilet connected to a septic tank or conservancy tank	0
-province	GT	2009	Pour flush toilet connected to a septic tank (or septage pit)	704
-province	GT	2009	Chemical toilet	0
-province	GT	2009	Pit latrine/toilet with ventilation pipe	4726
-province	GT	2009	Pit latrine/toilet without ventilation pipe	3103
-province	GT	2009	Bucket toilet (collected by municipality)	3289
-province	GT	2009	Bucket toilet (emptied by household)	0
-province	GT	2009	Ecological Sanitation System (e.g. urine diversion)	0
-province	GT	2009	Open defecation (e.g. no facilities; field; bush)	0
-province	GT	2009	Other	0
-province	GT	2009	Unspecified	0
-province	MP	2009	Flush toilet connected to a public sewerage system	27133
-province	MP	2009	Flush toilet connected to a septic tank or conservancy tank	21654
-province	MP	2009	Pour flush toilet connected to a septic tank (or septage pit)	0
-province	MP	2009	Chemical toilet	0
-province	MP	2009	Pit latrine/toilet with ventilation pipe	1442
-province	MP	2009	Pit latrine/toilet without ventilation pipe	2272
-province	MP	2009	Bucket toilet (collected by municipality)	0
-province	MP	2009	Bucket toilet (emptied by household)	0
-province	MP	2009	Ecological Sanitation System (e.g. urine diversion)	0
-province	MP	2009	Open defecation (e.g. no facilities; field; bush)	1653
-province	MP	2009	Other	0
-province	MP	2009	Unspecified	759
-province	LIM	2009	Flush toilet connected to a public sewerage system	2484
-province	LIM	2009	Flush toilet connected to a septic tank or conservancy tank	11471
-province	LIM	2009	Pour flush toilet connected to a septic tank (or septage pit)	1388
-province	LIM	2009	Chemical toilet	0
-province	LIM	2009	Pit latrine/toilet with ventilation pipe	4239
-province	LIM	2009	Pit latrine/toilet without ventilation pipe	16975
-province	LIM	2009	Bucket toilet (collected by municipality)	0
-province	LIM	2009	Bucket toilet (emptied by household)	0
-province	LIM	2009	Ecological Sanitation System (e.g. urine diversion)	0
-province	LIM	2009	Open defecation (e.g. no facilities; field; bush)	4346
-province	LIM	2009	Other	0
-province	LIM	2009	Unspecified	0
+province	ZA_1_008	2009	Flush toilet connected to a public sewerage system	8589
+province	ZA_1_008	2009	Flush toilet connected to a septic tank or conservancy tank	13400
+province	ZA_1_008	2009	Pour flush toilet connected to a septic tank (or septage pit)	0
+province	ZA_1_008	2009	Chemical toilet	0
+province	ZA_1_008	2009	Pit latrine/toilet with ventilation pipe	2135
+province	ZA_1_008	2009	Pit latrine/toilet without ventilation pipe	0
+province	ZA_1_008	2009	Bucket toilet (collected by municipality)	2315
+province	ZA_1_008	2009	Bucket toilet (emptied by household)	0
+province	ZA_1_008	2009	Ecological Sanitation System (e.g. urine diversion)	0
+province	ZA_1_008	2009	Open defecation (e.g. no facilities; field; bush)	0
+province	ZA_1_008	2009	Other	0
+province	ZA_1_008	2009	Unspecified	0
+province	ZA_1_003	2009	Flush toilet connected to a public sewerage system	19158
+province	ZA_1_003	2009	Flush toilet connected to a septic tank or conservancy tank	0
+province	ZA_1_003	2009	Pour flush toilet connected to a septic tank (or septage pit)	0
+province	ZA_1_003	2009	Chemical toilet	0
+province	ZA_1_003	2009	Pit latrine/toilet with ventilation pipe	13214
+province	ZA_1_003	2009	Pit latrine/toilet without ventilation pipe	0
+province	ZA_1_003	2009	Bucket toilet (collected by municipality)	0
+province	ZA_1_003	2009	Bucket toilet (emptied by household)	0
+province	ZA_1_003	2009	Ecological Sanitation System (e.g. urine diversion)	0
+province	ZA_1_003	2009	Open defecation (e.g. no facilities; field; bush)	0
+province	ZA_1_003	2009	Other	0
+province	ZA_1_003	2009	Unspecified	0
+province	ZA_1_006	2009	Flush toilet connected to a public sewerage system	23286
+province	ZA_1_006	2009	Flush toilet connected to a septic tank or conservancy tank	2583
+province	ZA_1_006	2009	Pour flush toilet connected to a septic tank (or septage pit)	465
+province	ZA_1_006	2009	Chemical toilet	0
+province	ZA_1_006	2009	Pit latrine/toilet with ventilation pipe	2013
+province	ZA_1_006	2009	Pit latrine/toilet without ventilation pipe	1445
+province	ZA_1_006	2009	Bucket toilet (collected by municipality)	0
+province	ZA_1_006	2009	Bucket toilet (emptied by household)	0
+province	ZA_1_006	2009	Ecological Sanitation System (e.g. urine diversion)	0
+province	ZA_1_006	2009	Open defecation (e.g. no facilities; field; bush)	317
+province	ZA_1_006	2009	Other	0
+province	ZA_1_006	2009	Unspecified	0
+province	ZA_1_002	2009	Flush toilet connected to a public sewerage system	5195
+province	ZA_1_002	2009	Flush toilet connected to a septic tank or conservancy tank	0
+province	ZA_1_002	2009	Pour flush toilet connected to a septic tank (or septage pit)	0
+province	ZA_1_002	2009	Chemical toilet	0
+province	ZA_1_002	2009	Pit latrine/toilet with ventilation pipe	0
+province	ZA_1_002	2009	Pit latrine/toilet without ventilation pipe	0
+province	ZA_1_002	2009	Bucket toilet (collected by municipality)	0
+province	ZA_1_002	2009	Bucket toilet (emptied by household)	0
+province	ZA_1_002	2009	Ecological Sanitation System (e.g. urine diversion)	0
+province	ZA_1_002	2009	Open defecation (e.g. no facilities; field; bush)	0
+province	ZA_1_002	2009	Other	0
+province	ZA_1_002	2009	Unspecified	0
+province	ZA_1_001	2009	Flush toilet connected to a public sewerage system	6510
+province	ZA_1_001	2009	Flush toilet connected to a septic tank or conservancy tank	14130
+province	ZA_1_001	2009	Pour flush toilet connected to a septic tank (or septage pit)	1380
+province	ZA_1_001	2009	Chemical toilet	2522
+province	ZA_1_001	2009	Pit latrine/toilet with ventilation pipe	17783
+province	ZA_1_001	2009	Pit latrine/toilet without ventilation pipe	34855
+province	ZA_1_001	2009	Bucket toilet (collected by municipality)	1326
+province	ZA_1_001	2009	Bucket toilet (emptied by household)	0
+province	ZA_1_001	2009	Ecological Sanitation System (e.g. urine diversion)	0
+province	ZA_1_001	2009	Open defecation (e.g. no facilities; field; bush)	0
+province	ZA_1_001	2009	Other	0
+province	ZA_1_001	2009	Unspecified	0
+province	ZA_1_007	2009	Flush toilet connected to a public sewerage system	13231
+province	ZA_1_007	2009	Flush toilet connected to a septic tank or conservancy tank	0
+province	ZA_1_007	2009	Pour flush toilet connected to a septic tank (or septage pit)	0
+province	ZA_1_007	2009	Chemical toilet	0
+province	ZA_1_007	2009	Pit latrine/toilet with ventilation pipe	4692
+province	ZA_1_007	2009	Pit latrine/toilet without ventilation pipe	877
+province	ZA_1_007	2009	Bucket toilet (collected by municipality)	0
+province	ZA_1_007	2009	Bucket toilet (emptied by household)	0
+province	ZA_1_007	2009	Ecological Sanitation System (e.g. urine diversion)	0
+province	ZA_1_007	2009	Open defecation (e.g. no facilities; field; bush)	0
+province	ZA_1_007	2009	Other	0
+province	ZA_1_007	2009	Unspecified	0
+province	ZA_1_009	2009	Flush toilet connected to a public sewerage system	130025
+province	ZA_1_009	2009	Flush toilet connected to a septic tank or conservancy tank	0
+province	ZA_1_009	2009	Pour flush toilet connected to a septic tank (or septage pit)	704
+province	ZA_1_009	2009	Chemical toilet	0
+province	ZA_1_009	2009	Pit latrine/toilet with ventilation pipe	4726
+province	ZA_1_009	2009	Pit latrine/toilet without ventilation pipe	3103
+province	ZA_1_009	2009	Bucket toilet (collected by municipality)	3289
+province	ZA_1_009	2009	Bucket toilet (emptied by household)	0
+province	ZA_1_009	2009	Ecological Sanitation System (e.g. urine diversion)	0
+province	ZA_1_009	2009	Open defecation (e.g. no facilities; field; bush)	0
+province	ZA_1_009	2009	Other	0
+province	ZA_1_009	2009	Unspecified	0
+province	ZA_1_004	2009	Flush toilet connected to a public sewerage system	27133
+province	ZA_1_004	2009	Flush toilet connected to a septic tank or conservancy tank	21654
+province	ZA_1_004	2009	Pour flush toilet connected to a septic tank (or septage pit)	0
+province	ZA_1_004	2009	Chemical toilet	0
+province	ZA_1_004	2009	Pit latrine/toilet with ventilation pipe	1442
+province	ZA_1_004	2009	Pit latrine/toilet without ventilation pipe	2272
+province	ZA_1_004	2009	Bucket toilet (collected by municipality)	0
+province	ZA_1_004	2009	Bucket toilet (emptied by household)	0
+province	ZA_1_004	2009	Ecological Sanitation System (e.g. urine diversion)	0
+province	ZA_1_004	2009	Open defecation (e.g. no facilities; field; bush)	1653
+province	ZA_1_004	2009	Other	0
+province	ZA_1_004	2009	Unspecified	759
+province	ZA_1_005	2009	Flush toilet connected to a public sewerage system	2484
+province	ZA_1_005	2009	Flush toilet connected to a septic tank or conservancy tank	11471
+province	ZA_1_005	2009	Pour flush toilet connected to a septic tank (or septage pit)	1388
+province	ZA_1_005	2009	Chemical toilet	0
+province	ZA_1_005	2009	Pit latrine/toilet with ventilation pipe	4239
+province	ZA_1_005	2009	Pit latrine/toilet without ventilation pipe	16975
+province	ZA_1_005	2009	Bucket toilet (collected by municipality)	0
+province	ZA_1_005	2009	Bucket toilet (emptied by household)	0
+province	ZA_1_005	2009	Ecological Sanitation System (e.g. urine diversion)	0
+province	ZA_1_005	2009	Open defecation (e.g. no facilities; field; bush)	4346
+province	ZA_1_005	2009	Other	0
+province	ZA_1_005	2009	Unspecified	0
 country	ZA	2009	Flush toilet connected to a public sewerage system	235611
 country	ZA	2009	Flush toilet connected to a septic tank or conservancy tank	63238
 country	ZA	2009	Pour flush toilet connected to a septic tank (or septage pit)	3937

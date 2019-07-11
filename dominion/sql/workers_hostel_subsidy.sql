@@ -37,46 +37,46 @@ CREATE TABLE public.workers_hostel_subsidy (
 --
 
 COPY public.workers_hostel_subsidy (geo_level, geo_code, geo_version, workers_hostel_subsidy, total) FROM stdin;
-province	WC	2009	Yes	743
-province	WC	2009	No	25696
-province	WC	2009	Do not know	0
-province	WC	2009	Unspecified	0
+province	ZA_1_008	2009	Yes	743
+province	ZA_1_008	2009	No	25696
+province	ZA_1_008	2009	Do not know	0
+province	ZA_1_008	2009	Unspecified	0
 country	ZA	2009	Yes	12033
 country	ZA	2009	No	406662
 country	ZA	2009	Do not know	824
 country	ZA	2009	Unspecified	9566
-province	NC	2009	Yes	0
-province	NC	2009	No	29111
-province	NC	2009	Do not know	0
-province	NC	2009	Unspecified	998
-province	NW	2009	Yes	0
-province	NW	2009	No	18801
-province	NW	2009	Do not know	0
-province	NW	2009	Unspecified	0
-province	MP	2009	Yes	8313
-province	MP	2009	No	39632
-province	MP	2009	Do not know	0
-province	MP	2009	Unspecified	6969
-province	LIM	2009	Yes	0
-province	LIM	2009	No	40903
-province	LIM	2009	Do not know	0
-province	LIM	2009	Unspecified	0
-province	KZN	2009	Yes	0
-province	KZN	2009	No	78506
-province	KZN	2009	Do not know	0
-province	KZN	2009	Unspecified	0
-province	GT	2009	Yes	0
-province	GT	2009	No	139424
-province	GT	2009	Do not know	824
-province	GT	2009	Unspecified	1599
-province	FS	2009	Yes	0
-province	FS	2009	No	5195
-province	FS	2009	Do not know	0
-province	FS	2009	Unspecified	0
-province	EC	2009	Yes	2977
-province	EC	2009	No	29395
-province	EC	2009	Do not know	0
-province	EC	2009	Unspecified	0
+province	ZA_1_006	2009	Yes	0
+province	ZA_1_006	2009	No	29111
+province	ZA_1_006	2009	Do not know	0
+province	ZA_1_006	2009	Unspecified	998
+province	ZA_1_007	2009	Yes	0
+province	ZA_1_007	2009	No	18801
+province	ZA_1_007	2009	Do not know	0
+province	ZA_1_007	2009	Unspecified	0
+province	ZA_1_004	2009	Yes	8313
+province	ZA_1_004	2009	No	39632
+province	ZA_1_004	2009	Do not know	0
+province	ZA_1_004	2009	Unspecified	6969
+province	ZA_1_005	2009	Yes	0
+province	ZA_1_005	2009	No	40903
+province	ZA_1_005	2009	Do not know	0
+province	ZA_1_005	2009	Unspecified	0
+province	ZA_1_001	2009	Yes	0
+province	ZA_1_001	2009	No	78506
+province	ZA_1_001	2009	Do not know	0
+province	ZA_1_001	2009	Unspecified	0
+province	ZA_1_009	2009	Yes	0
+province	ZA_1_009	2009	No	139424
+province	ZA_1_009	2009	Do not know	824
+province	ZA_1_009	2009	Unspecified	1599
+province	ZA_1_002	2009	Yes	0
+province	ZA_1_002	2009	No	5195
+province	ZA_1_002	2009	Do not know	0
+province	ZA_1_002	2009	Unspecified	0
+province	ZA_1_003	2009	Yes	2977
+province	ZA_1_003	2009	No	29395
+province	ZA_1_003	2009	Do not know	0
+province	ZA_1_003	2009	Unspecified	0
 \.
 
 

@@ -37,15 +37,15 @@ CREATE TABLE public.workers_hostel_rent (
 --
 
 COPY public.workers_hostel_rent (geo_level, geo_code, geo_version, workers_hostel_rent, total) FROM stdin;
-province	WC	2009	Unspecified	0
-province	WC	2009	R501-R1 000	4371
-province	WC	2009	R5 001-R7 000	0
-province	WC	2009	R3 001-R5 000	0
-province	WC	2009	R1 001-R3 000	0
-province	WC	2009	Not applicable	16278
-province	WC	2009	More than R7 000	0
-province	WC	2009	Less than R500	5790
-province	WC	2009	Do not know	0
+province	ZA_1_008	2009	Unspecified	0
+province	ZA_1_008	2009	R501-R1 000	4371
+province	ZA_1_008	2009	R5 001-R7 000	0
+province	ZA_1_008	2009	R3 001-R5 000	0
+province	ZA_1_008	2009	R1 001-R3 000	0
+province	ZA_1_008	2009	Not applicable	16278
+province	ZA_1_008	2009	More than R7 000	0
+province	ZA_1_008	2009	Less than R500	5790
+province	ZA_1_008	2009	Do not know	0
 country	ZA	2009	Unspecified	8063
 country	ZA	2009	R501-R1 000	34771
 country	ZA	2009	R5 001-R7 000	0
@@ -55,78 +55,78 @@ country	ZA	2009	Not applicable	277179
 country	ZA	2009	More than R7 000	0
 country	ZA	2009	Less than R500	85808
 country	ZA	2009	Do not know	615
-province	NC	2009	Unspecified	1910
-province	NC	2009	R501-R1 000	0
-province	NC	2009	R5 001-R7 000	0
-province	NC	2009	R3 001-R5 000	9564
-province	NC	2009	R1 001-R3 000	0
-province	NC	2009	Not applicable	12265
-province	NC	2009	More than R7 000	0
-province	NC	2009	Less than R500	6371
-province	NC	2009	Do not know	0
-province	NW	2009	Unspecified	0
-province	NW	2009	R501-R1 000	0
-province	NW	2009	R5 001-R7 000	0
-province	NW	2009	R3 001-R5 000	0
-province	NW	2009	R1 001-R3 000	2659
-province	NW	2009	Not applicable	8513
-province	NW	2009	More than R7 000	0
-province	NW	2009	Less than R500	7628
-province	NW	2009	Do not know	0
-province	MP	2009	Unspecified	0
-province	MP	2009	R501-R1 000	3087
-province	MP	2009	R5 001-R7 000	0
-province	MP	2009	R3 001-R5 000	0
-province	MP	2009	R1 001-R3 000	3216
-province	MP	2009	Not applicable	37339
-province	MP	2009	More than R7 000	0
-province	MP	2009	Less than R500	11273
-province	MP	2009	Do not know	0
-province	LIM	2009	Unspecified	0
-province	LIM	2009	R501-R1 000	0
-province	LIM	2009	R5 001-R7 000	0
-province	LIM	2009	R3 001-R5 000	0
-province	LIM	2009	R1 001-R3 000	1846
-province	LIM	2009	Not applicable	19483
-province	LIM	2009	More than R7 000	0
-province	LIM	2009	Less than R500	19574
-province	LIM	2009	Do not know	0
-province	KZN	2009	Unspecified	0
-province	KZN	2009	R501-R1 000	8493
-province	KZN	2009	R5 001-R7 000	0
-province	KZN	2009	R3 001-R5 000	954
-province	KZN	2009	R1 001-R3 000	0
-province	KZN	2009	Not applicable	55558
-province	KZN	2009	More than R7 000	0
-province	KZN	2009	Less than R500	13500
-province	KZN	2009	Do not know	0
-province	GT	2009	Unspecified	0
-province	GT	2009	R501-R1 000	18821
-province	GT	2009	R5 001-R7 000	0
-province	GT	2009	R3 001-R5 000	0
-province	GT	2009	R1 001-R3 000	2999
-province	GT	2009	Not applicable	98733
-province	GT	2009	More than R7 000	0
-province	GT	2009	Less than R500	20680
-province	GT	2009	Do not know	615
-province	FS	2009	Unspecified	0
-province	FS	2009	R501-R1 000	0
-province	FS	2009	R5 001-R7 000	0
-province	FS	2009	R3 001-R5 000	0
-province	FS	2009	R1 001-R3 000	0
-province	FS	2009	Not applicable	4202
-province	FS	2009	More than R7 000	0
-province	FS	2009	Less than R500	994
-province	FS	2009	Do not know	0
-province	EC	2009	Unspecified	6153
-province	EC	2009	R501-R1 000	0
-province	EC	2009	R5 001-R7 000	0
-province	EC	2009	R3 001-R5 000	0
-province	EC	2009	R1 001-R3 000	1412
-province	EC	2009	Not applicable	24807
-province	EC	2009	More than R7 000	0
-province	EC	2009	Less than R500	0
-province	EC	2009	Do not know	0
+province	ZA_1_006	2009	Unspecified	1910
+province	ZA_1_006	2009	R501-R1 000	0
+province	ZA_1_006	2009	R5 001-R7 000	0
+province	ZA_1_006	2009	R3 001-R5 000	9564
+province	ZA_1_006	2009	R1 001-R3 000	0
+province	ZA_1_006	2009	Not applicable	12265
+province	ZA_1_006	2009	More than R7 000	0
+province	ZA_1_006	2009	Less than R500	6371
+province	ZA_1_006	2009	Do not know	0
+province	ZA_1_007	2009	Unspecified	0
+province	ZA_1_007	2009	R501-R1 000	0
+province	ZA_1_007	2009	R5 001-R7 000	0
+province	ZA_1_007	2009	R3 001-R5 000	0
+province	ZA_1_007	2009	R1 001-R3 000	2659
+province	ZA_1_007	2009	Not applicable	8513
+province	ZA_1_007	2009	More than R7 000	0
+province	ZA_1_007	2009	Less than R500	7628
+province	ZA_1_007	2009	Do not know	0
+province	ZA_1_004	2009	Unspecified	0
+province	ZA_1_004	2009	R501-R1 000	3087
+province	ZA_1_004	2009	R5 001-R7 000	0
+province	ZA_1_004	2009	R3 001-R5 000	0
+province	ZA_1_004	2009	R1 001-R3 000	3216
+province	ZA_1_004	2009	Not applicable	37339
+province	ZA_1_004	2009	More than R7 000	0
+province	ZA_1_004	2009	Less than R500	11273
+province	ZA_1_004	2009	Do not know	0
+province	ZA_1_005	2009	Unspecified	0
+province	ZA_1_005	2009	R501-R1 000	0
+province	ZA_1_005	2009	R5 001-R7 000	0
+province	ZA_1_005	2009	R3 001-R5 000	0
+province	ZA_1_005	2009	R1 001-R3 000	1846
+province	ZA_1_005	2009	Not applicable	19483
+province	ZA_1_005	2009	More than R7 000	0
+province	ZA_1_005	2009	Less than R500	19574
+province	ZA_1_005	2009	Do not know	0
+province	ZA_1_001	2009	Unspecified	0
+province	ZA_1_001	2009	R501-R1 000	8493
+province	ZA_1_001	2009	R5 001-R7 000	0
+province	ZA_1_001	2009	R3 001-R5 000	954
+province	ZA_1_001	2009	R1 001-R3 000	0
+province	ZA_1_001	2009	Not applicable	55558
+province	ZA_1_001	2009	More than R7 000	0
+province	ZA_1_001	2009	Less than R500	13500
+province	ZA_1_001	2009	Do not know	0
+province	ZA_1_009	2009	Unspecified	0
+province	ZA_1_009	2009	R501-R1 000	18821
+province	ZA_1_009	2009	R5 001-R7 000	0
+province	ZA_1_009	2009	R3 001-R5 000	0
+province	ZA_1_009	2009	R1 001-R3 000	2999
+province	ZA_1_009	2009	Not applicable	98733
+province	ZA_1_009	2009	More than R7 000	0
+province	ZA_1_009	2009	Less than R500	20680
+province	ZA_1_009	2009	Do not know	615
+province	ZA_1_002	2009	Unspecified	0
+province	ZA_1_002	2009	R501-R1 000	0
+province	ZA_1_002	2009	R5 001-R7 000	0
+province	ZA_1_002	2009	R3 001-R5 000	0
+province	ZA_1_002	2009	R1 001-R3 000	0
+province	ZA_1_002	2009	Not applicable	4202
+province	ZA_1_002	2009	More than R7 000	0
+province	ZA_1_002	2009	Less than R500	994
+province	ZA_1_002	2009	Do not know	0
+province	ZA_1_003	2009	Unspecified	6153
+province	ZA_1_003	2009	R501-R1 000	0
+province	ZA_1_003	2009	R5 001-R7 000	0
+province	ZA_1_003	2009	R3 001-R5 000	0
+province	ZA_1_003	2009	R1 001-R3 000	1412
+province	ZA_1_003	2009	Not applicable	24807
+province	ZA_1_003	2009	More than R7 000	0
+province	ZA_1_003	2009	Less than R500	0
+province	ZA_1_003	2009	Do not know	0
 \.
 
 

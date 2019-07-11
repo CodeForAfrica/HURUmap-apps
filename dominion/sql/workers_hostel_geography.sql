@@ -37,36 +37,36 @@ CREATE TABLE public.workers_hostel_geography (
 --
 
 COPY public.workers_hostel_geography (geo_level, geo_code, geo_version, workers_hostel_geography, total) FROM stdin;
-province	WC	2009	Urban formal	13039
-province	WC	2009	Traditional	0
-province	WC	2009	Farms	13400
+province	ZA_1_008	2009	Urban formal	13039
+province	ZA_1_008	2009	Traditional	0
+province	ZA_1_008	2009	Farms	13400
 country	ZA	2009	Urban formal	258389
 country	ZA	2009	Traditional	19813
 country	ZA	2009	Farms	150883
-province	NC	2009	Urban formal	15522
-province	NC	2009	Traditional	0
-province	NC	2009	Farms	14588
-province	NW	2009	Urban formal	13231
-province	NW	2009	Traditional	749
-province	NW	2009	Farms	4820
-province	MP	2009	Urban formal	27149
-province	MP	2009	Traditional	4439
-province	MP	2009	Farms	23325
-province	LIM	2009	Urban formal	2484
-province	LIM	2009	Traditional	2530
-province	LIM	2009	Farms	35889
-province	KZN	2009	Urban formal	24755
-province	KZN	2009	Traditional	5322
-province	KZN	2009	Farms	48429
-province	GT	2009	Urban formal	132407
-province	GT	2009	Traditional	0
-province	GT	2009	Farms	9439
-province	FS	2009	Urban formal	4202
-province	FS	2009	Traditional	0
-province	FS	2009	Farms	994
-province	EC	2009	Urban formal	25600
-province	EC	2009	Traditional	6772
-province	EC	2009	Farms	0
+province	ZA_1_006	2009	Urban formal	15522
+province	ZA_1_006	2009	Traditional	0
+province	ZA_1_006	2009	Farms	14588
+province	ZA_1_007	2009	Urban formal	13231
+province	ZA_1_007	2009	Traditional	749
+province	ZA_1_007	2009	Farms	4820
+province	ZA_1_004	2009	Urban formal	27149
+province	ZA_1_004	2009	Traditional	4439
+province	ZA_1_004	2009	Farms	23325
+province	ZA_1_005	2009	Urban formal	2484
+province	ZA_1_005	2009	Traditional	2530
+province	ZA_1_005	2009	Farms	35889
+province	ZA_1_001	2009	Urban formal	24755
+province	ZA_1_001	2009	Traditional	5322
+province	ZA_1_001	2009	Farms	48429
+province	ZA_1_009	2009	Urban formal	132407
+province	ZA_1_009	2009	Traditional	0
+province	ZA_1_009	2009	Farms	9439
+province	ZA_1_002	2009	Urban formal	4202
+province	ZA_1_002	2009	Traditional	0
+province	ZA_1_002	2009	Farms	994
+province	ZA_1_003	2009	Urban formal	25600
+province	ZA_1_003	2009	Traditional	6772
+province	ZA_1_003	2009	Farms	0
 \.
 
 
