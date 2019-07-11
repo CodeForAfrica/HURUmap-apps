@@ -66,6 +66,10 @@ def get_profile(geo, profile_name, request):
         data['charts'] = charts
         return data
 
+    except Exception as e:
+        log.error("Error building profile level, code and version: %s-%s '%s'" % (geo_level, geo_code, version), exc_info=e)
+        raise e
+
     finally:
         session.close()
 
