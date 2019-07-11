@@ -309,12 +309,12 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
-CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_ALLOW_ALL = True
 
 #whitelist localhost:3000 to serve rest frontend
-CORS_ORIGIN_WHITELIST = (
-        'localhost:3000/'
-    )
+# CORS_ORIGIN_WHITELIST = (
+#         'localhost:3000/'
+#     )
 
 # color scheme
 
