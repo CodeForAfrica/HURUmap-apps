@@ -75,7 +75,7 @@ def get_country_and_level(geo):
     if level != 'continent':
         country = geo.geo_code.lower() \
             if level == 'country' \
-            else geo.ancestors()[-1].geo_code.lower()
+            else geo.ancestors()[-2].geo_code.lower() #-1 (last element is continent)
 
     return (country, level)
 
