@@ -37,51 +37,51 @@ CREATE TABLE public.workers_hostel_residential_ownership (
 --
 
 COPY public.workers_hostel_residential_ownership (geo_level, geo_code, geo_version, workers_hostel_residential_ownership, total) FROM stdin;
-province	ZA_1_008	2009	Yes; individually	0
-province	ZA_1_008	2009	Yes; jointly	2236
-province	ZA_1_008	2009	No	24202
-province	ZA_1_008	2009	Do not know	0
-province	ZA_1_008	2009	Unspecified	0
-province	ZA_1_003	2009	Yes; individually	654
-province	ZA_1_003	2009	Yes; jointly	4042
-province	ZA_1_003	2009	No	27677
-province	ZA_1_003	2009	Do not know	0
-province	ZA_1_003	2009	Unspecified	0
-province	ZA_1_006	2009	Yes; individually	3289
-province	ZA_1_006	2009	Yes; jointly	943
-province	ZA_1_006	2009	No	25878
-province	ZA_1_006	2009	Do not know	0
-province	ZA_1_006	2009	Unspecified	0
-province	ZA_1_002	2009	Yes; individually	0
-province	ZA_1_002	2009	Yes; jointly	0
-province	ZA_1_002	2009	No	5195
-province	ZA_1_002	2009	Do not know	0
-province	ZA_1_002	2009	Unspecified	0
-province	ZA_1_001	2009	Yes; individually	6527
-province	ZA_1_001	2009	Yes; jointly	544
-province	ZA_1_001	2009	No	70393
-province	ZA_1_001	2009	Do not know	0
-province	ZA_1_001	2009	Unspecified	1041
-province	ZA_1_007	2009	Yes; individually	749
-province	ZA_1_007	2009	Yes; jointly	0
-province	ZA_1_007	2009	No	18052
-province	ZA_1_007	2009	Do not know	0
-province	ZA_1_007	2009	Unspecified	0
-province	ZA_1_009	2009	Yes; individually	17259
-province	ZA_1_009	2009	Yes; jointly	3113
-province	ZA_1_009	2009	No	121475
-province	ZA_1_009	2009	Do not know	0
-province	ZA_1_009	2009	Unspecified	0
-province	ZA_1_004	2009	Yes; individually	13958
-province	ZA_1_004	2009	Yes; jointly	5005
-province	ZA_1_004	2009	No	35951
-province	ZA_1_004	2009	Do not know	0
-province	ZA_1_004	2009	Unspecified	0
-province	ZA_1_005	2009	Yes; individually	4667
-province	ZA_1_005	2009	Yes; jointly	0
-province	ZA_1_005	2009	No	35442
-province	ZA_1_005	2009	Do not know	0
-province	ZA_1_005	2009	Unspecified	794
+level1	ZA_1_008	2009	Yes; individually	0
+level1	ZA_1_008	2009	Yes; jointly	2236
+level1	ZA_1_008	2009	No	24202
+level1	ZA_1_008	2009	Do not know	0
+level1	ZA_1_008	2009	Unspecified	0
+level1	ZA_1_003	2009	Yes; individually	654
+level1	ZA_1_003	2009	Yes; jointly	4042
+level1	ZA_1_003	2009	No	27677
+level1	ZA_1_003	2009	Do not know	0
+level1	ZA_1_003	2009	Unspecified	0
+level1	ZA_1_006	2009	Yes; individually	3289
+level1	ZA_1_006	2009	Yes; jointly	943
+level1	ZA_1_006	2009	No	25878
+level1	ZA_1_006	2009	Do not know	0
+level1	ZA_1_006	2009	Unspecified	0
+level1	ZA_1_002	2009	Yes; individually	0
+level1	ZA_1_002	2009	Yes; jointly	0
+level1	ZA_1_002	2009	No	5195
+level1	ZA_1_002	2009	Do not know	0
+level1	ZA_1_002	2009	Unspecified	0
+level1	ZA_1_001	2009	Yes; individually	6527
+level1	ZA_1_001	2009	Yes; jointly	544
+level1	ZA_1_001	2009	No	70393
+level1	ZA_1_001	2009	Do not know	0
+level1	ZA_1_001	2009	Unspecified	1041
+level1	ZA_1_007	2009	Yes; individually	749
+level1	ZA_1_007	2009	Yes; jointly	0
+level1	ZA_1_007	2009	No	18052
+level1	ZA_1_007	2009	Do not know	0
+level1	ZA_1_007	2009	Unspecified	0
+level1	ZA_1_009	2009	Yes; individually	17259
+level1	ZA_1_009	2009	Yes; jointly	3113
+level1	ZA_1_009	2009	No	121475
+level1	ZA_1_009	2009	Do not know	0
+level1	ZA_1_009	2009	Unspecified	0
+level1	ZA_1_004	2009	Yes; individually	13958
+level1	ZA_1_004	2009	Yes; jointly	5005
+level1	ZA_1_004	2009	No	35951
+level1	ZA_1_004	2009	Do not know	0
+level1	ZA_1_004	2009	Unspecified	0
+level1	ZA_1_005	2009	Yes; individually	4667
+level1	ZA_1_005	2009	Yes; jointly	0
+level1	ZA_1_005	2009	No	35442
+level1	ZA_1_005	2009	Do not know	0
+level1	ZA_1_005	2009	Unspecified	794
 country	ZA	2009	Yes; individually	47102
 country	ZA	2009	Yes; jointly	15883
 country	ZA	2009	No	364265

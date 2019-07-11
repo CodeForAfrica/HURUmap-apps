@@ -37,132 +37,132 @@ CREATE TABLE public.workers_hostel_water_source (
 --
 
 COPY public.workers_hostel_water_source (geo_level, geo_code, geo_version, workers_hostel_water_source, total) FROM stdin;
-province	ZA_1_008	2009	Piped (tap) water in dwelling	3692
-province	ZA_1_008	2009	Piped (tap) water on site or in yard	15230
-province	ZA_1_008	2009	Borehole on site	752
-province	ZA_1_008	2009	Rain-water tank on site	2315
-province	ZA_1_008	2009	Neighbour's tap	0
-province	ZA_1_008	2009	Public/communal tap	4450
-province	ZA_1_008	2009	Water-carrier/tanker	0
-province	ZA_1_008	2009	Water vendor	0
-province	ZA_1_008	2009	Borehole outside yard	0
-province	ZA_1_008	2009	Flowing water/stream/river	0
-province	ZA_1_008	2009	Stagnant water/dam/pool	0
-province	ZA_1_008	2009	Well	0
-province	ZA_1_008	2009	Spring	0
-province	ZA_1_008	2009	Other	0
-province	ZA_1_003	2009	Piped (tap) water in dwelling	14889
-province	ZA_1_003	2009	Piped (tap) water on site or in yard	4269
-province	ZA_1_003	2009	Borehole on site	0
-province	ZA_1_003	2009	Rain-water tank on site	0
-province	ZA_1_003	2009	Neighbour's tap	0
-province	ZA_1_003	2009	Public/communal tap	6442
-province	ZA_1_003	2009	Water-carrier/tanker	0
-province	ZA_1_003	2009	Water vendor	0
-province	ZA_1_003	2009	Borehole outside yard	0
-province	ZA_1_003	2009	Flowing water/stream/river	619
-province	ZA_1_003	2009	Stagnant water/dam/pool	0
-province	ZA_1_003	2009	Well	0
-province	ZA_1_003	2009	Spring	6153
-province	ZA_1_003	2009	Other	0
-province	ZA_1_006	2009	Piped (tap) water in dwelling	16819
-province	ZA_1_006	2009	Piped (tap) water on site or in yard	9752
-province	ZA_1_006	2009	Borehole on site	2006
-province	ZA_1_006	2009	Rain-water tank on site	0
-province	ZA_1_006	2009	Neighbour's tap	0
-province	ZA_1_006	2009	Public/communal tap	0
-province	ZA_1_006	2009	Water-carrier/tanker	0
-province	ZA_1_006	2009	Water vendor	0
-province	ZA_1_006	2009	Borehole outside yard	1215
-province	ZA_1_006	2009	Flowing water/stream/river	317
-province	ZA_1_006	2009	Stagnant water/dam/pool	0
-province	ZA_1_006	2009	Well	0
-province	ZA_1_006	2009	Spring	0
-province	ZA_1_006	2009	Other	0
-province	ZA_1_002	2009	Piped (tap) water in dwelling	3474
-province	ZA_1_002	2009	Piped (tap) water on site or in yard	1721
-province	ZA_1_002	2009	Borehole on site	0
-province	ZA_1_002	2009	Rain-water tank on site	0
-province	ZA_1_002	2009	Neighbour's tap	0
-province	ZA_1_002	2009	Public/communal tap	0
-province	ZA_1_002	2009	Water-carrier/tanker	0
-province	ZA_1_002	2009	Water vendor	0
-province	ZA_1_002	2009	Borehole outside yard	0
-province	ZA_1_002	2009	Flowing water/stream/river	0
-province	ZA_1_002	2009	Stagnant water/dam/pool	0
-province	ZA_1_002	2009	Well	0
-province	ZA_1_002	2009	Spring	0
-province	ZA_1_002	2009	Other	0
-province	ZA_1_001	2009	Piped (tap) water in dwelling	15436
-province	ZA_1_001	2009	Piped (tap) water on site or in yard	19540
-province	ZA_1_001	2009	Borehole on site	14494
-province	ZA_1_001	2009	Rain-water tank on site	0
-province	ZA_1_001	2009	Neighbour's tap	0
-province	ZA_1_001	2009	Public/communal tap	5920
-province	ZA_1_001	2009	Water-carrier/tanker	866
-province	ZA_1_001	2009	Water vendor	0
-province	ZA_1_001	2009	Borehole outside yard	8067
-province	ZA_1_001	2009	Flowing water/stream/river	4165
-province	ZA_1_001	2009	Stagnant water/dam/pool	0
-province	ZA_1_001	2009	Well	0
-province	ZA_1_001	2009	Spring	10019
-province	ZA_1_001	2009	Other	0
-province	ZA_1_007	2009	Piped (tap) water in dwelling	12451
-province	ZA_1_007	2009	Piped (tap) water on site or in yard	5601
-province	ZA_1_007	2009	Borehole on site	0
-province	ZA_1_007	2009	Rain-water tank on site	0
-province	ZA_1_007	2009	Neighbour's tap	0
-province	ZA_1_007	2009	Public/communal tap	749
-province	ZA_1_007	2009	Water-carrier/tanker	0
-province	ZA_1_007	2009	Water vendor	0
-province	ZA_1_007	2009	Borehole outside yard	0
-province	ZA_1_007	2009	Flowing water/stream/river	0
-province	ZA_1_007	2009	Stagnant water/dam/pool	0
-province	ZA_1_007	2009	Well	0
-province	ZA_1_007	2009	Spring	0
-province	ZA_1_007	2009	Other	0
-province	ZA_1_009	2009	Piped (tap) water in dwelling	82218
-province	ZA_1_009	2009	Piped (tap) water on site or in yard	53096
-province	ZA_1_009	2009	Borehole on site	733
-province	ZA_1_009	2009	Rain-water tank on site	0
-province	ZA_1_009	2009	Neighbour's tap	0
-province	ZA_1_009	2009	Public/communal tap	2657
-province	ZA_1_009	2009	Water-carrier/tanker	3143
-province	ZA_1_009	2009	Water vendor	0
-province	ZA_1_009	2009	Borehole outside yard	0
-province	ZA_1_009	2009	Flowing water/stream/river	0
-province	ZA_1_009	2009	Stagnant water/dam/pool	0
-province	ZA_1_009	2009	Well	0
-province	ZA_1_009	2009	Spring	0
-province	ZA_1_009	2009	Other	0
-province	ZA_1_004	2009	Piped (tap) water in dwelling	25195
-province	ZA_1_004	2009	Piped (tap) water on site or in yard	20378
-province	ZA_1_004	2009	Borehole on site	4615
-province	ZA_1_004	2009	Rain-water tank on site	499
-province	ZA_1_004	2009	Neighbour's tap	611
-province	ZA_1_004	2009	Public/communal tap	743
-province	ZA_1_004	2009	Water-carrier/tanker	0
-province	ZA_1_004	2009	Water vendor	0
-province	ZA_1_004	2009	Borehole outside yard	2872
-province	ZA_1_004	2009	Flowing water/stream/river	0
-province	ZA_1_004	2009	Stagnant water/dam/pool	0
-province	ZA_1_004	2009	Well	0
-province	ZA_1_004	2009	Spring	0
-province	ZA_1_004	2009	Other	0
-province	ZA_1_005	2009	Piped (tap) water in dwelling	1846
-province	ZA_1_005	2009	Piped (tap) water on site or in yard	15959
-province	ZA_1_005	2009	Borehole on site	11400
-province	ZA_1_005	2009	Rain-water tank on site	0
-province	ZA_1_005	2009	Neighbour's tap	0
-province	ZA_1_005	2009	Public/communal tap	11699
-province	ZA_1_005	2009	Water-carrier/tanker	0
-province	ZA_1_005	2009	Water vendor	0
-province	ZA_1_005	2009	Borehole outside yard	0
-province	ZA_1_005	2009	Flowing water/stream/river	0
-province	ZA_1_005	2009	Stagnant water/dam/pool	0
-province	ZA_1_005	2009	Well	0
-province	ZA_1_005	2009	Spring	0
-province	ZA_1_005	2009	Other	0
+level1	ZA_1_008	2009	Piped (tap) water in dwelling	3692
+level1	ZA_1_008	2009	Piped (tap) water on site or in yard	15230
+level1	ZA_1_008	2009	Borehole on site	752
+level1	ZA_1_008	2009	Rain-water tank on site	2315
+level1	ZA_1_008	2009	Neighbour's tap	0
+level1	ZA_1_008	2009	Public/communal tap	4450
+level1	ZA_1_008	2009	Water-carrier/tanker	0
+level1	ZA_1_008	2009	Water vendor	0
+level1	ZA_1_008	2009	Borehole outside yard	0
+level1	ZA_1_008	2009	Flowing water/stream/river	0
+level1	ZA_1_008	2009	Stagnant water/dam/pool	0
+level1	ZA_1_008	2009	Well	0
+level1	ZA_1_008	2009	Spring	0
+level1	ZA_1_008	2009	Other	0
+level1	ZA_1_003	2009	Piped (tap) water in dwelling	14889
+level1	ZA_1_003	2009	Piped (tap) water on site or in yard	4269
+level1	ZA_1_003	2009	Borehole on site	0
+level1	ZA_1_003	2009	Rain-water tank on site	0
+level1	ZA_1_003	2009	Neighbour's tap	0
+level1	ZA_1_003	2009	Public/communal tap	6442
+level1	ZA_1_003	2009	Water-carrier/tanker	0
+level1	ZA_1_003	2009	Water vendor	0
+level1	ZA_1_003	2009	Borehole outside yard	0
+level1	ZA_1_003	2009	Flowing water/stream/river	619
+level1	ZA_1_003	2009	Stagnant water/dam/pool	0
+level1	ZA_1_003	2009	Well	0
+level1	ZA_1_003	2009	Spring	6153
+level1	ZA_1_003	2009	Other	0
+level1	ZA_1_006	2009	Piped (tap) water in dwelling	16819
+level1	ZA_1_006	2009	Piped (tap) water on site or in yard	9752
+level1	ZA_1_006	2009	Borehole on site	2006
+level1	ZA_1_006	2009	Rain-water tank on site	0
+level1	ZA_1_006	2009	Neighbour's tap	0
+level1	ZA_1_006	2009	Public/communal tap	0
+level1	ZA_1_006	2009	Water-carrier/tanker	0
+level1	ZA_1_006	2009	Water vendor	0
+level1	ZA_1_006	2009	Borehole outside yard	1215
+level1	ZA_1_006	2009	Flowing water/stream/river	317
+level1	ZA_1_006	2009	Stagnant water/dam/pool	0
+level1	ZA_1_006	2009	Well	0
+level1	ZA_1_006	2009	Spring	0
+level1	ZA_1_006	2009	Other	0
+level1	ZA_1_002	2009	Piped (tap) water in dwelling	3474
+level1	ZA_1_002	2009	Piped (tap) water on site or in yard	1721
+level1	ZA_1_002	2009	Borehole on site	0
+level1	ZA_1_002	2009	Rain-water tank on site	0
+level1	ZA_1_002	2009	Neighbour's tap	0
+level1	ZA_1_002	2009	Public/communal tap	0
+level1	ZA_1_002	2009	Water-carrier/tanker	0
+level1	ZA_1_002	2009	Water vendor	0
+level1	ZA_1_002	2009	Borehole outside yard	0
+level1	ZA_1_002	2009	Flowing water/stream/river	0
+level1	ZA_1_002	2009	Stagnant water/dam/pool	0
+level1	ZA_1_002	2009	Well	0
+level1	ZA_1_002	2009	Spring	0
+level1	ZA_1_002	2009	Other	0
+level1	ZA_1_001	2009	Piped (tap) water in dwelling	15436
+level1	ZA_1_001	2009	Piped (tap) water on site or in yard	19540
+level1	ZA_1_001	2009	Borehole on site	14494
+level1	ZA_1_001	2009	Rain-water tank on site	0
+level1	ZA_1_001	2009	Neighbour's tap	0
+level1	ZA_1_001	2009	Public/communal tap	5920
+level1	ZA_1_001	2009	Water-carrier/tanker	866
+level1	ZA_1_001	2009	Water vendor	0
+level1	ZA_1_001	2009	Borehole outside yard	8067
+level1	ZA_1_001	2009	Flowing water/stream/river	4165
+level1	ZA_1_001	2009	Stagnant water/dam/pool	0
+level1	ZA_1_001	2009	Well	0
+level1	ZA_1_001	2009	Spring	10019
+level1	ZA_1_001	2009	Other	0
+level1	ZA_1_007	2009	Piped (tap) water in dwelling	12451
+level1	ZA_1_007	2009	Piped (tap) water on site or in yard	5601
+level1	ZA_1_007	2009	Borehole on site	0
+level1	ZA_1_007	2009	Rain-water tank on site	0
+level1	ZA_1_007	2009	Neighbour's tap	0
+level1	ZA_1_007	2009	Public/communal tap	749
+level1	ZA_1_007	2009	Water-carrier/tanker	0
+level1	ZA_1_007	2009	Water vendor	0
+level1	ZA_1_007	2009	Borehole outside yard	0
+level1	ZA_1_007	2009	Flowing water/stream/river	0
+level1	ZA_1_007	2009	Stagnant water/dam/pool	0
+level1	ZA_1_007	2009	Well	0
+level1	ZA_1_007	2009	Spring	0
+level1	ZA_1_007	2009	Other	0
+level1	ZA_1_009	2009	Piped (tap) water in dwelling	82218
+level1	ZA_1_009	2009	Piped (tap) water on site or in yard	53096
+level1	ZA_1_009	2009	Borehole on site	733
+level1	ZA_1_009	2009	Rain-water tank on site	0
+level1	ZA_1_009	2009	Neighbour's tap	0
+level1	ZA_1_009	2009	Public/communal tap	2657
+level1	ZA_1_009	2009	Water-carrier/tanker	3143
+level1	ZA_1_009	2009	Water vendor	0
+level1	ZA_1_009	2009	Borehole outside yard	0
+level1	ZA_1_009	2009	Flowing water/stream/river	0
+level1	ZA_1_009	2009	Stagnant water/dam/pool	0
+level1	ZA_1_009	2009	Well	0
+level1	ZA_1_009	2009	Spring	0
+level1	ZA_1_009	2009	Other	0
+level1	ZA_1_004	2009	Piped (tap) water in dwelling	25195
+level1	ZA_1_004	2009	Piped (tap) water on site or in yard	20378
+level1	ZA_1_004	2009	Borehole on site	4615
+level1	ZA_1_004	2009	Rain-water tank on site	499
+level1	ZA_1_004	2009	Neighbour's tap	611
+level1	ZA_1_004	2009	Public/communal tap	743
+level1	ZA_1_004	2009	Water-carrier/tanker	0
+level1	ZA_1_004	2009	Water vendor	0
+level1	ZA_1_004	2009	Borehole outside yard	2872
+level1	ZA_1_004	2009	Flowing water/stream/river	0
+level1	ZA_1_004	2009	Stagnant water/dam/pool	0
+level1	ZA_1_004	2009	Well	0
+level1	ZA_1_004	2009	Spring	0
+level1	ZA_1_004	2009	Other	0
+level1	ZA_1_005	2009	Piped (tap) water in dwelling	1846
+level1	ZA_1_005	2009	Piped (tap) water on site or in yard	15959
+level1	ZA_1_005	2009	Borehole on site	11400
+level1	ZA_1_005	2009	Rain-water tank on site	0
+level1	ZA_1_005	2009	Neighbour's tap	0
+level1	ZA_1_005	2009	Public/communal tap	11699
+level1	ZA_1_005	2009	Water-carrier/tanker	0
+level1	ZA_1_005	2009	Water vendor	0
+level1	ZA_1_005	2009	Borehole outside yard	0
+level1	ZA_1_005	2009	Flowing water/stream/river	0
+level1	ZA_1_005	2009	Stagnant water/dam/pool	0
+level1	ZA_1_005	2009	Well	0
+level1	ZA_1_005	2009	Spring	0
+level1	ZA_1_005	2009	Other	0
 country	ZA	2009	Piped (tap) water in dwelling	176020
 country	ZA	2009	Piped (tap) water on site or in yard	145545
 country	ZA	2009	Borehole on site	33999

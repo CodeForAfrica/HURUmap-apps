@@ -37,106 +37,106 @@ CREATE TABLE public.workers_hostel_living_condition (
 --
 
 COPY public.workers_hostel_living_condition (geo_level, geo_code, geo_version, workers_hostel_living_condition, total) FROM stdin;
-province	ZA_1_008	2009	Cluster house in complex	15813
+level1	ZA_1_008	2009	Cluster house in complex	15813
 country	ZA	2009	Cluster house in complex	121353
-province	ZA_1_006	2009	Cluster house in complex	9753
-province	ZA_1_007	2009	Cluster house in complex	3943
-province	ZA_1_004	2009	Cluster house in complex	13843
-province	ZA_1_005	2009	Cluster house in complex	22911
-province	ZA_1_001	2009	Cluster house in complex	23059
-province	ZA_1_009	2009	Cluster house in complex	31411
-province	ZA_1_002	2009	Cluster house in complex	0
-province	ZA_1_003	2009	Cluster house in complex	619
-province	ZA_1_008	2009	Dwelling/house or brick/concrete block structure on a separate stand or yard or on farm.	0
+level1	ZA_1_006	2009	Cluster house in complex	9753
+level1	ZA_1_007	2009	Cluster house in complex	3943
+level1	ZA_1_004	2009	Cluster house in complex	13843
+level1	ZA_1_005	2009	Cluster house in complex	22911
+level1	ZA_1_001	2009	Cluster house in complex	23059
+level1	ZA_1_009	2009	Cluster house in complex	31411
+level1	ZA_1_002	2009	Cluster house in complex	0
+level1	ZA_1_003	2009	Cluster house in complex	619
+level1	ZA_1_008	2009	Dwelling/house or brick/concrete block structure on a separate stand or yard or on farm.	0
 country	ZA	2009	Dwelling/house or brick/concrete block structure on a separate stand or yard or on farm.	0
-province	ZA_1_006	2009	Dwelling/house or brick/concrete block structure on a separate stand or yard or on farm.	0
-province	ZA_1_007	2009	Dwelling/house or brick/concrete block structure on a separate stand or yard or on farm.	0
-province	ZA_1_004	2009	Dwelling/house or brick/concrete block structure on a separate stand or yard or on farm.	0
-province	ZA_1_005	2009	Dwelling/house or brick/concrete block structure on a separate stand or yard or on farm.	0
-province	ZA_1_001	2009	Dwelling/house or brick/concrete block structure on a separate stand or yard or on farm.	0
-province	ZA_1_009	2009	Dwelling/house or brick/concrete block structure on a separate stand or yard or on farm.	0
-province	ZA_1_002	2009	Dwelling/house or brick/concrete block structure on a separate stand or yard or on farm.	0
-province	ZA_1_003	2009	Dwelling/house or brick/concrete block structure on a separate stand or yard or on farm.	0
-province	ZA_1_008	2009	Dwelling/house/flat/room in backyard	0
+level1	ZA_1_006	2009	Dwelling/house or brick/concrete block structure on a separate stand or yard or on farm.	0
+level1	ZA_1_007	2009	Dwelling/house or brick/concrete block structure on a separate stand or yard or on farm.	0
+level1	ZA_1_004	2009	Dwelling/house or brick/concrete block structure on a separate stand or yard or on farm.	0
+level1	ZA_1_005	2009	Dwelling/house or brick/concrete block structure on a separate stand or yard or on farm.	0
+level1	ZA_1_001	2009	Dwelling/house or brick/concrete block structure on a separate stand or yard or on farm.	0
+level1	ZA_1_009	2009	Dwelling/house or brick/concrete block structure on a separate stand or yard or on farm.	0
+level1	ZA_1_002	2009	Dwelling/house or brick/concrete block structure on a separate stand or yard or on farm.	0
+level1	ZA_1_003	2009	Dwelling/house or brick/concrete block structure on a separate stand or yard or on farm.	0
+level1	ZA_1_008	2009	Dwelling/house/flat/room in backyard	0
 country	ZA	2009	Dwelling/house/flat/room in backyard	33278
-province	ZA_1_006	2009	Dwelling/house/flat/room in backyard	0
-province	ZA_1_007	2009	Dwelling/house/flat/room in backyard	0
-province	ZA_1_004	2009	Dwelling/house/flat/room in backyard	4229
-province	ZA_1_005	2009	Dwelling/house/flat/room in backyard	0
-province	ZA_1_001	2009	Dwelling/house/flat/room in backyard	1326
-province	ZA_1_009	2009	Dwelling/house/flat/room in backyard	14837
-province	ZA_1_002	2009	Dwelling/house/flat/room in backyard	2481
-province	ZA_1_003	2009	Dwelling/house/flat/room in backyard	10405
-province	ZA_1_008	2009	Flat or apartment in a block of flats	1681
+level1	ZA_1_006	2009	Dwelling/house/flat/room in backyard	0
+level1	ZA_1_007	2009	Dwelling/house/flat/room in backyard	0
+level1	ZA_1_004	2009	Dwelling/house/flat/room in backyard	4229
+level1	ZA_1_005	2009	Dwelling/house/flat/room in backyard	0
+level1	ZA_1_001	2009	Dwelling/house/flat/room in backyard	1326
+level1	ZA_1_009	2009	Dwelling/house/flat/room in backyard	14837
+level1	ZA_1_002	2009	Dwelling/house/flat/room in backyard	2481
+level1	ZA_1_003	2009	Dwelling/house/flat/room in backyard	10405
+level1	ZA_1_008	2009	Flat or apartment in a block of flats	1681
 country	ZA	2009	Flat or apartment in a block of flats	41536
-province	ZA_1_006	2009	Flat or apartment in a block of flats	698
-province	ZA_1_007	2009	Flat or apartment in a block of flats	1521
-province	ZA_1_004	2009	Flat or apartment in a block of flats	1335
-province	ZA_1_005	2009	Flat or apartment in a block of flats	11655
-province	ZA_1_001	2009	Flat or apartment in a block of flats	18465
-province	ZA_1_009	2009	Flat or apartment in a block of flats	6182
-province	ZA_1_002	2009	Flat or apartment in a block of flats	0
-province	ZA_1_003	2009	Flat or apartment in a block of flats	0
-province	ZA_1_008	2009	Informal dwelling/shack in backyard	0
+level1	ZA_1_006	2009	Flat or apartment in a block of flats	698
+level1	ZA_1_007	2009	Flat or apartment in a block of flats	1521
+level1	ZA_1_004	2009	Flat or apartment in a block of flats	1335
+level1	ZA_1_005	2009	Flat or apartment in a block of flats	11655
+level1	ZA_1_001	2009	Flat or apartment in a block of flats	18465
+level1	ZA_1_009	2009	Flat or apartment in a block of flats	6182
+level1	ZA_1_002	2009	Flat or apartment in a block of flats	0
+level1	ZA_1_003	2009	Flat or apartment in a block of flats	0
+level1	ZA_1_008	2009	Informal dwelling/shack in backyard	0
 country	ZA	2009	Informal dwelling/shack in backyard	10825
-province	ZA_1_006	2009	Informal dwelling/shack in backyard	770
-province	ZA_1_007	2009	Informal dwelling/shack in backyard	0
-province	ZA_1_004	2009	Informal dwelling/shack in backyard	1225
-province	ZA_1_005	2009	Informal dwelling/shack in backyard	0
-province	ZA_1_001	2009	Informal dwelling/shack in backyard	1568
-province	ZA_1_009	2009	Informal dwelling/shack in backyard	3701
-province	ZA_1_002	2009	Informal dwelling/shack in backyard	0
-province	ZA_1_003	2009	Informal dwelling/shack in backyard	3561
-province	ZA_1_008	2009	Informal dwelling/shack not in backyard; e.g. in an informal/squatter settlement or on farm	0
+level1	ZA_1_006	2009	Informal dwelling/shack in backyard	770
+level1	ZA_1_007	2009	Informal dwelling/shack in backyard	0
+level1	ZA_1_004	2009	Informal dwelling/shack in backyard	1225
+level1	ZA_1_005	2009	Informal dwelling/shack in backyard	0
+level1	ZA_1_001	2009	Informal dwelling/shack in backyard	1568
+level1	ZA_1_009	2009	Informal dwelling/shack in backyard	3701
+level1	ZA_1_002	2009	Informal dwelling/shack in backyard	0
+level1	ZA_1_003	2009	Informal dwelling/shack in backyard	3561
+level1	ZA_1_008	2009	Informal dwelling/shack not in backyard; e.g. in an informal/squatter settlement or on farm	0
 country	ZA	2009	Informal dwelling/shack not in backyard; e.g. in an informal/squatter settlement or on farm	0
-province	ZA_1_006	2009	Informal dwelling/shack not in backyard; e.g. in an informal/squatter settlement or on farm	0
-province	ZA_1_007	2009	Informal dwelling/shack not in backyard; e.g. in an informal/squatter settlement or on farm	0
-province	ZA_1_004	2009	Informal dwelling/shack not in backyard; e.g. in an informal/squatter settlement or on farm	0
-province	ZA_1_005	2009	Informal dwelling/shack not in backyard; e.g. in an informal/squatter settlement or on farm	0
-province	ZA_1_001	2009	Informal dwelling/shack not in backyard; e.g. in an informal/squatter settlement or on farm	0
-province	ZA_1_009	2009	Informal dwelling/shack not in backyard; e.g. in an informal/squatter settlement or on farm	0
-province	ZA_1_002	2009	Informal dwelling/shack not in backyard; e.g. in an informal/squatter settlement or on farm	0
-province	ZA_1_003	2009	Informal dwelling/shack not in backyard; e.g. in an informal/squatter settlement or on farm	0
-province	ZA_1_008	2009	Room/flatlet on a property or a larger dwelling servants’ quarters/granny flat	0
+level1	ZA_1_006	2009	Informal dwelling/shack not in backyard; e.g. in an informal/squatter settlement or on farm	0
+level1	ZA_1_007	2009	Informal dwelling/shack not in backyard; e.g. in an informal/squatter settlement or on farm	0
+level1	ZA_1_004	2009	Informal dwelling/shack not in backyard; e.g. in an informal/squatter settlement or on farm	0
+level1	ZA_1_005	2009	Informal dwelling/shack not in backyard; e.g. in an informal/squatter settlement or on farm	0
+level1	ZA_1_001	2009	Informal dwelling/shack not in backyard; e.g. in an informal/squatter settlement or on farm	0
+level1	ZA_1_009	2009	Informal dwelling/shack not in backyard; e.g. in an informal/squatter settlement or on farm	0
+level1	ZA_1_002	2009	Informal dwelling/shack not in backyard; e.g. in an informal/squatter settlement or on farm	0
+level1	ZA_1_003	2009	Informal dwelling/shack not in backyard; e.g. in an informal/squatter settlement or on farm	0
+level1	ZA_1_008	2009	Room/flatlet on a property or a larger dwelling servants’ quarters/granny flat	0
 country	ZA	2009	Room/flatlet on a property or a larger dwelling servants’ quarters/granny flat	0
-province	ZA_1_006	2009	Room/flatlet on a property or a larger dwelling servants’ quarters/granny flat	0
-province	ZA_1_007	2009	Room/flatlet on a property or a larger dwelling servants’ quarters/granny flat	0
-province	ZA_1_004	2009	Room/flatlet on a property or a larger dwelling servants’ quarters/granny flat	0
-province	ZA_1_005	2009	Room/flatlet on a property or a larger dwelling servants’ quarters/granny flat	0
-province	ZA_1_001	2009	Room/flatlet on a property or a larger dwelling servants’ quarters/granny flat	0
-province	ZA_1_009	2009	Room/flatlet on a property or a larger dwelling servants’ quarters/granny flat	0
-province	ZA_1_002	2009	Room/flatlet on a property or a larger dwelling servants’ quarters/granny flat	0
-province	ZA_1_003	2009	Room/flatlet on a property or a larger dwelling servants’ quarters/granny flat	0
-province	ZA_1_008	2009	Semi-detached house	4358
+level1	ZA_1_006	2009	Room/flatlet on a property or a larger dwelling servants’ quarters/granny flat	0
+level1	ZA_1_007	2009	Room/flatlet on a property or a larger dwelling servants’ quarters/granny flat	0
+level1	ZA_1_004	2009	Room/flatlet on a property or a larger dwelling servants’ quarters/granny flat	0
+level1	ZA_1_005	2009	Room/flatlet on a property or a larger dwelling servants’ quarters/granny flat	0
+level1	ZA_1_001	2009	Room/flatlet on a property or a larger dwelling servants’ quarters/granny flat	0
+level1	ZA_1_009	2009	Room/flatlet on a property or a larger dwelling servants’ quarters/granny flat	0
+level1	ZA_1_002	2009	Room/flatlet on a property or a larger dwelling servants’ quarters/granny flat	0
+level1	ZA_1_003	2009	Room/flatlet on a property or a larger dwelling servants’ quarters/granny flat	0
+level1	ZA_1_008	2009	Semi-detached house	4358
 country	ZA	2009	Semi-detached house	93311
-province	ZA_1_006	2009	Semi-detached house	3451
-province	ZA_1_007	2009	Semi-detached house	7814
-province	ZA_1_004	2009	Semi-detached house	19397
-province	ZA_1_005	2009	Semi-detached house	1846
-province	ZA_1_001	2009	Semi-detached house	3543
-province	ZA_1_009	2009	Semi-detached house	41334
-province	ZA_1_002	2009	Semi-detached house	994
-province	ZA_1_003	2009	Semi-detached house	10575
-province	ZA_1_008	2009	Town house (semi-detached house in complex)	4587
+level1	ZA_1_006	2009	Semi-detached house	3451
+level1	ZA_1_007	2009	Semi-detached house	7814
+level1	ZA_1_004	2009	Semi-detached house	19397
+level1	ZA_1_005	2009	Semi-detached house	1846
+level1	ZA_1_001	2009	Semi-detached house	3543
+level1	ZA_1_009	2009	Semi-detached house	41334
+level1	ZA_1_002	2009	Semi-detached house	994
+level1	ZA_1_003	2009	Semi-detached house	10575
+level1	ZA_1_008	2009	Town house (semi-detached house in complex)	4587
 country	ZA	2009	Town house (semi-detached house in complex)	119752
-province	ZA_1_006	2009	Town house (semi-detached house in complex)	15437
-province	ZA_1_007	2009	Town house (semi-detached house in complex)	5522
-province	ZA_1_004	2009	Town house (semi-detached house in complex)	13808
-province	ZA_1_005	2009	Town house (semi-detached house in complex)	4491
-province	ZA_1_001	2009	Town house (semi-detached house in complex)	22592
-province	ZA_1_009	2009	Town house (semi-detached house in complex)	44381
-province	ZA_1_002	2009	Town house (semi-detached house in complex)	1721
-province	ZA_1_003	2009	Town house (semi-detached house in complex)	7213
-province	ZA_1_008	2009	Traditional dwelling/hut/structure made of traditional materials	0
+level1	ZA_1_006	2009	Town house (semi-detached house in complex)	15437
+level1	ZA_1_007	2009	Town house (semi-detached house in complex)	5522
+level1	ZA_1_004	2009	Town house (semi-detached house in complex)	13808
+level1	ZA_1_005	2009	Town house (semi-detached house in complex)	4491
+level1	ZA_1_001	2009	Town house (semi-detached house in complex)	22592
+level1	ZA_1_009	2009	Town house (semi-detached house in complex)	44381
+level1	ZA_1_002	2009	Town house (semi-detached house in complex)	1721
+level1	ZA_1_003	2009	Town house (semi-detached house in complex)	7213
+level1	ZA_1_008	2009	Traditional dwelling/hut/structure made of traditional materials	0
 country	ZA	2009	Traditional dwelling/hut/structure made of traditional materials	9029
-province	ZA_1_006	2009	Traditional dwelling/hut/structure made of traditional materials	0
-province	ZA_1_007	2009	Traditional dwelling/hut/structure made of traditional materials	0
-province	ZA_1_004	2009	Traditional dwelling/hut/structure made of traditional materials	1076
-province	ZA_1_005	2009	Traditional dwelling/hut/structure made of traditional materials	0
-province	ZA_1_001	2009	Traditional dwelling/hut/structure made of traditional materials	7953
-province	ZA_1_009	2009	Traditional dwelling/hut/structure made of traditional materials	0
-province	ZA_1_002	2009	Traditional dwelling/hut/structure made of traditional materials	0
-province	ZA_1_003	2009	Traditional dwelling/hut/structure made of traditional materials	0
+level1	ZA_1_006	2009	Traditional dwelling/hut/structure made of traditional materials	0
+level1	ZA_1_007	2009	Traditional dwelling/hut/structure made of traditional materials	0
+level1	ZA_1_004	2009	Traditional dwelling/hut/structure made of traditional materials	1076
+level1	ZA_1_005	2009	Traditional dwelling/hut/structure made of traditional materials	0
+level1	ZA_1_001	2009	Traditional dwelling/hut/structure made of traditional materials	7953
+level1	ZA_1_009	2009	Traditional dwelling/hut/structure made of traditional materials	0
+level1	ZA_1_002	2009	Traditional dwelling/hut/structure made of traditional materials	0
+level1	ZA_1_003	2009	Traditional dwelling/hut/structure made of traditional materials	0
 \.
 
 
