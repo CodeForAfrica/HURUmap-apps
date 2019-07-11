@@ -32,7 +32,6 @@ def get_profile(geo, profile_name, request):
         comparative_geos = geo_data.get_comparative_geos(geo)
         charts = {}
         table_charts = [r.as_dict() for r in Chart.objects.all()]
-        data['primary_release_year'] = current_context().get('year')
         (country_code, level) = get_country_and_level(geo)
         available_releases = settings.HURUMAP.get('available_releases_years_per_country', {})
 
