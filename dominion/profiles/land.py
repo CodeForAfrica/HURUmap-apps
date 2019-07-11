@@ -67,7 +67,7 @@ def get_profile(geo, profile_name, request):
         return data
 
     except Exception as e:
-        log.error("Error building profile level, code and version: %s-%s '%s'" % (geo_level, geo_code, version), exc_info=e)
+        log.error("Error building profile level, code: %s-%s" % (geo.geo_level, geo.geo_code), exc_info=e)
         raise e
 
     finally:
