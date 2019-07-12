@@ -1279,7 +1279,8 @@ def get_workershostel_profile(geo, session):
                                   session, table_fields=[
                                       'workers_hostel_gender'],
                                   percent=False)
-
+        except Exception:
+            pass
         try:
             living_condition, _ = get_stat_data('workers_hostel_living_condition',
                                             geo,
@@ -1302,7 +1303,8 @@ def get_workershostel_profile(geo, session):
                                             session, table_fields=[
                                                 'workers_hostel_population_group'],
                                             percent=False)
-
+        except Exception:
+            pass                                
         try:
             population_year, population = get_stat_data('workers_hostel_population_year',
                                                     geo,
