@@ -1225,7 +1225,6 @@ def get_workershostel_profile(geo, session):
         population = 0
 
         try:
-
             access_electricity, _ = get_stat_data('workers_hostel_access_electricity',
                                               geo,
                                               session, table_fields=[
