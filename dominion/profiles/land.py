@@ -1264,7 +1264,7 @@ def get_workershostel_profile(geo, session):
                                                     'workers_hostel_handwashing_facility'],
                                                 percent=False)
         except Exception:
-            pass                                        
+            pass
         try:
             toilet_facility, _ = get_stat_data('workers_hostel_toilet_facility',
                                            geo,
@@ -1272,7 +1272,7 @@ def get_workershostel_profile(geo, session):
                                                'workers_hostel_toilet_facility'],
                                            percent=False)
         except Exception:
-            pass            
+            pass
         try:
             gender, _ = get_stat_data('workers_hostel_gender',
                                   geo,
@@ -1296,7 +1296,7 @@ def get_workershostel_profile(geo, session):
                                          'workers_hostel_ownership'],
                                      percent=False)
         except Exception:
-            pass                                
+            pass
         try:
             population_group, _ = get_stat_data('workers_hostel_population_group',
                                             geo,
@@ -1304,7 +1304,7 @@ def get_workershostel_profile(geo, session):
                                                 'workers_hostel_population_group'],
                                             percent=False)
         except Exception:
-            pass                                
+            pass
         try:
             population_year, population = get_stat_data('workers_hostel_population_year',
                                                     geo,
