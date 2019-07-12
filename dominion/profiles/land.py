@@ -1224,85 +1224,127 @@ def get_workershostel_profile(geo, session):
 
         population = 0
 
-        access_electricity, _ = get_stat_data('workers_hostel_access_electricity',
+        try:
+            access_electricity, _ = get_stat_data('workers_hostel_access_electricity',
                                               geo,
                                               session, table_fields=[
                                                   'workers_hostel_access_electricity'],
                                               percent=False)
-        age_group, _ = get_stat_data('workers_hostel_age_group',
+        except Exception:
+            pass
+        try:
+            age_group, _ = get_stat_data('workers_hostel_age_group',
                                      geo,
                                      session, table_fields=[
                                          'workers_hostel_age_group'],
                                      percent=False)
-        geography, _ = get_stat_data('workers_hostel_geography',
+        except Exception:
+            pass
+        try:
+            geography, _ = get_stat_data('workers_hostel_geography',
                                      geo,
                                      session, table_fields=[
                                          'workers_hostel_geography'],
                                      percent=False)
-        water_source, _ = get_stat_data('workers_hostel_water_source',
+        except Exception:
+            pass
+
+        try:
+            water_source, _ = get_stat_data('workers_hostel_water_source',
                                         geo,
                                         session, table_fields=[
                                             'workers_hostel_water_source'],
                                         percent=False)
-        handwashing_facility, _ = get_stat_data('workers_hostel_handwashing_facility',
+        except Exception:
+            pass
+        try:
+            handwashing_facility, _ = get_stat_data('workers_hostel_handwashing_facility',
                                                 geo,
                                                 session, table_fields=[
                                                     'workers_hostel_handwashing_facility'],
                                                 percent=False)
-        toilet_facility, _ = get_stat_data('workers_hostel_toilet_facility',
+        except Exception:
+            pass
+        try:
+            toilet_facility, _ = get_stat_data('workers_hostel_toilet_facility',
                                            geo,
                                            session, table_fields=[
                                                'workers_hostel_toilet_facility'],
                                            percent=False)
-
-        gender, _ = get_stat_data('workers_hostel_gender',
+        except Exception:
+            pass
+        try:
+            gender, _ = get_stat_data('workers_hostel_gender',
                                   geo,
                                   session, table_fields=[
                                       'workers_hostel_gender'],
                                   percent=False)
-
-        living_condition, _ = get_stat_data('workers_hostel_living_condition',
+        except Exception:
+            pass
+        try:
+            living_condition, _ = get_stat_data('workers_hostel_living_condition',
                                             geo,
                                             session, table_fields=[
                                                 'workers_hostel_living_condition'],
                                             percent=False)
-
-        ownership, _ = get_stat_data('workers_hostel_ownership',
+        except Exception:
+            pass
+        try:
+            ownership, _ = get_stat_data('workers_hostel_ownership',
                                      geo,
                                      session, table_fields=[
                                          'workers_hostel_ownership'],
                                      percent=False)
-
-        population_group, _ = get_stat_data('workers_hostel_population_group',
+        except Exception:
+            pass
+        try:
+            population_group, _ = get_stat_data('workers_hostel_population_group',
                                             geo,
                                             session, table_fields=[
                                                 'workers_hostel_population_group'],
                                             percent=False)
-
-        population_year, population = get_stat_data('workers_hostel_population_year',
+        except Exception:
+            pass
+        try:
+            population_year, population = get_stat_data('workers_hostel_population_year',
                                                     geo,
                                                     session, table_fields=[
                                                         'workers_hostel_population_year'],
                                                     percent=False)
-        rent, _ = get_stat_data('workers_hostel_rent',
+        except Exception:
+            pass
+        try:
+            rent, _ = get_stat_data('workers_hostel_rent',
                                 geo,
                                 session, table_fields=['workers_hostel_rent'],
                                 percent=False)
-        ss_dwelling, _ = get_stat_data('workers_hostel_ss_dwelling',
+        except Exception:
+            pass
+        try:
+            ss_dwelling, _ = get_stat_data('workers_hostel_ss_dwelling',
                                        geo,
                                        session, table_fields=[
                                            'workers_hostel_ss_dwelling'],
                                        percent=False)
-        residential_ownership, _ = get_stat_data('workers_hostel_residential_ownership',
+        except Exception:
+            pass
+        try:
+            residential_ownership, _ = get_stat_data('workers_hostel_residential_ownership',
                                                  geo,
                                                  session, table_fields=[
                                                      'workers_hostel_residential_ownership'],
                                                  percent=False)
-        subsidy, _ = get_stat_data('workers_hostel_subsidy',
+        except Exception:
+            pass
+
+        try:
+            subsidy, _ = get_stat_data('workers_hostel_subsidy',
                                    geo,
                                    session, table_fields=[
                                        'workers_hostel_subsidy'],
                                    percent=False)
+        except Exception:
+            pass
 
         is_missing = access_electricity.get('is_missing') and \
             age_group.get('is_missing') and gender.get('is_missing') and \

@@ -37,46 +37,46 @@ CREATE TABLE public.workers_hostel_ss_dwelling (
 --
 
 COPY public.workers_hostel_ss_dwelling (geo_level, geo_code, geo_version, workers_hostel_ss_dwelling, total) FROM stdin;
-province	WC	2009	Yes	743
-province	WC	2009	No	25696
-province	WC	2009	Do not know	0
-province	WC	2009	Unspecified	0
+level1	ZA_1_008	2009	Yes	743
+level1	ZA_1_008	2009	No	25696
+level1	ZA_1_008	2009	Do not know	0
+level1	ZA_1_008	2009	Unspecified	0
 country	ZA	2009	Yes	10353
 country	ZA	2009	No	415943
 country	ZA	2009	Do not know	1574
 country	ZA	2009	Unspecified	1216
-province	NC	2009	Yes	3137
-province	NC	2009	No	26223
-province	NC	2009	Do not know	750
-province	NC	2009	Unspecified	0
-province	NW	2009	Yes	0
-province	NW	2009	No	18801
-province	NW	2009	Do not know	0
-province	NW	2009	Unspecified	0
-province	MP	2009	Yes	0
-province	MP	2009	No	54446
-province	MP	2009	Do not know	0
-province	MP	2009	Unspecified	468
-province	LIM	2009	Yes	0
-province	LIM	2009	No	40155
-province	LIM	2009	Do not know	0
-province	LIM	2009	Unspecified	748
-province	KZN	2009	Yes	3496
-province	KZN	2009	No	75009
-province	KZN	2009	Do not know	0
-province	KZN	2009	Unspecified	0
-province	GT	2009	Yes	0
-province	GT	2009	No	141023
-province	GT	2009	Do not know	824
-province	GT	2009	Unspecified	0
-province	FS	2009	Yes	0
-province	FS	2009	No	5195
-province	FS	2009	Do not know	0
-province	FS	2009	Unspecified	0
-province	EC	2009	Yes	2977
-province	EC	2009	No	29395
-province	EC	2009	Do not know	0
-province	EC	2009	Unspecified	0
+level1	ZA_1_006	2009	Yes	3137
+level1	ZA_1_006	2009	No	26223
+level1	ZA_1_006	2009	Do not know	750
+level1	ZA_1_006	2009	Unspecified	0
+level1	ZA_1_007	2009	Yes	0
+level1	ZA_1_007	2009	No	18801
+level1	ZA_1_007	2009	Do not know	0
+level1	ZA_1_007	2009	Unspecified	0
+level1	ZA_1_004	2009	Yes	0
+level1	ZA_1_004	2009	No	54446
+level1	ZA_1_004	2009	Do not know	0
+level1	ZA_1_004	2009	Unspecified	468
+level1	ZA_1_005	2009	Yes	0
+level1	ZA_1_005	2009	No	40155
+level1	ZA_1_005	2009	Do not know	0
+level1	ZA_1_005	2009	Unspecified	748
+level1	ZA_1_001	2009	Yes	3496
+level1	ZA_1_001	2009	No	75009
+level1	ZA_1_001	2009	Do not know	0
+level1	ZA_1_001	2009	Unspecified	0
+level1	ZA_1_009	2009	Yes	0
+level1	ZA_1_009	2009	No	141023
+level1	ZA_1_009	2009	Do not know	824
+level1	ZA_1_009	2009	Unspecified	0
+level1	ZA_1_002	2009	Yes	0
+level1	ZA_1_002	2009	No	5195
+level1	ZA_1_002	2009	Do not know	0
+level1	ZA_1_002	2009	Unspecified	0
+level1	ZA_1_003	2009	Yes	2977
+level1	ZA_1_003	2009	No	29395
+level1	ZA_1_003	2009	Do not know	0
+level1	ZA_1_003	2009	Unspecified	0
 \.
 
 
