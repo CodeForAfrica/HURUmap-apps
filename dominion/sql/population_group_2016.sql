@@ -57,10 +57,10 @@ level1	ZA_1_001	2009	Black African	9625934
 level1	ZA_1_001	2009	Coloured	134089
 level1	ZA_1_001	2009	Indian or Asian	873161
 level1	ZA_1_001	2009	White	432056
-level1	ZA_1_006	2009	Black African	3432379
-level1	ZA_1_006	2009	Coloured	61010
-level1	ZA_1_006	2009	Indian or Asian	16686
-level1	ZA_1_006	2009	White	238360
+level1	ZA_1_007	2009	Black African	3432379
+level1	ZA_1_007	2009	Coloured	61010
+level1	ZA_1_007	2009	Indian or Asian	16686
+level1	ZA_1_007	2009	White	238360
 level1	ZA_1_009	2009	Black African	10770177
 level1	ZA_1_009	2009	Coloured	443289
 level1	ZA_1_009	2009	Indian or Asian	357409
