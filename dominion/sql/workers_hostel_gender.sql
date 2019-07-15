@@ -38,25 +38,25 @@ CREATE TABLE public.workers_hostel_gender (
 
 COPY public.workers_hostel_gender (geo_level, geo_code, geo_version, workers_hostel_gender, total) FROM stdin;
 country	ZA	2009	Male	315484
-province	GT	2009	Male	112026
-province	KZN	2009	Male	57772
-province	MP	2009	Male	36287
-province	LIM	2009	Male	31241
-province	NC	2009	Male	21529
-province	NW	2009	Male	18218
-province	WC	2009	Male	17491
-province	EC	2009	Male	17447
-province	FS	2009	Male	3474
+level1	ZA_1_009	2009	Male	112026
+level1	ZA_1_001	2009	Male	57772
+level1	ZA_1_004	2009	Male	36287
+level1	ZA_1_005	2009	Male	31241
+level1	ZA_1_006	2009	Male	21529
+level1	ZA_1_007	2009	Male	18218
+level1	ZA_1_008	2009	Male	17491
+level1	ZA_1_003	2009	Male	17447
+level1	ZA_1_002	2009	Male	3474
 country	ZA	2009	Female	113601
-province	GT	2009	Female	29821
-province	KZN	2009	Female	20734
-province	MP	2009	Female	18627
-province	EC	2009	Female	14925
-province	LIM	2009	Female	9662
-province	WC	2009	Female	8948
-province	NC	2009	Female	8580
-province	FS	2009	Female	1721
-province	NW	2009	Female	583
+level1	ZA_1_009	2009	Female	29821
+level1	ZA_1_001	2009	Female	20734
+level1	ZA_1_004	2009	Female	18627
+level1	ZA_1_003	2009	Female	14925
+level1	ZA_1_005	2009	Female	9662
+level1	ZA_1_008	2009	Female	8948
+level1	ZA_1_006	2009	Female	8580
+level1	ZA_1_002	2009	Female	1721
+level1	ZA_1_007	2009	Female	583
 \.
 
 

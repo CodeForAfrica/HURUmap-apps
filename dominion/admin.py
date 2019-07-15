@@ -29,6 +29,12 @@ class ChartForm(forms.ModelForm):
         ('pie', 'Pie Chart')
     )
 
+    STAT_TYPES = (
+       ('', '----------'),
+       ('number', 'Number'),
+       ('percentage', 'Percentage') 
+    )
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields["db_table"].widget.attrs.update(
@@ -63,10 +69,12 @@ class ChartForm(forms.ModelForm):
     chart_type = forms.ChoiceField(
         choices=CHART_TYPES, widget=forms.Select(attrs={"id": "chart-type"})
     )
+    
+    chart_stat_type = forms.ChoiceField(choices=STAT_TYPES)
 
     class Meta:
         model = Chart
-        fields = ["db_table", "fields", "chart_type", "chart_title", "chart_source", "chart_source_link"]
+        fields = ["db_table", "fields", "chart_type", "chart_stat_type", "chart_title", "chart_source", "chart_source_link"]
 
     class Media:
         js = ("js/charts.js",)
@@ -74,7 +82,7 @@ class ChartForm(forms.ModelForm):
 
 class ChartAdmin(admin.ModelAdmin):
     form = ChartForm
-    list_display = ("db_table", "fields", "chart_type", "chart_title", "chart_source", "chart_source_link")
+    list_display = ("db_table", "fields", "chart_type", "chart_stat_type", "chart_title", "chart_source", "chart_source_link")
 
 
 class ChartInline(admin.StackedInline):

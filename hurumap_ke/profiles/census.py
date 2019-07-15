@@ -9,7 +9,7 @@ from wazimap.data.utils import (calculate_median,
                                 dataset_context)
 from wazimap.geo import geo_data, LocationNotFound
 from wazimap.models.data import DataNotFound
-from hurumap_ke.models import Charts
+from hurumap_ke.models import Chart
 
 from utils import *
 
@@ -46,75 +46,118 @@ def get_profile(geo, profile_name, request):
     try:
         comparative_geos = geo_data.get_comparative_geos(geo)
         data = {}
-        table_charts = [r.as_dict() for r in Charts.objects.all()]
-        data['sample_profile_with_charts'] = get_sample_profile_with_charts(geo, session, table_charts)
+        charts = {}
+        table_charts = [r.as_dict() for r in Chart.objects.all()]
         data['primary_release_year'] = current_context().get('year')
-        sections = []
+        for tablechart in table_charts:
+            charts[tablechart['name']] = get_table_profile_with_charts(geo, session, tablechart)
 
-        for cat in SECTIONS:
-            sections.extend(SECTIONS[cat]['profiles'])
+            for comp_geo in comparative_geos:
+                try:
+                    merge_dicts(
+                        charts[tablechart['name']], get_table_profile_with_charts(
+                            comp_geo, session, tablechart), comp_geo.geo_level)
+                except KeyError as e:
+                    msg = "Error merging data into %s for section '%s' from %s: KeyError: %s" % (
+                        geo.geoid, tablechart['name'], comp_geo.geoid, e)
+                    log.fatal(msg, exc_info=e)
+                    raise ValueError(msg)
+        data['charts'] = charts
+        # sections = []
 
-        for section in sections:
-            section = section.lower().replace(' ', '_')
+        # for cat in SECTIONS:
+        #     sections.extend(SECTIONS[cat]['profiles'])
 
-            if 'voter_registration' in section:
-                year = re.search(r"\d+", section).group()
-                section = 'voter_registration'
+        # for section in sections:
+        #     section = section.lower().replace(' ', '_')
 
-            function_name = 'get_%s_profile' % section
+        #     if 'voter_registration' in section:
+        #         year = re.search(r"\d+", section).group()
+        #         section = 'voter_registration'
 
-            if function_name in globals():
-                func = globals()[function_name]
+        #     function_name = 'get_%s_profile' % section
 
-                if function_name == 'get_voter_registration_profile':
-                    section = '{}_{}'.format(section, year)
-                    data[section] = func(geo, session, year)
+        #     if function_name in globals():
+        #         func = globals()[function_name]
 
-                    # get profiles for comparative geometries
-                    for comp_geo in comparative_geos:
-                        try:
-                            merge_dicts(
-                                data[section],
-                                func(
-                                    comp_geo,
-                                    session,
-                                    year),
-                                comp_geo.geo_level)
-                        except KeyError as e:
-                            msg = "Error merging data into %s for section '%s' from %s: KeyError: %s" % (
-                                geo.geoid, section, comp_geo.geoid, e)
-                            log.fatal(msg, exc_info=e)
-                            raise ValueError(msg)
+        #         if function_name == 'get_voter_registration_profile':
+        #             section = '{}_{}'.format(section, year)
+        #             data[section] = func(geo, session, year)
 
-                else:
-                    data[section] = func(geo, session)
+        #             # get profiles for comparative geometries
+        #             for comp_geo in comparative_geos:
+        #                 try:
+        #                     merge_dicts(
+        #                         data[section],
+        #                         func(
+        #                             comp_geo,
+        #                             session,
+        #                             year),
+        #                         comp_geo.geo_level)
+        #                 except KeyError as e:
+        #                     msg = "Error merging data into %s for section '%s' from %s: KeyError: %s" % (
+        #                         geo.geoid, section, comp_geo.geoid, e)
+        #                     log.fatal(msg, exc_info=e)
+        #                     raise ValueError(msg)
 
-                    # get profiles for comparative geometries
-                    for comp_geo in comparative_geos:
-                        try:
-                            merge_dicts(
-                                data[section], func(
-                                    comp_geo, session), comp_geo.geo_level)
-                        except KeyError as e:
-                            msg = "Error merging data into %s for section '%s' from %s: KeyError: %s" % (
-                                geo.geoid, section, comp_geo.geoid, e)
-                            log.fatal(msg, exc_info=e)
-                            raise ValueError(msg)
+        #         else:
+        #             data[section] = func(geo, session)
 
-        # tweaks to make the data nicer
-        # show X largest groups on their own and group the rest as 'Other'
-        if 'households' in sections:
-            group_remainder(data['households']
-                            ['roofing_material_distribution'], 5)
-            group_remainder(data['households']
-                            ['wall_material_distribution'], 5)
-        data['afrobarometer'] = get_afrobarometer_profile(geo, session)
+        #             # get profiles for comparative geometries
+        #             for comp_geo in comparative_geos:
+        #                 try:
+        #                     merge_dicts(
+        #                         data[section], func(
+        #                             comp_geo, session), comp_geo.geo_level)
+        #                 except KeyError as e:
+        #                     msg = "Error merging data into %s for section '%s' from %s: KeyError: %s" % (
+        #                         geo.geoid, section, comp_geo.geoid, e)
+        #                     log.fatal(msg, exc_info=e)
+        #                     raise ValueError(msg)
+
+        # # tweaks to make the data nicer
+        # # show X largest groups on their own and group the rest as 'Other'
+        # if 'households' in sections:
+        #     group_remainder(data['households']
+        #                     ['roofing_material_distribution'], 5)
+        #     group_remainder(data['households']
+        #                     ['wall_material_distribution'], 5)
+        # data['afrobarometer'] = get_afrobarometer_profile(geo, session)
         return data
 
     finally:
         session.close()
 
-def get_sample_profile_with_charts(geo, session, tablecharts):
+
+def get_table_profile_with_charts(geo, session, tablechart):
+    table_data = LOCATIONNOTFOUND
+    table_total_data = 0
+
+    with dataset_context(year='2009'):
+        try:
+            table_data, table_total_data = get_stat_data(
+                tablechart['field'].split('_') , geo, session,
+                table_name=tablechart['table_id']
+            )
+        except Exception:
+            pass
+
+    return {
+        'chart': tablechart['chart_type'],
+        'title': tablechart['title'],
+        'section': tablechart['section'],
+        'fields': tablechart['field'],
+        'table_data': table_data,
+        'table_total_data': {
+            "name": "name for total data of %s" % tablechart['name'],
+            "values": {
+                "this": table_total_data
+                },
+        },
+    }
+            
+
+def get_sample_profile_with_charts(geo, session, tablecharts, comparative_geos):
     data = {}
     for tablechart in tablecharts:
         table_data = LOCATIONNOTFOUND
@@ -123,7 +166,7 @@ def get_sample_profile_with_charts(geo, session, tablecharts):
         with dataset_context(year='2009'):
             try:
                 table_data, table_total_data = get_stat_data(
-                    tablechart['field'] , geo, session,
+                    tablechart['field'].split('_') , geo, session,
                     table_name=tablechart['table_id']
                 )
             except Exception:
@@ -131,6 +174,9 @@ def get_sample_profile_with_charts(geo, session, tablecharts):
 
             data[tablechart['name']] = {
                 'chart': tablechart['chart_type'],
+                'title': tablechart['title'],
+                'section': tablechart['section'],
+                'fields': tablechart['field'],
                 'table_data': table_data,
                 'table_total_data': {
                     "name": "name for total data of %s" % tablechart['name'],
@@ -139,6 +185,16 @@ def get_sample_profile_with_charts(geo, session, tablecharts):
                         },
                 },
             }
+            for comp_geo in comparative_geos:
+                try:
+                    merge_dicts(
+                        data[tablechart['name']], get_sample_profile_with_charts(
+                            comp_geo, session, table_charts), comp_geo.geo_level)
+                except KeyError as e:
+                    msg = "Error merging data into %s for section '%s' from %s: KeyError: %s" % (
+                        geo.geoid, section, comp_geo.geoid, e)
+                    log.fatal(msg, exc_info=e)
+                    raise ValueError(msg)
     return data
 
 def get_demographics_profile(geo, session):

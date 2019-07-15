@@ -152,8 +152,8 @@ HURUMAP['available_releases_years_per_country'] = {
         'level1': [2009]
     },
     'za': {
-        'country': [2016, 2017, 2018],
-        'level1': [2016, 2017, 2018]
+        'country': [2018, 2017, 2016],
+        'level1': [2018, 2017, 2016]
     }
 }
 
@@ -309,12 +309,12 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
-CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_ALLOW_ALL = True
 
 #whitelist localhost:3000 to serve rest frontend
-CORS_ORIGIN_WHITELIST = (
-        'localhost:3000/'
-    )
+# CORS_ORIGIN_WHITELIST = (
+#         'localhost:3000/'
+#     )
 
 # color scheme
 

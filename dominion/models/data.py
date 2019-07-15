@@ -27,6 +27,7 @@ class Chart(models.Model):
     chart_title = models.CharField(max_length=500, null=True, blank=True, help_text="Descriptive title of this chart")
     chart_source = models.CharField(max_length=500, null=True, blank=True, help_text="Data source")
     chart_source_link = models.CharField(max_length=500, null=True, blank=True, help_text="Link to data source")
+    chart_stat_type = models.CharField(max_length=32, null=True, blank=True, help_text="Default is Number")
 
     # def clean(self):
     #     num_field = len(self.fields)
@@ -44,7 +45,8 @@ class Chart(models.Model):
         return {
             'name': str(self),
             'title': self.chart_title,
-            'field': '_'.join(self.fields),
+            'field': ','.join(self.fields),
+            'stat_type': self.chart_stat_type,
             'table_id': self.db_table.name,
             'chart_type': self.chart_type,
             'section': str(self.section),
