@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
         [...inputs].forEach(input => {
             input.parentElement.parentElement.style.display = 'none';
         });
-    
+
         tableSelector.onchange = (e) => {
             const tableName = tableSelector.options[tableSelector.selectedIndex].innerHTML;
             const found = fields.find(f => f.name.toLowerCase() === tableName);
@@ -39,25 +39,37 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             const fieldCheckList = inline.querySelector('#chart-table-field');
             fieldCheckList.onchange = (e) => {
-                fieldSelected = inline.querySelectorAll('input[id^=chart-table-field_]:checked').length;
-                if(fieldSelected === 1 ) {
+                fieldSelected = inline.querySelectorAll('input[id^=chart-table-field_]:checked');
+                numFieldSelected = fieldSelected.length;
+                if(numFieldSelected === 1 ) {
                     [...chartypes].forEach(option => {
                         option.style.display = 'block';
                     });
                     chartypes[4].style.display = 'none';
                 }
-                else if(fieldSelected === 2) {
+                //if two fields are selected, hide single field charts
+                else if(numFieldSelected === 2) {
                     [...chartypes].forEach(option => {
                         option.style.display = 'none';
                     });
                     chartypes[4].style.display = 'block';
+
+                    //populate group_by with the selected fields.
+                    let groupBy = inline.querySelector('#group_by');
+                    [...fieldSelected].forEach(field => {
+                      let grouByOption = document.createElement("option");
+                      grouByOption.text = field.value;
+                      grouByOption.value = field.value;
+                      groupBy.appendChild(grouByOption);
+                    });
+
                 } else {
                     [...chartypes].forEach(option => {
                         option.style.display = 'block';
                     });
                 }
             }
-    
+
         };
     }
 
