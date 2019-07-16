@@ -28,7 +28,7 @@ class Chart(models.Model):
     chart_source = models.CharField(max_length=500, null=True, blank=True, help_text="Data source")
     chart_source_link = models.CharField(max_length=500, null=True, blank=True, help_text="Link to data source")
     chart_stat_type = models.CharField(max_length=32, null=True, blank=True, help_text="Default is Number")
-    group_by = models.CharField(max_length=120, null=True, blank=True, help_text="Default is Number")
+    group_by = models.CharField(max_length=120, null=True, blank=True, help_text="You have choose grouped column chart, which field should the chart be grouped by?")
 
     # def clean(self):
     #     num_field = len(self.fields)

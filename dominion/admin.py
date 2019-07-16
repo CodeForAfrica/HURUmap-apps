@@ -61,6 +61,8 @@ class ChartForm(forms.ModelForm):
             )
         )
 
+        self.fields["group_by"].choices = self.fields["fields"].choices
+
     db_table = CustomChoiceField(
         widget=forms.Select(attrs={"id": "chart-table", "data-fields": "{}"}),
         queryset=DBTable.objects.all(),
@@ -77,7 +79,7 @@ class ChartForm(forms.ModelForm):
     chart_stat_type = forms.ChoiceField(choices=STAT_TYPES)
 
     group_by = forms.ChoiceField(
-        widget=forms.Select(attrs={"id": "group_by"}), choices=GROUP_BY,
+        widget=forms.Select(attrs={"id": "group_by"}),
     )
 
     class Meta:

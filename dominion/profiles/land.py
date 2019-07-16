@@ -58,7 +58,7 @@ def get_profile(geo, profile_name, request):
 
                 if not charts[tablechart['name']]['table_data'].get('is_missing'):
                     break
-            
+
             #get total population
             if "population" in tablechart['name'] and data["total_population"] == 0:
                 data['total_population'] = charts[tablechart['name']]['table_total_data']['values']['this']
@@ -67,7 +67,7 @@ def get_profile(geo, profile_name, request):
         return data
 
     except Exception as e:
-        log.error("Error building profile level, code and version: %s-%s '%s'" % (geo_level, geo_code, version), exc_info=e)
+        log.error("Error building profile level, code and version: %s-%s '%s'" % (geo.geo_level, geo.geo_code, geo.version), exc_info=e)
         raise e
 
     finally:
@@ -83,15 +83,25 @@ def get_country_and_level(geo):
 
     return (country, level)
 
-        
+
 def get_table_profile_with_charts(geo, session, tablechart, year):
     table_data = LOCATIONNOTFOUND
     table_total_data = 0
 
+    fields = tablechart['field'].split(',')
+
+    if len(fields) > 1:
+        new_fields = []
+        new_fields.append(tablechart['group_by'])
+        for item in fields:
+            if item != tablechart['group_by']:
+                new_fields.append(item)
+        fields = new_fields
+
     with dataset_context(year=year):
         try:
             table_data, table_total_data = get_stat_data(
-                tablechart['field'].split(',') , geo, session,
+                fields , geo, session,
                 table_name=tablechart['table_id']
             )
         except Exception:
@@ -111,52 +121,3 @@ def get_table_profile_with_charts(geo, session, tablechart, year):
                 },
         },
     }
-
-def get_demographics(geo, session, country, level, year):
-    population_data = get_population(geo, session, country, level, year)
-    demographics_data = dict(list(population_data.items()))
-    demographics_data['is_missing'] = population_data.get('is_missing')
-
-    return demographics_data
-
-
-def get_population(geo, session, country, level, year):
-    group_dist, total_population_group = LOCATIONNOTFOUND, 0
-    residence_dist, total_population_residence = LOCATIONNOTFOUND, 0
-    db_table = db_column_name = 'population_group_' + str(year)
-    try:
-        group_dist, total_population_group = get_stat_data(
-            db_table, geo, session, table_fields=[db_column_name])
-    except Exception:
-        pass
-
-
-    try:
-        db_table = db_column_name = 'population_residence_' + str(year)
-        residence_dist, total_population_residence = get_stat_data(
-            db_table, geo, session,
-            table_fields=[db_column_name])
-    except Exception:
-        pass
-
-    total_population = 0
-    is_missing = group_dist.get('is_missing') and \
-                 residence_dist.get('is_missing')
-    if not is_missing:
-        total_population = total_population_group if total_population_group > 0 else total_population_residence
-    total_population_dist = _create_single_value_dist(
-        'People', total_population)
-
-    demographics_data = {
-        'is_missing': is_missing,
-        'total_population': _add_metadata_to_dist(total_population_dist,
-                                                  'total_population_dist',
-                                                  country, level),
-    }
-
-    if geo.square_kms:
-        demographics_data['population_density'] = {
-            'name': "people per square kilometre",
-            'values': {"this": total_population / geo.square_kms},
-        }
-    return demographics_data
