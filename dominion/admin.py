@@ -26,13 +26,17 @@ class ChartForm(forms.ModelForm):
         ('histogram', 'Histogram'),
         ('line', 'Line'),
         ('grouped_column', 'Grouped Column'),
-        ('pie', 'Pie Chart')
+        ('pie', 'Pie'),
     )
 
     STAT_TYPES = (
        ('', '----------'),
        ('number', 'Number'),
-       ('percentage', 'Percentage') 
+       ('percentage', 'Percentage'),
+    )
+
+    GROUP_BY = (
+    ('', '-----------'),
     )
 
     def __init__(self, *args, **kwargs):
@@ -69,12 +73,16 @@ class ChartForm(forms.ModelForm):
     chart_type = forms.ChoiceField(
         choices=CHART_TYPES, widget=forms.Select(attrs={"id": "chart-type"})
     )
-    
+
     chart_stat_type = forms.ChoiceField(choices=STAT_TYPES)
+
+    group_by = forms.ChoiceField(
+        widget=forms.Select(attrs={"id": "group_by"}), choices=GROUP_BY,
+    )
 
     class Meta:
         model = Chart
-        fields = ["db_table", "fields", "chart_type", "chart_stat_type", "chart_title", "chart_source", "chart_source_link"]
+        fields = ["db_table", "fields", "chart_type", "group_by", "chart_stat_type", "chart_title", "chart_source", "chart_source_link"]
 
     class Media:
         js = ("js/charts.js",)
@@ -82,7 +90,7 @@ class ChartForm(forms.ModelForm):
 
 class ChartAdmin(admin.ModelAdmin):
     form = ChartForm
-    list_display = ("db_table", "fields", "chart_type", "chart_stat_type", "chart_title", "chart_source", "chart_source_link")
+    list_display = ("db_table", "fields", "chart_type", "group_by", "chart_stat_type", "chart_title", "chart_source", "chart_source_link")
 
 
 class ChartInline(admin.StackedInline):
@@ -94,7 +102,7 @@ class ChartInline(admin.StackedInline):
 
 class ChartSectionAdmin(admin.ModelAdmin):
     inlines = [
-        ChartInline, 
+        ChartInline,
     ]
 
 admin.site.register(ChartSection, ChartSectionAdmin)
