@@ -5,7 +5,7 @@ from distutils.util import strtobool
 
 import dj_database_url
 
-from hurumap.settings import *  # noqa
+from hurumap.dashboard.settings import *  # noqa
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

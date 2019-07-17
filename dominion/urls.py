@@ -5,6 +5,7 @@ from django.views.generic import RedirectView
 
 from dominion import settings
 from hurumap.urls import urlpatterns as hurumap_urlpatterns
+from hurumap.dashboard.urls import urlpatterns as hurumap_dashboard_urlpatterns
 
 from dominion.views import GeographyCompareAPIView
 
@@ -19,4 +20,4 @@ urlpatterns = [
     ),] + \
     static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + \
     static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + \
-    hurumap_urlpatterns
+    hurumap_urlpatterns + hurumap_dashboard_urlpatterns
