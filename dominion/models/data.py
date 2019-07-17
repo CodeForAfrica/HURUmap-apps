@@ -22,7 +22,6 @@ class Chart(models.Model):
     db_table = models.ForeignKey(DBTable, on_delete=models.CASCADE)
     chart_type = models.CharField(max_length=32, null=False)
     fields = ArrayField(models.CharField(max_length=150, null=False, unique=True), help_text="Comma-separated fields to be included in chart. Choose one field for one Column, Histogram or Pie. And Choose two fields for grouped column")
-    chart_title = models.CharField(max_length=100, null=True, blank=True, help_text="Descriptive title of this chart")
     section = models.ForeignKey(ChartSection, related_name='sections', null=True, on_delete=models.CASCADE)
     chart_title = models.CharField(max_length=500, null=True, blank=True, help_text="Descriptive title of this chart")
     chart_source = models.CharField(max_length=500, null=True, blank=True, help_text="Data source")
