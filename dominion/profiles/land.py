@@ -60,7 +60,7 @@ def get_profile(geo, profile_name, request):
                     break
 
             #get total population
-            if "population" in tablechart['name'] and data["total_population"] == 0:
+            if "population" in tablechart['name'] and charts[tablechart['name']]['table_total_data']['values']['this'] != 0:
                 data['total_population'] = charts[tablechart['name']]['table_total_data']['values']['this']
 
         data['charts'] = charts
@@ -75,11 +75,13 @@ def get_profile(geo, profile_name, request):
 
 def get_comparison_profile(geo, comp_geo):
     session = get_session()
+    geoid = "%s-%s" % (geo.geo_level, geo.geo_code)
+    comp_geoid = "%s-%s" % (comp_geo.geo_level, comp_geo.geo_code)
     data = {}
     try:
         charts = {}
         data['sections'] = [s.name for s in ChartSection.objects.all()]
-        data['total_population']['this'] = 0
+        data['total_population'] = {}
         table_charts = [r.as_dict() for r in Chart.objects.all()]
         (country_code, level) = get_country_and_level(geo)
         available_releases = settings.HURUMAP.get('available_releases_years_per_country', {})
@@ -91,33 +93,33 @@ def get_comparison_profile(geo, comp_geo):
             #loop through release year until there's data for that data context
             for release_year in geo_available_releases:
                 chart_profile = get_table_profile_with_charts(geo, session, tablechart, release_year)
-                chart_comp_profile = get_table_profile_with_charts(geo, session, tablechart, release_year)
+                chart_comp_profile = get_table_profile_with_charts(comp_geo, session, tablechart, release_year)
 
                 if not chart_profile['table_data'].get('is_missing') and not chart_comp_profile['table_data'].get('is_missing'):
                     try:
-                        merge_dicts(chart_profile, chart_comp_profile, comp_geo.full_geoid)
+                        merge_dicts(chart_profile, chart_comp_profile, comp_geoid)
+                        charts[tablechart['name']] = chart_profile
+
+                        #get total population
+                        if "population" in tablechart['name']:
+                            data['total_population']['this'] = charts[tablechart['name']]['table_total_data']['values']['this']
+                            data['total_population'][comp_geoid] = charts[tablechart['name']]['table_total_data']['values'][comp_geoid]
                     except KeyError as e:
                         msg = "Error merging comparison data for chart '%s', geographies %s, %s : KeyError: %s" % (
-                            tablechart['name'], geo.full_geoid, comp_geo.full_geoid, e)
-                            log.fatal(msg, exc_info=e)
-                            pass
+                            tablechart['name'], geoid, comp_geoid, e)
+                        log.fatal(msg, exc_info=e)
+                        raise ValueError(msg)
 
-                    charts[tablechart['name']] = chart_profile
                     break
 
-            #get total population
-            if "population" in tablechart['name'] and data["total_population"]["this"] == 0:
-                data['total_population']['this'] = charts[tablechart['name']]['table_total_data']['values']['this']
-                data['total_population'][comp_geo.full_geoid] = charts[tablechart['name']]['table_total_data']['values'][comp_geo.full_geoid]
-
         data['charts'] = charts
-        return data
 
     except Exception as e:
-        log.error("Error building profile level, code: %s-%s" % (geo.geo_level, geo.geo_code), exc_info=e)
-        raise e
+        log.error("Error building comparison profile for geos: %s, %s" % (geoid, comp_geoid), exc_info=e)
+        pass
 
     finally:
+        return data
         session.close()
 
 def get_country_and_level(geo):
