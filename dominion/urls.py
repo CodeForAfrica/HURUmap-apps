@@ -31,7 +31,13 @@ urlpatterns = [
         regex=r'^compare/(?P<geo_id1>\w+-\w+)/vs/(?P<geo_id2>\w+-\w+)/$',
         view=cache_page(STANDARD_CACHE_TIME)(GeographyCompareView.as_view()),
         name='geography_compare',
-    )] + \
+    ),
+    url(
+        regex   = '^api/1.0/compare/(?P<geo_id1>\w+-\w+)/vs/(?P<geo_id2>\w+-\w+)/$',
+        view    = cache_page(STANDARD_CACHE_TIME)(GeographyCompareView.as_view()),
+        kwargs  = {},
+        name    = 'geography_compare',
+    ),] + \
     static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + \
     static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + \
     hurumap_urlpatterns
