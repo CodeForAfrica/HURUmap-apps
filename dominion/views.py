@@ -26,7 +26,6 @@ class GeographyCompareAPIView(View):
                     "You must define WAZIMAP.profile_builder in settings.py")
 
             compare_profile_method = import_string(compare_profile_method)
-
             compare_profile_data = compare_profile_method(self.geo, self.comp_geo)
 
             compare_profile_data['geography'] = self.geo.as_dict_deep()
