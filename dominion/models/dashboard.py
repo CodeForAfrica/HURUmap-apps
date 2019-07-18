@@ -2,12 +2,14 @@ import json
 import logging
 
 from django import forms
+from django.db.models import F, Func
 from django.conf import settings
 from django.db import models
 from django.contrib.postgres.fields import ArrayField
 from django.utils.text import slugify
 from wazimap.models import Geography, DBTable, FieldTable, FieldTable
 from modelcluster.fields import ParentalKey
+from wagtail.core import blocks
 from modelcluster.models import ClusterableModel
 from wagtail.admin.edit_handlers import FieldPanel, InlinePanel
 from wagtail.contrib.settings.models import BaseSetting, register_setting
@@ -44,25 +46,25 @@ class ChartSections(ClusterableModel):
         return '{}'.format(self.name)
 
 class Charts(models.Model):
-    table = models.ForeignKey(DBTable, on_delete=models.CASCADE)
+    table = models.ForeignKey(DBTable, to_field='name', on_delete=models.CASCADE)
     chart_type = models.CharField(max_length=32, choices=CHART_TYPES, null=False)
-    fields = ArrayField(models.CharField(max_length=150, null=False, unique=True), help_text="Comma-separated fields to be included in chart. Choose one field for one Column, Histogram or Pie. And Choose two fields for grouped column")
+    fields = ArrayField(models.CharField(max_length=150, null=False, unique=True))
     title = models.CharField(max_length=500, null=True, blank=True, help_text="Descriptive title of this chart")
     source = models.CharField(max_length=500, null=True, blank=True, help_text="Data source")
     source_link = models.URLField(max_length=500, null=True, blank=True, help_text="Link to data source")
     stat_type = models.CharField(max_length=32, null=True, blank=True, choices=STAT_TYPES, help_text="Default is Number")
-    group_by = models.CharField(max_length=120, null=True, blank=True, help_text="You have choose grouped column chart, which field should the chart be grouped by?")
+    group_by = models.CharField(max_length=120, null=True, blank=True)
     parent = ParentalKey(ChartSections, related_name='charts')
 
     panels = [
         FieldPanel('table'),
-        FieldPanel('fields'),
+        FieldPanel('fields', widget=forms.CheckboxSelectMultiple),
         FieldPanel('chart_type'),
         FieldPanel('title'),
         FieldPanel('source'),
         FieldPanel('source_link'),
         FieldPanel('stat_type'),
-        FieldPanel('group_by'),
+        FieldPanel('group_by', widget=forms.Select),
     ]
 
     def __str__(self):
