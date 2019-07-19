@@ -1,1 +1,30 @@
 {% extends 'homepage.html' %}{% load humanize partition staticfiles %}
+
+{# Showcase #}
+        {% block how_it_works %}
+            <div class="wrapper clearfix">
+                <h1>How It Works</h1>
+                <br/>
+                <div class="column-third">
+                    <p><img src="{% static 'img/icons/blurbs/facts.png' %}" alt=""></p>
+                    <h3>Find Facts</h3>
+                    <p>Key Economic figures are broken down by category: Demographics, Household Surveys, Service Delivery, Economics and Education.</p>
+                </div>
+                <div class="column-third">
+                    <p><img src="{% static 'img/icons/blurbs/visualise.png' %}" alt=""></p>
+                    <h3>Visualize</h3>
+                    <p>Our library of charts gives you insight into data from places you research. Look for them on profile pages. You can embed the charts on your own site.</p>
+                </div>
+                <div class="column-third">
+                    <p><img src="{% static 'img/icons/blurbs/context.png' %}" alt=""></p>
+                    <h3>Get Context</h3>
+                    <p>Pre-computed statistics are presented alongside each data point so you can see how each place fits into a large context.</p>
+                </div>
+            </div>
+            <div class="wrapper">
+                <br/><br/>
+                <p><a href="/help" class="btn btn-lg bg-bottle-green">Learn more</a></p>
+            </div>
+        {% endblock %}
+
+{# End: Showcase #}
