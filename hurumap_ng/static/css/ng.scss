@@ -1,0 +1,22 @@
+/*
+ * HURUmap Nigeria SCSS
+ * --------------------
+ * Customizations for HURUmap Nigeria site
+ *
+ */
+
+// Pages
+
+.page-insights {
+
+  /* Insights page embeds charts which work best with white background */
+  background-color: white;
+}
+
+.insight {
+  margin: 2rem 0;
+}
+
+.about-hurumap {
+  min-height: 40rem;
+}
