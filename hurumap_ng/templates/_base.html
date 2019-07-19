@@ -1,15 +1,17 @@
 {% extends '_base.html' %}
 {% load sass_tags staticfiles %}
 
+{% block head_css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% sass_src 'css/ng.scss' %}">
+{% endblock %}
+
 {# HEAD #}
 
           {% block header_menu %}
             <li><a href="/about">About</a></li>
             <li>
-              <a href="//medium.com/code-for-africa"
-                 target="_blank" rel="noopener noreferrer">
-                Insights
-              </a>
+              <a href="{% url 'insights' %}">Insights</a>
             </li>
             <li><a href="/#showcase">Showcase</a></li>
             <li>
