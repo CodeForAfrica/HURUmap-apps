@@ -71,7 +71,7 @@ HURUMAP["showcase_stories"] = [
         "author": "NAN",
         "brief": "The National Bureau of Statistics (NBS), said the average price of some selected food items in the country increased in April.",
         "link": "//guardian.ng/news/prices-of-food-stuff-increases-in-april-nbs",
-        "img": STATIC_URL + "img/showcase/nbs.jpg",
+        "img": STATIC_URL + "img/showcase/nbs.png",
     },
     {
         "title": "Price of cooking gas drops in April — NBS",
@@ -85,7 +85,7 @@ HURUMAP["showcase_stories"] = [
         "author": "The Eagle Online",
         "brief": "The National Bureau of Statistics said Nigeria’s Gross Domestic Product recorded a positive growth as the non-oil sector grew in real terms by 0.41 per cent in first quarter of 2019.",
         "link": "//nipc.gov.ng/2019/05/22/nigerias-gdp-increases-as-non-oil-sector-grows-by-0-41/",
-        "img": STATIC_URL + "img/showcase/nbs.jpg",
+        "img": STATIC_URL + "img/showcase/nbs.png",
     },
 ]
 
