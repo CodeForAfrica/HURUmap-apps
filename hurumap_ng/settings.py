@@ -18,8 +18,11 @@ DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
 # Localise this instance of HURUmap
-HURUMAP['name'] = 'HURUmap Nigeria'
+HURUMAP['name'] = 'Nigerian Insights'
 HURUMAP['url'] = 'https://nigeria.hurumap.org'
+
+HURUMAP['title_tagline'] = 'Nigerian insights helps storytellers and campaigners use data to add context and depth to stories'
+
 HURUMAP['twitter'] = '@nigerianstat'
 HURUMAP['facebook'] = 'nigerianstatistics'
 
