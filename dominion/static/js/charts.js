@@ -24,11 +24,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         tableSelector.onchange = (e) => {
             const tableName = tableSelector.options[tableSelector.selectedIndex].value;
+            console.log(tableName);
+            chartfields.innerHTML = '';
             const found = fields.find(f => f.name.toLowerCase() === tableName);
             if (found) {
                 const validFields = found.fields;
                 //remove all current fields
-                chartfields.innerHTML = '';
                 [...validFields].forEach((item, i) => {
                     const listItem = document.createElement("li");
                     listItem.style.lineHeight = 3;
@@ -51,6 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
             chartfields.onchange = (e) => {
                 fieldSelected = inline.querySelectorAll(`input[id^=charts-${index}-fields_]:checked`);
                 numFieldSelected = fieldSelected.length;
+                groupBy.innerHTML = '';
                 if(numFieldSelected === 1 ) {
                     [...chartypes].forEach(option => {
                         option.style.display = 'block';

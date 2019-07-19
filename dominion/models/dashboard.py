@@ -12,10 +12,12 @@ from modelcluster.fields import ParentalKey
 from wagtail.core import blocks
 from modelcluster.models import ClusterableModel
 from wagtail.admin.edit_handlers import FieldPanel, InlinePanel
+from wagtail.admin.forms import WagtailAdminModelForm
 from wagtail.contrib.settings.models import BaseSetting, register_setting
 from wagtail.core import blocks
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.snippets.models import register_snippet
+from wagtail.contrib.modeladmin.options import ModelAdmin
 
 logger = logging.getLogger(__name__)
 
@@ -31,10 +33,11 @@ STAT_TYPES = (
        ('number', 'Number'),
        ('percentage', 'Percentage'),
     )
+    
 
 @register_snippet
 class ChartSections(ClusterableModel):
-    name = models.CharField(default="Default", max_length=1024,
+    name = models.CharField(default="Default Section", max_length=1024,
         help_text="Provide a unique name for list of charts")
 
     panels = [
@@ -80,5 +83,6 @@ class Charts(models.Model):
             'chart_type': self.chart_type,
             'source': self.chart_source,
             'source_link': self.chart_source_link,
-            'group_by': self.group_by
+            'group_by': self.group_by,
+            'section': self.parent
         }
