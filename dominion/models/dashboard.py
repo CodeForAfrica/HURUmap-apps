@@ -18,10 +18,12 @@ from wagtail.core import blocks
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.snippets.models import register_snippet
 from wagtail.contrib.modeladmin.options import ModelAdmin
+from wagtail.admin.forms import WagtailAdminModelForm
 
 logger = logging.getLogger(__name__)
 
 CHART_TYPES = (
+        ('', '-----------'),
         ('column', 'Column'),
         ('histogram', 'Histogram'),
         ('line', 'Line'),
@@ -33,56 +35,110 @@ STAT_TYPES = (
        ('number', 'Number'),
        ('percentage', 'Percentage'),
     )
-    
+
+class CustomChoiceField(forms.ModelChoiceField):
+    def label_from_instance(self, obj):
+        return obj.name
+
+class CustomChartForm(WagtailAdminModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.fields["table"].widget.attrs.update(
+            {
+                "data-fields": json.dumps(
+                    list(FieldTable.objects.values("name", "fields"))
+                )
+            }
+        )
+
+        self.fields["fields"].choices = tuple(
+            map(
+                lambda x: (x, x),
+                list(
+                    set(
+                        FieldTable.objects.annotate(
+                            table_fields=Func(F("fields"), function="UNNEST")
+                        ).values_list("table_fields", flat=True)
+                    )
+                ),
+            )
+        )
+
+        self.fields["group_by"].choices = self.fields["fields"].choices
+
+    table = CustomChoiceField(
+        widget=forms.Select(attrs={"id": "chart-table", "data-fields": "{}"}),
+        queryset=DBTable.objects.all(),
+    )
+
+    fields = forms.MultipleChoiceField(
+        widget=forms.CheckboxSelectMultiple(attrs={"id": "chart-fields"})
+    )
+
+    chart_type = forms.ChoiceField(
+        widget=forms.Select(attrs={"id": "chart-type"}),
+        choices=CHART_TYPES
+    )
+
+    group_by = forms.ChoiceField(
+        widget=forms.Select(attrs={"id": "group_by"}),
+    )
+
+    class Media:
+        js = ("js/charts.js",)
+
 
 @register_snippet
-class ChartSections(ClusterableModel):
-    name = models.CharField(default="Default Section", max_length=1024,
-        help_text="Provide a unique name for list of charts")
+class ChartSection(ClusterableModel):
+    name = models.CharField(default="Default Section",unique=True, max_length=1024,
+        help_text="Provide a unique name for profile section")
 
     panels = [
         FieldPanel('name'),
-        InlinePanel('charts', label='Charts'),
     ]
 
     def __str__(self):
         return '{}'.format(self.name)
 
-class Charts(models.Model):
+@register_snippet
+class Chart(models.Model):
     table = models.ForeignKey(DBTable, to_field='name', on_delete=models.CASCADE)
-    chart_type = models.CharField(max_length=32, choices=CHART_TYPES, null=False)
+    chart_type = models.CharField(max_length=32, null=False)
     fields = ArrayField(models.CharField(max_length=150, null=False, unique=True))
     title = models.CharField(max_length=500, null=True, blank=True, help_text="Descriptive title of this chart")
     source = models.CharField(max_length=500, null=True, blank=True, help_text="Data source")
     source_link = models.URLField(max_length=500, null=True, blank=True, help_text="Link to data source")
     stat_type = models.CharField(max_length=32, null=True, blank=True, choices=STAT_TYPES, help_text="Default is Number")
     group_by = models.CharField(max_length=120, null=True, blank=True)
-    parent = ParentalKey(ChartSections, related_name='charts')
+    section = models.ForeignKey(ChartSection, to_field='name', on_delete=models.CASCADE, help_text="Select profile section where the chart belongs to")
 
     panels = [
         FieldPanel('table'),
-        FieldPanel('fields', widget=forms.CheckboxSelectMultiple),
+        FieldPanel('fields'),
         FieldPanel('chart_type'),
         FieldPanel('title'),
+        FieldPanel('section'),
         FieldPanel('source'),
         FieldPanel('source_link'),
         FieldPanel('stat_type'),
-        FieldPanel('group_by', widget=forms.Select),
+        FieldPanel('group_by'),
     ]
+    base_form_class = CustomChartForm
 
     def __str__(self):
-        return 'chart-%s-%s-%s' % (self.chart_type, self.table.name, ('-'.join(self.fields)))
+        return '%s Chart for table %s using %s field(s)' % (self.chart_type.capitalize(), self.table.name, ('-'.join(self.fields)))
 
     def as_dict(self):
         return {
             'name': str(self),
-            'title': self.chart_title,
+            'title': self.title,
             'field': ','.join(self.fields),
-            'stat_type': self.chart_stat_type,
-            'table_id': self.db_table.name,
+            'stat_type': self.stat_type,
+            'table_id': self.table.name,
             'chart_type': self.chart_type,
-            'source': self.chart_source,
-            'source_link': self.chart_source_link,
+            'source': self.source,
+            'source_link': self.source_link,
             'group_by': self.group_by,
-            'section': self.parent
+            'section': str(self.section)
         }

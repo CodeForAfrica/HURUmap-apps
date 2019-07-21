@@ -1,94 +1,71 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const addChart = document.querySelector('#id_charts-ADD');
+  const tableSelector = document.querySelector("#chart-table");
+  const fields = JSON.parse(tableSelector.getAttribute('data-fields'));
+  const chartypes = document.querySelector("#chart-type").options;
+  let fieldSelected = 0;
 
-    addChart.addEventListener("click", () => {
-        //if add chart is clicked 
-        //work with the recent added chart form in the cluster
-        const fieldSets = document.querySelectorAll('li[id^=inline_child_charts-] > fieldset');
-        const newInline = fieldSets[fieldSets.length -1];
-        chartManipulation(newInline, fieldSets.length -1);
-    });
+  //hide groupBy option
+  let groupBy = document.querySelector('#group_by');
+  groupBy.style.display = 'none';
 
+  const inputs = document.querySelectorAll('input[id^=chart-fields_]');
+  [...inputs].forEach(input => {
+      input.parentElement.parentElement.style.display = 'none';
+  });
 
-    function chartManipulation(inline, index) {
-        const tableSelector = inline.querySelector(`#id_charts-${index}-table`);
-        const chartfields = inline.querySelector(`#id_charts-${index}-fields`);
-        
-        const fields = window.fieldtables;
-        const chartypes = inline.querySelector(`#id_charts-${index}-chart_type`).options;
-        let fieldSelected = 0;
+  tableSelector.onchange = (e) => {
+    const tableName = tableSelector.options[tableSelector.selectedIndex].innerHTML;
+         const found = fields.find(f => f.name.toLowerCase() === tableName);
+         if (found) {
+             const validFields = found.fields;
+             [...inputs].forEach(input => {
+                 if (validFields.indexOf(input.value) !== -1) {
+                     input.parentElement.parentElement.style.display = 'block';
+                     input.parentElement.style.display = 'contents';
+                 } else {
+                     input.checked = false;
+                     input.parentElement.parentElement.style.display = 'none';
+                 }
+             });
+         }
+         const fieldCheckList = document.querySelector('#chart-fields');
+         fieldCheckList.onchange = (e) => {
+             fieldSelected = document.querySelectorAll('input[id^=chart-fields_]:checked');
+             numFieldSelected = fieldSelected.length;
+             if(numFieldSelected === 1 ) {
+                 [...chartypes].forEach(option => {
+                     option.style.display = 'block';
+                 });
+                 chartypes[4].style.display = 'none';
+             }
+             //if two fields are selected, hide single field charts
+             else if(numFieldSelected === 2) {
+                 [...chartypes].forEach(option => {
+                     option.style.display = 'none';
+                 });
+                 chartypes[4].style.display = 'block';
 
-        //hide groupBy option
-        let groupBy = inline.querySelector(`#id_charts-${index}-group_by`);
-        groupBy.style.display = 'none';
+                 //populate group_by with the selected fields.
+                 let groupByOptions = groupBy.options;
+                 let selectedfields = [];
+                 [...fieldSelected].forEach(field => {
+                   selectedfields.push(field.value);
+                 });
+                 [...groupByOptions].forEach(groupByOption => {
+                     if (selectedfields.indexOf(groupByOption.value) === -1) {
+                       groupByOption.style.display = 'none';
+                     } else {
+                       groupByOption.selected = "selected";
+                     }
+                 });
+                 groupBy.style.display = 'block';
 
-        tableSelector.onchange = (e) => {
-            const tableName = tableSelector.options[tableSelector.selectedIndex].value;
-            console.log(tableName);
-            chartfields.innerHTML = '';
-            const found = fields.find(f => f.name.toLowerCase() === tableName);
-            if (found) {
-                const validFields = found.fields;
-                //remove all current fields
-                [...validFields].forEach((item, i) => {
-                    const listItem = document.createElement("li");
-                    listItem.style.lineHeight = 3;
-                    const listLabel = document.createElement("label");
-                    listLabel.style.display = 'contents';
-                    const label = document.createTextNode(item);
+             } else {
+                 [...chartypes].forEach(option => {
+                     option.style.display = 'block';
+                 });
+             }
+         }
 
-                    var itemInput = document.createElement("input");
-                    itemInput.type = "checkbox";
-                    itemInput.id = `charts-${index}-fields_${i}`;
-                    itemInput.value = item;
-
-                    listLabel.appendChild(itemInput);
-                    listLabel.appendChild(label);
-                    listItem.appendChild(listLabel);
-                    chartfields.appendChild(listItem);
-                });
-            }
-
-            chartfields.onchange = (e) => {
-                fieldSelected = inline.querySelectorAll(`input[id^=charts-${index}-fields_]:checked`);
-                numFieldSelected = fieldSelected.length;
-                groupBy.innerHTML = '';
-                if(numFieldSelected === 1 ) {
-                    [...chartypes].forEach(option => {
-                        option.style.display = 'block';
-                    });
-                    chartypes[4].style.display = 'none';
-                }
-                //if two fields are selected, hide single field charts
-                else if(numFieldSelected === 2) {
-                    [...chartypes].forEach(option => {
-                        option.style.display = 'none';
-                    });
-                    chartypes[4].style.display = 'block';
-
-                    //populate group_by with the selected fields.
-                    let groupByOptions = groupBy.options;
-                    let selectedfields = [];
-                    [...fieldSelected].forEach(field => {
-                      selectedfields.push(field.value);
-                    });
-
-                    [...selectedfields].forEach( selectedField => {
-                        const optionItem = document.createElement("option");
-                        optionItem.value = selectedField;
-                        optionItem.text = selectedField;
-                        groupBy.appendChild(optionItem);
-                    });
-                    groupBy.style.display = 'block';
-
-                } else {
-                    [...chartypes].forEach(option => {
-                        option.style.display = 'block';
-                    });
-                }
-            }
-
-        };
-    }
-
+      };
 });
