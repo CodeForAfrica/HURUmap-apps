@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
                  });
                  chartypes[4].style.display = 'block';
 
-                 //populate group_by with the selected fields.
+                 //display group_by with the selected fields.
                  let groupByOptions = groupBy.options;
                  let selectedfields = [];
                  [...fieldSelected].forEach(field => {
