@@ -1,5 +1,4 @@
 import json
-import logging
 
 from django import forms
 from django.db.models import F, Func
@@ -9,8 +8,6 @@ from wazimap.models import DBTable, FieldTable
 from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.admin.forms import WagtailAdminModelForm
 from wagtail.snippets.models import register_snippet
-
-logger = logging.getLogger(__name__)
 
 CHART_TYPES = (
         ('', '-----------'),
@@ -80,7 +77,7 @@ class CustomChartForm(WagtailAdminModelForm):
 
 
 @register_snippet
-class ChartSection(ClusterableModel):
+class ChartSection(models.Model):
     name = models.CharField(default="Default Section",unique=True, max_length=1024,
         help_text="Provide a unique name for profile section")
 
@@ -117,7 +114,7 @@ class Chart(models.Model):
     base_form_class = CustomChartForm
 
     def __str__(self):
-        return '%s Chart for table %s using %s field(s)' % (self.chart_type.capitalize(), self.table.name, ('-'.join(self.fields)))
+        return '%s Chart with field(s) %s' % (self.chart_type.capitalize(), (', '.join(self.fields)))
 
     def as_dict(self):
         return {
