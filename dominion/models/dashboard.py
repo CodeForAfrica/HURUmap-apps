@@ -3,22 +3,12 @@ import logging
 
 from django import forms
 from django.db.models import F, Func
-from django.conf import settings
 from django.db import models
 from django.contrib.postgres.fields import ArrayField
-from django.utils.text import slugify
-from wazimap.models import Geography, DBTable, FieldTable, FieldTable
-from modelcluster.fields import ParentalKey
-from wagtail.core import blocks
-from modelcluster.models import ClusterableModel
-from wagtail.admin.edit_handlers import FieldPanel, InlinePanel
+from wazimap.models import DBTable, FieldTable
+from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.admin.forms import WagtailAdminModelForm
-from wagtail.contrib.settings.models import BaseSetting, register_setting
-from wagtail.core import blocks
-from wagtail.core.fields import RichTextField, StreamField
 from wagtail.snippets.models import register_snippet
-from wagtail.contrib.modeladmin.options import ModelAdmin
-from wagtail.admin.forms import WagtailAdminModelForm
 
 logger = logging.getLogger(__name__)
 
