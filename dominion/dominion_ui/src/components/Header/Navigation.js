@@ -113,11 +113,24 @@ class Navigation extends Component {
         {[
           { title: 'About', link: '/about' },
           { title: 'Showcase', link: `${showcaseLink}` },
-          { title: 'Resources', link: '/resources' },
-          { title: 'Contact', link: '/contact' }
+          {
+            title: 'Resources',
+            link: 'https://openafrica.net/group/dominion',
+            target: '_blank'
+          },
+          {
+            title: 'Contact',
+            link: 'https://twitter.com/Code4Africa',
+            target: '_blank'
+          }
         ].map(menu => (
           <MenuItem key={menu.link} className={classes.menuListItem}>
-            <Link variant="body1" className={classes.link} href={menu.link}>
+            <Link
+              variant="body1"
+              className={classes.link}
+              href={menu.link}
+              target={menu.target}
+            >
               {menu.title}
             </Link>
           </MenuItem>
