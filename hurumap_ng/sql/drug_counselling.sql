@@ -13,30 +13,30 @@ SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-ALTER TABLE IF EXISTS ONLY public.drug_use DROP CONSTRAINT IF EXISTS drug_use_pkey;
-DROP TABLE IF EXISTS public.drug_use;
+ALTER TABLE IF EXISTS ONLY public.drug_counselling DROP CONSTRAINT IF EXISTS drug_counselling_pkey;
+DROP TABLE IF EXISTS public.drug_counselling;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
 
 --
--- Name: drug_use; Type: TABLE; Schema: public; Owner: -
+-- Name: drug_counselling; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.drug_use (
+CREATE TABLE public.drug_counselling (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     geo_version character varying(128) NOT NULL,
-    drug character varying(128) NOT NULL,
+    gender character varying(128) NOT NULL,
     total integer
 );
 
 
 --
--- Data for Name: drug_use; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: drug_counselling; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.drug_use (geo_level, geo_code, geo_version, drug, total) FROM stdin;
+COPY public.drug_counselling (geo_level, geo_code, geo_version, gender, total) FROM stdin;
 country	NG	2016	Female	44
 country	NG	2016	Male	958
 state	1	2016	Female	0
@@ -117,11 +117,11 @@ state	37	2016	Male	50
 
 
 --
--- Name: drug_use drug_use_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: drug_counselling drug_counselling_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.drug_use
-    ADD CONSTRAINT drug_use_pkey PRIMARY KEY (geo_level, geo_code, geo_version, drug);
+ALTER TABLE ONLY public.drug_counselling
+    ADD CONSTRAINT drug_counselling_pkey PRIMARY KEY (geo_level, geo_code, geo_version, gender);
 
 
 --
