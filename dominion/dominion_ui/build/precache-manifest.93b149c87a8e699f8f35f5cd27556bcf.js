@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "ca30e81a1598789eb0c782dc55472ef3",
-    "url": "/static/media/shape.ca30e81a.svg"
+    "revision": "ad780f2833c1a06b092226b3fc1859e9",
+    "url": "/static/media/close.ad780f28.svg"
   },
   {
-    "revision": "b85670f824d03844f2f3",
-    "url": "/static/js/main.b85670f8.chunk.js"
+    "revision": "e0d7d2c2232f5eb2c779",
+    "url": "/static/js/main.e0d7d2c2.chunk.js"
   },
   {
     "revision": "229c360febb4351a89df",
@@ -32,10 +32,6 @@ self.__precacheManifest = [
     "url": "/static/media/codeforafrica.bda4db84.png"
   },
   {
-    "revision": "bb78f01e6b9c6482ffc101f0052327e9",
-    "url": "/static/media/twaweza.bb78f01e.png"
-  },
-  {
     "revision": "345f88e80fb9bd0657118db934ab0ca4",
     "url": "/static/media/databg.345f88e8.png"
   },
@@ -52,12 +48,12 @@ self.__precacheManifest = [
     "url": "/static/media/dominion-logo-country.335659fb.png"
   },
   {
-    "revision": "6696e14713709b3546b07f9666718500",
-    "url": "/static/media/hero-image-1.6696e147.png"
+    "revision": "ca30e81a1598789eb0c782dc55472ef3",
+    "url": "/static/media/shape.ca30e81a.svg"
   },
   {
-    "revision": "ad780f2833c1a06b092226b3fc1859e9",
-    "url": "/static/media/close.ad780f28.svg"
+    "revision": "6696e14713709b3546b07f9666718500",
+    "url": "/static/media/hero-image-1.6696e147.png"
   },
   {
     "revision": "32556f4944ffd8d4c44eadb403d213dc",
@@ -80,6 +76,10 @@ self.__precacheManifest = [
     "url": "/static/media/hero_map.3dc6948e.png"
   },
   {
+    "revision": "bb78f01e6b9c6482ffc101f0052327e9",
+    "url": "/static/media/twaweza.bb78f01e.png"
+  },
+  {
     "revision": "e5c1cf0317410ab0514fad9cb016fe97",
     "url": "/static/media/aul.e5c1cf03.png"
   },
@@ -100,11 +100,11 @@ self.__precacheManifest = [
     "url": "/static/media/icfj.37dfe5cb.png"
   },
   {
-    "revision": "abff48ce225bbcbbfc74",
-    "url": "/static/js/1.abff48ce.chunk.js"
+    "revision": "d265ee99f4d67d77fb49",
+    "url": "/static/js/1.d265ee99.chunk.js"
   },
   {
-    "revision": "f9d60b944a88603c3c4dad308ee8441e",
+    "revision": "8cea1c72a18724af2cf6e34e11c5593d",
     "url": "/index.html"
   }
 ];
