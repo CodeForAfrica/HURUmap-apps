@@ -9,7 +9,6 @@ import bmgf from '../assets/images/logos/bmgf.png';
 import cfa from '../assets/images/logos/codeforafrica.png';
 import pulitzercenter from '../assets/images/logos/pulitzercenter.png';
 import icfj from '../assets/images/logos/icfj.png';
-import twaweza from '../assets/images/logos/twaweza.png';
 
 const styles = theme => ({
   root: {
@@ -58,11 +57,6 @@ function Partners({ classes }) {
             alt="Pulitzer Center"
             className={classes.img}
           />
-        </A>
-      </Grid>
-      <Grid item className={classes.imageGrid}>
-        <A href="https://www.twaweza.org">
-          <img src={twaweza} alt="Twaweza" className={classes.img} />
         </A>
       </Grid>
       <Grid item className={classes.imageGrid}>
