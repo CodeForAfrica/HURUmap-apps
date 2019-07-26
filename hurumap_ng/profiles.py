@@ -35,17 +35,18 @@ def get_profile(geo, profile_name, request):
                 data[section] = func(geo, session)
 
                 # get profiles for comparative geometries
-                # if not data[section]['is_missing']:
-                #     for comp_geo in comparative_geos:
-                #         try:
-                #             merge_dicts(
-                #                 data[section], func(
-                #                     comp_geo, session), comp_geo.geo_level)
-                #         except KeyError as e:
-                #             msg = "Error merging data into %s for section '%s' from %s: KeyError: %s" % (
-                #                 geo.geoid, data[section], comp_geo.geoid, e)
-                #             log.fatal(msg, exc_info=e)
-                #             raise ValueError(msg)
+                if not data[section]['is_missing']:
+                    for comp_geo in comparative_geos:
+                        try:
+                            comp_data = func(comp_geo, session)
+                            #merge only if there's data
+                            if not comp_data.get('is_missing'):
+                                merge_dicts(data[section], comp_data, comp_geo.geo_level)
+                        except KeyError as e:
+                            msg = "Error merging data into %s for section '%s' from %s: KeyError: %s" % (
+                                geo.geoid, section, comp_geo.geoid, e)
+                            log.fatal(msg, exc_info=e)
+                            raise ValueError(msg)
         return data
 
     finally:
@@ -397,7 +398,7 @@ def get_transportation_profile(geo, session):
             pass
 
         try:
-            air_transportation_domestic, _ = get_stat_data(fields=['month, depature_arrival'], geo=geo,
+            air_transportation_domestic, _ = get_stat_data(['month, depature_arrival'], geo=geo,
                                          session=session,
                                          table_name='air_transportation_domestic', percent=False)
         except Exception as e:
@@ -405,7 +406,7 @@ def get_transportation_profile(geo, session):
             pass
 
         try:
-            air_transportation_international, _ = get_stat_data(fields=['month, depature_arrival'], geo=geo,
+            air_transportation_international, _ = get_stat_data(['month, depature_arrival'], geo=geo,
                                          session=session,
                                          table_name='air_transportation_international', percent=False)
         except Exception as e:
