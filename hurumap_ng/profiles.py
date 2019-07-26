@@ -1,12 +1,9 @@
-import logging
 from collections import OrderedDict
 
 from django.conf import settings
 from wazimap.data.utils import (current_context, dataset_context, get_session,
-                                get_stat_data, merge_dicts, group_remainder)
+                                get_stat_data, group_remainder)
 from wazimap.geo import geo_data
-
-log = logging.getLogger(__name__)
 
 SECTIONS = settings.HURUMAP.get('topics', {})
 
@@ -23,7 +20,6 @@ def get_profile(geo, profile_name, request):
     session = get_session()
 
     try:
-        comparative_geos = geo_data.get_comparative_geos(geo)
         data = {}
 
         sections = list(SECTIONS)
@@ -33,20 +29,6 @@ def get_profile(geo, profile_name, request):
             if function_name in globals():
                 func = globals()[function_name]
                 data[section] = func(geo, session)
-
-                # get profiles for comparative geometries
-                if not data[section]['is_missing']:
-                    for comp_geo in comparative_geos:
-                        try:
-                            comp_data = func(comp_geo, session)
-                            #merge only if there's data
-                            if not comp_data.get('is_missing'):
-                                merge_dicts(data[section], comp_data, comp_geo.geo_level)
-                        except KeyError as e:
-                            msg = "Error merging data into %s for section '%s' from %s: KeyError: %s" % (
-                                geo.geoid, section, comp_geo.geoid, e)
-                            log.fatal(msg, exc_info=e)
-                            raise ValueError(msg)
         return data
 
     finally:
@@ -132,8 +114,9 @@ def get_crime_profile(geo, session):
     arrested_suspects = LOCATIONNOTFOUND
     suspects_prosecuted = LOCATIONNOTFOUND
     conviction_secured = LOCATIONNOTFOUND
-    bribery_prevalence = LOCATIONNOTFOUND
+    bribery_prevalence = 0
     cases_of_corruption = LOCATIONNOTFOUND
+    avg_number_bribes = LOCATIONNOTFOUND
 
     with dataset_context(year='2016'):
         try:
@@ -168,9 +151,9 @@ def get_crime_profile(geo, session):
 
     with dataset_context(year='2018'):
         try:
-            bribery_prevalence, _ = get_stat_data(fields=['year'], geo=geo,
+            _, bribery_prevalence = get_stat_data(fields=['year'], geo=geo,
                                          session=session,
-                                         table_name='bribery_prevalence', percent=False, order_by='year')
+                                         table_name='bribery_prevalence', percent=False)
         except Exception as e:
             print(str(e))
             pass
@@ -178,7 +161,15 @@ def get_crime_profile(geo, session):
         try:
             cases_of_corruption, _ = get_stat_data(fields=['year'], geo=geo,
                                          session=session,
-                                         table_name='cases_of_corruption', percent=False, order_by='year')
+                                         table_name='cases_of_corruption', percent=False)
+        except Exception as e:
+            print(str(e))
+            pass
+
+        try:
+            avg_number_bribes, _ = get_stat_data(fields=['year'], geo=geo,
+                                         session=session,
+                                         table_name='avg_number_bribes', percent=False)
         except Exception as e:
             print(str(e))
             pass
@@ -189,16 +180,21 @@ def get_crime_profile(geo, session):
     is_missing = arrested_suspects.get('is_missing') and \
                 suspects_prosecuted.get('is_missing') and \
                 conviction_secured.get('is_missing') and \
-                bribery_prevalence.get('is_missing') and \
-                cases_of_corruption.get('is_missing')
+                cases_of_corruption.get('is_missing') and \
+                avg_number_bribes.get('is_missing')
 
     final_data = {
         'is_missing': is_missing,
         'arrested_suspects': arrested_suspects,
         'suspects_prosecuted': suspects_prosecuted,
         'conviction_secured': conviction_secured,
-        'bribery_prevalence': bribery_prevalence,
-        'cases_of_corruption': cases_of_corruption
+        'bribery_prevalence': {
+            'name': "Prevalence of bribery, 2016",
+            'numerators': {'this': bribery_prevalence },
+            'values': {'this': bribery_prevalence },
+        },
+        'cases_of_corruption': cases_of_corruption,
+        'avg_number_bribes': avg_number_bribes
     }
     return final_data
 
@@ -449,4 +445,37 @@ def get_transportation_profile(geo, session):
         'air_transportation_domestic': air_transportation_domestic,
         'air_transportation_international': air_transportation_international
     }
+    return final_data
+
+
+def get_finance_profile(geo, session):
+    bank_credit = LOCATIONNOTFOUND
+    bank_deposit = LOCATIONNOTFOUND
+
+    with dataset_context(year='2018'):
+        try:
+            bank_credit, _ = get_stat_data(['credit_year'], geo=geo,
+                                         session=session,
+                                         table_name='bank_credit', percent=False)
+        except Exception as e:
+            print(str(e))
+            pass
+
+        try:
+            bank_deposit, _ = get_stat_data(['deposit_year'], geo=geo,
+                                         session=session,
+                                         table_name='bank_deposit', percent=False)
+        except Exception as e:
+            print(str(e))
+            pass
+
+    is_missing = bank_deposit.get('is_missing') and \
+                 bank_credit.get('is_missing')
+
+    final_data = {
+        'is_missing': is_missing,
+        'bank_credit': bank_credit,
+        'bank_deposit': bank_deposit
+    }
+
     return final_data

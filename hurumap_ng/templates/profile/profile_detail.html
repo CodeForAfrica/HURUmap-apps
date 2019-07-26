@@ -131,6 +131,26 @@
           </div>
       </section>
       {% endif %}
+      {% if not crime.avg_number_bribes.is_missing and not crime.bribery_prevalence.is_missing %}
+      <section class="clearfix stat-row">
+        {% if not crime.bribery_prevalence.is_missing %}
+        <div class="column-third">
+          <h3 class="chart-header">Corruption Index</h3>
+          {% include 'profile/_blocks/_stat_list.html' with stat=crime.bribery_prevalence stat_type='number' %}
+          </div>
+          {% endif %}
+        {% if not crime.avg_number_bribes.is_missing %}
+        <div class="column-two-thirds">
+            <div id="chart-column-crime-avg_number_bribes"
+                 data-chart-title="Average number of bribes, 2016"
+                 data-stat-type="number"
+                 data-source-title="National Bureau of Statistics, 2016"
+                 data-source-link="https://nigerianstat.gov.ng/resource/CorruptionStatistics_by_State_full.xlsx"></div>
+          </div>
+          {% endif %}
+
+      </section>
+      {% endif %}
       <!-- {% if not nbs_2018.mineral_production.is_missing %}
       <section class="clearfix stat-row">
         <div class="column-full">
@@ -341,6 +361,36 @@
                    data-source-title="National Bureau of Statistics, 2019"
                    data-source-link="https://nigerianstat.gov.ng/download/921"></div>
             </div>
+        </section>
+        {% endif %}
+      </div>
+    </article>
+  {% endif %}
+
+  {% if not finance.is_missing %}
+    <article id="transportation" class="clearfix">
+      <header class="section-contents"><h1>Finances</h1></header>
+      <div class="section-container">
+        {% if not finance.bank_credit.is_missing and not finance.bank_deposit.is_missing %}
+        <section class="clearfix stat-row">
+            {% if not finance.bank_credit.is_missing %}
+              <div class="column-half">
+                  <div id="chart-column-finance-bank_credit"
+                       data-chart-title="Bank Credit 2010 - 2015, (N' Million)"
+                       data-stat-type="number"
+                       data-source-title="National Bureau of Statistics, 2018"
+                       data-source-link="https://nigerianstat.gov.ng/download/384"></div>
+                </div>
+              {% endif %}
+              {% if not finance.bank_deposit.is_missing %}
+                <div class="column-half">
+                  <div id="chart-column-finance-bank_deposit"
+                       data-chart-title="Bank Deposit 2010 - 2015, (N' Million)"
+                       data-stat-type="number"
+                       data-source-title="National Bureau of Statistics, 2018"
+                       data-source-link="https://nigerianstat.gov.ng/download/384"></div>
+                </div>
+              {% endif %}
         </section>
         {% endif %}
       </div>
