@@ -15,6 +15,12 @@ LOCATIONNOTFOUND = {'is_missing': True,
 
 MONTH_ORDER= ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
+def _create_single_value_dist(name='', value=0):
+    return {
+        'name': name,
+        'numerators': {'this': value},
+        'values': {'this': value},
+    }
 
 def get_profile(geo, profile_name, request):
     session = get_session()
@@ -94,6 +100,7 @@ def get_nbs_2018(geo, session, year):
 
 def get_demographics_profile(geo, session):
     compiled_indeces = LOCATIONNOTFOUND
+    birth_registration = LOCATIONNOTFOUND
 
     with dataset_context(year='2018'):
         try:
@@ -103,10 +110,20 @@ def get_demographics_profile(geo, session):
         except Exception as e:
             print(str(e))
             pass
-    is_missing = compiled_indeces.get('is_missing')
+
+        try:
+            birth_registration, _ = get_stat_data(fields=['age'], geo=geo,
+                                         session=session,
+                                         table_name='birth_registration', percent=False)
+        except Exception as e:
+            print(str(e))
+            pass
+    is_missing = compiled_indeces.get('is_missing') and \
+                    birth_registration.get('is_missing')
     final_data = {
         'is_missing': is_missing,
-        'compiled_indeces': compiled_indeces
+        'compiled_indeces': compiled_indeces,
+        'birth_registration': birth_registration
     }
     return final_data
 
@@ -116,7 +133,7 @@ def get_crime_profile(geo, session):
     conviction_secured = LOCATIONNOTFOUND
     bribery_prevalence = 0
     cases_of_corruption = LOCATIONNOTFOUND
-    avg_number_bribes = LOCATIONNOTFOUND
+    avg_number_bribes = 0
 
     with dataset_context(year='2016'):
         try:
@@ -167,7 +184,7 @@ def get_crime_profile(geo, session):
             pass
 
         try:
-            avg_number_bribes, _ = get_stat_data(fields=['year'], geo=geo,
+            _, avg_number_bribes = get_stat_data(fields=['year'], geo=geo,
                                          session=session,
                                          table_name='avg_number_bribes', percent=False)
         except Exception as e:
@@ -180,21 +197,16 @@ def get_crime_profile(geo, session):
     is_missing = arrested_suspects.get('is_missing') and \
                 suspects_prosecuted.get('is_missing') and \
                 conviction_secured.get('is_missing') and \
-                cases_of_corruption.get('is_missing') and \
-                avg_number_bribes.get('is_missing')
+                cases_of_corruption.get('is_missing')
 
     final_data = {
         'is_missing': is_missing,
         'arrested_suspects': arrested_suspects,
         'suspects_prosecuted': suspects_prosecuted,
         'conviction_secured': conviction_secured,
-        'bribery_prevalence': {
-            'name': "Prevalence of bribery, 2016",
-            'numerators': {'this': bribery_prevalence },
-            'values': {'this': bribery_prevalence },
-        },
+        'bribery_prevalence': _create_single_value_dist("Prevalence of bribery, 2016", bribery_prevalence),
         'cases_of_corruption': cases_of_corruption,
-        'avg_number_bribes': avg_number_bribes
+        'avg_number_bribes': _create_single_value_dist("Average number of bribes, 2016", avg_number_bribes)
     }
     return final_data
 
@@ -478,4 +490,38 @@ def get_finance_profile(geo, session):
         'bank_deposit': bank_deposit
     }
 
+    return final_data
+
+
+def get_agriculture_profile(geo, session):
+    all_consumer_price = LOCATIONNOTFOUND
+    food_consumer_price = LOCATIONNOTFOUND
+
+    with dataset_context(year='2018'):
+        try:
+            all_consumer_price, _ = get_stat_data(fields=['year', 'month'], geo=geo,
+                                         session=session,
+                                         only={'item': ["All Items"]},
+                                         table_name='consumer_price_index', percent=False)
+        except Exception as e:
+            print(str(e))
+            pass
+
+        try:
+            food_consumer_price, _ = get_stat_data(fields=['year', 'month'], geo=geo,
+                                         session=session,
+                                         only={'item': ["Food"]},
+                                         table_name='consumer_price_index', percent=False)
+        except Exception as e:
+            print(str(e))
+            pass
+
+    is_missing = all_consumer_price.get('is_missing') and \
+                food_consumer_price.get('is_missing')
+
+    final_data = {
+        'is_missing': is_missing,
+        'all_consumer_price': all_consumer_price,
+        'food_consumer_price': food_consumer_price
+    }
     return final_data

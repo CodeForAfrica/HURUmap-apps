@@ -24,6 +24,21 @@
     <article id="demographics" class="clearfix">
       <header class="section-contents"><h1>Demographics</h1></header>
       <div class="section-container">
+        {% if not demographics.birth_registration.is_missing %}
+        <section class="clearfix stat-row">
+          <h2>
+            <a class="permalink" href="#birth_registration" id="birth_registration">
+              Birth Registration<i class="fa fa-link"></i></a></h2>
+          <div class="column-full">
+              <div id="chart-pie-demographics-birth_registration"
+                   data-chart-title="Propotion of Birth Registration"
+                   data-stat-type="number"
+                   data-stat-value="-value"
+                   data-source-title="National Bureau of Statistics, 2017"
+                   data-source-link="https://nigerianstat.gov.ng/resource/Demographic%20Statistics%20Bulletin%202017%20tables.xlsx"></div>
+            </div>
+        </section>
+        {% endif %}
         {% if not demographics.compiled_indeces.is_missing %}
         <section class="clearfix stat-row">
           <h2>
@@ -140,15 +155,23 @@
           </div>
           {% endif %}
         {% if not crime.avg_number_bribes.is_missing %}
-        <div class="column-two-thirds">
+          <div class="column-third">
             <div id="chart-column-crime-avg_number_bribes"
                  data-chart-title="Average number of bribes, 2016"
                  data-stat-type="number"
                  data-source-title="National Bureau of Statistics, 2016"
                  data-source-link="https://nigerianstat.gov.ng/resource/CorruptionStatistics_by_State_full.xlsx"></div>
           </div>
+        {% endif %}
+        {% if not crime.cases_of_corruption.is_missing %}
+            <div class="column-third">
+                <div id="chart-column-crime-cases_of_corruption"
+                     data-chart-title="Number Of Reported Cases Of Corruption"
+                     data-stat-type="number"
+                     data-source-title="National Bureau of Statistics, 2017"
+                     data-source-link="https://nigerianstat.gov.ng/download/866"></div>
+              </div>
           {% endif %}
-
       </section>
       {% endif %}
       <!-- {% if not nbs_2018.mineral_production.is_missing %}
@@ -221,7 +244,7 @@
 
   {% if not drugs.is_missing %}
     <article id="drugs" class="clearfix">
-      <header class="section-contents"><h1>Corruption & Crime</h1></header>
+      <header class="section-contents"><h1>Drugs</h1></header>
       <div class="section-container">
         {% if not drugs.drugs_seized.is_missing %}
         <section class="clearfix stat-row">
@@ -232,6 +255,32 @@
                    data-source-title="National Bureau of Statistics, 2016"
                    data-source-link="https://nigerianstat.gov.ng/download/614"></div>
             </div>
+        </section>
+        {% endif %}
+      </div>
+    </article>
+  {% endif %}
+
+  {% if not agriculture.is_missing %}
+    <article id="agriculture" class="clearfix">
+      <header class="section-contents"><h1>Agriculture</h1></header>
+      <div class="section-container">
+        {% if not agriculture.all_consumer_price.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-half">
+              <div id="chart-grouped_column-agriculture-all_consumer_price"
+                   data-chart-title="Urban And Rural State Consumer Price Index: All Items"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2019"
+                   data-source-link="https://nigerianstat.gov.ng/resource/cpi_1NewMAY2019.xlsx"></div>
+            </div>
+            <div class="column-half">
+                <div id="chart-grouped_column-agriculture-food_consumer_price"
+                     data-chart-title="Urban And Rural State Consumer Price Index: Food Items"
+                     data-stat-type="number"
+                     data-source-title="National Bureau of Statistics, 2019"
+                     data-source-link="https://nigerianstat.gov.ng/resource/cpi_1NewMAY2019.xlsx"></div>
+              </div>
         </section>
         {% endif %}
       </div>
