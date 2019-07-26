@@ -99,7 +99,7 @@ HURUMAP["available_release_years"] = {"county": [2018, 2016], "state": [2018, 20
 
 # -------------------------------------------------------------------------------------
 # Profile Sections
-HURUMAP['topics'] = {'demographics', 'education', 'health', 'crime', 'drugs', 'transportation', 'finance'}
+HURUMAP['topics'] = {'demographics', 'education', 'health', 'crime', 'drugs', 'agriculture', 'transportation', 'finance'}
 
 LOGGING["loggers"]["hurumap_ng"] = {"level": "DEBUG" if DEBUG else "INFO"}
 
