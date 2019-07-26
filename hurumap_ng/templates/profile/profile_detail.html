@@ -83,6 +83,17 @@
             </div>
         </section>
         {% endif %}
+        {% if not health.vaccine_coverage.is_missing %}
+          <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-column-health-vaccine_coverage"
+                   data-chart-title="Percentage of children 12-23 months vaccinated against preventable childhood diseases, 2018"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2018"
+                   data-source-link="https://nigerianstat.gov.ng/download/839"></div>
+            </div>
+        </section>
+        {% endif %}
         {% if not health.counselling_concluded.is_missing %}
         <section class="clearfix stat-row">
           <div class="column-full">
@@ -165,6 +176,17 @@
   <article id="crime" class="clearfix">
     <header class="section-contents"><h1>Corruption & Crime</h1></header>
     <div class="section-container">
+      {% if not crime.crime_summary.is_missing %}
+      <section class="clearfix stat-row">
+        <div class="column-full">
+            <div id="chart-column-crime-crime_summary"
+                 data-chart-title="Summary of Crime Statistics, 2017"
+                 data-stat-type="number"
+                 data-source-title="National Bureau of Statistics, 2016"
+                 data-source-link="https://nigerianstat.gov.ng/resource/CRIME%20STATISTICS%202017.xlsx"></div>
+          </div>
+      </section>
+      {% endif %}
       {% if not crime.arrested_suspects.is_missing %}
       <section class="clearfix stat-row">
         <div class="column-full">

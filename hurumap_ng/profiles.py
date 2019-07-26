@@ -138,6 +138,7 @@ def get_crime_profile(geo, session):
     offences_against_person = LOCATIONNOTFOUND
     offences_against_property = LOCATIONNOTFOUND
     offences_against_authority = LOCATIONNOTFOUND
+    crime_summary = LOCATIONNOTFOUND
 
     with dataset_context(year='2016'):
         try:
@@ -226,9 +227,13 @@ def get_crime_profile(geo, session):
             print(str(e))
             pass
 
-
-
-
+        try:
+            crime_summary, _ = get_stat_data(fields=['crime'], geo=geo,
+                                         session=session,
+                                         table_name='crime_summary', percent=False)
+        except Exception as e:
+            print(str(e))
+            pass
 
     is_missing = arrested_suspects.get('is_missing') and \
                 suspects_prosecuted.get('is_missing') and \
@@ -237,7 +242,8 @@ def get_crime_profile(geo, session):
                 bribery_report_rate.get('is_missing') and \
                 offences_against_authority.get('is_missing') and \
                 offences_against_property.get('is_missing') and \
-                offences_against_person.get('is_missing')
+                offences_against_person.get('is_missing') and \
+                crime_summary.get('is_missing')
 
     final_data = {
         'is_missing': is_missing,
@@ -250,7 +256,8 @@ def get_crime_profile(geo, session):
         'bribery_report_rate': bribery_report_rate,
         'offences_against_person': offences_against_person,
         'offences_against_property': offences_against_property,
-        'offences_against_authority': offences_against_authority
+        'offences_against_authority': offences_against_authority,
+        'crime_summary': crime_summary
     }
     return final_data
 
@@ -330,6 +337,7 @@ def get_health_profile(geo, session):
     access_to_wash = LOCATIONNOTFOUND
     adolescent_fertility = LOCATIONNOTFOUND
     contraceptive_use = LOCATIONNOTFOUND
+    vaccine_coverage = LOCATIONNOTFOUND
 
     with dataset_context(year='2016'):
         try:
@@ -372,11 +380,20 @@ def get_health_profile(geo, session):
             print(str(e))
             pass
 
+        try:
+            vaccine_coverage, _ = get_stat_data(fields=['vaccine'], geo=geo,
+                                         session=session,
+                                         table_name='vaccine_coverage', percent=False)
+        except Exception as e:
+            print(str(e))
+            pass
+
     is_missing = counselling_concluded.get('is_missing') and \
                 hiv_patients.get('is_missing') and \
                 access_to_wash.get('is_missing') and \
                 adolescent_fertility.get('is_missing') and \
-                contraceptive_use.get('is_missing')
+                contraceptive_use.get('is_missing') and \
+                vaccine_coverage.get('is_missing')
 
     final_data = {
         'is_missing': is_missing,
@@ -384,7 +401,8 @@ def get_health_profile(geo, session):
         'hiv_patients': hiv_patients,
         'access_to_wash': access_to_wash,
         'adolescent_fertility': adolescent_fertility,
-        'contraceptive_use': contraceptive_use
+        'contraceptive_use': contraceptive_use,
+        'vaccine_coverage': vaccine_coverage
     }
     return final_data
 
