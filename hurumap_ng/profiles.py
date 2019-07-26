@@ -1,9 +1,12 @@
+import logging
 from collections import OrderedDict
 
 from django.conf import settings
 from wazimap.data.utils import (current_context, dataset_context, get_session,
-                                get_stat_data, group_remainder)
-from wazimap.geo import LocationNotFound
+                                get_stat_data, merge_dicts, group_remainder)
+from wazimap.geo import geo_data
+
+log = logging.getLogger(__name__)
 
 SECTIONS = settings.HURUMAP.get('topics', {})
 
@@ -32,17 +35,17 @@ def get_profile(geo, profile_name, request):
                 data[section] = func(geo, session)
 
                 # get profiles for comparative geometries
-                if not data[section]['is_missing']:
-                    for comp_geo in comparative_geos:
-                        try:
-                            merge_dicts(
-                                data[section], func(
-                                    comp_geo, session), comp_geo.geo_level)
-                        except KeyError as e:
-                            msg = "Error merging data into %s for section '%s' from %s: KeyError: %s" % (
-                                geo.geoid, section, comp_geo.geoid, e)
-                            log.fatal(msg, exc_info=e)
-                            raise ValueError(msg)
+                # if not data[section]['is_missing']:
+                #     for comp_geo in comparative_geos:
+                #         try:
+                #             merge_dicts(
+                #                 data[section], func(
+                #                     comp_geo, session), comp_geo.geo_level)
+                #         except KeyError as e:
+                #             msg = "Error merging data into %s for section '%s' from %s: KeyError: %s" % (
+                #                 geo.geoid, data[section], comp_geo.geoid, e)
+                #             log.fatal(msg, exc_info=e)
+                #             raise ValueError(msg)
         return data
 
     finally:
@@ -244,6 +247,8 @@ def get_education_profile(geo, session):
 def get_health_profile(geo, session):
     counselling_concluded = LOCATIONNOTFOUND
     hiv_patients = LOCATIONNOTFOUND
+    access_to_wash = LOCATIONNOTFOUND
+    adolescent_fertility = LOCATIONNOTFOUND
 
     with dataset_context(year='2016'):
         try:
@@ -253,6 +258,8 @@ def get_health_profile(geo, session):
         except Exception as e:
             print(str(e))
             pass
+
+    with dataset_context(year='2018'):
         try:
             hiv_patients, _ = get_stat_data(fields=['year', 'gender'], geo=geo,
                                          session=session,
@@ -260,14 +267,33 @@ def get_health_profile(geo, session):
         except Exception as e:
             print(str(e))
             pass
+        try:
+            access_to_wash, _ = get_stat_data(fields=['access_to_wash'], geo=geo,
+                                         session=session,
+                                         table_name='access_to_wash', percent=False)
+        except Exception as e:
+            print(str(e))
+            pass
+
+        try:
+            adolescent_fertility, _ = get_stat_data(fields=['adolescent_fertility_year'], geo=geo,
+                                         session=session,
+                                         table_name='adolescent_fertility', percent=False)
+        except Exception as e:
+            print(str(e))
+            pass
 
     is_missing = counselling_concluded.get('is_missing') and \
-                hiv_patients.get('is_missing')
+                hiv_patients.get('is_missing') and \
+                access_to_wash.get('is_missing') and \
+                adolescent_fertility.get('is_missing')
 
     final_data = {
         'is_missing': is_missing,
         'counselling_concluded': counselling_concluded,
-        'hiv_patients': hiv_patients
+        'hiv_patients': hiv_patients,
+        'access_to_wash': access_to_wash,
+        'adolescent_fertility': adolescent_fertility
     }
     return final_data
 
@@ -282,6 +308,8 @@ def get_transportation_profile(geo, session):
     petrol_price_2017 = LOCATIONNOTFOUND
     petrol_price_2018 = LOCATIONNOTFOUND
     petrol_price_2019 = LOCATIONNOTFOUND
+    air_transportation_domestic = LOCATIONNOTFOUND
+    air_transportation_international = LOCATIONNOTFOUND
 
     with dataset_context(year='2018'):
         try:
@@ -366,37 +394,58 @@ def get_transportation_profile(geo, session):
                                          table_name='petrol_price', percent=False)
         except Exception as e:
             print(str(e))
+            pass
 
-    diesel_price = {
-        'is_missing': diesel_price_2019.get('is_missing') and \
-                        diesel_price_2018.get('is_missing') and \
-                        diesel_price_2017.get('is_missing') and \
-                        diesel_price_2016.get('is_missing') and \
-                        diesel_price_2015.get('is_missing'),
-        '2019': diesel_price_2019,
-        '2018': diesel_price_2018,
-        '2017': diesel_price_2017,
-        '2016': diesel_price_2016,
-        '2015': diesel_price_2015
-    }
+        try:
+            air_transportation_domestic, _ = get_stat_data(fields=['month, depature_arrival'], geo=geo,
+                                         session=session,
+                                         table_name='air_transportation_domestic', percent=False)
+        except Exception as e:
+            print(str(e))
+            pass
 
-    petrol_price = {
-        'is_missing': petrol_price_2018.get('is_missing') and \
-                        petrol_price_2017.get('is_missing') and \
-                        petrol_price_2016.get('is_missing') and \
-                        petrol_price_2016.get('is_missing'),
-        '2019': petrol_price_2019,
-        '2018': petrol_price_2018,
-        '2017': petrol_price_2017,
-        '2016': petrol_price_2016
-    }
+        try:
+            air_transportation_international, _ = get_stat_data(fields=['month, depature_arrival'], geo=geo,
+                                         session=session,
+                                         table_name='air_transportation_international', percent=False)
+        except Exception as e:
+            print(str(e))
+            pass
 
-        is_missing = diesel_price.get('is_missing') and petrol_price.get('is_missing')
-
-        final_data = {
-            'is_missing': is_missing,
-            'diesel_price': diesel_price,
-            'petrol_price': petrol_price,
-
+        diesel_price = {
+            'is_missing': diesel_price_2019.get('is_missing') and \
+                            diesel_price_2018.get('is_missing') and \
+                            diesel_price_2017.get('is_missing') and \
+                            diesel_price_2016.get('is_missing') and \
+                            diesel_price_2015.get('is_missing'),
+            '2019': diesel_price_2019,
+            '2018': diesel_price_2018,
+            '2017': diesel_price_2017,
+            '2016': diesel_price_2016,
+            '2015': diesel_price_2015
         }
-        return final_data
+
+        petrol_price = {
+            'is_missing': petrol_price_2018.get('is_missing') and \
+                            petrol_price_2017.get('is_missing') and \
+                            petrol_price_2016.get('is_missing') and \
+                            petrol_price_2016.get('is_missing'),
+            '2019': petrol_price_2019,
+            '2018': petrol_price_2018,
+            '2017': petrol_price_2017,
+            '2016': petrol_price_2016
+        }
+
+    is_missing = diesel_price.get('is_missing') and \
+                petrol_price.get('is_missing') and \
+                air_transportation_domestic.get('is_missing') and \
+                air_transportation_international.get('is_missing')
+
+    final_data = {
+        'is_missing': is_missing,
+        'diesel_price': diesel_price,
+        'petrol_price': petrol_price,
+        'air_transportation_domestic': air_transportation_domestic,
+        'air_transportation_international': air_transportation_international
+    }
+    return final_data

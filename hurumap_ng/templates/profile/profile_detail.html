@@ -20,8 +20,82 @@
 {% block profile_detail %}
 
 
-{% if not crime.is_missing %}
-  <article id="debt" class="clearfix">
+  {% if not demographics.is_missing %}
+    <article id="demographics" class="clearfix">
+      <header class="section-contents"><h1>Demographics</h1></header>
+      <div class="section-container">
+        {% if not demographics.compiled_indeces.is_missing %}
+        <section class="clearfix stat-row">
+          <h2>
+            <a class="permalink" href="#human-development-indeces" id="human-development-indeces">
+              Human Development Indeces<i class="fa fa-link"></i></a></h2>
+          <div class="column-full">
+              <div id="chart-column-demographics-compiled_indeces"
+                   data-chart-title="Human Development Indices"
+                   data-stat-type="number"
+                   data-source-title="Computation of Human Development Indices for the UNDP Nigeria Human Development Report (2016)"
+                   data-source-link="https://nigerianstat.gov.ng/download/830"></div>
+            </div>
+        </section>
+        {% endif %}
+      </div>
+    </article>
+  {% endif %}
+
+  {% if not health.is_missing %}
+    <article id="health" class="clearfix">
+      <header class="section-contents"><h1>Health</h1></header>
+      <div class="section-container">
+        {% if not health.hiv_patients.is_missing %}
+          <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-grouped_column-health-hiv_patients"
+                   data-chart-title="Distribution of HIV Patients by Year and Sex 2015-2016"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2018"
+                   data-source-link="https://nigerianstat.gov.ng/download/614"></div>
+            </div>
+        </section>
+        {% endif %}
+        {% if not health.counselling_concluded.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-column-health-counselling_concluded"
+                   data-chart-title="Number of Drug Counselling Sessions Concluded 2012 - 2016"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2016"
+                   data-source-link="https://nigerianstat.gov.ng/download/614"></div>
+            </div>
+        </section>
+        {% endif %}
+        {% if not health.access_to_wash.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-column-health-access_to_wash"
+                   data-chart-title="Percentage of Households with Access to Water Supply and Sanitation facility, 2018"
+                   data-stat-type="scaled-percentage"
+                   data-source-title="National Bureau of Statistics, 2016"
+                   data-source-link="https://nigerianstat.gov.ng/download/839"></div>
+            </div>
+        </section>
+        {% endif %}
+        {% if not health.adolescent_fertility.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-column-health-adolescent_fertility"
+                   data-chart-title="Female Adolescent Fertility Rate in 2016"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2018"
+                   data-source-link="https://nigerianstat.gov.ng/download/952"></div>
+            </div>
+        </section>
+        {% endif %}
+      </div>
+    </article>
+  {% endif %}
+
+  {% if not crime.is_missing %}
+  <article id="crime" class="clearfix">
     <header class="section-contents"><h1>Corruption & Crime</h1></header>
     <div class="section-container">
       {% if not crime.arrested_suspects.is_missing %}
@@ -57,7 +131,7 @@
           </div>
       </section>
       {% endif %}
-      {% if not nbs_2018.mineral_production.is_missing %}
+      <!-- {% if not nbs_2018.mineral_production.is_missing %}
       <section class="clearfix stat-row">
         <div class="column-full">
             <div id="chart-column-nbs_2018-mineral_production"
@@ -119,39 +193,9 @@
                  data-source-link="https://nigerianstat.gov.ng/download/614"></div>
           </div>
       </section>
-      {% endif %}
+      {% endif %} -->
     </div>
   </article>
-  {% endif %}
-
-  {% if not health.is_missing %}
-    <article id="health" class="clearfix">
-      <header class="section-contents"><h1>Health</h1></header>
-      <div class="section-container">
-        {% if not health.hiv_patients.is_missing %}
-          <section class="clearfix stat-row">
-          <div class="column-full">
-              <div id="chart-grouped_column-health-hiv_patients"
-                   data-chart-title="Distribution of HIV Patients by Year and Sex 2015-2016"
-                   data-stat-type="number"
-                   data-source-title="National Bureau of Statistics, 2018"
-                   data-source-link="https://nigerianstat.gov.ng/download/614"></div>
-            </div>
-        </section>
-        {% endif %}
-        {% if not health.counselling_concluded.is_missing %}
-        <section class="clearfix stat-row">
-          <div class="column-full">
-              <div id="chart-column-health-counselling_concluded"
-                   data-chart-title="Number of Drug Counselling Sessions Concluded 2012 - 2016"
-                   data-stat-type="number"
-                   data-source-title="National Bureau of Statistics, 2016"
-                   data-source-link="https://nigerianstat.gov.ng/download/614"></div>
-            </div>
-        </section>
-        {% endif %}
-      </div>
-    </article>
   {% endif %}
 
 
@@ -175,9 +219,32 @@
   {% endif %}
 
   {% if not transportation.is_missing %}
+  {{ transportation.air_transportation_domestic }}
     <article id="transportation" class="clearfix">
-      <header class="section-contents"><h1>transportation</h1></header>
+      <header class="section-contents"><h1>Transportation</h1></header>
       <div class="section-container">
+        {% if not transportation.air_transportation_domestic.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-grouped_column-transportation-air_transportation_domestic"
+                   data-chart-title="Number of Passengers 2018, Domestics Flights"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2018"
+                   data-source-link="https://nigerianstat.gov.ng/resource/JAN-DEC%202018%20Harmonised%20Air%20Traffic%20Statistics.xlsx"></div>
+            </div>
+        </section>
+        {% endif %}
+        {% if not transportation.air_transportation_international.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-grouped_column-transportation-air_transportation_international"
+                   data-chart-title="Number of Passengers 2018, International Flights"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2018"
+                   data-source-link="https://nigerianstat.gov.ng/resource/JAN-DEC%202018%20Harmonised%20Air%20Traffic%20Statistics.xlsx"></div>
+            </div>
+        </section>
+        {% endif %}
         {% if not transportation.petrol_price.2019.is_missing %}
         <section class="clearfix stat-row">
           <div class="column-full">
