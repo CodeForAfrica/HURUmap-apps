@@ -229,7 +229,7 @@ state	24	2016	Forgery of Currency	3
 state	24	2016	Gambling	0
 state	24	2016	Other Offence	5
 state	24	2016	Perjury	4
-state	25	2016	Breach of Peace	6,183
+state	25	2016	Breach of Peace	6183
 state	25	2016	Bribery and Corruption	4
 state	25	2016	Coining Offence	13
 state	25	2016	Escape from Custody	18
@@ -253,13 +253,13 @@ state	27	2016	Forgery of Currency	2
 state	27	2016	Gambling	0
 state	27	2016	Other Offence	712
 state	27	2016	Perjury	0
-country	NG	2016	Breach of Peace	9,605
+country	NG	2016	Breach of Peace	9605
 country	NG	2016	Bribery and Corruption	17
 country	NG	2016	Coining Offence	46
 country	NG	2016	Escape from Custody	123
 country	NG	2016	Forgery of Currency	111
 country	NG	2016	Gambling	471
-country	NG	2016	Other Offence	2,240
+country	NG	2016	Other Offence	2240
 country	NG	2016	Perjury	65
 state	28	2016	Breach of Peace	537
 state	28	2016	Bribery and Corruption	0
@@ -283,7 +283,6 @@ state	30	2016	Coining Offence	0
 state	30	2016	Escape from Custody	1
 state	30	2016	Forgery of Currency	0
 state	30	2016	Gambling	0
-state	30	2016	Other Offence	
 state	30	2016	Perjury	1
 state	31	2016	Breach of Peace	40
 state	31	2016	Bribery and Corruption	0

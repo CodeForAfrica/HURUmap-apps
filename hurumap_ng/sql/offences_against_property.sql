@@ -154,7 +154,7 @@ state	10	2016	House Breaking	146
 state	10	2016	Other Offences	341
 state	10	2016	Receiving Stolen Property	19
 state	10	2016	Store Breaking	370
-state	10	2016	Theft/Stealing	1,586
+state	10	2016	Theft/Stealing	1586
 state	10	2016	Unlawful Possess	43
 state	10	2016	Wounding with Menace	11
 state	11	2016	Armed Robbery	370
@@ -166,7 +166,7 @@ state	11	2016	House Breaking	66
 state	11	2016	Other Offences	275
 state	11	2016	Receiving Stolen Property	23
 state	11	2016	Store Breaking	41
-state	11	2016	Theft/Stealing	1,272
+state	11	2016	Theft/Stealing	1272
 state	11	2016	Unlawful Possess	64
 state	11	2016	Wounding with Menace	7
 state	12	2016	Armed Robbery	1
@@ -214,7 +214,7 @@ state	15	2016	House Breaking	129
 state	15	2016	Other Offences	188
 state	15	2016	Receiving Stolen Property	288
 state	15	2016	Store Breaking	16
-state	15	2016	Theft/Stealing	2,586
+state	15	2016	Theft/Stealing	2586
 state	15	2016	Unlawful Possess	0
 state	15	2016	Wounding with Menace	0
 state	16	2016	Armed Robbery	89
@@ -274,7 +274,7 @@ state	20	2016	House Breaking	135
 state	20	2016	Other Offences	466
 state	20	2016	Receiving Stolen Property	199
 state	20	2016	Store Breaking	137
-state	20	2016	Theft/Stealing	1,385
+state	20	2016	Theft/Stealing	1385
 state	20	2016	Unlawful Possess	213
 state	20	2016	Wounding with Menace	4
 state	21	2016	Armed Robbery	98
@@ -327,14 +327,14 @@ state	24	2016	Unlawful Possess	6
 state	24	2016	Wounding with Menace	1
 state	25	2016	Armed Robbery	370
 state	25	2016	Arson	222
-state	25	2016	Burglary	1,213
-state	25	2016	False Pretence and Cheating/Fraud	5,623
+state	25	2016	Burglary	1213
+state	25	2016	False Pretence and Cheating/Fraud	5623
 state	25	2016	Forgery	403
 state	25	2016	House Breaking	668
-state	25	2016	Other Offences	2,275
+state	25	2016	Other Offences	2275
 state	25	2016	Receiving Stolen Property	233
 state	25	2016	Store Breaking	417
-state	25	2016	Theft/Stealing	12,724
+state	25	2016	Theft/Stealing	12724
 state	25	2016	Unlawful Possess	764
 state	25	2016	Wounding with Menace	77
 state	26	2016	Armed Robbery	29
@@ -361,17 +361,17 @@ state	27	2016	Store Breaking	22
 state	27	2016	Theft/Stealing	595
 state	27	2016	Unlawful Possess	25
 state	27	2016	Wounding with Menace	0
-country	NG	2016	Armed Robbery	3,527
-country	NG	2016	Arson	1,086
-country	NG	2016	Burglary	2,167
-country	NG	2016	False Pretence and Cheating/Fraud	11,779
+country	NG	2016	Armed Robbery	3527
+country	NG	2016	Arson	1086
+country	NG	2016	Burglary	2167
+country	NG	2016	False Pretence and Cheating/Fraud	11779
 country	NG	2016	Forgery	801
-country	NG	2016	House Breaking	3,212
-country	NG	2016	Other Offences	7,442
-country	NG	2016	Receiving Stolen Property	1,354
-country	NG	2016	Store Breaking	1,873
-country	NG	2016	Theft/Stealing	32,348
-country	NG	2016	Unlawful Possess	2,455
+country	NG	2016	House Breaking	3212
+country	NG	2016	Other Offences	7442
+country	NG	2016	Receiving Stolen Property	1354
+country	NG	2016	Store Breaking	1873
+country	NG	2016	Theft/Stealing	32348
+country	NG	2016	Unlawful Possess	2455
 country	NG	2016	Wounding with Menace	535
 state	28	2016	Armed Robbery	65
 state	28	2016	Arson	11
@@ -394,7 +394,7 @@ state	29	2016	House Breaking	83
 state	29	2016	Other Offences	0
 state	29	2016	Receiving Stolen Property	8
 state	29	2016	Store Breaking	57
-state	29	2016	Theft/Stealing	1,107
+state	29	2016	Theft/Stealing	1107
 state	29	2016	Unlawful Possess	203
 state	29	2016	Wounding with Menace	3
 state	30	2016	Armed Robbery	32

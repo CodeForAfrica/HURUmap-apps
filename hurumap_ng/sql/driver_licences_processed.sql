@@ -37,310 +37,120 @@ CREATE TABLE public.driver_licences_processed (
 --
 
 COPY public.driver_licences_processed (geo_level, geo_code, geo_version, year, total) FROM stdin;
-state	1	2016	Breach of Peace	243
-state	1	2016	Bribery and Corruption	0
-state	1	2016	Coining Offence	0
-state	1	2016	Escape from Custody	6
-state	1	2016	Forgery of Currency	4
-state	1	2016	Gambling	4
-state	1	2016	Other Offence	11
-state	1	2016	Perjury	4
-state	2	2016	Breach of Peace	37
-state	2	2016	Bribery and Corruption	0
-state	2	2016	Coining Offence	0
-state	2	2016	Escape from Custody	6
-state	2	2016	Forgery of Currency	0
-state	2	2016	Gambling	0
-state	2	2016	Other Offence	9
-state	2	2016	Perjury	0
-state	3	2016	Breach of Peace	366
-state	3	2016	Bribery and Corruption	0
-state	3	2016	Coining Offence	0
-state	3	2016	Escape from Custody	3
-state	3	2016	Forgery of Currency	3
-state	3	2016	Gambling	4
-state	3	2016	Other Offence	0
-state	3	2016	Perjury	2
-state	4	2016	Breach of Peace	537
-state	4	2016	Bribery and Corruption	0
-state	4	2016	Coining Offence	2
-state	4	2016	Escape from Custody	9
-state	4	2016	Forgery of Currency	1
-state	4	2016	Gambling	0
-state	4	2016	Other Offence	182
-state	4	2016	Perjury	0
-state	5	2016	Breach of Peace	0
-state	5	2016	Bribery and Corruption	0
-state	5	2016	Coining Offence	0
-state	5	2016	Escape from Custody	0
-state	5	2016	Forgery of Currency	4
-state	5	2016	Gambling	0
-state	5	2016	Other Offence	0
-state	5	2016	Perjury	0
-state	6	2016	Breach of Peace	87
-state	6	2016	Bribery and Corruption	0
-state	6	2016	Coining Offence	0
-state	6	2016	Escape from Custody	2
-state	6	2016	Forgery of Currency	1
-state	6	2016	Gambling	0
-state	6	2016	Other Offence	0
-state	6	2016	Perjury	1
-state	7	2016	Breach of Peace	64
-state	7	2016	Bribery and Corruption	0
-state	7	2016	Coining Offence	0
-state	7	2016	Escape from Custody	5
-state	7	2016	Forgery of Currency	11
-state	7	2016	Gambling	6
-state	7	2016	Other Offence	23
-state	7	2016	Perjury	1
-state	8	2016	Breach of Peace	1
-state	8	2016	Bribery and Corruption	0
-state	8	2016	Coining Offence	0
-state	8	2016	Escape from Custody	0
-state	8	2016	Forgery of Currency	2
-state	8	2016	Gambling	0
-state	8	2016	Other Offence	0
-state	8	2016	Perjury	0
-state	9	2016	Breach of Peace	49
-state	9	2016	Bribery and Corruption	0
-state	9	2016	Coining Offence	0
-state	9	2016	Escape from Custody	1
-state	9	2016	Forgery of Currency	0
-state	9	2016	Gambling	0
-state	9	2016	Other Offence	6
-state	9	2016	Perjury	0
-state	10	2016	Breach of Peace	537
-state	10	2016	Bribery and Corruption	0
-state	10	2016	Coining Offence	2
-state	10	2016	Escape from Custody	9
-state	10	2016	Forgery of Currency	1
-state	10	2016	Gambling	0
-state	10	2016	Other Offence	182
-state	10	2016	Perjury	0
-state	11	2016	Breach of Peace	6
-state	11	2016	Bribery and Corruption	0
-state	11	2016	Coining Offence	13
-state	11	2016	Escape from Custody	1
-state	11	2016	Forgery of Currency	23
-state	11	2016	Gambling	72
-state	11	2016	Other Offence	34
-state	11	2016	Perjury	3
-state	12	2016	Breach of Peace	2
-state	12	2016	Bribery and Corruption	6
-state	12	2016	Coining Offence	4
-state	12	2016	Escape from Custody	11
-state	12	2016	Forgery of Currency	0
-state	12	2016	Gambling	243
-state	12	2016	Other Offence	41
-state	12	2016	Perjury	0
-state	13	2016	Breach of Peace	0
-state	13	2016	Bribery and Corruption	0
-state	13	2016	Coining Offence	0
-state	13	2016	Escape from Custody	0
-state	13	2016	Forgery of Currency	0
-state	13	2016	Gambling	0
-state	13	2016	Other Offence	0
-state	13	2016	Perjury	0
-state	14	2016	Breach of Peace	125
-state	14	2016	Bribery and Corruption	0
-state	14	2016	Coining Offence	0
-state	14	2016	Escape from Custody	0
-state	14	2016	Forgery of Currency	0
-state	14	2016	Gambling	0
-state	14	2016	Other Offence	0
-state	14	2016	Perjury	0
-state	15	2016	Breach of Peace	11
-state	15	2016	Bribery and Corruption	0
-state	15	2016	Coining Offence	0
-state	15	2016	Escape from Custody	0
-state	15	2016	Forgery of Currency	0
-state	15	2016	Gambling	0
-state	15	2016	Other Offence	28
-state	15	2016	Perjury	0
-state	16	2016	Breach of Peace	4
-state	16	2016	Bribery and Corruption	0
-state	16	2016	Coining Offence	0
-state	16	2016	Escape from Custody	1
-state	16	2016	Forgery of Currency	13
-state	16	2016	Gambling	1
-state	16	2016	Other Offence	14
-state	16	2016	Perjury	0
-state	17	2016	Breach of Peace	80
-state	17	2016	Bribery and Corruption	0
-state	17	2016	Coining Offence	0
-state	17	2016	Escape from Custody	0
-state	17	2016	Forgery of Currency	0
-state	17	2016	Gambling	0
-state	17	2016	Other Offence	0
-state	17	2016	Perjury	0
-state	18	2016	Breach of Peace	20
-state	18	2016	Bribery and Corruption	0
-state	18	2016	Coining Offence	5
-state	18	2016	Escape from Custody	2
-state	18	2016	Forgery of Currency	0
-state	18	2016	Gambling	5
-state	18	2016	Other Offence	15
-state	18	2016	Perjury	0
-state	19	2016	Breach of Peace	0
-state	19	2016	Bribery and Corruption	0
-state	19	2016	Coining Offence	0
-state	19	2016	Escape from Custody	2
-state	19	2016	Forgery of Currency	0
-state	19	2016	Gambling	2
-state	19	2016	Other Offence	0
-state	19	2016	Perjury	0
-state	20	2016	Breach of Peace	183
-state	20	2016	Bribery and Corruption	0
-state	20	2016	Coining Offence	3
-state	20	2016	Escape from Custody	4
-state	20	2016	Forgery of Currency	5
-state	20	2016	Gambling	56
-state	20	2016	Other Offence	38
-state	20	2016	Perjury	0
-state	21	2016	Breach of Peace	5
-state	21	2016	Bribery and Corruption	0
-state	21	2016	Coining Offence	0
-state	21	2016	Escape from Custody	7
-state	21	2016	Forgery of Currency	1
-state	21	2016	Gambling	0
-state	21	2016	Other Offence	45
-state	21	2016	Perjury	0
-state	22	2016	Breach of Peace	6
-state	22	2016	Bribery and Corruption	0
-state	22	2016	Coining Offence	0
-state	22	2016	Escape from Custody	1
-state	22	2016	Forgery of Currency	4
-state	22	2016	Gambling	0
-state	22	2016	Other Offence	0
-state	22	2016	Perjury	0
-state	23	2016	Breach of Peace	0
-state	23	2016	Bribery and Corruption	0
-state	23	2016	Coining Offence	0
-state	23	2016	Escape from Custody	0
-state	23	2016	Forgery of Currency	2
-state	23	2016	Gambling	0
-state	23	2016	Other Offence	23
-state	23	2016	Perjury	0
-state	24	2016	Breach of Peace	11
-state	24	2016	Bribery and Corruption	1
-state	24	2016	Coining Offence	0
-state	24	2016	Escape from Custody	1
-state	24	2016	Forgery of Currency	3
-state	24	2016	Gambling	0
-state	24	2016	Other Offence	5
-state	24	2016	Perjury	4
-state	25	2016	Breach of Peace	6,183
-state	25	2016	Bribery and Corruption	4
-state	25	2016	Coining Offence	13
-state	25	2016	Escape from Custody	18
-state	25	2016	Forgery of Currency	23
-state	25	2016	Gambling	72
-state	25	2016	Other Offence	712
-state	25	2016	Perjury	35
-state	26	2016	Breach of Peace	96
-state	26	2016	Bribery and Corruption	0
-state	26	2016	Coining Offence	0
-state	26	2016	Escape from Custody	4
-state	26	2016	Forgery of Currency	0
-state	26	2016	Gambling	0
-state	26	2016	Other Offence	33
-state	26	2016	Perjury	0
-state	27	2016	Breach of Peace	21
-state	27	2016	Bribery and Corruption	1
-state	27	2016	Coining Offence	0
-state	27	2016	Escape from Custody	18
-state	27	2016	Forgery of Currency	2
-state	27	2016	Gambling	0
-state	27	2016	Other Offence	712
-state	27	2016	Perjury	0
-country	NG	2016	Breach of Peace	9,605
-country	NG	2016	Bribery and Corruption	17
-country	NG	2016	Coining Offence	46
-country	NG	2016	Escape from Custody	123
-country	NG	2016	Forgery of Currency	111
-country	NG	2016	Gambling	471
-country	NG	2016	Other Offence	2,240
-country	NG	2016	Perjury	65
-state	28	2016	Breach of Peace	537
-state	28	2016	Bribery and Corruption	0
-state	28	2016	Coining Offence	0
-state	28	2016	Escape from Custody	0
-state	28	2016	Forgery of Currency	0
-state	28	2016	Gambling	0
-state	28	2016	Other Offence	0
-state	28	2016	Perjury	0
-state	29	2016	Breach of Peace	279
-state	29	2016	Bribery and Corruption	0
-state	29	2016	Coining Offence	0
-state	29	2016	Escape from Custody	0
-state	29	2016	Forgery of Currency	0
-state	29	2016	Gambling	0
-state	29	2016	Other Offence	0
-state	29	2016	Perjury	10
-state	30	2016	Breach of Peace	52
-state	30	2016	Bribery and Corruption	0
-state	30	2016	Coining Offence	0
-state	30	2016	Escape from Custody	1
-state	30	2016	Forgery of Currency	0
-state	30	2016	Gambling	0
-state	30	2016	Other Offence	
-state	30	2016	Perjury	1
-state	31	2016	Breach of Peace	40
-state	31	2016	Bribery and Corruption	0
-state	31	2016	Coining Offence	0
-state	31	2016	Escape from Custody	0
-state	31	2016	Forgery of Currency	0
-state	31	2016	Gambling	6
-state	31	2016	Other Offence	0
-state	31	2016	Perjury	0
-state	32	2016	Breach of Peace	0
-state	32	2016	Bribery and Corruption	0
-state	32	2016	Coining Offence	0
-state	32	2016	Escape from Custody	1
-state	32	2016	Forgery of Currency	1
-state	32	2016	Gambling	0
-state	32	2016	Other Offence	0
-state	32	2016	Perjury	0
-state	33	2016	Breach of Peace	0
-state	33	2016	Bribery and Corruption	0
-state	33	2016	Coining Offence	0
-state	33	2016	Escape from Custody	0
-state	33	2016	Forgery of Currency	0
-state	33	2016	Gambling	0
-state	33	2016	Other Offence	0
-state	33	2016	Perjury	0
-state	34	2016	Breach of Peace	22
-state	34	2016	Bribery and Corruption	3
-state	34	2016	Coining Offence	0
-state	34	2016	Escape from Custody	0
-state	34	2016	Forgery of Currency	0
-state	34	2016	Gambling	0
-state	34	2016	Other Offence	0
-state	34	2016	Perjury	1
-state	35	2016	Breach of Peace	1
-state	35	2016	Bribery and Corruption	2
-state	35	2016	Coining Offence	4
-state	35	2016	Escape from Custody	3
-state	35	2016	Forgery of Currency	3
-state	35	2016	Gambling	0
-state	35	2016	Other Offence	19
-state	35	2016	Perjury	1
-state	36	2016	Breach of Peace	0
-state	36	2016	Bribery and Corruption	0
-state	36	2016	Coining Offence	0
-state	36	2016	Escape from Custody	7
-state	36	2016	Forgery of Currency	3
-state	36	2016	Gambling	0
-state	36	2016	Other Offence	77
-state	36	2016	Perjury	1
-state	37	2016	Breach of Peace	0
-state	37	2016	Bribery and Corruption	0
-state	37	2016	Coining Offence	0
-state	37	2016	Escape from Custody	0
-state	37	2016	Forgery of Currency	1
-state	37	2016	Gambling	0
-state	37	2016	Other Offence	31
-state	37	2016	Perjury	0
+country	NG	2016	2013	395539
+country	NG	2016	2014	653046
+country	NG	2016	2015	1151906
+state	1	2016	2013	6859
+state	1	2016	2014	14677
+state	1	2016	2015	36316
+state	2	2016	2013	3288
+state	2	2016	2014	2670
+state	2	2016	2015	4961
+state	3	2016	2013	1888
+state	3	2016	2014	8804
+state	3	2016	2015	17623
+state	4	2016	2013	4691
+state	4	2016	2014	18720
+state	4	2016	2015	49527
+state	5	2016	2013	2524
+state	5	2016	2014	3107
+state	5	2016	2015	7493
+state	6	2016	2013	4576
+state	6	2016	2014	10809
+state	6	2016	2015	15056
+state	7	2016	2013	2270
+state	7	2016	2014	3027
+state	7	2016	2015	9503
+state	8	2016	2013	6083
+state	8	2016	2014	4595
+state	8	2016	2015	8916
+state	9	2016	2013	2927
+state	9	2016	2014	4626
+state	9	2016	2015	9399
+state	10	2016	2013	6366
+state	10	2016	2014	24817
+state	10	2016	2015	64482
+state	11	2016	2013	2778
+state	11	2016	2014	5054
+state	11	2016	2015	8684
+state	12	2016	2013	10365
+state	12	2016	2014	11980
+state	12	2016	2015	23793
+state	13	2016	2013	5940
+state	13	2016	2014	7954
+state	13	2016	2015	14466
+state	14	2016	2013	9725
+state	14	2016	2014	21714
+state	14	2016	2015	28358
+state	15	2016	2013	42613
+state	15	2016	2014	54532
+state	15	2016	2015	106946
+state	16	2016	2013	2699
+state	16	2016	2014	3337
+state	16	2016	2015	31303
+state	17	2016	2013	8936
+state	17	2016	2014	13253
+state	17	2016	2015	28088
+state	18	2016	2013	1495
+state	18	2016	2014	2167
+state	18	2016	2015	9427
+state	19	2016	2013	8726
+state	19	2016	2014	9565
+state	19	2016	2015	22567
+state	20	2016	2013	4000
+state	20	2016	2014	7053
+state	20	2016	2015	20666
+state	21	2016	2013	3936
+state	21	2016	2014	3529
+state	21	2016	2015	5500
+state	22	2016	2013	1274
+state	22	2016	2014	1349
+state	22	2016	2015	3734
+state	23	2016	2013	3331
+state	23	2016	2014	3464
+state	23	2016	2015	2861
+state	24	2016	2013	6972
+state	24	2016	2014	9315
+state	24	2016	2015	16198
+state	25	2016	2013	127261
+state	25	2016	2014	225284
+state	25	2016	2015	298319
+state	26	2016	2013	2886
+state	26	2016	2014	6218
+state	26	2016	2015	32293
+state	27	2016	2013	2435
+state	27	2016	2014	4379
+state	27	2016	2015	10504
+state	28	2016	2013	27805
+state	28	2016	2014	49521
+state	28	2016	2015	51438
+state	29	2016	2013	8339
+state	29	2016	2014	12646
+state	29	2016	2015	20812
+state	30	2016	2013	11898
+state	30	2016	2014	10975
+state	30	2016	2015	25072
+state	31	2016	2013	24297
+state	31	2016	2014	35666
+state	31	2016	2015	53755
+state	32	2016	2013	6234
+state	32	2016	2014	10092
+state	32	2016	2015	16640
+state	33	2016	2013	21425
+state	33	2016	2014	38804
+state	33	2016	2015	63421
+state	34	2016	2013	2384
+state	34	2016	2014	4022
+state	34	2016	2015	22156
+state	35	2016	2013	2588
+state	35	2016	2014	1876
+state	35	2016	2015	5821
+state	36	2016	2013	2286
+state	36	2016	2014	1732
+state	36	2016	2015	2375
+state	37	2016	2013	1439
+state	37	2016	2014	1713
+state	37	2016	2015	3433
 \.
 
 

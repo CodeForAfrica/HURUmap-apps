@@ -29,7 +29,7 @@ CREATE TABLE public.faac_yearly (
     geo_version character varying(128) NOT NULL,
     year character varying(128) NOT NULL,
     month character varying(128) NOT NULL,
-    total integer
+    total numeric
 );
 
 
@@ -486,10 +486,6 @@ state	14	2016	2018	December	4969772488
 state	14	2016	2019	January	2971979833
 state	14	2016	2019	February	2781853615
 state	14	2016	2019	March	2749263595
-state	15	2016	2016	January	-
-state	15	2016	2016	March	-
-state	15	2016	2016	April	-
-state	15	2016	2016	May	-
 state	15	2016	2016	June	135776593
 state	15	2016	2017	January	3695338374
 state	15	2016	2017	February	4271048326

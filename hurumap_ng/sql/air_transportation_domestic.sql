@@ -252,7 +252,7 @@ state	3	2016	Eket	Oct	Arrival	194
 state	3	2016	Eket	Nov	Arrival	0
 state	3	2016	Eket	Dec	Arrival	0
 state	3	2016	Eket	Dec	Departure	0
-state	3	2016	Eket	Nov	Departure
+state	3	2016	Eket	Nov	Departure	0
 state	3	2016	Eket	Oct	Departure	328
 state	3	2016	Eket	Sept	Departure	0
 state	14	2016	Enugu	Apr	Arrival	15101
