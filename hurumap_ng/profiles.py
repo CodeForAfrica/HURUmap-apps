@@ -132,8 +132,12 @@ def get_crime_profile(geo, session):
     suspects_prosecuted = LOCATIONNOTFOUND
     conviction_secured = LOCATIONNOTFOUND
     bribery_prevalence = 0
+    bribery_report_rate = LOCATIONNOTFOUND
     cases_of_corruption = LOCATIONNOTFOUND
     avg_number_bribes = 0
+    offences_against_person = LOCATIONNOTFOUND
+    offences_against_property = LOCATIONNOTFOUND
+    offences_against_authority = LOCATIONNOTFOUND
 
     with dataset_context(year='2016'):
         try:
@@ -190,6 +194,38 @@ def get_crime_profile(geo, session):
         except Exception as e:
             print(str(e))
             pass
+        try:
+            bribery_report_rate, _ = get_stat_data(fields=['status'], geo=geo,
+                                         session=session,
+                                         table_name='bribery_report_rate')
+        except Exception as e:
+            print(str(e))
+            pass
+
+        try:
+            offences_against_person, _ = get_stat_data(fields=['crime'], geo=geo,
+                                         session=session,
+                                         table_name='offences_against_person')
+        except Exception as e:
+            print(str(e))
+            pass
+
+        try:
+            offences_against_property, _ = get_stat_data(fields=['crime'], geo=geo,
+                                         session=session,
+                                         table_name='offences_against_property')
+        except Exception as e:
+            print(str(e))
+            pass
+
+        try:
+            offences_against_authority, _ = get_stat_data(fields=['crime'], geo=geo,
+                                         session=session,
+                                         table_name='offences_against_authority')
+        except Exception as e:
+            print(str(e))
+            pass
+
 
 
 
@@ -197,7 +233,11 @@ def get_crime_profile(geo, session):
     is_missing = arrested_suspects.get('is_missing') and \
                 suspects_prosecuted.get('is_missing') and \
                 conviction_secured.get('is_missing') and \
-                cases_of_corruption.get('is_missing')
+                cases_of_corruption.get('is_missing') and \
+                bribery_report_rate.get('is_missing') and \
+                offences_against_authority.get('is_missing') and \
+                offences_against_property.get('is_missing') and \
+                offences_against_person.get('is_missing')
 
     final_data = {
         'is_missing': is_missing,
@@ -206,7 +246,11 @@ def get_crime_profile(geo, session):
         'conviction_secured': conviction_secured,
         'bribery_prevalence': _create_single_value_dist("Prevalence of bribery, 2016", bribery_prevalence),
         'cases_of_corruption': cases_of_corruption,
-        'avg_number_bribes': _create_single_value_dist("Average number of bribes, 2016", avg_number_bribes)
+        'avg_number_bribes': _create_single_value_dist("Average number of bribes, 2016", avg_number_bribes),
+        'bribery_report_rate': bribery_report_rate,
+        'offences_against_person': offences_against_person,
+        'offences_against_property': offences_against_property,
+        'offences_against_authority': offences_against_authority
     }
     return final_data
 
@@ -245,7 +289,7 @@ def get_education_profile(geo, session):
         except Exception as e:
             print(str(e))
             pass
-            
+
     with dataset_context(year='2018'):
         try:
             senior_secondary_school_enrollment, _ = get_stat_data(

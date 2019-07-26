@@ -205,7 +205,7 @@
           <h3 class="chart-header">Corruption Index</h3>
           {% include 'profile/_blocks/_stat_list.html' with stat=crime.bribery_prevalence stat_type='number' %}
           </div>
-          {% endif %}
+        {% endif %}
         {% if not crime.avg_number_bribes.is_missing %}
           <div class="column-third">
             <div id="chart-column-crime-avg_number_bribes"
@@ -223,7 +223,49 @@
                      data-source-title="National Bureau of Statistics, 2017"
                      data-source-link="https://nigerianstat.gov.ng/download/866"></div>
               </div>
-          {% endif %}
+        {% endif %}
+        {% if not crime.bribery_report_rate_missing %}
+              <div class="column-third">
+                  <div id="chart-pie-crime-bribery_report_rate"
+                       data-chart-title="Rate of Bribery Reported to official authority or non-official institution, 2016"
+                       data-stat-type="percentage"
+                       data-source-title="National Bureau of Statistics, 2016"
+                       data-source-link="https://nigerianstat.gov.ng/resource/CorruptionStatistics_by_State_full.xlsx"></div>
+                </div>
+        {% endif %}
+      </section>
+      {% endif %}
+      {% if not crime.offences_against_authority.is_missing %}
+      <section class="clearfix stat-row">
+        <div class="column-full">
+            <div id="chart-column-crime-offences_against_authority"
+                 data-chart-title="Offences against Lawful Authority by state, 2017"
+                 data-stat-type="number"
+                 data-source-title="National Bureau of Statistics, 2017"
+                 data-source-link="https://nigerianstat.gov.ng/resource/CRIME%20STATISTICS%202017.xlsx"></div>
+          </div>
+      </section>
+      {% endif %}
+      {% if not crime.offences_against_property.is_missing %}
+      <section class="clearfix stat-row">
+        <div class="column-full">
+            <div id="chart-column-crime-offences_against_property"
+                 data-chart-title="Offences against Property, 2017"
+                 data-stat-type="number"
+                 data-source-title="National Bureau of Statistics, 2017"
+                 data-source-link="https://nigerianstat.gov.ng/resource/CRIME%20STATISTICS%202017.xlsx"></div>
+          </div>
+      </section>
+      {% endif %}
+      {% if not crime.offences_against_person.is_missing %}
+      <section class="clearfix stat-row">
+        <div class="column-full">
+            <div id="chart-column-crime-offences_against_person"
+                 data-chart-title="Offences against Persons, 2017"
+                 data-stat-type="number"
+                 data-source-title="National Bureau of Statistics, 2017"
+                 data-source-link="https://nigerianstat.gov.ng/resource/CRIME%20STATISTICS%202017.xlsx"></div>
+          </div>
       </section>
       {% endif %}
       <!-- {% if not nbs_2018.mineral_production.is_missing %}
