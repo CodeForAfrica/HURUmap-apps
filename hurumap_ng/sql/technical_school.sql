@@ -13,17 +13,17 @@ SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-ALTER TABLE IF EXISTS ONLY public.food_price DROP CONSTRAINT IF EXISTS food_price_pkey;
-DROP TABLE IF EXISTS public.food_price;
+ALTER TABLE IF EXISTS ONLY public.technical_school DROP CONSTRAINT IF EXISTS technical_school_pkey;
+DROP TABLE IF EXISTS public.technical_school;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
 
 --
--- Name: food_price; Type: TABLE; Schema: public; Owner: -
+-- Name: technical_school; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.food_price (
+CREATE TABLE public.technical_school (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     geo_version character varying(128) NOT NULL,
@@ -33,10 +33,10 @@ CREATE TABLE public.food_price (
 
 
 --
--- Data for Name: food_price; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: technical_school; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.food_price (geo_level, geo_code, geo_version, year, total) FROM stdin;
+COPY public.technical_school (geo_level, geo_code, geo_version, year, total) FROM stdin;
 state	1	2016	2014	4
 state	1	2016	2015	3
 state	1	2016	2016	2
@@ -155,11 +155,11 @@ state	37	2016	2016	2
 
 
 --
--- Name: food_price food_price_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: technical_school technical_school_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.food_price
-    ADD CONSTRAINT food_price_pkey PRIMARY KEY (geo_level, geo_code, geo_version, year);
+ALTER TABLE ONLY public.technical_school
+    ADD CONSTRAINT technical_school_pkey PRIMARY KEY (geo_level, geo_code, geo_version, year);
 
 
 --

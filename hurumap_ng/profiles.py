@@ -211,8 +211,6 @@ def get_crime_profile(geo, session):
     return final_data
 
 
-
-
 def get_drugs_profile(geo, session):
     drugs_seized = LOCATIONNOTFOUND
 
@@ -235,6 +233,9 @@ def get_drugs_profile(geo, session):
 
 def get_education_profile(geo, session):
     drugs_seized = LOCATIONNOTFOUND
+    junior_secondary_school_enrollment = LOCATIONNOTFOUND
+    senior_secondary_school_enrollment = LOCATIONNOTFOUND
+    technical_school = LOCATIONNOTFOUND
 
     with dataset_context(year='2016'):
         try:
@@ -244,11 +245,37 @@ def get_education_profile(geo, session):
         except Exception as e:
             print(str(e))
             pass
+            
+    with dataset_context(year='2018'):
+        try:
+            senior_secondary_school_enrollment, _ = get_stat_data(
+                ['year', 'gender'], geo, session, percent=False, table_name='senior_secondary_school_enrollment')
+        except Exception:
+            pass
 
-    is_missing = drugs_seized.get('is_missing')
+        try:
+            junior_secondary_school_enrollment, _ = get_stat_data(
+                ['year', 'gender'], geo, session, percent=False,
+                table_name='junior_secondary_school_enrollment')
+        except Exception:
+            pass
+        try:
+            technical_school, _ = get_stat_data(
+                ['year'], geo, session, percent=False,
+                table_name='technical_school')
+        except Exception:
+            pass
+
+    is_missing = drugs_seized.get('is_missing') and \
+                junior_secondary_school_enrollment.get('is_missing') and \
+                senior_secondary_school_enrollment.get('is_missing') and \
+                technical_school.get('is_missing')
     final_data = {
         'is_missing': is_missing,
-        'drugs_seized': drugs_seized
+        'drugs_seized': drugs_seized,
+        'junior_secondary_school_enrollment': junior_secondary_school_enrollment,
+        'senior_secondary_school_enrollment': senior_secondary_school_enrollment,
+        'technical_school': technical_school
     }
     return final_data
 
@@ -258,6 +285,7 @@ def get_health_profile(geo, session):
     hiv_patients = LOCATIONNOTFOUND
     access_to_wash = LOCATIONNOTFOUND
     adolescent_fertility = LOCATIONNOTFOUND
+    contraceptive_use = LOCATIONNOTFOUND
 
     with dataset_context(year='2016'):
         try:
@@ -292,22 +320,34 @@ def get_health_profile(geo, session):
             print(str(e))
             pass
 
+        try:
+            contraceptive_use, _ = get_stat_data(fields=['contraceptive_method'], geo=geo,
+                                         session=session,
+                                         table_name='contraceptive_use', percent=False)
+        except Exception as e:
+            print(str(e))
+            pass
+
     is_missing = counselling_concluded.get('is_missing') and \
                 hiv_patients.get('is_missing') and \
                 access_to_wash.get('is_missing') and \
-                adolescent_fertility.get('is_missing')
+                adolescent_fertility.get('is_missing') and \
+                contraceptive_use.get('is_missing')
 
     final_data = {
         'is_missing': is_missing,
         'counselling_concluded': counselling_concluded,
         'hiv_patients': hiv_patients,
         'access_to_wash': access_to_wash,
-        'adolescent_fertility': adolescent_fertility
+        'adolescent_fertility': adolescent_fertility,
+        'contraceptive_use': contraceptive_use
     }
     return final_data
 
 
 def get_transportation_profile(geo, session):
+    diseal_yearly = LOCATIONNOTFOUND
+    diseal_price_2015 = LOCATIONNOTFOUND
     diesel_price_2016 = LOCATIONNOTFOUND
     diesel_price_2017 = LOCATIONNOTFOUND
     diesel_price_2015 = LOCATIONNOTFOUND
@@ -319,6 +359,7 @@ def get_transportation_profile(geo, session):
     petrol_price_2019 = LOCATIONNOTFOUND
     air_transportation_domestic = LOCATIONNOTFOUND
     air_transportation_international = LOCATIONNOTFOUND
+    diesel_year = LOCATIONNOTFOUND
 
     with dataset_context(year='2018'):
         try:
@@ -421,6 +462,14 @@ def get_transportation_profile(geo, session):
             print(str(e))
             pass
 
+        try:
+            diesel_year, _ = get_stat_data(['diesel_year'], geo=geo,
+                                         session=session,
+                                         table_name='diesel_yearly', percent=False)
+        except Exception as e:
+            print(str(e))
+            pass
+
         diesel_price = {
             'is_missing': diesel_price_2019.get('is_missing') and \
                             diesel_price_2018.get('is_missing') and \
@@ -448,14 +497,16 @@ def get_transportation_profile(geo, session):
     is_missing = diesel_price.get('is_missing') and \
                 petrol_price.get('is_missing') and \
                 air_transportation_domestic.get('is_missing') and \
-                air_transportation_international.get('is_missing')
+                air_transportation_international.get('is_missing') and \
+                diesel_year.get('is_missing')
 
     final_data = {
         'is_missing': is_missing,
         'diesel_price': diesel_price,
         'petrol_price': petrol_price,
         'air_transportation_domestic': air_transportation_domestic,
-        'air_transportation_international': air_transportation_international
+        'air_transportation_international': air_transportation_international,
+        'diesel_year': diesel_year
     }
     return final_data
 

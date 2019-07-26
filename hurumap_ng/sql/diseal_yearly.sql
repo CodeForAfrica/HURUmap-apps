@@ -13,30 +13,30 @@ SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-ALTER TABLE IF EXISTS ONLY public.diseal_yearly DROP CONSTRAINT IF EXISTS diseal_yearly_pkey;
-DROP TABLE IF EXISTS public.diseal_yearly;
+ALTER TABLE IF EXISTS ONLY public.diesel_yearly DROP CONSTRAINT IF EXISTS diesel_yearly_pkey;
+DROP TABLE IF EXISTS public.diesel_yearly;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
 
 --
--- Name: diseal_yearly; Type: TABLE; Schema: public; Owner: -
+-- Name: diesel_yearly; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.diseal_yearly (
+CREATE TABLE public.diesel_yearly (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     geo_version character varying(128) NOT NULL,
-    diseal_year character varying(128) NOT NULL,
+    diesel_year character varying(128) NOT NULL,
     total numeric
 );
 
 
 --
--- Data for Name: diseal_yearly; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: diesel_yearly; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.diseal_yearly (geo_level, geo_code, geo_version, diseal_year, total) FROM stdin;
+COPY public.diesel_yearly (geo_level, geo_code, geo_version, diesel_year, total) FROM stdin;
 country	NG	2016	2015	154.53
 country	NG	2016	2016	176.13
 country	NG	2016	2017	212.8
@@ -231,11 +231,11 @@ state	37	2016	2019	223.75
 
 
 --
--- Name: diseal_yearly diseal_yearly_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: diesel_yearly diesel_yearly_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.diseal_yearly
-    ADD CONSTRAINT diseal_yearly_pkey PRIMARY KEY (geo_level, geo_code, geo_version, diseal_year);
+ALTER TABLE ONLY public.diesel_yearly
+    ADD CONSTRAINT diesel_yearly_pkey PRIMARY KEY (geo_level, geo_code, geo_version, diesel_year);
 
 
 --
