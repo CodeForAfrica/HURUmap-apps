@@ -287,6 +287,7 @@ def get_education_profile(geo, session):
     junior_secondary_school_enrollment = LOCATIONNOTFOUND
     senior_secondary_school_enrollment = LOCATIONNOTFOUND
     technical_school = LOCATIONNOTFOUND
+    primary_school_enrollment = LOCATIONNOTFOUND
 
     with dataset_context(year='2016'):
         try:
@@ -308,8 +309,10 @@ def get_education_profile(geo, session):
             junior_secondary_school_enrollment, _ = get_stat_data(
                 ['year', 'gender'], geo, session, percent=False,
                 table_name='junior_secondary_school_enrollment')
-        except Exception:
+        except Exception as e:
+            print(str(e))
             pass
+
         try:
             technical_school, _ = get_stat_data(
                 ['year'], geo, session, percent=False,
@@ -317,16 +320,26 @@ def get_education_profile(geo, session):
         except Exception:
             pass
 
+        try:
+            primary_school_enrollment, _ = get_stat_data(
+                ['year', 'gender'], geo, session, percent=False,
+                table_name='primary_school_enrollment')
+        except Exception:
+            pass
+
     is_missing = drugs_seized.get('is_missing') and \
                 junior_secondary_school_enrollment.get('is_missing') and \
                 senior_secondary_school_enrollment.get('is_missing') and \
-                technical_school.get('is_missing')
+                technical_school.get('is_missing') and \
+                primary_school_enrollment.get('is_missing')
+
     final_data = {
         'is_missing': is_missing,
         'drugs_seized': drugs_seized,
         'junior_secondary_school_enrollment': junior_secondary_school_enrollment,
         'senior_secondary_school_enrollment': senior_secondary_school_enrollment,
-        'technical_school': technical_school
+        'technical_school': technical_school,
+        'primary_school_enrollment': primary_school_enrollment
     }
     return final_data
 

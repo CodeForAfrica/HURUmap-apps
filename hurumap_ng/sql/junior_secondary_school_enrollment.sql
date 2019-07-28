@@ -29,7 +29,7 @@ CREATE TABLE public.junior_secondary_school_enrollment (
     geo_version character varying(128) NOT NULL,
     gender character varying(128) NOT NULL,
     year character varying(128) NOT NULL,
-    total numeric
+    total integer
 );
 
 

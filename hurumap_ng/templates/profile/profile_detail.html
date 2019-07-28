@@ -135,39 +135,46 @@
     <article id="education" class="clearfix">
       <header class="section-contents"><h1>Education</h1></header>
       <div class="section-container">
-        {% if not education.junior_secondary_school_enrollment.is_missing %}
         <section class="clearfix stat-row">
-          <div class="column-full">
+          {% if not education.primary_school_enrollment.is_missing %}
+          <div class="column-half">
+               <div id="chart-grouped_column-education-primary_school_enrollment"
+               data-stat-type="number"
+               data-chart-title="Distribution of Enrolment in Primary Schools by Year and Sex, 2015 -2016"
+               data-source-title="National Bureau of Statistics, 2018"
+               data-source-link="https://nigerianstat.gov.ng/download/952"></div>
+          </div>
+          {% endif %}
+        {% if not education.junior_secondary_school_enrollment.is_missing %}
+          <div class="column-half">
               <div id="chart-grouped_column-education-junior_secondary_school_enrollment"
                 data-stat-type="number"
                 data-chart-title="Distribution of Enrolment in Junior Secondary School by Year and sex, 2015 -2016"
                 data-source-title="National Bureau of Statistics, 2018"
                 data-source-link="https://nigerianstat.gov.ng/download/952"></div>
           </div>
-        </section>
         {% endif %}
-        {% if not education.senior_secondary_school_enrollment.is_missing %}
-        <section class="clearfix stat-row">
-          <div class="column-full">
+      </section>
+      <section class="clearfix stat-row">
+          {% if not education.senior_secondary_school_enrollment.is_missing %}
+          <div class="column-half">
                <div id="chart-grouped_column-education-senior_secondary_school_enrollment"
                data-stat-type="number"
-               data-chart-title="Distribution of Enrolment in Senior Secondary School by State, Year and Sex, 2015 -2016"
+               data-chart-title="Distribution of Enrolment in Senior Secondary School by Year and Sex, 2015 -2016"
                data-source-title="National Bureau of Statistics, 2018"
                data-source-link="https://nigerianstat.gov.ng/download/952"></div>
           </div>
-        </section>
         {% endif %}
         {% if not education.technical_school.is_missing %}
-        <section class="clearfix stat-row">
-          <div class="column-full">
+          <div class="column-half">
               <div id="chart-column-education-technical_school"
                    data-chart-title="Number Of Technical Schools By State And Year, (2014-2016)"
                    data-stat-type="number"
                    data-source-title="National Bureau of Statistics, 2017"
                    data-source-link="https://nigerianstat.gov.ng/download/866"></div>
             </div>
-          </section>
           {% endif %}
+        </section>
       </div>
     </article>
   {% endif %}
