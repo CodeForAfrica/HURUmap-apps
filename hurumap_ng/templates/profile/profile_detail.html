@@ -414,6 +414,17 @@
     <article id="transportation" class="clearfix">
       <header class="section-contents"><h1>Transportation</h1></header>
       <div class="section-container">
+        {% if not transportation.driver_licences_processed.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-column-transportation-driver_licences_processed"
+                   data-chart-title="Drivers Licences Processed (2013 - 2015)"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2016"
+                   data-source-link="https://nigerianstat.gov.ng/download/359"></div>
+            </div>
+        </section>
+        {% endif %}
         {% if not transportation.air_transportation_domestic.is_missing %}
         <section class="clearfix stat-row">
           <div class="column-full">

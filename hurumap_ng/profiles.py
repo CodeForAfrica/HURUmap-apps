@@ -435,6 +435,7 @@ def get_transportation_profile(geo, session):
     air_transportation_domestic = LOCATIONNOTFOUND
     air_transportation_international = LOCATIONNOTFOUND
     diesel_year = LOCATIONNOTFOUND
+    driver_licences_processed = LOCATIONNOTFOUND
 
     with dataset_context(year='2018'):
         try:
@@ -545,6 +546,14 @@ def get_transportation_profile(geo, session):
             print(str(e))
             pass
 
+        try:
+            driver_licences_processed, _ = get_stat_data(['year'], geo=geo,
+                                         session=session,
+                                         table_name='driver_licences_processed', percent=False)
+        except Exception as e:
+            print(str(e))
+            pass
+
         diesel_price = {
             'is_missing': diesel_price_2019.get('is_missing') and \
                             diesel_price_2018.get('is_missing') and \
@@ -573,7 +582,8 @@ def get_transportation_profile(geo, session):
                 petrol_price.get('is_missing') and \
                 air_transportation_domestic.get('is_missing') and \
                 air_transportation_international.get('is_missing') and \
-                diesel_year.get('is_missing')
+                diesel_year.get('is_missing') and \
+                driver_licences_processed.get('is_missing')
 
     final_data = {
         'is_missing': is_missing,
@@ -581,7 +591,8 @@ def get_transportation_profile(geo, session):
         'petrol_price': petrol_price,
         'air_transportation_domestic': air_transportation_domestic,
         'air_transportation_international': air_transportation_international,
-        'diesel_year': diesel_year
+        'diesel_year': diesel_year,
+        'driver_licences_processed': driver_licences_processed
     }
     return final_data
 
