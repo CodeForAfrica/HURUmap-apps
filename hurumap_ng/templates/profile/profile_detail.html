@@ -369,6 +369,17 @@
     <article id="drugs" class="clearfix">
       <header class="section-contents"><h1>Drugs</h1></header>
       <div class="section-container">
+        {% if not drugs.drug_arrests.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-column-drugs-drug_arrests"
+                   data-chart-title="Number of drug-related arrests made in Nigeria by gender (2018)"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2018"
+                   data-source-link="https://nigerianstat.gov.ng/download/881"></div>
+            </div>
+        </section>
+        {% endif %}
         {% if not drugs.drugs_seized.is_missing %}
         <section class="clearfix stat-row">
           <div class="column-full">

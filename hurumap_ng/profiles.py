@@ -264,20 +264,32 @@ def get_crime_profile(geo, session):
 
 def get_drugs_profile(geo, session):
     drugs_seized = LOCATIONNOTFOUND
+    drug_arrests = LOCATIONNOTFOUND
 
     with dataset_context(year='2016'):
         try:
             drugs_seized, _ = get_stat_data(fields=['year'], geo=geo,
                                          session=session,
-                                         table_name='drugs_seized', percent=False, order_by='year')
+                                         table_name='drugs_seized', percent=False)
         except Exception as e:
             print(str(e))
             pass
 
-    is_missing = drugs_seized.get('is_missing')
+    with dataset_context(year='2018'):
+        try:
+            drug_arrests, _ = get_stat_data(fields=['gender'], geo=geo,
+                                         session=session,
+                                         table_name='drug_arrests', percent=False)
+        except Exception as e:
+            print(str(e))
+            pass
+
+    is_missing = drugs_seized.get('is_missing') and \
+                    drug_arrests.get('is_missing')
     final_data = {
         'is_missing': is_missing,
-        'drugs_seized': drugs_seized
+        'drugs_seized': drugs_seized,
+        'drug_arrests': drug_arrests
     }
     return final_data
 
