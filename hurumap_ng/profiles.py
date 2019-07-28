@@ -265,6 +265,9 @@ def get_crime_profile(geo, session):
 def get_drugs_profile(geo, session):
     drugs_seized = LOCATIONNOTFOUND
     drug_arrests = LOCATIONNOTFOUND
+    drug_counselling = LOCATIONNOTFOUND
+    drug_convictions = LOCATIONNOTFOUND
+    drug_use = LOCATIONNOTFOUND
 
     with dataset_context(year='2016'):
         try:
@@ -284,12 +287,42 @@ def get_drugs_profile(geo, session):
             print(str(e))
             pass
 
+        try:
+            drug_counselling, _ = get_stat_data(fields=['gender'], geo=geo,
+                                         session=session,
+                                         table_name='drug_counselling', percent=False)
+        except Exception as e:
+            print(str(e))
+            pass
+
+        try:
+            drug_convictions, _ = get_stat_data(fields=['gender'], geo=geo,
+                                         session=session,
+                                         table_name='drug_convictions', percent=False)
+        except Exception as e:
+            print(str(e))
+            pass
+
+        try:
+            drug_use, _ = get_stat_data(fields=['drug'], geo=geo,
+                                         session=session,
+                                         table_name='drug_use', percent=False)
+        except Exception as e:
+            print(str(e))
+            pass
+
     is_missing = drugs_seized.get('is_missing') and \
-                    drug_arrests.get('is_missing')
+                    drug_arrests.get('is_missing') and \
+                    drug_counselling.get('is_missing') and \
+                    drug_convictions.get('is_missing') and \
+                    drug_use.get('is_missing')
     final_data = {
         'is_missing': is_missing,
         'drugs_seized': drugs_seized,
-        'drug_arrests': drug_arrests
+        'drug_arrests': drug_arrests,
+        'drug_counselling': drug_counselling,
+        'drug_convictions': drug_convictions,
+        'drug_use': drug_use
     }
     return final_data
 
@@ -300,12 +333,13 @@ def get_education_profile(geo, session):
     senior_secondary_school_enrollment = LOCATIONNOTFOUND
     technical_school = LOCATIONNOTFOUND
     primary_school_enrollment = LOCATIONNOTFOUND
+    hdi_education = LOCATIONNOTFOUND
 
     with dataset_context(year='2016'):
         try:
-            drugs_seized, _ = get_stat_data(fields=['year'], geo=geo,
+            hdi_education, _ = get_stat_data(fields=['year'], geo=geo,
                                          session=session,
-                                         table_name='drugs_seized', percent=False, order_by='year')
+                                         table_name='hdi_education', percent=False)
         except Exception as e:
             print(str(e))
             pass
@@ -339,7 +373,7 @@ def get_education_profile(geo, session):
         except Exception:
             pass
 
-    is_missing = drugs_seized.get('is_missing') and \
+    is_missing = hdi_education.get('is_missing') and \
                 junior_secondary_school_enrollment.get('is_missing') and \
                 senior_secondary_school_enrollment.get('is_missing') and \
                 technical_school.get('is_missing') and \
@@ -347,7 +381,7 @@ def get_education_profile(geo, session):
 
     final_data = {
         'is_missing': is_missing,
-        'drugs_seized': drugs_seized,
+        'hdi_education': hdi_education,
         'junior_secondary_school_enrollment': junior_secondary_school_enrollment,
         'senior_secondary_school_enrollment': senior_secondary_school_enrollment,
         'technical_school': technical_school,

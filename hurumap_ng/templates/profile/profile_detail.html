@@ -145,7 +145,7 @@
                data-source-link="https://nigerianstat.gov.ng/download/952"></div>
           </div>
           {% endif %}
-        {% if not education.junior_secondary_school_enrollment.is_missing %}
+          {% if not education.junior_secondary_school_enrollment.is_missing %}
           <div class="column-half">
               <div id="chart-grouped_column-education-junior_secondary_school_enrollment"
                 data-stat-type="number"
@@ -175,6 +175,17 @@
             </div>
           {% endif %}
         </section>
+        <section class="clearfix stat-row">
+            {% if not education.hdi_education.is_missing %}
+            <div class="column-half">
+                 <div id="chart-column-education-hdi_education"
+                 data-stat-type="number"
+                 data-chart-title="Education Index (EI) for 2013 and 2016"
+                 data-source-title="Computation of Human Development Indices for the UNDP Nigeria Human Development Report (2016)"
+                 data-source-link="https://nigerianstat.gov.ng/download/830"></div>
+            </div>
+          {% endif %}
+          </section>
       </div>
     </article>
   {% endif %}
@@ -369,28 +380,58 @@
     <article id="drugs" class="clearfix">
       <header class="section-contents"><h1>Drugs</h1></header>
       <div class="section-container">
-        {% if not drugs.drug_arrests.is_missing %}
         <section class="clearfix stat-row">
-          <div class="column-full">
-              <div id="chart-column-drugs-drug_arrests"
-                   data-chart-title="Number of drug-related arrests made in Nigeria by gender (2018)"
+          {% if not drugs.drug_arrests.is_missing %}
+            <div class="column-half">
+              <div id="chart-pie-drugs-drug_arrests"
+                   data-chart-title="Number of drug-related arrests made by gender (2018)"
                    data-stat-type="number"
+                   data-initial-sort="-value"
                    data-source-title="National Bureau of Statistics, 2018"
                    data-source-link="https://nigerianstat.gov.ng/download/881"></div>
             </div>
-        </section>
-        {% endif %}
-        {% if not drugs.drugs_seized.is_missing %}
-        <section class="clearfix stat-row">
-          <div class="column-full">
+            {% endif %}
+            {% if not drugs.drugs_seized.is_missing %}
+            <div class="column-half">
               <div id="chart-column-drugs-drugs_seized"
                    data-chart-title="Quantity of Narcotic Drugs Seized (kg) 2012-2016"
                    data-stat-type="number"
                    data-source-title="National Bureau of Statistics, 2016"
                    data-source-link="https://nigerianstat.gov.ng/download/614"></div>
             </div>
+            {% endif %}
         </section>
+        <section class="clearfix stat-row">
+        {% if not drugs.drug_counselling.is_missing %}
+          <div class="column-half">
+              <div id="chart-column-drugs-drug_counselling"
+                   data-chart-title="Quantity of Narcotic Drugs Seized (kg) 2012-2016"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2016"
+                   data-source-link="https://nigerianstat.gov.ng/download/614"></div>
+            </div>
         {% endif %}
+        {% if not drugs.drug_convictions.is_missing %}
+          <div class="column-half">
+              <div id="chart-column-drugs-drug_convictions"
+                   data-chart-title="Number of drug-related convictions made by gender (2018)"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2016"
+                   data-source-link="https://nigerianstat.gov.ng/download/881"></div>
+            </div>
+        {% endif %}
+      </section>
+      <section class="clearfix stat-row">
+      {% if not drugs.drug_use.is_missing %}
+        <div class="column-full">
+            <div id="chart-column-drugs-drug_use"
+                 data-chart-title="Drug Use (2018)"
+                 data-stat-type="number"
+                 data-source-title="National Bureau of Statistics, 2016"
+                 data-source-link="https://nigerianstat.gov.ng/download/881"></div>
+          </div>
+      {% endif %}
+    </section>
       </div>
     </article>
   {% endif %}
