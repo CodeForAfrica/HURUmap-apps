@@ -9,6 +9,12 @@
               src="{% static 'img/icons/favicon.ico' %}">{{ geography.this.name }}
           </span>
         </div>
+        <ul>
+          {% for tab in tabs %}
+            <li><a href={{tab.href}}><span>{{tab.name}}</span></a>
+            </li>
+          {% endfor %}
+          </ul>
       </div>
     </nav>
   </div>
@@ -20,14 +26,248 @@
 {% block profile_detail %}
 
 
-{% if not nbs_2016.is_missing or not nbs_2018.is_missing %}
-  <article id="debt" class="clearfix">
-    <header class="section-contents"><h1>National Bureau of Statistics</h1></header>
+  {% if not demographics.is_missing %}
+    <article id="demographics" class="clearfix">
+      <header class="section-contents"><h1>Demographics</h1></header>
+      <div class="section-container">
+        {% if not demographics.population_projection.is_missing %}
+        <section class="clearfix stat-row">
+          <h2>
+            <a class="permalink" href="#population" id="population">
+              Population<i class="fa fa-link"></i></a></h2>
+          <div class="column-full">
+              <div id="chart-grouped_column-demographics-population_projection"
+                   data-chart-title="Population Projections, 2007-2016"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2016"
+                   data-source-link="https://nigerianstat.gov.ng/resource/POPULATION%20PROJECTION%20Nigeria%20sgfn.xls"></div>
+            </div>
+        </section>
+        {% endif %}
+        {% if not demographics.birth_registration.is_missing %}
+        <section class="clearfix stat-row">
+          <h2>
+            <a class="permalink" href="#birth_registration" id="birth_registration">
+              Birth Registration<i class="fa fa-link"></i></a></h2>
+          <div class="column-full">
+              <div id="chart-pie-demographics-birth_registration"
+                   data-chart-title="Propotion of Birth Registration"
+                   data-stat-type="number"
+                   data-stat-value="-value"
+                   data-source-title="National Bureau of Statistics, 2017"
+                   data-source-link="https://nigerianstat.gov.ng/resource/Demographic%20Statistics%20Bulletin%202017%20tables.xlsx"></div>
+            </div>
+        </section>
+        {% endif %}
+        {% if not demographics.labour_force.is_missing %}
+        <section class="clearfix stat-row">
+          <h2>
+            <a class="permalink" href="#labour-force" id="labour-force">
+              Labour Force<i class="fa fa-link"></i></a></h2>
+              <div class="column-full">
+                <div id="chart-grouped_column-demographics-labour_force"
+                  data-chart-title="Labour Force Population, 2018"
+                  data-stat-type="number"
+                  data-source-title="Nigeria Bureau of Statistics, 2018"
+                  data-source-link="https://nigerianstat.gov.ng/resource/Unemplyment%20Data%20Series%20by%20State%20-%20Revised%20-%2015%20Apr%202019Latest%20v2.xlsx"></div>
+              </div>
+          </section>
+          <section class="clearfix stat-row">
+            <div class="column-half">
+                <div id="chart-grouped_column-demographics-unemployment_rate"
+                     data-chart-title="Unemployment Rate (%)"
+                     data-stat-type="number"
+                     data-source-title="Nigeria Bureau of Statistics, 2018"
+                     data-source-link="https://nigerianstat.gov.ng/resource/Unemplyment%20Data%20Series%20by%20State%20-%20Revised%20-%2015%20Apr%202019Latest%20v2.xlsx"></div>
+              </div>
+              <div class="column-half">
+                <div id="chart-grouped_column-demographics-under_employment_rate"
+                     data-chart-title="Under Employment Rate (%)"
+                     data-stat-type="number"
+                     data-source-title="Nigeria Bureau of Statistics, 2018"
+                     data-source-link="https://nigerianstat.gov.ng/resource/Unemplyment%20Data%20Series%20by%20State%20-%20Revised%20-%2015%20Apr%202019Latest%20v2.xlsx"></div>
+              </div>
+        </section>
+        {% endif %}
+        {% if not demographics.compiled_indeces.is_missing %}
+        <section class="clearfix stat-row">
+          <h2>
+            <a class="permalink" href="#human-development-indeces" id="human-development-indeces">
+              Human Development Indeces<i class="fa fa-link"></i></a></h2>
+          <div class="column-full">
+              <div id="chart-column-demographics-compiled_indeces"
+                   data-chart-title="Human Development Indices"
+                   data-stat-type="number"
+                   data-source-title="Computation of Human Development Indices for the UNDP Nigeria Human Development Report (2016)"
+                   data-source-link="https://nigerianstat.gov.ng/download/830"></div>
+            </div>
+        </section>
+        {% endif %}
+      </div>
+    </article>
+  {% endif %}
+
+  {% if not health.is_missing %}
+    <article id="health" class="clearfix">
+      <header class="section-contents"><h1>Health</h1></header>
+      <div class="section-container">
+        <section class="clearfix stat-row">
+          {% if not health.hiv_patients.is_missing %}
+          <div class="column-half">
+              <div id="chart-grouped_column-health-hiv_patients"
+                   data-chart-title="Distribution of HIV Patients by Year and Sex 2015-2016"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2018"
+                   data-source-link="https://nigerianstat.gov.ng/download/614"></div>
+            </div>
+            {% endif %}
+            {% if not health.hiv_arvs.is_missing %}
+            <div class="column-half">
+              <div id="chart-grouped_column-health-hiv_arvs"
+                   data-chart-title="Distribution of HIV Patients that have Access to Antiretroviral Treatment by Year and Sex  2015-2016"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2018"
+                   data-source-link="https://nigerianstat.gov.ng/download/952"></div>
+            </div>
+            {% endif %}
+          </section>
+        {% if not health.contraceptive_use.is_missing %}
+          <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-column-health-contraceptive_use"
+                   data-chart-title="Percent of women currently married or in union who are using (or whose partner is using) Contraceptive 2017"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2017"
+                   data-source-link="https://nigerianstat.gov.ng/resource/Demographic%20Statistics%20Bulletin%202017%20tables.xlsx"></div>
+            </div>
+        </section>
+        {% endif %}
+        {% if not health.vaccine_coverage.is_missing %}
+          <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-column-health-vaccine_coverage"
+                   data-chart-title="Percentage of children 12-23 months vaccinated against preventable childhood diseases, 2018"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2018"
+                   data-source-link="https://nigerianstat.gov.ng/download/839"></div>
+            </div>
+        </section>
+        {% endif %}
+        {% if not health.counselling_concluded.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-column-health-counselling_concluded"
+                   data-chart-title="Number of Drug Counselling Sessions Concluded 2012 - 2016"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2016"
+                   data-source-link="https://nigerianstat.gov.ng/download/614"></div>
+            </div>
+        </section>
+        {% endif %}
+        {% if not health.access_to_wash.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-column-health-access_to_wash"
+                   data-chart-title="Percentage of Households with Access to Water Supply and Sanitation facility, 2018"
+                   data-stat-type="scaled-percentage"
+                   data-source-title="National Bureau of Statistics, 2016"
+                   data-source-link="https://nigerianstat.gov.ng/download/839"></div>
+            </div>
+        </section>
+        {% endif %}
+        {% if not health.adolescent_fertility.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-column-health-adolescent_fertility"
+                   data-chart-title="Female Adolescent Fertility Rate in 2016"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2018"
+                   data-source-link="https://nigerianstat.gov.ng/download/952"></div>
+            </div>
+        </section>
+        {% endif %}
+      </div>
+    </article>
+  {% endif %}
+
+  {% if not education.is_missing %}
+    <article id="education" class="clearfix">
+      <header class="section-contents"><h1>Education</h1></header>
+      <div class="section-container">
+        <section class="clearfix stat-row">
+          {% if not education.primary_school_enrollment.is_missing %}
+          <div class="column-half">
+               <div id="chart-grouped_column-education-primary_school_enrollment"
+               data-stat-type="number"
+               data-chart-title="Distribution of Enrolment in Primary Schools by Year and Sex, 2015 -2016"
+               data-source-title="National Bureau of Statistics, 2018"
+               data-source-link="https://nigerianstat.gov.ng/download/952"></div>
+          </div>
+          {% endif %}
+          {% if not education.junior_secondary_school_enrollment.is_missing %}
+          <div class="column-half">
+              <div id="chart-grouped_column-education-junior_secondary_school_enrollment"
+                data-stat-type="number"
+                data-chart-title="Distribution of Enrolment in Junior Secondary School by Year and sex, 2015 -2016"
+                data-source-title="National Bureau of Statistics, 2018"
+                data-source-link="https://nigerianstat.gov.ng/download/952"></div>
+          </div>
+        {% endif %}
+      </section>
+      <section class="clearfix stat-row">
+          {% if not education.senior_secondary_school_enrollment.is_missing %}
+          <div class="column-half">
+               <div id="chart-grouped_column-education-senior_secondary_school_enrollment"
+               data-stat-type="number"
+               data-chart-title="Distribution of Enrolment in Senior Secondary School by Year and Sex, 2015 -2016"
+               data-source-title="National Bureau of Statistics, 2018"
+               data-source-link="https://nigerianstat.gov.ng/download/952"></div>
+          </div>
+        {% endif %}
+        {% if not education.technical_school.is_missing %}
+          <div class="column-half">
+              <div id="chart-column-education-technical_school"
+                   data-chart-title="Number Of Technical Schools By State And Year, (2014-2016)"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2017"
+                   data-source-link="https://nigerianstat.gov.ng/download/866"></div>
+            </div>
+          {% endif %}
+        </section>
+        <section class="clearfix stat-row">
+            {% if not education.hdi_education.is_missing %}
+            <div class="column-half">
+                 <div id="chart-column-education-hdi_education"
+                 data-stat-type="number"
+                 data-chart-title="Education Index (EI) for 2013 and 2016"
+                 data-source-title="Computation of Human Development Indices for the UNDP Nigeria Human Development Report (2016)"
+                 data-source-link="https://nigerianstat.gov.ng/download/830"></div>
+            </div>
+          {% endif %}
+          </section>
+      </div>
+    </article>
+  {% endif %}
+
+  {% if not crime.is_missing %}
+  <article id="crime" class="clearfix">
+    <header class="section-contents"><h1>Corruption & Crime</h1></header>
     <div class="section-container">
-      {% if not nbs_2016.arrested_suspects.is_missing %}
+      {% if not crime.crime_summary.is_missing %}
       <section class="clearfix stat-row">
         <div class="column-full">
-            <div id="chart-column-nbs_2016-arrested_suspects"
+            <div id="chart-column-crime-crime_summary"
+                 data-chart-title="Summary of Crime Statistics, 2017"
+                 data-stat-type="number"
+                 data-source-title="National Bureau of Statistics, 2016"
+                 data-source-link="https://nigerianstat.gov.ng/resource/CRIME%20STATISTICS%202017.xlsx"></div>
+          </div>
+      </section>
+      {% endif %}
+      {% if not crime.arrested_suspects.is_missing %}
+      <section class="clearfix stat-row">
+        <div class="column-full">
+            <div id="chart-column-crime-arrested_suspects"
                  data-chart-title="Number of Suspects Arrested on Drug Charges 2012-2016"
                  data-stat-type="number"
                  data-source-title="National Bureau of Statistics, 2016"
@@ -35,21 +275,10 @@
           </div>
       </section>
       {% endif %}
-      {% if not nbs_2016.drugs_seized.is_missing %}
+      {% if not crime.suspects_prosecuted.is_missing %}
       <section class="clearfix stat-row">
         <div class="column-full">
-            <div id="chart-column-nbs_2016-drugs_seized"
-                 data-chart-title="Quantity of Narcotic Drugs Seized (kg) 2012-2016"
-                 data-stat-type="number"
-                 data-source-title="National Bureau of Statistics, 2016"
-                 data-source-link="https://nigerianstat.gov.ng/download/614"></div>
-          </div>
-      </section>
-      {% endif %}
-      {% if not nbs_2016.suspects_prosecuted.is_missing %}
-      <section class="clearfix stat-row">
-        <div class="column-full">
-            <div id="chart-column-nbs_2016-suspects_prosecuted"
+            <div id="chart-column-crime-suspects_prosecuted"
                  data-chart-title="Number of Suspects Prosecuted on Drug Charges 2012-2016"
                  data-stat-type="number"
                  data-source-title="National Bureau of Statistics, 2016"
@@ -57,10 +286,10 @@
           </div>
       </section>
       {% endif %}
-      {% if not nbs_2016.conviction_secured.is_missing %}
+      {% if not crime.conviction_secured.is_missing %}
       <section class="clearfix stat-row">
         <div class="column-full">
-            <div id="chart-column-nbs_2016-conviction_secured"
+            <div id="chart-column-crime-conviction_secured"
                  data-chart-title="Number of Convictions Secured on Drug Cases 2012 - 2016"
                  data-stat-type="number"
                  data-source-title="National Bureau of Statistics, 2016"
@@ -68,191 +297,428 @@
           </div>
       </section>
       {% endif %}
-      {% if not nbs_2016.counselling_concluded.is_missing %}
+      {% if not crime.avg_number_bribes.is_missing and not crime.bribery_prevalence.is_missing %}
       <section class="clearfix stat-row">
-        <div class="column-full">
-            <div id="chart-column-nbs_2016-counselling_concluded"
-                 data-chart-title="Number of Drug Counselling Sessions Concluded 2012 - 2016"
+        {% if not crime.bribery_prevalence.is_missing %}
+        <div class="column-third">
+          <h3 class="chart-header">Corruption Index</h3>
+          {% include 'profile/_blocks/_stat_list.html' with stat=crime.bribery_prevalence stat_type='number' %}
+          </div>
+        {% endif %}
+        {% if not crime.avg_number_bribes.is_missing %}
+          <div class="column-third">
+            <div id="chart-column-crime-avg_number_bribes"
+                 data-chart-title="Average number of bribes, 2016"
                  data-stat-type="number"
                  data-source-title="National Bureau of Statistics, 2016"
-                 data-source-link="https://nigerianstat.gov.ng/download/614"></div>
+                 data-source-link="https://nigerianstat.gov.ng/resource/CorruptionStatistics_by_State_full.xlsx"></div>
           </div>
-      </section>
-      {% endif %}
-      {% if not nbs_2018.mineral_production.is_missing %}
-      <section class="clearfix stat-row">
-        <div class="column-full">
-            <div id="chart-column-nbs_2018-mineral_production"
-                 data-chart-title="Mineral Production 2016 - 2018"
-                 data-stat-type="number"
-                 data-source-title="National Bureau of Statistics, 2018"
-                 data-source-link="https://nigerianstat.gov.ng/download/614"></div>
-          </div>
-      </section>
-      {% endif %}
-      {% if not nbs_2018.mobile_subscription.is_missing %}
-      <section class="clearfix stat-row">
-        <div class="column-full">
-            <div id="chart-grouped_column-nbs_2018-mobile_subscription"
-                 data-chart-title="Telecoms Subscriptions by Mobile GSM and State Q4 2018"
-                 data-stat-type="number"
-                 data-source-title="National Bureau of Statistics, 2018"
-                 data-source-link="https://nigerianstat.gov.ng/download/614"></div>
-          </div>
-      </section>
-      {% endif %}
-      {% if not nbs_2018.debt_data.is_missing %}
-      <section class="clearfix stat-row">
-        <div class="column-full">
-          <div id="chart-grouped_column-nbs_2018-debt_data"
-               data-chart-title="External and Domestic Debt 2011 - June 2018 in ₦" data-stat-type="number"></div>
-            </div>
-        </section>
         {% endif %}
-        {% if not nbs_2018.faac.is_missing %}
+        {% if not crime.cases_of_corruption.is_missing %}
+            <div class="column-third">
+                <div id="chart-column-crime-cases_of_corruption"
+                     data-chart-title="Number Of Reported Cases Of Corruption"
+                     data-stat-type="number"
+                     data-source-title="National Bureau of Statistics, 2017"
+                     data-source-link="https://nigerianstat.gov.ng/download/866"></div>
+              </div>
+        {% endif %}
+        {% if not crime.bribery_report_rate_missing %}
+              <div class="column-third">
+                  <div id="chart-pie-crime-bribery_report_rate"
+                       data-chart-title="Rate of Bribery Reported to official authority or non-official institution, 2016"
+                       data-stat-type="percentage"
+                       data-source-title="National Bureau of Statistics, 2016"
+                       data-source-link="https://nigerianstat.gov.ng/resource/CorruptionStatistics_by_State_full.xlsx"></div>
+                </div>
+        {% endif %}
+      </section>
+      {% endif %}
+      {% if not crime.offences_against_authority.is_missing %}
       <section class="clearfix stat-row">
         <div class="column-full">
-            <div id="chart-column-nbs_2018-faac"
-                 data-chart-title="Federation Account Allocation Committee (FAAC) Allocation for January 2019 in Million ₦"
+            <div id="chart-column-crime-offences_against_authority"
+                 data-chart-title="Offences against Lawful Authority by state, 2017"
                  data-stat-type="number"
-                 data-source-title="National Bureau of Statistics, 2019"
-                 data-source-link="https://nigerianstat.gov.ng/download/614"></div>
+                 data-source-title="National Bureau of Statistics, 2017"
+                 data-source-link="https://nigerianstat.gov.ng/resource/CRIME%20STATISTICS%202017.xlsx"></div>
           </div>
       </section>
       {% endif %}
-      {% if not nbs_2018.telecom_subscription.is_missing %}
+      {% if not crime.offences_against_property.is_missing %}
       <section class="clearfix stat-row">
         <div class="column-full">
-            <div id="chart-grouped_column-nbs_2018-telecom_subscription"
-                 data-chart-title="Telecoms Subscriptions 2018"
+            <div id="chart-column-crime-offences_against_property"
+                 data-chart-title="Offences against Property, 2017"
                  data-stat-type="number"
-                 data-source-title="National Bureau of Statistics, 2018"
-                 data-source-link="https://nigerianstat.gov.ng/download/614"></div>
+                 data-source-title="National Bureau of Statistics, 2017"
+                 data-source-link="https://nigerianstat.gov.ng/resource/CRIME%20STATISTICS%202017.xlsx"></div>
           </div>
       </section>
       {% endif %}
-      {% if not nbs_2018.jamb.is_missing %}
+      {% if not crime.offences_against_person.is_missing %}
       <section class="clearfix stat-row">
         <div class="column-full">
-            <div id="chart-grouped_column-nbs_2018-jamb"
-                 data-chart-title="Telecoms Subscriptions 2018"
+            <div id="chart-column-crime-offences_against_person"
+                 data-chart-title="Offences against Persons, 2017"
                  data-stat-type="number"
-                 data-source-title="National Bureau of Statistics, 2018"
-                 data-source-link="https://nigerianstat.gov.ng/download/614"></div>
-          </div>
-      </section>
-      {% endif %}
-      {% if not nbs_2018.hiv_patients.is_missing %}
-      <section class="clearfix stat-row">
-        <div class="column-full">
-            <div id="chart-grouped_column-nbs_2018-hiv_patients"
-                 data-chart-title="Distribution of HIV Patients by Year and Sex 2015-2016"
-                 data-stat-type="number"
-                 data-source-title="National Bureau of Statistics, 2018"
-                 data-source-link="https://nigerianstat.gov.ng/download/614"></div>
-          </div>
-      </section>
-      {% endif %}
-      {% if not nbs_2018.petrol_price.2019.is_missing %}
-      <section class="clearfix stat-row">
-        <div class="column-full">
-            <div id="chart-column-nbs_2018-petrol_price-2019"
-                 data-chart-title="Petrol Price Jan to Dec 2019"
-                 data-stat-type="number"
-                 data-source-title="National Bureau of Statistics, 2019"
-                 data-source-link="https://nigerianstat.gov.ng/download/923"></div>
-          </div>
-      </section>
-      {% endif %}
-      {% if not nbs_2018.diesel_price.2019.is_missing %}
-      <section class="clearfix stat-row">
-        <div class="column-full">
-            <div id="chart-column-nbs_2018-diesel_price-2019"
-                 data-chart-title="Desel Price Jan to Dec 2019"
-                 data-stat-type="number"
-                 data-source-title="National Bureau of Statistics, 2019"
-                 data-source-link="https://nigerianstat.gov.ng/download/921"></div>
-          </div>
-      </section>
-      {% endif %}
-      {% if not nbs_2018.petrol_price.2018.is_missing %}
-      <section class="clearfix stat-row">
-        <div class="column-full">
-            <div id="chart-column-nbs_2018-petrol_price-2018"
-                 data-chart-title="Petrol Price Jan to Dec 2018"
-                 data-stat-type="number"
-                 data-source-title="National Bureau of Statistics, 2019"
-                 data-source-link="https://nigerianstat.gov.ng/download/923"></div>
-          </div>
-      </section>
-      {% endif %}
-      {% if not nbs_2018.diesel_price.2018.is_missing %}
-      <section class="clearfix stat-row">
-        <div class="column-full">
-            <div id="chart-column-nbs_2018-diesel_price-2018"
-                 data-chart-title="Desel Price Jan to Dec 2018"
-                 data-stat-type="number"
-                 data-source-title="National Bureau of Statistics, 2019"
-                 data-source-link="https://nigerianstat.gov.ng/download/921"></div>
-          </div>
-      </section>
-      {% endif %}
-      {% if not nbs_2018.petrol_price.2017.is_missing %}
-      <section class="clearfix stat-row">
-        <div class="column-full">
-            <div id="chart-column-nbs_2018-petrol_price-2017"
-                 data-chart-title="Petrol Price Jan to Dec 2017"
-                 data-stat-type="number"
-                 data-source-title="National Bureau of Statistics, 2019"
-                 data-source-link="https://nigerianstat.gov.ng/download/923"></div>
-          </div>
-      </section>
-      {% endif %}
-      {% if not nbs_2018.diesel_price.2017.is_missing %}
-      <section class="clearfix stat-row">
-        <div class="column-full">
-            <div id="chart-column-nbs_2018-diesel_price-2017"
-                 data-chart-title="Desel Price Jan to Dec 2017"
-                 data-stat-type="number"
-                 data-source-title="National Bureau of Statistics, 2019"
-                 data-source-link="https://nigerianstat.gov.ng/download/921"></div>
-          </div>
-      </section>
-      {% endif %}
-      {% if not nbs_2018.petrol_price.2016.is_missing %}
-      <section class="clearfix stat-row">
-        <div class="column-full">
-            <div id="chart-column-nbs_2018-petrol_price-2016"
-                 data-chart-title="Petrol Price Jan to Dec 2016"
-                 data-stat-type="number"
-                 data-source-title="National Bureau of Statistics, 2019"
-                 data-source-link="https://nigerianstat.gov.ng/download/923"></div>
-          </div>
-      </section>
-      {% endif %}
-      {% if not nbs_2018.diesel_price.2016.is_missing %}
-      <section class="clearfix stat-row">
-        <div class="column-full">
-            <div id="chart-column-nbs_2018-diesel_price-2016"
-                 data-chart-title="Desel Price Jan to Dec 2016"
-                 data-stat-type="number"
-                 data-source-title="National Bureau of Statistics, 2019"
-                 data-source-link="https://nigerianstat.gov.ng/download/921"></div>
-          </div>
-      </section>
-      {% endif %}
-      {% if not nbs_2018.diesel_price.2015.is_missing %}
-      <section class="clearfix stat-row">
-        <div class="column-full">
-            <div id="chart-column-nbs_2018-diesel_price-2015"
-                 data-chart-title="Desel Price Jan to Dec 2015"
-                 data-stat-type="number"
-                 data-source-title="National Bureau of Statistics, 2019"
-                 data-source-link="https://nigerianstat.gov.ng/download/921"></div>
+                 data-source-title="National Bureau of Statistics, 2017"
+                 data-source-link="https://nigerianstat.gov.ng/resource/CRIME%20STATISTICS%202017.xlsx"></div>
           </div>
       </section>
       {% endif %}
     </div>
   </article>
+  {% endif %}
+
+
+  {% if not drugs.is_missing %}
+    <article id="drugs" class="clearfix">
+      <header class="section-contents"><h1>Drugs</h1></header>
+      <div class="section-container">
+        <section class="clearfix stat-row">
+          {% if not drugs.drug_arrests.is_missing %}
+            <div class="column-half">
+              <div id="chart-pie-drugs-drug_arrests"
+                   data-chart-title="Number of drug-related arrests made by gender (2018)"
+                   data-stat-type="number"
+                   data-initial-sort="-value"
+                   data-source-title="National Bureau of Statistics, 2018"
+                   data-source-link="https://nigerianstat.gov.ng/download/881"></div>
+            </div>
+            {% endif %}
+            {% if not drugs.drugs_seized.is_missing %}
+            <div class="column-half">
+              <div id="chart-column-drugs-drugs_seized"
+                   data-chart-title="Quantity of Narcotic Drugs Seized (kg) 2012-2016"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2016"
+                   data-source-link="https://nigerianstat.gov.ng/download/614"></div>
+            </div>
+            {% endif %}
+        </section>
+        <section class="clearfix stat-row">
+        {% if not drugs.drug_counselling.is_missing %}
+          <div class="column-half">
+              <div id="chart-column-drugs-drug_counselling"
+                   data-chart-title="Quantity of Narcotic Drugs Seized (kg) 2012-2016"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2016"
+                   data-source-link="https://nigerianstat.gov.ng/download/614"></div>
+            </div>
+        {% endif %}
+        {% if not drugs.drug_convictions.is_missing %}
+          <div class="column-half">
+              <div id="chart-column-drugs-drug_convictions"
+                   data-chart-title="Number of drug-related convictions made by gender (2018)"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2016"
+                   data-source-link="https://nigerianstat.gov.ng/download/881"></div>
+            </div>
+        {% endif %}
+      </section>
+      <section class="clearfix stat-row">
+      {% if not drugs.drug_use.is_missing %}
+        <div class="column-full">
+            <div id="chart-column-drugs-drug_use"
+                 data-chart-title="Drug Use (2018)"
+                 data-stat-type="number"
+                 data-source-title="National Bureau of Statistics, 2016"
+                 data-source-link="https://nigerianstat.gov.ng/download/881"></div>
+          </div>
+      {% endif %}
+    </section>
+      </div>
+    </article>
+  {% endif %}
+
+  {% if not agriculture.is_missing %}
+    <article id="agriculture" class="clearfix">
+      <header class="section-contents"><h1>Agriculture</h1></header>
+      <div class="section-container">
+        {% if not agriculture.all_consumer_price.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-half">
+              <div id="chart-grouped_column-agriculture-all_consumer_price"
+                   data-chart-title="Urban And Rural State Consumer Price Index: All Items"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2019"
+                   data-source-link="https://nigerianstat.gov.ng/resource/cpi_1NewMAY2019.xlsx"></div>
+            </div>
+            <div class="column-half">
+                <div id="chart-grouped_column-agriculture-food_consumer_price"
+                     data-chart-title="Urban And Rural State Consumer Price Index: Food Items"
+                     data-stat-type="number"
+                     data-source-title="National Bureau of Statistics, 2019"
+                     data-source-link="https://nigerianstat.gov.ng/resource/cpi_1NewMAY2019.xlsx"></div>
+              </div>
+        </section>
+        {% endif %}
+        {% if not agriculture.groundnut_production.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-half">
+              <div id="chart-column-agriculture-groundnut_production"
+                   data-chart-title="Cost Per Hectare Of Groundnut Production"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2017"
+                   data-source-link="https://nigerianstat.gov.ng/download/866"></div>
+            </div>
+        </section>
+        {% endif %}
+      </div>
+    </article>
+  {% endif %}
+  {% if not finance.is_missing %}
+    <article id="finance" class="clearfix">
+      <header class="section-contents"><h1>Finances</h1></header>
+      <div class="section-container">
+        {% if not finance.bank_credit.is_missing and not finance.bank_deposit.is_missing %}
+        <section class="clearfix stat-row">
+            {% if not finance.bank_credit.is_missing %}
+              <div class="column-half">
+                  <div id="chart-column-finance-bank_credit"
+                       data-chart-title="Bank Credit 2010 - 2015, (N' Million)"
+                       data-stat-type="number"
+                       data-source-title="National Bureau of Statistics, 2018"
+                       data-source-link="https://nigerianstat.gov.ng/download/384"></div>
+                </div>
+              {% endif %}
+              {% if not finance.bank_deposit.is_missing %}
+                <div class="column-half">
+                  <div id="chart-column-finance-bank_deposit"
+                       data-chart-title="Bank Deposit 2010 - 2015, (N' Million)"
+                       data-stat-type="number"
+                       data-source-title="National Bureau of Statistics, 2018"
+                       data-source-link="https://nigerianstat.gov.ng/download/384"></div>
+                </div>
+              {% endif %}
+        </section>
+        {% endif %}
+        {% if not finance.debt_data.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-full">
+            <div id="chart-grouped_column-finance-debt_data"
+                 data-chart-title="External and Domestic Debt 2011 - June 2018 in ₦" data-stat-type="number"></div>
+              </div>
+          </section>
+        {% endif %}
+        {% if not finance.faac.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-column-finance-faac"
+                   data-chart-title="Federation Account Allocation Committee (FAAC) Allocation for January 2019 in Million ₦"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2019"
+                   data-source-link="https://nigerianstat.gov.ng/download/614"></div>
+            </div>
+        </section>
+        {% endif %}
+      </div>
+    </article>
+  {% endif %}
+  {% if not others.is_missing %}
+    <article id="others" class="clearfix">
+      <header class="section-contents"><h1>Others</h1></header>
+      <div class="section-container">
+        {% if not others.employment_in_civil_services.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-grouped_column-others-employment_in_civil_services"
+                   data-chart-title="Employment in State Civil Service by level and sex in 2015"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2018"
+                   data-source-link="https://nigerianstat.gov.ng/download/952"></div>
+            </div>
+        </section>
+        {% endif %}
+        {% if not others.mineral_production.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-column-others-mineral_production"
+                   data-chart-title="Mineral Production 2016 - 2018"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2018"
+                   data-source-link="https://nigerianstat.gov.ng/download/614"></div>
+            </div>
+        </section>
+        {% endif %}
+        {% if not others.mobile_subscription.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-grouped_column-others-mobile_subscription"
+                   data-chart-title="Telecoms Subscriptions by Mobile GSM and State Q4 2018"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2018"
+                   data-source-link="https://nigerianstat.gov.ng/download/614"></div>
+            </div>
+        </section>
+        {% endif %}
+        {% if not others.telecom_subscription.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-grouped_column-others-telecom_subscription"
+                   data-chart-title="Telecoms Subscriptions 2018"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2018"
+                   data-source-link="https://nigerianstat.gov.ng/download/614"></div>
+            </div>
+        </section>
+        {% endif %}
+        {% if not others.jamb.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-grouped_column-others-jamb"
+                   data-chart-title="Telecoms Subscriptions 2018"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2018"
+                   data-source-link="https://nigerianstat.gov.ng/download/614"></div>
+            </div>
+        </section>
+        {% endif %}
+        {% if not others.driver_licences_processed %}
+        <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-column-others-driver_licences_processed"
+                   data-chart-title="Drivers Licences Processed (2013 - 2015)"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2016"
+                   data-source-link="https://nigerianstat.gov.ng/download/359"></div>
+            </div>
+        </section>
+        {% endif %}
+        {% if not others.air_transportation_domestic.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-grouped_column-others-air_transportation_domestic"
+                   data-chart-title="Number of Passengers 2018, Domestics Flights"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2018"
+                   data-source-link="https://nigerianstat.gov.ng/resource/JAN-DEC%202018%20Harmonised%20Air%20Traffic%20Statistics.xlsx"></div>
+            </div>
+        </section>
+        {% endif %}
+        {% if not others.air_transportation_international.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-grouped_column-others-air_transportation_international"
+                   data-chart-title="Number of Passengers 2018, International Flights"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2018"
+                   data-source-link="https://nigerianstat.gov.ng/resource/JAN-DEC%202018%20Harmonised%20Air%20Traffic%20Statistics.xlsx"></div>
+            </div>
+        </section>
+        {% endif %}
+        {% if not others.diesel_year.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-column-others-diesel_year"
+                   data-chart-title="Yearly Average Diesel Price per litre (₦)"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2019"
+                   data-source-link="https://nigerianstat.gov.ng/resource/DIESEL%20may%202019.xlsx"></div>
+            </div>
+        </section>
+        {% endif %}
+        {% if not others.petrol_price.2019.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-column-others-petrol_price-2019"
+                   data-chart-title="Petrol Price Jan to Dec 2019"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2019"
+                   data-source-link="https://nigerianstat.gov.ng/download/923"></div>
+            </div>
+        </section>
+        {% endif %}
+        {% if not others.diesel_price.2019.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-column-others-diesel_price-2019"
+                   data-chart-title="Desel Price Jan to Dec 2019"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2019"
+                   data-source-link="https://nigerianstat.gov.ng/download/921"></div>
+            </div>
+        </section>
+        {% endif %}
+        {% if not others.petrol_price.2018.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-column-others-petrol_price-2018"
+                   data-chart-title="Petrol Price Jan to Dec 2018"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2019"
+                   data-source-link="https://nigerianstat.gov.ng/download/923"></div>
+            </div>
+        </section>
+        {% endif %}
+        {% if not others.diesel_price.2018.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-column-others-diesel_price-2018"
+                   data-chart-title="Desel Price Jan to Dec 2018"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2019"
+                   data-source-link="https://nigerianstat.gov.ng/download/921"></div>
+            </div>
+        </section>
+        {% endif %}
+        {% if not others.petrol_price.2017.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-column-others-petrol_price-2017"
+                   data-chart-title="Petrol Price Jan to Dec 2017"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2019"
+                   data-source-link="https://nigerianstat.gov.ng/download/923"></div>
+            </div>
+        </section>
+        {% endif %}
+        {% if not others.diesel_price.2017.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-column-others-diesel_price-2017"
+                   data-chart-title="Desel Price Jan to Dec 2017"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2019"
+                   data-source-link="https://nigerianstat.gov.ng/download/921"></div>
+            </div>
+        </section>
+        {% endif %}
+        {% if not others.petrol_price.2016.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-column-others-petrol_price-2016"
+                   data-chart-title="Petrol Price Jan to Dec 2016"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2019"
+                   data-source-link="https://nigerianstat.gov.ng/download/923"></div>
+            </div>
+        </section>
+        {% endif %}
+        {% if not others.diesel_price.2016.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-column-others-diesel_price-2016"
+                   data-chart-title="Desel Price Jan to Dec 2016"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2019"
+                   data-source-link="https://nigerianstat.gov.ng/download/921"></div>
+            </div>
+        </section>
+        {% endif %}
+        {% if not others.diesel_price.2015.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-column-others-diesel_price-2015"
+                   data-chart-title="Desel Price Jan to Dec 2015"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2019"
+                   data-source-link="https://nigerianstat.gov.ng/download/921"></div>
+            </div>
+        </section>
+        {% endif %}
+      </div>
+    </article>
   {% endif %}
 {% endblock %}
