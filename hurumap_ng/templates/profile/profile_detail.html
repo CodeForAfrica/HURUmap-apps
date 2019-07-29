@@ -24,6 +24,20 @@
     <article id="demographics" class="clearfix">
       <header class="section-contents"><h1>Demographics</h1></header>
       <div class="section-container">
+        {% if not demographics.population_projection.is_missing %}
+        <section class="clearfix stat-row">
+          <h2>
+            <a class="permalink" href="#population" id="population">
+              Population<i class="fa fa-link"></i></a></h2>
+          <div class="column-full">
+              <div id="chart-grouped_column-demographics-population_projection"
+                   data-chart-title="Population Projections, 2007-2016"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2016"
+                   data-source-link="https://nigerianstat.gov.ng/resource/POPULATION%20PROJECTION%20Nigeria%20sgfn.xls"></div>
+            </div>
+        </section>
+        {% endif %}
         {% if not demographics.birth_registration.is_missing %}
         <section class="clearfix stat-row">
           <h2>
@@ -37,6 +51,36 @@
                    data-source-title="National Bureau of Statistics, 2017"
                    data-source-link="https://nigerianstat.gov.ng/resource/Demographic%20Statistics%20Bulletin%202017%20tables.xlsx"></div>
             </div>
+        </section>
+        {% endif %}
+        {% if not demographics.labour_force.is_missing %}
+        <section class="clearfix stat-row">
+          <h2>
+            <a class="permalink" href="#labour-force" id="labour-force">
+              Labour Force<i class="fa fa-link"></i></a></h2>
+              <div class="column-full">
+                <div id="chart-grouped_column-demographics-labour_force"
+                  data-chart-title="Labour Force Population, 2018"
+                  data-stat-type="number"
+                  data-source-title="Nigeria Bureau of Statistics, 2018"
+                  data-source-link="https://nigerianstat.gov.ng/resource/Unemplyment%20Data%20Series%20by%20State%20-%20Revised%20-%2015%20Apr%202019Latest%20v2.xlsx"></div>
+              </div>
+          </section>
+          <section class="clearfix stat-row">
+            <div class="column-half">
+                <div id="chart-grouped_column-demographics-unemployment_rate"
+                     data-chart-title="Unemployment Rate (%)"
+                     data-stat-type="number"
+                     data-source-title="Nigeria Bureau of Statistics, 2018"
+                     data-source-link="https://nigerianstat.gov.ng/resource/Unemplyment%20Data%20Series%20by%20State%20-%20Revised%20-%2015%20Apr%202019Latest%20v2.xlsx"></div>
+              </div>
+              <div class="column-half">
+                <div id="chart-grouped_column-demographics-under_employment_rate"
+                     data-chart-title="Under Employment Rate (%)"
+                     data-stat-type="number"
+                     data-source-title="Nigeria Bureau of Statistics, 2018"
+                     data-source-link="https://nigerianstat.gov.ng/resource/Unemplyment%20Data%20Series%20by%20State%20-%20Revised%20-%2015%20Apr%202019Latest%20v2.xlsx"></div>
+              </div>
         </section>
         {% endif %}
         {% if not demographics.compiled_indeces.is_missing %}

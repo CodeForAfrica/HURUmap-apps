@@ -101,6 +101,10 @@ def get_nbs_2018(geo, session, year):
 def get_demographics_profile(geo, session):
     compiled_indeces = LOCATIONNOTFOUND
     birth_registration = LOCATIONNOTFOUND
+    population_projection = LOCATIONNOTFOUND
+    unemployment_rate = LOCATIONNOTFOUND
+    under_employment_rate = LOCATIONNOTFOUND
+    labour_force = LOCATIONNOTFOUND
 
     with dataset_context(year='2018'):
         try:
@@ -118,12 +122,52 @@ def get_demographics_profile(geo, session):
         except Exception as e:
             print(str(e))
             pass
+
+        try:
+            population_projection, _ = get_stat_data(fields=['year', 'gender'], geo=geo,
+                                         session=session,
+                                         table_name='population_projection', percent=False)
+        except Exception as e:
+            print(str(e))
+            pass
+
+        try:
+            unemployment_rate, _ = get_stat_data(fields=['year', 'period'], geo=geo,
+                                         session=session,
+                                         table_name='unemployment_rate', percent=False)
+        except Exception as e:
+            print(str(e))
+            pass
+
+        try:
+            under_employment_rate, _ = get_stat_data(fields=['year', 'period'], geo=geo,
+                                         session=session,
+                                         table_name='under_employment_rate', percent=False)
+        except Exception as e:
+            print(str(e))
+            pass
+
+        try:
+            labour_force, _ = get_stat_data(fields=['year', 'period'], geo=geo,
+                                         session=session,
+                                         table_name='labour_force', percent=False)
+        except Exception as e:
+            print(str(e))
+            pass
     is_missing = compiled_indeces.get('is_missing') and \
-                    birth_registration.get('is_missing')
+                    birth_registration.get('is_missing') and \
+                    population_projection.get('is_missing') and \
+                    unemployment_rate.get('is_missing') and \
+                    under_employment_rate.get('is_missing') and \
+                    labour_force.get('is_missing')
     final_data = {
         'is_missing': is_missing,
         'compiled_indeces': compiled_indeces,
-        'birth_registration': birth_registration
+        'birth_registration': birth_registration,
+        'unemployment_rate': unemployment_rate,
+        'population_projection': population_projection,
+        'under_employment_rate': under_employment_rate,
+        'labour_force': labour_force
     }
     return final_data
 
