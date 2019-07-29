@@ -13,115 +13,192 @@ SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
-ALTER TABLE IF EXISTS ONLY public.faac DROP CONSTRAINT IF EXISTS faac_pkey;
-DROP TABLE IF EXISTS public.faac;
+ALTER TABLE IF EXISTS ONLY public.hiv_arvs DROP CONSTRAINT IF EXISTS hiv_arvs_pkey;
+DROP TABLE IF EXISTS public.hiv_arvs;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
 
 --
--- Name: faac; Type: TABLE; Schema: public; Owner: -
+-- Name: hiv_arvs; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.faac (
+CREATE TABLE public.hiv_arvs (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     geo_version character varying(128) NOT NULL,
-    allocation character varying(128) NOT NULL,
+    year character varying(128) NOT NULL,
+    gender character varying(128) NOT NULL,
     total integer
 );
 
 
 --
--- Data for Name: faac; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: hiv_arvs; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.faac (geo_level, geo_code, geo_version, allocation, total) FROM stdin;
-state	1	2016	Gross Statutory Allocation	1890
-state	2	2016	Gross Statutory Allocation	2380
-state	3	2016	Gross Statutory Allocation	3170
-state	4	2016	Gross Statutory Allocation	2400
-state	5	2016	Gross Statutory Allocation	2720
-state	6	2016	Gross Statutory Allocation	1110
-state	7	2016	Gross Statutory Allocation	2960
-state	8	2016	Gross Statutory Allocation	3210
-state	9	2016	Gross Statutory Allocation	2070
-state	10	2016	Gross Statutory Allocation	2650
-state	11	2016	Gross Statutory Allocation	1530
-state	12	2016	Gross Statutory Allocation	2030
-state	13	2016	Gross Statutory Allocation	1610
-state	14	2016	Gross Statutory Allocation	2060
-state	15	2016	Gross Statutory Allocation	827
-state	16	2016	Gross Statutory Allocation	1410
-state	17	2016	Gross Statutory Allocation	2770
-state	18	2016	Gross Statutory Allocation	2910
-state	19	2016	Gross Statutory Allocation	3270
-state	20	2016	Gross Statutory Allocation	5200
-state	21	2016	Gross Statutory Allocation	3960
-state	22	2016	Gross Statutory Allocation	2500
-state	23	2016	Gross Statutory Allocation	2580
-state	24	2016	Gross Statutory Allocation	1830
-state	25	2016	Gross Statutory Allocation	3110
-state	26	2016	Gross Statutory Allocation	1630
-state	27	2016	Gross Statutory Allocation	3020
-state	28	2016	Gross Statutory Allocation	2150
-state	29	2016	Gross Statutory Allocation	2060
-state	30	2016	Gross Statutory Allocation	2790
-state	31	2016	Gross Statutory Allocation	3510
-state	32	2016	Gross Statutory Allocation	2200
-state	33	2016	Gross Statutory Allocation	2730
-state	34	2016	Gross Statutory Allocation	2750
-state	35	2016	Gross Statutory Allocation	2060
-state	36	2016	Gross Statutory Allocation	2070
-state	37	2016	Gross Statutory Allocation	1870
-country	NG	2016	Gross Statutory Allocation	90997
-state	1	2016	Total Net Amount	2730
-state	2	2016	Total Net Amount	3400
-state	3	2016	Total Net Amount	4550
-state	4	2016	Total Net Amount	3490
-state	5	2016	Total Net Amount	3850
-state	6	2016	Total Net Amount	1560
-state	7	2016	Total Net Amount	4020
-state	8	2016	Total Net Amount	4520
-state	9	2016	Total Net Amount	2910
-state	10	2016	Total Net Amount	3900
-state	11	2016	Total Net Amount	2140
-state	12	2016	Total Net Amount	2970
-state	13	2016	Total Net Amount	2360
-state	14	2016	Total Net Amount	2970
-state	15	2016	Total Net Amount	2760
-state	16	2016	Total Net Amount	1960
-state	17	2016	Total Net Amount	4010
-state	18	2016	Total Net Amount	4240
-state	19	2016	Total Net Amount	4700
-state	20	2016	Total Net Amount	7630
-state	21	2016	Total Net Amount	5650
-state	22	2016	Total Net Amount	3520
-state	23	2016	Total Net Amount	3540
-state	24	2016	Total Net Amount	2590
-state	25	2016	Total Net Amount	8870
-state	26	2016	Total Net Amount	2240
-state	27	2016	Total Net Amount	4260
-state	28	2016	Total Net Amount	3080
-state	29	2016	Total Net Amount	2940
-state	30	2016	Total Net Amount	3980
-state	31	2016	Total Net Amount	5270
-state	32	2016	Total Net Amount	3100
-state	33	2016	Total Net Amount	4130
-state	34	2016	Total Net Amount	3860
-state	35	2016	Total Net Amount	2840
-state	36	2016	Total Net Amount	2890
-state	37	2016	Total Net Amount	2670
-country	NG	2016	Total Net Amount	136100
+COPY public.hiv_arvs (geo_level, geo_code, geo_version, year, gender, total) FROM stdin;
+country	NG	2016	2015	Female	591303
+country	NG	2016	2015	Male	262689
+country	NG	2016	2016	Female	679429
+country	NG	2016	2016	Male	304551
+state	1	2016	2015	Female	8907
+state	1	2016	2015	Male	4813
+state	1	2016	2016	Female	10263
+state	1	2016	2016	Male	5103
+state	2	2016	2015	Female	18203
+state	2	2016	2015	Male	8390
+state	2	2016	2016	Female	21312
+state	2	2016	2016	Male	10308
+state	3	2016	2015	Female	26590
+state	3	2016	2015	Male	15035
+state	3	2016	2016	Female	37822
+state	3	2016	2016	Male	19018
+state	4	2016	2015	Female	15541
+state	4	2016	2015	Male	7368
+state	4	2016	2016	Female	17695
+state	4	2016	2016	Male	8468
+state	5	2016	2015	Female	9494
+state	5	2016	2015	Male	3762
+state	5	2016	2016	Female	9183
+state	5	2016	2016	Male	4320
+state	6	2016	2015	Female	2671
+state	6	2016	2015	Male	1100
+state	6	2016	2016	Female	2925
+state	6	2016	2016	Male	1303
+state	7	2016	2015	Female	107911
+state	7	2016	2015	Male	29088
+state	7	2016	2016	Female	110206
+state	7	2016	2016	Male	30409
+state	8	2016	2015	Female	5889
+state	8	2016	2015	Male	3058
+state	8	2016	2016	Female	7213
+state	8	2016	2016	Male	3551
+state	9	2016	2015	Female	15909
+state	9	2016	2015	Male	7070
+state	9	2016	2016	Female	16016
+state	9	2016	2016	Male	7235
+state	10	2016	2015	Female	15230
+state	10	2016	2015	Male	5630
+state	10	2016	2016	Female	18830
+state	10	2016	2016	Male	7151
+state	11	2016	2015	Female	3921
+state	11	2016	2015	Male	1985
+state	11	2016	2016	Female	4789
+state	11	2016	2016	Male	2221
+state	12	2016	2015	Female	15208
+state	12	2016	2015	Male	8140
+state	12	2016	2016	Female	17326
+state	12	2016	2016	Male	8404
+state	13	2016	2015	Female	2191
+state	13	2016	2015	Male	911
+state	13	2016	2016	Female	2430
+state	13	2016	2016	Male	997
+state	14	2016	2015	Female	17894
+state	14	2016	2015	Male	7377
+state	14	2016	2016	Female	19774
+state	14	2016	2016	Male	8024
+state	15	2016	2015	Female	30323
+state	15	2016	2015	Male	14426
+state	15	2016	2016	Female	37015
+state	15	2016	2016	Male	18316
+state	16	2016	2015	Female	16016
+state	16	2016	2015	Male	7604
+state	16	2016	2016	Female	17307
+state	16	2016	2016	Male	8350
+state	17	2016	2015	Female	10746
+state	17	2016	2015	Male	5497
+state	17	2016	2016	Female	12842
+state	17	2016	2016	Male	6407
+state	18	2016	2015	Female	3410
+state	18	2016	2015	Male	1731
+state	18	2016	2016	Female	4052
+state	18	2016	2016	Male	1966
+state	19	2016	2015	Female	28560
+state	19	2016	2015	Male	14420
+state	19	2016	2016	Female	29324
+state	19	2016	2016	Male	15699
+state	20	2016	2015	Female	16987
+state	20	2016	2015	Male	9832
+state	20	2016	2016	Female	18772
+state	20	2016	2016	Male	10702
+state	21	2016	2015	Female	7342
+state	21	2016	2015	Male	4707
+state	21	2016	2016	Female	8062
+state	21	2016	2016	Male	5069
+state	22	2016	2015	Female	4736
+state	22	2016	2015	Male	2677
+state	22	2016	2016	Female	5463
+state	22	2016	2016	Male	3055
+state	23	2016	2015	Female	13267
+state	23	2016	2015	Male	5807
+state	23	2016	2016	Female	15047
+state	23	2016	2016	Male	6680
+state	24	2016	2015	Female	5536
+state	24	2016	2015	Male	2254
+state	24	2016	2016	Female	5246
+state	24	2016	2016	Male	1693
+state	25	2016	2015	Female	32492
+state	25	2016	2015	Male	14911
+state	25	2016	2016	Female	40499
+state	25	2016	2016	Male	18451
+state	26	2016	2015	Female	15055
+state	26	2016	2015	Male	8204
+state	26	2016	2016	Female	31180
+state	26	2016	2016	Male	14957
+state	27	2016	2015	Female	11871
+state	27	2016	2015	Male	5330
+state	27	2016	2016	Female	13448
+state	27	2016	2016	Male	6077
+state	28	2016	2015	Female	8692
+state	28	2016	2015	Male	3573
+state	28	2016	2016	Female	9779
+state	28	2016	2016	Male	3721
+state	29	2016	2015	Female	5676
+state	29	2016	2015	Male	2191
+state	29	2016	2016	Female	6244
+state	29	2016	2016	Male	2388
+state	30	2016	2015	Female	3684
+state	30	2016	2015	Male	1489
+state	30	2016	2016	Female	4367
+state	30	2016	2016	Male	1731
+state	31	2016	2015	Female	10874
+state	31	2016	2015	Male	4739
+state	31	2016	2016	Female	11329
+state	31	2016	2016	Male	4979
+state	32	2016	2015	Female	24517
+state	32	2016	2015	Male	10588
+state	32	2016	2016	Female	26428
+state	32	2016	2016	Male	12204
+state	33	2016	2015	Female	20981
+state	33	2016	2015	Male	9431
+state	33	2016	2016	Female	26932
+state	33	2016	2016	Male	12105
+state	34	2016	2015	Female	5511
+state	34	2016	2015	Male	3615
+state	34	2016	2016	Female	5430
+state	34	2016	2016	Male	3778
+state	35	2016	2015	Female	28362
+state	35	2016	2015	Male	13559
+state	35	2016	2016	Female	31736
+state	35	2016	2016	Male	16814
+state	36	2016	2015	Female	3108
+state	36	2016	2015	Male	1883
+state	36	2016	2016	Female	3749
+state	36	2016	2016	Male	2273
+state	37	2016	2015	Female	2045
+state	37	2016	2015	Male	1322
+state	37	2016	2016	Female	2422
+state	37	2016	2016	Male	1508
 \.
 
 
 --
--- Name: faac faac_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: hiv_arvs hiv_arvs_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.faac
-    ADD CONSTRAINT faac_pkey PRIMARY KEY (geo_level, geo_code, geo_version, allocation);
+ALTER TABLE ONLY public.hiv_arvs
+    ADD CONSTRAINT hiv_arvs_pkey PRIMARY KEY (geo_level, geo_code, geo_version, year, gender);
 
 
 --

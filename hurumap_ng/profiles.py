@@ -397,6 +397,7 @@ def get_health_profile(geo, session):
     adolescent_fertility = LOCATIONNOTFOUND
     contraceptive_use = LOCATIONNOTFOUND
     vaccine_coverage = LOCATIONNOTFOUND
+    hiv_arvs = LOCATIONNOTFOUND
 
     with dataset_context(year='2016'):
         try:
@@ -447,12 +448,21 @@ def get_health_profile(geo, session):
             print(str(e))
             pass
 
+        try:
+            hiv_arvs, _ = get_stat_data(fields=['year', 'gender'], geo=geo,
+                                         session=session,
+                                         table_name='hiv_arvs', percent=False)
+        except Exception as e:
+            print(str(e))
+            pass
+
     is_missing = counselling_concluded.get('is_missing') and \
                 hiv_patients.get('is_missing') and \
                 access_to_wash.get('is_missing') and \
                 adolescent_fertility.get('is_missing') and \
                 contraceptive_use.get('is_missing') and \
-                vaccine_coverage.get('is_missing')
+                vaccine_coverage.get('is_missing') and \
+                hiv_arvs.get('is_missing')
 
     final_data = {
         'is_missing': is_missing,
@@ -461,7 +471,8 @@ def get_health_profile(geo, session):
         'access_to_wash': access_to_wash,
         'adolescent_fertility': adolescent_fertility,
         'contraceptive_use': contraceptive_use,
-        'vaccine_coverage': vaccine_coverage
+        'vaccine_coverage': vaccine_coverage,
+        'hiv_arvs': hiv_arvs
     }
     return final_data
 
@@ -679,6 +690,7 @@ def get_finance_profile(geo, session):
 def get_agriculture_profile(geo, session):
     all_consumer_price = LOCATIONNOTFOUND
     food_consumer_price = LOCATIONNOTFOUND
+    groundnut_production = LOCATIONNOTFOUND
 
     with dataset_context(year='2018'):
         try:
@@ -699,12 +711,22 @@ def get_agriculture_profile(geo, session):
             print(str(e))
             pass
 
+        try:
+            groundnut_production, _ = get_stat_data(fields=['year'], geo=geo,
+                                         session=session,
+                                         table_name='groundnut_production', percent=False)
+        except Exception as e:
+            print(str(e))
+            pass
+
     is_missing = all_consumer_price.get('is_missing') and \
-                food_consumer_price.get('is_missing')
+                food_consumer_price.get('is_missing') and \
+                groundnut_production.get('is_missing')
 
     final_data = {
         'is_missing': is_missing,
         'all_consumer_price': all_consumer_price,
-        'food_consumer_price': food_consumer_price
+        'food_consumer_price': food_consumer_price,
+        'groundnut_production': groundnut_production
     }
     return final_data

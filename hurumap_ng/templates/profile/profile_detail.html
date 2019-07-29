@@ -61,17 +61,26 @@
     <article id="health" class="clearfix">
       <header class="section-contents"><h1>Health</h1></header>
       <div class="section-container">
-        {% if not health.hiv_patients.is_missing %}
-          <section class="clearfix stat-row">
-          <div class="column-full">
+        <section class="clearfix stat-row">
+          {% if not health.hiv_patients.is_missing %}
+          <div class="column-half">
               <div id="chart-grouped_column-health-hiv_patients"
                    data-chart-title="Distribution of HIV Patients by Year and Sex 2015-2016"
                    data-stat-type="number"
                    data-source-title="National Bureau of Statistics, 2018"
                    data-source-link="https://nigerianstat.gov.ng/download/614"></div>
             </div>
-        </section>
-        {% endif %}
+            {% endif %}
+            {% if not health.hiv_arvs.is_missing %}
+            <div class="column-half">
+              <div id="chart-grouped_column-health-hiv_arvs"
+                   data-chart-title="Distribution of HIV Patients that have Access to Antiretroviral Treatment by Year and Sex  2015-2016"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2018"
+                   data-source-link="https://nigerianstat.gov.ng/download/952"></div>
+            </div>
+            {% endif %}
+          </section>
         {% if not health.contraceptive_use.is_missing %}
           <section class="clearfix stat-row">
           <div class="column-full">
@@ -456,6 +465,17 @@
                      data-source-title="National Bureau of Statistics, 2019"
                      data-source-link="https://nigerianstat.gov.ng/resource/cpi_1NewMAY2019.xlsx"></div>
               </div>
+        </section>
+        {% endif %}
+        {% if not agriculture.groundnut_production.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-half">
+              <div id="chart-column-agriculture-groundnut_production"
+                   data-chart-title="Cost Per Hectare Of Groundnut Production"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2017"
+                   data-source-link="https://nigerianstat.gov.ng/download/866"></div>
+            </div>
         </section>
         {% endif %}
       </div>
