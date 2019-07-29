@@ -35,6 +35,34 @@ def get_profile(geo, profile_name, request):
             if function_name in globals():
                 func = globals()[function_name]
                 data[section] = func(geo, session)
+
+
+        tabs = []
+        if not data['demographics'].get('is_missing'):
+            tabs.append({'name': 'Demographics', 'href': '#demographics'})
+
+        if not data['health'].get('is_missing'):
+            tabs.append({'name': 'Health', 'href': '#health'})
+
+        if not data['education'].get('is_missing'):
+            tabs.append({'name': 'Education', 'href': '#education'})
+
+        if not data['agriculture'].get('is_missing'):
+            tabs.append({'name': 'Agriculture', 'href': '#agriculture'})
+
+        if not data['crime'].get('is_missing'):
+            tabs.append({'name': 'Corruption & Crime', 'href': '#crime'})
+
+        if not data['drugs'].get('is_missing'):
+            tabs.append({'name': 'Drugs', 'href': '#drugs'})
+
+        if not data['finance'].get('is_missing'):
+            tabs.append({'name': 'Finances', 'href': '#finance'})
+
+        if not data['others'].get('is_missing'):
+            tabs.append({'name': 'Others', 'href': '#others'})
+
+        data['tabs'] = tabs
         return data
 
     finally:
@@ -521,7 +549,7 @@ def get_health_profile(geo, session):
     return final_data
 
 
-def get_transportation_profile(geo, session):
+def get_others_profile(geo, session):
     diseal_yearly = LOCATIONNOTFOUND
     diseal_price_2015 = LOCATIONNOTFOUND
     diesel_price_2016 = LOCATIONNOTFOUND
