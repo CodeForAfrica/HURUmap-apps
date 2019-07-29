@@ -10,25 +10,16 @@
                     </span>
         </div>
         <ul>
-          <li><a href="#elections"><i class="fa fa-check"></i>
-            <span>Elections</span></a></li>
           <li><a href="#demographics"><i class="fa fa-user"></i>
             <span>Demographics</span></a></li>
-          <li><a href="#households"><i class="fa fa-home"></i>
-            <span>Households</span></a></li>
-          <li><a href="#employment"><i
-              class="fa fa-briefcase"></i>
-            <span>Employment</span></a></li>
-          <li><a href="#crime_report"><i class="fa fa-shield"></i>
-            <span>Crime Reports</span></a></li>
           <li><a href="#education"><i
               class="fa fa-graduation-cap"></i>
             <span>Education</span></a>
           </li>
           <li><a href="#health"><i class="fa fa-medkit"></i>
             <span>Health</span></a></li>
-          <li><a href="#nutrition"><i class="fa fa-cutlery"></i>
-            <span>Nutrition</span></a></li>
+            <li><a href="#crime"><i class="fa fa-shield"></i>
+              <span>Crimes</span></a></li>
           {% if not afrobarometer.is_missing %}
             <li><a href="#afrobarometer"><i class="fa fa-signal"></i>
               <span>Afrobarometer</span></a>
@@ -38,7 +29,6 @@
       </div>
     </nav>
   </div>
-
 {% endblock %}
 
 
@@ -84,10 +74,10 @@
     </article>
   {% endif %} <!-- end if -->
 
-  {% if not literacy_and_numeracy_tests.is_missing %}
-    <article id="literacy_and_numeracy_tests" class="clearfix">
+  {% if not literacy_and_numeracy_tests.is_missing or not school_attendance.is_missing %}
+    <article id="education" class="clearfix">
       <header class="section-contents">
-        <h1>Literacy & numeracy tests</h1>
+        <h1>Education</h1>
       </header>
       <div class="section-container">
         <p class="source">Source:
@@ -108,36 +98,46 @@
           <div class="column-third" id="chart-pie-literacy_and_numeracy_tests-numeracy_test_dist" data-stat-type="percentage" data-initial-sort="-value" data-chart-title="Percentage of children aged 6-16 passing Numeracy tests" data-initial-sort="{{ literacy.numeracy_sort }}"></div>
         </section>
 
-      </div>
-    </article>
-  {% endif %} <!-- end if -->
-
-  {% if not school_attendance.is_missing %}
-    <article id="school_attendance" class="clearfix">
-      <header class="section-contents">
-        <h1>School attendance</h1>
-      </header>
-      <div class="section-container">
-
+        {% if not school_attendance.is_missing %}
         <section class="clearfix stat-row">
           {% if not school_attendance.out_of_school_dist.is_missing %}
-            <div class="column-half" id="chart-pie-school_attendance-out_of_school_dist" data-stat-type="percentage" data-initial-sort="-value" data-chart-title="Percentage of children aged 7-16 who are not in school" data-initial-sort="{{ attendance.out_of_school_sort }}"></div>
+          <div class="column-half" id="chart-pie-school_attendance-out_of_school_dist" data-stat-type="percentage" data-initial-sort="-value" data-chart-title="Percentage of children aged 7-16 who are not in school" data-initial-sort="{{ attendance.out_of_school_sort }}"></div>
 
           {% endif %} <!-- end if -->
           {% if not school_attendance.dropped_out_dist.is_missing %}
-            <div class="column-half" id="chart-pie-school_attendance-dropped_out_dist" data-stat-type="percentage" data-initial-sort="-value" data-chart-title="Percentage of children aged 9-13 who dropped out of primary school" data-initial-sort="{{ attendance.drop_out_sort }}"></div>
+          <div class="column-half" id="chart-pie-school_attendance-dropped_out_dist" data-stat-type="percentage" data-initial-sort="-value" data-chart-title="Percentage of children aged 9-13 who dropped out of primary school" data-initial-sort="{{ attendance.drop_out_sort }}"></div>
 
           {% endif %} <!-- end if -->
         </section>
+        {% endif %} <!-- end if -->
+        {% if not primary_school_teachers.is_missing %}
+        <section class="clearfix stat-row">
+            <h2 class="header-for-columns">
+              <a class="permalink">
+                <strong>Primary School Teachers</strong><i class="fa fa-link"></i></a>
+            </h2>
+            <p class="source">Source:
+              <a href="{{ primary_school_teachers.source_link }}">{{ primary_school_teachers.source_name }}</a>
+            </p>
+            <br clear="all">
+            <div class="column-half">
+              {% include 'profile/_blocks/_stat_list.html' with stat=primary_school_teachers.number_of_teachers stat_type='number' %}
+            </div>
+            {% if not primary_school_teachers.primary_school_teachers.is_missing %}
+              <div class="column-half" id="chart-pie-primary_school_teachers-primary_school_teachers" data-stat-type="percentage" data-chart-title="Distribution of primary school teachers based on gender(2016)" data-initial-sort="-value"></div>
 
+            {% endif %} <!-- end if -->
+          </section>
+        {% endif %} <!-- end if -->
       </div>
     </article>
   {% endif %} <!-- end if -->
 
+
   {% if not pepfar.is_missing %}
-    <article id="pepfar" class="clearfix">
+    <article id="health" class="clearfix">
       <header class="section-contents">
-        <h1>PEPFAR</h1>
+        <h1>Health</h1>
       </header>
 
       <div class="section-container">
@@ -192,223 +192,198 @@
           <div class="column-third"> {% include 'profile/_blocks/_stat_list.html' with stat=pepfar.TX_NEW stat_type='number' %}</div>
           <div class="column-third"> {% include 'profile/_blocks/_stat_list.html' with stat=pepfar.CARE_CURR stat_type='number' %}</div>
         </section>
-      </div>
-    </article>
-  {% endif %} <!-- end if -->
 
+        {% if not tetanus_vaccine.is_missing %}
+              <section class="clearfix stat-row">
+                <h2 class="header-for-columns">
+                  <a class="permalink">
+                    <strong>Tetanus Vaccination</strong><i class="fa fa-link"></i></a>
+                </h2>
 
-  <!--{% include 'profile/_blocks/_stat_list.html' with stat=pupil_teacher_ratios.pupil_teacher_ratio stat_type='number' %}-->
-  <!--</div>-->
-  <!--<div class="column-half">-->
-  <!--{% include 'profile/_blocks/_stat_list.html' with stat=pupil_teacher_ratios.pupils_per_textbook stat_type='number' %}-->
+                <p class="source">Source:
+                  <a href="{{ tetanus_vaccine.source_link }}">{{ tetanus_vaccine.source_name }}</a>
+                </p>
+                <br clear="all">
+                <div class="column-half">
+                  {% include 'profile/_blocks/_stat_list.html' with stat=tetanus_vaccine.number_vaccinated stat_type='number' %}
+                </div>
+                <div class="column-half">
+                  {% include 'profile/_blocks/_stat_list.html' with stat=tetanus_vaccine.coverage stat_type='percentage' %}
+                </div>
+              </section>
+        {% endif %}
+        {% if not place_of_delivery.is_missing %}
+              <section class="clearfix stat-row">
+                <h2 class="header-for-columns">
+                  <a class="permalink">
+                    <strong>Place of Delivery</strong><i class="fa fa-link"></i></a>
+                </h2>
+                <p class="source">Source:
+                  <a href="{{ place_of_delivery.source_link }}">{{ place_of_delivery.source_name }}</a>
+                </p>
+                <br clear="all">
+                <div class="column-half">
+                  {% include 'profile/_blocks/_stat_list.html' with stat=place_of_delivery.anc_projection stat_type='number' %}
+                </div>
+                <div class="column-half">
+                  {% include 'profile/_blocks/_stat_list.html' with stat=place_of_delivery.facility_birth_rate stat_type='percentage' %}
+                </div>
+                <div class="column-full">
+                  {% if not place_of_delivery.delivery_data.is_missing %}
+                    <div id="chart-histogram-place_of_delivery-delivery_data" data-stat-type="scaled-percentage" data-chart-title="Number of deliveries taking place in health facilities, home, before arrival to health facility and to traditional birth attendants (2014)"></div>
+                  {% endif %} <!-- end if -->
+                </div>
+              </section>
+        {% endif %} <!-- end if -->
+        {% if not causes_of_death.is_missing %}
+              <section class="clearfix stat-row">
+                <h2 class="header-for-columns">
+                  <a class="permalink">
+                    <strong>Causes of Death</strong><i class="fa fa-link"></i></a>
+                </h2>
+                <p class="source">Source:
+                  <a href="{{ causes_of_death.source_link }}">{{ causes_of_death.source_name }}</a>
+                </p>
+                <br clear="all">
+                <div class="column-full">
+                  {% if not causes_of_death.causes_of_death_under_five_data.is_missing %}
+                    <div id="chart-histogram-causes_of_death-causes_of_death_under_five_data" data-stat-type="scaled-percentage" data-chart-title="Causes of death among persons under five years of age (2013)"></div>
 
+                  {% endif %} <!-- end if -->
+                </div>
+                <div class="column-full">
+                  {% if not causes_of_death.causes_of_death_over_five_data.is_missing %}
+                    <div id="chart-histogram-causes_of_death-causes_of_death_over_five_data" data-stat-type="scaled-percentage" data-chart-title="Causes of death among persons over five years of age (2013)"></div>
 
-  {% if not causes_of_death.is_missing %}
-    <article id="causes_of_death" class="clearfix">
-      <header class="section-contents">
-        <h1>Causes of death </h1>
-      </header>
-      <div class="section-container">
-        <section class="clearfix stat-row">
-          <p class="source">Source:
-            <a href="{{ causes_of_death.source_link }}">{{ causes_of_death.source_name }}</a>
-          </p>
-          <br clear="all">
-          <div class="column-full">
-            {% if not causes_of_death.causes_of_death_under_five_data.is_missing %}
-              <div id="chart-histogram-causes_of_death-causes_of_death_under_five_data" data-stat-type="scaled-percentage" data-chart-title="Causes of death among persons under five years of age (2013)"></div>
+                  {% endif %} <!-- end if -->
+                </div>
+                <br clear="all">
+                <p class="source">Source:
+                  <a href="{{ causes_of_death.source_link_2 }}">{{ causes_of_death.source_name }}</a>
+                </p>
+                <br clear="all">
+                <div class="column-full">
+                  {% if not causes_of_death.inpatient_diagnosis_under_five_data.is_missing %}
+                    <div id="chart-histogram-causes_of_death-inpatient_diagnosis_under_five_data" data-stat-type="scaled-percentage" data-chart-title="Inpatient diagnosis among persons under five years of age (2014)"></div>
 
-            {% endif %} <!-- end if -->
-          </div>
-          <div class="column-full">
-            {% if not causes_of_death.causes_of_death_over_five_data.is_missing %}
-              <div id="chart-histogram-causes_of_death-causes_of_death_over_five_data" data-stat-type="scaled-percentage" data-chart-title="Causes of death among persons over five years of age (2013)"></div>
+                  {% endif %} <!-- end if -->
+                </div>
+                <div class="column-full">
+                  {% if not causes_of_death.inpatient_diagnosis_over_five_data.is_missing %}
+                    <div id="chart-histogram-causes_of_death-inpatient_diagnosis_over_five_data" data-stat-type="scaled-percentage" data-chart-title="Inpatient diagnosis among persons over years of age (2014)"></div>
 
-            {% endif %} <!-- end if -->
-          </div>
-          <br clear="all">
-          <p class="source">Source:
-            <a href="{{ causes_of_death.source_link_2 }}">{{ causes_of_death.source_name }}</a>
-          </p>
-          <br clear="all">
-          <div class="column-full">
-            {% if not causes_of_death.inpatient_diagnosis_under_five_data.is_missing %}
-              <div id="chart-histogram-causes_of_death-inpatient_diagnosis_under_five_data" data-stat-type="scaled-percentage" data-chart-title="Inpatient diagnosis among persons under five years of age (2014)"></div>
+                  {% endif %} <!-- end if -->
+                </div>
+                <br clear="all">
+                <p class="source">Source:
+                  <a href="{{ causes_of_death.source_link_3 }}">{{ causes_of_death.source_name }}</a>
+                </p>
+                <br clear="all">
+                <div class="column-full">
+                  {% if not causes_of_death.outpatient_diagnosis_under_five_data.is_missing %}
+                    <div id="chart-histogram-causes_of_death-outpatient_diagnosis_under_five_data" data-stat-type="scaled-percentage" data-chart-title="Outpatient diagnosis among persons under five years of age (2014)"></div>
 
-            {% endif %} <!-- end if -->
-          </div>
-          <div class="column-full">
-            {% if not causes_of_death.inpatient_diagnosis_over_five_data.is_missing %}
-              <div id="chart-histogram-causes_of_death-inpatient_diagnosis_over_five_data" data-stat-type="scaled-percentage" data-chart-title="Inpatient diagnosis among persons over years of age (2014)"></div>
+                  {% endif %} <!-- end if -->
+                </div>
+                <div class="column-full">
+                  {% if not causes_of_death.outpatient_diagnosis_over_five_data.is_missing %}
+                    <div id="chart-histogram-causes_of_death-outpatient_diagnosis_over_five_data" data-stat-type="scaled-percentage" data-chart-title="Outpatient diagnosis among persons over years of age (2014)"></div>
 
-            {% endif %} <!-- end if -->
-          </div>
-          <br clear="all">
-          <p class="source">Source:
-            <a href="{{ causes_of_death.source_link_3 }}">{{ causes_of_death.source_name }}</a>
-          </p>
-          <br clear="all">
-          <div class="column-full">
-            {% if not causes_of_death.outpatient_diagnosis_under_five_data.is_missing %}
-              <div id="chart-histogram-causes_of_death-outpatient_diagnosis_under_five_data" data-stat-type="scaled-percentage" data-chart-title="Outpatient diagnosis among persons under five years of age (2014)"></div>
+                  {% endif %} <!-- end if -->
+                </div>
+              </section>
+        {% endif %} <!-- end if -->
 
-            {% endif %} <!-- end if -->
-          </div>
-          <div class="column-full">
-            {% if not causes_of_death.outpatient_diagnosis_over_five_data.is_missing %}
-              <div id="chart-histogram-causes_of_death-outpatient_diagnosis_over_five_data" data-stat-type="scaled-percentage" data-chart-title="Outpatient diagnosis among persons over years of age (2014)"></div>
+        {% if not health_centers_distribution.is_missing %}
+              <section class="clearfix stat-row">
+                <h2 class="header-for-columns">
+                  <a class="permalink">
+                    <strong>Health centers distribution</strong><i class="fa fa-link"></i></a>
+                </h2>
+                <p class="source">Source:
+                  <a href="{{ health_centers_distribution.source_link }}">{{ health_centers_distribution.source_name }}</a>
+                </p>
+                <br clear="all">
+                <div class="column-third">
+                  {% include 'profile/_blocks/_stat_list.html' with stat=health_centers_distribution.total stat_type='number' %}
+                </div>
+                <div class="column-third">
+                  {% include 'profile/_blocks/_stat_list.html' with stat=health_centers_distribution.hiv_centers stat_type='number' %}
+                </div>
+                {% if not health_centers_distribution.health_center_ownership.is_missing %}
+                  <div class="column-third" id="chart-pie-health_centers_distribution-health_center_ownership" data-initial-sort="-value" data-stat-type="scaled-percentage" data-initial-sort="-value" data-chart-title="Ownership"></div>
 
-            {% endif %} <!-- end if -->
-          </div>
-        </section>
-      </div>
-    </article>
-  {% endif %} <!-- end if -->
+                {% endif %} <!-- end if -->
+                <div class="column-full">
+                  {% if not health_centers_distribution.health_center_data.is_missing %}
+                    <div id="chart-histogram-health_centers_distribution-health_center_data" data-stat-type="scaled-percentage" data-chart-title="Number of health centers by region (2014)"></div>
+                  {% endif %} <!-- end if -->
+                </div>
+              </section>
+        {% endif %} <!-- end if -->
 
-  {% if not health_centers_distribution.is_missing %}
-    <article id="health_centers_distribution" class="clearfix">
-      <header class="section-contents">
-        <h1>Health centers distribution</h1>
-      </header>
-      <div class="section-container">
-        <section class="clearfix stat-row">
-          <p class="source">Source:
-            <a href="{{ health_centers_distribution.source_link }}">{{ health_centers_distribution.source_name }}</a>
-          </p>
-          <br clear="all">
-          <div class="column-third">
-            {% include 'profile/_blocks/_stat_list.html' with stat=health_centers_distribution.total stat_type='number' %}
-          </div>
-          <div class="column-third">
-            {% include 'profile/_blocks/_stat_list.html' with stat=health_centers_distribution.hiv_centers stat_type='number' %}
-          </div>
-          {% if not health_centers_distribution.health_center_ownership.is_missing %}
-            <div class="column-third" id="chart-pie-health_centers_distribution-health_center_ownership" data-initial-sort="-value" data-stat-type="scaled-percentage" data-initial-sort="-value" data-chart-title="Ownership"></div>
+        {% if not health_workers_distribution.is_missing %}
+              <section class="clearfix stat-row">
+                <h2 class="header-for-columns">
+                  <a class="permalink">
+                    <strong>Health workers distribution</strong><i class="fa fa-link"></i></a>
+                </h2>
+                <p class="source">Source:
+                  <a href="{{ health_workers_distribution.source_link }}">{{ health_workers_distribution.source_name }}</a>
+                </p>
+                <br clear="all">
+                <div class="column-third">
+                  {% include 'profile/_blocks/_stat_list.html' with stat=health_workers_distribution.hrh_patient_ratio stat_type='number' %}
+                </div>
+                <div class="column-full">
+                  <div id="chart-histogram-health_workers_distribution-health_worker_data" data-stat-type="scaled-percentage" data-chart-title="Number of health workers by profession(2014)"></div>
+                </div>
+              </section>
+              <section class="clearfix stat-row">
+                <p class="source">Source:
+                  <a href="{{ health_workers_distribution.source_link }}">{{ health_workers_distribution.source_name }}</a>
+                </p>
+                <br clear="all">
+                <div class="column-third">
+                  {% include 'profile/_blocks/_stat_list.html' with stat=health_workers_distribution.hrh_patient_ratio stat_type='number' %}
+                </div>
+                <div class="column-full">
+                  {% if not health_workers_distribution.health_worker_data.is_missing %}
+                    <div id="chart-histogram-health_workers_distribution-health_worker_data" data-stat-type="scaled-percentage" data-chart-title="Number of health workers by profession(2014)"></div>
 
-          {% endif %} <!-- end if -->
-          <div class="column-full">
-            {% if not health_centers_distribution.health_center_data.is_missing %}
-              <div id="chart-histogram-health_centers_distribution-health_center_data" data-stat-type="scaled-percentage" data-chart-title="Number of health centers by region (2014)"></div>
-            {% endif %} <!-- end if -->
-          </div>
-        </section>
-      </div>
-    </article>
-  {% endif %} <!-- end if -->
+                  {% endif %} <!-- end if -->
+                </div>
+              </section>
+        {% endif %} <!-- end if -->
 
-  {% if not health_workers_distribution.is_missing %}
-    <article id="health_workers_distribution" class="clearfix">
-      <header class="section-contents">
-        <h1>Health workers distribution</h1>
-      </header>
-      <div class="section-container">
-        <section class="clearfix stat-row">
-          <p class="source">Source:
-            <a href="{{ health_workers_distribution.source_link }}">{{ health_workers_distribution.source_name }}</a>
-          </p>
-          <br clear="all">
-          <div class="column-third">
-            {% include 'profile/_blocks/_stat_list.html' with stat=health_workers_distribution.hrh_patient_ratio stat_type='number' %}
-          </div>
-          <div class="column-full">
-            <div id="chart-histogram-health_workers_distribution-health_worker_data" data-stat-type="scaled-percentage" data-chart-title="Number of health workers by profession(2014)"></div>
-          </div>
-        </section>
-        <section class="clearfix stat-row">
-          <p class="source">Source:
-            <a href="{{ health_workers_distribution.source_link }}">{{ health_workers_distribution.source_name }}</a>
-          </p>
-          <br clear="all">
-          <div class="column-third">
-            {% include 'profile/_blocks/_stat_list.html' with stat=health_workers_distribution.hrh_patient_ratio stat_type='number' %}
-          </div>
-          <div class="column-full">
-            {% if not health_workers_distribution.health_worker_data.is_missing %}
-              <div id="chart-histogram-health_workers_distribution-health_worker_data" data-stat-type="scaled-percentage" data-chart-title="Number of health workers by profession(2014)"></div>
-
-            {% endif %} <!-- end if -->
-          </div>
-        </section>
-      </div>
-    </article>
-  {% endif %} <!-- end if -->
-
-  {% if not family_planning_clients.is_missing %}
-    <article id="family_planning_clients" class="clearfix">
-      <header class="section-contents">
-        <h1>Family planning clients</h1>
-      </header>
-      <div class="section-container">
-        <section class="clearfix stat-row">
-          <p class="source">Source:
-            <a href="{{ family_planning_clients.source_link }}">{{ family_planning_clients.source_name }}</a>
-          </p>
-          <br clear="all">
-          <div class="column-third">
-            {% include 'profile/_blocks/_stat_list.html' with stat=family_planning_clients.total stat_type='number' %}
-          </div>
-          <div class="column-third">
-            {% include 'profile/_blocks/_stat_list.html' with stat=family_planning_clients.percentage_of_population stat_type='percentage' %}
-          </div>
-          <div class="column-third">
-            {% include 'profile/_blocks/_stat_list.html' with stat=family_planning_clients.rate stat_type='percentage' %}
-          </div>
-        </section>
-      </div>
-    </article>
-  {% endif %} <!-- end if -->
-
-  {% if not place_of_delivery.is_missing %}
-    <article id="place_of_delivery" class="clearfix">
-      <header class="section-contents">
-        <h1>Place of delivery</h1>
-      </header>
-      <div class="section-container">
-        <section class="clearfix stat-row">
-          <p class="source">Source:
-            <a href="{{ place_of_delivery.source_link }}">{{ place_of_delivery.source_name }}</a>
-          </p>
-          <br clear="all">
-          <div class="column-half">
-            {% include 'profile/_blocks/_stat_list.html' with stat=place_of_delivery.anc_projection stat_type='number' %}
-          </div>
-          <div class="column-half">
-            {% include 'profile/_blocks/_stat_list.html' with stat=place_of_delivery.facility_birth_rate stat_type='percentage' %}
-          </div>
-          <div class="column-full">
-            {% if not place_of_delivery.delivery_data.is_missing %}
-              <div id="chart-histogram-place_of_delivery-delivery_data" data-stat-type="scaled-percentage" data-chart-title="Number of deliveries taking place in health facilities, home, before arrival to health facility and to traditional birth attendants (2014)"></div>
-            {% endif %} <!-- end if -->
-          </div>
-        </section>
-      </div>
-    </article>
-  {% endif %} <!-- end if -->
-
-  {% if not tetanus_vaccine.is_missing %}
-    <article id="tetanus_vaccine" class="clearfix">
-      <header class="section-contents">
-        <h1>Tetanus vaccination</h1>
-      </header>
-      <div class="section-container">
-        <section class="clearfix stat-row">
-          <p class="source">Source:
-            <a href="{{ tetanus_vaccine.source_link }}">{{ tetanus_vaccine.source_name }}</a>
-          </p>
-          <br clear="all">
-          <div class="column-half">
-            {% include 'profile/_blocks/_stat_list.html' with stat=tetanus_vaccine.number_vaccinated stat_type='number' %}
-          </div>
-          <div class="column-half">
-            {% include 'profile/_blocks/_stat_list.html' with stat=tetanus_vaccine.coverage stat_type='percentage' %}
-          </div>
-        </section>
-      </div>
-    </article>
-  {% endif %} <!-- end if -->
+        {% if not family_planning_clients.is_missing %}
+              <section class="clearfix stat-row">
+                <h2 class="header-for-columns">
+                  <a class="permalink">
+                    <strong>Family Planning</strong><i class="fa fa-link"></i></a>
+                </h2>
+                <p class="source">Source:
+                  <a href="{{ family_planning_clients.source_link }}">{{ family_planning_clients.source_name }}</a>
+                </p>
+                <br clear="all">
+                <div class="column-third">
+                  {% include 'profile/_blocks/_stat_list.html' with stat=family_planning_clients.total stat_type='number' %}
+                </div>
+                <div class="column-third">
+                  {% include 'profile/_blocks/_stat_list.html' with stat=family_planning_clients.percentage_of_population stat_type='percentage' %}
+                </div>
+                <div class="column-third">
+                  {% include 'profile/_blocks/_stat_list.html' with stat=family_planning_clients.rate stat_type='percentage' %}
+                </div>
+              </section>
+            </div>
+          </article>
+        {% endif %} <!-- end if -->
+      {% endif %} <!-- end if -->
+ <!-- end if -->
 
   {% if not traffic_and_crimes.is_missing %}
-    <article id="traffic_and_crimes" class="clearfix">
+    <article id="crimes" class="clearfix">
       <header class="section-contents">
         <h1>Traffic and Crimes Incidents</h1>
       </header>
@@ -465,35 +440,6 @@
 
           {% endif %} <!-- end if -->
         </section>
-      </div>
-    </article>
-  {% endif %} <!-- end if -->
-
-  {% if not primary_school_teachers.is_missing %}
-    <article id="primary_school_teachers" class="clearfix">
-      <header class="section-contents">
-        <h1>Primary School Teachers</h1>
-      </header>
-      <div class="section-container">
-        <section class="clearfix stat-row">
-          <p class="source">Source:
-            <a href="{{ primary_school_teachers.source_link }}">{{ primary_school_teachers.source_name }}</a>
-          </p>
-          <br clear="all">
-          <div class="column-half">
-            {% include 'profile/_blocks/_stat_list.html' with stat=primary_school_teachers.number_of_teachers stat_type='number' %}
-          </div>
-          {% if not primary_school_teachers.primary_school_teachers.is_missing %}
-            <div class="column-half" id="chart-pie-primary_school_teachers-primary_school_teachers" data-stat-type="percentage" data-chart-title="Distribution of primary school teachers based on gender(2016)" data-initial-sort="-value"></div>
-
-          {% endif %} <!-- end if -->
-        </section>
-        <!--<section class="clearfix stat-row">
-          <div class="column-half">
-              {% include 'profile/_blocks/_stat_list.html' with stat=primary_school_desks.number_of_desks stat_type='number' %}
-          </div>
-      </section>-->
-        <br clear="all">
       </div>
     </article>
   {% endif %} <!-- end if -->
