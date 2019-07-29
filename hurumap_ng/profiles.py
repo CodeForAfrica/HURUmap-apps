@@ -519,6 +519,7 @@ def get_others_profile(geo, session):
     mineral_production = LOCATIONNOTFOUND
     telecom_subscription = LOCATIONNOTFOUND
     jamb = LOCATIONNOTFOUND
+    employment_in_civil_services = LOCATIONNOTFOUND
 
     with dataset_context(year='2018'):
         try:
@@ -669,6 +670,22 @@ def get_others_profile(geo, session):
             print(str(e))
             pass
 
+        try:
+            jamb, _ = get_stat_data(fields=['year', 'gender'], geo=geo,
+                                     session=session,
+                                     table_name='jamb', percent=False)
+        except Exception as e:
+            print(str(e))
+            pass
+
+        try:
+            employment_in_civil_services, _ = get_stat_data(fields=['level', 'gender'], geo=geo,
+                                     session=session,
+                                     table_name='employment_in_civil_services', percent=False)
+        except Exception as e:
+            print(str(e))
+            pass
+
         diesel_price = {
             'is_missing': diesel_price_2019.get('is_missing') and \
                             diesel_price_2018.get('is_missing') and \
@@ -698,7 +715,8 @@ def get_others_profile(geo, session):
                 air_transportation_domestic.get('is_missing') and \
                 air_transportation_international.get('is_missing') and \
                 diesel_year.get('is_missing') and \
-                driver_licences_processed.get('is_missing')
+                driver_licences_processed.get('is_missing') and \
+                employment_in_civil_services.get('is_missing')
 
     final_data = {
         'is_missing': is_missing,
@@ -711,7 +729,8 @@ def get_others_profile(geo, session):
         'mobile_subscription': mobile_subscription,
         'mineral_production': mineral_production,
         'telecom_subscription': telecom_subscription,
-        'jamb': jamb
+        'jamb': jamb,
+        'employment_in_civil_services': employment_in_civil_services
     }
     return final_data
 

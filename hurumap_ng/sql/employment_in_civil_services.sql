@@ -29,7 +29,7 @@ CREATE TABLE public.employment_in_civil_services (
     geo_version character varying(128) NOT NULL,
     level character varying(10) NOT NULL,
     gender character varying(10) NOT NULL,
-    total numeric
+    total integer
 );
 
 

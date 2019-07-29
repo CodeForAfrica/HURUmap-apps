@@ -520,6 +520,17 @@
     <article id="others" class="clearfix">
       <header class="section-contents"><h1>Others</h1></header>
       <div class="section-container">
+        {% if not others.employment_in_civil_services.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-grouped_column-others-employment_in_civil_services"
+                   data-chart-title="Employment in State Civil Service by level and sex in 2015"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2018"
+                   data-source-link="https://nigerianstat.gov.ng/download/952"></div>
+            </div>
+        </section>
+        {% endif %}
         {% if not others.mineral_production.is_missing %}
         <section class="clearfix stat-row">
           <div class="column-full">
