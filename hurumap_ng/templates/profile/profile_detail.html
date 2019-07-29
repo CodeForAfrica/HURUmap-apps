@@ -469,7 +469,7 @@
     </article>
   {% endif %}
   {% if not finance.is_missing %}
-    <article id="transportation" class="clearfix">
+    <article id="finance" class="clearfix">
       <header class="section-contents"><h1>Finances</h1></header>
       <div class="section-container">
         {% if not finance.bank_credit.is_missing and not finance.bank_deposit.is_missing %}
@@ -517,7 +517,7 @@
     </article>
   {% endif %}
   {% if not others.is_missing %}
-    <article id="transportation" class="clearfix">
+    <article id="others" class="clearfix">
       <header class="section-contents"><h1>Others</h1></header>
       <div class="section-container">
         {% if not others.mineral_production.is_missing %}
