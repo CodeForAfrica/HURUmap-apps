@@ -349,15 +349,15 @@ def get_households_profile(geo, session):
             # construction materials
             roofing_dist, _ = get_stat_data(
                 'main type of roofing material', geo=geo, session=session,
-                order_by='-total')
+                order_by='total')
 
             wall_dist, _ = get_stat_data(
                 'main type of wall material', geo=geo, session=session,
-                order_by='-total')
+                order_by='total')
 
             floor_dist, _ = get_stat_data(
                 'main type of floor material', geo=geo, session=session,
-                order_by='-total')
+                order_by='total')
         except Exception:
             pass
 
@@ -852,22 +852,37 @@ def get_causes_of_death_profile(geo, session):
         try:
             causes_of_death_under_five_data, _ = get_stat_data(
                 'causes of death under five', geo=geo, session=session,
-                order_by='-total')
+                order_by='total')
+        except Exception:
+            pass
+        try:
             causes_of_death_over_five_data, _ = get_stat_data(
                 'causes of death over five', geo=geo, session=session,
-                order_by='-total')
+                order_by='total')
+        except Exception:
+            pass
+        try:
             inpatient_diagnosis_over_five_data, _ = get_stat_data(
                 'inpatient diagnosis over five', geo=geo, session=session,
-                order_by='-total')
+                order_by='total')
+        except Exception:
+            pass
+        try:
             outpatient_diagnosis_over_five_data, _ = get_stat_data(
                 'outpatient diagnosis over five', geo=geo, session=session,
-                order_by='-total')
+                order_by='total')
+        except Exception:
+            pass
+        try:
             inpatient_diagnosis_under_five_data, _ = get_stat_data(
                 'inpatient diagnosis under five', geo=geo, session=session,
-                order_by='-total')
+                order_by='total')
+        except Exception:
+            pass
+        try:
             outpatient_diagnosis_under_five_data, _ = get_stat_data(
                 'outpatient diagnosis under five', geo=geo, session=session,
-                order_by='-total')
+                order_by='total')
         except Exception:
             pass
 
@@ -905,7 +920,7 @@ def get_family_planning_clients_profile(geo, session):
         try:
             family_planning_clients_data, _ = get_stat_data(
                 'family planning clients', geo=geo, session=session,
-                order_by='-total')
+                order_by='total')
             total = family_planning_clients_data['Total']['numerators']['this']
             rate = \
                 family_planning_clients_data['New client rate']['numerators'][
@@ -963,7 +978,7 @@ def get_place_of_delivery_profile(geo, session):
         try:
             delivery_data, _ = get_stat_data(
                 'place of delivery', geo=geo, session=session,
-                order_by='-total')
+                order_by='total')
             anc_projection = delivery_data['ANC projection']['numerators'][
                 'this']
             facility_birth_rate = \
@@ -999,7 +1014,7 @@ def get_health_workers_distribution_profile(geo, session):
     with dataset_context(year='2015'):
         try:
             hw_data, total = get_stat_data(
-                'health workers', geo=geo, session=session, order_by='-total')
+                'health workers', geo=geo, session=session, order_by='total')
 
             hrh_patient_ratio = hw_data['HRH patient ratio']['numerators'][
                 'this']
@@ -1039,7 +1054,7 @@ def get_health_centers_distribution_profile(geo, session):
     with dataset_context(year='2015'):
         try:
             hc_data, total = get_stat_data(
-                'health centers', geo=geo, session=session, order_by='-total')
+                'health centers', geo=geo, session=session, order_by='total')
             ho_data, _ = get_stat_data(
                 'health center ownership', geo, session)
             hiv_centers_data, hiv_c = get_stat_data(
@@ -1078,7 +1093,7 @@ def get_tetanus_vaccine_profile(geo, session):
     with dataset_context(year='2015'):
         try:
             tetanus_vaccine_data, _ = get_stat_data(
-                'tetanus vaccine', geo=geo, session=session, order_by='-total')
+                'tetanus vaccine', geo=geo, session=session, order_by='total')
             number_vaccinated = \
                 tetanus_vaccine_data['Vaccinated']['numerators'][
                     'this']
@@ -1171,7 +1186,7 @@ def get_traffic_and_crimes_profile(geo, session):
             traffic_and_crimes, _total_tc = get_stat_data('traffic and crimes',
                                                           geo=geo,
                                                           session=session,
-                                                          order_by='-total')
+                                                          order_by='total')
 
             # total accidents
 
@@ -1209,7 +1224,7 @@ def get_traffic_and_crimes_profile(geo, session):
                 only=person_offences, \
                 geo=geo,
                 session=session,
-                order_by='-total')
+                order_by='total')
 
             # cattle theft
             cattle_theft_only = ["Cattle Thieves", "Murdered Cattle Owners"]
@@ -1243,7 +1258,7 @@ def get_traffic_and_crimes_profile(geo, session):
                                                          only=cattle_theft_only, \
                                                          geo=geo,
                                                          session=session,
-                                                         order_by='-total', \
+                                                         order_by='total', \
                                                          recode=recoder)
 
             robbery_only = ['Robbery Victims', 'Robbery Thieves']
@@ -1252,7 +1267,7 @@ def get_traffic_and_crimes_profile(geo, session):
                 only=robbery_only, \
                 geo=geo,
                 session=session,
-                order_by='-total',
+                order_by='total',
                 recode=recoder)
 
             superstitious_only = ["Superstitious Beliefs Albino",
@@ -1263,7 +1278,7 @@ def get_traffic_and_crimes_profile(geo, session):
                                                           only=superstitious_only, \
                                                           geo=geo,
                                                           session=session,
-                                                          order_by='-total',
+                                                          order_by='total',
                                                           recode=recoder)
 
             total_cattletheft_robbery = _total_rf + _total_ct
@@ -1278,7 +1293,7 @@ def get_traffic_and_crimes_profile(geo, session):
                 only=public_fighting_only, \
                 geo=geo,
                 session=session,
-                order_by='-total',
+                order_by='total',
                 recode=recoder)
 
         except Exception:
@@ -1372,7 +1387,7 @@ def get_primary_school_teachers_profile(geo, session):
 
             ps_teachers, n_teachers = get_stat_data('primary school teachers', \
                                                     geo=geo, session=session,
-                                                    order_by='-total')
+                                                    order_by='total')
 
         except Exception:
             pass
@@ -1477,7 +1492,7 @@ def get_airport_types_profile(geo, session):
 
             airports_dist, n_airports = get_stat_data('airport types', \
                                                       geo=geo, session=session,
-                                                      order_by='-total')
+                                                      order_by='total')
 
         except Exception as e:
             pass
