@@ -73,59 +73,6 @@ fields, geo, session, table_dataset=None, table_universe=None,
                   table_fields=None, table_name=None, **kwargs
 """
 
-def get_nbs_2018(geo, session, year):
-    mobile_subscription = LOCATIONNOTFOUND
-    mineral_production = LOCATIONNOTFOUND
-    hiv_patients = LOCATIONNOTFOUND
-    telecom_subscription = LOCATIONNOTFOUND
-    faac = LOCATIONNOTFOUND
-    jamb = LOCATIONNOTFOUND
-    debt_data = LOCATIONNOTFOUND
-
-
-    with dataset_context(year='2018'):
-        try:
-            debt_data, _ = get_stat_data(fields=['year', 'debt_type'], geo=geo,
-                                         session=session,
-                                         percent=False, order_by='debt_type')
-            mobile_subscription, _ = get_stat_data(fields=['network', 'subscription_type'], geo=geo,
-                                         session=session,
-                                         table_name='mobile_subscription', percent=False)
-            mineral_production, _ = get_stat_data(fields=['year'], geo=geo,
-                                         session=session,
-                                         table_name='mineral_production', percent=False, order_by='year')
-            telecom_subscription, _ = get_stat_data(fields=['period', 'subscription_type'], geo=geo,
-                                         session=session,
-                                         table_name='telecom_subscription', percent=False)
-            faac, _ = get_stat_data(fields=['allocation'], geo=geo,
-                                         session=session,
-                                         table_name='faac', percent=False)
-            jamb, _ = get_stat_data(fields=['year', 'gender'], geo=geo,
-                                         session=session,
-                                         table_name='jamb', percent=False)
-
-        except Exception as e:
-            print(str(e))
-
-    is_missing = mobile_subscription.get('is_missing') and \
-                mineral_production.get('is_missing') and \
-                telecom_subscription.get('is_missing') and \
-                faac.get('is_missing') and jamb.get('is_missing') and \
-                debt_data.get('is_missing')
-
-    final_data = {
-        'is_missing': is_missing,
-        'mobile_subscription': mobile_subscription,
-        'mineral_production': mineral_production,
-        'telecom_subscription': telecom_subscription,
-        'debt_data': debt_data,
-        'faac': faac,
-        'jamb': jamb
-
-    }
-    return final_data
-
-
 def get_demographics_profile(geo, session):
     compiled_indeces = LOCATIONNOTFOUND
     birth_registration = LOCATIONNOTFOUND
@@ -470,6 +417,7 @@ def get_health_profile(geo, session):
     contraceptive_use = LOCATIONNOTFOUND
     vaccine_coverage = LOCATIONNOTFOUND
     hiv_arvs = LOCATIONNOTFOUND
+    fertility_rate = LOCATIONNOTFOUND
 
     with dataset_context(year='2016'):
         try:
@@ -534,7 +482,8 @@ def get_health_profile(geo, session):
                 adolescent_fertility.get('is_missing') and \
                 contraceptive_use.get('is_missing') and \
                 vaccine_coverage.get('is_missing') and \
-                hiv_arvs.get('is_missing')
+                hiv_arvs.get('is_missing') and \
+                fertility_rate.get('is_missing')
 
     final_data = {
         'is_missing': is_missing,
@@ -544,7 +493,8 @@ def get_health_profile(geo, session):
         'adolescent_fertility': adolescent_fertility,
         'contraceptive_use': contraceptive_use,
         'vaccine_coverage': vaccine_coverage,
-        'hiv_arvs': hiv_arvs
+        'hiv_arvs': hiv_arvs,
+        'fertility_rate': fertility_rate
     }
     return final_data
 
@@ -565,6 +515,10 @@ def get_others_profile(geo, session):
     air_transportation_international = LOCATIONNOTFOUND
     diesel_year = LOCATIONNOTFOUND
     driver_licences_processed = LOCATIONNOTFOUND
+    mobile_subscription = LOCATIONNOTFOUND
+    mineral_production = LOCATIONNOTFOUND
+    telecom_subscription = LOCATIONNOTFOUND
+    jamb = LOCATIONNOTFOUND
 
     with dataset_context(year='2018'):
         try:
@@ -683,6 +637,38 @@ def get_others_profile(geo, session):
             print(str(e))
             pass
 
+        try:
+            mobile_subscription, _ = get_stat_data(fields=['network', 'subscription_type'], geo=geo,
+                                     session=session,
+                                     table_name='mobile_subscription', percent=False)
+        except Exception as e:
+            print(str(e))
+            pass
+
+        try:
+            mineral_production, _ = get_stat_data(fields=['year'], geo=geo,
+                                     session=session,
+                                     table_name='mineral_production', percent=False, order_by='year')
+        except Exception as e:
+            print(str(e))
+            pass
+
+        try:
+            telecom_subscription, _ = get_stat_data(fields=['period', 'subscription_type'], geo=geo,
+                                     session=session,
+                                     table_name='telecom_subscription', percent=False)
+        except Exception as e:
+            print(str(e))
+            pass
+
+        try:
+            jamb, _ = get_stat_data(fields=['year', 'gender'], geo=geo,
+                                     session=session,
+                                     table_name='jamb', percent=False)
+        except Exception as e:
+            print(str(e))
+            pass
+
         diesel_price = {
             'is_missing': diesel_price_2019.get('is_missing') and \
                             diesel_price_2018.get('is_missing') and \
@@ -721,7 +707,11 @@ def get_others_profile(geo, session):
         'air_transportation_domestic': air_transportation_domestic,
         'air_transportation_international': air_transportation_international,
         'diesel_year': diesel_year,
-        'driver_licences_processed': driver_licences_processed
+        'driver_licences_processed': driver_licences_processed,
+        'mobile_subscription': mobile_subscription,
+        'mineral_production': mineral_production,
+        'telecom_subscription': telecom_subscription,
+        'jamb': jamb
     }
     return final_data
 
@@ -729,6 +719,8 @@ def get_others_profile(geo, session):
 def get_finance_profile(geo, session):
     bank_credit = LOCATIONNOTFOUND
     bank_deposit = LOCATIONNOTFOUND
+    debt_data = LOCATIONNOTFOUND
+    faac = LOCATIONNOTFOUND
 
     with dataset_context(year='2018'):
         try:
@@ -747,13 +739,35 @@ def get_finance_profile(geo, session):
             print(str(e))
             pass
 
+        try:
+            debt_data, _ = get_stat_data(fields=['year', 'debt_type'], geo=geo,
+                                         session=session,
+                                         percent=False, order_by='debt_type')
+        except Exception as e:
+            print(str(e))
+            pass
+
+        try:
+            faac, _ = get_stat_data(fields=['allocation'], geo=geo,
+                                         session=session,
+                                         table_name='faac', percent=False)
+        except Exception as e:
+            print(str(e))
+            pass
+
+
+
     is_missing = bank_deposit.get('is_missing') and \
-                 bank_credit.get('is_missing')
+                 bank_credit.get('is_missing') and \
+                 debt_data.get('is_missing') and \
+                 faac.get('is_missing')
 
     final_data = {
         'is_missing': is_missing,
         'bank_credit': bank_credit,
-        'bank_deposit': bank_deposit
+        'bank_deposit': bank_deposit,
+        'debt_data': debt_data,
+        'faac': faac
     }
 
     return final_data
