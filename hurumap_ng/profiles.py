@@ -438,6 +438,7 @@ def get_health_profile(geo, session):
     fertility_rate = LOCATIONNOTFOUND
     dentists_per_sex_year = LOCATIONNOTFOUND
     doctors_per_sex_year = LOCATIONNOTFOUND
+    maternal_mortality = LOCATIONNOTFOUND
 
     with dataset_context(year='2016'):
         try:
@@ -508,6 +509,12 @@ def get_health_profile(geo, session):
         except Exception:
             log.warn("Could not get data", exc_info=True)
 
+        try:
+            maternal_mortality, _ = get_stat_data(
+                ['year'], geo, session, percent=False, table_name='maternal_mortality')
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
     is_missing = counselling_concluded.get('is_missing') and \
                 hiv_patients.get('is_missing') and \
                 access_to_wash.get('is_missing') and \
@@ -517,7 +524,8 @@ def get_health_profile(geo, session):
                 hiv_arvs.get('is_missing') and \
                 fertility_rate.get('is_missing') and \
                 dentists_per_sex_year.get('is_missing') and \
-                doctors_per_sex_year.get('is_missing')
+                doctors_per_sex_year.get('is_missing') and \
+                maternal_mortality.get('is_missing')
 
     final_data = {
         'is_missing': is_missing,
@@ -530,7 +538,8 @@ def get_health_profile(geo, session):
         'hiv_arvs': hiv_arvs,
         'fertility_rate': fertility_rate,
         'doctors_per_sex_year': doctors_per_sex_year,
-        'dentists_per_sex_year': dentists_per_sex_year
+        'dentists_per_sex_year': dentists_per_sex_year,
+        'maternal_mortality': maternal_mortality
     }
     return final_data
 

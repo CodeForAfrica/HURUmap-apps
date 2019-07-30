@@ -28,7 +28,7 @@ CREATE TABLE public.maternal_mortality (
     geo_code character varying(10) NOT NULL,
     geo_version character varying(128) NOT NULL,
     year character varying(128) NOT NULL,
-    total integer
+    total numeric
 );
 
 

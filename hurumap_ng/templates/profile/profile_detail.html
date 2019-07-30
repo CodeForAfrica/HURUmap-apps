@@ -175,15 +175,20 @@
             </div>
         </section>
         {% endif %}
-        {% if not health.adolescent_fertility.is_missing %}
+        {% if not health.adolescent_fertility.is_missing or not health.maternal_mortality.is_missing %}
         <section class="clearfix stat-row">
-          <div class="column-full">
-              <div id="chart-column-health-adolescent_fertility"
-                   data-chart-title="Female Adolescent Fertility Rate in 2016"
-                   data-stat-type="number"
-                   data-source-title="National Bureau of Statistics, 2018"
-                   data-source-link="https://nigerianstat.gov.ng/download/952"></div>
+          {% if not health.adolescent_fertility.is_missing %}
+            <div class="column-half">
+              <h3 class="chart-header">Female Adolescent Fertility Rate</h3>
+              {% include 'profile/_blocks/_stat_list.html' with stat=health.adolescent_fertility.2016 stat_type='number' %}
             </div>
+          {% endif %}
+          {% if not health.maternal_mortality.is_missing %}
+            <div class="column-half">
+              <h3 class="chart-header">Maternal Mortality Rate</h3>
+              {% include 'profile/_blocks/_stat_list.html' with stat=health.maternal_mortality.2016 stat_type='number' %}
+            </div>
+          {% endif %}
         </section>
         {% endif %}
         {% if not health.doctors_per_sex_year.is_missing or not health.dentists_per_sex_year.is_missing %}
