@@ -11,8 +11,7 @@
         </div>
         <ul>
           {% for tab in tabs %}
-            <li><a href={{tab.href}}><span>{{tab.name}}</span></a>
-            </li>
+            <li><i class="{{tab.class}}"></i><a href={{tab.href}}><span>{{tab.name}}</span></a></li></li>
           {% endfor %}
           </ul>
       </div>
