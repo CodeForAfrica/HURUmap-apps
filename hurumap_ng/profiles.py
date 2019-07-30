@@ -1,9 +1,12 @@
 from collections import OrderedDict
+import logging
 
 from django.conf import settings
 from wazimap.data.utils import (current_context, dataset_context, get_session,
                                 get_stat_data, group_remainder)
 from wazimap.geo import geo_data
+
+log = logging.getLogger(__name__)
 
 SECTIONS = settings.HURUMAP.get('topics', {})
 
@@ -80,6 +83,8 @@ def get_demographics_profile(geo, session):
     unemployment_rate = LOCATIONNOTFOUND
     under_employment_rate = LOCATIONNOTFOUND
     labour_force = LOCATIONNOTFOUND
+    population_sex = LOCATIONNOTFOUND
+    total_population = 0
 
     with dataset_context(year='2018'):
         try:
@@ -129,6 +134,14 @@ def get_demographics_profile(geo, session):
         except Exception as e:
             print(str(e))
             pass
+
+        try:
+            population_sex, total_population = get_stat_data(fields=['population_sex'], geo=geo,
+                                    session=session, table_name='population_sex', percent=False)
+        except Exception as e:
+            print(str(e))
+            pass
+            
     is_missing = compiled_indeces.get('is_missing') and \
                     birth_registration.get('is_missing') and \
                     population_projection.get('is_missing') and \
@@ -142,7 +155,12 @@ def get_demographics_profile(geo, session):
         'unemployment_rate': unemployment_rate,
         'population_projection': population_projection,
         'under_employment_rate': under_employment_rate,
-        'labour_force': labour_force
+        'labour_force': labour_force,
+        'total_population': {
+                'name': 'People',
+                'values': {'this': total_population },
+                'numerators': { 'this': total_population }
+        }
     }
     return final_data
 
@@ -418,6 +436,8 @@ def get_health_profile(geo, session):
     vaccine_coverage = LOCATIONNOTFOUND
     hiv_arvs = LOCATIONNOTFOUND
     fertility_rate = LOCATIONNOTFOUND
+    dentists_per_sex_year = LOCATIONNOTFOUND
+    doctors_per_sex_year = LOCATIONNOTFOUND
 
     with dataset_context(year='2016'):
         try:
@@ -476,6 +496,18 @@ def get_health_profile(geo, session):
             print(str(e))
             pass
 
+        try:
+            doctors_per_sex_year, tot_doctors = get_stat_data(
+                ['number_of_dentist_year', 'number_of_dentist_sex'], geo, session, percent=False)
+        except Exception as e:
+            pass
+
+        try:
+            dentists_per_sex_year, tot_dentists = get_stat_data(
+                ['number_of_doctors_year', 'number_of_doctors_sex'], geo, session, percent=False)
+        except Exception as e:
+            pass
+
     is_missing = counselling_concluded.get('is_missing') and \
                 hiv_patients.get('is_missing') and \
                 access_to_wash.get('is_missing') and \
@@ -483,7 +515,9 @@ def get_health_profile(geo, session):
                 contraceptive_use.get('is_missing') and \
                 vaccine_coverage.get('is_missing') and \
                 hiv_arvs.get('is_missing') and \
-                fertility_rate.get('is_missing')
+                fertility_rate.get('is_missing') and \
+                dentists_per_sex_year.get('is_missing') and \
+                doctors_per_sex_year.get('is_missing')
 
     final_data = {
         'is_missing': is_missing,
