@@ -42,28 +42,28 @@ def get_profile(geo, profile_name, request):
 
         tabs = []
         if not data['demographics'].get('is_missing'):
-            tabs.append({'name': 'Demographics', 'href': '#demographics'})
+            tabs.append({'name': 'Demographics', 'href': '#demographics', 'class': 'fa fa-user'})
 
         if not data['health'].get('is_missing'):
-            tabs.append({'name': 'Health', 'href': '#health'})
+            tabs.append({'name': 'Health', 'href': '#health', 'class': 'fa fa-medkit'})
 
         if not data['education'].get('is_missing'):
-            tabs.append({'name': 'Education', 'href': '#education'})
+            tabs.append({'name': 'Education', 'href': '#education', 'class': 'fa fa-graduation-cap'})
 
         if not data['agriculture'].get('is_missing'):
-            tabs.append({'name': 'Agriculture', 'href': '#agriculture'})
+            tabs.append({'name': 'Agriculture', 'href': '#agriculture', 'class': 'fa fa-tree'})
 
         if not data['crime'].get('is_missing'):
-            tabs.append({'name': 'Corruption & Crime', 'href': '#crime'})
+            tabs.append({'name': 'Corruption & Crime', 'href': '#crime', 'class': 'fa fa-shield'})
 
         if not data['drugs'].get('is_missing'):
-            tabs.append({'name': 'Drugs', 'href': '#drugs'})
+            tabs.append({'name': 'Drugs', 'href': '#drugs', 'class': 'fa fa-ban'})
 
         if not data['finance'].get('is_missing'):
-            tabs.append({'name': 'Finances', 'href': '#finance'})
+            tabs.append({'name': 'Finances', 'href': '#finance', 'class': 'fa fa-money'})
 
         if not data['others'].get('is_missing'):
-            tabs.append({'name': 'Others', 'href': '#others'})
+            tabs.append({'name': 'Others', 'href': '#others', 'class': 'fa fa-folder'})
 
         data['tabs'] = tabs
         return data

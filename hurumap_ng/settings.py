@@ -71,21 +71,21 @@ HURUMAP["showcase_stories"] = [
         "author": "NAN",
         "brief": "The National Bureau of Statistics (NBS), said the average price of some selected food items in the country increased in April.",
         "link": "//guardian.ng/news/prices-of-food-stuff-increases-in-april-nbs",
-        "img": STATIC_URL + "img/showcase/nbs.png",
+        "img": STATIC_URL + "img/showcase/story-foodstuff-prices-2.jpg",
     },
     {
         "title": "Price of cooking gas drops in April — NBS",
         "author": "News Agency Of Nigeria",
         "brief": "The National Bureau of Statistics (NBS), said the average cost of refilling a five kilogramme (kg) cylinder of Liquefied Petroleum Gas (Cooking Gas) dropped to N2,046.53 in April from N2,064.45 recorded in March.",
         "link": "//www.pulse.ng/news/local/price-of-cooking-gas-drops-in-april-nbs/vtn2mf3",
-        "img": STATIC_URL + "img/showcase/gas.jpg",
+        "img": STATIC_URL + "img/showcase/story-cooking-gas-2.jpg",
     },
     {
         "title": "Nigeria’s GDP Increases as Non-oil Sector Grows by 0.41%",
         "author": "The Eagle Online",
         "brief": "The National Bureau of Statistics said Nigeria’s Gross Domestic Product recorded a positive growth as the non-oil sector grew in real terms by 0.41 per cent in first quarter of 2019.",
         "link": "//nipc.gov.ng/2019/05/22/nigerias-gdp-increases-as-non-oil-sector-grows-by-0-41/",
-        "img": STATIC_URL + "img/showcase/nbs.png",
+        "img": STATIC_URL + "img/showcase/story-nigeria-gdp.jpg",
     },
 ]
 
