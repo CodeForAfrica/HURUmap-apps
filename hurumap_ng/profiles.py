@@ -83,6 +83,7 @@ def get_demographics_profile(geo, session):
     unemployment_rate = LOCATIONNOTFOUND
     under_employment_rate = LOCATIONNOTFOUND
     labour_force = LOCATIONNOTFOUND
+    nominal_gdp = LOCATIONNOTFOUND
     population_sex = LOCATIONNOTFOUND
     total_population = 0
 
@@ -141,13 +142,20 @@ def get_demographics_profile(geo, session):
         except Exception:
             log.warn("Could not get data", exc_info=True)
 
+        try:
+            nominal_gdp, _ = get_stat_data(fields=['year', 'sector'], geo=geo,
+                                    session=session, table_name='nominal_gdp', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
 
     is_missing = compiled_indeces.get('is_missing') and \
                     birth_registration.get('is_missing') and \
                     population_projection.get('is_missing') and \
                     unemployment_rate.get('is_missing') and \
                     under_employment_rate.get('is_missing') and \
-                    labour_force.get('is_missing')
+                    labour_force.get('is_missing') and \
+                    nominal_gdp.get('is_missing')
     final_data = {
         'is_missing': is_missing,
         'compiled_indeces': compiled_indeces,
@@ -156,6 +164,7 @@ def get_demographics_profile(geo, session):
         'population_projection': population_projection,
         'under_employment_rate': under_employment_rate,
         'labour_force': labour_force,
+        'nominal_gdp': nominal_gdp,
         'total_population': {
                 'name': 'People',
                 'values': {'this': total_population },
@@ -371,6 +380,7 @@ def get_education_profile(geo, session):
     technical_school = LOCATIONNOTFOUND
     primary_school_enrollment = LOCATIONNOTFOUND
     hdi_education = LOCATIONNOTFOUND
+    literacy = LOCATIONNOTFOUND
 
     with dataset_context(year='2016'):
         try:
@@ -410,11 +420,19 @@ def get_education_profile(geo, session):
         except Exception:
             log.warn("Could not get data", exc_info=True)
 
+        try:
+            literacy, _ = get_stat_data(
+                ['gender'], geo, session, percent=False,
+                table_name='literacy')
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
     is_missing = hdi_education.get('is_missing') and \
                 junior_secondary_school_enrollment.get('is_missing') and \
                 senior_secondary_school_enrollment.get('is_missing') and \
                 technical_school.get('is_missing') and \
-                primary_school_enrollment.get('is_missing')
+                primary_school_enrollment.get('is_missing') and \
+                literacy.get('is_missing')
 
     final_data = {
         'is_missing': is_missing,
@@ -422,7 +440,8 @@ def get_education_profile(geo, session):
         'junior_secondary_school_enrollment': junior_secondary_school_enrollment,
         'senior_secondary_school_enrollment': senior_secondary_school_enrollment,
         'technical_school': technical_school,
-        'primary_school_enrollment': primary_school_enrollment
+        'primary_school_enrollment': primary_school_enrollment,
+        'literacy': literacy
     }
     return final_data
 

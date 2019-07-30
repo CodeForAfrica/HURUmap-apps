@@ -101,6 +101,20 @@
                    data-source-title="Computation of Human Development Indices for the UNDP Nigeria Human Development Report (2016)"
                    data-source-link="https://nigerianstat.gov.ng/download/830"></div>
             </div>
+          </section>
+          {% endif %}
+          {% if not demographics.nominal_gdp.is_missing %}
+          <section class="clearfix stat-row">
+            <h2>
+              <a class="permalink" href="#gdp" id="gdp">
+                Nominal GDP<i class="fa fa-link"></i></a></h2>
+            <div class="column-full">
+                <div id="chart-grouped_column-demographics-nominal_gdp"
+                     data-chart-title="Nominal GDP Main Sectors, N'Mn (2013 - 2017)"
+                     data-stat-type="number"
+                     data-source-title="National Bureau of Statistics, 2018"
+                     data-source-link="https://nigerianstat.gov.ng/resource/Final%2022%20SGDP%20%20Analysis_%20sg.xlsx"></div>
+              </div>
         </section>
         {% endif %}
       </div>
@@ -261,17 +275,28 @@
             </div>
           {% endif %}
         </section>
-        <section class="clearfix stat-row">
-            {% if not education.hdi_education.is_missing %}
+        {% if not education.hdi_education.is_missing  or not education.literacy.is_missing %}
+          <section class="clearfix stat-row">
+              {% if not education.hdi_education.is_missing %}
+              <div class="column-half">
+                   <div id="chart-column-education-hdi_education"
+                   data-stat-type="number"
+                   data-chart-title="Education Index (EI) for 2013 and 2016"
+                   data-source-title="Computation of Human Development Indices for the UNDP Nigeria Human Development Report (2016)"
+                   data-source-link="https://nigerianstat.gov.ng/download/830"></div>
+              </div>
+            {% endif %}
+            {% if not education.literacy.is_missing %}
             <div class="column-half">
-                 <div id="chart-column-education-hdi_education"
-                 data-stat-type="number"
-                 data-chart-title="Education Index (EI) for 2013 and 2016"
-                 data-source-title="Computation of Human Development Indices for the UNDP Nigeria Human Development Report (2016)"
-                 data-source-link="https://nigerianstat.gov.ng/download/830"></div>
+                 <div id="chart-column-education-literacy"
+                 data-stat-type="scaled-percentage"
+                 data-chart-title="Percentage of Women and Men age 15-24 years who are literate by Sex, 2016/17"
+                 data-source-title="National Bureau of Statistics, 2018"
+                 data-source-link="https://nigerianstat.gov.ng/download/952"></div>
             </div>
           {% endif %}
-          </section>
+        </section>
+        {% endif %}
       </div>
     </article>
   {% endif %}
