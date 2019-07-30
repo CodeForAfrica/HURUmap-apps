@@ -186,6 +186,28 @@
             </div>
         </section>
         {% endif %}
+        {% if not health.doctors_per_sex_year.is_missing or not health.dentists_per_sex_year.is_missing %}
+        <section class="clearfix stat-row">
+          {% if not health.doctors_per_sex_year.is_missing %}
+          <div class="column-half">
+              <div id="chart-grouped_column-health-doctors_per_sex_year"
+                   data-chart-title="Number of Doctors by Year and Sex (2015-2017)"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2018"
+                   data-source-link="https://nigerianstat.gov.ng/download/952"></div>
+            </div>
+            {% endif %}
+            {% if not health.dentists_per_sex_year.is_missing %}
+            <div class="column-half">
+                <div id="chart-grouped_column-health-dentists_per_sex_year"
+                     data-chart-title="Number of Dentists by Year and Sex (2015-2017)"
+                     data-stat-type="number"
+                     data-source-title="National Bureau of Statistics, 2018"
+                     data-source-link="https://nigerianstat.gov.ng/download/952"></div>
+              </div>
+              {% endif %}
+        </section>
+        {% endif %}
       </div>
     </article>
   {% endif %}
@@ -498,7 +520,7 @@
         <section class="clearfix stat-row">
           <div class="column-full">
             <div id="chart-grouped_column-finance-debt_data"
-                 data-chart-title="External and Domestic Debt 2011 - June 2018 in ₦" data-stat-type="number"></div>
+                 data-chart-title="External and Domestic Debt 2011 - June 2018 in Millions ₦" data-stat-type="number"></div>
               </div>
           </section>
         {% endif %}
