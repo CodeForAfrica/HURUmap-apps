@@ -25,6 +25,11 @@
               <span>Afrobarometer</span></a>
             </li>
           {% endif %}
+          {% if not airport_types.is_missing %}
+            <li><a href="#others"><i class="fa fa-check"></i>
+              <span>Others</span></a>
+            </li>
+          {% endif %}
         </ul>
       </div>
     </nav>
@@ -471,9 +476,9 @@
     </article>
   {% endif %}
   {% if not airport_types.is_missing or not airport_types %}
-    <article id="airport_types" class="clearfix">
+    <article id="others" class="clearfix">
       <header class="section-contents">
-        <h1>Airports</h1>
+        <h1>Others</h1>
       </header>
       <div class="section-container">
         <section class="clearfix stat-row">
