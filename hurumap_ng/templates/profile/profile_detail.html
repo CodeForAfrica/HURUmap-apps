@@ -48,7 +48,7 @@
           <h2>
             <a class="permalink" href="#birth_registration" id="birth_registration">
               Birth Registration<i class="fa fa-link"></i></a></h2>
-          <div class="column-full">
+          <div class="column-half">
               <div id="chart-pie-demographics-birth_registration"
                    data-chart-title="Propotion of Birth Registration"
                    data-stat-type="number"
@@ -91,8 +91,8 @@
         {% if not demographics.compiled_indeces.is_missing %}
         <section class="clearfix stat-row">
           <h2>
-            <a class="permalink" href="#human-development-indeces" id="human-development-indeces">
-              Human Development Indeces<i class="fa fa-link"></i></a></h2>
+            <a class="permalink" href="#human-development-indeces" id="human-development-indices">
+              Human Development Indices<i class="fa fa-link"></i></a></h2>
           <div class="column-full">
               <div id="chart-column-demographics-compiled_indeces"
                    data-chart-title="Human Development Indices"
@@ -100,8 +100,8 @@
                    data-source-title="Computation of Human Development Indices for the UNDP Nigeria Human Development Report (2016)"
                    data-source-link="https://nigerianstat.gov.ng/download/830"></div>
             </div>
-        </section>
-        {% endif %}
+          </section>
+          {% endif %}
       </div>
     </article>
   {% endif %}
@@ -174,15 +174,42 @@
             </div>
         </section>
         {% endif %}
-        {% if not health.adolescent_fertility.is_missing %}
+        {% if not health.adolescent_fertility.is_missing or not health.maternal_mortality.is_missing %}
         <section class="clearfix stat-row">
-          <div class="column-full">
-              <div id="chart-column-health-adolescent_fertility"
-                   data-chart-title="Female Adolescent Fertility Rate in 2016"
+          {% if not health.adolescent_fertility.is_missing %}
+            <div class="column-half">
+              <h3 class="chart-header">Female Adolescent Fertility Rate</h3>
+              {% include 'profile/_blocks/_stat_list.html' with stat=health.adolescent_fertility.2016 stat_type='number' %}
+            </div>
+          {% endif %}
+          {% if not health.maternal_mortality.is_missing %}
+            <div class="column-half">
+              <h3 class="chart-header">Maternal Mortality Rate</h3>
+              {% include 'profile/_blocks/_stat_list.html' with stat=health.maternal_mortality.2016 stat_type='number' %}
+            </div>
+          {% endif %}
+        </section>
+        {% endif %}
+        {% if not health.doctors_per_sex_year.is_missing or not health.dentists_per_sex_year.is_missing %}
+        <section class="clearfix stat-row">
+          {% if not health.doctors_per_sex_year.is_missing %}
+          <div class="column-half">
+              <div id="chart-grouped_column-health-doctors_per_sex_year"
+                   data-chart-title="Number of Doctors by Year and Sex (2015-2017)"
                    data-stat-type="number"
                    data-source-title="National Bureau of Statistics, 2018"
                    data-source-link="https://nigerianstat.gov.ng/download/952"></div>
             </div>
+            {% endif %}
+            {% if not health.dentists_per_sex_year.is_missing %}
+            <div class="column-half">
+                <div id="chart-grouped_column-health-dentists_per_sex_year"
+                     data-chart-title="Number of Dentists by Year and Sex (2015-2017)"
+                     data-stat-type="number"
+                     data-source-title="National Bureau of Statistics, 2018"
+                     data-source-link="https://nigerianstat.gov.ng/download/952"></div>
+              </div>
+              {% endif %}
         </section>
         {% endif %}
       </div>
@@ -233,17 +260,28 @@
             </div>
           {% endif %}
         </section>
-        <section class="clearfix stat-row">
-            {% if not education.hdi_education.is_missing %}
+        {% if not education.hdi_education.is_missing  or not education.literacy.is_missing %}
+          <section class="clearfix stat-row">
+              {% if not education.hdi_education.is_missing %}
+              <div class="column-half">
+                   <div id="chart-column-education-hdi_education"
+                   data-stat-type="number"
+                   data-chart-title="Education Index (EI) for 2013 and 2016"
+                   data-source-title="Computation of Human Development Indices for the UNDP Nigeria Human Development Report (2016)"
+                   data-source-link="https://nigerianstat.gov.ng/download/830"></div>
+              </div>
+            {% endif %}
+            {% if not education.literacy.is_missing %}
             <div class="column-half">
-                 <div id="chart-column-education-hdi_education"
-                 data-stat-type="number"
-                 data-chart-title="Education Index (EI) for 2013 and 2016"
-                 data-source-title="Computation of Human Development Indices for the UNDP Nigeria Human Development Report (2016)"
-                 data-source-link="https://nigerianstat.gov.ng/download/830"></div>
+                 <div id="chart-column-education-literacy"
+                 data-stat-type="scaled-percentage"
+                 data-chart-title="Percentage of Women and Men age 15-24 years who are literate by Sex, 2016/17"
+                 data-source-title="National Bureau of Statistics, 2018"
+                 data-source-link="https://nigerianstat.gov.ng/download/952"></div>
             </div>
           {% endif %}
-          </section>
+        </section>
+        {% endif %}
       </div>
     </article>
   {% endif %}
@@ -467,10 +505,25 @@
       </div>
     </article>
   {% endif %}
+
   {% if not finance.is_missing %}
     <article id="finance" class="clearfix">
       <header class="section-contents"><h1>Finances</h1></header>
       <div class="section-container">
+        {% if not finance.nominal_gdp.is_missing %}
+          <section class="clearfix stat-row">
+            <h2>
+              <a class="permalink" href="#gdp" id="gdp">
+                Nominal GDP<i class="fa fa-link"></i></a></h2>
+            <div class="column-full">
+                <div id="chart-grouped_column-finance-nominal_gdp"
+                     data-chart-title="Nominal GDP Main Sectors, N'Mn (2013 - 2017)"
+                     data-stat-type="number"
+                     data-source-title="National Bureau of Statistics, 2018"
+                     data-source-link="https://nigerianstat.gov.ng/resource/Final%2022%20SGDP%20%20Analysis_%20sg.xlsx"></div>
+              </div>
+        </section>
+        {% endif %}
         {% if not finance.bank_credit.is_missing and not finance.bank_deposit.is_missing %}
         <section class="clearfix stat-row">
             {% if not finance.bank_credit.is_missing %}
@@ -497,7 +550,7 @@
         <section class="clearfix stat-row">
           <div class="column-full">
             <div id="chart-grouped_column-finance-debt_data"
-                 data-chart-title="External and Domestic Debt 2011 - June 2018 in ₦" data-stat-type="number"></div>
+                 data-chart-title="External and Domestic Debt 2011 - June 2018 in Millions ₦" data-stat-type="number"></div>
               </div>
           </section>
         {% endif %}
