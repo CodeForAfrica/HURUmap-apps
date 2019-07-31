@@ -83,7 +83,6 @@ def get_demographics_profile(geo, session):
     unemployment_rate = LOCATIONNOTFOUND
     under_employment_rate = LOCATIONNOTFOUND
     labour_force = LOCATIONNOTFOUND
-    nominal_gdp = LOCATIONNOTFOUND
     population_sex = LOCATIONNOTFOUND
     total_population = 0
 
@@ -142,20 +141,13 @@ def get_demographics_profile(geo, session):
         except Exception:
             log.warn("Could not get data", exc_info=True)
 
-        try:
-            nominal_gdp, _ = get_stat_data(fields=['year', 'sector'], geo=geo,
-                                    session=session, table_name='nominal_gdp', percent=False)
-        except Exception:
-            log.warn("Could not get data", exc_info=True)
-
 
     is_missing = compiled_indeces.get('is_missing') and \
                     birth_registration.get('is_missing') and \
                     population_projection.get('is_missing') and \
                     unemployment_rate.get('is_missing') and \
                     under_employment_rate.get('is_missing') and \
-                    labour_force.get('is_missing') and \
-                    nominal_gdp.get('is_missing')
+                    labour_force.get('is_missing')
     final_data = {
         'is_missing': is_missing,
         'compiled_indeces': compiled_indeces,
@@ -164,7 +156,6 @@ def get_demographics_profile(geo, session):
         'population_projection': population_projection,
         'under_employment_rate': under_employment_rate,
         'labour_force': labour_force,
-        'nominal_gdp': nominal_gdp,
         'total_population': {
                 'name': 'People',
                 'values': {'this': total_population },
@@ -307,7 +298,6 @@ def get_crime_profile(geo, session):
     }
     return final_data
 
-
 def get_drugs_profile(geo, session):
     drugs_seized = LOCATIONNOTFOUND
     drug_arrests = LOCATIONNOTFOUND
@@ -371,7 +361,6 @@ def get_drugs_profile(geo, session):
         'drug_use': drug_use
     }
     return final_data
-
 
 def get_education_profile(geo, session):
     drugs_seized = LOCATIONNOTFOUND
@@ -444,7 +433,6 @@ def get_education_profile(geo, session):
         'literacy': literacy
     }
     return final_data
-
 
 def get_health_profile(geo, session):
     counselling_concluded = LOCATIONNOTFOUND
@@ -561,7 +549,6 @@ def get_health_profile(geo, session):
         'maternal_mortality': maternal_mortality
     }
     return final_data
-
 
 def get_others_profile(geo, session):
     diseal_yearly = LOCATIONNOTFOUND
@@ -798,12 +785,12 @@ def get_others_profile(geo, session):
     }
     return final_data
 
-
 def get_finance_profile(geo, session):
     bank_credit = LOCATIONNOTFOUND
     bank_deposit = LOCATIONNOTFOUND
     debt_data = LOCATIONNOTFOUND
     faac = LOCATIONNOTFOUND
+    nominal_gdp = LOCATIONNOTFOUND
 
     with dataset_context(year='2018'):
         try:
@@ -836,21 +823,27 @@ def get_finance_profile(geo, session):
                                          table_name='faac', percent=False)
         except Exception:
             log.warn("Could not get data", exc_info=True)
-
-
+        
+        try:
+            nominal_gdp, _ = get_stat_data(fields=['year', 'sector'], geo=geo,
+                                    session=session, table_name='nominal_gdp', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
 
 
     is_missing = bank_deposit.get('is_missing') and \
                  bank_credit.get('is_missing') and \
                  debt_data.get('is_missing') and \
-                 faac.get('is_missing')
+                 faac.get('is_missing') and \
+                 nominal_gdp.get('is_missing')
 
     final_data = {
         'is_missing': is_missing,
         'bank_credit': bank_credit,
         'bank_deposit': bank_deposit,
         'debt_data': debt_data,
-        'faac': faac
+        'faac': faac,
+        'nominal_gdp': nominal_gdp
     }
 
     return final_data

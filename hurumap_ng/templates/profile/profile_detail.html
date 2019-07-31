@@ -103,20 +103,6 @@
             </div>
           </section>
           {% endif %}
-          {% if not demographics.nominal_gdp.is_missing %}
-          <section class="clearfix stat-row">
-            <h2>
-              <a class="permalink" href="#gdp" id="gdp">
-                Nominal GDP<i class="fa fa-link"></i></a></h2>
-            <div class="column-full">
-                <div id="chart-grouped_column-demographics-nominal_gdp"
-                     data-chart-title="Nominal GDP Main Sectors, N'Mn (2013 - 2017)"
-                     data-stat-type="number"
-                     data-source-title="National Bureau of Statistics, 2018"
-                     data-source-link="https://nigerianstat.gov.ng/resource/Final%2022%20SGDP%20%20Analysis_%20sg.xlsx"></div>
-              </div>
-        </section>
-        {% endif %}
       </div>
     </article>
   {% endif %}
@@ -520,10 +506,25 @@
       </div>
     </article>
   {% endif %}
+
   {% if not finance.is_missing %}
     <article id="finance" class="clearfix">
       <header class="section-contents"><h1>Finances</h1></header>
       <div class="section-container">
+        {% if not finance.nominal_gdp.is_missing %}
+          <section class="clearfix stat-row">
+            <h2>
+              <a class="permalink" href="#gdp" id="gdp">
+                Nominal GDP<i class="fa fa-link"></i></a></h2>
+            <div class="column-full">
+                <div id="chart-grouped_column-finance-nominal_gdp"
+                     data-chart-title="Nominal GDP Main Sectors, N'Mn (2013 - 2017)"
+                     data-stat-type="number"
+                     data-source-title="National Bureau of Statistics, 2018"
+                     data-source-link="https://nigerianstat.gov.ng/resource/Final%2022%20SGDP%20%20Analysis_%20sg.xlsx"></div>
+              </div>
+        </section>
+        {% endif %}
         {% if not finance.bank_credit.is_missing and not finance.bank_deposit.is_missing %}
         <section class="clearfix stat-row">
             {% if not finance.bank_credit.is_missing %}
