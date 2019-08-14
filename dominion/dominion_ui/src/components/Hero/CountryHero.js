@@ -21,7 +21,7 @@ const styles = theme => ({
     height: '250px !important',
     left: 'unset !important',
     top: 'unset !important',
-    zIndex: 100,
+    zIndex: 0,
     [theme.breakpoints.up('md')]: {
       position: 'absolute !important',
       right: '50px',
@@ -33,6 +33,19 @@ const styles = theme => ({
     [theme.breakpoints.up('lg')]: {
       right: '9.375rem'
     }
+  },
+  countryName: {
+    [theme.breakpoints.up('md')]: {
+      whiteSpace: 'nowrap'
+    }
+  },
+  description: {
+    width: '100%'
+  },
+  titleGrid: {
+    [theme.breakpoints.up('md')]: {
+      maxWidth: '30%'
+    }
   }
 });
 
@@ -40,9 +53,11 @@ function CountryHero({ classes, toggleModal, dominion }) {
   const { selectedCountry = { name: '' } } = dominion;
   return (
     <Hero>
-      <HeroTitleGrid>
-        <HeroTitle>{selectedCountry.name}</HeroTitle>
-        <HeroDescription>
+      <HeroTitleGrid classes={{ titleTextGrid: classes.titleGrid }}>
+        <HeroTitle classes={{ title: classes.countryName }}>
+          {selectedCountry.name}
+        </HeroTitle>
+        <HeroDescription classes={{ body2: classes.description }}>
           Dominion makes data available to help add context and authority to
           public discourse and policy-making on vital issues of land ownership.
         </HeroDescription>
