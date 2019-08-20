@@ -53,7 +53,7 @@ HURUMAP['description'] = 'is a joint project of City Press, Rapport, '\
 'contested and incomplete,  We will keep sourcing, cleaning and adding data '\
 'sets to this site, and work towards becoming the authoritative data source on this issue.'
 
-HURUMAP['title_tagline'] = 'Who owns the land in South Africa'
+HURUMAP['title_tagline'] = 'Who owns the land'
 
 HURUMAP['facebook'] = 'hashtag/onsgrond'
 HURUMAP['twitter'] = 'hashtag/OnsGrond'
