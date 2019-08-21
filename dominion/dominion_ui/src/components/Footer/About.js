@@ -69,8 +69,18 @@ function About({ classes }) {
         <A href="https://openup.org.za/" className={classes.links}>
           OpenUp
         </A>{' '}
-        and Media Monitoring Africa for Wazimap in South Africa for Wazimap in
-        South Africa and by{' '}
+        and{' '}
+        <A
+          href="https://www.mediamonitoringafrica.org"
+          className={classes.links}
+        >
+          Media Monitoring Africa
+        </A>{' '}
+        for{' '}
+        <A href="https://wazimap.co.za" className={classes.links}>
+          Wazimap
+        </A>{' '}
+        in South Africa and by{' '}
         <A href="https://codeforafrica.org/" className={classes.links}>
           Code for Africa
         </A>{' '}
