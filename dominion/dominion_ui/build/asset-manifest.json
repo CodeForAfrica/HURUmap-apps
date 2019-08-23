@@ -1,8 +1,8 @@
 {
-  "main.js": "/static/js/main.9a541585.chunk.js",
-  "main.js.map": "/static/js/main.9a541585.chunk.js.map",
-  "static/js/1.d265ee99.chunk.js": "/static/js/1.d265ee99.chunk.js",
-  "static/js/1.d265ee99.chunk.js.map": "/static/js/1.d265ee99.chunk.js.map",
+  "main.js": "/static/js/main.548cffba.chunk.js",
+  "main.js.map": "/static/js/main.548cffba.chunk.js.map",
+  "static/js/1.7bbece4a.chunk.js": "/static/js/1.7bbece4a.chunk.js",
+  "static/js/1.7bbece4a.chunk.js.map": "/static/js/1.7bbece4a.chunk.js.map",
   "runtime~main.js": "/static/js/runtime~main.229c360f.js",
   "runtime~main.js.map": "/static/js/runtime~main.229c360f.js.map",
   "static/media/twaweza.png": "/static/media/twaweza.bb78f01e.png",
@@ -27,8 +27,9 @@
   "static/media/black-combined-shape.svg": "/static/media/black-combined-shape.d78e63d8.svg",
   "static/media/bmgf.png": "/static/media/bmgf.c68bf410.png",
   "static/media/icfj.png": "/static/media/icfj.37dfe5cb.png",
+  "static/media/oxpeckers.png": "/static/media/oxpeckers.e632f6fb.png",
   "static/media/hero-image-1.png": "/static/media/hero-image-1.6696e147.png",
   "index.html": "/index.html",
-  "precache-manifest.a6774a3be6799fe8820060d69bcf58dc.js": "/precache-manifest.a6774a3be6799fe8820060d69bcf58dc.js",
+  "precache-manifest.f5ee05be0d49891ba279993061ce0a79.js": "/precache-manifest.f5ee05be0d49891ba279993061ce0a79.js",
   "service-worker.js": "/service-worker.js"
 }
