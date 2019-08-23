@@ -9,6 +9,7 @@ import bmgf from '../assets/images/logos/bmgf.png';
 import cfa from '../assets/images/logos/codeforafrica.png';
 import pulitzercenter from '../assets/images/logos/pulitzercenter.png';
 import icfj from '../assets/images/logos/icfj.png';
+import oxpeckers from '../assets/images/logos/oxpeckers.png';
 
 const styles = theme => ({
   root: {
@@ -57,6 +58,11 @@ function Partners({ classes }) {
             alt="Pulitzer Center"
             className={classes.img}
           />
+        </A>
+      </Grid>
+      <Grid item className={classes.imageGrid}>
+        <A href="https://oxpeckers.org/">
+          <img src={oxpeckers} alt="Oxpeckers" className={classes.img} />
         </A>
       </Grid>
       <Grid item className={classes.imageGrid}>
