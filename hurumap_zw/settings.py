@@ -93,6 +93,33 @@ HURUMAP['available_release_years'] = {
     'province': [2017]
 }
 
+HURUMAP['showcase_stories'] = [
+    {
+        'title': 'Render to Caesar! Churches in Byo owe council $2.7m',
+        'author': 'Tanaka Mrewa',
+        'brief': 'Churches in Bulawayo owe a combined $2.7 million in unpaid bills to the' \
+            ' Bulawayo City Council (BCC), with council officials urging the churches to be faithful in paying their debt.',
+        'link': 'https://www.cite.org.zw/render-to-caesar-churches-in-byo-owe-council-2-7m/',
+        'img': STATIC_URL + 'img/showcase/showcase1.jpg'
+    },
+    {
+        'title': 'Cowdray Park to get more schools',
+        'author': 'Tanaka Mrewa',
+        'brief': 'The Bulawayo City Council (BCC) is working on a project to build more ' \
+            'schools in Cowdray Park, as the available schools cannot meet the demand.',
+        'link': 'https://www.cite.org.zw/cowdray-park-to-get-more-schools//',
+        'img': STATIC_URL + 'img/showcase/showcase2.png'
+    },
+    {
+        'title': 'Bulawayo top 10 best performing primary schools',
+        'author': 'Lungile Ngwenya',
+        'brief': 'The province recorded an overall 86.9% pass rate double the national ' \
+            'pass rate which is 44.73%. 54 out of 124 schools on Bulawayo attained at least 80%.',
+        'link': 'https://www.cite.org.zw/bulawayo-top-10-best-performing-primary-schools/',
+        'img': STATIC_URL + 'img/showcase/showcase3.png'
+    }
+]
+
 LOGGING['loggers']['hurumap_zw'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
 
 # Making sure they are the same
