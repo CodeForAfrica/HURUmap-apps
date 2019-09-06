@@ -20,10 +20,6 @@ DATABASES['default']['ATOMIC_REQUESTS'] = True
 # install this app before HURUmap
 INSTALLED_APPS = ['hurumap_ug'] + INSTALLED_APPS
 
-MIDDLEWARE_CLASSES = (
-                         'whitenoise.middleware.WhiteNoiseMiddleware',
-                     ) + MIDDLEWARE_CLASSES
-
 # Localise this instance of HURUmap
 HURUMAP['name'] = 'HURUmap Uganda'
 HURUMAP['url'] = 'https://uganda.hurumap.org'
