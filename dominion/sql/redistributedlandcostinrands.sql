@@ -27,7 +27,8 @@ CREATE TABLE public.redistributedlandcostinrands (
     geo_level character varying(50) NOT NULL,
     geo_code character varying(10) NOT NULL,
     geo_version character varying(100) DEFAULT ''::character varying NOT NULL,
-    redistributedlandcostinrands numeric NOT NULL
+    redistributedland character varying(100) NOT NULL,
+    total numeric
 );
 
 
@@ -35,17 +36,17 @@ CREATE TABLE public.redistributedlandcostinrands (
 -- Data for Name: redistributedlandcostinrands; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.redistributedlandcostinrands (geo_level, geo_code, geo_version, redistributedlandcostinrands) FROM stdin;
-level1	ZA_1_003	2009	21044000
-level1	ZA_1_002	2009	97579394
-level1	ZA_1_009	2009	23040935
-level1	ZA_1_001	2009	134494665
-level1	ZA_1_005	2009	15115000
-level1	ZA_1_004	2009	65116000
-level1	ZA_1_006	2009	79750000
-level1	ZA_1_007	2009	61115000.01
-level1	ZA_1_008	2009	14800000
-country	ZA	2009	512054994
+COPY public.redistributedlandcostinrands (geo_level, geo_code, geo_version, redistributedland, total) FROM stdin;
+level1	ZA_1_003	2009	cost in rands	21044000
+level1	ZA_1_002	2009	cost in rands	97579394
+level1	ZA_1_009	2009	cost in rands	23040935
+level1	ZA_1_001	2009	cost in rands	134494665
+level1	ZA_1_005	2009	cost in rands	15115000
+level1	ZA_1_004	2009	cost in rands	65116000
+level1	ZA_1_006	2009	cost in rands	79750000
+level1	ZA_1_007	2009	cost in rands	61115000.01
+level1	ZA_1_008	2009	cost in rands	14800000
+country	ZA	2009	cost in rands	512054994
 \.
 
 
@@ -54,10 +55,9 @@ country	ZA	2009	512054994
 --
 
 ALTER TABLE ONLY public.redistributedlandcostinrands
-    ADD CONSTRAINT pk_redistributedlandcostinrands PRIMARY KEY (geo_level, geo_code, geo_version, redistributedlandcostinrands);
+    ADD CONSTRAINT pk_redistributedlandcostinrands PRIMARY KEY (geo_level, geo_code, geo_version, redistributedland);
 
 
 --
 -- PostgreSQL database dump complete
 --
-

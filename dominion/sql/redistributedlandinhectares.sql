@@ -37,26 +37,6 @@ CREATE TABLE public.redistributedlandinhectares (
 --
 
 COPY public.redistributedlandinhectares (geo_level, geo_code, geo_version, redistributedland, total) FROM stdin;
-level1	ZA_1_003	2009	number of hectares	1314.69
-level1	ZA_1_002	2009	number of hectares	11735.83
-level1	ZA_1_009	2009	number of hectares	1256.14
-level1	ZA_1_001	2009	number of hectares	13770.03
-level1	ZA_1_005	2009	number of hectares	7337.09
-level1	ZA_1_004	2009	number of hectares	6704.34
-level1	ZA_1_006	2009	number of hectares	34037.19
-level1	ZA_1_007	2009	number of hectares	15017.18
-level1	ZA_1_008	2009	number of hectares	859.87
-country	ZA	2009	number of hectares	92032.35
-level1	ZA_1_003	2009	cost in rands	21044000
-level1	ZA_1_002	2009	cost in rands	97579394
-level1	ZA_1_009	2009	cost in rands	23040935
-level1	ZA_1_001	2009	cost in rands	134494665
-level1	ZA_1_005	2009	cost in rands	15115000
-level1	ZA_1_004	2009	cost in rands	65116000
-level1	ZA_1_006	2009	cost in rands	79750000
-level1	ZA_1_007	2009	cost in rands	61115000.01
-level1	ZA_1_008	2009	cost in rands	14800000
-country	ZA	2009	cost in rands	512054994
 level1	ZA_1_003	2009	average cost per hectares	16006.77
 level1	ZA_1_002	2009	average cost per hectares	8314.66
 level1	ZA_1_009	2009	average cost per hectares	18342.58
