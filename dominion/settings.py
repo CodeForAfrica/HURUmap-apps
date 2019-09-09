@@ -14,12 +14,6 @@ INSTALLED_APPS = ['dominion'] + INSTALLED_APPS
 
 ROOT_URLCONF = 'dominion.urls'
 
-MIDDLEWARE_CLASSES = (
-        'corsheaders.middleware.CorsMiddleware',
-        'whitenoise.middleware.WhiteNoiseMiddleware',
-    ) + MIDDLEWARE_CLASSES
-
-
 TEMPLATES[0]['OPTIONS']['context_processors'] = TEMPLATES[0]['OPTIONS'][
                                                     'context_processors'] + [
                                                     'dominion.context_processors.asset_manifest']

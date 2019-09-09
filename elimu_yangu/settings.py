@@ -35,10 +35,20 @@ INSTALLED_APPS = ['elimu_yangu', 'elimu_yangu.careerguide',
 
 ROOT_URLCONF = 'elimu_yangu.urls'
 
-MIDDLEWARE_CLASSES = ('whitenoise.middleware.WhiteNoiseMiddleware',
+# Since we need LocaleMiddleware and it must come before CommonMiddleware,
+# Best to just redeclare all middleware here.
+MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
-    'django.middleware.common.CommonMiddleware',) + MIDDLEWARE_CLASSES
+    'django.middleware.common.CommonMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'wazimap.middleware.RedirectMiddleware',
+]
+
 # Static Files Handler
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 

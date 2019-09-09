@@ -13,11 +13,6 @@ INSTALLED_APPS = ['hurumap_land'] + INSTALLED_APPS
 
 ROOT_URLCONF = 'hurumap_land.urls'
 
-MIDDLEWARE_CLASSES = (
-        'whitenoise.middleware.WhiteNoiseMiddleware',
-    ) + MIDDLEWARE_CLASSES
-
-
 # Static Files Handler
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
