@@ -14,7 +14,7 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET row_security = off;
 
-SET search_path = public, pg_catalog;
+SET search_path = pesayetu, public, pg_catalog;
 
 ALTER TABLE IF EXISTS ONLY pesayetu.expenditure_year DROP CONSTRAINT IF EXISTS pk_expenditure_year;
 DROP TABLE IF EXISTS pesayetu.expenditure_year;
