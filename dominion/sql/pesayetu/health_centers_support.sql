@@ -16,7 +16,7 @@ SET row_security = off;
 
 SET search_path = pesayetu, public, pg_catalog;
 
-ALTER TABLE IF EXISTS ONLY pesayetu.health_centres_support DROP CONSTRAINT IF EXISTS pk_financial_year;
+ALTER TABLE IF EXISTS ONLY pesayetu.health_centres_support DROP CONSTRAINT IF EXISTS pk_health_centres_support;
 DROP TABLE IF EXISTS pesayetu.health_centres_support;
 
 SET default_tablespace = '';
@@ -145,7 +145,7 @@ county	24	2009	2019/2020	12128484
 --
 
 ALTER TABLE ONLY pesayetu.health_centres_support
-    ADD CONSTRAINT pk_financial_year PRIMARY KEY (geo_level, geo_code, geo_version, financial_year);
+    ADD CONSTRAINT pk_health_centres_support PRIMARY KEY (geo_level, geo_code, geo_version, financial_year);
 
 
 --

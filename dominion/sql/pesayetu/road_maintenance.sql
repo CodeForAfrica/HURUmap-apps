@@ -16,7 +16,7 @@ SET row_security = off;
 
 SET search_path = public, pg_catalog;
 
-ALTER TABLE IF EXISTS ONLY pesayetu.road_maintenance DROP CONSTRAINT IF EXISTS pk_financial_year;
+ALTER TABLE IF EXISTS ONLY pesayetu.road_maintenance DROP CONSTRAINT IF EXISTS pk_road_maintenance;
 DROP TABLE IF EXISTS pesayetu.road_maintenance;
 
 SET default_tablespace = '';
@@ -241,7 +241,7 @@ county	24	2009	2019/2020	141948188
 --
 
 ALTER TABLE ONLY pesayetu.road_maintenance
-    ADD CONSTRAINT pk_financial_year PRIMARY KEY (geo_level, geo_code, geo_version, financial_year);
+    ADD CONSTRAINT pk_road_maintenance PRIMARY KEY (geo_level, geo_code, geo_version, financial_year);
 
 
 --
