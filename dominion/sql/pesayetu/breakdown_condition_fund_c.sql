@@ -16,18 +16,18 @@ SET row_security = off;
 
 SET search_path = pesayetu, public, pg_catalog;
 
-ALTER TABLE IF EXISTS ONLY pesayetu.breakdwon_condition_fund_dp DROP CONSTRAINT IF EXISTS pk_breakdwon_condition_fund_dp;
-DROP TABLE IF EXISTS pesayetu.breakdwon_condition_fund_dp;
+ALTER TABLE IF EXISTS ONLY pesayetu.breakdwon_condition_fund_c DROP CONSTRAINT IF EXISTS pk_breakdwon_condition_fund_c;
+DROP TABLE IF EXISTS pesayetu.breakdwon_condition_fund_c;
 
 SET default_tablespace = '';
 
 SET default_with_oids = false;
 
 --
--- Name: breakdwon_condition_fund_dp; Type: TABLE; Schema: public; Owner: -
+-- Name: breakdwon_condition_fund_c; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE pesayetu.breakdwon_condition_fund_dp (
+CREATE TABLE pesayetu.breakdwon_condition_fund_c (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     geo_version character varying(100) DEFAULT ''::character varying NOT NULL,
@@ -37,10 +37,10 @@ CREATE TABLE pesayetu.breakdwon_condition_fund_dp (
 );
 
 --
--- Data for Name: breakdwon_condition_fund_dp; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: breakdwon_condition_fund_c; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY pesayetu.breakdwon_condition_fund_dp (geo_level, geo_code, geo_version, project_type, year, total) FROM stdin;
+COPY pesayetu.breakdwon_condition_fund_c (geo_level, geo_code, geo_version, project_type, year, total) FROM stdin;
 county	1		Grant to supplement financing for county health facilities	2014/2015	3920000
 county	5		Grant to supplement financing for county health facilities	2014/2015	5260000
 county	11		Grant to supplement financing for county health facilities	2014/2015	5590000
@@ -241,11 +241,11 @@ country	KE		Total Conditional Additional Allocation	2013/2014	20000000000
 
 
 --
--- Name: breakdwon_condition_fund_dp pk_breakdwon_condition_fund_dp; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: breakdwon_condition_fund_c pk_breakdwon_condition_fund_c; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY pesayetu.breakdwon_condition_fund_dp
-    ADD CONSTRAINT pk_breakdwon_condition_fund_dp PRIMARY KEY (geo_level, geo_code, geo_version, project_type, year);
+ALTER TABLE ONLY pesayetu.breakdwon_condition_fund_c
+    ADD CONSTRAINT pk_breakdwon_condition_fund_c PRIMARY KEY (geo_level, geo_code, geo_version, project_type, year);
 
 
 --
