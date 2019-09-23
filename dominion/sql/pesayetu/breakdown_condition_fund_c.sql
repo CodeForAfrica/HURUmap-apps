@@ -232,10 +232,7 @@ county	12		Total Conditional Additional Allocation	2014/2015	1584004384
 county	43		Total Conditional Additional Allocation	2013/2014	1604785613
 county	47		Total Conditional Additional Allocation	2014/2015	1605339854
 country	KE		Loans and Grants to supplement financing for county functions	2014/2015	13165023499
-country	KE		Loans and Grants to supplement financing for county functions	2014/2015	13165023499
 country	KE		Total Conditional Additional Allocation	2014/2015	13898673499
-country	KE		Total Conditional Additional Allocation	2014/2015	13898673499
-country	KE		Total Conditional Additional Allocation	2013/2014	20000000000
 country	KE		Total Conditional Additional Allocation	2013/2014	20000000000
 \.
 

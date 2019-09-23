@@ -1057,7 +1057,6 @@ county	23		Total Conditional Additional Allocation	2019/2020	470612414
 county	39		Total Conditional Additional Allocation	2019/2020	471132654
 county	15		Total Conditional Additional Allocation	2019/2020	477658441
 country	KE		Supplement for construction of county headquarters	2019/2020	485152184
-country	KE		Supplement for construction of county headquarters	2019/2020	485152184
 county	3		Total Conditional Additional Allocation	2015/2016	486835382
 county	15		Total Conditional Additional Allocation	2017/2018	495457373
 county	39		Total Conditional Additional Allocation	2015/2016	495516573
@@ -1079,7 +1078,6 @@ county	7		Total Conditional Additional Allocation	2016/2017	586657085
 county	47		Total Conditional Additional Allocation	2016/2017	590993985
 county	23		Total Conditional Additional Allocation	2017/2018	594217857
 county	14		Total Conditional Additional Allocation	2019/2020	599466129
-country	KE		Supplement for construction of county headquarters	2017/2018	605000000
 country	KE		Supplement for construction of county headquarters	2017/2018	605000000
 county	14		Total Conditional Additional Allocation	2017/2018	611940103
 county	19		Total Conditional Additional Allocation	2016/2017	641510955

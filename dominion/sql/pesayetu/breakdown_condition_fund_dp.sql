@@ -1263,7 +1263,6 @@ county	17		Road Maintenance Fuel Levy	2018/2019	1362616001
 county	16		Total Conditional Additional Allocation	2018/2019	1371260080
 county	16		Total Conditional Additional Allocation	2019/2020	1379849081
 country	KE		IDA (World Bank) Kenya Devolution Support Project (KDSP) Level 1 grant	2019/2020	1410000000
-country	KE		IDA (World Bank) Kenya Devolution Support Project (KDSP) Level 1 grant	2019/2020	1410000000
 county	32		Total Conditional Additional Allocation	2018/2019	1474865158
 county	3		Total Conditional Additional Allocation	2019/2020	1500516666
 county	1		IDA (World Bank) Water & Sanitation Development Project (WSDP)	2019/2020	1550000000
