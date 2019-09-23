@@ -697,8 +697,6 @@ county	2		Road Maintenance Fuel Levy	2018/2019	50000000
 county	2		IDA (World Bank) Kenya Urban Support Project (KUSP) Urban Development Grant (UDG)	2019/2020	50000000
 county	31		Road Maintenance Fuel Levy	2018/2019	50000000
 county	31		IDA (World Bank) Kenya Urban Support Project (KUSP) Urban Development Grant (UDG)	2019/2020	50000000
-county	5		Grants to Level5 Hospitals	2018/2019	50000000
-county	5		Road Maintenance Fuel Levy	2018/2019	50000000
 county	5		IDA (World Bank) Kenya Urban Support Project (KUSP) Urban Development Grant (UDG)	2019/2020	50000000
 county	17		World Bank Loan for National Agricultural and Rural Inclusive Growth Project	2017/2018	50000000
 county	10		Road Maintenance Fuel Levy	2018/2019	50000000
