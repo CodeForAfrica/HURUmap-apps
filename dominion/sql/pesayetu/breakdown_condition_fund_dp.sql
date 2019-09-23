@@ -1118,7 +1118,6 @@ country	KE		German Development Bank (KfW) Drought Resilience Programme in Northe
 county	39		IDA (World Bank) National Agricultural and Rural Inclusive Growth Project (NARIGP)	2019/2020	350000000
 county	14		IDA (World Bank) National Agricultural and Rural Inclusive Growth Project (NARIGP)	2019/2020	350000000
 county	43		IDA (World Bank) National Agricultural and Rural Inclusive Growth Project (NARIGP)	2019/2020	350000000
-country	KE		German Development Bank (KfW) Drought Resilience Programme in Northern Kenya (DRPNK)	2019/2020	350000000
 county	3		IDA (World Bank) National Agricultural and Rural Inclusive Growth Project (NARIGP)	2019/2020	350000000
 county	20		IDA (World Bank) National Agricultural and Rural Inclusive Growth Project (NARIGP)	2019/2020	350000000
 county	45		IDA (World Bank) National Agricultural and Rural Inclusive Growth Project (NARIGP)	2019/2020	350000000
@@ -1147,13 +1146,10 @@ county	37		IDA (World Bank) Kenya Urban Support Project (KUSP) Urban Development
 county	4		Total Conditional Additional Allocation	2019/2020	392033835
 county	3		Total Conditional Additional Allocation	2017/2018	393492525
 country	KE		IDA (World Bank) Kenya Urban Support Project (KUSP) Urban Institutional Grants (UIG)	2019/2020	396000000
-country	KE		IDA (World Bank) Kenya Urban Support Project (KUSP) Urban Institutional Grants (UIG)	2019/2020	396000000
 county	7		IDA (World Bank) Water & Sanitation Development Project (WSDP)	2019/2020	400000000
 county	6		IDA (World Bank) Water & Sanitation Development Project (WSDP)	2019/2020	400000000
 county	11		Total Conditional Additional Allocation	2019/2020	403048854
 county	40		Total Conditional Additional Allocation	2019/2020	419041031
-country	KE		DANIDA grant to supplement financing for county health facilities	2015/2016	422355000
-country	KE		DANIDA grant to supplement financing for county health facilities	2016/2017	422355000
 country	KE		DANIDA grant to supplement financing for county health facilities	2015/2016	422355000
 country	KE		DANIDA grant to supplement financing for county health facilities	2016/2017	422355000
 county	14		Total Conditional Additional Allocation	2018/2019	423634353
@@ -1170,8 +1166,6 @@ county	18		Total Conditional Additional Allocation	2018/2019	466332856
 county	25		Total Conditional Additional Allocation	2018/2019	473519323
 county	43		Total Conditional Additional Allocation	2018/2019	479279189
 country	KE		EU Grant (Instruments for Devolution Advice and Support IDEAS)	2019/2020	492698583
-country	KE		EU Grant (Instruments for Devolution Advice and Support IDEAS)	2019/2020	492698583
-country	KE		EU Water Tower Protection and Climate Change Mitigation and Adaptation Programme (WaTER)	2019/2020	495000000
 country	KE		EU Water Tower Protection and Climate Change Mitigation and Adaptation Programme (WaTER)	2019/2020	495000000
 county	36		Total Conditional Additional Allocation	2018/2019	495931469
 county	4		Road Maintenance Fuel Levy	2018/2019	500000001
@@ -1218,7 +1212,6 @@ county	6		Total Conditional Additional Allocation	2019/2020	734315201
 county	26		Total Conditional Additional Allocation	2018/2019	745728311
 county	1		Total Conditional Additional Allocation	2018/2019	749726174
 country	KE		DANIDA grant for Universal Healthcare in Devolved System Program	2017/2018	762979751
-country	KE		DANIDA grant for Universal Healthcare in Devolved System Program	2017/2018	762979751
 county	38		Total Conditional Additional Allocation	2019/2020	769853103
 county	39		Total Conditional Additional Allocation	2018/2019	772708758
 county	42		Road Maintenance Fuel Levy	2018/2019	773573300
@@ -1229,24 +1222,18 @@ county	6		Total Conditional Additional Allocation	2018/2019	820585453
 county	23		Total Conditional Additional Allocation	2019/2020	825467592
 county	37		Total Conditional Additional Allocation	2018/2019	847913637
 country	KE		Sweden Agricultural Sector Development Support Programme (ASDSP) II	2019/2020	849626237
-country	KE		Sweden Agricultural Sector Development Support Programme (ASDSP) II	2019/2020	849626237
 county	2		Total Conditional Additional Allocation	2018/2019	872997000
-country	KE		World Bank Loan to supplement financing of County Health facilities	2017/2018	873407500
 country	KE		World Bank Loan to supplement financing of County Health facilities	2017/2018	873407500
 county	7		Total Conditional Additional Allocation	2019/2020	918389383
 county	39		Total Conditional Additional Allocation	2019/2020	923352734
 county	44		Total Conditional Additional Allocation	2018/2019	982299570
 county	2		Total Conditional Additional Allocation	2019/2020	982716075
 country	KE		EU Grant or instrument for Devolution Advice and Support	2017/2018	985800000
-country	KE		EU Grant or instrument for Devolution Advice and Support	2017/2018	985800000
 country	KE		DANIDA Grant (Universal Healthcare in Devolved System Program)	2019/2020	986583544
-country	KE		DANIDA Grant (Universal Healthcare in Devolved System Program)	2019/2020	986583544
-country	KE		Rehabilitation of Village Polytechnics	2018/2019	1012500000
 country	KE		Rehabilitation of Village Polytechnics	2018/2019	1012500000
 county	16		Road Maintenance Fuel Levy	2018/2019	1018320500
 county	16		IDA (World Bank) Kenya Urban Support Project (KUSP) Urban Development Grant (UDG)	2019/2020	1018320500
 county	27		Total Conditional Additional Allocation	2019/2020	1046492860
-country	KE		World Bank Loan for National Agricultural and Rural Inclusive Growth Project	2017/2018	1050000000
 country	KE		World Bank Loan for National Agricultural and Rural Inclusive Growth Project	2017/2018	1050000000
 county	44		Total Conditional Additional Allocation	2019/2020	1065515013
 county	27		Total Conditional Additional Allocation	2018/2019	1080111632
@@ -1255,8 +1242,6 @@ county	32		Road Maintenance Fuel Levy	2018/2019	1084843300
 county	32		IDA (World Bank) Kenya Urban Support Project (KUSP) Urban Development Grant (UDG)	2019/2020	1084843300
 county	3		Total Conditional Additional Allocation	2018/2019	1130333518
 county	42		Total Conditional Additional Allocation	2018/2019	1260705051
-country	KE		World Bank grant to supplement financing for county health facilities	2015/2016	1302324737
-country	KE		World Bank grant to supplement financing for county health facilities	2016/2017	1302324737
 country	KE		World Bank grant to supplement financing for county health facilities	2015/2016	1302324737
 country	KE		World Bank grant to supplement financing for county health facilities	2016/2017	1302324737
 county	17		Road Maintenance Fuel Levy	2018/2019	1362616001
@@ -1277,50 +1262,31 @@ county	22		Road Maintenance Fuel Levy	2018/2019	1885993000
 county	22		IDA (World Bank) Kenya Urban Support Project (KUSP) Urban Development Grant (UDG)	2019/2020	1885993000
 county	47		Other Loans & Grants	2017/2018	2137641302
 country	KE		Other Loans & Grants	2015/2016	2146000000
-country	KE		Other Loans & Grants	2015/2016	2146000000
-country	KE		KDSP (Level 1 Grant + FY 2016/2017 allocation)	2017/2018	2148000009
 country	KE		KDSP (Level 1 Grant + FY 2016/2017 allocation)	2017/2018	2148000009
 county	22		Total Conditional Additional Allocation	2018/2019	2230951780
 county	47		Total Conditional Additional Allocation	2017/2018	2290502230
 country	KE		Leasing of Medical Equipment	2018/2019	2300000000
-country	KE		Leasing of Medical Equipment	2018/2019	2300000000
 county	22		Total Conditional Additional Allocation	2019/2020	2381409369
 country	KE		World Bank Loan for transforming health systems for Universal Care Project	2017/2018	2750000000
-country	KE		World Bank Loan for transforming health systems for Universal Care Project	2017/2018	2750000000
-country	KE		Supplement for construction of county headquarters from Development Partners	2018/2019	2949138423
 country	KE		Supplement for construction of county headquarters from Development Partners	2018/2019	2949138423
 country	KE		World Bank Transforming Health Systems for Universal Care Project	2019/2020	2994247736
-country	KE		World Bank Transforming Health Systems for Universal Care Project	2019/2020	2994247736
-country	KE		Compensation for User Fee Foregone	2018/2019	3039000001
 country	KE		Compensation for User Fee Foregone	2018/2019	3039000001
 country	KE		IDA (World Bank) Water & Sanitation Development Project (WSDP)	2019/2020	3500000000
-country	KE		IDA (World Bank) Water & Sanitation Development Project (WSDP)	2019/2020	3500000000
-country	KE		Grants to Level5 Hospitals	2018/2019	3636589847
 country	KE		Grants to Level5 Hospitals	2018/2019	3636589847
 country	KE		IDA (World Bank) Kenya Climate Smart Agriculture Project (KCSAP)	2019/2020	3643298670
-country	KE		IDA (World Bank) Kenya Climate Smart Agriculture Project (KCSAP)	2019/2020	3643298670
-country	KE		Total Conditional Additional Allocation	2016/2017	3870679737
 country	KE		Total Conditional Additional Allocation	2016/2017	3870679737
 county	12		Other Loans & Grants	2017/2018	3943731665
 county	12		Total Conditional Additional Allocation	2017/2018	4092379277
 country	KE		IDA (World Bank) Kenya Devolution Support Project (KDSP) Level 2 grant	2019/2020	4890000000
-country	KE		IDA (World Bank) Kenya Devolution Support Project (KDSP) Level 2 grant	2019/2020	4890000000
 county	47		Total Conditional Additional Allocation	2015/2016	6227800000
 country	KE		IDA (World Bank) National Agricultural and Rural Inclusive Growth Project (NARIGP)	2019/2020	7232719940
-country	KE		IDA (World Bank) National Agricultural and Rural Inclusive Growth Project (NARIGP)	2019/2020	7232719940
 country	KE		Other Loans & Grants	2017/2018	7837638872
-country	KE		Other Loans & Grants	2017/2018	7837638872
-country	KE		Total Conditional Additional Allocation	2015/2016	10671178204
 country	KE		Total Conditional Additional Allocation	2015/2016	10671178204
 country	KE		Road Maintenance Fuel Levy	2018/2019	11464702500
 country	KE		IDA (World Bank) Kenya Urban Support Project (KUSP) Urban Development Grant (UDG)	2019/2020	11464702500
 country	KE		Road Maintenance Fuel Levy	2018/2019	11464702500
-country	KE		IDA (World Bank) Kenya Urban Support Project (KUSP) Urban Development Grant (UDG)	2019/2020	11464702500
-country	KE		Total Conditional Additional Allocation	2017/2018	16407826139
 country	KE		Total Conditional Additional Allocation	2017/2018	16407826139
 country	KE		Total Conditional Additional Allocation	2018/2019	36981384138
-country	KE		Total Conditional Additional Allocation	2018/2019	36981384138
-country	KE		Total Conditional Additional Allocation	2019/2020	38704877210
 country	KE		Total Conditional Additional Allocation	2019/2020	38704877210
 \.
 

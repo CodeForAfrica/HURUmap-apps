@@ -782,7 +782,6 @@ county	43		Leasing of Medical Equipment	2018/2019	200000000
 county	11		Leasing of Medical Equipment	2018/2019	200000000
 county	34		Leasing of Medical Equipment	2018/2019	200000000
 county	37		Leasing of Medical Equipment	2018/2019	200000000
-country	KE		Special Purpose Grant Supporting Emergency Medical Services	2016/2017	200000000
 county	35		Leasing of Medical Equipment	2018/2019	200000000
 county	22		Leasing of Medical Equipment	2018/2019	200000000
 county	3		Leasing of Medical Equipment	2018/2019	200000000
@@ -1128,10 +1127,6 @@ country	KE		Grant for Compensation for User Fee Foregone (County Health Fund)	20
 country	KE		Grant for Compensation for User Fee Foregone (County Health Fund)	2016/2017	900000000
 country	KE		Grant for Compensation for User Fee Foregone (County Health Fund)	2017/2018	900000000
 country	KE		Compensation for User Fee Foregone	2019/2020	900000000
-country	KE		Grant for Compensation for User Fee Foregone (County Health Fund)	2015/2016	900000000
-country	KE		Grant for Compensation for User Fee Foregone (County Health Fund)	2016/2017	900000000
-country	KE		Grant for Compensation for User Fee Foregone (County Health Fund)	2017/2018	900000000
-country	KE		Compensation for User Fee Foregone	2019/2020	900000000
 county	32		Total Conditional Additional Allocation	2019/2020	904946758
 county	37		Total Conditional Additional Allocation	2016/2017	906172077
 county	32		Total Conditional Additional Allocation	2018/2019	909243228
@@ -1145,47 +1140,25 @@ county	22		Total Conditional Additional Allocation	2019/2020	1028141559
 county	22		Total Conditional Additional Allocation	2018/2019	1087865232
 country	KE		Rehabilitation of Village Polytechnics	2018/2019	2000000000
 country	KE		Rehabilitation of Village Polytechnics	2019/2020	2000000000
-country	KE		Rehabilitation of Village Polytechnics	2018/2019	2000000000
-country	KE		Rehabilitation of Village Polytechnics	2019/2020	2000000000
-country	KE		Road Maintenance Fuel Levy	2015/2016	3300000000
 country	KE		Road Maintenance Fuel Levy	2015/2016	3300000000
 country	KE		Grants to Level5 Hospitals	2015/2016	3600480000
-country	KE		Grants to Level5 Hospitals	2015/2016	3600480000
-country	KE		Grants to Level5 Hospitals	2016/2017	4000000000
 country	KE		Grants to Level5 Hospitals	2016/2017	4000000000
 country	KE		Grant for Free Maternal Healthcare	2016/2017	4121029355
-country	KE		Grant for Free Maternal Healthcare	2016/2017	4121029355
-country	KE		Grants to Level5 Hospitals	2017/2018	4200000000
 country	KE		Grants to Level5 Hospitals	2017/2018	4200000000
 country	KE		Grant for Free Maternal Healthcare	2015/2016	4298000000
-country	KE		Grant for Free Maternal Healthcare	2015/2016	4298000000
-country	KE		Road Maintenance Fuel Levy	2016/2017	4306807629
 country	KE		Road Maintenance Fuel Levy	2016/2017	4306807629
 country	KE		Grants to Level 5 Hospitals	2019/2020	4326000000
-country	KE		Grants to Level 5 Hospitals	2019/2020	4326000000
-country	KE		County Emergency Fund	2015/2016	4400000000
 country	KE		County Emergency Fund	2015/2016	4400000000
 country	KE		Leasing of Medical Equipment	2015/2016	4500000000
 country	KE		Leasing of Medical Equipment	2016/2017	4500000000
-country	KE		Leasing of Medical Equipment	2015/2016	4500000000
-country	KE		Leasing of Medical Equipment	2016/2017	4500000000
-country	KE		Leasing of Medical Equipment	2019/2020	6200000000
 country	KE		Leasing of Medical Equipment	2019/2020	6200000000
 country	KE		Road Maintenance Fuel Levy	2018/2019	8269000000
-country	KE		Road Maintenance Fuel Levy	2018/2019	8269000000
-country	KE		Road Maintenance Fuel Levy	2019/2020	8984062500
 country	KE		Road Maintenance Fuel Levy	2019/2020	8984062500
 country	KE		Leasing of Medical Equipment	2018/2019	9400000000
-country	KE		Leasing of Medical Equipment	2018/2019	9400000000
-country	KE		Total Conditional Additional Allocation	2016/2017	18027836984
 country	KE		Total Conditional Additional Allocation	2016/2017	18027836984
 country	KE		Total Conditional Additional Allocation	2015/2016	20998480000
-country	KE		Total Conditional Additional Allocation	2015/2016	20998480000
-country	KE		Total Conditional Additional Allocation	2019/2020	22895214684
 country	KE		Total Conditional Additional Allocation	2019/2020	22895214684
 country	KE		Total Conditional Additional Allocation	2017/2018	23273192369
-country	KE		Total Conditional Additional Allocation	2017/2018	23273192369
-country	KE		Total Conditional Additional Allocation	2018/2019	25500000000
 country	KE		Total Conditional Additional Allocation	2018/2019	25500000000
 \.
 

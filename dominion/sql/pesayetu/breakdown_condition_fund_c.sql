@@ -217,7 +217,6 @@ county	39		Loans and Grants to supplement financing for county functions	2014/20
 county	42		Total Conditional Additional Allocation	2013/2014	711380679
 county	39		Total Conditional Additional Allocation	2014/2015	711417035
 country	KE		Grant to supplement financing for county health facilities	2014/2015	733650000
-country	KE		Grant to supplement financing for county health facilities	2014/2015	733650000
 county	28		Total Conditional Additional Allocation	2013/2014	744501814
 county	12		Total Conditional Additional Allocation	2013/2014	758421849
 county	22		Total Conditional Additional Allocation	2013/2014	805574808
