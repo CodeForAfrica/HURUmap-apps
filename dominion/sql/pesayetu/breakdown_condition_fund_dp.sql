@@ -1282,7 +1282,6 @@ country	KE		Other Loans & Grants	2017/2018	7837638872
 country	KE		Total Conditional Additional Allocation	2015/2016	10671178204
 country	KE		Road Maintenance Fuel Levy	2018/2019	11464702500
 country	KE		IDA (World Bank) Kenya Urban Support Project (KUSP) Urban Development Grant (UDG)	2019/2020	11464702500
-country	KE		Road Maintenance Fuel Levy	2018/2019	11464702500
 country	KE		Total Conditional Additional Allocation	2017/2018	16407826139
 country	KE		Total Conditional Additional Allocation	2018/2019	36981384138
 country	KE		Total Conditional Additional Allocation	2019/2020	38704877210
