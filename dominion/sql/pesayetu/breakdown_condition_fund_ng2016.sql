@@ -227,7 +227,6 @@ county	3	2009	Grant for Free Maternal Healthcare	2016/2017	181669778
 county	39	2009	Grant for Free Maternal Healthcare	2016/2017	189574801
 county	47	2009	Grant for Free Maternal Healthcare	2016/2017	199899133
 country	KE	2009	Special Purpose Grant Supporting Emergency Medical Services	2016/2017	200000000
-country	KE	2009	Special Purpose Grant Supporting Emergency Medical Services	2016/2017	200000000
 county	32	2009	Grant for Free Maternal Healthcare	2016/2017	215283613
 county	47	2009	Road Maintenance Fuel Levy	2016/2017	215471089
 county	37	2009	Grant for Free Maternal Healthcare	2016/2017	217184083
@@ -245,14 +244,9 @@ county	45	2009	Grants to Level5 Hospitals	2016/2017	397687861
 county	37	2009	Grants to Level5 Hospitals	2016/2017	406936416
 county	2	2009	Road Maintenance Fuel Levy	2016/2017	849790624
 country	KE	2009	Grant for Compensation for User Fee Foregone (County Health Fund)	2016/2017	900000000
-country	KE	2009	Grant for Compensation for User Fee Foregone (County Health Fund)	2016/2017	900000000
-country	KE	2009	Grants to Level5 Hospitals	2016/2017	4000000000
 country	KE	2009	Grants to Level5 Hospitals	2016/2017	4000000000
 country	KE	2009	Grant for Free Maternal Healthcare	2016/2017	4121029355
-country	KE	2009	Grant for Free Maternal Healthcare	2016/2017	4121029355
 country	KE	2009	Road Maintenance Fuel Levy	2016/2017	4306807629
-country	KE	2009	Road Maintenance Fuel Levy	2016/2017	4306807629
-country	KE	2009	Leasing of Medical Equipment	2016/2017	4500000000
 country	KE	2009	Leasing of Medical Equipment	2016/2017	4500000000
 \.
 

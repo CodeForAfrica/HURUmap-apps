@@ -288,16 +288,10 @@ county	19	2009	Grants to Level5 Hospitals	2015/2016	368620571
 county	32	2009	Grants to Level5 Hospitals	2015/2016	377193143
 county	1	2009	Grants to Level5 Hospitals	2015/2016	402910857
 country	KE	2009	Grant for Compensation for User Fee Foregone (County Health Fund)	2015/2016	900000000
-country	KE	2009	Grant for Compensation for User Fee Foregone (County Health Fund)	2015/2016	900000000
-country	KE	2009	Road Maintenance Fuel Levy	2015/2016	3300000000
 country	KE	2009	Road Maintenance Fuel Levy	2015/2016	3300000000
 country	KE	2009	Grants to Level5 Hospitals	2015/2016	3600480000
-country	KE	2009	Grants to Level5 Hospitals	2015/2016	3600480000
-country	KE	2009	Grant for Free Maternal Healthcare	2015/2016	4298000000
 country	KE	2009	Grant for Free Maternal Healthcare	2015/2016	4298000000
 country	KE	2009	County Emergency Fund	2015/2016	4400000000
-country	KE	2009	County Emergency Fund	2015/2016	4400000000
-country	KE	2009	Leasing of Medical Equipment	2015/2016	4500000000
 country	KE	2009	Leasing of Medical Equipment	2015/2016	4500000000
 \.
 

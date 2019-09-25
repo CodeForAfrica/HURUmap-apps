@@ -228,84 +228,29 @@ county	8	2009	Road Maintenance Fuel Levy	2019/2020	242569688
 county	15	2009	Road Maintenance Fuel Levy	2019/2020	250655344
 county	39	2009	Road Maintenance Fuel Levy	2019/2020	252452156
 county	22	2009	Road Maintenance Fuel Levy	2019/2020	267725063
-county	28	2009	Total Conditional Additional Allocation	2019/2020	280537673
-county	25	2009	Total Conditional Additional Allocation	2019/2020	283801082
 county	9	2009	Road Maintenance Fuel Levy	2019/2020	290185219
-county	31	2009	Total Conditional Additional Allocation	2019/2020	292381024
 county	37	2009	Road Maintenance Fuel Levy	2019/2020	295575656
 county	3	2009	Road Maintenance Fuel Levy	2019/2020	296474063
 county	32	2009	Road Maintenance Fuel Levy	2019/2020	297372469
-county	20	2009	Total Conditional Additional Allocation	2019/2020	298087199
 county	23	2009	Road Maintenance Fuel Levy	2019/2020	299169281
 county	14	2009	Grants to Level 5 Hospitals	2019/2020	301040462
-county	24	2009	Total Conditional Additional Allocation	2019/2020	303304863
-county	41	2009	Total Conditional Additional Allocation	2019/2020	308325869
-county	4	2009	Total Conditional Additional Allocation	2019/2020	313235934
-county	30	2009	Total Conditional Additional Allocation	2019/2020	314622598
-county	35	2009	Total Conditional Additional Allocation	2019/2020	332126043
-county	29	2009	Total Conditional Additional Allocation	2019/2020	334625211
-county	38	2009	Total Conditional Additional Allocation	2019/2020	344381111
 county	7	2009	Grants to Level 5 Hospitals	2019/2020	344739884
-county	10	2009	Total Conditional Additional Allocation	2019/2020	346375843
-county	46	2009	Total Conditional Additional Allocation	2019/2020	348716163
-county	36	2009	Total Conditional Additional Allocation	2019/2020	352339235
-county	6	2009	Total Conditional Additional Allocation	2019/2020	354796343
-county	34	2009	Total Conditional Additional Allocation	2019/2020	366740025
 county	42	2009	Grants to Level 5 Hospitals	2019/2020	369017341
-county	5	2009	Total Conditional Additional Allocation	2019/2020	370333538
 county	12	2009	Grants to Level 5 Hospitals	2019/2020	373872832
 county	32	2009	Grants to Level 5 Hospitals	2019/2020	373872832
-county	44	2009	Total Conditional Additional Allocation	2019/2020	375863013
-county	26	2009	Total Conditional Additional Allocation	2019/2020	377918043
-county	43	2009	Total Conditional Additional Allocation	2019/2020	380624069
-county	40	2009	Total Conditional Additional Allocation	2019/2020	382879464
 county	16	2009	Grants to Level 5 Hospitals	2019/2020	383583815
-county	11	2009	Total Conditional Additional Allocation	2019/2020	387607090
 county	1	2009	Grants to Level 5 Hospitals	2019/2020	388439306
-county	27	2009	Total Conditional Additional Allocation	2019/2020	389997506
-county	33	2009	Total Conditional Additional Allocation	2019/2020	400193676
 county	19	2009	Grants to Level 5 Hospitals	2019/2020	407861272
-county	8	2009	Total Conditional Additional Allocation	2019/2020	409172876
-county	21	2009	Total Conditional Additional Allocation	2019/2020	414104727
 county	45	2009	Grants to Level 5 Hospitals	2019/2020	417572254
-county	17	2009	Total Conditional Additional Allocation	2019/2020	421911014
 county	37	2009	Grants to Level 5 Hospitals	2019/2020	427283237
-county	2	2009	Total Conditional Additional Allocation	2019/2020	427925722
-county	18	2009	Total Conditional Additional Allocation	2019/2020	441988676
-county	13	2009	Total Conditional Additional Allocation	2019/2020	446030885
 county	47	2009	Road Maintenance Fuel Levy	2019/2020	451898344
-county	9	2009	Total Conditional Additional Allocation	2019/2020	469688330
-county	23	2009	Total Conditional Additional Allocation	2019/2020	470612414
-county	39	2009	Total Conditional Additional Allocation	2019/2020	471132654
-county	15	2009	Total Conditional Additional Allocation	2019/2020	477658441
 country	KE	2009	Supplement for construction of county headquarters	2019/2020	485152184
-country	KE	2009	Supplement for construction of county headquarters	2019/2020	485152184
-county	3	2009	Total Conditional Additional Allocation	2019/2020	513222118
 county	22	2009	Grants to Level 5 Hospitals	2019/2020	538716763
-county	14	2009	Total Conditional Additional Allocation	2019/2020	599466129
-county	47	2009	Total Conditional Additional Allocation	2019/2020	686234787
-county	7	2009	Total Conditional Additional Allocation	2019/2020	709693899
-county	42	2009	Total Conditional Additional Allocation	2019/2020	757960772
-county	19	2009	Total Conditional Additional Allocation	2019/2020	762248311
-county	1	2009	Total Conditional Additional Allocation	2019/2020	769558026
-county	16	2009	Total Conditional Additional Allocation	2019/2020	810830576
-county	12	2009	Total Conditional Additional Allocation	2019/2020	822199639
-county	45	2009	Total Conditional Additional Allocation	2019/2020	871187381
 country	KE	2009	Compensation for User Fee Foregone	2019/2020	900000000
-country	KE	2009	Compensation for User Fee Foregone	2019/2020	900000000
-county	32	2009	Total Conditional Additional Allocation	2019/2020	904946758
-county	37	2009	Total Conditional Additional Allocation	2019/2020	969486374
-county	22	2009	Total Conditional Additional Allocation	2019/2020	1028141559
-country	KE	2009	Rehabilitation of Village Polytechnics	2019/2020	2000000000
 country	KE	2009	Rehabilitation of Village Polytechnics	2019/2020	2000000000
 country	KE	2009	Grants to Level 5 Hospitals	2019/2020	4326000000
-country	KE	2009	Grants to Level 5 Hospitals	2019/2020	4326000000
-country	KE	2009	Leasing of Medical Equipment	2019/2020	6200000000
 country	KE	2009	Leasing of Medical Equipment	2019/2020	6200000000
 country	KE	2009	Road Maintenance Fuel Levy	2019/2020	8984062500
-country	KE	2009	Road Maintenance Fuel Levy	2019/2020	8984062500
-country	KE	2009	Total Conditional Additional Allocation	2019/2020	22895214684
-country	KE	2009	Total Conditional Additional Allocation	2019/2020	22895214684
 \.
 
 

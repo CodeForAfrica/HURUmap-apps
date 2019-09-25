@@ -285,20 +285,13 @@ county	8	2009	World Bank Loan for transforming health systems for Universal Care
 county	10	2009	DANIDA grant for Universal Healthcare in Devolved System Program	2017/2018	149513995
 county	22	2009	KDSP (Level 1 Grant + FY 2016/2017 allocation)	2017/2018	561591351
 country	KE	2009	DANIDA grant for Universal Healthcare in Devolved System Program	2017/2018	762979751
-country	KE	2009	DANIDA grant for Universal Healthcare in Devolved System Program	2017/2018	762979751
-country	KE	2009	World Bank Loan to supplement financing of County Health facilities	2017/2018	873407500
 country	KE	2009	World Bank Loan to supplement financing of County Health facilities	2017/2018	873407500
 country	KE	2009	EU Grant or instrument for Devolution Advice and Support	2017/2018	985800000
-country	KE	2009	EU Grant or instrument for Devolution Advice and Support	2017/2018	985800000
-country	KE	2009	World Bank Loan for National Agricultural and Rural Inclusive Growth Project	2017/2018	1050000000
 country	KE	2009	World Bank Loan for National Agricultural and Rural Inclusive Growth Project	2017/2018	1050000000
 county	47	2009	Other Loans & Grants	2017/2018	2137641302
 country	KE	2009	KDSP (Level 1 Grant + FY 2016/2017 allocation)	2017/2018	2148000009
-country	KE	2009	KDSP (Level 1 Grant + FY 2016/2017 allocation)	2017/2018	2148000009
-country	KE	2009	World Bank Loan for transforming health systems for Universal Care Project	2017/2018	2750000000
 country	KE	2009	World Bank Loan for transforming health systems for Universal Care Project	2017/2018	2750000000
 county	12	2009	Other Loans & Grants	2017/2018	3943731665
-country	KE	2009	Other Loans & Grants	2017/2018	7837638872
 country	KE	2009	Other Loans & Grants	2017/2018	7837638872
 \.
 

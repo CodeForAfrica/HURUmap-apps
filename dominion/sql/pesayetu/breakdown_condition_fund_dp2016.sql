@@ -110,8 +110,6 @@ county	3	2009	World Bank grant to supplement financing for county health facilit
 county	15	2009	World Bank grant to supplement financing for county health facilities	2016/2017	131525244
 county	44	2009	World Bank grant to supplement financing for county health facilities	2016/2017	138220725
 country	KE	2009	DANIDA grant to supplement financing for county health facilities	2016/2017	422355000
-country	KE	2009	DANIDA grant to supplement financing for county health facilities	2016/2017	422355000
-country	KE	2009	World Bank grant to supplement financing for county health facilities	2016/2017	1302324737
 country	KE	2009	World Bank grant to supplement financing for county health facilities	2016/2017	1302324737
 \.
 

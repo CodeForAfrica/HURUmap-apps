@@ -66,7 +66,6 @@ county	10	2009	Compensation for User Fee Foregone	2018/2019	150000000
 county	4	2009	Compensation for User Fee Foregone	2018/2019	150000000
 county	8	2009	Compensation for User Fee Foregone	2018/2019	150000000
 country	KE	2009	Compensation for User Fee Foregone	2018/2019	3039000001
-country	KE	2009	Compensation for User Fee Foregone	2018/2019	3039000001
 county	28	2009	Grants to Level5 Hospitals	2018/2019	50000000
 county	14	2009	Grants to Level5 Hospitals	2018/2019	50000000
 county	22	2009	Grants to Level5 Hospitals	2018/2019	50000000
@@ -114,7 +113,6 @@ county	26	2009	Grants to Level5 Hospitals	2018/2019	100000000
 county	23	2009	Grants to Level5 Hospitals	2018/2019	100000000
 county	8	2009	Grants to Level5 Hospitals	2018/2019	100000000
 county	24	2009	Grants to Level5 Hospitals	2018/2019	100000000
-country	KE	2009	Grants to Level5 Hospitals	2018/2019	3636589847
 country	KE	2009	Grants to Level5 Hospitals	2018/2019	3636589847
 county	5	2009	Leasing of Medical Equipment	2018/2019	33793559
 county	13	2009	Leasing of Medical Equipment	2018/2019	38536081
@@ -164,7 +162,6 @@ county	37	2009	Leasing of Medical Equipment	2018/2019	63508831
 county	23	2009	Leasing of Medical Equipment	2018/2019	65446016
 county	47	2009	Leasing of Medical Equipment	2018/2019	83424144
 country	KE	2009	Leasing of Medical Equipment	2018/2019	2300000000
-country	KE	2009	Leasing of Medical Equipment	2018/2019	2300000000
 county	5	2009	Rehabilitation of Village Polytechnics	2018/2019	8302500
 county	28	2009	Rehabilitation of Village Polytechnics	2018/2019	12150000
 county	13	2009	Rehabilitation of Village Polytechnics	2018/2019	12352500
@@ -213,7 +210,6 @@ county	3	2009	Rehabilitation of Village Polytechnics	2018/2019	33361875
 county	23	2009	Rehabilitation of Village Polytechnics	2018/2019	33766875
 county	47	2009	Rehabilitation of Village Polytechnics	2018/2019	51637500
 country	KE	2009	Rehabilitation of Village Polytechnics	2018/2019	1012500000
-country	KE	2009	Rehabilitation of Village Polytechnics	2018/2019	1012500000
 county	2	2009	Road Maintenance Fuel Levy	2018/2019	50000000
 county	31	2009	Road Maintenance Fuel Levy	2018/2019	50000000
 county	5	2009	Road Maintenance Fuel Levy	2018/2019	50000000
@@ -260,7 +256,6 @@ county	17	2009	Road Maintenance Fuel Levy	2018/2019	1362616001
 county	9	2009	Road Maintenance Fuel Levy	2018/2019	1758195001
 county	22	2009	Road Maintenance Fuel Levy	2018/2019	1885993000
 country	KE	2009	Road Maintenance Fuel Levy	2018/2019	11464702500
-country	KE	2009	Road Maintenance Fuel Levy	2018/2019	11464702500
 county	33	2009	Supplement for construction of county headquarters from Development Partners	2018/2019	140435
 county	39	2009	Supplement for construction of county headquarters from Development Partners	2018/2019	140435163
 county	14	2009	Supplement for construction of county headquarters from Development Partners	2018/2019	140435163
@@ -282,7 +277,6 @@ county	25	2009	Supplement for construction of county headquarters from Developme
 county	26	2009	Supplement for construction of county headquarters from Development Partners	2018/2019	140435163
 county	23	2009	Supplement for construction of county headquarters from Development Partners	2018/2019	140435163
 county	38	2009	Supplement for construction of county headquarters from Development Partners	2018/2019	140435163
-country	KE	2009	Supplement for construction of county headquarters from Development Partners	2018/2019	2949138423
 country	KE	2009	Supplement for construction of county headquarters from Development Partners	2018/2019	2949138423
 \.
 

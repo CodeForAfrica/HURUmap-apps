@@ -105,10 +105,7 @@ county	35	2009	Grants to Level5 Hospitals	2017/2018	412716763
 county	45	2009	Grants to Level5 Hospitals	2017/2018	417572254
 county	37	2009	Grants to Level5 Hospitals	2017/2018	427283237
 country	KE	2009	Supplement for construction of county headquarters	2017/2018	605000000
-country	KE	2009	Supplement for construction of county headquarters	2017/2018	605000000
 country	KE	2009	Grant for Compensation for User Fee Foregone (County Health Fund)	2017/2018	900000000
-country	KE	2009	Grant for Compensation for User Fee Foregone (County Health Fund)	2017/2018	900000000
-country	KE	2009	Grants to Level5 Hospitals	2017/2018	4200000000
 country	KE	2009	Grants to Level5 Hospitals	2017/2018	4200000000
 \.
 

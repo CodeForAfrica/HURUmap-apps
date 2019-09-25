@@ -183,10 +183,7 @@ county	23	2009	Road Maintenance Fuel Levy	2018/2019	283569986
 county	3	2009	Road Maintenance Fuel Levy	2018/2019	285223455
 county	47	2009	Road Maintenance Fuel Levy	2018/2019	415847530
 country	KE	2009	Rehabilitation of Village Polytechnics	2018/2019	2000000000
-country	KE	2009	Rehabilitation of Village Polytechnics	2018/2019	2000000000
 country	KE	2009	Road Maintenance Fuel Levy	2018/2019	8269000000
-country	KE	2009	Road Maintenance Fuel Levy	2018/2019	8269000000
-country	KE	2009	Leasing of Medical Equipment	2018/2019	9400000000
 country	KE	2009	Leasing of Medical Equipment	2018/2019	9400000000
 \.
 

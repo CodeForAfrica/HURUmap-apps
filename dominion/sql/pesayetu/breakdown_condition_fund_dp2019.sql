@@ -372,7 +372,6 @@ county	3	2009	IDA (World Bank) Kenya Urban Support Project (KUSP) Urban Developm
 county	22	2009	IDA (World Bank) National Agricultural and Rural Inclusive Growth Project (NARIGP)	2019/2020	331195210
 county	29	2009	IDA (World Bank) National Agricultural and Rural Inclusive Growth Project (NARIGP)	2019/2020	343929300
 country	KE	2009	German Development Bank (KfW) Drought Resilience Programme in Northern Kenya (DRPNK)	2019/2020	350000000
-country	KE	2009	German Development Bank (KfW) Drought Resilience Programme in Northern Kenya (DRPNK)	2019/2020	350000000
 county	39	2009	IDA (World Bank) National Agricultural and Rural Inclusive Growth Project (NARIGP)	2019/2020	350000000
 county	14	2009	IDA (World Bank) National Agricultural and Rural Inclusive Growth Project (NARIGP)	2019/2020	350000000
 county	43	2009	IDA (World Bank) National Agricultural and Rural Inclusive Growth Project (NARIGP)	2019/2020	350000000
@@ -392,38 +391,26 @@ county	23	2009	IDA (World Bank) National Agricultural and Rural Inclusive Growth
 county	38	2009	IDA (World Bank) National Agricultural and Rural Inclusive Growth Project (NARIGP)	2019/2020	350000000
 county	37	2009	IDA (World Bank) Kenya Urban Support Project (KUSP) Urban Development Grant (UDG)	2019/2020	389118800
 country	KE	2009	IDA (World Bank) Kenya Urban Support Project (KUSP) Urban Institutional Grants (UIG)	2019/2020	396000000
-country	KE	2009	IDA (World Bank) Kenya Urban Support Project (KUSP) Urban Institutional Grants (UIG)	2019/2020	396000000
 county	7	2009	IDA (World Bank) Water & Sanitation Development Project (WSDP)	2019/2020	400000000
 county	6	2009	IDA (World Bank) Water & Sanitation Development Project (WSDP)	2019/2020	400000000
 country	KE	2009	EU Grant (Instruments for Devolution Advice and Support IDEAS)	2019/2020	492698583
-country	KE	2009	EU Grant (Instruments for Devolution Advice and Support IDEAS)	2019/2020	492698583
-country	KE	2009	EU Water Tower Protection and Climate Change Mitigation and Adaptation Programme (WaTER)	2019/2020	495000000
 country	KE	2009	EU Water Tower Protection and Climate Change Mitigation and Adaptation Programme (WaTER)	2019/2020	495000000
 county	44	2009	IDA (World Bank) Kenya Urban Support Project (KUSP) Urban Development Grant (UDG)	2019/2020	518367800
 county	3	2009	IDA (World Bank) Water & Sanitation Development Project (WSDP)	2019/2020	600000000
 county	27	2009	IDA (World Bank) Kenya Urban Support Project (KUSP) Urban Development Grant (UDG)	2019/2020	630147800
 county	42	2009	IDA (World Bank) Kenya Urban Support Project (KUSP) Urban Development Grant (UDG)	2019/2020	773573300
 country	KE	2009	Sweden Agricultural Sector Development Support Programme (ASDSP) II	2019/2020	849626237
-country	KE	2009	Sweden Agricultural Sector Development Support Programme (ASDSP) II	2019/2020	849626237
-country	KE	2009	DANIDA Grant (Universal Healthcare in Devolved System Program)	2019/2020	986583544
 country	KE	2009	DANIDA Grant (Universal Healthcare in Devolved System Program)	2019/2020	986583544
 county	16	2009	IDA (World Bank) Kenya Urban Support Project (KUSP) Urban Development Grant (UDG)	2019/2020	1018320500
 county	32	2009	IDA (World Bank) Kenya Urban Support Project (KUSP) Urban Development Grant (UDG)	2019/2020	1084843300
 country	KE	2009	IDA (World Bank) Kenya Devolution Support Project (KDSP) Level 1 grant	2019/2020	1410000000
-country	KE	2009	IDA (World Bank) Kenya Devolution Support Project (KDSP) Level 1 grant	2019/2020	1410000000
 county	1	2009	IDA (World Bank) Water & Sanitation Development Project (WSDP)	2019/2020	1550000000
 county	22	2009	IDA (World Bank) Kenya Urban Support Project (KUSP) Urban Development Grant (UDG)	2019/2020	1885993000
 country	KE	2009	World Bank Transforming Health Systems for Universal Care Project	2019/2020	2994247736
-country	KE	2009	World Bank Transforming Health Systems for Universal Care Project	2019/2020	2994247736
-country	KE	2009	IDA (World Bank) Water & Sanitation Development Project (WSDP)	2019/2020	3500000000
 country	KE	2009	IDA (World Bank) Water & Sanitation Development Project (WSDP)	2019/2020	3500000000
 country	KE	2009	IDA (World Bank) Kenya Climate Smart Agriculture Project (KCSAP)	2019/2020	3643298670
-country	KE	2009	IDA (World Bank) Kenya Climate Smart Agriculture Project (KCSAP)	2019/2020	3643298670
-country	KE	2009	IDA (World Bank) Kenya Devolution Support Project (KDSP) Level 2 grant	2019/2020	4890000000
 country	KE	2009	IDA (World Bank) Kenya Devolution Support Project (KDSP) Level 2 grant	2019/2020	4890000000
 country	KE	2009	IDA (World Bank) National Agricultural and Rural Inclusive Growth Project (NARIGP)	2019/2020	7232719940
-country	KE	2009	IDA (World Bank) National Agricultural and Rural Inclusive Growth Project (NARIGP)	2019/2020	7232719940
-country	KE	2009	IDA (World Bank) Kenya Urban Support Project (KUSP) Urban Development Grant (UDG)	2019/2020	11464702500
 country	KE	2009	IDA (World Bank) Kenya Urban Support Project (KUSP) Urban Development Grant (UDG)	2019/2020	11464702500
 \.
 
