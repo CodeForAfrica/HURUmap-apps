@@ -620,14 +620,14 @@
         <section class="clearfix stat-row">
           <div class="column-full">
               <div id="chart-grouped_column-others-jamb"
-                   data-chart-title="Telecoms Subscriptions 2018"
+                   data-chart-title="Joint Admissions and Matriculation Board Candidates 2017-2018"
                    data-stat-type="number"
                    data-source-title="National Bureau of Statistics, 2018"
                    data-source-link="https://nigerianstat.gov.ng/download/614"></div>
             </div>
         </section>
         {% endif %}
-        {% if not others.driver_licences_processed %}
+        {% if not others.driver_licences_processed.is_missing %}
         <section class="clearfix stat-row">
           <div class="column-full">
               <div id="chart-column-others-driver_licences_processed"
