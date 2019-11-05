@@ -562,8 +562,10 @@ def get_others_profile(geo, session):
     petrol_price_2017 = LOCATIONNOTFOUND
     petrol_price_2018 = LOCATIONNOTFOUND
     petrol_price_2019 = LOCATIONNOTFOUND
-    air_transportation_domestic = LOCATIONNOTFOUND
-    air_transportation_international = LOCATIONNOTFOUND
+    air_transportation_domestic_dep = LOCATIONNOTFOUND
+    air_transportation_international_dep = LOCATIONNOTFOUND
+    air_transportation_domestic_arr = LOCATIONNOTFOUND
+    air_transportation_international_arr = LOCATIONNOTFOUND
     diesel_year = LOCATIONNOTFOUND
     driver_licences_processed = LOCATIONNOTFOUND
     mobile_subscription = LOCATIONNOTFOUND
@@ -649,7 +651,7 @@ def get_others_profile(geo, session):
 
 
         try:
-            petrol_price_2019, _ = get_stat_data(fields=['month',], geo=geo,
+            petrol_price_2019, _ = get_stat_data(fields=['month'], geo=geo,
                                          session=session,
                                          only={'year': ['2019']},
                                          table_name='petrol_price', percent=False)
@@ -658,16 +660,40 @@ def get_others_profile(geo, session):
 
 
         try:
-            air_transportation_domestic, _ = get_stat_data(['month, depature_arrival'], geo=geo,
+            air_transportation_domestic_dep, _ = get_stat_data(['month'], geo=geo,
                                          session=session,
+                                         only={'depature_arrival': ['Departure']},
+                                         key_order=MONTH_ORDER,
                                          table_name='air_transportation_domestic', percent=False)
         except Exception:
             log.warn("Could not get data", exc_info=True)
 
 
         try:
-            air_transportation_international, _ = get_stat_data(['month, depature_arrival'], geo=geo,
+            air_transportation_international_dep, _ = get_stat_data('month', geo=geo,
                                          session=session,
+                                         only={'depature_arrival': ['Departure']},
+                                         key_order=MONTH_ORDER,
+                                         table_name='air_transportation_international', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
+        
+        try:
+            air_transportation_domestic_arr, _ = get_stat_data(['month'], geo=geo,
+                                         session=session,
+                                         only={'depature_arrival': ['Arrival']},
+                                         key_order=MONTH_ORDER,
+                                         table_name='air_transportation_domestic', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
+
+        try:
+            air_transportation_international_arr, _ = get_stat_data(['month'], geo=geo,
+                                         session=session,
+                                         only={'depature_arrival': ['Arrival']},
+                                         key_order=MONTH_ORDER,
                                          table_name='air_transportation_international', percent=False)
         except Exception:
             log.warn("Could not get data", exc_info=True)
@@ -763,8 +789,10 @@ def get_others_profile(geo, session):
 
     is_missing = diesel_price.get('is_missing') and \
                 petrol_price.get('is_missing') and \
-                air_transportation_domestic.get('is_missing') and \
-                air_transportation_international.get('is_missing') and \
+                air_transportation_domestic_arr.get('is_missing') and \
+                air_transportation_international_arr.get('is_missing') and \
+                    air_transportation_domestic_dep.get('is_missing') and \
+                air_transportation_international_dep.get('is_missing') and \
                 diesel_year.get('is_missing') and \
                 driver_licences_processed.get('is_missing') and \
                 employment_in_civil_services.get('is_missing')
@@ -773,8 +801,10 @@ def get_others_profile(geo, session):
         'is_missing': is_missing,
         'diesel_price': diesel_price,
         'petrol_price': petrol_price,
-        'air_transportation_domestic': air_transportation_domestic,
-        'air_transportation_international': air_transportation_international,
+        'air_transportation_domestic_dep': air_transportation_domestic_dep,
+        'air_transportation_international_dep': air_transportation_international_dep,
+        'air_transportation_domestic_arr': air_transportation_domestic_arr,
+        'air_transportation_international_arr': air_transportation_international_arr,
         'diesel_year': diesel_year,
         'driver_licences_processed': driver_licences_processed,
         'mobile_subscription': mobile_subscription,

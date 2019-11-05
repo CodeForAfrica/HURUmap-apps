@@ -334,7 +334,7 @@
           </div>
       </section>
       {% endif %}
-      {% if not crime.avg_number_bribes.is_missing and not crime.bribery_prevalence.is_missing %}
+      {% if not crime.cases_of_corruption.is_missing or not crime.bribery_prevalence.is_missing %}
       <section class="clearfix stat-row">
         {% if not crime.bribery_prevalence.is_missing %}
         <div class="column-third">
@@ -342,17 +342,8 @@
           {% include 'profile/_blocks/_stat_list.html' with stat=crime.bribery_prevalence stat_type='number' %}
           </div>
         {% endif %}
-        {% if not crime.avg_number_bribes.is_missing %}
-          <div class="column-third">
-            <div id="chart-column-crime-avg_number_bribes"
-                 data-chart-title="Average number of bribes, 2016"
-                 data-stat-type="number"
-                 data-source-title="National Bureau of Statistics, 2016"
-                 data-source-link="https://nigerianstat.gov.ng/resource/CorruptionStatistics_by_State_full.xlsx"></div>
-          </div>
-        {% endif %}
         {% if not crime.cases_of_corruption.is_missing %}
-            <div class="column-third">
+            <div class="column-two-thirds">
                 <div id="chart-column-crime-cases_of_corruption"
                      data-chart-title="Number Of Reported Cases Of Corruption"
                      data-stat-type="number"
@@ -360,8 +351,18 @@
                      data-source-link="https://nigerianstat.gov.ng/download/866"></div>
               </div>
         {% endif %}
+      </section>
+      {% endif %}
+      {% if not crime.avg_number_bribes.is_missing or not crime.bribery_report_rate.is_missing %}
+      <section class="clearfix stat-row">
+        {% if not crime.bribery_prevalence.is_missing %}
+        <div class="column-third">
+          <h3 class="chart-header">Average Bribes</h3>
+          {% include 'profile/_blocks/_stat_list.html' with stat=crime.avg_number_bribes stat_type='number' %}
+          </div>
+        {% endif %}
         {% if not crime.bribery_report_rate_missing %}
-              <div class="column-third">
+              <div class="column-two-thirds">
                   <div id="chart-pie-crime-bribery_report_rate"
                        data-chart-title="Rate of Bribery Reported to official authority or non-official institution, 2016"
                        data-stat-type="percentage"
@@ -638,26 +639,46 @@
             </div>
         </section>
         {% endif %}
-        {% if not others.air_transportation_domestic.is_missing %}
+        {% if not others.air_transportation_domestic_dep.is_missing or not others.air_transportation_domestic_arr.is_missing %}
         <section class="clearfix stat-row">
-          <div class="column-full">
-              <div id="chart-grouped_column-others-air_transportation_domestic"
-                   data-chart-title="Number of Passengers 2018, Domestics Flights"
+            <h2 class="header-for-columns">
+                <a class="permalink">
+                  <strong>Number of Passengers on Domestic Air Flights</strong><i class="fa fa-link"></i></a>
+              </h2>
+            <div class="column-half">
+              <div id="chart-column-others-air_transportation_domestic_dep"
+                   data-chart-title="Number of Passengers Departured in 2018 Domestics Flights"
                    data-stat-type="number"
                    data-source-title="National Bureau of Statistics, 2018"
                    data-source-link="https://nigerianstat.gov.ng/resource/JAN-DEC%202018%20Harmonised%20Air%20Traffic%20Statistics.xlsx"></div>
             </div>
+            <div class="column-half">
+                <div id="chart-column-others-air_transportation_domestic_arr"
+                     data-chart-title="Number of Passengers Arrived in 2018, Domestics Flights"
+                     data-source-title="National Bureau of Statistics, 2018"
+                     data-source-link="https://nigerianstat.gov.ng/resource/JAN-DEC%202018%20Harmonised%20Air%20Traffic%20Statistics.xlsx"></div>
+              </div>
         </section>
         {% endif %}
-        {% if not others.air_transportation_international.is_missing %}
+        {% if not others.air_transportation_international_dep.is_missing or not not others.air_transportation_international_arr.is_missing %}
         <section class="clearfix stat-row">
-          <div class="column-full">
-              <div id="chart-grouped_column-others-air_transportation_international"
-                   data-chart-title="Number of Passengers 2018, International Flights"
+            <h2 class="header-for-columns">
+                <a class="permalink">
+                  <strong>Number of Passengers on International Air Flights</strong><i class="fa fa-link"></i></a>
+              </h2>
+          <div class="column-half">
+              <div id="chart-column-others-air_transportation_international_dep"
+                   data-chart-title="Number of Passengers Departured in 2018, International Flights"
                    data-stat-type="number"
                    data-source-title="National Bureau of Statistics, 2018"
                    data-source-link="https://nigerianstat.gov.ng/resource/JAN-DEC%202018%20Harmonised%20Air%20Traffic%20Statistics.xlsx"></div>
             </div>
+            <div class="column-half">
+                <div id="chart-column-others-air_transportation_international_arr"
+                     data-chart-title="Number of Passengers Arrived in 2018, International Flights"
+                     data-source-title="National Bureau of Statistics, 2018"
+                     data-source-link="https://nigerianstat.gov.ng/resource/JAN-DEC%202018%20Harmonised%20Air%20Traffic%20Statistics.xlsx"></div>
+              </div>
         </section>
         {% endif %}
         {% if not others.diesel_year.is_missing %}
@@ -665,7 +686,6 @@
           <div class="column-full">
               <div id="chart-column-others-diesel_year"
                    data-chart-title="Yearly Average Diesel Price per litre (₦)"
-                   data-stat-type="number"
                    data-source-title="National Bureau of Statistics, 2019"
                    data-source-link="https://nigerianstat.gov.ng/resource/DIESEL%20may%202019.xlsx"></div>
             </div>
@@ -698,7 +718,6 @@
           <div class="column-full">
               <div id="chart-column-others-petrol_price-2018"
                    data-chart-title="Petrol Price Jan to Dec 2018"
-                   data-stat-type="number"
                    data-source-title="National Bureau of Statistics, 2019"
                    data-source-link="https://nigerianstat.gov.ng/download/923"></div>
             </div>
@@ -709,7 +728,6 @@
           <div class="column-full">
               <div id="chart-column-others-diesel_price-2018"
                    data-chart-title="Desel Price Jan to Dec 2018"
-                   data-stat-type="number"
                    data-source-title="National Bureau of Statistics, 2019"
                    data-source-link="https://nigerianstat.gov.ng/download/921"></div>
             </div>
