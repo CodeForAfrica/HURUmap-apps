@@ -25,6 +25,34 @@ def _create_single_value_dist(name='', value=0):
         'values': {'this': value},
     }
 
+def _remove_empty_entry(dist):
+    for k, v in dict(dist).items():
+        if not bool(v):
+            del dist[k]
+
+    return dist
+    
+def _create_multiple_data_dist(fields, geo, session, only_field, only_values, tablename, order=None, percent=False):
+
+    result = { 'is_missing': True }
+
+    for val in only_values:
+        data_dist = LOCATIONNOTFOUND
+
+        try:
+            data_dist, _ = get_stat_data(fields=fields, geo=geo,
+                                    session=session,
+                                    only={ only_field : [val] },
+                                    key_order=order,
+                                    table_name=tablename, percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
+        result['is_missing'] = result['is_missing'] and data_dist.get('is_missing')
+        result[val] =  _remove_empty_entry(data_dist)
+
+    return result
+
 def get_profile(geo, profile_name, request):
     session = get_session()
 
@@ -575,6 +603,26 @@ def get_others_profile(geo, session):
     employment_in_civil_services = LOCATIONNOTFOUND
     travel_certificates = LOCATIONNOTFOUND
 
+    transport_air_fare_2016 = LOCATIONNOTFOUND
+    transport_air_fare_2017 = LOCATIONNOTFOUND
+    transport_air_fare_2018 = LOCATIONNOTFOUND
+    transport_air_fare_2019 = LOCATIONNOTFOUND
+
+    transport_motorcycle_fare_2016 = LOCATIONNOTFOUND
+    transport_motorcycle_fare_2017 = LOCATIONNOTFOUND
+    transport_motorcycle_fare_2018 = LOCATIONNOTFOUND
+    transport_motorcycle_fare_2019 = LOCATIONNOTFOUND
+
+    transport_bus_intercity_fare_2016 = LOCATIONNOTFOUND
+    transport_bus_intercity_fare_2017 = LOCATIONNOTFOUND
+    transport_bus_intercity_fare_2018 = LOCATIONNOTFOUND
+    transport_bus_intercity_fare_2019 = LOCATIONNOTFOUND
+
+    transport_withincity_fare_2016 = LOCATIONNOTFOUND
+    transport_withincity_fare_2017 = LOCATIONNOTFOUND
+    transport_withincity_fare_2018 = LOCATIONNOTFOUND
+    transport_withincity_fare_2019 = LOCATIONNOTFOUND
+
     with dataset_context(year='2018'):
         try:
             diesel_price_2018, _ = get_stat_data(['month'], geo=geo,
@@ -795,6 +843,26 @@ def get_others_profile(geo, session):
             '2016': petrol_price_2016
         }
 
+        transport_withincity_fare = _create_multiple_data_dist(
+            fields=['month'], geo=geo, session=session, only_field='year', 
+            only_values=['2016', '2017', '2018', '2019'], 
+            tablename='transport_withincity_fare', order=MONTH_ORDER )
+
+        transport_air_fare = _create_multiple_data_dist(
+            fields=['month'], geo=geo, session=session, only_field='year', 
+            only_values=['2016', '2017', '2018', '2019'],
+            tablename='transport_air_fare', order=MONTH_ORDER )
+
+        transport_motorcycle_fare = _create_multiple_data_dist(
+            fields=['month'], geo=geo, session=session, only_field='year', 
+            only_values=['2016', '2017', '2018', '2019'],
+            tablename='transport_motorcycle_fare', order=MONTH_ORDER )
+
+        transport_bus_intercity_fare = _create_multiple_data_dist(
+            fields=['month'], geo=geo, session=session, only_field='year', 
+            only_values=['2016', '2017', '2018', '2019'],
+            tablename='transport_bus_intercity_fare', order=MONTH_ORDER )
+
     is_missing = diesel_price.get('is_missing') and \
                 petrol_price.get('is_missing') and \
                 air_transportation_domestic_arr.get('is_missing') and \
@@ -804,7 +872,12 @@ def get_others_profile(geo, session):
                 diesel_year.get('is_missing') and \
                 driver_licences_processed.get('is_missing') and \
                 employment_in_civil_services.get('is_missing') and \
-                travel_certificates.get('is_missing')
+                travel_certificates.get('is_missing') and \
+                transport_air_fare.get('is_missing') and \
+                transport_withincity_fare.get('is_missing') and \
+                transport_bus_intercity_fare.get('is_missing') and \
+                transport_motorcycle_fare.get('is_missing')
+
 
     final_data = {
         'is_missing': is_missing,
@@ -821,7 +894,11 @@ def get_others_profile(geo, session):
         'telecom_subscription': telecom_subscription,
         'jamb': jamb,
         'employment_in_civil_services': employment_in_civil_services,
-        'travel_certificates': travel_certificates
+        'travel_certificates': travel_certificates,
+        'transport_air_fare': transport_air_fare,
+        'transport_bus_intercity_fare': transport_bus_intercity_fare,
+        'transport_motorcycle_fare': transport_motorcycle_fare,
+        'transport_withincity_fare': transport_withincity_fare
     }
     return final_data
 
@@ -940,7 +1017,6 @@ def get_finance_profile(geo, session):
     }
 
     return final_data
-
 
 def get_agriculture_profile(geo, session):
     all_consumer_price = LOCATIONNOTFOUND
