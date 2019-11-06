@@ -1082,7 +1082,7 @@ COPY public.petroleum_motor_spirit_price (geo_code, geo_level, geo_version, mont
 --
 
 ALTER TABLE ONLY public.petroleum_motor_spirit_price
-    ADD CONSTRAINT petroleum_motor_spirit_price_pkey PRIMARY KEY (geo_level, geo_code, geo_version, month, year);
+    ADD CONSTRAINT petroleum_motor_spirit_price_pkey PRIMARY KEY (geo_code, geo_level, geo_version, month, year);
 
 
 --
