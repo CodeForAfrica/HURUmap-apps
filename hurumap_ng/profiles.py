@@ -579,10 +579,6 @@ def get_health_profile(geo, session):
     return final_data
 
 def get_others_profile(geo, session):
-    air_transportation_domestic_dep = LOCATIONNOTFOUND
-    air_transportation_international_dep = LOCATIONNOTFOUND
-    air_transportation_domestic_arr = LOCATIONNOTFOUND
-    air_transportation_international_arr = LOCATIONNOTFOUND
     diesel_year = LOCATIONNOTFOUND
     driver_licences_processed = LOCATIONNOTFOUND
     mobile_subscription = LOCATIONNOTFOUND
@@ -591,6 +587,7 @@ def get_others_profile(geo, session):
     jamb = LOCATIONNOTFOUND
     employment_in_civil_services = LOCATIONNOTFOUND
     travel_certificates = LOCATIONNOTFOUND
+    passport_issued = LOCATIONNOTFOUND
 
     with dataset_context(year='2018'):
         try:
@@ -702,6 +699,13 @@ def get_others_profile(geo, session):
                                      table_name='travel_certificates', percent=False)
         except Exception:
             log.warn("Could not get data", exc_info=True)
+        
+        try:
+            passport_issued, _ = get_stat_data(fields=['year'], geo=geo,
+                                     session=session,
+                                     table_name='passport_issued', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
 
 
         diesel_price = _create_multiple_data_dist(
@@ -761,7 +765,8 @@ def get_others_profile(geo, session):
                 transport_air_fare.get('is_missing') and \
                 transport_withincity_fare.get('is_missing') and \
                 transport_bus_intercity_fare.get('is_missing') and \
-                transport_motorcycle_fare.get('is_missing')
+                transport_motorcycle_fare.get('is_missing') and \
+                passport_issued.get('is_missing')
 
 
     final_data = {
@@ -782,7 +787,8 @@ def get_others_profile(geo, session):
         'transport_bus_intercity_fare': transport_bus_intercity_fare,
         'transport_motorcycle_fare': transport_motorcycle_fare,
         'transport_withincity_fare': transport_withincity_fare,
-        'petroleum_motor_spirit_price': petroleum_motor_spirit_price
+        'petroleum_motor_spirit_price': petroleum_motor_spirit_price,
+        'passport_issued': passport_issued
     }
     return final_data
 
