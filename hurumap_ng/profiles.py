@@ -493,6 +493,13 @@ def get_health_profile(geo, session):
             log.warn("Could not get data", exc_info=True)
 
         try:
+            fertility_rate, _ = get_stat_data(fields=['year'], geo=geo,
+                                         session=session,
+                                         table_name='fertility_rate', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
+        try:
             access_to_wash, _ = get_stat_data(fields=['access_to_wash'], geo=geo,
                                          session=session,
                                          table_name='access_to_wash', percent=False)
@@ -589,48 +596,9 @@ def get_others_profile(geo, session):
     travel_certificates = LOCATIONNOTFOUND
     passport_issued = LOCATIONNOTFOUND
     passport_application = LOCATIONNOTFOUND
+    passport_re_issued = LOCATIONNOTFOUND
 
     with dataset_context(year='2018'):
-        try:
-            air_transportation_domestic_dep, _ = get_stat_data(['month'], geo=geo,
-                                         session=session,
-                                         only={'depature_arrival': ['Departure']},
-                                         key_order=MONTH_ORDER,
-                                         table_name='air_transportation_domestic', percent=False)
-        except Exception:
-            log.warn("Could not get data", exc_info=True)
-
-
-        try:
-            air_transportation_international_dep, _ = get_stat_data('month', geo=geo,
-                                         session=session,
-                                         only={'depature_arrival': ['Departure']},
-                                         key_order=MONTH_ORDER,
-                                         table_name='air_transportation_international', percent=False)
-        except Exception:
-            log.warn("Could not get data", exc_info=True)
-
-        
-        try:
-            air_transportation_domestic_arr, _ = get_stat_data(['month'], geo=geo,
-                                         session=session,
-                                         only={'depature_arrival': ['Arrival']},
-                                         key_order=MONTH_ORDER,
-                                         table_name='air_transportation_domestic', percent=False)
-        except Exception:
-            log.warn("Could not get data", exc_info=True)
-
-
-        try:
-            air_transportation_international_arr, _ = get_stat_data(['month'], geo=geo,
-                                         session=session,
-                                         only={'depature_arrival': ['Arrival']},
-                                         key_order=MONTH_ORDER,
-                                         table_name='air_transportation_international', percent=False)
-        except Exception:
-            log.warn("Could not get data", exc_info=True)
-
-
         try:
             diesel_year, _ = get_stat_data(['diesel_year'], geo=geo,
                                          session=session,
@@ -709,6 +677,14 @@ def get_others_profile(geo, session):
             log.warn("Could not get data", exc_info=True)
 
         try:
+            passport_re_issued, _ = get_stat_data(fields=['month'], geo=geo,
+                                     session=session,
+                                     key_order=MONTH_ORDER,
+                                     table_name='passport_re_issued', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
+        try:
             passport_application, _ = get_stat_data(fields=['age_group', 'year'], geo=geo,
                                      session=session,
                                      table_name='passport_application', percent=False)
@@ -775,7 +751,8 @@ def get_others_profile(geo, session):
                 transport_bus_intercity_fare.get('is_missing') and \
                 transport_motorcycle_fare.get('is_missing') and \
                 passport_issued.get('is_missing') and \
-                passport_application.get('is_missing')
+                passport_application.get('is_missing') and \
+                passport_re_issued.get('is_missing')
 
 
     final_data = {
@@ -798,7 +775,8 @@ def get_others_profile(geo, session):
         'transport_withincity_fare': transport_withincity_fare,
         'petroleum_motor_spirit_price': petroleum_motor_spirit_price,
         'passport_issued': passport_issued,
-        'passport_application': passport_application
+        'passport_application': passport_application,
+        'passport_re_issued': _remove_empty_entry(passport_re_issued)
     }
     return final_data
 
@@ -807,6 +785,7 @@ def get_finance_profile(geo, session):
     bank_deposit = LOCATIONNOTFOUND
     debt_data = LOCATIONNOTFOUND
     faac = LOCATIONNOTFOUND
+    generated_revenue = LOCATIONNOTFOUND
     faac_year_2016 = LOCATIONNOTFOUND
     faac_year_2017 = LOCATIONNOTFOUND
     faac_year_2018 = LOCATIONNOTFOUND
@@ -839,45 +818,16 @@ def get_finance_profile(geo, session):
 
 
         try:
-            faac, _ = get_stat_data(fields=['allocation'], geo=geo,
+            faac, _ = get_stat_data(fields=['allocation', 'month'], geo=geo,
                                          session=session,
                                          table_name='faac', percent=False)
         except Exception:
             log.warn("Could not get data", exc_info=True)
 
         try:
-            faac_year_2016, _ = get_stat_data(fields=['month'], geo=geo,
+            generated_revenue, _ = get_stat_data(fields=['revenue_type'], geo=geo,
                                          session=session,
-                                         only={ 'year': ['2016']},
-                                         key_order=['Jan', 'Mar', 'Apr', 'May', 'Jun'],
-                                         table_name='faac_yearly', percent=False)
-        except Exception:
-            log.warn("Could not get data", exc_info=True)
-
-        try:
-            faac_year_2017, _ = get_stat_data(fields=['month'], geo=geo,
-                                         session=session,
-                                         only={ 'year': ['2017']},
-                                         key_order=MONTH_ORDER,
-                                         table_name='faac_yearly', percent=False)
-        except Exception:
-            log.warn("Could not get data", exc_info=True)
-        
-        try:
-            faac_year_2018, _ = get_stat_data(fields=['month'], geo=geo,
-                                         session=session,
-                                         only={ 'year': ['2018']},
-                                         key_order=MONTH_ORDER,
-                                         table_name='faac_yearly', percent=False)
-        except Exception:
-            log.warn("Could not get data", exc_info=True)
-
-        try:
-            faac_year_2019, _ = get_stat_data(fields=['month'], geo=geo,
-                                         session=session,
-                                         only={ 'year': ['2019']},
-                                         key_order=['Jan', 'Feb', 'Mar'],
-                                         table_name='faac_yearly', percent=False)
+                                         table_name='generated_revenue', percent=False)
         except Exception:
             log.warn("Could not get data", exc_info=True)
         
@@ -887,16 +837,10 @@ def get_finance_profile(geo, session):
         except Exception:
             log.warn("Could not get data", exc_info=True)
 
-    faac_yearly = {
-            'is_missing': faac_year_2016.get('is_missing') and \
-                            faac_year_2017.get('is_missing') and \
-                            faac_year_2018.get('is_missing') and \
-                            faac_year_2019.get('is_missing'),
-            '2019': faac_year_2019,
-            '2018': faac_year_2018,
-            '2017': faac_year_2017,
-            '2016': faac_year_2016
-        }
+    faac_yearly = _create_multiple_data_dist(
+            fields=['month'], geo=geo, session=session, only_field='year', 
+            only_values=['2016', '2017', '2018', '2019'],
+            tablename='faac_yearly', order=MONTH_ORDER )
 
 
     is_missing = bank_deposit.get('is_missing') and \
@@ -904,7 +848,9 @@ def get_finance_profile(geo, session):
                  debt_data.get('is_missing') and \
                  faac.get('is_missing') and \
                  faac_yearly.get('is_missing') and \
-                 nominal_gdp.get('is_missing')
+                 nominal_gdp.get('is_missing') and \
+                 generated_revenue.get('is_missing')
+                 
 
     final_data = {
         'is_missing': is_missing,
@@ -913,7 +859,8 @@ def get_finance_profile(geo, session):
         'debt_data': debt_data,
         'faac': faac,
         'faac_yearly': faac_yearly,
-        'nominal_gdp': nominal_gdp
+        'nominal_gdp': nominal_gdp,
+        'generated_revenue': generated_revenue
     }
 
     return final_data

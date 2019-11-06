@@ -177,17 +177,24 @@
         {% if not health.adolescent_fertility.is_missing or not health.maternal_mortality.is_missing %}
         <section class="clearfix stat-row">
           {% if not health.adolescent_fertility.is_missing %}
-            <div class="column-half">
+            <div class="column-third">
               <h3 class="chart-header">Female Adolescent Fertility Rate</h3>
               {% include 'profile/_blocks/_stat_list.html' with stat=health.adolescent_fertility.2016 stat_type='number' %}
             </div>
           {% endif %}
           {% if not health.maternal_mortality.is_missing %}
-            <div class="column-half">
+            <div class="column-third">
               <h3 class="chart-header">Maternal Mortality Rate</h3>
               {% include 'profile/_blocks/_stat_list.html' with stat=health.maternal_mortality.2016 stat_type='number' %}
             </div>
           {% endif %}
+          <div class="column-third">
+              <div id="chart-column-health-fertility_rate"
+                   data-chart-title="Total Fertility Rate 2016/17"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2018"
+                   data-source-link="https://nigerianstat.gov.ng/download/952"></div>
+            </div>
         </section>
         {% endif %}
         {% if not health.doctors_per_sex_year.is_missing or not health.dentists_per_sex_year.is_missing %}
@@ -515,13 +522,27 @@
           <section class="clearfix stat-row">
             <h2>
               <a class="permalink" href="#gdp" id="gdp">
-                Nominal GDP<i class="fa fa-link"></i></a></h2>
+                <strong>Nominal GDP </strong><i class="fa fa-link"></i></a></h2>
             <div class="column-full">
                 <div id="chart-grouped_column-finance-nominal_gdp"
                      data-chart-title="Nominal GDP Main Sectors, N'Mn (2013 - 2017)"
                      data-stat-type="number"
                      data-source-title="National Bureau of Statistics, 2018"
                      data-source-link="https://nigerianstat.gov.ng/resource/Final%2022%20SGDP%20%20Analysis_%20sg.xlsx"></div>
+              </div>
+        </section>
+        {% endif %}
+        {% if not finance.generated_revenue.is_missing %}
+          <section class="clearfix stat-row">
+            <h2>
+              <a class="permalink" href="#revenue" id="revenue">
+                  <strong>Revenue</strong><i class="fa fa-link"></i></a></h2>
+            <div class="column-full">
+                <div id="chart-column-finance-generated_revenue"
+                     data-chart-title="Internally Generated Revenue (Q4 & Full Year 2018) in Million ₦"
+                     data-stat-type="number"
+                     data-source-title="National Bureau of Statistics, 2018"
+                     data-source-link="https://nigerianstat.gov.ng/resource"></div>
               </div>
         </section>
         {% endif %}
@@ -555,15 +576,15 @@
               </div>
           </section>
         {% endif %}
-        {% if not finance.faac.is_missing %}
+        {% if not finance.faac.is_missing or not finance.faac_yearly.is_missing %}
         <section class="clearfix stat-row">
             <h2 class="header-for-columns">
                 <a class="permalink">
                   <strong>Federation Account Allocation Committee (FAAC) Allocation</strong><i class="fa fa-link"></i></a>
               </h2>
           <div class="column-half">
-              <div id="chart-pie-finance-faac"
-                   data-chart-title="FAAC Allocation for January 2019 in Million ₦"
+              <div id="chart-grouped_column-finance-faac"
+                   data-chart-title="FAAC Allocation type in 2019 in Million ₦"
                    data-stat-type="number"
                    data-source-title="National Bureau of Statistics, 2019"
                    data-source-link="https://nigerianstat.gov.ng/download/614"></div>
@@ -683,18 +704,29 @@
         <section class="clearfix stat-row">
             <div class="column-half">
                 <div id="chart-grouped_column-others-passport_application"
-                      data-chart-title="Passports Application 2016 - 2018"
+                      data-chart-title="Passports Application per Age Group 2016 - 2018"
                       data-stat-type="number"
                       data-source-title="National Bureau of Statistics, 2018"
                       data-source-link="https://nigerianstat.gov.ng/resource/"></div>
               </div>
           <div class="column-half">
               <div id="chart-column-others-passport_issued"
-                    data-chart-title="Passports Issued 2017, 2018"
+                    data-chart-title="Passports Issued 2015 - 2018"
                     data-stat-type="number"
                     data-source-title="National Bureau of Statistics, 2018"
                     data-source-link="https://nigerianstat.gov.ng/resource/"></div>
             </div>
+        </section>
+        {% endif %}
+        {% if not others.passport_re_issued.is_missing %}
+        <section class="clearfix stat-row">
+            <div class="column-full">
+                <div id="chart-column-others-passport_re_issued"
+                      data-chart-title="Number of Lost and Stolen Passports Re-issued in 2017"
+                      data-stat-type="number"
+                      data-source-title="National Bureau of Statistics, 2018"
+                      data-source-link="https://nigerianstat.gov.ng/resource/"></div>
+              </div>
         </section>
         {% endif %}
         {% if not others.transport_motorcycle_fare.is_missing %}
