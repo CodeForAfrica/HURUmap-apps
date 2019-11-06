@@ -569,6 +569,7 @@
       </div>
     </article>
   {% endif %}
+  
   {% if not others.is_missing %}
     <article id="others" class="clearfix">
       <header class="section-contents"><h1>Others</h1></header>
@@ -628,14 +629,21 @@
             </div>
         </section>
         {% endif %}
-        {% if not others.driver_licences_processed.is_missing %}
+        {% if not others.driver_licences_processed.is_missing or not others.travel_certificates.is_missing %}
         <section class="clearfix stat-row">
-          <div class="column-full">
+          <div class="column-half">
               <div id="chart-column-others-driver_licences_processed"
                    data-chart-title="Drivers Licences Processed (2013 - 2015)"
                    data-stat-type="number"
                    data-source-title="National Bureau of Statistics, 2016"
                    data-source-link="https://nigerianstat.gov.ng/download/359"></div>
+            </div>
+            <div class="column-half">
+              <div id="chart-column-others-travel_certificates"
+                   data-chart-title="ECOWAS Travel Certificate Issued"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2018"
+                   data-source-link="https://nigerianstat.gov.ng/resource/">/div>
             </div>
         </section>
         {% endif %}

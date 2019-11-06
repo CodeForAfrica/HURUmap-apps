@@ -573,6 +573,7 @@ def get_others_profile(geo, session):
     telecom_subscription = LOCATIONNOTFOUND
     jamb = LOCATIONNOTFOUND
     employment_in_civil_services = LOCATIONNOTFOUND
+    travel_certificates = LOCATIONNOTFOUND
 
     with dataset_context(year='2018'):
         try:
@@ -761,6 +762,13 @@ def get_others_profile(geo, session):
                                      table_name='employment_in_civil_services', percent=False)
         except Exception:
             log.warn("Could not get data", exc_info=True)
+        
+        try:
+            travel_certificates, _ = get_stat_data(fields=['year'], geo=geo,
+                                     session=session,
+                                     table_name='travel_certificates', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
 
 
         diesel_price = {
@@ -795,7 +803,8 @@ def get_others_profile(geo, session):
                 air_transportation_international_dep.get('is_missing') and \
                 diesel_year.get('is_missing') and \
                 driver_licences_processed.get('is_missing') and \
-                employment_in_civil_services.get('is_missing')
+                employment_in_civil_services.get('is_missing') and \
+                travel_certificates.get('is_missing')
 
     final_data = {
         'is_missing': is_missing,
@@ -811,7 +820,8 @@ def get_others_profile(geo, session):
         'mineral_production': mineral_production,
         'telecom_subscription': telecom_subscription,
         'jamb': jamb,
-        'employment_in_civil_services': employment_in_civil_services
+        'employment_in_civil_services': employment_in_civil_services,
+        'travel_certificates': travel_certificates
     }
     return final_data
 
