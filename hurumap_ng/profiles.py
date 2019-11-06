@@ -830,6 +830,10 @@ def get_finance_profile(geo, session):
     bank_deposit = LOCATIONNOTFOUND
     debt_data = LOCATIONNOTFOUND
     faac = LOCATIONNOTFOUND
+    faac_year_2016 = LOCATIONNOTFOUND
+    faac_year_2017 = LOCATIONNOTFOUND
+    faac_year_2018 = LOCATIONNOTFOUND
+    faac_year_2019 = LOCATIONNOTFOUND
     nominal_gdp = LOCATIONNOTFOUND
 
     with dataset_context(year='2018'):
@@ -863,6 +867,42 @@ def get_finance_profile(geo, session):
                                          table_name='faac', percent=False)
         except Exception:
             log.warn("Could not get data", exc_info=True)
+
+        try:
+            faac_year_2016, _ = get_stat_data(fields=['month'], geo=geo,
+                                         session=session,
+                                         only={ 'year': ['2016']},
+                                         key_order=['Jan', 'Mar', 'Apr', 'May', 'Jun'],
+                                         table_name='faac_yearly', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
+        try:
+            faac_year_2017, _ = get_stat_data(fields=['month'], geo=geo,
+                                         session=session,
+                                         only={ 'year': ['2017']},
+                                         key_order=MONTH_ORDER,
+                                         table_name='faac_yearly', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+        
+        try:
+            faac_year_2018, _ = get_stat_data(fields=['month'], geo=geo,
+                                         session=session,
+                                         only={ 'year': ['2018']},
+                                         key_order=MONTH_ORDER,
+                                         table_name='faac_yearly', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
+        try:
+            faac_year_2019, _ = get_stat_data(fields=['month'], geo=geo,
+                                         session=session,
+                                         only={ 'year': ['2019']},
+                                         key_order=['Jan', 'Feb', 'Mar'],
+                                         table_name='faac_yearly', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
         
         try:
             nominal_gdp, _ = get_stat_data(fields=['year', 'sector'], geo=geo,
@@ -870,11 +910,23 @@ def get_finance_profile(geo, session):
         except Exception:
             log.warn("Could not get data", exc_info=True)
 
+    faac_yearly = {
+            'is_missing': faac_year_2016.get('is_missing') and \
+                            faac_year_2017.get('is_missing') and \
+                            faac_year_2018.get('is_missing') and \
+                            faac_year_2019.get('is_missing'),
+            '2019': faac_year_2019,
+            '2018': faac_year_2018,
+            '2017': faac_year_2017,
+            '2016': faac_year_2016
+        }
+
 
     is_missing = bank_deposit.get('is_missing') and \
                  bank_credit.get('is_missing') and \
                  debt_data.get('is_missing') and \
                  faac.get('is_missing') and \
+                 faac_yearly.get('is_missing') and \
                  nominal_gdp.get('is_missing')
 
     final_data = {
@@ -883,6 +935,7 @@ def get_finance_profile(geo, session):
         'bank_deposit': bank_deposit,
         'debt_data': debt_data,
         'faac': faac,
+        'faac_yearly': faac_yearly,
         'nominal_gdp': nominal_gdp
     }
 
