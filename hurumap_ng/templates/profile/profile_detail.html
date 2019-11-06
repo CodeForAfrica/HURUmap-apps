@@ -663,21 +663,32 @@
         {% endif %}
         {% if not others.driver_licences_processed.is_missing or not others.travel_certificates.is_missing %}
         <section class="clearfix stat-row">
-          <div class="column-third">
+          <div class="column-half">
             <div id="chart-column-others-driver_licences_processed"
                   data-chart-title="Drivers Licences Processed (2013 - 2015)"
                   data-stat-type="number"
                   data-source-title="National Bureau of Statistics, 2016"
                   data-source-link="https://nigerianstat.gov.ng/download/359"></div>
           </div>
-          <div class="column-third">
+          <div class="column-half">
             <div id="chart-column-others-travel_certificates"
                   data-chart-title="ECOWAS Travel Certificate Issued"
                   data-stat-type="number"
                   data-source-title="National Bureau of Statistics, 2018"
                   data-source-link="https://nigerianstat.gov.ng/resource/"></div>
           </div>
-          <div class="column-third">
+        </section>
+        {% endif %}
+        {% if not others.passport_issued.is_missing or not others.passport_application.is_missing %}
+        <section class="clearfix stat-row">
+            <div class="column-half">
+                <div id="chart-grouped_column-others-passport_application"
+                      data-chart-title="Passports Application 2016 - 2018"
+                      data-stat-type="number"
+                      data-source-title="National Bureau of Statistics, 2018"
+                      data-source-link="https://nigerianstat.gov.ng/resource/"></div>
+              </div>
+          <div class="column-half">
               <div id="chart-column-others-passport_issued"
                     data-chart-title="Passports Issued 2017, 2018"
                     data-stat-type="number"

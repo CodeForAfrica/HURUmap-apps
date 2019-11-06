@@ -588,6 +588,7 @@ def get_others_profile(geo, session):
     employment_in_civil_services = LOCATIONNOTFOUND
     travel_certificates = LOCATIONNOTFOUND
     passport_issued = LOCATIONNOTFOUND
+    passport_application = LOCATIONNOTFOUND
 
     with dataset_context(year='2018'):
         try:
@@ -707,6 +708,13 @@ def get_others_profile(geo, session):
         except Exception:
             log.warn("Could not get data", exc_info=True)
 
+        try:
+            passport_application, _ = get_stat_data(fields=['age_group', 'year'], geo=geo,
+                                     session=session,
+                                     table_name='passport_application', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
 
         diesel_price = _create_multiple_data_dist(
             fields=['month'], geo=geo, session=session, only_field='year',
@@ -766,7 +774,8 @@ def get_others_profile(geo, session):
                 transport_withincity_fare.get('is_missing') and \
                 transport_bus_intercity_fare.get('is_missing') and \
                 transport_motorcycle_fare.get('is_missing') and \
-                passport_issued.get('is_missing')
+                passport_issued.get('is_missing') and \
+                passport_application.get('is_missing')
 
 
     final_data = {
@@ -788,7 +797,8 @@ def get_others_profile(geo, session):
         'transport_motorcycle_fare': transport_motorcycle_fare,
         'transport_withincity_fare': transport_withincity_fare,
         'petroleum_motor_spirit_price': petroleum_motor_spirit_price,
-        'passport_issued': passport_issued
+        'passport_issued': passport_issued,
+        'passport_application': passport_application
     }
     return final_data
 
