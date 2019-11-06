@@ -823,42 +823,42 @@
             </div>
         </section>
         {% endif %}
-        {% if not others.air_transportation_domestic_dep.is_missing or not others.air_transportation_domestic_arr.is_missing %}
+        {% if not others.air_transportation_domestic.is_missing %}
         <section class="clearfix stat-row">
             <h2 class="header-for-columns">
                 <a class="permalink">
                   <strong>Number of Passengers on Domestic Air Flights</strong><i class="fa fa-link"></i></a>
               </h2>
             <div class="column-half">
-              <div id="chart-column-others-air_transportation_domestic_dep"
+              <div id="chart-column-others-air_transportation_domestic-Departure"
                    data-chart-title="Number of Passengers Departured in 2018 Domestics Flights"
                    data-stat-type="number"
                    data-source-title="National Bureau of Statistics, 2018"
                    data-source-link="https://nigerianstat.gov.ng/resource/JAN-DEC%202018%20Harmonised%20Air%20Traffic%20Statistics.xlsx"></div>
             </div>
             <div class="column-half">
-                <div id="chart-column-others-air_transportation_domestic_arr"
+                <div id="chart-column-others-air_transportation_domestic-Arrival"
                      data-chart-title="Number of Passengers Arrived in 2018, Domestics Flights"
                      data-source-title="National Bureau of Statistics, 2018"
                      data-source-link="https://nigerianstat.gov.ng/resource/JAN-DEC%202018%20Harmonised%20Air%20Traffic%20Statistics.xlsx"></div>
               </div>
         </section>
         {% endif %}
-        {% if not others.air_transportation_international_dep.is_missing or not not others.air_transportation_international_arr.is_missing %}
+        {% if not others.air_transportation_international.is_missing %}
         <section class="clearfix stat-row">
             <h2 class="header-for-columns">
                 <a class="permalink">
                   <strong>Number of Passengers on International Air Flights</strong><i class="fa fa-link"></i></a>
               </h2>
           <div class="column-half">
-              <div id="chart-column-others-air_transportation_international_dep"
+              <div id="chart-column-others-air_transportation_international-Departure"
                    data-chart-title="Number of Passengers Departured in 2018, International Flights"
                    data-stat-type="number"
                    data-source-title="National Bureau of Statistics, 2018"
                    data-source-link="https://nigerianstat.gov.ng/resource/JAN-DEC%202018%20Harmonised%20Air%20Traffic%20Statistics.xlsx"></div>
             </div>
             <div class="column-half">
-                <div id="chart-column-others-air_transportation_international_arr"
+                <div id="chart-column-others-air_transportation_international-Arrival"
                      data-chart-title="Number of Passengers Arrived in 2018, International Flights"
                      data-source-title="National Bureau of Statistics, 2018"
                      data-source-link="https://nigerianstat.gov.ng/resource/JAN-DEC%202018%20Harmonised%20Air%20Traffic%20Statistics.xlsx"></div>
@@ -969,6 +969,42 @@
                    data-stat-type="number"
                    data-source-title="National Bureau of Statistics, 2019"
                    data-source-link="https://nigerianstat.gov.ng/download/921"></div>
+            </div>
+        </section>
+        {% endif %}
+        {% if not others.petroleum_motor_spirit_price.is_missing %}
+        <section class="clearfix stat-row">
+          <h2 class="header-for-columns">
+            <a class="permalink">
+              <strong>Petroleum Motor Spirit Price</strong><i class="fa fa-link"></i></a>
+          </h2>
+          <div class="column-full">
+              <div id="chart-column-others-petroleum_motor_spirit_price-2019"
+                   data-chart-title="Petroleum Motor Spirit Price 2019"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2019"
+                   data-source-link="https://nigerianstat.gov.ng/download/958"></div>
+          </div>
+          <div class="column-full stat-row">
+              <div id="chart-column-others-petroleum_motor_spirit_price-2018"
+                    data-chart-title="Petroleum Motor Spirit Price 2018"
+                    data-stat-type="number"
+                    data-source-title="National Bureau of Statistics, 2019"
+                    data-source-link="https://nigerianstat.gov.ng/download/958"></div>
+          </div>
+          <div class="column-full stat-row">
+              <div id="chart-column-others-petroleum_motor_spirit_price-2017"
+                    data-chart-title="Petroleum Motor Spirit Price 2017"
+                    data-stat-type="number"
+                    data-source-title="National Bureau of Statistics, 2019"
+                    data-source-link="https://nigerianstat.gov.ng/download/958"></div>
+          </div>
+          <div class="column-full stat-row">
+              <div id="chart-column-others-petroleum_motor_spirit_price-2016"
+                    data-chart-title="Petroleum Motor Spirit Price 2016"
+                    data-stat-type="number"
+                    data-source-title="National Bureau of Statistics, 2019"
+                    data-source-link="https://nigerianstat.gov.ng/download/958"></div>
             </div>
         </section>
         {% endif %}

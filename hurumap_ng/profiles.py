@@ -579,17 +579,6 @@ def get_health_profile(geo, session):
     return final_data
 
 def get_others_profile(geo, session):
-    diseal_yearly = LOCATIONNOTFOUND
-    diseal_price_2015 = LOCATIONNOTFOUND
-    diesel_price_2016 = LOCATIONNOTFOUND
-    diesel_price_2017 = LOCATIONNOTFOUND
-    diesel_price_2015 = LOCATIONNOTFOUND
-    diesel_price_2018 = LOCATIONNOTFOUND
-    diesel_price_2019 = LOCATIONNOTFOUND
-    petrol_price_2016 = LOCATIONNOTFOUND
-    petrol_price_2017 = LOCATIONNOTFOUND
-    petrol_price_2018 = LOCATIONNOTFOUND
-    petrol_price_2019 = LOCATIONNOTFOUND
     air_transportation_domestic_dep = LOCATIONNOTFOUND
     air_transportation_international_dep = LOCATIONNOTFOUND
     air_transportation_domestic_arr = LOCATIONNOTFOUND
@@ -603,111 +592,7 @@ def get_others_profile(geo, session):
     employment_in_civil_services = LOCATIONNOTFOUND
     travel_certificates = LOCATIONNOTFOUND
 
-    transport_air_fare_2016 = LOCATIONNOTFOUND
-    transport_air_fare_2017 = LOCATIONNOTFOUND
-    transport_air_fare_2018 = LOCATIONNOTFOUND
-    transport_air_fare_2019 = LOCATIONNOTFOUND
-
-    transport_motorcycle_fare_2016 = LOCATIONNOTFOUND
-    transport_motorcycle_fare_2017 = LOCATIONNOTFOUND
-    transport_motorcycle_fare_2018 = LOCATIONNOTFOUND
-    transport_motorcycle_fare_2019 = LOCATIONNOTFOUND
-
-    transport_bus_intercity_fare_2016 = LOCATIONNOTFOUND
-    transport_bus_intercity_fare_2017 = LOCATIONNOTFOUND
-    transport_bus_intercity_fare_2018 = LOCATIONNOTFOUND
-    transport_bus_intercity_fare_2019 = LOCATIONNOTFOUND
-
-    transport_withincity_fare_2016 = LOCATIONNOTFOUND
-    transport_withincity_fare_2017 = LOCATIONNOTFOUND
-    transport_withincity_fare_2018 = LOCATIONNOTFOUND
-    transport_withincity_fare_2019 = LOCATIONNOTFOUND
-
     with dataset_context(year='2018'):
-        try:
-            diesel_price_2018, _ = get_stat_data(['month'], geo=geo,
-                                         session=session,
-                                         only={'year': ['2018']},
-                                         key_order=MONTH_ORDER,
-                                         table_name='diesel_price', percent=False)
-        except Exception:
-            log.warn("Could not get data", exc_info=True)
-
-        try:
-            diesel_price_2017, _ = get_stat_data(fields=['month'], geo=geo,
-                                         session=session,
-                                         only={'year': ['2017']},
-                                         key_order=MONTH_ORDER,
-                                         table_name='diesel_price', percent=False)
-        except Exception:
-            log.warn("Could not get data", exc_info=True)
-
-        try:
-            diesel_price_2016, _ = get_stat_data(fields=['month'], geo=geo,
-                                         session=session,
-                                         only={'year': ['2016']},
-                                         key_order=MONTH_ORDER,
-                                         table_name='diesel_price', percent=False)
-        except Exception:
-            log.warn("Could not get data", exc_info=True)
-
-
-        try:
-            diesel_price_2015, _ = get_stat_data(fields=['month'], geo=geo,
-                                         session=session,
-                                         only={'year': ['2015']},
-                                         table_name='diesel_price', percent=False)
-        except Exception:
-            log.warn("Could not get data", exc_info=True)
-
-
-        try:
-            diesel_price_2019, _ = get_stat_data(fields=['month'], geo=geo,
-                                         session=session,
-                                         only={'year': ['2019']},
-                                         exclude_zero=False,
-                                         table_name='diesel_price', percent=False)
-        except Exception:
-            log.warn("Could not get data", exc_info=True)
-
-
-        try:
-            petrol_price_2016, _ = get_stat_data(fields=['month'], geo=geo,
-                                         session=session,
-                                         only={'year': ['2016']},
-                                         table_name='petrol_price', percent=False)
-        except Exception:
-            log.warn("Could not get data", exc_info=True)
-
-
-        try:
-            petrol_price_2017, _ = get_stat_data(fields=['month'], geo=geo,
-                                         session=session,
-                                         only={'year': ['2017']},
-                                         table_name='petrol_price', percent=False)
-        except Exception:
-            log.warn("Could not get data", exc_info=True)
-
-
-        try:
-            petrol_price_2018, _ = get_stat_data(fields=['month'], geo=geo,
-                                         session=session,
-                                         only={'year': ['2018']},
-                                         key_order=MONTH_ORDER,
-                                         table_name='petrol_price', percent=False)
-        except Exception:
-            log.warn("Could not get data", exc_info=True)
-
-
-        try:
-            petrol_price_2019, _ = get_stat_data(fields=['month'], geo=geo,
-                                         session=session,
-                                         only={'year': ['2019']},
-                                         table_name='petrol_price', percent=False)
-        except Exception:
-            log.warn("Could not get data", exc_info=True)
-
-
         try:
             air_transportation_domestic_dep, _ = get_stat_data(['month'], geo=geo,
                                          session=session,
@@ -819,29 +704,20 @@ def get_others_profile(geo, session):
             log.warn("Could not get data", exc_info=True)
 
 
-        diesel_price = {
-            'is_missing': diesel_price_2019.get('is_missing') and \
-                            diesel_price_2018.get('is_missing') and \
-                            diesel_price_2017.get('is_missing') and \
-                            diesel_price_2016.get('is_missing') and \
-                            diesel_price_2015.get('is_missing'),
-            '2019': diesel_price_2019,
-            '2018': diesel_price_2018,
-            '2017': diesel_price_2017,
-            '2016': diesel_price_2016,
-            '2015': diesel_price_2015
-        }
+        diesel_price = _create_multiple_data_dist(
+            fields=['month'], geo=geo, session=session, only_field='year',
+            only_values=['2015', '2016', '2017', '2018', '2019'],
+            tablename='diesel_price', order=MONTH_ORDER )
 
-        petrol_price = {
-            'is_missing': petrol_price_2018.get('is_missing') and \
-                            petrol_price_2017.get('is_missing') and \
-                            petrol_price_2016.get('is_missing') and \
-                            petrol_price_2016.get('is_missing'),
-            '2019': petrol_price_2019,
-            '2018': petrol_price_2018,
-            '2017': petrol_price_2017,
-            '2016': petrol_price_2016
-        }
+        petrol_price = _create_multiple_data_dist(
+            fields=['month'], geo=geo, session=session, only_field='year',
+            only_values=['2016', '2017', '2018', '2019'],
+            tablename='petrol_price', order=MONTH_ORDER )
+
+        petroleum_motor_spirit_price = _create_multiple_data_dist(
+            fields=['month'], geo=geo, session=session, only_field='year',
+            only_values=['2016', '2017', '2018', '2019'],
+            tablename='petroleum_motor_spirit_price', order=MONTH_ORDER )
 
         transport_withincity_fare = _create_multiple_data_dist(
             fields=['month'], geo=geo, session=session, only_field='year', 
@@ -863,12 +739,21 @@ def get_others_profile(geo, session):
             only_values=['2016', '2017', '2018', '2019'],
             tablename='transport_bus_intercity_fare', order=MONTH_ORDER )
 
+        air_transportation_domestic = _create_multiple_data_dist(
+            fields=['month'], geo=geo, session=session, only_field='depature_arrival', 
+            only_values=['Departure', 'Arrival'],
+            tablename='air_transportation_domestic', order=MONTH_ORDER )
+
+        air_transportation_international = _create_multiple_data_dist(
+            fields=['month'], geo=geo, session=session, only_field='depature_arrival', 
+            only_values=['Departure', 'Arrival'],
+            tablename='air_transportation_international', order=MONTH_ORDER )
+
+
     is_missing = diesel_price.get('is_missing') and \
                 petrol_price.get('is_missing') and \
-                air_transportation_domestic_arr.get('is_missing') and \
-                air_transportation_international_arr.get('is_missing') and \
-                    air_transportation_domestic_dep.get('is_missing') and \
-                air_transportation_international_dep.get('is_missing') and \
+                air_transportation_domestic.get('is_missing') and \
+                air_transportation_international.get('is_missing') and \
                 diesel_year.get('is_missing') and \
                 driver_licences_processed.get('is_missing') and \
                 employment_in_civil_services.get('is_missing') and \
@@ -883,10 +768,8 @@ def get_others_profile(geo, session):
         'is_missing': is_missing,
         'diesel_price': diesel_price,
         'petrol_price': petrol_price,
-        'air_transportation_domestic_dep': air_transportation_domestic_dep,
-        'air_transportation_international_dep': air_transportation_international_dep,
-        'air_transportation_domestic_arr': air_transportation_domestic_arr,
-        'air_transportation_international_arr': air_transportation_international_arr,
+        'air_transportation_domestic': air_transportation_domestic,
+        'air_transportation_international': air_transportation_international,
         'diesel_year': diesel_year,
         'driver_licences_processed': driver_licences_processed,
         'mobile_subscription': mobile_subscription,
@@ -898,7 +781,8 @@ def get_others_profile(geo, session):
         'transport_air_fare': transport_air_fare,
         'transport_bus_intercity_fare': transport_bus_intercity_fare,
         'transport_motorcycle_fare': transport_motorcycle_fare,
-        'transport_withincity_fare': transport_withincity_fare
+        'transport_withincity_fare': transport_withincity_fare,
+        'petroleum_motor_spirit_price': petroleum_motor_spirit_price
     }
     return final_data
 
