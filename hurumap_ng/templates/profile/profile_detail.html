@@ -102,17 +102,25 @@
             </div>
           </section>
           {% endif %}
-          {% if not demographics.governor_deputy_governor.is_missing %}
+          {% if not demographics.governor_deputy_governor.is_missing or not demographics.local_govt_gender_dist.is_missing %}
         <section class="clearfix stat-row">
-          <div class="column-full">
+          <div class="column-half">
               <div id="chart-grouped_column-demographics-governor_deputy_governor"
                    data-chart-title="Distribution of Women and Men Occupying Position of Governor and Deputy Governor 2015 - 2019"
                    data-stat-type="number"
                    data-source-title="National Bureau of Statistics, 2018"
                    data-source-link="https://nigerianstat.gov.ng/download/952"></div>
             </div>
-          </section>
-          {% endif %}
+            <div class="column-half">
+                <div id="chart-grouped_column-demographics-local_govt_gender_dist"
+                     data-chart-title="Distribution of Women and Men Occupying Position at the Local Government Level (1999 – 2015)"
+                     data-stat-type="number"
+                     data-source-title="National Bureau of Statistics, 2018"
+                     data-source-link="https://nigerianstat.gov.ng/download/952"></div>
+              </div>
+            </section>
+            {% endif %}
+          
       </div>
     </article>
   {% endif %}
@@ -510,7 +518,7 @@
               </div>
         </section>
         {% endif %}
-        {% if not agriculture.groundnut_production.is_missing %}
+        {% if not agriculture.groundnut_production.is_missing or not agriculture.maize_production.is_missing %}
         <section class="clearfix stat-row">
           <div class="column-half">
               <div id="chart-column-agriculture-groundnut_production"
@@ -519,6 +527,13 @@
                    data-source-title="National Bureau of Statistics, 2017"
                    data-source-link="https://nigerianstat.gov.ng/download/866"></div>
             </div>
+            <div class="column-half">
+                <div id="chart-column-agriculture-maize_production"
+                     data-chart-title="Cost Per Hectare Of Maize Production 2014 - 2016"
+                     data-stat-type="number"
+                     data-source-title="National Bureau of Statistics, 2017"
+                     data-source-link="https://nigerianstat.gov.ng/download/866"></div>
+              </div>
         </section>
         {% endif %}
       </div>
@@ -709,6 +724,24 @@
                   data-source-title="National Bureau of Statistics, 2018"
                   data-source-link="https://nigerianstat.gov.ng/resource/"></div>
           </div>
+        </section>
+        {% endif %}
+        {% if not others.driver_licences_processed_per_gender.is_missing or not others.driver_licences_processed_per_age_group.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-half">
+            <div id="chart-grouped_column-others-driver_licences_processed_per_gender"
+                  data-chart-title="National Driving Licence Produced by Federal Road Safety Corps (FRSC) per gender"
+                  data-stat-type="number"
+                  data-source-title="National Bureau of Statistics, 2016"
+                  data-source-link="https://nigerianstat.gov.ng/download/359"></div>
+          </div>
+          <div class="column-half">
+              <div id="chart-grouped_column-others-driver_licences_processed_per_age_group"
+                    data-chart-title="National Driving Licence Produced by Federal Road Safety Corps (FRSC) per age group"
+                    data-stat-type="number"
+                    data-source-title="National Bureau of Statistics, 2016"
+                    data-source-link="https://nigerianstat.gov.ng/download/359"></div>
+            </div>
         </section>
         {% endif %}
         {% if not others.passport_issued.is_missing or not others.passport_application.is_missing %}
@@ -1084,6 +1117,78 @@
                     data-stat-type="number"
                     data-source-title="National Bureau of Statistics, 2019"
                     data-source-link="https://nigerianstat.gov.ng/download/958"></div>
+            </div>
+        </section>
+        {% endif %}
+        {% if not others.lpg_price_10kg.is_missing %}
+        <section class="clearfix stat-row">
+          <h2 class="header-for-columns">
+            <a class="permalink">
+              <strong>LPG (10 -12.5kg) Price Watch</strong><i class="fa fa-link"></i></a>
+          </h2>
+          <div class="column-full">
+              <div id="chart-column-others-lpg_price_10kg-2019"
+                   data-chart-title="Gas in medium cylinder (i.e 10kg or 12.5kg) refilling price 2019"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2019"
+                   data-source-link="https://nigerianstat.gov.ng/resource"></div>
+          </div>
+          <div class="column-full stat-row">
+              <div id="chart-column-others-lpg_price_10kg-2018"
+                    data-chart-title="Gas in medium cylinder (i.e 10kg or 12.5kg) refilling price 2018"
+                    data-stat-type="number"
+                    data-source-title="National Bureau of Statistics, 2019"
+                    data-source-link="https://nigerianstat.gov.ng/resource"></div>
+          </div>
+          <div class="column-full stat-row">
+              <div id="chart-column-others-lpg_price_10kg-2017"
+                    data-chart-title="Gas in medium cylinder (i.e 10kg or 12.5kg) refilling price 2017"
+                    data-stat-type="number"
+                    data-source-title="National Bureau of Statistics, 2019"
+                    data-source-link="https://nigerianstat.gov.ng/resource"></div>
+          </div>
+          <div class="column-full stat-row">
+              <div id="chart-column-others-lpg_price_10kg-2016"
+                    data-chart-title="Gas in medium cylinder (i.e 10kg or 12.5kg) refilling price 2016"
+                    data-stat-type="number"
+                    data-source-title="National Bureau of Statistics, 2019"
+                    data-source-link="https://nigerianstat.gov.ng/resource"></div>
+            </div>
+        </section>
+        {% endif %}
+        {% if not others.lpg_price_5kg.is_missing %}
+        <section class="clearfix stat-row">
+          <h2 class="header-for-columns">
+            <a class="permalink">
+              <strong>LPG (5kg) Price Watch</strong><i class="fa fa-link"></i></a>
+          </h2>
+          <div class="column-full">
+              <div id="chart-column-others-lpg_price_5kg-2019"
+                   data-chart-title="Gas in small cylinder (i.e 5kg) refilling price 2019"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2019"
+                   data-source-link="https://nigerianstat.gov.ng/resource"></div>
+          </div>
+          <div class="column-full stat-row">
+              <div id="chart-column-others-lpg_price_5kg-2018"
+                    data-chart-title="Gas in small cylinder (i.e 5kg) refilling price 2018"
+                    data-stat-type="number"
+                    data-source-title="National Bureau of Statistics, 2019"
+                    data-source-link="https://nigerianstat.gov.ng/resource"></div>
+          </div>
+          <div class="column-full stat-row">
+              <div id="chart-column-others-lpg_price_5kg-2017"
+                    data-chart-title="Gas in small cylinder (i.e 5kg) refilling price 2017"
+                    data-stat-type="number"
+                    data-source-title="National Bureau of Statistics, 2019"
+                    data-source-link="https://nigerianstat.gov.ng/resource"></div>
+          </div>
+          <div class="column-full stat-row">
+              <div id="chart-column-others-lpg_price_5kg-2016"
+                    data-chart-title="Gas in small cylinder (i.e 5kg) refilling price 2016"
+                    data-stat-type="number"
+                    data-source-title="National Bureau of Statistics, 2019"
+                    data-source-link="https://nigerianstat.gov.ng/resource"></div>
             </div>
         </section>
         {% endif %}

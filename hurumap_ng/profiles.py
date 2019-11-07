@@ -113,6 +113,7 @@ def get_demographics_profile(geo, session):
     labour_force = LOCATIONNOTFOUND
     population_sex = LOCATIONNOTFOUND
     governor_deputy_governor = LOCATIONNOTFOUND
+    local_govt_gender_dist = LOCATIONNOTFOUND
     total_population = 0
 
     with dataset_context(year='2018'):
@@ -176,6 +177,12 @@ def get_demographics_profile(geo, session):
         except Exception:
             log.warn("Could not get data", exc_info=True)
 
+        try:
+            local_govt_gender_dist, _ = get_stat_data(fields=['position', 'gender'], geo=geo,
+                                    session=session, table_name='local_govt_gender_dist', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
 
 
     is_missing = compiled_indeces.get('is_missing') and \
@@ -184,7 +191,8 @@ def get_demographics_profile(geo, session):
                     unemployment_rate.get('is_missing') and \
                     under_employment_rate.get('is_missing') and \
                     labour_force.get('is_missing') and \
-                    governor_deputy_governor.get('is_missing')
+                    governor_deputy_governor.get('is_missing') and \
+                    local_govt_gender_dist.get('is_missing')
     final_data = {
         'is_missing': is_missing,
         'compiled_indeces': compiled_indeces,
@@ -194,6 +202,7 @@ def get_demographics_profile(geo, session):
         'under_employment_rate': under_employment_rate,
         'labour_force': labour_force,
         'governor_deputy_governor': governor_deputy_governor,
+        'local_govt_gender_dist': local_govt_gender_dist,
         'total_population': {
                 'name': 'People',
                 'values': {'this': total_population },
@@ -598,6 +607,8 @@ def get_health_profile(geo, session):
 def get_others_profile(geo, session):
     diesel_year = LOCATIONNOTFOUND
     driver_licences_processed = LOCATIONNOTFOUND
+    driver_licences_processed_per_gender = LOCATIONNOTFOUND
+    driver_licences_processed_per_age_group = LOCATIONNOTFOUND
     mobile_subscription = LOCATIONNOTFOUND
     mineral_production = LOCATIONNOTFOUND
     telecom_subscription = LOCATIONNOTFOUND
@@ -637,6 +648,20 @@ def get_others_profile(geo, session):
             driver_licences_processed, _ = get_stat_data(['year'], geo=geo,
                                          session=session,
                                          table_name='driver_licences_processed', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
+        try:
+            driver_licences_processed_per_age_group, _ = get_stat_data(['year', 'age_group'], geo=geo,
+                                         session=session,
+                                         table_name='driver_licences_processed_age', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
+        try:
+            driver_licences_processed_per_gender, _ = get_stat_data(['year', 'gender'], geo=geo,
+                                         session=session,
+                                         table_name='driver_licences_processed_gender', percent=False)
         except Exception:
             log.warn("Could not get data", exc_info=True)
 
@@ -763,6 +788,16 @@ def get_others_profile(geo, session):
             only_values=['Departure', 'Arrival'],
             tablename='air_transportation_international', order=MONTH_ORDER )
 
+        lpg_price_5kg = _create_multiple_data_dist(
+            fields=['month'], geo=geo, session=session, only_field='year',
+            only_values=['2016', '2017', '2018', '2019'],
+            tablename='lpg_price_5kg', order=MONTH_ORDER )
+
+        lpg_price_10kg = _create_multiple_data_dist(
+            fields=['month'], geo=geo, session=session, only_field='year',
+            only_values=['2016', '2017', '2018', '2019'],
+            tablename='lpg_price_10kg', order=MONTH_ORDER )
+
 
     is_missing = diesel_price.get('is_missing') and \
                 petrol_price.get('is_missing') and \
@@ -780,7 +815,12 @@ def get_others_profile(geo, session):
                 passport_application.get('is_missing') and \
                 passport_re_issued.get('is_missing') and \
                 international_flights.get('is_missing') and \
-                domestic_flights.get('is_missing')
+                domestic_flights.get('is_missing') and \
+                lpg_price_10kg.get('is_missing') and \
+                lpg_price_5kg.get('is_missing') and \
+                driver_licences_processed_per_age_group.get('is_missing') and \
+                driver_licences_processed_per_gender.get('is_missing')
+                
 
 
     final_data = {
@@ -806,7 +846,11 @@ def get_others_profile(geo, session):
         'passport_application': passport_application,
         'passport_re_issued': _remove_empty_entry(passport_re_issued),
         'domestic_flights': domestic_flights,
-        'international_flights': international_flights
+        'international_flights': international_flights,
+        'lpg_price_10kg': lpg_price_10kg,
+        'lpg_price_5kg': lpg_price_5kg,
+        'driver_licences_processed_per_gender': driver_licences_processed_per_gender,
+        'driver_licences_processed_per_age_group': driver_licences_processed_per_age_group
     }
     return final_data
 
@@ -899,6 +943,7 @@ def get_agriculture_profile(geo, session):
     all_consumer_price = LOCATIONNOTFOUND
     food_consumer_price = LOCATIONNOTFOUND
     groundnut_production = LOCATIONNOTFOUND
+    maize_production = LOCATIONNOTFOUND
 
     with dataset_context(year='2018'):
         try:
@@ -926,15 +971,24 @@ def get_agriculture_profile(geo, session):
         except Exception:
             log.warn("Could not get data", exc_info=True)
 
+        try:
+            maize_production, _ = get_stat_data(fields=['year'], geo=geo,
+                                         session=session,
+                                         table_name='maize_production', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
 
     is_missing = all_consumer_price.get('is_missing') and \
                 food_consumer_price.get('is_missing') and \
-                groundnut_production.get('is_missing')
+                groundnut_production.get('is_missing') and \
+                maize_production.get('is_missing')
 
     final_data = {
         'is_missing': is_missing,
         'all_consumer_price': all_consumer_price,
         'food_consumer_price': food_consumer_price,
-        'groundnut_production': groundnut_production
+        'groundnut_production': groundnut_production,
+        'maize_production': maize_production
     }
     return final_data
