@@ -112,6 +112,7 @@ def get_demographics_profile(geo, session):
     under_employment_rate = LOCATIONNOTFOUND
     labour_force = LOCATIONNOTFOUND
     population_sex = LOCATIONNOTFOUND
+    governor_deputy_governor = LOCATIONNOTFOUND
     total_population = 0
 
     with dataset_context(year='2018'):
@@ -169,13 +170,21 @@ def get_demographics_profile(geo, session):
         except Exception:
             log.warn("Could not get data", exc_info=True)
 
+        try:
+            governor_deputy_governor, _ = get_stat_data(fields=['position', 'gender'], geo=geo,
+                                    session=session, table_name='governor_deputy_governor', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
+
 
     is_missing = compiled_indeces.get('is_missing') and \
                     birth_registration.get('is_missing') and \
                     population_projection.get('is_missing') and \
                     unemployment_rate.get('is_missing') and \
                     under_employment_rate.get('is_missing') and \
-                    labour_force.get('is_missing')
+                    labour_force.get('is_missing') and \
+                    governor_deputy_governor.get('is_missing')
     final_data = {
         'is_missing': is_missing,
         'compiled_indeces': compiled_indeces,
@@ -184,6 +193,7 @@ def get_demographics_profile(geo, session):
         'population_projection': population_projection,
         'under_employment_rate': under_employment_rate,
         'labour_force': labour_force,
+        'governor_deputy_governor': governor_deputy_governor,
         'total_population': {
                 'name': 'People',
                 'values': {'this': total_population },
@@ -597,12 +607,28 @@ def get_others_profile(geo, session):
     passport_issued = LOCATIONNOTFOUND
     passport_application = LOCATIONNOTFOUND
     passport_re_issued = LOCATIONNOTFOUND
+    international_flights = LOCATIONNOTFOUND
+    domestic_flights = LOCATIONNOTFOUND
 
     with dataset_context(year='2018'):
         try:
             diesel_year, _ = get_stat_data(['diesel_year'], geo=geo,
                                          session=session,
                                          table_name='diesel_yearly', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
+        try:
+            domestic_flights, _ = get_stat_data(['flight'], geo=geo,
+                                         session=session,
+                                         table_name='domestic_flights', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
+        try:
+            international_flights, _ = get_stat_data(['flight'], geo=geo,
+                                         session=session,
+                                         table_name='international_flights', percent=False)
         except Exception:
             log.warn("Could not get data", exc_info=True)
 
@@ -752,7 +778,9 @@ def get_others_profile(geo, session):
                 transport_motorcycle_fare.get('is_missing') and \
                 passport_issued.get('is_missing') and \
                 passport_application.get('is_missing') and \
-                passport_re_issued.get('is_missing')
+                passport_re_issued.get('is_missing') and \
+                international_flights.get('is_missing') and \
+                domestic_flights.get('is_missing')
 
 
     final_data = {
@@ -776,7 +804,9 @@ def get_others_profile(geo, session):
         'petroleum_motor_spirit_price': petroleum_motor_spirit_price,
         'passport_issued': passport_issued,
         'passport_application': passport_application,
-        'passport_re_issued': _remove_empty_entry(passport_re_issued)
+        'passport_re_issued': _remove_empty_entry(passport_re_issued),
+        'domestic_flights': domestic_flights,
+        'international_flights': international_flights
     }
     return final_data
 
