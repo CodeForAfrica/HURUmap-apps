@@ -101,25 +101,47 @@
                    data-source-link="https://nigerianstat.gov.ng/download/830"></div>
             </div>
           </section>
-          {% endif %}
-          {% if not demographics.governor_deputy_governor.is_missing or not demographics.local_govt_gender_dist.is_missing %}
+        {% endif %}
+        {% if not demographics.governor_deputy_governor.is_missing or not demographics.local_govt_gender_dist.is_missing %}
         <section class="clearfix stat-row">
           <div class="column-half">
-              <div id="chart-grouped_column-demographics-governor_deputy_governor"
+          <div id="chart-grouped_column-demographics-governor_deputy_governor"
+                data-chart-title="Distribution of Women and Men Occupying Position of Governor and Deputy Governor 2015 - 2019"
+                data-stat-type="number"
+                data-source-title="National Bureau of Statistics, 2018"
+                data-source-link="https://nigerianstat.gov.ng/download/952"></div>
+        </div>
+        <div class="column-half">
+            <div id="chart-grouped_column-demographics-local_govt_gender_dist"
+                  data-chart-title="Distribution of Women and Men Occupying Position at the Local Government Level (1999 – 2015)"
+                  data-stat-type="number"
+                  data-source-title="National Bureau of Statistics, 2018"
+                  data-source-link="https://nigerianstat.gov.ng/download/952"></div>
+          </div>
+        </section>
+        {% endif %}
+        {% if not demographics.officer_house_assembly.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-grouped_column-demographics-officer_house_assembly"
                    data-chart-title="Distribution of Women and Men Occupying Position of Governor and Deputy Governor 2015 - 2019"
                    data-stat-type="number"
                    data-source-title="National Bureau of Statistics, 2018"
                    data-source-link="https://nigerianstat.gov.ng/download/952"></div>
             </div>
-            <div class="column-half">
-                <div id="chart-grouped_column-demographics-local_govt_gender_dist"
-                     data-chart-title="Distribution of Women and Men Occupying Position at the Local Government Level (1999 – 2015)"
-                     data-stat-type="number"
-                     data-source-title="National Bureau of Statistics, 2018"
-                     data-source-link="https://nigerianstat.gov.ng/download/952"></div>
-              </div>
-            </section>
-            {% endif %}
+        </section>
+        {% endif %}
+        {% if not demographics.number_of_officials.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-column-demographics-number_of_officials"
+                   data-chart-title="Total Number of Officials, 2017"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2017"
+                   data-source-link="https://nigerianstat.gov.ng/resource"></div>
+            </div>
+        </section>
+        {% endif %}
           
       </div>
     </article>
@@ -160,6 +182,17 @@
             </div>
         </section>
         {% endif %}
+        {% if not health.underweight_children.is_missing %}
+          <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-column-health-underweight_children"
+                   data-chart-title="Prevalence of underweight children by state, 2018"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2018"
+                   data-source-link="https://nigerianstat.gov.ng/download/839"></div>
+            </div>
+        </section>
+        {% endif %}
         {% if not health.vaccine_coverage.is_missing %}
           <section class="clearfix stat-row">
           <div class="column-full">
@@ -168,6 +201,28 @@
                    data-stat-type="number"
                    data-source-title="National Bureau of Statistics, 2018"
                    data-source-link="https://nigerianstat.gov.ng/download/839"></div>
+            </div>
+        </section>
+        {% endif %}
+        {% if not health.immunization_coverage.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-grouped_column-health-immunization_coverage"
+                   data-chart-title="Proportion of Immunization coverage among children 12-23 months by Card and Recall, 2018"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2018"
+                   data-source-link="https://nigerianstat.gov.ng/download/839"></div>
+            </div>
+        </section>
+        {% endif %}
+        {% if not health.road_traffic_accidents.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-grouped_column-health-road_traffic_accidents"
+                   data-chart-title="Number Of Persons Reported Injured In Road Traffic Crash by state 2014-2016"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2017"
+                   data-source-link="https://nigerianstat.gov.ng/download/866"></div>
             </div>
         </section>
         {% endif %}
@@ -405,7 +460,7 @@
                  data-chart-title="Offences against Lawful Authority by state, 2017"
                  data-stat-type="number"
                  data-source-title="National Bureau of Statistics, 2017"
-                 data-source-link="https://nigerianstat.gov.ng/resource/CRIME%20STATISTICS%202017.xlsx"></div>
+                 data-source-link="https://nigerianstat.gov.ng/resource/"></div>
           </div>
       </section>
       {% endif %}
@@ -416,7 +471,7 @@
                  data-chart-title="Offences against Property, 2017"
                  data-stat-type="number"
                  data-source-title="National Bureau of Statistics, 2017"
-                 data-source-link="https://nigerianstat.gov.ng/resource/CRIME%20STATISTICS%202017.xlsx"></div>
+                 data-source-link="https://nigerianstat.gov.ng/resource/"></div>
           </div>
       </section>
       {% endif %}
@@ -427,8 +482,26 @@
                  data-chart-title="Offences against Persons, 2017"
                  data-stat-type="number"
                  data-source-title="National Bureau of Statistics, 2017"
-                 data-source-link="https://nigerianstat.gov.ng/resource/CRIME%20STATISTICS%202017.xlsx"></div>
+                 data-source-link="https://nigerianstat.gov.ng/resource/"></div>
           </div>
+      </section>
+      {% endif %}
+      {% if not crime.prison_population.is_missing or not crime.prison_capacity.is_missing %}
+      <section class="clearfix stat-row">
+        <div class="column-half">
+            <div id="chart-grouped_column-crime-prison_population"
+                 data-chart-title="Prison Inmate Population 2012 - 2016"
+                 data-stat-type="number"
+                 data-source-title="National Bureau of Statistics, 2017"
+                 data-source-link="https://nigerianstat.gov.ng/resource/"></div>
+          </div>
+          <div class="column-half">
+              <div id="chart-column-crime-prison_capacity"
+                   data-chart-title="Nigerian Prisons Capacity (2013 - 2015)"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2016"
+                   data-source-link="https://nigerianstat.gov.ng/download/379"></div>
+            </div>
       </section>
       {% endif %}
     </div>
@@ -551,10 +624,10 @@
                 <strong>Nominal GDP </strong><i class="fa fa-link"></i></a></h2>
             <div class="column-full">
                 <div id="chart-grouped_column-finance-nominal_gdp"
-                     data-chart-title="Nominal GDP Main Sectors, N'Mn (2013 - 2017)"
+                     data-chart-title="Nominal GDP Main Sectors, ₦ (2013 - 2017)"
                      data-stat-type="number"
                      data-source-title="National Bureau of Statistics, 2018"
-                     data-source-link="https://nigerianstat.gov.ng/resource/Final%2022%20SGDP%20%20Analysis_%20sg.xlsx"></div>
+                     data-source-link="https://nigerianstat.gov.ng/resource"></div>
               </div>
         </section>
         {% endif %}
@@ -664,6 +737,28 @@
             </div>
         </section>
         {% endif %}
+        {% if not others.marriage_distribution.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-column-others-marriage_distribution"
+                   data-chart-title="Marriage Distribution / Registry 2014 - 2016"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2016"
+                   data-source-link="https://nigerianstat.gov.ng/resource/"></div>
+            </div>
+        </section>
+        {% endif %}
+        {% if not others.youth_services_corp_dev.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-grouped_column-others-youth_services_corp_dev"
+                   data-chart-title="National Youth Services Corp Deployment 2015 - 2016"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2018"
+                   data-source-link="https://nigerianstat.gov.ng/download/866"></div>
+            </div>
+        </section>
+        {% endif %}
         {% if not others.mineral_production.is_missing %}
         <section class="clearfix stat-row">
           <div class="column-full">
@@ -705,6 +800,28 @@
                    data-stat-type="number"
                    data-source-title="National Bureau of Statistics, 2018"
                    data-source-link="https://nigerianstat.gov.ng/download/614"></div>
+            </div>
+        </section>
+        {% endif %}
+        {% if not others.postal_data.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-column-others-postal_data"
+                   data-chart-title="Total number of Annual Postal Services Data"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2016"
+                   data-source-link="https://nigerianstat.gov.ng/download/522"></div>
+            </div>
+        </section>
+        {% endif %}
+        {% if not others.number_of_plates.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-column-others-number_of_plates"
+                   data-chart-title="Number Plates Produced and Type, 2013-2015"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2016"
+                   data-source-link="https://nigerianstat.gov.ng/download/359"></div>
             </div>
         </section>
         {% endif %}

@@ -114,6 +114,8 @@ def get_demographics_profile(geo, session):
     population_sex = LOCATIONNOTFOUND
     governor_deputy_governor = LOCATIONNOTFOUND
     local_govt_gender_dist = LOCATIONNOTFOUND
+    officer_house_assembly = LOCATIONNOTFOUND
+    number_of_officials = LOCATIONNOTFOUND
     total_population = 0
 
     with dataset_context(year='2018'):
@@ -183,6 +185,23 @@ def get_demographics_profile(geo, session):
         except Exception:
             log.warn("Could not get data", exc_info=True)
 
+        try:
+            officer_house_assembly, _ = get_stat_data(fields=['position', 'gender'], geo=geo,
+                                    session=session,
+                                    recode={'gender': { 'Female': 'F', 'Male': 'M'}},
+                                    exclude_zero=True,
+                                    key_order={'gender': ['Female', 'Male']},
+                                    table_name='officer_house_assembly', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
+        try:
+            number_of_officials, _ = get_stat_data(fields=['position'], geo=geo,
+                                         session=session,
+                                         table_name='number_of_officials', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
 
 
     is_missing = compiled_indeces.get('is_missing') and \
@@ -192,7 +211,9 @@ def get_demographics_profile(geo, session):
                     under_employment_rate.get('is_missing') and \
                     labour_force.get('is_missing') and \
                     governor_deputy_governor.get('is_missing') and \
-                    local_govt_gender_dist.get('is_missing')
+                    local_govt_gender_dist.get('is_missing') and \
+                    officer_house_assembly.get('is_missing') and \
+                    number_of_officials.get('is_missing')
     final_data = {
         'is_missing': is_missing,
         'compiled_indeces': compiled_indeces,
@@ -203,6 +224,8 @@ def get_demographics_profile(geo, session):
         'labour_force': labour_force,
         'governor_deputy_governor': governor_deputy_governor,
         'local_govt_gender_dist': local_govt_gender_dist,
+        'officer_house_assembly': officer_house_assembly,
+        'number_of_officials': number_of_officials,
         'total_population': {
                 'name': 'People',
                 'values': {'this': total_population },
@@ -223,6 +246,8 @@ def get_crime_profile(geo, session):
     offences_against_property = LOCATIONNOTFOUND
     offences_against_authority = LOCATIONNOTFOUND
     crime_summary = LOCATIONNOTFOUND
+    prison_capacity = LOCATIONNOTFOUND
+    prison_population = LOCATIONNOTFOUND
 
     with dataset_context(year='2016'):
         try:
@@ -318,6 +343,21 @@ def get_crime_profile(geo, session):
         except Exception:
             log.warn("Could not get data", exc_info=True)
 
+        try:
+            prison_capacity, _ = get_stat_data(fields=['year'], geo=geo,
+                                         session=session,
+                                         table_name='prison_capacity')
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
+
+        try:
+            prison_population, _ = get_stat_data(fields=['gender', 'year'], geo=geo,
+                                         session=session,
+                                         table_name='prison_population', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
 
     is_missing = arrested_suspects.get('is_missing') and \
                 suspects_prosecuted.get('is_missing') and \
@@ -327,7 +367,9 @@ def get_crime_profile(geo, session):
                 offences_against_authority.get('is_missing') and \
                 offences_against_property.get('is_missing') and \
                 offences_against_person.get('is_missing') and \
-                crime_summary.get('is_missing')
+                crime_summary.get('is_missing') and \
+                prison_capacity.get('is_missing') and \
+                prison_population.get('is_missing')
 
     final_data = {
         'is_missing': is_missing,
@@ -341,7 +383,9 @@ def get_crime_profile(geo, session):
         'offences_against_person': offences_against_person,
         'offences_against_property': offences_against_property,
         'offences_against_authority': offences_against_authority,
-        'crime_summary': crime_summary
+        'crime_summary': crime_summary,
+        'prison_capacity': prison_capacity,
+        'prison_population': prison_population
     }
     return final_data
 
@@ -493,6 +537,9 @@ def get_health_profile(geo, session):
     dentists_per_sex_year = LOCATIONNOTFOUND
     doctors_per_sex_year = LOCATIONNOTFOUND
     maternal_mortality = LOCATIONNOTFOUND
+    immunization_coverage = LOCATIONNOTFOUND
+    road_traffic_accidents = LOCATIONNOTFOUND
+    underweight_children = LOCATIONNOTFOUND
 
     with dataset_context(year='2016'):
         try:
@@ -576,6 +623,24 @@ def get_health_profile(geo, session):
         except Exception:
             log.warn("Could not get data", exc_info=True)
 
+        try:
+            immunization_coverage, _ = get_stat_data(
+                ['immunization', 'method'], geo, session, percent=False, table_name='immunization_coverage')
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
+        try:
+            road_traffic_accidents, _ = get_stat_data(
+                ['year', 'gender'], geo, session, percent=False, table_name='road_traffic_accidents')
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
+        try:
+            underweight_children, _ = get_stat_data(
+                ['state'], geo, session, percent=False, table_name='underweight_children')
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
     is_missing = counselling_concluded.get('is_missing') and \
                 hiv_patients.get('is_missing') and \
                 access_to_wash.get('is_missing') and \
@@ -586,7 +651,10 @@ def get_health_profile(geo, session):
                 fertility_rate.get('is_missing') and \
                 dentists_per_sex_year.get('is_missing') and \
                 doctors_per_sex_year.get('is_missing') and \
-                maternal_mortality.get('is_missing')
+                maternal_mortality.get('is_missing') and \
+                immunization_coverage.get('is_missing') and \
+                underweight_children.get('is_missing') and \
+                road_traffic_accidents.get('is_missing')
 
     final_data = {
         'is_missing': is_missing,
@@ -600,7 +668,10 @@ def get_health_profile(geo, session):
         'fertility_rate': fertility_rate,
         'doctors_per_sex_year': doctors_per_sex_year,
         'dentists_per_sex_year': dentists_per_sex_year,
-        'maternal_mortality': maternal_mortality
+        'maternal_mortality': maternal_mortality,
+        'immunization_coverage': immunization_coverage,
+        'road_traffic_accidents': road_traffic_accidents,
+        'underweight_children': underweight_children
     }
     return final_data
 
@@ -620,6 +691,10 @@ def get_others_profile(geo, session):
     passport_re_issued = LOCATIONNOTFOUND
     international_flights = LOCATIONNOTFOUND
     domestic_flights = LOCATIONNOTFOUND
+    marriage_distribution = LOCATIONNOTFOUND
+    youth_services_corp_dev = LOCATIONNOTFOUND
+    number_of_plates = LOCATIONNOTFOUND
+    postal_data = LOCATIONNOTFOUND
 
     with dataset_context(year='2018'):
         try:
@@ -742,6 +817,34 @@ def get_others_profile(geo, session):
         except Exception:
             log.warn("Could not get data", exc_info=True)
 
+        try:
+            marriage_distribution, _ = get_stat_data(fields=['year'], geo=geo,
+                                     session=session,
+                                     table_name='marriage_distribution', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
+        try:
+            youth_services_corp_dev, _ = get_stat_data(fields=['year', 'gender'], geo=geo,
+                                     session=session,
+                                     table_name='youth_services_corp_dev', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
+        try:
+            number_of_plates, _ = get_stat_data(fields=['year'], geo=geo,
+                                     session=session,
+                                     table_name='number_of_plates', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
+        try:
+            postal_data, _ = get_stat_data(fields=['year'], geo=geo,
+                                     session=session,
+                                     table_name='postal_data', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
 
         diesel_price = _create_multiple_data_dist(
             fields=['month'], geo=geo, session=session, only_field='year',
@@ -819,7 +922,11 @@ def get_others_profile(geo, session):
                 lpg_price_10kg.get('is_missing') and \
                 lpg_price_5kg.get('is_missing') and \
                 driver_licences_processed_per_age_group.get('is_missing') and \
-                driver_licences_processed_per_gender.get('is_missing')
+                driver_licences_processed_per_gender.get('is_missing') and \
+                marriage_distribution.get('is_missing') and \
+                youth_services_corp_dev.get('is_missing') and \
+                number_of_plates.get('is_missing') and \
+                postal_data.get('is_missing')
                 
 
 
@@ -850,7 +957,11 @@ def get_others_profile(geo, session):
         'lpg_price_10kg': lpg_price_10kg,
         'lpg_price_5kg': lpg_price_5kg,
         'driver_licences_processed_per_gender': driver_licences_processed_per_gender,
-        'driver_licences_processed_per_age_group': driver_licences_processed_per_age_group
+        'driver_licences_processed_per_age_group': driver_licences_processed_per_age_group,
+        'marriage_distribution': marriage_distribution,
+        'youth_services_corp_dev': youth_services_corp_dev,
+        'number_of_plates': number_of_plates,
+        'postal_data': postal_data
     }
     return final_data
 
