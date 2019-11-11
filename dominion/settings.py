@@ -14,14 +14,6 @@ INSTALLED_APPS = ['dominion'] + INSTALLED_APPS
 
 ROOT_URLCONF = 'dominion.urls'
 
-TEMPLATES[0]['OPTIONS']['context_processors'] = TEMPLATES[0]['OPTIONS'][
-                                                    'context_processors'] + [
-                                                    'dominion.context_processors.asset_manifest']
-
-STATICFILES_DIRS = [
-     os.path.join(BASE_DIR, 'dominion/dominion_ui/build/static') # build appropriate path
-]
-
 # Static Files Handler
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
