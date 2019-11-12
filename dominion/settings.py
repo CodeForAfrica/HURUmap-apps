@@ -14,14 +14,6 @@ INSTALLED_APPS = ['dominion'] + INSTALLED_APPS
 
 ROOT_URLCONF = 'dominion.urls'
 
-TEMPLATES[0]['OPTIONS']['context_processors'] = TEMPLATES[0]['OPTIONS'][
-                                                    'context_processors'] + [
-                                                    'dominion.context_processors.asset_manifest']
-
-STATICFILES_DIRS = [
-     os.path.join(BASE_DIR, 'dominion/dominion_ui/build/static') # build appropriate path
-]
-
 # Static Files Handler
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
@@ -305,10 +297,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 CORS_ORIGIN_ALLOW_ALL = False
 
-#whitelist localhost:3000 to serve rest frontend
-CORS_ORIGIN_WHITELIST = (
-        'localhost:3000/'
-    )
 
 # color scheme
 
