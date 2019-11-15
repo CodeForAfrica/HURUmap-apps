@@ -28,7 +28,7 @@ CREATE TABLE public.number_of_plates (
     geo_code character varying(10) NOT NULL,
     geo_version character varying(128) NOT NULL,
     year character varying(128) NOT NULL,
-    type character varying(128) NOT NULL,
+    vehicle_type character varying(128) NOT NULL,
     total numeric
 );
 
@@ -37,7 +37,7 @@ CREATE TABLE public.number_of_plates (
 -- Data for Name: number_of_plates; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.number_of_plates (geo_level, geo_code, geo_version, year, type, total) FROM stdin;
+COPY public.number_of_plates (geo_level, geo_code, geo_version, year, vehicle_type, total) FROM stdin;
 state	1	2016	2013	Motor Cycle	6460
 state	1	2016	2013	Motor Vehicle	14541
 state	1	2016	2014	Motor Cycle	16851
@@ -274,7 +274,7 @@ state	37	2016	2015	Motor Vehicle	2848
 --
 
 ALTER TABLE ONLY public.number_of_plates
-    ADD CONSTRAINT number_of_plates_pkey PRIMARY KEY (geo_level, geo_code, geo_version, year, type);
+    ADD CONSTRAINT number_of_plates_pkey PRIMARY KEY (geo_level, geo_code, geo_version, year, vehicle_type);
 
 
 --
