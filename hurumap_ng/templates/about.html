@@ -1,0 +1,33 @@
+{% extends 'homepage.html' %}
+
+{% block body_id %}page{% endblock %}
+
+{% block content_container %}
+    <div class="content container-narrowest clearfix">
+        <h1>About {{ HURUMAP.name }}</h1>
+        <p>{{ HURUMAP.name }} was birthed from the partnership between Nigerian National Bureau of Statistics (NBS) and Code for Africa (CfA) in a bid to improve end users’ accessibility to NBS Data.</p>
+
+        <p>Nigeria’s <a href="https://www.nigerianstat.gov.ng/" target="_blank" rel="noopener">National Bureau of Statistics</a> (NBS) 
+            came into being with the enactment of the Statistics Act 2007 following the merger of the Federal Office of Statistics (FOS) 
+            and the National Data Bank (NDB). The merger was to give the new agency a national outlook as the apex statistical agency in the country.</p>
+
+        <p>NBS is the authoritative source and custodian of official statistics in Nigeria, 
+            and coordinates statistical operations of the National Statistical System comprising all Federal Ministries, 
+            Departments and Agencies (MDAs), State Statistical Agencies (SSAs) and a number of other data providers.</p>
+
+        <p>Code for Africa and its partners work together to facilitate free access to information, particularly for civil society and citizens.</p>
+
+        <p>NBS and Code for Africa are committed to the growth of the civic technology community by ensuring Nigeria’s data is readily accessible and freely available through the Nigeria HURUmap.</p>
+            
+        <p><em>What’s the data behind the story?</em></p>
+
+        <p>{{ HURUMAP.name }} provides the general public, particularly infomediaries like journalists and data enthusiasts, 
+            a friendly ‘plug & play’ toolkit for locating interactive data visualisations and embedding same in their storytelling. 
+            The project's underlying data is quality-checked and solely sourced from the National Bureau of Statistics (NBS). </p>
+
+        <p>The project is built on <a href="http://wazimap.readthedocs.org/" target="_blank" rel="noopener">Wazimap</a>, an open source platform by <a href="https://openup.org.za/" target="_blank" rel="noopener">OpenUp</a> and <a href="http://www.mediamonitoringafrica.org/" target="_blank" rel="noopener">Media Monitoring Africa</a> for making census data more understandable.</p>
+
+        <br/>
+        {% include 'blocks/about/manifesto.html' %}
+    </div>
+{% endblock %}
