@@ -847,20 +847,6 @@ def get_others_profile(geo, session):
         except Exception:
             log.warn("Could not get data", exc_info=True)
 
-        try:
-            mobile_subscription_q1_2019, _ = get_stat_data(fields=['network', 'subscription_type'], geo=geo,
-                                     session=session,
-                                     table_name='mobile_subscription_q1_2019', percent=False)
-        except Exception:
-            log.warn("Could not get data", exc_info=True)
-
-        try:
-            mobile_subscription_q2_2019, _ = get_stat_data(fields=['network', 'subscription_type'], geo=geo,
-                                     session=session,
-                                     table_name='mobile_subscription_q2_2019', percent=False)
-        except Exception:
-            log.warn("Could not get data", exc_info=True)
-
 
         diesel_price = _create_multiple_data_dist(
             fields=['month'], geo=geo, session=session, only_field='year',
@@ -916,6 +902,21 @@ def get_others_profile(geo, session):
             fields=['month'], geo=geo, session=session, only_field='year',
             only_values=['2016', '2017', '2018', '2019'],
             tablename='lpg_price_10kg', order=MONTH_ORDER )
+
+    with dataset_context(year='2019'):
+        try:
+            mobile_subscription_q1_2019, _ = get_stat_data(fields=['network', 'subscription_type'], geo=geo,
+                                     session=session,
+                                     table_name='mobile_subscription_q1_2019', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
+        try:
+            mobile_subscription_q2_2019, _ = get_stat_data(fields=['network', 'subscription_type'], geo=geo,
+                                     session=session,
+                                     table_name='mobile_subscription_q2_2019', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
 
 
     is_missing = diesel_price.get('is_missing') and \
