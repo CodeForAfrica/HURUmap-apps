@@ -138,7 +138,7 @@ def get_demographics_profile(geo, session):
         try:
             population_projection, _ = get_stat_data(fields=['year', 'gender'], geo=geo,
                                          session=session,
-                                         table_name='population_projection', percent=False)
+                                         table_name='population_projection', percent=False, order_by='gender')
         except Exception:
             log.warn("Could not get data", exc_info=True)
 
