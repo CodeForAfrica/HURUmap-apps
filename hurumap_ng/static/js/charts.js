@@ -37,7 +37,6 @@ function Chart(options) {
     chart.chartNullLabel = options.chartNullLabel || "N/A";
     chart.decimalPlaces = parseInt(options.chartDecimalPlaces) || 0;
     chart.tableDecimalPlaces = parseInt(options.chartDecimalPlaces) || 1;
-    chart.columnWidth = parseInt(options.chartColumnWidth);
     chart.colorbrewer = options.colorbrewer || (window.HURUMAP_THEME && window.HURUMAP_THEME.charts.colorbrewer);
     chart.chartChartShowYAxis = options.chartChartShowYAxis ||
         (window.HURUMAP_THEME && window.HURUMAP_THEME.charts.show_y_axis) ||
@@ -415,10 +414,12 @@ function Chart(options) {
     chart.htmlBase = chart.chartContainer
       .append("div")
       .attr("class", "column-set")
-      .style("margin-bottom", function() {
-        return chart.chartChartShowYAxis ? -chart.settings.height + "px" : "0";
-      })
       .style("height", chart.settings.height + "px");
+
+    if (chart.chartChartShowYAxis) {
+      chart.htmlBase = chart.htmlBase
+        .style("margin-bottom", -chart.settings.height + "px");
+    }
 
     // narrow padding for histograms
     if (chart.chartType == "histogram") {
@@ -531,7 +532,7 @@ function Chart(options) {
         .each(function(d, i) {
           g = d3.select(this);
           groupValues = d3.values(d.values);
-          columnWidth = chart.columnWidth || Math.floor(chart.x.rangeBand() / groupValues.length);
+          columnWidth = Math.floor(chart.x.rangeBand() / groupValues.length);
 
           g.append("span")
             .classed("x axis label", true)
