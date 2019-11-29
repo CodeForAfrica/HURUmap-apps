@@ -20,7 +20,7 @@ HURUMAP["url"] = "https://nigeria.hurumap.org"
 
 HURUMAP[
     "title_tagline"
-] = "HURUmap Nigeria helps storytellers use data to add context and depth to stories"
+] = "HURUmap Nigeria helps storytellers use data to add context and depth to stories."
 
 HURUMAP["twitter"] = "@nigerianstat"
 HURUMAP["facebook"] = "nigerianstatistics"
