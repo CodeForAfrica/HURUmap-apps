@@ -903,6 +903,11 @@ def get_others_profile(geo, session):
             only_values=['2016', '2017', '2018', '2019'],
             tablename='lpg_price_10kg', order=MONTH_ORDER )
 
+        petroleum_gas_distribution = _create_multiple_data_dist(
+            fields=['month'], geo=geo, session=session, only_field='year',
+            only_values=['2018', '2019'],
+            tablename='petroleum_gas_distribution', order=MONTH_ORDER )
+
     with dataset_context(year='2019'):
         try:
             mobile_subscription_q1_2019, _ = get_stat_data(fields=['network', 'subscription_type'], geo=geo,
@@ -945,7 +950,8 @@ def get_others_profile(geo, session):
                 number_of_plates.get('is_missing') and \
                 postal_data.get('is_missing') and \
                 mobile_subscription_q1_2019.get('is_missing') and \
-                mobile_subscription_q2_2019.get('is_missing')
+                mobile_subscription_q2_2019.get('is_missing') and \
+                petroleum_gas_distribution.get('is_missing')
                 
 
 
@@ -982,7 +988,8 @@ def get_others_profile(geo, session):
         'number_of_plates': number_of_plates,
         'postal_data': postal_data,
         'mobile_subscription_q1_2019': mobile_subscription_q1_2019,
-        'mobile_subscription_q2_2019': mobile_subscription_q2_2019
+        'mobile_subscription_q2_2019': mobile_subscription_q2_2019,
+        'petroleum_gas_distribution': petroleum_gas_distribution
 
     }
     return final_data

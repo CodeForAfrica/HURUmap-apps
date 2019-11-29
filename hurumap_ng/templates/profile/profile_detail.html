@@ -1335,6 +1335,28 @@
             </div>
         </section>
         {% endif %}
+        {% if not others.petroleum_motor_spirit_price.is_missing %}
+        <section class="clearfix stat-row">
+          <h2 class="header-for-columns">
+            <a class="permalink">
+              <strong>Petroleum Gas Distribution</strong><i class="fa fa-link"></i></a>
+          </h2>
+          <div class="column-full">
+              <div id="chart-column-others-petroleum_gas_distribution-2019"
+                   data-chart-title="Liquid Petroleum Gas State Distribution of Truck-Out Volume 2019"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2019"
+                   data-source-link="https://nigerianstat.gov.ng/download/978"></div>
+          </div>
+          <div class="column-full stat-row">
+              <div id="chart-column-others-petroleum_gas_distribution-2018"
+                    data-chart-title="Liquid Petroleum Gas State Distribution of Truck-Out Volume 2018"
+                    data-stat-type="number"
+                    data-source-title="National Bureau of Statistics, 2019"
+                    data-source-link="https://nigerianstat.gov.ng/download/978"></div>
+          </div>
+        </section>
+        {% endif %}
       </div>
     </article>
   {% endif %}
