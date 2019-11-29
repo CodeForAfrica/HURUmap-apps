@@ -695,6 +695,8 @@ def get_others_profile(geo, session):
     youth_services_corp_dev = LOCATIONNOTFOUND
     number_of_plates = LOCATIONNOTFOUND
     postal_data = LOCATIONNOTFOUND
+    mobile_subscription_q1_2019 = LOCATIONNOTFOUND
+    mobile_subscription_q2_2019 = LOCATIONNOTFOUND
 
     with dataset_context(year='2018'):
         try:
@@ -845,6 +847,20 @@ def get_others_profile(geo, session):
         except Exception:
             log.warn("Could not get data", exc_info=True)
 
+        try:
+            mobile_subscription_q1_2019, _ = get_stat_data(fields=['network', 'subscription_type'], geo=geo,
+                                     session=session,
+                                     table_name='mobile_subscription_q1_2019', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
+        try:
+            mobile_subscription_q2_2019, _ = get_stat_data(fields=['network', 'subscription_type'], geo=geo,
+                                     session=session,
+                                     table_name='mobile_subscription_q2_2019', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
 
         diesel_price = _create_multiple_data_dist(
             fields=['month'], geo=geo, session=session, only_field='year',
@@ -926,7 +942,9 @@ def get_others_profile(geo, session):
                 marriage_distribution.get('is_missing') and \
                 youth_services_corp_dev.get('is_missing') and \
                 number_of_plates.get('is_missing') and \
-                postal_data.get('is_missing')
+                postal_data.get('is_missing') and \
+                mobile_subscription_q1_2019.get('is_missing') and \
+                mobile_subscription_q2_2019.get('is_missing')
                 
 
 
@@ -961,7 +979,10 @@ def get_others_profile(geo, session):
         'marriage_distribution': marriage_distribution,
         'youth_services_corp_dev': youth_services_corp_dev,
         'number_of_plates': number_of_plates,
-        'postal_data': postal_data
+        'postal_data': postal_data,
+        'mobile_subscription_q1_2019': mobile_subscription_q1_2019,
+        'mobile_subscription_q2_2019': mobile_subscription_q2_2019
+
     }
     return final_data
 
