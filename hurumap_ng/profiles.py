@@ -697,6 +697,7 @@ def get_others_profile(geo, session):
     postal_data = LOCATIONNOTFOUND
     mobile_subscription_q1_2019 = LOCATIONNOTFOUND
     mobile_subscription_q2_2019 = LOCATIONNOTFOUND
+    prepaid_metres = LOCATIONNOTFOUND
 
     with dataset_context(year='2018'):
         try:
@@ -847,6 +848,13 @@ def get_others_profile(geo, session):
         except Exception:
             log.warn("Could not get data", exc_info=True)
 
+        try:
+            prepaid_metres, _ = get_stat_data(fields=['city'], geo=geo, session=session,
+                                    table_name='prepaid_metres', percent=False)
+
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
 
         diesel_price = _create_multiple_data_dist(
             fields=['month'], geo=geo, session=session, only_field='year',
@@ -951,7 +959,8 @@ def get_others_profile(geo, session):
                 postal_data.get('is_missing') and \
                 mobile_subscription_q1_2019.get('is_missing') and \
                 mobile_subscription_q2_2019.get('is_missing') and \
-                petroleum_gas_distribution.get('is_missing')
+                petroleum_gas_distribution.get('is_missing') and \
+                prepaid_metres.get('is_missing')
                 
 
 
@@ -989,7 +998,8 @@ def get_others_profile(geo, session):
         'postal_data': postal_data,
         'mobile_subscription_q1_2019': mobile_subscription_q1_2019,
         'mobile_subscription_q2_2019': mobile_subscription_q2_2019,
-        'petroleum_gas_distribution': petroleum_gas_distribution
+        'petroleum_gas_distribution': petroleum_gas_distribution,
+        'prepaid_metres': prepaid_metres
 
     }
     return final_data

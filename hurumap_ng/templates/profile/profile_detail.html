@@ -765,12 +765,19 @@
         {% endif %}
         {% if not others.mineral_production.is_missing %}
         <section class="clearfix stat-row">
-          <div class="column-full">
+          <div class="column-two-thirds">
               <div id="chart-column-others-mineral_production"
                    data-chart-title="Mineral Production 2016 - 2018"
                    data-stat-type="number"
                    data-source-title="National Bureau of Statistics, 2018"
                    data-source-link="https://nigerianstat.gov.ng/download/614"></div>
+            </div>
+            <div class="column-third">
+              <div id="chart-column-others-prepaid_metres"
+                   data-chart-title="Number of consumers with prepaid meters Q4 2018"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2018"
+                   data-source-link="https://nigerianstat.gov.ng/download/866"></div>
             </div>
         </section>
         {% endif %}
