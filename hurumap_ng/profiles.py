@@ -891,6 +891,11 @@ def get_others_profile(geo, session):
             only_values=['2016', '2017', '2018', '2019'],
             tablename='transport_bus_intercity_fare', order=MONTH_ORDER )
 
+        transport_water_fare = _create_multiple_data_dist(
+            fields=['month'], geo=geo, session=session, only_field='year', 
+            only_values=['2016', '2017', '2018', '2019'],
+            tablename='transport_water_fare', order=MONTH_ORDER )
+
         air_transportation_domestic = _create_multiple_data_dist(
             fields=['month'], geo=geo, session=session, only_field='depature_arrival', 
             only_values=['Departure', 'Arrival'],
@@ -960,7 +965,8 @@ def get_others_profile(geo, session):
                 mobile_subscription_q1_2019.get('is_missing') and \
                 mobile_subscription_q2_2019.get('is_missing') and \
                 petroleum_gas_distribution.get('is_missing') and \
-                prepaid_metres.get('is_missing')
+                prepaid_metres.get('is_missing') and \
+                transport_water_fare.get('is_missing')
                 
 
 
@@ -999,7 +1005,8 @@ def get_others_profile(geo, session):
         'mobile_subscription_q1_2019': mobile_subscription_q1_2019,
         'mobile_subscription_q2_2019': mobile_subscription_q2_2019,
         'petroleum_gas_distribution': petroleum_gas_distribution,
-        'prepaid_metres': prepaid_metres
+        'prepaid_metres': prepaid_metres,
+        'transport_water_fare': transport_water_fare
 
     }
     return final_data
