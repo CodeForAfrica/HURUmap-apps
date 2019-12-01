@@ -700,6 +700,7 @@ def get_others_profile(geo, session):
     mobile_subscription_q2_2019 = LOCATIONNOTFOUND
     prepaid_metres = LOCATIONNOTFOUND
     enterprise_registered = LOCATIONNOTFOUND
+    state_employment = LOCATIONNOTFOUND
 
     with dataset_context(year='2018'):
         try:
@@ -871,6 +872,13 @@ def get_others_profile(geo, session):
         except Exception:
             log.warn("Could not get data", exc_info=True)
 
+        try:
+            state_employment, _ = get_stat_data(fields=['gender'], geo=geo,
+                                     session=session,
+                                     table_name='total_state_employment_2017', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
 
         diesel_price = _create_multiple_data_dist(
             fields=['month'], geo=geo, session=session, only_field='year',
@@ -996,7 +1004,8 @@ def get_others_profile(geo, session):
                 kerosene_price_litre.get('is_missing') and \
                 kerosene_price_gallon.get('is_missing') and \
                 postal_services.get('is_missing') and \
-                enterprise_registered.get('is_missing')
+                enterprise_registered.get('is_missing') and \
+                state_employment.get('is_missing')
                 
 
 
@@ -1040,7 +1049,8 @@ def get_others_profile(geo, session):
         'kerosene_price_litre': kerosene_price_litre,
         'kerosene_price_gallon': kerosene_price_gallon,
         'postal_services': postal_services,
-        'enterprise_registered': enterprise_registered
+        'enterprise_registered': enterprise_registered,
+        'state_employment': state_employment
 
     }
     return final_data

@@ -744,13 +744,20 @@
           {% endif %}
         {% if not others.employment_in_civil_services.is_missing %}
         <section class="clearfix stat-row">
-          <div class="column-full">
+          <div class="column-two-thirds">
               <div id="chart-grouped_column-others-employment_in_civil_services"
                    data-chart-title="Employment in State Civil Service by level and sex in 2015"
                    data-stat-type="number"
                    data-source-title="National Bureau of Statistics, 2018"
                    data-source-link="https://nigerianstat.gov.ng/download/952"></div>
             </div>
+            <div class="column-third">
+                <div id="chart-column-others-state_employment"
+                     data-chart-title="Total Employment by State as at December 2017"
+                     data-stat-type="number"
+                     data-source-title="National Bureau of Statistics, 2018"
+                     data-source-link="https://nigerianstat.gov.ng/download/966"></div>
+              </div>
         </section>
         {% endif %}
         {% if not others.marriage_distribution.is_missing %}
