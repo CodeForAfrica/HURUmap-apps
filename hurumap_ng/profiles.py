@@ -1019,25 +1019,25 @@ def get_others_profile(geo, session):
             log.warn("Could not get data", exc_info=True)
 
         try:
-            automative_gas_oil_volumes, _ = get_stat_data(fields=['quarter', 'year'], geo=geo, session=session, 
+            automative_gas_oil_volumes, _ = get_stat_data(fields=['year', 'quarter'], geo=geo, session=session, 
                                     table_name='automative_gas_oil_volumes', percent=False)
         except Exception:
             log.warn("Could not get data", exc_info=True)
 
         try:
-            aviation_turbine_kerosene_volumes, _ = get_stat_data(fields=['quarter', 'year'], geo=geo, session=session, 
+            aviation_turbine_kerosene_volumes, _ = get_stat_data(fields=['year', 'quarter'], geo=geo, session=session, 
                                     table_name='aviation_turbine_kerosene_volumes', percent=False)
         except Exception:
             log.warn("Could not get data", exc_info=True)
 
         try:
-            household_kerosene_volumes, _ = get_stat_data(fields=['quarter', 'year'], geo=geo, session=session, 
+            household_kerosene_volumes, _ = get_stat_data(fields=['year', 'quarter'], geo=geo, session=session, 
                                     table_name='household_kerosene_volumes', percent=False)
         except Exception:
             log.warn("Could not get data", exc_info=True)
 
         try:
-            premium_motor_spirit_volumes, _ = get_stat_data(fields=['quarter', 'year'], geo=geo, session=session, 
+            premium_motor_spirit_volumes, _ = get_stat_data(fields=['year', 'quarter'], geo=geo, session=session, 
                                     table_name='premium_motor_spirit_volumes', percent=False)
         except Exception:
             log.warn("Could not get data", exc_info=True)
