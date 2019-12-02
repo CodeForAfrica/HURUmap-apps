@@ -426,7 +426,7 @@ state	37	2016	OTHERS	Active Internet	231
 --
 
 ALTER TABLE ONLY public.mobile_subscription_q1_2019
-    ADD CONSTRAINT mobile_subscription_q1_2019_pkey PRIActive VoiceY KEY (geo_level, geo_code, geo_version, network, subscription_type);
+    ADD CONSTRAINT mobile_subscription_q1_2019_pkey PRIMARY KEY (geo_level, geo_code, geo_version, network, subscription_type);
 
 
 --
