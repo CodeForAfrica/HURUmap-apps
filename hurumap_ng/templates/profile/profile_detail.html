@@ -38,6 +38,8 @@
               <div id="chart-grouped_column-demographics-population_projection"
                    data-chart-title="Population Projections, 2007-2016"
                    data-stat-type="number"
+                   data-chart-show-y-axis="true"
+                   data-qualifier="F: Female,  M: Male"
                    data-source-title="National Bureau of Statistics, 2016"
                    data-source-link="https://nigerianstat.gov.ng/resource/POPULATION%20PROJECTION%20Nigeria%20sgfn.xls"></div>
             </div>
@@ -125,7 +127,8 @@
         <section class="clearfix stat-row">
           <div class="column-full">
               <div id="chart-grouped_column-demographics-officer_house_assembly"
-                   data-chart-title="Distribution of Women and Men Occupying Position of Governor and Deputy Governor 2015 - 2019"
+                   data-chart-title="Representation of Principal Officers in State House of Assembly by Type of Office and Sex 2015 - 2019"
+                   data-qualifier="F: Female,  M: Male"
                    data-stat-type="number"
                    data-source-title="National Bureau of Statistics, 2018"
                    data-source-link="https://nigerianstat.gov.ng/download/952"></div>
@@ -720,6 +723,17 @@
             </div>
         </section>
         {% endif %}
+        {% if not finance.access_to_bank.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-full">
+            <div id="chart-column-finance-access_to_bank"
+                 data-chart-title="Sole Proprietorship with access to Bank Finance by State vs total Sole Proprietorship 2017" 
+                 data-stat-type="number"
+                 data-source-title="National Bureau of Statistics, 2019"
+                data-source-link="https://nigerianstat.gov.ng/download/966"></div>
+              </div>
+          </section>
+        {% endif %}
       </div>
     </article>
   {% endif %}
@@ -728,15 +742,44 @@
     <article id="others" class="clearfix">
       <header class="section-contents"><h1>Others</h1></header>
       <div class="section-container">
+          {% if not others.enterprise_registered.is_missing or not others.micro_enterprises.is_missing %}
+          <section class="clearfix stat-row">
+              <h2 class="header-for-columns">
+                  <a class="permalink">
+                    <strong>Enterprises Registered</strong><i class="fa fa-link"></i></a>
+                </h2>
+            <div class="column-two-thirds">
+                <div id="chart-grouped_column-others-enterprise_registered"
+                     data-chart-title="Number of Small and Medium Enterprises registered by State, 2010, 2013 and 2017"
+                     data-stat-type="number"
+                     data-source-title="National Bureau of Statistics, 2018"
+                     data-source-link="https://nigerianstat.gov.ng/download/966"></div>
+              </div>
+              <div class="column-third">
+                <div id="chart-column-others-micro_enterprises"
+                     data-chart-title="Number of Micro Enterprises by State, 2013 & 2017"
+                     data-stat-type="number"
+                     data-source-title="National Bureau of Statistics, 2018"
+                     data-source-link="https://nigerianstat.gov.ng/download/966"></div>
+              </div>
+          </section>
+          {% endif %}
         {% if not others.employment_in_civil_services.is_missing %}
         <section class="clearfix stat-row">
-          <div class="column-full">
+          <div class="column-two-thirds">
               <div id="chart-grouped_column-others-employment_in_civil_services"
                    data-chart-title="Employment in State Civil Service by level and sex in 2015"
                    data-stat-type="number"
                    data-source-title="National Bureau of Statistics, 2018"
                    data-source-link="https://nigerianstat.gov.ng/download/952"></div>
             </div>
+            <div class="column-third">
+                <div id="chart-column-others-state_employment"
+                     data-chart-title="Total Employment by State as at December 2017"
+                     data-stat-type="number"
+                     data-source-title="National Bureau of Statistics, 2018"
+                     data-source-link="https://nigerianstat.gov.ng/download/966"></div>
+              </div>
         </section>
         {% endif %}
         {% if not others.marriage_distribution.is_missing %}
@@ -747,6 +790,53 @@
                    data-stat-type="number"
                    data-source-title="National Bureau of Statistics, 2016"
                    data-source-link="https://nigerianstat.gov.ng/resource/"></div>
+            </div>
+        </section>
+        {% endif %}
+        {% if not others.awareness_of_fed_gov_intiative.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-column-others-awareness_of_fed_gov_intiative"
+                   data-chart-title="Awareness of New Federal Government Initiatives by State 2017"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2018"
+                   data-source-link="https://nigerianstat.gov.ng/download/966"></div>
+            </div>
+        </section>
+        {% endif %}
+        {% if not others.business_operation_equipment_source.is_missing or not others.business_reg_with_cac.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-half">
+              <div id="chart-column-others-business_operation_equipment_source"
+                   data-chart-title="Sources of Equipment for Business Operation 2017"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2018"
+                   data-source-link="https://nigerianstat.gov.ng/download/966"></div>
+            </div>
+            <div class="column-half">
+                <div id="chart-column-others-business_reg_with_cac"
+                     data-chart-title="Business establishement registered with Corporate Affairs Commission of Nigeria (CAC) vs Total Number of establishement  2017"
+                     data-stat-type="number"
+                     data-source-title="National Bureau of Statistics, 2018"
+                     data-source-link="https://nigerianstat.gov.ng/download/966"></div>
+              </div>
+        </section>
+        {% endif %}
+        {% if not others.benefit_from_smedan.is_missing or not others.awareness_of_smedan.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-half">
+              <div id="chart-column-others-benefit_from_smedan"
+                   data-chart-title="Benefit from Small and Medium Enterprises Development Agency of Nigeria (SMEDAN) Service by State 2017"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2019"
+                   data-source-link="https://nigerianstat.gov.ng/download/966"></div>
+            </div>
+            <div class="column-half">
+              <div id="chart-column-others-awareness_of_smedan"
+                   data-chart-title="Awareness of Small and Medium Enterprises Development Agency of Nigeria (SMEDAN) by State 2017 - (Number of enterprisess aware of SMED vs Total Number of Enterprises)"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2019"
+                   data-source-link="https://nigerianstat.gov.ng/download/966"></div>
             </div>
         </section>
         {% endif %}
@@ -763,9 +853,38 @@
         {% endif %}
         {% if not others.mineral_production.is_missing %}
         <section class="clearfix stat-row">
-          <div class="column-full">
+          <div class="column-half">
               <div id="chart-column-others-mineral_production"
                    data-chart-title="Mineral Production 2016 - 2018"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2018"
+                   data-source-link="https://nigerianstat.gov.ng/download/614"></div>
+            </div>
+            <div class="column-half">
+              <div id="chart-column-others-prepaid_metres"
+                   data-chart-title="Number of consumers with prepaid meters Q4 2018"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2018"
+                   data-source-link="https://nigerianstat.gov.ng/download/866"></div>
+            </div>
+        </section>
+        {% endif %}
+        {% if not others.mobile_subscription_q2_2019.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-grouped_column-others-mobile_subscription_q2_2019"
+                   data-chart-title="Telecoms Subscriptions by Mobile GSM and State by June, Q2 2019"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2018"
+                   data-source-link="https://nigerianstat.gov.ng/download/614"></div>
+            </div>
+        </section>
+        {% endif %}
+        {% if not others.mobile_subscription_q1_2019.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-grouped_column-others-mobile_subscription_q1_2019"
+                   data-chart-title="Telecoms Subscriptions by Mobile GSM and State by March, Q1 2019"
                    data-stat-type="number"
                    data-source-title="National Bureau of Statistics, 2018"
                    data-source-link="https://nigerianstat.gov.ng/download/614"></div>
@@ -805,14 +924,21 @@
             </div>
         </section>
         {% endif %}
-        {% if not others.postal_data.is_missing %}
+        {% if not others.postal_data.is_missing or not others.postal_services.is_missing %}
         <section class="clearfix stat-row">
-          <div class="column-full">
+          <div class="column-third">
               <div id="chart-column-others-postal_data"
                    data-chart-title="Total number of Annual Postal Services Data"
                    data-stat-type="number"
                    data-source-title="National Bureau of Statistics, 2016"
                    data-source-link="https://nigerianstat.gov.ng/download/522"></div>
+            </div>
+            <div class="column-two-thirds">
+              <div id="chart-column-others-postal_services"
+                   data-chart-title="Annual Postal Services Data 2018"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2018"
+                   data-source-link="https://nigerianstat.gov.ng/resource"></div>
             </div>
         </section>
         {% endif %}
@@ -914,7 +1040,7 @@
         <section class="clearfix stat-row">
           <h2 class="header-for-columns">
             <a class="permalink">
-              <strong>Air Transport Fare Watch</strong><i class="fa fa-link"></i></a>
+              <strong>Motorcycle Fare Watch</strong><i class="fa fa-link"></i></a>
           </h2>
           <div class="column-full">
               <div id="chart-column-others-transport_motorcycle_fare-2019"
@@ -1048,6 +1174,42 @@
           <div class="column-full stat-row">
               <div id="chart-column-others-transport_air_fare-2016"
                     data-chart-title="Air fare charge 2016"
+                    data-stat-type="number"
+                    data-source-title="National Bureau of Statistics, 2019"
+                    data-source-link="https://nigerianstat.gov.ng/resource"></div>
+            </div>
+        </section>
+        {% endif %}
+        {% if not others.transport_water_fare.is_missing %}
+        <section class="clearfix stat-row">
+          <h2 class="header-for-columns">
+            <a class="permalink">
+              <strong>Water Transport Fare Watch</strong><i class="fa fa-link"></i></a>
+          </h2>
+          <div class="column-full">
+              <div id="chart-column-others-transport_water_fare-2019"
+                   data-chart-title="Water fare charge 2019"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2019"
+                   data-source-link="https://nigerianstat.gov.ng/resource"></div>
+          </div>
+          <div class="column-full stat-row">
+              <div id="chart-column-others-transport_water_fare-2018"
+                    data-chart-title="Water fare charge 2018"
+                    data-stat-type="number"
+                    data-source-title="National Bureau of Statistics, 2019"
+                    data-source-link="https://nigerianstat.gov.ng/resource"></div>
+          </div>
+          <div class="column-full stat-row">
+              <div id="chart-column-others-transport_water_fare-2017"
+                    data-chart-title="Water fare charge 2017"
+                    data-stat-type="number"
+                    data-source-title="National Bureau of Statistics, 2019"
+                    data-source-link="https://nigerianstat.gov.ng/resource"></div>
+          </div>
+          <div class="column-full stat-row">
+              <div id="chart-column-others-transport_water_fare-2016"
+                    data-chart-title="Water fare charge 2016"
                     data-stat-type="number"
                     data-source-title="National Bureau of Statistics, 2019"
                     data-source-link="https://nigerianstat.gov.ng/resource"></div>
@@ -1309,6 +1471,162 @@
                     data-source-title="National Bureau of Statistics, 2019"
                     data-source-link="https://nigerianstat.gov.ng/resource"></div>
             </div>
+        </section>
+        {% endif %}
+        {% if not others.kerosene_price_litre.is_missing %}
+        <section class="clearfix stat-row">
+          <h2 class="header-for-columns">
+            <a class="permalink">
+              <strong>Kerosene Price Watch (One Litre)</strong><i class="fa fa-link"></i></a>
+          </h2>
+          <div class="column-full">
+              <div id="chart-column-others-kerosene_price_litre-2019"
+                   data-chart-title="Kerosene Price Watch (One Litre) 2019"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2019"
+                   data-source-link="https://nigerianstat.gov.ng/resource"></div>
+          </div>
+          <div class="column-full stat-row">
+              <div id="chart-column-others-kerosene_price_litre-2018"
+                    data-chart-title="Kerosene Price Watch (One Litre) 2018"
+                    data-stat-type="number"
+                    data-source-title="National Bureau of Statistics, 2019"
+                    data-source-link="https://nigerianstat.gov.ng/resource"></div>
+          </div>
+          <div class="column-full stat-row">
+              <div id="chart-column-others-kerosene_price_litre-2017"
+                    data-chart-title="Kerosene Price Watch (One Litre) 2017"
+                    data-stat-type="number"
+                    data-source-title="National Bureau of Statistics, 2019"
+                    data-source-link="https://nigerianstat.gov.ng/resource"></div>
+          </div>
+          <div class="column-full stat-row">
+              <div id="chart-column-others-kerosene_price_litre-2016"
+                    data-chart-title="Kerosene Price Watch (One Litre) 2016"
+                    data-stat-type="number"
+                    data-source-title="National Bureau of Statistics, 2019"
+                    data-source-link="https://nigerianstat.gov.ng/resource"></div>
+            </div>
+            <div class="column-full stat-row">
+              <div id="chart-column-others-kerosene_price_litre-2015"
+                    data-chart-title="Kerosene Price Watch (One Litre) 2015"
+                    data-stat-type="number"
+                    data-source-title="National Bureau of Statistics, 2019"
+                    data-source-link="https://nigerianstat.gov.ng/resource"></div>
+            </div>
+        </section>
+        {% endif %}
+        {% if not others.kerosene_price_gallon.is_missing %}
+        <section class="clearfix stat-row">
+          <h2 class="header-for-columns">
+            <a class="permalink">
+              <strong>Kerosene Price Watch (One Gallon)</strong><i class="fa fa-link"></i></a>
+          </h2>
+          <div class="column-full">
+              <div id="chart-column-others-kerosene_price_gallon-2019"
+                   data-chart-title="Kerosene Price Watch (One Gallon) 2019"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2019"
+                   data-source-link="https://nigerianstat.gov.ng/resource"></div>
+          </div>
+          <div class="column-full stat-row">
+              <div id="chart-column-others-kerosene_price_gallon-2018"
+                    data-chart-title="Kerosene Price Watch (One Gallon) 2018"
+                    data-stat-type="number"
+                    data-source-title="National Bureau of Statistics, 2019"
+                    data-source-link="https://nigerianstat.gov.ng/resource"></div>
+          </div>
+          <div class="column-full stat-row">
+              <div id="chart-column-others-kerosene_price_gallon-2017"
+                    data-chart-title="Kerosene Price Watch (One Gallon) 2017"
+                    data-stat-type="number"
+                    data-source-title="National Bureau of Statistics, 2019"
+                    data-source-link="https://nigerianstat.gov.ng/resource"></div>
+          </div>
+          <div class="column-full stat-row">
+              <div id="chart-column-others-kerosene_price_gallon-2016"
+                    data-chart-title="Kerosene Price Watch (One Gallon) 2016"
+                    data-stat-type="number"
+                    data-source-title="National Bureau of Statistics, 2019"
+                    data-source-link="https://nigerianstat.gov.ng/resource"></div>
+            </div>
+            <div class="column-full stat-row">
+              <div id="chart-column-others-kerosene_price_gallon-2015"
+                    data-chart-title="Kerosene Price Watch (One Gallon) 2015"
+                    data-stat-type="number"
+                    data-source-title="National Bureau of Statistics, 2019"
+                    data-source-link="https://nigerianstat.gov.ng/resource"></div>
+            </div>
+        </section>
+        {% endif %}
+        {% if not others.petroleum_motor_spirit_price.is_missing %}
+        <section class="clearfix stat-row">
+          <h2 class="header-for-columns">
+            <a class="permalink">
+              <strong>Petroleum Gas Distribution</strong><i class="fa fa-link"></i></a>
+          </h2>
+          <div class="column-full">
+              <div id="chart-column-others-petroleum_gas_distribution-2019"
+                   data-chart-title="Liquid Petroleum Gas State Distribution of Truck-Out Volume 2019"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2019"
+                   data-source-link="https://nigerianstat.gov.ng/download/978"></div>
+          </div>
+          <div class="column-full stat-row">
+              <div id="chart-column-others-petroleum_gas_distribution-2018"
+                    data-chart-title="Liquid Petroleum Gas State Distribution of Truck-Out Volume 2018"
+                    data-stat-type="number"
+                    data-source-title="National Bureau of Statistics, 2019"
+                    data-source-link="https://nigerianstat.gov.ng/download/978"></div>
+          </div>
+        </section>
+        {% endif %}
+        {% if not others.aviation_turbine_kerosene_volumes.is_missing %}
+        <section class="clearfix stat-row">
+          <h2 class="header-for-columns">
+            <a class="permalink">
+              <strong>Petroleum Products Importation And Consumption (Truck Out) 2018 - 2019</strong><i class="fa fa-link"></i></a>
+          </h2>
+          <div class="column-full">
+              <div id="chart-grouped_column-others-aviation_turbine_kerosene_volumes"
+                   data-chart-title="Aviation Turbine Kerosene in Millions Volume Litres"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2019"
+                   data-source-link="https://nigerianstat.gov.ng/download/978"></div>
+          </div>
+          </section>
+          {% endif %}
+        {% if not others.household_kerosene_volumes.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-grouped_column-others-household_kerosene_volumes"
+                   data-chart-title="Household Kerosene in Millions Volume Litres"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2019"
+                   data-source-link="https://nigerianstat.gov.ng/download/978"></div>
+          </div>
+        </section>
+        {% endif %}
+      {% if not others.automative_gas_oil_volumes.is_missing %}
+      <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-grouped_column-others-automative_gas_oil_volumes"
+                   data-chart-title="Automative Gas Oil in Millions Volume Litres"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2019"
+                   data-source-link="https://nigerianstat.gov.ng/download/978"></div>
+          </div>
+        </section>
+        {% endif %}
+      {% if not others.premium_motor_spirit_volumes.is_missing %}
+      <section class="clearfix stat-row">
+          <div class="column-full">
+              <div id="chart-grouped_column-others-premium_motor_spirit_volumes"
+                   data-chart-title="Premium Motor Spirit in Millions Volume Litres"
+                   data-stat-type="number"
+                   data-source-title="National Bureau of Statistics, 2019"
+                   data-source-link="https://nigerianstat.gov.ng/download/978"></div>
+          </div>
         </section>
         {% endif %}
       </div>

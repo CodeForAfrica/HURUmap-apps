@@ -138,7 +138,7 @@ def get_demographics_profile(geo, session):
         try:
             population_projection, _ = get_stat_data(fields=['year', 'gender'], geo=geo,
                                          session=session,
-                                         table_name='population_projection', percent=False)
+                                         table_name='population_projection', percent=False, order_by='gender')
         except Exception:
             log.warn("Could not get data", exc_info=True)
 
@@ -695,6 +695,22 @@ def get_others_profile(geo, session):
     youth_services_corp_dev = LOCATIONNOTFOUND
     number_of_plates = LOCATIONNOTFOUND
     postal_data = LOCATIONNOTFOUND
+    postal_services = LOCATIONNOTFOUND
+    mobile_subscription_q1_2019 = LOCATIONNOTFOUND
+    mobile_subscription_q2_2019 = LOCATIONNOTFOUND
+    prepaid_metres = LOCATIONNOTFOUND
+    enterprise_registered = LOCATIONNOTFOUND
+    micro_enterprises = LOCATIONNOTFOUND
+    state_employment = LOCATIONNOTFOUND
+    awareness_of_fed_gov_intiative = LOCATIONNOTFOUND
+    benefit_from_smedan = LOCATIONNOTFOUND
+    awareness_of_smedan = LOCATIONNOTFOUND
+    business_operation_equipment_source = LOCATIONNOTFOUND
+    business_reg_with_cac = LOCATIONNOTFOUND
+    automative_gas_oil_volumes = LOCATIONNOTFOUND
+    premium_motor_spirit_volumes = LOCATIONNOTFOUND
+    household_kerosene_volumes = LOCATIONNOTFOUND
+    aviation_turbine_kerosene_volumes = LOCATIONNOTFOUND
 
     with dataset_context(year='2018'):
         try:
@@ -845,6 +861,54 @@ def get_others_profile(geo, session):
         except Exception:
             log.warn("Could not get data", exc_info=True)
 
+        try:
+            postal_services, _ = get_stat_data(fields=['services'], geo=geo,
+                                     session=session,
+                                     table_name='postal_data_services', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
+        try:
+            prepaid_metres, _ = get_stat_data(fields=['city'], geo=geo, session=session,
+                                    table_name='prepaid_metres', percent=False)
+
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
+        try:
+            enterprise_registered, _ = get_stat_data(fields=['year', 'type'], geo=geo,
+                                     session=session,
+                                     table_name='enterprise_registered', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
+        try:
+            micro_enterprises, _ = get_stat_data(fields=['year'], geo=geo,
+                                     session=session,
+                                     table_name='micro_enterprises', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
+        try:
+            state_employment, _ = get_stat_data(fields=['gender'], geo=geo,
+                                     session=session,
+                                     table_name='total_state_employment_2017', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
+        try:
+            business_operation_equipment_source, _ = get_stat_data(fields=['source_type'], geo=geo,
+                                     session=session,
+                                     table_name='business_operation_equipment_source', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
+        try:
+            business_reg_with_cac, _ = get_stat_data(fields=['type'], geo=geo, session=session, 
+                                    table_name='business_reg_with_cac', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
 
         diesel_price = _create_multiple_data_dist(
             fields=['month'], geo=geo, session=session, only_field='year',
@@ -881,6 +945,11 @@ def get_others_profile(geo, session):
             only_values=['2016', '2017', '2018', '2019'],
             tablename='transport_bus_intercity_fare', order=MONTH_ORDER )
 
+        transport_water_fare = _create_multiple_data_dist(
+            fields=['month'], geo=geo, session=session, only_field='year', 
+            only_values=['2016', '2017', '2018', '2019'],
+            tablename='transport_water_fare', order=MONTH_ORDER )
+
         air_transportation_domestic = _create_multiple_data_dist(
             fields=['month'], geo=geo, session=session, only_field='depature_arrival', 
             only_values=['Departure', 'Arrival'],
@@ -900,6 +969,80 @@ def get_others_profile(geo, session):
             fields=['month'], geo=geo, session=session, only_field='year',
             only_values=['2016', '2017', '2018', '2019'],
             tablename='lpg_price_10kg', order=MONTH_ORDER )
+
+        kerosene_price_gallon = _create_multiple_data_dist(
+            fields=['month'], geo=geo, session=session, only_field='year',
+            only_values=['2015', '2016', '2017', '2018', '2019'],
+            tablename='kerosene_price_gallon', order=MONTH_ORDER )
+
+        kerosene_price_litre = _create_multiple_data_dist(
+            fields=['month'], geo=geo, session=session, only_field='year',
+            only_values=['2015', '2016', '2017', '2018', '2019'],
+            tablename='kerosene_price_litre', order=MONTH_ORDER )
+
+        petroleum_gas_distribution = _create_multiple_data_dist(
+            fields=['month'], geo=geo, session=session, only_field='year',
+            only_values=['2018', '2019'],
+            tablename='petroleum_gas_distribution', order=MONTH_ORDER )
+
+    with dataset_context(year='2019'):
+        try:
+            mobile_subscription_q1_2019, _ = get_stat_data(fields=['network', 'subscription_type'], geo=geo,
+                                     session=session,
+                                     table_name='mobile_subscription_q1_2019', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
+        try:
+            mobile_subscription_q2_2019, _ = get_stat_data(fields=['network', 'subscription_type'], geo=geo,
+                                     session=session,
+                                     table_name='mobile_subscription_q2_2019', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
+        try:
+            awareness_of_fed_gov_intiative, _ = get_stat_data(fields=['type'], geo=geo, session=session, 
+                                    table_name='awareness_of_fed_gov_intiative', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
+        try:
+            benefit_from_smedan, _ = get_stat_data(fields=['type'], geo=geo, session=session, 
+                                    table_name='benefit_from_smedan', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
+        try:
+            awareness_of_smedan, _ = get_stat_data(fields=['type'], geo=geo, session=session, 
+                                    table_name='awareness_of_smedan', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
+        try:
+            automative_gas_oil_volumes, _ = get_stat_data(fields=['year', 'quarter'], geo=geo, session=session, 
+                                    table_name='automative_gas_oil_volumes', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
+        try:
+            aviation_turbine_kerosene_volumes, _ = get_stat_data(fields=['year', 'quarter'], geo=geo, session=session, 
+                                    table_name='aviation_turbine_kerosene_volumes', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
+        try:
+            household_kerosene_volumes, _ = get_stat_data(fields=['year', 'quarter'], geo=geo, session=session, 
+                                    table_name='household_kerosene_volumes', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
+        try:
+            premium_motor_spirit_volumes, _ = get_stat_data(fields=['year', 'quarter'], geo=geo, session=session, 
+                                    table_name='premium_motor_spirit_volumes', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
+
 
 
     is_missing = diesel_price.get('is_missing') and \
@@ -926,7 +1069,27 @@ def get_others_profile(geo, session):
                 marriage_distribution.get('is_missing') and \
                 youth_services_corp_dev.get('is_missing') and \
                 number_of_plates.get('is_missing') and \
-                postal_data.get('is_missing')
+                postal_data.get('is_missing') and \
+                mobile_subscription_q1_2019.get('is_missing') and \
+                mobile_subscription_q2_2019.get('is_missing') and \
+                petroleum_gas_distribution.get('is_missing') and \
+                prepaid_metres.get('is_missing') and \
+                transport_water_fare.get('is_missing') and \
+                kerosene_price_litre.get('is_missing') and \
+                kerosene_price_gallon.get('is_missing') and \
+                postal_services.get('is_missing') and \
+                enterprise_registered.get('is_missing') and \
+                state_employment.get('is_missing') and \
+                awareness_of_fed_gov_intiative.get('is_missing') and \
+                benefit_from_smedan.get('is_missing') and \
+                awareness_of_smedan.get('is_missing') and \
+                micro_enterprises.get('is_missing') and \
+                business_operation_equipment_source.get('is_missing') and \
+                business_reg_with_cac.get('is_missing') and \
+                automative_gas_oil_volumes.get('is_missing') and \
+                household_kerosene_volumes.get('is_missing') and \
+                aviation_turbine_kerosene_volumes.get('is_missing') and \
+                premium_motor_spirit_volumes.get('is_missing')
                 
 
 
@@ -961,7 +1124,27 @@ def get_others_profile(geo, session):
         'marriage_distribution': marriage_distribution,
         'youth_services_corp_dev': youth_services_corp_dev,
         'number_of_plates': number_of_plates,
-        'postal_data': postal_data
+        'postal_data': postal_data,
+        'mobile_subscription_q1_2019': mobile_subscription_q1_2019,
+        'mobile_subscription_q2_2019': mobile_subscription_q2_2019,
+        'petroleum_gas_distribution': petroleum_gas_distribution,
+        'prepaid_metres': prepaid_metres,
+        'transport_water_fare': transport_water_fare,
+        'kerosene_price_litre': kerosene_price_litre,
+        'kerosene_price_gallon': kerosene_price_gallon,
+        'postal_services': postal_services,
+        'enterprise_registered': enterprise_registered,
+        'state_employment': state_employment,
+        'awareness_of_fed_gov_intiative': awareness_of_fed_gov_intiative,
+        'benefit_from_smedan': benefit_from_smedan,
+        'awareness_of_smedan': awareness_of_smedan,
+        'micro_enterprises': micro_enterprises,
+        'business_operation_equipment_source': business_operation_equipment_source,
+        'business_reg_with_cac': business_reg_with_cac,
+        'automative_gas_oil_volumes': automative_gas_oil_volumes,
+        'premium_motor_spirit_volumes': premium_motor_spirit_volumes,
+        'aviation_turbine_kerosene_volumes': aviation_turbine_kerosene_volumes,
+        'household_kerosene_volumes': household_kerosene_volumes
     }
     return final_data
 
@@ -976,6 +1159,7 @@ def get_finance_profile(geo, session):
     faac_year_2018 = LOCATIONNOTFOUND
     faac_year_2019 = LOCATIONNOTFOUND
     nominal_gdp = LOCATIONNOTFOUND
+    access_to_bank = LOCATIONNOTFOUND
 
     with dataset_context(year='2018'):
         try:
@@ -1022,6 +1206,12 @@ def get_finance_profile(geo, session):
         except Exception:
             log.warn("Could not get data", exc_info=True)
 
+        try:
+            access_to_bank, _ = get_stat_data(fields=['type'], geo=geo, session=session, 
+                                    table_name='access_to_bank', percent=False)
+        except Exception:
+            log.warn("Could not get data", exc_info=True)
+
     faac_yearly = _create_multiple_data_dist(
             fields=['month'], geo=geo, session=session, only_field='year', 
             only_values=['2016', '2017', '2018', '2019'],
@@ -1034,7 +1224,8 @@ def get_finance_profile(geo, session):
                  faac.get('is_missing') and \
                  faac_yearly.get('is_missing') and \
                  nominal_gdp.get('is_missing') and \
-                 generated_revenue.get('is_missing')
+                 generated_revenue.get('is_missing') and \
+                access_to_bank.get('is_missing')
                  
 
     final_data = {
@@ -1045,7 +1236,8 @@ def get_finance_profile(geo, session):
         'faac': faac,
         'faac_yearly': faac_yearly,
         'nominal_gdp': nominal_gdp,
-        'generated_revenue': generated_revenue
+        'generated_revenue': generated_revenue,
+        'access_to_bank': access_to_bank
     }
 
     return final_data

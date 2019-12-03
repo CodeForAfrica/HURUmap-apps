@@ -1,5 +1,14 @@
 {% extends 'homepage.html' %}{% load humanize partition staticfiles %}
 
+{% block header_content %}
+<div class="content-container clearfix bg-color-secondary text-center">
+    <div class="wrapper">
+        <h1>Discover the Stories Behind the Data</h1>
+        <h4>{{ HURUMAP.title_tagline }} </h4>
+    </div>
+</div>
+{% endblock header_content %}
+
 {# Showcase #}
         {% block how_it_works %}
             <div class="wrapper clearfix">
