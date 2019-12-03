@@ -494,7 +494,7 @@ function Chart(options) {
         .attr(
           "transform",
           "translate(" +
-            chart.settings.margin.left * 1.8 +
+            chart.settings.margin.left * 2 +
             "," +
             chart.settings.margin.top +
             ")"
@@ -541,7 +541,7 @@ function Chart(options) {
               return chart.settings.displayHeight + 51 + "px";
             })
             .style("left", function(d) {
-              return chart.x(d.name) + chart.settings.margin.left + "px";
+              return chart.x(d.name) + chart.settings.margin.left + 5 + "px";
             })
             .text(function(d) {
               return chart.capitalize(d.name);
@@ -561,7 +561,7 @@ function Chart(options) {
               })
               .style("left", function(d) {
                 return (
-                  chart.x(d.name) +
+                  chart.x(d.name) + 6 +
                   chart.settings.margin.left +
                   (columnWidth + 2) * i +
                   "px"
