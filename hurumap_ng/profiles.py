@@ -607,13 +607,13 @@ def get_health_profile(geo, session):
 
         try:
             doctors_per_sex_year, tot_doctors = get_stat_data(
-                ['number_of_dentist_year', 'number_of_doctors_sex'], geo, session, percent=False)
+                ['number_of_doctors_year', 'number_of_doctors_sex'], geo, session, percent=False)
         except Exception:
             log.warn("Could not get data", exc_info=True)
 
         try:
             dentists_per_sex_year, tot_dentists = get_stat_data(
-                ['number_of_doctors_year', 'number_of_dentist_sex'], geo, session, percent=False)
+                ['number_of_dentist_year', 'number_of_dentist_sex'], geo, session, percent=False)
         except Exception:
             log.warn("Could not get data", exc_info=True)
 
