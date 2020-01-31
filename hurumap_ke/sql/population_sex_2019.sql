@@ -27,7 +27,7 @@ CREATE TABLE public.population_sex_2019 (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
     geo_version character varying(100) DEFAULT ''::character varying NOT NULL,
-    population_sex_2019 character varying(128) NOT NULL,
+    sex character varying(128) NOT NULL,
     total integer
 );
 
@@ -36,7 +36,7 @@ CREATE TABLE public.population_sex_2019 (
 -- Data for Name: population_sex_2019; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.population_sex_2019 (geo_level, geo_code, geo_version, population_sex_2019, total) FROM stdin;
+COPY public.population_sex_2019 (geo_level, geo_code, geo_version, sex, total) FROM stdin;
 county	1	2009	Female	598046
 county	1	2009	Intersex	30
 county	1	2009	Male	610257
@@ -189,7 +189,7 @@ country	KE	2009	Male	23548056
 --
 
 ALTER TABLE ONLY public.population_sex_2019
-    ADD CONSTRAINT pk_population_sex_2019 PRIMARY KEY (geo_level, geo_code, geo_version, population_sex_2019);
+    ADD CONSTRAINT pk_population_sex_2019 PRIMARY KEY (geo_level, geo_code, geo_version, sex);
 
 
 --
