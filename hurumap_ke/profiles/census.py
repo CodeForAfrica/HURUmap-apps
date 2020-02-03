@@ -83,6 +83,22 @@ def get_profile(geo, profile_name, request):
                             log.fatal(msg, exc_info=e)
                             raise ValueError(msg)
 
+                elif function_name == 'get_demographics_profile':
+                    year= request.GET.get('release', settings.WAZIMAP['latest_release_year'])
+                    data[section] = func(geo, session, year)
+
+                    # get profiles for comparative geometries
+                    for comp_geo in comparative_geos:
+                        try:
+                            merge_dicts(
+                                data[section], func(
+                                    comp_geo, session, year), comp_geo.geo_level)
+                        except KeyError as e:
+                            msg = "Error merging data into %s for section '%s' from %s: KeyError: %s" % (
+                                geo.geoid, section, comp_geo.geoid, e)
+                            log.fatal(msg, exc_info=e)
+                            raise ValueError(msg)
+
                 else:
                     data[section] = func(geo, session)
 
@@ -112,7 +128,7 @@ def get_profile(geo, profile_name, request):
         session.close()
 
 
-def get_demographics_profile(geo, session):
+def get_demographics_profile(geo, session, release_year):
     sex_dist_data = LOCATIONNOTFOUND
     religion_dist_data = LOCATIONNOTFOUND
     urban_dist_data = LOCATIONNOTFOUND
@@ -121,7 +137,14 @@ def get_demographics_profile(geo, session):
     total_urbanised = 0
     total_pop = 0
     median = 0
-    with dataset_context(year='2009'):
+
+    households_and_population_dist = LOCATIONNOTFOUND
+    subcounty_population_sex_2019_dist = LOCATIONNOTFOUND
+    avg_household_size_dist = 0
+    sex_dist_2019 = LOCATIONNOTFOUND
+    total_pop_2019 = 0
+ 
+    with dataset_context(year=release_year):
         try:
             # sex
             sex_dist_data, total_pop = get_stat_data(
@@ -186,32 +209,65 @@ def get_demographics_profile(geo, session):
         except Exception:
             pass
 
-        is_missing = sex_dist_data.get('is_missing') and \
-                     religion_dist_data.get('is_missing') and \
-                     urban_dist_data.get('is_missing') and \
-                     age_dist_data.get('is_missing')
+        try:
+            sex_dist_2019, total_pop_2019 = get_stat_data(
+                ['sex'], geo, session, table_name='population_sex_2019')
+        except Exception:
+            pass
+        try:
+            _, avg_household_size_dist = get_stat_data(
+                ['year'], geo, session, table_name='avg_household_size', percent=False)
+        except Exception:
+            pass
 
-        final_data = {
-            'is_missing': is_missing,
-            'sex_ratio': sex_dist_data,
-            'religion_ratio': religion_dist_data,
-            'urban_distribution': urban_dist_data,
-            'urbanised': {
-                'name': 'In urban areas',
-                'numerators': {'this': total_urbanised},
-                'values': {'this': round(total_urbanised / total_pop * 100, 2)}
-            },
-            'age_group_distribution': age_dist_data,
-            'age_category_distribution': age_cats,
-            'median_age': {
-                "name": "Median age",
-                "values": {"this": median},
-            },
-            'total_population': {
-                "name": "People",
-                "values": {"this": total_pop}
-            }
+        try:
+            households_and_population_dist, _ = get_stat_data(
+                ['variable'], geo, session, table_name='households_and_population', percent=False)
+        except Exception:
+            pass
+        
+        try:
+            subcounty_population_sex_2019_dist, _ = get_stat_data(
+                ['subcounty'], geo, session, table_name='subcounty_population_sex_2019', percent=False)
+        except Exception:
+            pass
+
+    is_missing = sex_dist_data.get('is_missing') and \
+                    sex_dist_2019.get('is_missing') and \
+                    religion_dist_data.get('is_missing') and \
+                    urban_dist_data.get('is_missing') and \
+                    age_dist_data.get('is_missing') and \
+                        households_and_population_dist.get('is_missing') and \
+                            subcounty_population_sex_2019_dist.get('is_missing')
+
+    urbanised_value = round(total_urbanised / total_pop * 100, 2) if total_pop != 0 else 0
+
+    final_data = {
+        'is_missing': is_missing,
+        'sex_ratio': sex_dist_2019 if sex_dist_data.get('is_missing') else sex_dist_data,
+        'religion_ratio': religion_dist_data,
+        'urban_distribution': urban_dist_data,
+        'urbanised': {
+            'name': 'In urban areas',
+            'numerators': {'this': total_urbanised },
+            'values': {'this': urbanised_value }
+        },
+        'age_group_distribution': age_dist_data,
+        'age_category_distribution': age_cats,
+        'median_age': {
+            "name": "Median age",
+            "values": {"this": median},
+        },
+        'households_and_population': households_and_population_dist,
+        'avg_household_size': {
+            "name": "Average Household Size",
+            "values": { "this": avg_household_size_dist} 
+        },
+        'total_population': {
+            "name": "People",
+            "values": {"this": total_pop or total_pop_2019}
         }
+    }
 
     return final_data
 
