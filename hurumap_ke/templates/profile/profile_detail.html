@@ -57,20 +57,37 @@
                                             href="#pop_count"
                                             id="pop_count">Population <i
               class="fa fa-link"></i></a></h2>
-          <div class="column-quarter">
+          <div class="column-third">
             {% include 'profile/_blocks/_stat_list.html' with stat=demographics.total_population stat_type='number' %}
           </div>
-          <div class="column-quarter"
+          <div class="column-two-thirds"
                id="chart-pie-demographics-sex_ratio"
                data-stat-type="percentage" data-chart-title="Sex"></div>
-          <div class="column-quarter">
+        </section>
+      {% if not demographics.urban_distribution.is_missing %}
+        <section class="clearfix stat-row">     
+          <div class="column-third">
             {% include 'profile/_blocks/_stat_list.html' with stat=demographics.urbanised stat_type='percentage' %}
           </div>
-          <div class="column-quarter"
+          <div class="column-two-thirds"
                id="chart-grouped_column-demographics-urban_distribution"
                data-stat-type="scaled-percentage"
                data-chart-title="Urban vs rural by sex"></div>
         </section>
+        {% endif %}
+        {% if not demographics.households_and_population.is_missing %}
+        <section class="clearfix stat-row">
+          <div class="column-third">
+              <h3 class="chart-header">Household Size</h3>
+              {% include 'profile/_blocks/_stat_list.html' with stat=demographics.avg_household_size stat_type='number' %}
+            </div>
+          <div class="column-two-thirds"
+               id="chart-column-demographics-households_and_population" 
+               data-stat-type="number" 
+               data-chart-title="Distribution of Population and Number of Households"></div>
+
+        </section>
+        {% endif %}
       </div> <!-- end of section container -->
     </article> <!-- end of demographics article -->
   {% endif %} <!-- end if demographics -->
