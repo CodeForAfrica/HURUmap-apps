@@ -42,80 +42,80 @@ CREATE TABLE pesayetu.breakdown_condition_fund_dp2015 (
 
 COPY pesayetu.breakdown_condition_fund_dp2015 (geo_level, geo_code, geo_version, project_type, year, total) FROM stdin;
 country	KE	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	422355000
-county	1	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	3150000
-county	5	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	3820000
-county	11	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	3985000
-county	4	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	4645000
-county	25	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	5495000
-county	26	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	5665000
-county	31	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	5765000
-county	23	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	6035000
-county	24	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	6090000
-county	13	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	6165000
-county	20	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	6385000
-county	40	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	6495000
-county	2	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	6810000
-county	14	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	6875000
-county	38	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	7085000
-county	9	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	7310000
-county	39	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	7375000
-county	6	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	7405000
-county	10	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	7675000
-county	3	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	7765000
-county	42	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	8290000
-county	27	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	8660000
-county	36	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	8810000
-county	34	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	8945000
-county	33	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	8945000
-county	7	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	8970000
-county	29	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	9155000
-county	18	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	9430000
-county	22	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	9600000
-county	35	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	9965000
-county	8	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	10045000
-county	44	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	10220000
-county	12	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	10295000
-county	28	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	10400000
-county	19	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	11465000
-county	45	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	11475000
-county	37	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	11750000
-county	46	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	11960000
-county	17	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	12065000
-county	43	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	12385000
-county	21	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	12405000
-county	32	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	12630000
-county	30	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	12985000
-county	16	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	13350000
-county	41	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	13765000
-county	47	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	13900000
-county	5	2009	World Bank grant to supplement financing for county health facilities	2015/2016	14528378
-county	1	2009	Other Loans & Grants	2015/2016	16000000
-county	15	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	18495000
-county	11	2009	World Bank grant to supplement financing for county health facilities	2015/2016	22247373
-county	4	2009	World Bank grant to supplement financing for county health facilities	2015/2016	24174105
-county	25	2009	World Bank grant to supplement financing for county health facilities	2015/2016	29848554
-county	42	2009	Other Loans & Grants	2015/2016	30000000
-county	10	2009	World Bank grant to supplement financing for county health facilities	2015/2016	34627134
-county	6	2009	World Bank grant to supplement financing for county health facilities	2015/2016	36034216
-county	34	2009	Other Loans & Grants	2015/2016	40000000
-county	7	2009	World Bank grant to supplement financing for county health facilities	2015/2016	41161467
-county	9	2009	World Bank grant to supplement financing for county health facilities	2015/2016	42477798
-county	13	2009	World Bank grant to supplement financing for county health facilities	2015/2016	44654343
-county	8	2009	World Bank grant to supplement financing for county health facilities	2015/2016	46166458
-county	24	2009	World Bank grant to supplement financing for county health facilities	2015/2016	56049761
-county	28	2009	World Bank grant to supplement financing for county health facilities	2015/2016	56932570
-county	31	2009	World Bank grant to supplement financing for county health facilities	2015/2016	60049676
-county	23	2009	World Bank grant to supplement financing for county health facilities	2015/2016	67258982
-county	30	2009	World Bank grant to supplement financing for county health facilities	2015/2016	77761278
-county	33	2009	World Bank grant to supplement financing for county health facilities	2015/2016	81201403
-county	2	2009	World Bank grant to supplement financing for county health facilities	2015/2016	82166289
-county	34	2009	World Bank grant to supplement financing for county health facilities	2015/2016	100581341
-county	3	2009	World Bank grant to supplement financing for county health facilities	2015/2016	114657642
-county	15	2009	World Bank grant to supplement financing for county health facilities	2015/2016	131525244
-county	44	2009	World Bank grant to supplement financing for county health facilities	2015/2016	138220725
-county	47	2009	Other Loans & Grants	2015/2016	360000000
+level1	KE_1_001	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	3150000
+level1	KE_1_005	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	3820000
+level1	KE_1_011	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	3985000
+level1	KE_1_004	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	4645000
+level1	KE_1_025	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	5495000
+level1	KE_1_026	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	5665000
+level1	KE_1_031	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	5765000
+level1	KE_1_023	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	6035000
+level1	KE_1_024	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	6090000
+level1	KE_1_013	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	6165000
+level1	KE_1_020	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	6385000
+level1	KE_1_040	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	6495000
+level1	KE_1_002	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	6810000
+level1	KE_1_014	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	6875000
+level1	KE_1_038	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	7085000
+level1	KE_1_009	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	7310000
+level1	KE_1_039	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	7375000
+level1	KE_1_006	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	7405000
+level1	KE_1_010	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	7675000
+level1	KE_1_003	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	7765000
+level1	KE_1_042	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	8290000
+level1	KE_1_027	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	8660000
+level1	KE_1_036	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	8810000
+level1	KE_1_034	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	8945000
+level1	KE_1_033	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	8945000
+level1	KE_1_007	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	8970000
+level1	KE_1_029	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	9155000
+level1	KE_1_018	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	9430000
+level1	KE_1_022	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	9600000
+level1	KE_1_035	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	9965000
+level1	KE_1_008	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	10045000
+level1	KE_1_044	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	10220000
+level1	KE_1_012	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	10295000
+level1	KE_1_028	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	10400000
+level1	KE_1_019	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	11465000
+level1	KE_1_045	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	11475000
+level1	KE_1_037	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	11750000
+level1	KE_1_046	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	11960000
+level1	KE_1_017	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	12065000
+level1	KE_1_043	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	12385000
+level1	KE_1_021	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	12405000
+level1	KE_1_032	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	12630000
+level1	KE_1_030	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	12985000
+level1	KE_1_016	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	13350000
+level1	KE_1_041	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	13765000
+level1	KE_1_047	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	13900000
+level1	KE_1_005	2009	World Bank grant to supplement financing for county health facilities	2015/2016	14528378
+level1	KE_1_001	2009	Other Loans & Grants	2015/2016	16000000
+level1	KE_1_015	2009	DANIDA grant to supplement financing for county health facilities	2015/2016	18495000
+level1	KE_1_011	2009	World Bank grant to supplement financing for county health facilities	2015/2016	22247373
+level1	KE_1_004	2009	World Bank grant to supplement financing for county health facilities	2015/2016	24174105
+level1	KE_1_025	2009	World Bank grant to supplement financing for county health facilities	2015/2016	29848554
+level1	KE_1_042	2009	Other Loans & Grants	2015/2016	30000000
+level1	KE_1_010	2009	World Bank grant to supplement financing for county health facilities	2015/2016	34627134
+level1	KE_1_006	2009	World Bank grant to supplement financing for county health facilities	2015/2016	36034216
+level1	KE_1_034	2009	Other Loans & Grants	2015/2016	40000000
+level1	KE_1_007	2009	World Bank grant to supplement financing for county health facilities	2015/2016	41161467
+level1	KE_1_009	2009	World Bank grant to supplement financing for county health facilities	2015/2016	42477798
+level1	KE_1_013	2009	World Bank grant to supplement financing for county health facilities	2015/2016	44654343
+level1	KE_1_008	2009	World Bank grant to supplement financing for county health facilities	2015/2016	46166458
+level1	KE_1_024	2009	World Bank grant to supplement financing for county health facilities	2015/2016	56049761
+level1	KE_1_028	2009	World Bank grant to supplement financing for county health facilities	2015/2016	56932570
+level1	KE_1_031	2009	World Bank grant to supplement financing for county health facilities	2015/2016	60049676
+level1	KE_1_023	2009	World Bank grant to supplement financing for county health facilities	2015/2016	67258982
+level1	KE_1_030	2009	World Bank grant to supplement financing for county health facilities	2015/2016	77761278
+level1	KE_1_033	2009	World Bank grant to supplement financing for county health facilities	2015/2016	81201403
+level1	KE_1_002	2009	World Bank grant to supplement financing for county health facilities	2015/2016	82166289
+level1	KE_1_034	2009	World Bank grant to supplement financing for county health facilities	2015/2016	100581341
+level1	KE_1_003	2009	World Bank grant to supplement financing for county health facilities	2015/2016	114657642
+level1	KE_1_015	2009	World Bank grant to supplement financing for county health facilities	2015/2016	131525244
+level1	KE_1_044	2009	World Bank grant to supplement financing for county health facilities	2015/2016	138220725
+level1	KE_1_047	2009	Other Loans & Grants	2015/2016	360000000
 country	KE	2009	World Bank grant to supplement financing for county health facilities	2015/2016	1302324737
-county	12	2009	Other Loans & Grants	2015/2016	1700000000
+level1	KE_1_012	2009	Other Loans & Grants	2015/2016	1700000000
 country	KE	2009	Other Loans & Grants	2015/2016	2146000000
 \.
 
