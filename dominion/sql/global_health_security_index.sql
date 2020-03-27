@@ -1,55 +1,49 @@
--- -------------------------------------------------------------
--- TablePlus 2.12(282)
---
--- https://tableplus.com/
---
--- Database: dominion_api
--- Generation Time: 2020-03-27 09:55:38.1550
--- -------------------------------------------------------------
-
-
--- This script only contains the table creation statements and does not fully represent the table in the database. It's still missing: indices, triggers. Do not use it as a backup.
-
--- Table Definition
-CREATE TABLE "public"."global_health_security_index" (
-    "geo_level" text NOT NULL,
-    "geo_code" text NOT NULL,
-    "parent_level" text NOT NULL,
-    "parent_code" text NOT NULL,
-    "category" text,
-    "score" numeric,
-    "geo_version" numeric
+CREATE TABLE IF NOT EXISTS public.global_health_security_index (
+          geo_level TEXT,
+geo_code TEXT,
+geo_version NUMERIC,
+parent_level TEXT,
+parent_code TEXT,
+category TEXT,
+score NUMERIC
 );
 
-INSERT INTO "public"."global_health_security_index" ("geo_level", "geo_code", "parent_level", "parent_code", "category", "score", "geo_version") VALUES ('country', 'KE', 'continent', 'AFR', 'Rank', '55', NULL);
-INSERT INTO "public"."global_health_security_index" ("geo_level", "geo_code", "parent_level", "parent_code", "category", "score", "geo_version") VALUES ('country', 'KE', 'continent', 'AFR', 'Overall Score', '47.1', NULL);
-INSERT INTO "public"."global_health_security_index" ("geo_level", "geo_code", "parent_level", "parent_code", "category", "score", "geo_version") VALUES ('country', 'KE', 'continent', 'AFR', 'Prevention of the Emergence or Release of Pathogens', '45.9', NULL);
-INSERT INTO "public"."global_health_security_index" ("geo_level", "geo_code", "parent_level", "parent_code", "category", "score", "geo_version") VALUES ('country', 'KE', 'continent', 'AFR', 'Early Detection & Reporting for Epidemics of Potential International Concern', '68.6', NULL);
-INSERT INTO "public"."global_health_security_index" ("geo_level", "geo_code", "parent_level", "parent_code", "category", "score", "geo_version") VALUES ('country', 'KE', 'continent', 'AFR', 'Rapid Response to And Mitigation of The Spread of an Epidemic', '37.1', NULL);
-INSERT INTO "public"."global_health_security_index" ("geo_level", "geo_code", "parent_level", "parent_code", "category", "score", "geo_version") VALUES ('country', 'KE', 'continent', 'AFR', 'Sufficient & Robust Health System to Treat The Sick & Protect Health Workers', '20.7', NULL);
-INSERT INTO "public"."global_health_security_index" ("geo_level", "geo_code", "parent_level", "parent_code", "category", "score", "geo_version") VALUES ('country', 'KE', 'continent', 'AFR', 'Commitments to Improving National Capacity, Financing and Adherence to Norms', '67.1', NULL);
-INSERT INTO "public"."global_health_security_index" ("geo_level", "geo_code", "parent_level", "parent_code", "category", "score", "geo_version") VALUES ('country', 'KE', 'continent', 'AFR', 'Overall Risk Environment And Country Vulnerability to Biological Threats', '40.7', NULL);
-INSERT INTO "public"."global_health_security_index" ("geo_level", "geo_code", "parent_level", "parent_code", "category", "score", "geo_version") VALUES ('country', 'ZA', 'continent', 'AFR', 'Rank', '34', NULL);
-INSERT INTO "public"."global_health_security_index" ("geo_level", "geo_code", "parent_level", "parent_code", "category", "score", "geo_version") VALUES ('country', 'ZA', 'continent', 'AFR', 'Overall Score', '54.8', NULL);
-INSERT INTO "public"."global_health_security_index" ("geo_level", "geo_code", "parent_level", "parent_code", "category", "score", "geo_version") VALUES ('country', 'ZA', 'continent', 'AFR', 'Prevention of the Emergence or Release of Pathogens', '44.8', NULL);
-INSERT INTO "public"."global_health_security_index" ("geo_level", "geo_code", "parent_level", "parent_code", "category", "score", "geo_version") VALUES ('country', 'ZA', 'continent', 'AFR', 'Early Detection & Reporting for Epidemics of Potential International Concern', '81.5', NULL);
-INSERT INTO "public"."global_health_security_index" ("geo_level", "geo_code", "parent_level", "parent_code", "category", "score", "geo_version") VALUES ('country', 'ZA', 'continent', 'AFR', 'Rapid Response to And Mitigation of The Spread of an Epidemic', '57.7', NULL);
-INSERT INTO "public"."global_health_security_index" ("geo_level", "geo_code", "parent_level", "parent_code", "category", "score", "geo_version") VALUES ('country', 'ZA', 'continent', 'AFR', 'Sufficient & Robust Health System to Treat The Sick & Protect Health Workers', '33', NULL);
-INSERT INTO "public"."global_health_security_index" ("geo_level", "geo_code", "parent_level", "parent_code", "category", "score", "geo_version") VALUES ('country', 'ZA', 'continent', 'AFR', 'Commitments to Improving National Capacity, Financing and Adherence to Norms', '46.3', NULL);
-INSERT INTO "public"."global_health_security_index" ("geo_level", "geo_code", "parent_level", "parent_code", "category", "score", "geo_version") VALUES ('country', 'ZA', 'continent', 'AFR', 'Overall Risk Environment And Country Vulnerability to Biological Threats', '61.8', NULL);
-INSERT INTO "public"."global_health_security_index" ("geo_level", "geo_code", "parent_level", "parent_code", "category", "score", "geo_version") VALUES ('country', 'GH', 'continent', 'AFR', 'Rank', '105', NULL);
-INSERT INTO "public"."global_health_security_index" ("geo_level", "geo_code", "parent_level", "parent_code", "category", "score", "geo_version") VALUES ('country', 'GH', 'continent', 'AFR', 'Overall Score', '35.5', NULL);
-INSERT INTO "public"."global_health_security_index" ("geo_level", "geo_code", "parent_level", "parent_code", "category", "score", "geo_version") VALUES ('country', 'GH', 'continent', 'AFR', 'Prevention of the Emergence or Release of Pathogens', '32.2', NULL);
-INSERT INTO "public"."global_health_security_index" ("geo_level", "geo_code", "parent_level", "parent_code", "category", "score", "geo_version") VALUES ('country', 'GH', 'continent', 'AFR', 'Early Detection & Reporting for Epidemics of Potential International Concern', '40.5', NULL);
-INSERT INTO "public"."global_health_security_index" ("geo_level", "geo_code", "parent_level", "parent_code", "category", "score", "geo_version") VALUES ('country', 'GH', 'continent', 'AFR', 'Rapid Response to And Mitigation of The Spread of an Epidemic', '31.5', NULL);
-INSERT INTO "public"."global_health_security_index" ("geo_level", "geo_code", "parent_level", "parent_code", "category", "score", "geo_version") VALUES ('country', 'GH', 'continent', 'AFR', 'Sufficient & Robust Health System to Treat The Sick & Protect Health Workers', '23.4', NULL);
-INSERT INTO "public"."global_health_security_index" ("geo_level", "geo_code", "parent_level", "parent_code", "category", "score", "geo_version") VALUES ('country', 'GH', 'continent', 'AFR', 'Commitments to Improving National Capacity, Financing and Adherence to Norms', '38', NULL);
-INSERT INTO "public"."global_health_security_index" ("geo_level", "geo_code", "parent_level", "parent_code", "category", "score", "geo_version") VALUES ('country', 'GH', 'continent', 'AFR', 'Overall Risk Environment And Country Vulnerability to Biological Threats', '51', NULL);
-INSERT INTO "public"."global_health_security_index" ("geo_level", "geo_code", "parent_level", "parent_code", "category", "score", "geo_version") VALUES ('country', 'ET', 'continent', 'AFR', 'Rank', '84', NULL);
-INSERT INTO "public"."global_health_security_index" ("geo_level", "geo_code", "parent_level", "parent_code", "category", "score", "geo_version") VALUES ('country', 'ET', 'continent', 'AFR', 'Overall Score', '40.6', NULL);
-INSERT INTO "public"."global_health_security_index" ("geo_level", "geo_code", "parent_level", "parent_code", "category", "score", "geo_version") VALUES ('country', 'ET', 'continent', 'AFR', 'Prevention of the Emergence or Release of Pathogens', '36.8', NULL);
-INSERT INTO "public"."global_health_security_index" ("geo_level", "geo_code", "parent_level", "parent_code", "category", "score", "geo_version") VALUES ('country', 'ET', 'continent', 'AFR', 'Early Detection & Reporting for Epidemics of Potential International Concern', '33.7', NULL);
-INSERT INTO "public"."global_health_security_index" ("geo_level", "geo_code", "parent_level", "parent_code", "category", "score", "geo_version") VALUES ('country', 'ET', 'continent', 'AFR', 'Rapid Response to And Mitigation of The Spread of an Epidemic', '44.7', NULL);
-INSERT INTO "public"."global_health_security_index" ("geo_level", "geo_code", "parent_level", "parent_code", "category", "score", "geo_version") VALUES ('country', 'ET', 'continent', 'AFR', 'Sufficient & Robust Health System to Treat The Sick & Protect Health Workers', '29', NULL);
-INSERT INTO "public"."global_health_security_index" ("geo_level", "geo_code", "parent_level", "parent_code", "category", "score", "geo_version") VALUES ('country', 'ET', 'continent', 'AFR', 'Commitments to Improving National Capacity, Financing and Adherence to Norms', '65.8', NULL);
-INSERT INTO "public"."global_health_security_index" ("geo_level", "geo_code", "parent_level", "parent_code", "category", "score", "geo_version") VALUES ('country', 'ET', 'continent', 'AFR', 'Overall Risk Environment And Country Vulnerability to Biological Threats', '33.6', NULL);
+INSERT INTO public.global_health_security_index VALUES
+    ('country','ET',2009,'continent','AFR','Overall Score Normed',0.382021),
+('country','ET',2009,'continent','AFR','Demographic Domain Score',0.28569545),
+('country','ET',2009,'continent','AFR','Health Care Domain Score',0.39330463),
+('country','ET',2009,'continent','AFR','Public Health Domain Score',0.622299852),
+('country','ET',2009,'continent','AFR','Disease Dynamics Domain Score',0.499217243),
+('country','ET',2009,'continent','AFR','Political Domestic Domain Score',0.272946162),
+('country','ET',2009,'continent','AFR','Political International Domain Score',0.492468433),
+('country','ET',2009,'continent','AFR','Economic Domain Score',0.156768353),
+('country','KE',2009,'continent','AFR','Overall Score Normed',0.385436),
+('country','KE',2009,'continent','AFR','Demographic Domain Score',0.610453351),
+('country','KE',2009,'continent','AFR','Health Care Domain Score',0.415088725),
+('country','KE',2009,'continent','AFR','Public Health Domain Score',0.489142677),
+('country','KE',2009,'continent','AFR','Disease Dynamics Domain Score',0.406130325),
+('country','KE',2009,'continent','AFR','Political Domestic Domain Score',0.316426717),
+('country','KE',2009,'continent','AFR','Political International Domain Score',0.518261714),
+('country','KE',2009,'continent','AFR','Economic Domain Score',0.20694373),
+('country','ZA',2009,'continent','AFR','Overall Score Normed',0.697292),
+('country','ZA',2009,'continent','AFR','Demographic Domain Score',0.739000698),
+('country','ZA',2009,'continent','AFR','Health Care Domain Score',0.492333001),
+('country','ZA',2009,'continent','AFR','Public Health Domain Score',0.910898968),
+('country','ZA',2009,'continent','AFR','Disease Dynamics Domain Score',0.728928869),
+('country','ZA',2009,'continent','AFR','Political Domestic Domain Score',0.555658151),
+('country','ZA',2009,'continent','AFR','Political International Domain Score',0.806992812),
+('country','ZA',2009,'continent','AFR','Economic Domain Score',0.458012442),
+('country','GH',2009,'continent','AFR','Overall Score Normed',0.462565),
+('country','GH',2009,'continent','AFR','Demographic Domain Score',0.526023873),
+('country','GH',2009,'continent','AFR','Health Care Domain Score',0.370472249),
+('country','GH',2009,'continent','AFR','Public Health Domain Score',0.543649558),
+('country','GH',2009,'continent','AFR','Disease Dynamics Domain Score',0.431181585),
+('country','GH',2009,'continent','AFR','Political Domestic Domain Score',0.500767939),
+('country','GH',2009,'continent','AFR','Political International Domain Score',0.616686004),
+('country','GH',2009,'continent','AFR','Economic Domain Score',0.248491531);
+      
+INSERT into public.sources(geo_level, country_code, table_name, source_title, source_link) VALUES('country','ET','allGlobalHealthSecurityIndices','Global Health Security Index, 2019','https://www.ghsindex.org/wp-content/uploads/2019/10/2019-Global-Health-Security-Index.pdf') on conflict do nothing;
+INSERT into public.sources(geo_level, country_code, table_name, source_title, source_link) VALUES('country','KE','allGlobalHealthSecurityIndices','Global Health Security Index, 2019','https://www.ghsindex.org/wp-content/uploads/2019/10/2019-Global-Health-Security-Index.pdf') on conflict do nothing;
+INSERT into public.sources(geo_level, country_code, table_name, source_title, source_link) VALUES('country','ZA','allGlobalHealthSecurityIndices','Global Health Security Index, 2019','https://www.ghsindex.org/wp-content/uploads/2019/10/2019-Global-Health-Security-Index.pdf') on conflict do nothing;
+INSERT into public.sources(geo_level, country_code, table_name, source_title, source_link) VALUES('country','GH','allGlobalHealthSecurityIndices','Global Health Security Index, 2019','https://www.ghsindex.org/wp-content/uploads/2019/10/2019-Global-Health-Security-Index.pdf') on conflict do nothing;
+
