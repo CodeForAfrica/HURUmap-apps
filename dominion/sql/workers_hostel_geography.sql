@@ -37,36 +37,36 @@ CREATE TABLE public.workers_hostel_geography (
 --
 
 COPY public.workers_hostel_geography (geo_level, geo_code, geo_version, workers_hostel_geography, total) FROM stdin;
-level1	ZA_1_008	2009	Urban formal	13039
-level1	ZA_1_008	2009	Traditional	0
-level1	ZA_1_008	2009	Farms	13400
+level1	ZA_1_001	2009	Urban formal	13039
+level1	ZA_1_001	2009	Traditional	0
+level1	ZA_1_001	2009	Farms	13400
 country	ZA	2009	Urban formal	258389
 country	ZA	2009	Traditional	19813
 country	ZA	2009	Farms	150883
-level1	ZA_1_006	2009	Urban formal	15522
-level1	ZA_1_006	2009	Traditional	0
-level1	ZA_1_006	2009	Farms	14588
-level1	ZA_1_007	2009	Urban formal	13231
-level1	ZA_1_007	2009	Traditional	749
-level1	ZA_1_007	2009	Farms	4820
-level1	ZA_1_004	2009	Urban formal	27149
-level1	ZA_1_004	2009	Traditional	4439
-level1	ZA_1_004	2009	Farms	23325
+level1	ZA_1_003	2009	Urban formal	15522
+level1	ZA_1_003	2009	Traditional	0
+level1	ZA_1_003	2009	Farms	14588
+level1	ZA_1_006	2009	Urban formal	13231
+level1	ZA_1_006	2009	Traditional	749
+level1	ZA_1_006	2009	Farms	4820
+level1	ZA_1_008	2009	Urban formal	27149
+level1	ZA_1_008	2009	Traditional	4439
+level1	ZA_1_008	2009	Farms	23325
 level1	ZA_1_005	2009	Urban formal	2484
 level1	ZA_1_005	2009	Traditional	2530
 level1	ZA_1_005	2009	Farms	35889
-level1	ZA_1_001	2009	Urban formal	24755
-level1	ZA_1_001	2009	Traditional	5322
-level1	ZA_1_001	2009	Farms	48429
-level1	ZA_1_009	2009	Urban formal	132407
-level1	ZA_1_009	2009	Traditional	0
-level1	ZA_1_009	2009	Farms	9439
-level1	ZA_1_002	2009	Urban formal	4202
-level1	ZA_1_002	2009	Traditional	0
-level1	ZA_1_002	2009	Farms	994
-level1	ZA_1_003	2009	Urban formal	25600
-level1	ZA_1_003	2009	Traditional	6772
-level1	ZA_1_003	2009	Farms	0
+level1	ZA_1_009	2009	Urban formal	24755
+level1	ZA_1_009	2009	Traditional	5322
+level1	ZA_1_009	2009	Farms	48429
+level1	ZA_1_007	2009	Urban formal	132407
+level1	ZA_1_007	2009	Traditional	0
+level1	ZA_1_007	2009	Farms	9439
+level1	ZA_1_004	2009	Urban formal	4202
+level1	ZA_1_004	2009	Traditional	0
+level1	ZA_1_004	2009	Farms	994
+level1	ZA_1_002	2009	Urban formal	25600
+level1	ZA_1_002	2009	Traditional	6772
+level1	ZA_1_002	2009	Farms	0
 \.
 
 

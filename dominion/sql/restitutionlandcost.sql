@@ -38,15 +38,15 @@ CREATE TABLE public.restitutionlandcost (
 --
 
 COPY public.restitutionlandcost (geo_level, geo_code, geo_version, restitutionlandcost, year, total) FROM stdin;
-level1	ZA_1_003	2009	landcost	2017/2018	0
 level1	ZA_1_002	2009	landcost	2017/2018	0
-level1	ZA_1_009	2009	landcost	2017/2018	0
-level1	ZA_1_001	2009	landcost	2017/2018	29795000
-level1	ZA_1_005	2009	landcost	2017/2018	3950000
-level1	ZA_1_004	2009	landcost	2017/2018	15300000
-level1	ZA_1_006	2009	landcost	2017/2018	0
+level1	ZA_1_004	2009	landcost	2017/2018	0
 level1	ZA_1_007	2009	landcost	2017/2018	0
-level1	ZA_1_008	2009	landcost	2017/2018	19100
+level1	ZA_1_009	2009	landcost	2017/2018	29795000
+level1	ZA_1_005	2009	landcost	2017/2018	3950000
+level1	ZA_1_008	2009	landcost	2017/2018	15300000
+level1	ZA_1_003	2009	landcost	2017/2018	0
+level1	ZA_1_006	2009	landcost	2017/2018	0
+level1	ZA_1_001	2009	landcost	2017/2018	19100
 country	ZA	2009	landcost	2017/2018	49064100
 \.
 

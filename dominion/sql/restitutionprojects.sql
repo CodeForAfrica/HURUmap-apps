@@ -38,15 +38,15 @@ CREATE TABLE public.restitutionprojects (
 --
 
 COPY public.restitutionprojects (geo_level, geo_code, geo_version, restitutionprojects, year, total) FROM stdin;
-level1	ZA_1_002	2009	projects	2017/2018	0
-level1	ZA_1_009	2009	projects	2017/2018	10
-level1	ZA_1_001	2009	projects	2017/2018	148
+level1	ZA_1_004	2009	projects	2017/2018	0
+level1	ZA_1_007	2009	projects	2017/2018	10
+level1	ZA_1_009	2009	projects	2017/2018	148
 level1	ZA_1_005	2009	projects	2017/2018	278
-level1	ZA_1_004	2009	projects	2017/2018	35
-level1	ZA_1_006	2009	projects	2017/2018	2
-level1	ZA_1_007	2009	projects	2017/2018	7
-level1	ZA_1_008	2009	projects	2017/2018	231
-level1	ZA_1_003	2009	projects	2017/2018	64
+level1	ZA_1_008	2009	projects	2017/2018	35
+level1	ZA_1_003	2009	projects	2017/2018	2
+level1	ZA_1_006	2009	projects	2017/2018	7
+level1	ZA_1_001	2009	projects	2017/2018	231
+level1	ZA_1_002	2009	projects	2017/2018	64
 country	ZA	2009	projects	2017/2018	775
 \.
 

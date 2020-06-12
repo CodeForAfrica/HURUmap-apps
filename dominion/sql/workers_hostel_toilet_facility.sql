@@ -37,47 +37,23 @@ CREATE TABLE public.workers_hostel_toilet_facility (
 --
 
 COPY public.workers_hostel_toilet_facility (geo_level, geo_code, geo_version, workers_hostel_toilet_facility, total) FROM stdin;
-level1	ZA_1_008	2009	Flush toilet connected to a public sewerage system	8589
-level1	ZA_1_008	2009	Flush toilet connected to a septic tank or conservancy tank	13400
-level1	ZA_1_008	2009	Pour flush toilet connected to a septic tank (or septage pit)	0
-level1	ZA_1_008	2009	Chemical toilet	0
-level1	ZA_1_008	2009	Pit latrine/toilet with ventilation pipe	2135
-level1	ZA_1_008	2009	Pit latrine/toilet without ventilation pipe	0
-level1	ZA_1_008	2009	Bucket toilet (collected by municipality)	2315
-level1	ZA_1_008	2009	Bucket toilet (emptied by household)	0
-level1	ZA_1_008	2009	Ecological Sanitation System (e.g. urine diversion)	0
-level1	ZA_1_008	2009	Open defecation (e.g. no facilities; field; bush)	0
-level1	ZA_1_008	2009	Other	0
-level1	ZA_1_008	2009	Unspecified	0
-level1	ZA_1_003	2009	Flush toilet connected to a public sewerage system	19158
-level1	ZA_1_003	2009	Flush toilet connected to a septic tank or conservancy tank	0
-level1	ZA_1_003	2009	Pour flush toilet connected to a septic tank (or septage pit)	0
-level1	ZA_1_003	2009	Chemical toilet	0
-level1	ZA_1_003	2009	Pit latrine/toilet with ventilation pipe	13214
-level1	ZA_1_003	2009	Pit latrine/toilet without ventilation pipe	0
-level1	ZA_1_003	2009	Bucket toilet (collected by municipality)	0
-level1	ZA_1_003	2009	Bucket toilet (emptied by household)	0
-level1	ZA_1_003	2009	Ecological Sanitation System (e.g. urine diversion)	0
-level1	ZA_1_003	2009	Open defecation (e.g. no facilities; field; bush)	0
-level1	ZA_1_003	2009	Other	0
-level1	ZA_1_003	2009	Unspecified	0
-level1	ZA_1_006	2009	Flush toilet connected to a public sewerage system	23286
-level1	ZA_1_006	2009	Flush toilet connected to a septic tank or conservancy tank	2583
-level1	ZA_1_006	2009	Pour flush toilet connected to a septic tank (or septage pit)	465
-level1	ZA_1_006	2009	Chemical toilet	0
-level1	ZA_1_006	2009	Pit latrine/toilet with ventilation pipe	2013
-level1	ZA_1_006	2009	Pit latrine/toilet without ventilation pipe	1445
-level1	ZA_1_006	2009	Bucket toilet (collected by municipality)	0
-level1	ZA_1_006	2009	Bucket toilet (emptied by household)	0
-level1	ZA_1_006	2009	Ecological Sanitation System (e.g. urine diversion)	0
-level1	ZA_1_006	2009	Open defecation (e.g. no facilities; field; bush)	317
-level1	ZA_1_006	2009	Other	0
-level1	ZA_1_006	2009	Unspecified	0
-level1	ZA_1_002	2009	Flush toilet connected to a public sewerage system	5195
+level1	ZA_1_001	2009	Flush toilet connected to a public sewerage system	8589
+level1	ZA_1_001	2009	Flush toilet connected to a septic tank or conservancy tank	13400
+level1	ZA_1_001	2009	Pour flush toilet connected to a septic tank (or septage pit)	0
+level1	ZA_1_001	2009	Chemical toilet	0
+level1	ZA_1_001	2009	Pit latrine/toilet with ventilation pipe	2135
+level1	ZA_1_001	2009	Pit latrine/toilet without ventilation pipe	0
+level1	ZA_1_001	2009	Bucket toilet (collected by municipality)	2315
+level1	ZA_1_001	2009	Bucket toilet (emptied by household)	0
+level1	ZA_1_001	2009	Ecological Sanitation System (e.g. urine diversion)	0
+level1	ZA_1_001	2009	Open defecation (e.g. no facilities; field; bush)	0
+level1	ZA_1_001	2009	Other	0
+level1	ZA_1_001	2009	Unspecified	0
+level1	ZA_1_002	2009	Flush toilet connected to a public sewerage system	19158
 level1	ZA_1_002	2009	Flush toilet connected to a septic tank or conservancy tank	0
 level1	ZA_1_002	2009	Pour flush toilet connected to a septic tank (or septage pit)	0
 level1	ZA_1_002	2009	Chemical toilet	0
-level1	ZA_1_002	2009	Pit latrine/toilet with ventilation pipe	0
+level1	ZA_1_002	2009	Pit latrine/toilet with ventilation pipe	13214
 level1	ZA_1_002	2009	Pit latrine/toilet without ventilation pipe	0
 level1	ZA_1_002	2009	Bucket toilet (collected by municipality)	0
 level1	ZA_1_002	2009	Bucket toilet (emptied by household)	0
@@ -85,54 +61,78 @@ level1	ZA_1_002	2009	Ecological Sanitation System (e.g. urine diversion)	0
 level1	ZA_1_002	2009	Open defecation (e.g. no facilities; field; bush)	0
 level1	ZA_1_002	2009	Other	0
 level1	ZA_1_002	2009	Unspecified	0
-level1	ZA_1_001	2009	Flush toilet connected to a public sewerage system	6510
-level1	ZA_1_001	2009	Flush toilet connected to a septic tank or conservancy tank	14130
-level1	ZA_1_001	2009	Pour flush toilet connected to a septic tank (or septage pit)	1380
-level1	ZA_1_001	2009	Chemical toilet	2522
-level1	ZA_1_001	2009	Pit latrine/toilet with ventilation pipe	17783
-level1	ZA_1_001	2009	Pit latrine/toilet without ventilation pipe	34855
-level1	ZA_1_001	2009	Bucket toilet (collected by municipality)	1326
-level1	ZA_1_001	2009	Bucket toilet (emptied by household)	0
-level1	ZA_1_001	2009	Ecological Sanitation System (e.g. urine diversion)	0
-level1	ZA_1_001	2009	Open defecation (e.g. no facilities; field; bush)	0
-level1	ZA_1_001	2009	Other	0
-level1	ZA_1_001	2009	Unspecified	0
-level1	ZA_1_007	2009	Flush toilet connected to a public sewerage system	13231
-level1	ZA_1_007	2009	Flush toilet connected to a septic tank or conservancy tank	0
-level1	ZA_1_007	2009	Pour flush toilet connected to a septic tank (or septage pit)	0
-level1	ZA_1_007	2009	Chemical toilet	0
-level1	ZA_1_007	2009	Pit latrine/toilet with ventilation pipe	4692
-level1	ZA_1_007	2009	Pit latrine/toilet without ventilation pipe	877
-level1	ZA_1_007	2009	Bucket toilet (collected by municipality)	0
-level1	ZA_1_007	2009	Bucket toilet (emptied by household)	0
-level1	ZA_1_007	2009	Ecological Sanitation System (e.g. urine diversion)	0
-level1	ZA_1_007	2009	Open defecation (e.g. no facilities; field; bush)	0
-level1	ZA_1_007	2009	Other	0
-level1	ZA_1_007	2009	Unspecified	0
-level1	ZA_1_009	2009	Flush toilet connected to a public sewerage system	130025
-level1	ZA_1_009	2009	Flush toilet connected to a septic tank or conservancy tank	0
-level1	ZA_1_009	2009	Pour flush toilet connected to a septic tank (or septage pit)	704
-level1	ZA_1_009	2009	Chemical toilet	0
-level1	ZA_1_009	2009	Pit latrine/toilet with ventilation pipe	4726
-level1	ZA_1_009	2009	Pit latrine/toilet without ventilation pipe	3103
-level1	ZA_1_009	2009	Bucket toilet (collected by municipality)	3289
+level1	ZA_1_003	2009	Flush toilet connected to a public sewerage system	23286
+level1	ZA_1_003	2009	Flush toilet connected to a septic tank or conservancy tank	2583
+level1	ZA_1_003	2009	Pour flush toilet connected to a septic tank (or septage pit)	465
+level1	ZA_1_003	2009	Chemical toilet	0
+level1	ZA_1_003	2009	Pit latrine/toilet with ventilation pipe	2013
+level1	ZA_1_003	2009	Pit latrine/toilet without ventilation pipe	1445
+level1	ZA_1_003	2009	Bucket toilet (collected by municipality)	0
+level1	ZA_1_003	2009	Bucket toilet (emptied by household)	0
+level1	ZA_1_003	2009	Ecological Sanitation System (e.g. urine diversion)	0
+level1	ZA_1_003	2009	Open defecation (e.g. no facilities; field; bush)	317
+level1	ZA_1_003	2009	Other	0
+level1	ZA_1_003	2009	Unspecified	0
+level1	ZA_1_004	2009	Flush toilet connected to a public sewerage system	5195
+level1	ZA_1_004	2009	Flush toilet connected to a septic tank or conservancy tank	0
+level1	ZA_1_004	2009	Pour flush toilet connected to a septic tank (or septage pit)	0
+level1	ZA_1_004	2009	Chemical toilet	0
+level1	ZA_1_004	2009	Pit latrine/toilet with ventilation pipe	0
+level1	ZA_1_004	2009	Pit latrine/toilet without ventilation pipe	0
+level1	ZA_1_004	2009	Bucket toilet (collected by municipality)	0
+level1	ZA_1_004	2009	Bucket toilet (emptied by household)	0
+level1	ZA_1_004	2009	Ecological Sanitation System (e.g. urine diversion)	0
+level1	ZA_1_004	2009	Open defecation (e.g. no facilities; field; bush)	0
+level1	ZA_1_004	2009	Other	0
+level1	ZA_1_004	2009	Unspecified	0
+level1	ZA_1_009	2009	Flush toilet connected to a public sewerage system	6510
+level1	ZA_1_009	2009	Flush toilet connected to a septic tank or conservancy tank	14130
+level1	ZA_1_009	2009	Pour flush toilet connected to a septic tank (or septage pit)	1380
+level1	ZA_1_009	2009	Chemical toilet	2522
+level1	ZA_1_009	2009	Pit latrine/toilet with ventilation pipe	17783
+level1	ZA_1_009	2009	Pit latrine/toilet without ventilation pipe	34855
+level1	ZA_1_009	2009	Bucket toilet (collected by municipality)	1326
 level1	ZA_1_009	2009	Bucket toilet (emptied by household)	0
 level1	ZA_1_009	2009	Ecological Sanitation System (e.g. urine diversion)	0
 level1	ZA_1_009	2009	Open defecation (e.g. no facilities; field; bush)	0
 level1	ZA_1_009	2009	Other	0
 level1	ZA_1_009	2009	Unspecified	0
-level1	ZA_1_004	2009	Flush toilet connected to a public sewerage system	27133
-level1	ZA_1_004	2009	Flush toilet connected to a septic tank or conservancy tank	21654
-level1	ZA_1_004	2009	Pour flush toilet connected to a septic tank (or septage pit)	0
-level1	ZA_1_004	2009	Chemical toilet	0
-level1	ZA_1_004	2009	Pit latrine/toilet with ventilation pipe	1442
-level1	ZA_1_004	2009	Pit latrine/toilet without ventilation pipe	2272
-level1	ZA_1_004	2009	Bucket toilet (collected by municipality)	0
-level1	ZA_1_004	2009	Bucket toilet (emptied by household)	0
-level1	ZA_1_004	2009	Ecological Sanitation System (e.g. urine diversion)	0
-level1	ZA_1_004	2009	Open defecation (e.g. no facilities; field; bush)	1653
-level1	ZA_1_004	2009	Other	0
-level1	ZA_1_004	2009	Unspecified	759
+level1	ZA_1_006	2009	Flush toilet connected to a public sewerage system	13231
+level1	ZA_1_006	2009	Flush toilet connected to a septic tank or conservancy tank	0
+level1	ZA_1_006	2009	Pour flush toilet connected to a septic tank (or septage pit)	0
+level1	ZA_1_006	2009	Chemical toilet	0
+level1	ZA_1_006	2009	Pit latrine/toilet with ventilation pipe	4692
+level1	ZA_1_006	2009	Pit latrine/toilet without ventilation pipe	877
+level1	ZA_1_006	2009	Bucket toilet (collected by municipality)	0
+level1	ZA_1_006	2009	Bucket toilet (emptied by household)	0
+level1	ZA_1_006	2009	Ecological Sanitation System (e.g. urine diversion)	0
+level1	ZA_1_006	2009	Open defecation (e.g. no facilities; field; bush)	0
+level1	ZA_1_006	2009	Other	0
+level1	ZA_1_006	2009	Unspecified	0
+level1	ZA_1_007	2009	Flush toilet connected to a public sewerage system	130025
+level1	ZA_1_007	2009	Flush toilet connected to a septic tank or conservancy tank	0
+level1	ZA_1_007	2009	Pour flush toilet connected to a septic tank (or septage pit)	704
+level1	ZA_1_007	2009	Chemical toilet	0
+level1	ZA_1_007	2009	Pit latrine/toilet with ventilation pipe	4726
+level1	ZA_1_007	2009	Pit latrine/toilet without ventilation pipe	3103
+level1	ZA_1_007	2009	Bucket toilet (collected by municipality)	3289
+level1	ZA_1_007	2009	Bucket toilet (emptied by household)	0
+level1	ZA_1_007	2009	Ecological Sanitation System (e.g. urine diversion)	0
+level1	ZA_1_007	2009	Open defecation (e.g. no facilities; field; bush)	0
+level1	ZA_1_007	2009	Other	0
+level1	ZA_1_007	2009	Unspecified	0
+level1	ZA_1_008	2009	Flush toilet connected to a public sewerage system	27133
+level1	ZA_1_008	2009	Flush toilet connected to a septic tank or conservancy tank	21654
+level1	ZA_1_008	2009	Pour flush toilet connected to a septic tank (or septage pit)	0
+level1	ZA_1_008	2009	Chemical toilet	0
+level1	ZA_1_008	2009	Pit latrine/toilet with ventilation pipe	1442
+level1	ZA_1_008	2009	Pit latrine/toilet without ventilation pipe	2272
+level1	ZA_1_008	2009	Bucket toilet (collected by municipality)	0
+level1	ZA_1_008	2009	Bucket toilet (emptied by household)	0
+level1	ZA_1_008	2009	Ecological Sanitation System (e.g. urine diversion)	0
+level1	ZA_1_008	2009	Open defecation (e.g. no facilities; field; bush)	1653
+level1	ZA_1_008	2009	Other	0
+level1	ZA_1_008	2009	Unspecified	759
 level1	ZA_1_005	2009	Flush toilet connected to a public sewerage system	2484
 level1	ZA_1_005	2009	Flush toilet connected to a septic tank or conservancy tank	11471
 level1	ZA_1_005	2009	Pour flush toilet connected to a septic tank (or septage pit)	1388

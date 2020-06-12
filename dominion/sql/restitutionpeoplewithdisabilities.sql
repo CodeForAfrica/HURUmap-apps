@@ -38,15 +38,15 @@ CREATE TABLE public.restitutionpeoplewdisabilities (
 --
 
 COPY public.restitutionpeoplewdisabilities (geo_level, geo_code, geo_version, restitutionpeoplewdisabilities, year, total) FROM stdin;
-level1	ZA_1_003	2009	people with disabilities	2017/2018	0
 level1	ZA_1_002	2009	people with disabilities	2017/2018	0
-level1	ZA_1_009	2009	people with disabilities	2017/2018	2
-level1	ZA_1_001	2009	people with disabilities	2017/2018	55
-level1	ZA_1_005	2009	people with disabilities	2017/2018	0
 level1	ZA_1_004	2009	people with disabilities	2017/2018	0
-level1	ZA_1_006	2009	people with disabilities	2017/2018	0
-level1	ZA_1_007	2009	people with disabilities	2017/2018	0
+level1	ZA_1_007	2009	people with disabilities	2017/2018	2
+level1	ZA_1_009	2009	people with disabilities	2017/2018	55
+level1	ZA_1_005	2009	people with disabilities	2017/2018	0
 level1	ZA_1_008	2009	people with disabilities	2017/2018	0
+level1	ZA_1_003	2009	people with disabilities	2017/2018	0
+level1	ZA_1_006	2009	people with disabilities	2017/2018	0
+level1	ZA_1_001	2009	people with disabilities	2017/2018	0
 country	ZA	2009	people with disabilities	2017/2018	57
 \.
 

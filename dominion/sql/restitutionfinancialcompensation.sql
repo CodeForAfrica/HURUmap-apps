@@ -38,15 +38,15 @@ CREATE TABLE public.restitutionfinancialcompensation (
 --
 
 COPY public.restitutionfinancialcompensation (geo_level, geo_code, geo_version, restitutionfinancialcompensation, year, total) FROM stdin;
-level1	ZA_1_003	2009	financial compensation	2017/2018	119737376.2
-level1	ZA_1_002	2009	financial compensation	2017/2018	0
-level1	ZA_1_009	2009	financial compensation	2017/2018	11495331.1
-level1	ZA_1_001	2009	financial compensation	2017/2018	426535925
+level1	ZA_1_002	2009	financial compensation	2017/2018	119737376.2
+level1	ZA_1_004	2009	financial compensation	2017/2018	0
+level1	ZA_1_007	2009	financial compensation	2017/2018	11495331.1
+level1	ZA_1_009	2009	financial compensation	2017/2018	426535925
 level1	ZA_1_005	2009	financial compensation	2017/2018	241701978
-level1	ZA_1_004	2009	financial compensation	2017/2018	24520268.41
-level1	ZA_1_006	2009	financial compensation	2017/2018	3415113.67
-level1	ZA_1_007	2009	financial compensation	2017/2018	31074701.26
-level1	ZA_1_008	2009	financial compensation	2017/2018	16474489.42
+level1	ZA_1_008	2009	financial compensation	2017/2018	24520268.41
+level1	ZA_1_003	2009	financial compensation	2017/2018	3415113.67
+level1	ZA_1_006	2009	financial compensation	2017/2018	31074701.26
+level1	ZA_1_001	2009	financial compensation	2017/2018	16474489.42
 country	ZA	2009	financial compensation	2017/2018	874955183.1
 \.
 

@@ -37,15 +37,15 @@ CREATE TABLE public.redistributedlandinhectares (
 --
 
 COPY public.redistributedlandinhectares (geo_level, geo_code, geo_version, redistributedland, total) FROM stdin;
-level1	ZA_1_003	2009	average cost per hectares	16006.77
-level1	ZA_1_002	2009	average cost per hectares	8314.66
-level1	ZA_1_009	2009	average cost per hectares	18342.58
-level1	ZA_1_001	2009	average cost per hectares	9767.2
+level1	ZA_1_002	2009	average cost per hectares	16006.77
+level1	ZA_1_004	2009	average cost per hectares	8314.66
+level1	ZA_1_007	2009	average cost per hectares	18342.58
+level1	ZA_1_009	2009	average cost per hectares	9767.2
 level1	ZA_1_005	2009	average cost per hectares	2060.08
-level1	ZA_1_004	2009	average cost per hectares	9712.52
-level1	ZA_1_006	2009	average cost per hectares	2343.03
-level1	ZA_1_007	2009	average cost per hectares	4069.67
-level1	ZA_1_008	2009	average cost per hectares	17212
+level1	ZA_1_008	2009	average cost per hectares	9712.52
+level1	ZA_1_003	2009	average cost per hectares	2343.03
+level1	ZA_1_006	2009	average cost per hectares	4069.67
+level1	ZA_1_001	2009	average cost per hectares	17212
 country	ZA	2009	average cost per hectares	5563.86
 \.
 

@@ -37,60 +37,60 @@ CREATE TABLE public.access_to_information (
 --
 
 COPY public.access_to_information (geo_level, geo_code, geo_version, access_to_information, total) FROM stdin;
-level1	ZA_1_003	2009	Not at all likely	37
-level1	ZA_1_003	2009	Not very likely	8
-level1	ZA_1_003	2009	Somewhat likely	21
-level1	ZA_1_003	2009	Very likely	25
-level1	ZA_1_003	2009	Refused	0
-level1	ZA_1_003	2009	Don't know/Haven't heard	9
-level1	ZA_1_002	2009	Not at all likely	18
-level1	ZA_1_002	2009	Not very likely	17
-level1	ZA_1_002	2009	Somewhat likely	39
-level1	ZA_1_002	2009	Very likely	18
+level1	ZA_1_002	2009	Not at all likely	37
+level1	ZA_1_002	2009	Not very likely	8
+level1	ZA_1_002	2009	Somewhat likely	21
+level1	ZA_1_002	2009	Very likely	25
 level1	ZA_1_002	2009	Refused	0
-level1	ZA_1_002	2009	Don't know/Haven't heard	7
-level1	ZA_1_009	2009	Not at all likely	50
-level1	ZA_1_009	2009	Not very likely	16
-level1	ZA_1_009	2009	Somewhat likely	18
-level1	ZA_1_009	2009	Very likely	13
+level1	ZA_1_002	2009	Don't know/Haven't heard	9
+level1	ZA_1_004	2009	Not at all likely	18
+level1	ZA_1_004	2009	Not very likely	17
+level1	ZA_1_004	2009	Somewhat likely	39
+level1	ZA_1_004	2009	Very likely	18
+level1	ZA_1_004	2009	Refused	0
+level1	ZA_1_004	2009	Don't know/Haven't heard	7
+level1	ZA_1_007	2009	Not at all likely	50
+level1	ZA_1_007	2009	Not very likely	16
+level1	ZA_1_007	2009	Somewhat likely	18
+level1	ZA_1_007	2009	Very likely	13
+level1	ZA_1_007	2009	Refused	0
+level1	ZA_1_007	2009	Don't know/Haven't heard	2
+level1	ZA_1_009	2009	Not at all likely	36
+level1	ZA_1_009	2009	Not very likely	19
+level1	ZA_1_009	2009	Somewhat likely	27
+level1	ZA_1_009	2009	Very likely	9
 level1	ZA_1_009	2009	Refused	0
-level1	ZA_1_009	2009	Don't know/Haven't heard	2
-level1	ZA_1_001	2009	Not at all likely	36
-level1	ZA_1_001	2009	Not very likely	19
-level1	ZA_1_001	2009	Somewhat likely	27
-level1	ZA_1_001	2009	Very likely	9
-level1	ZA_1_001	2009	Refused	0
-level1	ZA_1_001	2009	Don't know/Haven't heard	10
+level1	ZA_1_009	2009	Don't know/Haven't heard	10
 level1	ZA_1_005	2009	Not at all likely	37
 level1	ZA_1_005	2009	Not very likely	17
 level1	ZA_1_005	2009	Somewhat likely	8
 level1	ZA_1_005	2009	Very likely	29
 level1	ZA_1_005	2009	Refused	0
 level1	ZA_1_005	2009	Don't know/Haven't heard	8
-level1	ZA_1_004	2009	Not at all likely	42
-level1	ZA_1_004	2009	Not very likely	9
-level1	ZA_1_004	2009	Somewhat likely	16
-level1	ZA_1_004	2009	Very likely	21
-level1	ZA_1_004	2009	Refused	0
-level1	ZA_1_004	2009	Don't know/Haven't heard	12
-level1	ZA_1_007	2009	Not at all likely	36
-level1	ZA_1_007	2009	Not very likely	15
-level1	ZA_1_007	2009	Somewhat likely	33
-level1	ZA_1_007	2009	Very likely	10
-level1	ZA_1_007	2009	Refused	0
-level1	ZA_1_007	2009	Don't know/Haven't heard	6
-level1	ZA_1_006	2009	Not at all likely	44
-level1	ZA_1_006	2009	Not very likely	20
-level1	ZA_1_006	2009	Somewhat likely	20
-level1	ZA_1_006	2009	Very likely	15
-level1	ZA_1_006	2009	Refused	0
-level1	ZA_1_006	2009	Don't know/Haven't heard	2
-level1	ZA_1_008	2009	Not at all likely	39
-level1	ZA_1_008	2009	Not very likely	16
-level1	ZA_1_008	2009	Somewhat likely	17
-level1	ZA_1_008	2009	Very likely	19
+level1	ZA_1_008	2009	Not at all likely	42
+level1	ZA_1_008	2009	Not very likely	9
+level1	ZA_1_008	2009	Somewhat likely	16
+level1	ZA_1_008	2009	Very likely	21
 level1	ZA_1_008	2009	Refused	0
-level1	ZA_1_008	2009	Don't know/Haven't heard	10
+level1	ZA_1_008	2009	Don't know/Haven't heard	12
+level1	ZA_1_006	2009	Not at all likely	36
+level1	ZA_1_006	2009	Not very likely	15
+level1	ZA_1_006	2009	Somewhat likely	33
+level1	ZA_1_006	2009	Very likely	10
+level1	ZA_1_006	2009	Refused	0
+level1	ZA_1_006	2009	Don't know/Haven't heard	6
+level1	ZA_1_003	2009	Not at all likely	44
+level1	ZA_1_003	2009	Not very likely	20
+level1	ZA_1_003	2009	Somewhat likely	20
+level1	ZA_1_003	2009	Very likely	15
+level1	ZA_1_003	2009	Refused	0
+level1	ZA_1_003	2009	Don't know/Haven't heard	2
+level1	ZA_1_001	2009	Not at all likely	39
+level1	ZA_1_001	2009	Not very likely	16
+level1	ZA_1_001	2009	Somewhat likely	17
+level1	ZA_1_001	2009	Very likely	19
+level1	ZA_1_001	2009	Refused	0
+level1	ZA_1_001	2009	Don't know/Haven't heard	10
 country	ZA	2009	Don't know/Haven't heard	65
 country	ZA	2009	Not at all likely	339
 country	ZA	2009	Not very likely	138

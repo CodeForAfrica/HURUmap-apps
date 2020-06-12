@@ -37,32 +37,32 @@ CREATE TABLE public.number_of_erven_land_owners_per_nationality (
 --
 
 COPY public.number_of_erven_land_owners_per_nationality (geo_level, geo_code, geo_version, number_of_erven_land_owners_per_nationality, total) FROM stdin;
-level1	ZA_1_003	2009	South African	580567
-level1	ZA_1_002	2009	South African	435000
-level1	ZA_1_009	2009	South African	1771387
-level1	ZA_1_001	2009	South African	693422
-level1	ZA_1_004	2009	South African	296358
-level1	ZA_1_007	2009	South African	253024
-level1	ZA_1_006	2009	South African	177128
-level1	ZA_1_008	2009	South African	1058526
+level1	ZA_1_002	2009	South African	580567
+level1	ZA_1_004	2009	South African	435000
+level1	ZA_1_007	2009	South African	1771387
+level1	ZA_1_009	2009	South African	693422
+level1	ZA_1_008	2009	South African	296358
+level1	ZA_1_006	2009	South African	253024
+level1	ZA_1_003	2009	South African	177128
+level1	ZA_1_001	2009	South African	1058526
 country	ZA	2009	South African	5416890
-level1	ZA_1_003	2009	Foreign	11604
-level1	ZA_1_002	2009	Foreign	7268
-level1	ZA_1_009	2009	Foreign	88479
-level1	ZA_1_001	2009	Foreign	21355
-level1	ZA_1_004	2009	Foreign	7673
-level1	ZA_1_007	2009	Foreign	5677
-level1	ZA_1_006	2009	Foreign	4624
-level1	ZA_1_008	2009	Foreign	50486
+level1	ZA_1_002	2009	Foreign	11604
+level1	ZA_1_004	2009	Foreign	7268
+level1	ZA_1_007	2009	Foreign	88479
+level1	ZA_1_009	2009	Foreign	21355
+level1	ZA_1_008	2009	Foreign	7673
+level1	ZA_1_006	2009	Foreign	5677
+level1	ZA_1_003	2009	Foreign	4624
+level1	ZA_1_001	2009	Foreign	50486
 country	ZA	2009	Foreign	200629
-level1	ZA_1_003	2009	Other	55635
-level1	ZA_1_002	2009	Other	27497
-level1	ZA_1_009	2009	Other	123914
-level1	ZA_1_001	2009	Other	67258
-level1	ZA_1_004	2009	Other	18435
-level1	ZA_1_007	2009	Other	19900
-level1	ZA_1_006	2009	Other	7143
-level1	ZA_1_008	2009	Other	8420
+level1	ZA_1_002	2009	Other	55635
+level1	ZA_1_004	2009	Other	27497
+level1	ZA_1_007	2009	Other	123914
+level1	ZA_1_009	2009	Other	67258
+level1	ZA_1_008	2009	Other	18435
+level1	ZA_1_006	2009	Other	19900
+level1	ZA_1_003	2009	Other	7143
+level1	ZA_1_001	2009	Other	8420
 country	ZA	2009	Other	351946
 level1	ZA_1_005	2009	South African	151478
 level1	ZA_1_005	2009	Foreign	3463

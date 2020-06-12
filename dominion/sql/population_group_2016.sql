@@ -37,38 +37,38 @@ CREATE TABLE public.population_group_2016 (
 --
 
 COPY public.population_group_2016 (geo_level, geo_code, geo_version, "population_group_2016", total) FROM stdin;
-level1	ZA_1_008	2009	Black African	2242042
-level1	ZA_1_008	2009	Coloured	2984398
-level1	ZA_1_008	2009	Indian or Asian	48720
-level1	ZA_1_008	2009	White	1004571
-level1	ZA_1_003	2009	Black African	6043913
-level1	ZA_1_003	2009	Coloured	603685
-level1	ZA_1_003	2009	Indian or Asian	29204
-level1	ZA_1_003	2009	White	320174
-level1	ZA_1_006	2009	Black African	574246
-level1	ZA_1_006	2009	Coloured	521261
-level1	ZA_1_006	2009	Indian or Asian	6486
-level1	ZA_1_006	2009	White	91787
-level1	ZA_1_002	2009	Black African	2514990
-level1	ZA_1_002	2009	Coloured	72095
-level1	ZA_1_002	2009	Indian or Asian	7296
-level1	ZA_1_002	2009	White	240333
-level1	ZA_1_001	2009	Black African	9625934
-level1	ZA_1_001	2009	Coloured	134089
-level1	ZA_1_001	2009	Indian or Asian	873161
-level1	ZA_1_001	2009	White	432056
-level1	ZA_1_006	2009	Black African	3432379
-level1	ZA_1_006	2009	Coloured	61010
-level1	ZA_1_006	2009	Indian or Asian	16686
-level1	ZA_1_006	2009	White	238360
-level1	ZA_1_009	2009	Black African	10770177
-level1	ZA_1_009	2009	Coloured	443289
-level1	ZA_1_009	2009	Indian or Asian	357409
-level1	ZA_1_009	2009	White	1828849
-level1	ZA_1_004	2009	Black African	4057760
-level1	ZA_1_004	2009	Coloured	32859
-level1	ZA_1_004	2009	Indian or Asian	19786
-level1	ZA_1_004	2009	White	225558
+level1	ZA_1_001	2009	Black African	2242042
+level1	ZA_1_001	2009	Coloured	2984398
+level1	ZA_1_001	2009	Indian or Asian	48720
+level1	ZA_1_001	2009	White	1004571
+level1	ZA_1_002	2009	Black African	6043913
+level1	ZA_1_002	2009	Coloured	603685
+level1	ZA_1_002	2009	Indian or Asian	29204
+level1	ZA_1_002	2009	White	320174
+level1	ZA_1_003	2009	Black African	574246
+level1	ZA_1_003	2009	Coloured	521261
+level1	ZA_1_003	2009	Indian or Asian	6486
+level1	ZA_1_003	2009	White	91787
+level1	ZA_1_004	2009	Black African	2514990
+level1	ZA_1_004	2009	Coloured	72095
+level1	ZA_1_004	2009	Indian or Asian	7296
+level1	ZA_1_004	2009	White	240333
+level1	ZA_1_009	2009	Black African	9625934
+level1	ZA_1_009	2009	Coloured	134089
+level1	ZA_1_009	2009	Indian or Asian	873161
+level1	ZA_1_009	2009	White	432056
+level1	ZA_1_003	2009	Black African	3432379
+level1	ZA_1_003	2009	Coloured	61010
+level1	ZA_1_003	2009	Indian or Asian	16686
+level1	ZA_1_003	2009	White	238360
+level1	ZA_1_007	2009	Black African	10770177
+level1	ZA_1_007	2009	Coloured	443289
+level1	ZA_1_007	2009	Indian or Asian	357409
+level1	ZA_1_007	2009	White	1828849
+level1	ZA_1_008	2009	Black African	4057760
+level1	ZA_1_008	2009	Coloured	32859
+level1	ZA_1_008	2009	Indian or Asian	19786
+level1	ZA_1_008	2009	White	225558
 level1	ZA_1_005	2009	Black African	5630163
 level1	ZA_1_005	2009	Coloured	16839
 level1	ZA_1_005	2009	Indian or Asian	17085

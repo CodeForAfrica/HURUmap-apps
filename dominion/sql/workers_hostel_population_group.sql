@@ -37,46 +37,46 @@ CREATE TABLE public.workers_hostel_population_group (
 --
 
 COPY public.workers_hostel_population_group (geo_level, geo_code, geo_version, workers_hostel_population_group, total) FROM stdin;
-level1	ZA_1_008	2009	African/Black	18567
-level1	ZA_1_008	2009	Coloured	7872
-level1	ZA_1_008	2009	Indian/Asian	0
-level1	ZA_1_008	2009	White	0
+level1	ZA_1_001	2009	African/Black	18567
+level1	ZA_1_001	2009	Coloured	7872
+level1	ZA_1_001	2009	Indian/Asian	0
+level1	ZA_1_001	2009	White	0
 country	ZA	2009	African/Black	410203
 country	ZA	2009	Coloured	15206
 country	ZA	2009	Indian/Asian	0
 country	ZA	2009	White	3676
-level1	ZA_1_006	2009	African/Black	26749
-level1	ZA_1_006	2009	Coloured	3361
+level1	ZA_1_003	2009	African/Black	26749
+level1	ZA_1_003	2009	Coloured	3361
+level1	ZA_1_003	2009	Indian/Asian	0
+level1	ZA_1_003	2009	White	0
+level1	ZA_1_006	2009	African/Black	18801
+level1	ZA_1_006	2009	Coloured	0
 level1	ZA_1_006	2009	Indian/Asian	0
 level1	ZA_1_006	2009	White	0
-level1	ZA_1_007	2009	African/Black	18801
-level1	ZA_1_007	2009	Coloured	0
-level1	ZA_1_007	2009	Indian/Asian	0
-level1	ZA_1_007	2009	White	0
-level1	ZA_1_004	2009	African/Black	51238
-level1	ZA_1_004	2009	Coloured	0
-level1	ZA_1_004	2009	Indian/Asian	0
-level1	ZA_1_004	2009	White	3676
+level1	ZA_1_008	2009	African/Black	51238
+level1	ZA_1_008	2009	Coloured	0
+level1	ZA_1_008	2009	Indian/Asian	0
+level1	ZA_1_008	2009	White	3676
 level1	ZA_1_005	2009	African/Black	40903
 level1	ZA_1_005	2009	Coloured	0
 level1	ZA_1_005	2009	Indian/Asian	0
 level1	ZA_1_005	2009	White	0
-level1	ZA_1_001	2009	African/Black	77180
-level1	ZA_1_001	2009	Coloured	1326
-level1	ZA_1_001	2009	Indian/Asian	0
-level1	ZA_1_001	2009	White	0
-level1	ZA_1_009	2009	African/Black	141846
-level1	ZA_1_009	2009	Coloured	0
+level1	ZA_1_009	2009	African/Black	77180
+level1	ZA_1_009	2009	Coloured	1326
 level1	ZA_1_009	2009	Indian/Asian	0
 level1	ZA_1_009	2009	White	0
-level1	ZA_1_002	2009	African/Black	5195
-level1	ZA_1_002	2009	Coloured	0
+level1	ZA_1_007	2009	African/Black	141846
+level1	ZA_1_007	2009	Coloured	0
+level1	ZA_1_007	2009	Indian/Asian	0
+level1	ZA_1_007	2009	White	0
+level1	ZA_1_004	2009	African/Black	5195
+level1	ZA_1_004	2009	Coloured	0
+level1	ZA_1_004	2009	Indian/Asian	0
+level1	ZA_1_004	2009	White	0
+level1	ZA_1_002	2009	African/Black	29725
+level1	ZA_1_002	2009	Coloured	2648
 level1	ZA_1_002	2009	Indian/Asian	0
 level1	ZA_1_002	2009	White	0
-level1	ZA_1_003	2009	African/Black	29725
-level1	ZA_1_003	2009	Coloured	2648
-level1	ZA_1_003	2009	Indian/Asian	0
-level1	ZA_1_003	2009	White	0
 \.
 
 

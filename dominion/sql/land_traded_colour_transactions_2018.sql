@@ -86,198 +86,198 @@ country	ZA	2009	Government Agriculture	Nov	1
 country	ZA	2009	Government Urban	Nov	\N
 country	ZA	2009	Private	Nov	38
 country	ZA	2009	Other	Nov	17
-level1	ZA_1_003	2009	Government Agriculture	Dec	1
-level1	ZA_1_003	2009	Government Urban	Dec	\N
-level1	ZA_1_003	2009	Private	Dec	4
-level1	ZA_1_003	2009	Other	Dec	\N
-level1	ZA_1_003	2009	Government Agriculture	Jan	\N
-level1	ZA_1_003	2009	Government Urban	Jan	\N
-level1	ZA_1_003	2009	Private	Jan	1
-level1	ZA_1_003	2009	Other	Jan	\N
-level1	ZA_1_003	2009	Government Agriculture	Feb	\N
-level1	ZA_1_003	2009	Government Urban	Feb	1
-level1	ZA_1_003	2009	Private	Feb	2
-level1	ZA_1_003	2009	Other	Feb	1
-level1	ZA_1_003	2009	Government Agriculture	Mar	\N
-level1	ZA_1_003	2009	Government Urban	Mar	\N
-level1	ZA_1_003	2009	Private	Mar	4
-level1	ZA_1_003	2009	Other	Mar	3
-level1	ZA_1_003	2009	Government Agriculture	Apr	\N
-level1	ZA_1_003	2009	Government Urban	Apr	\N
-level1	ZA_1_003	2009	Private	Apr	6
-level1	ZA_1_003	2009	Other	Apr	\N
-level1	ZA_1_003	2009	Government Agriculture	May	\N
-level1	ZA_1_003	2009	Government Urban	May	\N
-level1	ZA_1_003	2009	Private	May	3
-level1	ZA_1_003	2009	Other	May	\N
-level1	ZA_1_003	2009	Government Agriculture	Jun	\N
-level1	ZA_1_003	2009	Government Urban	Jun	\N
-level1	ZA_1_003	2009	Private	Jun	5
-level1	ZA_1_003	2009	Other	Jun	\N
-level1	ZA_1_003	2009	Government Agriculture	Jul	\N
-level1	ZA_1_003	2009	Government Urban	Jul	\N
-level1	ZA_1_003	2009	Private	Jul	13
-level1	ZA_1_003	2009	Other	Jul	\N
-level1	ZA_1_003	2009	Government Agriculture	Aug	\N
-level1	ZA_1_003	2009	Government Urban	Aug	\N
-level1	ZA_1_003	2009	Private	Aug	5
-level1	ZA_1_003	2009	Other	Aug	1
-level1	ZA_1_003	2009	Government Agriculture	Sep	\N
-level1	ZA_1_003	2009	Government Urban	Sep	\N
-level1	ZA_1_003	2009	Private	Sep	6
-level1	ZA_1_003	2009	Other	Sep	\N
-level1	ZA_1_003	2009	Government Agriculture	Oct	1
-level1	ZA_1_003	2009	Government Urban	Oct	\N
-level1	ZA_1_003	2009	Private	Oct	3
-level1	ZA_1_003	2009	Other	Oct	\N
-level1	ZA_1_003	2009	Government Agriculture	Nov	\N
-level1	ZA_1_003	2009	Government Urban	Nov	\N
-level1	ZA_1_003	2009	Private	Nov	5
-level1	ZA_1_003	2009	Other	Nov	1
-level1	ZA_1_002	2009	Government Agriculture	Dec	\N
+level1	ZA_1_002	2009	Government Agriculture	Dec	1
 level1	ZA_1_002	2009	Government Urban	Dec	\N
 level1	ZA_1_002	2009	Private	Dec	4
-level1	ZA_1_002	2009	Other	Dec	1
-level1	ZA_1_002	2009	Government Agriculture	Jan	2
+level1	ZA_1_002	2009	Other	Dec	\N
+level1	ZA_1_002	2009	Government Agriculture	Jan	\N
 level1	ZA_1_002	2009	Government Urban	Jan	\N
 level1	ZA_1_002	2009	Private	Jan	1
 level1	ZA_1_002	2009	Other	Jan	\N
 level1	ZA_1_002	2009	Government Agriculture	Feb	\N
-level1	ZA_1_002	2009	Government Urban	Feb	\N
-level1	ZA_1_002	2009	Private	Feb	7
-level1	ZA_1_002	2009	Other	Feb	\N
-level1	ZA_1_002	2009	Government Agriculture	Mar	1
+level1	ZA_1_002	2009	Government Urban	Feb	1
+level1	ZA_1_002	2009	Private	Feb	2
+level1	ZA_1_002	2009	Other	Feb	1
+level1	ZA_1_002	2009	Government Agriculture	Mar	\N
 level1	ZA_1_002	2009	Government Urban	Mar	\N
-level1	ZA_1_002	2009	Private	Mar	10
-level1	ZA_1_002	2009	Other	Mar	2
+level1	ZA_1_002	2009	Private	Mar	4
+level1	ZA_1_002	2009	Other	Mar	3
 level1	ZA_1_002	2009	Government Agriculture	Apr	\N
 level1	ZA_1_002	2009	Government Urban	Apr	\N
-level1	ZA_1_002	2009	Private	Apr	4
-level1	ZA_1_002	2009	Other	Apr	1
+level1	ZA_1_002	2009	Private	Apr	6
+level1	ZA_1_002	2009	Other	Apr	\N
 level1	ZA_1_002	2009	Government Agriculture	May	\N
 level1	ZA_1_002	2009	Government Urban	May	\N
-level1	ZA_1_002	2009	Private	May	10
-level1	ZA_1_002	2009	Other	May	1
+level1	ZA_1_002	2009	Private	May	3
+level1	ZA_1_002	2009	Other	May	\N
 level1	ZA_1_002	2009	Government Agriculture	Jun	\N
 level1	ZA_1_002	2009	Government Urban	Jun	\N
-level1	ZA_1_002	2009	Private	Jun	6
-level1	ZA_1_002	2009	Other	Jun	1
-level1	ZA_1_002	2009	Government Agriculture	Jul	3
+level1	ZA_1_002	2009	Private	Jun	5
+level1	ZA_1_002	2009	Other	Jun	\N
+level1	ZA_1_002	2009	Government Agriculture	Jul	\N
 level1	ZA_1_002	2009	Government Urban	Jul	\N
-level1	ZA_1_002	2009	Private	Jul	7
+level1	ZA_1_002	2009	Private	Jul	13
 level1	ZA_1_002	2009	Other	Jul	\N
 level1	ZA_1_002	2009	Government Agriculture	Aug	\N
 level1	ZA_1_002	2009	Government Urban	Aug	\N
-level1	ZA_1_002	2009	Private	Aug	3
-level1	ZA_1_002	2009	Other	Aug	2
+level1	ZA_1_002	2009	Private	Aug	5
+level1	ZA_1_002	2009	Other	Aug	1
 level1	ZA_1_002	2009	Government Agriculture	Sep	\N
 level1	ZA_1_002	2009	Government Urban	Sep	\N
-level1	ZA_1_002	2009	Private	Sep	4
-level1	ZA_1_002	2009	Other	Sep	1
-level1	ZA_1_002	2009	Government Agriculture	Oct	4
+level1	ZA_1_002	2009	Private	Sep	6
+level1	ZA_1_002	2009	Other	Sep	\N
+level1	ZA_1_002	2009	Government Agriculture	Oct	1
 level1	ZA_1_002	2009	Government Urban	Oct	\N
-level1	ZA_1_002	2009	Private	Oct	6
-level1	ZA_1_002	2009	Other	Oct	1
+level1	ZA_1_002	2009	Private	Oct	3
+level1	ZA_1_002	2009	Other	Oct	\N
 level1	ZA_1_002	2009	Government Agriculture	Nov	\N
 level1	ZA_1_002	2009	Government Urban	Nov	\N
-level1	ZA_1_002	2009	Private	Nov	3
+level1	ZA_1_002	2009	Private	Nov	5
 level1	ZA_1_002	2009	Other	Nov	1
+level1	ZA_1_004	2009	Government Agriculture	Dec	\N
+level1	ZA_1_004	2009	Government Urban	Dec	\N
+level1	ZA_1_004	2009	Private	Dec	4
+level1	ZA_1_004	2009	Other	Dec	1
+level1	ZA_1_004	2009	Government Agriculture	Jan	2
+level1	ZA_1_004	2009	Government Urban	Jan	\N
+level1	ZA_1_004	2009	Private	Jan	1
+level1	ZA_1_004	2009	Other	Jan	\N
+level1	ZA_1_004	2009	Government Agriculture	Feb	\N
+level1	ZA_1_004	2009	Government Urban	Feb	\N
+level1	ZA_1_004	2009	Private	Feb	7
+level1	ZA_1_004	2009	Other	Feb	\N
+level1	ZA_1_004	2009	Government Agriculture	Mar	1
+level1	ZA_1_004	2009	Government Urban	Mar	\N
+level1	ZA_1_004	2009	Private	Mar	10
+level1	ZA_1_004	2009	Other	Mar	2
+level1	ZA_1_004	2009	Government Agriculture	Apr	\N
+level1	ZA_1_004	2009	Government Urban	Apr	\N
+level1	ZA_1_004	2009	Private	Apr	4
+level1	ZA_1_004	2009	Other	Apr	1
+level1	ZA_1_004	2009	Government Agriculture	May	\N
+level1	ZA_1_004	2009	Government Urban	May	\N
+level1	ZA_1_004	2009	Private	May	10
+level1	ZA_1_004	2009	Other	May	1
+level1	ZA_1_004	2009	Government Agriculture	Jun	\N
+level1	ZA_1_004	2009	Government Urban	Jun	\N
+level1	ZA_1_004	2009	Private	Jun	6
+level1	ZA_1_004	2009	Other	Jun	1
+level1	ZA_1_004	2009	Government Agriculture	Jul	3
+level1	ZA_1_004	2009	Government Urban	Jul	\N
+level1	ZA_1_004	2009	Private	Jul	7
+level1	ZA_1_004	2009	Other	Jul	\N
+level1	ZA_1_004	2009	Government Agriculture	Aug	\N
+level1	ZA_1_004	2009	Government Urban	Aug	\N
+level1	ZA_1_004	2009	Private	Aug	3
+level1	ZA_1_004	2009	Other	Aug	2
+level1	ZA_1_004	2009	Government Agriculture	Sep	\N
+level1	ZA_1_004	2009	Government Urban	Sep	\N
+level1	ZA_1_004	2009	Private	Sep	4
+level1	ZA_1_004	2009	Other	Sep	1
+level1	ZA_1_004	2009	Government Agriculture	Oct	4
+level1	ZA_1_004	2009	Government Urban	Oct	\N
+level1	ZA_1_004	2009	Private	Oct	6
+level1	ZA_1_004	2009	Other	Oct	1
+level1	ZA_1_004	2009	Government Agriculture	Nov	\N
+level1	ZA_1_004	2009	Government Urban	Nov	\N
+level1	ZA_1_004	2009	Private	Nov	3
+level1	ZA_1_004	2009	Other	Nov	1
+level1	ZA_1_007	2009	Government Agriculture	Dec	1
+level1	ZA_1_007	2009	Government Urban	Dec	\N
+level1	ZA_1_007	2009	Private	Dec	6
+level1	ZA_1_007	2009	Other	Dec	\N
+level1	ZA_1_007	2009	Government Agriculture	Jan	\N
+level1	ZA_1_007	2009	Government Urban	Jan	1
+level1	ZA_1_007	2009	Private	Jan	3
+level1	ZA_1_007	2009	Other	Jan	1
+level1	ZA_1_007	2009	Government Agriculture	Feb	1
+level1	ZA_1_007	2009	Government Urban	Feb	\N
+level1	ZA_1_007	2009	Private	Feb	5
+level1	ZA_1_007	2009	Other	Feb	\N
+level1	ZA_1_007	2009	Government Agriculture	Mar	\N
+level1	ZA_1_007	2009	Government Urban	Mar	\N
+level1	ZA_1_007	2009	Private	Mar	10
+level1	ZA_1_007	2009	Other	Mar	3
+level1	ZA_1_007	2009	Government Agriculture	Apr	\N
+level1	ZA_1_007	2009	Government Urban	Apr	\N
+level1	ZA_1_007	2009	Private	Apr	9
+level1	ZA_1_007	2009	Other	Apr	\N
+level1	ZA_1_007	2009	Government Agriculture	May	\N
+level1	ZA_1_007	2009	Government Urban	May	\N
+level1	ZA_1_007	2009	Private	May	7
+level1	ZA_1_007	2009	Other	May	3
+level1	ZA_1_007	2009	Government Agriculture	Jun	\N
+level1	ZA_1_007	2009	Government Urban	Jun	\N
+level1	ZA_1_007	2009	Private	Jun	10
+level1	ZA_1_007	2009	Other	Jun	2
+level1	ZA_1_007	2009	Government Agriculture	Jul	\N
+level1	ZA_1_007	2009	Government Urban	Jul	2
+level1	ZA_1_007	2009	Private	Jul	8
+level1	ZA_1_007	2009	Other	Jul	\N
+level1	ZA_1_007	2009	Government Agriculture	Aug	1
+level1	ZA_1_007	2009	Government Urban	Aug	\N
+level1	ZA_1_007	2009	Private	Aug	5
+level1	ZA_1_007	2009	Other	Aug	1
+level1	ZA_1_007	2009	Government Agriculture	Sep	\N
+level1	ZA_1_007	2009	Government Urban	Sep	\N
+level1	ZA_1_007	2009	Private	Sep	7
+level1	ZA_1_007	2009	Other	Sep	1
+level1	ZA_1_007	2009	Government Agriculture	Oct	4
+level1	ZA_1_007	2009	Government Urban	Oct	1
+level1	ZA_1_007	2009	Private	Oct	13
+level1	ZA_1_007	2009	Other	Oct	3
+level1	ZA_1_007	2009	Government Agriculture	Nov	\N
+level1	ZA_1_007	2009	Government Urban	Nov	\N
+level1	ZA_1_007	2009	Private	Nov	6
+level1	ZA_1_007	2009	Other	Nov	5
 level1	ZA_1_009	2009	Government Agriculture	Dec	1
-level1	ZA_1_009	2009	Government Urban	Dec	\N
-level1	ZA_1_009	2009	Private	Dec	6
+level1	ZA_1_009	2009	Government Urban	Dec	1
+level1	ZA_1_009	2009	Private	Dec	8
 level1	ZA_1_009	2009	Other	Dec	\N
 level1	ZA_1_009	2009	Government Agriculture	Jan	\N
-level1	ZA_1_009	2009	Government Urban	Jan	1
-level1	ZA_1_009	2009	Private	Jan	3
-level1	ZA_1_009	2009	Other	Jan	1
+level1	ZA_1_009	2009	Government Urban	Jan	\N
+level1	ZA_1_009	2009	Private	Jan	6
+level1	ZA_1_009	2009	Other	Jan	\N
 level1	ZA_1_009	2009	Government Agriculture	Feb	1
 level1	ZA_1_009	2009	Government Urban	Feb	\N
-level1	ZA_1_009	2009	Private	Feb	5
-level1	ZA_1_009	2009	Other	Feb	\N
-level1	ZA_1_009	2009	Government Agriculture	Mar	\N
+level1	ZA_1_009	2009	Private	Feb	4
+level1	ZA_1_009	2009	Other	Feb	3
+level1	ZA_1_009	2009	Government Agriculture	Mar	3
 level1	ZA_1_009	2009	Government Urban	Mar	\N
-level1	ZA_1_009	2009	Private	Mar	10
-level1	ZA_1_009	2009	Other	Mar	3
+level1	ZA_1_009	2009	Private	Mar	22
+level1	ZA_1_009	2009	Other	Mar	2
 level1	ZA_1_009	2009	Government Agriculture	Apr	\N
 level1	ZA_1_009	2009	Government Urban	Apr	\N
-level1	ZA_1_009	2009	Private	Apr	9
-level1	ZA_1_009	2009	Other	Apr	\N
+level1	ZA_1_009	2009	Private	Apr	8
+level1	ZA_1_009	2009	Other	Apr	1
 level1	ZA_1_009	2009	Government Agriculture	May	\N
 level1	ZA_1_009	2009	Government Urban	May	\N
-level1	ZA_1_009	2009	Private	May	7
-level1	ZA_1_009	2009	Other	May	3
+level1	ZA_1_009	2009	Private	May	14
+level1	ZA_1_009	2009	Other	May	1
 level1	ZA_1_009	2009	Government Agriculture	Jun	\N
 level1	ZA_1_009	2009	Government Urban	Jun	\N
-level1	ZA_1_009	2009	Private	Jun	10
-level1	ZA_1_009	2009	Other	Jun	2
+level1	ZA_1_009	2009	Private	Jun	4
+level1	ZA_1_009	2009	Other	Jun	\N
 level1	ZA_1_009	2009	Government Agriculture	Jul	\N
-level1	ZA_1_009	2009	Government Urban	Jul	2
-level1	ZA_1_009	2009	Private	Jul	8
+level1	ZA_1_009	2009	Government Urban	Jul	\N
+level1	ZA_1_009	2009	Private	Jul	10
 level1	ZA_1_009	2009	Other	Jul	\N
-level1	ZA_1_009	2009	Government Agriculture	Aug	1
+level1	ZA_1_009	2009	Government Agriculture	Aug	\N
 level1	ZA_1_009	2009	Government Urban	Aug	\N
 level1	ZA_1_009	2009	Private	Aug	5
-level1	ZA_1_009	2009	Other	Aug	1
+level1	ZA_1_009	2009	Other	Aug	2
 level1	ZA_1_009	2009	Government Agriculture	Sep	\N
 level1	ZA_1_009	2009	Government Urban	Sep	\N
-level1	ZA_1_009	2009	Private	Sep	7
+level1	ZA_1_009	2009	Private	Sep	3
 level1	ZA_1_009	2009	Other	Sep	1
-level1	ZA_1_009	2009	Government Agriculture	Oct	4
+level1	ZA_1_009	2009	Government Agriculture	Oct	\N
 level1	ZA_1_009	2009	Government Urban	Oct	1
-level1	ZA_1_009	2009	Private	Oct	13
-level1	ZA_1_009	2009	Other	Oct	3
+level1	ZA_1_009	2009	Private	Oct	11
+level1	ZA_1_009	2009	Other	Oct	1
 level1	ZA_1_009	2009	Government Agriculture	Nov	\N
 level1	ZA_1_009	2009	Government Urban	Nov	\N
-level1	ZA_1_009	2009	Private	Nov	6
-level1	ZA_1_009	2009	Other	Nov	5
-level1	ZA_1_001	2009	Government Agriculture	Dec	1
-level1	ZA_1_001	2009	Government Urban	Dec	1
-level1	ZA_1_001	2009	Private	Dec	8
-level1	ZA_1_001	2009	Other	Dec	\N
-level1	ZA_1_001	2009	Government Agriculture	Jan	\N
-level1	ZA_1_001	2009	Government Urban	Jan	\N
-level1	ZA_1_001	2009	Private	Jan	6
-level1	ZA_1_001	2009	Other	Jan	\N
-level1	ZA_1_001	2009	Government Agriculture	Feb	1
-level1	ZA_1_001	2009	Government Urban	Feb	\N
-level1	ZA_1_001	2009	Private	Feb	4
-level1	ZA_1_001	2009	Other	Feb	3
-level1	ZA_1_001	2009	Government Agriculture	Mar	3
-level1	ZA_1_001	2009	Government Urban	Mar	\N
-level1	ZA_1_001	2009	Private	Mar	22
-level1	ZA_1_001	2009	Other	Mar	2
-level1	ZA_1_001	2009	Government Agriculture	Apr	\N
-level1	ZA_1_001	2009	Government Urban	Apr	\N
-level1	ZA_1_001	2009	Private	Apr	8
-level1	ZA_1_001	2009	Other	Apr	1
-level1	ZA_1_001	2009	Government Agriculture	May	\N
-level1	ZA_1_001	2009	Government Urban	May	\N
-level1	ZA_1_001	2009	Private	May	14
-level1	ZA_1_001	2009	Other	May	1
-level1	ZA_1_001	2009	Government Agriculture	Jun	\N
-level1	ZA_1_001	2009	Government Urban	Jun	\N
-level1	ZA_1_001	2009	Private	Jun	4
-level1	ZA_1_001	2009	Other	Jun	\N
-level1	ZA_1_001	2009	Government Agriculture	Jul	\N
-level1	ZA_1_001	2009	Government Urban	Jul	\N
-level1	ZA_1_001	2009	Private	Jul	10
-level1	ZA_1_001	2009	Other	Jul	\N
-level1	ZA_1_001	2009	Government Agriculture	Aug	\N
-level1	ZA_1_001	2009	Government Urban	Aug	\N
-level1	ZA_1_001	2009	Private	Aug	5
-level1	ZA_1_001	2009	Other	Aug	2
-level1	ZA_1_001	2009	Government Agriculture	Sep	\N
-level1	ZA_1_001	2009	Government Urban	Sep	\N
-level1	ZA_1_001	2009	Private	Sep	3
-level1	ZA_1_001	2009	Other	Sep	1
-level1	ZA_1_001	2009	Government Agriculture	Oct	\N
-level1	ZA_1_001	2009	Government Urban	Oct	1
-level1	ZA_1_001	2009	Private	Oct	11
-level1	ZA_1_001	2009	Other	Oct	1
-level1	ZA_1_001	2009	Government Agriculture	Nov	\N
-level1	ZA_1_001	2009	Government Urban	Nov	\N
-level1	ZA_1_001	2009	Private	Nov	9
-level1	ZA_1_001	2009	Other	Nov	2
+level1	ZA_1_009	2009	Private	Nov	9
+level1	ZA_1_009	2009	Other	Nov	2
 level1	ZA_1_005	2009	Government Agriculture	Dec	\N
 level1	ZA_1_005	2009	Government Urban	Dec	\N
 level1	ZA_1_005	2009	Private	Dec	7
@@ -326,198 +326,198 @@ level1	ZA_1_005	2009	Government Agriculture	Nov	\N
 level1	ZA_1_005	2009	Government Urban	Nov	\N
 level1	ZA_1_005	2009	Private	Nov	8
 level1	ZA_1_005	2009	Other	Nov	1
-level1	ZA_1_004	2009	Government Agriculture	Dec	1
-level1	ZA_1_004	2009	Government Urban	Dec	\N
-level1	ZA_1_004	2009	Private	Dec	4
-level1	ZA_1_004	2009	Other	Dec	1
-level1	ZA_1_004	2009	Government Agriculture	Jan	\N
-level1	ZA_1_004	2009	Government Urban	Jan	\N
-level1	ZA_1_004	2009	Private	Jan	6
-level1	ZA_1_004	2009	Other	Jan	2
-level1	ZA_1_004	2009	Government Agriculture	Feb	1
-level1	ZA_1_004	2009	Government Urban	Feb	\N
-level1	ZA_1_004	2009	Private	Feb	9
-level1	ZA_1_004	2009	Other	Feb	3
-level1	ZA_1_004	2009	Government Agriculture	Mar	\N
-level1	ZA_1_004	2009	Government Urban	Mar	\N
-level1	ZA_1_004	2009	Private	Mar	9
-level1	ZA_1_004	2009	Other	Mar	2
-level1	ZA_1_004	2009	Government Agriculture	Apr	\N
-level1	ZA_1_004	2009	Government Urban	Apr	\N
-level1	ZA_1_004	2009	Private	Apr	7
-level1	ZA_1_004	2009	Other	Apr	1
-level1	ZA_1_004	2009	Government Agriculture	May	\N
-level1	ZA_1_004	2009	Government Urban	May	\N
-level1	ZA_1_004	2009	Private	May	6
-level1	ZA_1_004	2009	Other	May	1
-level1	ZA_1_004	2009	Government Agriculture	Jun	\N
-level1	ZA_1_004	2009	Government Urban	Jun	\N
-level1	ZA_1_004	2009	Private	Jun	5
-level1	ZA_1_004	2009	Other	Jun	\N
-level1	ZA_1_004	2009	Government Agriculture	Jul	2
-level1	ZA_1_004	2009	Government Urban	Jul	1
-level1	ZA_1_004	2009	Private	Jul	8
-level1	ZA_1_004	2009	Other	Jul	1
-level1	ZA_1_004	2009	Government Agriculture	Aug	\N
-level1	ZA_1_004	2009	Government Urban	Aug	\N
-level1	ZA_1_004	2009	Private	Aug	7
-level1	ZA_1_004	2009	Other	Aug	2
-level1	ZA_1_004	2009	Government Agriculture	Sep	3
-level1	ZA_1_004	2009	Government Urban	Sep	\N
-level1	ZA_1_004	2009	Private	Sep	7
-level1	ZA_1_004	2009	Other	Sep	1
-level1	ZA_1_004	2009	Government Agriculture	Oct	4
-level1	ZA_1_004	2009	Government Urban	Oct	\N
-level1	ZA_1_004	2009	Private	Oct	9
-level1	ZA_1_004	2009	Other	Oct	5
-level1	ZA_1_004	2009	Government Agriculture	Nov	\N
-level1	ZA_1_004	2009	Government Urban	Nov	\N
-level1	ZA_1_004	2009	Private	Nov	3
-level1	ZA_1_004	2009	Other	Nov	5
-level1	ZA_1_006	2009	Government Agriculture	Dec	\N
-level1	ZA_1_006	2009	Government Urban	Dec	\N
-level1	ZA_1_006	2009	Private	Dec	1
-level1	ZA_1_006	2009	Other	Dec	2
-level1	ZA_1_006	2009	Government Agriculture	Jan	\N
-level1	ZA_1_006	2009	Government Urban	Jan	\N
-level1	ZA_1_006	2009	Private	Jan	1
-level1	ZA_1_006	2009	Other	Jan	\N
-level1	ZA_1_006	2009	Government Agriculture	Feb	\N
-level1	ZA_1_006	2009	Government Urban	Feb	\N
-level1	ZA_1_006	2009	Private	Feb	1
-level1	ZA_1_006	2009	Other	Feb	1
-level1	ZA_1_006	2009	Government Agriculture	Mar	\N
-level1	ZA_1_006	2009	Government Urban	Mar	1
-level1	ZA_1_006	2009	Private	Mar	2
-level1	ZA_1_006	2009	Other	Mar	3
-level1	ZA_1_006	2009	Government Agriculture	Apr	\N
-level1	ZA_1_006	2009	Government Urban	Apr	\N
-level1	ZA_1_006	2009	Private	Apr	2
-level1	ZA_1_006	2009	Other	Apr	1
-level1	ZA_1_006	2009	Government Agriculture	May	\N
-level1	ZA_1_006	2009	Government Urban	May	\N
-level1	ZA_1_006	2009	Private	May	\N
-level1	ZA_1_006	2009	Other	May	\N
-level1	ZA_1_006	2009	Government Agriculture	Jun	\N
-level1	ZA_1_006	2009	Government Urban	Jun	\N
-level1	ZA_1_006	2009	Private	Jun	4
-level1	ZA_1_006	2009	Other	Jun	\N
-level1	ZA_1_006	2009	Government Agriculture	Jul	\N
-level1	ZA_1_006	2009	Government Urban	Jul	\N
-level1	ZA_1_006	2009	Private	Jul	\N
-level1	ZA_1_006	2009	Other	Jul	\N
-level1	ZA_1_006	2009	Government Agriculture	Aug	\N
-level1	ZA_1_006	2009	Government Urban	Aug	\N
-level1	ZA_1_006	2009	Private	Aug	3
-level1	ZA_1_006	2009	Other	Aug	1
-level1	ZA_1_006	2009	Government Agriculture	Sep	\N
-level1	ZA_1_006	2009	Government Urban	Sep	\N
-level1	ZA_1_006	2009	Private	Sep	1
-level1	ZA_1_006	2009	Other	Sep	\N
-level1	ZA_1_006	2009	Government Agriculture	Oct	3
-level1	ZA_1_006	2009	Government Urban	Oct	\N
-level1	ZA_1_006	2009	Private	Oct	\N
-level1	ZA_1_006	2009	Other	Oct	\N
-level1	ZA_1_006	2009	Government Agriculture	Nov	\N
-level1	ZA_1_006	2009	Government Urban	Nov	\N
-level1	ZA_1_006	2009	Private	Nov	1
-level1	ZA_1_006	2009	Other	Nov	\N
-level1	ZA_1_007	2009	Government Agriculture	Dec	1
-level1	ZA_1_007	2009	Government Urban	Dec	\N
-level1	ZA_1_007	2009	Private	Dec	16
-level1	ZA_1_007	2009	Other	Dec	\N
-level1	ZA_1_007	2009	Government Agriculture	Jan	\N
-level1	ZA_1_007	2009	Government Urban	Jan	\N
-level1	ZA_1_007	2009	Private	Jan	13
-level1	ZA_1_007	2009	Other	Jan	\N
-level1	ZA_1_007	2009	Government Agriculture	Feb	\N
-level1	ZA_1_007	2009	Government Urban	Feb	\N
-level1	ZA_1_007	2009	Private	Feb	10
-level1	ZA_1_007	2009	Other	Feb	\N
-level1	ZA_1_007	2009	Government Agriculture	Mar	5
-level1	ZA_1_007	2009	Government Urban	Mar	\N
-level1	ZA_1_007	2009	Private	Mar	9
-level1	ZA_1_007	2009	Other	Mar	\N
-level1	ZA_1_007	2009	Government Agriculture	Apr	\N
-level1	ZA_1_007	2009	Government Urban	Apr	\N
-level1	ZA_1_007	2009	Private	Apr	11
-level1	ZA_1_007	2009	Other	Apr	2
-level1	ZA_1_007	2009	Government Agriculture	May	2
-level1	ZA_1_007	2009	Government Urban	May	1
-level1	ZA_1_007	2009	Private	May	8
-level1	ZA_1_007	2009	Other	May	2
-level1	ZA_1_007	2009	Government Agriculture	Jun	2
-level1	ZA_1_007	2009	Government Urban	Jun	\N
-level1	ZA_1_007	2009	Private	Jun	9
-level1	ZA_1_007	2009	Other	Jun	1
-level1	ZA_1_007	2009	Government Agriculture	Jul	1
-level1	ZA_1_007	2009	Government Urban	Jul	\N
-level1	ZA_1_007	2009	Private	Jul	5
-level1	ZA_1_007	2009	Other	Jul	2
-level1	ZA_1_007	2009	Government Agriculture	Aug	1
-level1	ZA_1_007	2009	Government Urban	Aug	1
-level1	ZA_1_007	2009	Private	Aug	11
-level1	ZA_1_007	2009	Other	Aug	1
-level1	ZA_1_007	2009	Government Agriculture	Sep	1
-level1	ZA_1_007	2009	Government Urban	Sep	\N
-level1	ZA_1_007	2009	Private	Sep	6
-level1	ZA_1_007	2009	Other	Sep	\N
-level1	ZA_1_007	2009	Government Agriculture	Oct	1
-level1	ZA_1_007	2009	Government Urban	Oct	1
-level1	ZA_1_007	2009	Private	Oct	6
-level1	ZA_1_007	2009	Other	Oct	4
-level1	ZA_1_007	2009	Government Agriculture	Nov	\N
-level1	ZA_1_007	2009	Government Urban	Nov	\N
-level1	ZA_1_007	2009	Private	Nov	3
-level1	ZA_1_007	2009	Other	Nov	1
-level1	ZA_1_008	2009	Government Agriculture	Dec	\N
+level1	ZA_1_008	2009	Government Agriculture	Dec	1
 level1	ZA_1_008	2009	Government Urban	Dec	\N
-level1	ZA_1_008	2009	Private	Dec	2
+level1	ZA_1_008	2009	Private	Dec	4
 level1	ZA_1_008	2009	Other	Dec	1
 level1	ZA_1_008	2009	Government Agriculture	Jan	\N
 level1	ZA_1_008	2009	Government Urban	Jan	\N
-level1	ZA_1_008	2009	Private	Jan	3
-level1	ZA_1_008	2009	Other	Jan	\N
-level1	ZA_1_008	2009	Government Agriculture	Feb	\N
+level1	ZA_1_008	2009	Private	Jan	6
+level1	ZA_1_008	2009	Other	Jan	2
+level1	ZA_1_008	2009	Government Agriculture	Feb	1
 level1	ZA_1_008	2009	Government Urban	Feb	\N
-level1	ZA_1_008	2009	Private	Feb	5
-level1	ZA_1_008	2009	Other	Feb	1
+level1	ZA_1_008	2009	Private	Feb	9
+level1	ZA_1_008	2009	Other	Feb	3
 level1	ZA_1_008	2009	Government Agriculture	Mar	\N
 level1	ZA_1_008	2009	Government Urban	Mar	\N
-level1	ZA_1_008	2009	Private	Mar	3
-level1	ZA_1_008	2009	Other	Mar	1
-level1	ZA_1_008	2009	Government Agriculture	Apr	2
+level1	ZA_1_008	2009	Private	Mar	9
+level1	ZA_1_008	2009	Other	Mar	2
+level1	ZA_1_008	2009	Government Agriculture	Apr	\N
 level1	ZA_1_008	2009	Government Urban	Apr	\N
-level1	ZA_1_008	2009	Private	Apr	4
-level1	ZA_1_008	2009	Other	Apr	\N
-level1	ZA_1_008	2009	Government Agriculture	May	1
+level1	ZA_1_008	2009	Private	Apr	7
+level1	ZA_1_008	2009	Other	Apr	1
+level1	ZA_1_008	2009	Government Agriculture	May	\N
 level1	ZA_1_008	2009	Government Urban	May	\N
-level1	ZA_1_008	2009	Private	May	2
-level1	ZA_1_008	2009	Other	May	\N
+level1	ZA_1_008	2009	Private	May	6
+level1	ZA_1_008	2009	Other	May	1
 level1	ZA_1_008	2009	Government Agriculture	Jun	\N
 level1	ZA_1_008	2009	Government Urban	Jun	\N
-level1	ZA_1_008	2009	Private	Jun	3
+level1	ZA_1_008	2009	Private	Jun	5
 level1	ZA_1_008	2009	Other	Jun	\N
-level1	ZA_1_008	2009	Government Agriculture	Jul	\N
-level1	ZA_1_008	2009	Government Urban	Jul	\N
-level1	ZA_1_008	2009	Private	Jul	\N
-level1	ZA_1_008	2009	Other	Jul	\N
+level1	ZA_1_008	2009	Government Agriculture	Jul	2
+level1	ZA_1_008	2009	Government Urban	Jul	1
+level1	ZA_1_008	2009	Private	Jul	8
+level1	ZA_1_008	2009	Other	Jul	1
 level1	ZA_1_008	2009	Government Agriculture	Aug	\N
 level1	ZA_1_008	2009	Government Urban	Aug	\N
-level1	ZA_1_008	2009	Private	Aug	4
-level1	ZA_1_008	2009	Other	Aug	1
-level1	ZA_1_008	2009	Government Agriculture	Sep	1
+level1	ZA_1_008	2009	Private	Aug	7
+level1	ZA_1_008	2009	Other	Aug	2
+level1	ZA_1_008	2009	Government Agriculture	Sep	3
 level1	ZA_1_008	2009	Government Urban	Sep	\N
-level1	ZA_1_008	2009	Private	Sep	4
+level1	ZA_1_008	2009	Private	Sep	7
 level1	ZA_1_008	2009	Other	Sep	1
-level1	ZA_1_008	2009	Government Agriculture	Oct	\N
+level1	ZA_1_008	2009	Government Agriculture	Oct	4
 level1	ZA_1_008	2009	Government Urban	Oct	\N
-level1	ZA_1_008	2009	Private	Oct	3
-level1	ZA_1_008	2009	Other	Oct	1
-level1	ZA_1_008	2009	Government Agriculture	Nov	1
+level1	ZA_1_008	2009	Private	Oct	9
+level1	ZA_1_008	2009	Other	Oct	5
+level1	ZA_1_008	2009	Government Agriculture	Nov	\N
 level1	ZA_1_008	2009	Government Urban	Nov	\N
-level1	ZA_1_008	2009	Private	Nov	\N
-level1	ZA_1_008	2009	Other	Nov	1
+level1	ZA_1_008	2009	Private	Nov	3
+level1	ZA_1_008	2009	Other	Nov	5
+level1	ZA_1_003	2009	Government Agriculture	Dec	\N
+level1	ZA_1_003	2009	Government Urban	Dec	\N
+level1	ZA_1_003	2009	Private	Dec	1
+level1	ZA_1_003	2009	Other	Dec	2
+level1	ZA_1_003	2009	Government Agriculture	Jan	\N
+level1	ZA_1_003	2009	Government Urban	Jan	\N
+level1	ZA_1_003	2009	Private	Jan	1
+level1	ZA_1_003	2009	Other	Jan	\N
+level1	ZA_1_003	2009	Government Agriculture	Feb	\N
+level1	ZA_1_003	2009	Government Urban	Feb	\N
+level1	ZA_1_003	2009	Private	Feb	1
+level1	ZA_1_003	2009	Other	Feb	1
+level1	ZA_1_003	2009	Government Agriculture	Mar	\N
+level1	ZA_1_003	2009	Government Urban	Mar	1
+level1	ZA_1_003	2009	Private	Mar	2
+level1	ZA_1_003	2009	Other	Mar	3
+level1	ZA_1_003	2009	Government Agriculture	Apr	\N
+level1	ZA_1_003	2009	Government Urban	Apr	\N
+level1	ZA_1_003	2009	Private	Apr	2
+level1	ZA_1_003	2009	Other	Apr	1
+level1	ZA_1_003	2009	Government Agriculture	May	\N
+level1	ZA_1_003	2009	Government Urban	May	\N
+level1	ZA_1_003	2009	Private	May	\N
+level1	ZA_1_003	2009	Other	May	\N
+level1	ZA_1_003	2009	Government Agriculture	Jun	\N
+level1	ZA_1_003	2009	Government Urban	Jun	\N
+level1	ZA_1_003	2009	Private	Jun	4
+level1	ZA_1_003	2009	Other	Jun	\N
+level1	ZA_1_003	2009	Government Agriculture	Jul	\N
+level1	ZA_1_003	2009	Government Urban	Jul	\N
+level1	ZA_1_003	2009	Private	Jul	\N
+level1	ZA_1_003	2009	Other	Jul	\N
+level1	ZA_1_003	2009	Government Agriculture	Aug	\N
+level1	ZA_1_003	2009	Government Urban	Aug	\N
+level1	ZA_1_003	2009	Private	Aug	3
+level1	ZA_1_003	2009	Other	Aug	1
+level1	ZA_1_003	2009	Government Agriculture	Sep	\N
+level1	ZA_1_003	2009	Government Urban	Sep	\N
+level1	ZA_1_003	2009	Private	Sep	1
+level1	ZA_1_003	2009	Other	Sep	\N
+level1	ZA_1_003	2009	Government Agriculture	Oct	3
+level1	ZA_1_003	2009	Government Urban	Oct	\N
+level1	ZA_1_003	2009	Private	Oct	\N
+level1	ZA_1_003	2009	Other	Oct	\N
+level1	ZA_1_003	2009	Government Agriculture	Nov	\N
+level1	ZA_1_003	2009	Government Urban	Nov	\N
+level1	ZA_1_003	2009	Private	Nov	1
+level1	ZA_1_003	2009	Other	Nov	\N
+level1	ZA_1_006	2009	Government Agriculture	Dec	1
+level1	ZA_1_006	2009	Government Urban	Dec	\N
+level1	ZA_1_006	2009	Private	Dec	16
+level1	ZA_1_006	2009	Other	Dec	\N
+level1	ZA_1_006	2009	Government Agriculture	Jan	\N
+level1	ZA_1_006	2009	Government Urban	Jan	\N
+level1	ZA_1_006	2009	Private	Jan	13
+level1	ZA_1_006	2009	Other	Jan	\N
+level1	ZA_1_006	2009	Government Agriculture	Feb	\N
+level1	ZA_1_006	2009	Government Urban	Feb	\N
+level1	ZA_1_006	2009	Private	Feb	10
+level1	ZA_1_006	2009	Other	Feb	\N
+level1	ZA_1_006	2009	Government Agriculture	Mar	5
+level1	ZA_1_006	2009	Government Urban	Mar	\N
+level1	ZA_1_006	2009	Private	Mar	9
+level1	ZA_1_006	2009	Other	Mar	\N
+level1	ZA_1_006	2009	Government Agriculture	Apr	\N
+level1	ZA_1_006	2009	Government Urban	Apr	\N
+level1	ZA_1_006	2009	Private	Apr	11
+level1	ZA_1_006	2009	Other	Apr	2
+level1	ZA_1_006	2009	Government Agriculture	May	2
+level1	ZA_1_006	2009	Government Urban	May	1
+level1	ZA_1_006	2009	Private	May	8
+level1	ZA_1_006	2009	Other	May	2
+level1	ZA_1_006	2009	Government Agriculture	Jun	2
+level1	ZA_1_006	2009	Government Urban	Jun	\N
+level1	ZA_1_006	2009	Private	Jun	9
+level1	ZA_1_006	2009	Other	Jun	1
+level1	ZA_1_006	2009	Government Agriculture	Jul	1
+level1	ZA_1_006	2009	Government Urban	Jul	\N
+level1	ZA_1_006	2009	Private	Jul	5
+level1	ZA_1_006	2009	Other	Jul	2
+level1	ZA_1_006	2009	Government Agriculture	Aug	1
+level1	ZA_1_006	2009	Government Urban	Aug	1
+level1	ZA_1_006	2009	Private	Aug	11
+level1	ZA_1_006	2009	Other	Aug	1
+level1	ZA_1_006	2009	Government Agriculture	Sep	1
+level1	ZA_1_006	2009	Government Urban	Sep	\N
+level1	ZA_1_006	2009	Private	Sep	6
+level1	ZA_1_006	2009	Other	Sep	\N
+level1	ZA_1_006	2009	Government Agriculture	Oct	1
+level1	ZA_1_006	2009	Government Urban	Oct	1
+level1	ZA_1_006	2009	Private	Oct	6
+level1	ZA_1_006	2009	Other	Oct	4
+level1	ZA_1_006	2009	Government Agriculture	Nov	\N
+level1	ZA_1_006	2009	Government Urban	Nov	\N
+level1	ZA_1_006	2009	Private	Nov	3
+level1	ZA_1_006	2009	Other	Nov	1
+level1	ZA_1_001	2009	Government Agriculture	Dec	\N
+level1	ZA_1_001	2009	Government Urban	Dec	\N
+level1	ZA_1_001	2009	Private	Dec	2
+level1	ZA_1_001	2009	Other	Dec	1
+level1	ZA_1_001	2009	Government Agriculture	Jan	\N
+level1	ZA_1_001	2009	Government Urban	Jan	\N
+level1	ZA_1_001	2009	Private	Jan	3
+level1	ZA_1_001	2009	Other	Jan	\N
+level1	ZA_1_001	2009	Government Agriculture	Feb	\N
+level1	ZA_1_001	2009	Government Urban	Feb	\N
+level1	ZA_1_001	2009	Private	Feb	5
+level1	ZA_1_001	2009	Other	Feb	1
+level1	ZA_1_001	2009	Government Agriculture	Mar	\N
+level1	ZA_1_001	2009	Government Urban	Mar	\N
+level1	ZA_1_001	2009	Private	Mar	3
+level1	ZA_1_001	2009	Other	Mar	1
+level1	ZA_1_001	2009	Government Agriculture	Apr	2
+level1	ZA_1_001	2009	Government Urban	Apr	\N
+level1	ZA_1_001	2009	Private	Apr	4
+level1	ZA_1_001	2009	Other	Apr	\N
+level1	ZA_1_001	2009	Government Agriculture	May	1
+level1	ZA_1_001	2009	Government Urban	May	\N
+level1	ZA_1_001	2009	Private	May	2
+level1	ZA_1_001	2009	Other	May	\N
+level1	ZA_1_001	2009	Government Agriculture	Jun	\N
+level1	ZA_1_001	2009	Government Urban	Jun	\N
+level1	ZA_1_001	2009	Private	Jun	3
+level1	ZA_1_001	2009	Other	Jun	\N
+level1	ZA_1_001	2009	Government Agriculture	Jul	\N
+level1	ZA_1_001	2009	Government Urban	Jul	\N
+level1	ZA_1_001	2009	Private	Jul	\N
+level1	ZA_1_001	2009	Other	Jul	\N
+level1	ZA_1_001	2009	Government Agriculture	Aug	\N
+level1	ZA_1_001	2009	Government Urban	Aug	\N
+level1	ZA_1_001	2009	Private	Aug	4
+level1	ZA_1_001	2009	Other	Aug	1
+level1	ZA_1_001	2009	Government Agriculture	Sep	1
+level1	ZA_1_001	2009	Government Urban	Sep	\N
+level1	ZA_1_001	2009	Private	Sep	4
+level1	ZA_1_001	2009	Other	Sep	1
+level1	ZA_1_001	2009	Government Agriculture	Oct	\N
+level1	ZA_1_001	2009	Government Urban	Oct	\N
+level1	ZA_1_001	2009	Private	Oct	3
+level1	ZA_1_001	2009	Other	Oct	1
+level1	ZA_1_001	2009	Government Agriculture	Nov	1
+level1	ZA_1_001	2009	Government Urban	Nov	\N
+level1	ZA_1_001	2009	Private	Nov	\N
+level1	ZA_1_001	2009	Other	Nov	1
 \.
 
 
