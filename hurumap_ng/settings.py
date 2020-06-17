@@ -50,7 +50,7 @@ HURUMAP["mapit"] = {
         None: "1",
         # this should be based on the default_geo_version wazimap setting
     },
-    "code_type": "HDX",
+    "code_type": "NGA",
     "level_simplify": {"country": 0, "province": 0},
     "map_country": {"centre": [9.0820, 8.6753], "zoom": 6},
 }
