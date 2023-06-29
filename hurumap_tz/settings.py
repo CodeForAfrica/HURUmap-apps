@@ -77,7 +77,7 @@ HURUMAP['mapit'] = {
     }
 }
 
-HURUMAP['ga_tracking_id'] = 'UA-91133100-4'
+HURUMAP['ga_tracking_id'] = os.environ.get('GA_TRACKING_ID')
 
 HURUMAP['twitter'] = '@Code4Africa'
 

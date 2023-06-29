@@ -25,7 +25,7 @@ HURUMAP[
 HURUMAP["twitter"] = "@nigerianstat"
 HURUMAP["facebook"] = "nigerianstatistics"
 
-HURUMAP["ga_tracking_id"] = "UA-44795600-49"
+HURUMAP['ga_tracking_id'] = os.environ.get('GA_TRACKING_ID')
 
 HURUMAP["country_code"] = "NG"
 HURUMAP["country_name"] = "Nigeria"
