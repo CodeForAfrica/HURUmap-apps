@@ -19,7 +19,8 @@ HURUMAP['name'] = 'HURUmap Zambia'
 HURUMAP['url'] = 'https://zambia.hurumap.org'
 HURUMAP['twitter'] = '@Code4Africa'
 
-HURUMAP['ga_tracking_id'] = 'UA-44795600-21'
+HURUMAP['ga_tracking_id'] = os.environ.get('GA_TRACKING_ID')
+
 
 HURUMAP['country_code'] = 'ZM'
 HURUMAP['country_name'] = 'Zambia'

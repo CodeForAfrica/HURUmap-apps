@@ -47,7 +47,8 @@ HURUMAP['email'] = 'info@codeforafrica.org'
 
 HURUMAP['github_url'] = 'https://github.com/CodeForAfrica/HURUmap-apps'
 
-HURUMAP['ga_tracking_id'] = 'UA-44795600-47'
+
+HURUMAP['ga_tracking_id'] = os.environ.get('GA_TRACKING_ID')
 HURUMAP['google_geocode_api_key'] = os.environ.get('GOOGLE_GEOCODE_API_KEY')
 
 HURUMAP['country_code'] = 'ZA'

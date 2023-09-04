@@ -1,3 +1,4 @@
+import os
 # pull in the default HURUmap settings
 from collections import OrderedDict
 from distutils.util import strtobool
@@ -26,7 +27,7 @@ HURUMAP['url'] = os.environ.get('HURUMAP_URL', 'https://zimbabwe.hurumap.org')
 HURUMAP['country_code'] = 'ZW'
 HURUMAP['country_name'] = 'Zimbabwe'
 
-HURUMAP['ga_tracking_id'] = 'UA-44795600-45'
+HURUMAP['ga_tracking_id'] = os.environ.get('GA_TRACKING_ID')
 
 # Define the profile to load
 

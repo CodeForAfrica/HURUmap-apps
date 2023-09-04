@@ -1,3 +1,4 @@
+import os
 from django.utils.translation import ugettext_lazy as _
 from collections import OrderedDict
 from distutils.util import strtobool
@@ -121,7 +122,8 @@ HURUMAP['mapit'] = {
     }
 }
 
-HURUMAP['ga_tracking_id'] = 'UA-91133100-8'
+HURUMAP['ga_tracking_id'] = os.environ.get('GA_TRACKING_ID')
+
 # HURUMAP['ga_tracking_ids'] = ['UA-44795600-8','UA-91133100-4']
 
 HURUMAP['twitter'] = '@Code4Africa'
